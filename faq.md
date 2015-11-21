@@ -20,7 +20,7 @@
     - From inside your blog's version of the article, link back to the
        original source on HackHands, using the tag "rel=canonical".  The
        canonical tag makes it clear to Google that the content is syndicated.
-       See this article about the [Canonical tag](http://www.shoutmeloud.com/relcanonical-wordpresss-content-syndication-seo.html")
+       See this article about the [Canonical tag](http://www.shoutmeloud.com/relcanonical-wordpresss-content-syndication-seo.html").
 - What types of articles are you looking for?
     - We're generally looking for tutorials on programing with X where X is a
       technology or library you're passionate about.
