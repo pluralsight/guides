@@ -23,19 +23,48 @@ Think of this as a "Wikipedia" for technical tutorials.
 - (Future) **Bring knowledge to other countries**.  Your content can be translated by a community of bilingual and passionate about their countries receiving knowledge, to be shared with other countries who don't have a deep understanding of the English language.
 
 ## Some bonus reasons to a contribute a tutorial here!
-- Our sponsor, Pluralsight, has agreed that if you write a high quality tutorial, you'll receive a free subscription to Pluralsight.com, so that you can keep your skils sharp.
-- They'll also consider you for making training videos, to earn extra income.
-- Plus, if you've created any Pluralsight.com videos already, your tutorials can promote those videos you've created.
+
+ *All of these awesome benefits*
+
+ * Help the world
+    You'll be helping spread useful knowledge to the developer community
+
+ * Improve your HackerNews karma
+    -You'll get early access to high-quality articles before anyone else to post
+ * Learn from great content
+    -You'll get the latest knowledge coming from our authors about interesting programming topics
+
+ * Free subscription to Pluralsight.com
+    -As a small thank-you, you'll get Pluralsight for free. Stay up-to-date on all programming topics. A $299 value!
+
+ * Exclusive access to our Slack to network with other top developers
+    -Make awesome connections with other top programmers who are also involved.
+
+ * Explore opportunities to earn supplemental income
+    -We'll give you preferential consideration to being a mentor on HackHands, or to make money authoring video courses!
+
+ * Free access to the next hack.summit() conference for you and your friends
+    -Get your own special code you can give out!
 
 ## What types of tutorials are appropriate to post?
-- Technical tutorials.  Feel free to write about any technology that you're passionate about.
-- We'd encourage you to write high-quality content that improves the world's knowledge about the subject.
+
+*Feel free to write about any technology that you're passionate about.* Generally speaking, one of the following:
+
+* Tutorial on programming with X (where X is a technology or library you’re passionate about)
+* Top 10 things you probably didn’t know about X
+* Guide to what’s new in the latest version of X
+* Advanced guide to programming with X
+* Top 10 tips when programming with X
+* X vs Y [where Y is a competing technology, or is no technology]
+
+or any other ideas you might have :) email us!
 
 ## How long should tutorials be?
-- What we're trying to create are definitive tutorials on technical subjects.  Longform articles are a great fit for this.
+
+- Tutorials/articles ideally ranging from 1500-3000 words, including <code-blocks>. We're trying to create are definitive tutorials on technical subjects.  Longform articles are a great fit for this.
 
 ## Can you help me edit/revise the article?
-- Yes! That's why we've built the editing tools on this site. It's easy to share a link to your article on social media and crowdsource expert-level editors for your topic.  You'll be able to see suggestions from the community and accept the changes you want.  Our editors can help improve it too.
+- Yes! That's why we've built the editing tools on this site. It's easy to share a link to your article on social media and crowdsource expert-level editors for your topics. You'll be able to see suggestions from the community and accept the changes you want. Our editors can help improve it too.
 
 ## How do I know if my tutorial idea is any good?
 - One easy thing you can do is to check-out what else is out their for this particular subject.  Try doing a quick search now for some topics that interest you.  Other articles are generally OK so long as there is enough unique/useful content that sets your article apart.  Are there ideas you can talk about in your proposed article that hasn't already been written?  Enough interesting unique contributions that can be added that moves the world's knowledge forward? Those are some things to think about.
