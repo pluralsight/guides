@@ -35,6 +35,6 @@ Do you have a strong presence on HackerNews?  If so, we'd love to talk to you.
  * Free access to the next hack.summit() conference for you and your friends
     -Get your own special code you can give out!
 
-4. This sounds awesome. How do I get involved?
+4. This sounds awesome.  How do I get involved?
 
    Email Prateek Gupta (prateek-gupta@pluralsight.com) and we'll get going.
