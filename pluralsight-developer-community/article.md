@@ -1,36 +1,40 @@
 At Pluralsight we are creating a series of high-quality tutorials on programming. We're doing this because we want to help developers around the world learn more about programming. But we need your help. We're looking to our friends in the developer community to help us spread this knowledge on Twitter, Facebook, and HackerNews. We'd love for you to get involved.
 
-FAQ:
+##FAQ:
 
-Q: What's involved?
-A: A couple of times per week we'll send you an article to read. If you like it, then please share it! Pretty simple and easy.
+1. What's involved?
 
-Q: What are the requirements for getting involved?
-A: A minimum HackerNews reputation of 1000 karma.
+    A couple of times per week we'll send you an article to read. If you like it, then please share it! Pretty simple and easy.
 
-Q: What's in it for me?
-A: All of these awesome benefits--
+2. What are the requirements for getting involved?
 
-        Help the world
-                You'll be helping spread useful knowledge to the developer community
+   A minimum HackerNews reputation of 1000 karma.
 
-        Improve your HackerNews karma
-                You'll get early access to high-quality articles before anyone else to post
+3. What's in it for me?
+   
+   *All of these awesome benefits*
 
-        Learn from great content
-                You'll get the latest knowledge coming from our authors about interesting programming topics
+ * Help the world
+    You'll be helping spread useful knowledge to the developer community
 
-        Free subscription to Pluralsight.com
-                As a small thank-you, you'll get Pluralsight for free. Stay up-to-date on all programming topics. A $299 value!
+ * Improve your HackerNews karma
+    -You'll get early access to high-quality articles before anyone else to post
+ * Learn from great content
+    -You'll get the latest knowledge coming from our authors about interesting programming topics
 
-        Exclusive access to our Slack to network with other top developers
-                Make awesome connections with other top programmers who are also involved.
+ * Free subscription to Pluralsight.com
+    -As a small thank-you, you'll get Pluralsight for free. Stay up-to-date on all programming topics. A $299 value!
 
-        Explore opportunities to earn supplemental income
-                We'll give you preferential consideration to being a mentor on HackHands, or to make money authoring video courses!
+ * Exclusive access to our Slack to network with other top developers
+    -Make awesome connections with other top programmers who are also involved.
 
-        Free access to the next hack.summit() conference for you and your friends
-                Get your own special code you can give out!
+ * Explore opportunities to earn supplemental income
+    -We'll give you preferential consideration to being a mentor on HackHands, or to make money authoring video courses!
 
-Q: This sounds awesome. How do I get involved?
-A: Email prateek-gupta@pluralsight.com and we'll get going!
+ * Free access to the next hack.summit() conference for you and your friends
+    -Get your own special code you can give out!
+
+4. This sounds awesome. How do I get involved?
+
+   Email Prateek Gupta (prateek-gupta@pluralsight.com) and we'll get going!
+
