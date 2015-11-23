@@ -24,3 +24,4 @@ Welcome! This is a community for collaborating on creating great technical tutor
 
 - Help us spread the word about the site on Facebook and Twitter (see buttons on bottom of page)
 - Get started now by [writing a new article](/write/) or editing one of the articles needing review.
+- Help us improve the code for this site by making an open-source contribution.
