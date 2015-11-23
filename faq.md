@@ -18,7 +18,7 @@ Think of this as a "Wikipedia" for technical tutorials.
 - If you aren't familiar with git/Github, or don't want to bother with that, that's fine too -- we have a handy-dandy visual editor on our site to edit tutorials right here.
 - **The code for this site is open-sourced in Github**.  Let's improve it together!
 - You can get your tutorials **peer-reviewed by others**.  This improves the quality of our collective knowledge.
-- **Others can help maintain your tutorials long-term**, making the content have a much deeper longevity when updates are needed, and removes the original author as a single point of failure if he doesn’t maintain the tutorial.
+- **Others can help maintain your tutorials long-term**, making the content have a much deeper longevity when updates are needed, and removes the original author as a single point of failure if you get busy and can't maintain your tutorial.
 - **We can help each other reach a wide audience and make a bigger impact**.  When a tutorial gets published, we all work together to help promote it on HackerNews, to get lots of viewers.  By building momentum on this site together, we'll get a larger audience over time, which means your tutorials will reach a wide audience.
 - (Future) **Bring knowledge to other countries**.  Your content can be translated by a community of bilingual and passionate about their countries receiving knowledge, to be shared with other countries who don't have a deep understanding of the English language.
 
