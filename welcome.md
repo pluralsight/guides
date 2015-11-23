@@ -5,7 +5,7 @@ Welcome! This is a community for collaborating on creating great technical tutor
 - Technical tutorial blog content is currently created on WordPress, which is universally abhorred by us.
 - Once a tutorial is created, it becomes stale and out of date. If the author doesn’t maintain their content, then it becomes less useful.
 - There isn’t a strong way for developers to improve their content through peer review.  Wordpress sucks for that.
-- Tutorials currently exist in silos.  They live on individual developer blogs worldwide.  This makes the content fragmented.  Also, the creators of this content have a limited audience due to the poor reach of their blogs.
+- Tutorials currently exist in silos.  They live on individual blogs, and are fragmented and varying in quality.  Those tutorials don't typically reach a wide audience since individual blogs have limited reach.
 - Tutorials are largely in English and do not translate quickly/easily into other languages since code isn’t easily auto-translated.  Other countries don’t have easy access to learning.
 
 
