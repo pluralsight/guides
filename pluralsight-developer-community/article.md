@@ -15,7 +15,7 @@ A minimum HackerNews reputation of 1000 karma.
 *All of these awesome benefits*
 
 * Help the world
-    You'll be helping spread useful knowledge through the world
+    -You'll help spread useful knowledge to the world
 
 * Improve your HackerNews karma
     -You'll get early access to high-quality articles before anyone else to post
