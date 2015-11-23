@@ -1,6 +1,6 @@
 Do you have a strong presence on HackerNews? If so, we'd love to talk to you.
 
-##FAQ:
+### FAQ:
 
 ### What are you looking for?
 
