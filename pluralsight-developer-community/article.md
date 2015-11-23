@@ -36,5 +36,5 @@ At Pluralsight we are creating a series of high-quality tutorials on programming
 
 4. This sounds awesome. How do I get involved?
 
-   Email Prateek Gupta (prateek-gupta@pluralsight.com) and we'll get going!
+   Email Prateek Gupta (prateek-gupta@pluralsight.com) and we'll get going.
 
