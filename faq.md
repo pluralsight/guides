@@ -22,7 +22,7 @@ Think of this as a "Wikipedia" for technical tutorials.
 - **We can help each other reach a wide audience and make a bigger impact**.  When a tutorial gets published, we all work together to help promote it on HackerNews, to get lots of viewers.  By building momentum on this site together, we'll get a larger audience over time, which means your tutorials will reach a wide audience.
 - (Future) **Bring knowledge to other countries**.  Your content can be translated by a community of bilingual and passionate about their countries receiving knowledge, to be shared with other countries who don't have a deep understanding of the English language.
 
-## Some bonus reasons to a contribute a tutorial here!
+### Some bonus reasons to a contribute a tutorial here!
 
  *All of these awesome benefits*
 
@@ -46,7 +46,7 @@ Think of this as a "Wikipedia" for technical tutorials.
  * Free access to the next hack.summit() conference for you and your friends
     -Get your own special code you can give out!
 
-## What types of tutorials are appropriate to post?
+### What types of tutorials are appropriate to post?
 
 *Feel free to write about any technology that you're passionate about.* Generally speaking, one of the following:
 
@@ -59,17 +59,17 @@ Think of this as a "Wikipedia" for technical tutorials.
 
 or any other ideas you might have :) email us!
 
-## How long should tutorials be?
+### How long should tutorials be?
 
 - Tutorials/articles ideally ranging from 1500-3000 words, including <code-blocks>. We're trying to create are definitive tutorials on technical subjects.  Longform articles are a great fit for this.
 
-## Can you help me edit/revise the article?
+### Can you help me edit/revise the article?
 - Yes! That's why we've built the editing tools on this site. It's easy to share a link to your article on social media and crowdsource expert-level editors for your topics. You'll be able to see suggestions from the community and accept the changes you want. Our editors can help improve it too.
 
-## How do I know if my tutorial idea is any good?
+### How do I know if my tutorial idea is any good?
 - One easy thing you can do is to check-out what else is out their for this particular subject.  Try doing a quick search now for some topics that interest you.  Other articles are generally OK so long as there is enough unique/useful content that sets your article apart.  Are there ideas you can talk about in your proposed article that hasn't already been written?  Enough interesting unique contributions that can be added that moves the world's knowledge forward? Those are some things to think about.
 
-## What is the writing process?
+### What is the writing process?
 1. [Submit an tutorial](/write/)
 2. Share a link for suggestions to your article with friends, co-workers, etc.
 3. Continue improving your article with the community help
