@@ -1,4 +1,4 @@
-Welcome! This is a community for collaborating on creating great technical tutorials.  Our collective aim is by working together, we can educate the world, plus improve our knowledge, so we can be smarter than yesterday. Think of this as a "Wikipedia" for technical tutorials.  It’s a way for all of us to give-back and contribute to the knowledge of society.
+Welcome! This is a community for collaborating on creating great technical tutorials.  Our collective aim is by working together, we can educate the world, plus improve our knowledge, so we can be smarter than yesterday. Think of this as a "Wikipedia" for technical tutorials.  It’s a way for all of us to give-back and contribute to the knowledge of society.  After all, the best way to learn is to teach, and you have unique expertise.
 
 ### Problems we’re trying to solve
 
@@ -11,16 +11,16 @@ Welcome! This is a community for collaborating on creating great technical tutor
 
 ### How we’re solving these problems together
 
-- We've created this as a place to share and discover new & innovative technical articles/content. The content is community-generated, making this a long-term self-sustaining project.
-- We use MarkDown (rather than WordPress), a simple file format.  The content is stored in GitHub, which many developers use daily and love.
-- You can use your favorite text editor to create tutorials and check them in via Git.  Or you can use our handy-dandy Visual Editor if you'd rather have that handled by us.
-- The code for the site itself is open-source and is stored in Github.  Let's improve it together!
-- You can get your tutorials peer-reviewed by others.  This improves the quality of our collective knowledge.
-- Others can help maintain your tutorials long-terms, making the content have a much deeper longevity when updates are needed, and removes the original author as a single point of failure if he doesn’t maintain the tutorial.
-- By building momentum on this site together, we'll get a larger audience over time, which means your tutorials will reach a wide community and the impact of your words will be larger.
-- (Future) Your content can be translated by a community of programmers who are bilingual and passionate about their countries receiving knowledge, to be shared with other countries who don't have a deep understanding of the English language.
+- **We use MarkDown** (rather than WordPress), a simple file format
+- **The tutorials are stored in GitHub**, which many developers use daily and love.
+- **Use your favorite text editor** to create tutorials and **check them in via Git**.  Or you can use our handy-dandy Visual Editor if you'd rather have that handled by us.
+- **The code for this site is open-sourced in Github**.  Let's improve it together!
+- You can get your tutorials **peer-reviewed by others**.  This improves the quality of our collective knowledge.
+- **Others can help maintain your tutorials long-term**, making the content have a much deeper longevity when updates are needed, and removes the original author as a single point of failure if he doesn’t maintain the tutorial.
+- **The impact of our words will be larger**.  By building momentum on this site together, we'll get a larger audience over time, which means your tutorials will reach a wide community.
+- (Future) **Bring knowledge to other countries**.  Your content can be translated by a community of bilingual and passionate about their countries receiving knowledge, to be shared with other countries who don't have a deep understanding of the English language.
 
 ### I love this.  How do I help?
 
-- Help us spread the word about the site on Facebook and Twitter
-- The best way to learn is to teach, and you have unique expertise. Give back to the community you learned from.  Get started now by [writing a new article](/write/) or editing one of the articles needing review.
+- Help us spread the word about the site on Facebook and Twitter (see buttons on bottom of page)
+- Get started now by [writing a new article](/write/) or editing one of the articles needing review.
