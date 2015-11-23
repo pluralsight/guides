@@ -40,11 +40,11 @@ Think of this as a "Wikipedia" for technical tutorials.
 * Top 10 tips when programming with X
 * X vs Y [where Y is a competing technology, or is no technology]
 
-or any other ideas you might have, please reach out to Prateek (prateek-gupta@pluralsight.com)! :)
+...or any other ideas you might have.  Please reach out to Prateek (prateek-gupta@pluralsight.com)! :)
 
 ### How long should tutorials be?
 
-Tutorials/articles ideally ranging from 1500-3000 words, including <code-blocks>. We're trying to create are definitive tutorials on technical subjects.  Longform articles are a great fit for this.
+Tutorials/articles ideally range from 1500-3000 words, including `code blocks`, to be a 'definitive tutorial' on a technical subject.
 
 ### Can you help me edit/revise the article?
 Yes! That's why we've built the editing tools on this site. It's easy to share a link to your article on social media and crowdsource expert-level editors for your topics. You'll be able to see suggestions from the community and accept the changes you want. Our editors can help improve it too.
