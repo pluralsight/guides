@@ -23,28 +23,11 @@ Think of this as a "Wikipedia" for technical tutorials.
 - (Future) **Bring knowledge to other countries**.  Your content can be translated by a community of bilingual and passionate about their countries receiving knowledge, to be shared with other countries who don't have a deep understanding of the English language.
 
 ### Some bonus reasons to a contribute a tutorial here!
-
- *All of these awesome benefits*
-
- * Help the world
-    You'll be helping spread useful knowledge to the developer community
-
- * Improve your HackerNews karma
-    -You'll get early access to high-quality articles before anyone else to post
- * Learn from great content
-    -You'll get the latest knowledge coming from our authors about interesting programming topics
-
- * Free subscription to Pluralsight.com
-    -As a small thank-you, you'll get Pluralsight for free. Stay up-to-date on all programming topics. A $299 value!
-
- * Exclusive access to our Slack to network with other top developers
-    -Make awesome connections with other top programmers who are also involved.
-
- * Explore opportunities to earn supplemental income
-    -We'll give you preferential consideration to being a mentor on HackHands, or to make money authoring video courses!
-
- * Free access to the next hack.summit() conference for you and your friends
-    -Get your own special code you can give out!
+* **Help the world**.  You'll help spread useful knowledge.
+* **Free subscription to Pluralsight.com**.  As a small thank-you, you'll get Pluralsight for free. Stay up-to-date on all programming topics.  This is worth $299.
+* **Network with other important members of the community**.  We'll give you exclusive access to our community Slack, to make awesome connections with others who are involved.
+* **Explore opportunities to earn supplemental income**.  We'll give you preferential consideration to being a mentor on HackHands, or to make money authoring video courses.
+* **Free access to the next hack.summit() conference for you and your friends**.  Get your own special code you can give out!
 
 ### What types of tutorials are appropriate to post?
 
