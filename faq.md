@@ -2,24 +2,30 @@ Welcome!  This is a community for collaborating on creating great technical tuto
 Our collective aim is by working together, we can educate the world, plus improve our knowledge.
 Think of this as a "Wikipedia" for technical tutorials.
 
-## Why would I contribute tutorials here?
-- Give your expertise back to the community
-- The best way to learn for yourself is to teach others
-- Our community collectively offers promotion and distribution of your tutorials to a wide audience (much more than a personal blog post)
-- We can help you promote the content on HackerNews to get a lot of eyeballs and traffic
-- Our community can help improve your tutorials with peer review of your content
-- Improve your personal brand by being a thought leader, leading to opportunities for your career
-- If you write a very high quality tutorial, we'll give you a free subscription to Pluralsight, so that you can keep your skils sharp.
-- If you've created any Pluralsight videos, your tutorials can promote those videos you've created, earning more income
+### Problems we’re trying to solve
 
-## What is the technology behind this site?
-It's super cool :)
-- We use Github for article storage.  This way you can directly edit your articles via git and Github, and your favorite text editor
-- If you aren't familiar with git/Github, or don't want to bother with that, that's fine too -- we have a visual editor on our site to edit tutorials right here.
-- We use Markdown as the file format.  This is a really simple text-based file format that takes around 60 seconds to understand.  It's really easy to make things **bold**, _italics_, `code blocks`, etc.  Markdown is used in many places, such as Github README files.
-- So basically, these are the same tools that developers use every day.  And it's *way* better than Wordpress!
-- We've open-sourced all of it too.  Help us improve it!
-- Even this file is a Markdown file.  You can help us edit and improve it!
+- Technical tutorial blog content is currently created on WordPress, which is universally abhorred by us.
+- Once a tutorial is created, it becomes stale and out of date. If the author doesn’t maintain their content, then it becomes less useful.
+- There isn’t a strong way for developers to improve their content through peer review.  Wordpress sucks for that.
+- Tutorials currently exist in silos.  They live on individual blogs, and are fragmented and varying in quality.  Those tutorials don't typically reach a wide audience since individual blogs have limited reach.
+- Tutorials are largely in English and do not translate quickly/easily into other languages since code isn’t easily auto-translated.  Other countries don’t have easy access to learning.
+
+### How we’re solving these problems together
+
+- **We use MarkDown** (rather than WordPress), a simple file format.  This is a really simple text-based file format that takes around 60 seconds to understand.  It's really easy to make things **bold**, _italics_, `code blocks`, etc.  Markdown is used in many places, such as Github README files.  Even this file is a Markdown file.  You can help us edit and improve it.
+- **The tutorials are stored in GitHub**, which many developers use daily and love.
+- **Use your favorite text editor** to create tutorials and **check them in via Git**.  Or you can also edit tutorials using Github's UI.  **Way better than Wordpress**.
+- If you aren't familiar with git/Github, or don't want to bother with that, that's fine too -- we have a handy-dandy visual editor on our site to edit tutorials right here.
+- **The code for this site is open-sourced in Github**.  Let's improve it together!
+- You can get your tutorials **peer-reviewed by others**.  This improves the quality of our collective knowledge.
+- **Others can help maintain your tutorials long-term**, making the content have a much deeper longevity when updates are needed, and removes the original author as a single point of failure if he doesn’t maintain the tutorial.
+- **We can help each other reach a wide audience and make a bigger impact**.  When a tutorial gets published, we all work together to help promote it on HackerNews, to get lots of viewers.  By building momentum on this site together, we'll get a larger audience over time, which means your tutorials will reach a wide audience.
+- (Future) **Bring knowledge to other countries**.  Your content can be translated by a community of bilingual and passionate about their countries receiving knowledge, to be shared with other countries who don't have a deep understanding of the English language.
+
+## Some bonus reasons to a contribute a tutorial here!
+- Our sponsor, Pluralsight, has agreed that if you write a high quality tutorial, you'll receive a free subscription to Pluralsight.com, so that you can keep your skils sharp.
+- They'll also consider you for making training videos, to earn extra income.
+- Plus, if you've created any Pluralsight.com videos already, your tutorials can promote those videos you've created.
 
 ## What types of tutorials are appropriate to post?
 - Technical tutorials.  Feel free to write about any technology that you're passionate about.
