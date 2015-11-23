@@ -1,54 +1,42 @@
-- Why would I write for Pluralsight Tutorials?
-    - Get access to free Pluralsight training videos
-    - Give your expertise back to the community
-    - Improve your personal brand, leading to opportunities for your
-- Why does Pluralsight Tutorials want content?
-    - We want to be the best place for accessing great tutorial conent on the
-      web, and we're passionate about providing a platform for experts to
-      improve their personal reach while teaching others.
-- Can you help me edit/revise the article?
-    - Yes! That's why we've built the editing tools on this site. It's easy to
-      share a link to your article on social media and crowdsource expert-level
-      editors for your topic.  You'll be able to see suggestions from the
-      community and accept the changes you want.
-- Can I cross-post on my own blog?
-    - Yes!  But from an SEO perspective, Google will hit us with a duplicate
-      content penalty if we both post it without being careful about it.  Here
-      is what to do:
+Welcome!  This is a community for collaborating on creating great technical tutorials.
+Our collective aim is by working together, we can educate the world, plus improve our knowledge.
+Think of this as a "Wikipedia" for technical tutorials.
 
-    - Wait 2 weeks before posting, from the day it goes live on HackHands
-    - From inside your blog's version of the article, link back to the
-       original source on HackHands, using the tag "rel=canonical".  The
-       canonical tag makes it clear to Google that the content is syndicated.
-       See this article about the [Canonical tag](http://www.shoutmeloud.com/relcanonical-wordpresss-content-syndication-seo.html").
-- What types of articles are you looking for?
-    - We're generally looking for tutorials on programing with X where X is a
-      technology or library you're passionate about.
-- How long should the article be?
-    - What's most important is that its a definitive article on the subject, is
-      super useful, and is linked-to from other sites.  Longform articles are a
-      great fit for this.
-- What type of content are you looking for?
-    - In general, content marketing is very hit-driven.  95% of posts don't get
-      results, but the ones that do make up for all the others that don't.  So
-      that's why the only strategy that generally works is to write fewer
-      pieces that are more definitive in nature.
-    - The goal is that when someone does a google search for this subject, that
-      your article appears on the first page of results.  For that to occur, we
-      need the quality of the content to be high enough that many other sites
-      link into your article because its definitive.
-- How do I know if my article idea has a good chance of getting high traffic?
-    - One easy thing you can do is to check-out the competition for SEO for
-      this particular subject.  Try doing a quick search now for some topics
-      that interest you.  Competition is generally OK so long as there is
-      enough unique/useful content that sets your article apart from the
-      competition.  Are there ideas you can talk about in your proposed article
-      that hasn't already been written?  Enough interesting unique
-      contributions that can be added that moves the world's knowledge forward?
-      Those are some things to think about.
-- What is the writing process?
-    - [Submit an article](/write/)
-    - Share a link for suggestions to your article with friends, co-workers, etc.
-    - Continue improving your article with the community help
-    - Our editors will also assist you with improving your article
-    - We'll publish your article
+## Why would I contribute tutorials here?
+- Give your expertise back to the community
+- The best way to learn for yourself is to teach others
+- Our community collectively offers promotion and distribution of your tutorials to a wide audience (much more than a personal blog post)
+- We can help you promote the content on HackerNews to get a lot of eyeballs and traffic
+- Our community can help improve your tutorials with peer review of your content
+- Improve your personal brand by being a thought leader, leading to opportunities for your career
+- If you write a very high quality tutorial, we'll give you a free subscription to Pluralsight, so that you can keep your skils sharp.
+- If you've created any Pluralsight videos, your tutorials can promote those videos you've created, earning more income
+
+## What is the technology behind this site?
+It's super cool :)
+- We use Github for article storage.  This way you can directly edit your articles via git and Github, and your favorite text editor
+- If you aren't familiar with git/Github, or don't want to bother with that, that's fine too -- we have a visual editor on our site to edit tutorials right here.
+- We use Markdown as the file format.  This is a really simple text-based file format that takes around 60 seconds to understand.  It's really easy to make things **bold**, _italics_, `code blocks`, etc.  Markdown is used in many places, such as Github README files.
+- So basically, these are the same tools that developers use every day.  And it's *way* better than Wordpress!
+- We've open-sourced all of it too.  Help us improve it!
+- Even this file is a Markdown file.  You can help us edit and improve it!
+
+## What types of tutorials are appropriate to post?
+- Technical tutorials.  Feel free to write about any technology that you're passionate about.
+- We'd encourage you to write high-quality content that improves the world's knowledge about the subject.
+
+## How long should tutorials be?
+- What we're trying to create are definitive tutorials on technical subjects.  Longform articles are a great fit for this.
+
+## Can you help me edit/revise the article?
+- Yes! That's why we've built the editing tools on this site. It's easy to share a link to your article on social media and crowdsource expert-level editors for your topic.  You'll be able to see suggestions from the community and accept the changes you want.  Our editors can help improve it too.
+
+## How do I know if my tutorial idea is any good?
+- One easy thing you can do is to check-out what else is out their for this particular subject.  Try doing a quick search now for some topics that interest you.  Other articles are generally OK so long as there is enough unique/useful content that sets your article apart.  Are there ideas you can talk about in your proposed article that hasn't already been written?  Enough interesting unique contributions that can be added that moves the world's knowledge forward? Those are some things to think about.
+
+## What is the writing process?
+1. [Submit an tutorial](/write/)
+2. Share a link for suggestions to your article with friends, co-workers, etc.
+3. Continue improving your article with the community help
+4. Our editors will also assist you with improving your article
+5. Publish your article!
