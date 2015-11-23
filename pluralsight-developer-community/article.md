@@ -2,15 +2,15 @@ Do you have a strong presence on HackerNews?  If so, we'd love to talk to you.
 
 ##FAQ:
 
-1. What are you looking for?
+- What are you looking for?
 
     A couple of times per week we'll send you a tutorial to read. If you like it, then please share it! Pretty simple and easy.
 
-2. What are the requirements for getting involved?
+- What are the requirements for getting involved?
 
    A minimum HackerNews reputation of 1000 karma.
 
-3. What's in it for me?
+- What's in it for me?
    
    *All of these awesome benefits*
 
@@ -35,6 +35,6 @@ Do you have a strong presence on HackerNews?  If so, we'd love to talk to you.
  * Free access to the next hack.summit() conference for you and your friends
     -Get your own special code you can give out!
 
-4. This sounds awesome.  How do I get involved?
+- This sounds awesome.  How do I get involved?
 
    Email Prateek Gupta (prateek-gupta@pluralsight.com) and we'll get going.
