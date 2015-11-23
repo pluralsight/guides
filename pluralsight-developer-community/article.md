@@ -4,7 +4,7 @@ Do you have a strong presence on HackerNews?  If so, we'd love to talk to you.
 
 ### What are you looking for?
 
-A couple of times per week we'll send you a tutorial to read. If you like it, then please share it! Pretty simple and easy.
+A couple of times per week we'll send you a tutorial to read. If you like it, then please share it on HackerNews, Facebook, and/or Twitter! Pretty simple and easy.
 
 ### What are the requirements for getting involved?
 
