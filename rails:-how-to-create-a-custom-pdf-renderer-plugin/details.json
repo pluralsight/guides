@@ -3,7 +3,7 @@
     "branch": "master",
     "branches": [],
     "filename": "article.md",
-    "language": null,
-    "published": false,
+    "language": rails,
+    "published": true,
     "title": "Rails: How to create a custom PDF renderer plugin"
 }
