@@ -1,4 +1,4 @@
-In a [previous article](blog.pluralsight.com/tutorial-angularjs)I discussed how AngularJS fits into web development as a framework for building rich client side web applications. One aspect of that framework is that it follows the Model-View-Controller (MVC) pattern for user interfaces. In this article I will examine how the MVC pattern is implemented in AngularJS and how that drives your application development.
+In a [previous article](blog.pluralsight.com/tutorial-angularjs), I discussed how AngularJS fits into web development as a framework for building rich client side web applications. One aspect of that framework is that it follows the Model-View-Controller (MVC) pattern for user interfaces. In this article I will examine how the MVC pattern is implemented in AngularJS and how that drives your application development.
 
 ### Model view controller
  
@@ -328,4 +328,7 @@ The routing module connects the various views together. Because each unique URL 
 
 #### Where are we?
 In this article the MVC model as implemented by AngularJS was covered to provide the foundation for future articles. Those articles will go into depth on models, views and controllers to provide more detail on each item in isolation and the capabilities and requirements of each.
+
+Learn more about the author of this tutorial: [Matt Milner](https://www.pluralsight.com/authors/matt-milner)
+
 
