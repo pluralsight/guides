@@ -1,4 +1,4 @@
-In a previous article I discussed how AngularJS fits into web development as a framework for building rich client side web applications. One aspect of that framework is that it follows the Model-View-Controller (MVC) pattern for user interfaces. In this article I will examine how the MVC pattern is implemented in AngularJS and how that drives your application development.
+In a [previous article](blog.pluralsight.com/tutorial-angularjs)I discussed how AngularJS fits into web development as a framework for building rich client side web applications. One aspect of that framework is that it follows the Model-View-Controller (MVC) pattern for user interfaces. In this article I will examine how the MVC pattern is implemented in AngularJS and how that drives your application development.
 
 ### Model view controller
  
