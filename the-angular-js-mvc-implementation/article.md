@@ -230,7 +230,7 @@ Updating the model with a function
 The popupGreet function is added directly to the $scope object and can now be invoked by the click handler. In this function the goal is to show an alert with a message to the user. Rather than try to code directly to the browser window it is advised to use the $window service. This enables easier testing of the controller because any test written for the controller can provide a testable object for the $window parameter and validate its state after the test. 
 One nice thing about this pattern is that the controller has no responsibility for creating the $window service. Rather it declares the $window service as a dependency, by including it in the constructor function in this case, and AngularJS takes care of injecting that dependency at runtime. 
 
-[!image_1](http://blog.pluralsight.com/wp-content/uploads/2015/11/Screen-Shot-2015-11-24-at-8.46.54-AM.png)](http://blog.pluralsight.com/wp-content/uploads/2015/11/Screen-Shot-2015-11-24-at-8.46.54-AM.png) 
+[![image_1](http://blog.pluralsight.com/wp-content/uploads/2015/11/Screen-Shot-2015-11-24-at-8.46.54-AM.png)](http://blog.pluralsight.com/wp-content/uploads/2015/11/Screen-Shot-2015-11-24-at-8.46.54-AM.png) 
 Using injected dependencies to interact with services
 
 Routing
