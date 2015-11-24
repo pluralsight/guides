@@ -4,7 +4,7 @@ In a previous article I discussed how AngularJS fits into web development as a f
  
 In the Model-View-Controller pattern, the different aspects of the application are broken into components to separate the responsibilities. The Model contains the data and logic, the View contains the visual layout and presentation, while the Controller connects the two together.
 
-Image 1 goes here
+[![Screen-Shot-2015-11-24-at-8.45.08-AM](http://blog.pluralsight.com/wp-content/uploads/2015/11/Screen-Shot-2015-11-24-at-8.45.08-AM.png)](http://blog.pluralsight.com/wp-content/uploads/2015/11/Screen-Shot-2015-11-24-at-8.45.08-AM.png) 
 
 Using this pattern, the various components have a relationship defined by their interactions. The model is only aware of itself. The view is generally aware of the model as it is responsible for rendering data contained in the model and invoking actions (methods) on the model. The job of the controller is to create and populate the model and hand it over to the view. The controller needs to know about the model and how to resolve the view and provide it the model. 
 
@@ -12,8 +12,6 @@ Using this pattern, the various components have a relationship defined by their 
 In AngularJS the MVC pattern is implemented in JavaScript and HTML of course. The view is defined in HTML while the model and controller are implemented in JavaScript. There are several ways that these components can be put together in AngularJS but the simplest form starts with the view. 
 Views
 The view in an AngularJS application is created with HTML. In a very simple example that HTML can all exist inside a single page. Almost all applications will quickly move past the single view model however, in which case the fragments of HTML that make up the view will be stored in individual files. For example, take this HTML page as a starting point:
-
-
 
 ```html
 <!DOCTYPE html>
@@ -96,9 +94,7 @@ Referencing the AngularJS Application
 
 Viewing the page in a browser results in a simple view which shows the heading and the static message contained in the view. 
 
-IMAGE 2 GOES HERE
-
-The Static View
+[![image_3](http://blog.pluralsight.com/wp-content/uploads/2015/11/Screen-Shot-2015-11-24-at-8.46.09-AM.png)](http://blog.pluralsight.com/wp-content/uploads/2015/11/Screen-Shot-2015-11-24-at-8.46.09-AM.png) 
 
 Now that the application has a view, it needs a controller and model to actually make it more than just some HTML markup. The controller will be responsible for connecting the view and model for now, but will also handle resolving other dependencies later such as services to consume HTTP resources. 
 The simplest way to provide a controller for the view is to use a directive in the markup as with the ng-app and ng-view directives earlier. Of course the directive needs the corresponding JavaScript implementation to function correctly.
@@ -176,7 +172,7 @@ Updated view with data binding
 The highlighted markup is a simple binding statement indicating that the value of the “message” property on the $scope should be rendered at this location; in this case, inside the DIV.
 Combining the controller code that sets up the model with the declarative binding in the view gives us an updated, albeit not much different on the surface, output. 
 
-IMAGE 3 GOES HERE
+[![image_1](http://blog.pluralsight.com/wp-content/uploads/2015/11/Screen-Shot-2015-11-24-at-8.46.29-AM.png)](http://blog.pluralsight.com/wp-content/uploads/2015/11/Screen-Shot-2015-11-24-at-8.46.29-AM.png) 
 Updated view using databinding
 
 Now the view is not much different from before, but it displays information from the model instead of hard coded text. In a more complete application there would be much more data in the model including perhaps lists of items that could be displayed in the view. This simple example does show the interaction between the model, view, and controller. This model will play out similarly in more complex applications. The differences will be in the complexity of the model, more advanced databinding and view elements, plus the use of additional services in the controller.
@@ -200,7 +196,7 @@ Updating the view to show two-way databinding
 
 Now viewing the page and changing the data in the input box will change the value of the message automatically. The input is tied to the model using the ng-model directive instead of the curly brace syntax used for the display. Using this approach allows for setting both the model and an initial value for the HTML element. This opens up choices that a developer will have to make about whether the initial value is defined in the HTML markup or set on the model in the controller code. For unit testing the controller code it will likely make more sense for those defaults to happen in code so they can be tested, but again, this approach gives the developer options.
 
-IMAGE 4 
+[![image_1](http://blog.pluralsight.com/wp-content/uploads/2015/11/Screen-Shot-2015-11-24-at-8.46.41-AM.png)](http://blog.pluralsight.com/wp-content/uploads/2015/11/Screen-Shot-2015-11-24-at-8.46.41-AM.png)  
 Binding causes display to update as model is edited in the input box
 
 The model can also have functions defined which can be bound to events in the view. For example, a button click can be configured to invoke a particular function on the model. Using the ng-click directive on a button declares the binding allowing AngularJS to setup the appropriate event listener and connect that to the function on the model.
@@ -234,7 +230,7 @@ Updating the model with a function
 The popupGreet function is added directly to the $scope object and can now be invoked by the click handler. In this function the goal is to show an alert with a message to the user. Rather than try to code directly to the browser window it is advised to use the $window service. This enables easier testing of the controller because any test written for the controller can provide a testable object for the $window parameter and validate its state after the test. 
 One nice thing about this pattern is that the controller has no responsibility for creating the $window service. Rather it declares the $window service as a dependency, by including it in the constructor function in this case, and AngularJS takes care of injecting that dependency at runtime. 
 
-IMAGE 5 
+[!image_1](http://blog.pluralsight.com/wp-content/uploads/2015/11/Screen-Shot-2015-11-24-at-8.46.54-AM.png)](http://blog.pluralsight.com/wp-content/uploads/2015/11/Screen-Shot-2015-11-24-at-8.46.54-AM.png) 
 Using injected dependencies to interact with services
 
 Routing
@@ -325,7 +321,7 @@ The first thing to notice is that the creation of the application now includes a
 
 Before an AngularJS application runs and processes the markup in the host page, executes controllers and displays a view, it goes through a configuration process. Like many other aspects of AngularJS, the configuration process supports dependency injection. In the example above the $routeProvider is injected into the config function. The implementation sets up the routes using the when function on the route provider to map each URL to the corresponding controller and template (view). The otherwise function provides a fallback or default controller and view if a match to the current URl cannot be located. 
 
-IMAGE 6
+[![image_1](http://blog.pluralsight.com/wp-content/uploads/2015/11/Screen-Shot-2015-11-24-at-8.47.36-AM.png)](http://blog.pluralsight.com/wp-content/uploads/2015/11/Screen-Shot-2015-11-24-at-8.47.36-AM.png) 
 Navigating between views using hyperlinks
 
 The routing module connects the various views together. Because each unique URL points to a specific view and controller, the user will be able to bookmark specific views and return to them.
