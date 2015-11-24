@@ -7,3 +7,5 @@ Why I Love Pluralsight:
 I **really** love Pluralsight!
 
 I like writing `code`.
+
+I love #WeArePluralsight
