@@ -346,8 +346,7 @@ Now you should head back to the [iTunes Connect portal](https://itunesconnect.ap
 Next, click on the `1.0 Prepare for Submission` button on the left hand side, as shown on the image below. When we uploaded our archive, iTunes Connect automatically determined which device sizes are supported. As you can also see on the image below, you'll need to upload at least one screenshot image for each of the various app sizes that were detected by iTunes Connect.
 ![](http://i.imgur.com/Rat0FRr.png)
 
-From my personal experience, the easiest way to generate these images is to simulate the app in Simulator and make a screenshot of different screen sizes. You can easily switch devices in the Simulator by going in `Hardware -> Device -> iOS -> Device name` as shown on the image below:
-![](http://i.imgur.com/n7aukRm.png)
+From my personal experience, the easiest way to generate these images is to simulate the app in Simulator and make a screenshot of different screen sizes. However, please note that you have to make sure that your `Window -> Scale` property in the Simulator is set to `100%`, otherwise the image size will not be the one as expected in iTunes Connect.
 
 Next you'll have to insert Description, Keywords, Support URL and Marketing URL (optionally), as shown on the image below:
 ![](http://i.imgur.com/46YV8Vw.png)
@@ -357,9 +356,15 @@ In the `Build` section you have to click on the `+` button and select the build 
 
 Next you'll have to upload the icon, edit the rating, and set some additional info like copyright and your information. Note that the size of the icon that you'll have to upload here will have to be 1024 by 1024 pixels. Thankfully, you can use the splash.png from the second tutorial. If you're the sole developer then the data in the `App Review Information` should be your own. Finally, as the last option, you can leave the default checked option that once your app is approved that it is automatically released to the App Store.
 
-Now that we're finished with adding all of the details to the app listing, we can press `Save` and then `Submit for Review`.
+Now that we're finished with adding all of the details to the app listing, we can press `Save` and then `Submit for Review`. Finally, you'll be presented with the last form that you'll have to fill out: 
+![](http://i.imgur.com/BXbPvhf.png)
 
-Apple prides itself with a manual review process, which basically means it can take several days for your app to be reviewed. You'll be notified of any issues or updates to your app status.
+The only "tricky" question may be the one about Content rights. In our example we can safely select `No`. Since we're using AdMob in our application we have to select `Yes` in the `Advertising Identifier` and check the `Serve advertisements within the app` checkbox. You can learn more about it from this [StackOverflow question](http://stackoverflow.com/questions/31261926/ios-does-your-app-contain-display-or-access-third-party-content-admob).
+
+After you submit your app for review you'll see the status of it in the My Apps as `Waiting for review`, as shown on the image below. Also, shortly after you submit your app for review you'll get a confirmation email from iTunes Connect that your app is in review.
+![](http://i.imgur.com/Bm3LbQA.jpg)
+
+Apple prides itself with a manual review process, which basically means it can take several days for your app to be reviewed. You'll be notified of any issues or updates to your app status. From my personal experience it usualy takes up to 5 days for the app to be reviewed. 
 
 ### Updating the app
 Since you'll probably want to update your app at some point you'll first have to update the build and version numbers in the Cordova `config.xml` file and then rebuild the application and open it up from the Xcode and follow the same steps all over again.
@@ -367,7 +372,7 @@ Since you'll probably want to update your app at some point you'll first have to
 Once you submit for the review, you'll have to wait for the review process again. It's pivotal to note that if your changes aren't too big you could use [Ionic Deploy](http://blog.ionic.io/announcing-ionic-deploy-alpha-update-your-app-without-waiting/) to update your application without going through the review process, but more about this in the future tutorials.
 
 # Conclusion
-In this tutorial, we showed you how to prepare the application for the Apple's App Store and Google's Play Store and finally how to publish the application to both stores. Also, we created a small landing page for our application with the basic information and download instructions (links to the application in both stores).
+In this tutorial, we showed you how to prepare the application for the Apple's App Store and Google's Play Store, how to create the listings and finally how to publish the application to both stores. 
 
 If you have any questions about this tutorial, please read the following help guides. Of course, I encourage you to ask a question in the comments so that anyone else who may have a similar question or doubt, learns something too.
 
