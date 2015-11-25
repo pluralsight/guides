@@ -57,8 +57,22 @@ Now we need to include another table which has nothing but dates. In Data Wareho
 
 We'll use this as our starting point since it won't be constrained by the employee status at the time or dates in our emp table. From there we'll do a left join to our emp table to get the count of active employees similar to how we did it manually above. Here's the SQL to do this:
 
-```
-
+``` sql
+select
+DayDate, count(hires.EmployeeId) as ActiveCount
+from 
+    dates d
+-- get hires
+left join 
+ (select 'active' as Status, * from emps) hires
+on
+ ( d.Date >= hires.HireDate and d.Date < hires.TermDate) -- normal active
+or
+  (d.Date 
+      between (case when hires.RehireDate = '1900-01-01' then null else hires.RehireDate end) 
+      and hires.TermDate)
+where 
+  d.Date between '2004-06-17' and now() -- use the function to pull the current date here
 ```
 
 
