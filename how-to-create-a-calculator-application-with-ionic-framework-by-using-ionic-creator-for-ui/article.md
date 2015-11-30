@@ -20,7 +20,7 @@ Finished project:
 
 ## Introduction
 Since there are not so many Calculator applications in the App store (around **500** according to my search shown on the image below), who knows, you just may create your own bestseller in this category, if you add a needed tweak or two.
-![](http://i.imgur.com/pwGFPus.png)
+![](http://i.imgur.com/hW4ZTKW.jpg)
 
 All jokes and hopes aside, this seemed to be a decent "more serious", but still easy to acomplish, tutorial. Let's start this tutorial by creating the interface for our application.
 
