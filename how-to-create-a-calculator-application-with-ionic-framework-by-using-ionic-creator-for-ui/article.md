@@ -1,8 +1,8 @@
-![How to create a calculator application with Ionic framework by using Ionic Creator for UI](http://i.imgur.com/0Es31Xg.png)
+![](http://i.imgur.com/0Es31Xg.png)
 
 # How to create a calculator application with Ionic framework by using Ionic Creator for UI
 
-This is the second post in a series of posts which will teach you how to take advantage of your web development knowledge in building hybrid applications for iOS and Android. The first post in this series was all about [How to get started with Ionic framework on Windows and Mac]().
+This is the second post in a series of posts which will teach you how to take advantage of your web development knowledge in building hybrid applications for iOS and Android. The first post in this series was all about [How to get started with Ionic framework on Windows and Mac](http://blog.pluralsight.com/ionic-framework-on-mac-and-windows).
 
 This second post explains:
 
@@ -40,6 +40,7 @@ Anyways, back to our calculator application; we don't need any fancy options (at
 These basic operations will be our MVP (Minimal Viable Product), as the author Eric Ries explains in his awesome (and highly recommended) book [Lean Startup](http://www.nikola-breznjak.com/blog/books/the-lean-startup-eric-ries/). We can always add features later, if it turns out that our idea was good. Or, we can pivot away from it, if it turns out it was not a _next best thing after Flappy Bird_, by not spending too much time and money building the app with dozen of features which in end would not be used at all.
 
 As for the user interface, you can use various tools that help with mocking up your application's user interface ([Balsamiq Mockups](https://balsamiq.com/products/mockups/), [Mockingbird](https://gomockingbird.com/home), [Mockup Builder](http://mockupbuilder.com/), etc.), but I tend to be old school about it and I made a little hand drawing of how I imagined the app should look like, and this is what I came up with after few attempts:
+
 ![](http://imgur.com/znFbgb1.jpg)
 
 *Note: As you can see there's no comma in our mockup, basically because we're just trying to keep it simple here. If you like, and request it in the comments, I can add it in the future tutorials.*
@@ -90,6 +91,7 @@ Repeat the process by adding next three rows:
 + buttons representing 1, 2, 3 and a button representing subtraction (**-**)
 
 Your interface should look like the one on the image below:
+
 ![](http://i.imgur.com/xdzhTdg.jpg)
 
 In the last row you should also add four buttons:
@@ -100,6 +102,7 @@ In the last row you should also add four buttons:
 + one button representing the addition operation (**+**), with the `Energized style
 
 Your interface should look like the one on the image below:
+
 ![](http://i.imgur.com/Ci5bPkV.png.jpg)
 
 Don't worry about the slight missalignement or paddings, we'll take care of this in the next tutorial when we'll be polishing our application and preparing it for the App/Play store.
@@ -175,6 +178,7 @@ Now, let's see how this application looks like in the browser by executing the f
 > You should be familiar with this command from the [first tutorial](firstTutLink), and if not please take a look at it first. For those short in time, basically `ionic serve` starts up a local web browser and shows how our application would look like; which, actually is great for rapid development since you get to see changes instantly without needing to reload your browser.
 
 We should see something similar to the image below:
+
 ![](http://i.imgur.com/Kp49zVS.png)
 
 Btw, the ruller and the Device setting (Apple iPhone 6) are a part of an awesome Developer tools in Chrome browser, which I highly recommend.
@@ -188,6 +192,7 @@ Now, let's go and see what our generated folder structure looks like and what is
 
 ## Ionic application folder structure
 If you open up the project in your editor (I'm using Sublime Text 3 on the image below), you will see something like:
+
 ![](http://i.imgur.com/WAqDPs3.jpg)
 
 Now we're going to explain what each of these files and folders represent in Ionic framework.
@@ -213,7 +218,7 @@ You don't need to use Sass in Ionic if you don't want to (it's actually turned o
 
 > Bower is a package manager for front-end modules that are usually comprised of JavaScript and/or CSS. It lets us easily search for, install, update, or remove these front-end dependencies. If you want to learn more about Bower, you can check out my post [How to Manage Front-End JavaScript and CSS Dependencies with Bower](http://www.nikola-breznjak.com/blog/codeproject/how-to-manage-front-end-javascript-and-css-dependencies-with-bower-on-ubuntu-14-04/).
 
-The contents of my bower.json file is shown below (you will see the same content if you cloned the project from Github or started it from my Ionic Creator template):
+The contents of my `bower.json` file is shown below (you will see the same content if you cloned the project from Github or started it from my Ionic Creator template):
 ```
 {
   "name": "HelloIonic",
@@ -234,7 +239,7 @@ The contents of the `.bowerrc` file is shown below:
 ```
 
 ### config.xml file
-**config.xml** is a configuration file for the [Cordova](https://cordova.apache.org/) project (as you may remeber from the [first post](link to first post), Ionic is built on top of Cordova). It contains some meta information about the app like permissions and a list of Cordova plugins which are used in the app. To learn more about available settings in the `config.xml` file, please refer to the [official documentation](https://cordova.apache.org/docs/en/4.0.0/config_ref_index.md.html).
+**config.xml** is a configuration file for the [Cordova](https://cordova.apache.org/) project (as you may remeber from the [first post](http://blog.pluralsight.com/ionic-framework-on-mac-and-windows), Ionic is built on top of Cordova). It contains some meta information about the app like permissions and a list of Cordova plugins which are used in the app. To learn more about available settings in the `config.xml` file, please refer to the [official documentation](https://cordova.apache.org/docs/en/4.0.0/config_ref_index.md.html).
 
 ### gulpfile.js file
 **gulpfile.js** is a configuration file for [Gulp](http://gulpjs.com/).
@@ -463,7 +468,7 @@ Since we're not going to use SASS in this example (we will cover this in the lat
 -->
 ```
 
-Next, as you can see, there is nowhere a reference to the `js/app.js` file inside the `index.html` file, thus meaning it's not used anywhere. If by any chance you've looked around the file structure of the application we created in the first tutorial you will most likely find this strange. Indeed, Ionic Creator needs some additional tweaking, but I'm sure this will all be dealt with in the future.
+Next, as you can see, there is nowhere a reference to the `js/app.js` file inside the `index.html` file, thus meaning it's not used anywhere. If by any chance you've looked around the file structure of the application we created in the [first tutorial](http://blog.pluralsight.com/ionic-framework-on-mac-and-windows) you will most likely find this strange. Indeed, Ionic Creator needs some additional tweaking, but I'm sure this will all be dealt with in the future.
 
 Since the code inside the `<script>` element is JavaScript (AngularJS to be more exact) and it's mixed with HTML, we don't want to have that so we're going to copy the contents of the `<script>` element and paste it (by overwriting its whole contents) to the file `app.js` (resides in the `js` folder).
 
