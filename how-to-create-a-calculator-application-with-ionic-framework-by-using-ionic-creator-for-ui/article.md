@@ -1,7 +1,5 @@
 ![](http://i.imgur.com/0Es31Xg.png)
 
-# How to create a calculator application with Ionic framework by using Ionic Creator for UI
-
 This is the second post in a series of posts which will teach you how to take advantage of your web development knowledge in building hybrid applications for iOS and Android. The first post in this series was all about [How to get started with Ionic framework on Windows and Mac](http://blog.pluralsight.com/ionic-framework-on-mac-and-windows).
 
 This second post explains:
