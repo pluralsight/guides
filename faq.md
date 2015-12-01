@@ -29,6 +29,10 @@ Think of this as a "Wikipedia" for technical tutorials.
 * **Explore opportunities to earn supplemental income**.  We'll give you preferential consideration to being a mentor on HackHands, or to make money authoring video courses.
 * **Free access to the next hack.summit() conference for you and your friends**.  Get your own special code you can give out!
 
+### Who owns the tutorials created here?
+
+You do, as the original author.  We are a venue for your content to reach a wider audience, but we don't own your content.
+
 ### What types of tutorials are appropriate to post?
 
 *Feel free to write about any technology that you're passionate about.* Generally speaking, one of the following:
