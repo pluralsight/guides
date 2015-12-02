@@ -756,3 +756,6 @@ Few of the resources that proved indispensable when I was learning about Ionic:
 + To get started with AngluarJS try [these](http://angular.codeschool.com/) [few](https://hackhands.com/finishing-Angular-TODO-application-deploying-production/) [resources](https://docs.angularjs.org/tutorial), not necessarily in that particular order.
 + Let me just kind of repeat myself by saying that if you have **any questions** about Ionic framework, or you had trouble following this tutorial (you couldn't install something), or you would like to suggest what kind of tutorials you would like to see regarding Ionic in the future, then please **share it in the comments** below. Also, you can reach me personally via @[HitmanHR](https://twitter.com/hitmanhr) or [my blog](http://www.nikola-breznjak.com/blog). I'll do my best to  answer all of your questions.
 + If, however, you favor "one on one" help, you can reach me [via HackHands](https://hackhands.com/dashboard/request/hitman666/preferred).
+
+[Learn how to build your own app with ionic framework on Pluralsight.](https://app.pluralsight.com/library/courses/building-mobile-apps-ionic-framework-angularjs/table-of-contents)
+
