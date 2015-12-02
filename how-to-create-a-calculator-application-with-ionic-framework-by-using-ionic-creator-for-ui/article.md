@@ -42,6 +42,7 @@ As for the user interface, you can use various tools that help with mocking up y
 
 ![](http://imgur.com/znFbgb1.jpg)
 
+
 *Note: As you can see there's no comma in our mockup, basically because we're just trying to keep it simple here. If you like, and request it in the comments, I can add it in the future tutorials.*
 
 ## Calculator interface prototype
@@ -55,14 +56,18 @@ The best thing is that you can then just download the created HTML and use it di
 Worth noting is that there are currently on the market lots of other tools for interface prototyping ([InVision](www.invisionapp.com/), [Flinto](https://www.flinto.com/), [Mockup Builder](http://mockupbuilder.com/), etc.), however these tools don't (at least not yet) have a "one-click download and ready for your Ionic" option like Ionic Creator does.
 
 ### Creating calculator interface with Ionic Creator
-In order to use [Ionic Creator](https://creator.ionic.io/) you have to signup/login on their website. The first time you log in, you'll be asked for additional info like Company or phone, but you can safely skip that. In the initial screen you will be asked to name your application (I chose *IonicCalculator*):
+In order to use [Ionic Creator](https://creator.ionic.io/) you have to signup/login on their website. The first time you log in, you'll be asked for additional info like Company or phone, but you can safely skip that. In the initial screen you will be asked to name your application (I chose *IonicCalculator*): 
+
+
 ![](http://i.imgur.com/7yx5g5F.jpg)
 
+
 The main screen of the Ionic Creator application looks like the one shown on the image below:
+
 ![](http://i.imgur.com/SB3E1QY.jpg)
 
-
 In the upper left hand side you'll see the **PAGES** panel and inside it you'll see **Page** item. Click on **Page**, and on the right hand side change the **TITLE** to *Calculator*. Next, remove the **PADDING** by switching off the slider. The way this should look like now is shown on the image below:
+
 ![](http://i.imgur.com/T2uGCrr.jpg)
 
 First, we need some kind of a "display" which will show the numbers that we're clicking. Ideally, we would use a `<label>` component, however it's not available in the Ionic Creator as of yet. So, for this we will use the `<input>` element, and we can easily adjust this later when we'll download the generated HTML code.
@@ -72,16 +77,19 @@ First, we need some kind of a "display" which will show the numbers that we're c
 Since we concluded that we'll use the Input element, we can try to drag&amp;drop it to the Phone, but that won't work. First you need to drag the **Form** component on the page, and then on it you should drag&amp;drop the **Input** component as well.
 
 Select the Input component (by clicking it in the PAGES panel in the upper left corner mentioned before) and change its PLACEHOLDER to **0** (zero digit) and NAME to **display**. The way this should look like now is shown on the image below:
+
 ![](http://i.imgur.com/4r10hfI.jpg)
 
 Next, according to our mockup, we should add buttons that would represent the digits from **0** to **9**, and the buttons that would represent adding (**+**), substracting (**-**), multiplying (**x**) and dividing (**/**) operations. Also, we will need the equals button (**=**) and a clear button (**C**).
 
 In the first row we need to have 4 buttons, the ones representing digits 7, 8, 9 and one representing a dividing operation. To acomplish this, we will use a **Button Bar** component from the Components panel so that we'll drag&amp;drop it just below the Input field on the screen. You should see something like this now in your Ionic Creator window:
+
 ![](http://i.imgur.com/CVcreWF.jpg)
 
 As you can see from the previous image, three buttons were added inside the Button Bar component. Click on a button with text **1** and change it to **7**. Repeat the process for other two buttons by changing the text to 8 and 9, respectively.
 
 Ionic Creator adds 3 buttons within the Button Bar, but we need the 4th one. So, to add it, drag&amp;drop a **Button** component next to the button which you labeled as 9. Click on this newly added button and change its text to **/**, and its style to **Energized**. Your interface should look like the one on the image below:
+
 ![](http://i.imgur.com/OPr1wpc.jpg)
 
 Repeat the process by adding next three rows:
@@ -107,9 +115,11 @@ Your interface should look like the one on the image below:
 Don't worry about the slight missalignement or paddings, we'll take care of this in the next tutorial when we'll be polishing our application and preparing it for the App/Play store.
 
 So, basically this is it, we have our interface ready and now we can export it by clicking on the Export icon in the header, as shown on the image below:
+
 ![](http://i.imgur.com/BLBjCpu.jpg)
 
 After this a popup, with the following content, appears:
+
 ![](http://i.imgur.com/BsQTesK.jpg)
 
 
