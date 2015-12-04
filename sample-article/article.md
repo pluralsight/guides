@@ -1,1 +1,0 @@
-This is an **awesome** `test article`!
