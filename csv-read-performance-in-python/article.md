@@ -67,7 +67,7 @@ the `%timeit` functionality [2]:
     100 loops, best of 3: 28 ms per loop
 ```
 
-## Pandas wins!
+## Pandas wins
 
 The result is that [Pandas](http://pandas.pydata.org/) is **much** faster, but
 why? The short answer, as developer [Wes McKinney](http://wesmckinney.com)
