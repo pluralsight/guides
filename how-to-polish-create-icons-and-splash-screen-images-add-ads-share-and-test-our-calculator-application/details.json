@@ -1,7 +1,9 @@
 {
     "author_name": "Hitman666",
     "branch": "master",
-    "branches": [],
+    "branches": [
+        "prtkgpt"
+    ],
     "filename": "article.md",
     "language": null,
     "published": false,
