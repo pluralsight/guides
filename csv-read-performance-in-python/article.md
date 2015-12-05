@@ -1,4 +1,4 @@
-There are a few ways to read data from a
+There are several ways to read data from a
 [csv](http://en.wikipedia.org/wiki/Comma-separated_values) file into a numpy
 array:
 
