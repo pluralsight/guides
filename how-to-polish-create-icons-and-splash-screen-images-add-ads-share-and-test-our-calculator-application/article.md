@@ -1,8 +1,6 @@
 ![How to polish, create icons and splash screen images, add ads, share and test our calculator application](http://i.imgur.com/uiU4uOs.png)
 
-# How to polish, create icons and splash screen images, add ads, share and test our calculator application
-
-This is the third post in a series of posts which will teach you how to take advantage of your web development knowledge in building hybrid applications for iOS and Android. The first post in this series was all about [How to get started with Ionic framework on Windows and Mac](), the second one was about [How to create a calculator application with Ionic framework by using Ionic Creator for UI]().
+This is the third post in a series of posts which will teach you how to take advantage of your web development knowledge in building hybrid applications for iOS and Android. The first post in this series was all about [How to get started with Ionic framework on Windows and Mac](http://blog.pluralsight.com/ionic-framework-on-mac-and-windows), the second one was about [How to create a calculator application with Ionic framework by using Ionic Creator for UI](http://tutorials.pluralsight.com/review/how-to-create-a-calculator-application-with-ionic-framework-by-using-ionic-creator-for-ui/article.md).
 
 This third post explains:
 
