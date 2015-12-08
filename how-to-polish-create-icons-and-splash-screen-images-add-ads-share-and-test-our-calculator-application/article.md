@@ -463,15 +463,18 @@ Let's start with AdMob settings:
 
 4.  Create new tracking ID:
 
-[![Screen Shot 2015-05-05 at 23.25.20](http://www.nikola-breznjak.com/blog/wp-content/uploads/2015/05/Screen-Shot-2015-05-05-at-23.25.20.png)](http://www.nikola-breznjak.com/blog/wp-content/uploads/2015/05/Screen-Shot-2015-05-05-at-23.25.20.png)
+[![Screen Shot 2015-05-05 at 23.25.20]
+(http://www.nikola-breznjak.com/blog/wp-content/uploads/2015/05/Screen-Shot-2015-05-05-at-23.25.20.png)](http://www.nikola-breznjak.com/blog/wp-content/uploads/2015/05/Screen-Shot-2015-05-05-at-23.25.20.png)
 
 5.  Configure the adds type, size, placement, style, name:
 
-[![Screen Shot 2015-05-05 at 23.26.29](http://www.nikola-breznjak.com/blog/wp-content/uploads/2015/05/Screen-Shot-2015-05-05-at-23.26.29.png)](http://www.nikola-breznjak.com/blog/wp-content/uploads/2015/05/Screen-Shot-2015-05-05-at-23.26.29.png)
+[![Screen Shot 2015-05-05 at 23.26.29]
+(http://www.nikola-breznjak.com/blog/wp-content/uploads/2015/05/Screen-Shot-2015-05-05-at-23.26.29.png)](http://www.nikola-breznjak.com/blog/wp-content/uploads/2015/05/Screen-Shot-2015-05-05-at-23.26.29.png)
 
 6.  You can read additional info on how to implement GA and AdMob, but for now let's just click Done:
 
 [![Screen Shot 2015-05-05 at 23.28.10](http://www.nikola-breznjak.com/blog/wp-content/uploads/2015/05/Screen-Shot-2015-05-05-at-23.28.10.png)](http://www.nikola-breznjak.com/blog/wp-content/uploads/2015/05/Screen-Shot-2015-05-05-at-23.28.10.png)
+
 7.  You will now see the following similar screen: 
 
 [![Screen Shot 2015-05-05 at 23.30.11](http://www.nikola-breznjak.com/blog/wp-content/uploads/2015/05/Screen-Shot-2015-05-05-at-23.30.11.png)](http://www.nikola-breznjak.com/blog/wp-content/uploads/2015/05/Screen-Shot-2015-05-05-at-23.30.11.png)
