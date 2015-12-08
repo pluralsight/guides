@@ -452,13 +452,32 @@ What we're going to cover here is the Ad-based monetization option where we'll s
 
 Let's start with AdMob settings:
 
-1.  Sign in/Sign up for AdMob at [https://www.google.com/admob/](https://www.google.com/admob/)
-2.  Click the **Monetize new app **button:[![Screen Shot 2015-05-05 at 23.21.06](http://www.nikola-breznjak.com/blog/wp-content/uploads/2015/05/Screen-Shot-2015-05-05-at-23.21.06.png)](http://www.nikola-breznjak.com/blog/wp-content/uploads/2015/05/Screen-Shot-2015-05-05-at-23.21.06.png)
-3.  If your app is not yet published you can add it manually:[![Screen Shot 2015-05-05 at 23.23.07](http://www.nikola-breznjak.com/blog/wp-content/uploads/2015/05/Screen-Shot-2015-05-05-at-23.23.07.png)](http://www.nikola-breznjak.com/blog/wp-content/uploads/2015/05/Screen-Shot-2015-05-05-at-23.23.07.png)
-4.  Create new tracking ID:[![Screen Shot 2015-05-05 at 23.25.20](http://www.nikola-breznjak.com/blog/wp-content/uploads/2015/05/Screen-Shot-2015-05-05-at-23.25.20.png)](http://www.nikola-breznjak.com/blog/wp-content/uploads/2015/05/Screen-Shot-2015-05-05-at-23.25.20.png)
-5.  Configure the adds type, size, placement, style, name:[![Screen Shot 2015-05-05 at 23.26.29](http://www.nikola-breznjak.com/blog/wp-content/uploads/2015/05/Screen-Shot-2015-05-05-at-23.26.29.png)](http://www.nikola-breznjak.com/blog/wp-content/uploads/2015/05/Screen-Shot-2015-05-05-at-23.26.29.png)
-6.  You can read additional info on how to implement GA and AdMob, but for now let's just click Done:[![Screen Shot 2015-05-05 at 23.28.10](http://www.nikola-breznjak.com/blog/wp-content/uploads/2015/05/Screen-Shot-2015-05-05-at-23.28.10.png)](http://www.nikola-breznjak.com/blog/wp-content/uploads/2015/05/Screen-Shot-2015-05-05-at-23.28.10.png)
-7.  You will now see the following similar screen: [![Screen Shot 2015-05-05 at 23.30.11](http://www.nikola-breznjak.com/blog/wp-content/uploads/2015/05/Screen-Shot-2015-05-05-at-23.30.11.png)](http://www.nikola-breznjak.com/blog/wp-content/uploads/2015/05/Screen-Shot-2015-05-05-at-23.30.11.png)The most important thing to note here is this **Ad unit ID**, which in my test case is **ca-app-pub-7957971173858308/3599533362**. Please make a note of this string as it's the most important part of this setting.
+1.  Sign in/Sign up for AdMob at[https://www.google.com/admob/](https://www.google.com/admob/)
+2.  Click the **Monetize new app **button:
+
+[![Screen Shot 2015-05-05 at 23.21.06](http://www.nikola-breznjak.com/blog/wp-content/uploads/2015/05/Screen-Shot-2015-05-05-at-23.21.06.png)](http://www.nikola-breznjak.com/blog/wp-content/uploads/2015/05/Screen-Shot-2015-05-05-at-23.21.06.png)
+
+3.  If your app is not yet published you can add it manually:
+
+[![Screen Shot 2015-05-05 at 23.23.07](http://www.nikola-breznjak.com/blog/wp-content/uploads/2015/05/Screen-Shot-2015-05-05-at-23.23.07.png)](http://www.nikola-breznjak.com/blog/wp-content/uploads/2015/05/Screen-Shot-2015-05-05-at-23.23.07.png)
+
+4.  Create new tracking ID:
+
+[![Screen Shot 2015-05-05 at 23.25.20](http://www.nikola-breznjak.com/blog/wp-content/uploads/2015/05/Screen-Shot-2015-05-05-at-23.25.20.png)](http://www.nikola-breznjak.com/blog/wp-content/uploads/2015/05/Screen-Shot-2015-05-05-at-23.25.20.png)
+
+5.  Configure the adds type, size, placement, style, name:
+
+[![Screen Shot 2015-05-05 at 23.26.29](http://www.nikola-breznjak.com/blog/wp-content/uploads/2015/05/Screen-Shot-2015-05-05-at-23.26.29.png)](http://www.nikola-breznjak.com/blog/wp-content/uploads/2015/05/Screen-Shot-2015-05-05-at-23.26.29.png)
+
+6.  You can read additional info on how to implement GA and AdMob, but for now let's just click Done:
+
+[![Screen Shot 2015-05-05 at 23.28.10](http://www.nikola-breznjak.com/blog/wp-content/uploads/2015/05/Screen-Shot-2015-05-05-at-23.28.10.png)](http://www.nikola-breznjak.com/blog/wp-content/uploads/2015/05/Screen-Shot-2015-05-05-at-23.28.10.png)
+7.  You will now see the following similar screen: 
+
+[![Screen Shot 2015-05-05 at 23.30.11](http://www.nikola-breznjak.com/blog/wp-content/uploads/2015/05/Screen-Shot-2015-05-05-at-23.30.11.png)](http://www.nikola-breznjak.com/blog/wp-content/uploads/2015/05/Screen-Shot-2015-05-05-at-23.30.11.png)
+
+The most important thing to note here is this **Ad unit ID**, which in my test case is **ca-app-pub-7957971173858308/3599533362**. Please make a note of this string as it's the most important part of this setting.
+
 8. Create as much of the Ad units as you may need (for each platform[iOS, Android] and ad format [Banner, Interstitial]). In my case, I just created the additional Interstitial ad and will use them in both iOS and Android devices.
 
 ### Ionic settings
