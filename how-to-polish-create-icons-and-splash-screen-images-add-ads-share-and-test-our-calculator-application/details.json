@@ -3,7 +3,8 @@
     "branch": "master",
     "branches": [
         "prtkgpt",
-        "perkolasoft"
+        "perkolasoft",
+        "shadowcodex"
     ],
     "filename": "article.md",
     "language": null,
