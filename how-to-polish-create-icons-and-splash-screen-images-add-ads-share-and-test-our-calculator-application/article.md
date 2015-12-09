@@ -1,4 +1,4 @@
-![How to polish, create icons and splash screen images, add ads, share and test our calculator application](http://i.imgur.com/uiU4uOs.png)
+![](http://i.imgur.com/uiU4uOs.png)
 
 This is the third post in a series of posts which will teach you how to take advantage of your web development knowledge in building hybrid applications for iOS and Android. The first post in this series was all about [How to get started with Ionic framework on Windows and Mac](http://blog.pluralsight.com/ionic-framework-on-mac-and-windows), the second one was about [How to create a calculator application with Ionic framework by using Ionic Creator for UI](http://tutorials.pluralsight.com/review/how-to-create-a-calculator-application-with-ionic-framework-by-using-ionic-creator-for-ui/article.md).
 
@@ -28,7 +28,7 @@ angular.module('calculator', [])
 .controller('CalculatorCtrl', function($scope, $ionicPopup){
     $scope.result = '';
 
-    $scope.btnClicked = function(btn){        
+    $scope.btnClicked = function(btn){       
         if (btn == 'C'){
             $scope.result = '';
         }
@@ -50,8 +50,8 @@ angular.module('calculator', [])
             }
         }
         else{
-            $scope.result += btn;    
-        }        
+            $scope.result += btn;   
+        }       
     };
 });
 ```
@@ -118,16 +118,17 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
 
 As you can see, here we can override the default Ionic colors. Since you most probably have programming background, I'm sure you realize how important and useful SASS is.
 
-When, for example, you want to change the color you only need to change it in one place in one variable, without having to trace it through all the files and change the certain color in all the places that it is used. 
+When, for example, you want to change the color you only need to change it in one place in one variable, without having to trace it through all the files and change the certain color in all the places that it is used.
 
 Also, here you can see that we're including (better said importing) the other Ionic SASS files, which are nicely structured in different files. You don't have to worry about multiple files because the gulpfile task produces a single minified version of the CSS on every save. *I encourage you to check out the contents of the gulpfile.js file and see for yourself*.
 
 On the image below you can see what I came up with after changing few of the CSS rules (and a slight addition to our HTML template that I'll address additionally):
+
 ![](http://i.imgur.com/QijEnmp.png)
 
 I'm sure that more design-inclined readers will come up with way more slick design than this and I encourage you to share your images/scss changes with the rest of us, and I promise to incorporate the best one in the tutorial (with the proper credits, of course).
 
-Now we're going to go through the parts that were changed so that you can follow along in your example and see for yourself. But, before you start doing the changes you'll need to add the following link code to your `index.html` file just below the `<title>` tag in order to load the CSS file generated through SASS (we removed this in the [2nd tutorial]()):
+Now we're going to go through the parts that were changed so that you can follow along in your example and see for yourself. But, before you start doing the changes you'll need to add the following link code to your `index.html` file just below the `<title>` tag in order to load the CSS file generated through SASS (we removed this in the [2nd tutorial](http://tutorials.pluralsight.com/review/how-to-create-a-calculator-application-with-ionic-framework-by-using-ionic-creator-for-ui/article.md)):
 
 `<link href="css/ionic.app.css" rel="stylesheet">`
 
@@ -141,7 +142,7 @@ As for the changes, here is the final content of the `templates/calculator.html`
                     <input type="text" placeholder="0" ng-model="result" class="myResultInput" />
                 </form>
             </div>
-        
+       
             <div class="button-bar row">
                 <button class="button button-stable button-block" ng-click="btnClicked('7')">7</button>
                 <button class="button button-stable button-block" ng-click="btnClicked('8')">8</button>
@@ -172,7 +173,7 @@ As for the changes, here is the final content of the `templates/calculator.html`
 ```
 Here is the breakdown of the changes that I made:
 
-+ I first removed the `<span class="input-label">Result</span>` and edited the `form` element to just contain the following line of code: 
++ I first removed the `<span class="input-label">Result</span>` and edited the `form` element to just contain the following line of code:
 
 `<form><input type="text" placeholder="0" ng-model="result" class="myResultInput"></form>`
 
@@ -233,35 +234,44 @@ The icon is an important part of your application because it represents your app
 Ionic helps tremendously with this by providing a single Ionic CLI command to generate all the needed icon and splash screen sizes for us automatically. Also, Ionic created [Photoshop Icon Template](http://code.ionicframework.com/resources/icon.psd) and [Photoshop Splash Screen Template](http://code.ionicframework.com/resources/splash.psd), which you can download for free and use as a guideline for creating an icon.
 
 For when you're creating a branded product having a custom made icon is definitelly a must. However, in this case, we'll show how to use one of the free services to search for a free icon which we can use in our application (even if our application is a commercial application). I tend to use [IconFinder](https://www.iconfinder.com) a lot, and here are the setting which you have to use in order to filter out the calculator images which are Free (PRICE) and can be used in commercial applications and which do not even require a link back (LICENSE TYPE). *Of course, you can also choose to buy an image if you happen to find one that you like*. You can additionally search by format, size and background. The filters should look like this:
+
 ![](http://i.imgur.com/TDkaEbp.jpg)
 
 We're going to use the first one in the second row. Simply click on it, and you should get to the download page that looks like it's shown on the image below:
+
 ![](http://i.imgur.com/zTVcOqT.jpg)
 
 To download it just click on the green PNG button. We're going to alter it just a bit by making it a size of 128x128px, so that it will finally look like this:
+
 ![](http://i.imgur.com/8pl8utM.jpg)
 
 Now (download if you haven't yet and) open up the [Photoshop Icon Template](http://code.ionicframework.com/resources/icon.psd) and you should see:
+
 ![](http://i.imgur.com/bVtqbnW.jpg)
 
 > Don't worry if you don't have Photoshop, you can use open source tools like for example  [Gimp](http://www.gimp.org/) or [Paint.NET](http://www.getpaint.net/index.html).
 
 Now drag the calculator icon into the Photoshop and make sure you place the icon within the bounds of the blue guides. You should have something like this:
+
 ![](http://i.imgur.com/JROeVCX.jpg)
 
 Next, remove the guides by going to `View->Show` and remove the `Guides` option.
+
 ![](http://i.imgur.com/JKgvmFu.jpg)
 
 Also, you can remove the Grid in the same way if you like. Finally, remove the `icon-cut-guide` layer by clicking on the eye icon next to it:
+
 ![](http://i.imgur.com/x2l1INq.jpg)
 
 Now save the file by going to `File->Save for Web` and select PNG-24 and after that click the `Save...` button and save the image to Desktop as `icon.png`:
+
 ![](http://i.imgur.com/wincuBx.jpg)
 
 Repeat the process to create the splash screen image and name is `splash.png`. The image I came up with looks like this in Photoshop:
+
 ![](http://i.imgur.com/3hPXcza.jpg)
 
-> If you've followed the [2nd tutorial](), you should have the app. In case you don't have it, you can [clone it from Github]().
+> If you've followed the [2nd tutorial](http://tutorials.pluralsight.com/review/how-to-create-a-calculator-application-with-ionic-framework-by-using-ionic-creator-for-ui/article.md), you should have the app. In case you don't have it, you can [clone it from Github](https://github.com/Hitman666/Ionic_2ndTutorial).
 
 Now that you have both **icon.png** and **splash.png** images ready, you have to copy them in the **resources** folder in the root of the application (next to the folders like `www` and `plugins`). If you don't have this folder, then create it. Next, navigate with your Terminal/Command prompt to the root folder of the application and run the following command:
 
@@ -302,7 +312,7 @@ Creating Cordova project for the Android platform:
         Android target: android-22
 Copying template files...
 Android project created with cordova-android@4.0.2
-Running command: C:\NodeJS\node.exe C:\Users\Nikola\Desktop\IonicTesting\Ionic_3rdTutorial\hooks\after_prepare\010_add_platform_class.js 
+Running command: C:\NodeJS\node.exe C:\Users\Nikola\Desktop\IonicTesting\Ionic_3rdTutorial\hooks\after_prepare\010_add_platform_class.js
 
 C:\Users\Nikola\Desktop\IonicTesting\Ionic_3rdTutorial
 add to body class: platform-android
@@ -448,36 +458,36 @@ There are multiple ways you can earn money with your app these days and here are
 
 What we're going to cover here is the Ad-based monetization option where we'll show how to add Google AdMob ads to our calculator application. There are two parts to implementing Google AdMob ads to our Ionic project. I broke down the steps in two parts: AdMob settings and Ionic settings.
 
+> I made a [short video tutorial](https://www.youtube.com/watch?v=uvHW7Cb29lo) about how to add AdMob to your Ionic project, so you can check that out too.
+
 ## AdMob settings
 
 Let's start with AdMob settings:
 
-1.  Sign in/Sign up for AdMob at[https://www.google.com/admob/](https://www.google.com/admob/)
+1.  Sign in/Sign up for AdMob at [https://www.google.com/admob/](https://www.google.com/admob/)
 2.  Click the **Monetize new app **button:
 
-[![Screen Shot 2015-05-05 at 23.21.06](http://www.nikola-breznjak.com/blog/wp-content/uploads/2015/05/Screen-Shot-2015-05-05-at-23.21.06.png)](http://www.nikola-breznjak.com/blog/wp-content/uploads/2015/05/Screen-Shot-2015-05-05-at-23.21.06.png)
+![](http://www.nikola-breznjak.com/blog/wp-content/uploads/2015/05/Screen-Shot-2015-05-05-at-23.21.06.png)
 
 3.  If your app is not yet published you can add it manually:
 
-[![Screen Shot 2015-05-05 at 23.23.07](http://www.nikola-breznjak.com/blog/wp-content/uploads/2015/05/Screen-Shot-2015-05-05-at-23.23.07.png)](http://www.nikola-breznjak.com/blog/wp-content/uploads/2015/05/Screen-Shot-2015-05-05-at-23.23.07.png)
+![](http://www.nikola-breznjak.com/blog/wp-content/uploads/2015/05/Screen-Shot-2015-05-05-at-23.23.07.png)
 
 4.  Create new tracking ID:
 
-[![Screen Shot 2015-05-05 at 23.25.20]
-(http://www.nikola-breznjak.com/blog/wp-content/uploads/2015/05/Screen-Shot-2015-05-05-at-23.25.20.png)](http://www.nikola-breznjak.com/blog/wp-content/uploads/2015/05/Screen-Shot-2015-05-05-at-23.25.20.png)
+![](http://www.nikola-breznjak.com/blog/wp-content/uploads/2015/05/Screen-Shot-2015-05-05-at-23.25.20.png)
 
 5.  Configure the adds type, size, placement, style, name:
 
-[![Screen Shot 2015-05-05 at 23.26.29]
-(http://www.nikola-breznjak.com/blog/wp-content/uploads/2015/05/Screen-Shot-2015-05-05-at-23.26.29.png)](http://www.nikola-breznjak.com/blog/wp-content/uploads/2015/05/Screen-Shot-2015-05-05-at-23.26.29.png)
+![](http://www.nikola-breznjak.com/blog/wp-content/uploads/2015/05/Screen-Shot-2015-05-05-at-23.26.29.png)
 
 6.  You can read additional info on how to implement GA and AdMob, but for now let's just click Done:
 
-[![Screen Shot 2015-05-05 at 23.28.10](http://www.nikola-breznjak.com/blog/wp-content/uploads/2015/05/Screen-Shot-2015-05-05-at-23.28.10.png)](http://www.nikola-breznjak.com/blog/wp-content/uploads/2015/05/Screen-Shot-2015-05-05-at-23.28.10.png)
+![](http://www.nikola-breznjak.com/blog/wp-content/uploads/2015/05/Screen-Shot-2015-05-05-at-23.28.10.png)
 
-7.  You will now see the following similar screen: 
+7.  You will now see the following similar screen:
 
-[![Screen Shot 2015-05-05 at 23.30.11](http://www.nikola-breznjak.com/blog/wp-content/uploads/2015/05/Screen-Shot-2015-05-05-at-23.30.11.png)](http://www.nikola-breznjak.com/blog/wp-content/uploads/2015/05/Screen-Shot-2015-05-05-at-23.30.11.png)
+![](http://www.nikola-breznjak.com/blog/wp-content/uploads/2015/05/Screen-Shot-2015-05-05-at-23.30.11.png)
 
 The most important thing to note here is this **Ad unit ID**, which in my test case is **ca-app-pub-7957971173858308/3599533362**. Please make a note of this string as it's the most important part of this setting.
 
@@ -521,7 +531,7 @@ Now, add the following code to your app.js file, inside the `.run` function so t
     $ionicPlatform.ready(function() {
         // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
         // for form inputs)
-        if (window.cordova &amp;&amp; window.cordova.plugins.Keyboard) {
+        if (window.cordova && window.cordova.plugins.Keyboard) {
             cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
         }
 
@@ -546,7 +556,7 @@ Of course, change it according to your own `admob_key` which you obtained in the
 ```
 // select the right Ad Id according to platform
 var admobid = {};
-if( /(android)/i.test(navigator.userAgent) ) { // for android &amp; amazon-fireos
+if( /(android)/i.test(navigator.userAgent) ) { // for android & amazon-fireos
     admobid = {
         banner: 'ca-app-pub-xxx/xxx',
         interstitial: 'ca-app-pub-xxx/yyy'
@@ -567,6 +577,7 @@ else { // for windows phone
 ```
 
 The documentation of this plugin is awesome with detailed examples and finished example projects, so if you run into any problems make sure to check it out. Of course, you can always ask below in the comments if you get stuck. One common thing that you might have to do is to install some extras in Android SDK manager (type `android sdk` in your Terminal/Command prompt to launch it) which are marked as **Installed** on the image below:
+
 ![](https://cloud.githubusercontent.com/assets/2339512/8176143/20533ec0-1429-11e5-8e17-a748373d5110.png)
 
 For more information about the Android SDK manager, take a look at the section about [How to test our application on the real physical devices and emulators](#).
@@ -578,7 +589,7 @@ This plugin's documentation states an interesting fact that it is strongly recom
 | Click Rate            |   < 1%    |     3-15%      |
 | RPM (1k impressions)  | 0.5$ - 4$ |    10-100$     |
 
-> Banner ad is the small add that is usually placed in the bottom of the screen, whereas Interstitial ads are full screen ads that cover the interface of their host app. Therefore, you may want rather to opt for this kind of an ad instead for the Banner one. 
+> Banner ad is the small add that is usually placed in the bottom of the screen, whereas Interstitial ads are full screen ads that cover the interface of their host app. Therefore, you may want rather to opt for this kind of an ad instead for the Banner one.
 
 Of course, you can choose to use both also, which is exactly what we will do. First, add the following line of code in the `if (Admob)` case in the `app.js` file which prepares the Interstitial Ad for showing:
 
@@ -594,7 +605,7 @@ angular.module('calculator', [])
     $scope.result = '';
 
     $scope.counter = 1;
-    $scope.btnClicked = function(btn){        
+    $scope.btnClicked = function(btn){       
         if (btn == 'C'){
             $scope.result = '';
         }
@@ -612,12 +623,12 @@ angular.module('calculator', [])
                     template: "Ooops, please try again..."
                 });
 
-                $scope.result = '';     
+                $scope.result = '';    
             }
         }
         else{
-            $scope.result += btn;    
-        }        
+            $scope.result += btn;   
+        }       
 
         if ($scope.counter++ == 10){
             AdMob.showInterstitial();
@@ -669,7 +680,7 @@ angular.module('calculator', [])
                     template: "Ooops, please try again..."
                 });
 
-                $scope.result = '';     
+                $scope.result = '';    
             }
 
             //on every 5th result show the Interstitial ad one second after the result appears
@@ -678,7 +689,7 @@ angular.module('calculator', [])
                     if (AdMob){
                         AdMob.showInterstitial();   
                     }
-                    
+                   
                     $scope.counter = 1;
                 }, 1000);
             }
@@ -691,7 +702,7 @@ angular.module('calculator', [])
 ```
 
 # How to use Ionic.io cloud service to share our application with other users without going through the app store
-Having the ability to immediately get feedback on something that you're working on, without having to install the app manually on your clients devices or waiting for the App Store/Play Store approval is indispensable for constant feedback loop which is crucial in rapid application development. *This is something that Eric Ries stresses a lot in his book [The Lean Startup](http://www.nikola-breznjak.com/blog/books/the-lean-startup-eric-ries/), which I already mentioned in the [2nd tutorial](#)*.
+Having the ability to immediately get feedback on something that you're working on, without having to install the app manually on your clients devices or waiting for the App Store/Play Store approval is indispensable for constant feedback loop which is crucial in rapid application development. *This is something that Eric Ries stresses a lot in his book [The Lean Startup](http://www.nikola-breznjak.com/blog/books/the-lean-startup-eric-ries/), which I already mentioned in the [2nd tutorial](http://tutorials.pluralsight.com/review/how-to-create-a-calculator-application-with-ionic-framework-by-using-ionic-creator-for-ui/article.md)*.
 
 In Ionic this is actually easier than you may have thought. All you have to do is create the account on [https://apps.ionic.io](https://apps.ionic.io) and after that in your Terminal/Command prompt in the root of the project just type the following command:
 
@@ -720,19 +731,24 @@ And, as stated in the output, to share your app with a client or a friend, witho
 where, of course, you change EMAIL with an actual email address.
 
 On the image below it's shown how the interface of [https://apps.ionic.io/apps](https://apps.ionic.io/apps) looks like once you're logged in and you can see the list of your uploaded apps:
+
 ![](http://i.imgur.com/cD57c7Q.png)
 
 After you entered the command for sharing your application the person gets an email like this:
+
 ![](http://i.imgur.com/ZGkLwvn.png)
 
 After your client/friend clicks on the `View app` link he's taken to the landing page shown on the image below where they basically have to login or create an account:
+
 ![](http://i.imgur.com/tPClB78.jpg)
 
 Once the client/friend creates the account or logs in he will see the same app listed as we showed before. As noted before, in order for them to test this application on their phone, all they have to do is install the [Ionic View](http://view.ionic.io/) application, run it, login, click on the application and select `View App` as shown on the image below:
+
 ![](http://i.imgur.com/Ahce98q.jpg)
 
 # How to test our application on the real physical devices and emulators
 If you run the application (to which you added AdMob) in the browser, you will see an error in the Console output (if you're using [Chrome](https://www.google.com/chrome/) or [Firebug](http://getfirebug.com/)) that AdMob is not defined, as shown on the image below:
+
 ![](http://i.imgur.com/8hgXqoM.png)
 
 Also, if you view the app in Ionic View you will notice that no ads will show up. This is because **Cordova plugins don't work in the browser, nor in the Ionic View**. Instead, they have to be tested on the real device or in an emulator (in iOS terminology the word simulator is used).
@@ -742,7 +758,7 @@ In this section, we're going to show how to install the needed prerequisites and
 Before we go any further, we have to add the `cordova.js` file.
 
 > In the previous versions of Ionic, during development in the browser, this file would have resulted in a `404 Not found` error, but once deployed on a real physical device or emulator it would work fine. As of new versions of Ionic this is fixed so that the `cordova.js` file has a simple content (when included in `index.html` and tested in browser):
-> 
+>
 > `// mocked cordova.js response to prevent 404 errors during development`
 
 Add the following `script` tag just before the js/app.js script tag:
@@ -788,7 +804,7 @@ The main tool for developing native iOS applications is [Xcode](https://develope
 
 However, if you want to build and deploy iOS applications to the App Store, you need to have a [Mac computer](http://www.apple.com/mac/) since Xcode only works on their operating system. Yes, **even if you're using Ionic, you need to use Xcode** to build the application for iOS.
 
-There are some ways around this, like for example with using a so-called [Hackintosh](http://www.hackintosh.com/) computer, but honestly from my experience this is just not worth it. 
+There are some ways around this, like for example with using a so-called [Hackintosh](http://www.hackintosh.com/) computer, but honestly from my experience this is just not worth it.
 
 If you're really anti-Apple :), then you'll be happy to know that there are services which allow you to [rent a Mac in the cloud](http://www.macincloud.com/), just for the time you need to build your application. Also, Ionic promissed to build a service that will allow you to build mobile apps for any supported platform even if you don’t have a Mac, but we have to wait for this to become available.
 
@@ -796,9 +812,11 @@ If you're really anti-Apple :), then you'll be happy to know that there are serv
 
 ### Installing the needed tools
 As we've mentioned before, you need to install Xcode, and you can do that by opening up the App Store application on your Mac and search for Xcode. You install it as any other application by clicking on the download button and following the NextNextNext type of installation just like any other.
+
 ![](http://i.imgur.com/yS2WuBx.png)
 
 After the installation is finished, open up Xcode, and navigate to `Xcode -> Preferences -> Downloads` tab. Here you have to download the latest version of the Simulator available. In my case, at the time of this writing, the version is iOS 8.4 Simulator, as you can see on the image below:
+
 ![](http://i.imgur.com/iah66tM.png)
 
 Also, we need to install the ios-sim package with npm:
@@ -811,12 +829,15 @@ Now, in order to test our application in a simulator all we have to do is execut
 `ionic emulate ios`
 
 After a bunch of cryptic messages you should see an Xcode simulator open up and show your awesome application along with a splash screen and ads:
+
 ![](http://i.imgur.com/uiU4uOs.png)
 
 If you test the app by doing five calculations, then after the fifth time you press the equals (=) button the Interstitial ad will appear, as shown on the image below:
+
 ![](http://i.imgur.com/LlVjkW9.png)
 
 If you exit the simulator back to the home screen (by pressing `COMMAND + SHIFT + H) you will see the application's icon:
+
 ![](http://i.imgur.com/5KrFOmO.png)
 
 When we're testing our application in browser with `ionic serve` we have that great live realod feature. We can have that too in the emulator, if we run the emulator with the extra flag `–l`. If we also want to see the console.log output, as we would see it in the browser, then we have to add the flag `–c`:
@@ -841,6 +862,7 @@ Here you basically have two options:
 + Android SDK Tools - only the SDK
 
 Both can be downloaded from [http://developer.android.com/sdk/index.html](http://developer.android.com/sdk/index.html) but I recommend that you only download the SDK since we will not be using the actual Android IDE at all.
+
 ![](http://i.imgur.com/s4bis7N.png)
 
 The installation of the SDK is also a simple NextNextNext type of installation on Windows machine (if you downloaded the .exe version), and if you downloaded the zip file (on both Mac or Windows) then you need to extract them to a certain folder (`C:\Dev` or `/Users/nikola/Dev` for example) and set up the PATH variable correctly.
@@ -910,6 +932,7 @@ Finally, you need to set up the SDK packages, and to do so run the following com
 
 The SDK Manager allows you to download the platform files for any version
 of Android. I recommend that you download just the most recent packages as shown on the image below:
+
 ![](http://i.imgur.com/0bTd3N0.png)
 
 As you can see from the image, the things you need to check and then click on Install are:
@@ -920,27 +943,33 @@ As you can see from the image, the things you need to check and then click on In
 + Android 6.0 (API 23) - here you can actually go with 5.1
 
 As mentioned in the [How to implement Google AdMob ads](#How to implement Google AdMob ads) section, you need to install some extra tools as shown on the image below:
+
 ![](http://i.imgur.com/4q5kL62.png)
 
 Android SDK has an emulator that can emulate the screen size and resolution of most Android devices, but to be honest it's way too slow and klunky and I recommend that you do not use it. Instead, download [Genymotion](https://www.genymotion.com/#!/) which is free for personal use.
 
 After you install and run Genymotion you will see an iterface like this:
+
 ![](http://i.imgur.com/4Fh0rJb.jpg)
 
 Now you have to add an emulator, and you can do this by clicking on the `Add (+)` button where you'll get a broad selection of options as shown on the image below.
+
 ![](http://i.imgur.com/776dCgo.jpg)
 
 Once you select one (I'm using a Samsung Galaxy S5) just click Next and confirm on the confirmation window:
+
 ![](http://i.imgur.com/eLajDKu.jpg)
 
 Once you have the device all set up you can run it by clicking the Start button and Android will start up quickly:
+
 ![](http://i.imgur.com/l9MGObI.jpg)
 
 Since Ionic sees the Genymotion device as a real device attached to your computer, you can't run `ionic emulate android`, as we did in the iOS section (with the obvious ios/android change). Instead, you need to run the Ionic's `run` command (before you do the build phase) like this:
 
-`ionic build android &amp;&amp; ionic run android`
+`ionic build android && ionic run android`
 
 This would now run the application on the Genymotion emulator and it would look like shown on the image below:
+
 ![](http://i.imgur.com/I2cHeH4.jpg)
 
 If you would like to run the application on your own Android device then you first have to run the following command to build the project:
@@ -978,7 +1007,7 @@ Now connect your device and execute the following command in your Termina/Comman
 
 You should see a list of devices that are attached to your computer (Genymotion emulators will also show up here), among which the one that you just attached.
 
-Now, to install the application on your attached device first make sure that you're in the root directory of the project (Ionic_3rdTutorial in our case) and then run the following command from your Terminal/Command prompt: 
+Now, to install the application on your attached device first make sure that you're in the root directory of the project (Ionic_3rdTutorial in our case) and then run the following command from your Terminal/Command prompt:
 
 `adb –d install platforms\android\build\outputs\apk\android-debug.apk`
 
