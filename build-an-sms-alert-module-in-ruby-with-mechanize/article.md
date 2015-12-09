@@ -1,6 +1,6 @@
 One of the great things about the ruby programmer community is our hacker mentality; we will either find a way or create one in order to accomplish the goals we set for our projects. In this tutorial, I will be sharing a little treasure that I’ve used in a few of my projects to help me manage the status of my applications in pseudo­-real-­time no matter how far I am from my computer. I’ve noticed that as the number of projects I take part in grows, the number of emails in my inbox grow as well. Email alerts in my inbox tend to go unnoticed amid the noise of work emails, personal emails and spam that the world pelts me with every day.
 
-[![Graph Joke](assets/graph.png)](assets/graph.png)
+[![Graph Joke](https://hackhands.com/wp-content/uploads/2015/02/graph.png)](assets/graph.png)
 
 So I created a little module that I can easily include in any of my ruby scripts to send me text alerts whenever certain conditions are met at runtime. It’s not as glamorous as some paid services (like Twilio), but it’s completely free and gets the job done with just a slight bit of effort. Let’s get started! My tutorial will be completed entirely using Cloud9 IDE, my favorite development environment in the cloud. It’s very robust, and it allows me to work from whichever computer I’m close to. The biggest advantage is that I don’t have to employ hours worth of setup and configuration. If you don’t have an account, [you can register for free here](https://c9.io/web/sign-up/free).
 
