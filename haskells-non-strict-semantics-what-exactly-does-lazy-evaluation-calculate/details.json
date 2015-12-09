@@ -1,0 +1,9 @@
+{
+    "author_name": "prtkgpt",
+    "branch": "master",
+    "branches": [],
+    "filename": "article.md",
+    "language": null,
+    "published": false,
+    "title": "Haskell\u2019s Non-Strict Semantics \u2013 What Exactly does Lazy Evaluation Calculate?"
+}
