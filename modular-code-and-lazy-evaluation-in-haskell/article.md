@@ -1,9 +1,5 @@
 _This tutorial is part of a larger series, [The Incomplete Guide to Lazy Evaluation (in Haskell)](https://hackhands.com/guide-lazy-evaluation-haskell/ "The Incomplete Guide to Lazy Evaluation (in Haskell)")._
 
-# Modular Code and Lazy Evaluation in Haskell
-
-_minimum = head . sort_
-
 Lazy evaluation is the most widely used method for executing Haskell program code on a computer. It can help with making our code simpler and more modular, but it can also make it harder to understand how a program is evaluated in detail. In the [last tutorial](https://hackhands.com/lazy-evaluation-works-haskell/), we have looked at how exactly a Haskell program is executed with lazy evaluation, and what this means for time and memory usage. Today, we want to reap the benefits: How exactly can lazy evaluation help improve our code?
 
 We will look at several examples and idioms that are made possible by lazy evaluation, for example an equality test for strings that returns early, or the celebrated _infinite lists_. The main tenet is that lazy evaluation allows us to reuse code in a larger context while keeping a good level of efficiency. At the end of the tutorial, we will take this to an extreme and find the minimum element of a list by first _sorting_ the list -- and rely on lazy evaluation to do that in _linear time_.
