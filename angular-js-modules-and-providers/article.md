@@ -220,7 +220,7 @@ The config function now has a dependency on the calendarToken constant provider 
 To choose between providers models there are a couple of key decision points that will help including the type of object being returned and the requirements around the configuration cycle of the AngularJS application. The flowchart below is one example of a decision process to pick a provider type.
 
 
-![](http://blog.pluralsight.com/wp-content/uploads/2015/12/Screen-Shot-2015-12-10-at-5.01.27-PM.png)
+![](http://blog.pluralsight.com/wp-content/uploads/2015/12/Screen-Shot-2015-12-10-at-5.01.27-PM-e1449796015719.png)
 
 ####Module and Providers Together
 
