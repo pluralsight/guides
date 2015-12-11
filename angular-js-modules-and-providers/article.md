@@ -1,5 +1,6 @@
 AngularJS has many different components used to make an application. It is important in any project using JavaScript to be able to manage the code in a reasonable way. AngularJS uses modules, like many modern JavaScript libraries, to encapsulate functionality such as controllers, directives, filters and services. AngularJS is also highly focused on dependency injection and therefore has infrastructure in place to help instantiate the many objects necessary in your application. When you define a controller, for example, and list the dependencies in the constructor function, there are Providers which are responsible for instantiating the dependent objects used by the controller. This model allows AngularJS to correctly create and inject items into your code and provides a powerful means for you to control that object creation. In this article I will examine the module pattern and the different types of providers that can be used in an AngularJS application.
 
+
 #Understanding Modules
 
 Modules define a unit of code in your Angular application and contain the code you write such as controllers, directives, filters, and services. In simple examples, such as those used in previous articles, it is common to see an application defined as a single module.
@@ -33,7 +34,7 @@ main-controller.js
 
 angular.module('secondModule')
  .controller('secondaryController', secondaryController);
-	
+ 
 function secondaryController() {
  var vm = this;
  vm.hello = "multiple files"
@@ -53,7 +54,9 @@ main.js (updated with dependencies)
 
 In this updated main.js file, the main module declares a dependency on the second module. It is important to note that the second module is not declared until after the first module. Often in JavaScript the order of declaration is important as items need to be available before being referenced. When the main module is loaded the second one must be available, but not before then. Again this provides more flexibility in the declaration of the modules.
 
-Combining the idea of multiple modules with the dependency support, an application can be built from linking those modules together. Often this is accomplished with a main module that has the singular purpose of linking in the other modules as dependencies. 
+Combining the idea of multiple modules with the dependency support, an application can be built from linking those modules together. Often this is accomplished with a main module that has the singular purpose of linking in the other modules as dependencies.
+
+![](http://blog.pluralsight.com/wp-content/uploads/2015/12/Screen-Shot-2015-12-10-at-5.01.09-PM.png)
 
 In this example the “app” module serves to tie together the other modules used in the application. The core modules include things like services or user interface elements like filters and directives that might be used across modules or even across applications. As shown here, the core modules are listed as dependencies of the main app module and the individual modules where they are used. A different approach would be to only include those dependencies in the modules that use them. I’ve shown both here simply to point out the options.
  
@@ -216,6 +219,9 @@ The config function now has a dependency on the calendarToken constant provider 
 
 To choose between providers models there are a couple of key decision points that will help including the type of object being returned and the requirements around the configuration cycle of the AngularJS application. The flowchart below is one example of a decision process to pick a provider type.
 
+
+![](http://blog.pluralsight.com/wp-content/uploads/2015/12/Screen-Shot-2015-12-10-at-5.01.27-PM.png)
+
 ####Module and Providers Together
 
 To pull this all back together, modules are the containers for the code in an AngularJS application. As such, they contain controllers, services, and other code. Modules and services can declare dependencies which are resolved by Angular’s injector service. To populate the injector service with singleton instances of services, functions, and values; providers are created and registered with the injector through methods on the module. Each pattern other than the core provider pattern is a simplification for certain cases to make writing and testing code easier.
@@ -223,4 +229,4 @@ To pull this all back together, modules are the containers for the code in an An
 Another thing to note is that the pattern for creating controllers is the same as the factory provider model. However, there is a difference in how objects created using the two different patterns are instantiated which is why there are separate methods for registering them. A controller is not a singleton like other services and may be instantiated multiple times when a route is invoked or the controller is otherwise activated by AngularJS. It is important to keep in mind these differences in the lifecycle of these special objects and other custom objects or values created in user code. 
 
 ###Where are we?
-In this article we covered the module and provider patterns used by AngularJS to manage application code and dependency creation. With a good understanding of the patterns and underlying techniques used to manage an application, it is time to move on to understanding the core coding concepts that make up the bulk of each AngularJS application. 
+In this article we covered the module and provider patterns used by AngularJS to manage application code and dependency creation. With a good understanding of the patterns and underlying techniques used to manage an application, it is time to move on to understanding the core coding concepts that make up the bulk of each AngularJS application.
