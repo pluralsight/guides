@@ -1,7 +1,9 @@
 {
     "author_name": "prtkgpt",
     "branch": "master",
-    "branches": [],
+    "branches": [
+        "shadowcodex"
+    ],
     "filename": "article.md",
     "language": null,
     "published": true,
