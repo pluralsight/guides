@@ -231,4 +231,4 @@ Another thing to note is that the pattern for creating controllers is the same a
 ###Where are we?
 In this article we covered the module and provider patterns used by AngularJS to manage application code and dependency creation. With a good understanding of the patterns and underlying techniques used to manage an application, it is time to move on to understanding the core coding concepts that make up the bulk of each AngularJS application.
 
-Author of this tutorial is [Matt Milner](https://www.pluralsight.com/authors/matt-milner). 
+Author of this tutorial is [Matt Milner](https://www.pluralsight.com/authors/matt-milner).
