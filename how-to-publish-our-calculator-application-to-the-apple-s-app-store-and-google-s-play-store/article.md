@@ -1,7 +1,5 @@
 ![](http://i.imgur.com/gFTi3A2.png)
 
-# How to publish our calculator application to the Apple's App Store and Google's Play Store
-
 This is the fourth post in a series of posts which will teach you how to take advantage of your web development knowledge in building hybrid applications for iOS and Android. The series comprises of the following published tutorials:
 
 + [How to get started with Ionic framework on Windows and Mac](http://blog.pluralsight.com/ionic-framework-on-mac-and-windows)
