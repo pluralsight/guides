@@ -74,6 +74,7 @@ Next I changed up the jQuery even to an on event. This is a personal style prefe
 ```
 
 Now let's break this code block down as well:
+
 1. We use an if statement to check if we have a comment that is protected. When the if statement evaluates to true (AKA commentflag == false) then we do not have a comment stored.
 2. Once we are inside the if statement then we go ahead and store this comment.
 3. Logout this for debug purposes
@@ -102,6 +103,7 @@ $('div.comment').on("mouseleave", function(){
 ```
 
 Let's break this down too:
+
 1. ON the mouseleave event we want to start off with an if statement.
 2. The if statement evaluates to true if the id of the div firing the mouseleave event is the same div that protected itself.
 3. If it evaluates as true then we want to go ahead and restore the old html data, and set the commentflag back to false.
