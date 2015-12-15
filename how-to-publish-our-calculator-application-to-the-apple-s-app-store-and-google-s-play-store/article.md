@@ -1,5 +1,7 @@
 ![](http://i.imgur.com/gFTi3A2.png)
 
+# How to publish our calculator application to the Apple's App Store and Google's Play Store
+
 This is the fourth post in a series of posts which will teach you how to take advantage of your web development knowledge in building hybrid applications for iOS and Android. The series comprises of the following published tutorials:
 
 + [How to get started with Ionic framework on Windows and Mac](http://blog.pluralsight.com/ionic-framework-on-mac-and-windows)
@@ -368,7 +370,7 @@ Missing Push Notification Entitlement - Your app appears to include API used to 
 If you're not using Push Notifications then you don't have to worry, as stated in the [official Ionic framework forum](http://forum.ionicframework.com/t/missing-push-notification-entitlement/5436/20).
 
 ### Finishing the app list process
-Now you should head back to the [iTunes Connect portal](https://itunesconnect.apple.com) and login. Next, click on the `Pricing and Availability` on the left hand side under `APP STORE INFORMATION. Basically, all that I've set here is the price 0 (Free) as you can see on the image below:
+Now you should head back to the [iTunes Connect portal](https://itunesconnect.apple.com) and login. Next, click on the `Pricing and Availability` on the left hand side under `APP STORE INFORMATION`. Basically, all that I've set here is the price 0 (Free) as you can see on the image below:
 
 ![](http://i.imgur.com/qEDWaZG.png)
 
@@ -413,6 +415,12 @@ In this tutorial, we showed you how to prepare the application for the Apple's A
 If you have any questions about this tutorial, please read the following help guides. Of course, I encourage you to ask a question in the comments so that anyone else who may have a similar question or doubt, learns something too.
 
 With this, I leave you and hope you had a great learning experience with the series so far. We have few of the project ideas lined up already for the next posts. However, **I encourage you to share your wishes and ideas** about what kind of an app would you like to see built step by step. Remember, I'm here to help you get the best of Ionic framework so don't hesitate to ask.
+
+# Blog2Book
+
+![](https://s3.amazonaws.com/titlepages.leanpub.com/ionic-framework/large?1450181256)
+
+If by some chance you would like to download a PDF version of unabridged 4 posts you can do so [via Leanpub](https://leanpub.com/ionic-framework). Yes, you can choose zero as the amount and I promise I won't take it against you ;)
 
 # How to get help with Ionic framework
 Few of the resources that proved indispensable when I was learning about Ionic:
