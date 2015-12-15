@@ -22,8 +22,6 @@ Up until fairly recently, if you wanted to make an app for (currently) two most 
 
 Nowadays, with the Ionic Framework you can create one application by using the skills you, as a web developer, already have and then deploy this **one codebase** as an app to both iOS and Android stores.
 
-![](http://i.imgur.com/G09oGwh.jpg)
-
 ## Ways you can make an app these days
 There are actually 3 ways that you can make an application for mobile devices these days.
 
