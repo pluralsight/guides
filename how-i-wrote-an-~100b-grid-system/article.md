@@ -6,7 +6,11 @@ I really wanted to have a **minimal** and **usable** solution for **modern brows
 
 ---
 
-Then I quickly hacked my solution: [**Gridly**](https://github.com/IonicaBizau/gridly). So, thinking from the highest level, I thought the nice HTML syntax would be:
+Then I quickly hacked my solution: [**Gridly**](https://github.com/IonicaBizau/gridly).
+
+[![gridly](http://i.imgur.com/kPrOESX.png)](http://ionicabizau.github.io/gridly/example/)
+
+So, thinking from the highest level, I thought the nice HTML syntax would be:
 
 ```html
 <div class="row">
@@ -37,6 +41,8 @@ Then, to handle the smaller devices (to create full-width columns), I added:
     .col { flex: 0 0 auto; }
 }
 ```
+
+[![gridly](http://i.imgur.com/m4pwrnO.png)](http://ionicabizau.github.io/gridly/example/)
 
 
 Then, I thought it could be convenient to add percent values (e.g. `third`–33%, `quarter`–25% etc), so the columns could have different widths inside of the same row. I did this keeping the modularization in mind. I created  `gridly-col-widths.css` and put the following things there:
