@@ -49,7 +49,7 @@ A hybrid app is a mobile application, written with the same languages that you u
 
 Definite advantage of the hybrid apps is that you can access the additional phone features via plugins and that you can do all the development with the same set of skills you use when developing _"normal"_ web applications. One of the disadvantages is that, even though it's improving, the so-called Web View has it's limitations in terms of speed. Basically, you wouldn't use a hybrid aproach if you wante to build a 3D game.
 
-## What is Ionic and why it's so good
+##1 What is Ionic and why it's so good
 As I gave an [answer on StackOverflow](http://stackoverflow.com/questions/31179211/use-ionic-or-cordova/31180666):
 
 > Disclaimer: This will sound like advertisement, so I have to say I'm in no way affiliated with Ionic, I just happen to like it so much that I'm sharing the love for it.
@@ -107,7 +107,7 @@ Great thing about this is that you automatically have a **live reload** feature,
 
 > If you like, you can get this project on [Github](https://github.com/Hitman666/Ionic_1stTutorial).
 
-#2. How to create a simple calculator application with Ionic framework by using Ionic Creator for UI
+##2. How to create a simple calculator application with Ionic framework by using Ionic Creator for UI
 
 In this section you'll learn:
 
