@@ -1,10 +1,12 @@
 ![](http://i.imgur.com/gFTi3A2.png)
 
 
-In this section you'll learn:
+Welcome!  This definitive guide to the ionic framework -- an incredibly easy way to build beautiful and interactive mobile apps using HTML5 and AngularJS.  We will help you understand the major aspects of the framework.  We'll also be creating a running example of a calculator application throughout the tutorial.
 
-+ How to make an app these days
-+ What actually is Ionic framework
+In this first section, you'll learn:
+
++ An overview of the choices for making applications
++ Introduction to the Ionic framework
 + How to install Ionic on both Mac and Windows
 + How to use Ionic CLI to start an Ionic project
 + How to run an Ionic application
@@ -105,7 +107,7 @@ Great thing about this is that you automatically have a **live reload** feature,
 
 > If you like, you can get this project on [Github](https://github.com/Hitman666/Ionic_1stTutorial).
 
-#2 How to create a simple calculator application with Ionic framework by using Ionic Creator for UI
+#2. How to create a simple calculator application with Ionic framework by using Ionic Creator for UI
 
 In this section you'll learn:
 
@@ -163,7 +165,7 @@ In the upper left hand side you'll see the **PAGES** panel and inside it you'll 
 
 First, we need some kind of a "display" which will show the numbers that we're clicking. Ideally, we would use a `<label>` component, however it's not available in the Ionic Creator as of yet. So, for this we will use the `<input>` element, and we can easily adjust this later when we'll download the generated HTML code.
 
-First you need to drag the **Form** component on the page, and then on it you should drag&amp;drop the **Input** component as well.
+First you need to drag the **Form** component on the page, and then on it you should drag&drop the **Input** component as well.
 
 Select the Input component and change its PLACEHOLDER to **0** (zero digit) and NAME to **display**. The way this should look like now is shown below:
 
@@ -171,13 +173,13 @@ Select the Input component and change its PLACEHOLDER to **0** (zero digit) and 
 
 Next, according to our mockup, we should add buttons that would represent the digits from **0** to **9**, and the buttons that would represent mathematical operations (+, -, *, /). Also, we will need the equals button (**=**) and a clear button (**C**).
 
-In the first row we need to have 4 buttons, the ones representing digits 7, 8, 9 and one representing a dividing operation. To acomplish this, we will use a **Button Bar** component from the Components panel so that we'll drag&amp;drop it just below the Input field on the screen. You should see something like this now in your Ionic Creator window:
+In the first row we need to have 4 buttons, the ones representing digits 7, 8, 9 and one representing a dividing operation. To acomplish this, we will use a **Button Bar** component from the Components panel so that we'll drag&drop it just below the Input field on the screen. You should see something like this now in your Ionic Creator window:
 
 ![](http://i.imgur.com/CVcreWF.jpg)
 
 As you can see from the previous image, three buttons were added inside the Button Bar component. Click on a button with text **1** and change it to **7**. Repeat the process for other two buttons by changing the text to 8 and 9, respectively.
 
-Ionic Creator adds 3 buttons within the Button Bar, but we need the 4th one. So, to add it, drag&amp;drop a **Button** component next to the button which you labeled as 9. Click on this newly added button and change its text to **/**, and its style to **Energized**. Your interface should look like the one on the image below:
+Ionic Creator adds 3 buttons within the Button Bar, but we need the 4th one. So, to add it, drag&drop a **Button** component next to the button which you labeled as 9. Click on this newly added button and change its text to **/**, and its style to **Energized**. Your interface should look like the one on the image below:
 
 ![](http://i.imgur.com/OPr1wpc.jpg)
 
@@ -308,7 +310,7 @@ angular.module('app', ['ionic'])
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
-    if(window.cordova &amp;&amp; window.cordova.plugins.Keyboard) {
+    if(window.cordova && window.cordova.plugins.Keyboard) {
       cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
     }
     if(window.StatusBar) {
@@ -765,14 +767,34 @@ What we're going to cover here is the Ad-based monetization option where we'll s
 
 ### AdMob settings
 
-1. Sign in/Sign up for AdMob at [https://www.google.com/admob/](https://www.google.com/admob/)
-2. Click the **Monetize new app **button:[![Screen Shot 2015-05-05 at 23.21.06](http://www.nikola-breznjak.com/blog/wp-content/uploads/2015/05/Screen-Shot-2015-05-05-at-23.21.06.png)](http://www.nikola-breznjak.com/blog/wp-content/uploads/2015/05/Screen-Shot-2015-05-05-at-23.21.06.png)
-3. If your app is not yet published you can add it manually:[![Screen Shot 2015-05-05 at 23.23.07](http://www.nikola-breznjak.com/blog/wp-content/uploads/2015/05/Screen-Shot-2015-05-05-at-23.23.07.png)](http://www.nikola-breznjak.com/blog/wp-content/uploads/2015/05/Screen-Shot-2015-05-05-at-23.23.07.png)
-4. Create new tracking ID:[![Screen Shot 2015-05-05 at 23.25.20](http://www.nikola-breznjak.com/blog/wp-content/uploads/2015/05/Screen-Shot-2015-05-05-at-23.25.20.png)](http://www.nikola-breznjak.com/blog/wp-content/uploads/2015/05/Screen-Shot-2015-05-05-at-23.25.20.png)
-5. Configure the adds type, size, placement, style, name:[![Screen Shot 2015-05-05 at 23.26.29](http://www.nikola-breznjak.com/blog/wp-content/uploads/2015/05/Screen-Shot-2015-05-05-at-23.26.29.png)](http://www.nikola-breznjak.com/blog/wp-content/uploads/2015/05/Screen-Shot-2015-05-05-at-23.26.29.png)
-6. You can read additional info on how to implement GA and AdMob, but for now let's just click Done:[![Screen Shot 2015-05-05 at 23.28.10](http://www.nikola-breznjak.com/blog/wp-content/uploads/2015/05/Screen-Shot-2015-05-05-at-23.28.10.png)](http://www.nikola-breznjak.com/blog/wp-content/uploads/2015/05/Screen-Shot-2015-05-05-at-23.28.10.png)
-7. You will now see the following similar screen: [![Screen Shot 2015-05-05 at 23.30.11](http://www.nikola-breznjak.com/blog/wp-content/uploads/2015/05/Screen-Shot-2015-05-05-at-23.30.11.png)](http://www.nikola-breznjak.com/blog/wp-content/uploads/2015/05/Screen-Shot-2015-05-05-at-23.30.11.png)The most important thing to note here is this **Ad unit ID**, which in my test case is **ca-app-pub-7957971173858308/3599533362**. Please make a note of this string as it's the most important part of this setting.
-8. Create as much of the Ad units as you may need (for each platform[iOS, Android] and ad format [Banner, Interstitial]). In my case, I just created the additional Interstitial ad and will use them in both iOS and Android devices.
+1) Sign in/Sign up for AdMob at [https://www.google.com/admob/](https://www.google.com/admob/)
+
+2) Click the **Monetize new app **button:
+
+[![Screen Shot 2015-05-05 at 23.21.06](http://www.nikola-breznjak.com/blog/wp-content/uploads/2015/05/Screen-Shot-2015-05-05-at-23.21.06.png)](http://www.nikola-breznjak.com/blog/wp-content/uploads/2015/05/Screen-Shot-2015-05-05-at-23.21.06.png)
+
+3) If your app is not yet published you can add it manually:
+
+[![Screen Shot 2015-05-05 at 23.23.07](http://www.nikola-breznjak.com/blog/wp-content/uploads/2015/05/Screen-Shot-2015-05-05-at-23.23.07.png)](http://www.nikola-breznjak.com/blog/wp-content/uploads/2015/05/Screen-Shot-2015-05-05-at-23.23.07.png)
+
+4) Create new tracking ID:
+
+[![Screen Shot 2015-05-05 at 23.25.20](http://www.nikola-breznjak.com/blog/wp-content/uploads/2015/05/Screen-Shot-2015-05-05-at-23.25.20.png)](http://www.nikola-breznjak.com/blog/wp-content/uploads/2015/05/Screen-Shot-2015-05-05-at-23.25.20.png)
+
+5) Configure the adds type, size, placement, style, name:
+
+[![Screen Shot 2015-05-05 at 23.26.29](http://www.nikola-breznjak.com/blog/wp-content/uploads/2015/05/Screen-Shot-2015-05-05-at-23.26.29.png)](http://www.nikola-breznjak.com/blog/wp-content/uploads/2015/05/Screen-Shot-2015-05-05-at-23.26.29.png)
+
+6) You can read additional info on how to implement GA and AdMob, but for now let's just click Done:
+
+[![Screen Shot 2015-05-05 at 23.28.10](http://www.nikola-breznjak.com/blog/wp-content/uploads/2015/05/Screen-Shot-2015-05-05-at-23.28.10.png)](http://www.nikola-breznjak.com/blog/wp-content/uploads/2015/05/Screen-Shot-2015-05-05-at-23.28.10.png)
+
+7) You will now see the following similar screen:
+
+[![Screen Shot 2015-05-05 at 23.30.11](http://www.nikola-breznjak.com/blog/wp-content/uploads/2015/05/Screen-Shot-2015-05-05-at-23.30.11.png)](http://www.nikola-breznjak.com/blog/wp-content/uploads/2015/05/Screen-Shot-2015-05-05-at-23.30.11.png)
+The most important thing to note here is this **Ad unit ID**, which in my test case is **ca-app-pub-7957971173858308/3599533362**. Please make a note of this string as it's the most important part of this setting.
+
+8) Create as much of the Ad units as you may need (for each platform[iOS, Android] and ad format [Banner, Interstitial]). In my case, I just created the additional Interstitial ad and will use them in both iOS and Android devices.
 
 ### Ionic settings
 In the root of the application execute the following command to add the [cordova-plugin-admobpro](https://github.com/floatinghotpot/cordova-admob-pro) plugin:
@@ -788,7 +810,7 @@ Now, add the following code to your app.js file, inside the `.run` function so t
     $ionicPlatform.ready(function() {
         // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
         // for form inputs)
-        if (window.cordova &amp;&amp; window.cordova.plugins.Keyboard) {
+        if (window.cordova && window.cordova.plugins.Keyboard) {
             cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
         }
 
@@ -1002,7 +1024,7 @@ Android SDK has an emulator that can emulate the screen size and resolution of m
 
 Since Ionic sees the Genymotion device as a real device attached to your computer, you can't run `ionic emulate android`, as we did in the iOS section. Instead, you need to use the Ionic's `run` command (before you do the build phase) like this:
 
-`ionic build android &amp;&amp; ionic run android`
+`ionic build android && ionic run android`
 
 This would now build and run the application on the Genymotion emulator:
 
