@@ -1,8 +1,7 @@
-I have spent some time really digging into
-[generators](http://docs.python.org/2/tutorial/classes.html#generators) and by
-extension
+I have spent some time digging into
+[generators](http://docs.python.org/2/tutorial/classes.html#generators) and 
 [iterables](http://docs.python.org/2/library/stdtypes.html#iterator-types).
-The official docs are pretty good, but I found that
+The official docs are good, but I found that
 [David Beazley](http://dabeaz.com/)'s
 [generator explanation](http://www.dabeaz.com/generators/Generators.pdf) fills
 a lot of the gaps.
