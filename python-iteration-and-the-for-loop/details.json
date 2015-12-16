@@ -1,7 +1,9 @@
 {
     "author_name": "perkolasoft",
     "branch": "master",
-    "branches": [],
+    "branches": [
+        "durden"
+    ],
     "filename": "article.md",
     "language": null,
     "published": false,
