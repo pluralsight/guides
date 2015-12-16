@@ -49,7 +49,7 @@ A hybrid app is a mobile application, written with the same languages that you u
 
 Definite advantage of the hybrid apps is that you can access the additional phone features via plugins and that you can do all the development with the same set of skills you use when developing _"normal"_ web applications. One of the disadvantages is that, even though it's improving, the so-called Web View has it's limitations in terms of speed. Basically, you wouldn't use a hybrid aproach if you wante to build a 3D game.
 
-##1 What is Ionic and why it's so good
+##1. What is Ionic and why it's so good
 As I gave an [answer on StackOverflow](http://stackoverflow.com/questions/31179211/use-ionic-or-cordova/31180666):
 
 > Disclaimer: This will sound like advertisement, so I have to say I'm in no way affiliated with Ionic, I just happen to like it so much that I'm sharing the love for it.
@@ -545,7 +545,7 @@ As mentioned in the begining of this section, you can take a look at the source 
 ## Conclusion
 In this section we showed you how to create a calculator application step by step. We showed how to create a mockup of our idea, then we showed how to create an interface by using Ionic Creator, and finally how to refactor our application and create the logic with controllers.
 
-#3 How to polish, and test our calculator application
+#3. How to polish, and test our calculator application
 
 
 This third section explains:
@@ -1064,7 +1064,7 @@ Find the application in your application list and open it. You should see the ad
 ## Conclusion
 In this section, we showed you how to polish our existing calculator application by improving the design and user experience. Next, we showed how to automatically create icons and splash screen images. Then we covered how to make money with our application by using Google AdMob ads. Also, we showed how to share our application with other users without going through the app stores. Finally, we showed how to test our application on the real physical devices and emulators.
 
-#4 How to publish our calculator application to the Apple's App Store and Google's Play Store
+#4. How to publish our calculator application to the Apple's App Store and Google's Play Store
 
 ## Google Play Store
 
