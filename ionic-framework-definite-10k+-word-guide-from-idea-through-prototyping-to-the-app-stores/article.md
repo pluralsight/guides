@@ -308,7 +308,7 @@ Since the code inside the `<script>` element is JavaScript (AngularJS to be more
 
 So, our `js/app.js` file should now look like this:
 
-```
+```javascript
 angular.module('app', ['ionic'])
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -362,7 +362,7 @@ Well, this also looks like a good piece to take out and put into its own file. A
 
 Since we don't have that folder in our example, create it inside the `www` folder. Then, create the `calculator.html` file and paste the contents of the previously mentioned `<script>` tag. This is how our `templates/calculator.html` file should look like now:
 
-```
+```html
 <ion-view title="Calculator">
     <ion-content padding="false" class="has-header">
         <form>
@@ -401,7 +401,7 @@ Since we don't have that folder in our example, create it inside the `www` folde
 
 Just for reference, here's the contents of the `index.html` file, as it should look like now:
 
-```
+```html
 <!DOCTYPE html>
 <html>
   <head>
@@ -438,7 +438,7 @@ Inside the `$ionicPlatform.ready` function's callback, we're detecting if a Keyb
 
 Inside the `config` function callback we're setting the routes for our application. Ionic uses [AngularUI Router](https://github.com/angular-ui/ui-router) which uses the concept of states. Since we moved our calculator UI into the `calculator.html` file inside the `templates` folder, we have to adjust the path to it accordingly. Also, we'll put our calculator logic inside the so called `CalculatorCtrl` controller. The state definition, with the acompanying controller definition should now look like this:
 
-```
+```javascript
 $stateProvider
     .state('calculator', {
         url: '',
@@ -456,7 +456,7 @@ just after the `app.js` inclusion script tag.
 
 There are really multiple ways that we could have realized the calculator logic, but we'll keep it simple here. The contents of our `CalculatorCtrl.js` file will be as follows:
 
-```
+```javascript
 angular.module('calculator', [])
 .controller('CalculatorCtrl', function($scope){
     $scope.result = '';
@@ -492,7 +492,7 @@ Next, we defined a new function called `btnClicked` which accepts one parameter 
 ## Finishing the calculator template
 The only thing which is left for us to do is to add the appropriate function calls on the buttons in the `calculator.html` template. Basically, all that we have to do is add the `ng-click="btnClicked()` function call to each button, and pass in the appropriate parameter. The way this should look like is as follows:
 
-```
+```html
 <ion-view title="Calculator">
     <ion-content padding="false" class="has-header">
         <form>
@@ -568,7 +568,7 @@ In our current application, we don't have a security measure against the possibl
 
 To handle this, we're going to wrap our evaluation line of code in the try/catch block and we're going to show an alert to the user using the [$ionicPopup](http://ionicframework.com/docs/api/service/$ionicPopup/) service (injected as a dependency in the `CalculatorCtrl` controller). The whole contents of the `CalculatorCtrl.js` file should look like this now:
 
-```
+```javascript
 angular.module('calculator', [])
 .controller('CalculatorCtrl', function($scope, $ionicPopup){
   $scope.result = '';
@@ -637,7 +637,7 @@ Now we're going to go through the parts that were changed so that you can follow
 
 As for the changes, here is the final content of the `templates/calculator.html` file:
 
-```
+```html
 <ion-view title="SuperSimple Calculator">
     <ion-content padding="false" class="has-header" scroll="false">
         <section class = "home-container">
@@ -691,7 +691,7 @@ The changes were as follows:
 
 In the `scss/ionic.app.scss` file I added the definitions for these new classes:
 
-```
+```css
 .myResultInput {
     font-size: 36px !important;
     text-align: right !important;
@@ -721,7 +721,7 @@ Flexbox is used here as a basis in making the layout which fills the whole conte
 
 Next, in the `lib/scss/_variables.scss` file I changed the values of the following variables:
 
-```
+```css
 $button-block-margin: 0px !default;
 $button-font-size: 32px !default;
 $button-height: 70px !default;
@@ -789,7 +789,7 @@ In the root of the application execute the following command to add the [cordova
 
 Now, add the following code to your app.js file, inside the `.run` function so that the run function would now look like:
 
-```
+```javascript
 .run(function($ionicPlatform) {
     $ionicPlatform.ready(function() {
         // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
@@ -822,7 +822,7 @@ Of course, you can choose to use both also. There's probably no exact formula he
 
 **The solution for which I personally opted for in the end** was to show the banner ads all the time and to show the Interstitial ad every 5th time when the equals (=) button has been pressed. Additionally I wait for 1 second after the 5th button click has been reached before showing the Interstitial ad. Here's how my CalculatorCtrl.js file looks like now:
 
-```
+```javascript
 angular.module('calculator', [])
 .controller('CalculatorCtrl', function($scope, $ionicPopup){
     $scope.result = '';
@@ -897,7 +897,7 @@ Before we go any further, we have to add the `cordova.js` file reference just be
 
 Just for reference, the whole contents of my `index.html` file is now:
 
-```
+```html
 <!DOCTYPE html>
 <html>
   <head>
@@ -1070,7 +1070,7 @@ Basically, you should remove any unnecessary plugins or libraries which you may 
 
 Next, in your `package.json` file you should change the `name`, `description` and `version` properties (leave other settings as they are). This is how I've set up mine:
 
-```
+```json
 {
   "name": "SuperSimpleCalculator",
   "version": "1.0.0",
@@ -1081,7 +1081,7 @@ Next, in your `package.json` file you should change the `name`, `description` an
 
 In the `config.xml` file make sure that you change the `widget id`, `name`, `description` and `author` elements. My file looks like this now:
 
-```
+```html
 <widget id="com.nikola-breznjak.calculator" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0" xmlns:gap="http://phonegap.com/ns/1.0">
   <name>SuperSimple Calculator</name>
   <description>
