@@ -3,7 +3,8 @@
     "branch": "master",
     "branches": [
         "edroman",
-        "prtkgpt"
+        "prtkgpt",
+        "wilbyang"
     ],
     "filename": "article.md",
     "language": null,
