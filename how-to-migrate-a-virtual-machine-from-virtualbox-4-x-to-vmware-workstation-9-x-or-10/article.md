@@ -9,3 +9,19 @@ I had no time to install, create and configure my new VM or to reinstall my wind
 My only chance was the command line support of VirtualBox, which is excellent and bullet proof. From here we will start exactly 14 steps and around 1 hour and a half if you have a virtual hard disk of 80 GB with support for dynamic disk expansion instead using a big 80GB chunk.
 
 Ready?
+
+##Requirements
+
+>Your virtualbox vm should be off. Detach any network setting.
+>Any virtualbox release above of 4.x
+>The location of your VDI file in your hard disk.
+>having installed VMware Workstation 9
+
+##Provided Environment
+I’m working in a Windows 8 Pro X64, with 8GB in Ram, 750GB in HD and Intel i7 Core Sandy Bridge Second gen. Mostly all the procedures should work with computers with windows 7 x64, iOS and Ubuntu. There is no difference on the OS, what we need is to Convert the VDI file to VMDK format.
+
+Steps
+Startup.
+All this steps must work in any OS, the only difference here is how we reach our installation through the terminal. For this case, I will be executing this under Windows.
+
+Once we located the VDI File with our file manage (called it explorer, or finder, etc) we need to go to the terminal and locate the installation of Virtualbox. In a windows 7/8 X64 machine it should be
