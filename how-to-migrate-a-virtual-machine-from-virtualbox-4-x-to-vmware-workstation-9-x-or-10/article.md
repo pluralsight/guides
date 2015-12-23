@@ -31,4 +31,14 @@ Once we located the VDI File with our file manage (called it explorer, or finder
 
     C:\Program Files\Oracle\VirtualBox
 
+so we do
 
+    cd "C:\Program Files\Oracle\VirtualBox" 
+
+once we reach here we need to execute the following line. Remember the location of your VDI file!
+
+    Vboxmanage.exe clonehd "C:\myvm\myharddisk.vdi" "C:\myvm\myharddisk.vmdk" -format VMDK -variant standard 
+
+Once we press enter, the conversion will start. Depending on the size of your hard disk it will take around 1 hour if you have used 50GB of space of your dynamic hard disk expansion in Virtualbox. So you can take your coffee, doing your laundry, or like I did, Play Professor Layton’s Puzzles…
+
+![alt "Command Line"](http://i.imgur.com/BwwrpM2.png "Command Line")
