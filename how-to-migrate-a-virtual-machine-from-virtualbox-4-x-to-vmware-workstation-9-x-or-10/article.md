@@ -47,7 +47,7 @@ Once we press enter, the conversion will start. Depending on the size of your ha
 
 Now that the conversion reached 100%, we can move safely the new vmdk file to a location of our convenience. Run VMware Workstation and start the wizard for creating a new virtual machine.
 
-!(http://i.imgur.com/ai9rzYk.png "We should execute a custom installation since we will link the converted VMDK disk in a new machine.")
+![alt "Command Line"](http://i.imgur.com/ai9rzYk.png "We should execute a custom installation since we will link the converted VMDK disk in a new machine.")
 
-We should execute a custom installation since we will link the converted VMDK disk in a new machine.
+!We should execute a custom installation since we will link the converted VMDK disk in a new machine.
 
