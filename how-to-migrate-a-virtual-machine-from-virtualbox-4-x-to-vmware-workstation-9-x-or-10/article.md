@@ -28,7 +28,7 @@ All this steps must work in any OS, the only difference here is how we reach our
 
 Once we located the VDI File with our file manage (called it explorer, or finder, etc) we need to go to the terminal and locate the installation of Virtualbox. In a windows 7/8 X64 machine it should be
 
-`
-C:\Program Files\Oracle\VirtualBox
-`
+
+    C:\Program Files\Oracle\VirtualBox
+
 
