@@ -12,7 +12,7 @@ Think of this as a "Wikipedia" for technical tutorials.
 
 ### How we’re solving these problems together
 
-- **We use MarkDown** (rather than WordPress), a simple file format.  This is a really simple text-based file format that takes around 60 seconds to understand.  It's really easy to make things **bold**, _italics_, `code blocks`, etc.  Markdown is used in many places, such as Github README files.  Even this file is a Markdown file.  You can help us edit and improve it.
+- **We use [MarkDown](http://daringfireball.net/projects/markdown/)** (rather than WordPress), a simple file format.  This is a really simple text-based file format that takes around 60 seconds to understand.  It's really easy to make things **bold**, _italics_, `code blocks`, etc.  Markdown is used in many places, such as Github README files.  Even this file is a Markdown file.  You can help us edit and improve it.
 - **The tutorials are stored in GitHub**, which many developers use daily and love.
 - **Use your favorite text editor** to create tutorials and **check them in via Git**.  Or you can also edit tutorials using Github's UI.  **Way better than Wordpress**.
 - If you aren't familiar with git/Github, or don't want to bother with that, that's fine too -- we have a handy-dandy visual editor on our site to edit tutorials right here.
