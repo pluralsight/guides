@@ -49,5 +49,5 @@ Now that the conversion reached 100%, we can move safely the new vmdk file to a 
 
 ![alt "Command Line"](http://i.imgur.com/ai9rzYk.png "We should execute a custom installation since we will link the converted VMDK disk in a new machine.")
 
-!We should execute a custom installation since we will link the converted VMDK disk in a new machine.
+We should execute a custom installation since we will link the converted VMDK disk in a new machine.
 
