@@ -12,16 +12,23 @@ Ready?
 
 ##Requirements
 
->Your virtualbox vm should be off. Detach any network setting.
->Any virtualbox release above of 4.x
->The location of your VDI file in your hard disk.
->having installed VMware Workstation 9
++Your virtualbox vm should be off. Detach any network setting.
++Any virtualbox release above of 4.x
++The location of your VDI file in your hard disk.
++having installed VMware Workstation 9 or superior
 
 ##Provided Environment
+
 I’m working in a Windows 8 Pro X64, with 8GB in Ram, 750GB in HD and Intel i7 Core Sandy Bridge Second gen. Mostly all the procedures should work with computers with windows 7 x64, iOS and Ubuntu. There is no difference on the OS, what we need is to Convert the VDI file to VMDK format.
 
-Steps
-Startup.
+Now lets start with the steps
+
+## 1. Startup.
 All this steps must work in any OS, the only difference here is how we reach our installation through the terminal. For this case, I will be executing this under Windows.
 
 Once we located the VDI File with our file manage (called it explorer, or finder, etc) we need to go to the terminal and locate the installation of Virtualbox. In a windows 7/8 X64 machine it should be
+
+<blockquote>
+C:\Program Files\Oracle\VirtualBox
+</blockquote>
+
