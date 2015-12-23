@@ -42,3 +42,11 @@ once we reach here we need to execute the following line. Remember the location 
 Once we press enter, the conversion will start. Depending on the size of your hard disk it will take around 1 hour if you have used 50GB of space of your dynamic hard disk expansion in Virtualbox. So you can take your coffee, doing your laundry, or like I did, Play Professor Layton’s Puzzles…
 
 ![alt "Command Line"](http://i.imgur.com/BwwrpM2.png "Command Line")
+
+###Step 1.
+
+Now that the conversion reached 100%, we can move safely the new vmdk file to a location of our convenience. Run VMware Workstation and start the wizard for creating a new virtual machine.
+
+![alt "We should execute a custom installation since we will link the converted VMDK disk in a new machine."](http://i.imgur.com/ai9rzYk.png "We should execute a custom installation since we will link the converted VMDK disk in a new machine.")
+We should execute a custom installation since we will link the converted VMDK disk in a new machine.
+
