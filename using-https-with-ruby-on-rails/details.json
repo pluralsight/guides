@@ -1,7 +1,9 @@
 {
     "author_name": "weppos",
     "branch": "master",
-    "branches": [],
+    "branches": [
+        "prtkgpt"
+    ],
     "filename": "article.md",
     "language": null,
     "published": false,
