@@ -1,6 +1,6 @@
-I'm going to give beginners an all inclusive guide to Github, however this is not a guide to Git in and of itself. I will be doing a full article on Git by itself soon... In the meantime I will put a little bit at the end of this article for people to get a small taste for Git. For the rest of you this is going to be an overall guide to the inner workings of Github in the way I understand and see it to work.
+I'm going to give beginners an all inclusive guide to Github, however this is not a guide to Git in and of itself. I will be doing a full article on Git soon... In the meantime I will put a little bit at the end of this article for people to get a small taste for Git. For the rest of you this is going to be an overall guide to the inner workings of Github in the way I understand and see it to work.
 
-> FYI: If you are used to Github and experienced with it then most of this guide might be redundant for you. However there also might be a few gems you didn't know about!
+> FYI: If you are used to Github and experienced with it, then most of this guide might be redundant for you. However there also might be a few gems you didn't know about!
 
 # Introduction
 First of all, what is Github? Github is the largest single point or hub of open source and world wide development. It uses a source code versioning system called `Git`, which is very powerful and lends itself well to open source communities. On Github you will find all types of hidden gems that can help you become a better developer. I spend at least a few minutes a day browsing and looking for new projects, inspecting their code, and learning from the community. 
@@ -8,7 +8,7 @@ First of all, what is Github? Github is the largest single point or hub of open 
 > It is by far (In My Honest Opinion) the easiest way to manage your source code, project, documentation, and more.
 
 # Signing Up
-To get started you will need to sign up. To do this go to the [Homepage](https://github.com) and sign up. Make sure to chose your username wisely, and try not to use any special characters such as dashes or underscores. Readability is key. This username will be used in the links and navigation of all your projects going forward. 
+To get started you will need to sign up. To do this go to the [Homepage](https://github.com) and sign up. Make sure to choose your username wisely, and try not to use any special characters such as dashes or underscores. Readability is key. This username will be used in the links and navigation of all your projects going forward. 
 
 # Your Profile
 Your profile holds a lot of information about you, your activity, and the projects you work on. 
@@ -46,10 +46,10 @@ Kudos to Hitman666 for that continuous block of green.
 
 > Quick Tip: If your contributions are not showing when you are pushing commits then you should make sure your email is setup in your git config on your development machine. If it doesn't match the email in your Github profile you won't get the credit for it.
 
-Below that section you will see a contribution list. By clicking on one of the green blocks on your profile (Or someone else's profile) you can filter and sort through the contributions for that day. It is really good to show what all you have done for the day. It also allows you to go to that specific contribution to inspect it, comment, or sometimes modify it.
+Below that section you will see a contribution list. By clicking on one of the green blocks on your profile (Or someone else's profile) you can filter and sort through the contributions for that day. It is a really good way to show all you have done for that day. It also allows you to go to that specific contribution to inspect, comment or sometimes modify it.
 
 # Finding Projects
-Github has made it extremely easy to find projects. There are many reasons you will want to search for projects on Github. The biggest reasons are to find a tool / code to use in your personal / team project, find a new project to contribute to, find an experienced and mature project to learn concepts from (Unit testing, documentation, etc..), and just to peruse and find cool stuff.
+Github has made it extremely easy to find projects. There are many reasons you will want to search for projects on Github. The biggest reasons are to find a tool / code to use in your personal / team project, find a new project to contribute to, find an experienced and mature project to learn concepts from (Unit testing, documentation, etc..) or just to peruse to find cool stuff.
 
 To start, look for the search bar at the top of the screen. It has two modes. Global and Repository.
 
@@ -118,7 +118,7 @@ To the right of that you will find three buttons you should get very familiar wi
 
 ![Watch, Star, and Fork](http://i.imgur.com/7cFlUck.png)
 
-Below those three important buttons you will have the project information area. This area shows how many commits, branches, releases, and contributors there are on the project.
+Below those three important buttons you will have the project information area. This area shows how many commits, branches, releases, and contributors are on the project.
 
 * *Commits* : These are the base behind the Git Versioning system. Instead of pushing all of the code to the server every time you make changes, the system only stores what those changes are. This makes it easy to roll back, and see what someone has actually done with the code. A commit is a package (Boxed up and ready to go) of all the changes done up to that point since the last commit.
 * *Branches* : When working on a specific idea, you want to leave your main code alone. Here you can copy your code over to a new "Branch" and there you can make your changes without modifying the original. When you feel like you have good code, have tested it, and want to move it back to the main branch you can do that with a pull request. (More on that in the coming sections).
@@ -131,7 +131,7 @@ If you notice the colored part underneath that bar, you can click on it. This wi
 
 ![Language Distribution](http://i.imgur.com/k2iGJx1.png)
 
-The next section allows you to traverse through the code in the project. View it, edit it, etc... Though if you edit someone else's code note, that it will fork it to your own repository for editing. 
+The next section allows you to traverse through the code in the project. View it, edit it, etc... Though if you edit someone else's code, note that it will fork it to your own repository for editing. 
 
 ![File Listing](http://i.imgur.com/HN56K22.png)
 
@@ -142,8 +142,8 @@ If you were to click on a file it would take you into the file editor. I clicked
 You will also notice a few buttons on the top right of the editor. I'll quickly describe each one for you.
 
 * *Raw* : This will open a new window and show the raw contents of the file. Allowing you to select it all to copy, etc...
-* *Blame* : This is another view of the code. It shows all the recent commits on the left with the code on the right. For each line of the code.
-* *History* : This shows in chronological order the changes made to this file.
+* *Blame* : This is another view of the code. For each line of the code, it shows all the recent commits on the left, with the code on the right. 
+* *History* : This shows in chronological order the changes made to a file.
 * *Open in GH Desktop* : This will download the file and open it in Github's desktop source control software. 
 * *Edit* : If this is your file it will open the file for you to edit and update. If it is someone else's file it will open it up in a fork for you to edit.
 * *Delete* : Again if this is your file it will just delete the file. If it is someone else's file it will fork the project to your own repository and delete this file from it.
@@ -157,7 +157,7 @@ Click This:
 
 ![New repo](http://i.imgur.com/kXgOirS.png)
 
-On the next page just fill out the details. Click `initialize this repository with a README` and most of the time I choose the MIT License. If you click the info sign next to the license Github can tell you all about the different types of licenses available to chose from. It's important to note that due to `Github's Terms of Service` you have to use an open source license for public repositories. After you have filled it out you can click `Create repository`. Here is my repository I am making for this article.
+On the next page just fill out the details. Click `initialize this repository with a README` and most of the time I choose the MIT License. If you click the info sign (next to the license), Github can tell you all about the different types of licenses available to chose from. It's important to note that due to `Github's Terms of Service` you have to use an open source license for public repositories. After you have filled it out, you can click `Create repository`. Here is the repository I am making for this article.
 
 ![Create Repo Screen](http://i.imgur.com/E4tshgQ.png)
 
@@ -180,7 +180,7 @@ I am making this repository to allow others to view it after reading the article
 
 You can find the article at [This link](http://insertarticlelinkehere)
 ```
-There is a lot of stuff that you can do while editing this file. YOu can preview the changes, and also change the name. When you are done editing you need to name your commit (Remember you are pushing changes, so this will be packaged as a commit and put in your repository) and a description of what you changed. You can see what I have done here: 
+There is a lot of stuff that you can do while editing this file. You can preview the changes and also change the name. When you are done editing you need to name your commit (Remember you are pushing changes, so this will be packaged as a commit and put in your repository) and a description of what you changed. You can see what I have done here: 
 
 ![Editing Readme](http://i.imgur.com/mdlwgcr.png)
 
@@ -194,17 +194,17 @@ Issues are probably the second most important part of Github. Issues make managi
 
 ![The Issues Page](http://i.imgur.com/vpFXljb.png)
 
-> Quick Tip: Open issues are GREEN and closed issues are RED...
+> Quick Tip: Opened issues are GREEN and closed issues are RED...
 
 To create a new issue just hit that big green `New issue` button up there. Give your issue a title, and then describe what the issue is. It can be anything from a `bug`, an `enhancement`, a call for `help wanted`, or even just a `question`. What I just described are Labels. And you can select labels on the right. You can also select a milestone if you have created one, or assign someone. Please note that some of these actions require you to be an owner of a repository. Once you are done you can click `Submit new issue`.
 
 ![Submit Issue](http://i.imgur.com/WJPVHC8.png)
 
-On the issue page you can see all details about an issue. Including all the fields we just populated when submitting the issue. You can link issues to each other using the `#issuenumber` and link to commits using the `commit hash`. This is where you will have the discussion of your issue for further conversations. Up until it is closed.
+On the issue page you can see all details about an issue. Including all the fields we just populated when submitting the issue. You can link issues to each other using the `#issuenumber` and link to commits using the `commit hash`. This is where you will have the discussion of your issue for further conversations, up until it is closed.
 
 ![Issue Page](http://i.imgur.com/lNDrhb2.png)
 
-For beginning you are probably good with the default labels so I am not going to go over that. Here is what an active issue board looks like...
+For beginners, you are probably good with the default labels so I am not going to go over that. Here is what an active issue board looks like...
 
 ![Active issues](http://i.imgur.com/RyzJX9F.png)
 
@@ -223,7 +223,7 @@ Wiki pages are just a separate area to store your documentation in markdown form
 The wiki can be a quick way to get your documentation started. However I prefer to use Github Pages.
 
 ## Github Pages
-Github Pages is one of the newer additions to the Github platform. It allows you to server static websites for free. Yes I said for free. It's one of the best kept secrets that isn't a secret anymore. I've personally dropped all of my paid hosting and moved everything to github pages. 
+Github Pages is one of the newer additions to the Github platform. It allows you to serve static websites for free. Yes I said for free. It's one of the best kept secrets that isn't a secret anymore. I've personally dropped all of my paid hosting and moved everything to github pages. 
 
 The system uses a software called Jekyll to generate and maintain the static files, and that system is pretty easy to use. You can learn about Jekyll over [at it's main site](http://jekyllrb.com). Think of it like wordpress for the command line.
 
@@ -237,25 +237,25 @@ To use Github Pages all you have to do is create a new Branch in your repository
 I'd guess that more than half of the repositories (Probably 8 out of 10) on Github are open source projects. Open source projects tend to work well for communities to buy into and help build. Because of that you will want to provide ways for your community to grow. Here are just a few of those ways.
 
 ### Integrate With [Slack](http://slack.com)
-Slack is probably one of the best communication tools on the market right now. It's free to use and setup, and with some well programmed API's it can become a great community. For example by clicking on this [link](https://uc-slack.herokuapp.com) you can fill out a form and get invited to my communities Slack Team. 
+Slack is probably one of the best communication tools on the market right now. It's free to use and setup and with some well programmed APIs it can help build up a great community. For example by clicking on this [link](https://uc-slack.herokuapp.com) you can fill out a form and get invited to my Slack Community. 
 
-I prefer to use Slack because it can be used for multiple projects, has a mobile app, and is very very simple to use. 
+I prefer to use Slack because it can be used for multiple projects, has a mobile app and is very simple to use. 
 
-You can also integrate Slack with github by using a service called "If This Then That" located at [IFTTT](http://ifttt.com). IFTTT allows you to build triggers. I have a lot of them setup for my team's Slack such as when A new issue gets posted to any of my github repositories, it automatically notifies people through Slack.
+You can also integrate Slack with GitHub by using a service called "If This Then That" located at [IFTTT](http://ifttt.com). IFTTT allows you to build triggers. I have a lot of them setup for my team's Slack such that, when A new issue gets posted to any of my GitHub repositories, it automatically notifies people through Slack.
 
 ### Integrate With [Trello](http://trello.com)
-Trello is a good tool to help keep your project organized. You can use it to organize `cards` into `categories`. This could be a new feature in the In Progress category. I have used an IFTTT flow to post new issues to a Trello Board where I can then work them and move them through my task management workflow.
+Trello is a good tool to help keep your project organized. You can use it to organize `cards` into `categories`. This could be a new feature in the `In Progress` category. I have used an IFTTT flow to post new issues to a Trello Board where I can then work on them and move them through my task management workflow.
 
 ### Integrate With [Gitter](http://gitter.im)
-Gitter is an alternate to using slack. I have not used it much, however I see a lot of repositories that do. One thing to keep in mind is that if you work behind a corporate firewall they may block ".im" domain names.
+Gitter is an alternative to using slack. I have not used it much, however I see a lot of repositories that do. One thing to keep in mind is that, if you work behind a corporate firewall they may block ".im" domain names.
 
 # Contributing to Projects
-This is the strongest part of Github in my opinion. I stated earlier that issues were number two and this is by far #1. The concept of Github and Git in and of itself lends well to collaboration. For the rest of this article I will be talking about contributions and how to use git. 
+This is the strongest part of GitHub in my opinion. I stated earlier that issues feature was #2 and this by far is #1. The concept of Github and Git in and of itself lends well to collaboration. For the rest of this article I will be talking about contributions and how to use Git. 
 
 ## Fork
-Before you get started on helping with a project you should first check with the owner of the repository of things that need to be done. Sure you can add your ideas into the mix, but if there are major things that need to be done then you need to understand that. 
+Before you get started on helping with a project, you should first check with the owner of the repository for things that has to be done. Sure, you can add your ideas into the mix, but if there are major things that has to be done, then you need to understand that. 
 
-After you decide you are going to contribute and have an idea of what you want to do you will want to fork the repository. This will copy the repository to your own personal repository. Here you can clone the repository (See below about cloning), make your changes, push them back to your repository. You can do this as long as you want, but keep in mind that the repository that you forked from will keep on changing. Make sure you keep your code synced with changes that are happening with the main repository.
+After you decide you are going to contribute and have an idea of what you want to do, you will want to fork the repository. This will copy the repository to your own personal repository. Here you can clone the repository (See below about cloning), make your changes, push them back to your repository. You can do this as long as you want, but keep in mind that the repository that you forked from will keep on changing. Make sure you keep your code synced with changes that are happening with the main repository.
 
 ## Pull Request
 After you have finished making the changes to your repository, you have tested them, and are confident they are ready then you need to submit a Pull request. I'll go ahead and make a small change to a Pluralsight Tutorial and submit a pull request so you can see how that looks.
@@ -274,7 +274,7 @@ After I click that it will move me to a comparing changes page where you can see
 
 ![Submit Pull Request](http://i.imgur.com/oAU7gEl.png)
 
-Next it will ask me to title and comment my pull request. Github was nice enough to prefill these from my propose file changes area. I'll just go ahead and say that is good enough and click the green `Create pull request` button to finish the submission.
+Next it will ask me to title and comment my pull request. Github was nice enough to prefill these from my proposed file changes area. I'll just go ahead and say that is good enough and click the green `Create pull request` button to finish the submission.
 
 ![Complete Pull Submission](http://i.imgur.com/z9l4uXM.png)
 
@@ -305,7 +305,7 @@ or
 ## Cloning
 When you create your project on Github you will notice that on it's home page there is a link that looks like this: 
 
-![Clone Linke](http://i.imgur.com/7E3BKA2.png)
+![Clone Link](http://i.imgur.com/7E3BKA2.png)
 
 Once you have git installed on your local machine all you have to do to get this code onto your machine is run the following command using that link.
 
@@ -316,7 +316,7 @@ $ git clone https://your-github-link
 This will copy the entire master branch (Or whatever branch you have set as default) to your local machine.
 
 ## Commit
-Once you have cloned your repository you are free to make changes to the files. After you are done you will want to push the changes back to Github. To do this we are going to make a commit which will store all the changes into a package ready to be pushed to the server. The following commands will add all the changes to a commit for you. 
+Once you have cloned your repository you are free to make changes to the files. After you are done, you will want to push the changes back to Github. To do this we are going to make a commit which will store all the changes into a package ready to be pushed to the server. The following commands will add all the changes to a commit for you. 
 
 > Quick Tip: Make sure you are in the root directory of your project before running these commands.
 
@@ -350,7 +350,7 @@ $ git push
 It will ask you for your username and password. Once you have entered those correctly it will push all commits to the server. You're done!
 
 ## Pull
-If you make changes on the remote repository then you will want to get those changes into your local repository. (Assuming you have already cloned it). You can do this with the pull command. Running the following command will pull and new commits on the server to your local machine.
+If you make changes on the remote repository then you will want to get those changes into your local repository. (Assuming you have already cloned it). You can do this with the pull command. Running the following command will pull any new commits on the server to your local machine.
 
 ```shell
 $ git pull
@@ -363,13 +363,13 @@ $ git checkout your-branch-name
 ```
 
 ## Pull Request
-I recommend that beginners do all pull requests on the website. It makes it easier and more fool proof.
+I recommend that beginners do all pull requests on the website. It makes it easier and more fool-proof.
 
 # Wrap Up
-With that I wrap up the article. It's been a great time, and I hope you have enjoyed learning all about Github. I look forward to seeing you on there. Just follow me, join my slack, and we will make some awesome things!
+With that, I wrap up the article. It's been a great time, and I hope you have enjoyed learning all about Github. I look forward to seeing you on there. Just follow me, join my [Slack](https://uc-slack.herokuapp.com) and we will make some awesome things!
 
 ### About The Author:
 
 ![Shannon Duncan](https://pbs.twimg.com/profile_images/672481536826937344/GeAx6xl4_200x200.jpg) 
 
-Shannon Duncan is the Founder and Author at [Unrestricted Coding](http://unrestrictedcoding.com). He mentors and teaches people of all ages how to code and enjoy the art of programming. Find him on [twitter](https://twitter.com/bikemybodyback), [linked-in](https://www.linkedin.com/in/jsduncan98), and [github](https://github.com/shadowcodex).
+Shannon Duncan is the Founder and Author at [Unrestricted Coding](http://unrestrictedcoding.com). He mentors and teaches people of all ages on how to code and enjoy the art of programming. Find him on [Twitter](https://twitter.com/bikemybodyback), [LinkedIn](https://www.linkedin.com/in/jsduncan98), and [GitHub](https://github.com/shadowcodex).
