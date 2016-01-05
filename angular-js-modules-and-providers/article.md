@@ -5,7 +5,7 @@ AngularJS has many different components used to make an application. It is impor
 
 Modules define a unit of code in your Angular application and contain the code you write such as controllers, directives, filters, and services. In simple examples, such as those used in previous articles, it is common to see an application defined as a single module.
 
-```
+```javascript
 angular.module('mainModule',[])
  .controller('mainController', mainController);
 
@@ -18,7 +18,7 @@ In these examples the controllers are all added to the same module. While that w
 
 The module function can either create a module, or retrieve one. When creating a module, it is given a name and a list of dependencies. To retrieve a module, the function is called with just the name. Using this pattern allows for creating a module out of multiple files. For example, each controller can be defined in its own file and still added to the same module. 
 
-```
+```javascript
 angular.module('mainModule',[]);
 angular.module('secondModule',[]);
 main.js
@@ -46,7 +46,7 @@ Notice that in the main.js file the two modules are created with an empty depend
  
 The use of dependencies provides additional power to this model as one module can simply declare that it depends on another module. AngularJS will then take care of loading that dependency making sure it is available for use when the depending module needs it. 
 
-```
+```javascript
 angular.module('mainModule',['secondModule']);
 angular.module('secondModule',[]); 
 main.js (updated with dependencies)
@@ -66,7 +66,7 @@ I mentioned the idea of splitting application code into several different files.
 
 Once all the modules are defined, AngularJS needs to be started and pointed to those modules. The manual way to do this is using a function named “bootstrap” that connects AngularJS to both the DOM (document object model) and the module or modules containing your application code.
 
-``` 
+```javascript 
 angular.bootstrap(document, ['mainModule'])
 
 ```
@@ -77,7 +77,7 @@ With manual bootstrapping AngularJS needs a reference to the element in the DOM 
 
 A shortcut used in place of the manual bootstrapping is to use the ng-app directive in the main HTML page hosting the application.
 
-```
+```html
 <html ng-app="mainModule">
 ```
 
@@ -94,7 +94,7 @@ Providers can create many types of objects including native JavaScript types lik
 
 There is a basic pattern for creating a provider that provides the most flexibility but also requires the most work. Using this model you define a function and include a $get property that will be invoked by AngularJS to create your object. It is important to keep in mind that all providers create singletons so they will only be asked to provide the object once. After that, the object is stored in the AngularJS injector service where it can be looked up when needed to fulfill a dependency declaration. 
 
-```
+```javascript
 function calendarProvider() {
  var cal = "en.usa";
  this.setCalendar = function(calendar){
@@ -114,7 +114,7 @@ In this example the function returns a custom object but it could also return a 
 
 In order to use the object provided, a controller or other dependency enabled type can declare a dependency on the registered name of the provider as this example shows with a controller.
 
-```
+```javascript
 angular.module('mainModule')
  .controller('mainController',['calendarService', 'calendar', mainController]);
 ```
@@ -125,7 +125,7 @@ As mentioned, this is the basic pattern for a provider and comes with certain be
 
 The Service provider allows for the creation of a custom object using the constructor pattern. In other words, if you have an object that can be created using the “new” keyword, with or without parameters, then you can use a shortcut to create that service. For example, the following service object retrieves public holidays from a google calendar and invokes a callback with the results. The service has dependencies as indicated by the parameters in the constructor function.
 
-```
+```javascript
 function CalendarService(calendarUrlFactory, $http) {
  this.getHolidays = function(cb) {
   $http.get(calendarUrlFactory)
@@ -142,7 +142,7 @@ function CalendarService(calendarUrlFactory, $http) {
 
 Rather than create a full provider implementation for this object, the shortcut service method can be invoked on the module.
 
-```
+```javascript
 angular.module("mainModule")
  .service('calendarService',['calendarUrlFactory', '$http', function(calendarUrlFactory, $http) {
   return new CalendarService(calendarUrlFactory, $http);
@@ -157,7 +157,7 @@ Once this service provider has been registered with the module it can be declare
 
 In some cases the object returned by a provider is not a custom object but instead a native type such as a string, number, or function. In those cases a factory provider can be used to create the object. This provider is much like the service provider but does not return a custom object. 
 
-```
+```javascript
 angular.module("mainModule")
  .factory("calendarUrlFactory", ['calendarName', 'calendarToken', function(calendarName, calendarToken){
   return calendarName + "/events? maxResults=10&key=" + calendarToken;
@@ -170,7 +170,7 @@ In this example the factory method is invoked on the module to register a functi
 ###Value Provider
 In some cases there may be a need to simply provide a value throughout an application from a centralized code location. For those cases the value provider makes is simple to register a value with the injector which can then be used throughout the application. 
 
-```
+```javascript
 angular.module("mainModule")
  .value("calendarName", "https://www.googleapis.com/calendar/v3/calendars/. . .");
 ```
@@ -183,7 +183,7 @@ One important distinction between this provider type and others is that the valu
 
 The final way to create a provider is the constant method on the module to define a constant value as shown here.
 
-```
+```javascript
 angular.module('mainModule')
  .constant("calendarToken", "YOUR API TOKEN ");
 ```
@@ -194,7 +194,7 @@ Like the value provider this provider registers a simple value with the injector
 
 When the bootstrap process runs, an AngularJS application goes through two stages: configuration and run. During the configuration process each provider is instantiated, then each module is configured by calling the config method if it exists. It is in the config method that providers following the full provider model can have functions invoked to configure them.
 
-```
+```javascript
 angular.module('mainModule',['secondModule'])
  .config(['calendarProvider', function(calendarProvider){
   calendarProvider.setCalendar("en.usa");
@@ -205,7 +205,7 @@ The config method on the module accepts a list of dependencies like services do 
 
 However, during the configuration phase the constant providers are available for use. This means that the functions or values registered through constant providers can be used to configure the other providers as well as be used at runtime by services, controllers, etc. For example, assuming the calendarProvider was updated to include a setToken method, the following configuration code can be used.
 
-```
+```javascript
 angular.module('mainModule',['secondModule'])
  .config(['calendarProvider','calendarToken', function(calendarProvider, calendarToken){
   calendarProvider.setCalendar("en.usa");
