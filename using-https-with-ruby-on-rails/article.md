@@ -1,3 +1,6 @@
+![](http://i.imgur.com/1CLlQld.png)
+
+
 HTTPS is the secure, encrypted version of the HTTP protocol. To serve a Ruby on Rails application via HTTPS there are 3 steps you need to follow:
 
 1. Obtain an SSL certificate
