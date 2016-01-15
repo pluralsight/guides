@@ -3,7 +3,9 @@
     "branch": "master",
     "branches": [],
     "filename": "article.md",
-    "language": null,
+    "stacks": [
+        "Front-End JavaScript (Angular, React, Meteor, etc)"
+    ],
     "published": true,
     "title": "Angular JS: Modules and Providers"
 }

@@ -3,7 +3,9 @@
     "branch": "master",
     "branches": [],
     "filename": "article.md",
-    "language": null,
+    "stacks": [
+        "Android"
+    ],
     "published": true,
     "title": "How to create a calculator application with Ionic framework by using Ionic Creator for UI",
     "image_url": "https://avatars.githubusercontent.com/u/1001064?v=3&"

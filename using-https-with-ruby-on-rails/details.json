@@ -5,6 +5,9 @@
         "prtkgpt"
     ],
     "filename": "article.md",
+    "stacks": [
+        "Ruby, Ruby on Rails"
+    ],
     "language": null,
     "published": true,
     "title": "Using HTTPs with Ruby on Rails"

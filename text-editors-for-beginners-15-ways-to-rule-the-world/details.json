@@ -5,7 +5,9 @@
         "prtkgpt"
     ],
     "filename": "article.md",
-    "language": null,
+    "stacks": [
+        "Software Engineering Best Practices"
+    ],
     "published": true,
     "title": "Text Editors For Beginners - 15 Ways To Rule The World."
 }

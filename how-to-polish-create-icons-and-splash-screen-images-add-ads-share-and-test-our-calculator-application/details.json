@@ -6,7 +6,9 @@
         "shadowcodex"
     ],
     "filename": "article.md",
-    "language": null,
+    "stacks": [
+        "Android"
+    ],
     "published": true,
     "title": "How to polish, create icons and splash screen images, add ads, share and test our calculator application",
     "image_url": "https://avatars.githubusercontent.com/u/1001064?v=3"

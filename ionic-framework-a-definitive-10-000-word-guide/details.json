@@ -7,7 +7,9 @@
         "wilbyang"
     ],
     "filename": "article.md",
-    "language": null,
+    "stacks": [
+        "Android"
+    ],
     "published": true,
     "title": "Ionic Framework: A definitive 10,000 word guide"
 }
