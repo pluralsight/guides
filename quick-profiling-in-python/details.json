@@ -4,7 +4,10 @@
     "branch": "master",
     "branches": [],
     "filename": "article.md",
-    "language": null,
+    "image_url": "https://avatars.githubusercontent.com/u/58063?v=3",
+    "stacks": [
+        "Python"
+    ]
     "published": true,
     "title": "Quick profiling in Python"
 }
