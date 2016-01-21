@@ -99,8 +99,26 @@ Here we will choose the Hard Disk to be used. Locate your converted VMDK disk an
 Give the location of your converted VMDK disk.
 
 ###Step 11
-![alt "Command Line"](http://i0.wp.com/www.tbogard.com/wp-content/uploads/2013/01/Page-11.gif "Here is the tricky part. Since I don't know if I will use again VirtualBox in a next future, I didn't converted to a recent format. I want to have a Fallback measure if things goes wrong. Once this part is finished, we can test the new virtual machine on VMware.") 
+![alt "Command Line"](http://i0.wp.com/www.tbogard.com/wp-content/uploads/2013/01/Page-11.gif "Here is the tricky part. Since I don't know if I will use again VirtualBox in a next future, I didn't converted to a recent format. I want to have a Fallback measure if things goes wrong. Once this part is finished, we can test the new virtual machine on VMware.") 
 
 Here is the tricky part. Since I don't know if I will use again VirtualBox in a next future, I didn't converted to a recent format. I want to have a Fallback measure if things goes wrong. Once this part is finished, we can test the new virtual machine on VMware.
+
+
+###Step 12
+![alt "Command Line"](http://i0.wp.com/www.tbogard.com/wp-content/uploads/2013/01/Page-12.gif "Now the only thing we need to do is to start the new Virtual Machine.")
+
+Now the only thing we need to do is to start the new Virtual Machine.
+
+###Step 13
+![alt "Command Line"](http://i0.wp.com/www.tbogard.com/wp-content/uploads/2013/01/Page-13.gif "Congratulations! Migration was painless and now I can reinstall PHPEd and go back to work!")
+
+Congratulations! Migration was painless and now I can reinstall PHPEd and go back to work!
+
+Crazy ride isn't? After this last step you need to reconfigure your network and add the VMware additions to your virtual machine.
+
+I hope this tutorial can be helpful if you face migration problems between Virtualbox and VMWare, and I hope you have enjoy this reading.
+
+Thanks!
+
 
 
