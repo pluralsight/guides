@@ -125,7 +125,7 @@ Thanks!
 
 ![alt ""](https://secure.gravatar.com/avatar/c633b3f0881e5972f2eaf7b157e95c22.jpg?s=180&d=https%3A%2F%2Fhackhands.s3.amazonaws.com%2Fstatic%2F..%2F_default%2Fassets%2Fimages%2Favatar_large.jpg "")
 
-John Ericson Rodriguez (or Erick if you want to keep it short), is the Founder and CEO of [Stream Overlay Pro](http://www.streamoverlaypro.com) and avid software engineer and designer for more than 15 years.
+John Ericson Rodriguez (or Erick if you want to keep it short), is the Founder and CEO of [Stream Overlay Pro](http://www.streamoverlaypro.com). He is an avid software engineer and designer that have worked on many web projects for more than 15 years.
 
 He master the arts of Publishing, Web Developing, GUI Designing, LAMP/WAMP Stacks and knowledgeable in PHP and Javascript frameworks. In his free times, he loves to spend time with his wife and son, ride his bike, creating GUI interfaces experiments with jQueryUI, play e-sports and practice meditation if time allow it. 
 
