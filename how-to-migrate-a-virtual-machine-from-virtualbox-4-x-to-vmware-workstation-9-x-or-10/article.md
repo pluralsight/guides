@@ -68,16 +68,39 @@ We do not need really to reinstall the Operative System, so it is safe to choose
 Choose Linux, then Ubuntu. Sometimes it appears as default
 
 ###Step 5
-![alt "Command Line"](http://i0.wp.com/www.tbogard.com/wp-content/uploads/2013/01/Page-5.gif "Name the virtual machine as you want. Also you can change the default location of the vm if needed.")
+![alt "Command Line"](http://i0.wp.com/www.tbogard.com/wp-content/uploads/2013/01/Page-5.gif "Name the virtual machine as you want. Also you can change the default location of the virtual machine if needed.")
 
-Name the virtual machine as you want. Also you can change the default location of the vm if needed.
+Name the virtual machine as you want. Also you can change the default location of the virtual machine if needed.
 
 ###Step 6
-![alt "Command Line"](http://i0.wp.com/www.tbogard.com/wp-content/uploads/2013/01/Page-6.gif "To match the processors used in my virtualbox vm, I assign the same amount of processors and cores for the new virtual machine")
+![alt "Command Line"](http://i0.wp.com/www.tbogard.com/wp-content/uploads/2013/01/Page-6.gif "To match the processors used in my virtualbox virtual machone, I assign the same amount of processors and cores for the new virtual machine")
+
+To match the processors used in my virtualbox virtual machone, I assign the same amount of processors and cores for the new virtual machine
 
 ###Step 7
-![alt "Command Line"](http://i0.wp.com/www.tbogard.com/wp-content/uploads/2013/01/Page-7.gif "I do exactly the same like in the previous step. Match the amount of memory to be assign to this vm.")
+![alt "Command Line"](http://i0.wp.com/www.tbogard.com/wp-content/uploads/2013/01/Page-7.gif "I do exactly the same like in the previous step. Match the amount of memory to be assign to this virtual machine.")
+
+I do exactly the same like in the previous step. Match the amount of memory to be assign to this virtual machine.
 
 ###Step 8
 ![alt "Command Line"](http://i0.wp.com/www.tbogard.com/wp-content/uploads/2013/01/Page-8.gif "Use the NAT for the moment. Later on you can configure a bridged network connection to make your VM visible to your network.")
+
+Use the NAT for the moment. Later on you can configure a bridged network connection to make your VM visible to your network.
+
+###Step 9
+![alt "Command Line"](http://i0.wp.com/www.tbogard.com/wp-content/uploads/2013/01/Page-9.gif "Here we will choose the Hard Disk to be used. Locate your converted VMDK disk and continue")
+
+Here we will choose the Hard Disk to be used. Locate your converted VMDK disk and continue
+
+
+###Step 10
+![alt "Command Line"](http://i0.wp.com/www.tbogard.com/wp-content/uploads/2013/01/Page-10.gif "Give the location of your converted VMDK disk.")
+
+Give the location of your converted VMDK disk.
+
+###Step 11
+![alt "Command Line"](http://i0.wp.com/www.tbogard.com/wp-content/uploads/2013/01/Page-11.gif "Here is the tricky part. Since I don't know if I will use again VirtualBox in a next future, I didn't converted to a recent format. I want to have a Fallback measure if things goes wrong. Once this part is finished, we can test the new virtual machine on VMware.") 
+
+Here is the tricky part. Since I don't know if I will use again VirtualBox in a next future, I didn't converted to a recent format. I want to have a Fallback measure if things goes wrong. Once this part is finished, we can test the new virtual machine on VMware.
+
 
