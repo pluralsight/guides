@@ -105,7 +105,7 @@ Here is the tricky part. Since I don't know if I will use again VirtualBox in a 
 
 
 ###Step 12
-![alt "Command Line"](http://i0.wp.com/www.tbogard.com/wp-content/uploads/2013/01/Page-12.gif "Now the only thing we need to do is to start the new Virtual Machine.")
+![alt "Command Line"](http://i0.wp.com/www.tbogard.com/wp-content/uploads/2013/01/Page-12.png "Now the only thing we need to do is to start the new Virtual Machine.")
 
 Now the only thing we need to do is to start the new Virtual Machine.
 
