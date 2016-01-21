@@ -71,3 +71,13 @@ Choose Linux, then Ubuntu. Sometimes it appears as default
 ![alt "Command Line"](http://i0.wp.com/www.tbogard.com/wp-content/uploads/2013/01/Page-5.gif "Name the virtual machine as you want. Also you can change the default location of the vm if needed.")
 
 Name the virtual machine as you want. Also you can change the default location of the vm if needed.
+
+###Step 6
+![alt "Command Line"](http://i0.wp.com/www.tbogard.com/wp-content/uploads/2013/01/Page-6.gif "To match the processors used in my virtualbox vm, I assign the same amount of processors and cores for the new virtual machine")
+
+###Step 7
+![alt "Command Line"](http://i0.wp.com/www.tbogard.com/wp-content/uploads/2013/01/Page-7.gif "I do exactly the same like in the previous step. Match the amount of memory to be assign to this vm.")
+
+###Step 8
+![alt "Command Line"](http://i0.wp.com/www.tbogard.com/wp-content/uploads/2013/01/Page-8.gif "Use the NAT for the moment. Later on you can configure a bridged network connection to make your VM visible to your network.")
+
