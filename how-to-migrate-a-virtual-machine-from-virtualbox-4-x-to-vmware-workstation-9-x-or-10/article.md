@@ -116,7 +116,7 @@ Congratulations! Migration was painless and now I can reinstall PHPEd and go bac
 
 Crazy ride isn't? After this last step you need to reconfigure your network and add the VMware additions to your virtual machine.
 
-I hope this tutorial can be helpful if you face migration problems between Virtualbox and VMWare, and I hope you have enjoy this reading.
+I hope this tutorial can be helpful if you face migration problems between Virtualbox and VMWare, and I hope you have enjoyed this article.
 
 Thanks!
 
