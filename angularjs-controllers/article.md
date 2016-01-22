@@ -2,7 +2,7 @@ Controllers are one of the key components in the MVC architecture of AngularJS. 
 
 ## Controller Basics
 
-In a previous article on the MVC pattern in AngularJS, I discussed how the job of the controller is to connect the view with the model. The view handles the visual layout while the model handles much of the business logic. However, because controllers support the dependency injection system in AngularJS, and simple model objects do not, controllers often leverage services to help build up the model, or to handle interactions from the view. 
+In a [previous article](http://blog.pluralsight.com/tutorial-angularjs-mvc-implementation) on the [MVC pattern in AngularJS](https://app.pluralsight.com/library/courses/angularjs-dotnet-developers/table-of-contents), I discussed how the job of the controller is to connect the view with the model. The view handles the visual layout while the model handles much of the business logic. However, because controllers support the dependency injection system in AngularJS, and simple model objects do not, controllers often leverage services to help build up the model, or to handle interactions from the view. 
 
 ## Connecting controllers to views
 
