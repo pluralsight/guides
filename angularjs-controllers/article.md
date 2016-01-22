@@ -2,7 +2,7 @@ Controllers are one of the key components in the MVC architecture of AngularJS. 
 
 ## Controller Basics
 
-In a [previous article](http://blog.pluralsight.com/tutorial-angularjs-mvc-implementation) on the [MVC pattern in AngularJS](https://app.pluralsight.com/library/courses/angularjs-dotnet-developers/table-of-contents), I discussed how the job of the controller is to connect the view with the model. The view handles the visual layout while the model handles much of the business logic. However, because controllers support the dependency injection system in AngularJS, and simple model objects do not, controllers often leverage services to help build up the model, or to handle interactions from the view. 
+In a [previous article](http://blog.pluralsight.com/tutorial-angularjs-mvc-implementation) on the [MVC pattern in AngularJS](https://app.pluralsight.com/library/courses/angularjs-dotnet-developers/table-of-contents), I discussed how the job of the controller is to connect the view with the model. The view handles the visual layout while the model handles much of the business logic. However, because controllers support [the dependency injection system in AngularJS](https://app.pluralsight.com/library/courses/angularjs-patterns-clean-code/table-of-contents), and simple model objects do not, controllers often leverage services to help build up the model, or to handle interactions from the view. 
 
 ## Connecting controllers to views
 
@@ -60,6 +60,7 @@ $routeProvider.when('/mentoring/:tech', {
 ```
 
 As shown here, the route parameter is included in the URL at the appropriate location and the name is prefixed with a colon (:) to differentiate it from other parts of the path. Using the previous URL example (/mentoring/jquery), the “tech” route parameter now has the value of “jquery”.
+
 The second part of the solution is for the controller to use the $routeParams service to collect the parameters. Each named parameter from the route location will have an accessible value hanging off this object. Continuing the example from before, the “tech” parameter can be accessed via the $routeParams object in the controller code and used to help build the model in whatever way is needed. 
 
 ```
@@ -94,6 +95,7 @@ angular.module('hackApp').controller('modelController', modelController);
 ```
 
 The very first line of the controller function sets a scoped variable to the “this” variable which currently represents the controller itself. Once that scoped variable is created, it is treated as the view model and properties and functions are defined on that model. In this case an array of technologies is defined and two methods to sort the array in ascending or descending order. (Please do not pay much attention to the sort functions. There are many better ways to sort an array, but that is not the point of this example.)
+
 In order to use this controller model, the view must be updated and the route definition or controller directive must be modified as well.
 
 ```
@@ -270,5 +272,6 @@ This is just a simple example of how AngularJS make testing of JavaScript code e
 
 ## Where are we?
 
-In this series we have covered what AngularJS is and how it implements the MVC pattern. In this article we have begun to dive deeper into the components of that MVC architecture with the controller. In the next two articles we will go deeper into models and views before finishing up with more advanced topics around filters and directives. 
+In this series we have covered what AngularJS is and how it implements the MVC pattern. In this article we have begun to dive deeper into the components of that MVC architecture with the controller. In the next two articles we will go deeper into models and views before finishing up with more advanced topics around filters and directives.
 
+Author of this tutorial is [Matt Milner](http://blog.pluralsight.com/author/matt-milner).
