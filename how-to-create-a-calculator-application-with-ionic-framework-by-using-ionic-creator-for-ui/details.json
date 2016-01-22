@@ -1,13 +1,13 @@
+
 {
     "author_name": "Hitman666",
-    "author_real_name": "Nikola Breznjak",
     "branch": "master",
     "branches": [],
     "filename": "article.md",
-    "image_url": "https://avatars.githubusercontent.com/u/1001064?v=3&"
-    "published": true,
     "stacks": [
         "Android"
     ],
+    "published": true,
     "title": "How to create a calculator application with Ionic framework by using Ionic Creator for UI",
+    "image_url": "https://avatars.githubusercontent.com/u/1001064?v=3&"
 }
