@@ -1,10 +1,10 @@
 ![](http://i.imgur.com/4wFa7JX.png?1)
 
-When starting out with Front-end programming one will run across Angular and React pretty quickly. Currently the JavaScript scene is changing at a very rapid pace, and new technology is coming out every day it seems like. While some may thing this is a good thing and others a bad thing, that is besides the point. At this point in time it seems that Angular and React are the two big players that everyone is using. In 6 months or a year that could all change, and as a programmer you should be able to adapt to that change easily. 
+When starting out with Front-end programming one will run across Angular and React pretty quickly. Currently the JavaScript scene is changing at a very rapid pace, and new technology is coming out every day it seems like. While some may think this is a good thing and others a bad thing, that is besides the point. At this point in time it seems that Angular and React are the two big players that everyone is using. In 6 months or a year that could all change, and as a programmer you should be able to adapt to that change easily. 
 
-There are a lot of articles out there about Angular vs React, and a lot of them tend to take a biased side to either one or the other. We can argue that Angular is more popular, and that React makes you a better JavaScript programmer all day long. However, I am not interested in that. I am interested in the cold hard comparisons of what makes each platform different. As a reference, I started writing this article with little to no knowledge of how to use either platform. I believe that this lack of knowledge gives me some form of a non-biased viewpoint on it. I will simple report what I find and do a large side by side comparison of the two frameworks.
+There are a lot of articles out there about Angular vs React, and a lot of them tend to take a biased side to either one or the other. We can argue that Angular is more popular, and that React makes you a better JavaScript programmer all day long. However, I am not interested in that. I am interested in the cold hard comparisons of what makes each platform different. As a reference, I started writing this article with little to no knowledge of how to use either platform. I believe that this lack of knowledge gives me some form of a non-biased viewpoint on it. I will simply report on what I find and do a side by side comparison of the two frameworks.
 
-I went out and compiled all the information I could find on the two frameworks (And Angular 1.0). Below you will see what the results of this research shows.
+I went out and compiled the information I could find on the two frameworks (And Angular 1.0). Below you will see what the results of this research shows.
 
 #The Basics
 
@@ -29,6 +29,7 @@ This table is pretty straight forward, Angular is by Google and React is by Face
 | *JavaScript “Fatigue”* | Less | Less | More |
 
 These tend to be high conservation areas that get started on Reddit and Hacker News.
+
 #The Other Information
 
 | Attribute | AngularJS | Angular 2 | React |
@@ -58,11 +59,11 @@ When looking at sizes there are some distinct differences between React and Angu
 
 Debugging is sometimes the hardest thing to do. I think it is interesting how each framework handles debugging. Angular 2 and it’s runtime debugging tends to give you less information than React and it’s compile time debugging.
 
-Finally I wanted to talk a second about the Virtual DOM that React uses. This was a new concept to me, and I looked into it more in depth. This concept seems to be much faster since you don’t have to work with the heavyweight parts that the real DOM has. Manipulating and changing a virtual copy of your DOM that is lightweight, and then only pushing the changes that are shown when doing a diff on the DOM is pretty awesome.
+Finally I wanted to talk a second about the Virtual DOM that React uses. This was a new concept to me, and I looked at it more in depth. This concept seems to be much faster since you don’t have to work with the heavyweight parts that the real DOM has. Manipulating and changing a virtual copy of your DOM that is lightweight, and then only pushing the changes that are shown when doing a diff on the DOM is pretty awesome.
 
 After spending a few days researching and reading other articles on these two frameworks, I have found that there is a lot of give and take when it comes to comparing the two. On some things Angular is better and on others React is better. As always you should asses the project that you are working on to find out what best suits your needs. Maybe this comparison chart can help you in that decision. 
 
-For more information on this check out Pluralsights libraries of videos that pertain to this. Some that come to mind are:
+For more information on this check out Pluralsight's libraries of videos that pertain to this. Some that come to mind are:
 
 * [Building a Real-time App with React, Flux, Webpack, and Firebase](https://app.pluralsight.com/library/courses/build-isomorphic-app-react-flux-webpack-firebase/table-of-contents)
 * [Building a Full-Stack App with React and Express](https://app.pluralsight.com/library/courses/react-express-full-stack-app-build/table-of-contents)
