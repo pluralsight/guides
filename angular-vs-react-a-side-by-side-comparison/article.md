@@ -71,7 +71,7 @@ For more information on this check out Pluralsights libraries of videos that per
 
 Those should get you started on the right track, and if you really want to throw a wrench in and learn something new then check out [RiotJS](http://riotjs.com/)
 
-I can't list all other frameworks out there, so if you have you like that isn't one of these then please comment below!
+I can't list all other frameworks out there, so if you have one you like that isn't one of these then please comment below!
 
 ### About The Author:
 
