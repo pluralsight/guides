@@ -392,11 +392,11 @@ how different articles are sorted: `ruby gem` or `ruby gemstone`.
 Now search for `gem` and try changing the Multi Match Query Type Parameter to
 `phrase_prefix` to see what will change.
 
-If you still thing this is exciting, how about going through the
+If you still think this is exciting, how about going through the
 [Elastic Search Query DSL][es-query-dsl]. Be amazed and do experiment!
 
-About the author:
------------------
+About the author
+----------------
 
 ![Itay Grudev](https://gravatar.com/avatar/37aeb9f5242f93cec35e98e464ed7424?s=200)
 
@@ -413,7 +413,7 @@ Itay is mostly interested in Linux, Security, Electronics and Amateur Radio. He 
 [es-suggesters]: https://www.elastic.co/guide/en/elasticsearch/reference/current/search-suggesters.html
 [es-query-dsl]: https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl.html
 [es-query-multi-match]: https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-multi-match-query.html
-[es-lang-analysers]: https://www.elastic.co/guide/en/elasticsearch/reference/current/analysis-lang-.html
+[es-lang-analysers]: https://www.elastic.co/guide/en/elasticsearch/reference/current/analysis-lang-analyzer.html
 [es-term-suggester]: https://www.elastic.co/guide/en/elasticsearch/reference/current/search-suggesters-term.html
 [hamming-distance]: https://en.wikipedia.org/wiki/Hamming_distance
 [es-tuturial]: https://github.com/itay-grudev/es-tutorial
