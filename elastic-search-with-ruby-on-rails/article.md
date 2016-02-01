@@ -7,7 +7,7 @@ Introduction to ElasticSearch
 Elastic Search is a very powerful Full Text Search Engine based on [Apache Lucene][lucene].
 Key characteristic of Elastic Search is that it is distributed at it's core.
 This means that you can easily scale it horizontally for the purpose of
-redundancy or performance. Elastic Search can also be used as datastore engine,
+redundancy or performance. Elastic Search can also be used as data store engine,
 but it has certain disadvantages:
 
 * __Security__ - Elastic Search does not provide any internal security or access
@@ -18,7 +18,7 @@ database side.
 meaning that if you submit a comment to a post and refresh the page it might not
 show up as the index is still updating.
 * __Durability__ – Elastic Search is distributed and relatively stable, but
-backups are not as high priority as in other datastore solutions. This is a
+backups are not as high priority as in other data store solutions. This is a
 really important consideration when Elastic Search is your primary data store.
 
 For the purpose of this tutorial I will vaguely cover some of the Elastic Search
@@ -395,8 +395,8 @@ Now search for `gem` and try changing the Multi Match Query Type Parameter to
 If you still think this is exciting, how about going through the
 [Elastic Search Query DSL][es-query-dsl]. Be amazed and do experiment!
 
-About the author
-----------------
+About the author:
+-----------------
 
 ![Itay Grudev](https://gravatar.com/avatar/37aeb9f5242f93cec35e98e464ed7424?s=200)
 
