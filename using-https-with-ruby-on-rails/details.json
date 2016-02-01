@@ -1,5 +1,6 @@
 {
     "author_name": "weppos",
+    "author_real_name": "Simone Carletti",
     "branch": "master",
     "branches": [
         "prtkgpt"
@@ -11,4 +12,5 @@
     "language": null,
     "published": true,
     "title": "Using HTTPs with Ruby on Rails"
+    "image_url": "https://avatars3.githubusercontent.com/u/5387?v=3",
 }
