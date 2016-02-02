@@ -11,7 +11,7 @@ redundancy or performance. Elastic Search can also be used as data store engine,
 but it has certain disadvantages:
 
 * __Security__ - Elastic Search does not provide any internal security or access
-control system. The only way to protect ES from external access is a firewall.
+control system. The only way to protect ES from external access is with a firewall.
 * __Computation__ – There is limited support for advanced computation on the
 database side.
 * __Data Availability__ – Data in Elastic Search is available in "near real time",
@@ -163,13 +163,13 @@ Note that your document can have more fields than the ones specified in your
 
 ### Implementing the `self.search()` method
 
- The final and most complex addition to your model will be the `self.search`
+ The final and most complex addition to your model is the `self.search`
 method that will be spawning requests to Elastic Search. It is the hardest method
 to write as you will need to have some knowledge of the
 [Elastic Search Query DSL][es-query-dsl].
 
 What I will show you is universal to most projects but if the functionality you
-are looking for is not here do check out [Elastic Search Query DSL][es-query-dsl].
+are looking for is not covered here do check out the [Elastic Search Query DSL][es-query-dsl].
 
 You will notice that queries to Elastic Search are written in JSON. In Ruby JSON
 is easily represented with a `Hash` so what we will do is a method that will call
@@ -187,7 +187,7 @@ def self.search(query)
           fields: ['title^5', 'body']
         }
       },
-      # more things will go IN HERE. Keep reading!
+      # more blocks will go IN HERE. Keep reading!
    }
  end
 end
@@ -195,8 +195,8 @@ end
 
 We spawn a Multi Match query to ES with the search term as the first
 argument of the class method and we specify which fields are we running this
-query on. Additionally we are also specifying the weight of a match inside each
-field. In the example I gave, the `title` field is 5 times as important as the
+query on. Additionally we are also specifying the weight of matches inside each
+field. In the example I gave the `title` field is 5 times as important as the
 `body` field. There are several types of Multi Match queries, specified by the
 `type` parameter. The possible options are:
 
@@ -252,12 +252,12 @@ fields with a [Hamming Distance][hamming-distance] of up to `1`. You can of
 course change that.
 
 You can read more about the [Elastic Search Term Suggester][es-term-suggester]
-or take a look at the other [Elastic Search Suggesters][es-suggesters].
+or take a look at the other [Elastic Search Suggesters][es-suggesters]. For example there is a [Completion Suggester][es-completion-suggester] for auto complete functionality.
 
 Going back to the scenario where we had a `status` field of type integer taking
 the values of `[0, 1, 2, 3]` indicating whether the article is a draft, private,
 unlisted or public. Assuming that `status == 3` means that an article is public,
-we might want to specify a filter in our search to only search for public articles.
+we might want to specify a filter in our search to only show public articles.
 
 ```ruby
 filter: {
@@ -273,7 +273,7 @@ of the data returned from ES.
 Setting up Controllers and Views
 --------------------------------
 
-Thanks to our neat method we've wrote in the model the controller will simply
+Thanks to the neat search method in the model the controller will simply
 look like this, where the `if` statement is there only to ensure the controller doesn't
 fail if the search form is submitted empty.
 
@@ -291,9 +291,9 @@ end
 
 Because the `self.search()` method returns a result of type
 `Elasticsearch::Model::Response` instead of `ActiveRecord::Relation`, but they
-are similar and somewhat compatible with a little bit of tricky handling you can
+are similar and somewhat compatible, with a little bit of tricky handling you can
 make your view support both. This is useful if you would like to have your
-search do more advanced searches with `ActiveRecord` only without having to use
+search page work with `ActiveRecord` queries as well without having to use
 another view.
 
 Assuming that the results from `Elasticsearch`/`ActiveRecord` are stored in the
@@ -371,11 +371,11 @@ A little homework
 -----------------
 
 I've prepared a simple [demo application][es-tuturial] that demonstrates Elastic
-Search with Ruby on Rails. You can take a look at how I implemented it or try to
+Search integration with Ruby on Rails. You can take a look at how I implemented it or try to
 tweak it into doing more advanced things.
 
 To get it running all you need to do is install all gems, create the database
-(SQLite 3), run an elasticsearch instance in background and seed the Application
+(SQLite 3), run an `elasticsearch` instance in the background and seed the Application
 with the provided Wikipedia articles within the `/db/seed/` directory.
 
 ```bash
@@ -386,7 +386,7 @@ rake db:seed
 ```
 
 After you've got it running go to [localhost:3000](http://localhost:3000/) and
-try searching for `ruby` or `language`. Also try a combination of words to see
+try searching for `ruby` or `language`. Also try a combinations of words to see
 how different articles are sorted: `ruby gem` or `ruby gemstone`.
 
 Now search for `gem` and try changing the Multi Match Query Type Parameter to
@@ -415,6 +415,7 @@ Itay is mostly interested in Linux, Security, Electronics and Amateur Radio. He 
 [es-query-multi-match]: https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-multi-match-query.html
 [es-lang-analysers]: https://www.elastic.co/guide/en/elasticsearch/reference/current/analysis-lang-analyzer.html
 [es-term-suggester]: https://www.elastic.co/guide/en/elasticsearch/reference/current/search-suggesters-term.html
+[es-completion-suggester]: https://www.elastic.co/guide/en/elasticsearch/reference/current/search-suggesters-completion.html
 [hamming-distance]: https://en.wikipedia.org/wiki/Hamming_distance
 [es-tuturial]: https://github.com/itay-grudev/es-tutorial
 
