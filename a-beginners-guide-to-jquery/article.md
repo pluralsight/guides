@@ -36,7 +36,7 @@ jQuery.noConflict();
 
 jQuery can be invoked, like `$(args)`, and it also has some utilities bound to it, like `ajax` and `isArray`, which you reference as properties, like `jQuery.ajax(args)`.
 
-When you invoke jQuery, you can it pass a function that will be invoked once the document is ready to be manipulated. This gives you an easy way to keep your code in its own scope, and it ensures your code will execute as soon as the DOM is ready to manipulate (once all the html has been parsed).
+When you invoke jQuery, you can it pass a function that will be invoked once the document is ready to be manipulated. This gives you an easy way to keep your code in its own scope, and it ensures that your code will execute as soon as the DOM is ready to manipulate (once all the html has been parsed).
 
 ~~~ javascript
 $(function() {
@@ -83,7 +83,7 @@ Using jQuery to select some elements, then applying methods to the selection, is
 $("p").addClass("foo")
 ~~~
 
-That expression selects all the paragraph elements, then invokes the `addClass` method on the resulting jQuery object, adding the `foo` class to each of the selected paragraph elements.
+That expression selects all the paragraph elements, then invokes the `addClass` method on the resulting jQuery object, adding the `foo` class to each of the selected elements.
 
 ## Quick Review
 
@@ -136,7 +136,7 @@ There are a handful of methods that do not return a jQuery object, and you can n
 
 ## The Can Do Method
 
-jQuery has a method that can do anything. It is named `each`, and you use whenever you need a quick custom method, but only need it once, so defining a plugin would be overkill.
+jQuery has a method that can do anything. It is named `each`, and you use it whenever you need a quick custom method, but only need it once, so defining a plugin would be overkill.
 
 You invoke the `each` method like any normal jQuery method, and pass it a function that defines the custom logic you want to apply. The function is invoked for each element. It receives the iteration index as an argument, and you can reference the element itself as `this`.
 
@@ -244,7 +244,7 @@ $element.on("foo", handler);
 $element.trigger("foo");
 ~~~
 
-### The PreventDefault Method
+### The PreventDefault Event Method
 
 Even if you handle an event, the event will continue to bubble up naturally, perhaps causing other things to happen too. Event objects have a `preventDefault` method that is used to stop this from happening. The following code just makes anchor tags stop working:
 
