@@ -386,7 +386,7 @@ rake db:seed
 ```
 
 After you've got it running go to [localhost:3000](http://localhost:3000/) and
-try searching for `ruby` or `language`. Also try a combinations of words to see
+try searching for `ruby` or `language`. Also try combinations of words to see
 how different articles are sorted: `ruby gem` or `ruby gemstone`.
 
 Now search for `gem` and try changing the Multi Match Query Type Parameter to
