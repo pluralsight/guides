@@ -126,7 +126,7 @@ indexes :status, type: :byte
 Or in the case of an author id in a column called `user_id` you will do:
 
 ```ruby
-indexes :status, type: :integer
+indexes :user_id, type: :integer
 ```
 
 Elastic Search also supports complex types as Arrays, Objects or `Nested` which
@@ -395,8 +395,8 @@ Now search for `gem` and try changing the Multi Match Query Type Parameter to
 If you still think this is exciting, how about going through the
 [Elastic Search Query DSL][es-query-dsl]. Be amazed and do experiment!
 
-About the author:
------------------
+About the author
+----------------
 
 ![Itay Grudev](https://gravatar.com/avatar/37aeb9f5242f93cec35e98e464ed7424?s=200)
 
