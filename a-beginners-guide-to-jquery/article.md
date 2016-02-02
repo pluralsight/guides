@@ -36,7 +36,7 @@ jQuery.noConflict();
 
 jQuery can be invoked, like `$(args)`, and it also has some utilities bound to it, like `ajax` and `isArray`, which you reference as properties, like `jQuery.ajax(args)`.
 
-When you invoke jQuery, you can it pass a function that will be invoked once the document is ready to be manipulated. This gives you an easy way to keep your code in its own scope code, and it ensures your code will execute as soon as the DOM is ready to manipulate (once all the html has been parsed).
+When you invoke jQuery, you can it pass a function that will be invoked once the document is ready to be manipulated. This gives you an easy way to keep your code in its own scope, and it ensures your code will execute as soon as the DOM is ready to manipulate (once all the html has been parsed).
 
 ~~~ javascript
 $(function() {
