@@ -77,7 +77,7 @@ You can also pass a HTMLElement or NodeList to jQuery, and it will return a jQue
 
 Note that while you use the jQuery function to select the elements you want to work on, you do all the real work with jQuery methods, which are bound to the jQuery objects that the jQuery function constructs and returns.
 
-Using jQuery to select some elements, then applying methods to the selection, is normally achieved with in single expression. For example:
+Using jQuery to select some elements, then applying methods to the selection, is normally achieved in single expression. For example:
 
 ~~~ javascript
 $("p").addClass("foo")
