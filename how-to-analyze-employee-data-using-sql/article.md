@@ -75,6 +75,10 @@ where
   d.Date between '2004-06-17' and now() -- use the function to pull the current date here
 ```
 
+### Alas, we have trend data!
+
+The results of our query above will give us a daily count of Active employees to trend over time. This is just the first step in analyzing employee data of course, but a solid foundation to start and a good example of why having a date dimension in your data warehouse is important.
+
 
 
 
