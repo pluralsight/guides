@@ -268,6 +268,6 @@ Here we will just quickly reiterate a few key points to keep in mind when you ar
 
 This tutorial has focussed on using jQuery to mutate the DOM and handle events, which is what you will primarily use jQuery for. We have not covered jQuery's AJAX support, the animation features or how to define and use plugins. You should definitely look into those things as you come across a need for them, but the features we covered here are what you need to get up and running with jQuery, and to understand its unique approach to front-end web development.
 
-jQuery has a huge community and ecosystem, it is fun to use, and it makes such light work of browser programming that a framework is often redundant. Every front-end dev should have it in their tool kit.
+jQuery has a huge community and ecosystem, it is fun to use, and it makes such light work of browser programming that a framework is often redundant. Every front-end dev should have it in their tool box.
 
 
