@@ -1,9 +1,13 @@
 {
     "author_name": "bsullins",
+    "author_real_name": "Ben Sullins",
     "branch": "master",
     "branches": [],
     "filename": "article.md",
-    "language": null,
-    "published": true,
+    "image_url": "https://avatars.githubusercontent.com/u/3732908?v=3",
+    "published": false,
+    "stacks": [
+        "SQL"
+    ],
     "title": "How to analyze employee data using SQL"
 }
