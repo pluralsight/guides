@@ -1,4 +1,4 @@
-![](http://i.imgur.com/6fGtS5d.png)
+[](http://i.imgur.com/6fGtS5d.png)
 
 # Introducing jQuery
 
