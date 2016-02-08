@@ -58,7 +58,7 @@ JavaScript Object Notation is not exactly language agnostic. It uses syntax deri
 
 In JavaScript, `[1, 2, 3]` evaluates to an Array type value that contains three Number type values. We could serialise that array, and then save the string to a file. We could then read the file in Python, and deserialise the string using the `json` module from the Python Standard Library. Python does not have Array or Number types, but that is not a problem; it would just use List and Int instead.
 
-Any value that a language can serialise into JSON text is known as a *JSON serialisable value*. For a given language, those values will have data types which are the are equivalent of the JavaScript types Null, Bool, Number, String, Object and Array.
+Any value that a language can serialise into JSON text is known as a *JSON serialisable value*. For a given language, those values will have data types which are the equivalent of the JavaScript types Null, Bool, Number, String, Object and Array.
 
 Note that what JavaScript calls an *object* is a bit different to the more complex objects used by most object oriented languages. The JavaScript Object type is roughly equivalent to what other languages call a *record*, *struct*, *dictionary*, *hash table*, *keyed list*, or *associative array*. It is a container that associates keys with values.
 
