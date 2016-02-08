@@ -124,7 +124,7 @@ The original JSON spec required that the value being serialised was either an ob
 
 ## Never Evaluate JSON Text
 
-JSON syntax is derived from JavaScript syntax. They are not exactly the same. The differences relate to escaping unicode, and are only a concern for the authors of JSON libraries. However, one consequence of the syntactic similarity is that, in JavaScript, you can usually pass a JSON text to the `eval` function and it will return the correct value, as though you passed the text to `JSON.parse`. Using `eval` like that is a really bad idea.
+JSON syntax is derived from JavaScript syntax, though they are not exactly the same. The differences relate to escaping unicode, and are only a concern for the authors of JSON libraries. However, one consequence of the syntactic similarity is that, in JavaScript, you can usually pass a JSON text to the `eval` function and it will return the correct value, as though you passed the text to `JSON.parse`. Using `eval` like that is a really bad idea.
 
 If you can not trust the source of a JSON text, then the text may contain something malicious, and `eval` would happily execute the malicious payload. The `JSON.parse` function does not have this issue, and will only parse valid JSON, which can not contain anything executable.
 
