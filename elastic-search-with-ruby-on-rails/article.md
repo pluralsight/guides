@@ -5,7 +5,7 @@ A key characteristic of Elastic Search is that it’s distributed at it's core, 
 control system. The only way to protect ES from external access is with a firewall.
 * __Computation__ – There is limited support for advanced computation on the
 database side.
-* __Data Availability__ – Data in Elastic Search is available in "near real time",
+* __Data Availability__ – Data in Elastic Search is available in "near real time," -
 meaning that if you submit a comment to a post and refresh the page, it might not
 show up as the index is still updating.
 * __Durability__ – ES is distributed and relatively stable, but
@@ -60,7 +60,7 @@ gem 'elasticsearch-model'
 ### Settings and indexing
 
 Let's assume that we have a model called `Article` with two columns, `title` and
-`body` of types `string` and `text`, correspondingly.
+`body` of types `string` and `text,`, correspondingly.
 
 The first thing we need to do is include the `Elasticsearch::Model` functionality
 inside our model. Additionally, the `Elasticsearch::Model::Callbacks` ensures
@@ -92,7 +92,7 @@ Notice the `number_of_shards` setting I’m using. I've set it to 1 since I was
 only using a single machine and a very small amount of data (< 100MB). But if you have a very high amount of data or would like to increase the performance of ES, increase the number of primary shards. Since both fields will contain text written in English I’m using the `english` analyzer. Elastic Search has a wide set of Analyzers including [Language Analyzers][es-lang-analysers]. Depending on the data stored within a field, a different analyzer may give better results. For example, a keyword analyzer is useful for data like zip codes and ids, among other things.
 
 You can also specify the type of the field as basic types, such as an integer
-requiring much simpler indexing methods. So, assuming that you have a field `status`,
+requiring much simpler indexing methods. So, assuming that you have a field `status,`
 which can only take the values of `[0, 1, 2, 3]` indicating whether the article
 is a draft, private, unlisted or public, you’ll specify it like this:
 
@@ -106,7 +106,7 @@ Or in the case of an author id in a column called `user_id` you will do this:
 indexes :user_id, type: :integer
 ```
 
-Elastic Search also supports complex types as `Arrays`, `Objects` or `Nested`, which
+Elastic Search also supports complex types as `Arrays,`, `Objects` or `Nested,` which
 is an array of objects. There is support for geographic coordinates and IP addresses, among other things. Take a look at the full set of [Types][es-types] Elastic Search supports
 when setting up your index.
 
@@ -147,7 +147,7 @@ to write, as you’ll need to have some knowledge of the
 What I’m about to show you is universal to most projects, but if the functionality you need isn’t covered here, check out the [Elastic Search Query DSL][es-query-dsl].
 
 You’ll notice that queries to ES are written in JSON. In Ruby, JSON
-is easily represented with a `Hash`, so we’ll use a method that will call
+is easily represented with a `Hash,`, so we’ll use a method that will call
 the Elastic Search cluster and send it our query written as a Ruby `Hash.` For the
 sake of brevity, I’ll show how the method looks and will describe each
 section in a separate code block.
@@ -186,7 +186,7 @@ field. In the example, the `title` field is five times as important as the
 For more details on each option see [Elastic Search Multi Match Query][es-query-multi-match].
 
 The next section I’ll add is for highlighting the matched keywords inside the
-text. We want to match both fields, `title` and `body`, and encapsulate them in
+text. We want to match both fields, `title` and `body,` and encapsulate them in
 a `<mark>` tag.
 
 ```ruby
