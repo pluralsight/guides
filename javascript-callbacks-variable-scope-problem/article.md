@@ -4,7 +4,7 @@ The Callback Variable Scope Problem
 As a HackHands expert I've often seen this JavaScript problem which people don't
 understand how to fix.
 
-Consider this example example:
+Lets consider this example:
 
 ```javascript
 var array = [ ... ]; // An array with some objects
@@ -16,8 +16,8 @@ for( var i = 0; i < array.length; ++i )
 }
 ```
 
-While this code looks perfectly fine, it is an example of misunderstanding a
-very basic JavaScript concept. Now for an expert like myself this error is quite
+While this code looks perfectly fine, it shows the misunderstanding of a very
+basic JavaScript concept. Now for an expert like myself this error is quite
 easy to spot and I am rather used to similar problems, but often that's not the
 case with most people, who can literally spend hours trying to figure out why
 their code isn't working.
