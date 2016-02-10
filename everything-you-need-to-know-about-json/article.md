@@ -185,3 +185,10 @@ HTML5 added localStorage and sessionStorage for client-side persistency. They on
 
 No one knows the future, but JSON is a safe bet. It already has widespread, solid support across the entire software ecosystem, and as we move inexorably towards a world based on cloud services, and one where everything happens in parallel, JSON has become our lingua franca.
 
+### About the author:
+
+![](https://avatars0.githubusercontent.com/u/7561668?v=3&s=80)
+
+[Carl](https://hackhands.com/carlsmith/) is a self-taught, full-stack web developer. He began using Python back in 2009, mainly for scripting cloud services, and he is especially familiar with Google App Engine. He has extensive experience of browser technologies, is a big fan of jQuery, and a bit of a CoffeeScript evangelist. Carl has led the development of commercial applications, and he has published a couple of open source projects too.
+
+
