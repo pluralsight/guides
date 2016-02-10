@@ -73,9 +73,9 @@ Choose Linux, then Ubuntu. Sometimes it appears as default
 Name the virtual machine as you want. Also you can change the default location of the virtual machine if needed.
 
 ###Step 7
-![alt "Command Line"](http://i0.wp.com/www.tbogard.com/wp-content/uploads/2013/01/Page-6.gif "To match the processors used in my virtualbox virtual machone, I assign the same amount of processors and cores for the new virtual machine")
+![alt "Command Line"](http://i0.wp.com/www.tbogard.com/wp-content/uploads/2013/01/Page-6.gif "To match the processors used in my virtualbox virtual machine, I assign the same amount of processors and cores for the new virtual machine")
 
-To match the processors used in my virtualbox virtual machone, I assign the same amount of processors and cores for the new virtual machine
+To match the processors used in my virtualbox virtual machine, I assign the same amount of processors and cores for the new virtual machine
 
 ###Step 8
 ![alt "Command Line"](http://i0.wp.com/www.tbogard.com/wp-content/uploads/2013/01/Page-7.gif "I do exactly the same like in the previous step. Match the amount of memory to be assign to this virtual machine.")
