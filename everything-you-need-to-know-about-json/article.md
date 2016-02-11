@@ -175,7 +175,7 @@ A growing number of non-relational databases are based on JSON, including MongoD
 
 Of course, we can’t predict the future, but JSON is a safe bet. It already has widespread, solid support across the entire software ecosystem, and as we move towards a world based on cloud services, and one where everything happens in parallel, JSON has become our lingua franca.
 
-### About the author:
+### About the author
 
 ![](https://avatars0.githubusercontent.com/u/7561668?v=3&s=80)
 
