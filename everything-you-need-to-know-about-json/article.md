@@ -165,7 +165,7 @@ If you ever need to serialise circular structures, there are libraries available
 
 ## An elegant solution
 
-[JSON](https://app.pluralsight.com/library/courses/json-csharp-jsondotnet-getting-started/table-of-contents) is an especially elegant solution to serialisation. It’s effectively language agnostic, yet it directly works with values that we actually have in a our programs. The JSON format is derived from JavaScript syntax, which is a lot like C syntax, so programmers generally find it easy to read and edit the serialised data directly, and we don’t have to reference schemas to do it.
+[JSON](https://app.pluralsight.com/library/courses/json-csharp-jsondotnet-getting-started/table-of-contents) is an especially elegant solution to serialisation. It’s effectively language agnostic, yet it directly works with values that we actually have in our programs. The JSON format is derived from JavaScript syntax, which is a lot like C syntax, so programmers generally find it easy to read and edit the serialised data directly, and we don’t have to reference schemas to do it.
 
 ### JSON everywhere
 

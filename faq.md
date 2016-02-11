@@ -57,7 +57,7 @@ Yes! That's why we've built the editing tools on this site. It's easy to share a
 One easy thing you can do is to check-out what else is out their for this particular subject. Try doing a quick search now for some topics that interest you. Other articles are generally OK so long as there is enough unique/useful content that sets your article apart. Are there ideas you can talk about in your proposed article that hasn't already been written? Enough interesting unique contributions that can be added that moves the world's knowledge forward? Those are some things to think about.
 
 ### What is the writing process?
-1. [Submit an tutorial](/write/)
+1. [Submit a tutorial](/write/)
 2. Share a link for suggestions to your article with friends, co-workers, etc.
 3. Continue improving your article with the community help
 4. Our editors will also assist you with improving your article

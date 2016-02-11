@@ -233,7 +233,7 @@ The icon is an important part of your application because it represents your app
 
 Ionic helps tremendously with this by providing a single Ionic CLI command to generate all the needed icon and splash screen sizes for us automatically. Also, Ionic created [Photoshop Icon Template](http://code.ionicframework.com/resources/icon.psd) and [Photoshop Splash Screen Template](http://code.ionicframework.com/resources/splash.psd), which you can download for free and use as a guideline for creating an icon.
 
-For when you're creating a branded product having a custom made icon is definitelly a must. However, in this case, we'll show how to use one of the free services to search for a free icon which we can use in our application (even if our application is a commercial application). I tend to use [IconFinder](https://www.iconfinder.com) a lot, and here are the setting which you have to use in order to filter out the calculator images which are Free (PRICE) and can be used in commercial applications and which do not even require a link back (LICENSE TYPE). *Of course, you can also choose to buy an image if you happen to find one that you like*. You can additionally search by format, size and background. The filters should look like this:
+For when you're creating a branded product having a custom made icon is definitely a must. However, in this case, we'll show how to use one of the free services to search for a free icon which we can use in our application (even if our application is a commercial application). I tend to use [IconFinder](https://www.iconfinder.com) a lot, and here are the setting which you have to use in order to filter out the calculator images which are Free (PRICE) and can be used in commercial applications and which do not even require a link back (LICENSE TYPE). *Of course, you can also choose to buy an image if you happen to find one that you like*. You can additionally search by format, size and background. The filters should look like this:
 
 ![](http://i.imgur.com/TDkaEbp.jpg)
 
@@ -806,7 +806,7 @@ However, if you want to build and deploy iOS applications to the App Store, you 
 
 There are some ways around this, like for example with using a so-called [Hackintosh](http://www.hackintosh.com/) computer, but honestly from my experience this is just not worth it.
 
-If you're really anti-Apple :), then you'll be happy to know that there are services which allow you to [rent a Mac in the cloud](http://www.macincloud.com/), just for the time you need to build your application. Also, Ionic promissed to build a service that will allow you to build mobile apps for any supported platform even if you don’t have a Mac, but we have to wait for this to become available.
+If you're really anti-Apple :), then you'll be happy to know that there are services which allow you to [rent a Mac in the cloud](http://www.macincloud.com/), just for the time you need to build your application. Also, Ionic promised to build a service that will allow you to build mobile apps for any supported platform even if you don’t have a Mac, but we have to wait for this to become available.
 
 > To **publish an app** in the App Store (or **test it on your own iOS device**) you'll need to purchase the *Apple Developer Program* license which costs **US $99 per year**. You’ll need to sign up at [http://developer.apple.com](http://developer.apple.com), but don't worry about this for now; we'll cover all the steps in our next tutorial where I'll guide you through the application deploy process for both the Apple's App Store and Google's Play Store.
 
@@ -840,13 +840,13 @@ If you exit the simulator back to the home screen (by pressing `COMMAND + SHIFT 
 
 ![](http://i.imgur.com/5KrFOmO.png)
 
-When we're testing our application in browser with `ionic serve` we have that great live realod feature. We can have that too in the emulator, if we run the emulator with the extra flag `–l`. If we also want to see the console.log output, as we would see it in the browser, then we have to add the flag `–c`:
+When we're testing our application in browser with `ionic serve` we have that great live reload feature. We can have that too in the emulator, if we run the emulator with the extra flag `–l`. If we also want to see the console.log output, as we would see it in the browser, then we have to add the flag `–c`:
 
 ```
 ionic emulate ios -lc
 ```
 
-> Since we need to have an Apple Developer account in order to run the application on our phsyical phone device, we will leave this for our next tutorial where we'll also show how to deploy the application to the actual App Store.
+> Since we need to have an Apple Developer account in order to run the application on our physical phone device, we will leave this for our next tutorial where we'll also show how to deploy the application to the actual App Store.
 
 ## Android settings
 There are no prerequisites for Android development regarding the operating systems; you can develop for Android on Mac, Linux, and Windows computers.
@@ -948,7 +948,7 @@ As mentioned in the [How to implement Google AdMob ads](#How to implement Google
 
 Android SDK has an emulator that can emulate the screen size and resolution of most Android devices, but to be honest it's way too slow and klunky and I recommend that you do not use it. Instead, download [Genymotion](https://www.genymotion.com/#!/) which is free for personal use.
 
-After you install and run Genymotion you will see an iterface like this:
+After you install and run Genymotion you will see an interface like this:
 
 ![](http://i.imgur.com/4Fh0rJb.jpg)
 

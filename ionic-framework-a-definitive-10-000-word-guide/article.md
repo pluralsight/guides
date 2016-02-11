@@ -47,7 +47,7 @@ A definite advantage of the mobile websites is that you can update them without 
 ### Hybrid app
 A hybrid app is a mobile application, written with the same languages that you use when building websites, with the addition that it contains an isolated browser instance, called **WebView**, which runs this web application inside of a native app. Hybrid apps can access the mobile device and use the additional phone features like for example camera or GPS.
 
-Definite advantage of the hybrid apps is that you can access the additional phone features via plugins and that you can do all the development with the same set of skills you use when developing _"normal"_ web applications. One of the disadvantages is that, even though it's improving, the so-called Web View has it's limitations in terms of speed. Basically, you wouldn't use a hybrid aproach if you wante to build a 3D game.
+Definite advantage of the hybrid apps is that you can access the additional phone features via plugins and that you can do all the development with the same set of skills you use when developing _"normal"_ web applications. One of the disadvantages is that, even though it's improving, the so-called Web View has it's limitations in terms of speed. Basically, you wouldn't use a hybrid approach if you want to build a 3D game.
 
 ##1. What is Ionic and why it's so good
 As I gave an [answer on StackOverflow](http://stackoverflow.com/questions/31179211/use-ionic-or-cordova/31180666):
@@ -173,7 +173,7 @@ Select the Input component and change its PLACEHOLDER to **0** (zero digit) and 
 
 Next, according to our mockup, we should add buttons that would represent the digits from **0** to **9**, and the buttons that would represent mathematical operations (+, -, *, /). Also, we will need the equals button (**=**) and a clear button (**C**).
 
-In the first row we need to have 4 buttons, the ones representing digits 7, 8, 9 and one representing a dividing operation. To acomplish this, we will use a **Button Bar** component from the Components panel so that we'll drag&drop it just below the Input field on the screen. You should see something like this now in your Ionic Creator window:
+In the first row we need to have 4 buttons, the ones representing digits 7, 8, 9 and one representing a dividing operation. To accomplish this, we will use a **Button Bar** component from the Components panel so that we'll drag&drop it just below the Input field on the screen. You should see something like this now in your Ionic Creator window:
 
 ![](http://i.imgur.com/CVcreWF.jpg)
 
@@ -266,7 +266,7 @@ Gulp is a JavaScript task runner that helps with rapid development by making use
 ### package.json
 **package.json** is a file used by `npm` to store versions of the `npm` packages installed in the current project.
 
-`npm` (Node.js Package Manager) is a CLI tool which comes with Node.js installation and it's used for installing other tools like aftorementioned Bower, Gulp, etc...
+`npm` (Node.js Package Manager) is a CLI tool which comes with Node.js installation and it's used for installing other tools like aforementioned Bower, Gulp, etc...
 
 ### .gitignore and README.md file
 Both .gitignore and README.md are files related to [GitHub](https://github.com/). I'm sure most of the readers know and use GitHub (and consequently [Git](https://git-scm.com/)).
@@ -285,10 +285,10 @@ We'll take a look at two most important files (**index.html** and **app.js**) an
 
 Also, we'll refactor our code into separate files, since Ionic Creator put everything in one. Finally, we'll add the calculator logic so that our calculator will work as expected.
 
-> Generally, putting all the code in one file and mixing logic and presentation (JavaScript and HTML code) is simply a big NO-NO, and often referred to as [spaghetti code](https://en.wikipedia.org/wiki/Spaghetti_code). You can learn more about refactoring your code from the cult book [Refactoring: Improving the Design of Existing Code](http://amzn.to/1LWo4Ow) by Martin Fowler, Kent Beck, and others. If you're searching for a bit lighter introduction to refactoring and good programing practices in general I can't recomment the classic [Code Complete 2](http://amzn.to/1LWomoq) by Steve McConnell enough.
+> Generally, putting all the code in one file and mixing logic and presentation (JavaScript and HTML code) is simply a big NO-NO, and often referred to as [spaghetti code](https://en.wikipedia.org/wiki/Spaghetti_code). You can learn more about refactoring your code from the cult book [Refactoring: Improving the Design of Existing Code](http://amzn.to/1LWo4Ow) by Martin Fowler, Kent Beck, and others. If you're searching for a bit lighter introduction to refactoring and good programming practices in general I can't recommend the classic [Code Complete 2](http://amzn.to/1LWomoq) by Steve McConnell enough.
 
 ### index.html file
-The starting point of our Ionic application is `index.html`. Now we'll go step by step throguh the this file by explaining the certain lines of code. Also, we'll remove the unnecessary pieces, and move some other parts of the code to different files.
+The starting point of our Ionic application is `index.html`. Now we'll go step by step through this file by explaining the certain lines of code. Also, we'll remove the unnecessary pieces, and move some other parts of the code to different files.
 
 The `<meta>` element is used to properly resize our application on mobile devices.
 
@@ -426,13 +426,13 @@ Just for reference, here's the contents of the `index.html` file, as it should l
 ```
 
 ### app.js file
-Contents of the **app.js** file bootstraps our Ionic (well, more acurately AngularJS) application, configures necessary plugings, and defines the states in our application. As we said before, the name of the root module matches the value given to the `ng-app` directive in the `index.html` file (**app** in our case). Also, we need to *inject* '`ionic`' module dependency to our root module so that we can use the Ionic library directives and other Ionic components.
+Contents of the **app.js** file bootstraps our Ionic (well, more accurately AngularJS) application, configures necessary plugins, and defines the states in our application. As we said before, the name of the root module matches the value given to the `ng-app` directive in the `index.html` file (**app** in our case). Also, we need to *inject* '`ionic`' module dependency to our root module so that we can use the Ionic library directives and other Ionic components.
 
 `$ionicPlatform.ready` event is triggered after the device (your mobile phone on which the application is started) is all set up and ready to use. This includes plugins which are used with this project. If you would try to check if some plugin is available outside the `ready` function callback, you could get wrong results due to the fact that it is possible that some plugin would not have been set up just yet. Using the aforementioned `$ionicPlatform.ready` event and placing your code to check for plugin instantiations solves these issues. You can learn more about ionicPlatform utility methods here: [http://ionicframework.com/docs/api/utility/ionic.Platform/](http://ionicframework.com/docs/api/utility/ionic.Platform/).
 
 Inside the `$ionicPlatform.ready` function's callback, we're detecting if a Keyboard plugin is available in our Ionic application. If so, we're hiding the keyboard accessory bar (buttons like `next`, `previous` and `done`). You can change these settings, and quite a bit of additional ones (see a [full list here](https://github.com/driftyco/ionic-plugin-keyboard)), as per your project's requirements.
 
-Inside the `config` function callback we're setting the routes for our application. Ionic uses [AngularUI Router](https://github.com/angular-ui/ui-router) which uses the concept of states. Since we moved our calculator UI into the `calculator.html` file inside the `templates` folder, we have to adjust the path to it accordingly. Also, we'll put our calculator logic inside the so called `CalculatorCtrl` controller. The state definition, with the acompanying controller definition should now look like this:
+Inside the `config` function callback we're setting the routes for our application. Ionic uses [AngularUI Router](https://github.com/angular-ui/ui-router) which uses the concept of states. Since we moved our calculator UI into the `calculator.html` file inside the `templates` folder, we have to adjust the path to it accordingly. Also, we'll put our calculator logic inside the so called `CalculatorCtrl` controller. The state definition, with the accompanying controller definition should now look like this:
 
 ```javascript
 $stateProvider
@@ -540,7 +540,7 @@ Now you can run the application by executing the command
 
 and you should see your awesome calculator open up in your browser.
 
-As mentioned in the begining of this section, you can take a look at the source code on [GitHub](https://github.com/Hitman666/Ionic_2ndTutorial), or you can take a look at the [live example](http://nikola-dev.com/IonicCalculator/mobile.html) of this application.
+As mentioned in the beginning of this section, you can take a look at the source code on [GitHub](https://github.com/Hitman666/Ionic_2ndTutorial), or you can take a look at the [live example](http://nikola-dev.com/IonicCalculator/mobile.html) of this application.
 
 ## Conclusion
 In this section we showed you how to create a calculator application step by step. We showed how to create a mockup of our idea, then we showed how to create an interface by using Ionic Creator, and finally how to refactor our application and create the logic with controllers.
@@ -734,7 +734,7 @@ The icon is an important part of your application because it represents your app
 
 Ionic helps tremendously by providing a single Ionic CLI command to generate all the needed icon and splash screen sizes for us automatically (which usually used to be a tedious work). Also, Ionic created [Photoshop Icon Template](http://code.ionicframework.com/resources/icon.psd) and [Photoshop Splash Screen Template](http://code.ionicframework.com/resources/splash.psd), which you can download for free and use as a guideline for creating an icon.
 
-When you're creating a branded product, having a custom made icon is definitelly a must. However, in this case, we'll show how to use one of the free services to search for a free icon which we can use in our application. I tend to use [IconFinder](https://www.iconfinder.com) a lot and these are the filters I used:
+When you're creating a branded product, having a custom made icon is definitely a must. However, in this case, we'll show how to use one of the free services to search for a free icon which we can use in our application. I tend to use [IconFinder](https://www.iconfinder.com) a lot and these are the filters I used:
 
 ![](http://i.imgur.com/TDkaEbp.jpg)
 
@@ -982,7 +982,7 @@ If you run the simulator with the extra `–l` flag you'll . If we also want to 
 ionic emulate ios -lc
 ```
 
-Since we need to have an Apple Developer account in order to run the application on our phsyical phone device, we will cover this in the next section where we'll also show how to deploy the application to the actual App Store.
+Since we need to have an Apple Developer account in order to run the application on our physical phone device, we will cover this in the next section where we'll also show how to deploy the application to the actual App Store.
 
 ### Android settings
 You can develop Android applications on Mac, Linux, and Windows computers. Android provides a number of tools for developers that are available for free from their [website](http://developer.android.com/).
@@ -1020,7 +1020,7 @@ The options that you need to check (and then click on `Install`) are:
 + Android SDK Build-tools (choose the newest one)
 + Android 6.0 (API 23) - here you can actually go with 5.1
 
-Android SDK has an emulator that can emulate the screen size and resolution of most Android devices, but to be honest it's way too slow and klunky and I recommend that you do not use it. Instead, download [Genymotion](https://www.genymotion.com/#!/) which is free for personal use.
+Android SDK has an emulator that can emulate the screen size and resolution of most Android devices, but to be honest it's way too slow and clunky and I recommend that you do not use it. Instead, download [Genymotion](https://www.genymotion.com/#!/) which is free for personal use.
 
 Since Ionic sees the Genymotion device as a real device attached to your computer, you can't run `ionic emulate android`, as we did in the iOS section. Instead, you need to use the Ionic's `run` command (before you do the build phase) like this:
 
@@ -1114,7 +1114,7 @@ To create a keystore, execute (change *SuperSimpleCalculator* keyword with your 
 
 `keytool -genkey -v -keystore SuperSimpleCalculator.keystore -alias SuperSimpleCalculator -keyalg RSA -keysize 2048 -validity 10000`
 
-You' wi'll be asked for a password two times (don't forget it!). The process looks like this:
+You will be asked for a password two times (don't forget it!). The process looks like this:
 
 This command will create a `SuperSimpleCalculator.keystore` file. You should place this file in a place where you'll remember it, because you'll need this file for any app updates you'll want to push to the Play Store. However, just to make things clear; **for every new application that you make, you need to create a new keystore file**.
 
@@ -1146,16 +1146,16 @@ The zipalign tool just takes the name of the signed file (we still have *unsigne
 
 `zipalign -v 4 SuperSimpleCalculator-release-unsigned.apk SuperSimpleCalculator.apk`
 
-The process finishes with the `Verification succesful` output and you will get a **SuperSimpleCalculator.apk** file which you can submit to the Google Play Store.
+The process finishes with the `Verification successful` output and you will get a **SuperSimpleCalculator.apk** file which you can submit to the Google Play Store.
 
 You may get an error like:
 
 > zipalign is not recognized as an internal or external command, operable program or batch file.
 
-In this case, you need to search your computer for the zipalign file, and make sure it's in your system PATH to fix this problem (in my case, on Windows, the the path to the file was `C:\Android\android-sdk\build-tools\21.1.2\zipalign.exe`).
+In this case, you need to search your computer for the zipalign file, and make sure it's in your system PATH to fix this problem (in my case, on Windows, the path to the file was `C:\Android\android-sdk\build-tools\21.1.2\zipalign.exe`).
 
 ### Building the update of your application
-To build an update of an existing app you have to follow the same steps, except that you have to use the **same keystore** to sign the application for every update, becase the update will be otherwise rejected and you'll have to create a new app listing.
+To build an update of an existing app you have to follow the same steps, except that you have to use the **same keystore** to sign the application for every update, because the update will be otherwise rejected and you'll have to create a new app listing.
 
 You must update the **version** in the **config.xml** file for the next release, otherwise the app will not be properly updated. To learn more about versioning you can take a look at the [official documentation](https://cordova.apache.org/docs/en/dev/config_ref/index.html), or this [StackOverflow question](http://stackoverflow.com/questions/25858547/phonegap-how-to-set-build-and-version-property-in-config-xml-for-ios).
 
@@ -1236,7 +1236,7 @@ One the next screen, shown on the image below, select the plus (+) button in ord
 
 ![](http://i.imgur.com/BbK4KHq.png)
 
-On the next screen, shown partialy on the image below, you'll have to set the name of your app, and use the `Explicit App ID` option and set the `Bundle ID` to the value of the `id` in your Cordova `config.xml` <widget> tag.
+On the next screen, shown partially on the image below, you'll have to set the name of your app, and use the `Explicit App ID` option and set the `Bundle ID` to the value of the `id` in your Cordova `config.xml` <widget> tag.
 
 ![](http://i.imgur.com/fsENfcP.png)
 
@@ -1249,7 +1249,7 @@ Apple uses [iTunes Connect](https://itunesconnect.apple.com) to manage app submi
 
 ![](http://i.imgur.com/mvnrafK.png)
 
-Here you have to select the My Apps button, and on the next screen select the + button, just below the `iTunes Conenct My Apps` header, as shown on the image below:
+Here you have to select the My Apps button, and on the next screen select the + button, just below the `iTunes Connect My Apps` header, as shown on the image below:
 
 ![](http://i.imgur.com/68rK26r.png)
 
@@ -1271,7 +1271,7 @@ In the root directory of your application execute the following command:
 
 If everything went well you'll see the **BUILD SUCCEEDED** output in the console.
 
-### Oppening the project in Xcode
+### Opening the project in Xcode
 Open the `platforms/ios/SuperSimpleCalculator.xcodeproj` file in Xcode (of course you would change `SuperSimpleCalculator` with your own name).
 
 ![](http://i.imgur.com/3lSsexm.png)
@@ -1282,7 +1282,7 @@ Once the Xcode opens up the project, you should see the details about your app i
 
 You should just check that the bundle identifier is set up correctly, so that it's the same as the value you specified earlier in the app ID. Also, make sure that the version and build numbers are correct. Team option should be set to your Apple developer account. Under the deployment target you can choose which devices your application will support.
 
-Since we're on this setting screen right now, I should mention that it's **very important** that you select the **Requires full screen** option, otherwise you may (as I did) get the following error when uploading the app to the App Store (covered futher in the tutorial):
+Since we're on this setting screen right now, I should mention that it's **very important** that you select the **Requires full screen** option, otherwise you may (as I did) get the following error when uploading the app to the App Store (covered further in the tutorial):
 
 ```
 Invalid Bundle. iPad Multitasking support requires these orientations: 'UIInterfaceOrientationPortrait,UIInterfaceOrientationPortraitUpsideDown,UIInterfaceOrientationLandscapeLeft,UIInterfaceOrientationLandscapeRight'. Found 'UIInterfaceOrientationPortrait,UIInterfaceOrientationPortraitUpsideDown' in bundle 'com.bitscoffee.PhotoMarks.iOS'.
@@ -1360,7 +1360,7 @@ After you submit your app for review you'll see the status of it in the My Apps 
 
 ![](http://i.imgur.com/Bm3LbQA.jpg)
 
-Apple prides itself with a manual review process, which basically means it can take several days for your app to be reviewed. You'll be notified of any issues or updates to your app status. From my personal experience it usualy takes up to 5 days for the app to be reviewed. 
+Apple prides itself with a manual review process, which basically means it can take several days for your app to be reviewed. You'll be notified of any issues or updates to your app status. From my personal experience it usually takes up to 5 days for the app to be reviewed. 
 
 ### Updating the app
 Since you'll probably want to update your app at some point you'll first have to update the build and version numbers in the Cordova `config.xml` file and then rebuild the application and open it up from the Xcode and follow the same steps all over again.

@@ -21,7 +21,7 @@ Since there are not so many Calculator applications in the App store (around **5
 
 ![](http://i.imgur.com/hW4ZTKW.jpg)
 
-All jokes and hopes aside, this seemed to be a decent "more serious", but still easy to acomplish, tutorial. Let's start this tutorial by creating the interface for our application.
+All jokes and hopes aside, this seemed to be a decent "more serious", but still easy to accomplish, tutorial. Let's start this tutorial by creating the interface for our application.
 
 ## Calculator interface mockup
 Before starting any application, we should know what we want (well, at least in general). We should know what problem are we trying to solve with our application and how are we going to solve it. Also, we would need to have a decent idea of how we would want our application to look like. 
@@ -82,7 +82,7 @@ Select the Input component (by clicking it in the PAGES panel in the upper left 
 
 Next, according to our mockup, we should add buttons that would represent the digits from **0** to **9**, and the buttons that would represent adding (**+**), substracting (**-**), multiplying (**x**) and dividing (**/**) operations. Also, we will need the equals button (**=**) and a clear button (**C**).
 
-In the first row we need to have 4 buttons, the ones representing digits 7, 8, 9 and one representing a dividing operation. To acomplish this, we will use a **Button Bar** component from the Components panel so that we'll drag&amp;drop it just below the Input field on the screen. You should see something like this now in your Ionic Creator window:
+In the first row we need to have 4 buttons, the ones representing digits 7, 8, 9 and one representing a dividing operation. To accomplish this, we will use a **Button Bar** component from the Components panel so that we'll drag&amp;drop it just below the Input field on the screen. You should see something like this now in your Ionic Creator window:
 
 ![](http://i.imgur.com/CVcreWF.jpg)
 
@@ -190,7 +190,7 @@ We should see something similar to the image below:
 
 ![](http://i.imgur.com/Kp49zVS.png)
 
-Btw, the ruller and the Device setting (Apple iPhone 6) are a part of an awesome Developer tools in Chrome browser, which I highly recommend.
+Btw, the ruler and the Device setting (Apple iPhone 6) are a part of an awesome Developer tools in Chrome browser, which I highly recommend.
 
 > If you get an error similar to this:
 > `Unable to locate the ionic.project file. Are you in your project directory? (CLI v1.6.4)`
@@ -248,7 +248,7 @@ The contents of the `.bowerrc` file is shown below:
 ```
 
 ### config.xml file
-**config.xml** is a configuration file for the [Cordova](https://cordova.apache.org/) project (as you may remeber from the [first post](http://blog.pluralsight.com/ionic-framework-on-mac-and-windows), Ionic is built on top of Cordova). It contains some meta information about the app like permissions and a list of Cordova plugins which are used in the app. To learn more about available settings in the `config.xml` file, please refer to the [official documentation](https://cordova.apache.org/docs/en/4.0.0/config_ref_index.md.html).
+**config.xml** is a configuration file for the [Cordova](https://cordova.apache.org/) project (as you may remember from the [first post](http://blog.pluralsight.com/ionic-framework-on-mac-and-windows), Ionic is built on top of Cordova). It contains some meta information about the app like permissions and a list of Cordova plugins which are used in the app. To learn more about available settings in the `config.xml` file, please refer to the [official documentation](https://cordova.apache.org/docs/en/4.0.0/config_ref_index.md.html).
 
 ### gulpfile.js file
 **gulpfile.js** is a configuration file for [Gulp](http://gulpjs.com/).
@@ -265,7 +265,7 @@ Another popular task runner is [Grunt](http://gruntjs.com/). However, from my pe
 ### package.json
 **package.json** is a file used by `npm` to store versions of the `npm` packages installed in the current project.
 
-> `npm` (Node.js Package Manager) is a CLI tool which comes with Node.js installation and it's used for installing other tools like aftorementioned Bower, Gulp, etc...
+> `npm` (Node.js Package Manager) is a CLI tool which comes with Node.js installation and it's used for installing other tools like aforementioned Bower, Gulp, etc...
 
 Contents of my `package.json` file, shown below, is useful as we can see which Cordova plugins and dependencies are installed for the project, as well as some meta information like *name*, *version* and *description*:
 ```
@@ -308,7 +308,7 @@ So, [Git]((https://git-scm.com/)) on the other hand is (quoted from the official
 >a free and open source distributed version control system designed to handle everything from small to very large projects with speed and efficiency.
 Git is easy to learn and has a tiny footprint with lightning fast performance. It outclasses SCM tools like Subversion, CVS, Perforce, and ClearCase with features like cheap local branching, convenient staging areas, and multiple workflows.
 
-Now that we got the basics out of the way, let's take a look at what the aftorementioned two files represent.
+Now that we got the basics out of the way, let's take a look at what the aforementioned two files represent.
 
 **.gitignore** is a configuration file for GitHub. Contents of the `.gitignore` file, shown below, basically instructs Git that it should not track folders **node_modules**, **platforms** and **plugins** when uploading the code to GitHub.
 ```
@@ -325,11 +325,11 @@ plugins/
 > If you're not using Git (and Github) in your workflow, I highly encourage you to do so, as it will prove really useful in the long run.
 
 ## <a name="refactoring"></a>Refactoring our application
-As said, we'll be spending most of our development time in the **www** folder and that's why we mentioned it just briefly in the previous section. We'll take a full deep dive in it here, by taking the two most imporant files (**index.html** and **app.js**) and explain their contents step by step.
+As said, we'll be spending most of our development time in the **www** folder and that's why we mentioned it just briefly in the previous section. We'll take a full deep dive in it here, by taking the two most important files (**index.html** and **app.js**) and explain their contents step by step.
 
 Also, we'll refactor our code into separate files, since Ionic Creator put everything in one. Finally, we'll add the calculator logic so that our calculator will work as expected.
 
-> Generally, putting all the code in one file and mixing logic and presentation (JavaScript and HTML code) is simply a big NO-NO, and often referred to as [spaghetti code](https://en.wikipedia.org/wiki/Spaghetti_code). You can learn more about refactoring your code from the cult book [Refactoring: Improving the Design of Existing Code](http://amzn.to/1LWo4Ow) by Martin Fowler, Kent Beck, and others. If you're searching for a bit lighter introduction to refactoring and good programing practices in general I can't recomment the classic [Code Complete 2](http://amzn.to/1LWomoq) by Steve McConnell enough.
+> Generally, putting all the code in one file and mixing logic and presentation (JavaScript and HTML code) is simply a big NO-NO, and often referred to as [spaghetti code](https://en.wikipedia.org/wiki/Spaghetti_code). You can learn more about refactoring your code from the cult book [Refactoring: Improving the Design of Existing Code](http://amzn.to/1LWo4Ow) by Martin Fowler, Kent Beck, and others. If you're searching for a bit lighter introduction to refactoring and good programming practices in general I can't recommend the classic [Code Complete 2](http://amzn.to/1LWomoq) by Steve McConnell enough.
 
 ### index.html file
 The starting point of our Ionic application is `index.html`, whose contents is as follows:
@@ -604,7 +604,7 @@ Just for reference, here's the contents of the `index.html` file, as it should l
 ```
 
 ### app.js file
-Contents of the **app.js** file bootstraps our Ionic (well, more acurately AngularJS) application, configures necessary plugings, and defines the states in our application. As we said before, the name of the root module matches the value given to the `ng-app` directive in the `index.html` file (**app** in our case). Also, we need to *inject* '`ionic`' module dependency to our root module so that we can use the Ionic library directives and other Ionic components.
+Contents of the **app.js** file bootstraps our Ionic (well, more accurately AngularJS) application, configures necessary plugins, and defines the states in our application. As we said before, the name of the root module matches the value given to the `ng-app` directive in the `index.html` file (**app** in our case). Also, we need to *inject* '`ionic`' module dependency to our root module so that we can use the Ionic library directives and other Ionic components.
 
 `$ionicPlatform.ready` event is triggered after the device (your mobile phone on which the application is started) is all set up and ready to use. This includes plugins which are used with this project. If you would try to check if some plugin is available outside the `ready` function callback, you could get wrong results due to the fact that it is possible that some plugin would not have been set up just yet. Using the aforementioned `$ionicPlatform.ready` event and placing your code to check for plugin instantiations solves these issues. You can learn more about ionicPlatform utility methods here: [http://ionicframework.com/docs/api/utility/ionic.Platform/](http://ionicframework.com/docs/api/utility/ionic.Platform/).
 
@@ -626,7 +626,7 @@ cordova-plugin-whitelist 1.0.0 "Whitelist"
 
 From the listing above we can see that there is no StatusBar plugin (org.apache.cordova.statusbar), so we can safely remove the corresponding lines in the `app.js` file.
 
-Inside the `config` function callback we're setting the routes for our application. Ionic uses [AngularUI Router](https://github.com/angular-ui/ui-router) which uses the concept of states. Since we moved our calculator UI into the `calculator.html` file inside the `templates` folder, we have to adjust the path to it accordingly. Also, we'll put our calculator logic inside the so called `CalculatorCtrl` controller. The state definition, with the acompanying controller definition should now look like this:
+Inside the `config` function callback we're setting the routes for our application. Ionic uses [AngularUI Router](https://github.com/angular-ui/ui-router) which uses the concept of states. Since we moved our calculator UI into the `calculator.html` file inside the `templates` folder, we have to adjust the path to it accordingly. Also, we'll put our calculator logic inside the so called `CalculatorCtrl` controller. The state definition, with the accompanying controller definition should now look like this:
 
 ```
 $stateProvider
@@ -736,14 +736,14 @@ Now you can run the application by executing the command
 
 and you should see your awesome calculator open up in your browser.
 
-As mentioned in the begining of this tutorial, you can take a look at the source code on [GitHub](https://github.com/Hitman666/Ionic_2ndTutorial), or you can take a look at the [live example](http://nikola-dev.com/IonicCalculator/mobile.html) of this application.
+As mentioned in the beginning of this tutorial, you can take a look at the source code on [GitHub](https://github.com/Hitman666/Ionic_2ndTutorial), or you can take a look at the [live example](http://nikola-dev.com/IonicCalculator/mobile.html) of this application.
 
 ## Conclusion
 In this tutorial we showed you how to create a calculator application step by step. We showed how to create a mockup of our idea, then we showed how to create an interface by using Ionic Creator, and finally how to refactor our application and create the logic with controllers.
 
 In the next tutorial we're going to take a look  at how to test your application on the real physical devices, and also how to use Ionic.io cloud service to share our application with other users without going through the app store. Also, we're going to take a look how to implement Google Analytics and Google Admob ads, and how to prepare our application for the stores. Also, we'll take a look at how to customize the icons and the application's splash screen.
 
-If you have any questions about this tutorial please read the following help guides. Of course, I encourage you to ask a question in the comments so that anyone else who may have a silmiar question or doubt, learns something too.
+If you have any questions about this tutorial please read the following help guides. Of course, I encourage you to ask a question in the comments so that anyone else who may have a similar question or doubt, learns something too.
 
 With this I leave you and hope you had a great learning experience with following this tutorial. See you in the next installment of this series!
 
