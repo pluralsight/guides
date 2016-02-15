@@ -100,7 +100,7 @@ To the make the AJAX call, we will use jQuery’s `$.get()` method.
 To include jQuery, add the following script tag:
 
 ```
-<script type=”text/javascript” src=”https://code.jquery.com/jquery-1.12.0.min.js
+<script type=”text/javascript” src=”https://code.jquery.com/jquery-1.12.0.min.js></script>
 ```
 
 
