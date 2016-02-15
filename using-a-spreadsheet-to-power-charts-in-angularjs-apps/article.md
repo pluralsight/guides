@@ -161,7 +161,7 @@ To create the chart we will use the FusionCharts’ [AngularJS charts](http://ww
 
 We will be creating a 3D doughnut chart, so we just need FusionCharts core library - `fusioncharts.js`.
 
-We will include AngularJS, jQuery, FusionCharts, and FusionCharts’ AngularJS plugin using HTML <script> tags:
+We will include AngularJS, jQuery, FusionCharts, and FusionCharts’ AngularJS plugin using HTML `<script>` tags:
 
 ```
 <script src='https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0-rc.2/angular.min.js'></script>
