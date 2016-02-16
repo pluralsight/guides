@@ -1,0 +1,8 @@
+- [Be careful what you import](http://tutorials.pluralsight.com/review/be-careful-what-you-import) by [Luke Lee](http://tutorials.pluralsight.com/user/durden) Python
+- [How I wrote an ~100B grid system](http://tutorials.pluralsight.com/review/how-i-wrote-an-%7E100b-grid-system) by [IonicaBizau](http://tutorials.pluralsight.com/user/IonicaBizau) 
+- [How to analyze employee data using SQL](http://tutorials.pluralsight.com/review/how-to-analyze-employee-data-using-sql) by [Ben Sullins](http://tutorials.pluralsight.com/user/bsullins) SQL
+- [How to Migrate a virtual machine from Virtualbox 4.x to VMware Workstation 9.x or 10](http://tutorials.pluralsight.com/review/how-to-migrate-a-virtual-machine-from-virtualbox-4-x-to-vmware-workstation-9-x-or-10) by [Erick Rodriguez](http://tutorials.pluralsight.com/user/tbogard) 
+- [JavaScript Callbacks Variable Scope Problem](http://tutorials.pluralsight.com/review/javascript-callbacks-variable-scope-problem) by [Itay Grudev](http://tutorials.pluralsight.com/user/itay-grudev) Front-End JavaScript (Angular, React, Meteor, etc)
+- [Python iteration and the for loop](http://tutorials.pluralsight.com/review/python-iteration-and-the-for-loop) by [perkolasoft](http://tutorials.pluralsight.com/user/perkolasoft) 
+- [Using ​a Spreadsheet​ ​to Power Charts in AngularJS Apps](http://tutorials.pluralsight.com/review/using-a-spreadsheet-to-power-charts-in-angularjs-apps) by [Rohit Boggarapu](http://tutorials.pluralsight.com/user/rohitb4) Front-End JavaScript (Angular, React, Meteor, etc)
+- [Using Google spreadsheet as a database](http://tutorials.pluralsight.com/review/using-google-spreadsheet-as-a-database) by [Aki](http://tutorials.pluralsight.com/user/multiaki) PHP
