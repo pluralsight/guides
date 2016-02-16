@@ -14,3 +14,4 @@
 - [Text Editors For Beginners - 15 Ways To Rule The World.](http://tutorials.pluralsight.com/review/text-editors-for-beginners-15-ways-to-rule-the-world) by [shadowcodex](http://tutorials.pluralsight.com/user/shadowcodex) Software Engineering Best Practices
 - [Using HTTPs with Ruby on Rails](http://tutorials.pluralsight.com/review/using-https-with-ruby-on-rails) by [weppos](http://tutorials.pluralsight.com/user/weppos) Ruby, Ruby on Rails
 - [Welcome to Pluralsight Tutorials](http://tutorials.pluralsight.com/review/welcome-to-pluralsight-tutorials) by [Prateek Gupta](http://tutorials.pluralsight.com/user/prtkgpt) 
+- [Simple debugging with meta programming](/review/simple-debugging-with-meta-programming) by [Luke Lee](/user/durden) Python
