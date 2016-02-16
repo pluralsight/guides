@@ -1,5 +1,3 @@
-# Simple debugging with meta programming
-
 The 'watch' feature of modern debuggers allows a developer to see when a
 variable changes state. I use this feature a lot when doing small debugging
 sprints. Unfortunately, using it requires opening up a big
@@ -36,7 +34,7 @@ Now we need a list of what attributes to watch. Then, we can provide a custom
 that watches each attribute 'set' action and alert us when a specific attribute
 changes.
 
-[code lang="python"]
+```python
     def __setattr__(self, name, value):
         if name in ['myvar1', 'myvar2']:
             import traceback
@@ -44,7 +42,7 @@ changes.
             # Print stack (without this __setattr__ call)
             traceback.print_stack(sys._getframe(1))
             print '%s -> %s = %s' % (repr(self), name, value)
-[/code]
+```
 
 The above approach works, but it doesn't give us much flexibility.
 
@@ -78,20 +76,36 @@ simply by using the `@` decorator syntax.
 
 So, without further ado:
 
-[gist 4081514]
+```python
+def watch_variables(var_list):
+    """Usage: @watch_variables(['myvar1', 'myvar2'])"""
+    def _decorator(cos):
+        def _setattr(self, name, value):
+            if name in var_list:
+                import traceback
+                import sys
+                # Print stack (without this __setattr__ call)
+                traceback.print_stack(sys._getframe(1))
+                print '%s -> %s = %s' % (repr(self), name, value)
+
+            return super(cls, self).__setattr__(name, value)
+        cls.__setattr__ = _setattr
+        return cos
+    return _decorator
+```
 
 In a nutshell, we make our own `_setattr` method and then replace the decorated
 class's `__setattr__` with our own. So, to watch attributes in a class simply
 put `@watch_variables` above your class with a list of attribute names. For
 example:
 
-[code lang="python"]
+```python
     @watch_variables(['foo', 'bar'])
     class BuggyClass(object):
         def __init__(self, foo, bar):
             self.foo = foo
             self.bar = bar
-[/code]
+```
 
 ### Good Enough?
 
