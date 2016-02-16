@@ -5,9 +5,9 @@
     "branches": [],
     "filename": "article.md",
     "image_url": "https://avatars.githubusercontent.com/u/2123767?v=3",
-    "published": true,
+    "published": false,
     "stacks": [
         "Ruby, Ruby on Rails"
     ],
-    "title": "Elastic Search with Ruby on Rails"
+    "title": "Elasticsearch with Ruby on Rails"
 }
