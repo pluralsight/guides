@@ -1,19 +1,19 @@
-Elastic Search _(ES)_ is a powerful Full Text Search Engine based on [Apache Lucene][lucene].
-A key characteristic of Elastic Search is that it’s distributed at it's core, meaning that you can easily scale it horizontally for the purpose of redundancy or performance. Elastic Search can also be used as data store engine, but it has some disadvantages:
+Elasticsearch _(ES)_ is a powerful Full Text Search Engine based on [Apache Lucene][lucene].
+A key characteristic of Elasticsearch is that it’s distributed at it's core, meaning that you can easily scale it horizontally for the purpose of redundancy or performance. Elasticsearch can also be used as data store engine, but it has some disadvantages:
 
-* __Security__ - Elastic Search does not provide any internal security or access
+* __Security__ - Elasticsearch does not provide any internal security or access
 control system. The only way to protect ES from external access is with a firewall.
 * __Computation__ – There is limited support for advanced computation on the
 database side.
-* __Data Availability__ – Data in Elastic Search is available in "near real time", -
+* __Data Availability__ – Data in Elasticsearch is available in "near real time", -
 meaning that if you submit a comment to a post and refresh the page, it might not
 show up as the index is still updating.
 * __Durability__ – ES is distributed and relatively stable, but
-backups are not as high priority as in other data store solutions. This is an important consideration when Elastic Search is your primary data store.
+backups are not as high priority as in other data store solutions. This is an important consideration when Elasticsearch is your primary data store.
 
-For the purpose of this tutorial we’ll cover some of the Elastic Search
+For the purpose of this tutorial we’ll cover some of the Elasticsearch
 basis, so you can later understand what’s happening behind the scenes. To fully
-grasp how it works and how to use its API, take a look at the [Elastic Search
+grasp how it works and how to use its API, take a look at the [Elasticsearch
 Documentation][es-docs].
 
 ES is document oriented; it stores its entire objects
@@ -29,11 +29,11 @@ Elasticsearch  ⇒ Indices   ⇒ Types  ⇒ Documents ⇒ Fields
 Each ES Index can be split into multiple pieces called shards. This
 is done if, for example, your required storage volume exceeds the abilities of a
 single node (server), or could be used to parallelize operations across shards
-to increase the performance of your ES cluster. 
+to increase the performance of your ES cluster.
 
 Note that the number of primary shards is fixed the moment an index is created. This
 effectively defines the maximum amount of data stored in your index, as each node
-is limited by the amount of CPU, RAM and I/Os it can have to fit at least one shard. You can only change the amount of replica shards after the index has been created, though that only affects the throughput of your cluster and not the actual data storage capabilities. You can read more about that on [Elastic Search Scale Horizontally][es-scale].
+is limited by the amount of CPU, RAM and I/Os it can have to fit at least one shard. You can only change the amount of replica shards after the index has been created, though that only affects the throughput of your cluster and not the actual data storage capabilities. You can read more about that on [Elasticsearch Scale Horizontally][es-scale].
 
 It’s important to understand these basic concepts, as we will configure some of them
 later in this post.
@@ -47,7 +47,7 @@ app with search, highlighting of matches and search suggestions based on the
 [term suggester][es-term-suggester].
 
 The official [elasticsearch][es-gem] gem for Ruby contains the most important
-libraries for using Elastic Search with Ruby. But we’ll use the
+libraries for using Elasticsearch with Ruby. But we’ll use the
 [elasticsearch-model][es-model-gem] gem, which is built on top of the `elasticsearch`
 gem and contains all the tools to make a model searchable.
 
@@ -64,7 +64,7 @@ Let's assume that we have a model called `Article` with two columns, `title` and
 
 The first thing we need to do is include the `Elasticsearch::Model` functionality
 inside our model. Additionally, the `Elasticsearch::Model::Callbacks` ensures
-that Elastic Search indexes are updated when a record is created or updated.
+that Elasticsearch indexes are updated when a record is created or updated.
 
 ```ruby
 class Article < ActiveRecord::Base
@@ -89,7 +89,7 @@ end
 ```
 
 Notice the `number_of_shards` setting I’m using. I've set it to 1 since I was
-only using a single machine and a very small amount of data (< 100MB). But if you have a very high amount of data or would like to increase the performance of ES, increase the number of primary shards. Since both fields will contain text written in English I’m using the `english` analyzer. Elastic Search has a wide set of Analyzers including [Language Analyzers][es-lang-analysers]. Depending on the data stored within a field, a different analyzer may give better results. For example, a keyword analyzer is useful for data like zip codes and ids, among other things.
+only using a single machine and a very small amount of data (< 100MB). But if you have a very high amount of data or would like to increase the performance of ES, increase the number of primary shards. Since both fields will contain text written in English I’m using the `english` analyzer. Elasticsearch has a wide set of Analyzers including [Language Analyzers][es-lang-analysers]. Depending on the data stored within a field, a different analyzer may give better results. For example, a keyword analyzer is useful for data like zip codes and ids, among other things.
 
 You can also specify the type of the field as basic types, such as an integer
 requiring much simpler indexing methods. So, assuming that you have a field `status`,
@@ -106,8 +106,8 @@ Or in the case of an author id in a column called `user_id` you will do this:
 indexes :user_id, type: :integer
 ```
 
-Elastic Search also supports complex types as `Arrays`, `Objects` or `Nested`, which
-is an array of objects. There is support for geographic coordinates and IP addresses, among other things. Take a look at the full set of [Types][es-types] Elastic Search supports
+Elasticsearch also supports complex types as `Arrays`, `Objects` or `Nested`, which
+is an array of objects. There is support for geographic coordinates and IP addresses, among other things. Take a look at the full set of [Types][es-types] Elasticsearch supports
 when setting up your index.
 
 If your model also has additional fields that you don't need to store/index on
@@ -132,7 +132,7 @@ end
 This is where `:method_name` is either a symbol or an array of symbols corresponding to
 method names in your model. It’s useful if, for example, your page body is stored
 in a format as Markdown. You can have a method that renders Markdown as plain text
-and then send that plain text to Elastic Search.
+and then send that plain text to Elasticsearch.
 
 Note that your document can have more fields than those specified in your
 `settings` block, but they won't be indexed.
@@ -140,15 +140,15 @@ Note that your document can have more fields than those specified in your
 ### Implementing the `self.search()` method
 
  The final and most complex addition to your model is the `self.search`
-method that will spawn requests to Elastic Search. It’s the hardest method
+method that will spawn requests to Elasticsearch. It’s the hardest method
 to write, as you’ll need to have some knowledge of the
-[Elastic Search Query DSL][es-query-dsl].
+[Elasticsearch Query DSL][es-query-dsl].
 
-What I’m about to show you is universal to most projects, but if the functionality you need isn’t covered here, check out the [Elastic Search Query DSL][es-query-dsl].
+What I’m about to show you is universal to most projects, but if the functionality you need isn’t covered here, check out the [Elasticsearch Query DSL][es-query-dsl].
 
 You’ll notice that queries to ES are written in JSON. In Ruby, JSON
 is easily represented with a `Hash`, so we’ll use a method that will call
-the Elastic Search cluster and send it our query written as a Ruby `Hash.` For the
+the Elasticsearch cluster and send it our query written as a Ruby `Hash.` For the
 sake of brevity, I’ll show how the method looks and will describe each
 section in a separate code block.
 
@@ -183,7 +183,7 @@ field. In the example, the `title` field is five times as important as the
 | `phrase`        | Runs a match_phrase query on each field and combines the _score from each field. |
 | `phrase_prefix` | Runs a match_phrase query on each field and combines the _score from each field. |
 
-For more details on each option see [Elastic Search Multi Match Query][es-query-multi-match].
+For more details on each option see [Elasticsearch Multi Match Query][es-query-multi-match].
 
 The next section I’ll add is for highlighting the matched keywords inside the
 text. We want to match both fields, `title` and `body`, and encapsulate them in
@@ -222,8 +222,8 @@ suggest: {
 ```
 
 This enables search term suggestions based on both the `title` and `body`
-fields with a [Hamming Distance][hamming-distance] of up to `1` (you can change that). You can read more about the [Elastic Search Term Suggester][es-term-suggester]
-or take a look at the other [Elastic Search Suggesters][es-suggesters]. For example, there’s a [Completion Suggester][es-completion-suggester] for auto complete functionality.
+fields with a [Hamming Distance][hamming-distance] of up to `1` (you can change that). You can read more about the [Elasticsearch Term Suggester][es-term-suggester]
+or take a look at the other [Elasticsearch Suggesters][es-suggesters]. For example, there’s a [Completion Suggester][es-completion-suggester] for auto complete functionality.
 
 Let’s go back to the scenario in which we had a `status` field of type integer taking
 the values of `[0, 1, 2, 3]` indicating whether the article is a draft, private,
@@ -348,7 +348,7 @@ tweak it into doing more advanced things. To get it running: install all gems, c
 ```bash
 bundle install
 rake db:migrate
-elasticsearch >/dev/null </dev/null &amp;
+elasticsearch >/dev/null </dev/null &
 rake db:seed
 ```
 
@@ -360,7 +360,7 @@ Now search for `gem` and try changing the Multi Match Query Type Parameter to
 `phrase_prefix` to see what will change.
 
 If you still think this is exciting, how about going through the
-[Elastic Search Query DSL][es-query-dsl]. Be amazed and experiment!
+[Elasticsearch Query DSL][es-query-dsl]. Be amazed and experiment!
 
 About the author
 ----------------
@@ -385,5 +385,4 @@ Itay is mostly interested in Linux, Security, Electronics and Amateur Radio. He 
 [es-completion-suggester]: https://www.elastic.co/guide/en/elasticsearch/reference/current/search-suggesters-completion.html
 [hamming-distance]: https://en.wikipedia.org/wiki/Hamming_distance
 [es-tuturial]: https://github.com/itay-grudev/es-tutorial
-
 
