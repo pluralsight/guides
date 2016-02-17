@@ -6,4 +6,5 @@
 - [Python iteration and the for loop](http://tutorials.pluralsight.com/review/python-iteration-and-the-for-loop) by [perkolasoft](http://tutorials.pluralsight.com/user/perkolasoft) 
 - [Using ​a Spreadsheet​ ​to Power Charts in AngularJS Apps](http://tutorials.pluralsight.com/review/using-a-spreadsheet-to-power-charts-in-angularjs-apps) by [Rohit Boggarapu](http://tutorials.pluralsight.com/user/rohitb4) Front-End JavaScript (Angular, React, Meteor, etc)
 - [Using Google spreadsheet as a database](http://tutorials.pluralsight.com/review/using-google-spreadsheet-as-a-database) by [Aki](http://tutorials.pluralsight.com/user/multiaki) PHP
-- [Simple debugging with meta programming](/review/simple-debugging-with-meta-programming) by [Luke Lee](/user/durden) Python
+- [Simple debugging with meta programming](http://tutorials.pluralsight.com/review/simple-debugging-with-meta-programming) by [Luke Lee](http://tutorials.pluralsight.com/user/durden) Python
+- [How to publish our calculator application to the Apple's App Store and Google's Play Store](http://tutorials.pluralsight.com/review/how-to-publish-our-calculator-application-to-the-apple-s-app-store-and-google-s-play-store) by [Nikola Breznjak](http://tutorials.pluralsight.com/user/Hitman666) Android
