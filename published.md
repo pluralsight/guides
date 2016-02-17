@@ -12,3 +12,4 @@
 - [Using HTTPs with Ruby on Rails](http://tutorials.pluralsight.com/review/using-https-with-ruby-on-rails) by [Simone Carletti](http://tutorials.pluralsight.com/user/weppos) Related to: Ruby, Ruby on Rails
 - [Welcome to Pluralsight Tutorials](http://tutorials.pluralsight.com/review/welcome-to-pluralsight-tutorials) by [Prateek Gupta](http://tutorials.pluralsight.com/user/prtkgpt) 
 - [Elasticsearch with Ruby on Rails](http://tutorials.pluralsight.com/review/elasticsearch-with-ruby-on-rails) by [Itay Grudev](http://tutorials.pluralsight.com/user/itay-grudev) Related to: Ruby, Ruby on Rails
+- [JavaScript Callbacks Variable Scope Problem](http://tutorials.pluralsight.com/review/javascript-callbacks-variable-scope-problem) by [Itay Grudev](http://tutorials.pluralsight.com/user/itay-grudev) Related to: Front-End JavaScript (Angular, React, Meteor, etc)
