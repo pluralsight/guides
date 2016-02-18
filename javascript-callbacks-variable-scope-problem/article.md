@@ -86,10 +86,10 @@ for( var i = 0; i < array.length; ++i )
 }
 ```
 
-Since each function declares it's own scope, and since `i` has base atomic type
-(`Integer`) rather than being an object it is not passed as a reference, but
-rather as a copy which ensures that the actual callback will be executed against
-the correct value.
+Since each function declares it's own scope, and `i` has a base atomic type
+(`int`)  it is not passed as a reference, but rather as a copy (unlike objects)
+which ensures that the actual callback will be executed against the correct
+value.
 
 Inline closure
 --------------
