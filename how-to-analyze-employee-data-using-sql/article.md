@@ -1,6 +1,6 @@
 When it comes to how to analyze employee data, there are fewer more complex data structures to work with. Probably the biggest challenge with working with an employee data set is how unassuming it may seem to start. Let's take a typical employee table from a Human Resources Information System (HRIS) and see how we can run some common analytical queries against it.
 
-Here is a table structure for how our data is stored. This is typical of many HRIS sytems I've seen in my days so we'll stick with this as an example.
+Here is a table structure for how our data is stored. This is typical of many HRIS systems I've seen in my days so we'll stick with this as an example.
 
 ## Table Name: emps
 

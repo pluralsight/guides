@@ -190,7 +190,7 @@ Textastic can connect to cloud drives, ftp, and more. It’s extremely fast for 
 
 | **Name** | **Price** | **Operating System** | **Key Features** |
 |------------------|------------------------------|------------------|-------------------------------------------------|
-| Atom | Free / Open Source | WIN/MAC/LINUX | Packageas, Themes |
+| Atom | Free / Open Source | WIN/MAC/LINUX | Packages, Themes |
 | Brackets | Free / Open Source | WIN/MAC/LINUX | PSD Extract |
 | Sublime Text | Paid / `$70 USD` | WIN/MAC/LINUX | Power User, Commands |
 | Notepad++ | Free / Open Source | Windows | Easy |

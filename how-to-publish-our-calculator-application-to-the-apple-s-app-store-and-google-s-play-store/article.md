@@ -179,21 +179,21 @@ The zipalign tool just takes the name of the signed file (we still have *unsigne
 
 `zipalign -v 4 SuperSimpleCalculator-release-unsigned.apk SuperSimpleCalculator.apk`
 
-The process finishes with the `Verification succesful` output and you will get a **SuperSimpleCalculator.apk** file which you can submit to the Google Play Store.
+The process finishes with the `Verification successful` output and you will get a **SuperSimpleCalculator.apk** file which you can submit to the Google Play Store.
 
 You may get an error like:
 
 > zipalign is not recognized as an internal or external command, operable program or batch file.
 
-In this case, you need to search your computer for the zipalign file, and make sure it's in your system PATH to fix this problem. Alternatively, you can enter a full path to the zipalign file (in my case, on Windows, the the path to the file was `C:\Android\android-sdk\build-tools\21.1.2\zipalign.exe`).
+In this case, you need to search your computer for the zipalign file, and make sure it's in your system PATH to fix this problem. Alternatively, you can enter a full path to the zipalign file (in my case, on Windows, the path to the file was `C:\Android\android-sdk\build-tools\21.1.2\zipalign.exe`).
 
 ### Building the update of your application
-To build an update of an existing app you have to follow the same steps except that you don't need to create another keystore. You have to use the **same keystore** to sign the application for every update, becase the update will be otherwise rejected and you'll have to create a new app listing.
+To build an update of an existing app you have to follow the same steps except that you don't need to create another keystore. You have to use the **same keystore** to sign the application for every update, because the update will be otherwise rejected and you'll have to create a new app listing.
 
 You must update the **version** in the **config.xml** file for the next release, otherwise the app will not be properly updated on your users' devices. To learn more about versioning you can take a look at the [official documentation](https://cordova.apache.org/docs/en/dev/config_ref/index.html), or this [StackOverflow question](http://stackoverflow.com/questions/25858547/phonegap-how-to-set-build-and-version-property-in-config-xml-for-ios).
 
 ### Creating the app listing and uploading the app to the Play Store
-The first thing you should do is sign up for the Google developer program at [https://play.google.com/apps/publish/signup/](https://play.google.com/apps/publish/signup/). If you're not going to make applications as an individial then it's recommended that you create a separate Google account for your apps (you need it to sign up). You'll need to pay **$25 one-time fee** for a developer license.
+The first thing you should do is sign up for the Google developer program at [https://play.google.com/apps/publish/signup/](https://play.google.com/apps/publish/signup/). If you're not going to make applications as an individual then it's recommended that you create a separate Google account for your apps (you need it to sign up). You'll need to pay **$25 one-time fee** for a developer license.
 
 You start by clicking the `Add new application` button on the right hand side as shown on the image below:
 
@@ -275,7 +275,7 @@ One the next screen, shown on the image below, select the plus (+) button in ord
 
 ![](http://i.imgur.com/BbK4KHq.png)
 
-On the next screen, shown partialy on the image below, you'll have to set the name of your app, and use the `Explicit App ID` option and set the `Bundle ID` to the value of the `id` in your Cordova `config.xml` <widget> tag.
+On the next screen, shown partially on the image below, you'll have to set the name of your app, and use the `Explicit App ID` option and set the `Bundle ID` to the value of the `id` in your Cordova `config.xml` <widget> tag.
 
 ![](http://i.imgur.com/fsENfcP.png)
 
@@ -288,7 +288,7 @@ Apple uses [iTunes Connect](https://itunesconnect.apple.com) to manage app submi
 
 ![](http://i.imgur.com/mvnrafK.png)
 
-Here you have to select the My Apps button, and on the next screen select the + button, just below the `iTunes Conenct My Apps` header, as shown on the image below:
+Here you have to select the My Apps button, and on the next screen select the + button, just below the `iTunes Connect My Apps` header, as shown on the image below:
 
 ![](http://i.imgur.com/68rK26r.png)
 
@@ -310,7 +310,7 @@ In the root directory of your application execute the following command:
 
 If everything went well you'll see the **BUILD SUCCEEDED** output in the console.
 
-### Oppening the project in Xcode
+### Opening the project in Xcode
 Now, open the `platforms/ios/SuperSimpleCalculator.xcodeproj` file in Xcode (of course you would change `SuperSimpleCalculator` with your own name).
 
 ![](http://i.imgur.com/3lSsexm.png)
@@ -321,7 +321,7 @@ Once the Xcode opens up the project, you should see the details about your app i
 
 You should just check that the bundle identifier is set up correctly, so that it's the same as the value you specified earlier in the app ID. Also, make sure that the version and build numbers are correct. Team option should be set to your Apple developer account. Under the deployment target you can choose which devices your application will support.
 
-Since we're on this setting screen right now, I should mention that it's **very important** that you select the **Requires full screen** option, otherwise you may (as I did) get the following error when uploading the app to the App Store (covered futher in the tutorial):
+Since we're on this setting screen right now, I should mention that it's **very important** that you select the **Requires full screen** option, otherwise you may (as I did) get the following error when uploading the app to the App Store (covered further in the tutorial):
 `Invalid Bundle. iPad Multitasking support requires these orientations: 'UIInterfaceOrientationPortrait,UIInterfaceOrientationPortraitUpsideDown,UIInterfaceOrientationLandscapeLeft,UIInterfaceOrientationLandscapeRight'. Found 'UIInterfaceOrientationPortrait,UIInterfaceOrientationPortraitUpsideDown' in bundle 'com.bitscoffee.PhotoMarks.iOS'.`
 
 You can learn more about this error from [this StackOverflow question](http://stackoverflow.com/questions/32559724/ipad-multitasking-support-requires-these-orientations).
@@ -400,7 +400,7 @@ After you submit your app for review you'll see the status of it in the My Apps 
 
 ![](http://i.imgur.com/Bm3LbQA.jpg)
 
-Apple prides itself with a manual review process, which basically means it can take several days for your app to be reviewed. You'll be notified of any issues or updates to your app status. From my personal experience it usualy takes up to 5 days for the app to be reviewed. 
+Apple prides itself with a manual review process, which basically means it can take several days for your app to be reviewed. You'll be notified of any issues or updates to your app status. From my personal experience it usually takes up to 5 days for the app to be reviewed. 
 
 ### Updating the app
 Since you'll probably want to update your app at some point you'll first have to update the build and version numbers in the Cordova `config.xml` file and then rebuild the application and open it up from the Xcode and follow the same steps all over again.
