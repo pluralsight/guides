@@ -3,6 +3,7 @@
 - [Read the guide](http://tutorials.pluralsight.com/review/a-beginners-guide-to-jquery)
 - [Read more from Carl Smith](http://tutorials.pluralsight.com/user/carlsmith) <img src="https://avatars.githubusercontent.com/u/7561668?v=3" width="30" height="30" alt="Carl Smith" />
 - Related to: Front-End JavaScript (Angular, React, Meteor, etc)
+- [Thumbnail](http://i.imgur.com/RORvXUG.png)
 
 ### A call for HackerNews Contributors by Prateek Gupta
 - [Read the guide](http://tutorials.pluralsight.com/review/a-call-for-hackernews-contributors)
