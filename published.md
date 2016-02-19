@@ -18,6 +18,7 @@
 - [Read the guide](http://tutorials.pluralsight.com/review/angular-vs-react-a-side-by-side-comparison)
 - [Read more from Shannon Duncan](http://tutorials.pluralsight.com/user/shadowcodex) <img src="https://avatars.githubusercontent.com/u/1348053?v=3" width="30" height="30" alt="Shannon Duncan" />
 - Related to: Front-End JavaScript (Angular, React, Meteor, etc)
+- [Thumbnail](http://i.imgur.com/armS961.png)
 
 ### AngularJS - Controllers by Matt Milner
 - [Read the guide](http://tutorials.pluralsight.com/review/angularjs-controllers)
