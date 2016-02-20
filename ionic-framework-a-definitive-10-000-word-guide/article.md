@@ -1,6 +1,3 @@
-![](http://i.imgur.com/gFTi3A2.png)
-
-
 Welcome!  This definitive guide to the ionic framework -- an incredibly easy way to build beautiful and interactive mobile apps using HTML5 and AngularJS.  We will help you understand the major aspects of the framework.  We'll also be creating a running example of a calculator application throughout the tutorial.
 
 In this first section, you'll learn:
