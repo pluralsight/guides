@@ -24,7 +24,7 @@ Think of this as a "Wikipedia" for technical guides and tutorials.
 
 ### Some bonus reasons to a contribute a tutorial here!
 * **Help the world**.  You'll help spread useful knowledge.
-* **Free subscription to Pluralsight.com**.  As a small thank-you, you'll get Pluralsight for free. Stay up-to-date on all programming topics.  This is worth $299.
+* **Free subscription to Pluralsight.com**.  Pluralsight is our corporate sponsor for this project and is subsidizing the costs of some of the open-source development.  We've negotiated with Pluralsight to give all contributors a free subscription to their video library on programmer training, so you can stay up-to-date on all programming topics.  This is worth $299.
 * **Network with other important members of the community**.  We'll give you exclusive access to our community Slack, to make awesome connections with others who are involved.
 * **Explore opportunities to earn supplemental income**.  We'll give you preferential consideration to being a mentor on HackHands, or to make money authoring video courses.
 * **Free access to the next hack.summit() conference for you and your friends**.  Get your own special code you can give out!
