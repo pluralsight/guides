@@ -74,3 +74,8 @@
 - [Read the guide](http://tutorials.pluralsight.com/review/welcome-to-pluralsight-tutorials)
 - [Read more from Prateek Gupta](http://tutorials.pluralsight.com/user/prtkgpt) <img src="https://avatars1.githubusercontent.com/u/2454349?v=3" width="30" height="30" alt="Prateek Gupta" />
 
+### How to analyze employee data using SQL by Ben Sullins
+- [Read the guide](/review/how-to-analyze-employee-data-using-sql)
+- [Read more from Ben Sullins](/user/bsullins) <img src="https://avatars.githubusercontent.com/u/3732908?v=3" width="30" height="30" alt="Ben Sullins" />
+- Related to: SQL
+
