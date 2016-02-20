@@ -1,19 +1,19 @@
-Welcome!  This is a community for collaborating on creating great technical tutorials.
+Welcome!  This is a community for collaborating on creating great technical guides and tutorials.
 Our collective aim is by working together, we can educate the world, plus improve our knowledge.
-Think of this as a "Wikipedia" for technical tutorials.
+Think of this as a "Wikipedia" for technical guides and tutorials.
 
 ### Problems we’re trying to solve
 
-- Technical tutorial blog content is currently created on WordPress, which is universally abhorred by us.
-- Once a tutorial is created, it becomes stale and out of date. If the author doesn’t maintain their content, then it becomes less useful.
-- There isn’t a strong way for developers to improve their content through peer review.  Wordpress sucks for that.
-- Tutorials currently exist in silos.  They live on individual blogs, and are fragmented and varying in quality.  Those tutorials don't typically reach a wide audience since individual blogs have limited reach.
+- Technical blog content is currently created on WordPress, which isn't great for developers (doesn't easily support code blocks, etc).
+- Once a guide is created, it becomes stale and out of date. If the author doesn’t maintain their content, then it becomes less useful.
+- There isn’t a strong way for developers to improve their content through peer review.  Wordpress isn't great for that.
+- Guides currently exist in silos.  They live on individual blogs, and are fragmented and varying in quality.  Those guides don't typically reach a wide audience since individual blogs have limited reach.
 - Tutorials are largely in English and do not translate quickly/easily into other languages since code isn’t easily auto-translated.  Other countries don’t have easy access to learning.
 
 ### How we’re solving these problems together
 
 - **We use [MarkDown](http://daringfireball.net/projects/markdown/basics)** (rather than WordPress), a simple file format.  This is a really simple text-based file format that takes around 60 seconds to understand.  It's really easy to make things **bold**, _italics_, `code blocks`, etc.  Markdown is used in many places, such as Github README files.  Even this file is a Markdown file.  You can help us edit and improve it.
-- **The tutorials are stored in GitHub**, which many developers use daily and love.
+- **The guides are stored in GitHub**, which many developers use daily and love.
 - **Use your favorite text editor** to create tutorials and **check them in via Git**.  Or you can also edit tutorials using Github's UI.  **Way better than Wordpress**.
 - If you aren't familiar with git/Github, or don't want to bother with that, that's fine too -- we have a handy-dandy visual editor on our site to edit tutorials right here.
 - **The code for this site is open-sourced in Github**.  Let's improve it together!
