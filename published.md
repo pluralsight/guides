@@ -39,6 +39,8 @@
 - [Read the guide](http://tutorials.pluralsight.com/review/using-https-with-ruby-on-rails)
 - [Read more from Simone Carletti](http://tutorials.pluralsight.com/user/weppos) <img src="https://avatars3.githubusercontent.com/u/5387?v=3" width="30" height="30" alt="Simone Carletti" />
 - Related to: Ruby, Ruby on Rails
+- [Thumbnail](http://i.imgur.com/YbxBcyF.png)
+
 
 ### JavaScript Callbacks Variable Scope Problem by Itay Grudev
 - [Read the guide](http://tutorials.pluralsight.com/review/javascript-callbacks-variable-scope-problem)
