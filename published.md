@@ -41,7 +41,6 @@
 - Related to: Ruby, Ruby on Rails
 - [Thumbnail](http://i.imgur.com/YbxBcyF.png)
 
-
 ### JavaScript Callbacks Variable Scope Problem by Itay Grudev
 - [Read the guide](http://tutorials.pluralsight.com/review/javascript-callbacks-variable-scope-problem)
 - [Read more from Itay Grudev](http://tutorials.pluralsight.com/user/itay-grudev) <img src="https://avatars.githubusercontent.com/u/2123767?v=3" width="30" height="30" alt="Itay Grudev" />
@@ -51,11 +50,13 @@
 - [Read the guide](http://tutorials.pluralsight.com/review/text-editors-for-beginners-15-ways-to-rule-the-world)
 - [Read more from Shannon Duncan](http://tutorials.pluralsight.com/user/shadowcodex) <img src="https://avatars.githubusercontent.com/u/1348053?v=3" width="30" height="30" alt="Shannon Duncan" />
 - Related to: Software Engineering Best Practices
+- [Thumbnail](http://i.imgur.com/25WdQhS.png)
 
 ### How to analyze employee data using SQL by Ben Sullins
 - [Read the guide](http://tutorials.pluralsight.com/review/how-to-analyze-employee-data-using-sql)
 - [Read more from Ben Sullins](http://tutorials.pluralsight.com/user/bsullins) <img src="https://avatars.githubusercontent.com/u/3732908?v=3" width="30" height="30" alt="Ben Sullins" />
 - Related to: SQL
+- [Thumbnail](http://i.imgur.com/JqhjXYv.png)
 
 ### A call for HackerNews Contributors by Prateek Gupta
 - [Read the guide](http://tutorials.pluralsight.com/review/a-call-for-hackernews-contributors)
@@ -65,11 +66,13 @@
 - [Read the guide](http://tutorials.pluralsight.com/review/how-to-create-a-calculator-application-with-ionic-framework-by-using-ionic-creator-for-ui)
 - [Read more from Nikola Breznjak](http://tutorials.pluralsight.com/user/Hitman666) <img src="https://avatars.githubusercontent.com/u/1001064?v=3&" width="30" height="30" alt="Nikola Breznjak" />
 - Related to: Android
+- [Thumbnail](http://i.imgur.com/xvMLDkQ.png)
 
 ### How to polish, create icons and splash screen images, add ads, share and test our calculator application by Nikola Breznjak
 - [Read the guide](http://tutorials.pluralsight.com/review/how-to-polish-create-icons-and-splash-screen-images-add-ads-share-and-test-our-calculator-application)
 - [Read more from Nikola Breznjak](http://tutorials.pluralsight.com/user/Hitman666) <img src="https://avatars.githubusercontent.com/u/1001064?v=3" width="30" height="30" alt="Nikola Breznjak" />
 - Related to: Android
+- [Thumbnail](http://i.imgur.com/xvMLDkQ.png)
 
 ### Ionic Framework: A definitive 10,000 word guide by Nikola Breznjak
 - [Read the guide](http://tutorials.pluralsight.com/review/ionic-framework-a-definitive-10-000-word-guide)
