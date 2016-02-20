@@ -13,6 +13,7 @@
 - [Read the guide](http://tutorials.pluralsight.com/review/angular-js-modules-and-providers)
 - [Read more from Matt Milner](http://tutorials.pluralsight.com/user/mnmilner) <img src="https://avatars3.githubusercontent.com/u/2028582?v=3" width="30" height="30" alt="Matt Milner" />
 - Related to: Front-End JavaScript (Angular, React, Meteor, etc)
+- [Thumbnail](http://i.imgur.com/MBjvJC1.png)
 
 ### Angular vs React : A Side-By-Side Comparison by Shannon Duncan
 - [Read the guide](http://tutorials.pluralsight.com/review/angular-vs-react-a-side-by-side-comparison)
@@ -24,16 +25,19 @@
 - [Read the guide](http://tutorials.pluralsight.com/review/angularjs-controllers)
 - [Read more from Matt Milner](http://tutorials.pluralsight.com/user/mnmilner) <img src="https://avatars3.githubusercontent.com/u/2028582?v=3" width="30" height="30" alt="Matt Milner" />
 - Related to: Front-End JavaScript (Angular, React, Meteor, etc)
+- [Thumbnail](http://i.imgur.com/dS0g0uX.png)
 
 ### Elasticsearch with Ruby on Rails by Itay Grudev
 - [Read the guide](http://tutorials.pluralsight.com/review/elasticsearch-with-ruby-on-rails)
 - [Read more from Itay Grudev](http://tutorials.pluralsight.com/user/itay-grudev) <img src="https://avatars.githubusercontent.com/u/2123767?v=3" width="30" height="30" alt="Itay Grudev" />
 - Related to: Ruby, Ruby on Rails
+- [Thumbnail](http://i.imgur.com/iAFGPY7.png)
 
 ### Everything You Need to Know About JSON by Carl Smith
 - [Read the guide](http://tutorials.pluralsight.com/review/everything-you-need-to-know-about-json)
 - [Read more from Carl Smith](http://tutorials.pluralsight.com/user/carlsmith) <img src="https://avatars.githubusercontent.com/u/7561668?v=3" width="30" height="30" alt="Carl Smith" />
 - Related to: Software Engineering Best Practices
+- [Thumbnail](http://i.imgur.com/hh8mO3c.png)
 
 ### How to create a calculator application with Ionic framework by using Ionic Creator for UI by Nikola Breznjak
 - [Read the guide](http://tutorials.pluralsight.com/review/how-to-create-a-calculator-application-with-ionic-framework-by-using-ionic-creator-for-ui)
@@ -49,6 +53,7 @@
 - [Read the guide](http://tutorials.pluralsight.com/review/ionic-framework-a-definitive-10-000-word-guide)
 - [Read more from Nikola Breznjak](http://tutorials.pluralsight.com/user/Hitman666) <img src="https://avatars.githubusercontent.com/u/1001064?v=3&" width="30" height="30" alt="Nikola Breznjak" />
 - Related to: Android
+- [Thumbnail](http://i.imgur.com/F0QUS8R.png)
 
 ### JavaScript Callbacks Variable Scope Problem by Itay Grudev
 - [Read the guide](http://tutorials.pluralsight.com/review/javascript-callbacks-variable-scope-problem)
@@ -59,6 +64,7 @@
 - [Read the guide](http://tutorials.pluralsight.com/review/quick-profiling-in-python)
 - [Read more from Luke Lee](http://tutorials.pluralsight.com/user/durden) <img src="https://avatars.githubusercontent.com/u/58063?v=3" width="30" height="30" alt="Luke Lee" />
 - Related to: Python
+- [Thumbnail](http://i.imgur.com/ZyyYaRI.png)
 
 ### Text Editors For Beginners - 15 Ways To Rule The World. by Shannon Duncan
 - [Read the guide](http://tutorials.pluralsight.com/review/text-editors-for-beginners-15-ways-to-rule-the-world)
@@ -74,8 +80,9 @@
 - [Read the guide](http://tutorials.pluralsight.com/review/welcome-to-pluralsight-tutorials)
 - [Read more from Prateek Gupta](http://tutorials.pluralsight.com/user/prtkgpt) <img src="https://avatars1.githubusercontent.com/u/2454349?v=3" width="30" height="30" alt="Prateek Gupta" />
 
-### How to analyze employee data using SQL by Ben Sullins
-- [Read the guide](/review/how-to-analyze-employee-data-using-sql)
-- [Read more from Ben Sullins](/user/bsullins) <img src="https://avatars.githubusercontent.com/u/3732908?v=3" width="30" height="30" alt="Ben Sullins" />
-- Related to: SQL
 
+
+### How to analyze employee data using SQL by Ben Sullins
+- [Read the guide](http://tutorials.pluralsight.com/review/how-to-analyze-employee-data-using-sql)
+- [Read more from Ben Sullins](http://tutorials.pluralsight.com/user/bsullins) <img src="https://avatars.githubusercontent.com/u/3732908?v=3" width="30" height="30" alt="Ben Sullins" />
+- Related to: SQL
