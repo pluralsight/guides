@@ -13,7 +13,7 @@ A community, movement, and website of full of developers with the [ambitious goa
 1. [Write your own guide](http://tutorials.pluralsight.com/write/).
 2. [Find a guide to review](http://tutorials.pluralsight.com/review) and help out the author by editing their work.
 3. [Fork our Github-powered CMS](https://github.com/pluralsight/guides-cms) and help us improve the experience of creating and consuming great techincal guides.
-4. [Fork this repository](https://github.com/pluralsight/tutorials#fork-destination-box) and send us a Pull Request with your edits.
+4. [Fork this repository](https://github.com/pluralsight/guides#fork-destination-box) and send us a Pull Request with your edits.
 5. Tell your friends!
 
 ### What's in it for you?
@@ -38,9 +38,9 @@ Got an idea for improving the article? Click the fork button in the top-right co
 
 #### Want to easily browse the guides?
 
-1. Click on the [published.md file](https://github.com/pluralsight/tutorials/blob/master/published.md) to see our published guides.
+1. Click on the [published.md file](https://github.com/pluralsight/guides/blob/master/published.md) to see our published guides.
     - Here you can find links to our top guides as well as links to read more from your favorite contributors.
-2. Click on the [unpublished.md file](https://github.com/pluralsight/tutorials/blob/master/unpublished.md) to search through the guides currently needing review.
+2. Click on the [unpublished.md file](https://github.com/pluralsight/guides/blob/master/unpublished.md) to search through the guides currently needing review.
 
 ## Creating a new guide the hacker way
 
