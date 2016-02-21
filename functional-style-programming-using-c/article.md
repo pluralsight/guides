@@ -992,8 +992,8 @@ We want to prove that `{\hbox{\em factorial}}(x)=x!`. So, naturally
 `{\hbox{\em factorial}}(x-1)` supposed to be `(x-1)!`. We will take this
 as the induction hypothesis.
 
-             deduction | reason
-  ------------|---------------------------------------------------------------- ------ ------------------------------
+             . | .
+  -------------|---------------------------------------------------------------- ------ ------------------------------
   `{\hbox{\em factorial}}(x-1) = (x-1)!` | …(1) by induction hypothesis
   `(x-1)! = (x-1) \times (x-2) \times \ldots \times 1` | expanded form
   so, `x \times (x-1)! = x \times (x-1) \times (x-2) \times \ldots \times 1` | multiplying both side by `x`
