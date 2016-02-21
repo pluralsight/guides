@@ -72,6 +72,211 @@ easy to write on notebook (paper) by pen or pencil. In this way, the
 learner could be familiarize with the relation of theoretical formula
 and the implemented program.
 
+Simple Programs
+============================================================================================================
+
+Some basic functions will be shown converted to programs in this section. First, we will see
+how to write programs for unary functions. Later, we will learn the same
+of binary and n-ary function.
+
+**Programs for Unary Arithmetic Function**
+------------------------------------------
+
+### Identity Function
+
+\[fig:func\]
+
+function `id(x) = x` can be converted into -
+
+```c
+    int id(int x){
+     return x;
+    }
+```
+
+### Successor Function
+
+   <span>**Operator**</span> | <span>**Name**</span>
+  --------------------------- -----------------------
+              $+$ | Addition
+              $-$ | Subtraction
+              $*$ | Multiplication
+              $/$ | Division
+             $\%$ | Reminder
+
+function `suc(x) = x + 1` can be converted into -
+
+```c
+    int suc(int x){
+        return x + 1;
+    }
+```
+
+### Twice Function
+
+function in arithmetic can be defined as – `twice(x) = 2x`
+
+It can be converted into a programming function as -
+```c
+    int twice(int x){
+     return 2 * x;
+    }
+```
+
+### Square Function
+
+function in arithmetic can be defined as – `square(x) = x^2`
+
+It can be converted into a programming function as -
+```c
+    int square(int x){
+     return x * x;
+    }
+```
+
+Here we present a pictorial representation of the above function
+<span>*square*</span> where the parameter `x` is mutiplied with itself
+to produce and return the result.
+
+### Polynomial Function
+
+function in arithmetic `poly_1(x) = x^2 + 1`
+
+can be converted into a programming function as -
+```c
+    int poly1(int x){
+     return x * x + 1;
+    }
+```
+
+function in arithmetic can be defined as – `poly2(x) = x^4 + x^2 + 1`
+
+It can be converted into a programming function as -
+```c
+    int poly2(int x){
+     return (x * x * x * x) + (x * x) + 1;
+    }
+```
+
+can be simplified by the following function –
+```
+\sum_{i=1}^ni = n(n+1)/2
+```
+
+It can be converted into a programming function as -
+```c
+    int sum(int n){
+     return n * (n + 1) / 2;
+    }
+```
+
+#### Exercise 
+
+Convert the arithmetic functions into
+programming function – 
+1. `f1(x) = x + 2$ $f2(x) = x^3$ $f3(x) = 2x^2 + 3`
+2. `f4(x) = 3x^3 + 4x^2 + 7$ $_1(m) = m(m+1)(2m+1)/6`
+3. `sumOfSquare_2(m) = m^3/3 + m^2/2 + m/6$ $_1(m) = (m(m+1)/2)^2`
+4. `sumOfSquare_2(m) = m^4/4+m^3/2+m^2/4`
+5. `(y) = y - 1` 
+6. `(z) = z / 2`
+
+**Programs for Binary Function**
+--------------------------------
+
+function, such as ‘add’ in arithmetic can be defined as –
+`add(x, y) = x + y`
+
+It can be converted into a programming function as -
+```c
+    int add(int x, int y){
+     return x + y;
+    }
+```
+
+function in arithmetic – `addSquare(x, y) = x^2 + 2xy + y^2`
+
+It can be converted into a programming function as -
+```c
+    int addSquare(int x, int y){
+     return (x * x) + (2 * x * y) + (y * y);
+    }
+```
+
+### Comparison
+
+Now we will solve a problem of determining the larger number between two
+numbers. In this case, we will construct a function that takes two
+parameters and it will return `1` if the first parameter is larger than
+the second parameter and `0` otherwise. For that we will introduce a new
+operator `>`.
+
+`a > b` is `1` or (<span>*`True`*</span> in meaning) if `a` is larger than
+`b`. Otherwise it is `0` (<span>*`False`*</span> in meaning). So, our
+function is – `isLarger(x, y) = x > y`
+
+The corresponding program is –
+
+   <span>**Operator**</span> | <span>**Name**</span>
+  --------------------------- --------------------------
+              $>$ | Greater than
+             $>=$ | Greater than or equal to
+              $<$ | Smaller than
+             $<=$ | Smaller than or equal to
+             $==$ | Equals to
+             $!=$ | Not equals to
+
+```c
+    int isLarger(int x, int y){
+     return x > y;
+    }
+```
+
+#### Exercise 
+
+Convert the arithmetic functions
+into programming function – 
+1. `sub(x,y) = x - y`
+2. `addOfSquare(x,y) = (x \times x) + (y \times y)`
+3. `subOfSquare(x,y) = (x \times x) - (y \times y)`
+4. `subOfSquare_1(x,y) = (x+y)(x-y)` 
+5. `g(a,b) = a + ab + b`
+
+Write functions in arithmetic and programming to – multiply two numbers.
+calculate average of two numbers. determine if the two given numbers are
+equal. determine if the two given numbers are not equal.
+
+**Programs for n-Ary Function**
+-------------------------------
+
+### 3-ary Function
+
+A ternary function takes three parameter. For example –
+`avgOfThree(x, y, z) = (x + y + z) / 3`
+
+It can be converted into a programming function as -
+```c
+    int avgOfThree(int x, int y, int z){
+     return (x + y + z) / 3;
+    }
+```
+
+### N-ary Function
+
+In a n-ary function, number of parameters is n. In this example, square of distance
+is an useful function to compare two distances.
+
+The squareOfDistane function
+`squareOfDistance(x_1, y_1, x_2, y_2) = (x_1-x_2)(x_1-x_2) + (y_1-y_2)(y_1-y_2)`
+
+can be converted into a programming function as -
+```c
+    int squareOfDistance(int x1, int y1, 
+                         int x2, int y2){
+     return (x1-x2)*(x1-x2) + (y1-y2)*(y1-y2);
+    }
+```
+
 Composition 
 ========================================================================================================
 
