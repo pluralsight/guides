@@ -1,6 +1,6 @@
 This placeholder guide will eventually be a Ruby on Rails verses Node.js guide.  Here are some assorted notes which will be assembled into a guide:
 
-<h1> Pros of Node.js: </h1>
+<h1> Pros of Node: </h1>
 
 - Can program in one language for both client-side pages and server
 
@@ -10,7 +10,7 @@ This placeholder guide will eventually be a Ruby on Rails verses Node.js guide. 
 
 - Code is going to be generally faster because everything must not be a blocking call (although savvy developers can simulate this in Ruby via EventMachine)
 
-<h1> Cons of Node.js: </h1>
+<h1> Cons of Node: </h1>
 
 - Lots of Rails-like frameworks available. The core team hasn't settled on one / the community hasn't fully rallied behind one yet
 
