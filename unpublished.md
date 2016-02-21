@@ -46,3 +46,8 @@
 - [Read more from Mahmudul FAISAL Al Ameen](http://tutorials.pluralsight.com/user/phaysaal) <img src="https://avatars.githubusercontent.com/u/12531542?v=3" width="30" height="30" alt="Mahmudul FAISAL Al Ameen" />
 - Related to: C/C++
 
+### How to create a calculator application with Ionic framework by using Ionic Creator for UI by Nikola Breznjak
+- [Read the guide](/review/how-to-create-a-calculator-application-with-ionic-framework-by-using-ionic-creator-for-ui)
+- [Read more from Nikola Breznjak](/user/Hitman666) <img src="https://avatars.githubusercontent.com/u/1001064?v=3&" width="30" height="30" alt="Nikola Breznjak" />
+- Related to: Android
+
