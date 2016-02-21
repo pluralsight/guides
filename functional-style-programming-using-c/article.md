@@ -993,12 +993,12 @@ We want to prove that `{\hbox{\em factorial}}(x)=x!`. So, naturally
 as the induction hypothesis.
 
              . | .
-  -------------|---------------------------------------------------------------- ------ ------------------------------
-  `{\hbox{\em factorial}}(x-1) = (x-1)!` | …(1) by induction hypothesis
-  `(x-1)! = (x-1) \times (x-2) \times \ldots \times 1` | expanded form
+  -------------|----------------------------------------------------------------
+  `factorial(x-1) = (x-1)!` | …(1) by induction hypothesis
+  `(x-1)! = (x-1) \times (x-2) \times ... \times 1` | expanded form
   so, `x \times (x-1)! = x \times (x-1) \times (x-2) \times \ldots \times 1` | multiplying both side by `x`
-  so, `x \times {\hbox{\em factorial}}(x-1) = x!` | from (1)
-  `\therefore {\hbox{\em factorial}}(x) = x!` | from the function
+  so, `x \times factorial(x-1) = x!` | from (1)
+  `\therefore factorial(x) = x!` | from the function
 
 
 **Fibonacci**
