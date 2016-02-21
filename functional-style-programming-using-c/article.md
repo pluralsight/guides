@@ -180,11 +180,17 @@ It can be converted into a programming function as -
 
 Convert the arithmetic functions into
 programming function – 
+
 1. `f1(x) = x + 2$ $f2(x) = x^3$ $f3(x) = 2x^2 + 3`
+
 2. `f4(x) = 3x^3 + 4x^2 + 7$ $_1(m) = m(m+1)(2m+1)/6`
+
 3. `sumOfSquare_2(m) = m^3/3 + m^2/2 + m/6$ $_1(m) = (m(m+1)/2)^2`
+
 4. `sumOfSquare_2(m) = m^4/4+m^3/2+m^2/4`
+
 5. `(y) = y - 1` 
+
 6. `(z) = z / 2`
 
 **Programs for Binary Function**
@@ -242,10 +248,15 @@ The corresponding program is –
 
 Convert the arithmetic functions
 into programming function – 
+
 1. `sub(x,y) = x - y`
+
 2. `addOfSquare(x,y) = (x \times x) + (y \times y)`
+
 3. `subOfSquare(x,y) = (x \times x) - (y \times y)`
+
 4. `subOfSquare_1(x,y) = (x+y)(x-y)` 
+
 5. `g(a,b) = a + ab + b`
 
 Write functions in arithmetic and programming to – multiply two numbers.
