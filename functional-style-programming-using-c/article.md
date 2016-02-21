@@ -30,13 +30,17 @@ How to Write Program
     C program, compile it and execute it without hassle. You can use
     other IDE too.
 
-- Give meaningfull name to functions and parameters.
+- Give meaningful name to functions and parameters.
 
-Introduction <span><span><span style="font-variant:small-caps;">— Good to read it —</span></span></span>
+Introduction _Good to read it_
 ========================================================================================================
 
-, we learned what is a mathematical function and how to write it. For
-example - $$f(x)=x^2$$ is a simple square function of arithmetic.
+From the elementary school, we learned what is a mathematical function and how to write it. For
+example - 
+```math
+f(x)=x^2
+``` 
+is a simple square function of arithmetic.
 
 A function describes a mathematical statement. The above function is
 basically a mapping between two sets of natural number as given at the
