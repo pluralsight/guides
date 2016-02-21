@@ -764,10 +764,10 @@ Hence, the code for the above function is –
   ----------------------|---------------------------
   int/long |                  `-2^{31}` to `2^{31} - 1`
   long long | `-2^{63}` to `2^{63} - 1`
-  float |                            1.2E-38 to 3.4E+38
-  double | 2.3E-308 to 1.7E+308
-  long double | 3.4E-4932 to 1.1E+4932
-  char |                                    -128 to 127
+  float |     `1.2E-38` to `3.4E+38`
+  double | `2.3E-308` to `1.7E+308`
+  long double | `3.4E-4932` to `1.1E+4932`
+  char |     `-128` to `127`
 
 Note: `2^{31}=2,147,483,648` and `2^{63}=9,223,372,036,854,775,808`
 
@@ -867,45 +867,44 @@ driving parameter(s).
 1. Base cases part  
 
     Need to determine the value of the function for the base case(s) of
-    the driving parameter(s). For example, `{\hbox{\em exp}}(n,x)=1`
+    the driving parameter(s). For example, `exp(n,x)=1`
     when `x=0`.
 
 2. Recursion part  
 
    The function itself will be appeared with smaller (typically
         1 step) value or size of the driving parameter(s). For example,
-        `{\hbox{\em exp}}(x-1)`. This is called induction
+        `exp(x-1)`. This is called induction
         hypothesis (HI).
 
     - The induction hypothesis often needs to be computed with
         something else to be equal to the original definition. For
-        example, `{\hbox{\em exp}}(x)=x \times {\hbox{\em exp}}(x-1)`.
+        example, `exp(x)=x \times exp(x-1)`.
 
     - Other parameters remain the same in recursion call inside
         the body.
 
 If we follow the above steps, it will help us to construct recursive
-defintion. We will explore some examples soon. In some examples, we will
+definition. We will explore some examples soon. In some examples, we will
 see how the function is constructed from the above tips. We will also
 see whether definition is correct.
 
 **Exponential**
 ---------------
 
-We will define `(x,k)`. Here `x` is the base and `k` is the power. So,
+We will define `exp(x,k)`. Here `x` is the base and `k` is the power. So,
 `k` is the driving parameter. Now we know the base case when `k=0` -
-`(x,0)=1`. Next, we will have to construct the recursion part. First, we
-know that the expression `(x,k-1)` exists in this part because the 1
+`exp(x,0) = 1`. Next, we will have to construct the recursion part. First, we
+know that the expression `exp(x,k-1)` exists in this part because the 1
 step smaller value of `k` is `k-1`. `x` will remain same. Now it is
-necessary to multiply it to `x` to be equal to `(x,k)`. Therefore, the
-full expression becomes `(x,k) = x \times ``` (x,k-1)`. Now together the
+necessary to multiply it to `x` to be equal to `exp(x,k)`. Therefore, the
+full expression becomes `exp(x,k) = x \times exp(x,k-1)`. Now together the
 function is looks like –
 
 ``` 
-{\hbox{\em exp}}(x,k)=\begin{dcases*}
-        1 & when `k=0`\\
-        x \times {\hbox{\em exp}}(x,k-1) & otherwise
-        \end{dcases*}
+exp(x,k) =
+        1, when `k=0`
+        x \times exp(x,k-1), otherwise
 ``` 
 
 Obviously, the code for the above function is –
@@ -925,45 +924,44 @@ can prove it by using induction on `k`.
 
 Case 1. `k=0`.
 
-                 |
-  ---------------|-------------- ------ -------------------
+               . | .
+  ---------------|--------------
   `exp(x,0) = 1 ` |…(1) from the function
   `x^0=1` |                         …(2) naturally
   `\therefore exp(x,0) = x^0` | from (1) and (2)
-  ----------------------------- ------ -------------------
+
 
 Case 2. `k \neq 0`.
 
 We want to prove that `exp(x,k)=x^k`. So, naturally `exp(x,k-1)`
 supposed to be `x^{k-1}`. We will take this as the induction hypothesis.
 
-                    |
-  ------------------|------------------ ------ -------------------------
+                  . | .
+  ------------------|------------------
   `exp(x,k-1) = x^{k-1}` | …(1) by induction hypothesis
   so, `x \times x^{k-1} = x^{k-1+1}` | we know from arithmatic
   so, `x \times x^{k-1} = x^k` | `k-1+1=k`
   so, `x \times exp(x,k-1) = x^k` | from (1)
   `\therefore exp(x,k) = x^k` | from the function
-  ------------------------------------ ------ -------------------------
+
 
 **Factorial**
 -------------
 
 Factorial is another arithmetic function that is informally,
-`x! = x \times (x-1) \times \ldots \times 1` . We can define it
+`x! = x \times (x-1) \times ... \times 1` . We can define it
 recursively. First, it has the only parameter, `x`. We know that `x` can
-be at least `0` and `{\hbox{\em factorial}}(0)=1`. This is our base
+be at least `0` and `factorial(0)=1`. This is our base
 part. Now in the recursion part it must contain
-`{\hbox{\em factorial}}(x-1)`. Finally, we can multiply it with `x` to
-make it equal to `{\hbox{\em factorial}}(x)`. See the proof later for a
+`factorial(x-1)`. Finally, we can multiply it with `x` to
+make it equal to `factorial(x)`. See the proof later for a
 better understanding.
 
 Now our function looks like –
 ``` 
-{\hbox{\em factorial}}(x)=\begin{dcases*}
-        1 & when `x=0`\\
-        x \times {\hbox{\em factorial}}(x-1) & otherwise
-        \end{dcases*}
+factorial(x)=
+        1 , when `x=0`
+        x \times factorial(x-1), otherwise
 ``` 
 
 Obviously, the code for the above function is –
@@ -978,18 +976,18 @@ Obviously, the code for the above function is –
 
 <span>**Proof of correctness**</span>
 
-Let us see whether the above function, `{\hbox{\em factorial}}(x)` is
+Let us see whether the above function, `factorial(x)` is
 really `x!`. We can prove it by using induction on `x`.
 
 Case 1. `x=0`.
 
-  `{\hbox{\em factorial}}(0) = 1 ` by definition, 0! = 1
+  `factorial(0) = 1 ` by definition, 0! = 1
   ---------------------------------- -- -----------------------
 
 Case 2. `x \neq 0`.
 
-We want to prove that `{\hbox{\em factorial}}(x)=x!`. So, naturally
-`{\hbox{\em factorial}}(x-1)` supposed to be `(x-1)!`. We will take this
+We want to prove that `factorial(x)=x!`. So, naturally
+`factorial(x-1)` supposed to be `(x-1)!`. We will take this
 as the induction hypothesis.
 
              . | .
