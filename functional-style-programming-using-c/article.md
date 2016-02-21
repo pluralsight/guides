@@ -1,25 +1,4 @@
----
-author:
-- 'Faisal Al Ameen, Mahmudul'
-title: F Style Programming
-...
-
-\
-
-\
-
-  Copyright ©  
-
-This book has been typeset using LaTeX and “tufte-book” package.
-
-*For personal use and still under (slow) authoring,*
-
- 
-
-*Dedicated to those who appreciate mathematical approach to solve
-computer problems and interested in beautiful programming.*
-
-Study Instruction {#study-instruction .unnumbered}
+Study Instruction {#study-instruction}
 =================
 
 How to Read This Book
@@ -159,6 +138,7 @@ $$squareOfDistance_1(x_1,y_1,x_2,y_2)=square(x_1-x_2)+square(y_1-y_2)$$
 
 Let us write it in programming language.
 
+```c
     int square(int x){
             return x * x;
     }
@@ -166,6 +146,7 @@ Let us write it in programming language.
                           int x2, int y2){
      return square(x1-x2) + square(y1-y2);
     }
+```
 
 Here we present a pictorial representation of the above function
 <span>*squareOfDistance1*</span>.
@@ -962,7 +943,7 @@ the square root of $n$ is not a natural number, the smallest larger
 value ($\sqrt{n}+1$) will be accepted as an approximation. For each test
 fails, the next natural number will be tested similarly.
 
-The logic behind the condition <span>square(k) &gt;= n</span> is that
+The logic behind the condition <span>square(k) >= n</span> is that
 $\sqrt{n}=k$ if and only if $k^2=n$ and $\sqrt n+1=k+1$ and then
 $(k+1)^2 > n$. Since the value of <span>k</span> is increasing from
 <span>0</span> one by one, either $\sqrt n $ of $\sqrt n+1$ will be
