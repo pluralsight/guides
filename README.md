@@ -14,7 +14,8 @@ A community, movement, and website of full of developers with the [ambitious goa
 2. [Find a guide to review](http://tutorials.pluralsight.com/review) and help out the author by editing their work.
 3. [Fork our Github-powered CMS](https://github.com/pluralsight/guides-cms) and help us improve the experience of creating and consuming great techincal guides.
 4. Fork this repository using the fork button above and send us a Pull Request with your edits.
-5. Tell your friends!
+5. [Join our slack community](https://hackguides.slack.com/)
+6. Tell your friends!
 
 ### What's in it for you?
 
