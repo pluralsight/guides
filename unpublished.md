@@ -41,12 +41,12 @@
 - [Read more from Ed Roman](http://tutorials.pluralsight.com/user/edroman) <img src="https://avatars.githubusercontent.com/u/1248205?v=3" width="30" height="30" alt="Ed Roman" />
 - Related to: Node.js
 
+
+
 ### Functional Style Programming using C by Mahmudul FAISAL Al Ameen
 - [Read the guide](http://tutorials.pluralsight.com/review/functional-style-programming-using-c)
 - [Read more from Mahmudul FAISAL Al Ameen](http://tutorials.pluralsight.com/user/phaysaal) <img src="https://avatars.githubusercontent.com/u/12531542?v=3" width="30" height="30" alt="Mahmudul FAISAL Al Ameen" />
 - Related to: C/C++
-
-
 
 ### How to create a calculator application with Ionic framework by using Ionic Creator for UI by Nikola Breznjak
 - [Read the guide](/review/how-to-create-a-calculator-application-with-ionic-framework-by-using-ionic-creator-for-ui)
