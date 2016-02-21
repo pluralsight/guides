@@ -148,7 +148,7 @@ Let us write it in programming language.
     }
     int squareOfDistance1(int x1, int y1, 
                           int x2, int y2){
-     return square(x1-x2) + square(y1-y2);
+            return square(x1-x2) + square(y1-y2);
     }
 ```
 
@@ -198,9 +198,12 @@ chapter in new form using composition.
 The old function was defined as – $$Poly2(x) = x^4 + x^2 + 1$$
 
 Now we will re-define it as $Poly2_1$ using the function $square$.
-$$square(x) = x \times x$$
-$$Poly2_1(x) = square(square(x)) + square(x) + 1$$
+```math
+square(x) = x \times x
+Poly2_1(x) = square(square(x)) + square(x) + 1
+```
 
+```c
 In programming, we can write it as –
 
     int square(int x){
@@ -210,17 +213,21 @@ In programming, we can write it as –
     int poly21(int x){
             return square(square(x)) + square(x) + 1;
     }
+```
 
 ### The Function sumOfQube
 
-The old function was defined as – $$sumOfQube_1(x) = (x(x+1)/2)^2$$
+The old function was defined as – 
+```math
+sumOfQube_1(x) = (x(x+1)/2)^2
+```
 
 Now we will re-define it as $sumOfQube$ using the function $square$ and
 $sum$. $$square(x) = x \times x$$ $$sum(x) = (square(x) + x) / 2$$
 $$sumOfQube(x) = square(sum(x))$$
 
 In programming, we can write it as –
-
+```c
     int square(int x){
             return x * x;
     }
@@ -232,6 +239,7 @@ In programming, we can write it as –
     int sumOfSquare(int x){
             return square(sum(x));
     }
+```
 
 Prove that – $x^3 = x \times square(x)$
 $x^8 = square(square(square(x)))$ Simplify them by composing other
