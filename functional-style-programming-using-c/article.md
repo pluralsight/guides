@@ -1,38 +1,4 @@
-Study Instruction {#study-instruction}
-=================
-
-How to Read This Book
----------------------
-
-- Several times a single function will be written using subscript. If
-    the name of the function has an intuitive meaning, we should assume
-    that the functions with same names and different subscripts are the
-    same in meaning but different in definition.
-
-- The line number (at the left of a code) is only for reference. Never
-    write it in actual coding.
-
-- In most mathemetical textbook, a function is named $f$, $g$, etc.
-    (e.g. $f(x) = x^2$). Here most times we will name a function
-    according to its meaning (e.g. $square(x) = x^2$).
-
-- Since it is impossible to write subscript in coding (programming),
-    it is converted into normal text especially when it is a part
-    of name.
-
-- Colors in the code indicates different types of texts used
-    in programming.
-
-How to Write Program
---------------------
-
-- Use <span>*Code::Blocks IDE*</span>, a free tool where you can write
-    C program, compile it and execute it without hassle. You can use
-    other IDE too.
-
-- Give meaningful name to functions and parameters.
-
-Introduction _Good to read it_
+Introduction
 ========================================================================================================
 
 From the elementary school, we learned what is a mathematical function and how to write it. For
@@ -51,7 +17,7 @@ writing the inherent relation between the sets.
 
 \[fig:func1\]
 
-This is perhaps the simplest way when we deal with sets of numerics
+This is perhaps the simplest way when we deal with sets of numeric
 (integer, natural number, real numbers, complex numbers, etc.).
 
 We can also think of a function as a system/machine which has some
