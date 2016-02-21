@@ -1,3 +1,9 @@
+> LEARNING PROGRAMMING AND LEARNING PROGRAMMING LANGUAGE ARE
+NOT THE SAME. MOST OF OUR TEXT BOOKS TEACH US PROGRAMMING LANGUAGE. 
+IN FACT, A PROGRAMMING LANGUAGE IS JUST A TOOL TO IMPLEMENT A PROGRAM THAT CAN BE EXECUTED ON THE COMPUTER. WE NEED
+A GOOD BOOK THAT TEACHES US HOW TO SOLVE PROBLEMS USING A PROGRAMMING LANGUAGE.
+
+
 Introduction
 ========================================================================================================
 #### Good to read it
@@ -98,11 +104,11 @@ function `id(x) = x` can be converted into -
 
    <span>**Operator**</span> | <span>**Name**</span>
   ---------------------------|-----------------------
-              $+$ | Addition
-              $-$ | Subtraction
-              $*$ | Multiplication
-              $/$ | Division
-             $\%$ | Reminder
+              `+` | Addition
+              `-` | Subtraction
+              `*` | Multiplication
+              `/` | Division
+              `%` | Reminder
 
 function `suc(x) = x + 1` can be converted into -
 
@@ -219,12 +225,12 @@ The corresponding program is –
 
    <span>**Operator**</span> | <span>**Name**</span>
   ---------------------------|--------------------------
-              $>$ | Greater than
-             $>=$ | Greater than or equal to
-              $<$ | Smaller than
-             $<=$ | Smaller than or equal to
-             $==$ | Equals to
-             $!=$ | Not equals to
+              `>` | Greater than
+             `>=` | Greater than or equal to
+              `<` | Smaller than
+             `<=` | Smaller than or equal to
+             `==` | Equals to
+             `!=` | Not equals to
 
 ```c
     int isLarger(int x, int y){
