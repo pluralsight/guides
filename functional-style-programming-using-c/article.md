@@ -97,7 +97,7 @@ function `id(x) = x` can be converted into -
 ### Successor Function
 
    <span>**Operator**</span> | <span>**Name**</span>
-  --------------------------- -----------------------
+  ---------------------------|-----------------------
               $+$ | Addition
               $-$ | Subtraction
               $*$ | Multiplication
@@ -218,7 +218,7 @@ function is – `isLarger(x, y) = x > y`
 The corresponding program is –
 
    <span>**Operator**</span> | <span>**Name**</span>
-  --------------------------- --------------------------
+  ---------------------------|--------------------------
               $>$ | Greater than
              $>=$ | Greater than or equal to
               $<$ | Smaller than
