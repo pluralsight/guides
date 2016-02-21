@@ -27,14 +27,6 @@ also important. A function often (not always) has a name so that we can
 identify it uniquely. Typically a function is deterministic, means that
 it can produce only a single output from an unique set of inputs.
 
-(n1) <span>$in_1$</span>; (n2) \[below=of n1,yshift=7mm\] ; (n3)
-\[below=of n2,yshift=7mm\] <span>$in_2$</span>; (p) \[minimum
-height=3cm,right=of n2, text width=4cm,text centered\] <span> <span>Let
-$x$ be $in_1 / in_2$\
-Let $y$ be $x \times in_2$\
-Let $out$ be $in_1 - y$</span></span>; ; (m) \[right=of p\]
-<span>$out$</span>; ; ; ; (n1) – (p); (n3) – (p); (p) – (m);
-
 **Philosophical Background**
 ----------------------------
 
@@ -44,8 +36,7 @@ domains.
 One philosophical foundation of computer programming was to represent or
 express all kinds of mathematical problems by a single language and
 solve them using a generalized mathematics. The result was two
-equivalent systems - <span><span> **Turing machine**</span></span> and
-<span><span> **lambda calculus**</span></span>.
+equivalent systems - **Turing machine** and **lambda calculus**.
 
 Turing machine influenced imperative programming paradigm such as that
 of <span><span> *Assembly*</span></span>, <span><span>
@@ -83,28 +74,19 @@ easy to write on notebook (paper) by pen or pencil. In this way, the
 learner could be familiarize with the relation of theoretical formula
 and the implemented program.
 
-Composition <span><span><span style="font-variant:small-caps;">— Add the programs —</span></span></span>
+Composition
 ========================================================================================================
 
 **Square of Distance**
 ----------------------
 
-(x1) <span>$x_1$</span>; (y1) \[right=of x1,xx\] <span>$y_1$</span>;
-(x2) \[right=of y1,xx\] <span>$x_2$</span>; (y2) \[right=of x2,xx\]
-<span>$y_2$</span>; (sub1) \[below=of x1,yy,xshift=7mm\]
-<span>$-$</span>; (sub2) \[below=of x2,yy,xshift=7mm\] <span>$-$</span>;
-(sq1) \[below=of sub1,yy\] <span>$square$</span>; (sq2) \[below=of
-sub2,yy\] <span>$square$</span>; (plus) \[below=of sq1,yy,xshift=14mm\]
-<span>$+$</span>; (eq) \[below=of plus,yy\] <span>$=$</span>; (poly)
-\[below=of eq,yy\] <span>$squareOfDistance_1(x)$</span>; (x1) – (sub1);
-(x2) – (sub1); (y1) – (sub2); (y2) – (sub2); (sub1) – (sq1); (sub2) –
-(sq2); (sq1) – (plus); (sq2) – (plus); (plus) – (eq); (poly) – (eq);
-
 A function can be composed using other functions. It often simplifies
-the expression. For example, the function, $squareOfDistance$ can be
+the expression. For example, the function, `squareOfDistance` can be
 simplified if we use the function $square$. It is shown here –
-$$square(x) = x \times x$$
-$$squareOfDistance_1(x_1,y_1,x_2,y_2)=square(x_1-x_2)+square(y_1-y_2)$$
+```math
+square(x) = x \times x
+squareOfDistance_1(x_1,y_1,x_2,y_2)=square(x_1-x_2)+square(y_1-y_2)
+```
 
 Let us write it in programming language.
 
@@ -118,37 +100,6 @@ Let us write it in programming language.
     }
 ```
 
-Here we present a pictorial representation of the above function
-<span>*squareOfDistance1*</span>.
-
-\(b) at (0,0) ; (xa) at (1.45,.70) <span>$x$</span>; at (-1.5,.75)
-<span>*square*</span>; (dr) at (0,0) <span>$*$</span>; (xa.south) |-
-(dr); (xa.west) -| (dr); (dr.south) – (0,-1);
-
-\(b) at (5,0) ; (xb) at (6.45,.70) <span>$x$</span>; at (3.5,.75)
-<span>*square*</span>; (dr) at (5,0) <span>$*$</span>; (xb.south) |-
-(dr); (xb.west) -| (dr); (dr.south) – (5,-1);
-
-\(b) at (2.5,3) ; (y2) at (4.95,3.70) <span>$y_2$</span>; (x2) at
-(3.9,3.70) <span>$x_2$</span>; (y1) at (2.85,3.70) <span>$y_1$</span>;
-(x1) at (1.8,3.70) <span>$x_1$</span>; (plus) at (2.5,2.75)
-<span>$+$</span>; (minus1) \[left=of plus\] <span>$-$</span>; (minus2)
-\[right=of plus\] <span>$-$</span>; (x1.west) -| (minus1); (x2.south) –
-++(0,-.2) – ++(-2.5,0) |- (minus1); (y1.south) – ++(0,-.1) – ++(.75,0)
-|- (minus2); (y2.south) |- (minus2); (minus1) – ++(0,-.75); (minus2) –
-++(0,-.75); at (0,4.2) <span>*squareOfDistance1*</span>;
-
-(1.45,.95) – ++(0,.4) – ++(-.67,0) – ++(0,.67); (6.45,.95) – ++(0,.4) –
-++(-2.23,0) – ++(0,.67);
-
-(0,-1) – node\[xshift=7mm\]<span>return</span> ++(0,-.5) –
-node\[yshift=-2mm\]<span>$x*x$</span> ++(-2.5,0) – ++(0,3.1) – ++(4.2,0)
-|- (plus); (5,-1) – node\[xshift=7mm\]<span>return</span> ++(0,-.5) –
-node\[yshift=-2mm\]<span>$x*x$</span> ++(-2.5,0) – ++(0,3) – (plus);
-(plus.east) – ++(.3,0) – ++(0,-1.1) – ++(3,0) – ++(0,3); (x1.north) –
-++(0,.7); (y1.north) – ++(0,.7); (x2.north) – ++(0,.7); (y2.north) –
-++(0,.7);
-
 Here we can see that the function <span>*squareOfDistance1*</span> is
 using two copies of the function <span>*square*</span>. It is very
 important to understand.
@@ -159,7 +110,7 @@ important to understand.
 In this section, we will show some functions presented in previous
 chapter in new form using composition.
 
-### The Function $Poly2$
+### The Function `Poly2`
 
 The old function was defined as – $$Poly2(x) = x^4 + x^2 + 1$$
 
