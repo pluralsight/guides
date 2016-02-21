@@ -992,7 +992,7 @@ We want to prove that `{\hbox{\em factorial}}(x)=x!`. So, naturally
 `{\hbox{\em factorial}}(x-1)` supposed to be `(x-1)!`. We will take this
 as the induction hypothesis.
 
-              |
+             deduction | reason
   ------------|---------------------------------------------------------------- ------ ------------------------------
   `{\hbox{\em factorial}}(x-1) = (x-1)!` | …(1) by induction hypothesis
   `(x-1)! = (x-1) \times (x-2) \times \ldots \times 1` | expanded form
@@ -1137,7 +1137,7 @@ the square root of `n` is not a natural number, the smallest larger
 value (`\sqrt{n}+1`) will be accepted as an approximation. For each test
 fails, the next natural number will be tested similarly.
 
-The logic behind the condition <span>square(k) &gt;= n</span> is that
+The logic behind the condition <span>square(k) >= n</span> is that
 `\sqrt{n}=k` if and only if `k^2=n` and `\sqrt n+1=k+1` and then
 `(k+1)^2 > n`. Since the value of <span>k</span> is increasing from
 <span>0</span> one by one, either `\sqrt n ` of `\sqrt n+1` will be
