@@ -12,6 +12,8 @@
 - [Read the guide](http://tutorials.pluralsight.com/review/how-to-migrate-a-virtual-machine-from-virtualbox-4-x-to-vmware-workstation-9-x-or-10)
 - [Read more from Erick Rodriguez](http://tutorials.pluralsight.com/user/tbogard) <img src="https://avatars.githubusercontent.com/u/1978642?v=3" width="30" height="30" alt="Erick Rodriguez" />
 
+
+
 ### Python iteration and the for loop by perkolasoft
 - [Read the guide](http://tutorials.pluralsight.com/review/python-iteration-and-the-for-loop)
 - [Read more from perkolasoft](http://tutorials.pluralsight.com/user/perkolasoft)
@@ -95,4 +97,3 @@
 - [Read the guide](http://tutorials.pluralsight.com/review/running-shell-commands-with-flask)
 - [Read more from Red Moses](http://tutorials.pluralsight.com/user/redmoses) <img src="https://avatars.githubusercontent.com/u/4059490?v=3" width="30" height="30" alt="Red Moses" />
 - Related to: Python
-
