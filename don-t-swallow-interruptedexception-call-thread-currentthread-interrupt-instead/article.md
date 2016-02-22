@@ -45,4 +45,6 @@ Or read Java Concurrency in Practice By BriaBrian Goetz, Tim Peierls, Joshua Blo
 
 **If you don't know what to do with an `InterruptedException` call `Thread.currentThread().interrupt()`**
 
-(This is based on my blog entry [Don't swallow InterruptedException. Call Thread.currentThread().interrupt() instead.](http://michaelscharf.blogspot.de/2006/09/dont-swallow-interruptedexception-call.html))
+####Note
+
+This is based on my blog entry I have written 10 years ago ["Don't swallow InterruptedException. Call Thread.currentThread().interrupt() instead."](http://michaelscharf.blogspot.de/2006/09/dont-swallow-interruptedexception-call.html)
