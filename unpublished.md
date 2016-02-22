@@ -64,4 +64,5 @@
 ### Don't swallow InterruptedException. Call Thread.currentThread().interrupt() instead. by Michael Scharf (Github)
 - [Read the guide](http://tutorials.pluralsight.com/review/don-t-swallow-interruptedexception-call-thread-currentthread-interrupt-instead)
 - [Read more from Michael Scharf (Github)](http://tutorials.pluralsight.com/user/scharf) <img src="https://avatars.githubusercontent.com/u/3731059?v=3" width="30" height="30" alt="Michael Scharf (Github)" />
+- Related to: Java and J2EE
 
