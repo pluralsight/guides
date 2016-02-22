@@ -8,7 +8,7 @@ Think of this as a "Wikipedia" for technical guides and tutorials.
 - Once a guide is created, it becomes stale and out of date. If the author doesn’t maintain their content, then it becomes less useful.
 - There isn’t a strong way for developers to improve their content through peer review.  Wordpress isn't great for that.
 - Guides currently exist in silos.  They live on individual blogs, and are fragmented and varying in quality.  Those guides don't typically reach a wide audience since individual blogs have limited reach.
-- Tutorials are largely in English and do not translate quickly/easily into other languages since code isn’t easily auto-translated.  Other countries don’t have easy access to learning.
+- Programming guides are largely in English and do not translate quickly/easily into other languages since code isn’t easily auto-translated.  Other countries don’t have easy access to learning.
 
 ### How we’re solving these problems together
 
@@ -52,6 +52,19 @@ Tutorials/articles ideally range from 1500-3000 words, including `code blocks`, 
 
 ### Can you help me edit/revise the article?
 Yes! That's why we've built the editing tools on this site. It's easy to share a link to your article on social media and crowdsource expert-level editors for your topics. You'll be able to see suggestions from the community and accept the changes you want. Our editors can help improve it too.
+
+### Can I hang out with you on your Slack?
+
+Absolutely!  We want as much feedback as possible.
+
+### How else can I help?
+
+* Volunteer to be an editor to help others improve content
+* Make some engine contributions to the open-source engine for the site
+* Spread the word about the site on twitter, facebook, HackerNews, etc.
+* Volunteer to be a translator to help us bring content to other spoken languages
+
+Please reach out to Prateek (prateek-gupta@pluralsight.com) if you want to chat about any of this, or ping us on our Slack!
 
 ### How do I know if my tutorial idea is any good?
 One easy thing you can do is to check-out what else is out their for this particular subject. Try doing a quick search now for some topics that interest you. Other articles are generally OK so long as there is enough unique/useful content that sets your article apart. Are there ideas you can talk about in your proposed article that hasn't already been written? Enough interesting unique contributions that can be added that moves the world's knowledge forward? Those are some things to think about.
