@@ -31,8 +31,6 @@
 - [Read more from Aki](http://tutorials.pluralsight.com/user/multiaki) <img src="https://avatars.githubusercontent.com/u/831569?v=3" width="30" height="30" alt="Aki" />
 - Related to: PHP
 
-
-
 ### Ruby on Rails verses Node.js guide by Ed Roman
 - [Read the guide](http://tutorials.pluralsight.com/review/ruby-on-rails-verses-node-js-guide)
 - [Read more from Ed Roman](http://tutorials.pluralsight.com/user/edroman) <img src="https://avatars.githubusercontent.com/u/1248205?v=3" width="30" height="30" alt="Ed Roman" />
@@ -97,6 +95,8 @@
 - [Read the guide](http://tutorials.pluralsight.com/review/running-shell-commands-with-flask)
 - [Read more from Red Moses](http://tutorials.pluralsight.com/user/redmoses) <img src="https://avatars.githubusercontent.com/u/4059490?v=3" width="30" height="30" alt="Red Moses" />
 - Related to: Python
+
+
 
 ### Should Laravel get it's own stack category? by JΛSΞ
 - [Read the guide](http://tutorials.pluralsight.com/review/should-laravel-get-it-s-own-stack-category)
