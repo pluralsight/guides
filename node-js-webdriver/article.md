@@ -9,9 +9,36 @@ We will be using the selenium-webdriver and node filesystem modules in this guid
 //Add inclusion of Chrome, Safari, and IE
 
 ## Create a Driver
+```
+function GetDriver(name)
+{
+    switch(name){
+        case "FireFox":
+            return new webdriver.Builder().forBrowser('firefox').build();
+        case "Chrome":
+            return new webdriver.Builder().withCapabilities(webdriver.Capabilities.chrome()).build();
+    }
+}
+```
 
 ## Write a Test
+function test(name,fileName) {
+    return new Promise(function(resolve) {
+        var driver = GetDriver(name);
+        //add testing
+    }
+}
 
 ## Take a Picture
+```
+function TakePicture(driver,fileName,driverName){
+    driver.takeScreenshot().then(function(data){
+        var base64Data = data.replace(/^data:image\/png;base64,/,"");
+        fs.writeFile(driverName + " : " + fileName+".png", base64Data, 'base64', function(err) {
+            if(err) console.log(err);
+        });
+    });
+}
+```
 
 ## Put it Together
