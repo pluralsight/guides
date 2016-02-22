@@ -12,8 +12,6 @@
 - [Read the guide](http://tutorials.pluralsight.com/review/how-to-migrate-a-virtual-machine-from-virtualbox-4-x-to-vmware-workstation-9-x-or-10)
 - [Read more from Erick Rodriguez](http://tutorials.pluralsight.com/user/tbogard) <img src="https://avatars.githubusercontent.com/u/1978642?v=3" width="30" height="30" alt="Erick Rodriguez" />
 
-
-
 ### Python iteration and the for loop by perkolasoft
 - [Read the guide](http://tutorials.pluralsight.com/review/python-iteration-and-the-for-loop)
 - [Read more from perkolasoft](http://tutorials.pluralsight.com/user/perkolasoft)
@@ -67,6 +65,8 @@
 - [Read the guide](http://tutorials.pluralsight.com/review/don-t-swallow-interruptedexception-call-thread-currentthread-interrupt-instead)
 - [Read more from Michael Scharf (Github)](http://tutorials.pluralsight.com/user/scharf) <img src="https://avatars.githubusercontent.com/u/3731059?v=3" width="30" height="30" alt="Michael Scharf (Github)" />
 - Related to: Java and J2EE
+
+
 
 ### Response Streams with Rails 4 and Redis by Adam Fortuna
 - [Read the guide](http://tutorials.pluralsight.com/review/response-streams-with-rails-4-and-redis)
