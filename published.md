@@ -53,6 +53,3 @@
 - [Read the guide](http://tutorials.pluralsight.com/review/quick-profiling-in-python)
 - [Read more from Luke Lee](http://tutorials.pluralsight.com/user/durden) <img src="https://avatars.githubusercontent.com/u/58063?v=3" width="30" height="30" alt="Luke Lee" />
 - Related to: Python
-### Welcome to Pluralsight Tutorials by Prateek Gupta
-- [Read the guide](http://tutorials.pluralsight.com/review/welcome-to-pluralsight-tutorials)
-- [Read more from Prateek Gupta](http://tutorials.pluralsight.com/user/prtkgpt) <img src="https://avatars1.githubusercontent.com/u/2454349?v=3" width="30" height="30" alt="Prateek Gupta" />
