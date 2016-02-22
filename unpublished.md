@@ -66,6 +66,8 @@
 - [Read more from Michael Scharf (Github)](http://tutorials.pluralsight.com/user/scharf) <img src="https://avatars.githubusercontent.com/u/3731059?v=3" width="30" height="30" alt="Michael Scharf (Github)" />
 - Related to: Java and J2EE
 
+
+
 ### Response Streams with Rails 4 and Redis by Adam Fortuna
 - [Read the guide](http://tutorials.pluralsight.com/review/response-streams-with-rails-4-and-redis)
 - [Read more from Adam Fortuna](http://tutorials.pluralsight.com/user/adamfortuna) <img src="https://avatars.githubusercontent.com/u/7741?v=3" width="30" height="30" alt="Adam Fortuna" />
@@ -100,4 +102,3 @@
 - [Read the guide](http://tutorials.pluralsight.com/review/should-laravel-get-it-s-own-stack-category)
 - [Read more from JΛSΞ](http://tutorials.pluralsight.com/user/JaseMiller) <img src="https://avatars.githubusercontent.com/u/9310558?v=3" width="30" height="30" alt="JΛSΞ" />
 - Related to: PHP
-
