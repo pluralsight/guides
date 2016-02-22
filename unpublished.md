@@ -121,3 +121,8 @@
 - [Read more from Fredy Guibert](http://tutorials.pluralsight.com/user/fredyfx) <img src="https://avatars.githubusercontent.com/u/4960023?v=3" width="30" height="30" alt="Fredy Guibert" />
 - Related to: Microsoft.NET (C#, ASP.NET, VB.NET, etc)
 
+### TicTac Toe Game by drA
+- [Read the guide](http://tutorials.pluralsight.com/review/tictac-toe-game)
+- [Read more from drA](http://tutorials.pluralsight.com/user/alfonsotech) <img src="https://avatars.githubusercontent.com/u/15456287?v=3" width="30" height="30" alt="drA" />
+- Related to: Front-End JavaScript (Angular, React, Meteor, etc)
+
