@@ -24,3 +24,17 @@ This is the idea:
 * Store the data on a database.
 * Add Identity : This will take care about users, logins, roles, claims. 
 * Deploy the project to a Local IIS.
+
+## Overview about MVC Pattern.
+This is not new, according to the story and thanks to Wikipedia the concept of MVC comes from 1970s... 
+
+## Creating the project
+* We need to have ASP.net MVC RC2 Tooling.
+* This new framework is very modular, as you advance you install only what you need.
+
+
+## Add MVC Support
+
+Final words
+------------------------
+Thank you for reading this article, if you enjoyed this post I will be happy if you share it! Keep rocking! This is just the beginning. 
