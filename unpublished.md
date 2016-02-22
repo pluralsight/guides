@@ -66,9 +66,13 @@
 - [Read more from Michael Scharf (Github)](http://tutorials.pluralsight.com/user/scharf) <img src="https://avatars.githubusercontent.com/u/3731059?v=3" width="30" height="30" alt="Michael Scharf (Github)" />
 - Related to: Java and J2EE
 
-
-
 ### Response Streams with Rails 4 and Redis by Adam Fortuna
 - [Read the guide](http://tutorials.pluralsight.com/review/response-streams-with-rails-4-and-redis)
 - [Read more from Adam Fortuna](http://tutorials.pluralsight.com/user/adamfortuna) <img src="https://avatars.githubusercontent.com/u/7741?v=3" width="30" height="30" alt="Adam Fortuna" />
 - Related to: Ruby, Ruby on Rails
+
+### Intra Oral Scanner IOT Hub by DentalHacks
+- [Read the guide](http://tutorials.pluralsight.com/review/intra-oral-scanner-iot-hub)
+- [Read more from DentalHacks](http://tutorials.pluralsight.com/user/DentalHacks) <img src="https://avatars.githubusercontent.com/u/7098673?v=3" width="30" height="30" alt="DentalHacks" />
+- Related to: Java and J2EE
+
