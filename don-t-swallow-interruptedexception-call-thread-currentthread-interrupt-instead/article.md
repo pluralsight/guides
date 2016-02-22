@@ -37,9 +37,9 @@ It should be clear by now: because ignoring an `InterruptedException` means rese
 ## Some more thoughts
 Unfortunately it is not specified that `Thread.interrupt()` can only be used for cancellation. It can be used for anything that requires to set a flag on a thread. So, ending your task or `Runnable` early might be the wrong choice, if the interrupted status is used for something else. But common practice is to use it for cancellation. But even if it is used for something else, you code does not have the right to reset the interrupt flag (unless you are the owner of the thread).
 
-To learn more read the nice article Dealing with `InterruptedException` by Brian Goetz.
+To learn more read the nice article [Dealing with `InterruptedException` by Brian Goetz](http://www.ibm.com/developerworks/library/j-jtp05236/).
 
-Or read [Java Concurrency in Practice](http://www.ibm.com/developerworks/library/j-jtp05236/) By BriaBrian Goetz, Tim Peierls, Joshua Bloch, Joseph Bowbeer, David Holmes, and Doug Lea. It's a great book! If you program in java 5 this book is a must read!. I bought the book after I read Brians artikle. I have not yet read the entire book, but what I have read impresses me. It gives a lot of theorie and options. Very competent and complete, but I'm missing a set of simple patterns for concurrent programming. I'm looking forward to Doug Leas 3rd edition of Concurrent Programming in Java.
+Or read Java Concurrency in Practice By BriaBrian Goetz, Tim Peierls, Joshua Bloch, Joseph Bowbeer, David Holmes, and Doug Lea. It's a great book! If you program in java 5 this book is a must read!. I bought the book after I read Brians artikle. I have not yet read the entire book, but what I have read impresses me. It gives a lot of theorie and options. Very competent and complete, but I'm missing a set of simple patterns for concurrent programming. I'm looking forward to Doug Leas 3rd edition of Concurrent Programming in Java.
 
 ##Summary
 
