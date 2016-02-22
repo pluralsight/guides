@@ -55,26 +55,18 @@ Idealmente para ser un "tutorial definitivo" en un tema, los tutoriales o articu
 
 * Ofrécete para ayudar a otros a mejorar su contenido.
 * Haz contribuciones al código de nuestro sitio.
-* 
-### Can I hang out with you on your Slack?
+* Haz correr la voz sobre el sitio en Twitter, Facebook, HackerNews, etc.
+* Ofrécete a traducir para ayudarnos a brindar contenido a otros idiomas.
 
-Absolutely! Join our [Slack community](https://hackguides.typeform.com/to/ZroxPD), we want as much feedback as possible.
+Si quieres charlar sobre esto, por favor contáctate con Prateek (prateek-gupta@pluralsight.com) o háblanos por Slack!
 
-### How else can I help?
+### ¿Cómo se si mi idea para un tutorial es buena?
+Algo sencillo que puedes hacer es revisar que existe sobre esa idea en particular. Prueba haciendo una búsqueda rapida sobre temas que te interesen. Otros articulos en general estan bien, siempre y cuando haya suficiente contenido que establezca a tu articulo aparte. ¿Hay ideas sobre las que quieres hablar en tu artículo que aún no hayan sido escritas? ¿Suficientes contribuciones únicas que logren hacer avanzar al conocimiento mundial? Esas son algunas de las cosas a tener en cuenta.
 
-* Volunteer to be an editor to help others improve content
-* Make some engine contributions to the open-source engine for the site
-* Spread the word about the site on twitter, facebook, HackerNews, etc.
-* Volunteer to be a translator to help us bring content to other spoken languages
+### ¿Cómo es el proceso de publicación?
 
-Please reach out to Prateek (prateek-gupta@pluralsight.com) if you want to chat about any of this, or ping us on our Slack!
-
-### How do I know if my tutorial idea is any good?
-One easy thing you can do is to check-out what else is out their for this particular subject. Try doing a quick search now for some topics that interest you. Other articles are generally OK so long as there is enough unique/useful content that sets your article apart. Are there ideas you can talk about in your proposed article that hasn't already been written? Enough interesting unique contributions that can be added that moves the world's knowledge forward? Those are some things to think about.
-
-### What is the writing process?
-1. [Submit a tutorial](/write/)
-2. Share a link for suggestions to your article with friends, co-workers, etc.
-3. Continue improving your article with the community help
-4. Our editors will also assist you with improving your article
-5. Publish your article!
+1. [Escribe un tutorial](/write/)
+2. Comparte un link para obtener sugerencias de tus amigos y colegas para tu artículo.
+3. Continúa mejorando tu artículo con la ayuda de la comunidad.
+4. Nuestros editores tambien te ayudaran para mejorar tu artículo.
+5. ¡Publica tu artículo!
