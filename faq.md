@@ -25,13 +25,13 @@ Think of this as a "Wikipedia" for technical guides and tutorials.
 ### Some bonus reasons to a contribute a tutorial here!
 * **Help the world**.  You'll help spread useful knowledge.
 * **Free subscription to Pluralsight.com**.  Pluralsight is our corporate sponsor for this project and is subsidizing the costs of some of the open-source development.  We've negotiated with Pluralsight to give all contributors a free subscription to their video library on programmer training, so you can stay up-to-date on all programming topics.  This is worth $299.
-* **Network with other important members of the community**.  We'll give you exclusive access to our community Slack, to make awesome connections with others who are involved.
-* **Explore opportunities to earn supplemental income**.  We'll give you preferential consideration to being a mentor on HackHands, or to make money authoring video courses.
+* **Network with other important members of the community**.  We'll give you access to our community Slack, to make awesome connections with others who are involved.
+* **Extra perks**.  As a small thank-you for helping out, we convinced Pluralsight to agree to give everyone who contributes on this site, preferential consideration to being a mentor / course author on Pluralsight.  This is one of the ways we're hacking jump-starting the community.
 * **Free access to the next hack.summit() conference for you and your friends**.  Get your own special code you can give out!
 
 ### Who owns the tutorials created here?
 
-You do, as the original author.  We are a venue for your content to reach a wider audience, but we don't own your content.
+You do, as the original author.  This site is a venue for your content to be maintained in a much better way than Wordpress, and to reach a wider audience.  But we don't own your content.  In fact, if you really want to, you can host a copy of this website yourself, since everything is open-source.
 
 ### What types of tutorials are appropriate to post?
 
