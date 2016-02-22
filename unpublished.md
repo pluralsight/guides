@@ -51,6 +51,8 @@
 - [Read more from Luke Lee](http://tutorials.pluralsight.com/user/durden) <img src="https://avatars.githubusercontent.com/u/58063?v=3" width="30" height="30" alt="Luke Lee" />
 - Related to: Python
 
+
+
 ### Node.js Webdriver by Mat Forsberg
 - [Read the guide](http://tutorials.pluralsight.com/review/node-js-webdriver)
 - [Read more from Mat Forsberg](http://tutorials.pluralsight.com/user/MatForsberg) <img src="https://avatars.githubusercontent.com/u/12013662?v=3" width="30" height="30" alt="Mat Forsberg" />
@@ -95,4 +97,3 @@
 - [Read the guide](http://tutorials.pluralsight.com/review/running-shell-commands-with-flask)
 - [Read more from Red Moses](http://tutorials.pluralsight.com/user/redmoses) <img src="https://avatars.githubusercontent.com/u/4059490?v=3" width="30" height="30" alt="Red Moses" />
 - Related to: Python
-
