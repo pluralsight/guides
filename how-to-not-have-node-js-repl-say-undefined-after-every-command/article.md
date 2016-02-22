@@ -15,4 +15,4 @@ You can see my original question on StackOverflow where I learned this method he
 
 http://stackoverflow.com/questions/34972737/how-to-avoid-undefined-output-from-node-repl
 
-(feel free to upvote this question as it already has at least one downvote on it for apparently being too simple for the SO community)
+(feel free to up-vote this question as it already has at least one downvote on it for apparently being too simple for the SO community)
