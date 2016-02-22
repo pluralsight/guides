@@ -1,0 +1,14 @@
+{
+    "author_name": "adamfortuna",
+    "author_real_name": "Adam Fortuna",
+    "branch": "master",
+    "branches": [],
+    "filename": "article.md",
+    "image_url": "https://avatars.githubusercontent.com/u/7741?v=3",
+    "published": false,
+    "stacks": [
+        "Ruby, Ruby on Rails"
+    ],
+    "thumbnail_url": null,
+    "title": "Response Streams with Rails 4 and Redis"
+}
