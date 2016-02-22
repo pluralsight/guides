@@ -41,8 +41,6 @@
 - [Read more from Ed Roman](http://tutorials.pluralsight.com/user/edroman) <img src="https://avatars.githubusercontent.com/u/1248205?v=3" width="30" height="30" alt="Ed Roman" />
 - Related to: Node.js
 
-
-
 ### Functional Style Programming using C by Mahmudul FAISAL Al Ameen
 - [Read the guide](http://tutorials.pluralsight.com/review/functional-style-programming-using-c)
 - [Read more from Mahmudul FAISAL Al Ameen](http://tutorials.pluralsight.com/user/phaysaal) <img src="https://avatars.githubusercontent.com/u/12531542?v=3" width="30" height="30" alt="Mahmudul FAISAL Al Ameen" />
@@ -52,3 +50,8 @@
 - [Read the guide](/review/how-to-create-a-calculator-application-with-ionic-framework-by-using-ionic-creator-for-ui)
 - [Read more from Nikola Breznjak](/user/Hitman666) <img src="https://avatars.githubusercontent.com/u/1001064?v=3&" width="30" height="30" alt="Nikola Breznjak" />
 - Related to: Android
+
+### Welcome to Pluralsight Tutorials by Prateek Gupta
+- [Read the guide](/review/welcome-to-pluralsight-tutorials)
+- [Read more from Prateek Gupta](/user/prtkgpt) <img src="https://avatars1.githubusercontent.com/u/2454349?v=3" width="30" height="30" alt="Prateek Gupta" />
+
