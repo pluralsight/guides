@@ -55,3 +55,8 @@
 - [Read the guide](/review/welcome-to-pluralsight-tutorials)
 - [Read more from Prateek Gupta](/user/prtkgpt) <img src="https://avatars1.githubusercontent.com/u/2454349?v=3" width="30" height="30" alt="Prateek Gupta" />
 
+### Getting your hands dirty in Python by Stanley Ndagi
+- [Read the guide](http://tutorials.pluralsight.com/review/getting-your-hands-dirty-in-python)
+- [Read more from Stanley Ndagi](http://tutorials.pluralsight.com/user/NdagiStanley) <img src="https://avatars.githubusercontent.com/u/15629602?v=3" width="30" height="30" alt="Stanley Ndagi" />
+- Related to: Python
+
