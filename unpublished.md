@@ -96,8 +96,6 @@
 - [Read more from Red Moses](http://tutorials.pluralsight.com/user/redmoses) <img src="https://avatars.githubusercontent.com/u/4059490?v=3" width="30" height="30" alt="Red Moses" />
 - Related to: Python
 
-
-
 ### Should Laravel get it's own stack category? by JΛSΞ
 - [Read the guide](http://tutorials.pluralsight.com/review/should-laravel-get-it-s-own-stack-category)
 - [Read more from JΛSΞ](http://tutorials.pluralsight.com/user/JaseMiller) <img src="https://avatars.githubusercontent.com/u/9310558?v=3" width="30" height="30" alt="JΛSΞ" />
@@ -112,3 +110,9 @@
 - [Read the guide](http://tutorials.pluralsight.com/review/seeing-c-sharp)
 - [Read more from Ravindu Liyanapathirana](http://tutorials.pluralsight.com/user/RavinduL) <img src="https://avatars.githubusercontent.com/u/7352580?v=3" width="30" height="30" alt="Ravindu Liyanapathirana" />
 - Related to: Microsoft.NET (C#, ASP.NET, VB.NET, etc)
+
+### ELB SSL termination the Docker way by Scott Miller
+- [Read the guide](http://tutorials.pluralsight.com/review/elb-ssl-termination-the-docker-way)
+- [Read more from Scott Miller](http://tutorials.pluralsight.com/user/smiller171) <img src="https://avatars.githubusercontent.com/u/3587913?v=3" width="30" height="30" alt="Scott Miller" />
+- Related to: DevOps (Docker, Nagios, Jenkins, Chef, Puppet, etc)
+
