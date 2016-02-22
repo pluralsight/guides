@@ -81,3 +81,8 @@
 - [Read more from Gustavo Graña](http://tutorials.pluralsight.com/user/ggrana) <img src="https://avatars.githubusercontent.com/u/793491?v=3" width="30" height="30" alt="Gustavo Graña" />
 - Related to: Swift
 
+### Adding a MIGS Payment Gateway to Events Manager Pro Plugin in Wordpress by Roshan Karunarathna
+- [Read the guide](http://tutorials.pluralsight.com/review/adding-a-migs-payment-gateway-to-events-manager-pro-plugin-in-wordpress)
+- [Read more from Roshan Karunarathna](http://tutorials.pluralsight.com/user/Madu-rosh) <img src="https://avatars.githubusercontent.com/u/5592683?v=3" width="30" height="30" alt="Roshan Karunarathna" />
+- Related to: PHP
+
