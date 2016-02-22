@@ -28,7 +28,7 @@ together by writing decorators as a class. [1]
 
 The following two decorators are equivalent:
 
-[code lang="python"]
+```python
     def decoratorfunc(fund):
         def wrapper(*args, **kwargs):
             print 'Decorator as function'
@@ -54,7 +54,7 @@ The following two decorators are equivalent:
         print 'foo'
 
     foo()
-[/code]
+```
 
 Notice that `decoratorclass` is a bit longer in terms of lines of code.
 However, they are logically equivalent when operating with the definition of a
