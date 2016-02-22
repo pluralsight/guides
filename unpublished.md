@@ -31,6 +31,8 @@
 - [Read more from Aki](http://tutorials.pluralsight.com/user/multiaki) <img src="https://avatars.githubusercontent.com/u/831569?v=3" width="30" height="30" alt="Aki" />
 - Related to: PHP
 
+
+
 ### Ruby on Rails verses Node.js guide by Ed Roman
 - [Read the guide](http://tutorials.pluralsight.com/review/ruby-on-rails-verses-node-js-guide)
 - [Read more from Ed Roman](http://tutorials.pluralsight.com/user/edroman) <img src="https://avatars.githubusercontent.com/u/1248205?v=3" width="30" height="30" alt="Ed Roman" />
@@ -66,8 +68,6 @@
 - [Read more from Michael Scharf (Github)](http://tutorials.pluralsight.com/user/scharf) <img src="https://avatars.githubusercontent.com/u/3731059?v=3" width="30" height="30" alt="Michael Scharf (Github)" />
 - Related to: Java and J2EE
 
-
-
 ### Response Streams with Rails 4 and Redis by Adam Fortuna
 - [Read the guide](http://tutorials.pluralsight.com/review/response-streams-with-rails-4-and-redis)
 - [Read more from Adam Fortuna](http://tutorials.pluralsight.com/user/adamfortuna) <img src="https://avatars.githubusercontent.com/u/7741?v=3" width="30" height="30" alt="Adam Fortuna" />
@@ -102,3 +102,13 @@
 - [Read the guide](http://tutorials.pluralsight.com/review/should-laravel-get-it-s-own-stack-category)
 - [Read more from JΛSΞ](http://tutorials.pluralsight.com/user/JaseMiller) <img src="https://avatars.githubusercontent.com/u/9310558?v=3" width="30" height="30" alt="JΛSΞ" />
 - Related to: PHP
+
+### Getting Started with Chef by Michael Dweck
+- [Read the guide](http://tutorials.pluralsight.com/review/getting-started-with-chef)
+- [Read more from Michael Dweck](http://tutorials.pluralsight.com/user/mykeylynx) <img src="https://avatars.githubusercontent.com/u/2422717?v=3" width="30" height="30" alt="Michael Dweck" />
+- Related to: Ruby, Ruby on Rails
+
+### Seeing C#, sharp by Ravindu Liyanapathirana
+- [Read the guide](http://tutorials.pluralsight.com/review/seeing-c-sharp)
+- [Read more from Ravindu Liyanapathirana](http://tutorials.pluralsight.com/user/RavinduL) <img src="https://avatars.githubusercontent.com/u/7352580?v=3" width="30" height="30" alt="Ravindu Liyanapathirana" />
+- Related to: Microsoft.NET (C#, ASP.NET, VB.NET, etc)
