@@ -26,7 +26,6 @@ Think of this as a "Wikipedia" for technical guides and tutorials, or "Medium.co
 * **Help the world**.  You'll help spread useful knowledge.
 * **Free subscription to Pluralsight.com**.  Pluralsight is our corporate sponsor for this project and is subsidizing the costs of some of the open-source development.  We've negotiated with Pluralsight to give all contributors a free subscription to their video library on programmer training, so you can stay up-to-date on all programming topics.  This is worth $299.
 * **Network with other important members of the community**.  We'll give you access to our community [Slack](https://hackguides.typeform.com/to/ZroxPD), to make awesome connections with others who are involved.
-* **Extra perks**.  As a small thank-you for helping out, we convinced Pluralsight to agree to give everyone who contributes on this site, preferential consideration to being a mentor / course author on Pluralsight.  This is one of the ways we're hacking jump-starting the community.
 * **Free access to the next hack.summit() conference for you and your friends**.  Get your own special code you can give out!
 
 ### Who owns the tutorials created here?
