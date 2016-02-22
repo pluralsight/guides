@@ -61,3 +61,7 @@
 - [Read more from Giuseppe Pace](http://tutorials.pluralsight.com/user/peppinho89) <img src="https://avatars.githubusercontent.com/u/7128730?v=3" width="30" height="30" alt="Giuseppe Pace" />
 - Related to: Front-End JavaScript (Angular, React, Meteor, etc)
 
+### Don't swallow InterruptedException. Call Thread.currentThread().interrupt() instead. by Michael Scharf (Github)
+- [Read the guide](http://tutorials.pluralsight.com/review/don-t-swallow-interruptedexception-call-thread-currentthread-interrupt-instead)
+- [Read more from Michael Scharf (Github)](http://tutorials.pluralsight.com/user/scharf) <img src="https://avatars.githubusercontent.com/u/3731059?v=3" width="30" height="30" alt="Michael Scharf (Github)" />
+
