@@ -3,28 +3,28 @@
 ### Problemas que tratamos de resolver
 
 - Actualmente el contenido de los blogs técnicos es creado en WordPress, que no es conveniente para desarrolladores (no posee soporte para bloques de código, etc).
-- Una vez que una guía es publicada, queda estancada y desactualizada. Si el autor no mantiene el contenido, el mismo se vuelve menos útil.
-- No existe una manera, para los desarrolladores, para mejorar el contenido mediante revisión de pares. WordPress no es bueno para eso.
+- Una vez que una guía es publicada, queda abandonada y desactualizada. Si el autor no mantiene el contenido, el mismo se vuelve menos útil.
+- No existe una manera, para los desarrolladores, de mejorar el contenido mediante revisión de pares. WordPress no es bueno para esto.
 - Actualmente las guías existen en silos. Viven en blogs individuales, están fragmentadas y varían en cuanto a calidad. Típicamente, estas guías no alcanzan a una gran audiencia ya que los blogs individuales tienen un alcance limitado.
-- Las guías sobre programación están mayormente en Inglés y no se traducen ni rápida ni fácilmente a otros idiomas ya que el código no es fácilmente traducible de manera automática. Otros países no tienen un acceso sencillo a la educación.
+- Las guías sobre programación están mayormente en Inglés y no se traducen ni rápida ni fácilmente a otros idiomas ya que el código no es fácilmente traducible. Otros países no tienen un acceso sencillo a la educación.
 
 ### Cómo estamos resolviendo estos problemas
 
-- **Usamos [MarkDown](http://daringfireball.net/projects/markdown/basics)** (en vez de WordPress), un simple formato de archivos. Es un formato de archivos de texto, extremadamente sencillo, que toma alrededor de 60 segundos de entender. Es realmente sencillo hacer que el texto esté en **negrita**, _ itálica _, `bloque de código`, etc. MarkDown es utilizado en muchos lugares, como los archivos README de Github. Incluso este archivo está escrito en MarkDown, puedes ayudarnos a mejorarlo.
+- **Usamos [MarkDown](http://daringfireball.net/projects/markdown/basics)** (en vez de WordPress), un simple formato de archivos. Es un formato de archivos de texto, extremadamente sencillo, que toma alrededor de 60 segundos en entenderse. Es realmente sencillo hacer que el texto esté en **negrita**, _ itálica _, `bloque de código`, etc. MarkDown es utilizado en muchos lugares, como los archivos README de Github. Incluso este archivo está escrito en MarkDown, tu puedes ayudarnos a mejorarlo.
 - **Las guías se almacenan en Github**, que muchos desarrolladores aman y utilizan diariamente.
 - **Usa tu editor de texto favorito** para crear tutoriales y **revisarlos vía Git**. O también puedes editarlos utilizando la interfaz de usuario de Github. **Mucho mejor que WordPress**.
 - Si no estás familiarizado con git/Github, o no quieres molestarte con eso, está bien -- tenemos un conveniente editor en nuestro sitio para editar tutoriales justo aquí.
 - **El código de este sitio es de código abierto y está en Github**. ¡Mejorémoslo juntos!
 - Puedes tener tus tutoriales **revisados por otros**. Esto mejora la calidad de nuestro conocimiento colectivo.
 - **Otros pueden ayudar a mantener tus tutoriales en el largo plazo**, logrando que el código tenga una mayor vigencia cuando actualizaciones son necesarias, y te permite transferir la autoría si estás muy ocupado y no puedes mantenerlo.
-- **Podemos ayudarnos entre nosotros a alcanzar a una audiencia más amplia y generar un impacto mayor**. Cuando un tutorial es publicado, todos trabajamos juntos para promocionarlo en HackerNews, para atraer muchos lectores. Impulsando este sitio juntos, obtendremos una mayor audiencia con el correr del tiempo, lo que significa que tus tutoriales llegarán a mayor audiencia.
+- **Podemos ayudarnos entre nosotros a alcanzar a una audiencia más amplia y generar un mayor impacto**. Cuando un tutorial es publicado, todos trabajamos juntos para promocionarlo en HackerNews, y así atraer muchos lectores. Impulsando este sitio, juntos obtendremos una mayor audiencia con el correr del tiempo, lo que significa que tus tutoriales llegarán a una mayor audiencia.
 - (Futuro) **Llevar conocimiento a otros países**. Tu contenido puede ser traducido por una comunidad  bilingüe y apasionada para que sus países reciban conocimiento, para que sea compartido con otros países que no tienen un gran conocimiento del idioma Inglés.
 
 ### ¡Algunas razones adicionales para contribuir aquí!
 
-* **Ayuda al mundo**. Tu ayudarás a esparcir conocimiento valioso.
-* **Subscripción gratuita a Pluralsight.com**. Pluralsight es nuestro sponsor corporativo para este proyecto y está subsidiando los costos de algunos de sus desarrollos de código abierto. Hemos negociado con Pluralsight para brindarle a todos los contribuidores una subscripción gratuita para su biblioteca de videos sobre programación, para que puedas estar actualizado con todos los temas de programación. Normalmente, esto tiene un costo de $299.
-* **Conéctate con otros importantes miembros de esta comunidad**. Te daremos acceso a nuestra comunidad en [Slack](https://hackguides.typeform.com/to/ZroxPD), para conectarte con otros asombrosos miembros que estén involucrados.
+* **Ayuda al mundo**. Ayuda a esparcir conocimiento valioso.
+* **Subscripción gratuita a Pluralsight.com**. Pluralsight es nuestro sponsor corporativo para este proyecto y está subsidiando los costos de algunos de sus desarrollos de código abierto. Hemos negociado con Pluralsight para brindarle a todos los contribuidores una subscripción gratuita a su biblioteca de videos, para que puedas estar actualizado con todos los temas de programación. Normalmente, esto tiene un costo de $299.
+* **Conéctate con otros importantes miembros de esta comunidad**. Te daremos acceso a nuestra comunidad en [Slack](https://hackguides.typeform.com/to/ZroxPD), para conectarte con otros asombrosos miembros que también estén involucrados.
 * **Acceso gratuito para la próxima conferencia hack.summit() para ti y tus amigos**. ¡Obtén tu código especial para poder compartirlo!
 
 ### ¿Quién es el dueño de los tutoriales creados aquí?
