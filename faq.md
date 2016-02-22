@@ -1,6 +1,6 @@
 Welcome!  This is a community for collaborating on creating great technical guides and tutorials.
 Our collective aim is by working together, we can educate the world, plus improve our knowledge.
-Think of this as a "Wikipedia" for technical guides and tutorials.
+Think of this as a "Wikipedia" for technical guides and tutorials, or "Medium.com for developers" as another analogy.
 
 ### Problems we’re trying to solve
 
