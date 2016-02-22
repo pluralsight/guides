@@ -56,3 +56,8 @@
 - [Read more from Mat Forsberg](http://tutorials.pluralsight.com/user/MatForsberg) <img src="https://avatars.githubusercontent.com/u/12013662?v=3" width="30" height="30" alt="Mat Forsberg" />
 - Related to: Node.js
 
+### AngularJs Star Rate Directive by Giuseppe Pace
+- [Read the guide](http://tutorials.pluralsight.com/review/angularjs-star-rate-directive)
+- [Read more from Giuseppe Pace](http://tutorials.pluralsight.com/user/peppinho89) <img src="https://avatars.githubusercontent.com/u/7128730?v=3" width="30" height="30" alt="Giuseppe Pace" />
+- Related to: Front-End JavaScript (Angular, React, Meteor, etc)
+
