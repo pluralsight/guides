@@ -76,3 +76,8 @@
 - [Read more from DentalHacks](http://tutorials.pluralsight.com/user/DentalHacks) <img src="https://avatars.githubusercontent.com/u/7098673?v=3" width="30" height="30" alt="DentalHacks" />
 - Related to: Java and J2EE
 
+### Getting started with Swift by Gustavo Graña
+- [Read the guide](http://tutorials.pluralsight.com/review/getting-started-with-swift)
+- [Read more from Gustavo Graña](http://tutorials.pluralsight.com/user/ggrana) <img src="https://avatars.githubusercontent.com/u/793491?v=3" width="30" height="30" alt="Gustavo Graña" />
+- Related to: Swift
+
