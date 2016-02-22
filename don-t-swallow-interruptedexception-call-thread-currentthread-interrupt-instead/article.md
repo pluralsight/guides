@@ -39,7 +39,7 @@ Unfortunately it is not specified that `Thread.interrupt()` can only be used for
 
 To learn more read the nice article Dealing with `InterruptedException` by Brian Goetz.
 
-Or read Java Concurrency in Practice By BriaBrian Goetz, Tim Peierls, Joshua Bloch, Joseph Bowbeer, David Holmes, and Doug Lea. It's a great book! If you program in java 5 this book is a must read!. I bought the book after I read Brians artikle. I have not yet read the entire book, but what I have read impresses me. It gives a lot of theorie and options. Very competent and complete, but I'm missing a set of simple patterns for concurrent programming. I'm looking forward to Doug Leas 3rd edition of Concurrent Programming in Java.
+Or read [Java Concurrency in Practice](http://www.ibm.com/developerworks/library/j-jtp05236/) By BriaBrian Goetz, Tim Peierls, Joshua Bloch, Joseph Bowbeer, David Holmes, and Doug Lea. It's a great book! If you program in java 5 this book is a must read!. I bought the book after I read Brians artikle. I have not yet read the entire book, but what I have read impresses me. It gives a lot of theorie and options. Very competent and complete, but I'm missing a set of simple patterns for concurrent programming. I'm looking forward to Doug Leas 3rd edition of Concurrent Programming in Java.
 
 ##Summary
 
