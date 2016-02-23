@@ -68,6 +68,10 @@ impossible task of preventing them entirely.
 
 ### Python tools
 
+
+![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/a1516ea4-3261-43a6-a52d-348446b844df.png)
+
+
 Let's take a deeper look at some of the tools available to help in
 following the guidelines.  We'll use [Python](http://python.org)
 as our language for demonstration purposes, but most languages have very
