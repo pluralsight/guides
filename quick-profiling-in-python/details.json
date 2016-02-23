@@ -2,15 +2,13 @@
     "author_name": "durden",
     "author_real_name": "Luke Lee",
     "branch": "master",
-    "branches": [
-        "perkolasoft"
-    ],
+    "branches": [],
     "filename": "article.md",
     "image_url": "https://avatars.githubusercontent.com/u/58063?v=3",
     "published": true,
     "stacks": [
         "Python"
     ],
-    "title": "Quick profiling in Python",
-    "thumbnail_url": "http://i.imgur.com/ZyyYaRI.png"
+    "thumbnail_url": null,
+    "title": "Quick profiling in Python"
 }
