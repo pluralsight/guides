@@ -1,8 +1,35 @@
 Semantic HTML's primary purpose is to provide both meaning and structure. 
-Why write semantic HTML? There are a lot of benefits including, more readable and efficient code. It makes it easier for web crawlers and assistive devices/software to understand the structure of your webpage, which makes it more accessible. The structure of a web page is called the Document Outline.
+Why write semantic HTML? There are a lot of benefits including, more readable and efficient code. It makes it easier for web crawlers and assistive devices/software to understand the structure of your web page, which makes it more accessible. The structure of a web page is called the Document Outline.
 
-The most important 
-header, hgroup, nav, article, figure, figcaption, time, section, aside, and footer elements
+Arguably some elements are more structurally important to semantics than other elements. The most important are the ```
+header
+```, ```
+hgroup
+```, ```
+nav
+```, ```
+article
+```, ```
+figure
+```, ```
+figcaption
+```, ```
+time
+```, ```
+section
+```, ```
+aside
+```, and 
+```
+footer
+```
+ elements.
+
+
+
+## Header
+
+
 
 A ```
 div
