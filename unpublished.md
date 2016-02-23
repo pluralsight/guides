@@ -161,3 +161,8 @@
 - [Read more from hassan alnator](http://tutorials.pluralsight.com/user/hassan-alnator) <img src="https://avatars.githubusercontent.com/u/5238896?v=3" width="30" height="30" alt="hassan alnator" />
 - Related to: Node.js
 
+### Getting started with Ember.js by David Lormor
+- [Read the guide](http://tutorials.pluralsight.com/review/getting-started-with-ember-js)
+- [Read more from David Lormor](http://tutorials.pluralsight.com/user/davidlormor) <img src="https://avatars.githubusercontent.com/u/3712117?v=3" width="30" height="30" alt="David Lormor" />
+- Related to: Front-End JavaScript (Angular, React, Meteor, etc)
+
