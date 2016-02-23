@@ -22,7 +22,7 @@ Think of this as a "Wikipedia" for technical guides and tutorials, or "Medium.co
 - **We can help each other reach a wide audience and make a bigger impact**.  When a tutorial gets published, we all work together to help promote it on HackerNews, to get lots of viewers.  By building momentum on this site together, we'll get a larger audience over time, which means your tutorials will reach a wide audience.
 - (Future) **Bring knowledge to other countries**.  Your content can be translated by a community of bilingual individuals who are passionate about their countries receiving knowledge. Thanks to their translating efforts, the guides and tutorials can be shared with countries who don't have a deep understanding of the English language.
 
-### Some bonus reasons to a contribute a tutorial here!
+### Some bonus reasons to contribute a tutorial here!
 * **Help the world**.  You'll help spread useful knowledge.
 * **Free subscription to Pluralsight.com**.  Pluralsight is our corporate sponsor for this project and is subsidizing the costs of some of the open-source development.  We've negotiated with Pluralsight to give all contributors a free subscription to their video library on training for programmers, so you can stay up-to-date on all programming topics.  This is worth $299.
 * **Network with other important members of the community**.  We'll give you access to our community [Slack](https://hackguides.typeform.com/to/ZroxPD), to make awesome connections with others who are involved.
