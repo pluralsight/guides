@@ -51,7 +51,7 @@ How to work around it
 I am going to present you with two solutions on how to go around the problem.
 Both are very efficient in terms of performance and memory consumptions. The
 first method is easier to understand, but requires the definition of a function
-in an upper scope, which makes the code a bit less readable since you have too
+in an upper scope, which makes the code a bit less readable since you have to
 look up the function. The second solution is my personal favorite but is harder
 to understand, especially when you see such constructs for the first time. There
 are other solutions, but these at the moment are the fastest and are supported
