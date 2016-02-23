@@ -298,9 +298,6 @@ This small change has several benefits:
       expected
     - Expose potential new use cases that cannot be executed
 
-
-![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/0f4a3714-e689-4451-9471-8cdfd910b9d6.png)
-
 ### Assert downsides
 
 We've established that asserts can provide a ton of benefits, but it's
