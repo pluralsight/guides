@@ -24,6 +24,7 @@ hassan@home:~$ sudo apt-get update
 
 ```
 hassan@home:~$ sudo apt-get install nodejs
+
 ```
 
 <br/>
