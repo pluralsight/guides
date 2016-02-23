@@ -4,10 +4,20 @@
 Node.js is a JavaScript runtime built on Chrome's V8 JavaScript engine for developing server-side applications. It also has a built in package ecosystem called npm (node package manager), which allows you to install a variety of packages and plugins (such as Ember CLI) to increase your development efficiency.
 
 ### nvm
-While node has a great installer, I highly recommend installing node via nvm (Node Version Manager), which allows you to install and run multiple versions of node alongside one another.
+While node has a great installer, I highly recommend installing node via nvm (Node Version Manager), which allows you to install and run multiple versions of node alongside one another. Why would you want to do such a thing? Let's say you're working as a consultant and constantly moving back and forth between many different projects. Each of these projects would likely be created at different points in time, and, therefore, reliant on different versions of tools. Because node.js is constantly in development, you may be running projects under different versions of node that aren't necessarily compatible. nvm gives us a simple interface to manage the different versions of node on our system, and easily switch between them as we jump between different projects.
+
+#### Installing on OS X
+To install nvm on OS X, we can use the fantastic homebrew package manager. Once you have it installed, simply run `brew install nvm`. Once it's been installed we have a few housekeeping items to address to make sure that it's properly configured. First, create a working directory for the tool by calling `mkdir ~/.nvm`. This tells our system to "make a directory" (`mkdir`) in our "home" folder (`~`), called `.nvm`. The file is preceeded by a `.` to make it a "hidden" folder, ensuring that it won't show up in your typical filesystem browsing activities (because you shouldn't typically be directly modifying its contents).
+
+Next, we need to add some environment configuration to our shell's configuration (`.zshrc` or `.bashrc`). At the time of this writing, nvm requires the following configuration:
+```
+export NVM_DIR=~/.nvm
+. $(brew --prefix nvm)/nvm.sh
+```
+Finally, load the configuration by "sourcing" your `rc` file - (`source ~/.zshrc` or `source ~/.bashrc`). You can run `nvm help` to ensure everything is working at this point.
 
 ## Install Ember CLI
-This part is simple. Run the command `npm install -g ember-cli`. Before we move on, though, let's look at what this command does. `npm` invokes the node package manager executable. This command takes a variety of subcommands such as:
+With node.js and nvm successfully setup, simply run the command `npm install -g ember-cli`. Before we move on, though, let's look at what this command does. `npm` invokes the node package manager executable. This command takes a variety of subcommands such as:
 - `install` - install a package
 - `help` - lookup help on subcommands or the npm command itself
 - `update` - update a package
