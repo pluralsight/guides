@@ -1,6 +1,8 @@
-<div id="node">
+
 **Getting Started With Node.js**
-<center><img src="https://nodejs.org/static/images/logos/nodejs-new-white-pantone.png"/></center>
+
+![node.js](https://nodejs.org/static/images/logos/nodejs-new-white-pantone.png "node.js")
+
 <hr/>
 <h1>Introduction</h1>
 Node.js is a JavaScript runtime built on Chrome's V8 JavaScript engine. Node.js uses an event-driven, non-blocking I/O model that makes it lightweight and efficient. 
@@ -119,4 +121,3 @@ app.get('/', function (req, res) {
 app.listen(8080)
 ```
 
-</div>
