@@ -54,7 +54,7 @@ Yes! That's why we've built the editing tools on this site. It's easy to share a
 
 ### Can I hang out with you on your Slack?
 
-Absolutely! Join our [Slack community](https://hackguides.typeform.com/to/ZroxPD), we want as much feedback as possible.
+Absolutely! Join our [Slack community](https://hackguides.herokuapp.com/), we want as much feedback as possible.
 
 ### How else can I help?
 
