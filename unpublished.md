@@ -136,3 +136,8 @@
 - [Read more from Dileep Bapat](http://tutorials.pluralsight.com/user/dileepbapat) <img src="https://avatars.githubusercontent.com/u/633838?v=3" width="30" height="30" alt="Dileep Bapat" />
 - Related to: DevOps (Docker, Nagios, Jenkins, Chef, Puppet, etc)
 
+### iOS Generic Table View Array Data Source by kapellanos
+- [Read the guide](http://tutorials.pluralsight.com/review/ios-generic-table-view-array-data-source)
+- [Read more from kapellanos](http://tutorials.pluralsight.com/user/kapellanos) <img src="https://avatars.githubusercontent.com/u/4869580?v=3" width="30" height="30" alt="kapellanos" />
+- Related to: Swift
+
