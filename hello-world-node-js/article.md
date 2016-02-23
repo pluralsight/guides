@@ -1,4 +1,3 @@
-
 **Getting Started With Node.js**
 
 ![node.js](https://nodejs.org/static/images/logos/nodejs-new-white-pantone.png "node.js")
@@ -21,7 +20,7 @@ To install Node.js on your machine using your terminal :
 hassan@home:~$ sudo apt-get update
 ```
 <br/>
-<div style="font-size:12px">_now we will install node.js using this command_</div>
+_now we will install node.js using this command_
 
 
 ```
@@ -34,7 +33,7 @@ hassan@home:~$ sudo apt-get install nodejs
 
 Now we need to install **npm** (the node package manager) is the default package manager for the JavaScript runtime environment Node.js.
 
-<div style="font-size:12px">_use this command to install the node package manager_</div>
+_use this command to install the node package manager_
 
 ```
 hassan@home:~$ sudo apt-get install npm
@@ -47,7 +46,7 @@ hassan@home:~$ sudo apt-get install npm
 lets create our first simple hello world application using node.js , whats fascinating about node is that you start from the ground up by creating a server and handling requests and response , check this out :
 
 <br/>
-<div style="font-size:12px">_create a file index.js on you application directory_</div>
+_create a file index.js on you application directory_
 
 ```
 // requiring the HTTP interfaces in node
