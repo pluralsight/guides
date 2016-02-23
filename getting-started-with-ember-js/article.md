@@ -18,10 +18,12 @@ Finally, load the configuration by "sourcing" your `rc` file - (`source ~/.zshrc
 
 ## Install Ember CLI
 With node.js and nvm successfully setup, simply run the command `npm install -g ember-cli`. Before we move on, though, let's look at what this command does. `npm` invokes the node package manager executable. This command takes a variety of subcommands such as:
+
 - `install` - install a package
 - `help` - lookup help on subcommands or the npm command itself
 - `update` - update a package
 - `ls` - list installed packages
+
 We invoke the `install` subcommand with a "flag" (a letter preceded by a dash such as `-g` or `-l`). The `-g` flag tells npm to install this package globally. This means that the package will be accessible from anywhere that has access to your node modules, instead of just the particular project your are working on. Finally `ember-cli` is the name of the package we install. When installed it exposes an `ember` executable that is used to manage Ember CLI-based projects.
 
 ## Generate a project
