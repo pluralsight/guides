@@ -126,3 +126,8 @@
 - [Read more from drA](http://tutorials.pluralsight.com/user/alfonsotech) <img src="https://avatars.githubusercontent.com/u/15456287?v=3" width="30" height="30" alt="drA" />
 - Related to: Front-End JavaScript (Angular, React, Meteor, etc)
 
+### Spark in your data analysis by di1
+- [Read the guide](http://tutorials.pluralsight.com/review/spark-in-your-data-analysis)
+- [Read more from di1](http://tutorials.pluralsight.com/user/di1) <img src="https://avatars.githubusercontent.com/u/9478611?v=3" width="30" height="30" alt="di1" />
+- Related to: Scala
+
