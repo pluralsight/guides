@@ -112,8 +112,11 @@ There are six JSON types:
 - Number: Represents a signed decimal with high precision.
 <img src="http://www.json.org/number.gif"></img>
 - String: Represents a sequence of zero or more characters.
+<img src="http://www.json.org/string.gif"></img>
 - Object: Represents a collection of zero or more key, value pairs.
+<img src="http://www.json.org/object.gif"></img>
 - Array: Represents a sequence of zero or more values.
+<img src="http://www.json.org/array.gif"></img>
 
 ### The rules
 
@@ -148,6 +151,7 @@ let array = [value, value, value];
 ~~~
 
 The difference between references and values has a number of consequences that can be very confusing until you appreciate the distinction, especially when dealing with mutable values. One consequence that is relevant to JSON is that you can’t serialise circular references.
+<img src="http://www.json.org/value.gif"></img>
 
 ### Infinite recursion
 
@@ -175,6 +179,9 @@ JSON is rapidly replacing XML for doing AJAX. Crockford once joked that the X in
 A growing number of non-relational databases are based on JSON, including MongoDB and CouchDB. Other databases, such as DynamoDB from Amazon and the Google App Engine Datastore, have built-in support for working with JSON too. Many Web APIs only use JSON, and those that still use XML usually have the option to request JSON instead. HTML5 added localStorage and sessionStorage for client-side persistency. This only allows us to store strings; the logic being that we can just use JSON to store other types of data.
 
 Of course, we can’t predict the future, but JSON is a safe bet. It already has widespread, solid support across the entire software ecosystem, and as we move towards a world based on cloud services, and one where everything happens in parallel, JSON has become our lingua franca.
+
+### References
+<a href="http://www.json.org/">Introducing JSON</a>
 
 ### About the author
 
