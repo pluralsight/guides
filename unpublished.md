@@ -141,9 +141,8 @@
 - [Read more from kapellanos](http://tutorials.pluralsight.com/user/kapellanos) <img src="https://avatars.githubusercontent.com/u/4869580?v=3" width="30" height="30" alt="kapellanos" />
 - Related to: Swift
 
-
-
 ### Defensive programming in Python by Luke Lee
 - [Read the guide](http://tutorials.pluralsight.com/review/defensive-programming-in-python)
 - [Read more from Luke Lee](http://tutorials.pluralsight.com/user/durden) <img src="https://avatars.githubusercontent.com/u/58063?v=3" width="30" height="30" alt="Luke Lee" />
 - Related to: Python
+
