@@ -146,3 +146,8 @@
 - [Read more from Luke Lee](http://tutorials.pluralsight.com/user/durden) <img src="https://avatars.githubusercontent.com/u/58063?v=3" width="30" height="30" alt="Luke Lee" />
 - Related to: Python
 
+### Semantic HTML: Add Structure and Meaning to your Webpage by Klarence
+- [Read the guide](http://tutorials.pluralsight.com/review/semantic-html-add-structure-and-meaning-to-your-webpage)
+- [Read more from Klarence](http://tutorials.pluralsight.com/user/Klarence) <img src="https://avatars.githubusercontent.com/u/1621537?v=3" width="30" height="30" alt="Klarence" />
+- Related to: HTML/CSS
+
