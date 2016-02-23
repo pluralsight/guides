@@ -1,5 +1,3 @@
-##How to use a spreadsheet to power charts in AngularJS apps
-
 AngularJS and Google Sheets are all the rage nowadays. Both are being used commonly, and developers are finding interesting use cases around them.Today I’m going to share something I’ve built that is not only fun, but may have some practical applications as well.
 
 We’ll build an AngularJS application to create interactive JavaScript charts which will contain data exported from Google Sheets in real-time. First, we’ll briefly talk about [AngularJS](https://angularjs.org), [FusionCharts](http://www.fusioncharts.com) and [Google Sheets](https://www.google.com/sheets/about/). And then we’ll put all of these together to build our project. If you’re already aware of these technologies, you can skip the introductions and dive right into the tutorial.
