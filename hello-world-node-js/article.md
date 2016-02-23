@@ -1,4 +1,3 @@
-
 <div id="node">
 **Getting Started With Node.js**
 <center><img src="https://nodejs.org/static/images/logos/nodejs-new-white-pantone.png"/></center>
