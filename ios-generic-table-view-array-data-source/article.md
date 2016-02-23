@@ -7,10 +7,6 @@ The previous solution, implemented in Objective-C, separate the array data sourc
 <h2>ArrayDataSource.h</h2>
 
 ```objc
-//
-// ArrayDataSource.h
-// objc.io example project (issue #1)
-//
 
 #import <Foundation/Foundation.h>
 
@@ -32,10 +28,6 @@ typedef void (^TableViewCellConfigureBlock)(id cell, id item);
 <h2>ArrayDataSource.m</h2>
 
 ```objc
-//
-// ArrayDataSource.h
-// objc.io example project (issue #1)
-//
 
 #import "ArrayDataSource.h"
 
@@ -95,8 +87,56 @@ typedef void (^TableViewCellConfigureBlock)(id cell, id item);
 ```
 
 <h1>New solution in Swift</h1>
+In the Swift implementation, we use a intermediate object to configure the data source, called ArrayDataSourceConfigurator. This class allow to the data source to don't implement some methods that don't belong in nature to it.
 
+```swift
 
+import UIKit
+
+class IDArrayDataSourceConfigurator<T,U: UITableViewCell>
+{
+    var cellIdentifier: String
+    var cellStyle: UITableViewCellStyle
+    var configureCellClosure: ((cell: U, object: T) -> ())?
+    
+    private var items: [[T]]
+    
+    init(builder: IDArrayDataSourceConfigureBuilder<T,U>)
+    {
+        cellIdentifier = builder.cellIdentifier ?? ""
+        cellStyle = builder.cellStyle ?? .Default
+        configureCellClosure = builder.configureCellClosure
+        items = builder.items ?? [[]]
+    }
+    
+    func numberOfSections() -> Int
+    {
+        return items.count
+    }
+    
+    func numberOfRowsInSection(section: Int) -> Int
+    {
+        return items[section].count
+    }
+    
+    func item(indexPath indexPath: NSIndexPath) -> T?
+    {
+        return items[indexPath.section][indexPath.row]
+    }
+    
+    func update(items items: [[T]])
+    {
+        self.items = items
+    }
+    
+    func insert(item: T, indexPath:NSIndexPath)
+    {
+        self.items[indexPath.section][indexPath.row] = item
+    }
+}
+```
+
+Here we use to generics: ***T*** for the items used to configure the cell and ***U*** for the table view cell. 
 
 [objc-issue]: https://www.objc.io/issues/1-view-controllers/lighter-view-controllers/
 
