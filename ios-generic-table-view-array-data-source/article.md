@@ -1,34 +1,100 @@
-This guide is based on the post in [objc.io issue][objc-issue] but it tries to explain how to expand the use of generic table view array data sources to separate the logic of filling the cells of a table view from the logic of the controller.
+This guide is based on the post in [objc.io issue][objc-issue] but using the concepts describe there to make an implementation of a Generic Table View Data Source in Swift.
 
-The main problem of the solution implemented in [objc.io issue][objc-issue] (apart than it used Objective-C) is that you can't reuse the array data source architecture in different table views so you have to implement the solution once per view controller. With the code implemented here, you'll have a reusable solution that can be used in all your table views. Otherwise, there are some problems that this solution can't afford and we'll see why and possible solutions at the end
+<h1>Previous solution in Objective-C</h1>
 
-<h1>Previous solution</h1>
+The previous solution, implemented in Objective-C, separate the array data source of the table view in a new class an uses blocks to configure each cell. We can see the *.h and *.m source files respectively:
 
-The previous solution
+<h2>ArrayDataSource.h</h2>
 
 ```objc
+//
+// ArrayDataSource.h
+// objc.io example project (issue #1)
+//
+
+#import <Foundation/Foundation.h>
+
+
+typedef void (^TableViewCellConfigureBlock)(id cell, id item);
+
+
+@interface ArrayDataSource : NSObject <UITableViewDataSource>
+
+- (id)initWithItems:(NSArray *)anItems
+     cellIdentifier:(NSString *)aCellIdentifier
+ configureCellBlock:(TableViewCellConfigureBlock)aConfigureCellBlock;
+
+- (id)itemAtIndexPath:(NSIndexPath *)indexPath;
+
+@end
+```
+
+<h2>ArrayDataSource.m</h2>
+
+```objc
+//
+// ArrayDataSource.h
+// objc.io example project (issue #1)
+//
+
+#import "ArrayDataSource.h"
+
+
+@interface ArrayDataSource ()
+
+@property (nonatomic, strong) NSArray *items;
+@property (nonatomic, copy) NSString *cellIdentifier;
+@property (nonatomic, copy) TableViewCellConfigureBlock configureCellBlock;
+
+@end
+
+
 @implementation ArrayDataSource
 
-- (id)itemAtIndexPath:(NSIndexPath*)indexPath {
-    return items[(NSUInteger)indexPath.row];
+- (id)init
+{
+    return nil;
 }
 
-- (NSInteger)tableView:(UITableView*)tableView 
- numberOfRowsInSection:(NSInteger)section {
-    return items.count;
+- (id)initWithItems:(NSArray *)anItems
+     cellIdentifier:(NSString *)aCellIdentifier
+ configureCellBlock:(TableViewCellConfigureBlock)aConfigureCellBlock
+{
+    self = [super init];
+    if (self) {
+        self.items = anItems;
+        self.cellIdentifier = aCellIdentifier;
+        self.configureCellBlock = [aConfigureCellBlock copy];
+    }
+    return self;
 }
 
-- (UITableViewCell*)tableView:(UITableView*)tableView 
-        cellForRowAtIndexPath:(NSIndexPath*)indexPath {
-    id cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier
-                                              forIndexPath:indexPath];
+- (id)itemAtIndexPath:(NSIndexPath *)indexPath
+{
+    return self.items[(NSUInteger) indexPath.row];
+}
+
+
+#pragma mark UITableViewDataSource
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return self.items.count;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:self.cellIdentifier
+                                                            forIndexPath:indexPath];
     id item = [self itemAtIndexPath:indexPath];
-    configureCellBlock(cell,item);
+    self.configureCellBlock(cell, item);
     return cell;
 }
 
 @end
 ```
+
+<h1>New solution in Swift</h1>
 
 
 
