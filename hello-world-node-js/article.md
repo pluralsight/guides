@@ -81,7 +81,7 @@ your application is running on port 8080 now so just open your browser and hit h
 <hr/>
 <h1>How to use npm ? </h1>
 
-the node package manager will give you the ability to install modules that other people develop and publish on https://www.npmjs.com.
+the node package manager will give you the ability to install modules that other people develop and published on https://www.npmjs.com.
 
 using npm will reflect everything you install on a package.json file that lists all modules and information about your application.
 
