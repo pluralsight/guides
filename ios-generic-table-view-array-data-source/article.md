@@ -136,7 +136,7 @@ class IDArrayDataSourceConfigurator<T,U: UITableViewCell>
 }
 ```
 
-Here we use to generics: ***T*** for the items used to configure the cell and ***U*** for the table view cell. 
+Here we use to generics: **T** for the items used to configure the cell and **U** for the table view cell. 
 
 [objc-issue]: https://www.objc.io/issues/1-view-controllers/lighter-view-controllers/
 
