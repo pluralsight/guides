@@ -131,3 +131,8 @@
 - [Read more from di1](http://tutorials.pluralsight.com/user/di1) <img src="https://avatars.githubusercontent.com/u/9478611?v=3" width="30" height="30" alt="di1" />
 - Related to: Scala
 
+### Try Docker vanilla by Dileep Bapat
+- [Read the guide](http://tutorials.pluralsight.com/review/try-docker-vanilla)
+- [Read more from Dileep Bapat](http://tutorials.pluralsight.com/user/dileepbapat) <img src="https://avatars.githubusercontent.com/u/633838?v=3" width="30" height="30" alt="Dileep Bapat" />
+- Related to: DevOps (Docker, Nagios, Jenkins, Chef, Puppet, etc)
+
