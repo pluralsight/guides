@@ -22,7 +22,7 @@ Think of this as a "Wikipedia" for technical guides and tutorials, or "Medium.co
 - **We can help each other reach a wide audience and make a bigger impact**.  When a tutorial gets published, we all work together to help promote it on HackerNews, to get lots of viewers.  By building momentum on this site together, we'll get a larger audience over time, which means your tutorials will reach a wide audience.
 - (Future) **Bring knowledge to other countries**.  Your content can be translated by a community of bilingual and passionate about their countries receiving knowledge, to be shared with other countries who don't have a deep understanding of the English language.
 
-### Some bonus reasons to a contribute a tutorial here!
+### Some bonus reasons to contribute a tutorial here!
 * **Help the world**.  You'll help spread useful knowledge.
 * **Free subscription to Pluralsight.com**.  Pluralsight is our corporate sponsor for this project and is subsidizing the costs of some of the open-source development.  We've negotiated with Pluralsight to give all contributors a free subscription to their video library on programmer training, so you can stay up-to-date on all programming topics.  This is worth $299.
 * **Network with other important members of the community**.  We'll give you access to our community [Slack](https://hackguides.typeform.com/to/ZroxPD), to make awesome connections with others who are involved.
@@ -66,7 +66,7 @@ Absolutely! Join our [Slack community](https://hackguides.typeform.com/to/ZroxPD
 Please reach out to Prateek (prateek-gupta@pluralsight.com) if you want to chat about any of this, or ping us on our Slack!
 
 ### How do I know if my tutorial idea is any good?
-One easy thing you can do is to check-out what else is out their for this particular subject. Try doing a quick search now for some topics that interest you. Other articles are generally OK so long as there is enough unique/useful content that sets your article apart. Are there ideas you can talk about in your proposed article that hasn't already been written? Enough interesting unique contributions that can be added that moves the world's knowledge forward? Those are some things to think about.
+One easy thing you can do is to check-out what else is out there for this particular subject. Try doing a quick search now for some topics that interest you. Other articles are generally OK so long as there is enough unique/useful content that sets your article apart. Are there ideas you can talk about in your proposed article that hasn't already been written? Enough interesting unique contributions that can be added that moves the world's knowledge forward? Those are some things to think about.
 
 ### What is the writing process?
 1. [Submit a tutorial](/write/)
