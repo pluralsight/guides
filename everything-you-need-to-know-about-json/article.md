@@ -110,13 +110,21 @@ There are six JSON types:
 - Null: Represents the absence of a meaningful value.
 - Bool: Represents absolute truth or absolute falsehood.
 - Number: Represents a signed decimal with high precision.
+
 <img src="http://www.json.org/number.gif"></img>
+
 - String: Represents a sequence of zero or more characters.
+
 <img src="http://www.json.org/string.gif"></img>
+
 - Object: Represents a collection of zero or more key, value pairs.
+
 <img src="http://www.json.org/object.gif"></img>
+
 - Array: Represents a sequence of zero or more values.
+
 <img src="http://www.json.org/array.gif"></img>
+
 
 ### The rules
 
@@ -151,7 +159,9 @@ let array = [value, value, value];
 ~~~
 
 The difference between references and values has a number of consequences that can be very confusing until you appreciate the distinction, especially when dealing with mutable values. One consequence that is relevant to JSON is that you can’t serialise circular references.
+
 <img src="http://www.json.org/value.gif"></img>
+
 
 ### Infinite recursion
 
