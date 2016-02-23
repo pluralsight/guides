@@ -1,3 +1,5 @@
+![elegant framework](http://getelegant.com/static/images/logo.png "elegant framework")
+
 </h1>Installing Elegant</h1>
 Before We Start , As you know Elegant is built using nodejs, So make sure that you already have nodejs and NPM(Node Package Manager) on your machine, for more information about installing node visit: How to Install Node.js.
 
