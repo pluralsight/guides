@@ -14,7 +14,8 @@ V8 is Google's open source high-performance JavaScript engine, written in C++ an
 To install Node.js on your machine using your terminal :
 
 <br/><br/>
-_first lets update our packages _
+
+_first lets update our packages_
 
 ```
 hassan@home:~$ sudo apt-get update
