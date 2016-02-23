@@ -110,7 +110,7 @@ There are six JSON types:
 - Null: Represents the absence of a meaningful value.
 - Bool: Represents absolute truth or absolute falsehood.
 - Number: Represents a signed decimal with high precision.
-<a href="http://www.json.org/number.gif"></a>
+<img src="http://www.json.org/number.gif"></img>
 - String: Represents a sequence of zero or more characters.
 - Object: Represents a collection of zero or more key, value pairs.
 - Array: Represents a sequence of zero or more values.
