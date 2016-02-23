@@ -58,7 +58,7 @@ Sublime Text is the power user text editor. It’s extremely fast, and has a ton
 
 http://www.sublimetext.com
  
-Sublime also lets you customize the editor, however it isn’t as straightforward as with Atom or Brackets. There is a well known feature of the editor called unlimited trail. This means you can use the editor for free forever in a trial period, however if you are going to actually use it for a project then you should go ahead and fork out the $70 USD to get it.
+Sublime also lets you customize the editor, however it isn’t as straightforward as with Atom or Brackets. There is a well known feature of the editor called unlimited trial. This means you can use the editor for free forever in a trial period, however if you are going to actually use it for a project then you should go ahead and fork out the $70 USD to get it.
 
 ### NotePad++
 
