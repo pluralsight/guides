@@ -27,8 +27,8 @@ https://www.powershellgallery.com/GettingStarted?section=Get%20Started
 
 https://azure.microsoft.com/en-us/blog/azps-1-0/
 
-https://channel9.msdn.com/Series/Windows-Azure-Virtual-Machines-and-Networking-Tutorials/Introduction-to-Windows-Azure-PowerShell – good 9 minute introduction video.
-
- 
+https://channel9.msdn.com/Series/Windows-Azure-Virtual-Machines-and-Networking-Tutorials/Introduction-to-Windows-Azure-PowerShell – good 9 minute introduction video. 
 
 Hint: Run $PSVersionTable.PSVersion in PowerShell to get the version of PS you have.
+
+See [my blog](http://geekswithblogs.net/Aligned/) for more of my articles.
