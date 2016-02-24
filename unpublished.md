@@ -176,3 +176,8 @@
 - [Read more from Aligned](http://tutorials.pluralsight.com/user/logankd) <img src="https://avatars.githubusercontent.com/u/1636977?v=3" width="30" height="30" alt="Aligned" />
 - Related to: DevOps (Docker, Nagios, Jenkins, Chef, Puppet, etc)
 
+### Getting started with Mongo 3.2 by David
+- [Read the guide](http://tutorials.pluralsight.com/review/getting-started-with-mongo-3-2)
+- [Read more from David](http://tutorials.pluralsight.com/user/davidchchang) <img src="https://avatars.githubusercontent.com/u/451089?v=3" width="30" height="30" alt="David" />
+- Related to: NoSQL Databases (MongoDB, Cassandra, etc)
+
