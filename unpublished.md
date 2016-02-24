@@ -86,8 +86,6 @@
 - [Read more from Peter Kellner](http://tutorials.pluralsight.com/user/pkellner) <img src="https://avatars.githubusercontent.com/u/241170?v=3" width="30" height="30" alt="Peter Kellner" />
 - Related to: Node.js
 
-
-
 ### Running shell commands with Flask by Red Moses
 - [Read the guide](http://tutorials.pluralsight.com/review/running-shell-commands-with-flask)
 - [Read more from Red Moses](http://tutorials.pluralsight.com/user/redmoses) <img src="https://avatars.githubusercontent.com/u/4059490?v=3" width="30" height="30" alt="Red Moses" />
@@ -162,6 +160,8 @@
 - [Read the guide](http://tutorials.pluralsight.com/review/getting-started-with-elegant-node-js-framework)
 - [Read more from hassan alnator](http://tutorials.pluralsight.com/user/hassan-alnator) <img src="https://avatars.githubusercontent.com/u/5238896?v=3" width="30" height="30" alt="hassan alnator" />
 - Related to: Node.js
+
+
 
 ### Getting started with Ember.js by David Lormor
 - [Read the guide](http://tutorials.pluralsight.com/review/getting-started-with-ember-js)
