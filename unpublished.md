@@ -86,6 +86,8 @@
 - [Read more from Peter Kellner](http://tutorials.pluralsight.com/user/pkellner) <img src="https://avatars.githubusercontent.com/u/241170?v=3" width="30" height="30" alt="Peter Kellner" />
 - Related to: Node.js
 
+
+
 ### Running shell commands with Flask by Red Moses
 - [Read the guide](http://tutorials.pluralsight.com/review/running-shell-commands-with-flask)
 - [Read more from Red Moses](http://tutorials.pluralsight.com/user/redmoses) <img src="https://avatars.githubusercontent.com/u/4059490?v=3" width="30" height="30" alt="Red Moses" />
@@ -175,4 +177,3 @@
 - [Read the guide](http://tutorials.pluralsight.com/review/tips-and-cool-tricks-to-use-in-git)
 - [Read more from Lucas Andrey](http://tutorials.pluralsight.com/user/andreybleme) <img src="https://avatars.githubusercontent.com/u/5385383?v=3" width="30" height="30" alt="Lucas Andrey" />
 - Related to: DevOps (Docker, Nagios, Jenkins, Chef, Puppet, etc)
-
