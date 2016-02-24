@@ -1,3 +1,7 @@
+### Using ​a Spreadsheet​ ​to Power Charts in AngularJS Apps by Rohit Boggarapu
+- [Read the guide](/review/using-a-spreadsheet-to-power-charts-in-angularjs-apps)
+- [Read more from Rohit Boggarapu](/user/rohitb4) <img src="https://avatars.githubusercontent.com/u/6358889?v=3" width="30" height="30" alt="Rohit Boggarapu" />
+- Related to: Front-End JavaScript (Angular, React, Meteor, etc)
 ### A Beginners Guide to jQuery by Carl Smith
 - [Read the guide](http://tutorials.pluralsight.com/review/a-beginners-guide-to-jquery)
 - [Read more from Carl Smith](http://tutorials.pluralsight.com/user/carlsmith) <img src="https://avatars.githubusercontent.com/u/7561668?v=3" width="30" height="30" alt="Carl Smith" />

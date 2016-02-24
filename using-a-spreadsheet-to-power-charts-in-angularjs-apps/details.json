@@ -2,12 +2,15 @@
     "author_name": "rohitb4",
     "author_real_name": "Rohit Boggarapu",
     "branch": "master",
-    "branches": [],
+    "branches": [
+        "prtkgpt"
+    ],
     "filename": "article.md",
     "image_url": "https://avatars.githubusercontent.com/u/6358889?v=3",
-    "published": false,
+    "published": true,
     "stacks": [
         "Front-End JavaScript (Angular, React, Meteor, etc)"
     ],
+    "thumbnail_url": null,
     "title": "Using \u200ba Spreadsheet\u200b \u200bto Power Charts in AngularJS Apps"
 }

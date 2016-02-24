@@ -11,7 +11,7 @@ quickly and allow you to get back to coding. Fortunately it's is easy enough
 to run on your code periodically and find some pain points sooner rather than
 later. [1]
 
-## Step One: Profile application as a whole
+## Step One: Profile entire application
 
 The first step is to run the script/application with the
 [built-in profiler](http://docs.python.org/2/library/profile.html#module-cProfile)

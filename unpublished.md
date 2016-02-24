@@ -21,11 +21,6 @@
 - [Read more from Luke Lee](http://tutorials.pluralsight.com/user/durden) <img src="https://avatars.githubusercontent.com/u/58063?v=3" width="30" height="30" alt="Luke Lee" />
 - Related to: Python
 
-### Using ​a Spreadsheet​ ​to Power Charts in AngularJS Apps by Rohit Boggarapu
-- [Read the guide](http://tutorials.pluralsight.com/review/using-a-spreadsheet-to-power-charts-in-angularjs-apps)
-- [Read more from Rohit Boggarapu](http://tutorials.pluralsight.com/user/rohitb4) <img src="https://avatars.githubusercontent.com/u/6358889?v=3" width="30" height="30" alt="Rohit Boggarapu" />
-- Related to: Front-End JavaScript (Angular, React, Meteor, etc)
-
 ### Using Google spreadsheet as a database by Aki
 - [Read the guide](http://tutorials.pluralsight.com/review/using-google-spreadsheet-as-a-database)
 - [Read more from Aki](http://tutorials.pluralsight.com/user/multiaki) <img src="https://avatars.githubusercontent.com/u/831569?v=3" width="30" height="30" alt="Aki" />
@@ -91,8 +86,6 @@
 - [Read more from Peter Kellner](http://tutorials.pluralsight.com/user/pkellner) <img src="https://avatars.githubusercontent.com/u/241170?v=3" width="30" height="30" alt="Peter Kellner" />
 - Related to: Node.js
 
-
-
 ### Running shell commands with Flask by Red Moses
 - [Read the guide](http://tutorials.pluralsight.com/review/running-shell-commands-with-flask)
 - [Read more from Red Moses](http://tutorials.pluralsight.com/user/redmoses) <img src="https://avatars.githubusercontent.com/u/4059490?v=3" width="30" height="30" alt="Red Moses" />
@@ -117,3 +110,59 @@
 - [Read the guide](http://tutorials.pluralsight.com/review/elb-ssl-termination-the-docker-way)
 - [Read more from Scott Miller](http://tutorials.pluralsight.com/user/smiller171) <img src="https://avatars.githubusercontent.com/u/3587913?v=3" width="30" height="30" alt="Scott Miller" />
 - Related to: DevOps (Docker, Nagios, Jenkins, Chef, Puppet, etc)
+
+### Getting Started With ASP.net MVC Core 1.0 from zero to hero! by Fredy Guibert
+- [Read the guide](http://tutorials.pluralsight.com/review/getting-started-with-asp-net-mvc-core-1-0-from-zero-to-hero)
+- [Read more from Fredy Guibert](http://tutorials.pluralsight.com/user/fredyfx) <img src="https://avatars.githubusercontent.com/u/4960023?v=3" width="30" height="30" alt="Fredy Guibert" />
+- Related to: Microsoft.NET (C#, ASP.NET, VB.NET, etc)
+
+### TicTac Toe Game by drA
+- [Read the guide](http://tutorials.pluralsight.com/review/tictac-toe-game)
+- [Read more from drA](http://tutorials.pluralsight.com/user/alfonsotech) <img src="https://avatars.githubusercontent.com/u/15456287?v=3" width="30" height="30" alt="drA" />
+- Related to: Front-End JavaScript (Angular, React, Meteor, etc)
+
+### Spark in your data analysis by di1
+- [Read the guide](http://tutorials.pluralsight.com/review/spark-in-your-data-analysis)
+- [Read more from di1](http://tutorials.pluralsight.com/user/di1) <img src="https://avatars.githubusercontent.com/u/9478611?v=3" width="30" height="30" alt="di1" />
+- Related to: Scala
+
+### Try Docker vanilla by Dileep Bapat
+- [Read the guide](http://tutorials.pluralsight.com/review/try-docker-vanilla)
+- [Read more from Dileep Bapat](http://tutorials.pluralsight.com/user/dileepbapat) <img src="https://avatars.githubusercontent.com/u/633838?v=3" width="30" height="30" alt="Dileep Bapat" />
+- Related to: DevOps (Docker, Nagios, Jenkins, Chef, Puppet, etc)
+
+### iOS Generic Table View Array Data Source by kapellanos
+- [Read the guide](http://tutorials.pluralsight.com/review/ios-generic-table-view-array-data-source)
+- [Read more from kapellanos](http://tutorials.pluralsight.com/user/kapellanos) <img src="https://avatars.githubusercontent.com/u/4869580?v=3" width="30" height="30" alt="kapellanos" />
+- Related to: Swift
+
+### Defensive programming in Python by Luke Lee
+- [Read the guide](http://tutorials.pluralsight.com/review/defensive-programming-in-python)
+- [Read more from Luke Lee](http://tutorials.pluralsight.com/user/durden) <img src="https://avatars.githubusercontent.com/u/58063?v=3" width="30" height="30" alt="Luke Lee" />
+- Related to: Python
+
+### Semantic HTML: Add Structure and Meaning to your Webpage by Klarence
+- [Read the guide](http://tutorials.pluralsight.com/review/semantic-html-add-structure-and-meaning-to-your-webpage)
+- [Read more from Klarence](http://tutorials.pluralsight.com/user/Klarence) <img src="https://avatars.githubusercontent.com/u/1621537?v=3" width="30" height="30" alt="Klarence" />
+- Related to: HTML/CSS
+
+### Hello World Node.js by hassan alnator
+- [Read the guide](http://tutorials.pluralsight.com/review/hello-world-node-js)
+- [Read more from hassan alnator](http://tutorials.pluralsight.com/user/hassan-alnator) <img src="https://avatars.githubusercontent.com/u/5238896?v=3" width="30" height="30" alt="hassan alnator" />
+- Related to: Node.js
+
+### Hello Guide by Bojan Bedrac
+- [Read the guide](http://tutorials.pluralsight.com/review/hello-guide)
+- [Read more from Bojan Bedrac](http://tutorials.pluralsight.com/user/xbojch) <img src="https://avatars.githubusercontent.com/u/4233387?v=3" width="30" height="30" alt="Bojan Bedrac" />
+- Related to: PHP
+
+### Getting started with Elegant node.js framework by hassan alnator
+- [Read the guide](http://tutorials.pluralsight.com/review/getting-started-with-elegant-node-js-framework)
+- [Read more from hassan alnator](http://tutorials.pluralsight.com/user/hassan-alnator) <img src="https://avatars.githubusercontent.com/u/5238896?v=3" width="30" height="30" alt="hassan alnator" />
+- Related to: Node.js
+
+### Getting started with Ember.js by David Lormor
+- [Read the guide](http://tutorials.pluralsight.com/review/getting-started-with-ember-js)
+- [Read more from David Lormor](http://tutorials.pluralsight.com/user/davidlormor) <img src="https://avatars.githubusercontent.com/u/3712117?v=3" width="30" height="30" alt="David Lormor" />
+- Related to: Front-End JavaScript (Angular, React, Meteor, etc)
+
