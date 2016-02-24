@@ -76,7 +76,7 @@ Notes:
 
 Now lets try to return a complete html page, so instead of returning a string lets return an elegant view, first you should require the "elegant-view" module and return a new view:
 
-```
+```javascript
 var Controller = require("elegant-controller");
 
 var View = require("elegant-view");
@@ -96,7 +96,7 @@ Lets write a query that return our articles and display them in the index.html p
 
 
 
-```
+```javascript
 var Controller = require("elegant-controller");
 
 var View = require("elegant-view");
@@ -122,7 +122,7 @@ Notes:
 
 After we have passed our query result to the index view , Now we need to update our html page and display our articles as the following:
 
-```
+```html
 <html>
   <head>
     <title>Articles</title>
@@ -146,7 +146,7 @@ Now lets try to receive data from the client, so we need to create two controlle
 <br/>
 So create a new javascript file in the controllers directory (/app/controllers/) and name it article.js then write in this file the following code for the first controller:
 
-```
+```javascript
 var Controller = require("elegant-controller");
 var View = require("elegant-view");
 
@@ -158,7 +158,7 @@ new Controller("/add/article").get(function () {
 
 now in the views directory (/app/views/) create a new html file and name it "add-article.html", in this file add the following html code:
 
-```
+```html
 <html>
   <head>
     <title>Add Article</title>
@@ -183,7 +183,7 @@ now in the views directory (/app/views/) create a new html file and name it "add
 
 Now restart the application and you can access this page from the url http://localhost:9090/add/article, now for the second controller that will handle this form data, update the article.js file with the new controller as below:
 
-```
+```javascript
 var Controller = require("elegant-controller");
 var View = require("elegant-view");
 var MySql = require("elegant-mysql");
@@ -214,8 +214,7 @@ new Controller("add/article").post(function () {
 
 in this way are passing the "success" variable to our "add-article.html" that will indicate if the article is inserted or not, so lest update our html page to display this to the user as follow:
 
-```
-
+```html
 <html>
   <head>
     <title>Add Article</title>
@@ -251,7 +250,7 @@ a session is a bucket that hold some information on server side , Now lets Dive 
 <br/>
 First we need to build our first controller login.js for the login page as the following :
 
-```
+```javascript
 var Controller = require("elegant-controller");
 var View = require("elegant-view");
 
@@ -263,7 +262,7 @@ new Controller("/user/login").get(function () {
 
 now in the views directory (/app/views/) create a new html file and name it "login.html" and add the following code:
 
-```
+```html
 <html>
   <head>
     <title>Login</title>
@@ -280,7 +279,7 @@ now in the views directory (/app/views/) create a new html file and name it "log
 
 after we have built our login form we need a controller that check if the credentials are true and creates a new session for the user then redirects the user to the (/user) page , update login.js as the following:
 
-```
+```javascript
 var Controller = require("elegant-controller");
 var View = require("elegant-view");
 var Redirect = require("elegant-redirect");
@@ -329,7 +328,7 @@ new Controller("/user").get(function () {
 
 Now for the last step in our authentication app , lets build our user dashboard (user.html):
 
-```
+```html
 <html>
   <head>
     <title>user dashbord</title>
@@ -352,8 +351,8 @@ Note: elegant template engine is built over swig, if you wont to learn more abou
 A Template is split into parts that we call regions such as ( header,body,footer ), every region is a stand alone html file that well be included to the master template file on render.
 <br/>
 Now lets Try a real life example and build our first elegant template , lets pretend that we have the following html page:
-```
 
+```html
 <html>
   <head>
     <title>Home</title>
@@ -382,8 +381,9 @@ Now lets Try a real life example and build our first elegant template , lets pre
 </html>
 ```
 
+
 Now Lets Start By Spliting our desgin into Regions , so as you can see in our html page its displayed as three parts the header , main-content and footer. so we are going to create three html files in app/view/default/regions folder ,the first html file is header.html as bellow: 
-```
+```html
 <ul>
   <li><a href="#">Home</a></li>
   <li><a href="#">About Us</a></li>
@@ -392,7 +392,7 @@ Now Lets Start By Spliting our desgin into Regions , so as you can see in our ht
 ```
 
 The secound html file is maincontent.html as bellow :
-```
+```html
 <div>
   Page Main Content
 </div>
@@ -400,7 +400,7 @@ The secound html file is maincontent.html as bellow :
 
 The third html file is footer.html as bellow :
 
-```
+```html
 <div>
   Page Footer
 </div>
@@ -408,7 +408,7 @@ The third html file is footer.html as bellow :
 
 After We have finished creating our region , we should create the master page now in app/view/default and call it index.html with the following code :
 
-```
+```html
 <html>
   <head>
     <title>Home</title>
@@ -433,13 +433,13 @@ The master page is where all the regions will be included and as you node the va
 <br/>
 The final step to complete our elegant template is registering our regions in the regions.js file that is placed in app/views/default as the following : 
 
-```
+```javascript
 module.exports = ['header','maincontent','footer'];
 ```
 
 Now lets make a controller to view our index page as the following :
 
-```
+```javascript
 var Controller = require("elegant-controller");
 var View = require("elegant-view");
 ​
@@ -455,7 +455,7 @@ To be more specific , the master page includes three regions in our case (header
 Now lets try to add a new page to our app with a new main content to view , so first of all lets add a new controller:
 
 
-```
+```javascript
 var Controller = require("elegant-controller");
 var View = require("elegant-view");
 ​
@@ -481,7 +481,7 @@ Elegant Manages resources as bundles by grouping related file in a single bundle
 <br/><br/>
 To Create a bundle , open the file app/views/default/resources.js and add you new bundle , it should look something like this :
 
-```
+```javascript
 module.exports = {
   'base.css': {
     files: ['base.css', 'font-awesome/css/font-awesome.min.css']
@@ -499,7 +499,7 @@ HTTP caching allows these resources to be saved, or cached, by a browser or prox
 Thus caching is a double win: you reduce round-trip time by eliminating numerous HTTP requests for the required resources, and you substantially reduce the total payload size of the responses. Besides leading to a dramatic reduction in page load time for subsequent user visits, enabling caching can also significantly reduce the bandwidth and hosting costs for your site.
 
 To enable caching and compression in you application , just go to your app/config.js file and add the following :
-```
+```javascript
 // Compressing Resources
 config.STATIC.COMPRESS_RESOURCES = true;
 ​
@@ -520,7 +520,7 @@ config.STATIC.CASH_HTML= true;
 
 ```
 To load any Static RESOURCES inline just add the following code in the head of you page using the RESOURCES Object with the name of the bundle you wont to use , such as :
-```
+```html
 <style type="text/css">
   {
     {
