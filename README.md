@@ -4,7 +4,7 @@ Welcome to the hack.guides() content repository.  This repository contains publi
 
 ## What is hack.guides()?
 
-A community, movement, and website of full of developers with the [ambitious goal](http://www.tutorials.pluralsight.com/faq) of educating ourselves and the world.
+A community, movement, and website of full of developers with the [ambitious goal](http://tutorials.pluralsight.com/faq) of educating ourselves and the world.
 
 ## Join the movement
 
