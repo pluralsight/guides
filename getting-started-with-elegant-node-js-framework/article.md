@@ -61,7 +61,7 @@ As you notice your app is coming with a beautiful homepage, no lets replace it w
 inside the controllers directory create a new javascript file and name it index.js, then write the following code in this file:
 
 
-```node.js
+```javascript
 var Controller = require("elegant-controller");
 new Controller("/").get(function () {
   return "hello world";
