@@ -151,6 +151,8 @@
 - [Read more from hassan alnator](http://tutorials.pluralsight.com/user/hassan-alnator) <img src="https://avatars.githubusercontent.com/u/5238896?v=3" width="30" height="30" alt="hassan alnator" />
 - Related to: Node.js
 
+
+
 ### Hello Guide by Bojan Bedrac
 - [Read the guide](http://tutorials.pluralsight.com/review/hello-guide)
 - [Read more from Bojan Bedrac](http://tutorials.pluralsight.com/user/xbojch) <img src="https://avatars.githubusercontent.com/u/4233387?v=3" width="30" height="30" alt="Bojan Bedrac" />
@@ -160,8 +162,6 @@
 - [Read the guide](http://tutorials.pluralsight.com/review/getting-started-with-elegant-node-js-framework)
 - [Read more from hassan alnator](http://tutorials.pluralsight.com/user/hassan-alnator) <img src="https://avatars.githubusercontent.com/u/5238896?v=3" width="30" height="30" alt="hassan alnator" />
 - Related to: Node.js
-
-
 
 ### Getting started with Ember.js by David Lormor
 - [Read the guide](http://tutorials.pluralsight.com/review/getting-started-with-ember-js)
