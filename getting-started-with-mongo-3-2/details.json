@@ -1,0 +1,14 @@
+{
+    "author_name": "davidchchang",
+    "author_real_name": "David",
+    "branch": "master",
+    "branches": [],
+    "filename": "article.md",
+    "image_url": "https://avatars.githubusercontent.com/u/451089?v=3",
+    "published": false,
+    "stacks": [
+        "NoSQL Databases (MongoDB, Cassandra, etc)"
+    ],
+    "thumbnail_url": null,
+    "title": "Getting started with Mongo 3.2"
+}
