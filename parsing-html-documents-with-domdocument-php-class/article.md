@@ -1,5 +1,4 @@
 
-
 Hi every one! today I'm gonna to show you how to parse HTML files through the amazing DOMDocument.
 To tests will be done with the following HTML script.
 
