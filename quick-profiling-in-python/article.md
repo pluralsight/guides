@@ -59,7 +59,7 @@ these are a little awkward to use and documentation is a bit lacking. Luckily,
 this simple approach to profiling doesn't need too much documentation.
 
 The first and probably most awkward step is to place the `@profile` decorator
-around the function your interested in profiling [2]. Don't worry, there is
+around the function you're interested in profiling [2]. Don't worry, there is
 nothing to import for `@profile` because it's **magic** [3].
 
 Next, run the `kernprof.py` script with your script/application as the
@@ -125,7 +125,7 @@ speed. Luckily, there are still several options.
     - PyPy is an alternative implementation of the [Python language
       spec](http://docs.python.org/2/reference/). PyPy is, in a nutshell,
       Python implemented in Python. A real explanation of PyPy is beyond this
-      post and my expertise. However, if your interested in languages and some
+      post and my expertise. However, if you're interested in languages and some
       serious [Computer Science](http://en.wikipedia.org/wiki/Computer_science)
       definitely look into it. It will test your thought process, which is
       always a good thing.
