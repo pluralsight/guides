@@ -25,7 +25,7 @@ Think of this as a "Wikipedia" for technical guides and tutorials, or "Medium.co
 ### Some bonus reasons to contribute a tutorial here!
 * **Help the world**.  You'll help spread useful knowledge.
 * **Free subscription to Pluralsight.com**.  Pluralsight is our corporate sponsor for this project and is subsidizing the costs of some of the open-source development.  We've negotiated with Pluralsight to give all contributors a free subscription to their video library on training for programmers, so you can stay up-to-date on all programming topics.  This is worth $299.
-* **Network with other important members of the community**.  We'll give you access to our community [Slack](https://hackguides.typeform.com/to/ZroxPD), to make awesome connections with others who are involved.
+* **Network with other important members of the community**.  We'll give you access to our <a href="https://hackguides.herokuapp.com" target="_blank">Slack community</a>, to make awesome connections with others who are involved.
 * **Free access to the next hack.summit() conference for you and your friends**.  Get your own special code you can give out!
 
 ### Who owns the tutorials created here?
@@ -54,10 +54,11 @@ Yes! That's why we've built the editing tools on this site. It's easy to share a
 
 ### Can I hang out with you on your Slack?
 
-Absolutely! Join our [Slack community](https://hackguides.typeform.com/to/ZroxPD), we want as much feedback as possible.
+Absolutely! Join our <a href="https://hackguides.herokuapp.com" target="_blank">Slack community</a>, we want as much feedback as possible.
 
 ### How else can I help?
 
+* Fill out <a href="https://hackguides.typeform.com/to/EwVks9" target="_blank">this quick form</a> to let us know what you're interested in
 * Volunteer to be an editor to help others improve content
 * Make some engine contributions to the open-source engine for the site
 * Spread the word about the site on twitter, facebook, HackerNews, etc.
