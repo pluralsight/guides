@@ -191,3 +191,8 @@
 - [Read more from clthck](http://tutorials.pluralsight.com/user/clthck) <img src="https://avatars.githubusercontent.com/u/14348482?v=3" width="30" height="30" alt="clthck" />
 - Related to: Ruby, Ruby on Rails
 
+### dfghjkufku by jorgemmsilva
+- [Read the guide](http://tutorials.pluralsight.com/review/dfghjkufku)
+- [Read more from jorgemmsilva](http://tutorials.pluralsight.com/user/jorgemmsilva) <img src="https://avatars.githubusercontent.com/u/1187222?v=3" width="30" height="30" alt="jorgemmsilva" />
+- Related to: PHP
+
