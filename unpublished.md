@@ -116,8 +116,6 @@
 - [Read more from Fredy Guibert](http://tutorials.pluralsight.com/user/fredyfx) <img src="https://avatars.githubusercontent.com/u/4960023?v=3" width="30" height="30" alt="Fredy Guibert" />
 - Related to: Microsoft.NET (C#, ASP.NET, VB.NET, etc)
 
-
-
 ### TicTac Toe Game by drA
 - [Read the guide](http://tutorials.pluralsight.com/review/tictac-toe-game)
 - [Read more from drA](http://tutorials.pluralsight.com/user/alfonsotech) <img src="https://avatars.githubusercontent.com/u/15456287?v=3" width="30" height="30" alt="drA" />
@@ -192,3 +190,9 @@
 - [Read the guide](http://tutorials.pluralsight.com/review/how-to-install-ruby-on-rails-on-centos-7)
 - [Read more from clthck](http://tutorials.pluralsight.com/user/clthck) <img src="https://avatars.githubusercontent.com/u/14348482?v=3" width="30" height="30" alt="clthck" />
 - Related to: Ruby, Ruby on Rails
+
+### Must Have Tools for Programmers ! by Shashi Jangra
+- [Read the guide](http://tutorials.pluralsight.com/review/must-have-tools-for-programmers)
+- [Read more from Shashi Jangra](http://tutorials.pluralsight.com/user/shashijangra22) <img src="https://avatars.githubusercontent.com/u/10132780?v=3" width="30" height="30" alt="Shashi Jangra" />
+- Related to: Software Engineering Best Practices
+
