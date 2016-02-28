@@ -2,13 +2,15 @@
     "author_name": "carlsmith",
     "author_real_name": "Carl Smith",
     "branch": "master",
-    "branches": [],
+    "branches": [
+        "last-indigo"
+    ],
     "filename": "article.md",
     "image_url": "https://avatars.githubusercontent.com/u/7561668?v=3",
     "published": true,
     "stacks": [
         "Front-End JavaScript (Angular, React, Meteor, etc)"
     ],
-    "title": "A Beginners Guide to jQuery",
-    "thumbnail_url": null
+    "thumbnail_url": null,
+    "title": "A Beginners Guide to jQuery"
 }
