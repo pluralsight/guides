@@ -196,3 +196,7 @@
 - [Read more from Shashi Jangra](http://tutorials.pluralsight.com/user/shashijangra22) <img src="https://avatars.githubusercontent.com/u/10132780?v=3" width="30" height="30" alt="Shashi Jangra" />
 - Related to: Software Engineering Best Practices
 
+### Docker's - Beginner Guide by Marius Baisan
+- [Read the guide](http://tutorials.pluralsight.com/review/docker-s-beginner-guide)
+- [Read more from Marius Baisan](http://tutorials.pluralsight.com/user/mariobyn) <img src="https://avatars.githubusercontent.com/u/4470735?v=3" width="30" height="30" alt="Marius Baisan" />
+
