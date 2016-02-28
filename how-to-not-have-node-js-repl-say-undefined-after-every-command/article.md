@@ -9,7 +9,7 @@ To **avoid** this all you have to do is install a package directly into your nod
 node -e "require('repl').start({ignoreUndefined: true})"
 ```
 
-Now you will be able to type into the REPL prompt without being annoyed by undefined warnings every time youy press return.
+Now you will be able to type into the REPL prompt without being annoyed by undefined warnings every time you press return.
 
 You can see my original question on StackOverflow where I learned this method here:
 
