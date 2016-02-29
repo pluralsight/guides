@@ -166,6 +166,8 @@
 - [Read more from Jason Beechum](http://tutorials.pluralsight.com/user/jbeechum) <img src="https://avatars.githubusercontent.com/u/7976594?v=3" width="30" height="30" alt="Jason Beechum" />
 - Related to: Microsoft.NET (C#, ASP.NET, VB.NET, etc)
 
+
+
 ### Tips and cool tricks to use in git by Lucas Andrey
 - [Read the guide](http://tutorials.pluralsight.com/review/tips-and-cool-tricks-to-use-in-git)
 - [Read more from Lucas Andrey](http://tutorials.pluralsight.com/user/andreybleme) <img src="https://avatars.githubusercontent.com/u/5385383?v=3" width="30" height="30" alt="Lucas Andrey" />
@@ -216,3 +218,6 @@
 - [Read more from Luke Lee](http://tutorials.pluralsight.com/user/durden) <img src="https://avatars.githubusercontent.com/u/58063?v=3" width="30" height="30" alt="Luke Lee" />
 - Related to: Python
 
+### Beginner: Linux Navigation Manual by Prakrit Duangsutha
+- [Read the guide](http://tutorials.pluralsight.com/review/beginner-linux-navigation-manual)
+- [Read more from Prakrit Duangsutha](http://tutorials.pluralsight.com/user/brillydev) <img src="https://avatars.githubusercontent.com/u/2718812?v=3" width="30" height="30" alt="Prakrit Duangsutha" />
