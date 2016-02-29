@@ -206,3 +206,8 @@
 - [Read more from Om Prakash](http://tutorials.pluralsight.com/user/omps) <img src="https://avatars.githubusercontent.com/u/985481?v=3" width="30" height="30" alt="Om Prakash" />
 - Related to: Python
 
+### Data Analysis with Python by Om Prakash
+- [Read the guide](http://tutorials.pluralsight.com/review/data-analysis-with-python)
+- [Read more from Om Prakash](http://tutorials.pluralsight.com/user/omps) <img src="https://avatars.githubusercontent.com/u/985481?v=3" width="30" height="30" alt="Om Prakash" />
+- Related to: Python
+
