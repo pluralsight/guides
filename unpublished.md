@@ -201,3 +201,8 @@
 - [Read more from Marius Baisan](http://tutorials.pluralsight.com/user/mariobyn) <img src="https://avatars.githubusercontent.com/u/4470735?v=3" width="30" height="30" alt="Marius Baisan" />
 - Related to: DevOps (Docker, Nagios, Jenkins, Chef, Puppet, etc)
 
+### Using Emacs as Python IDE by Om Prakash
+- [Read the guide](http://tutorials.pluralsight.com/review/using-emacs-as-python-ide)
+- [Read more from Om Prakash](http://tutorials.pluralsight.com/user/omps) <img src="https://avatars.githubusercontent.com/u/985481?v=3" width="30" height="30" alt="Om Prakash" />
+- Related to: Python
+
