@@ -211,3 +211,8 @@
 - [Read more from Om Prakash](http://tutorials.pluralsight.com/user/omps) <img src="https://avatars.githubusercontent.com/u/985481?v=3" width="30" height="30" alt="Om Prakash" />
 - Related to: Python
 
+### Profiling memory usage in Python by Luke Lee
+- [Read the guide](http://tutorials.pluralsight.com/review/profiling-memory-usage-in-python)
+- [Read more from Luke Lee](http://tutorials.pluralsight.com/user/durden) <img src="https://avatars.githubusercontent.com/u/58063?v=3" width="30" height="30" alt="Luke Lee" />
+- Related to: Python
+
