@@ -30,8 +30,10 @@ $ rake db:migrate
 
 Now it’s time to populate our database with some sample data! We’ll need it to make sure what we’re going to implement works properly. The following script will populate our database with 10 arbitrary items.
 
-_db/seeds.rb_
+
 ```ruby
+#db/seeds.rb
+
 class Seed
   attr_reader :seed
   def initialize
@@ -77,8 +79,11 @@ $ bundle
 
 Second, we’ll make a small adjustment to the application controller. Except throwing an exception, we’ll make the controller throw a `null session` because we’re going to request json, which is different to the html (which is requested by default).
 
-_application_\_controller.rb_
+
 ```ruby
+#application_controller.rb
+
+
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :null_session
 end
@@ -94,8 +99,10 @@ app/controllers/api/v1
 
 In the `app/controllers/api/v1` directory, we’ll create two controllers. The base_controller will have global rules that apply to all of our API-based controllers.
 
-_base_\__controller.rb_
+
 ```ruby
+#base_controller.rb
+
 class Api::V1::BaseController < ApplicationController
   respond_to :json
 end
@@ -104,8 +111,10 @@ end
 
 The respond_to method ensures that all actions from the controllers, which inherit from the base controller, will respond with JSON. This is the standard approach for building JSON-based APIs. After we’re done with the base controller, we can create a controller for our Item model. We’ll make the controller inherit from the base controller and put the standard index, create update and destroy actions.
 
-_items_\__controller.rb_
+
 ```ruby
+#items_controller.rb
+
 class Api::V1::ItemsController < Api::V1::BaseController
   def index
     respond_with Item.all
@@ -140,8 +149,10 @@ The routing for the controller has to consider the fact that it’s within two n
 
 #### Routing the controllers
 
-_app/config/routes.rb_
+
 ```ruby
+#app/config/routes.rb
+
 Rails.application.routes.draw do
     namespace :api do
       namespace :v1 do
@@ -162,8 +173,11 @@ If you see an array for JSON objects, you’re good to go!
 
 We’re done with the API, but where will we render React? Let’s build a static view where the application will lead us. First, we’ll have to create a controller that’s solely responsible for rendering the static view.
 
-_app/controllers/site_\__controller.rb_
+
 ```ruby
+#app/controllers/site_controller.rb
+
+
 class SiteController < ApplicationController
   def index
   end
@@ -171,8 +185,10 @@ end
 
 ```
 
-_app/config/routes.rb_
+
 ```ruby
+
+#app/config/routes.rb
 Rails.application.routes.draw do
   root to: 'site#index'
 ```
@@ -180,7 +196,7 @@ Rails.application.routes.draw do
 
 #### Adding React to Rails
 
-Add ‘reach-rails’ to the Gemfile.
+Add `reach-rails` to the Gemfile.
 
 ```ruby
 gem 'react-rails'
@@ -214,8 +230,10 @@ For example, let’s say you want to build a simple layout with a body, header a
 
 To make Rails render React components, we need to add the react_component view helper to our root route.
 
-_app/views/site/index.html.erb_
+
 ```ruby
+#app/views/site/index.html.erb
+
 <%= react_component 'Main' %>
 ```
 
@@ -225,8 +243,10 @@ The `react_component` is part of react-rails. In this case, it’s used to put t
 
 The first thing we need to do is to set-up a jsx file in our components folder.
 
-_app/assets/javascripts/components/_\__main.js.jsx_
+
 ```javascript
+//app/assets/javascripts/components/_main.js.jsx
+
 var Main = React.createClass({
     render() {
         return (
