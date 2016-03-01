@@ -71,7 +71,7 @@ Put the gem in your gemfile and bundle it:
 gem 'responders'
 ```
 
-```
+```bash
 $ bundle
 ```
 
@@ -194,7 +194,7 @@ $ rails g react:install
 The react:install generator will automatically include the react JavaScript library in your asset pipeline
 
 
-```
+```bash
 $ rails g react:install
         create app/assets/javascripts/components
         create app/assets/javascripts/components/.gitkeep
