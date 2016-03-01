@@ -51,7 +51,8 @@ Now we add the support of MVC doing the following steps:
 
 ## Add CRUD operations.
 CRUD? What the hell is it? First time to look this word? Well, it refers to Create Read Update and Delete methods.
-
+Now let's pick up a topic: Sales -> Let's start with Products and Categories and later we increment the level.
+What does a product   
 
 ## Playing with action filters.
 First at all, An action filter could be execute... on the request...
