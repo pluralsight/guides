@@ -695,8 +695,9 @@ var AllItems = React.createClass({
 
 
 
-_app/assets/javascripts/components/_\__body.js.jsx_
 ```javascript
+// app/assets/javascripts/components/_body.js.jsx
+
 var Body = React.createClass({
     getInitialState() {
         return { items: [] }
@@ -729,8 +730,9 @@ var Body = React.createClass({
 
 
 
-_app/assets/javascripts/components/_\__new\__item.js.jsx_
 ```javascript
+// app/assets/javascripts/components/_new_item.js.jsx
+
 var NewItem= React.createClass({
     handleClick() {
         var name    = this.refs.name.value;
@@ -763,8 +765,10 @@ var NewItem= React.createClass({
 
 Deleting items is similar to creating new ones. The first thing we need to do is to add a button and a function (for handling the click for deleting an item in the `<AllItems />` component).
 
-_app/assets/javascripts/components/_\_all_\__items.js.jsx_
+
 ```javascript
+// app/assets/javascripts/components/_all_items.js.jsx
+
 var AllItems = React.createClass({
     handleDelete() {
         console.log('delete item clicked');
@@ -793,8 +797,10 @@ var AllItems = React.createClass({
 
 Second, we’re going to pass the reference to the function up to the parent `<Body />` component, where the update of the list will be handled when the delete button is clicked.
 
-_app/assets/javascripts/components/_\__body.js.jsx_
+
 ```javascript
+// app/assets/javascripts/components/_body.js.jsx
+
     handleDelete() {
         console.log('in handle delete');
     },
@@ -816,8 +822,10 @@ _app/assets/javascripts/components/_\__body.js.jsx_
 
 Now we’ll just pass the reference of the function in the parent component to the child component via `props` :
 
-_app/assets/javascripts/components/_\_all_\__items.js.jsx_
+
 ```javascript
+// app/assets/javascripts/components/_all_items.js.jsx
+
 var AllItems = React.createClass({
     handleDelete() {
         this.props.handleDelete();
@@ -831,8 +839,10 @@ var AllItems = React.createClass({
 
 It all looks good, but how do we know which item we’re deleting?  We’re going to use the `bind()` method. The `bind()` method will bind the `id` of the item to `this`, causing the id to send as an argument.
 
-_app/assets/javascripts/components/_\_all_\__items.js.jsx_
+
 ```javascript
+// app/assets/javascripts/components/_all_items.js.jsx
+
 handleDelete(id) {
     this.props.handleDelete(id);
 },
@@ -853,8 +863,9 @@ render() {
 
 Now that we can send the id as an argument, we’re done with the second step. The third thing we need to do is to make an AJAX call to delete the item from the database. 
 
-_app/assets/javascripts/components/_\__body.js.jsx_
 ```javascript
+// app/assets/javascripts/components/_body.js.jsx
+
 handleDelete(id) {
     $.ajax({
         url: `/api/v1/items/${id}`,
@@ -870,8 +881,9 @@ handleDelete(id) {
 
 Everything works, but we’re encountering the same problem we had with adding a new item; the page has to be restarted in order to see the results. Our last step is to change that; we will remove the item from the database once it finishes deleting server-side. 
 
-_app/assets/javascripts/components/_\__body.js.jsx_
 ```javascript
+// app/assets/javascripts/components/_body.js.jsx
+
 handleDelete(id) {
     $.ajax({
         url: `/api/v1/items/${id}`,
@@ -901,8 +913,9 @@ The last thing we’re going to do is implement editing and updating of items. W
 
 First, we’ll implement the edit button and its event listener.
 
-_app/assets/javascripts/components/_\_all_\__items.js.jsx_
 ```javascript
+// app/assets/javascripts/components/_all_items.js.jsx
+
 handleEdit() {
 
 },
@@ -913,8 +926,9 @@ handleEdit() {
 
 With the editing mode, the code for a singular skill will become too much, and following the rule of separation of concerns, we’ll have to move it to a separate component, which will be named <Skill />. This component will be used to contain the information and methods for a single skill. The `handleEdit()` and `handleDelete()` functions will be referenced as properties of the component and, as such, will be referenced using the `this.props.*` notation.
 
-_app/assets/javascripts/components/_\_all_\__items.js.jsx_
 ```javascript
+// app/assets/javascripts/components/_all_items.js.jsx
+
 render() {
     var items= this.props.items.map((item) => {
         return (
@@ -931,8 +945,9 @@ render() {
 
 Here’s how the `<Item />` template will look:
 
-_app/assets/javascripts/components/_\__item.js.jsx_
+
 ```javascript
+// app/assets/javascripts/components/_item.js.jsx
 
 var Item = React.createClass({
     render() {
@@ -966,8 +981,10 @@ _app/assets/javascripts/components/_\__item.js.jsx_
 
 And initialize the method into the component:
 
-_app/assets/javascripts/components/_\__item.js.jsx_
+
 ```javascript
+// app/assets/javascripts/components/_item.js.jsx
+
 var Item = React.createClass({
     handleEdit() {
         console.log('edit button clicked')
@@ -978,8 +995,10 @@ var Item = React.createClass({
 
 Now, we’ll have a state variable named editable `this.state.editable` that we’ll set to `false` initially, and set to `true` if the edit button is clicked.
 
-_app/assets/javascripts/components/_\__item.js.jsx_
+
 ```javascript
+// app/assets/javascripts/components/_item.js.jsx
+
 var Item = React.createClass({
     getInitialState() {
         return {editable: false}
@@ -995,8 +1014,10 @@ var Item = React.createClass({
 
 A ternary operator must be implanted; this will render different elements depending whether `this.state.editable` is set to `true` or `false`. Here’s how to do that:
 
-_app/assets/javascripts/components/_\__item.js.jsx_
+
 ```javascript
+// app/assets/javascripts/components/_item.js.jsx
+
 render() {
     var name = this.state.editable ? <input type='text' defaultValue={this.props.item.name} /> : <h3>{this.props.item.name}</h3>;
     var description = this.state.editable ? <input type='text' defaultValue={this.props.item.description} />: <p>{this.props.item.description}</p>;
@@ -1012,15 +1033,18 @@ render() {
 ```
 The name and description variable are now dynamic; they will change depending on `this.state.editable`. Let’s do the same for the edit button:
 
-_app/assets/javascripts/components/_\__item.js.jsx_
+
 ```javascript
+// app/assets/javascripts/components/_item.js.jsx
+
 <button onClick={this.handleEdit}> {this.state.editable ? 'Submit' : 'Edit' } </button>
 ```
 
 There’s something missing in the input fields. We’ll reference them in the component methods just as we did in `<NewSkill />`; there has to be a `ref` attribute in the input fields. Let’s add this attribute to the input fields and reference them in the `handleEdit()` method.
 
-_app/assets/javascripts/components/_\__item.js.jsx_
 ```javascript
+// app/assets/javascripts/components/_item.js.jsx
+
 render() {
     var name = this.state.editable ? <input type='text' ref='name' defaultValue={this.props.item.name} /> : <h3>{this.props.item.name}</h3>;
     var description = this.state.editable ? <input type='text' ref='description' defaultValue={this.props.item.description} />: <p>{this.props.item.description}</p>;
@@ -1030,8 +1054,9 @@ render() {
 
 Now, add the code to reference the input fields in the method:
 
-_app/assets/javascripts/components/_\__item.js.jsx_
 ```javascript
+// app/assets/javascripts/components/_item.js.jsx
+
 handleEdit() {
     if(this.state.editable) {
         var name = this.refs.name.value;
@@ -1047,8 +1072,9 @@ handleEdit() {
 
 Open your JavaScript console and try entering values into an item. Once you click the submit button, you will see the values displayed on the screen. We have the values in `<Item />` and we have to send them up to the `<Body />` where the array with all the items is stored and where we’re going to call our server. This means that we’ll use props functions to pass the data up the chain. The journey will start with `<Item />`, pass to `<AllItems />` and end up in `<Body />`. Let’s start with `<Item />` to `<AllSkills />`:
 
-_app/assets/javascripts/components/_\__item.js.jsx_
 ```javascript
+// app/assets/javascripts/components/_item.js.jsx
+
 handleEdit() {
     if(this.state.editable) {
         var name = this.refs.name.value;
@@ -1066,8 +1092,9 @@ handleEdit() {
 
 In `<AllItems />` we’ll add a `handleUpdate` method that will take the properties set in `onUpdate` and will pass these up to its own `onUpdate` property:
 
-_app/assets/javascripts/components/_\_all_\__items.js.jsx_
 ```javascript
+// app/assets/javascripts/components/_all_items.js.jsx
+
 onUpdate(item) {
     this.props.onUpdate(item);
 },
@@ -1089,8 +1116,9 @@ render() {
 
 Finally, `<Body />` will take the `onUpdate` property of `<AllItems />` with the item in it.
 
-_app/assets/javascripts/components/_\__body.js.jsx_
 ```javascript
+// app/assets/javascripts/components/_body.js.jsx
+
 handleUpdate(item) {
     $.ajax({
             url: `/api/v1/items/${item.id}`,
@@ -1122,8 +1150,10 @@ As you can see, we’ve managed to send the item up the components. (Note: Make 
 
 The last thing that must be done in order to finish the functionality is to add a method in `<Body />` to replace the newly updated item with the old one in the items array.
 
-_app/assets/javascripts/components/_\__body.js.jsx_
+
 ```javascript
+// app/assets/javascripts/components/_body.js.jsx
+
 handleUpdate(item) {
     $.ajax({
             url: `/api/v1/items/${item.id}`,
