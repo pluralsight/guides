@@ -10,19 +10,19 @@ We’re going to employ a different approach to the application’s architecture
 
 First, let’s initialize an empty rails application:
 
-```
+```bash
 $ rails new item_cart
 ```
 
 Now, let’s create the model for which we’ll build a CRUD interface:
 
-```
-rails g model Item name:string description:text
+```bash
+$ rails g model Item name:string description:text
 ```
 
 This will create a model with a name and description attributes, and a database migration for it.  We just need to add the model to the database schema.
 
-```
+```bash
 $ rake db:migrate
 ```
 
@@ -58,7 +58,7 @@ seed.run
 
 ```
 
-```
+```bash
 $ rake db:seed
 ```
 
@@ -88,7 +88,7 @@ end
 
 Because this is an API-based application, we’ll structure the controllers using namespaces. By convention, we have to put the controllers for the different namespaces in folders corresponding to their namespace. For example, all controllers belonging to the `api` namespace must be put in a folder named ‘api’.  In the ‘controllers’ folder (in our application), we’ll create a folder named `api` and, in it, another folder named `v1`:
 
-```
+```bash
 app/controllers/api/v1
 ```
 
@@ -154,7 +154,7 @@ Rails.application.routes.draw do
 ```
 To see if everything works, go to:
 
-```
+```bash
 http://localhost:3000/api/v1/items.json
 ```
 
@@ -186,7 +186,7 @@ Add ‘reach-rails’ to the Gemfile.
 gem 'react-rails'
 ```
 
-```
+```bash
 $ bundle
 $ rails g react:install
 ```
@@ -281,7 +281,7 @@ Great! We just nested two components together.
 
 As previously mentioned. All the items will be listed in the `<Body />` component. The `<Body />` component will also contain a form for inserting new items. Here’s the list of files that need to be created:
 
-```
+```bash
 app/assets/javascripts/components/_body.js.jsx
 app/assets/javascripts/components/_all_items.js.jsx
 app/assets/javascripts/components/_new_items.js.jsx
