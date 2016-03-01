@@ -225,3 +225,8 @@
 - [Read more from Lucas Andrey](http://tutorials.pluralsight.com/user/andreybleme) <img src="https://avatars.githubusercontent.com/u/5385383?v=3" width="30" height="30" alt="Lucas Andrey" />
 - Related to: HTML/CSS
 
+### Building a CRUD interface with React and Ruby on Rails by Hristo Georgiev
+- [Read the guide](http://tutorials.pluralsight.com/review/building-a-crud-interface-with-react-and-ruby-on-rails)
+- [Read more from Hristo Georgiev](http://tutorials.pluralsight.com/user/Kaizeras) <img src="https://avatars.githubusercontent.com/u/6340189?v=3" width="30" height="30" alt="Hristo Georgiev" />
+- Related to: Ruby, Ruby on Rails
+
