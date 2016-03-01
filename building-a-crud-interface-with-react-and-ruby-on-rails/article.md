@@ -245,7 +245,7 @@ The first thing we need to do is to set-up a jsx file in our components folder.
 
 
 ```javascript
-//app/assets/javascripts/components/_main.js.jsx
+// app/assets/javascripts/components/_main.js.jsx
 
 var Main = React.createClass({
     render() {
@@ -265,7 +265,8 @@ The `<Main />` component has two child components; `<Header />` and `<Body />`. 
 
 
 ```javascript
-//app/assets/javascripts/components/_header.js.jsx
+
+// app/assets/javascripts/components/_header.js.jsx
 
 var Header = React.createClass({
     render() {
@@ -284,7 +285,8 @@ And change our `<Main />` component so that it will render `<Header />` in its r
 
 
 ```javascript
-#app/assets/javascripts/components/_main.js.jsx
+
+// app/assets/javascripts/components/_main.js.jsx
 
 var Main = React.createClass({
     render() {
@@ -317,7 +319,7 @@ We’ll use `componentDidMount()`, which is called right after the component is 
 
 
 ```javascript
-//app/assets/javascripts/components/_all_items.js.jsx
+// app/assets/javascripts/components/_all_items.js.jsx
 
 var AllItems = React.createClass({
     componentDidMount() {
@@ -342,7 +344,7 @@ Before we fetch information from the server, we need to know how data is stored 
 
 
 ```javascript
-//app/assets/javascripts/components/_all_items.js.jsx
+// app/assets/javascripts/components/_all_items.js.jsx
 
 var AllItems = React.createClass({
     getInitialState() {
@@ -354,7 +356,7 @@ var AllItems = React.createClass({
 Now, we need to get the data from the server and assign it to the items object. Here’s how we do it:
 
 ```javascript
-//app/assets/javascripts/components/_all_items.js.jsx
+// app/assets/javascripts/components/_all_items.js.jsx
 
 getInitialState() {
         return { items: [] }
@@ -372,7 +374,7 @@ Okay, we’ve got the items, but how do we render them? We’re going to iterate
 
 
 ```javascript
-//app/assets/javascripts/components/_all_items.js.jsx
+// app/assets/javascripts/components/_all_items.js.jsx
 
 //getInitialState and componentDidMount
 
@@ -400,7 +402,7 @@ The map method is similar to the each method in the `.erb` templates. It iterate
 But hold on--we’re not done just yet! When we iterate through items in React, there must be a way to identify each item into the component’s DOM. For that, we’ll use a unique attribute of each item, also known as `key`. To add a key to the item, we need to use the key attribute in the div that wraps it, like this:
 
 ```javascript
-//app/assets/javascripts/components/_all_items.js.jsx
+// app/assets/javascripts/components/_all_items.js.jsx
 
     var items= this.state.items.map((item) => {
         return (
@@ -425,8 +427,9 @@ Did you notice the key attribute in the div element that’s used in the iterato
 
 Let’s test if everything is working. First, `<Body />` , the parent component of `<AllItems />` and `<NewItem />` must be put into the `<Main />` component.
 
-_app/assets/javascripts/components/_\__main.js.jsx_
+
 ```javascript
+// app/assets/javascripts/components/_main.js.jsx_
 var Main = React.createClass({
     render() {
         return (
@@ -442,8 +445,10 @@ var Main = React.createClass({
 
 We must add the `<AllItems />` and `<NewItem />` components into the body component, just like we included. In the `<Body />` component, we’ll include the rest of the nested components, respectively:
 
-_app/assets/javascripts/components/_\__body.js.jsx_
+
 ```javascript
+// app/assets/javascripts/components/_body.js.jsx
+
 var Body = React.createClass({
     render() {
         return (
@@ -465,8 +470,10 @@ Great! You should now see all the items displayed.
 Time to move on to the next file we created previously; 
 
 
-_app/assets/javascripts/components/_\__new\__item.js.jsx_
+
 ```javascript
+//app/assets/javascripts/components/_new_item.js.jsx
+
 var NewItem= React.createClass({
     render() {
         return (
@@ -484,8 +491,10 @@ What’s needed to create a new item? We must create two input fields and send t
 
 Let’s add the form fields and the button to handle the submission.
 
-_app/assets/javascripts/components/_\__new\__item.js.jsx_
+
 ```javascript
+// app/assets/javascripts/components/_new_item.js.jsx
+
 var NewItem= React.createClass({
     render() {
         return (
@@ -515,9 +524,10 @@ If you tried to click the `submit` button, you’ll notice that nothing happens.
 
 Once we have this, when we click the button the component will look for the `handleClick()` function. We must define it in the JavaScript file.
 
-_app/assets/javascripts/components/_\__new\__item.js.jsx_
 
 ```javascript
+// app/assets/javascripts/components/_new_item.js.jsx
+
 // var NewItem = …
 handleClick() {
     var name    = this.refs.name.value;
@@ -535,8 +545,10 @@ handleClick() {
 
 This time, if you put text in the input fields and you click the button, it will print out the values of the input fields in the JavaScript console. Here you can see how the refs attribute is used in order to get the value out of the input field. Instead of sending the values to the console, we’re going to send them to the server. Here’s how this will happen: 
 
-_app/assets/javascripts/components/_\__new\__item.js.jsx_
+
 ```javascript
+// app/assets/javascripts/components/_new_item.js.jsx
+
 var NewItem= React.createClass({
     handleClick() {
         var name    = this.refs.name.value;
@@ -572,15 +584,17 @@ Move `getInitialState()` and `componentDidMount()` from `<Allitems />` to `<Body
 
 Here’s how we’ll send down the items from `<Body />` to `<AllItems />` :
 
-_app/assets/javascripts/components/_\__body.js.jsx_
 ```javascript
+// app/assets/javascripts/components/_body.js.jsx
+
 <AllItems items={this.state.items} /> 
 ```
 
 Here’s how they’re going to be referenced in  `<AllItems />` :
 
-_app/assets/javascripts/components/_\_all_\__items.js.jsx_
 ```javascript
+// app/assets/javascripts/components/_all_items.js.jsx
+
 var items= this.props.items.map((item) => {
 
 ```
@@ -588,8 +602,10 @@ var items= this.props.items.map((item) => {
 
 We can also pass functions as properties down the components hierarchy. Let’s do that with `handleSubmit()` in `<NewItem />`. Just like the items array, we’ll move the function to its parent `<Body />` component as well.
 
-_app/assets/javascripts/components/_\__body.js.jsx_
+
 ```javascript
+// app/assets/javascripts/components/_body.js.jsx
+
 // getInitialState() and componentDidMount()
 
     handleSubmit(item) {
@@ -602,16 +618,20 @@ _app/assets/javascripts/components/_\__body.js.jsx_
 ```
 Then, let’s reference the function in the child component, just like we did with the array:
 
-_app/assets/javascripts/components/_\__body.js.jsx_
+
 ```javascript
+// app/assets/javascripts/components/_body.js.js
+
 <NewItem handleSubmit={this.handleSubmit}/>
 
 ```
 
 In the `<NewItem />` component, we’ll pass the function as part of `this.props` and pass on the object from the AJAX request as an argument of the parent:
 
-_app/assets/javascripts/components/_\__new\__item.js.jsx_
+
 ```javascript
+// app/assets/javascripts/components/_new_item.js.jsx
+
 handleClick() {
     var name    = this.refs.name.value;
     var description = this.refs.description.value;
@@ -630,8 +650,10 @@ handleClick() {
 
 Now, when you click the submit button, the JavaScript console will log the object we just created. Awesome! We’re almost there. We just need to add the new item to the items array instead of logging it to the console.
 
-_app/assets/javascripts/components/_\__body.js.jsx_
+
 ```javascript
+// app/assets/javascripts/components/_body.js.js
+
 // getInitialState() and componentDidMount()
 
     handleSubmit(item) {
@@ -646,8 +668,10 @@ _app/assets/javascripts/components/_\__body.js.jsx_
 
 Everything should now be working right. Since a lot of code was moved in this step, here are the updated files, so that you can check if you have followed through correctly:
 
-_app/assets/javascripts/components/_\_all_\__items.js.jsx_
+
 ```javascript
+// app/assets/javascripts/components/_all_items.js.jsx
+
 var AllItems = React.createClass({
     render() {
         var items= this.props.items.map((item) => {
