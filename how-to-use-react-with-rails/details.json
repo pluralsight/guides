@@ -1,11 +1,11 @@
 {
-    "author_name": "prtkgpt",
-    "author_real_name": "Prateek Gupta",
+    "author_name": "Kaizeras",
+    "author_real_name": "Hristo Georgiev",
     "branch": "master",
     "branches": [],
     "filename": "article.md",
     "image_url": "https://avatars.githubusercontent.com/u/2454349?v=3",
-    "published": false,
+    "published": true,
     "stacks": [
         "Front-End JavaScript (Angular, React, Meteor, etc)"
     ],
