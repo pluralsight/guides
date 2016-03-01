@@ -220,11 +220,6 @@
 - [Read the guide](http://tutorials.pluralsight.com/review/beginner-linux-navigation-manual)
 - [Read more from Prakrit Duangsutha](http://tutorials.pluralsight.com/user/brillydev) <img src="https://avatars.githubusercontent.com/u/2718812?v=3" width="30" height="30" alt="Prakrit Duangsutha" />
 
-### How to use React with Rails by Prateek Gupta
-- [Read the guide](http://tutorials.pluralsight.com/review/how-to-use-react-with-rails)
-- [Read more from Prateek Gupta](http://tutorials.pluralsight.com/user/prtkgpt) <img src="https://avatars.githubusercontent.com/u/2454349?v=3" width="30" height="30" alt="Prateek Gupta" />
-- Related to: Front-End JavaScript (Angular, React, Meteor, etc)
-
 ### Diga adeus ao Wordpress. Conheça o Jekyll! by Lucas Andrey
 - [Read the guide](http://tutorials.pluralsight.com/review/diga-adeus-ao-wordpress-conheca-o-jekyll)
 - [Read more from Lucas Andrey](http://tutorials.pluralsight.com/user/andreybleme) <img src="https://avatars.githubusercontent.com/u/5385383?v=3" width="30" height="30" alt="Lucas Andrey" />
