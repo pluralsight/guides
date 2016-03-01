@@ -263,8 +263,10 @@ The `js.jsx` in React components works the same way as `html.erb` works for Rail
 
 The `<Main />` component has two child components; `<Header />` and `<Body />`. Let’s start with the `<Header />` first.
 
-_app/assets/javascripts/components/_\__header.js.jsx_
+
 ```javascript
+//app/assets/javascripts/components/_header.js.jsx
+
 var Header = React.createClass({
     render() {
         return (
@@ -280,8 +282,10 @@ var Header = React.createClass({
 
 And change our `<Main />` component so that it will render `<Header />` in its render function.
 
-_app/assets/javascripts/components/_\__main.js.jsx_
+
 ```javascript
+#app/assets/javascripts/components/_main.js.jsx
+
 var Main = React.createClass({
     render() {
         return (
@@ -310,9 +314,11 @@ app/assets/javascripts/components/_new_items.js.jsx
 First, let’s start with listing all the items. Listing them will include making a request to the server to fetch all the items into our component using an AJAX request. We need to do it when the component gets rendered into the DOM. React has several built-in methods that handle different events during a component’s lifespan. There are methods that execute before and after component mounts into the DOM or before and after it dismounts from the DOM. In this case, we need a method that will handle the AJAX request when the component mounts.
 We’ll use `componentDidMount()`, which is called right after the component is mounted. You can find out about other component methods and how to use them in [React’s documentation](https://facebook.github.io/react/docs/component-specs.html).
 
-_app/assets/javascripts/components/_\_all_\__items.js.jsx_
+
 
 ```javascript
+//app/assets/javascripts/components/_all_items.js.jsx
+
 var AllItems = React.createClass({
     componentDidMount() {
         console.log('Component mounted');
@@ -334,8 +340,10 @@ Here’s how you implement the `componentDidMount()` method. Note how the method
 
 Before we fetch information from the server, we need to know how data is stored in the component. When the component is mounted, its data has to be initialized. This is done by the `getInitialState()` method. 
 
-_app/assets/javascripts/components/_\_all_\__items.js.jsx_
+
 ```javascript
+//app/assets/javascripts/components/_all_items.js.jsx
+
 var AllItems = React.createClass({
     getInitialState() {
         return { items: [] }
@@ -345,8 +353,9 @@ var AllItems = React.createClass({
 
 Now, we need to get the data from the server and assign it to the items object. Here’s how we do it:
 
-_app/assets/javascripts/components/_\_all_\__items.js.jsx_
 ```javascript
+//app/assets/javascripts/components/_all_items.js.jsx
+
 getInitialState() {
         return { items: [] }
 },
@@ -361,8 +370,10 @@ We use the `getJSON` method with the URL of the `items.json` as an argument, and
 
 Okay, we’ve got the items, but how do we render them? We’re going to iterate through them in our `render()` method.
 
-_app/assets/javascripts/components/_\_all_\__items.js.jsx_
+
 ```javascript
+//app/assets/javascripts/components/_all_items.js.jsx
+
 //getInitialState and componentDidMount
 
 render() {
@@ -388,8 +399,9 @@ The map method is similar to the each method in the `.erb` templates. It iterate
 
 But hold on--we’re not done just yet! When we iterate through items in React, there must be a way to identify each item into the component’s DOM. For that, we’ll use a unique attribute of each item, also known as `key`. To add a key to the item, we need to use the key attribute in the div that wraps it, like this:
 
-_app/assets/javascripts/components/_\_all_\__items.js.jsx_
 ```javascript
+//app/assets/javascripts/components/_all_items.js.jsx
+
     var items= this.state.items.map((item) => {
         return (
             <div key={item.id}>
