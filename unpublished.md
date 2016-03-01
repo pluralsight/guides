@@ -116,8 +116,6 @@
 - [Read more from Fredy Guibert](http://tutorials.pluralsight.com/user/fredyfx) <img src="https://avatars.githubusercontent.com/u/4960023?v=3" width="30" height="30" alt="Fredy Guibert" />
 - Related to: Microsoft.NET (C#, ASP.NET, VB.NET, etc)
 
-
-
 ### TicTac Toe Game by drA
 - [Read the guide](http://tutorials.pluralsight.com/review/tictac-toe-game)
 - [Read more from drA](http://tutorials.pluralsight.com/user/alfonsotech) <img src="https://avatars.githubusercontent.com/u/15456287?v=3" width="30" height="30" alt="drA" />
@@ -226,3 +224,9 @@
 - [Read the guide](http://tutorials.pluralsight.com/review/how-to-use-react-with-rails)
 - [Read more from Prateek Gupta](http://tutorials.pluralsight.com/user/prtkgpt) <img src="https://avatars.githubusercontent.com/u/2454349?v=3" width="30" height="30" alt="Prateek Gupta" />
 - Related to: Front-End JavaScript (Angular, React, Meteor, etc)
+
+### Diga adeus ao Wordpress. Conheça o Jekyll! by Lucas Andrey
+- [Read the guide](http://tutorials.pluralsight.com/review/diga-adeus-ao-wordpress-conheca-o-jekyll)
+- [Read more from Lucas Andrey](http://tutorials.pluralsight.com/user/andreybleme) <img src="https://avatars.githubusercontent.com/u/5385383?v=3" width="30" height="30" alt="Lucas Andrey" />
+- Related to: HTML/CSS
+
