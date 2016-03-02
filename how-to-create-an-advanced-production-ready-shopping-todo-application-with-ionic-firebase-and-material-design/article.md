@@ -34,14 +34,23 @@ The way were going to approach this implementation is that we'll try to reuse as
 The finished app, which you can take a look at [here](http://shopping-todo.com/), has the following screens:
 
 + Login - the app offers Facebook and Google login, and it even has the DEMO mode where you can test the app without needing to log in
+
 <img src="http://i.imgur.com/6DqqUlY.jpg" style="width: 300px" />
+
 + Home screen - where you can add as many projects (we call them `groups` in the code) as you like
+
 <img src="http://i.imgur.com/cnD3Wbv.jpg" style="width: 300px" />
+
 + Project screen - shows a list of items that need to be bought and those that are already bought, with a view of the price of bought/to-buy items
+
 <img src="http://i.imgur.com/or5l1ll.jpg" style="width: 300px" />
+
 + Adding items on the project screen
+
 <img src="http://i.imgur.com/yE7IecW.jpg" style="width: 300px" />
+
 + Adding users to your project
+
 <img src="http://i.imgur.com/k9olacL.jpg" style="width: 300px" />
 
 ## Finished project code
