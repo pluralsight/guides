@@ -49,7 +49,8 @@ In Angular 2, we use a top-level component in the same way. To help show how thi
 ```typescript
 /* src/app.ts
 ** Don't get caught up with these import statements
-*/ We will learn more about them in the module section
+** We will learn more about them in the module section
+*/
 import {Component} from 'angular2/core';
 import {RouteConfig, ROUTER_DIRECTIVES} from 'angular2/router';
 import {FORM_PROVIDERS} from 'angular2/common';
