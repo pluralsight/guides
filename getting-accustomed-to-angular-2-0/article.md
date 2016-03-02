@@ -35,7 +35,7 @@ export class MyComponent {
 
 Applications built with Angular 2 are made up of a whole bunch of different components. In order to create a component, we must use the `@` decorator which will tell Angular that we are trying to build a class of something; in this case, Angular will know we are trying to build a component. Furthermore, Angular will render this template everywhere that `<my-component></my-component>` appears in an application, granted that the component is imported into the app's main component. 
 
-##### What main component? 
+#### Top Level Component 
 Those who used Angular 1 will remember the main application file, or `angular.module` that served as our top-level module. It was inside this file that we would add our dependencies that our application relied on.
 
 In Angular 2, we use a top-level component in the same way. To help show how this works, I've included another piece of code which imports `MyComponent` into our main app files, and then grants the `AppComponent` access to it. That said, there are a few important pieces of information here that we should be focusing on.
