@@ -46,10 +46,10 @@ In Angular 2, we use a top-level component in the same way. To help show how thi
 3. The top-level component of an Angular 2 application must be passed into this `bootstrap` function in order for our application to run. Often times, we will see an application's `bootstrap` function being used in a separate file.
 
 
-```
-//src/app.ts
-/* Don't get caught up with these import statements
-** We will learn more about them in the module section
+```typescript
+/* src/app.ts
+** Don't get caught up with these import statements
+*/ We will learn more about them in the module section
 import {Component} from 'angular2/core';
 import {RouteConfig, ROUTER_DIRECTIVES} from 'angular2/router';
 import {FORM_PROVIDERS} from 'angular2/common';
@@ -74,3 +74,6 @@ export class AppComponent {
 }
 bootstrap(AppComponent);
 ```
+
+
+
