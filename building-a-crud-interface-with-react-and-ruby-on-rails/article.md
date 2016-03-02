@@ -196,7 +196,7 @@ Rails.application.routes.draw do
 
 #### Adding React to Rails
 
-Add `reach-rails` to the Gemfile.
+Add `react-rails` to the Gemfile.
 
 ```ruby
 gem 'react-rails'
