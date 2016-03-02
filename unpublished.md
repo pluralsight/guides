@@ -230,3 +230,8 @@
 - [Read more from Nikola Brežnjak](http://tutorials.pluralsight.com/user/Hitman666) <img src="https://avatars.githubusercontent.com/u/1001064?v=3" width="30" height="30" alt="Nikola Brežnjak" />
 - Related to: Front-End JavaScript (Angular, React, Meteor, etc)
 
+### Getting Accustomed to Angular 2.0  by Tom Greco
+- [Read the guide](http://tutorials.pluralsight.com/review/getting-accustomed-to-angular-2-0)
+- [Read more from Tom Greco](http://tutorials.pluralsight.com/user/thomasjosephgreco) <img src="https://avatars.githubusercontent.com/u/6646552?v=3" width="30" height="30" alt="Tom Greco" />
+- Related to: Front-End JavaScript (Angular, React, Meteor, etc)
+
