@@ -7,10 +7,6 @@
 - [Read the guide](http://tutorials.pluralsight.com/review/how-i-wrote-an-%7E100b-grid-system)
 - [Read more from IonicaBizau](http://tutorials.pluralsight.com/user/IonicaBizau)
 
-### How to Migrate a virtual machine from Virtualbox 4.x to VMware Workstation 9.x or 10 by Erick Rodriguez
-- [Read the guide](http://tutorials.pluralsight.com/review/how-to-migrate-a-virtual-machine-from-virtualbox-4-x-to-vmware-workstation-9-x-or-10)
-- [Read more from Erick Rodriguez](http://tutorials.pluralsight.com/user/tbogard) <img src="https://avatars.githubusercontent.com/u/1978642?v=3" width="30" height="30" alt="Erick Rodriguez" />
-
 ### Python iteration and the for loop by perkolasoft
 - [Read the guide](http://tutorials.pluralsight.com/review/python-iteration-and-the-for-loop)
 - [Read more from perkolasoft](http://tutorials.pluralsight.com/user/perkolasoft)
