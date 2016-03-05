@@ -1,3 +1,8 @@
+### Generate Enum from database table with T4 by Correia de Freitas
+- [Read the guide](http://tutorials.pluralsight.com/review/generate-enum-from-database-table-with-t4)
+- [Read more from Correia de Freitas](http://tutorials.pluralsight.com/user/correiadefreitas) <img src="https://avatars.githubusercontent.com/u/9440177?v=3" width="30" height="30" alt="Correia de Freitas" />
+- Related to: Microsoft.NET (C#, ASP.NET, VB.NET, etc)
+
 ### Be careful what you import by Luke Lee
 - [Read the guide](http://tutorials.pluralsight.com/review/be-careful-what-you-import)
 - [Read more from Luke Lee](http://tutorials.pluralsight.com/user/durden) <img src="https://avatars.githubusercontent.com/u/58063?v=3" width="30" height="30" alt="Luke Lee" />
