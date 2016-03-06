@@ -112,3 +112,5 @@ con.Close();
     }
 #>
 </pre>
+
+Code in https://github.com/correiadefreitas/SQL_T4_Enum
