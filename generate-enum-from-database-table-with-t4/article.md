@@ -2,7 +2,7 @@
 
 Here's a little something I wrote a while back.
 
-<code>
+<pre>
 /// Author: José Pedro Correia de Freitas
 <#@ template debug="false" hostSpecific="true" language="C#" #>
 <#@ assembly name="System.Data" #>
@@ -113,4 +113,4 @@ con.Close();
         }
     }
 #>
-</code>
+</pre>
