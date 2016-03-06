@@ -1,5 +1,3 @@
-<h1>Generate Enum from database table with T4</h1>
-
 Here's a little something I wrote a while back.
 
 <pre>
@@ -16,7 +14,7 @@ Here's a little something I wrote a while back.
 <#
 
 string path = Path.GetDirectoryName(Host.TemplateFile);
-// Be sure to include default database name
+// Be sure to include default database name, if it exists
 string constr = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=" + path + @"\App_Data\exampleDB.mdf;Integrated Security=True;Connect Timeout=30";
 
 List<Entity> entities = new List<Entity>();
