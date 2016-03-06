@@ -1,4 +1,6 @@
-Here's a little something I wrote a while back.
+Sometimes it's handy to have the same data in two different enviroments:
+- In SQL for joins and filters
+- In C# so the numbers make sense to us humans and to contain the number of possible choices.
 
 <pre>
 <#@ template debug="false" hostSpecific="true" language="C#" #>
