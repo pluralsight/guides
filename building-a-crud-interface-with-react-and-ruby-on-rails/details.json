@@ -3,7 +3,8 @@
     "author_real_name": "Hristo Georgiev",
     "branch": "master",
     "branches": [
-        "mostlyerror"
+        "mostlyerror",
+        "dydx"
     ],
     "filename": "article.md",
     "image_url": "https://avatars.githubusercontent.com/u/6340189?v=3",
