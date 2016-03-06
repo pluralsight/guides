@@ -415,7 +415,7 @@ But hold on--we’re not done just yet! When we iterate through items in React, 
 
     return(
         <div>
-            {skills}
+            {items}
         </div>
     )
 }
@@ -580,7 +580,7 @@ We send a `POST` request to the URL endpoint for the items using `$.ajax` . The 
 
 Everything goes well, but there seems to be a problem: We have to restart the page in order to see the new item. How can we make this better?  `<NewItem />` and `<AllItems />` cannot communicate between each other because they’re on the same level. As we know, we can send data only down the component hierarchy. This means that we have to move the storing of the items of the `<AllItems />` state to an upper layer; we must move it to the `<Body />` component. 
 
-Move `getInitialState()` and `componentDidMount()` from `<Allitems />` to `<Body />`. Now, the skills will be fetched when `<Body />` is loaded. We can send variables down the children components with `props`. Props are immutable in the child and, in order to reach them, we need to use `this.props`. In our case, instead of using `this.state.items`, we’ll use `this.props.items`. 
+Move `getInitialState()` and `componentDidMount()` from `<Allitems />` to `<Body />`. Now, the items will be fetched when `<Body />` is loaded. We can send variables down the children components with `props`. Props are immutable in the child and, in order to reach them, we need to use `this.props`. In our case, instead of using `this.state.items`, we’ll use `this.props.items`. 
 
 Here’s how we’ll send down the items from `<Body />` to `<AllItems />` :
 
@@ -924,7 +924,7 @@ handleEdit() {
 
 ```
 
-With the editing mode, the code for a singular skill will become too much, and following the rule of separation of concerns, we’ll have to move it to a separate component, which will be named <Skill />. This component will be used to contain the information and methods for a single skill. The `handleEdit()` and `handleDelete()` functions will be referenced as properties of the component and, as such, will be referenced using the `this.props.*` notation.
+With the editing mode, the code for a singular item will become too much, and following the rule of separation of concerns, we’ll have to move it to a separate component, which will be named <Item />. This component will be used to contain the information and methods for a single item. The `handleEdit()` and `handleDelete()` functions will be referenced as properties of the component and, as such, will be referenced using the `this.props.*` notation.
 
 ```javascript
 // app/assets/javascripts/components/_all_items.js.jsx
@@ -968,9 +968,9 @@ var Item = React.createClass({
 
 The html markup is similar to the one we used previously, but the attributes and the functions are accessed via `this.props`, since they were referenced as properties of the template. Now, test out the functionality to be sure everything works.
 
-Next, we’ll move `handleEdit()` to the `<Skill />` template. We’ll have a Boolean variable which we’ll toggle by clicking on the button. If the variable is set to true, the text is converted to input fields and vice versa.
+Next, we’ll move `handleEdit()` to the `<Item />` template. We’ll have a Boolean variable which we’ll toggle by clicking on the button. If the variable is set to true, the text is converted to input fields and vice versa.
 
-Let’s move the `handleEdit()` to `<Skill />`. We can simply do this by writing the method inside the component and changing the property of the button from `this.props.handleEdit` to `this.handleEdit`.
+Let’s move the `handleEdit()` to `<Item />`. We can simply do this by writing the method inside the component and changing the property of the button from `this.props.handleEdit` to `this.handleEdit`.
 
 _app/assets/javascripts/components/_\__item.js.jsx_
 ```javascript
@@ -1040,7 +1040,7 @@ The name and description variable are now dynamic; they will change depending on
 <button onClick={this.handleEdit}> {this.state.editable ? 'Submit' : 'Edit' } </button>
 ```
 
-There’s something missing in the input fields. We’ll reference them in the component methods just as we did in `<NewSkill />`; there has to be a `ref` attribute in the input fields. Let’s add this attribute to the input fields and reference them in the `handleEdit()` method.
+There’s something missing in the input fields. We’ll reference them in the component methods just as we did in `<NewItem />`; there has to be a `ref` attribute in the input fields. Let’s add this attribute to the input fields and reference them in the `handleEdit()` method.
 
 ```javascript
 // app/assets/javascripts/components/_item.js.jsx
@@ -1070,7 +1070,7 @@ handleEdit() {
 ```
 
 
-Open your JavaScript console and try entering values into an item. Once you click the submit button, you will see the values displayed on the screen. We have the values in `<Item />` and we have to send them up to the `<Body />` where the array with all the items is stored and where we’re going to call our server. This means that we’ll use props functions to pass the data up the chain. The journey will start with `<Item />`, pass to `<AllItems />` and end up in `<Body />`. Let’s start with `<Item />` to `<AllSkills />`:
+Open your JavaScript console and try entering values into an item. Once you click the submit button, you will see the values displayed on the screen. We have the values in `<Item />` and we have to send them up to the `<Body />` where the array with all the items is stored and where we’re going to call our server. This means that we’ll use props functions to pass the data up the chain. The journey will start with `<Item />`, pass to `<AllItems />` and end up in `<Body />`. Let’s start with `<Item />` to `<AllItems />`:
 
 ```javascript
 // app/assets/javascripts/components/_item.js.jsx
