@@ -43,14 +43,14 @@ foreach (Entity entity in entities)
 #>
 namespace <#= entity.EnumNameSpace #> {
 
-	/// <summary>
+	/// &lt;summary&gt;
 	/// Namespace    : <#= entity.EnumNameSpace #>
 	/// Name         : <#= entity.EnumName #>
 	/// Type         : <#= entity.EnumType #>
 	/// Table        : <#= entity.TableSchema #>.<#= entity.TableName #>
 	/// Value column : <#= entity.TableValueColumn #>
 	/// Text column  : <#= entity.TableTextColumn #>
-    /// </summary>
+    /// &lt;/summary&gt;
 	public enum <#= Entity.ParseEntityField(entity.EnumName) + (entity.EnumType == "int" ? "" : " : " + entity.EnumType ) #> 
 	{
 <#
