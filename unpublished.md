@@ -1,3 +1,8 @@
+### Introduction to Test Driven Development in JavaScript by Peter Olson
+- [Read the guide](http://tutorials.pluralsight.com/review/introduction-to-test-driven-development-in-javascript)
+- [Read more from Peter Olson](http://tutorials.pluralsight.com/user/peterolson) <img src="https://avatars.githubusercontent.com/u/920512?v=3" width="30" height="30" alt="Peter Olson" />
+- Related to: Front-End JavaScript (Angular, React, Meteor, etc)
+
 ### Defining roles with concerns by arturcp
 - [Read the guide](http://tutorials.pluralsight.com/review/defining-roles-with-concerns)
 - [Read more from arturcp](http://tutorials.pluralsight.com/user/arturcp) <img src="https://avatars.githubusercontent.com/u/523071?v=3" width="30" height="30" alt="arturcp" />
