@@ -196,9 +196,9 @@
 - [Read more from Sousa Gaspar](http://tutorials.pluralsight.com/user/sousadgaspar) <img src="https://avatars.githubusercontent.com/u/4113494?v=3" width="30" height="30" alt="Sousa Gaspar" />
 - Related to: PHP
 
-### How To Install Ruby on Rails on CentOS 7 by clthck
+### How To Install Ruby on Rails on CentOS 7 by Consigliere
 - [Read the guide](http://tutorials.pluralsight.com/review/how-to-install-ruby-on-rails-on-centos-7)
-- [Read more from clthck](http://tutorials.pluralsight.com/user/clthck) <img src="https://avatars.githubusercontent.com/u/14348482?v=3" width="30" height="30" alt="clthck" />
+- [Read more from Consigliere](http://tutorials.pluralsight.com/user/clthck) <img src="https://avatars.githubusercontent.com/u/14348482?v=3" width="30" height="30" alt="Consigliere" />
 - Related to: Ruby, Ruby on Rails
 
 ### Must Have Tools for Programmers ! by Shashi Jangra
