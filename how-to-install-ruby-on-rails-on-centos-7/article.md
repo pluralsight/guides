@@ -134,7 +134,7 @@ local    all        all                           md5
 <p>
 In most cases, we are installing postgres on remote server (VPS etc) and we might want to connect to the server using postgres client software, such as Navicat.
 <br>
-In order to enable remote access to PostgreSQL database server, we have to the following things:
+In order to enable remote access to PostgreSQL database server, we have to do the following things:
 
 **Add the following line to `pg_hba.conf` file**
 ```
