@@ -33,13 +33,17 @@ Sandi Metz came to the rescue. I was, by a lucky chance, reading her book _Pract
 
 Here is what I had:
 
-```
--- base_rule.rb
+
+|-- base_rule.rb
+
 |--- max_hops_rule.rb
+
 |--- max_cost_rule.rb
+
 |--- no_repetition_rule.rb
+
 |--- …
-```
+
 
 To make things more visual, let's write some code. We have a `Node` class, which is a pair of origin-destination (let's say, A->B) values. We also have a list of nodes and must find paths from origin to destination, and a rule (or a set of rules, but to simplify the code let's stick with just one) will be applied to stop the loop. For example, we can limit the path to 30 hops at most, or to at least 5.
 
