@@ -1,4 +1,4 @@
-Welcome! This is a community for collaborating on creating great technical tutorials.  Our collective aim is by working together, we can educate the world, plus improve our knowledge, so we can be smarter than yesterday. Think of this as a "Wikipedia" for technical tutorials.  It’s a way for all of us to give-back and contribute to the knowledge of society.  After all, the best way to learn is to teach, and you have unique expertise.
+Welcome! This is a community for collaborating on creating great technical tutorials.  Our collective aim is by working together, we can educate the world and improve our knowledge. Think of this as a "Wikipedia" for technical tutorials.  It’s a way for all of us to give-back and contribute to the knowledge of society.  After all, the best way to learn is to teach, and you have unique expertise.
 
 ### I love this.  How do I help?
 

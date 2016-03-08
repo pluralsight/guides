@@ -380,4 +380,3 @@ However, now that SSL is encouraged for everyone and doesn't have performance co
 Both `force_ssl` and `rack-ssl` options are designed to quickly setup your application to get started with HTTPS with a default set of options and security configurations.
 
 However, now that your Ruby on Rails application is running via HTTPS, you may want to fully take advantage of HTTPS and properly tweak the security headers returned by your application. On this topic, check out the [introduction to Browser Security Headers](https://www.pluralsight.com/courses/browser-security-headers) from Troy Hunt. This course will help you to better understand what are the security headers related to HTTPS and how to properly use them.
-
