@@ -2,13 +2,15 @@
     "author_name": "mnmilner",
     "author_real_name": "Matt Milner",
     "branch": "master",
-    "branches": [],
+    "branches": [
+        "dpkdns"
+    ],
     "filename": "article.md",
     "image_url": "https://avatars3.githubusercontent.com/u/2028582?v=3",
     "published": true,
     "stacks": [
         "Front-End JavaScript (Angular, React, Meteor, etc)"
     ],
-    "title": "Angular JS : Modules and Providers",
-    "thumbnail_url": "http://i.imgur.com/MBjvJC1.png"
+    "thumbnail_url": null,
+    "title": "Angular JS : Modules and Providers"
 }

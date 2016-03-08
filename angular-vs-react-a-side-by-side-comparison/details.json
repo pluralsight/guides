@@ -2,13 +2,17 @@
     "author_name": "shadowcodex",
     "author_real_name": "Shannon Duncan",
     "branch": "master",
-    "branches": [],
+    "branches": [
+        "panoptican",
+        "AppCaffet",
+        "gianpaj"
+    ],
     "filename": "article.md",
     "image_url": "https://avatars.githubusercontent.com/u/1348053?v=3",
     "published": true,
     "stacks": [
         "Front-End JavaScript (Angular, React, Meteor, etc)"
     ],
-    "title": "Angular vs React : A Side-By-Side Comparison",
-    "thumbnail_url": "http://i.imgur.com/armS961.png"
+    "thumbnail_url": null,
+    "title": "Angular vs React : A Side-By-Side Comparison"
 }

@@ -365,8 +365,6 @@ If you still think this is exciting, how about going through the
 About the author
 ----------------
 
-![Itay Grudev](https://gravatar.com/avatar/37aeb9f5242f93cec35e98e464ed7424?s=200)
-
 Itay Grudev is a student currently pursuing a degree in _Computer Science and Physics at the University of Aberdeen, United Kingdom_.
 
 Itay is mostly interested in Linux, Security, Electronics and Amateur Radio. He loves Open Source and Free Software. He is a talented developer and one of those people spending time to change your `i++` to `++i`, crazy about efficiency and beautiful code. His favorite technologies are `C++`, `Qt` and `Ruby on Rails`.
