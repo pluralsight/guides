@@ -214,6 +214,4 @@ Do you use any of these editors? Are there some that you think deserve to be men
 
 ### About The Author:
 
-![Shannon Duncan](https://pbs.twimg.com/profile_images/672481536826937344/GeAx6xl4_200x200.jpg) 
-
 Shannon Duncan is the Founder and Author at [Unrestricted Coding](http://unrestrictedcoding.com). He mentors and teaches people of all ages how to code and enjoy the art of programming. Find him on [twitter](https://twitter.com/bikemybodyback), [linked-in](https://www.linkedin.com/in/jsduncan98), and [github](https://github.com/shadowcodex).
