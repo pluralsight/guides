@@ -1,3 +1,13 @@
+### Ruby on Rails Nested Attributes by Itay Grudev
+- [Read the guide](http://tutorials.pluralsight.com/review/ruby-on-rails-nested-attributes)
+- [Read more from Itay Grudev](http://tutorials.pluralsight.com/user/itay-grudev) <img src="https://avatars.githubusercontent.com/u/2123767?v=3" width="30" height="30" alt="Itay Grudev" />
+- Related to: Ruby, Ruby on Rails
+
+### Introduction to Test Driven Development in JavaScript by Peter Olson
+- [Read the guide](http://tutorials.pluralsight.com/review/introduction-to-test-driven-development-in-javascript)
+- [Read more from Peter Olson](http://tutorials.pluralsight.com/user/peterolson) <img src="https://avatars.githubusercontent.com/u/920512?v=3" width="30" height="30" alt="Peter Olson" />
+- Related to: Front-End JavaScript (Angular, React, Meteor, etc)
+
 ### Defining roles with concerns by arturcp
 - [Read the guide](http://tutorials.pluralsight.com/review/defining-roles-with-concerns)
 - [Read more from arturcp](http://tutorials.pluralsight.com/user/arturcp) <img src="https://avatars.githubusercontent.com/u/523071?v=3" width="30" height="30" alt="arturcp" />
@@ -191,9 +201,9 @@
 - [Read more from Sousa Gaspar](http://tutorials.pluralsight.com/user/sousadgaspar) <img src="https://avatars.githubusercontent.com/u/4113494?v=3" width="30" height="30" alt="Sousa Gaspar" />
 - Related to: PHP
 
-### How To Install Ruby on Rails on CentOS 7 by clthck
+### How To Install Ruby on Rails on CentOS 7 by Consigliere
 - [Read the guide](http://tutorials.pluralsight.com/review/how-to-install-ruby-on-rails-on-centos-7)
-- [Read more from clthck](http://tutorials.pluralsight.com/user/clthck) <img src="https://avatars.githubusercontent.com/u/14348482?v=3" width="30" height="30" alt="clthck" />
+- [Read more from Consigliere](http://tutorials.pluralsight.com/user/clthck) <img src="https://avatars.githubusercontent.com/u/14348482?v=3" width="30" height="30" alt="Consigliere" />
 - Related to: Ruby, Ruby on Rails
 
 ### Must Have Tools for Programmers ! by Shashi Jangra
