@@ -384,6 +384,4 @@ However, now that your Ruby on Rails application is running via HTTPS, you may w
 
 ### About the author:
 
-![Simone Carletti](https://www.gravatar.com/avatar/99e0b39c091e10d9c7d4452a34ca52dc?s=328&d=identicon&r=PG)
-
 [Simone Carletti](https://simonecarletti.com/) is a passionate programmer and scuba diving instructor. He works at DNSimple, and created [RoboWhois](https://www.robowhois.com/) and [RoboDomain](http://robodomain.com/). Simone have been involved with software development for more than a decade, contributing code and creating libraries. He is [#1 answerer](http://stackoverflow.com/users/123527/simone-carletti) for Rails questions on StackOverFlow.com.

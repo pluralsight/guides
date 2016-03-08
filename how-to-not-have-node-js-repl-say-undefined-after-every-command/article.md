@@ -3,7 +3,7 @@ You get the message
 undefined
 ```
 
-To avoid this all you have to do is install a package directly into your node session by typing the command:
+To **avoid** this all you have to do is install a package directly into your node session by typing the command:
 
 ```sh
 node -e "require('repl').start({ignoreUndefined: true})"
