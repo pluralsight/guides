@@ -2,7 +2,9 @@
     "author_name": "pkellner",
     "author_real_name": "Peter Kellner",
     "branch": "master",
-    "branches": [],
+    "branches": [
+        "WERUreo"
+    ],
     "filename": "article.md",
     "image_url": "https://avatars.githubusercontent.com/u/241170?v=3",
     "published": false,

@@ -2,7 +2,9 @@
     "author_name": "durden",
     "author_real_name": "Luke Lee",
     "branch": "master",
-    "branches": [],
+    "branches": [
+        "atifar"
+    ],
     "filename": "article.md",
     "image_url": "https://avatars.githubusercontent.com/u/58063?v=3",
     "published": false,

@@ -260,6 +260,4 @@ The features covered here are what you need to get up and running with jQuery, a
 
 ### About the author:
 
-![](https://avatars0.githubusercontent.com/u/7561668?v=3&s=80)
-
 [Carl](https://hackhands.com/carlsmith/) is a self-taught, full-stack web developer. He began using Python back in 2009, mainly for scripting cloud services, and he is especially familiar with Google App Engine. He has extensive experience of browser technologies, is a big fan of jQuery, and a bit of a CoffeeScript evangelist. Carl has led the development of commercial applications, and he has published a couple of open source projects too.
