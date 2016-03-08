@@ -2,7 +2,9 @@
     "author_name": "MatForsberg",
     "author_real_name": "Mat Forsberg",
     "branch": "master",
-    "branches": [],
+    "branches": [
+        "prtkgpt"
+    ],
     "filename": "article.md",
     "image_url": "https://avatars.githubusercontent.com/u/12013662?v=3",
     "published": false,

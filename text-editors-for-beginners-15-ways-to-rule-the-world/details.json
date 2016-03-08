@@ -3,13 +3,15 @@
     "author_real_name": "Shannon Duncan",
     "branch": "master",
     "branches": [
-        "prtkgpt"
+        "prtkgpt",
+        "arelia"
     ],
     "filename": "article.md",
+    "image_url": "https://avatars.githubusercontent.com/u/1348053?v=3",
+    "published": true,
     "stacks": [
         "Software Engineering Best Practices"
     ],
-    "published": true,
-    "title": "Text Editors For Beginners - 15 Ways To Rule The World.",
-    "image_url": "https://avatars.githubusercontent.com/u/1348053?v=3"
+    "thumbnail_url": null,
+    "title": "Text Editors For Beginners - 15 Ways To Rule The World."
 }

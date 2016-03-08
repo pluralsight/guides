@@ -1,3 +1,12 @@
+### Building a CRUD interface with React and Ruby on Rails by Hristo Georgiev
+- [Read the guide](http://tutorials.pluralsight.com/review/building-a-crud-interface-with-react-and-ruby-on-rails)
+- [Read more from Hristo Georgiev](http://tutorials.pluralsight.com/user/Kaizeras) <img src="https://avatars.githubusercontent.com/u/6340189?v=3" width="30" height="30" alt="Hristo Georgiev" />
+- Related to: Ruby, Ruby on Rails
+
+### Using ​a Spreadsheet​ ​to Power Charts in AngularJS Apps by Rohit Boggarapu
+- [Read the guide](http://tutorials.pluralsight.com/review/using-a-spreadsheet-to-power-charts-in-angularjs-apps)
+- [Read more from Rohit Boggarapu](http://tutorials.pluralsight.com/user/rohitb4) <img src="https://avatars.githubusercontent.com/u/6358889?v=3" width="30" height="30" alt="Rohit Boggarapu" />
+- Related to: Front-End JavaScript (Angular, React, Meteor, etc)
 
 ### A Beginners Guide to jQuery by Carl Smith
 - [Read the guide](http://tutorials.pluralsight.com/review/a-beginners-guide-to-jquery)
@@ -13,9 +22,6 @@
 - [Read the guide](http://tutorials.pluralsight.com/review/angular-vs-react-a-side-by-side-comparison)
 - [Read more from Shannon Duncan](http://tutorials.pluralsight.com/user/shadowcodex) <img src="https://avatars.githubusercontent.com/u/1348053?v=3" width="30" height="30" alt="Shannon Duncan" />
 - Related to: Front-End JavaScript (Angular, React, Meteor, etc)
-- [Thumbnail](http://i.imgur.com/armS961.png)
-
-
 
 ### AngularJS - Controllers by Matt Milner
 - [Read the guide](http://tutorials.pluralsight.com/review/angularjs-controllers)
@@ -55,11 +61,6 @@
 ### A call for HackerNews Contributors by Prateek Gupta
 - [Read the guide](http://tutorials.pluralsight.com/review/a-call-for-hackernews-contributors)
 - [Read more from Prateek Gupta](http://tutorials.pluralsight.com/user/prtkgpt) <img src="https://avatars1.githubusercontent.com/u/2454349?v=3" width="30" height="30" alt="Prateek Gupta" />
-
-### How to polish, create icons and splash screen images, add ads, share and test our calculator application by Nikola Breznjak
-- [Read the guide](http://tutorials.pluralsight.com/review/how-to-polish-create-icons-and-splash-screen-images-add-ads-share-and-test-our-calculator-application)
-- [Read more from Nikola Breznjak](http://tutorials.pluralsight.com/user/Hitman666) <img src="https://avatars.githubusercontent.com/u/1001064?v=3" width="30" height="30" alt="Nikola Breznjak" />
-- Related to: Android
 
 ### Ionic Framework: A definitive 10,000 word guide by Nikola Breznjak
 - [Read the guide](http://tutorials.pluralsight.com/review/ionic-framework-a-definitive-10-000-word-guide)

@@ -11,6 +11,8 @@ try {
 
 I have! I newer knew what the heck to do with those annoying `InterruptedException` when I simply wanted to call `Thread.sleep(..)`. What is this `InterruptedException`? Why is it thrown? Why can't I ignore it?
 
+# This is what you should do!
+
 Before I explain the whys, here is what you should do (if you don't re-throw):
 
 ```Java
@@ -37,10 +39,14 @@ It should be clear by now: because ignoring an `InterruptedException` means rese
 ## Some more thoughts
 Unfortunately it is not specified that `Thread.interrupt()` can only be used for cancellation. It can be used for anything that requires to set a flag on a thread. So, ending your task or `Runnable` early might be the wrong choice, if the interrupted status is used for something else. But common practice is to use it for cancellation. But even if it is used for something else, you code does not have the right to reset the interrupt flag (unless you are the owner of the thread).
 
-To learn more read the nice article Dealing with `InterruptedException` by Brian Goetz.
+To learn more read the nice article [Dealing with `InterruptedException` by Brian Goetz](http://www.ibm.com/developerworks/library/j-jtp05236/).
 
-Or read Java Concurrency in Practice By BriaBrian Goetz, Tim Peierls, Joshua Bloch, Joseph Bowbeer, David Holmes, and Doug Lea. It's a great book! If you program in java 5 this book is a must read!. I bought the book after I read Brians artikle. I have not yet read the entire book, but what I have read impresses me. It gives a lot of theorie and options. Very competent and complete, but I'm missing a set of simple patterns for concurrent programming. I'm looking forward to Doug Leas 3rd edition of Concurrent Programming in Java
+Or read [Java Concurrency in Practice](https://books.google.de/books/about/Java_Concurrency_in_Practice.html?id=EK43StEVfJIC) by BriaBrian Goetz, Tim Peierls, Joshua Bloch, Joseph Bowbeer, David Holmes, and Doug Lea. It's a great book!
 
-**Summary: If you don't know what to do with an `InterruptedException` call `Thread.currentThread().interrupt()`**
+##Summary
 
-(This is based on my blog entry (http://michaelscharf.blogspot.de/2006/09/dont-swallow-interruptedexception-call.html))
+**If you don't know what to do with an `InterruptedException` call `Thread.currentThread().interrupt()`**
+
+####Note
+
+This is based on my blog entry I have written 10 years ago ["Don't swallow InterruptedException. Call Thread.currentThread().interrupt() instead."](http://michaelscharf.blogspot.de/2006/09/dont-swallow-interruptedexception-call.html)

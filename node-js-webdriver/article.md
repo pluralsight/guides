@@ -6,7 +6,12 @@ We will be using the selenium-webdriver and node filesystem modules in this guid
 
 `$ npm install selenium-webdriver`
 
-//Add inclusion of Chrome, Safari, and IE
+We need to require the webdriver and filesystem module.
+
+```
+var webdriver = require('selenium-webdriver');
+var fs = require('fs');
+```
 
 ## Create a Driver
 ```
@@ -16,18 +21,20 @@ function GetDriver(name)
         case "FireFox":
             return new webdriver.Builder().forBrowser('firefox').build();
         case "Chrome":
-            return new webdriver.Builder().withCapabilities(webdriver.Capabilities.chrome()).build();
+            return new webdriver.Builder().forBrowser('chrome').build();
     }
 }
 ```
 
 ## Write a Test
+```
 function test(name,fileName) {
     return new Promise(function(resolve) {
         var driver = GetDriver(name);
         //add testing
     }
 }
+```
 
 ## Take a Picture
 ```

@@ -1,0 +1,16 @@
+{
+    "author_name": "pkellner",
+    "author_real_name": "Peter Kellner",
+    "branch": "master",
+    "branches": [
+        "WERUreo"
+    ],
+    "filename": "article.md",
+    "image_url": "https://avatars.githubusercontent.com/u/241170?v=3",
+    "published": false,
+    "stacks": [
+        "Node.js"
+    ],
+    "thumbnail_url": null,
+    "title": "How to not have Node.js REPL Say \"undefined\" After Every Command"
+}
