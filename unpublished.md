@@ -1,3 +1,22 @@
+### Ruby on Rails Nested Attributes by Itay Grudev
+- [Read the guide](http://tutorials.pluralsight.com/review/ruby-on-rails-nested-attributes)
+- [Read more from Itay Grudev](http://tutorials.pluralsight.com/user/itay-grudev) <img src="https://avatars.githubusercontent.com/u/2123767?v=3" width="30" height="30" alt="Itay Grudev" />
+- Related to: Ruby, Ruby on Rails
+
+### Introduction to Test Driven Development in JavaScript by Peter Olson
+- [Read the guide](http://tutorials.pluralsight.com/review/introduction-to-test-driven-development-in-javascript)
+- [Read more from Peter Olson](http://tutorials.pluralsight.com/user/peterolson) <img src="https://avatars.githubusercontent.com/u/920512?v=3" width="30" height="30" alt="Peter Olson" />
+- Related to: Front-End JavaScript (Angular, React, Meteor, etc)
+
+### Defining roles with concerns by arturcp
+- [Read the guide](http://tutorials.pluralsight.com/review/defining-roles-with-concerns)
+- [Read more from arturcp](http://tutorials.pluralsight.com/user/arturcp) <img src="https://avatars.githubusercontent.com/u/523071?v=3" width="30" height="30" alt="arturcp" />
+- Related to: Ruby, Ruby on Rails
+
+### Generate Enum from database table with T4 by Correia de Freitas
+- [Read the guide](http://tutorials.pluralsight.com/review/generate-enum-from-database-table-with-t4)
+- [Read more from Correia de Freitas](http://tutorials.pluralsight.com/user/correiadefreitas) <img src="https://avatars.githubusercontent.com/u/9440177?v=3" width="30" height="30" alt="Correia de Freitas" />
+- Related to: Microsoft.NET (C#, ASP.NET, VB.NET, etc)
 
 ### Be careful what you import by Luke Lee
 - [Read the guide](http://tutorials.pluralsight.com/review/be-careful-what-you-import)
@@ -8,10 +27,6 @@
 - [Read the guide](http://tutorials.pluralsight.com/review/how-i-wrote-an-%7E100b-grid-system)
 - [Read more from IonicaBizau](http://tutorials.pluralsight.com/user/IonicaBizau)
 
-### How to Migrate a virtual machine from Virtualbox 4.x to VMware Workstation 9.x or 10 by Erick Rodriguez
-- [Read the guide](http://tutorials.pluralsight.com/review/how-to-migrate-a-virtual-machine-from-virtualbox-4-x-to-vmware-workstation-9-x-or-10)
-- [Read more from Erick Rodriguez](http://tutorials.pluralsight.com/user/tbogard) <img src="https://avatars.githubusercontent.com/u/1978642?v=3" width="30" height="30" alt="Erick Rodriguez" />
-
 ### Python iteration and the for loop by perkolasoft
 - [Read the guide](http://tutorials.pluralsight.com/review/python-iteration-and-the-for-loop)
 - [Read more from perkolasoft](http://tutorials.pluralsight.com/user/perkolasoft)
@@ -20,11 +35,6 @@
 - [Read the guide](http://tutorials.pluralsight.com/review/simple-debugging-with-meta-programming)
 - [Read more from Luke Lee](http://tutorials.pluralsight.com/user/durden) <img src="https://avatars.githubusercontent.com/u/58063?v=3" width="30" height="30" alt="Luke Lee" />
 - Related to: Python
-
-### Using ​a Spreadsheet​ ​to Power Charts in AngularJS Apps by Rohit Boggarapu
-- [Read the guide](http://tutorials.pluralsight.com/review/using-a-spreadsheet-to-power-charts-in-angularjs-apps)
-- [Read more from Rohit Boggarapu](http://tutorials.pluralsight.com/user/rohitb4) <img src="https://avatars.githubusercontent.com/u/6358889?v=3" width="30" height="30" alt="Rohit Boggarapu" />
-- Related to: Front-End JavaScript (Angular, React, Meteor, etc)
 
 ### Using Google spreadsheet as a database by Aki
 - [Read the guide](http://tutorials.pluralsight.com/review/using-google-spreadsheet-as-a-database)
@@ -136,13 +146,6 @@
 - [Read more from Dileep Bapat](http://tutorials.pluralsight.com/user/dileepbapat) <img src="https://avatars.githubusercontent.com/u/633838?v=3" width="30" height="30" alt="Dileep Bapat" />
 - Related to: DevOps (Docker, Nagios, Jenkins, Chef, Puppet, etc)
 
-
-
-### iOS Generic Table View Array Data Source by kapellanos
-- [Read the guide](http://tutorials.pluralsight.com/review/ios-generic-table-view-array-data-source)
-- [Read more from kapellanos](http://tutorials.pluralsight.com/user/kapellanos) <img src="https://avatars.githubusercontent.com/u/4869580?v=3" width="30" height="30" alt="kapellanos" />
-- Related to: Swift
-
 ### Defensive programming in Python by Luke Lee
 - [Read the guide](http://tutorials.pluralsight.com/review/defensive-programming-in-python)
 - [Read more from Luke Lee](http://tutorials.pluralsight.com/user/durden) <img src="https://avatars.githubusercontent.com/u/58063?v=3" width="30" height="30" alt="Luke Lee" />
@@ -152,3 +155,97 @@
 - [Read the guide](http://tutorials.pluralsight.com/review/semantic-html-add-structure-and-meaning-to-your-webpage)
 - [Read more from Klarence](http://tutorials.pluralsight.com/user/Klarence) <img src="https://avatars.githubusercontent.com/u/1621537?v=3" width="30" height="30" alt="Klarence" />
 - Related to: HTML/CSS
+
+### Hello World Node.js by hassan alnator
+- [Read the guide](http://tutorials.pluralsight.com/review/hello-world-node-js)
+- [Read more from hassan alnator](http://tutorials.pluralsight.com/user/hassan-alnator) <img src="https://avatars.githubusercontent.com/u/5238896?v=3" width="30" height="30" alt="hassan alnator" />
+- Related to: Node.js
+
+### Hello Guide by Bojan Bedrac
+- [Read the guide](http://tutorials.pluralsight.com/review/hello-guide)
+- [Read more from Bojan Bedrac](http://tutorials.pluralsight.com/user/xbojch) <img src="https://avatars.githubusercontent.com/u/4233387?v=3" width="30" height="30" alt="Bojan Bedrac" />
+- Related to: PHP
+
+### Getting started with Elegant node.js framework by hassan alnator
+- [Read the guide](http://tutorials.pluralsight.com/review/getting-started-with-elegant-node-js-framework)
+- [Read more from hassan alnator](http://tutorials.pluralsight.com/user/hassan-alnator) <img src="https://avatars.githubusercontent.com/u/5238896?v=3" width="30" height="30" alt="hassan alnator" />
+- Related to: Node.js
+
+### Getting started with Ember.js by David Lormor
+- [Read the guide](http://tutorials.pluralsight.com/review/getting-started-with-ember-js)
+- [Read more from David Lormor](http://tutorials.pluralsight.com/user/davidlormor) <img src="https://avatars.githubusercontent.com/u/3712117?v=3" width="30" height="30" alt="David Lormor" />
+- Related to: Front-End JavaScript (Angular, React, Meteor, etc)
+
+### Windows Authentication using Katana and Middleware by Jason Beechum
+- [Read the guide](http://tutorials.pluralsight.com/review/windows-authentication-using-katana-and-middleware)
+- [Read more from Jason Beechum](http://tutorials.pluralsight.com/user/jbeechum) <img src="https://avatars.githubusercontent.com/u/7976594?v=3" width="30" height="30" alt="Jason Beechum" />
+- Related to: Microsoft.NET (C#, ASP.NET, VB.NET, etc)
+
+### Tips and cool tricks to use in git by Lucas Andrey
+- [Read the guide](http://tutorials.pluralsight.com/review/tips-and-cool-tricks-to-use-in-git)
+- [Read more from Lucas Andrey](http://tutorials.pluralsight.com/user/andreybleme) <img src="https://avatars.githubusercontent.com/u/5385383?v=3" width="30" height="30" alt="Lucas Andrey" />
+- Related to: DevOps (Docker, Nagios, Jenkins, Chef, Puppet, etc)
+
+### Moving a Cloud App to a different Azure Resource Group by Aligned
+- [Read the guide](http://tutorials.pluralsight.com/review/moving-a-cloud-app-to-a-different-azure-resource-group)
+- [Read more from Aligned](http://tutorials.pluralsight.com/user/logankd) <img src="https://avatars.githubusercontent.com/u/1636977?v=3" width="30" height="30" alt="Aligned" />
+- Related to: DevOps (Docker, Nagios, Jenkins, Chef, Puppet, etc)
+
+### 5 Simple Important Tips for Ruby on Rails.  by Meriton
+- [Read the guide](http://tutorials.pluralsight.com/review/5-simple-important-tips-for-ruby-on-rails)
+- [Read more from Meriton](http://tutorials.pluralsight.com/user/meriton) <img src="https://avatars.githubusercontent.com/u/2198377?v=3" width="30" height="30" alt="Meriton" />
+- Related to: Ruby, Ruby on Rails
+
+### Parsing HTML Documents with DOMDocument PHP class by Sousa Gaspar
+- [Read the guide](http://tutorials.pluralsight.com/review/parsing-html-documents-with-domdocument-php-class)
+- [Read more from Sousa Gaspar](http://tutorials.pluralsight.com/user/sousadgaspar) <img src="https://avatars.githubusercontent.com/u/4113494?v=3" width="30" height="30" alt="Sousa Gaspar" />
+- Related to: PHP
+
+### How To Install Ruby on Rails on CentOS 7 by Consigliere
+- [Read the guide](http://tutorials.pluralsight.com/review/how-to-install-ruby-on-rails-on-centos-7)
+- [Read more from Consigliere](http://tutorials.pluralsight.com/user/clthck) <img src="https://avatars.githubusercontent.com/u/14348482?v=3" width="30" height="30" alt="Consigliere" />
+- Related to: Ruby, Ruby on Rails
+
+### Must Have Tools for Programmers ! by Shashi Jangra
+- [Read the guide](http://tutorials.pluralsight.com/review/must-have-tools-for-programmers)
+- [Read more from Shashi Jangra](http://tutorials.pluralsight.com/user/shashijangra22) <img src="https://avatars.githubusercontent.com/u/10132780?v=3" width="30" height="30" alt="Shashi Jangra" />
+- Related to: Software Engineering Best Practices
+
+### Docker's - Beginner Guide by Marius Baisan
+- [Read the guide](http://tutorials.pluralsight.com/review/docker-s-beginner-guide)
+- [Read more from Marius Baisan](http://tutorials.pluralsight.com/user/mariobyn) <img src="https://avatars.githubusercontent.com/u/4470735?v=3" width="30" height="30" alt="Marius Baisan" />
+- Related to: DevOps (Docker, Nagios, Jenkins, Chef, Puppet, etc)
+
+### Using Emacs as Python IDE by Om Prakash
+- [Read the guide](http://tutorials.pluralsight.com/review/using-emacs-as-python-ide)
+- [Read more from Om Prakash](http://tutorials.pluralsight.com/user/omps) <img src="https://avatars.githubusercontent.com/u/985481?v=3" width="30" height="30" alt="Om Prakash" />
+- Related to: Python
+
+### Data Analysis with Python by Om Prakash
+- [Read the guide](http://tutorials.pluralsight.com/review/data-analysis-with-python)
+- [Read more from Om Prakash](http://tutorials.pluralsight.com/user/omps) <img src="https://avatars.githubusercontent.com/u/985481?v=3" width="30" height="30" alt="Om Prakash" />
+- Related to: Python
+
+### Profiling memory usage in Python by Luke Lee
+- [Read the guide](http://tutorials.pluralsight.com/review/profiling-memory-usage-in-python)
+- [Read more from Luke Lee](http://tutorials.pluralsight.com/user/durden) <img src="https://avatars.githubusercontent.com/u/58063?v=3" width="30" height="30" alt="Luke Lee" />
+- Related to: Python
+
+### Beginner: Linux Navigation Manual by Prakrit Duangsutha
+- [Read the guide](http://tutorials.pluralsight.com/review/beginner-linux-navigation-manual)
+- [Read more from Prakrit Duangsutha](http://tutorials.pluralsight.com/user/brillydev) <img src="https://avatars.githubusercontent.com/u/2718812?v=3" width="30" height="30" alt="Prakrit Duangsutha" />
+
+### Diga adeus ao Wordpress. Conheça o Jekyll! by Lucas Andrey
+- [Read the guide](http://tutorials.pluralsight.com/review/diga-adeus-ao-wordpress-conheca-o-jekyll)
+- [Read more from Lucas Andrey](http://tutorials.pluralsight.com/user/andreybleme) <img src="https://avatars.githubusercontent.com/u/5385383?v=3" width="30" height="30" alt="Lucas Andrey" />
+- Related to: HTML/CSS
+
+### How to create an advanced, production ready shopping todo application with Ionic, Firebase and Material design by Nikola Brežnjak
+- [Read the guide](http://tutorials.pluralsight.com/review/how-to-create-an-advanced-production-ready-shopping-todo-application-with-ionic-firebase-and-material-design)
+- [Read more from Nikola Brežnjak](http://tutorials.pluralsight.com/user/Hitman666) <img src="https://avatars.githubusercontent.com/u/1001064?v=3" width="30" height="30" alt="Nikola Brežnjak" />
+- Related to: Front-End JavaScript (Angular, React, Meteor, etc)
+
+### Getting Accustomed to Angular 2.0  by Tom Greco
+- [Read the guide](http://tutorials.pluralsight.com/review/getting-accustomed-to-angular-2-0)
+- [Read more from Tom Greco](http://tutorials.pluralsight.com/user/thomasjosephgreco) <img src="https://avatars.githubusercontent.com/u/6646552?v=3" width="30" height="30" alt="Tom Greco" />
+- Related to: Front-End JavaScript (Angular, React, Meteor, etc)
