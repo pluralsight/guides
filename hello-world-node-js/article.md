@@ -49,7 +49,7 @@ lets create our first simple hello world application using node.js , whats fasci
 <br/>
 _create a file index.js on you application directory_
 
-```
+```javascript
 // requiring the HTTP interfaces in node
 var http = require('http');
 
@@ -110,7 +110,7 @@ if you get any errors just try it again with "sudo" before it.
 <br/>
 <h1>Hello world using express</h1>
 
-```
+```javascript
 var express = require('express')
 var app = express()
  
