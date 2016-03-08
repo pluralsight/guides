@@ -1,3 +1,12 @@
+### Building a CRUD interface with React and Ruby on Rails by Hristo Georgiev
+- [Read the guide](http://tutorials.pluralsight.com/review/building-a-crud-interface-with-react-and-ruby-on-rails)
+- [Read more from Hristo Georgiev](http://tutorials.pluralsight.com/user/Kaizeras) <img src="https://avatars.githubusercontent.com/u/6340189?v=3" width="30" height="30" alt="Hristo Georgiev" />
+- Related to: Ruby, Ruby on Rails
+
+### Using ​a Spreadsheet​ ​to Power Charts in AngularJS Apps by Rohit Boggarapu
+- [Read the guide](http://tutorials.pluralsight.com/review/using-a-spreadsheet-to-power-charts-in-angularjs-apps)
+- [Read more from Rohit Boggarapu](http://tutorials.pluralsight.com/user/rohitb4) <img src="https://avatars.githubusercontent.com/u/6358889?v=3" width="30" height="30" alt="Rohit Boggarapu" />
+- Related to: Front-End JavaScript (Angular, React, Meteor, etc)
 
 ### A Beginners Guide to jQuery by Carl Smith
 - [Read the guide](http://tutorials.pluralsight.com/review/a-beginners-guide-to-jquery)
@@ -38,8 +47,6 @@
 - [Read the guide](http://tutorials.pluralsight.com/review/javascript-callbacks-variable-scope-problem)
 - [Read more from Itay Grudev](http://tutorials.pluralsight.com/user/itay-grudev) <img src="https://avatars.githubusercontent.com/u/2123767?v=3" width="30" height="30" alt="Itay Grudev" />
 - Related to: Front-End JavaScript (Angular, React, Meteor, etc)
-
-
 
 ### Text Editors For Beginners - 15 Ways To Rule The World. by Shannon Duncan
 - [Read the guide](http://tutorials.pluralsight.com/review/text-editors-for-beginners-15-ways-to-rule-the-world)

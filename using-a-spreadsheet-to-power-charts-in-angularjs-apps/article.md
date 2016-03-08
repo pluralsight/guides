@@ -1,5 +1,3 @@
-#How to use a spreadsheet to power charts in AngularJS apps
-
 AngularJS and Google Sheets are all the rage nowadays. Both are being used commonly, and developers are finding interesting use cases around them.Today I’m going to share something I’ve built that is not only fun, but may have some practical applications as well.
 
 We’ll build an AngularJS application to create interactive JavaScript charts which will contain data exported from Google Sheets in real-time. First, we’ll briefly talk about [AngularJS](https://angularjs.org), [FusionCharts](http://www.fusioncharts.com) and [Google Sheets](https://www.google.com/sheets/about/). And then we’ll put all of these together to build our project. If you’re already aware of these technologies, you can skip the introductions and dive right into the tutorial.
@@ -17,7 +15,7 @@ The best part is that you can export the data present in your sheet via JSON! An
 
 A quick look into what we will be making (see the [live CodePen demo here](http://codepen.io/brohit4/pen/gPEMwQ?editors=1010)):
 
-![Donut Chart](donut-chart.png)
+![Donut Chart](http://i.imgur.com/oZWReG2.png?1)
 
 Now, let’s get started with the tutorial!
 
@@ -29,15 +27,20 @@ For this tutorial, I’m creating a sheet with two columns of data. One column w
 To be able to create a chart from Google Sheets, we need to somehow fetch the data present in our sheet. Luckily, we just need to make some changes in the settings of the sheet. The default setting of the Google Sheet makes the sheet not accessible on the Web without authentication. So, first we need to modify this setting. To do that we need to change the sharing settings to **Anyone with the link** or **Public on the Web**. Follow these steps:
 
 - Step-1: Click the ‘Share’ button on top right corner of your sheet. You should see this screen after clicking:
-![step-1](step-1.png) 
+
+![step-1](http://i.imgur.com/nKiQvam.png?1) 
+
 - Step-2: Click on ‘Advanced’ on the bottom right corner of above screen. You will get this:
-![step-2](step-2.jpg)
+
+![step-2](http://i.imgur.com/gZKIaYm.jpg?1)
+
 - Step-3: Right now above screen says ‘Specific people can access’. To change this, click ‘Change...’. Choose ‘On  - Anyone with the link’ on the screen that appears (see below).
-![step-3](step-3.png)
+
+![step-3](http://i.imgur.com/kQQioOW.png?1)
     
 Now our sheet is accessible to anyone who has a link to it, but we’re not done yet. To make the data available in different formats like JSON or XML for the chart, we need to publish the Google Sheet to the Web. Click on ‘File’ >> ‘Publish to the web...’. Then click the ‘Publish’ button on the screen that appears:
 
-![publish to web](publish-to-web.png)
+![publish to web](http://i.imgur.com/DdRxQPz.png?1)
 
 Now our sheet is all set up to make some awesome charts! With these settings made, the JSON data should be available through this URL: [https://spreadsheets.google.com/feeds/list/187iKB7ekhP96evCySKBWy5LfWErrJDono-8glzFPcCY/od6/public/basic?alt=json]. 
 
