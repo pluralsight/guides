@@ -162,7 +162,7 @@ Thinking about the roles, there are some tests that will certainly be repeated a
 Instead of repeating ourselves, we can instead create shared examples that will run for all of the roles. Every class that includes our module will automatically gain these tests with not a single repeated line. 
 ```ruby
 shared_examples_for 'a restrictor' do
-  it { should respond_to(:stop?) }
+  it { is_expected.to respond_to('stop?') }
 end
 ```
 
@@ -204,5 +204,4 @@ class MaxHopRule
 end
 
 ```
-
 
