@@ -1,3 +1,22 @@
+### Ruby on Rails Nested Attributes by Itay Grudev
+- [Read the guide](http://tutorials.pluralsight.com/review/ruby-on-rails-nested-attributes)
+- [Read more from Itay Grudev](http://tutorials.pluralsight.com/user/itay-grudev) <img src="https://avatars.githubusercontent.com/u/2123767?v=3" width="30" height="30" alt="Itay Grudev" />
+- Related to: Ruby, Ruby on Rails
+
+### Introduction to Test Driven Development in JavaScript by Peter Olson
+- [Read the guide](http://tutorials.pluralsight.com/review/introduction-to-test-driven-development-in-javascript)
+- [Read more from Peter Olson](http://tutorials.pluralsight.com/user/peterolson) <img src="https://avatars.githubusercontent.com/u/920512?v=3" width="30" height="30" alt="Peter Olson" />
+- Related to: Front-End JavaScript (Angular, React, Meteor, etc)
+
+### Defining roles with concerns by arturcp
+- [Read the guide](http://tutorials.pluralsight.com/review/defining-roles-with-concerns)
+- [Read more from arturcp](http://tutorials.pluralsight.com/user/arturcp) <img src="https://avatars.githubusercontent.com/u/523071?v=3" width="30" height="30" alt="arturcp" />
+- Related to: Ruby, Ruby on Rails
+
+### Generate Enum from database table with T4 by Correia de Freitas
+- [Read the guide](http://tutorials.pluralsight.com/review/generate-enum-from-database-table-with-t4)
+- [Read more from Correia de Freitas](http://tutorials.pluralsight.com/user/correiadefreitas) <img src="https://avatars.githubusercontent.com/u/9440177?v=3" width="30" height="30" alt="Correia de Freitas" />
+- Related to: Microsoft.NET (C#, ASP.NET, VB.NET, etc)
 
 ### Be careful what you import by Luke Lee
 - [Read the guide](http://tutorials.pluralsight.com/review/be-careful-what-you-import)
@@ -7,10 +26,6 @@
 ### How I wrote an ~100B grid system by IonicaBizau
 - [Read the guide](http://tutorials.pluralsight.com/review/how-i-wrote-an-%7E100b-grid-system)
 - [Read more from IonicaBizau](http://tutorials.pluralsight.com/user/IonicaBizau)
-
-### How to Migrate a virtual machine from Virtualbox 4.x to VMware Workstation 9.x or 10 by Erick Rodriguez
-- [Read the guide](http://tutorials.pluralsight.com/review/how-to-migrate-a-virtual-machine-from-virtualbox-4-x-to-vmware-workstation-9-x-or-10)
-- [Read more from Erick Rodriguez](http://tutorials.pluralsight.com/user/tbogard) <img src="https://avatars.githubusercontent.com/u/1978642?v=3" width="30" height="30" alt="Erick Rodriguez" />
 
 ### Python iteration and the for loop by perkolasoft
 - [Read the guide](http://tutorials.pluralsight.com/review/python-iteration-and-the-for-loop)
@@ -188,9 +203,9 @@
 - [Read more from Sousa Gaspar](http://tutorials.pluralsight.com/user/sousadgaspar) <img src="https://avatars.githubusercontent.com/u/4113494?v=3" width="30" height="30" alt="Sousa Gaspar" />
 - Related to: PHP
 
-### How To Install Ruby on Rails on CentOS 7 by clthck
+### How To Install Ruby on Rails on CentOS 7 by Consigliere
 - [Read the guide](http://tutorials.pluralsight.com/review/how-to-install-ruby-on-rails-on-centos-7)
-- [Read more from clthck](http://tutorials.pluralsight.com/user/clthck) <img src="https://avatars.githubusercontent.com/u/14348482?v=3" width="30" height="30" alt="clthck" />
+- [Read more from Consigliere](http://tutorials.pluralsight.com/user/clthck) <img src="https://avatars.githubusercontent.com/u/14348482?v=3" width="30" height="30" alt="Consigliere" />
 - Related to: Ruby, Ruby on Rails
 
 ### Must Have Tools for Programmers ! by Shashi Jangra
@@ -202,3 +217,37 @@
 - [Read the guide](http://tutorials.pluralsight.com/review/docker-s-beginner-guide)
 - [Read more from Marius Baisan](http://tutorials.pluralsight.com/user/mariobyn) <img src="https://avatars.githubusercontent.com/u/4470735?v=3" width="30" height="30" alt="Marius Baisan" />
 - Related to: DevOps (Docker, Nagios, Jenkins, Chef, Puppet, etc)
+
+### Using Emacs as Python IDE by Om Prakash
+- [Read the guide](http://tutorials.pluralsight.com/review/using-emacs-as-python-ide)
+- [Read more from Om Prakash](http://tutorials.pluralsight.com/user/omps) <img src="https://avatars.githubusercontent.com/u/985481?v=3" width="30" height="30" alt="Om Prakash" />
+- Related to: Python
+
+### Data Analysis with Python by Om Prakash
+- [Read the guide](http://tutorials.pluralsight.com/review/data-analysis-with-python)
+- [Read more from Om Prakash](http://tutorials.pluralsight.com/user/omps) <img src="https://avatars.githubusercontent.com/u/985481?v=3" width="30" height="30" alt="Om Prakash" />
+- Related to: Python
+
+### Profiling memory usage in Python by Luke Lee
+- [Read the guide](http://tutorials.pluralsight.com/review/profiling-memory-usage-in-python)
+- [Read more from Luke Lee](http://tutorials.pluralsight.com/user/durden) <img src="https://avatars.githubusercontent.com/u/58063?v=3" width="30" height="30" alt="Luke Lee" />
+- Related to: Python
+
+### Beginner: Linux Navigation Manual by Prakrit Duangsutha
+- [Read the guide](http://tutorials.pluralsight.com/review/beginner-linux-navigation-manual)
+- [Read more from Prakrit Duangsutha](http://tutorials.pluralsight.com/user/brillydev) <img src="https://avatars.githubusercontent.com/u/2718812?v=3" width="30" height="30" alt="Prakrit Duangsutha" />
+
+### Diga adeus ao Wordpress. Conheça o Jekyll! by Lucas Andrey
+- [Read the guide](http://tutorials.pluralsight.com/review/diga-adeus-ao-wordpress-conheca-o-jekyll)
+- [Read more from Lucas Andrey](http://tutorials.pluralsight.com/user/andreybleme) <img src="https://avatars.githubusercontent.com/u/5385383?v=3" width="30" height="30" alt="Lucas Andrey" />
+- Related to: HTML/CSS
+
+### How to create an advanced, production ready shopping todo application with Ionic, Firebase and Material design by Nikola Brežnjak
+- [Read the guide](http://tutorials.pluralsight.com/review/how-to-create-an-advanced-production-ready-shopping-todo-application-with-ionic-firebase-and-material-design)
+- [Read more from Nikola Brežnjak](http://tutorials.pluralsight.com/user/Hitman666) <img src="https://avatars.githubusercontent.com/u/1001064?v=3" width="30" height="30" alt="Nikola Brežnjak" />
+- Related to: Front-End JavaScript (Angular, React, Meteor, etc)
+
+### Getting Accustomed to Angular 2.0  by Tom Greco
+- [Read the guide](http://tutorials.pluralsight.com/review/getting-accustomed-to-angular-2-0)
+- [Read more from Tom Greco](http://tutorials.pluralsight.com/user/thomasjosephgreco) <img src="https://avatars.githubusercontent.com/u/6646552?v=3" width="30" height="30" alt="Tom Greco" />
+- Related to: Front-End JavaScript (Angular, React, Meteor, etc)

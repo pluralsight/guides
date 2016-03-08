@@ -1,0 +1,14 @@
+{
+    "author_name": "peterolson",
+    "author_real_name": "Peter Olson",
+    "branch": "master",
+    "branches": [],
+    "filename": "article.md",
+    "image_url": "https://avatars.githubusercontent.com/u/920512?v=3",
+    "published": false,
+    "stacks": [
+        "Front-End JavaScript (Angular, React, Meteor, etc)"
+    ],
+    "thumbnail_url": null,
+    "title": "Introduction to Test Driven Development in JavaScript"
+}

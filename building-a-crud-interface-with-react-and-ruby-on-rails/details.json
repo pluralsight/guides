@@ -1,0 +1,17 @@
+{
+    "author_name": "Kaizeras",
+    "author_real_name": "Hristo Georgiev",
+    "branch": "master",
+    "branches": [
+        "mostlyerror",
+        "dydx"
+    ],
+    "filename": "article.md",
+    "image_url": "https://avatars.githubusercontent.com/u/6340189?v=3",
+    "published": true,
+    "stacks": [
+        "Ruby, Ruby on Rails"
+    ],
+    "thumbnail_url": null,
+    "title": "Building a CRUD interface with React and Ruby on Rails"
+}

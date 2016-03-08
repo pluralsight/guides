@@ -36,7 +36,7 @@ Let's take a look how does it work:
 1. First at all, open Visual Studio CE 2015.
 2. File, New Project, We are going to target Net Framework 4.6.1.
 3. We are going to start from empty, from nothing, from zero to hero!
-4. Now if you are have experience working with ASP.net MVC you will realize there is a new folder structure. Personally I really like it, it makes a lot of sense having 2 package managers: one for the client and one for the server. More organization, better code.
+4. Now if you are have experience working with ASP.net MVC you will realize there is a new folder structure. Personally I really like it, it makes a lot of sense having package managers for client side and for server side. More organization, better code.
 
 ## Add MVC Support
 Now we add the support of MVC doing the following steps:
@@ -50,8 +50,13 @@ Now we add the support of MVC doing the following steps:
 4. On StartUp.cs we need to set up 
 
 ## Add CRUD operations.
-CRUD? What the hell is it? First time to look this word? Well, it refers to Create Read Update and Delete methods.
+CRUD? If you are a new developer in this world one of the first questions you will have is: What the hell is it? Well, it refers to **C**reate **R**ead **U**pdate and **D**elete Entities.
+For make this more interesting and having a clear idea, now let's pick up a topic: How about Sales? Sales is another *Mystic* topic that you will find on Internet in many different languages. Let's start with a couple of classes: Products and Categories and later on we will increment the level.
 
+* What are the properties for a *Product*? Name, Unit Price, Category, and we can continue as long as we require. For this sample we are going to stay with these three, remember this is just the starting point!
+* What are the properties for a *Category*? Name, Description. And that's it. We have our basic **classes** ready to continue.
+
+Something we are forgetting is that the machine need an field to distinguish the difference between the records on our table for products.
 
 ## Playing with action filters.
 First at all, An action filter could be execute... on the request...
