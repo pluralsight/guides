@@ -266,9 +266,6 @@ well documented.
 
 About the author
 ----------------
-
-![Itay Grudev](https://gravatar.com/avatar/37aeb9f5242f93cec35e98e464ed7424?s=200)
-
 Itay Grudev is a student currently pursuing a degree in _Computer Science and
 Physics at the University of Aberdeen, United Kingdom_.
 
