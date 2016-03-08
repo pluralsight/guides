@@ -1,0 +1,17 @@
+{
+    "author_name": "dileepbapat",
+    "author_real_name": "Dileep Bapat",
+    "branch": "master",
+    "branches": [
+        "smiller171",
+        "di1"
+    ],
+    "filename": "article.md",
+    "image_url": "https://avatars.githubusercontent.com/u/633838?v=3",
+    "published": false,
+    "stacks": [
+        "DevOps (Docker, Nagios, Jenkins, Chef, Puppet, etc)"
+    ],
+    "thumbnail_url": null,
+    "title": "Try Docker vanilla"
+}

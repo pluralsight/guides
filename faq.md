@@ -1,5 +1,5 @@
 Welcome!  This is a community for collaborating on creating great technical guides and tutorials.
-Our collective aim is by working together, we can educate the world, plus improve our knowledge.
+Our collective aim is working together to educate the world while improving our knowledge at the same time.
 Think of this as a "Wikipedia" for technical guides and tutorials, or "Medium.com for developers" as another analogy.
 
 ### Problems we’re trying to solve
@@ -20,18 +20,17 @@ Think of this as a "Wikipedia" for technical guides and tutorials, or "Medium.co
 - You can get your tutorials **peer-reviewed by others**.  This improves the quality of our collective knowledge.
 - **Others can help maintain your tutorials long-term**, making the content have a much deeper longevity when updates are needed, and removes the original author as a single point of failure if you get busy and can't maintain your tutorial.
 - **We can help each other reach a wide audience and make a bigger impact**.  When a tutorial gets published, we all work together to help promote it on HackerNews, to get lots of viewers.  By building momentum on this site together, we'll get a larger audience over time, which means your tutorials will reach a wide audience.
-- (Future) **Bring knowledge to other countries**.  Your content can be translated by a community of bilingual and passionate about their countries receiving knowledge, to be shared with other countries who don't have a deep understanding of the English language.
+- (Future) **Bring knowledge to other countries**.  Your content can be translated by a community of bilingual individuals who are passionate about their countries receiving knowledge. Thanks to their translating efforts, the guides and tutorials can be shared with countries who don't have a deep understanding of the English language.
 
-### Some bonus reasons to a contribute a tutorial here!
+### Some bonus reasons to contribute a tutorial here!
 * **Help the world**.  You'll help spread useful knowledge.
-* **Free subscription to Pluralsight.com**.  Pluralsight is our corporate sponsor for this project and is subsidizing the costs of some of the open-source development.  We've negotiated with Pluralsight to give all contributors a free subscription to their video library on programmer training, so you can stay up-to-date on all programming topics.  This is worth $299.
-* **Network with other important members of the community**.  We'll give you access to our community [Slack](https://hackguides.typeform.com/to/ZroxPD), to make awesome connections with others who are involved.
-* **Extra perks**.  As a small thank-you for helping out, we convinced Pluralsight to agree to give everyone who contributes on this site, preferential consideration to being a mentor / course author on Pluralsight.  This is one of the ways we're hacking jump-starting the community.
+* **Free subscription to Pluralsight.com**.  Pluralsight is our corporate sponsor for this project and is subsidizing the costs of some of the open-source development.  We've negotiated with Pluralsight to give all contributors a free subscription to their video library on training for programmers, so you can stay up-to-date on all programming topics.  This is worth $299.
+* **Network with other important members of the community**.  We'll give you access to our <a href="https://hackguides.herokuapp.com" target="_blank">Slack community</a>, to make awesome connections with others who are involved.
 * **Free access to the next hack.summit() conference for you and your friends**.  Get your own special code you can give out!
 
 ### Who owns the tutorials created here?
 
-You do, as the original author.  This site is a venue for your content to be maintained in a much better way than Wordpress, and to reach a wider audience.  But we don't own your content.  In fact, if you really want to, you can host a copy of this website yourself, since everything is open-source.
+You do, as the original author.  This site is a venue for your content to be maintained in a much better way than Wordpress, and to reach a wider audience.  But we don't own your content.  In fact, if you really want to, you can host a copy of this website yourself since everything is open-source.
 
 ### What types of tutorials are appropriate to post?
 
@@ -42,7 +41,7 @@ You do, as the original author.  This site is a venue for your content to be mai
 * Guide to what’s new in the latest version of X
 * Advanced guide to programming with X
 * Top 10 tips when programming with X
-* X vs Y [where Y is a competing technology, or is no technology]
+* X vs Y [where Y is a competing technology or is no technology]
 
 ...or any other ideas you might have.  Please reach out to Prateek (prateek-gupta@pluralsight.com)! :)
 
@@ -55,10 +54,11 @@ Yes! That's why we've built the editing tools on this site. It's easy to share a
 
 ### Can I hang out with you on your Slack?
 
-Absolutely! Join our [Slack community](https://hackguides.typeform.com/to/ZroxPD), we want as much feedback as possible.
+Absolutely! Join our <a href="https://hackguides.herokuapp.com" target="_blank">Slack community</a>, we want as much feedback as possible.
 
 ### How else can I help?
 
+* Fill out <a href="https://hackguides.typeform.com/to/EwVks9" target="_blank">this quick form</a> to let us know what you're interested in
 * Volunteer to be an editor to help others improve content
 * Make some engine contributions to the open-source engine for the site
 * Spread the word about the site on twitter, facebook, HackerNews, etc.
@@ -67,7 +67,7 @@ Absolutely! Join our [Slack community](https://hackguides.typeform.com/to/ZroxPD
 Please reach out to Prateek (prateek-gupta@pluralsight.com) if you want to chat about any of this, or ping us on our Slack!
 
 ### How do I know if my tutorial idea is any good?
-One easy thing you can do is to check-out what else is out their for this particular subject. Try doing a quick search now for some topics that interest you. Other articles are generally OK so long as there is enough unique/useful content that sets your article apart. Are there ideas you can talk about in your proposed article that hasn't already been written? Enough interesting unique contributions that can be added that moves the world's knowledge forward? Those are some things to think about.
+One easy thing you can do is to check-out what else is out there for this particular subject. Try doing a quick search now for some topics that interest you. Other articles are generally OK so long as there is enough unique/useful content that sets your article apart. Are there ideas you can talk about in your proposed article that hasn't already been written? Enough interesting unique contributions that can be added that move the world's knowledge forward? Those are some things to think about.
 
 ### What is the writing process?
 1. [Submit a tutorial](/write/)

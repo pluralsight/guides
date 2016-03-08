@@ -2,13 +2,15 @@
     "author_name": "carlsmith",
     "author_real_name": "Carl Smith",
     "branch": "master",
-    "branches": [],
+    "branches": [
+        "vCillusion"
+    ],
     "filename": "article.md",
     "image_url": "https://avatars.githubusercontent.com/u/7561668?v=3",
     "published": true,
     "stacks": [
         "Software Engineering Best Practices"
     ],
-    "title": "Everything You Need to Know About JSON",
-    "thumbnail_url": "http://i.imgur.com/hh8mO3c.png"
+    "thumbnail_url": null,
+    "title": "Everything You Need to Know About JSON"
 }

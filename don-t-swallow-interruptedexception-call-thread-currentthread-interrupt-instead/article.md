@@ -11,6 +11,8 @@ try {
 
 I have! I newer knew what the heck to do with those annoying `InterruptedException` when I simply wanted to call `Thread.sleep(..)`. What is this `InterruptedException`? Why is it thrown? Why can't I ignore it?
 
+# This is what you should do!
+
 Before I explain the whys, here is what you should do (if you don't re-throw):
 
 ```Java
