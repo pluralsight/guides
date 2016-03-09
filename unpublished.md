@@ -1,6 +1,6 @@
-### How to build a shopping app with Ionic Firebase by Prateek Gupta
+### How to build a shopping app with Ionic Firebase by Nikola Brežnjak
 - [Read the guide](http://tutorials.pluralsight.com/review/how-to-build-a-shopping-app-with-ionic-firebase)
-- [Read more from Prateek Gupta](http://tutorials.pluralsight.com/user/prtkgpt) <img src="https://avatars.githubusercontent.com/u/2454349?v=3" width="30" height="30" alt="Prateek Gupta" />
+- [Read more from Nikola Brežnjak](http://tutorials.pluralsight.com/user/Hitman666) <img src="https://avatars.githubusercontent.com/u/1001064?v=3" width="30" height="30" alt="Nikola Brežnjak" />
 - Related to: Front-End JavaScript (Angular, React, Meteor, etc)
 
 ### Ruby on Rails Nested Attributes by Itay Grudev
@@ -239,11 +239,6 @@
 - [Read the guide](http://tutorials.pluralsight.com/review/diga-adeus-ao-wordpress-conheca-o-jekyll)
 - [Read more from Lucas Andrey](http://tutorials.pluralsight.com/user/andreybleme) <img src="https://avatars.githubusercontent.com/u/5385383?v=3" width="30" height="30" alt="Lucas Andrey" />
 - Related to: HTML/CSS
-
-### How to create an advanced, production ready shopping todo application with Ionic, Firebase and Material design by Nikola Brežnjak
-- [Read the guide](http://tutorials.pluralsight.com/review/how-to-create-an-advanced-production-ready-shopping-todo-application-with-ionic-firebase-and-material-design)
-- [Read more from Nikola Brežnjak](http://tutorials.pluralsight.com/user/Hitman666) <img src="https://avatars.githubusercontent.com/u/1001064?v=3" width="30" height="30" alt="Nikola Brežnjak" />
-- Related to: Front-End JavaScript (Angular, React, Meteor, etc)
 
 ### Getting Accustomed to Angular 2.0  by Tom Greco
 - [Read the guide](http://tutorials.pluralsight.com/review/getting-accustomed-to-angular-2-0)
