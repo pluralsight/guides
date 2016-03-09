@@ -1,11 +1,11 @@
 {
     "author_name": "Hitman666",
-    "author_real_name": "Nikola Brežnjak",
+    "author_real_name": "Nikola Bre\u017enjak",
     "branch": "master",
     "branches": [],
     "filename": "article.md",
     "image_url": "https://avatars.githubusercontent.com/u/1001064?v=3",
-    "published": false,
+    "published": true,
     "stacks": [
         "Front-End JavaScript (Angular, React, Meteor, etc)"
     ],
