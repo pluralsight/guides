@@ -1,106 +1,93 @@
->Docker experiment to build hello world image from scratch. Instead of using shell script, C based
-application is used to make it comparable to custom application package/distribution.
+>Docker experiment to build hello world image from scratch. Instead of using shell script, C based application is used to make it comparable to custom application package/distribution.
 
 
 
 
-Creating minimal docker image
+Creating minimal Docker image
 -----------------------------
 
 
 
-what you need :
+#### What you need :
 
--   docker installed on linux variant (tested on Ubuntu 14LTS)
-
--   gcc for making minimal application
-
+* Docker installed on linux variant (tested on Ubuntu 14LTS)
+* gcc for making minimal application
 
 
-docker can import archives such as tar, tar.gz, .bzip etc. you can package all
-necessary files into an archive and import it into docker.
+#### Let's create Helloworld application to package it to Docker:
 
+file: helloWorld.c
 
+```c
+#include<stdio.h>
 
-    tar cv --files-from /dev/null | sudo docker import - empty
+void main() {
 
-This will create empty image in docker repository.
+  printf("Hello from Docker!!\n");
 
-
-
-Now lets create Helloworld application to package it to docker.
-
-file: a.c
-
-    #include<stdio.h>
-
-    void main() {
-
-      printf("Hello from docker!!\n");
-
-    }
-
+}
+```
 
 
 We can compile with static linking to avoid shared library dependencies.
 
-    gcc -static a.c -o a`
+```bash
+gcc -static helloWorld.c -o helloWorld`
+```
 
-Verify that there are not dependencies with ldd
+Verify that there are no dependencies with ldd
+```bash
+ldd "helloWorld"
+>     not a dynamic executable
+```
 
-    ldd "a"
-    >     not a dynamic executable
 
-
-
-Create a Dockerfile with below entries (configuration for docker container that
+Create a Dockerfile as follows (configuration for Docker image that
 we are about to build).
 
-    FROM empty
-    ADD ./a /a
-    CMD ["/a"]
+```
+FROM scratch
+ADD ./helloWorld /helloWorld
+CMD ["/helloWorld"]
+```
 
 
-
-It says docker that seed the image from empty image that we have created and add
-file a
-
-to it as target path /a and startup command is to execute /a
+It tells Docker to seed the image from the `scratch` image, which is completely empty, and add the helloWorld executable to it as target path /helloWorld and the startup command is to execute /helloWorld.
 
 
 
 Now build the image with
 
-    $ sudo docker build -t "first_image" ./
-    Sending build context to Docker daemon 880.6 kB
-    Sending build context to Docker daemon
-    Step 0 : FROM empty
-     ---> 62f67e5fbc6a
-    Step 1 : ADD ./a /a
-     ---> 1236c4ce0129
-    Step 2 : CMD ["/a"]
-     ---> f6982bf61e13
-    Successfully built f6982bf61e13
-
+```bash
+$ docker build -t "helloWorld" .
+Sending build context to Docker daemon 880.6 kB
+Sending build context to Docker daemon
+Step 0 : FROM empty
+ ---> 62f67e5fbc6a
+Step 1 : ADD ./a /a
+ ---> 1236c4ce0129
+Step 2 : CMD ["/a"]
+ ---> f6982bf61e13
+Successfully built f6982bf61e13
+```
 
 Now you can list images with
-
-    $sudo docker images
-    REPOSITORY   TAG    IMAGE ID     CREATED           VIRTUAL SIZE
-    first_image  latest 9ba228119b81 54 seconds ago      877.4 kB
-
-
-
-To Run the docker instance in background mode :
-
-    $ sudo docker run first_image
+```bash
+$ docker images
+REPOSITORY   TAG    IMAGE ID     CREATED           VIRTUAL SIZE
+first_image  latest f6982bf61e13 54 seconds ago      877.4 kB
+```
 
 
+To Run the docker image as a container:  
+```bash
+$ docker run helloWorld
+```
 
-You should see output like
-
-    Hello from docker
-
+You should see output like:
+```
+Hello from docker
+```
 
 > Recommended to checkout https://github.com/docker/docker.git and browse the source in your
 favorite ide
