@@ -1,8 +1,3 @@
-### How to build a shopping app with Ionic Firebase by Nikola Brežnjak
-- [Read the guide](http://tutorials.pluralsight.com/review/how-to-build-a-shopping-app-with-ionic-firebase)
-- [Read more from Nikola Brežnjak](http://tutorials.pluralsight.com/user/Hitman666) <img src="https://avatars.githubusercontent.com/u/1001064?v=3" width="30" height="30" alt="Nikola Brežnjak" />
-- Related to: Front-End JavaScript (Angular, React, Meteor, etc)
-
 ### Ruby on Rails Nested Attributes by Itay Grudev
 - [Read the guide](http://tutorials.pluralsight.com/review/ruby-on-rails-nested-attributes)
 - [Read more from Itay Grudev](http://tutorials.pluralsight.com/user/itay-grudev) <img src="https://avatars.githubusercontent.com/u/2123767?v=3" width="30" height="30" alt="Itay Grudev" />
