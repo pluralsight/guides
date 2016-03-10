@@ -38,13 +38,13 @@ expect(add(-4,5)).toEqual(1);
 ```
 and so on for as many test examples as we like. Then, we will write the `add` function. When we're finished, we can run the test code, and it will tell us whether our function passes all the tests:
 
-> 2 of 3 tests passed. 1 test failed: 
+> 2 of 3 tests passed. 1 test failed:  
 > Expected `add(-4,5)` to return `1`, but got `-9`.
 
 OK, so we failed 1 of the tests. We'll revise the code to try to correct the mistake, and then we'll run the tests again:
 
-> 1 of 3 tests passed. 2 tests failed:
-> Expected `add(1,1)` to return `2`, but got `0`.
+> 1 of 3 tests passed. 2 tests failed:  
+> Expected `add(1,1)` to return `2`, but got `0`.  
 > Expected `add(5,7)` to return `12`, but got `-2`.
 
 Oops, we fixed one thing but broke other things at the same time. We'll revise the code again and see if there are still any problems:
@@ -275,7 +275,7 @@ return function (date) {
 
 All the tests should pass.
 
-##Getters
+## Getters
 
 The easiest next step is to implement all the property getters. Writing tests for all of them is straightforward, although a little tedious. All that's involved is looping through some test dates and making sure that all the property getters return the expected values for these test dates.
 
@@ -387,7 +387,7 @@ I made quite a few mistakes in the process of writing the code above that the te
 
 When I run the tests I see 8 failed specs. This number might vary depending on your time zone. Here is one of my failed expectations:
 
-> DateTime getter returns expected values for property 'monthName'
+> DateTime getter returns expected values for property 'monthName'  
 > Expected 'December' to equal 'November'.
 
 This is caused by the `2111-11-30T22:01:10` date. My `monthName` getter says this is December instead of November. This is because I live in the GMT+8 timezone, so something behind the scenes is converting the time from GMT into my timezone, resulting in `2111-12-01 06:01:10`. The solution to this problem is to use the `getUTCMonth` method instead of the `getMonth` method to prevent this conversion:
