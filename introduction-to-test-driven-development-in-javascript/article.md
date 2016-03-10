@@ -1,12 +1,12 @@
-# Introduction to test-driven development in JavaScript
+In this article I introduce the basics of test-driven development (commonly abbreviated as TDD) by walking through the development of a small project in a test-driven way. The first part focuses on unit tests, and the last part focuses on code coverage.
 
-In this article I'll introduce the basics of test-driven development (commonly abbreviated as TDD) by walking through the development of a small project in a test-driven way. The first part will focus on unit tests, and the last part will focus on code coverage.
+If you want to experiment with the project yourself, there is a [repository hosted on GitHub that puts together all the code from this article](https://github.com/peterolson/Introduction-to-Test-Driven-Development-in-Javascript).
 
 ## Who this article is aimed at
 
 This articles assumes that you have a basic understanding of writing programs using JavaScript, but it does not assume that you have any prior experience with test-driven development.
 
-If you are relatively inexperienced in JavaScript, some of the patterns used in the code below may seem somewhat unfamiliar or confusing - but that's OK. The purpose of this article is to demonstrate how TDD works, and the exact implementation is not so important to understand fully. Feel free to skim through the code just to get the big picture, and don't worry about working through every single detail.
+If you are relatively inexperienced in JavaScript, some of the patterns used in the code below may seem somewhat unfamiliar or confusing - but that's OK. The purpose of this article is to demonstrate how TDD works, and the nitty-gritty particulars are not so important to understand fully. Feel free to skim through just to get the big picture, and don't worry about working through every single detail.
 
 ## What is test-driven development?
 
@@ -16,11 +16,13 @@ Traditionally, the software development workflow is mostly a loop of the followi
  2. Write the code to do it.
  3. Test the code to see if it works.
 
-For example, if we wanted to write a function `add(number1, number2)` to add two numbers together, we would first write the `add` function, then we would try a few examples to see if it gives the output we expect. We might try running `add(1,1)`, `add(5,7)` and `add(-4, 5)`, and we might get the outputs `2`, `12`, and... oops, there must be a bug somewhere, `-9`.
+For example, let's say we want to write a function `add(number1, number2)` to add two numbers together. First, we write the `add` function, then we try a few examples to see if it gives the output we expect. We could try running `add(1,1)`, `add(5,7)` and `add(-4, 5)`, and we might get the outputs `2`, `12`, and... oops, there must be a bug somewhere, `-9`.
 
-We'll revise the code to try to fix the erroneous output, and then we'll run `add(-4, 5)` again, and now it will return `1`, just like we wanted. Just to be safe, we'll run the other examples again to see if they still give the right output... oops, but now `add(5,7)` returns `-2`. We'll go through a few cycles of revising our code and then trying a few examples until we're sufficiently confident that our code works like we want it to.
+We revise the code to try to fix the incorrect output, and then we run `add(-4, 5)` again. Maybe it will return `1`, just like we wanted. Just to be safe, we'll run the other examples again to see if they still give the right output. Oops, now `add(5,7)` returns `-2`.
 
-**Test-driven development changes this workflow** by switching steps 2 and 3, and by automating the see-if-it-works process:
+We'll go through a few cycles of this: we revise our code and then try a few examples until we're sufficiently confident that our code works like we want it to.
+
+**Test-driven development changes this workflow** by writing automated tests, and by writing tests *before* we write the code. Here is our new workflow:
 
  1. Think about what your code is supposed to do.
  2. Write tests specifying what you expect your code to do.
@@ -39,7 +41,7 @@ and so on for as many test examples as we like. Then, we will write the `add` fu
 > 2 of 3 tests passed. 1 test failed: 
 > Expected `add(-4,5)` to return `1`, but got `-9`.
 
-OK, we'll revise the code and run the tests again:
+OK, so we failed 1 of the tests. We'll revise the code to try to correct the mistake, and then we'll run the tests again:
 
 > 1 of 3 tests passed. 2 tests failed:
 > Expected `add(1,1)` to return `2`, but got `0`.
@@ -49,7 +51,7 @@ Oops, we fixed one thing but broke other things at the same time. We'll revise t
 
 > 3 of 3 tests passed. Yay!
 
-Of course, just because our code passed the tests it doesn't mean the code works in general, but it does give us a little more confidence about its correctness. And if we find a bug in the future, we should always add a test for it.
+Of course, just because our code passed the tests it doesn't mean the code works in general, but it does give us a little more confidence about its correctness. And if we find a bug in the future that our tests missed, we can always add more tests for better coverage.
 
 Many of you might object, "*But what's the point of that? Isn't that just a lot of pointless extra bother?*"
 
@@ -57,7 +59,7 @@ I have to admit, it is true that setting up the testing environment and figuring
 
  - **Automatic regression detection** --- Sometimes you'll write a bug in your program that causes code that used to function properly to no longer do so, or you'll accidentally reintroduce an old bug that you had previously fixed. This is called a *regression*. Regressions might sneak by unnoticed for a long time if you don't have any automated testing. Passing your unit tests don't guarantee that your code works correctly, but if you write tests for every bug you fix, one thing passing your unit tests can guarantee is that you haven't reintroduced an old bug.
  - **Bold refactoring** --- Code can get messy pretty quickly, but it's often scary to refactor it, since there's a good chance that you'll break something in the process. After all, code often looks messy because you had to hack together some workarounds to make it work for rare edge cases. When you try to clean it up, or even rewrite it from scratch, it's likely that it will fail on those edge cases. If you have unit tests covering these edge cases, you'll find out immediately when you've broken something and you can make changes more courageously.
- - **Documentation** --- If another developer (or perhaps the future you) can't figure out how to use the code you've written, they can look at the unit tests to see how the code was designed to be used. Unit tests aren't a replacement for real documentation, of course, but they're certainly better than no documentation at all -- and no documentation at all is unfortunately common, since programmers always seem to have things higher on their priority lists than writing documentation.
+ - **Documentation** --- If another developer (or perhaps the future you) can't figure out how to use the code you've written, they can look at the unit tests to see how the code was designed to be used. Unit tests aren't a replacement for real documentation, of course, but they're certainly better than no documentation at all -- and no documentation at all is unfortunately common, since programmers almost always have things higher on their priority lists than writing documentation.
  - **Robustness** --- When you have no automated testing and applications become sufficiently complex, it is easy for the code to feel very fragile. That is, it seems to work alright (most of the time) when you use it, but you have a nagging anxiety that the slightest unexpected action from the user or the slightest future modification to the code will cause everything to crash and burn. Knowing that your code passes a suite of unit tests is more reassuring than knowing that your code seemed to work when you manually tested it with a handful of examples the other day.
 
 Alright, enough with the theory already, let's get our hands dirty and see how this works in practice.
@@ -81,7 +83,7 @@ Here's how I set things up:
  4. In the parent folder, create a file named `DateTime.js`, and in the `test/spec` folder create a file named `DateTimeSpec.js`. Delete the other files in the `spec` folder; we don't need them anymore.
  5. Edit the head of the `SpecRunner.html` file to reference our scripts. It should look something like this:
 
-```
+```html
 <script src="lib/jasmine-2.4.1/jasmine.js"></script>
 <script src="lib/jasmine-2.4.1/jasmine-html.js"></script>
 <script src="lib/jasmine-2.4.1/boot.js"></script>
@@ -125,7 +127,7 @@ The object returned by `DateTime` will have the following method
 
  - `toString(formatString?)` - returns a string representation of the date, using the optional `formatString` argument to specify how the output should be formatted. If no `formatString` is provided, it will default to `"YYYY-M-D H:m:s"`.
 
-    ```
+    ```javascript
     > DateTime().toString()
     "2016-2-22 15:06:42"
     > DateTime().toString("MMMM Do, YYYY")
@@ -149,7 +151,7 @@ and the following properties
 
 ## Getting started
 
-Let's get started! The first thing we need to do is to decide on some minimal subset of the API to implement, and then incrementally build on top of that until we're finished. One reasonable place to start is making a `DateTime` that returns an object representing the current time.
+The first thing we need to do is to decide on some minimal subset of the API to implement, and then incrementally build on top of that until we're finished. One reasonable place to start is making a `DateTime` constructor that returns an object representing the current time.
 
 First, we should write a unit test that specifies what we expect `DateTime` to do. In `DateTimeSpec.js`, we'll write our first test. If you don't understand what this test code is doing yet, don't worry; I'll explain it shortly.
 
@@ -235,7 +237,7 @@ There are lots of possible answers to these two questions depending on your erro
  1. Throw an error.
  2. Continue without throwing an error. All the native `Date` methods we use will return `NaN` in this situation, so our `DateTime` properties and methods will propagate this behavior automatically.
 
-Don't think too hard about what the reasoning is behind these choices, because there isn't that much reasoning behind them. I made these choices mostly so that I could demonstrate how to write tests that expect errors to be thrown and tests that expect `NaN`. In any case, regardless of what behavior we might decide on, we should write tests that codify that behavior - so here we go:
+Don't think too hard about what the reasoning is behind these choices, because there isn't much reasoning behind them. I made these choices mostly so that I could demonstrate how to write tests that expect errors to be thrown and tests that expect `NaN`. In any case, regardless of what behavior we might decide on, we should write tests that codify that behavior - so here we go:
 
 ```javascript
 it("throws an error when called with a single non-Date argument", function () {
@@ -256,7 +258,7 @@ This is fairly straightforward, except for the `DateTime.bind` part. The [functi
 
 When we open `SpecRunner.html` now we should see that the three specs we just wrote all failed. This is an important thing to check: if a spec passes before we write the implementation code, that usually means we made a mistake while writing the spec.
 
-Now we can write the implementation code:
+Now we can write the implementation:
 
 ```javascript
 // ...
@@ -381,9 +383,9 @@ function createDateTime(date) {
 }
 ```
     
-I made quite a few mistakes in the process of writing the code above that the tests helped me catch. Most of them were fairly trivial and uninteresting mistakes that I would probably have eventually found anyway, but there is one subtler bug that I have left in that I want to show you.
+I made quite a few mistakes in the process of writing the code above that the tests helped me catch. Most of them were fairly trivial and uninteresting mistakes that I would probably have eventually found anyway, but there is one subtler bug that I have left in the code above that I want to show you now.
 
-When I run the tests now I see 8 failed specs. This number might vary depending on your time zone. Here is one of my failed expectations:
+When I run the tests I see 8 failed specs. This number might vary depending on your time zone. Here is one of my failed expectations:
 
 > DateTime getter returns expected values for property 'monthName'
 > Expected 'December' to equal 'November'.
@@ -444,7 +446,7 @@ return {
 };
 ```
 
-After these modifications, all the tests should pass now. This type of bug is a bit nasty because the unit tests might not catch it if your timezone is close to GMT, and I'm not sure that even I would have noticed it if I hadn't written the unit tests.
+After these modifications, all the tests should pass now. This type of bug is a bit nasty because the unit tests might not catch it if your timezone is close to GMT, and I'm not sure that I would have even noticed it if I hadn't written the unit tests.
 
 ## Setters
 
@@ -483,7 +485,7 @@ As usual, when you run these tests, they should all fail since we haven't writte
 
 Finally, the only property left is the `day` property, which is readonly. In JavaScript, writing to readonly properties fails silently by default:
 
-```
+```javascript
 > var obj = { get readonlyProperty() { return 1; } };
 > obj.readonlyProperty
 1
@@ -735,7 +737,7 @@ Now all the tests should pass. The process of writing this part was where the un
 
 I haven't detailed all of the iterations of mistakes and fixes that I went through writing this, since they were mostly trivial and uninteresting mistakes. That said, I do want to point out how illuminating (and humbling) this process is: the number of mistakes you make while writing code can be surprisingly large.
 
-It might seem like we're finished now, but there's another step we should go through to see if our tests are thorough enough.
+It might seem like we're finished now, since we've written all of the features and all the tests pass, but there's one more step we should go through to see if our tests are thorough enough.
 
 # Code coverage
 
