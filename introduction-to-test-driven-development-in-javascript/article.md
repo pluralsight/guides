@@ -29,10 +29,11 @@ We'll revise the code to try to fix the erroneous output, and then we'll run `ad
 
 That is, before we even start writing our `add` function, we'll write some test code that specifies what output we expect. This is called *unit testing*. Unit tests might look something like this:
 
+```javascript
     expect(add(1,1)).toEqual(2);
     expect(add(5,7)).toEqual(12);
     expect(add(-4,5)).toEqual(1);
-
+```
 and so on for as many test examples as we like. Then, we will write the `add` function. When we're finished, we can run the test code, and it will tell us whether our function passes all the tests:
 
 > 2 of 3 tests passed. 1 test failed: 
@@ -80,6 +81,7 @@ Here's how I set things up:
  4. In the parent folder, create a file named `DateTime.js`, and in the `test/spec` folder create a file named `DateTimeSpec.js`. Delete the other files in the `spec` folder; we don't need them anymore.
  5. Edit the head of the `SpecRunner.html` file to reference our scripts. It should look something like this:
 
+```
         <script src="lib/jasmine-2.4.1/jasmine.js"></script>
         <script src="lib/jasmine-2.4.1/jasmine-html.js"></script>
         <script src="lib/jasmine-2.4.1/boot.js"></script>
@@ -89,6 +91,7 @@ Here's how I set things up:
          
         <!-- include spec files here... -->
         <script src="spec/DateTimeSpec.js"></script>
+```
 
 If you refresh `SpecRunner.html` now, it should say "No specs found" since we haven't written anything yet.
 
@@ -102,24 +105,32 @@ Feel free to quickly skim through this section to just get a basic idea of what 
 
  - `DateTime()`, called with no arguments, creates an object representing the current date/time.
    
+    ```javascript
         var d = DateTime(); // d represents the current date/time.
+    ```
    
  - `DateTime(date)`, called with one argument `date`, a native JavaScript `Date` object, creates an object representing the date/time corresponding to `date`.
 
+    ```javascript
         var d = DateTime(new Date(0)); // d represents 1 Jan 1970 00:00:00 GMT
+    ```
 
  - `DateTime(dateString, formatString)`, called with two arguments `dateString` and `formatString`,  returns an object representing the date/time encoded in `dateString`, which is interpreted using the format specified in `formatString`.
 
+    ```javascript
         var d = DateTime("1/5/2012", "D/M/YYYY");
+    ```
 
 The object returned by `DateTime` will have the following method
 
  - `toString(formatString?)` - returns a string representation of the date, using the optional `formatString` argument to specify how the output should be formatted. If no `formatString` is provided, it will default to `"YYYY-M-D H:m:s"`.
 
+    ```
         > DateTime().toString()
         "2016-2-22 15:06:42"
         > DateTime().toString("MMMM Do, YYYY")
         "February 22nd, 2016"
+    ```
         
 and the following properties
 
@@ -142,6 +153,7 @@ Let's get started! The first thing we need to do is to decide on some minimal su
 
 First, we should write a unit test that specifies what we expect `DateTime` to do. In `DateTimeSpec.js`, we'll write our first test. If you don't understand what this test code is doing yet, don't worry; I'll explain it shortly.
 
+```javascript
     describe("DateTime", function () {
         it("returns the current time when called with no arguments", function () {
             var lowerLimit = new Date().getTime(),
@@ -151,6 +163,7 @@ First, we should write a unit test that specifies what we expect `DateTime` to d
             expect(offset).not.toBeGreaterThan(upperLimit);
         });
     });
+```
 
 Now open `SpecRunner.html` and click on "Spec List". You should see 1 failing test:
 
@@ -169,6 +182,7 @@ In case test code above didn't make sense to you, here is a brief explanation of
 
 Now that we've finished writing our first test, we can write code to implement the features we are testing. In the `DateTime.js` file, paste the following code:
 
+```javascript
     "use strict";
     var DateTime = (function () {
     
@@ -184,6 +198,7 @@ Now that we've finished writing our first test, we can write code to implement t
             return createDateTime(new Date());
         };
     })();
+```
 
 When we open `SpecRunner.html` our test should pass:
 
@@ -193,12 +208,14 @@ Great, now we've completed our first development iteration.
 
 A reasonable next step is to implement the `DateTime(date)` constructor. First, we write a unit test for it:
 
+```javascript
     it("matches the passed in Date when called with one argument", function () {
         var dates = [new Date(), new Date(0), new Date(864e13), new Date(-864e13)];
         for (var i = 0; i < dates.length; i++) {
             expect(DateTime(dates[i]).offset).toEqual(dates[i].getTime());
         }
     });
+```
 
 I've chosen four dates to test: the current date, and three dates that are potential edge cases: 
 
@@ -220,6 +237,7 @@ There are lots of possible answers to these two questions depending on your erro
 
 Don't think too hard about what the reasoning is behind these choices, because there isn't that much reasoning behind them. I made these choices mostly so that I could demonstrate how to write tests that expect errors to be thrown and tests that expect `NaN`. In any case, regardless of what behavior we might decide on, we should write tests that codify that behavior - so here we go:
 
+```javascript
     it("throws an error when called with a single non-Date argument", function () {
         var nonDates = [0, NaN, Infinity, "", "not a date", null, /regex/, {}, []];
         for (var i = 0; i < nonDates.length; i++) {
@@ -232,6 +250,7 @@ Don't think too hard about what the reasoning is behind these choices, because t
             expect(isNaN(DateTime(invalidDates[i]).offset)).toBe(true);
         }
     });
+```
 
 This is fairly straightforward, except for the `DateTime.bind` part. The [function binding](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_objects/Function/bind) is used because (1) `.toThrow()` assumes a function was passed to `expect`, and (2) [creating a function inside of a loop in the straightforward way behaves somewhat counter-intuitively in JavaScript](http://stackoverflow.com/q/750486/546661).
 
@@ -239,6 +258,7 @@ When we open `SpecRunner.html` now we should see that the three specs we just wr
 
 Now we can write the implementation code:
 
+```javascript
     // ...
     return function (date) {
         if (date !== undefined) {
@@ -249,6 +269,7 @@ Now we can write the implementation code:
         }
         return createDateTime(new Date());
     };
+```
 
 All the tests should pass.
 
@@ -258,6 +279,7 @@ The easiest next step is to implement all the property getters. Writing tests fo
 
 When choosing test dates it's a good idea to include both typical dates as well as some potential edge cases.
 
+```javascript
     var testDates = [
         "0001-01-01T00:00:00", // Monday
         "0021-02-03T07:06:07", // Wednesday
@@ -302,11 +324,13 @@ When choosing test dates it's a good idea to include both typical dates as well 
             });
         });
     });
+```
 
 All the new tests we just wrote should fail now, except the one corresponding to the `offset` property, since we already implemented the getter for `offset`.
 
 Now that we've written the tests we can write the implementation code.
 
+```javascript
     var monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
         dayNames = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 
@@ -355,6 +379,7 @@ Now that we've written the tests we can write the implementation code.
             }
         };
     }
+```
     
 I made quite a few mistakes in the process of writing the code above that the tests helped me catch. Most of them were fairly trivial and uninteresting mistakes that I would probably have eventually found anyway, but there is one subtler bug that I have left in that I want to show you.
 
@@ -365,12 +390,15 @@ When I run the tests now I see 8 failed specs. This number might vary depending 
 
 This is caused by the `2111-11-30T22:01:10` date. My `monthName` getter says this is December instead of November. This is because I live in the GMT+8 timezone, so something behind the scenes is converting the time from GMT into my timezone, resulting in `2111-12-01 06:01:10`. The solution to this problem is to use the `getUTCMonth` method instead of the `getMonth` method to prevent this conversion:
   
+```javascript
         get monthName() {
             return monthNames[date.getUTCMonth()];
         },
+```
 
 The same logic applies to the other methods, like `getFullYear`/`getUTCFullYear`, `getDay`/`getUTCDay`, and so forth:
 
+```javascript
     return {
         get year() {
             return date.getUTCFullYear();
@@ -414,6 +442,7 @@ The same logic applies to the other methods, like `getFullYear`/`getUTCFullYear`
             return date.getTime();
         }
     };
+```
 
 After these modifications, all the tests should pass now. This type of bug is a bit nasty because the unit tests might not catch it if your timezone is close to GMT, and I'm not sure that even I would have noticed it if I hadn't written the unit tests.
 
@@ -431,6 +460,7 @@ This time, we will create a date, set it's year property to `2008`, set it's mon
 
 Here's the code for the setter unit tests:
 
+```javascript
     describe("setter", function () {
         var settableProperties = [["seconds", "minutes", "hours", "date", "month", "year"],
             ["seconds", "minutes", "hours12", "ampm", "ordinalDate", "monthName", "year"],
@@ -447,31 +477,37 @@ Here's the code for the setter unit tests:
             });
         });
     });
+```
 
 As usual, when you run these tests, they should all fail since we haven't written the setter code yet.
 
 Finally, the only property left is the `day` property, which is readonly. In JavaScript, writing to readonly properties fails silently by default:
 
+```
     > var obj = { get readonlyProperty() { return 1; } };
     > obj.readonlyProperty
     1
     > obj.readonlyProperty = 2;
     > obj.readonlyProperty
     1
+```
 
 In my opinion, this is bad design: there's no warning when you try to write to a property without a setter and you might waste time later trying to figure out why it didn't work. Instead, we should throw an error when an attempt is made to write to `day`. Let's specify that with a test:
 
+```javascript
     it("throws an error on attempt to write to property 'day'", function () {
         expect(function () {
             var date = DateTime();
             date.day = 4;
         }).toThrow();
     });
+```
 
 Again, this test should fail since we haven't written the implementation yet.
 
 Here is the code for the setters:
 
+```javascript
     set year(v) {
         date.setUTCFullYear(v);
     },
@@ -517,6 +553,7 @@ Here is the code for the setters:
     set offset(v) {
         date.setTime(v);
     }
+```
 
 All the tests should pass now.
 
@@ -526,11 +563,13 @@ The only things left now are the `DateTime(dateString, formatString)` constructo
 
 We can reuse the same test dates from before, but we need to specify what strings we expect from them given different formats:
 
+```javascript
     var expectedStrings = {
         "YYYY-M-D H:m:s": ["1-1-1 0:00:00", "21-2-3 7:06:07", "321-3-6 14:12:14", "1776-4-9 21:18:21", "1900-5-12 4:24:28", "1901-6-15 11:30:35", "1970-7-18 18:36:42", "2000-8-21 1:42:49", "2008-9-24 8:48:56", "2016-10-27 15:54:03", "2111-11-30 22:01:10", "9999-12-31 12:07:17", "275760-9-13 0:00:00", "-271821-4-20 0:00:00", "-5-10-17 4:26:40"],
         "dddd, MMMM Do YYYY h:m:s a": ["Monday, January 1st 1 12:00:00 am", "Wednesday, February 3rd 21 7:06:07 am", "Sunday, March 6th 321 2:12:14 pm", "Tuesday, April 9th 1776 9:18:21 pm", "Saturday, May 12th 1900 4:24:28 am", "Saturday, June 15th 1901 11:30:35 am", "Saturday, July 18th 1970 6:36:42 pm", "Monday, August 21st 2000 1:42:49 am", "Wednesday, September 24th 2008 8:48:56 am", "Thursday, October 27th 2016 3:54:03 pm", "Monday, November 30th 2111 10:01:10 pm", "Friday, December 31st 9999 12:07:17 pm", "Saturday, September 13th 275760 12:00:00 am", "Tuesday, April 20th -271821 12:00:00 am", "Tuesday, October 17th -5 4:26:40 am"],
         "YYYY.MMMM.M.dddd.D.Do.H.h.m.s.a": ["1.January.1.Monday.1.1st.0.12.00.00.am", "21.February.2.Wednesday.3.3rd.7.7.06.07.am", "321.March.3.Sunday.6.6th.14.2.12.14.pm", "1776.April.4.Tuesday.9.9th.21.9.18.21.pm", "1900.May.5.Saturday.12.12th.4.4.24.28.am", "1901.June.6.Saturday.15.15th.11.11.30.35.am", "1970.July.7.Saturday.18.18th.18.6.36.42.pm", "2000.August.8.Monday.21.21st.1.1.42.49.am", "2008.September.9.Wednesday.24.24th.8.8.48.56.am", "2016.October.10.Thursday.27.27th.15.3.54.03.pm", "2111.November.11.Monday.30.30th.22.10.01.10.pm", "9999.December.12.Friday.31.31st.12.12.07.17.pm", "275760.September.9.Saturday.13.13th.0.12.00.00.am", "-271821.April.4.Tuesday.20.20th.0.12.00.00.am", "-5.October.10.Tuesday.17.17th.4.4.26.40.am"]
     };
+```
 
 Once we've constructed this object, it's straightforward to write the tests:
 
@@ -539,6 +578,7 @@ Once we've constructed this object, it's straightforward to write the tests:
 
 Here that is expressed in code:
 
+```javascript
     describe("toString", function () {
         it("returns expected values", function () {
             testDates.forEach(function (date, i) {
@@ -556,11 +596,13 @@ Here that is expressed in code:
             });
         }
     });
+```
 
 As usual, these tests should fail if we run them now.
 
 Here's the implementation code to add these features. This is the most complicated part of the library, so the code here is not as simple as the code we've written up to this point. Feel free to just skim through this code to get the big picture without analyzing the finer details.
 
+```javascript
     "use strict";
     var DateTime = (function () {
     
@@ -687,6 +729,7 @@ Here's the implementation code to add these features. This is the most complicat
             return createDateTime(new Date());
         };
     })();
+```
 
 Now all the tests should pass. The process of writing this part was where the unit tests became the most useful. Since the amount and complexity of the code here is relatively greater here, there were lots of bugs that I encountered while writing this that the tests helped me spot quickly.
 
@@ -710,6 +753,7 @@ We will use [Karma](http://karma-runner.github.io/0.13/index.html) for running t
 
 Create a file in your project called `package.json` with the following content:
 
+```javascript
     {
       "scripts": {
         "test": "node_modules/.bin/karma start my.conf.js"
@@ -722,9 +766,11 @@ Create a file in your project called `package.json` with the following content:
         "karma-chrome-launcher": "~0.1"
       }
     }
+```
 
 Then create another file named `my.conf.js` with the following content:
 
+```javascript
     module.exports = function(config) {
       config.set({
         basePath: '',
@@ -739,6 +785,7 @@ Then create another file named `my.conf.js` with the following content:
         reporters: ['progress', 'coverage']
       });
     };
+```
 
 If you use Windows, open the Node.js command prompt. Otherwise, just open your terminal. Navigate to your project folder and run `npm install`. 
 
@@ -758,13 +805,16 @@ At this point, the code coverage report shows that the unit tests cover 96% of t
 
  - There are no tests that use the default format string in the `toString` method. We can add some to the `describe("toString", ...)` section:
 
+    ```javascript
         it("uses YYYY-M-D H:m:s as the default format string", function () {
             testDates.forEach(function (date, i) {
                 expect(date.toString()).toEqual(expectedStrings["YYYY-M-D H:m:s"][i]);
             });
         });
+    ```
  - There are no tests that try to set `monthName` to an invalid month name. We can add some to the `describe("setter", ...)` section:
 
+    ```javascript
         it("throws an error on attempt to set property `monthName` to an invalid value", function () {
             var invalidMonths = ["janury", "???", "", 5];
             invalidMonths.forEach(function (value) {
@@ -774,8 +824,10 @@ At this point, the code coverage report shows that the unit tests cover 96% of t
                 }).toThrow();
             });
         });
+    ```
  - There are no tests that try to set `ampm` to a value other than `am` or `pm`. We can add some to the `describe("setter", ...)` section:
 
+    ```javascript
         it("throws an error on attempt to set property `ampm` to an invalid value", function () {
             var invalidAMPM = ["afternoon", "p", "a", 0];
             invalidAMPM.forEach(function (value) {
@@ -785,8 +837,10 @@ At this point, the code coverage report shows that the unit tests cover 96% of t
                 }).toThrow();
             });
         });
+    ```
  - There are no tests that try to parse an invalid date string. We can add some to the `describe("DateTime", ...)` section:
 
+    ```javascript
         it("throws an error when passed in an invalid date string and a format string", function () {
             var invalidDates = ["1234!5+3 1:2:3", "tomorrow", "Monday, January 500th 2000 5:40:30 pm", 0];
             Object.keys(expectedStrings).forEach(function (format) {
@@ -797,6 +851,7 @@ At this point, the code coverage report shows that the unit tests cover 96% of t
                 });
             });
         });
+    ```
 
 Now the tests should cover 100% of the lines and branches of the code.
 
