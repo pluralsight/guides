@@ -1,0 +1,14 @@
+{
+    "author_name": "correiadefreitas",
+    "author_real_name": "Correia de Freitas",
+    "branch": "master",
+    "branches": [],
+    "filename": "article.md",
+    "image_url": "https://avatars.githubusercontent.com/u/9440177?v=3",
+    "publish_status": "draft",
+    "stacks": [
+        "Microsoft.NET (C#, ASP.NET, VB.NET, etc)"
+    ],
+    "thumbnail_url": null,
+    "title": "Generate Enum from database table with T4"
+}
