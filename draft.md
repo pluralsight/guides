@@ -1,3 +1,8 @@
+### junk by Luke Lee
+- [Read the guide](http://tutorials.pluralsight.com/other/junk?status=draft)
+- [Read more from Luke Lee](http://tutorials.pluralsight.com/user/durden) <img src="https://avatars.githubusercontent.com/u/58063?v=3" width="30" height="30" alt="Luke Lee" />
+- Related to: other
+
 ### Getting weather updates via sms  by Kristianne Nerona
 - [Read the guide](http://tutorials.pluralsight.com/review/getting-weather-updates-via-sms)
 - [Read more from Kristianne Nerona](http://tutorials.pluralsight.com/user/itiannerona) <img src="https://avatars.githubusercontent.com/u/17387645?v=3" width="30" height="30" alt="Kristianne Nerona" />
