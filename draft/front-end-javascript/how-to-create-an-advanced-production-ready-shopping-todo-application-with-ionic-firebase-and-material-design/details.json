@@ -1,0 +1,14 @@
+{
+    "author_name": "Hitman666",
+    "author_real_name": "Nikola Bre\u017enjak",
+    "branch": "master",
+    "branches": [],
+    "filename": "article.md",
+    "image_url": "https://avatars.githubusercontent.com/u/1001064?v=3",
+    "publish_status": "draft",
+    "stacks": [
+        "Front-End JavaScript (Angular, React, Meteor, etc)"
+    ],
+    "thumbnail_url": null,
+    "title": "How to create an advanced, production ready shopping todo application with Ionic, Firebase and Material design"
+}

@@ -1,0 +1,14 @@
+{
+    "author_name": "itay-grudev",
+    "author_real_name": "Itay Grudev",
+    "branch": "master",
+    "branches": [],
+    "filename": "article.md",
+    "image_url": "https://avatars.githubusercontent.com/u/2123767?v=3",
+    "publish_status": "published",
+    "stacks": [
+        "Ruby, Ruby on Rails"
+    ],
+    "thumbnail_url": null,
+    "title": "Elasticsearch with Ruby on Rails"
+}
