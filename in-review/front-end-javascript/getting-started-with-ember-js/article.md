@@ -44,9 +44,17 @@ Out of the box, every Ember application has a root-level route known as the "app
 
 The application route is basically a "wrapper" for all other routes that get rendered in your app.
 
+### `app/routes/application.js`
+
+### `app/templates/application.hbs`
+
 ## Customing the index route
 
 Each "parent" route in an app (including the application route) will, by default, render an index route when it is entered.
+
+### `app/routes/index.js`
+
+### `app/templates/index.js`
 
 # Our first custom route
 
@@ -62,3 +70,4 @@ Now that we have a decent understanding of the routes that Ember builds by defau
 
 # Components
 
+# Addons
