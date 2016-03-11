@@ -1,3 +1,8 @@
+### Defining roles with concerns by arturcp
+- [Read the guide](http://tutorials.pluralsight.com/ruby-ruby-on-rails/defining-roles-with-concerns?status=in-review)
+- [Read more from arturcp](http://tutorials.pluralsight.com/user/arturcp) <img src="https://avatars.githubusercontent.com/u/523071?v=3" width="30" height="30" alt="arturcp" />
+- Related to: Ruby, Ruby on Rails
+
 ### Introduction to Test Driven Development in JavaScript by Peter Olson
 - [Read the guide](http://tutorials.pluralsight.com/front-end-javascript/introduction-to-test-driven-development-in-javascript?status=in-review)
 - [Read more from Peter Olson](http://tutorials.pluralsight.com/user/peterolson) <img src="https://avatars.githubusercontent.com/u/920512?v=3" width="30" height="30" alt="Peter Olson" />
