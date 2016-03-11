@@ -8,11 +8,6 @@
 - [Read more from Tom Resing](http://tutorials.pluralsight.com/user/tomresing) <img src="https://avatars.githubusercontent.com/u/2660081?v=3" width="30" height="30" alt="Tom Resing" />
 - Related to: Microsoft.NET (C#, ASP.NET, VB.NET, etc)
 
-### Defining roles with concerns by arturcp
-- [Read the guide](http://tutorials.pluralsight.com/review/defining-roles-with-concerns)
-- [Read more from arturcp](http://tutorials.pluralsight.com/user/arturcp) <img src="https://avatars.githubusercontent.com/u/523071?v=3" width="30" height="30" alt="arturcp" />
-- Related to: Ruby, Ruby on Rails
-
 ### Generate Enum from database table with T4 by Correia de Freitas
 - [Read the guide](http://tutorials.pluralsight.com/review/generate-enum-from-database-table-with-t4)
 - [Read more from Correia de Freitas](http://tutorials.pluralsight.com/user/correiadefreitas) <img src="https://avatars.githubusercontent.com/u/9440177?v=3" width="30" height="30" alt="Correia de Freitas" />
