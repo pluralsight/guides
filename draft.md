@@ -1,3 +1,8 @@
+### test by Paulo Cheque
+- [Read the guide](http://tutorials.pluralsight.com/python/test?status=draft)
+- [Read more from Paulo Cheque](http://tutorials.pluralsight.com/user/paulocheque) <img src="https://avatars.githubusercontent.com/u/94350?v=3" width="30" height="30" alt="Paulo Cheque" />
+- Related to: Python
+
 ### Creating a chat using Rails' Action Cable by Hristo Georgiev
 - [Read the guide](http://tutorials.pluralsight.com/ruby-ruby-on-rails/creating-a-chat-using-rails-action-cable?status=draft)
 - [Read more from Hristo Georgiev](http://tutorials.pluralsight.com/user/Kaizeras) <img src="https://avatars.githubusercontent.com/u/6340189?v=3" width="30" height="30" alt="Hristo Georgiev" />
