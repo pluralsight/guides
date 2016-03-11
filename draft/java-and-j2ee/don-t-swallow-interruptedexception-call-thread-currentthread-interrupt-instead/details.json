@@ -1,0 +1,16 @@
+{
+    "author_name": "scharf",
+    "author_real_name": "Michael Scharf (Github)",
+    "branch": "master",
+    "branches": [
+        "mykelalvis"
+    ],
+    "filename": "article.md",
+    "image_url": "https://avatars.githubusercontent.com/u/3731059?v=3",
+    "publish_status": "draft",
+    "stacks": [
+        "Java and J2EE"
+    ],
+    "thumbnail_url": null,
+    "title": "Don't swallow InterruptedException. Call Thread.currentThread().interrupt() instead."
+}
