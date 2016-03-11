@@ -8,11 +8,6 @@
 - [Read more from Tom Resing](http://tutorials.pluralsight.com/user/tomresing) <img src="https://avatars.githubusercontent.com/u/2660081?v=3" width="30" height="30" alt="Tom Resing" />
 - Related to: Microsoft.NET (C#, ASP.NET, VB.NET, etc)
 
-### Ruby on Rails Nested Attributes by Itay Grudev
-- [Read the guide](http://tutorials.pluralsight.com/review/ruby-on-rails-nested-attributes)
-- [Read more from Itay Grudev](http://tutorials.pluralsight.com/user/itay-grudev) <img src="https://avatars.githubusercontent.com/u/2123767?v=3" width="30" height="30" alt="Itay Grudev" />
-- Related to: Ruby, Ruby on Rails
-
 ### Introduction to Test Driven Development in JavaScript by Peter Olson
 - [Read the guide](http://tutorials.pluralsight.com/review/introduction-to-test-driven-development-in-javascript)
 - [Read more from Peter Olson](http://tutorials.pluralsight.com/user/peterolson) <img src="https://avatars.githubusercontent.com/u/920512?v=3" width="30" height="30" alt="Peter Olson" />
