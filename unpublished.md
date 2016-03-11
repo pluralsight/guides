@@ -1,3 +1,8 @@
+### Getting weather updates via sms  by Kristianne Nerona
+- [Read the guide](http://tutorials.pluralsight.com/review/getting-weather-updates-via-sms)
+- [Read more from Kristianne Nerona](http://tutorials.pluralsight.com/user/itiannerona) <img src="https://avatars.githubusercontent.com/u/17387645?v=3" width="30" height="30" alt="Kristianne Nerona" />
+- Related to: Interesting APIs (SendGrid, Twilio, etc)
+
 ### .Net Starting Points by Tom Resing
 - [Read the guide](http://tutorials.pluralsight.com/review/net-starting-points)
 - [Read more from Tom Resing](http://tutorials.pluralsight.com/user/tomresing) <img src="https://avatars.githubusercontent.com/u/2660081?v=3" width="30" height="30" alt="Tom Resing" />
