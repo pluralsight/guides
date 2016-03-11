@@ -102,11 +102,6 @@
 - [Read more from Jason Beechum](http://tutorials.pluralsight.com/user/jbeechum) <img src="https://avatars.githubusercontent.com/u/7976594?v=3" width="30" height="30" alt="Jason Beechum" />
 - Related to: Microsoft.NET (C#, ASP.NET, VB.NET, etc)
 
-### Moving a Cloud App to a different Azure Resource Group by Aligned
-- [Read the guide](http://tutorials.pluralsight.com/review/moving-a-cloud-app-to-a-different-azure-resource-group)
-- [Read more from Aligned](http://tutorials.pluralsight.com/user/logankd) <img src="https://avatars.githubusercontent.com/u/1636977?v=3" width="30" height="30" alt="Aligned" />
-- Related to: DevOps (Docker, Nagios, Jenkins, Chef, Puppet, etc)
-
 ### 5 Simple Important Tips for Ruby on Rails.  by Meriton
 - [Read the guide](http://tutorials.pluralsight.com/review/5-simple-important-tips-for-ruby-on-rails)
 - [Read more from Meriton](http://tutorials.pluralsight.com/user/meriton) <img src="https://avatars.githubusercontent.com/u/2198377?v=3" width="30" height="30" alt="Meriton" />
