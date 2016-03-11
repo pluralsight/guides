@@ -92,11 +92,6 @@
 - [Read more from Klarence](http://tutorials.pluralsight.com/user/Klarence) <img src="https://avatars.githubusercontent.com/u/1621537?v=3" width="30" height="30" alt="Klarence" />
 - Related to: HTML/CSS
 
-### Hello World Node.js by hassan alnator
-- [Read the guide](http://tutorials.pluralsight.com/review/hello-world-node-js)
-- [Read more from hassan alnator](http://tutorials.pluralsight.com/user/hassan-alnator) <img src="https://avatars.githubusercontent.com/u/5238896?v=3" width="30" height="30" alt="hassan alnator" />
-- Related to: Node.js
-
 ### Hello Guide by Bojan Bedrac
 - [Read the guide](http://tutorials.pluralsight.com/review/hello-guide)
 - [Read more from Bojan Bedrac](http://tutorials.pluralsight.com/user/xbojch) <img src="https://avatars.githubusercontent.com/u/4233387?v=3" width="30" height="30" alt="Bojan Bedrac" />
