@@ -13,11 +13,6 @@
 - [Read more from Correia de Freitas](http://tutorials.pluralsight.com/user/correiadefreitas) <img src="https://avatars.githubusercontent.com/u/9440177?v=3" width="30" height="30" alt="Correia de Freitas" />
 - Related to: Microsoft.NET (C#, ASP.NET, VB.NET, etc)
 
-### Be careful what you import by Luke Lee
-- [Read the guide](http://tutorials.pluralsight.com/review/be-careful-what-you-import)
-- [Read more from Luke Lee](http://tutorials.pluralsight.com/user/durden) <img src="https://avatars.githubusercontent.com/u/58063?v=3" width="30" height="30" alt="Luke Lee" />
-- Related to: Python
-
 ### How I wrote an ~100B grid system by IonicaBizau
 - [Read the guide](http://tutorials.pluralsight.com/review/how-i-wrote-an-%7E100b-grid-system)
 - [Read more from IonicaBizau](http://tutorials.pluralsight.com/user/IonicaBizau)
