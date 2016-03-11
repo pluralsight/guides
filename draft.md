@@ -122,10 +122,6 @@
 - [Read more from Om Prakash](http://tutorials.pluralsight.com/user/omps) <img src="https://avatars.githubusercontent.com/u/985481?v=3" width="30" height="30" alt="Om Prakash" />
 - Related to: Python
 
-### Beginner: Linux Navigation Manual by Prakrit Duangsutha
-- [Read the guide](http://tutorials.pluralsight.com/review/beginner-linux-navigation-manual)
-- [Read more from Prakrit Duangsutha](http://tutorials.pluralsight.com/user/brillydev) <img src="https://avatars.githubusercontent.com/u/2718812?v=3" width="30" height="30" alt="Prakrit Duangsutha" />
-
 ### Diga adeus ao Wordpress. Conheça o Jekyll! by Lucas Andrey
 - [Read the guide](http://tutorials.pluralsight.com/review/diga-adeus-ao-wordpress-conheca-o-jekyll)
 - [Read more from Lucas Andrey](http://tutorials.pluralsight.com/user/andreybleme) <img src="https://avatars.githubusercontent.com/u/5385383?v=3" width="30" height="30" alt="Lucas Andrey" />
