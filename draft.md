@@ -27,11 +27,6 @@
 - [Read more from Ed Roman](http://tutorials.pluralsight.com/user/edroman) <img src="https://avatars.githubusercontent.com/u/1248205?v=3" width="30" height="30" alt="Ed Roman" />
 - Related to: Node.js
 
-### Functional Style Programming using C by Mahmudul FAISAL Al Ameen
-- [Read the guide](http://tutorials.pluralsight.com/review/functional-style-programming-using-c)
-- [Read more from Mahmudul FAISAL Al Ameen](http://tutorials.pluralsight.com/user/phaysaal) <img src="https://avatars.githubusercontent.com/u/12531542?v=3" width="30" height="30" alt="Mahmudul FAISAL Al Ameen" />
-- Related to: C/C++
-
 ### Getting your hands dirty in Python by Stanley Ndagi
 - [Read the guide](http://tutorials.pluralsight.com/review/getting-your-hands-dirty-in-python)
 - [Read more from Stanley Ndagi](http://tutorials.pluralsight.com/user/NdagiStanley) <img src="https://avatars.githubusercontent.com/u/15629602?v=3" width="30" height="30" alt="Stanley Ndagi" />
