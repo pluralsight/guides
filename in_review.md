@@ -1,3 +1,8 @@
+### Introduction to Test Driven Development in JavaScript by Peter Olson
+- [Read the guide](http://tutorials.pluralsight.com/front-end-javascript/introduction-to-test-driven-development-in-javascript?status=in-review)
+- [Read more from Peter Olson](http://tutorials.pluralsight.com/user/peterolson) <img src="https://avatars.githubusercontent.com/u/920512?v=3" width="30" height="30" alt="Peter Olson" />
+- Related to: Front-End JavaScript (Angular, React, Meteor, etc)
+
 ### Ruby on Rails Nested Attributes by Itay Grudev
 - [Read the guide](http://tutorials.pluralsight.com/ruby-ruby-on-rails/ruby-on-rails-nested-attributes?status=in-review)
 - [Read more from Itay Grudev](http://tutorials.pluralsight.com/user/itay-grudev) <img src="https://avatars.githubusercontent.com/u/2123767?v=3" width="30" height="30" alt="Itay Grudev" />
