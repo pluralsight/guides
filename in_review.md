@@ -1,3 +1,8 @@
+### Getting Accustomed to Angular 2.0  by Tom Greco
+- [Read the guide](http://tutorials.pluralsight.com/front-end-javascript/getting-accustomed-to-angular-2-0?status=in-review)
+- [Read more from Tom Greco](http://tutorials.pluralsight.com/user/thomasjosephgreco) <img src="https://avatars.githubusercontent.com/u/6646552?v=3" width="30" height="30" alt="Tom Greco" />
+- Related to: Front-End JavaScript (Angular, React, Meteor, etc)
+
 ### Beginner: Linux Navigation Manual by Prakrit Duangsutha
 - [Read the guide](http://tutorials.pluralsight.com/other/beginner-linux-navigation-manual?status=in-review)
 - [Read more from Prakrit Duangsutha](http://tutorials.pluralsight.com/user/brillydev) <img src="https://avatars.githubusercontent.com/u/2718812?v=3" width="30" height="30" alt="Prakrit Duangsutha" />
