@@ -102,11 +102,6 @@
 - [Read more from Jason Beechum](http://tutorials.pluralsight.com/user/jbeechum) <img src="https://avatars.githubusercontent.com/u/7976594?v=3" width="30" height="30" alt="Jason Beechum" />
 - Related to: Microsoft.NET (C#, ASP.NET, VB.NET, etc)
 
-### Tips and cool tricks to use in git by Lucas Andrey
-- [Read the guide](http://tutorials.pluralsight.com/review/tips-and-cool-tricks-to-use-in-git)
-- [Read more from Lucas Andrey](http://tutorials.pluralsight.com/user/andreybleme) <img src="https://avatars.githubusercontent.com/u/5385383?v=3" width="30" height="30" alt="Lucas Andrey" />
-- Related to: DevOps (Docker, Nagios, Jenkins, Chef, Puppet, etc)
-
 ### Moving a Cloud App to a different Azure Resource Group by Aligned
 - [Read the guide](http://tutorials.pluralsight.com/review/moving-a-cloud-app-to-a-different-azure-resource-group)
 - [Read more from Aligned](http://tutorials.pluralsight.com/user/logankd) <img src="https://avatars.githubusercontent.com/u/1636977?v=3" width="30" height="30" alt="Aligned" />
