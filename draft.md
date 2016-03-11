@@ -102,11 +102,6 @@
 - [Read more from Jason Beechum](http://tutorials.pluralsight.com/user/jbeechum) <img src="https://avatars.githubusercontent.com/u/7976594?v=3" width="30" height="30" alt="Jason Beechum" />
 - Related to: Microsoft.NET (C#, ASP.NET, VB.NET, etc)
 
-### 5 Simple Important Tips for Ruby on Rails.  by Meriton
-- [Read the guide](http://tutorials.pluralsight.com/review/5-simple-important-tips-for-ruby-on-rails)
-- [Read more from Meriton](http://tutorials.pluralsight.com/user/meriton) <img src="https://avatars.githubusercontent.com/u/2198377?v=3" width="30" height="30" alt="Meriton" />
-- Related to: Ruby, Ruby on Rails
-
 ### Parsing HTML Documents with DOMDocument PHP class by Sousa Gaspar
 - [Read the guide](http://tutorials.pluralsight.com/review/parsing-html-documents-with-domdocument-php-class)
 - [Read more from Sousa Gaspar](http://tutorials.pluralsight.com/user/sousadgaspar) <img src="https://avatars.githubusercontent.com/u/4113494?v=3" width="30" height="30" alt="Sousa Gaspar" />
