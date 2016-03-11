@@ -1,0 +1,16 @@
+{
+    "author_name": "tbogard",
+    "author_real_name": "Erick Rodriguez",
+    "branch": "master",
+    "branches": [
+        "mykelalvis"
+    ],
+    "filename": "article.md",
+    "image_url": "https://avatars.githubusercontent.com/u/1978642?v=3",
+    "publish_status": "draft",
+    "stacks": [
+        "other"
+    ],
+    "thumbnail_url": null,
+    "title": "How to Migrate a virtual machine from Virtualbox 4.x to VMware Workstation 9.x or 10"
+}
