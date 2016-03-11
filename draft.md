@@ -77,11 +77,6 @@
 - [Read more from Ravindu Liyanapathirana](http://tutorials.pluralsight.com/user/RavinduL) <img src="https://avatars.githubusercontent.com/u/7352580?v=3" width="30" height="30" alt="Ravindu Liyanapathirana" />
 - Related to: Microsoft.NET (C#, ASP.NET, VB.NET, etc)
 
-### ELB SSL termination the Docker way by Scott Miller
-- [Read the guide](http://tutorials.pluralsight.com/review/elb-ssl-termination-the-docker-way)
-- [Read more from Scott Miller](http://tutorials.pluralsight.com/user/smiller171) <img src="https://avatars.githubusercontent.com/u/3587913?v=3" width="30" height="30" alt="Scott Miller" />
-- Related to: DevOps (Docker, Nagios, Jenkins, Chef, Puppet, etc)
-
 ### Getting Started With ASP.net MVC Core 1.0 from zero to hero! by Fredy Guibert
 - [Read the guide](http://tutorials.pluralsight.com/review/getting-started-with-asp-net-mvc-core-1-0-from-zero-to-hero)
 - [Read more from Fredy Guibert](http://tutorials.pluralsight.com/user/fredyfx) <img src="https://avatars.githubusercontent.com/u/4960023?v=3" width="30" height="30" alt="Fredy Guibert" />
