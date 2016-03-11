@@ -73,6 +73,6 @@ One easy thing you can do is to check-out what else is out there for this partic
 ### What is the writing process?
 1. [Submit a guide](/write/)
 2. Share a link for suggestions to your article with friends, co-workers, etc.
-3. Continue improving your article with the community help
-4. Our editors will also assist you with improving your article
-5. Publish your article!
+3. Continue improving your guide and mark it as 'in-review' from the bottom of the guide page itself.  Marking a guide as 'in-review' will make it visible to the community editors and signal that you're ready for help improving the content.
+4. Our editors will also assist you with improving your guide
+5. Our community editors will decide when your guide is ready to publish. They will contact you directly and mark your guide as published, which pushes your guide to our [homepage](http://www.pluralsight.com/guides)!
