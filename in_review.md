@@ -1,3 +1,8 @@
+### ELB SSL termination the Docker way by Scott Miller
+- [Read the guide](http://tutorials.pluralsight.com/devops/elb-ssl-termination-the-docker-way?status=in-review)
+- [Read more from Scott Miller](http://tutorials.pluralsight.com/user/smiller171) <img src="https://avatars.githubusercontent.com/u/3587913?v=3" width="30" height="30" alt="Scott Miller" />
+- Related to: DevOps (Docker, Nagios, Jenkins, Chef, Puppet, etc)
+
 ### Running shell commands with Flask by Red Moses
 - [Read the guide](http://tutorials.pluralsight.com/python/running-shell-commands-with-flask?status=in-review)
 - [Read more from Red Moses](http://tutorials.pluralsight.com/user/redmoses) <img src="https://avatars.githubusercontent.com/u/4059490?v=3" width="30" height="30" alt="Red Moses" />
