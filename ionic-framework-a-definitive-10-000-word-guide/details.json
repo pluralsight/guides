@@ -8,12 +8,11 @@
         "wilbyang"
     ],
     "filename": "article.md",
+    "image_url": "https://avatars.githubusercontent.com/u/1001064?v=3&",
+    "publish_status": "published",
     "stacks": [
         "Android"
     ],
-    "published": true,
-    "title": "Ionic Framework: A definitive 10,000 word guide",
-    "image_url": "https://avatars.githubusercontent.com/u/1001064?v=3&",
-    "thumbnail_url": null
-
+    "thumbnail_url": null,
+    "title": "Ionic Framework: A definitive 10,000 word guide"
 }

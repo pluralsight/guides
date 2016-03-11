@@ -6,12 +6,12 @@
         "prtkgpt"
     ],
     "filename": "article.md",
+    "image_url": "https://avatars3.githubusercontent.com/u/5387?v=3",
+    "language": null,
+    "publish_status": "published",
     "stacks": [
         "Ruby, Ruby on Rails"
     ],
-    "language": null,
-    "published": true,
-    "title": "Using HTTPs with Ruby on Rails",
-    "image_url": "https://avatars3.githubusercontent.com/u/5387?v=3",
-    "thumbnail_url": null
+    "thumbnail_url": null,
+    "title": "Using HTTPs with Ruby on Rails"
 }

@@ -5,7 +5,7 @@
     "branches": [],
     "filename": "article.md",
     "image_url": "https://avatars.githubusercontent.com/u/1636977?v=3",
-    "published": false,
+    "publish_status": "draft",
     "stacks": [
         "DevOps (Docker, Nagios, Jenkins, Chef, Puppet, etc)"
     ],

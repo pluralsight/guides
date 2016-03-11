@@ -8,7 +8,9 @@
     "filename": "article.md",
     "image_url": null,
     "language": null,
-    "published": false,
-    "stacks": [],
+    "publish_status": "draft",
+    "stacks": [
+        "other"
+    ],
     "title": "Python iteration and the for loop"
 }

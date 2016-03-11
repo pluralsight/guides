@@ -7,7 +7,7 @@
     ],
     "filename": "article.md",
     "image_url": "https://avatars.githubusercontent.com/u/241170?v=3",
-    "published": false,
+    "publish_status": "draft",
     "stacks": [
         "Node.js"
     ],

@@ -7,7 +7,7 @@
     ],
     "filename": "article.md",
     "image_url": "https://avatars.githubusercontent.com/u/3731059?v=3",
-    "published": false,
+    "publish_status": "draft",
     "stacks": [
         "Java and J2EE"
     ],

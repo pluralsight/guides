@@ -5,10 +5,10 @@
     "branches": [],
     "filename": "article.md",
     "image_url": "https://avatars3.githubusercontent.com/u/2028582?v=3",
-    "published": true,
+    "publish_status": "published",
     "stacks": [
         "Front-End JavaScript (Angular, React, Meteor, etc)"
     ],
-    "title": "AngularJS - Controllers",
-    "thumbnail_url": null
+    "thumbnail_url": null,
+    "title": "AngularJS - Controllers"
 }

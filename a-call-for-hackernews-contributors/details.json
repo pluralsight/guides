@@ -4,9 +4,11 @@
     "branch": "master",
     "branches": [],
     "filename": "article.md",
+    "image_url": "https://avatars1.githubusercontent.com/u/2454349?v=3",
     "language": null,
-    "published": true,
-    "title": "A call for HackerNews Contributors",
-    "image_url": "https://avatars1.githubusercontent.com/u/2454349?v=3"
+    "publish_status": "published",
+    "stacks": [
+        "other"
+    ],
+    "title": "A call for HackerNews Contributors"
 }
-

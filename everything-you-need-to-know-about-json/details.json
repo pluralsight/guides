@@ -7,7 +7,7 @@
     ],
     "filename": "article.md",
     "image_url": "https://avatars.githubusercontent.com/u/7561668?v=3",
-    "published": true,
+    "publish_status": "published",
     "stacks": [
         "Software Engineering Best Practices"
     ],

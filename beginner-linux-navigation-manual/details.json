@@ -5,8 +5,10 @@
     "branches": [],
     "filename": "article.md",
     "image_url": "https://avatars.githubusercontent.com/u/2718812?v=3",
-    "published": false,
-    "stacks": [],
+    "publish_status": "draft",
+    "stacks": [
+        "other"
+    ],
     "thumbnail_url": null,
     "title": "Beginner: Linux Navigation Manual"
 }

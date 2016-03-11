@@ -9,7 +9,7 @@
     ],
     "filename": "article.md",
     "image_url": "https://avatars.githubusercontent.com/u/1348053?v=3",
-    "published": true,
+    "publish_status": "published",
     "stacks": [
         "Front-End JavaScript (Angular, React, Meteor, etc)"
     ],
