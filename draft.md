@@ -13,10 +13,6 @@
 - [Read more from Correia de Freitas](http://tutorials.pluralsight.com/user/correiadefreitas) <img src="https://avatars.githubusercontent.com/u/9440177?v=3" width="30" height="30" alt="Correia de Freitas" />
 - Related to: Microsoft.NET (C#, ASP.NET, VB.NET, etc)
 
-### How I wrote an ~100B grid system by IonicaBizau
-- [Read the guide](http://tutorials.pluralsight.com/review/how-i-wrote-an-%7E100b-grid-system)
-- [Read more from IonicaBizau](http://tutorials.pluralsight.com/user/IonicaBizau)
-
 ### Python iteration and the for loop by perkolasoft
 - [Read the guide](http://tutorials.pluralsight.com/review/python-iteration-and-the-for-loop)
 - [Read more from perkolasoft](http://tutorials.pluralsight.com/user/perkolasoft)
