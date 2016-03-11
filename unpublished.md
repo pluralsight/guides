@@ -1,3 +1,8 @@
+### .Net Starting Points by Tom Resing
+- [Read the guide](http://tutorials.pluralsight.com/review/net-starting-points)
+- [Read more from Tom Resing](http://tutorials.pluralsight.com/user/tomresing) <img src="https://avatars.githubusercontent.com/u/2660081?v=3" width="30" height="30" alt="Tom Resing" />
+- Related to: Microsoft.NET (C#, ASP.NET, VB.NET, etc)
+
 ### Building a Dashboard in React by Rohit Boggarapu
 - [Read the guide](http://tutorials.pluralsight.com/review/building-a-dashboard-in-react)
 - [Read more from Rohit Boggarapu](http://tutorials.pluralsight.com/user/rohitb4) <img src="https://avatars.githubusercontent.com/u/6358889?v=3" width="30" height="30" alt="Rohit Boggarapu" />
