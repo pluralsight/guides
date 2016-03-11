@@ -32,11 +32,6 @@
 - [Read more from Stanley Ndagi](http://tutorials.pluralsight.com/user/NdagiStanley) <img src="https://avatars.githubusercontent.com/u/15629602?v=3" width="30" height="30" alt="Stanley Ndagi" />
 - Related to: Python
 
-### Decorators as classes or functions? by Luke Lee
-- [Read the guide](http://tutorials.pluralsight.com/review/decorators-as-classes-or-functions)
-- [Read more from Luke Lee](http://tutorials.pluralsight.com/user/durden) <img src="https://avatars.githubusercontent.com/u/58063?v=3" width="30" height="30" alt="Luke Lee" />
-- Related to: Python
-
 ### Node.js Webdriver by Mat Forsberg
 - [Read the guide](http://tutorials.pluralsight.com/review/node-js-webdriver)
 - [Read more from Mat Forsberg](http://tutorials.pluralsight.com/user/MatForsberg) <img src="https://avatars.githubusercontent.com/u/12013662?v=3" width="30" height="30" alt="Mat Forsberg" />
