@@ -1,3 +1,8 @@
+### Profiling memory usage in Python by Luke Lee
+- [Read the guide](http://tutorials.pluralsight.com/python/profiling-memory-usage-in-python?status=in-review)
+- [Read more from Luke Lee](http://tutorials.pluralsight.com/user/durden) <img src="https://avatars.githubusercontent.com/u/58063?v=3" width="30" height="30" alt="Luke Lee" />
+- Related to: Python
+
 ### Docker's - Beginner Guide by Marius Baisan
 - [Read the guide](http://tutorials.pluralsight.com/devops/docker-s-beginner-guide?status=in-review)
 - [Read more from Marius Baisan](http://tutorials.pluralsight.com/user/mariobyn) <img src="https://avatars.githubusercontent.com/u/4470735?v=3" width="30" height="30" alt="Marius Baisan" />
