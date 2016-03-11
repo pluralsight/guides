@@ -2,8 +2,11 @@
     "author_name": "rohitb4",
     "author_real_name": "Rohit Boggarapu",
     "branch": "master",
-    "branches": [],
+    "branches": [
+        "prtkgpt"
+    ],
     "filename": "article.md",
+    "first_commit": null,
     "image_url": "https://avatars.githubusercontent.com/u/6358889?v=3",
     "publish_status": "in-review",
     "stacks": [
