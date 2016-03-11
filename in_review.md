@@ -1,3 +1,8 @@
+### Try Docker vanilla by Dileep Bapat
+- [Read the guide](http://tutorials.pluralsight.com/devops/try-docker-vanilla?status=in-review)
+- [Read more from Dileep Bapat](http://tutorials.pluralsight.com/user/dileepbapat) <img src="https://avatars.githubusercontent.com/u/633838?v=3" width="30" height="30" alt="Dileep Bapat" />
+- Related to: DevOps (Docker, Nagios, Jenkins, Chef, Puppet, etc)
+
 ### Getting Started With ASP.net MVC Core 1.0 from zero to hero! by Fredy Guibert
 - [Read the guide](http://tutorials.pluralsight.com/microsoft-net/getting-started-with-asp-net-mvc-core-1-0-from-zero-to-hero?status=in-review)
 - [Read more from Fredy Guibert](http://tutorials.pluralsight.com/user/fredyfx) <img src="https://avatars.githubusercontent.com/u/4960023?v=3" width="30" height="30" alt="Fredy Guibert" />
