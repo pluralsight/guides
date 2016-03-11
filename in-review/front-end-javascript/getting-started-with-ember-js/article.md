@@ -1,12 +1,12 @@
 # Installation and first steps
 
-## Install node.js
+## Installing node.js
 Node.js is a JavaScript runtime built on Chrome's V8 JavaScript engine for developing server-side applications. It also has a built in package ecosystem called npm (node package manager), which allows you to install a variety of packages and plugins (such as Ember CLI) to increase your development efficiency.
 
 ### nvm
 While node has a great installer, I highly recommend installing node via nvm (Node Version Manager), which allows you to install and run multiple versions of node alongside one another. Why would you want to do such a thing? Let's say you're working as a consultant and constantly moving back and forth between many different projects. Each of these projects would likely be created at different points in time, and, therefore, reliant on different versions of tools. Because node.js is constantly in development, you may be running projects under different versions of node that aren't necessarily compatible. nvm gives us a simple interface to manage the different versions of node on our system, and easily switch between them as we jump between different projects.
 
-#### Installing on OS X
+#### OS X Installation
 To install nvm on OS X, we can use the fantastic homebrew package manager. Once you have it installed, simply run `brew install nvm`. Once it's been installed we have a few housekeeping items to address to make sure that it's properly configured. First, create a working directory for the tool by calling `mkdir ~/.nvm`. This tells our system to "make a directory" (`mkdir`) in our "home" folder (`~`), called `.nvm`. The file is preceeded by a `.` to make it a "hidden" folder, ensuring that it won't show up in your typical filesystem browsing activities (because you shouldn't typically be directly modifying its contents).
 
 Next, we need to add some environment configuration to our shell's configuration (`.zshrc` or `.bashrc`). At the time of this writing, nvm requires the following configuration:
@@ -16,7 +16,7 @@ export NVM_DIR=~/.nvm
 ```
 Finally, load the configuration by "sourcing" your `rc` file - (`source ~/.zshrc` or `source ~/.bashrc`). You can run `nvm help` to ensure everything is working at this point.
 
-## Install Ember CLI
+## Installing Ember CLI
 With node.js and nvm successfully setup, simply run the command `npm install -g ember-cli`. Before we move on, though, let's look at what this command does. `npm` invokes the node package manager executable. This command takes a variety of subcommands such as:
 
 - `install` - install a package
@@ -38,8 +38,27 @@ Now that we've got our "app" up and running, it's time to take a quick detour an
 # The application route and index route
 One of Ember's core differentiators is it's focus on routing as a first-class citizen. Unlike other JavaScript frameworks that view routing as an afterthought or something to be handled by a plugin, Ember has full fledged support for dynamic routing all handled from the client-side. This came from a mindset of JavaScript apps that "don't break the back button" and work in compliment with the features of modern browsers, rather than competing against them.
 
-Out of the box, every Ember application has a root-level route known as the "application" route. Let's take a look at what this means, why it's necessary, and how it affects the rest of our applicaiton.
+Out of the box, every Ember application has a root-level route known as the "application" route. Let's take a look at what this means, why it's necessary, and how it affects the rest of our application.
 
-# Our first route
+## Customizing the application route
+
+The application route is basically a "wrapper" for all other routes that get rendered in your app.
+
+## Customing the index route
+
+Each "parent" route in an app (including the application route) will, by default, render an index route when it is entered.
+
+# Our first custom route
 
 Now that we have a decent understanding of the routes that Ember builds by default, let's take a crack at building our own route.
+
+## `app/router.js`
+
+## `routes/about.js`
+
+## `templates/about.hbs`
+
+# Pods
+
+# Components
+
