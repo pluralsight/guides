@@ -17,11 +17,6 @@
 - [Read the guide](http://tutorials.pluralsight.com/review/python-iteration-and-the-for-loop)
 - [Read more from perkolasoft](http://tutorials.pluralsight.com/user/perkolasoft)
 
-### Simple debugging with meta programming by Luke Lee
-- [Read the guide](http://tutorials.pluralsight.com/review/simple-debugging-with-meta-programming)
-- [Read more from Luke Lee](http://tutorials.pluralsight.com/user/durden) <img src="https://avatars.githubusercontent.com/u/58063?v=3" width="30" height="30" alt="Luke Lee" />
-- Related to: Python
-
 ### Using Google spreadsheet as a database by Aki
 - [Read the guide](http://tutorials.pluralsight.com/review/using-google-spreadsheet-as-a-database)
 - [Read more from Aki](http://tutorials.pluralsight.com/user/multiaki) <img src="https://avatars.githubusercontent.com/u/831569?v=3" width="30" height="30" alt="Aki" />
