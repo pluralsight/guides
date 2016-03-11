@@ -1,3 +1,8 @@
+### 5 Simple Important Tips for Ruby on Rails.  by Meriton
+- [Read the guide](http://tutorials.pluralsight.com/ruby-ruby-on-rails/5-simple-important-tips-for-ruby-on-rails?status=in-review)
+- [Read more from Meriton](http://tutorials.pluralsight.com/user/meriton) <img src="https://avatars.githubusercontent.com/u/2198377?v=3" width="30" height="30" alt="Meriton" />
+- Related to: Ruby, Ruby on Rails
+
 ### Moving a Cloud App to a different Azure Resource Group by Aligned
 - [Read the guide](http://tutorials.pluralsight.com/devops/moving-a-cloud-app-to-a-different-azure-resource-group?status=in-review)
 - [Read more from Aligned](http://tutorials.pluralsight.com/user/logankd) <img src="https://avatars.githubusercontent.com/u/1636977?v=3" width="30" height="30" alt="Aligned" />
