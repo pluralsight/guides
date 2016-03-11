@@ -1,3 +1,8 @@
+### Diga adeus ao Wordpress. Conheça o Jekyll! by Lucas Andrey
+- [Read the guide](http://tutorials.pluralsight.com/html-css/diga-adeus-ao-wordpress-conheca-o-jekyll?status=in-review)
+- [Read more from Lucas Andrey](http://tutorials.pluralsight.com/user/andreybleme) <img src="https://avatars.githubusercontent.com/u/5385383?v=3" width="30" height="30" alt="Lucas Andrey" />
+- Related to: HTML/CSS
+
 ### Getting Accustomed to Angular 2.0  by Tom Greco
 - [Read the guide](http://tutorials.pluralsight.com/front-end-javascript/getting-accustomed-to-angular-2-0?status=in-review)
 - [Read more from Tom Greco](http://tutorials.pluralsight.com/user/thomasjosephgreco) <img src="https://avatars.githubusercontent.com/u/6646552?v=3" width="30" height="30" alt="Tom Greco" />
