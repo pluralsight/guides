@@ -1,3 +1,8 @@
+### Tips and cool tricks to use in git by Lucas Andrey
+- [Read the guide](http://tutorials.pluralsight.com/devops/tips-and-cool-tricks-to-use-in-git?status=in-review)
+- [Read more from Lucas Andrey](http://tutorials.pluralsight.com/user/andreybleme) <img src="https://avatars.githubusercontent.com/u/5385383?v=3" width="30" height="30" alt="Lucas Andrey" />
+- Related to: DevOps (Docker, Nagios, Jenkins, Chef, Puppet, etc)
+
 ### Getting started with Ember.js by David Lormor
 - [Read the guide](http://tutorials.pluralsight.com/front-end-javascript/getting-started-with-ember-js?status=in-review)
 - [Read more from David Lormor](http://tutorials.pluralsight.com/user/davidlormor) <img src="https://avatars.githubusercontent.com/u/3712117?v=3" width="30" height="30" alt="David Lormor" />
