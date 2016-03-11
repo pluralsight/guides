@@ -77,11 +77,6 @@
 - [Read more from Ravindu Liyanapathirana](http://tutorials.pluralsight.com/user/RavinduL) <img src="https://avatars.githubusercontent.com/u/7352580?v=3" width="30" height="30" alt="Ravindu Liyanapathirana" />
 - Related to: Microsoft.NET (C#, ASP.NET, VB.NET, etc)
 
-### Getting Started With ASP.net MVC Core 1.0 from zero to hero! by Fredy Guibert
-- [Read the guide](http://tutorials.pluralsight.com/review/getting-started-with-asp-net-mvc-core-1-0-from-zero-to-hero)
-- [Read more from Fredy Guibert](http://tutorials.pluralsight.com/user/fredyfx) <img src="https://avatars.githubusercontent.com/u/4960023?v=3" width="30" height="30" alt="Fredy Guibert" />
-- Related to: Microsoft.NET (C#, ASP.NET, VB.NET, etc)
-
 ### TicTac Toe Game by drA
 - [Read the guide](http://tutorials.pluralsight.com/review/tictac-toe-game)
 - [Read more from drA](http://tutorials.pluralsight.com/user/alfonsotech) <img src="https://avatars.githubusercontent.com/u/15456287?v=3" width="30" height="30" alt="drA" />
