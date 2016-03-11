@@ -62,11 +62,6 @@
 - [Read more from Peter Kellner](http://tutorials.pluralsight.com/user/pkellner) <img src="https://avatars.githubusercontent.com/u/241170?v=3" width="30" height="30" alt="Peter Kellner" />
 - Related to: Node.js
 
-### Running shell commands with Flask by Red Moses
-- [Read the guide](http://tutorials.pluralsight.com/review/running-shell-commands-with-flask)
-- [Read more from Red Moses](http://tutorials.pluralsight.com/user/redmoses) <img src="https://avatars.githubusercontent.com/u/4059490?v=3" width="30" height="30" alt="Red Moses" />
-- Related to: Python
-
 ### Should Laravel get it's own stack category? by JΛSΞ
 - [Read the guide](http://tutorials.pluralsight.com/review/should-laravel-get-it-s-own-stack-category)
 - [Read more from JΛSΞ](http://tutorials.pluralsight.com/user/JaseMiller) <img src="https://avatars.githubusercontent.com/u/9310558?v=3" width="30" height="30" alt="JΛSΞ" />
