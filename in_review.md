@@ -1,3 +1,8 @@
+### Be careful what you import by Luke Lee
+- [Read the guide](http://tutorials.pluralsight.com/python/be-careful-what-you-import?status=in-review)
+- [Read more from Luke Lee](http://tutorials.pluralsight.com/user/durden) <img src="https://avatars.githubusercontent.com/u/58063?v=3" width="30" height="30" alt="Luke Lee" />
+- Related to: Python
+
 ### Defining roles with concerns by arturcp
 - [Read the guide](http://tutorials.pluralsight.com/ruby-ruby-on-rails/defining-roles-with-concerns?status=in-review)
 - [Read more from arturcp](http://tutorials.pluralsight.com/user/arturcp) <img src="https://avatars.githubusercontent.com/u/523071?v=3" width="30" height="30" alt="arturcp" />
