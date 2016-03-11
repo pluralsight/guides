@@ -97,11 +97,6 @@
 - [Read more from Bojan Bedrac](http://tutorials.pluralsight.com/user/xbojch) <img src="https://avatars.githubusercontent.com/u/4233387?v=3" width="30" height="30" alt="Bojan Bedrac" />
 - Related to: PHP
 
-### Getting started with Ember.js by David Lormor
-- [Read the guide](http://tutorials.pluralsight.com/review/getting-started-with-ember-js)
-- [Read more from David Lormor](http://tutorials.pluralsight.com/user/davidlormor) <img src="https://avatars.githubusercontent.com/u/3712117?v=3" width="30" height="30" alt="David Lormor" />
-- Related to: Front-End JavaScript (Angular, React, Meteor, etc)
-
 ### Windows Authentication using Katana and Middleware by Jason Beechum
 - [Read the guide](http://tutorials.pluralsight.com/review/windows-authentication-using-katana-and-middleware)
 - [Read more from Jason Beechum](http://tutorials.pluralsight.com/user/jbeechum) <img src="https://avatars.githubusercontent.com/u/7976594?v=3" width="30" height="30" alt="Jason Beechum" />
