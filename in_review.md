@@ -1,3 +1,8 @@
+### Moving a Cloud App to a different Azure Resource Group by Aligned
+- [Read the guide](http://tutorials.pluralsight.com/devops/moving-a-cloud-app-to-a-different-azure-resource-group?status=in-review)
+- [Read more from Aligned](http://tutorials.pluralsight.com/user/logankd) <img src="https://avatars.githubusercontent.com/u/1636977?v=3" width="30" height="30" alt="Aligned" />
+- Related to: DevOps (Docker, Nagios, Jenkins, Chef, Puppet, etc)
+
 ### Tips and cool tricks to use in git by Lucas Andrey
 - [Read the guide](http://tutorials.pluralsight.com/devops/tips-and-cool-tricks-to-use-in-git?status=in-review)
 - [Read more from Lucas Andrey](http://tutorials.pluralsight.com/user/andreybleme) <img src="https://avatars.githubusercontent.com/u/5385383?v=3" width="30" height="30" alt="Lucas Andrey" />
