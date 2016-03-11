@@ -126,8 +126,3 @@
 - [Read the guide](http://tutorials.pluralsight.com/review/diga-adeus-ao-wordpress-conheca-o-jekyll)
 - [Read more from Lucas Andrey](http://tutorials.pluralsight.com/user/andreybleme) <img src="https://avatars.githubusercontent.com/u/5385383?v=3" width="30" height="30" alt="Lucas Andrey" />
 - Related to: HTML/CSS
-
-### Getting Accustomed to Angular 2.0  by Tom Greco
-- [Read the guide](http://tutorials.pluralsight.com/review/getting-accustomed-to-angular-2-0)
-- [Read more from Tom Greco](http://tutorials.pluralsight.com/user/thomasjosephgreco) <img src="https://avatars.githubusercontent.com/u/6646552?v=3" width="30" height="30" alt="Tom Greco" />
-- Related to: Front-End JavaScript (Angular, React, Meteor, etc)
