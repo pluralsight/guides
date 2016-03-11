@@ -1,3 +1,8 @@
+### Don't swallow InterruptedException. Call Thread.currentThread().interrupt() instead. by Michael Scharf (Github)
+- [Read the guide](http://tutorials.pluralsight.com/java-and-j2ee/don-t-swallow-interruptedexception-call-thread-currentthread-interrupt-instead?status=in-review)
+- [Read more from Michael Scharf (Github)](http://tutorials.pluralsight.com/user/scharf) <img src="https://avatars.githubusercontent.com/u/3731059?v=3" width="30" height="30" alt="Michael Scharf (Github)" />
+- Related to: Java and J2EE
+
 ### Decorators as classes or functions? by Luke Lee
 - [Read the guide](http://tutorials.pluralsight.com/python/decorators-as-classes-or-functions?status=in-review)
 - [Read more from Luke Lee](http://tutorials.pluralsight.com/user/durden) <img src="https://avatars.githubusercontent.com/u/58063?v=3" width="30" height="30" alt="Luke Lee" />
