@@ -1,3 +1,8 @@
+### Getting started with Elegant node.js framework by hassan alnator
+- [Read the guide](http://tutorials.pluralsight.com/node-js/getting-started-with-elegant-node-js-framework?status=in-review)
+- [Read more from hassan alnator](http://tutorials.pluralsight.com/user/hassan-alnator) <img src="https://avatars.githubusercontent.com/u/5238896?v=3" width="30" height="30" alt="hassan alnator" />
+- Related to: Node.js
+
 ### Hello World Node.js by hassan alnator
 - [Read the guide](http://tutorials.pluralsight.com/node-js/hello-world-node-js?status=in-review)
 - [Read more from hassan alnator](http://tutorials.pluralsight.com/user/hassan-alnator) <img src="https://avatars.githubusercontent.com/u/5238896?v=3" width="30" height="30" alt="hassan alnator" />
