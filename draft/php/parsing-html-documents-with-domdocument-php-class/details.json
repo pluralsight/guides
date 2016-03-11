@@ -1,0 +1,14 @@
+{
+    "author_name": "sousadgaspar",
+    "author_real_name": "Sousa Gaspar",
+    "branch": "master",
+    "branches": [],
+    "filename": "article.md",
+    "image_url": "https://avatars.githubusercontent.com/u/4113494?v=3",
+    "publish_status": "draft",
+    "stacks": [
+        "PHP"
+    ],
+    "thumbnail_url": null,
+    "title": "Parsing HTML Documents with DOMDocument PHP class"
+}
