@@ -195,7 +195,143 @@ Typing `App.cable` will show you what the actual representation of ActionCable l
 
 In the terminal you can see that the method has been successfully called from the client. Awesome!
 
+Trasmitting data
+--
+
+ Now that we are done with the connection, it is time to transmit and create our first message via ActionCable. First, let's make the `speak()` function accept a parameter:
 
 
+```coffee
+#app/assets/javascripts/channels/room.coffee
+
+App.room = App.cable.subscriptions.create "RoomChannel",
+  #rest of the code
+  speak: (message) ->
+    @perform 'speak', message: message
+```
+
+This will send a `message` object serialized as JSON to the server-side `speak` method in the RoomChannel. Consequently, we need to change the method so that it accepts parameters! Let's do that.
+
+```ruby
+ #app/channels/room_channel.rb
+
+  def speak(data)
+    ActionCable.server.broadcast "room_channel", message: data['message']
+  end
+
+```
+
+ Now the speak method will take the message and broadcast it to `room_channel`. But how do we get the broadcasts from it? In order to do that, we will assign all the subscribers to listen to it by using `stream_from` in the `subscribed` method. 
+
+```ruby
+ #app/channels/room_channel.rb
+
+class RoomChannel < ApplicationCable::Channel
+  def subscribed
+     stream_from "room_channel"
+  end
+
+  def unsubscribed
+    # Any cleanup needed when channel is unsubscribed
+  end
+
+  def speak(data)
+    ActionCable.server.broadcast "room_channel", message: data['message']
+  end
+end
+```
+
+Essentially, `room_channel` is the environment in the ActionCable server where the data comes and gets bounced back to all clients. We can receive the data from `subscribed` by, surprise-surprise, using the `received()` function in `room.coffee`. Here is how:
+
+```coffee
+#app/assets/javascripts/channels/room.coffee
+
+  received: (data) ->
+    alert(data['message'])
+
+  #speak function
+
+$(document).on 'keypress', '[data-behavior~=room_speaker]', (event) ->
+  if event.keyCode is 13 # return/enter = send
+    App.room.speak event.target.value
+    event.target.value = ''
+    event.preventDefault()
+```
+ An event listener has been added on the bottom of the file for the textbox we put in the template.
+
+Restart your rails server, and try typing a message in the text field and clicking enter.
+Did you get an alert? Great! If you open multiple browsers or tabs on `localhost:3000` and you type something, you will get alerts on all of them because they'll all be subscribed to the same channel. We have completed a full cycle - the message goes from the client to the server and bounces back to the server to all clients that have subscribed to the channel.
+
+![Alert from websockets](https://raw.githubusercontent.com/pluralsight/guides/master/images/46534b4f-ab02-4481-a92a-685034817eef.PNG)
+
+Persisting messages into the database
+--
+
+ Our application is working, but there are two issues:
+1. The messages are not stored in the database
+2. We don't have enough control in what format the messages are broadcasted.
+
+Solving the first problem is easy - we are simply going to create a new message once the server receives the message instead of broadcasting it:
+
+```
+ #app/channels/room_channel.rb
+
+  #the rest of the methods
+  def speak(data)
+    Message.create!
+  end
+```
+
+What we are aiming to achieve is to broadcast the `_message.html.erb` partial we created earlier to the `room_channel`. Usually, we would do this in the controller, but we do not have one. Rendering it in the model, view or the channel seems inappropriate. So where can we put it? Enter [Rails Jobs](http://edgeguides.rubyonrails.org/active_job_basics.html).
+
+
+Here is how we are going to do it: 
+ First, we will create a `after_create` hook in the model.
+
+```ruby
+#app/models/message.rb
+
+class Message < ApplicationRecord
+  after_create_commit { MessageBroadcastJob.perform_later self }
+end 
+
+```
+
+Once the message has been created, it will send it to  the `MessageBroadCastJob` that will handle the broadcasting.
+
+Let's generate  `MessageBroadCastJob`:
+
+```bash
+rails g job MessageBroadcast
+```
+
+```ruby
+#app/jobs/message_broadcast_job.rb
+class MessageBroadcastJob < ApplicationJob
+  queue_as :default
+
+  def perform(message)
+    ActionCable.server.broadcast 'room_channel', message: render_message(message)
+  end
+
+  private
+
+  def render_message(message)
+    ApplicationController.renderer.render(partial: 'messages/message', locals: { message: message })
+  end
+end
+```
+
+The `perform` method of the job is going to receive the message, do its magic by rendering the message into the `_message.html.erb` partial, and broadcast directly from the job. 
+Another new feature in Rails 5 is that you can render templates out of the scope of a controller, using the `renderer` of the `ApplicationController` . This nifty feature is used exactly for a case like this in which we do not have a `MessageController` defined but we would like to use its templates.
+
+There is only one thing left to do - remove the `alert` and replace it with a function that will append the partial to our view:
+
+```coffee
+#app/assets/javascripts/channels/room.coffee
+
+  received: (data) ->
+    $('#messages').append data['message']
+```
 
  
