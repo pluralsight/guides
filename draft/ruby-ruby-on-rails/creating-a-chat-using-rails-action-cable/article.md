@@ -54,6 +54,7 @@ rails g controller rooms show
  The controller and the action are done, let's put them as the root for the application:
 
 ```ruby
+
 #config/routes.rb
 
 Rails.application.routes.draw do
@@ -72,7 +73,7 @@ rails db:migrate
 
 With the model ready, let's add all the messages to the  `show` action.
 ```ruby
-#controllers/rooms_controller.rb
+#app/controllers/rooms_controller.rb
 
 class RoomsController < ApplicationController
   def show
@@ -114,7 +115,31 @@ Second, let's create a folder for messages in the views folder and create the pa
 Creating a channel
 --
 
- So far, it's all been the standard Rails stuff. Time to move to the interesting part - creating your first ActionCable channel. Rails has introduced a new generator for that, so let's run it and see what it does:
+ So far, it's all been the standard Rails stuff. Time to move to the interesting part - creating your first ActionCable channel. 
+
+ The first we need to do is enable the usage of ActionCable in the application. It is done in two simple steps:
+  1. Mount it in `routes.rb` .
+```ruby
+  #config/routes.rb
+     # Serve websocket cable requests in-process
+   mount ActionCable.server => '/cable'
+```
+  2. Initialize it in `cable.coffee`
+
+```coffee
+#= require action_cable
+#= require_self
+#= require_tree ./channels
+#
+@App ||= {}
+App.cable = ActionCable.createConsumer()
+
+```
+
+It is also good to check if you have  `<%= action_cable_meta_tag %>` in the head section of `app/views/layouts/application.html.erb`.
+
+
+Rails has introduced a new generator for generating channels, so let's run it and see what it does:
 
 ```bash
 rails g channel room speak
@@ -124,6 +149,8 @@ rails g channel room speak
 Let's analyze the ruby file first:
 
 ```ruby
+ #app/channels/room_channel.rb
+
 class RoomChannel < ApplicationCable::Channel
   def subscribed
     # stream_from "some_channel"
@@ -141,6 +168,8 @@ end
  The `subscribed` method is a default method that is called when a client connects to the channel and it is usually used to 'subscribe' the client to listen to changes. The `speak` action is a custom action that we created when we ran the generator. It will be used to receive data from its client-side representation.
 
 ```coffee
+ #app/assets/javascripts/channels/room.coffee
+
 App.room = App.cable.subscriptions.create "RoomChannel",
   connected: ->
     # Called when the subscription is ready for use on the server
@@ -156,5 +185,17 @@ App.room = App.cable.subscriptions.create "RoomChannel",
 ```
 
  In the JavaScript file, the client subscribes to the server through  `App.room = App.cable.subscriptions.create "RoomChannel"`.There are three default methods - `connected` , `disconnected` which, as you might have probably guessed, handle the state of the connection. The third one is `received` which is going to handle how received data from the server-side is going to be handled. The `speak` method in the JavaScript file will be used to send data to its server-side representation.
+
+Start your rails server by typing `rails s` and go to your JavaScript console. 
+![ActionCable client-side](https://raw.githubusercontent.com/pluralsight/guides/master/images/53df9c0c-b325-4feb-9b8f-97ed51ed9f62.cable)
+
+Typing `App.cable` will show you what the actual representation of ActionCable looks like client-side. `App.room` is the channel we just created. By typing `App.room.speak` we call the `speak()` function from the `room.coffee` file, which then transmits data to the `speak` method in `room_channel`.
+
+![ActionCable server-side](https://raw.githubusercontent.com/pluralsight/guides/master/images/02531309-4849-443d-8245-cb2ca979f7c5.cable)
+
+In the terminal you can see that the method has been successfully called from the client. Awesome!
+
+
+
 
  
