@@ -602,8 +602,6 @@ Please join our [Slack community](https://hackguides.herokuapp.com/) to chat abo
 
 #### Footnotes
 
-<br/>
-
 - References for this blog have been grouped into a
 [Pinboard collection of links](https://pinboard.in/u:durden/t:defensive_coding_talk/)
 - A version of the blog was
@@ -630,7 +628,9 @@ Please join our [Slack community](https://hackguides.herokuapp.com/) to chat abo
     script come behind you every time and collect these files.  Now you have a
     ton of usage information in a simple text-based format opening up tons of
     possibilities for data mining and helping your users.
-    <br/> <!-- markdown parsing fails if we don't include a true html break -->
+
+    <br/>
+
     Keep in mind that most users won't fill out surveys.  So, this would be a
     way to collect information on the features they are trying to use or common
     workflows.  Then, you could make these better in future releases.
