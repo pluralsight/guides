@@ -81,3 +81,80 @@ class RoomsController < ApplicationController
 end
 
 ```
+The controllers and the model are done, time to move on to the views.
+
+First, it is time to remove the scaffolded view for `rooms#show` and replace it with this:
+
+```erb
+<h1>Chat room</h1>
+  
+<div id="messages">
+  <%= render @messages %>
+</div>
+  
+<form>
+  <label>Say something:</label><br>
+  <input type="text" data-behavior="room_speaker">
+</form>
+
+```
+
+Second, let's create a folder for messages in the views folder and create the partial that we are going to use for rendering a single message
+
+```erb
+# app/view/messages/_message.html.erb
+
+<div class=“message”>
+  <p><%= message.content %></p>
+</div>
+```
+
+ `render @messages` will automatically look for a `_message.html.erb` partial in the `views/messages` directory to display each single message, so that we don't have to write anything extra - it just cannot get DRYer than that!
+
+Creating a channel
+--
+
+ So far, it's all been the standard Rails stuff. Time to move to the interesting part - creating your first ActionCable channel. Rails has introduced a new generator for that, so let's run it and see what it does:
+
+```bash
+rails g channel room speak
+```
+ Running it will generate two files - a javascript file located in `app/assets/javascripts/channels/room.coffee` and a ruby file located in `app/channels/room_channel.rb`. 
+
+Let's analyze the ruby file first:
+
+```ruby
+class RoomChannel < ApplicationCable::Channel
+  def subscribed
+    # stream_from "some_channel"
+  end
+
+  def unsubscribed
+    # Any cleanup needed when channel is unsubscribed
+  end
+
+  def speak
+  end
+end
+```
+
+ The `subscribed` method is a default method that is called when a client connects to the channel and it is usually used to 'subscribe' the client to listen to changes. The `speak` action is a custom action that we created when we ran the generator. It will be used to receive data from its client-side representation.
+
+```js
+App.room = App.cable.subscriptions.create "RoomChannel",
+  connected: ->
+    # Called when the subscription is ready for use on the server
+
+  disconnected: ->
+    # Called when the subscription has been terminated by the server
+
+  received: (data) ->
+    # Called when there's incoming data on the websocket for this channel
+
+  speak: ->
+    @perform 'speak'
+```
+
+ In the JavaScript file, the client subscribes to the server through  `App.room = App.cable.subscriptions.create "RoomChannel"`.There are three default methods - `connected` , `disconnected` which, as you might have probably guessed, handle the state of the connection. The third one is `received` which is going to handle how received data from the server-side is going to be handled. The `speak` method in the JavaScript file will be used to send data to its server-side representation.
+
+ 
