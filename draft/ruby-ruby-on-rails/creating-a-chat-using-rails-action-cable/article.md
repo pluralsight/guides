@@ -1,6 +1,6 @@
 ### THIS TUTORIAL IS IN DEVELOPMENT
 
--- intro
+ intro
 --
  Action Cable is a new feature of Rails that requires you to have the latest version. As of March 11, 2016, the latest stable version is Rails 5 beta3. In order to get it, you need to install the `rails` gem with the following options:
 
