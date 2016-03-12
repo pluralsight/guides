@@ -598,6 +598,8 @@ to form your own style.  Also, the requirements for every project differ so
 it's important to learn all the tools and combine them in ways that
 make sense for your situation.
 
+Please join our [Slack community](https://hackguides.herokuapp.com/) to chat about this tutorial with the author, Luke Lee. 
+
 #### Footnotes
 
 <br/>
