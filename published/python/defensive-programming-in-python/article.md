@@ -103,11 +103,17 @@ def normalize_ranges(colname):
     live_max = numpy.max(live_data)
 
     ratio = {}
-    ratio['min'] = (live_min - original_range['datamin']) / colspan
-    ratio['max'] = (live_max - original_range['datamin']) / colspan
+    try:
+        ratio['min'] = (live_min - original_range['datamin']) / colspan
+        ratio['max'] = (live_max - original_range['datamin']) / colspan
+    except ZeroDivisionError:
+        ratio['min'] = 0.0
+        ratio['max'] = 0.0
 
     return ratio
 ```
+
+**Update Thanks to [this great comment on reddit](https://www.reddit.com/r/Python/comments/49yrtp/defensive_programming_in_python/d0wx2cr) for finding a bug in the article!**
 
 Now, assume we have the following 'columns' that are returned by the
 `get_column_data()` function:
@@ -196,8 +202,13 @@ def normalize_ranges(colname):
     live_max = numpy.max(live_data)
 
     ratio = {}
-    ratio['min'] = (live_min - original_range['datamin']) / colspan
-    ratio['max'] = (live_max - original_range['datamin']) / colspan
+    
+    try:
+        ratio['min'] = (live_min - original_range['datamin']) / colspan
+        ratio['max'] = (live_max - original_range['datamin']) / colspan
+    except ZeroDivisionError:
+        ratio['min'] = 0.0
+        ratio['max'] = 0.0
 
     assert 0.0 <= ratio['min'] <= 1.0, (
             '"%s" min (%f) not in [0-1] given (%f) colspan (%f)' % (
@@ -349,8 +360,13 @@ def normalize_ranges(colname):
     live_max = numpy.max(live_data)
 
     ratio = {}
-    ratio['min'] = (live_min - original_range['datamin']) / colspan
-    ratio['max'] = (live_max - original_range['datamin']) / colspan
+    
+    try:
+        ratio['min'] = (live_min - original_range['datamin']) / colspan
+        ratio['max'] = (live_max - original_range['datamin']) / colspan
+    except ZeroDivisionError:
+        ratio['min'] = 0.0
+        ratio['max'] = 0.0
 
     assert 0.0 <= ratio['min'] <= 1.0
     assert 0.0 <= ratio['max'] <= 1.0
