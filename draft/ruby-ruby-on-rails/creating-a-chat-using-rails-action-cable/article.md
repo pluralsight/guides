@@ -140,7 +140,7 @@ end
 
  The `subscribed` method is a default method that is called when a client connects to the channel and it is usually used to 'subscribe' the client to listen to changes. The `speak` action is a custom action that we created when we ran the generator. It will be used to receive data from its client-side representation.
 
-```js
+```coffee
 App.room = App.cable.subscriptions.create "RoomChannel",
   connected: ->
     # Called when the subscription is ready for use on the server
