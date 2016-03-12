@@ -617,3 +617,6 @@ make sense for your situation.
     way to collect information on the features they are trying to use or common
     workflows.  Then, you could make these better in future releases.
 </small>
+
+
+Please join our [Slack community](https://hackguides.herokuapp.com/) to chat about this tutorial with the author. 
