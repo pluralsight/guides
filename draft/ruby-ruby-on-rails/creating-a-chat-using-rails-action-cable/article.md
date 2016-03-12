@@ -43,7 +43,7 @@ As you have guessed from the name of the new application, we are going to build 
 
 
  
- First, let's start by scaffolding a simple controller for the chat room. It will contain the view for the chat itself.
+First, let's start  offby scaffolding a simple controller for the chat room. It will contain the view for the chat itself.
 
 
 ```bash
