@@ -2,7 +2,8 @@ The JavaScript world is currently in great turbulence. A new framework pops up d
 
 Fortunately, Facebook’s [React](https://facebook.github.io/react/docs/reconciliation.html) provides a ray of hope by promising a novel approach to building user interfaces. Even better, Rails can seamlessly integrate with it, and it’s easy to set up a Rails API application and to build its view layer with React. So, let’s take a look at how to build a simple Rails API that accommodates create, read, update and delete functionality for a single model with React. 
 
-### Setting up a basic Rails API
+Setting up a basic Rails API
+--
 
 #### Setting up the model
 
@@ -303,7 +304,8 @@ var Main = React.createClass({
 Great! We just nested two components together.
 
 
-### Rendering all the items
+Rendering all the items
+--
 
 As previously mentioned. All the items will be listed in the `<Body />` component. The `<Body />` component will also contain a form for inserting new items. Here’s the list of files that need to be created:
 
@@ -465,7 +467,8 @@ var Body = React.createClass({
 
 Great! You should now see all the items displayed.
 
-### Adding a new item
+Adding a new item
+--
 
 Time to move on to the next file we created previously; 
 
@@ -761,7 +764,8 @@ var NewItem= React.createClass({
 ```
 
 
-#### Deleting an item
+Deleting an item
+--
 
 Deleting items is similar to creating new ones. The first thing we need to do is to add a button and a function (for handling the click for deleting an item in the `<AllItems />` component).
 
@@ -907,7 +911,8 @@ removeItemClient(id) {
 
 Remember to change the syntax of the `success` function from `success (response) {}` to `success: () => {}`, otherwise you’ll be referring to the promise of the response instead of the component itself.
 
-#### Editing items
+Editing an item
+--
 
 The last thing we’re going to do is implement editing and updating of items. We’ll add an edit button and a listener for it. When the edit button is clicked, the item will enter into `edit` mode in which the text attributes will turn into text fields. When the changes are submitted, an AJAX request will be made and, if it is successful, the item will be saved with the new attributes.
 
