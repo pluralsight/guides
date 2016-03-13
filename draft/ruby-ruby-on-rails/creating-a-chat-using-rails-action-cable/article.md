@@ -1,3 +1,7 @@
+In this tutorial we are going to explore two new features of Rails 5 - Action Cable and Active Job. Action Cable is without any doubt, the more thrilling of the two. It features integration of the WebSocket protocol which, compared to its ancestor HTTP, offers some great new features that will give you numerous new ideas for building things. Rails is perhaps the first mature framework to adopt and implement the WebScoket protocol, so we can only imagine the possibilities of what can be built with  it!
+
+To best demonstrate the capabilities of ActionCable, WebSocket and Active Job, we are going to do this by build a chat using Ruby on Rails 5.
+
 HTTP and Websockets
 --
 In HTTP, the connection between the server and the client has a short lifespan: The client requests a resource from the server, a connection with a server is established and the requested resource (be it JSON, HTML, XML or some kind of a file) is streamed to the client as a response. Then, the connection is closed. But how the client would know if the server has new or updated data? Usually, HTTP would use long polling, in which the client would 'ask' the server if there is something new in a given interval of time.
@@ -284,9 +288,15 @@ Solving the first problem is easy - we are simply going to create a new message 
 
 What we are aiming to achieve is to broadcast the `_message.html.erb` partial we created earlier to the `room_channel`. Usually, we would do this in the controller, but we do not have one. Rendering it in the model, view or the channel seems inappropriate. So where can we put it? Enter [Rails Jobs](http://edgeguides.rubyonrails.org/active_job_basics.html).
 
+Rails jobs are good for two types of things:
+ - Big tasks that can be broken down in small chunks
+ - Tasks that have to run in parallel
 
-Here is how we are going to do it: 
- First, we will create a `after_create` hook in the model.
+This means that multiple jobs can be created and queued so that the server
+can execute as many at a time as its resources permit. The more processing power and memory the server has - the more jobs can be ran simultaneously!
+
+
+Here is how we are going to do make a broadcast job for the chat messages:
 
 ```ruby
 #app/models/message.rb
@@ -296,8 +306,8 @@ class Message < ApplicationRecord
 end 
 
 ```
+ First, we will create a `after_create` hook in the model. The `after_create_commit` hook means that a job is going to be executed once the message has been successfully saved into the database. `perform_later` means that the job will be executed as soon as the queue is empty.
 
-Once the message has been created, it will send it to  the `MessageBroadCastJob` that will handle the broadcasting.
 
 Let's generate  `MessageBroadCastJob`:
 
@@ -333,5 +343,5 @@ There is only one thing left to do - remove the `alert` and replace it with a fu
   received: (data) ->
     $('#messages').append data['message']
 ```
-
+In this way, the '#messages' div will have the message in the template appended to the DOM. To clarify, `data['message']` contains what was broadcast from the `MessageBroadcastJob` , i.e the rendered `_message.html.erb` partial with the message in it.
  
