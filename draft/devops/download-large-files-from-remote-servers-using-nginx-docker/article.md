@@ -79,6 +79,7 @@ If you find out that the down command is not working this probably means that yo
 Once you’ve started your container you can start downloading your files. At first you’ll need to put your files in the appropriate location,
 
 > I’m assuming you’ve kept the files in the ~/downloads directory and you need to download a file called db.tar.gz
+
 ```
 cp db.tar.gz ~/downloader/files/
 ```
