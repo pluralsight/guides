@@ -1,3 +1,8 @@
+### Download large files from remote servers using Nginx docker by Red Moses
+- [Read the guide](http://tutorials.pluralsight.com/devops/download-large-files-from-remote-servers-using-nginx-docker?status=draft)
+- [Read more from Red Moses](http://tutorials.pluralsight.com/user/redmoses) <img src="https://avatars.githubusercontent.com/u/4059490?v=3" width="30" height="30" alt="Red Moses" />
+- Related to: DevOps (Docker, Nagios, Jenkins, Chef, Puppet, etc)
+
 ### test by Paulo Cheque
 - [Read the guide](http://tutorials.pluralsight.com/python/test?status=draft)
 - [Read more from Paulo Cheque](http://tutorials.pluralsight.com/user/paulocheque) <img src="https://avatars.githubusercontent.com/u/94350?v=3" width="30" height="30" alt="Paulo Cheque" />
