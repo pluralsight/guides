@@ -262,6 +262,7 @@ $(document).on 'keypress', '[data-behavior~=room_speaker]', (event) ->
     event.preventDefault()
 ```
  An event listener has been added on the bottom of the file for the textbox we put in the template.
+ When you write something in text box and press the 'Enter' button ('Return for Macs'), it will call the speak function of the room, which will send the text in the input to the server-side method.
 
 Restart your rails server, and try typing a message in the text field and clicking enter.
 Did you get an alert? Great! If you open multiple browsers or tabs on `localhost:3000` and you type something, you will get alerts on all of them because they'll all be subscribed to the same channel. We have completed a full cycle - the message goes from the client to the server and bounces back to the server to all clients that have subscribed to the channel.
@@ -344,4 +345,7 @@ There is only one thing left to do - remove the `alert` and replace it with a fu
     $('#messages').append data['message']
 ```
 In this way, the '#messages' div will have the message in the template appended to the DOM. To clarify, `data['message']` contains what was broadcast from the `MessageBroadcastJob` , i.e the rendered `_message.html.erb` partial with the message in it.
+
+
+Now you can go ahead and start typing away in the text box and you will see your messages appearing in the chat.
  
