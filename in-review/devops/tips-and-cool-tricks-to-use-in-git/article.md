@@ -57,8 +57,6 @@ You may have used these two commands: [checkout][checkout] and [reset][reset], t
 
 What you may not know is that you can also use the *checkout* and *reset* commands for files.
 
-Quando usamos o *git reset* em um arquivo, o git **atualiza** a área de stage (staging area), fazendo com que um determinado arquivo **volte** ao estado em que se encontrava em um commit anterior qualquer.
-
 When we use `git reset` on a file in git, it will **update** the staging area, causing a particular file to go **back** to the state it was in a previous commit.
 
 This means we can remove the file *"jedi.js"* from the staging area, and cause it to be equal to its version in *HEAD* with the command:
