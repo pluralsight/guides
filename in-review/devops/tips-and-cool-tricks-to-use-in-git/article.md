@@ -1,10 +1,10 @@
 This entry is motivated by a tough week.
 
-That's right, a week of challenges related to [scm] [scmlink] (which is not there the most relaxing thing in the world). A week full of failed attempts to [ `cherry-pick` git] [cherrypick] s and other git things, I probably would not use if the code was being managed" right ".
+That's right, a week of challenges related to [scm] [scmlink] (which is not the most relaxing thing in the world). A week full of failed attempts to [ `cherry-pick` git] [cherrypick] and other git things, I probably would not use if the code was being managed" right ".
 
 Now, no longer weeping and trying to look on the positive side, I learned some cool little things that can be useful to me in the future, and why not, for you :)
 
-The idea here is not to teach git nor present the basic commands or something like that. The idea is to show some tricks and cool git tricks, you'll want to be known before.
+The idea here is not to teach git nor present the basic commands or something like that. The idea is to show some tricks and cool git tricks, you'll want to have known before.
 
 So here we go ...
 
@@ -19,8 +19,8 @@ $ git config --global alias.st status
 
 Just replace the **alias** with the name that you want and put the command in the front.
 
-It is better to type "git co" doque "git checkout" right?
-Just create the alias! I've seen people * (i) * using an alias * g * pro * command git *. It is much haha laziness. This would give you a kind thing:
+It is better to type "git co" than "git checkout" right?
+Just create the alias! I've seen people *(I)* using an alias of *g* for the *git command*. It is much laziness haha. This would give you such a kind of thing:
 
 ```
 $ g co
@@ -31,17 +31,17 @@ $ g co
 
 ### Autocomplete no shell
 
-Use the git command line, and thank God the git autocomplete was always enabled here. If you use git shell by ruWindows, the autocomplete should already be set.
+Use the git command line, and thank God the git autocomplete was always enabled here. If you use the git shell by ruWindows, the autocomplete should already be set.
 
-If the autocomplete is not enabled on your terminal, you can download the autocomplete script git [this link](https://github.com/git/git/blob/master/contrib/completion/git-completion.bash).
+If the autocomplete is not enabled on your terminal, you can download the autocomplete script for git at [this link](https://github.com/git/git/blob/master/contrib/completion/git-completion.bash).
 
-After downloading, copy the file to the home directory, and add to your file *.bashrc* the line above:
+After downloading, copy the file to the home directory, and add the line below to your *.bashrc* file:
 
 ```
 source ~/git-completion.bash
 ```
 
-Ready. Now when you enter a git command and press *tab*, it should display to you the commands:
+Ready. Now when you enter a git command and press *tab*, it should display the commands to you:
 
 ```
 $ git co<tab>
@@ -51,30 +51,30 @@ $ git co<tab>
 commit config
 ```
 
-### Checkout e reset on files
+### Checkout and reset on files
 
-You may have used these two commands: [checkout] [checkout] and *[reset][reset]*, to work with branches and commits.
+You may have used these two commands: [checkout][checkout] and [reset][reset], to work with branches and commits.
 
-What you may not know is that you can also use the *checkout* and *reset* files.
+What you may not know is that you can also use the *checkout* and *reset* commands for files.
 
 Quando usamos o *git reset* em um arquivo, o git **atualiza** a área de stage (staging area), fazendo com que um determinado arquivo **volte** ao estado em que se encontrava em um commit anterior qualquer.
 
-When we use the *git reset* on a file in git ** update** the stage area (staging area), causing a particular file **back ** to the state it was in a previous commit.
+When we use `git reset` on a file in git, it will **update** the staging area, causing a particular file to go **back** to the state it was in a previous commit.
 
-This means we can remove the file *"jedi.js"* the stage area, and cause it to be equal to its version in *HEAD* with the command:
+This means we can remove the file *"jedi.js"* from the staging area, and cause it to be equal to its version in *HEAD* with the command:
 
 ```
 $ git reset HEAD jedi.js
 ```
 
-The result of the operation, the file is outside the stage area and with the same content, present in the latest commit.
+The result of the operation is: the file is outside of the stage area and with the same content as present in the latest commit.
 
 ![Reset File](https://raw.githubusercontent.com/andreybleme/andreybleme.github.io/master/assets/img/resetfile.png "git reset file")
 
 Pretty cool!
 Now let's take a look at **`checkout`**.
 
-Good old *git checkout* we use to switch between branches, when used with a path to a file does git point to that file. Without updating the current branch.
+Good old *git checkout*, we use it to switch between branches, when used with a path to a file does git point to that file. Without updating the current branch.
 
 ```
 $ git checkout HEAD jedi.js
