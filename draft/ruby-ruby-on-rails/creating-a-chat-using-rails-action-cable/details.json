@@ -6,10 +6,10 @@
     "filename": "article.md",
     "first_commit": null,
     "image_url": "https://avatars.githubusercontent.com/u/6340189?v=3",
-    "publish_status": "published",
+    "publish_status": "draft",
     "stacks": [
         "Ruby, Ruby on Rails"
     ],
     "thumbnail_url": null,
-    "title": "Building a CRUD interface with React and Ruby on Rails"
+    "title": "Creating a chat using Rails' Action Cable"
 }

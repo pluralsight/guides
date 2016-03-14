@@ -1,0 +1,12 @@
+{
+    "author_name": "IonicaBizau",
+    "branch": "master",
+    "branches": [],
+    "filename": "article.md",
+    "language": null,
+    "publish_status": "in-review",
+    "stacks": [
+        "other"
+    ],
+    "title": "How I wrote an ~100B grid system"
+}
