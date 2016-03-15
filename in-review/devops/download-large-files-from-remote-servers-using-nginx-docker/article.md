@@ -12,6 +12,8 @@ The solution requires you to have the following packages (preferrably the latest
 
 ### Nginx configuration file
 
+> It is strongly recommended to use SSL if you use this guide on your production servers. Here's an [article](https://www.digitalocean.com/community/tutorials/how-to-secure-nginx-with-let-s-encrypt-on-ubuntu-14-04) that might be helpful.
+
 ```
 server {
   listen 80;
