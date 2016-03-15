@@ -1,10 +1,10 @@
 Nested Attributes is a feature that allows you to save attributes of a record
-through it's associated parent. In this example we will consider the following
+through its associated parent. In this example we will consider the following
 scenario. We are making an online store with lots of products. Each `Product`
-can have zero or more `Variants`s. Variants represents a variation of the same
+can have zero or more `Variants`. Variants represents a variation of the same
 product, but in different color for example. Both have a `name` and `price`.
-Each product will also be associated with one `Image` record, containing a
-`url`, `alt` and a `caption`.
+Each product will also be associated with one `Image` record, containing
+`url`, `alt` and `caption`.
 
 Further in the article we will be improving these models:
 
@@ -34,7 +34,7 @@ One to one association
 ----------------------
 
 The simplest example of Nested Attributes is with a one-to-one association. To
-add Nested Attributes support to the product model all you need to do is add the
+add Nested Attributes support to the product model, all you need to do is to add the
 following line.
 
 ```ruby
@@ -77,7 +77,7 @@ additional fields for the image association. You can do it by using the
 The only part left is to modify the controller to accept those new attributes.
 The entire idea behind Nested Attributes is that you won't have to add
 additional code in the controller to handle this input and the association, but
-you do need to allow those attributes to reach the model, which is what
+you do need to allow those attributes to reach the model.  This is something that
 [Strong Parameters][strong-params] would prevent by default. So you will need to
 add the following to the `product_params` method in the `ProductsController`.
 
@@ -100,15 +100,15 @@ Many to many association
 As product variants are quite simple (2 fields), there is really no point in
 creating a separate page for editing them. Instead we would like to edit them
 inline from the same product form along with the product attributes. As each
-product can have many variants that means that we will have to handle more than
-one item and also adding new variants and deleting old ones. Let's address the
+product can have many variants, it means that we will have to handle more than
+one item and also to add new variants and delete old ones. Let's address the
 problems one by one.
 
 ### Displaying multiple associations
 
 The `fields_for` method yields a block for each associated record and thus we
-don't need to change anything, but because we will need to reuse this form for
-the purpose of automatically adding new fields through JavaScript we will need
+don't need to change anything. But because we will need to reuse this form for
+the purpose of automatically adding new fields through JavaScript, we will need
 to move it into a separate file. We are going to create a new partial, called
 `_variant_fields.slim` containing just the variant fields, like this:
 
@@ -132,20 +132,20 @@ helper object to the partial.
 ### Adding new associations
 
 Now for adding new associations we will need to create some JavaScript that
-adds new fields. What I like to do, is have a link that when you click on it,
+adds new fields. What I like to do is to have a link that, when you click on it,
 will add a new tuple of fields. Something like:
 
 ```slim
 = link_to_add_fields 'Add Product Variant', f, :variants
 ```
 
-I've wrote this really useful helper method, that will create a link with the
+I've written this really useful helper method, that will create a link with the
 `data-form-prepend` attribute containing the entire contents of the
-`_variant_fields.slim` partial. The idea is that when you click on it you will
+`_variant_fields.slim` partial. The idea is that, when you click on it, you will
 use some simple re-usable JavaScript to append those fields to the end of the
 form.
 
-Now the actual helper looks quite complex and messy but bare with me. It
+Now the actual helper looks quite complex and messy but bear with me. It
 actually is simple as most of the code just handles the arguments and the key
 logic rests in the last 7 lines. You can place this code in your
 `application_helper.rb`.
@@ -185,9 +185,9 @@ def link_to_add_fields(name = nil, f = nil, association = nil, options = nil, ht
 end
 ```
 
-On the JavaScript side I use a jQuery to find every element with the name
+On the JavaScript side I use jQuery to find every element with the name
 attribute set to `new_record` and replace it with a timestamp. This solves a
-problem when you are adding more than one new record, both will have the same
+problem when you are adding more than one new record, both would have the same
 id (`new_record`).
 
 ```javascript
@@ -207,8 +207,8 @@ $('[data-form-prepend]').click( function(e) {
 
 Fortunately the `accepts_nested_attributes_for` has some neat features for
 deleting associations. If we pass the `allow_destroy: true` argument to
-`accepts_nested_attributes_for` it will destroys any members from the attributes
-which contain a `_destroy` key.
+`accepts_nested_attributes_for` it will destroy any members from the attributes
+which contains a `_destroy` key.
 
 ```ruby
 accepts_nested_attributes_for :variants, allow_destroy: true
@@ -238,7 +238,7 @@ end
 ```
 
 The `Product` model just has the following addition, to enable Nested Attributes
-for the `variants` association
+for the `variants` association:
 
 ```ruby
 accepts_nested_attributes_for :variants, reject_if: :all_blank, allow_destroy: true
@@ -254,7 +254,7 @@ which specifies the maximum number of records that will be processed.
 
 The second option is `update_only` which applies to one-to-one associations and
 has a rather interesting behavior. If it is set to true, it will only update the
-attributes of the associated record. If set to false upon change it won't touch
+attributes of the associated record. If set to false, upon change it won't touch
 the old record but will create a new one with the new attributes. By default it
 is false and will create a new record unless the record includes an `id`
 attribute, which is exactly the reason why we included the `id` attribute in the
