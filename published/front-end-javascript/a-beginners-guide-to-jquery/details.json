@@ -2,9 +2,7 @@
     "author_name": "carlsmith",
     "author_real_name": "Carl Smith",
     "branch": "master",
-    "branches": [
-        "last-indigo"
-    ],
+    "branches": [],
     "filename": "article.md",
     "image_url": "https://avatars.githubusercontent.com/u/7561668?v=3",
     "publish_status": "published",
