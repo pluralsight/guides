@@ -2,14 +2,15 @@
     "author_name": "durden",
     "author_real_name": "Luke Lee",
     "branch": "master",
-    "branches": [],
+    "branches": [
+        "atifar"
+    ],
     "filename": "article.md",
-    "first_commit": null,
     "image_url": "https://avatars.githubusercontent.com/u/58063?v=3",
-    "publish_status": "published",
+    "publish_status": "in-review",
     "stacks": [
         "Python"
     ],
     "thumbnail_url": null,
-    "title": "Defensive programming in Python"
+    "title": "Decorators as classes or functions?"
 }
