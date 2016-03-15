@@ -1,0 +1,14 @@
+{
+    "author_name": "smiller171",
+    "author_real_name": "Scott Miller",
+    "branch": "master",
+    "branches": [],
+    "filename": "article.md",
+    "image_url": "https://avatars.githubusercontent.com/u/3587913?v=3",
+    "publish_status": "in-review",
+    "stacks": [
+        "DevOps (Docker, Nagios, Jenkins, Chef, Puppet, etc)"
+    ],
+    "thumbnail_url": null,
+    "title": "ELB SSL termination the Docker way"
+}

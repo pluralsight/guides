@@ -1,0 +1,14 @@
+{
+    "author_name": "logankd",
+    "author_real_name": "Aligned",
+    "branch": "master",
+    "branches": [],
+    "filename": "article.md",
+    "image_url": "https://avatars.githubusercontent.com/u/1636977?v=3",
+    "publish_status": "in-review",
+    "stacks": [
+        "DevOps (Docker, Nagios, Jenkins, Chef, Puppet, etc)"
+    ],
+    "thumbnail_url": null,
+    "title": "Moving a Cloud App to a different Azure Resource Group"
+}
