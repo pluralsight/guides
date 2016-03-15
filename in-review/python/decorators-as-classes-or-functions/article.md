@@ -29,7 +29,7 @@ together by writing decorators as a class. [1]
 The following two decorators are equivalent:
 
 ```python
-    def decoratorfunc(fund):
+    def decoratorfunc(func):
         def wrapper(*args, **kwargs):
             print 'Decorator as function'
             func(*args, **kwargs)
