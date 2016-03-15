@@ -5,8 +5,9 @@ It adds elegance in building custom DOM/html elements, while providing less boil
 Polymer has set out with some goals in mind.  The main goal is to enable to developers to create compelex apps and user interfaces
 with an already familiar DOM as a framework.  A secondary goal is to promote the http/2 way of creating webapps with smart caching,
 which is covered later in the tutorial.  There are other ad hoc goals, but they are aimed at encapsulating and creating tools to improve
-efficiency in development, testing, and performance.  For example, using [polygit]() and [bower]() for managing elements, [polylint]()
-for error management, and [polydev]() to measure the efficiency of your elements.
+efficiency in development, testing, and performance.  For example, using [polygit](https://github.com/PolymerLabs/polygit) and 
+[bower](http://bower.io/) for managing elements, [polylint](https://github.com/PolymerLabs/polylint) 
+for error management, and [polydev](https://github.com/PolymerLabs/polydev) to measure the efficiency of your elements.
 
 
 ## Thinking in Polymer
@@ -25,7 +26,7 @@ the "mediator pattern", but in some ways it reflects the functionality of the co
 the dispatcher in Flux (React.js).  The general idea is reflected in the picture below.  Events that deal with
 state information are passed from child to child via the mediator.
 
-[!mediator](mediator.png)
+![mediator](mediator.png)
 
 
 
