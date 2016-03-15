@@ -7,7 +7,7 @@ We are going to use [JavaScript charts](http://www.fusioncharts.com/) library of
 
 In our dashboard we are going to explore performance of Acme, Inc. in 2015. We will see what were its top revenue generating countries, monthly revenue trend and highest performing product categories. This is what our final dashboard will look like:
 
-![A simple dashboard built in React](react-dashboard.png)
+![A simple dashboard built in React](http://i.imgur.com/7dnsHHq.png)
 
 You can [see the live version here](https://rohitb4.github.io/react-dashboard/) and find the [GitHub repo for the project here](https://github.com/rohitb4/react-dashboard).
 
