@@ -1,9 +1,8 @@
-
 Today’s tutorial is about ***‘Dashboards’***. No matter what you do, you can’t escape from them. Every department inside every company is chasing some goal and there is no better way to monitor its status than to have a compact dashboard that monitors all the related metrics. 
 
 Marketing is running after getting leads, Sales is running after closing leads and Developers are running after solving bugs. There is a dashboard for all such use cases. And if you are a developer then at some point you will have to make a dashboard for your company. So I am going to talk about creating one in this tutorial. 
 
-We are going to use [JavaScript charts](http://www.fusioncharts.com/) library offered by FusionCharts for making charts. But instead of doing it in vanilla JavaScript, we are going to use React - the hottest JavaScript framework at the moment. And rightly so in my opinion.
+We are going to use [JavaScript charts](http://www.fusioncharts.com/) library offered by FusionCharts for making charts. But instead of doing it in vanilla JavaScript, we are going to use React - the hottest JavaScript library at the moment. And rightly so in my opinion.
 
 In our dashboard we are going to explore performance of Acme, Inc. in 2015. We will see what were its top revenue generating countries, monthly revenue trend and highest performing product categories. This is what our final dashboard will look like:
 
