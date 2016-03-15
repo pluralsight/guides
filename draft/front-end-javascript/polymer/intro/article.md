@@ -1,5 +1,5 @@
 ## What is Polymer?
-[Polymer]() is a lean & light library from Google that pushes the next evolution of the web.
+[Polymer](https://www.polymer-project.org/1.0/) is a lean & light library from Google that pushes the next evolution of the web.
 It adds elegance in building custom DOM/html elements, while providing less boilerplate code.
 ## Goals
 Polymer has set out with some goals in mind.  The main goal is to enable to developers to create compelex apps and user interfaces
@@ -22,7 +22,12 @@ to the "localDOM".
 
 The flow of data or passing of information from element to element is also required to create a robust Polymer webapp.  We call this
 the "mediator pattern", but in some ways it reflects the functionality of the controller in MVC or
-the dispatcher in React.
+the dispatcher in Flux (React.js).  The general idea is reflected in the picture below.  Events that deal with
+state information are passed from child to child via the mediator.
+
+[!mediator](mediator.png)
+
+
 
 
 
