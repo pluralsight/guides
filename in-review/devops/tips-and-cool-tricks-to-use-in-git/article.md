@@ -147,13 +147,13 @@ Until next **o/**
 
 
 
-[scmlink]:      		https://en.wikipedia.org/wiki/Version_control
-[cherrypick]: 	 http://imasters.com.br/artigo/24442/desenvolvimento/dica-git-da-semana-cherry-picking/
-[alias]: https://git-scm.com/book/tr/v2/Git-Basics-Git-Aliases
-[checkout]: https://www.atlassian.com/git/tutorials/undoing-changes/git-checkout
-[reset]: https://www.atlassian.com/git/tutorials/undoing-changes/git-checkout
-[stash]: https://git-scm.com/book/pt-br/v1/Ferramentas-do-Git-Fazendo-Stash
-[amend]: https://git-scm.com/book/pt-br/v1/Git-Essencial-Desfazendo-Coisas
-[diff]: https://git-scm.com/docs/git-diff
-[sha]: https://git-scm.com/book/en/v2/Git-Internals-Git-Objects
-[githubdiff]: https://help.github.com/articles/comparing-commits-across-time/
+[scmlink](https://en.wikipedia.org/wiki/Version_control)
+[cherrypick](http://imasters.com.br/artigo/24442/desenvolvimento/dica-git-da-semana-cherry-picking/)
+[alias](https://git-scm.com/book/tr/v2/Git-Basics-Git-Aliases)
+[checkout](https://www.atlassian.com/git/tutorials/undoing-changes/git-checkout)
+[reset](https://www.atlassian.com/git/tutorials/undoing-changes/git-checkout)
+[stash](https://git-scm.com/book/pt-br/v1/Ferramentas-do-Git-Fazendo-Stash)
+[amend](https://git-scm.com/book/pt-br/v1/Git-Essencial-Desfazendo-Coisas)
+[diff](https://git-scm.com/docs/git-diff)
+[sha](https://git-scm.com/book/en/v2/Git-Internals-Git-Objects)
+[githubdiff](https://help.github.com/articles/comparing-commits-across-time/)
