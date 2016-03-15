@@ -2,11 +2,7 @@
     "author_name": "Hitman666",
     "author_real_name": "Nikola Breznjak",
     "branch": "master",
-    "branches": [
-        "edroman",
-        "prtkgpt",
-        "wilbyang"
-    ],
+    "branches": [],
     "filename": "article.md",
     "image_url": "https://avatars.githubusercontent.com/u/1001064?v=3&",
     "publish_status": "published",
