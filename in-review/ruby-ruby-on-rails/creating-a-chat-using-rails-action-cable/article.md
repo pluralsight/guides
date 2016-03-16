@@ -348,4 +348,7 @@ In this way, the '#messages' div will have the message in the template appended 
 
 
 Now you can go ahead and start typing away in the text box and you will see your messages appearing in the chat.
+
+
+That's it! We have a simple working chat. Here is the [Github repository](https://github.com/Kaizeras/actioncable-chat-tutoria) of the project so that you can check your code.
  
