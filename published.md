@@ -1,3 +1,8 @@
+### Building a Dashboard in React by Rohit Boggarapu
+- [Read the guide](http://tutorials.pluralsight.com/front-end-javascript/building-a-dashboard-in-react)
+- [Read more from Rohit Boggarapu](http://tutorials.pluralsight.com/author/rohitb4) <img src="https://avatars.githubusercontent.com/u/6358889?v=3" width="30" height="30" alt="Rohit Boggarapu" />
+- Related to: Front-End JavaScript (Angular, React, Meteor, etc)
+
 ### How to build a shopping app with Ionic Firebase by Nikola Brežnjak
 - [Read the guide](/review/how-to-build-a-shopping-app-with-ionic-firebase)
 - [Read more from Nikola Brežnjak](/user/Hitman666) <img src="https://avatars.githubusercontent.com/u/1001064?v=3" width="30" height="30" alt="Nikola Brežnjak" />
