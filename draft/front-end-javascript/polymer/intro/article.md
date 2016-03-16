@@ -18,7 +18,7 @@ become a cumbersome task to 'just making things work', which makes it easy to ig
 It often helps in building a polymer application to 'think locally', meaning examine one element at a time in relation to it's sibling
 and parent elements.  Another important mindset to have when working with Polymer is the 'composition' mindset.  The 'composition' mindset
 allows you to think of how the elements really do represent building blocks in the context of the larger app.  In browsers that support
-it, you can build in what's called the "shadowDOM" (see vocabulary below) to manipulate state and values which will be passed down
+it, you can build in what's called the "shadowDOM" (see below) to manipulate state and values which will be passed down
 to the "localDOM".
 
 The flow of data or passing of information from element to element is also required to create a robust Polymer webapp.  We call this
@@ -28,7 +28,22 @@ state information are passed from child to child via the mediator.
 
 ![mediator](mediator.png)
 
+### A bit about Shadow DOM
+Shadow DOM is a tricky concept to understand.  It's defined in the [Web Component Spec](https://www.w3.org/TR/2013/WD-components-intro-20130606/), which
+includes things like CSS decorators and custom elements. [Agraj Mangal](http://code.tutsplus.com/tutorials/intro-to-shadow-dom--net-34966) 
+describes the "shadow DOM" as an encapsulation for HTML from JavaScript and CSS.  [Scott Miles](https://www.polymer-project.org/1.0/articles/shadydom.html)
+ describes it as hiding the "tree scoping", where a scoped part of the tree is hidden in the "shadows" when he presents the "shady DOM" concept. 
+ Essentially, when you write Polymer custom elements, they are not seen in the UI until render time (if at all), where the normal HTML tree is replaced by the abstract "shadow DOM".
+Currently, Agraj cites examples like the ```<audio></audio>``` tag.  In that element, the normal DOM is replaced
+by abstract elements that show up as the ```<audio></audio>``` tag when you inspect the source.  It's not until
+one enables the option in Chrome Dev Tools (or any other supporting browser like Opera).
 
+* **Shadow Host**: is the DOM element which is hosting the Shadow DOM subtree or it is the DOM node which contains the Shadow Root.
+* **Shadow Root**: is the root of the DOM subtree containing the shadow DOM nodes. It is a special node, which creates the boundary between the normal DOM nodes and the Shadow DOM nodes. It is this boundary, which encapsulates the Shadow DOM nodes from any JavaScript or CSS code on the consuming page.
+* **Shadow DOM**: allows for multiple DOM subtrees to be composed into one larger tree. 
+* **Composition**: the process of overlaying the nodes
+* **Shadow Boundary**: is denoted by the dotted line in the image above. This denotes the separation between the normal DOM world and the Shadow DOM world. The scripts from either side cannot cross this boundary and create havoc on the other side.
+* **Shady DOM**: a super-fast shim for shadow DOM that provides tree-scoping, but has drawbacks like complicated CSS.  useful for restoring Shadow DOM values and examining subtrees quickly.
 
 
 
