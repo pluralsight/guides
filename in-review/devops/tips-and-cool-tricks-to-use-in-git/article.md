@@ -13,7 +13,7 @@ So here we go ...
 You can create [alias] [alias] for any Git command.
 For example, the following creates an alias **st** for the Git command **status**:
 
-```
+```shell
 $ git config --global alias.st status 
 ```
 
@@ -22,7 +22,7 @@ Just replace the **alias** with the name that you want, followed by the original
 It is better to type "git co" than "git checkout", right?
 Just create the alias! I've seen people *(hint: myself)* using an alias of **g** for the command **git**. It is much laziness haha. With an alias **g** and **co**, the following command will achieve the same effect as `git checkout`:
 
-```
+```shell
 $ g co
 ```
 
@@ -31,23 +31,23 @@ $ g co
 
 ### Autocomplete no shell
 
-Use the git command line, and thank God the git autocomplete was always enabled here. If you use the git shell by ruWindows, the autocomplete should already be set.
+When using Git via command line, it is always useful to have autocompleted enabled. If you use the git shell by ruWindows, the autocomplete should already be set.
 
-If the autocomplete is not enabled on your terminal, you can download the autocomplete script for git at [this link](https://github.com/git/git/blob/master/contrib/completion/git-completion.bash).
+If the autocomplete is not enabled on your terminal, you can download the autocomplete script for Git from [Github][autocomplete].
 
-After downloading, copy the file to the home directory, and add the line below to your *.bashrc* file:
+After downloading, copy the file to the home directory, and add the line below to your _.bashrc_ file:
 
-```
+```shell
 source ~/git-completion.bash
 ```
 
-Ready. Now when you enter a git command and press *tab*, it should display the commands to you:
+Ready. Now when you enter a git command and press *tab*, it should display all Git commands which start with _co_:
 
-```
+```shell
 $ git co<tab>
 ```
 
-```
+```shell
 commit config
 ```
 
@@ -151,6 +151,7 @@ Until next **o/**
 [cherrypick]:(http://imasters.com.br/artigo/24442/desenvolvimento/dica-git-da-semana-cherry-picking/)
 [alias]: (https://git-scm.com/book/tr/v2/Git-Basics-Git-Aliases)
 [checkout]: (https://www.atlassian.com/git/tutorials/undoing-changes/git-checkout)
+[autocomplete]: (https://github.com/git/git/blob/master/contrib/completion/git-completion.bash)
 [reset]: (https://www.atlassian.com/git/tutorials/undoing-changes/git-checkout)
 [stash]: (https://git-scm.com/book/pt-br/v1/Ferramentas-do-Git-Fazendo-Stash)
 [amend]: (https://git-scm.com/book/pt-br/v1/Git-Essencial-Desfazendo-Coisas)
