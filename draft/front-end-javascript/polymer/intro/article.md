@@ -42,8 +42,16 @@ one enables the option in Chrome Dev Tools (or any other supporting browser like
 * **Shadow Root**: is the root of the DOM subtree containing the shadow DOM nodes. It is a special node, which creates the boundary between the normal DOM nodes and the Shadow DOM nodes. It is this boundary, which encapsulates the Shadow DOM nodes from any JavaScript or CSS code on the consuming page.
 * **Shadow DOM**: allows for multiple DOM subtrees to be composed into one larger tree. 
 * **Composition**: the process of overlaying the nodes
-* **Shadow Boundary**: is denoted by the dotted line in the image above. This denotes the separation between the normal DOM world and the Shadow DOM world. The scripts from either side cannot cross this boundary and create havoc on the other side.
+* **Shadow Boundary**: The separation between the normal DOM world and the Shadow DOM world. The scripts from either side cannot cross this boundary and create havoc on the other side.
 * **Shady DOM**: a super-fast shim for shadow DOM that provides tree-scoping, but has drawbacks like complicated CSS.  useful for restoring Shadow DOM values and examining subtrees quickly.
+
+## The Polymer Starter Kit
+
+Want to start building right away?  Take a look at the [Polymer Start Kit](https://developers.google.com/web/tools/polymer-starter-kit/?hl=en).  The PSK is a wonderful way to avoid what we call
+the "blank page effect".  Many generators (including Yeoman for Angular) require some time to configure.  Then, after all the complexity of configuration, the end result is essentially a blank page.
+Being of a Polymer mindset, we want to keep the complexity at a minimum.  PSK allows us to set up a commercially viable UI in a few CLI commands or with a [simple unzipping](https://github.com/polymerelements/polymer-starter-kit/releases).
+
+[Confused?  Learn more here.](/psk/article.md)
 
 
 
