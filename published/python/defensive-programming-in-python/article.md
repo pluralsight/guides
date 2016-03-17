@@ -612,15 +612,16 @@ Please join our [Slack community](https://hackguides.herokuapp.com/) to chat abo
     - You can also view the references for the related talk
       [here](http://bitly.com/defensive_coding).
 
+<p>
 [1]
 <small>
     Executable documentation is a term sometimes used to describe
     [doctests](http://docs.python.org/2/library/doctest.html).  "Literate
     testing" is term used to describe this concept.
 </small>
+</p>
 
-<br/>
-
+<p>
 [2]
 <small>
     You could even use logging to build your own analytics tool.  Log to a
@@ -628,10 +629,9 @@ Please join our [Slack community](https://hackguides.herokuapp.com/) to chat abo
     script come behind you every time and collect these files.  Now you have a
     ton of usage information in a simple text-based format opening up tons of
     possibilities for data mining and helping your users.
-
-    <br/>
-
+</small></p>
+<p><small>
     Keep in mind that most users won't fill out surveys.  So, this would be a
     way to collect information on the features they are trying to use or common
     workflows.  Then, you could make these better in future releases.
-</small>
+</small></p>
