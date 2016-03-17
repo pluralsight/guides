@@ -1,10 +1,10 @@
 This entry is motivated by a tough week.
 
-That's right, a week of challenges related to [scm] [scmlink] (which is not the most relaxing thing in the world). A week full of failed attempts to [ `cherry-pick` git] [cherrypick] and other git things, I probably would not use if the code was being managed" right ".
+That's right, a week of challenges related to [scm][scmlink] (which is not the most relaxing thing in the world). A week full of failed attempts to [`cherry-pick`][cherrypick] and other Git things I probably would not use if the code was being managed "right".
 
-Now, no longer weeping and trying to look on the positive side, I learned some cool little things that can be useful to me in the future, and why not, for you :)
+Now, no longer weeping and trying to look on the positive side, I learned some cool tricks which can be useful to me in the future, and you :)
 
-The idea here is not to teach git nor present the basic commands or something like that. The idea is to show some tricks and cool git tricks, you'll want to have known before.
+The idea here is not to teach Git nor present fundamentals. The idea is to show some tricks you'll want to have known before.
 
 So here we go ...
 
