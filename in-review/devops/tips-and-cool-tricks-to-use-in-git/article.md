@@ -10,17 +10,17 @@ So here we go ...
 
 
 ### Alias (co > checkout)
-You can create [alias] [alias] for any git command.
-You just need to set the alias to the command you want, like this:
+You can create [alias] [alias] for any Git command.
+For example, the following creates an alias **st** for the Git command **status**:
 
 ```
 $ git config --global alias.st status 
 ```
 
-Just replace the **alias** with the name that you want and put the command in the front.
+Just replace the **alias** with the name that you want, followed by the original command.
 
-It is better to type "git co" than "git checkout" right?
-Just create the alias! I've seen people *(I)* using an alias of *g* for the *git command*. It is much laziness haha. This would give you such a kind of thing:
+It is better to type "git co" than "git checkout", right?
+Just create the alias! I've seen people *(hint: myself)* using an alias of **g** for the command **git**. It is much laziness haha. With an alias **g** and **co**, the following command will achieve the same effect as `git checkout`:
 
 ```
 $ g co
