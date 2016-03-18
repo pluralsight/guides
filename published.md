@@ -80,7 +80,7 @@
 ### Ionic Framework: A definitive 10,000 word guide by Nikola Breznjak
 - [Read the guide](http://tutorials.pluralsight.com/review/ionic-framework-a-definitive-10-000-word-guide)
 - [Read more from Nikola Breznjak](http://tutorials.pluralsight.com/user/Hitman666) <img src="https://avatars.githubusercontent.com/u/1001064?v=3&" width="30" height="30" alt="Nikola Breznjak" />
-- Related to: Android
+- Related to: Front-End JavaScript (Angular, React, Meteor, etc)
 
 ### Quick profiling in Python by Luke Lee
 - [Read the guide](http://tutorials.pluralsight.com/review/quick-profiling-in-python)
