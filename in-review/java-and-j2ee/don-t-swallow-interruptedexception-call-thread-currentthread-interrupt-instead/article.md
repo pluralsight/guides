@@ -45,7 +45,7 @@ Or read [Java Concurrency in Practice](https://books.google.de/books/about/Java_
 
 ##Summary
 
-**If you don't know what to do with an `InterruptedException` call `Thread.currentThread().interrupt()`**
+**If you don't know what to do with an `InterruptedException`, call `Thread.currentThread().interrupt()`**
 
 ####Note
 
