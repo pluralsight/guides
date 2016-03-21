@@ -26,7 +26,7 @@ the "mediator pattern", but in some ways it reflects the functionality of the co
 the dispatcher in Flux (React.js).  The general idea is reflected in the picture below.  Events that deal with
 state information are passed from child to child via the mediator.
 
-![mediator](mediator.png)
+![mediator](https://raw.githubusercontent.com/pluralsight/guides/master/images/mediator.png)
 
 ### A bit about Shadow DOM
 Shadow DOM is a tricky concept to understand.  It's defined in the [Web Component Spec](https://www.w3.org/TR/2013/WD-components-intro-20130606/), which
