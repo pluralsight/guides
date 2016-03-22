@@ -1,11 +1,14 @@
 {
+    "_publish_status": "in-review",
     "author_name": "scharf",
     "author_real_name": "Michael Scharf (Github)",
     "branch": "master",
-    "branches": [],
+    "branches": [
+        "NabaSadiaSiddiqui"
+    ],
     "filename": "article.md",
+    "first_commit": null,
     "image_url": "https://avatars.githubusercontent.com/u/3731059?v=3",
-    "publish_status": "in-review",
     "stacks": [
         "Java and J2EE"
     ],

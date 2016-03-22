@@ -1,3 +1,8 @@
+### Ruby on Rails Nested Attributes by Itay Grudev
+- [Read the guide](http://tutorials.pluralsight.com/ruby-ruby-on-rails/ruby-on-rails-nested-attributes)
+- [Read more from Itay Grudev](http://tutorials.pluralsight.com/author/itay-grudev) <img src="https://avatars.githubusercontent.com/u/2123767?v=3" width="30" height="30" alt="Itay Grudev" />
+- Related to: Ruby, Ruby on Rails
+
 ### Building a Dashboard in React by Rohit Boggarapu
 - [Read the guide](http://tutorials.pluralsight.com/front-end-javascript/building-a-dashboard-in-react)
 - [Read more from Rohit Boggarapu](http://tutorials.pluralsight.com/author/rohitb4) <img src="https://avatars.githubusercontent.com/u/6358889?v=3" width="30" height="30" alt="Rohit Boggarapu" />
@@ -10,7 +15,7 @@
 
 ### Defensive programming in Python by Luke Lee
 - [Read the guide](http://tutorials.pluralsight.com/python/defensive-programming-in-python)
-- [Read more from Luke Lee](http://tutorials.pluralsight.com/user/durden) <img src="https://avatars.githubusercontent.com/u/58063?v=3" width="30" height="30" alt="Luke Lee" />
+- [Read more from Luke Lee](http://tutorials.pluralsight.com/author/durden) <img src="https://avatars.githubusercontent.com/u/58063?v=3" width="30" height="30" alt="Luke Lee" />
 - Related to: Python
 
 ### Building a CRUD interface with React and Ruby on Rails by Hristo Georgiev
@@ -80,7 +85,7 @@
 ### Ionic Framework: A definitive 10,000 word guide by Nikola Breznjak
 - [Read the guide](http://tutorials.pluralsight.com/review/ionic-framework-a-definitive-10-000-word-guide)
 - [Read more from Nikola Breznjak](http://tutorials.pluralsight.com/user/Hitman666) <img src="https://avatars.githubusercontent.com/u/1001064?v=3&" width="30" height="30" alt="Nikola Breznjak" />
-- Related to: Android
+- Related to: Front-End JavaScript (Angular, React, Meteor, etc)
 
 ### Quick profiling in Python by Luke Lee
 - [Read the guide](http://tutorials.pluralsight.com/review/quick-profiling-in-python)
