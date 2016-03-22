@@ -1,0 +1,15 @@
+{
+    "_publish_status": "draft",
+    "author_name": "durden",
+    "author_real_name": "Luke Lee",
+    "branch": "master",
+    "branches": [],
+    "filename": "article.md",
+    "first_commit": "ec5b4e98f27b60f26f7eb103a62cf8b3f0d6dce1",
+    "image_url": "https://avatars.githubusercontent.com/u/58063?v=3",
+    "stacks": [
+        "Python"
+    ],
+    "thumbnail_url": null,
+    "title": "Sneaky PEP8"
+}
