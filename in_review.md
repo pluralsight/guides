@@ -1,3 +1,8 @@
+### Comparing unrelated types by Luke Lee
+- [Read the guide](http://tutorials.pluralsight.com/python/comparing-unrelated-types?saved=1&status=in-review)
+- [Read more from Luke Lee](http://tutorials.pluralsight.com/author/durden) <img src="https://avatars.githubusercontent.com/u/58063?v=3" width="30" height="30" alt="Luke Lee" />
+- Related to: Python
+
 ### Python iteration and the for loop by None
 - [Read the guide](http://tutorials.pluralsight.com/other/python-iteration-and-the-for-loop?saved=1&status=in-review)
 - [Read more from None](http://tutorials.pluralsight.com/author/perkolasoft) <img src="https://avatars.githubusercontent.com/u/15053257?v=3" width="30" height="30" alt="None" />
