@@ -106,8 +106,8 @@ if (w == Py_None)
 
 ##Python 3
 
-But wait, there's more!  What does
-[Python 3](http://www.python.org/getit/releases/3.0/) do in this case?
+Until now, I was using Python 2.7. I wanted to know what 
+[Python 3](http://www.python.org/getit/releases/3.0/) would do in this case.
 
 ```python
 >>> x = range(50)
@@ -127,9 +127,9 @@ TypeError: unorderable types: list() < dict()
 
 Nice!  As you see above, unrelated type comparisons now lead to TypeErrors, a result that's more comprehensible than alphabetical order. So this little quirk is fixed. 
 
-When you upgrade your awesome
+So when you upgrade your awesome
 application to [Python 3](http://www.python.org/getit/releases/3.0/) comparing
-completely different types will complain loudly as it should. Then, you will
+completely different types will cause compilers to complain loudly, and it should. Then, you will
 be free to forget everything you learned in this post. :)
 
 ##Suggested Reading
