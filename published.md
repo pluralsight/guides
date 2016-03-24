@@ -1,3 +1,8 @@
+### Tips and cool tricks to use in git by Lucas Andrey
+- [Read the guide](http://tutorials.pluralsight.com/devops/tips-and-cool-tricks-to-use-in-git?saved=1)
+- [Read more from Lucas Andrey](http://tutorials.pluralsight.com/author/andreybleme) <img src="https://avatars.githubusercontent.com/u/5385383?v=3" width="30" height="30" alt="Lucas Andrey" />
+- Related to: DevOps (Docker, Nagios, Jenkins, Chef, Puppet, etc)
+
 ### Ruby on Rails Nested Attributes by Itay Grudev
 - [Read the guide](http://tutorials.pluralsight.com/ruby-ruby-on-rails/ruby-on-rails-nested-attributes)
 - [Read more from Itay Grudev](http://tutorials.pluralsight.com/author/itay-grudev) <img src="https://avatars.githubusercontent.com/u/2123767?v=3" width="30" height="30" alt="Itay Grudev" />
