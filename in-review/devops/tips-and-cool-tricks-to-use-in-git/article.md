@@ -136,8 +136,6 @@ If you use GitHub, you may better see the differences there.
 
 These are just some of the tricks I've found while using Git. If you found this tutorial useful, or even just intriguing, please add comments and give me feedback :)
 
-Until next **o/**
-
 [scmlink]: (https://en.wikipedia.org/wiki/Version_control)
 [cherrypick]:(http://imasters.com.br/artigo/24442/desenvolvimento/dica-git-da-semana-cherry-picking/)
 [alias]: (https://git-scm.com/book/tr/v2/Git-Basics-Git-Aliases)
