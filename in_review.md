@@ -3,11 +3,6 @@
 - [Read more from Luke Lee](http://tutorials.pluralsight.com/author/durden) <img src="https://avatars.githubusercontent.com/u/58063?v=3" width="30" height="30" alt="Luke Lee" />
 - Related to: Python
 
-### Python iteration and the for loop by None
-- [Read the guide](http://tutorials.pluralsight.com/other/python-iteration-and-the-for-loop?saved=1&status=in-review)
-- [Read more from None](http://tutorials.pluralsight.com/author/perkolasoft) <img src="https://avatars.githubusercontent.com/u/15053257?v=3" width="30" height="30" alt="None" />
-- Related to: other
-
 ### Creating a chat using Rails' Action Cable by Hristo Georgiev
 - [Read the guide](http://tutorials.pluralsight.com/ruby-ruby-on-rails/creating-a-chat-using-rails-action-cable?status=in-review)
 - [Read more from Hristo Georgiev](http://tutorials.pluralsight.com/author/Kaizeras) <img src="https://avatars.githubusercontent.com/u/6340189?v=3" width="30" height="30" alt="Hristo Georgiev" />
