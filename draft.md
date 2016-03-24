@@ -33,11 +33,6 @@
 - [Read more from Correia de Freitas](http://tutorials.pluralsight.com/author/correiadefreitas) <img src="https://avatars.githubusercontent.com/u/9440177?v=3" width="30" height="30" alt="Correia de Freitas" />
 - Related to: Microsoft.NET (C#, ASP.NET, VB.NET, etc)
 
-### Python iteration and the for loop by perkolasoft
-- [Read the guide](http://tutorials.pluralsight.com/other/python-iteration-and-the-for-loop?status=draft)
-- [Read more from perkolasoft](http://tutorials.pluralsight.com/author/perkolasoft)
-- Related to: other
-
 ### Using Google spreadsheet as a database by Aki
 - [Read the guide](http://tutorials.pluralsight.com/php/using-google-spreadsheet-as-a-database?status=draft)
 - [Read more from Aki](http://tutorials.pluralsight.com/author/multiaki) <img src="https://avatars.githubusercontent.com/u/831569?v=3" width="30" height="30" alt="Aki" />
