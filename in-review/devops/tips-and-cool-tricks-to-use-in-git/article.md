@@ -1,13 +1,10 @@
-This entry is motivated by a tough week.
+This entry is motivated by a tough week. A week of challenges related to [scm][scmlink] (which is not the most relaxing thing in the world). A week full of failed attempts to [`cherry-pick`][cherrypick] and other Git things I probably would not use if the code was being managed correctly.
 
-That's right, a week of challenges related to [scm][scmlink] (which is not the most relaxing thing in the world). A week full of failed attempts to [`cherry-pick`][cherrypick] and other Git things I probably would not use if the code was being managed "right".
+Nonetheless, I learned some cool tricks to using Git that will save you blood, sweat, and tears in the future.
 
-Now, no longer weeping and trying to look on the positive side, I learned some cool tricks which can be useful to me in the future, and you :)
+This tutorial is designed not to teach Git fundamentals but to demonstrate some important strategies for using Git. 
 
-The idea here is not to teach Git nor present fundamentals. The idea is to show some tricks you'll want to have known before.
-
-So here we go ...
-
+**I will cover aliases, autocomplete, checkout/reset, stashes, amending, and differences between Git commits.**
 
 ### Alias (co > checkout)
 You can create [alias] [alias] for any Git command.
@@ -17,10 +14,7 @@ For example, the following creates an alias **st** for the Git command **status*
 $ git config --global alias.st status 
 ```
 
-Just replace the **alias** with the name that you want, followed by the original command.
-
-It is better to type "git co" than "git checkout", right?
-Just create the alias! I've seen people *(hint: myself)* using an alias of **g** for the command **git**. It is much laziness haha. With an alias **g** and **co**, the following command will achieve the same effect as `git checkout`:
+Just replace the **alias** with the name that you want, followed by the original command. With an alias **g** and **co**, the following command will achieve the same effect as `git checkout`:
 
 ```shell
 $ g co
@@ -29,11 +23,11 @@ $ g co
 > It is a little different, but over time you earn enough in productivity.
 
 
-### Autocomplete no shell
+### Autocomplete
 
-When using Git via command line, it is always useful to have autocompleted enabled. If you use the git shell by ruWindows, the autocomplete should already be set.
+When using Git via command line, it is always useful to have **autocomplete** enabled. If you use the git shell by ruWindows, autocomplete should already be set.
 
-If the autocomplete is not enabled on your terminal, you can download the autocomplete script for Git from [Github][autocomplete].
+If autocomplete is not enabled on your terminal, you can download the autocomplete script for Git from [Github][autocomplete].
 
 After downloading, copy the file to the home directory, and add the line below to your _.bashrc_ file:
 
@@ -41,7 +35,7 @@ After downloading, copy the file to the home directory, and add the line below t
 source ~/git-completion.bash
 ```
 
-Ready. Now when you enter a git command and press *tab*, it should display all Git commands which start with _co_:
+Now when you enter a git command and press **tab**, it should display all Git commands which start with _co_:
 
 ```shell
 $ git co<tab>
@@ -51,26 +45,25 @@ $ git co<tab>
 commit config
 ```
 
+Having this autocomplete ability at your fingertips speeds up implementation.
+
 ### Checkout and reset on files
 
-You may have used [checkout][checkout] and [reset][reset] to work with branches and commits.
+You may have used [checkout][checkout] and [reset][reset] to work with branches and commits. However, you can also use the **checkout** and **reset** commands on files.
 
-What you may not know is that you can also use the **checkout** and **reset** commands on files.
+When we use `git reset` on a file in git, the reset command will update the staging area, causing a particular file to revert to its previous state.
 
-When we use `git reset` on a file in git, it will **update** the staging area, causing a particular file to go **back** to the state it was in a previous commit.
-
-This means we can remove the file *"jedi.js"* from the staging area, and cause it to be equal to its version in *HEAD* with the command:
+As a result, users can remove the file *"jedi.js"* from the staging area and make it equal to its version in *HEAD* with the command:
 
 ```shell
 $ git reset HEAD jedi.js
 ```
 
-The result of the operation is: the file is no longer in staging and has the same content as the latest commit.
+As seen in the diagram above, the file is no longer in staging and has the same content as the latest commit.
 
 ![Reset File](https://raw.githubusercontent.com/andreybleme/andreybleme.github.io/master/assets/img/resetfile.png "git reset file")
 
-Pretty cool!
-Now let's take a look at **`checkout`**.
+Pretty cool! Now let's take a look at **`checkout`**.
 
 Good old `git checkout` is typically used to switch between branches. When the command is used with a file path, the specified file is reset to the same state as the branch (__HEAD__ in this case).
 
@@ -83,43 +76,43 @@ The above command restores the file **"jedi.html"** to the state of the file poi
 ![Checkout File](https://raw.githubusercontent.com/andreybleme/andreybleme.github.io/master/assets/img/checkoutfile.png "git checkout file")
 
 
-> Save it somewhere, really. You will need one day.
+> Save it somewhere, really. This file will definitely come in handy.
 
 
-Thus, you can only restore the file to a version pointed to by another  branch (or the same). You can make changes to it, and add the modified file to staging with `git add .`.
+Thus, you can only restore the file to a version pointed to by another branch (or the same). You can make changes to the file then add this modified file to staging with `git add .`.
 
-### Stash, to be happy
+### Stash saves time
 
-The command `git stash`, picks **all** the changes in staging and save it in a separate place. Thus, clearing your staging area.
+The command `git stash`, picks **all** the changes in staging and save it in a separate place. Thus, this useful and aptly named command clears your staging area.
 
-That's really cool, because that way you can save a set of changes you have made but do not yet want to commit.
+That way you can save a set of changes you have made but do not yet want to commit.
 
 ```shell
 $ git stash
 ```
 
-In particular, I use more [stash][stash] when I need to `git pull` and want to avoid conflicts between my local changes and upstream. 
+In particular, I use more [stash][stash] when I need to `git pull` and want to avoid conflicts between local changes and changes upstream. 
 
-To restore your local changes back to staging, you need to _apply_ your stash. The following command pops the latest changes that were **stashed away**:
+To restore your local changes back to staging, you need to _apply_ your stash. The following command recreates the latest changes that were **stashed away**:
 
 ```shell
 $ git stash apply
 ```
 
-> You can have more than one stash. By default, they will **always** be applied in FILO order.
+> You can have more than one stash. By default, your stashes will be applied in FILO (First-in, last-out) order.
 
 
-### Amend, to redeem
+### Amend also saves time 
 
-If, after having committed some changes, you remembered that you forgot to add a modification to a file (it happens), you can use the [* --amend *][amend] option.
+If, after committing some changes, you remember that you forgot to add a modification to a file, you can use the [* --amend *][amend] option.
 
-The following demonstrates a use case:
+The following demonstrates a use case of **amend**, another important pro tool:
 
 ![Commit amend](https://raw.githubusercontent.com/andreybleme/andreybleme.github.io/master/assets/img/amend.png "git commit amend")
 
-Here the parameter * - no-edit * makes the amend without changing the commit message.
+Here, the parameter * - no-edit * fixes the file without changing the commit message.
 
-### Diffs between commits
+### Differences between commits
 
 To see the changes of the last commit, you can use:
 ```shell
@@ -136,14 +129,12 @@ To see the difference between two commits using [sha][sha]s of commits in hand (
 $ git diff 0da94be 59ff30c
 ```
 
-If you use GitHub, you may better see the differences there.
+If you use GitHub, you may better see the differences there. 
 [+ see how][githubdiff]
 
-### That's it folks !
+### That's all folks !
 
-There are some other tricks and cool stuff that Git offers but to avoid the post from becoming too big, I chose the ones I liked.
-
-Add comments for any feedback :)
+These are just some of the tricks I've found while using Git. If you found this tutorial useful, or even just intriguing, please add comments and give me feedback :)
 
 Until next **o/**
 
