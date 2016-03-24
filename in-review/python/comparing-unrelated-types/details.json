@@ -3,7 +3,9 @@
     "author_name": "durden",
     "author_real_name": "Luke Lee",
     "branch": "master",
-    "branches": [],
+    "branches": [
+        "adityavarshney"
+    ],
     "filename": "article.md",
     "first_commit": null,
     "image_url": "https://avatars.githubusercontent.com/u/58063?v=3",
