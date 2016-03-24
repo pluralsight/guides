@@ -1,4 +1,5 @@
 {
+    "_publish_status": "in-review",
     "author_name": "perkolasoft",
     "author_real_name": null,
     "branch": "master",
@@ -6,7 +7,6 @@
     "filename": "article.md",
     "image_url": null,
     "language": null,
-    "publish_status": "draft",
     "stacks": [
         "other"
     ],
