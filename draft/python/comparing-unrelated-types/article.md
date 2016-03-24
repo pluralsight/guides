@@ -17,7 +17,7 @@ all, the implementation of the `<` operator is handled by the
 [less-than dunder method](http://docs.python.org/reference/datamodel.html#object.__lt__)
 for the [list](http://docs.python.org/library/types.html#types.ListType) type.
 
-###Assumptions
+##Assumptions
 
 1. My first thought was the `<` operator was comparing with `len()` for the
 list, which would make `x < 51` `True`.  Result: **wrong**.
@@ -33,7 +33,7 @@ make sense.  Result: **wrong** again.
 False
 ```
 
-###To the source!
+##To the source!
 
 At this point the sheer mystery drove me to download the
 [Python 2.7](http://python.org/download/releases/2.7.3/) source.
@@ -73,7 +73,7 @@ if (c > 0)
 
 Surprised?  Confused?  I was both.  
 
-###TL;DR
+##TL;DR
 
 The end result is that comparison is based on the actual name of the types!
 So, in our case **List** is greater alphabetically than **Integer**!
@@ -93,7 +93,7 @@ A **List** is less than a **Tuple**, remember 'L' comes before 'T' in the
 alphabet, and of course by the same logic a **List** is NOT less than a
 **Dict**.
 
-###Easter Egg
+##Easter Egg
 
 `None` is **really**
 [small in comparison](http://hg.python.org/releasing/2.7.3/file/7bb96963d067/Objects/object.c#l773):
@@ -106,7 +106,7 @@ if (w == Py_None)
     return 1;
 ```
 
-###Python 3
+##Python 3
 
 This is a bit weird, but wait there's more!  What does
 [Python 3](http://www.python.org/getit/releases/3.0/) do in this case?
@@ -132,7 +132,7 @@ application to [Python 3](http://www.python.org/getit/releases/3.0/) comparing
 completely different types will complain loudly as it should. Then, you will
 be free to forget everything you learned in this post. :)
 
-###Suggested Reading
+##Suggested Reading
 
 If your interested I later found a great
 [stackoverflow post](http://stackoverflow.com/questions/7167657/python-list-greater-than-number)
