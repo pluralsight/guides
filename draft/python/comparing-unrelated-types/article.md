@@ -1,7 +1,7 @@
-[code lang="python"]
+```python
 >>> x = range(50)
 >>> x < 20
-[/code]
+```
 
 What's the value of `x < 20`?
 
@@ -26,12 +26,12 @@ list, which would make `x < 51` `True`.  Result: **wrong**.
 [id](http://docs.python.org/library/functions.html#id).  This would **sort of**
 make sense.  Result: **wrong** again.
 
-[code lang="python"]
+```python
 >>> id(x)
 170461900
 >>> x < 170461901
 False
-[/code]
+```
 
 ###To the source!
 
@@ -54,7 +54,7 @@ comparison operation ends in the
 function.  Finally, the following snippet of code decides that our list is
 always greater than (not less than) all integers:
 
-[code lang="c"]
+```c
 /* different type: compare type names; numbers are smaller */
 if (PyNumber_Check(v))
     vname = "";
@@ -69,7 +69,7 @@ if (c < 0)
     return -1;
 if (c > 0)
     return 1;
-[/code]
+```
 
 Surprised?  Confused?  I was both.  
 
@@ -82,10 +82,10 @@ Not exactly the rationale I was hoping for, but at least we have an answer.
 However, now that we know what is happening see if you can figure out the
 answer to a few more puzzles:
 
-[code lang="python"]
+```python
 >>> [] < ()
 >>> [] < {}
-[/code]
+```
 
 **Spoiler alert**
 
@@ -98,20 +98,20 @@ alphabet, and of course by the same logic a **List** is NOT less than a
 `None` is **really**
 [small in comparison](http://hg.python.org/releasing/2.7.3/file/7bb96963d067/Objects/object.c#l773):
 
-[code lang="c"]
+```c
 /* None is smaller than anything */
 if (v == Py_None)
     return -1;
 if (w == Py_None)
     return 1;
-[/code]
+```
 
 ###Python 3
 
 This is a bit weird, but wait there's more!  What does
 [Python 3](http://www.python.org/getit/releases/3.0/) do in this case?
 
-[code lang="python"]
+```python
 >>> x = range(50)
 >>> x < 20
 Traceback (most recent call last):
@@ -125,7 +125,7 @@ TypeError: unorderable types: list() < tuple()
 Traceback (most recent call last):
 File "<stdin>", line 1, in <module>
 TypeError: unorderable types: list() < dict()
-[/code]
+```
 
 Nice!  This little quirk has been fixed.  Now when you upgrade your awesome
 application to [Python 3](http://www.python.org/getit/releases/3.0/) comparing
