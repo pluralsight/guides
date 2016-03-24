@@ -1,3 +1,8 @@
+### Python iteration and the for loop by None
+- [Read the guide](http://tutorials.pluralsight.com/other/python-iteration-and-the-for-loop?saved=1&status=draft)
+- [Read more from None](http://tutorials.pluralsight.com/author/perkolasoft) <img src="https://avatars.githubusercontent.com/u/15053257?v=3" width="30" height="30" alt="None" />
+- Related to: other
+
 ### How to Migrate a virtual machine from Virtualbox 4.x to VMware Workstation 9.x or 10 by Erick Rodriguez
 - [Read the guide](http://tutorials.pluralsight.com/other/how-to-migrate-a-virtual-machine-from-virtualbox-4-x-to-vmware-workstation-9-x-or-10?status=draft)
 - [Read more from Erick Rodriguez](http://tutorials.pluralsight.com/author/tbogard) <img src="https://avatars.githubusercontent.com/u/1978642?v=3" width="30" height="30" alt="Erick Rodriguez" />
