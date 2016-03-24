@@ -1,3 +1,8 @@
+### Begining Ember by Sigu Magwa
+- [Read the guide](http://tutorials.pluralsight.com/front-end-javascript/begining-ember?status=draft)
+- [Read more from Sigu Magwa](http://tutorials.pluralsight.com/author/sigu) <img src="https://avatars.githubusercontent.com/u/584211?v=3" width="30" height="30" alt="Sigu Magwa" />
+- Related to: Front-End JavaScript (Angular, React, Meteor, etc)
+
 ### Python iteration and the for loop by None
 - [Read the guide](http://tutorials.pluralsight.com/other/python-iteration-and-the-for-loop?saved=1&status=draft)
 - [Read more from None](http://tutorials.pluralsight.com/author/perkolasoft) <img src="https://avatars.githubusercontent.com/u/15053257?v=3" width="30" height="30" alt="None" />
