@@ -1,3 +1,8 @@
+### Comparing unrelated types by Luke Lee
+- [Read the guide](http://tutorials.pluralsight.com/python/comparing-unrelated-types?status=draft)
+- [Read more from Luke Lee](http://tutorials.pluralsight.com/author/durden) <img src="https://avatars.githubusercontent.com/u/58063?v=3" width="30" height="30" alt="Luke Lee" />
+- Related to: Python
+
 ### How to Migrate a virtual machine from Virtualbox 4.x to VMware Workstation 9.x or 10 by Erick Rodriguez
 - [Read the guide](http://tutorials.pluralsight.com/other/how-to-migrate-a-virtual-machine-from-virtualbox-4-x-to-vmware-workstation-9-x-or-10?status=draft)
 - [Read more from Erick Rodriguez](http://tutorials.pluralsight.com/author/tbogard) <img src="https://avatars.githubusercontent.com/u/1978642?v=3" width="30" height="30" alt="Erick Rodriguez" />
