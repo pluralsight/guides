@@ -1,3 +1,8 @@
+### Creating a chat using Rails' Action Cable by Hristo Georgiev
+- [Read the guide](http://tutorials.pluralsight.com/ruby-ruby-on-rails/creating-a-chat-using-rails-action-cable?saved=1)
+- [Read more from Hristo Georgiev](http://tutorials.pluralsight.com/author/Kaizeras) <img src="https://avatars.githubusercontent.com/u/6340189?v=3" width="30" height="30" alt="Hristo Georgiev" />
+- Related to: Ruby, Ruby on Rails
+
 ### Tips and cool tricks to use in git by Lucas Andrey
 - [Read the guide](http://tutorials.pluralsight.com/devops/tips-and-cool-tricks-to-use-in-git?saved=1)
 - [Read more from Lucas Andrey](http://tutorials.pluralsight.com/author/andreybleme) <img src="https://avatars.githubusercontent.com/u/5385383?v=3" width="30" height="30" alt="Lucas Andrey" />
