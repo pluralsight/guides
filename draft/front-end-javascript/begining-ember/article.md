@@ -99,21 +99,33 @@ You should see a "Welcome to Ember" message on your website. Well Done! You have
 
 You can open Ember Inspector in your Browser. Hope you've already installed it. Ember Inspector exists in Chrome and in Firefox as an extension. After installation you should have a new tab in your developer console in your browser. Check it out, look around. [More details about Ember Inspector here](https://guides.emberjs.com/v2.4.0/ember-inspector/installation/). 
 
-## Turn on a few debugging options
+## Add Bootstrap and Sass to Ember.js App
 
-If you would like to see more information in your browser's console about what Ember.js is doing under the hood, you can turn on a few debugging options in your configuration file.
+Let's add some basic style to our application. We use Bootstrap with Sass. Ember CLI can install for us add-ons and useful packages. These add-ons simplify our development process, because we don't have to reinvent the wheel, we get more out of the box. You can find various packages, add-ons on these websites: http://www.emberaddons.com or http://www.emberobserver.com
 
-You can find a list of debugging options in `./config/environment.js` file and under the `development` environment. Remove the comment sign as follows:
+We install an add-on for Sass and another for Bootstrap.
 
-``` 
-//..
-if (environment === 'development') {
-  // ENV.APP.LOG_RESOLVER = true;
-  ENV.APP.LOG_ACTIVE_GENERATION = true;
-  ENV.APP.LOG_TRANSITIONS = true;
-  ENV.APP.LOG_TRANSITIONS_INTERNAL = true;
-  ENV.APP.LOG_VIEW_LOOKUPS = true;
-}
-//..
+Exit your `ember server` with `Ctrl+C` in your terminal.
+
+Run the following two commands:
+
 ```
-Check your app and open the Console in Chrome/Firefox. You will see same extra information about what Ember.js actually does under the hood. Don't worry if you don't understand these debug messages at this stage. As you spend more and more time with Ember.js development, these lines are going to be clearer.
+$ ember install ember-cli-sass
+$ ember install ember-cli-bootstrap-sassy
+```
+
+This adds some code to your `package.json` and `bower.json` files.
+
+I love using sass because of the flexibility it gives. Lets use it in our app. We start by renaming our `app.css` to `app.scss` with the following terminal command or you can use your editor to rename the `./app/styles/app.css` file:
+
+```
+$ mv app/styles/app.css app/styles/app.scss
+```
+
+Open `./app/styles/app.scss` file in your editor and add the following line:
+
+```
+@import "bootstrap";
+```
+
+Adding bootstrap will not take effect immediately until you relaunch your app with `ember server`. You should see in the browser, that 'Welcome to Ember' uses Bootstrap default font.
