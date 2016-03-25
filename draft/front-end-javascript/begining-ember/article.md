@@ -99,7 +99,7 @@ You should see a "Welcome to Ember" message on your website. Well Done! You have
 
 You can open Ember Inspector in your Browser. Hope you've already installed it. Ember Inspector exists in Chrome and in Firefox as an extension. After installation you should have a new tab in your developer console in your browser. Check it out, look around. [More details about Ember Inspector here](https://guides.emberjs.com/v2.4.0/ember-inspector/installation/). 
 
-## Add Bootstrap and Sass to Ember.js App
+## Add Bootstrap
 
 Let's add some basic style to our application. We use Bootstrap with Sass. Ember CLI can install for us add-ons and useful packages. These add-ons simplify our development process, because we don't have to reinvent the wheel, we get more out of the box. You can find various packages, add-ons on these websites: http://www.emberaddons.com or http://www.emberobserver.com ( I recommend you bookmark this and check them out later on - preferably after finishing this guide)
 
