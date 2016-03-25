@@ -101,7 +101,7 @@ You can open Ember Inspector in your Browser. Hope you've already installed it. 
 
 ## Add Bootstrap and Sass to Ember.js App
 
-Let's add some basic style to our application. We use Bootstrap with Sass. Ember CLI can install for us add-ons and useful packages. These add-ons simplify our development process, because we don't have to reinvent the wheel, we get more out of the box. You can find various packages, add-ons on these websites: http://www.emberaddons.com or http://www.emberobserver.com
+Let's add some basic style to our application. We use Bootstrap with Sass. Ember CLI can install for us add-ons and useful packages. These add-ons simplify our development process, because we don't have to reinvent the wheel, we get more out of the box. You can find various packages, add-ons on these websites: http://www.emberaddons.com or http://www.emberobserver.com ( I recommend you bookmark this and check them out later on - preferably after finishing this guide)
 
 We install an add-on for Sass and another for Bootstrap.
 
@@ -128,4 +128,56 @@ Open `./app/styles/app.scss` file in your editor and add the following line:
 @import "bootstrap";
 ```
 
-Adding bootstrap will not take effect immediately until you relaunch your app with `ember server`. You should see in the browser, that 'Welcome to Ember' uses Bootstrap default font.
+If your server is still runnig adding bootstrap will not take effect immediately until you relaunch your app by hitting `ctrl-c` then `ember server` launch. You should see in the browser, that 'Welcome to Ember' uses Bootstrap default font.
+
+## Create a navigation partial
+
+A partial is a html snippet that is placed as a part of a larger container. In this case a navigation and the footer would be nice to be created a partial as they are independent portions of the larger page.
+Can you locate where the words 'Welcome to ember' are coming from? If you can't worry less I will show you. Head to `./app/templates/application.hbs`. This is know as the main template file
+
+Now update your main template file. Delete the example content and add the following code to your .
+
+``` 
+<div class="container">
+  {{partial 'navbar'}}
+  {{outlet}}
+</div>
+``` 
+
+Ember uses handlebar syntax in templates. It is almost the same as plain html, but you could have dynamic elements with `{{ }}`.
+
+The `partial` helper helps us insert snippets from other templates e.g the partial we are about to create known as `navbar`.
+
+The `outlet` helper is a general helper, a placeholder, where deeper level content will be inserted. The `outlet` in `application.hbs` means that almost all content from other pages will appear inside this section. For this reason, `application.hbs` is a good place to determine the main structure of our website. In our case we have a `container` div, a navigation bar, and the real content.
+
+Ember-cli uses generators which create new files and prefills with some boilerplate code. The generator takes the following shape `$ ember generate <generator-name> <options>`
+
+So we can generate a `navbar.hbs` template file with the following command in you terminal.
+
+    $ ember generate template navbar
+
+You can always undo your generation by using `$ ember destroy <generator-name> <options>`
+
+You can open `./app/templates/navbar.hbs` in your editor and add the following lines:
+
+```
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#main-navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      {{#link-to 'index' class="navbar-brand"}}Library App{{/link-to}}
+    </div>
+
+    <div class="collapse navbar-collapse" id="main-navbar">
+      <ul class="nav navbar-nav">
+            {{#link-to 'index' tagName="li"}}<a href="">Home</a>{{/link-to}}
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+```
