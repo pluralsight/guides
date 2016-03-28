@@ -1,57 +1,51 @@
-Docker is a hot product on the market right now, i think most of you heard of it, if not let me explain a little what it means.
+This tutorial covers the basics of Docker, a container that wraps code in a complete filesystem that contains code, runtime, system tools, and system libraries. Docker containers ensure that code will function the same, regardless of the environment -- in essence, a code incubator. 
 
-Docker allows you to package an application with all of its dependencies into a standardized unit for software development. That unit is called container. 
-
-Docker it runs only above **Linux** but you can use it with **Mac OS** or **Windows** using **Kitematic**. Kitematic is a Docker tool that creates for you **VirtualBox Machines** in order to let you run Docker on them. Basically for development part is ok to run Docker on Mac/Windows but for production is desirable to run Docker only on Linux machines.
+This tool is a hot product on the market right now. 
 
 Let me explain some terms used in Docker:
-- **dockerfile** - is a file that describes your steps in order to create a Docker image. Is like a recipe where you tell all ingredients and steps in order to obtain your dish.
-- **image** - images on Docker are like the snapshot of a virtual machine, but way more lightweight, they are the building-block of the containers.
-- **container** - From images you can create containers, this is the equivalent of creating a VM from a snapshot, but again, way more lightweight. Containers are the ones that run applications.
 
-These terms are the most used terms in Docker's world. I will cover only these terms for the beginner's guide.
+- **dockerfile** - a file that describes your steps in order to create a Docker image. It's like a recipe with all ingredients and steps necessary in making your dish.
+- **image** - the snapshot of a virtual machine, but way more lightweight. Images are the building-blocks of the containers.
+- **container** - the equivalent of creating a VM from a snapshot, but again, way more lightweight. Containers run the applications themselves.
 
-I will cover the creating and packaging of a **Java** application that runs on **Tomcat Server**.
+These terms are the most used terms in the Docker world, and they are the main terms that I will use in this tutorial.
 
-**_
+I will also cover the creation and packaging of a **Java** application that runs on [Tomcat Server](https://www.quora.com/What-is-the-function-of-Apache-Tomcat-and-how-do-I-use-it).
 
-### 0. Installation
-_**
+### 0. Kitematic Installation
 
+Docker only runs above _Linux_ but you can use it with _Mac OS_ or _Windows OS_ using **Kitematic**. Kitematic creates **VirtualBox Machines** that let you run Docker on them. 
 
-You can install Kitematic for Mac OS and Windows from here [https://kitematic.com/](https://kitematic.com/) and for Linux you can type this command 
+You can install Kitematic for Mac OS and Windows from here [https://kitematic.com/](https://kitematic.com/) and for Linux you can type this command:
+
 ```
 curl -sSL https://get.docker.com/ | sh
 ```
-_If you are using Mac or Windows i will suggest you to not use Kitematic interface in the beginning, it will be ok if you start to create and manipulate everything from command line in this way you will learn more._
 
+_If you are using Mac or Windows, I suggest that you not use the Kitematic interface early on. It will be better if you start creating and manipulating everything from the command line. In this way you will learn more._
 
+### 1. Creating a Dockerfile
 
-**_
+You start by creating your Dockerfile that describes the steps in order to create the base image. Here is an example (comments on each line describe the code):
 
-### 1. First Step
-_**
-
-You start by creating your Dockerfile that describes the steps in order to create the base image, here is an example (comments on each line that describes the code):
 ```
-
-# All Dockerfiles needs to start from a base linux image.
-# Docker has a hub (http://hub.docker.com) where you can see all images submitted by users and 
-# you can submit your own images. Something like github for Docker images
-# we will start from java:8-jre that is an ubuntu machine with java 8 installed on it
-# the keyword here is FROM
+# All Dockerfiles need to start from a base Linux image.
+# Docker has a hub (http://hub.docker.com) where you can see all Images submitted by users and 
+# where you can submit your own images. This is like a github for Docker images.
+# We will start from java:8-jre. This is an ubuntu machine with java 8 installed on it.
+# The keyword here is FROM.
 FROM java:8-jre
 
-# The KEYWORD ENV it let us specify some linux environment variables
-# Here we will set catalina_home (the home of the tomcat server)
+# The KEYWORD ENV it let us specify some Linux environment variables
+# Here we will set CATALINA_HOME (the home of the tomcat server)
 ENV CATALINA_HOME /usr/local/tomcat
 ENV PATH $CATALINA_HOME/bin:$PATH
 
 
-# One key command is RUN that let you run linux commands inside the image.
-# Here we navigate into /usr/local then download tomcat from the server
-# then uncompress it and then rename it to /tomcat
-# the final path to tomcat will be /usr/local/tomcat
+# RUN lets you run Linux commands inside the image.
+# Here we will navigate into /usr/local then download tomcat from the server
+# then decompress it and rename it to /tomcat.
+# The final path to tomcat will be /usr/local/tomcat.
 RUN 
      cd /usr/local/ && 
      wget http://mirrors.m247.ro/apache/tomcat/tomcat-8/v8.0.32/bin/apache-tomcat-8.0.32.tar.gz && 
@@ -59,64 +53,76 @@ RUN
      mv apache-tomcat-8.0.32/ tomcat/
 
 
-# the EXPOSE command it will tell to your future container to expose 8080 port to outside
-# 8080 is the default port for tomcat
+# the EXPOSE command will tell your future container to expose 8080 port to the outside
+# 8080 is the default port for tomcat.
 EXPOSE 8080
 
-# CMD it sets the first command that will be run when you will start containers from the resulting image, here we will tell that we will start the tomcat when the container is started
+# CMD sets the first command that will run when you create containers from the resulting image.
+# Here, we will start tomcat once the container is called
 CMD ["/usr/local/tomcat/catalina.sh", "run"]
 ```
 
-**
+### 2. Creating an Image
 
-### 2. Step Two
-**
-After you create this Dockerfile you need to create your Image.
-You need to navigate into your directory where the Dockerfile was saved (navigate through command line) and type
+After you create this Dockerfile you need to create your image.
+You need to navigate through your directory to where the Dockerfile was saved. Use this command line prompt: 
+
 ```
 docker build -t tomcat .
 ```
 
-What this mean: **docker build** - _Build a new image from the source code at PATH_, in our case the PATH is '.' (current folder). -t means  Name and optionally a tag the image (format name:tag), in our case just the name tomcat.
+A couple quick definitions:
 
-After all steps that will be executed you will check if everything was ok by typing
-docker images and you will see your image there: tomcat.
+**docker build** - _This command builds a new image from the source code at PATH_. In our case, the PATH is '.' (current folder). 
+**t** _ this term refers to a Name of (or tag of) the image (format name:tag). In this case, just the name "tomcat".
 
-**
+After all steps have been executed, you can test your code's functionality by typing docker images and you will see your image there: tomcat.
 
-### 3. Step three
-**
-You can now start a container from an images is by running this
+### 3. Starting a container
+
+You can now start a container from an image by running this:
+
 ```
 docker run -p 8080:8080 --name=tomcat tomcat
 ```
 
-Let me explain, **docker run** - _Run a command in a new container_. -p is very important  because, usually applications that use some ports in order to run, like tomcat 8080, mysql 3306, apache 80, in a docker container those ports will be restricted only in that container. What this means? it means that if you start a container with mysql (port 3306) and you want to access that mysql instance from a Java application you will not be able to access it because mysql port is restricted to be open just in the Docker container that you started. 
-But we have a solution here by using -p parameter - _Publish a container's port(s) to the host_.By using **port1:port2** you want to say that: i want  **port1** to match with **port2**. After that you can use **port2** in order to access the service that is opened on **port1** inside the container.
+Let's break down this simple, yet complex command.
 
-**
+**docker run** - _Runs a command in a new container_. 
 
-### 4. Step four
-** 
-After you run a container you can check that by typing 
+**p** - an important term. Usually applications that use some ports in order to run, like tomcat 8080, mySQL 3306, Apache 80, and so on. In a docker container, those ports will be restricted to that container. This means that, if you start a container with mySQL (port 3306) and you'd like to access that mySQL instance from a Java application, you will not be able to access it. The mySQL port is forced to be open in the Docker container that you have started. 
+
+But we solve this port issue by using p parameter.
+
+**p parameter** - Establishes a connection between container's port(s) to the host_. By using **port1:port2** you make  **port1** match with **port2**. After that, you can use **port2** in order to access the service that is opened on **port1** inside the container. Thus, the container is now connected with outside environments.
+
+### 4. Checking for containers
+
+After you run a container you can check that it exists by typing the following sequence:
+
 ```
 docker ps
 ```
-This command will show to you all running containers, if this will not show something than it means your container creation failed. To check that type
+
+This command will show you all running containers. If this commands returns nothing at all, then your container creation failed.
+
 ```
 docker ps -a
 ```
-That will display all containers.
 
-**
+The above command displays all containers (running or not).
 
 ### 5. Extras
-**
 
-After you started a container you can stop it by using **docker stop [name]**, in the future you can start again the container by typing **docker start [name]**.
-Another important command is **docker exec** that let's you run a command inside your docker **running** container. Be aware just in running containers not in the stopped ones.
+After you started a container you can stop it by using **docker stop [name]**. You can restart the container by typing **docker start [name]**.
 
-For a complete list of commands you can go to [https://docs.docker.com/engine/reference/commandline/cli/](https://docs.docker.com/engine/reference/commandline/cli/). I will recommend you to read all of those commands.
+Another important command is **docker exec**, which lets you run a command inside your Docker **running** container. Note that this only works in runnign containers, not stopped ones.
 
-Hope that this will help you. For any question just write me on twiiter [@grvmariobyn](https://twitter.com/grvmariobyn)
-Thank you. Marius.
+For a complete list of commands you can go to [Docker references](https://docs.docker.com/engine/reference/commandline/cli/). I will recommend that you read up on many of those commands if you find Docker containers interesting.
+
+I hope that this brief tutorial on Dockers has helped you! 
+
+If you have any questions, please comment below or find me on Twitter, at [@grvmariobyn](https://twitter.com/grvmariobyn).
+
+Thank you. 
+Marius.
