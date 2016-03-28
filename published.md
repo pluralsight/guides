@@ -1,3 +1,8 @@
+### Docker's - Beginner Guide by Marius Baisan
+- [Read the guide](http://tutorials.pluralsight.com/devops/docker-s-beginner-guide?saved=1)
+- [Read more from Marius Baisan](http://tutorials.pluralsight.com/author/mariobyn) <img src="https://avatars.githubusercontent.com/u/4470735?v=3" width="30" height="30" alt="Marius Baisan" />
+- Related to: DevOps (Docker, Nagios, Jenkins, Chef, Puppet, etc)
+
 ### Creating a chat using Rails' Action Cable by Hristo Georgiev
 - [Read the guide](http://tutorials.pluralsight.com/ruby-ruby-on-rails/creating-a-chat-using-rails-action-cable?saved=1)
 - [Read more from Hristo Georgiev](http://tutorials.pluralsight.com/author/Kaizeras) <img src="https://avatars.githubusercontent.com/u/6340189?v=3" width="30" height="30" alt="Hristo Georgiev" />
