@@ -1,5 +1,5 @@
 ### Comparing unrelated types by Luke Lee
-- [Read the guide](http://tutorials.pluralsight.com/python/comparing-unrelated-types?saved=1&status=in-review)
+- [Read the guide](http://tutorials.pluralsight.com/python/comparing-unrelated-types?status=in-review)
 - [Read more from Luke Lee](http://tutorials.pluralsight.com/author/durden) <img src="https://avatars.githubusercontent.com/u/58063?v=3" width="30" height="30" alt="Luke Lee" />
 - Related to: Python
 
