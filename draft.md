@@ -1,3 +1,8 @@
+### Beginners guide to node.js by Prateek Gupta
+- [Read the guide](http://tutorials.pluralsight.com/node-js/beginners-guide-to-node-js?status=draft)
+- [Read more from Prateek Gupta](http://tutorials.pluralsight.com/author/prtkgpt) <img src="https://avatars.githubusercontent.com/u/2454349?v=3" width="30" height="30" alt="Prateek Gupta" />
+- Related to: Node.js
+
 ### Begining Ember by Sigu Magwa
 - [Read the guide](http://tutorials.pluralsight.com/front-end-javascript/begining-ember?status=draft)
 - [Read more from Sigu Magwa](http://tutorials.pluralsight.com/author/sigu) <img src="https://avatars.githubusercontent.com/u/584211?v=3" width="30" height="30" alt="Sigu Magwa" />
