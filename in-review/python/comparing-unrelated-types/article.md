@@ -129,7 +129,7 @@ Nice!  As you see above, unrelated type comparisons now lead to TypeErrors, a re
 
 So when you upgrade your awesome
 application to [Python 3](http://www.python.org/getit/releases/3.0/) comparing
-completely different types will the interpreter to complain loudly, and it should. Then, you will be free to forget everything you learned in this post. :)
+completely different types will cause the interpreter to complain loudly, and it should. Then, you are free to forget everything you learned in this post. :)
 
 ##Suggested Reading
 
