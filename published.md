@@ -3,8 +3,8 @@
 - [Read more from Peter Olson](http://tutorials.pluralsight.com/author/peterolson) <img src="https://avatars.githubusercontent.com/u/920512?v=3" width="30" height="30" alt="Peter Olson" />
 - Related to: Front-End JavaScript (Angular, React, Meteor, etc)
 
-### Docker - A Beginner's Guide by Marius Baisan
-- [Read the guide](http://tutorials.pluralsight.com/devops/docker-a-beginner-s-guide?saved=1)
+### Docker - A Beginner Guide by Marius Baisan
+- [Read the guide](http://tutorials.pluralsight.com/devops/docker-a-beginner-guide?saved=1)
 - [Read more from Marius Baisan](http://tutorials.pluralsight.com/author/mariobyn) <img src="https://avatars.githubusercontent.com/u/4470735?v=3" width="30" height="30" alt="Marius Baisan" />
 - Related to: DevOps (Docker, Nagios, Jenkins, Chef, Puppet, etc)
 
