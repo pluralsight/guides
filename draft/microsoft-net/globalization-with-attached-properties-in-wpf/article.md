@@ -15,7 +15,7 @@ So basically they are the existing properties that we use in everyday WPF develo
 
 ```xml
 <DockPanel>
-<CheckBox DockPanel.Dock="Top">Hello</CheckBox>
+   <CheckBox DockPanel.Dock="Top">Hello</CheckBox>
 </DockPanel>
 ```
 
