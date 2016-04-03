@@ -27,7 +27,7 @@ So using attached properties you can create new custom properties that suit your
 
 After finding out about attached properties, my purpose was to create attached properties that will automatically select the text, header or tooltip that matches the current language of the application.
 
-To get started let's first deal with TextBlocks. Attached properties work like extension methods, here is the code to add translated text to a TextBlock:
+To get started let's first deal with TextBlocks. Attached properties work like extension methods, here is the code to add translated text to a ```TextBlock``` :
 
 ```cs
 namespace SomeNamespace.Extensions
@@ -65,5 +65,19 @@ namespace SomeNamespace.Extensions
 	}
 }
 ```
+It is fairly simple; we create 2 seperate properties for both languages named TurkishText and EnglishText. These properties will be of type ```string``` . Finally we define the getters and setters for these properties.
 
+So now that we defined the properties, we can add them to our XAML code.
+
+```xaml
+<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+		xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+		xmlns:uiExtensions="clr-namespace:SomeNamespace.Extensions"
+		mc:Ignorable="d" x:Class="SomeNamespace.MainWindow"
+        Title="MainWindow">
+</Window>
+```
 
