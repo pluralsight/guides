@@ -2,7 +2,7 @@ Recently during my PhD studies, as a part of the thesis project, I needed an app
 
 There are many ways to do globalization, such as setting up string resources, having custom static classes that hold the original and translated text or using some globalization libraries but I wanted something simple and easy on the XAML and the code behind like:
 
-```xml
+```xaml
 <TextBlock Text=”English Text” English=”English Text” Turkish=”Türkçe Yazı” />
 ```
 
@@ -13,7 +13,7 @@ After a bit of research I came upon a concept called “attached properties” w
 According to an MSDN article; “An attached property is a concept defined by Extensible Application Markup Language (XAML). An attached property is intended to be used as a type of global property that is settable on any object. In Windows Presentation Foundation (WPF), attached properties are typically defined as a specialized form of dependency property that does not have the conventional property wrapper”.
 So basically they are the existing properties that we use in everyday WPF development such as:
 
-```xml
+```xaml
 <DockPanel>
    <CheckBox DockPanel.Dock="Top">Hello</CheckBox>
 </DockPanel>
