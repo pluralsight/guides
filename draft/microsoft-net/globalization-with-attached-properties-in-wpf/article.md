@@ -82,7 +82,7 @@ So now that we defined the properties, we can add them to our XAML code.
 ```
 So now we can use our newly created extension like this:
 
-```
+```xaml
 <TextBlock Text="Example English Text" 
 			uiExtensions:UiExtensions.TurkishText="Örnek Türkçe Yazı" 
 			uiExtensions:UiExtensions.EnglishText="Example English Text"/>
@@ -90,7 +90,7 @@ So now we can use our newly created extension like this:
 
 However if you run the application now you will see that nothing actually changes. We need to tell the application that we want to change the language somehow.
 
-We can simply write a LanguageChanger class and a few helper classes to do this job for us.
+We can simply write a ```LanguageChanger``` class and a few helper classes to do this job for us.
 
 ```cs
 namespace SomeNamespace.Globalization
@@ -169,4 +169,72 @@ namespace SomeNamespace.Globalization
 ```
 
 So when we use the language changer code, now it should find all the TextBlocks and change their language to whichever language setting we set before. However, there is a big problem here. It will try and change **ALL** TextBlocks in our XAML. So if it cannot find any EnglishText or TurkishText it will default to empty string which is not very desirable because we do not want **ALL** our TextBlocks to change.
+
+To solve this issue we need a flag for the ```LanguageChanger``` class to decide whether to translate or not. For this we need yet another attached property.
+
+So our extensions will look like this:
+
+```cs
+namespace SomeNamespace.Extensions
+{
+	public class UiExtensions
+	{
+		public static readonly DependencyProperty TurkishTextProperty = DependencyProperty.RegisterAttached("TurkishText",
+                                                                                                        typeof(string),
+                                                                                                        typeof(UiExtensions),
+                                                                                                        new PropertyMetadata(default(string)));
+        public static readonly DependencyProperty EnglishTextProperty = DependencyProperty.RegisterAttached("EnglishText",
+                                                                                                        typeof(string),
+                                                                                                        typeof(UiExtensions),
+                                                                                                        new PropertyMetadata(default(string)));
+		public static readonly DependencyProperty ChangeLanguageProperty = DependencyProperty.RegisterAttached("ChangeLanguage",
+																												typeof(bool),
+																												typeof(UiExtensions),
+																												new PropertyMetadata(default(bool)));																										
+																										
+        public static void SetTurkishText(UIElement element, string value)
+        {
+            element.SetValue(TurkishTextProperty, value);
+        }
+
+        public static string GetTurkishText(UIElement element)
+        {
+            return (string) element.GetValue(TurkishTextProperty);
+        }
+
+        public static void SetEnglishText(UIElement element, string value)
+        {
+            element.SetValue(EnglishTextProperty, value);
+        }
+
+        public static string GetEnglishText(UIElement element)
+        {
+            return (string) element.GetValue(EnglishTextProperty);
+        }	
+		
+        public static void SetChangeLanguage(UIElement element, bool value)
+        {
+            element.SetValue(ChangeLanguageProperty, value);
+        }
+
+        public static bool GetChangeLanguage(UIElement element)
+        {
+            return (bool) element.GetValue(ChangeLanguageProperty);
+        }
+	}
+}
+```
+
+The property we added is of type ```bool``` and it will help ```LanguageChanger``` whether to skip this ```TextBlock``` or not.
+
+We also need to change our XAML code accordingly and add our newly created property.
+
+```xaml
+<TextBlock Text="Example English Text"
+			uiExtensions:UiExtensions.ChangeLanguage="True" 
+			uiExtensions:UiExtensions.TurkishText="Örnek Türkçe Yazı" 
+			uiExtensions:UiExtensions.EnglishText="Example English Text"/>
+```
+
+When ```ChangeLanguage``` is ```true``` then it will process that ```TextBlock```, if ```false```, then it will skip it.
 
