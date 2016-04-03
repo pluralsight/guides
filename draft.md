@@ -1,3 +1,8 @@
+### Globalization with Attached Properties in WPF by aykanatm
+- [Read the guide](http://tutorials.pluralsight.com/microsoft-net/globalization-with-attached-properties-in-wpf?status=draft)
+- [Read more from aykanatm](http://tutorials.pluralsight.com/author/aykanatm) <img src="https://avatars.githubusercontent.com/u/9140297?v=3" width="30" height="30" alt="aykanatm" />
+- Related to: Microsoft.NET (C#, ASP.NET, VB.NET, etc)
+
 ### Beginners guide to node.js by Prateek Gupta
 - [Read the guide](http://tutorials.pluralsight.com/node-js/beginners-guide-to-node-js?status=draft)
 - [Read more from Prateek Gupta](http://tutorials.pluralsight.com/author/prtkgpt) <img src="https://avatars.githubusercontent.com/u/2454349?v=3" width="30" height="30" alt="Prateek Gupta" />
