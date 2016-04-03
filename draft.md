@@ -1,6 +1,6 @@
-### Globalization with Attached Properties in WPF by aykanatm
+### Globalization with Attached Properties in WPF by Murat Aykanat
 - [Read the guide](http://tutorials.pluralsight.com/microsoft-net/globalization-with-attached-properties-in-wpf?status=draft)
-- [Read more from aykanatm](http://tutorials.pluralsight.com/author/aykanatm) <img src="https://avatars.githubusercontent.com/u/9140297?v=3" width="30" height="30" alt="aykanatm" />
+- [Read more from Murat Aykanat](http://tutorials.pluralsight.com/author/aykanatm) <img src="https://avatars.githubusercontent.com/u/9140297?v=3" width="30" height="30" alt="Murat Aykanat" />
 - Related to: Microsoft.NET (C#, ASP.NET, VB.NET, etc)
 
 ### Beginners guide to node.js by Prateek Gupta
