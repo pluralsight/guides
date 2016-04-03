@@ -27,7 +27,7 @@ So using attached properties you can create new custom properties that suit your
 
 After finding out about attached properties, my purpose was to create attached properties that will automatically select the text, header or tooltip that matches the current language of the application.
 
-To get started let's first deal with TextBlocks. Attached properties work like extension methods, here is the code to add translated text to a ```TextBlock``` :
+As an example I will show how you can use attached properties with TextBlocks. Attached properties work like extension methods, here is the code to add translated text to a ```TextBlock``` :
 
 ```cs
 namespace SomeNamespace.Extensions
@@ -283,4 +283,14 @@ namespace SomeNamespace.Globalization
     }
 }
 ```
+
+So after all the hard work is done, you can now simply use your newly created custom properties to create translations for every ```TextBlock``` in your application purely in XAML.
+
+Do we stop at translating only TextBlocks? Of course not! We can use attached properties on every type of string we want to translate. For example, headers, context menus, contents etc.
+
+All you need to do is to create some attached properties, add them to your ```LanguageChanger```, or whatever class you are using for globalization and just edit your XAML code as we did with TextBlocks.
+
+### Conclusion
+
+Attached properties are a very useful part of WPF and their use can be extensive on extending or creating new properties for your controls and objects. Especially in the task of globalization I found them very useful. This technique will hopefully help you in your own projects as well.
 
