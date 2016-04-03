@@ -26,3 +26,44 @@ So using attached properties you can create new custom properties that suit your
 ### Attached Properties in Globalization
 
 After finding out about attached properties, my purpose was to create attached properties that will automatically select the text, header or tooltip that matches the current language of the application.
+
+To get started let's first deal with TextBlocks. Attached properties work like extension methods, here is the code to add translated text to a TextBlock:
+
+```
+namespace SomeNamespace.Extensions
+{
+	public class UiExtensions
+	{
+		public static readonly DependencyProperty TurkishTextProperty = DependencyProperty.RegisterAttached("TurkishText",
+                                                                                                        typeof(string),
+                                                                                                        typeof(UiExtensions),
+                                                                                                        new PropertyMetadata(default(string)));
+        public static readonly DependencyProperty EnglishTextProperty = DependencyProperty.RegisterAttached("EnglishText",
+                                                                                                        typeof(string),
+                                                                                                        typeof(UiExtensions),
+                                                                                                        new PropertyMetadata(default(string)));																							
+																										
+        public static void SetTurkishText(UIElement element, string value)
+        {
+            element.SetValue(TurkishTextProperty, value);
+        }
+
+        public static string GetTurkishText(UIElement element)
+        {
+            return (string) element.GetValue(TurkishTextProperty);
+        }
+
+        public static void SetEnglishText(UIElement element, string value)
+        {
+            element.SetValue(EnglishTextProperty, value);
+        }
+
+        public static string GetEnglishText(UIElement element)
+        {
+            return (string) element.GetValue(EnglishTextProperty);
+        }
+	}
+}
+```
+
+
