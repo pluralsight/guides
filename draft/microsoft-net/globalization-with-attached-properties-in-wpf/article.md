@@ -80,4 +80,52 @@ So now that we defined the properties, we can add them to our XAML code.
         Title="MainWindow">
 </Window>
 ```
+So now we can use our newly created extension like this:
+
+```
+<TextBlock Text="Example English Text" 
+			uiExtensions:UiExtensions.TurkishText="Örnek Türkçe Yazı" 
+			uiExtensions:UiExtensions.EnglishText="Example English Text"/>
+```
+
+However if you run the application now you will see that nothing actually changes. We need to tell the application that we want to change the language somehow.
+
+We can simply write a LanguageChanger class to do this job for us.
+
+```cs
+namespace SomeNamespace.Globalization
+{
+    public class LanguageChanger
+    {
+        private readonly UIElement _element;
+        private readonly string _language;
+        
+        public LanguageChanger(UIElement element, string language)
+        {
+            _element = element;
+            _language = language;
+        }
+        
+        public void Change()
+        {
+            var textBlocks = UiUtilities.GetChildren<TextBlock>(_element);            
+
+            if (_language == AppLanguages.English)
+            {
+                foreach (var textblock in textBlocks)
+                {
+                    textblock.Text = UiExtensions.GetEnglishText(textblock);                    
+                }                
+            }
+            else if (_language == AppLanguages.Turkish)
+            {
+                foreach (var textblock in textBlocks)
+                {                   
+					textblock.Text = UiExtensions.GetTurkishText(textblock);                    
+                }                
+            }
+        }
+    }
+}
+```
 
