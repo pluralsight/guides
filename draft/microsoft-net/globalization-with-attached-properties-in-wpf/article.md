@@ -168,3 +168,5 @@ namespace SomeNamespace.Globalization
 }
 ```
 
+So when we use the language changer code, now it should find all the TextBlocks and change their language to whichever language setting we set before. However, there is a big problem here. It will try and change **ALL** TextBlocks in our XAML. So if it cannot find any EnglishText or TurkishText it will default to empty string which is not very desirable because we do not want **ALL** our TextBlocks to change.
+
