@@ -90,7 +90,46 @@ So now we can use our newly created extension like this:
 
 However if you run the application now you will see that nothing actually changes. We need to tell the application that we want to change the language somehow.
 
-We can simply write a LanguageChanger class to do this job for us.
+We can simply write a LanguageChanger class and a few helper classes to do this job for us.
+
+```cs
+namespace SomeNamespace.Globalization
+{
+    public static class AppLanguages
+    {
+        public static string English = "English";
+        public static string Turkish = "Türkçe";
+    }
+}
+```
+
+```cs
+namespace SomeNamespace.Utilities
+{
+    public static class UiUtilities
+    {
+        public static IEnumerable<T> GetChildren<T>(DependencyObject depObj) where T : DependencyObject
+        {
+            if (depObj != null)
+            {
+                for (int i = 0; i < VisualTreeHelper.GetChildrenCount(depObj); i++)
+                {
+                    DependencyObject child = VisualTreeHelper.GetChild(depObj, i);
+                    if (child != null && child is T)
+                    {
+                        yield return (T)child;
+                    }
+
+                    foreach (T childOfChild in GetChildren<T>(child))
+                    {
+                        yield return childOfChild;
+                    }
+                }
+            }
+        }
+    }
+}
+```
 
 ```cs
 namespace SomeNamespace.Globalization
