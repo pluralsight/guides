@@ -29,7 +29,7 @@ After finding out about attached properties, my purpose was to create attached p
 
 To get started let's first deal with TextBlocks. Attached properties work like extension methods, here is the code to add translated text to a TextBlock:
 
-```
+```cs
 namespace SomeNamespace.Extensions
 {
 	public class UiExtensions
