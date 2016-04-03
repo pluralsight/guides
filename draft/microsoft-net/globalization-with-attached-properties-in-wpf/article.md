@@ -238,3 +238,49 @@ We also need to change our XAML code accordingly and add our newly created prope
 
 When ```ChangeLanguage``` is ```true``` then it will process that ```TextBlock```, if ```false```, then it will skip it.
 
+Finally we need to edit our ```LanguageChanger``` :
+
+```cs
+namespace SomeNamespace.Globalization
+{
+    public class LanguageChanger
+    {
+        private readonly UIElement _element;
+        private readonly string _language;
+        
+        public LanguageChanger(UIElement element, string language)
+        {
+            _element = element;
+            _language = language;
+        }
+        
+        public void Change()
+        {
+            var textBlocks = UiUtilities.GetChildren<TextBlock>(_element);
+            
+
+            if (_language == AppLanguages.English)
+            {
+                foreach (var textblock in textBlocks)
+                {
+                    if (UiExtensions.GetChangeLanguage(textblock))
+                    {
+                        textblock.Text = UiExtensions.GetEnglishText(textblock);
+                    }
+                }                
+            }
+            else if (_language == AppLanguages.Turkish)
+            {
+                foreach (var textblock in textBlocks)
+                {
+                    if (UiExtensions.GetChangeLanguage(textblock))
+                    {
+                        textblock.Text = UiExtensions.GetTurkishText(textblock);
+                    }
+                }                
+            }
+        }
+    }
+}
+```
+
