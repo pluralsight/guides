@@ -10,7 +10,7 @@ After a bit of research I came upon a concept called “attached properties” w
 
 ### What are attached properties?
 
-According to an MSDN article; “An attached property is a concept defined by Extensible Application Markup Language (XAML). An attached property is intended to be used as a type of global property that is settable on any object. In Windows Presentation Foundation (WPF), attached properties are typically defined as a specialized form of dependency property that does not have the conventional property wrapper”.
+According to an [MSDN article](https://msdn.microsoft.com/en-us/library/ms749011%28v=vs.100%29.aspx); “An attached property is a concept defined by Extensible Application Markup Language (XAML). An attached property is intended to be used as a type of global property that is settable on any object. In Windows Presentation Foundation (WPF), attached properties are typically defined as a specialized form of dependency property that does not have the conventional property wrapper”.
 So basically they are the existing properties that we use in everyday WPF development such as:
 
 ```xaml
