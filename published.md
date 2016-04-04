@@ -1,3 +1,8 @@
+### Comparing unrelated types by Luke Lee
+- [Read the guide](http://tutorials.pluralsight.com/python/comparing-unrelated-types)
+- [Read more from Luke Lee](http://tutorials.pluralsight.com/author/durden) <img src="https://avatars.githubusercontent.com/u/58063?v=3" width="30" height="30" alt="Luke Lee" />
+- Related to: Python
+
 ### Introduction to Test Driven Development in JavaScript by Peter Olson
 - [Read the guide](http://tutorials.pluralsight.com/front-end-javascript/introduction-to-test-driven-development-in-javascript)
 - [Read more from Peter Olson](http://tutorials.pluralsight.com/author/peterolson) <img src="https://avatars.githubusercontent.com/u/920512?v=3" width="30" height="30" alt="Peter Olson" />
