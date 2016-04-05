@@ -36,7 +36,6 @@ The differences between lists and sets introduce a few trade-offs:
 
 ### 1. Memory size *
 
-[code lang="python"]
     >>> import sys
     >>> sys.getsizeof({})
     136
@@ -44,7 +43,6 @@ The differences between lists and sets introduce a few trade-offs:
     32
     >>> sys.getsizeof(set())
     112
-[/code]
 
 Notice the [dict](http://docs.python.org/2/tutorial/datastructures.html#dictionaries) is considerably larger than the [list](http://docs.python.org/2/tutorial/datastructures.html#more-on-lists).  We can refer to this as the memory overhead of dicts vs lists.  This is only a few bytes, which doesn't seem like a lot.  However, this can become a big issue if your application maintains thousands or millions of dicts.
 
@@ -58,7 +56,6 @@ This is where things get a bit fuzzy and start to depend heavily the specific re
 
 Optimizing algorithms is another [science](http://en.wikipedia.org/wiki/Mathematical_optimization) all by itself, so let's use narrow the algorithm discussion and just use a single example, determining if an entry is in our collection or not.
 
-[code lang="python"]
     >>> import timeit
     >>> # Timing lookup for a list
     >>> t = timeit.Timer('100000 in x', 
@@ -75,7 +72,6 @@ Optimizing algorithms is another [science](http://en.wikipedia.org/wiki/Mathemat
                          setup='x = {ii:ii for ii in xrange(100000)}')
     >>> sum(t.repeat(3, 1)) / 3.0
     2.384185791015625e-06
-[/code]
 
 Notice how much slower the list lookup is.  So, a [list](http://docs.python.org/2/tutorial/datastructures.html#more-on-lists) is a poor choice for any application where you will be doing lots of lookup operations on a relatively large collection.
 
@@ -85,7 +81,6 @@ Unfortunately, the decision is usually not as simple as finding what is fastest.
 
 This principle applies directly here.  What kind of space/memory trade-off would we be making to get this increased lookup speed?
 
-[code lang="python"]
     >>> x = [ii for ii in xrange(100000)]
     >>> sys.getsizeof(x) / 1024
     402
@@ -95,7 +90,6 @@ This principle applies directly here.  What kind of space/memory trade-off would
     >>> x = {ii:ii for ii in xrange(100000)}
     >>> sys.getsizeof(x) / 1024
     3072
-[/code]
 
 As you can see, we gave up a relatively large amount of memory to get the improved lookup speeds of the set and dict.
 
