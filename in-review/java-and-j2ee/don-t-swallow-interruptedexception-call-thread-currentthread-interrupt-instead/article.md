@@ -24,20 +24,20 @@ try {
 }
 ```
 
-## What is the InterruptedException?
+## What is InterruptedException?
 
-There is no way to simply stop a running thread in java (don't even consider using the deprecated method `stop()`). Stopping threads is cooperative in java. Calling `Thread.interrupt()` is a way to tell the thread to stop what it is doing. If the thread is in a blocking call, the blocking call will throw an `InterruptedException,` otherwise the interrupted flag of the tread will be set. A Thread or a `Runnable` that is interruptable should check from time to time `Thread.currentThread().isInterrupted()`. If it returns true, cleanup and return.
+There is no way to simply stop a running thread in Java (don't even consider using the deprecated method `stop()`). Stopping threads is cooperative in Java. Calling `Thread.interrupt()` is a way to tell the thread to stop what it is doing. If the thread is in a blocking call, the blocking call will throw an `InterruptedException,` otherwise the interrupted flag of the tread will be set. A Thread or a `Runnable` that is interruptible should check from time to time `Thread.currentThread().isInterrupted()`. If it returns true, the thread should clean-up and return.
 
-## Why is `InterruptedException` thrown?
+## Why is InterruptedException thrown?
 
-The problem is that blocking calls like `sleep()` and `wait()`, can take very long till the check can be done. Therefore they throw an `InterruptedException`. However the `isInterrupted` is cleared when the I`nterruptedException` is thrown! (I have some vague idea why this is the case, but for whatever reason this is done, that is how it is!)
+The problem is that blocking calls like `sleep()` and `wait()`, can take very long till the check `Thread.currentThread().isInterrupted()` can be done. Therefore they throw an `InterruptedException`. However the `isInterrupted` is cleared when the `InterruptedException` is thrown! (I have some vague idea why this is the case, but for whatever reason this is done, that is how it is!)
 
-## Why can't `InterruptedException` be simply ignored?
+## Why can't InterruptedException be simply ignored?
 
-It should be clear by now: because ignoring an `InterruptedException` means resetting the interrupted status of the thread. For example, worker threads take `Runnable` from a queue and execute they may check the interrupted status periodically. If you swallow it the thread would not know that it was interrupted and would happily continue to run.
+It should be clear by now: ignoring an `InterruptedException` means resetting the interrupted status of the thread. For example, worker threads take `Runnable` from a queue and execute, and check the interrupted status periodically. If you swallow the exception, the thread would not know that it was interrupted and would happily continue to run.
 
 ## Some more thoughts
-Unfortunately it is not specified that `Thread.interrupt()` can only be used for cancellation. It can be used for anything that requires to set a flag on a thread. So, ending your task or `Runnable` early might be the wrong choice, if the interrupted status is used for something else. But common practice is to use it for cancellation. But even if it is used for something else, you code does not have the right to reset the interrupt flag (unless you are the owner of the thread).
+Unfortunately it is not specified that `Thread.interrupt()` can only be used for cancellation. It can be used for anything that requires to set a flag on a thread. So, ending your task or `Runnable` early might be the wrong choice if the interrupted status is used for something else. Even though common practice is to use it for cancellation, if it is used for something else, your code does not have the right to reset the interrupt flag (unless you are the owner of the thread).
 
 To learn more read the nice article [Dealing with `InterruptedException` by Brian Goetz](http://www.ibm.com/developerworks/library/j-jtp05236/).
 
@@ -45,7 +45,7 @@ Or read [Java Concurrency in Practice](https://books.google.de/books/about/Java_
 
 ##Summary
 
-**If you don't know what to do with an `InterruptedException` call `Thread.currentThread().interrupt()`**
+**If you don't know what to do with an `InterruptedException`, call `Thread.currentThread().interrupt()`**
 
 ####Note
 
