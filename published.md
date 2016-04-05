@@ -1,3 +1,28 @@
+### Comparing unrelated types by Luke Lee
+- [Read the guide](http://tutorials.pluralsight.com/python/comparing-unrelated-types)
+- [Read more from Luke Lee](http://tutorials.pluralsight.com/author/durden) <img src="https://avatars.githubusercontent.com/u/58063?v=3" width="30" height="30" alt="Luke Lee" />
+- Related to: Python
+
+### Introduction to Test Driven Development in JavaScript by Peter Olson
+- [Read the guide](http://tutorials.pluralsight.com/front-end-javascript/introduction-to-test-driven-development-in-javascript)
+- [Read more from Peter Olson](http://tutorials.pluralsight.com/author/peterolson) <img src="https://avatars.githubusercontent.com/u/920512?v=3" width="30" height="30" alt="Peter Olson" />
+- Related to: Front-End JavaScript (Angular, React, Meteor, etc)
+
+### Docker - A Beginner Guide by Marius Baisan
+- [Read the guide](http://tutorials.pluralsight.com/devops/docker-a-beginner-guide)
+- [Read more from Marius Baisan](http://tutorials.pluralsight.com/author/mariobyn) <img src="https://avatars.githubusercontent.com/u/4470735?v=3" width="30" height="30" alt="Marius Baisan" />
+- Related to: DevOps (Docker, Nagios, Jenkins, Chef, Puppet, etc)
+
+### Creating a chat using Rails' Action Cable by Hristo Georgiev
+- [Read the guide](http://tutorials.pluralsight.com/ruby-ruby-on-rails/creating-a-chat-using-rails-action-cable)
+- [Read more from Hristo Georgiev](http://tutorials.pluralsight.com/author/Kaizeras) <img src="https://avatars.githubusercontent.com/u/6340189?v=3" width="30" height="30" alt="Hristo Georgiev" />
+- Related to: Ruby, Ruby on Rails
+
+### Tips and cool tricks to use in git by Lucas Andrey
+- [Read the guide](http://tutorials.pluralsight.com/devops/tips-and-cool-tricks-to-use-in-git)
+- [Read more from Lucas Andrey](http://tutorials.pluralsight.com/author/andreybleme) <img src="https://avatars.githubusercontent.com/u/5385383?v=3" width="30" height="30" alt="Lucas Andrey" />
+- Related to: DevOps (Docker, Nagios, Jenkins, Chef, Puppet, etc)
+
 ### Ruby on Rails Nested Attributes by Itay Grudev
 - [Read the guide](http://tutorials.pluralsight.com/ruby-ruby-on-rails/ruby-on-rails-nested-attributes)
 - [Read more from Itay Grudev](http://tutorials.pluralsight.com/author/itay-grudev) <img src="https://avatars.githubusercontent.com/u/2123767?v=3" width="30" height="30" alt="Itay Grudev" />

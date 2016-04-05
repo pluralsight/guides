@@ -1,7 +1,7 @@
-### Creating a chat using Rails' Action Cable by Hristo Georgiev
-- [Read the guide](http://tutorials.pluralsight.com/ruby-ruby-on-rails/creating-a-chat-using-rails-action-cable?status=in-review)
-- [Read more from Hristo Georgiev](http://tutorials.pluralsight.com/author/Kaizeras) <img src="https://avatars.githubusercontent.com/u/6340189?v=3" width="30" height="30" alt="Hristo Georgiev" />
-- Related to: Ruby, Ruby on Rails
+### Globalization with Attached Properties in WPF by Murat Aykanat
+- [Read the guide](http://tutorials.pluralsight.com/microsoft-net/globalization-with-attached-properties-in-wpf?status=in-review)
+- [Read more from Murat Aykanat](http://tutorials.pluralsight.com/author/aykanatm) <img src="https://avatars.githubusercontent.com/u/9140297?v=3" width="30" height="30" alt="Murat Aykanat" />
+- Related to: Microsoft.NET (C#, ASP.NET, VB.NET, etc)
 
 ### Download large files from remote servers using Nginx docker by Red Moses
 - [Read the guide](http://tutorials.pluralsight.com/devops/download-large-files-from-remote-servers-using-nginx-docker?status=in-review)
@@ -28,11 +28,6 @@
 - [Read more from Luke Lee](http://tutorials.pluralsight.com/user/durden) <img src="https://avatars.githubusercontent.com/u/58063?v=3" width="30" height="30" alt="Luke Lee" />
 - Related to: Python
 
-### Docker's - Beginner Guide by Marius Baisan
-- [Read the guide](http://tutorials.pluralsight.com/devops/docker-s-beginner-guide?status=in-review)
-- [Read more from Marius Baisan](http://tutorials.pluralsight.com/user/mariobyn) <img src="https://avatars.githubusercontent.com/u/4470735?v=3" width="30" height="30" alt="Marius Baisan" />
-- Related to: DevOps (Docker, Nagios, Jenkins, Chef, Puppet, etc)
-
 ### How To Install Ruby on Rails on CentOS 7 by Consigliere
 - [Read the guide](http://tutorials.pluralsight.com/ruby-ruby-on-rails/how-to-install-ruby-on-rails-on-centos-7?status=in-review)
 - [Read more from Consigliere](http://tutorials.pluralsight.com/author/clthck) <img src="https://avatars.githubusercontent.com/u/14348482?v=3" width="30" height="30" alt="Consigliere" />
@@ -46,11 +41,6 @@
 ### Moving a Cloud App to a different Azure Resource Group by Aligned
 - [Read the guide](http://tutorials.pluralsight.com/devops/moving-a-cloud-app-to-a-different-azure-resource-group?status=in-review)
 - [Read more from Aligned](http://tutorials.pluralsight.com/user/logankd) <img src="https://avatars.githubusercontent.com/u/1636977?v=3" width="30" height="30" alt="Aligned" />
-- Related to: DevOps (Docker, Nagios, Jenkins, Chef, Puppet, etc)
-
-### Tips and cool tricks to use in git by Lucas Andrey
-- [Read the guide](http://tutorials.pluralsight.com/devops/tips-and-cool-tricks-to-use-in-git?status=in-review)
-- [Read more from Lucas Andrey](http://tutorials.pluralsight.com/user/andreybleme) <img src="https://avatars.githubusercontent.com/u/5385383?v=3" width="30" height="30" alt="Lucas Andrey" />
 - Related to: DevOps (Docker, Nagios, Jenkins, Chef, Puppet, etc)
 
 ### Getting started with Ember.js by David Lormor
@@ -127,8 +117,3 @@
 - [Read the guide](http://tutorials.pluralsight.com/ruby-ruby-on-rails/defining-roles-with-concerns?status=in-review)
 - [Read more from arturcp](http://tutorials.pluralsight.com/user/arturcp) <img src="https://avatars.githubusercontent.com/u/523071?v=3" width="30" height="30" alt="arturcp" />
 - Related to: Ruby, Ruby on Rails
-
-### Introduction to Test Driven Development in JavaScript by Peter Olson
-- [Read the guide](http://tutorials.pluralsight.com/front-end-javascript/introduction-to-test-driven-development-in-javascript?status=in-review)
-- [Read more from Peter Olson](http://tutorials.pluralsight.com/user/peterolson) <img src="https://avatars.githubusercontent.com/u/920512?v=3" width="30" height="30" alt="Peter Olson" />
-- Related to: Front-End JavaScript (Angular, React, Meteor, etc)
