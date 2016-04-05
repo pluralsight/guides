@@ -1,0 +1,14 @@
+{
+    "author_name": "brown2rl",
+    "author_real_name": "Bobby Brown",
+    "branch": "master",
+    "branches": [],
+    "filename": "article.md",
+    "image_url": "https://avatars.githubusercontent.com/u/7128730?v=3",
+    "publish_status": "draft",
+    "stacks": [
+        "Front-End JavaScript (Angular, React, Meteor, etc)"
+    ],
+    "thumbnail_url": null,
+    "title": "Polymer - user interfaces for the next evolution of the web"
+}

@@ -1,0 +1,18 @@
+{
+    "_publish_status": "published",
+    "author_name": "andreybleme",
+    "author_real_name": "Lucas Andrey",
+    "branch": "master",
+    "branches": [
+        "NabaSadiaSiddiqui",
+        "adityavarshney"
+    ],
+    "filename": "article.md",
+    "first_commit": null,
+    "image_url": "https://avatars.githubusercontent.com/u/5385383?v=3",
+    "stacks": [
+        "DevOps (Docker, Nagios, Jenkins, Chef, Puppet, etc)"
+    ],
+    "thumbnail_url": null,
+    "title": "Tips and cool tricks to use in git"
+}

@@ -1,0 +1,18 @@
+{
+    "_publish_status": "published",
+    "author_name": "mariobyn",
+    "author_real_name": "Marius Baisan",
+    "branch": "master",
+    "branches": [
+        "adityavarshney",
+        "durden"
+    ],
+    "filename": "article.md",
+    "first_commit": null,
+    "image_url": "https://avatars.githubusercontent.com/u/4470735?v=3",
+    "stacks": [
+        "DevOps (Docker, Nagios, Jenkins, Chef, Puppet, etc)"
+    ],
+    "thumbnail_url": null,
+    "title": "Docker - A Beginner Guide"
+}

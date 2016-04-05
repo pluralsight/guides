@@ -12,10 +12,10 @@ Ready?
 
 ##Requirements
 
-+Your virtualbox vm should be off. Detach any network setting.
-+Any virtualbox release above of 4.x
-+The location of your VDI file in your hard disk.
-+having installed VMware Workstation 9 or superior
+- Your virtualbox vm should be off. Detach any network setting.
+- Any virtualbox release above of 4.x
+- The location of your VDI file in your hard disk.
+- Have VMware Workstation 9 or greater installed
 
 ##Provided Environment
 

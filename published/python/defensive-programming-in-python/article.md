@@ -103,11 +103,17 @@ def normalize_ranges(colname):
     live_max = numpy.max(live_data)
 
     ratio = {}
-    ratio['min'] = (live_min - original_range['datamin']) / colspan
-    ratio['max'] = (live_max - original_range['datamin']) / colspan
+    try:
+        ratio['min'] = (live_min - original_range['datamin']) / colspan
+        ratio['max'] = (live_max - original_range['datamin']) / colspan
+    except ZeroDivisionError:
+        ratio['min'] = 0.0
+        ratio['max'] = 0.0
 
     return ratio
 ```
+
+**Update Thanks to [this great comment on reddit](https://www.reddit.com/r/Python/comments/49yrtp/defensive_programming_in_python/d0wx2cr) for finding a bug in the article!**
 
 Now, assume we have the following 'columns' that are returned by the
 `get_column_data()` function:
@@ -196,8 +202,13 @@ def normalize_ranges(colname):
     live_max = numpy.max(live_data)
 
     ratio = {}
-    ratio['min'] = (live_min - original_range['datamin']) / colspan
-    ratio['max'] = (live_max - original_range['datamin']) / colspan
+    
+    try:
+        ratio['min'] = (live_min - original_range['datamin']) / colspan
+        ratio['max'] = (live_max - original_range['datamin']) / colspan
+    except ZeroDivisionError:
+        ratio['min'] = 0.0
+        ratio['max'] = 0.0
 
     assert 0.0 <= ratio['min'] <= 1.0, (
             '"%s" min (%f) not in [0-1] given (%f) colspan (%f)' % (
@@ -349,8 +360,13 @@ def normalize_ranges(colname):
     live_max = numpy.max(live_data)
 
     ratio = {}
-    ratio['min'] = (live_min - original_range['datamin']) / colspan
-    ratio['max'] = (live_max - original_range['datamin']) / colspan
+    
+    try:
+        ratio['min'] = (live_min - original_range['datamin']) / colspan
+        ratio['max'] = (live_max - original_range['datamin']) / colspan
+    except ZeroDivisionError:
+        ratio['min'] = 0.0
+        ratio['max'] = 0.0
 
     assert 0.0 <= ratio['min'] <= 1.0
     assert 0.0 <= ratio['max'] <= 1.0
@@ -582,9 +598,9 @@ to form your own style.  Also, the requirements for every project differ so
 it's important to learn all the tools and combine them in ways that
 make sense for your situation.
 
-#### Footnotes
+Please join our [Slack community](https://hackguides.herokuapp.com/) to chat about this tutorial with the author, Luke Lee. 
 
-<br/>
+#### Footnotes
 
 - References for this blog have been grouped into a
 [Pinboard collection of links](https://pinboard.in/u:durden/t:defensive_coding_talk/)
@@ -596,15 +612,16 @@ make sense for your situation.
     - You can also view the references for the related talk
       [here](http://bitly.com/defensive_coding).
 
+<p>
 [1]
 <small>
     Executable documentation is a term sometimes used to describe
     [doctests](http://docs.python.org/2/library/doctest.html).  "Literate
     testing" is term used to describe this concept.
 </small>
+</p>
 
-<br/>
-
+<p>
 [2]
 <small>
     You could even use logging to build your own analytics tool.  Log to a
@@ -612,8 +629,9 @@ make sense for your situation.
     script come behind you every time and collect these files.  Now you have a
     ton of usage information in a simple text-based format opening up tons of
     possibilities for data mining and helping your users.
-    <br/> <!-- markdown parsing fails if we don't include a true html break -->
+</small></p>
+<p><small>
     Keep in mind that most users won't fill out surveys.  So, this would be a
     way to collect information on the features they are trying to use or common
     workflows.  Then, you could make these better in future releases.
-</small>
+</small></p>

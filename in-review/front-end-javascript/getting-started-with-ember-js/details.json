@@ -1,0 +1,17 @@
+{
+    "_publish_status": "in-review",
+    "author_name": "davidlormor",
+    "author_real_name": "David Lormor",
+    "branch": "master",
+    "branches": [
+        "adityavarshney"
+    ],
+    "filename": "article.md",
+    "first_commit": null,
+    "image_url": "https://avatars.githubusercontent.com/u/3712117?v=3",
+    "stacks": [
+        "Front-End JavaScript (Angular, React, Meteor, etc)"
+    ],
+    "thumbnail_url": null,
+    "title": "Getting started with Ember.js"
+}
