@@ -4,7 +4,8 @@
     "author_real_name": "Marius Baisan",
     "branch": "master",
     "branches": [
-        "adityavarshney"
+        "adityavarshney",
+        "durden"
     ],
     "filename": "article.md",
     "first_commit": null,
@@ -13,5 +14,5 @@
         "DevOps (Docker, Nagios, Jenkins, Chef, Puppet, etc)"
     ],
     "thumbnail_url": null,
-    "title": "Docker's - Beginner Guide"
+    "title": "Docker - A Beginner Guide"
 }

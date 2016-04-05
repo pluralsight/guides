@@ -28,6 +28,7 @@ Think of this as a "Wikipedia" for technical guides and tutorials, or "Medium.co
 * **Free subscription to Pluralsight.com**.  Pluralsight is our corporate sponsor for this project and is subsidizing the costs of some of the open-source development.  We've negotiated with Pluralsight to give all contributors a free subscription to their video library on training for programmers, so you can stay up-to-date on all programming topics.  This is worth $299.
 * **Network with other important members of the community**.  We'll give you access to our <a href="https://hackguides.herokuapp.com" target="_blank">Slack community</a>, to make awesome connections with others who are involved.
 * **Free access to the next hack.summit() conference for you and your friends**.  Get your own special code you can give out!
+* **Github.com contribution credits**. Github tracks your open source contributions and shows a cool green graph on your profile page. Every change you make to a guide counts toward your open source contributions. Now you can easily get every square on your graph into the green!  See [here](https://help.github.com/articles/viewing-contributions-on-your-profile-page/) for more information.
 
 ### Who owns the guides created here?
 
