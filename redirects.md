@@ -7,3 +7,5 @@ The following URLs are redirected due to title changes, etc.  The format of this
 /review/docker-s-beginner-guide /devops/docker-a-beginner-guide
 
 /review/elastic-search-with-ruby-on-rails /ruby-ruby-on-rails/elasticsearch-with-ruby-on-rails
+
+/android/ionic-framework-a-definitive-10-000-word-guide /front-end-javascript/ionic-framework-a-definitive-10-000-word-guide
