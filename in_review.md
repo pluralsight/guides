@@ -3,11 +3,6 @@
 - [Read more from Luke Lee](http://tutorials.pluralsight.com/author/durden) <img src="https://avatars.githubusercontent.com/u/58063?v=3" width="30" height="30" alt="Luke Lee" />
 - Related to: Python
 
-### Globalization with Attached Properties in WPF by Murat Aykanat
-- [Read the guide](http://tutorials.pluralsight.com/microsoft-net/globalization-with-attached-properties-in-wpf?status=in-review)
-- [Read more from Murat Aykanat](http://tutorials.pluralsight.com/author/aykanatm) <img src="https://avatars.githubusercontent.com/u/9140297?v=3" width="30" height="30" alt="Murat Aykanat" />
-- Related to: Microsoft.NET (C#, ASP.NET, VB.NET, etc)
-
 ### Download large files from remote servers using Nginx docker by Red Moses
 - [Read the guide](http://tutorials.pluralsight.com/devops/download-large-files-from-remote-servers-using-nginx-docker?status=in-review)
 - [Read more from Red Moses](http://tutorials.pluralsight.com/author/redmoses) <img src="https://avatars.githubusercontent.com/u/4059490?v=3" width="30" height="30" alt="Red Moses" />
