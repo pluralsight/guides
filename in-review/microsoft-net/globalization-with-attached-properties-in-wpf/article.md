@@ -1,6 +1,8 @@
-Recently during my PhD studies, as a part of the thesis project, I needed an application that works on Windows so I decided to go for a WPF application. I developed the application but there was a problem. My thesis was supposed to be in English so the application was supposed to be English; however the place where the application was going to be used was a local place, hence it had to be Turkish as well. So I had to globalize my application to be both English and Turkish.
+Recently, as a part of my phD thesis project, I needed an application that works on Windows. I decided to go for a Windows Presentation Foundation (WPF) application, which I ended up developing. But there was a problem. 
 
-There are many ways to do globalization, such as setting up string resources, having custom static classes that hold the original and translated text or using some globalization libraries but I wanted something simple and easy on the XAML and the code behind like:
+My thesis was supposed to be in English so the application was supposed to be English. Yet the application was going to be used locally, and had to be in Turkish as well. So I had to **globalize** my application to be both in English and Turkish.
+
+There are many ways to perform globalization, such as setting up string resources, having custom static classes that hold the original and translated text or using some globalization libraries. But I wanted something simple and easily done with Extensible Application Markup Language (XAML). The code would look like:
 
 ```xaml
 <TextBlock Text=”English Text” English=”English Text” Turkish=”Türkçe Yazı” />
@@ -21,11 +23,11 @@ So basically they are the existing properties that we use in everyday WPF develo
 
 Going over the example in the MSDN article; Dockpanel.Dock is an attached property that is predefined for us.
 
-So using attached properties you can create new custom properties that suit your needs.
+Using attached properties, you can create new custom properties that suit your needs.
 
 ### Attached Properties in Globalization
 
-After finding out about attached properties, my purpose was to create attached properties that will automatically select the text, header or tooltip that matches the current language of the application.
+After finding out about attached properties, I aimed to create attached properties that would automatically select the text, header, or tooltip that matches the current language of the application.
 
 As an example I will show how you can use attached properties with TextBlocks. Attached properties work like extension methods, here is the code to add translated text to a ```TextBlock``` :
 
@@ -65,9 +67,9 @@ namespace SomeNamespace.Extensions
 	}
 }
 ```
-It is fairly simple; we create 2 seperate properties for both languages named TurkishText and EnglishText. These properties will be of type ```string``` . Finally we define the getters and setters for these properties.
+The code above is fairly simple. First, we create 2 separate properties for both languages, which are named TurkishText and EnglishText. These properties will be of type ```string``` . Then we define the getters and setters for these properties.
 
-So now that we defined the properties, we can add them to our XAML code.
+Now that we defined the properties, we can add them to our XAML code.
 
 ```xaml
 <Window
@@ -88,7 +90,7 @@ So now we can use our newly created extension like this:
 			uiExtensions:UiExtensions.EnglishText="Example English Text"/>
 ```
 
-However if you run the application now you will see that nothing actually changes. We need to tell the application that we want to change the language somehow.
+However, running the application, we see that the text does not actually change. We still need to tell the application that we want to change the language somehow.
 
 We can simply write a ```LanguageChanger``` class and a few helper classes to do this job for us.
 
@@ -168,11 +170,13 @@ namespace SomeNamespace.Globalization
 }
 ```
 
-So when we use the language changer code, now it should find all the TextBlocks and change their language to whichever language setting we set before. However, there is a big problem here. It will try and change **ALL** TextBlocks in our XAML. So if it cannot find any EnglishText or TurkishText it will default to empty string which is not very desirable because we do not want **ALL** our TextBlocks to change.
+The LanguageChanger code should allow our WPF to find all the TextBlocks and change their language to whichever language setting we decide. 
 
-To solve this issue we need a flag for the ```LanguageChanger``` class to decide whether to translate or not. For this we need yet another attached property.
+However, there is a big problem here. Our application will try and change **ALL** TextBlocks in our XAML. So if it cannot find any EnglishText or TurkishText, the application will default to empty strings which are not very desirable because we do not want **ALL** our TextBlocks to change, just the blocks that are EnglishText.
 
-So our extensions will look like this:
+To solve this issue we need a flag for the ```LanguageChanger``` class to decide whether or not the application should translate. 
+
+For this we need yet another attached property:
 
 ```cs
 namespace SomeNamespace.Extensions
@@ -284,13 +288,13 @@ namespace SomeNamespace.Globalization
 }
 ```
 
-So after all the hard work is done, you can now simply use your newly created custom properties to create translations for every ```TextBlock``` in your application purely in XAML.
+You can now use your newly-created custom properties to create translations for every ```TextBlock``` in your application purely in XAML.
 
-Do we stop at translating only TextBlocks? Of course not! We can use attached properties on every type of string we want to translate. For example, headers, context menus, contents etc.
+Do we stop at translating only TextBlocks? Of course not! 
 
-All you need to do is to create some attached properties, add them to your ```LanguageChanger```, or whatever class you are using for globalization and just edit your XAML code as we did with TextBlocks.
+We can use attached properties on every type of string we want to translate. For example, headers, context menus, contents etc. Simply create some attached properties, add them to your ```LanguageChanger```, or whatever class you are using for globalization, and edit your XAML code as we did with TextBlocks.
 
 ### Conclusion
 
-Attached properties are a very useful part of WPF and their use can be extensive on extending or creating new properties for your controls and objects. Especially in the task of globalization I found them very useful. This technique will hopefully help you in your own projects as well.
+Attached properties are a very useful part of WPF, and their use can be extensive on extending or creating new properties for your controls and objects. I found them especially useful when I was attempting globalization. This technique will hopefully help you in your own projects as well.
 
