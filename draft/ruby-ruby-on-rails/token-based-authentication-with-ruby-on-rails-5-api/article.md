@@ -25,7 +25,8 @@ The way token-based authentication works is simple: The user enters his/her cred
 
 ![token-based auth](http://i.imgur.com/xkvip2y.jpg)
 
-
+### What does a JWT token contain?
+text here
 ## Setting up a token-based authentication with Rails 5
 
 
@@ -83,7 +84,7 @@ bundle install
 
 ```
 Once the  gem is installed, it can be accessed through the `JWT` global variable. Here are the two methods that have to be created:
-# EXPLAIN STRUCUTRE WITH CLAIMS
+
  ```ruby
  
  # lib/json_web_token.rb
