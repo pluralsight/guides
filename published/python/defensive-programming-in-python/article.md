@@ -616,8 +616,7 @@ Please join our [Slack community](https://hackguides.herokuapp.com/) to chat abo
 [1]
 <small>
     Executable documentation is a term sometimes used to describe
-    [doctests](http://docs.python.org/2/library/doctest.html).  "Literate
-    testing" is term used to describe this concept.
+    <a href="http://docs.python.org/2/library/doctest.html">doctests</a>.  "Literate testing" is term used to describe this concept.
 </small>
 </p>
 
