@@ -83,6 +83,7 @@ bundle install
 
 ```
 Once the  gem is installed, it can be accessed through the `JWT` global variable. Here are the two methods that have to be created:
+# EXPLAIN STRUCUTRE WITH CLAIMS
  ```ruby
  
  # lib/json_web_token.rb
@@ -103,4 +104,36 @@ class JsonWebToken
   end
 end
 ```
-The first method,`encode`, includes three parameters - takes the user id, the expiration time (1 day) and the unique secret key of your rails application in order to create a key. The second method,`decode` takes the token and uses the application's secret key to decode it.
+The first method,`encode`, includes three parameters - takes the user id, the expiration time (1 day) and the unique secret key of your rails application in order to create a key. The second method,`decode` takes the token and uses the application's secret key to decode it. These are the two cases in which these methods will be used:
+ * For authenticating the user and generate a token for him/her using `encode`
+ * To check if the user's token appended in each request is correct by using `decode`. 
+
+### Authenticating users
+ Instead of using private controller methods, we will use [simple_command](https://github.com/nebulab/simple_command).
+
+The simple command gem is an easy way of creating services. Its role is similar to helpers, but instead of facilitating the connection between the controller and the view, it does the same for the controller and the model. In this way, the code in the models and controllers is reduced to minimum.
+
+Add the gem to your `Gemfile`:
+```ruby
+gem 'simple_command'
+```
+And bundle it:
+```bash
+bundle install
+```
+Then, the alias methods of the `simple_command` can be easiy used in a class by writing `prepend SimpleCommand`. Here is how a command is structured:
+```ruby
+
+class AuthenticateUser
+   prepend SimpleCommand
+
+  def initialize()
+   #this is where parameters are taken when the command is called
+  end
+
+  def call
+   #this is where the result gets returned
+  end
+
+end
+```
