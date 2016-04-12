@@ -24,10 +24,15 @@ The way token-based authentication works is simple: The user enters his/her cred
 ![token-based auth](http://i.imgur.com/xkvip2y.jpg)
 
 ### What does a JWT token contain?
-First Column Header | Second Column Header | Third Column
-------------------- | -------------------- | ------------
-Content from cell 1 | | Content from cell 3
-Another cell 1 | Another cell 2
+The token is separated in three base-64 encoded, dot-separated values, each one representing different type of data:
+#### Header
+Consits of the type of the token (JWT) and the type of encryption algorithm (HS256) encoded in base-64.
+#### Payload
+The payload contains information about the user and his/her role. For example,
+the payload of the token can contain the e-mail and the password.
+#### Signature
+Signature is an unique key that identifies the service which creates the header. In this case, the signature of the token will be a base-64 encoded version of the Rails application's secret key (`Rails.application.secrets.secret_key_base`). Because each application has an unique base key, it would be the best fit for the signature of the token.
+
 
 ## Setting up a token-based authentication with Rails 5
 
@@ -195,7 +200,7 @@ The token creation is done, but there is no way to check if a token appended to 
 
 
 > **A refresher on headers**
-  Each http request has fields known as [headers](https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html). Headers contain informationabout the request that can be helpful to the server such as the format of the request body. Tokens are usually attached to the 'Authorization' header.
+  Each http request has fields known as [headers](https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html). Headers can contain a wide variety of information about the request that can be helpful to the server such as the format of the request body, authorization information and other meta information (you can find all the types [here](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers)). Tokens are usually attached to the 'Authorization' header.
   
   Here is how the code is structured:
 ```ruby
@@ -275,7 +280,7 @@ end
    #config/routes.rb
    post 'authenticate', to: 'authentication#authenticate'
  ```
- 
+
  
 #### Authorizing requests
  
@@ -290,7 +295,7 @@ class ApplicationController < ActionController::API
   private
 
   def authenticate_request
-    @current_user = AuthenticateApiRequest.call(request.headers).result
+    @current_user = AuthorizeApiRequest.call(request.headers).result
     render json: { error: 'Not Authorized' }, status: 401 unless @current_user
   end
 end
@@ -300,7 +305,7 @@ By using `before_action`, the server calls the and passes the request headers (u
 
 ### Does it work?
 
- Let's test if everything is working properly. First, create a user.
+ Let's see how everything works. 
  Start the rails console in the application's root directory:
 ```bash
 rails c
@@ -309,8 +314,18 @@ Insert a user to the console:
 ```bash
 User.create!(email: 'example@mail.com' , password: '123123123' , password_confirmation: '123123123')
 ```  
+ To see how authorization works, there needs to be a resource that has to be requested. Let's scaffold a resource:
+ 
+ In your terminal, run:
+ ```bash
+ rails g scaffold Item name:string description:text
+  ```
+ This will create a resource named `Item` from top to bottom - a model, a controller, routes and views. Migrate the database:
+  ```bash
+  rails db:mgirate
+ ``` 
 
-Now, open Postman or any other tool for making requests to an API and post the credentials to `localhost:3000/authorize`. Here is how teh request should look:
+Now, start the server and open Postman or any other tool for making requests to an API and post the credentials to `localhost:3000/authorize`. Here is how the request should look:
 
 ![request](https://raw.githubusercontent.com/pluralsight/guides/master/images/71e8f847-fd33-420a-a8bc-6bba399589f7.PNG)
 
@@ -318,5 +333,15 @@ Now, open Postman or any other tool for making requests to an API and post the c
 
 ![response](https://raw.githubusercontent.com/pluralsight/guides/master/images/c858cc01-f723-47aa-8284-fb71090a43fb.PNG)
 
-Great! 
+Great! A token has been generated. Let's check if the resource is reachable. You can do it by making a `GET` request to  `localhost:3000/items `:
 
+![request](https://raw.githubusercontent.com/pluralsight/guides/master/images/93adb4c0-5c5d-4c60-812a-06445b2395e4.PNG)
+
+The reason it is not working is that the token hasn't been prepended to the headers of the request. Copy the previously generated token and put it in the `Authorization` header:
+
+![response](https://raw.githubusercontent.com/pluralsight/guides/master/images/f2452fce-938c-476a-b7b3-a9cb4da2a65b.PNG)
+
+With the token prepended, an empty array is retrned. This is normal - if you add any items, you are going to see them returned in the request.
+
+
+Awesome! Everything works. If you missed something, the project has been uploaded on [GitHub](https://github.com/Kaizeras/rails-jwt-auth-tutorial). If you have any questions, do not hesitate to ask in the comments on message me on Github.
