@@ -7,12 +7,10 @@ With API-only applications gaining popularity and  Rails 5 being just around the
 
 ### Benefits of token-based authentication
 There are several benefits to using such approach. The main ones are:
-Cross-domain / CORS: cookies + CORS don't play well across different domains. A token-based approach allows you to make AJAX calls to any server, on any domain because you use an HTTP header to transmit the user information.
+- Cross-domain / CORS: cookies + CORS don't play well across different domains. A token-based approach allows you to make AJAX calls to any server, on any domain because you use an HTTP header to transmit the user information.
 
-- JWT are stateless there is no need to keep a session store, the token is a self-contanined entity that conveys all the user information. 
-
-
-- Decoupling: you are not tied to a particular authentication scheme. The token might be generated anywhere, hence the API can be called from anywhere with a single way of authenticating all the calls.
+- Stateless:Tokens are stateless there is no need to keep a session store, the token is a self-contanined entity that contains all the user information in it. 
+- Decoupling: You are not tied to a particular authentication scheme. The token might be generated anywhere, hence the API can be called from anywhere with a single way of authenticating all the calls.
 
 - Mobile ready: Cookies are a problem when it comes to storing user information on native mobile applications. Adopting a token-based approach simplifies the process significantly.
 
