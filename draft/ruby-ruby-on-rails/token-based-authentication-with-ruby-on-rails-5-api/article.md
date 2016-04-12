@@ -28,8 +28,8 @@ First Column Header | Second Column Header | Third Column
 ------------------- | -------------------- | ------------
 Content from cell 1 | | Content from cell 3
 Another cell 1 | Another cell 2
-## Setting up a token-based authentication with Rails 5
 
+## Setting up a token-based authentication with Rails 5
 
 Enought theory, it's time for practice. The first step is to create a new Rails 5 API-only application:
 
@@ -60,7 +60,16 @@ To make set up token authentication for the newly created application, several s
  By running these methods, we create a user model in with name, e-mail and password fields and have its schema migrated in the database.
  
 The method `has_secure_password`  has to be added to the model to make sure the password is properly encrypted into the database:
- 
+ `has_secure_password`  is part of the bcrypt gem, so we have to install it first. Add it to the gemfile:
+ ```ruby
+ #Gemfile.rb
+ gem 'bcrypt', '~> 3.1.7'
+ ```
+ And install it:
+ ```bash
+  bundle install
+ ```
+ With the gem installed, the method can be included in the model:
  ```ruby
 #app/user.rb
  
@@ -215,3 +224,80 @@ class AuthorizeApiRequest
   end
 end
 ```
+There is a chain of methods getting executed. Let's start from bottom to top:
+
+The last method in the chain, `http_auth_header`, extracts the token from the authorization header received in the initialization of the class the class.
+. The second method in the chain is `decoded_auth_token` which decodes the token received from `http_auth_header`to get get the id of the user which is contained in the decoded token.
+
+The `user` method, contains logic that might seem abstract, so let's go through it:  In the first line, the `||=` operator is used to assign `@user`. Its purpose  is to "assign if not `nil`". Basically, if the `User.find()` returns an empty set or `decoded_auth_token` returns false, `@user` will be `nil`. Moving to the second line,  `user` method will either return the user or an error. In Ruby, the last line of the function is implicitly returned, so the command ends up returning the user object.
+
+### Implementing helper methods into the controllers
+ All the logic for handling JWT tokens has been laid down. It is time to implement it in the controllers and put it to actual use. The two most essential things that have to be implemented is a way of logging in the user and having his/her token returned and a `current_user` method to 'persist' the user and check the token for every request.
+ 
+ 
+ #### Logging in users
+ 
+ First, let's start with the logging in of the user:
+ 
+ ```ruby
+ # app/controllers/authentication_controller.rb
+
+class AuthenticationController < ApplicationController
+  skip_before_action :authenticate_request
+
+  def authenticate
+    command = AuthenticateUser.call(params[:email], params[:password])
+
+    if command.success?
+      render json: { auth_token: command.result }
+    else
+      render json: { error: command.errors }, status: :unauthorized
+    end
+  end
+end
+ ```
+ The `authenticate` action will take the JSON parameters for e-mail and password through the `params` hash and pass them to the `AuthenticateUser` command. If the command succeeds, it will send the JWT  token back to the user.
+ 
+ Let's put a endpoint for the action:
+ 
+ ```ruby
+   #config/routes.rb
+   post 'authenticate', to: 'authentication#authenticate'
+ ```
+ 
+ 
+ #### Authorizing requests
+ 
+ To put the token to use, there must be a `current_user` method that will 'persist' the user. In order to have `current_user` available to all controllers, it has to be declared in the `ApplicationController`:
+
+```ruby
+#app/controllers/application_controller.rb
+class ApplicationController < ActionController::API
+ before_action :authenticate_request
+  attr_reader :current_user
+
+  private
+
+  def authenticate_request
+    @current_user = AuthenticateApiRequest.call(request.headers).result
+    render json: { error: 'Not Authorized' }, status: 401 unless @current_user
+  end
+end
+```
+By using `before_action`, the server calls the and passes the request headers (using the built-in `request.headers`) to `AuthenticateApiRequest` every time the user makes a request. The results are returned to the `@current_user`, making it available to all controllers inheriting from `ApplicationController`.
+
+
+### Does it work?
+
+ Let's test if everything is working properly. First, create a user.
+ Start the rails console in the application's root directory:
+```bash
+rails c
+```  
+Insert a user to the console:
+```bash
+  User.create!(email: 'example@mail.com' , password: '123123123' , password_confirmation: '123123123')
+```  
+
+Now, open Postman or any other tool for making requests to an API and post the credentials to `localhost:3000/authorize` and see what happens:
+
