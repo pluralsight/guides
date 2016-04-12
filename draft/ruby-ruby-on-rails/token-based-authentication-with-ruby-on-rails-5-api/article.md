@@ -119,6 +119,17 @@ The first method,`encode`, includes three parameters - takes the user id, the ex
  * For authenticating the user and generate a token for him/her using `encode`
  * To check if the user's token appended in each request is correct by using `decode`. 
 
+To make sure everything will work, we have to load the contents of the `lib` directory when the Rails applciation loads:
+```ruby
+    #config/application.rb
+module ApiApp
+  class Application < Rails::Application
+    #.....
+    config.autoload_paths << Rails.root.join('lib')
+    #.....
+    end
+   end
+```
 ### Authenticating users
  Instead of using private controller methods, we will use [simple_command](https://github.com/nebulab/simple_command).
 
@@ -266,7 +277,7 @@ end
  ```
  
  
- #### Authorizing requests
+#### Authorizing requests
  
  To put the token to use, there must be a `current_user` method that will 'persist' the user. In order to have `current_user` available to all controllers, it has to be declared in the `ApplicationController`:
 
@@ -296,8 +307,16 @@ rails c
 ```  
 Insert a user to the console:
 ```bash
-  User.create!(email: 'example@mail.com' , password: '123123123' , password_confirmation: '123123123')
+User.create!(email: 'example@mail.com' , password: '123123123' , password_confirmation: '123123123')
 ```  
 
-Now, open Postman or any other tool for making requests to an API and post the credentials to `localhost:3000/authorize` and see what happens:
+Now, open Postman or any other tool for making requests to an API and post the credentials to `localhost:3000/authorize`. Here is how teh request should look:
+
+![request](https://raw.githubusercontent.com/pluralsight/guides/master/images/71e8f847-fd33-420a-a8bc-6bba399589f7.PNG)
+
+ And you will get your token returned:
+
+![response](https://raw.githubusercontent.com/pluralsight/guides/master/images/c858cc01-f723-47aa-8284-fb71090a43fb.PNG)
+
+Great! 
 
