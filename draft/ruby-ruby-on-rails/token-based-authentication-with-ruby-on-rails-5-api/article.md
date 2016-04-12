@@ -26,7 +26,10 @@ The way token-based authentication works is simple: The user enters his/her cred
 ![token-based auth](http://i.imgur.com/xkvip2y.jpg)
 
 ### What does a JWT token contain?
-text here
+First Column Header | Second Column Header | Third Column
+------------------- | -------------------- | ------------
+Content from cell 1 | | Content from cell 3
+Another cell 1 | Another cell 2
 ## Setting up a token-based authentication with Rails 5
 
 
@@ -83,7 +86,7 @@ And install it:
 bundle install
 
 ```
-Once the  gem is installed, it can be accessed through the `JWT` global variable. Here are the two methods that have to be created:
+Once the  gem is installed, it can be accessed through the `JWT` global variable. Because the methods have to be encapsulated somehow, a singleton class is  a great way of wrapping the methods and using them in other constructs:
 
  ```ruby
  
@@ -168,3 +171,49 @@ class AuthenticateUser
 end
 ```
 The command takes the parameters and initializes a class instance with `email` and `passowrd` attributes that are accessible wthing the class. The private method `user` uses the credentials to check if the user exists in the database using `User.find_by_email` . If the user is found, it uses the built-in `authenticate` method (available by putting [has_secure_password](http://api.rubyonrails.org/classes/ActiveModel/SecurePassword/ClassMethods.html) in the User model to check if the user's password is correct. If everything is true, the user will be returned. If not, the method will return `nil`.
+
+### Checking if user is authorized
+The token creation is done, but there is no way to check if a token appended to request is valid. The command for authorization has to take the `headers` of the request and decode the token using the `decode` method in the `JsonWebToken` singleton. 
+
+
+> **A refresher on headers**
+  Each http request has fields known as [headers](https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html). Headers contain informationabout the request that can be helpful to the server such as the format of the request body. Tokens are usually attached to the 'Authorization' header.
+  
+  Here is how the code is structured:
+```ruby
+# app/commands/check_if_user_authorized.rb
+
+class AuthorizeApiRequest
+  prepend SimpleCommand
+
+  def initialize(headers = {})
+    @headers = headers
+  end
+
+  def call
+    user
+  end
+
+  private
+
+  attr_reader :headers
+
+  def user
+    @user ||= User.find(decoded_auth_token[:user_id]) if decoded_auth_token
+    @user || errors.add(:token, 'Invalid token') && nil
+  end
+
+  def decoded_auth_token
+    @decoded_auth_token ||= JsonWebToken.decode(http_auth_header)
+  end
+
+  def http_auth_header
+    if headers['Authorization'].present?
+      return headers['Authorization'].split(' ').last
+    else
+      errors.add(:token, 'Missing token')
+    end
+    nil
+  end
+end
+```
