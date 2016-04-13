@@ -1,8 +1,3 @@
-### Token-based authentication with  Ruby on Rails 5 API by Hristo Georgiev
-- [Read the guide](http://tutorials.pluralsight.com/ruby-ruby-on-rails/token-based-authentication-with-ruby-on-rails-5-api?status=draft)
-- [Read more from Hristo Georgiev](http://tutorials.pluralsight.com/author/Kaizeras) <img src="https://avatars.githubusercontent.com/u/6340189?v=3" width="30" height="30" alt="Hristo Georgiev" />
-- Related to: Ruby, Ruby on Rails
-
 ### Beginners guide to node.js by Prateek Gupta
 - [Read the guide](http://tutorials.pluralsight.com/node-js/beginners-guide-to-node-js?status=draft)
 - [Read more from Prateek Gupta](http://tutorials.pluralsight.com/author/prtkgpt) <img src="https://avatars.githubusercontent.com/u/2454349?v=3" width="30" height="30" alt="Prateek Gupta" />
