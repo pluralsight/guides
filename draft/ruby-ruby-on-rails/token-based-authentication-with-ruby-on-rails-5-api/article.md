@@ -6,7 +6,7 @@ With API-only applications gaining popularity and  Rails 5 being just around the
  Token-based authentication (also known as [JSON Web Token authentication](https://jwt.io/)) is a new way of handling authentication of users in applications. It is an alternative to session-based authentication. The most notable difference between the two is that session-based authentication is persisted server-side i.e a record is created for each logged-in user. Token-based authentication is stateless - it does not store anything on the server, but creates a unique encoded token that is checked every time a request is made.  
 
 ### Benefits of token-based authentication
-There are several benefits to using such approach. The main ones are:
+There are several benefits to using such approach:
 - Cross-domain / CORS: cookies + CORS don't play well across different domains. A token-based approach allows you to make AJAX calls to any server, on any domain because you use an HTTP header to transmit the user information.
 
 - Stateless:Tokens are stateless there is no need to keep a session store, the token is a self-contanined entity that contains all the user information in it. 
@@ -43,12 +43,12 @@ rails _5.0.0.beta3_ new api-app --api
 ```
 
 
-Using `--api-only` when create an  API-only application. [API-only](http://edgeguides.rubyonrails.org/api_app.html) applications are a new feature that is included in Rails 5. They are trimmed down versions of standard Rails applications that have features like `.erb` views, helpers and assets removed because of redundancy. They come with special middlewares such as `ActionController::API` , request throttling, easily configurable CORS and other custom-waived features for building APIs.
+By appending `--api` at the end of the generator, a API-only application will be created. [API-only](http://edgeguides.rubyonrails.org/api_app.html) applications are a new feature that is included in Rails 5. An API application is a trimmed down version of standard Rails application that does not have unnecessary middleware such as `.erb` views, helpers and assets. API applications come with special middlewares such as `ActionController::API` , request throttling, easily configurable CORS and other custom-waived features for building APIs.
 
-To make set up token authentication for the newly created application, several steps have to be taken:
+To set up token-based authentication, several steps have to be taken:
 
-* A model that can be accessed
-* A way of encoding and decoding JWT tokens
+* A model that can be accessed.
+* A way of encoding and decoding JWT tokens must be implemented.
 * Methods for checking if the user is authenticated.
 * Controllers for creating and logging in users.
 * Routes for creating users and logging them in and out.
@@ -65,7 +65,7 @@ To make set up token authentication for the newly created application, several s
  By running these methods, we create a user model in with name, e-mail and password fields and have its schema migrated in the database.
  
 The method `has_secure_password`  has to be added to the model to make sure the password is properly encrypted into the database:
- `has_secure_password`  is part of the bcrypt gem, so we have to install it first. Add it to the gemfile:
+ `has_secure_password` is part of the `bcrypt` gem, so we have to install it first. Add it to the gemfile:
  ```ruby
  #Gemfile.rb
  gem 'bcrypt', '~> 3.1.7'
@@ -90,7 +90,6 @@ Once the user model is done, the implementation of the JWT token generation can 
  
  ```ruby
   gem 'jwt'
-
 ```
 And install it:
 
@@ -98,7 +97,7 @@ And install it:
 bundle install
 
 ```
-Once the  gem is installed, it can be accessed through the `JWT` global variable. Because the methods have to be encapsulated somehow, a singleton class is  a great way of wrapping the methods and using them in other constructs:
+Once the  gem is installed, it can be accessed through the `JWT` global variable. Because the methods that are going to be used have to be encapsulated somehow, a singleton class is  a great way of wrapping the logic and using it in other constructs:
 
  ```ruby
  
@@ -120,11 +119,11 @@ class JsonWebToken
   end
 end
 ```
-The first method,`encode`, includes three parameters - takes the user id, the expiration time (1 day) and the unique secret key of your rails application in order to create a key. The second method,`decode` takes the token and uses the application's secret key to decode it. These are the two cases in which these methods will be used:
+The first method,`encode`, includes three parameters - takes the user id, the expiration time (1 day) and the unique secret key of your rails application in order to create a unique token. The second method,`decode` takes the token and uses the application's secret key to decode it. These are the two cases in which these methods will be used:
  * For authenticating the user and generate a token for him/her using `encode`
  * To check if the user's token appended in each request is correct by using `decode`. 
 
-To make sure everything will work, we have to load the contents of the `lib` directory when the Rails applciation loads:
+To make sure everything will work, the conents of the `lib` directo have to be included when the Rails applciation loads:
 ```ruby
     #config/application.rb
 module ApiApp
@@ -136,7 +135,7 @@ module ApiApp
    end
 ```
 ### Authenticating users
- Instead of using private controller methods, we will use [simple_command](https://github.com/nebulab/simple_command).
+ Instead of using private controller methods, `simple_command` can be used: [simple_command](https://github.com/nebulab/simple_command).
 
 The simple command gem is an easy way of creating services. Its role is similar to helpers, but instead of facilitating the connection between the controller and the view, it does the same for the controller and the model. In this way, the code in the models and controllers is reduced to minimum.
 
@@ -200,7 +199,7 @@ The token creation is done, but there is no way to check if a token appended to 
 
 
 > **A refresher on headers**
-  Each http request has fields known as [headers](https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html). Headers can contain a wide variety of information about the request that can be helpful to the server such as the format of the request body, authorization information and other meta information (you can find all the types [here](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers)). Tokens are usually attached to the 'Authorization' header.
+  Http requests have fields known as [headers](https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html). Headers can contain a wide variety of information about the request that can be helpful for the server to interpret it. For example, a header can contain the format of the request body, authorization information and other meta information (you can find all the types [here](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers)). Tokens are usually attached to the 'Authorization' header.
   
   Here is how the code is structured:
 ```ruby
@@ -240,15 +239,15 @@ class AuthorizeApiRequest
   end
 end
 ```
-There is a chain of methods getting executed. Let's start from bottom to top:
+There is a chain of methods getting executed in the command. Let's start from bottom to top:
 
 The last method in the chain, `http_auth_header`, extracts the token from the authorization header received in the initialization of the class the class.
-. The second method in the chain is `decoded_auth_token` which decodes the token received from `http_auth_header`to get get the id of the user which is contained in the decoded token.
+.The second method in the chain is `decoded_auth_token`, which decodes the token received from `http_auth_header`to decode the token and retrieve the id of the user.
 
-The `user` method, contains logic that might seem abstract, so let's go through it:  In the first line, the `||=` operator is used to assign `@user`. Its purpose  is to "assign if not `nil`". Basically, if the `User.find()` returns an empty set or `decoded_auth_token` returns false, `@user` will be `nil`. Moving to the second line,  `user` method will either return the user or an error. In Ruby, the last line of the function is implicitly returned, so the command ends up returning the user object.
+The `user` method contains logic that might seem abstract, so let's go through it line by line:  In the first line, the `||=` operator is used to assign `@user`. Its purpose of hte operator is to "assign if not `nil`". Basically, if the `User.find()` returns an empty set or `decoded_auth_token` returns false, `@user` will be `nil`. Moving to the second line,  `user` method will either return the user or an error. In Ruby, the last line of the function is implicitly returned, so the command ends up returning the user object.
 
 ### Implementing helper methods into the controllers
- All the logic for handling JWT tokens has been laid down. It is time to implement it in the controllers and put it to actual use. The two most essential things that have to be implemented is a way of logging in the user and having his/her token returned and a `current_user` method to 'persist' the user and check the token for every request.
+ All the logic for handling JWT tokens has been laid down. It is time to implement it in the controllers and put it to actual use. The two most essential things that have to be implemented - logging in of users and having a way of referencing the current user.
  
  
  #### Logging in users
@@ -300,7 +299,7 @@ class ApplicationController < ActionController::API
   end
 end
 ```
-By using `before_action`, the server calls the and passes the request headers (using the built-in `request.headers`) to `AuthenticateApiRequest` every time the user makes a request. The results are returned to the `@current_user`, making it available to all controllers inheriting from `ApplicationController`.
+By using `before_action`, the server calls the and passes the request headers (using the built-in object property `request.headers`) to `AuthorizeApiRequest` every time the user makes a request. The results are returned to the `@current_user`, making it available to all controllers inheriting from `ApplicationController`.
 
 
 ### Does it work?
@@ -344,7 +343,7 @@ The reason it is not working is that the token hasn't been prepended to the head
 $ curl -H "Authorization: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE0NjA2NTgxODZ9.xsSwcPC22IR71OBv6bU_OGCSyfE89DvEzWfDU0iybMA" http://localhost:3000/items
 []
  ``` 
-With the token prepended, an empty array is retrned. This is normal - if you add any items, you are going to see them returned in the request.
+With the token prepended, an empty array (`[]`) is returned. This is normal - if you add any items, you are going to see them returned in the request.
 
 
 Awesome! Everything works. If you missed something, the project has been uploaded on [GitHub](https://github.com/Kaizeras/rails-jwt-auth-tutorial). If you have any questions, do not hesitate to ask in the comments on message me on Github.
