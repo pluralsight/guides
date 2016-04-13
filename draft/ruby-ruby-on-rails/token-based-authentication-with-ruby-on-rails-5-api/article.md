@@ -325,22 +325,25 @@ User.create!(email: 'example@mail.com' , password: '123123123' , password_confir
   rails db:mgirate
  ``` 
 
-Now, start the server and open Postman or any other tool for making requests to an API and post the credentials to `localhost:3000/authorize`. Here is how the request should look:
-
-![request](https://raw.githubusercontent.com/pluralsight/guides/master/images/71e8f847-fd33-420a-a8bc-6bba399589f7.PNG)
-
+Now, start the server and open Postman or any other tool for making requests to an API and post the credentials to `localhost:3000/authenticate`. Here is how the request should look:
+ ```bash
+$ curl -H "Content-Type: application/json" -X POST -d '{"email":"example@mail.com","password":"123123123"}' http://localhost:3000/authenticate
+ ``` 
  And you will get your token returned:
 
-![response](https://raw.githubusercontent.com/pluralsight/guides/master/images/c858cc01-f723-47aa-8284-fb71090a43fb.PNG)
-
+ ```bash
+{"auth_token":"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE0NjA2NTgxODZ9.xsSwcPC22IR71OBv6bU_OGCSyfE89DvEzWfDU0iybMA"}
+ ``` 
 Great! A token has been generated. Let's check if the resource is reachable. You can do it by making a `GET` request to  `localhost:3000/items `:
-
-![request](https://raw.githubusercontent.com/pluralsight/guides/master/images/93adb4c0-5c5d-4c60-812a-06445b2395e4.PNG)
-
+ ```bash
+$ curl http://localhost:3000/items
+{"error":"Not Authorized"}
+ ``` 
 The reason it is not working is that the token hasn't been prepended to the headers of the request. Copy the previously generated token and put it in the `Authorization` header:
-
-![response](https://raw.githubusercontent.com/pluralsight/guides/master/images/f2452fce-938c-476a-b7b3-a9cb4da2a65b.PNG)
-
+ ```bash
+$ curl -H "Authorization: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE0NjA2NTgxODZ9.xsSwcPC22IR71OBv6bU_OGCSyfE89DvEzWfDU0iybMA" http://localhost:3000/items
+[]
+ ``` 
 With the token prepended, an empty array is retrned. This is normal - if you add any items, you are going to see them returned in the request.
 
 
