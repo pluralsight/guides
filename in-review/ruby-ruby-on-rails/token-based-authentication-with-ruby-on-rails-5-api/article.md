@@ -324,7 +324,7 @@ User.create!(email: 'example@mail.com' , password: '123123123' , password_confir
   rails db:mgirate
  ``` 
 
-Now, start the server and open Postman or any other tool for making requests to an API and post the credentials to `localhost:3000/authenticate`. Here is how the request should look:
+Now, start the server and use cURL to post the credentials to `localhost:3000/authenticate`. Here is how the request should look:
  ```bash
 $ curl -H "Content-Type: application/json" -X POST -d '{"email":"example@mail.com","password":"123123123"}' http://localhost:3000/authenticate
  ``` 
