@@ -745,7 +745,7 @@ Create a file in your project called `package.json` with the following content:
 ```javascript
 {
   "scripts": {
-    "test": "node_modules/.bin/karma start my.conf.js"
+    "test": "karma start my.conf.js"
   },
   "devDependencies": {
     "jasmine-core": "^2.3.4",
