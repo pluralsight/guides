@@ -3,7 +3,9 @@
     "author_name": "Kaizeras",
     "author_real_name": "Hristo Georgiev",
     "branch": "master",
-    "branches": [],
+    "branches": [
+        "adityavarshney"
+    ],
     "filename": "article.md",
     "first_commit": null,
     "image_url": "https://avatars.githubusercontent.com/u/6340189?v=3",
@@ -11,5 +13,5 @@
         "Ruby, Ruby on Rails"
     ],
     "thumbnail_url": null,
-    "title": "Creating a chat using Rails' Action Cable"
+    "title": "Token-based authentication with  Ruby on Rails 5 API"
 }

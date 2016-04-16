@@ -1,3 +1,8 @@
+### hello by Prateek Gupta
+- [Read the guide](http://tutorials.pluralsight.com/c-c++/hello?status=draft)
+- [Read more from Prateek Gupta](http://tutorials.pluralsight.com/author/prtkgpt) <img src="https://avatars.githubusercontent.com/u/2454349?v=3" width="30" height="30" alt="Prateek Gupta" />
+- Related to: C/C++
+
 ### Beginners guide to node.js by Prateek Gupta
 - [Read the guide](http://tutorials.pluralsight.com/node-js/beginners-guide-to-node-js?status=draft)
 - [Read more from Prateek Gupta](http://tutorials.pluralsight.com/author/prtkgpt) <img src="https://avatars.githubusercontent.com/u/2454349?v=3" width="30" height="30" alt="Prateek Gupta" />

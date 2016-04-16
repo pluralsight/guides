@@ -286,7 +286,7 @@ Solving the first problem is easy. We’ll simply create a new message once the 
 
   #the rest of the methods
   def speak(data)
-    Message.create!
+    Message.create! content: data['message']
   end
 ```
 

@@ -1,11 +1,14 @@
 {
+    "_publish_status": "in-review",
     "author_name": "adamfortuna",
     "author_real_name": "Adam Fortuna",
     "branch": "master",
-    "branches": [],
+    "branches": [
+        "adityavarshney"
+    ],
     "filename": "article.md",
+    "first_commit": null,
     "image_url": "https://avatars.githubusercontent.com/u/7741?v=3",
-    "publish_status": "in-review",
     "stacks": [
         "Ruby, Ruby on Rails"
     ],
