@@ -1,21 +1,14 @@
 Comprehensive Bash tutorial for the absolute Linux beginner. 
------
+--------------------------------------------------------------
 
 Welcome to the Linux world! Whether you’re just starting on an intro to CS course or wandering through your very first UNIX-based home server, learning how to navigate around in Linux (more specifically, using the command line) is going to make your life much easier and much much more powerful.
-If you’ve been Googling around, you’ll notice that not a lot of written Linux tutorials out there are very beginner-friendly. In fact, none of them are. Except, maybe, this guy:
-
-[Ryan's Linux Tutorial](http://ryanstutorials.net/linuxtutorial/ "Linux Tutorial")
-
-First of all, his tutorials are excellent. His explanations are extensive and filled with tons of tips and tricks along the way. He also covered many solid aspects of working in the command line — very helpful for those who want to understand how the command line works. 
-
-But what about this tutorial? This tutorial aims to equip you with the same, or perhaps, more compact explanations of some of the basic commands you should know when working in Linux. In short, this tutorial is a beginner-friendly guide to get you up and running as quickly as possible. Each explanation here will be succinct and empirical; so don’t expect me to cover more ground than Ryan’s tutorial. If you’d like to know more, simply refer to his tutorial. If you have any questions, feel free to contact me.
 
 ## Getting Started
 
 
 ### Linux
 
-There are many distributions of Linux out there. Each of them has their own variation of commands to work with. Specifically for this tutorial, I’m going to be using **Ubuntu 14.04.2 LTS** on **[Cloud9](www.c9.io)**. Keep in mind that all commands demonstrated here will probably be usable on earlier and future versions of Ubuntu, as well as Debian and Debian-based *distro*s.
+There are many distributions of Linux out there. Each of them has its own variation of commands to work with. Specifically for this tutorial, I’m going to be using **Ubuntu 14.04.2 LTS** on **[Cloud9](www.c9.io)**. Keep in mind that all commands demonstrated here will probably be usable on earlier and future versions of Ubuntu, as well as Debian and Debian-based *distro*s.
 
 To check for the distribution and version number, simply type this into the terminal.
 
@@ -66,7 +59,7 @@ In case you’re wondering:
 
 #### cd
 
-The most basic command of all time, `cd` (change directory) means. Err, change directory.
+The most basic command of all time, `cd` (change directory) means... Err, change directory.
 
     $ pwd
     /home/brillydev/workspace/foo/bar
@@ -156,7 +149,7 @@ You’re having fun playing around with all these commands when you realize you 
 
 #### File Execution
 
-Suprisingly not many beginners know how to run a standalone binary/executable file. To execute a local file, simply type
+Surprisingly not many beginners know how to run a standalone binary/executable file. To execute a local file, simply type
 
     $ ./filename 
 
@@ -222,7 +215,7 @@ Interestingly, it can also be used to rename things as well!
     $ ls
     hello.txt
 
-And if you’re tired of typing ls everytime after the command, a semicolon can condense your code into one line. This produces the same effect:
+And if you’re tired of typing `ls` everytime after the command, a semicolon can condense your code into one line. This produces the same effect:
 
     $ mv apple.txt hello.txt; ls
     hello.txt
@@ -259,7 +252,7 @@ If you’re tired of typing `y`s for all the files, `rm -rf` can help you. Be ex
 
 #### rmdir
 
-If you try to use rm alone for directories, you’ll be faced with this:
+If you try to use `rm` alone for directories, you’ll be faced with this:
 
     $ ls
     bar/
@@ -279,7 +272,7 @@ In this case, `rmdir` (remove directory) can be used instead. Note also that thi
 
 #### touch
 
-When you wish to create new files, use `touch`.
+When you wish to create new (empty) files, use `touch`.
 
     $ ls
     $
@@ -384,7 +377,7 @@ Redirections are similar to pipe; but instead of passing the output as an input,
     $ wc < abc.txt
     21
 
-Redirections do overwrite the files each time it is used. Use appends (`>>` and `<<`) should you decide to not overwrite them.
+Redirection overwrites the files each time it is used. Use appends (`>>` and `<<`) should you decide to not overwrite them, and append instead.
     
     $ ls foo >> abc.txt | grep "bar"
     bar/
@@ -441,7 +434,7 @@ For instructions, I recommend this awesome interactive guide:
 
 #### nano
 
-If you’re kinda lazy to learn `vim`, `nano` is a simple intuitive backup.
+If you’re kinda lazy to learn `vim`, `nano` is a simple intuitive alternative.
     
     $ apt-get install nano
     $ nano sometext.txt
@@ -552,6 +545,7 @@ You can find out more about `ssh` (secure shell) from the Internet.
 
 Not a command, but helpful to know. If you notice, all the commands here are really just compiled binary files underneath the hood. To know where they stay, check out:
 
+
 [Differences between /bin, /sbin, /usr/bin, /usr/sbin, /usr/local/bin, /usr/local/sbin](http://askubuntu.com/questions/308045/differences-between-bin-sbin-usr-bin-usr-sbin-usr-local-bin-usr-local)
 
 
@@ -560,14 +554,23 @@ Not a command, but helpful to know. If you notice, all the commands here are rea
 
 Phew! That was an awful lot of stuff! Use it often, and you’ll remember all the commands by heart. For now, this cheat sheet may be of help.
 
+
 [FOSSwire Linux/UNIX Command Reference](https://fosswire.com/post/2007/08/unixlinux-command-cheat-sheet/)
 
 ![Linux/UNIX Command Quick Reference](https://cdn-images-2.medium.com/max/1200/1*3DaRml5vdPK_fCCCxBEHnA.png "adapted from https://fosswire.com/post/2007/08/unixlinux-command-cheat-sheet/]")
 
-Keep in mind that there are still tons of things which I did not cover in this tutorial. To learn more topics or gain deeper insights, be sure to visit [Ryan’s articles](http://ryanstutorials.net/linuxtutorial/ "Linux Tutorial")!
 
-What’s next? It’s now on **you**.
+Keep in mind that there are still tons of things which I did not cover in this tutorial. In fact, I didn’t even go into details about how these commands work. Because this tutorial is only designed to be a broad overview (for absolute beginners), I encourage you to dive in further and actually *do stuff* with it.
+But if you’re still not very confident, or maybe you got lost in this tutorial, that’s okay too! There are many alternatives out there on the Internet, but be warned that not a lot of them are beginner-friendly.
 
-As you develop your own experience, remember that you’re not alone. If you ever get stuck on something, Google is always there waiting for you.
+Except, maybe, this guy:
+
+[Ryan's Linux Tutorial](http://ryanstutorials.net/linuxtutorial/ "Linux Tutorial")
+
+![Ryan's Linux Tutorial](http://i.imgur.com/1W4VTW5.jpg?1 "Linux Tutorial")
+
+First of all, his tutorials are fantastic. His explanations are extensive and filled with tons of tips and tricks along the way. He also covered many solid aspects of working in the command line — very helpful for those who want to understand how the command line works.
+
+So you want more concrete explanations and use cases? Be sure to visit Ryan’s site!
 
 Good luck :)
