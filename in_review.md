@@ -20,7 +20,7 @@
 
 ### Beginner: Linux Navigation Manual by Prakrit Duangsutha
 - [Read the guide](http://tutorials.pluralsight.com/other/beginner-linux-navigation-manual?status=in-review)
-- [Read more from Prakrit Duangsutha](http://tutorials.pluralsight.com/user/brillydev) <img src="https://avatars.githubusercontent.com/u/2718812?v=3" width="30" height="30" alt="Prakrit Duangsutha" />
+- [Read more from Prakrit Duangsutha](http://tutorials.pluralsight.com/author/brillydev) <img src="https://avatars.githubusercontent.com/u/2718812?v=3" width="30" height="30" alt="Prakrit Duangsutha" />
 - Related to: other
 
 ### Profiling memory usage in Python by Luke Lee
