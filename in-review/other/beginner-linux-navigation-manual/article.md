@@ -38,9 +38,9 @@ Oh, and keep in mind that Linux is case-sensitive. `A` is different from `a`!
 
 
 
-### Basic Navigation
+## Basic Navigation
 
-#### pwd
+### pwd
 
 `pwd` (print working directory) shows the current *directory* (basically, the folder) you’re in.
 
@@ -57,7 +57,7 @@ In case you’re wondering:
 `.
 
 
-#### cd
+### cd
 
 The most basic command of all time, `cd` (change directory) means... Err, change directory.
 
@@ -85,7 +85,7 @@ You can see that the directory changes according to what you type after `cd`. Ty
     /home/brillydev
 
 
-#### ls
+### ls
 
 `ls` (list) list down all the content inside the directory.
 
@@ -98,7 +98,7 @@ You can see that the directory changes according to what you type after `cd`. Ty
 A slash (`/`) post-fixed after a name indicates that it is a directory. In this case, `bar` and `foo` are directories. Anything not with a slash are all files.
 
 
-#### Flags
+### Flags
 
 In addition to performing a general task, a command may also contain flags to specify a specific task you want the command to do. A flag is anything prefixed with a dash (`-`) that follows the command name.
 
@@ -129,7 +129,7 @@ Some flags can also be more than one-letter long. Those that are multiple letter
     ./ ../ .hiddenfile.txt apple.txt bar/ foo/ somefiles.txt
 
 
-#### tree
+### tree
 
 For those who want more fancy visualization, `tree` is for you.
 
@@ -142,12 +142,12 @@ For those who want more fancy visualization, `tree` is for you.
     2 directories, 2 files
 
 
-#### clear / reset / Ctrl + L / ⌘ + K
+### clear / reset / Ctrl + L / ⌘ + K
 
 You’re having fun playing around with all these commands when you realize you screen is really cluttered and you need some clean up. Typing `clear` or `reset` or input any of the key combinations mentioned will get your terminal wiped up.
 
 
-#### File Execution
+### File Execution
 
 Surprisingly not many beginners know how to run a standalone binary/executable file. To execute a local file, simply type
 
@@ -156,7 +156,7 @@ Surprisingly not many beginners know how to run a standalone binary/executable f
 If you ever find yourself stuck in the program, simply press <kbd>Ctrl</kbd> + <kbd>C</kbd> to get out.
 
 
-#### Some Addition
+### Some Addition
  
 If shutting down the system is frustrating to you, here is the way to do it.
 
@@ -178,9 +178,9 @@ If any of these don’t work, adding a `sudo` in front will probably help.
 
 
 
-### File Manipulation
+## File Manipulation
 
-#### mkdir
+### mkdir
 `mkdir` (make directory) is used to create a directory.
 
     $ ls
@@ -191,7 +191,7 @@ If any of these don’t work, adding a `sudo` in front will probably help.
     apple.txt bar/ foo/ somefiles.txt
 
 
-#### mv
+### mv
 To move files, the command `mv` (move) is used.
 
     $ ls
@@ -221,7 +221,7 @@ And if you’re tired of typing `ls` everytime after the command, a semicolon ca
     hello.txt
 
 
-#### rm
+### rm
 
 `rm` (remove) removes files. Take note that this action cannot be undone.
 
@@ -250,7 +250,7 @@ And if you’re tired of typing `ls` everytime after the command, a semicolon ca
 If you’re tired of typing `y`s for all the files, `rm -rf` can help you. Be extremely careful, however, as this command-flag combination is incredibly dangerous. If you accidentally type the wrong path — boy, there’s no going back!
 
 
-#### rmdir
+### rmdir
 
 If you try to use `rm` alone for directories, you’ll be faced with this:
 
@@ -270,7 +270,7 @@ In this case, `rmdir` (remove directory) can be used instead. Note also that thi
     $
 
 
-#### touch
+### touch
 
 When you wish to create new (empty) files, use `touch`.
 
@@ -281,7 +281,7 @@ When you wish to create new (empty) files, use `touch`.
     file1 file2.txt file3
 
 
-#### cp
+### cp
 
 Copying is undeniably one of the greatest inventions of all time. To do that, use `cp` (copy).
 
@@ -296,7 +296,7 @@ Copying is undeniably one of the greatest inventions of all time. To do that, us
 To copy a directory recursively, use `cp -r`.
 
 
-#### ln -s
+### ln -s
 
 You’ll encounter this quite often in the future. So it’s probably good to know it now. To create a *symbolic link* (Google for explanations), use `ln -s`.
 
@@ -304,16 +304,16 @@ You’ll encounter this quite often in the future. So it’s probably good to kn
 
 
 
-### Working with Content
+## Working with Content
 
-#### echo
+### echo
 `echo` prints out whatever you say to it.
 
     $ echo "hello world"
     hello world
 
 
-#### cat / more / less / head / tail
+### cat / more / less / head / tail
 
 To display the content of a file, use any of the commands above.
 
@@ -325,7 +325,7 @@ To display the content of a file, use any of the commands above.
 These commands don’t do exactly the same thing. Do some little experiments to find out how they differ :)
 
 
-#### grep
+### grep
 
 `grep` is an extremely powerful tool to search the content of a file. It prints out the line containing the word(s) specified, if it is present in the file. For example.
 
@@ -338,10 +338,10 @@ There are a lot more powerful tools out there, such as `sed` and `awk`, that wil
 
 
 
-### User Manual
+## User Manual
 
 
-#### man
+### man
 
 If you happen to forget, or see a new command you’ve never heard of, apart from Google, your user manual will also be incredibly helpful. To use it, simply type `man`.
 
@@ -350,18 +350,19 @@ If you happen to forget, or see a new command you’ve never heard of, apart fro
 
 
 
-### Piping and Redirection
+## Piping and Redirection
 
-#### Pipe
+### Pipe
 
 `|` (that vertical bar right above the <kbd>Enter</kbd> key) is called a *pipe*. It redirects the output of the left command to the input of the right. For example:
 
-    $ echo “hello world\n
+    $ echo “hello world
+
     You’re really cute.” | grep “cute”
     You’re really cute.
 
 
-#### Redirection
+### Redirection
 
 Redirections are similar to pipe; but instead of passing the output as an input, they save the output to a file, or read the content of a file.
 
@@ -385,9 +386,9 @@ Redirection overwrites the files each time it is used. Use appends (`>>` and `<<
 
 
 
-### Working with Packages
+## Working with Packages
 
-#### apt-get
+### apt-get
 
 Working with computers nowadays usually requires external software from the Internet. You can choose to download them manually, or use a package manager to manage all the stuff for you. `apt-get` (advance packaging tool) is the default package manager for Ubuntu and Debian.
 
@@ -398,7 +399,7 @@ Working with computers nowadays usually requires external software from the Inte
 If you ever get stuck, `sudo` can help you.
 
 
-#### wget
+### wget
 
 `wget` is a tool to download files from the Internet.
 
@@ -406,7 +407,7 @@ If you ever get stuck, `sudo` can help you.
     $ wget https://www.google.com/thefilethatIwant.zip
 
 
-#### tar / unzip
+### tar / unzip
 
 Sometimes you’ll get files in archived form. To extract them, use unzip or tar.
 
@@ -418,9 +419,9 @@ Sometimes you’ll get files in archived form. To extract them, use unzip or tar
 
 
 
-### Text Editing
+## Text Editing
 
-#### vi/vim
+### vi/vim
 
 `vi` or `vim` (vi improved) is an awesome tool to do all things text. It’s incredibly difficult to use at first, but through time, you’ll realize that it’s one of the best out there.
 
@@ -432,7 +433,7 @@ For instructions, I recommend this awesome interactive guide:
 [Interactive Vim Tutorial](www.openvim.com)
 
 
-#### nano
+### nano
 
 If you’re kinda lazy to learn `vim`, `nano` is a simple intuitive alternative.
     
@@ -440,7 +441,7 @@ If you’re kinda lazy to learn `vim`, `nano` is a simple intuitive alternative.
     $ nano sometext.txt
 
 
-#### emacs
+### emacs
 
 All-time rival of `vim`, here comes `emacs`.
 
@@ -449,9 +450,9 @@ All-time rival of `vim`, here comes `emacs`.
 
 
 
-### Permissions
+## Permissions
 
-#### Overview
+### Overview
 
 Remember this?
 
@@ -475,7 +476,7 @@ This means that the **user** (owner of `apple.txt`) can **read and write** to `a
 **Execute**, in the context of a directory, also means **access**. Hence if you deny permission to execute a directory, you can’t access it.
 
 
-#### chmod
+### chmod
 
 To change permissions, `chmod` (change mode) can be used. I leave it to you to interpret what this means :P
 
@@ -483,7 +484,7 @@ To change permissions, `chmod` (change mode) can be used. I leave it to you to i
     $ sudo chmod a-r apple.txt
 
 
-#### chown
+### chown
 
 Similar to `chmod`, `chown` (change owner) changes the owner of the file.
 
@@ -491,14 +492,14 @@ Similar to `chmod`, `chown` (change owner) changes the owner of the file.
 
 
 
-### Fancy Little Features
+## Fancy Little Features
 
-#### history
+### history
     
     $ history
 
 
-#### cal
+### cal
  
     $ cal
        February 2016 
@@ -510,38 +511,38 @@ Similar to `chmod`, `chown` (change owner) changes the owner of the file.
     28 29
 
 
-#### ssh
+### ssh
 
 You can find out more about `ssh` (secure shell) from the Internet.
 
     $ ssh http://prakrit.d/
 
 
-#### cowsay
+### cowsay
 
     $ sudo apt-get install cowsay
     $ cowsay -f ghostbusters "Hi, How are you"
 
 
-#### figlet
+### figlet
 
     $ sudo apt-get install figlet
     $ figlet "Welcome"
 
 
-#### fortune
+### fortune
 
     $ sudo apt-get install fortune
     $ fortune
 
 
-#### Star Wars
+### Star Wars
 
     $ sudo apt-get install telnet
     $ telnet towel.blinkenlights.nl
 
 
-#### FHS
+### FHS
 
 Not a command, but helpful to know. If you notice, all the commands here are really just compiled binary files underneath the hood. To know where they stay, check out:
 
@@ -550,7 +551,7 @@ Not a command, but helpful to know. If you notice, all the commands here are rea
 
 
 
-### Cheat Sheet
+## Cheat Sheet
 
 Phew! That was an awful lot of stuff! Use it often, and you’ll remember all the commands by heart. For now, this cheat sheet may be of help.
 
