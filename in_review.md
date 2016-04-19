@@ -78,11 +78,6 @@
 - [Read more from Red Moses](http://tutorials.pluralsight.com/user/redmoses) <img src="https://avatars.githubusercontent.com/u/4059490?v=3" width="30" height="30" alt="Red Moses" />
 - Related to: Python
 
-### Response Streams with Rails 4 and Redis by Adam Fortuna
-- [Read the guide](http://tutorials.pluralsight.com/ruby-ruby-on-rails/response-streams-with-rails-4-and-redis?status=in-review)
-- [Read more from Adam Fortuna](http://tutorials.pluralsight.com/user/adamfortuna) <img src="https://avatars.githubusercontent.com/u/7741?v=3" width="30" height="30" alt="Adam Fortuna" />
-- Related to: Ruby, Ruby on Rails
-
 ### Don't swallow InterruptedException. Call Thread.currentThread().interrupt() instead. by Michael Scharf (Github)
 - [Read the guide](http://tutorials.pluralsight.com/java-and-j2ee/don-t-swallow-interruptedexception-call-thread-currentthread-interrupt-instead?status=in-review)
 - [Read more from Michael Scharf (Github)](http://tutorials.pluralsight.com/user/scharf) <img src="https://avatars.githubusercontent.com/u/3731059?v=3" width="30" height="30" alt="Michael Scharf (Github)" />
