@@ -3,7 +3,9 @@
     "author_name": "brillydev",
     "author_real_name": "Prakrit Duangsutha",
     "branch": "master",
-    "branches": [],
+    "branches": [
+        "adityavarshney"
+    ],
     "filename": "article.md",
     "first_commit": null,
     "image_url": "https://avatars.githubusercontent.com/u/2718812?v=3",
