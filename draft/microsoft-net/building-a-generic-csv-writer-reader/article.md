@@ -10,7 +10,7 @@ murat,aykanat
 john,smith
 ```
 
-CSV format is very useful because it is a text file and any operating system can read it. So for example if your application creates the CSV file on a Windows machine, you can open it up and use it in a Linux machine. So it is a very portable and easily readable file format by any operating system.
+CSV format is very useful because it is a text file and any operating system can read it. So for example if your application creates the CSV file on a Windows machine, you can open it up and use it in a Linux machine. So it is a very portable and easily readable file format.
 
 ### Formatting of a CSV file
 ### Why write a custom CSV writer/reader instead of using a 3rd party tool?
