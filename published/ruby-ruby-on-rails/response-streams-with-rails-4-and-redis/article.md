@@ -99,4 +99,4 @@ If you set this up to run in a `before` filter, and do any database communicatio
 
 ## Update
 
-For an example of how this technique is used, read the post on [Teaching iOS 7 at Code School](http://adamfortuna.com/articles/teaching-ios7-at-codeschool). This post details the user experience that can be achieved using response streams.
+For an example of how this technique is used, read the post on [Teaching iOS 7 at Code School](http://adamfortuna.com/articles/teaching-ios7-at-codeschool). This post details the user experience that can be achieved using response streams. Tutorial was [originally posted here](http://adamfortuna.com/articles/response-streams-with-rails-4).
