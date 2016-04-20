@@ -2,7 +2,7 @@
 
 In this guide I will explain how to write a generic CSV Writer/Reader that will automatically pick data from the public properties of the input objects and generate a CSV file.
 
-Before we dive into the code let me explain what is CSV file format so we can better understand what's going on in the code.
+Before we dive into the code let me explain what is CSV file format so we have a better understading of what we are dealing with.
 
 ### What is a CSV file?
 A CSV file is a plain text file which holds data in table format. Each line is like a row in a table, and columns are seperated by a comma, hence the name comma sepeated value.
