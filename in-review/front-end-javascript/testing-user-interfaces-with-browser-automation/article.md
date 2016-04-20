@@ -219,7 +219,7 @@ Now we'll use Nightwatch to simulate a user interacting with this calculator. We
 
 In the `tests` folder, create a file named `BMICalculator.js` with the following content:
 
-```
+```javascript
 var selectors = {
     weight: "input[name=weight]",
     height: "input[name=height]",
