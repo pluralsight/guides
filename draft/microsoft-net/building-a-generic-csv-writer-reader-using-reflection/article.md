@@ -1,4 +1,4 @@
-(**C**omma **S**eperated **V**alue) CSV file format is a very common way of storing large datasets in a simple and portable format. Also since it is plain text, it is very easy to make such a file programmatically in an application. There are libraries around for such tasks but if you want to customize or create something specific it is better to write your own implementation for full control.
+(**C**omma **S**eperated **V**alue) CSV file format is a very common way of storing datasets in a simple and portable format. Also since it is plain text, it is very easy to make such a file programmatically in an application. There are libraries around for such tasks but if you want to customize or create something specific it is better to write your own implementation for full control.
 
 In this guide I will explain how to write a generic CSV Writer/Reader that will automatically pick data from the public properties of the input objects and generate a CSV file.
 
