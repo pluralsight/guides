@@ -1,3 +1,5 @@
+CSV file format is a very common way of storing large datasets in a simple and portable format. Also since it is plain text, it is very easy to make such a file programmatically in an application. There are libraries around for such tasks but if you want to customize it is better to write your own implementation for full control.
+
 ### What is a CSV file and why we use it
 A (**C**omma **S**eperated **V**alue) CSV file is a plain text file which holds data in table format. Each line is like a row in a table, and columns are seperated by a comma, hence the name comma sepeated value.
 
@@ -53,11 +55,19 @@ We can also have actual quotation marks we need to include in our data. In this 
 murat,""aykanat""
 john,""smith""
 ```
-That would read as name->murat, lastname->"aykanat".
+That would read as; name is murat, lastname is "aykanat".
 
 #### Headers
+You can also add headers to the columns.
+```csv
+name,lastname
+murat,aykanat
+john,smith
+```
+This is useful when the columns are not differentiable. For example if columns are all numbers, and you send the file to a person who does not know what the columns mean, that would be very confusing.So it would be better if we include headers in those scenarios.
 
 ### Why write a custom CSV writer/reader instead of using a 3rd party tool?
+
 ### CSV Writer
 #### Writing from an IEnumerable
 #### Writing from a XML file
