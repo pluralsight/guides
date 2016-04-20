@@ -68,7 +68,7 @@ name,lastname
 murat,aykanat
 john,smith
 ```
-This is useful when the columns are not differentiable. For example if columns are all numbers, and you send the file to a person who does not know what the columns mean, that would be very confusing.So it would be better if we include headers in those scenarios.
+This is useful when the columns are not differentiable. For example if columns are all numbers, and you send the file to a person who does not know what the columns mean. That would be very confusing for the other person.So it would be better if we include headers in those scenarios to indicate what those column of values mean.
 
 ### The Theory
 Our idea is simple, we want to input an array of objects into our CSV Writer and output a CSV file. For the reading part we want to input the file path and output an array of objects back into the memory.
