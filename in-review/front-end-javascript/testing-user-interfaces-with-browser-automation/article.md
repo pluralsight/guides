@@ -146,7 +146,7 @@ BMI is defined as a person's weight in kilograms divided by the square of their 
 
 We'll start out with a quick-and-dirty page where the user can input their height and weight, press a button, and find out their BMI. Create a file named `BMICalculator.html` with the following content:
 
-```
+```html
 <!DOCTYPE html>
 <html>
     <head>
@@ -392,7 +392,7 @@ The tests failed. That's a good thing. If the validation tests passed before we 
 
 To implement the input validation, modify the `BMICalculator.html` file as follows:
 
-```
+```html
 <style>
 	#result, #error {
 		display: none;
@@ -463,7 +463,7 @@ Many times the web-page will not respond instantaneously to an action. If you se
 
 Just as a simple example, let's say we have a small app with a button and a list. When you click the button, it waits for some random period of time and then adds an item to the end of the list. Create a file named `asyncExample.html` in your project folder with the following content:
 
-```
+```html
 <button id="add">Add item</button>
 <ul id="list"></ul>
 <script>
