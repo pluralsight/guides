@@ -21,12 +21,12 @@ CSV format is very useful because it is a text file and any operating system can
 #### Seperator Issues
 In some cases the file may not be comma seperated. Especially if you are using a 3rd party program(e.g. Microsoft Excell), depending on the culture of your machine "seperator" might be a different character such as **";"**. This is because of the decimal sepeator is different in different cultures. In some cultures decimal seperator is **"."** so the CSV seperator can be **","**. But in some cultures decimal seperator is **","** so the CSV file has to use **";"** as seperator.
 
-For example if your locale is set to a european culture, such as fr-FR, default decimal seperator becomes "," and you need to use ";" in CSV file as column seperator:
+For example if your locale is set to a european culture, such as "fr-FR", default decimal seperator becomes "," and you need to use ";" in CSV file as column seperator:
 ```csv
 3,5;2,5;5,4
 4,5;6,7;8,9
 ```
-However in a machine which has en-US set as default, since decimal seperator is "." by default, same CSV file would look like this:
+However in a machine which has "en-US" set as default, since decimal seperator is "." by default, same CSV file would look like this:
 ```csv
 3.5,2.5,5.4
 4.5,6.7,8.9
