@@ -70,7 +70,25 @@ john,smith
 ```
 This is useful when the columns are not differentiable. For example if columns are all numbers, and you send the file to a person who does not know what the columns mean, that would be very confusing.So it would be better if we include headers in those scenarios.
 
-### Why write a custom CSV writer/reader instead of using a 3rd party tool?
+### The Theory
+Our idea is simple, we want to input an array of objects into our CSV Writer and output a CSV file. For the reading part we want to input the file path and output an array of objects back into the memory.
+
+**Input**
+```cs
+public class Person
+{
+     public string Name { get; set; }
+     public string Lastname { get; set; }
+}
+```
+**Output**
+```csv
+murat,aykanat
+john,smith
+```
+However there are some considerations:
+- CSV Writer and Reader must abide by the rules of CSV file format mentioned above
+- The process of writing must be automated. What I mean by this is, if we have 2 public properties in a class, it is fairly easy to write those properties to a file. But what if we have 100 or 10000 public properties? We just can't write them one by one. There must be automation.
 
 ### CSV Writer
 #### Writing from an IEnumerable
