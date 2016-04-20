@@ -103,7 +103,7 @@ public class Person
 ```
 However there are some considerations:
 - CSV Writer and Reader must abide by the rules of CSV file format mentioned above
-- The process of writing must be automated. What I mean by this is, if we have 2 public properties in a class, it is fairly easy to write those properties to a file. But what if we have 100 or 10000 public properties? We just can't write them one by one. There must be automation.
+- The process of writing must be automated. What I mean by this is, if we have 2 public properties in a class, it is fairly easy to write those properties to a file. But what if we have 100 or 10000 public properties? We just can't write them one by one.
 
 ### CSV Writer
 ### CSV Reader
