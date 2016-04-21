@@ -209,8 +209,8 @@ public abstract class CsvableBase
     }
     private string PreProcess(string input)
     {
-        input = input.Replace('ı', 'i').Replace('ç', 'c').
-                      Replace('ö', 'o').Replace('ş', 's')
+        input = input.Replace('ı', 'i').Replace('ç', 'c')
+                      .Replace('ö', 'o').Replace('ş', 's')
                       .Replace('ü', 'u').Replace('ğ', 'g')
                       .Replace('İ', 'I').Replace('Ç', 'C')
                       .Replace('Ö', 'O').Replace('Ş', 'S')
@@ -219,11 +219,28 @@ public abstract class CsvableBase
                       .Trim();
         if (input.Contains(","))
         {
-            input = "\"" + input + "\"";
+            input = """ + input + """;
         }
         return input;
     }
 }
+```
+Lets change our ```Person``` object into something that can test our pre-processing method.
+```cs
+class Program
+{
+    static void Main(string[] args)
+    {
+        var p = new Person(1,"\"Hello\", world!","İĞÜÇÖıüşöç");
+        Console.WriteLine(p.ToCsv());
+        Console.ReadLine();
+    }
+}
+```
+Output of this code:
+```text
+1,"""Hello"", world!",IGUCOiusoc
+```
 
 ### CSV Reader
 ### Conclusion
