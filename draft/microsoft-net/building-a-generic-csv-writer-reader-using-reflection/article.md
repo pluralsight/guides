@@ -107,8 +107,8 @@ However there are some considerations:
 - Every object should output its public properties via a method.
 
 Optional considerations:
-- Since some CSV readers out there do not support UTF-8 encoding, all local characters must be converted into ASCII format. This may not be possible in some languages, however since I will be giving Turkish as an example, it will be possible in this guide.
-- Unless explicitly defined by quotation marks left and right spaces must be trimmed.
+- Since some CSV readers out there do not support UTF-8 encoding, all "special" characters must be converted into ASCII counterparts if possible. Note that this may not be possible in some languages, however since I will be giving Turkish special characters as an example, it will be possible in this guide.
+- Unless explicitly defined by quotation marks left and right spaces must be trimmed, because in my experience unnecessary left and right spaces are usually a mistake by the person who input the values, especially if the values are copied from some other application. If we absolutely need left and right spaces we can use quotation marks.
 - Properties can be ignored with their index or their name.
 
 ### CSV Writer
@@ -118,8 +118,9 @@ First of all we need to plan this in a way so that we can write it once and use 
 - Override ToString()
 - Abstract base class
 
-I didn't want to use the ```ToString()``` override because maybe we may need it somewhere else and I wantthe ```ToCsv()``` to be a seperate method so it will be clear what it is doing. Since the code will be same for each class, I will go with the abstract class way. However if your particular class is already inheriting from a certain base class you can go with the interface. You just need to copy paste for each class you want to turn to CSV.
+I didn't want to use the ```ToString()``` override because maybe we need it somewhere else in our code and I want the ```ToCsv()``` to be a seperate method so it will be clear what it is doing. Also, since the code will be same for each class, I will go with the abstract class way. However if your particular class is already inheriting from a certain base class you can go with the interface implementation. You just need to copy paste for each class you want to turn to CSV.
 
+#### Basic Implementation
 What we need to do here is use reflection to get all the values of public properties of the class.
 ```cs
 public abstract class CsvableBase
@@ -180,8 +181,9 @@ Output of above code:
 ```text
 1,murat,aykanat
 ```
+#### Comma, Quotation Marks and Special Characters
 
-This is the basic implementation, however it does not yet satisfy other considerations we set such as special characters, commas and quotation marks. For that, let's add a pre-processing method to our base class.
+To pre-process commas, quotation marks and special characters, let's add a pre-processing method to our base class.
 
 ```cs
 public abstract class CsvableBase
@@ -209,17 +211,23 @@ public abstract class CsvableBase
     }
     private string PreProcess(string input)
     {
-        input = input.Replace('ı', 'i').Replace('ç', 'c')
-                      .Replace('ö', 'o').Replace('ş', 's')
-                      .Replace('ü', 'u').Replace('ğ', 'g')
-                      .Replace('İ', 'I').Replace('Ç', 'C')
-                      .Replace('Ö', 'O').Replace('Ş', 'S')
-                      .Replace('Ü', 'U').Replace('Ğ', 'G')
-                      .Replace("\"", "\"\"")
-                      .Trim();
+        input = input.Replace('ı', 'i')
+            .Replace('ç', 'c')
+            .Replace('ö', 'o')
+            .Replace('ş', 's')
+            .Replace('ü', 'u')
+            .Replace('ğ', 'g')
+            .Replace('İ', 'I')
+            .Replace('Ç', 'C')
+            .Replace('Ö', 'O')
+            .Replace('Ş', 'S')
+            .Replace('Ü', 'U')
+            .Replace('Ğ', 'G')
+            .Replace("\"", "\"\"")
+            .Trim();
         if (input.Contains(","))
         {
-            input = """ + input + """;
+            input = "\"" + input + "\"";
         }
         return input;
     }
@@ -231,7 +239,7 @@ class Program
 {
     static void Main(string[] args)
     {
-        var p = new Person(1,"\"Hello\", world!","İĞÜÇÖıüşöç");
+        var p = new Person(1,""Hello", world!","İĞÜÇÖıüşöç");
         Console.WriteLine(p.ToCsv());
         Console.ReadLine();
     }
@@ -241,6 +249,73 @@ Output of this code:
 ```text
 1,"""Hello"", world!",IGUCOiusoc
 ```
+#### Ignoring Properties
+
+Sometimes you may not need ALL the public properties in a class. So we need to ignore selected properties either by their name or their index in the list of properties we acquire by reflection.
+
+But what happens in the edge cases such as the beginning or the end? How do we manage commas?
+
+We just need to modify our code a bit to achive what we want. Let's add following methods to our ```CsvableBase``` class.
+
+```cs
+public virtual string ToCsv(string[] propertiesToIgnore)
+{
+    string output = "";
+    bool isFirstPropertyWritten = false;
+    
+
+    var properties = GetType().GetProperties();
+
+    for (var i = 0; i < properties.Length; i++)
+    {
+        if (!propertiesToIgnore.Contains(properties[i].Name))
+        {
+            if (isFirstPropertyWritten)
+            {
+                output += ",";
+            }
+            output += PreProcess(properties[i].GetValue(this).ToString());
+
+            if (!isFirstPropertyWritten)
+            {
+                isFirstPropertyWritten = true;
+            }
+        }
+    }
+
+    return output;
+}
+
+public virtual string ToCsv(int[] propertiesToIgnore)
+{
+    string output = "";
+
+    bool isFirstPropertyWritten = false;
+
+    var properties = GetType().GetProperties();
+
+    for (var i = 0; i < properties.Length; i++)
+    {
+        if (!propertiesToIgnore.Contains(i))
+        {
+            if (isFirstPropertyWritten)
+            {
+                output += ",";
+            }
+
+            output += PreProcess(properties[i].GetValue(this).ToString());
+
+            if (!isFirstPropertyWritten)
+            {
+                isFirstPropertyWritten = true;
+            }
+        }
+    }
+
+    return output;
+}
+```
+
 
 ### CSV Reader
 ### Conclusion
