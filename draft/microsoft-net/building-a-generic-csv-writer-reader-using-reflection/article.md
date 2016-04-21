@@ -223,7 +223,7 @@ public abstract class CsvableBase
             .Replace('Ş', 'S')
             .Replace('Ü', 'U')
             .Replace('Ğ', 'G')
-            .Replace(""", """")
+            .Replace("\"", "\"\"")
             .Trim();
         if (input.Contains(","))
         {
@@ -333,14 +333,18 @@ class Program
     {
         var p = new Person(1,"murat","aykanat");
         Console.WriteLine("Ignore by property name:");
-        Console.WriteLine("Ignoring Id property: \n" 
+        Console.WriteLine("Ignoring Id property: 
+" 
                         + p.ToCsv(new []{"Id"}));
-        Console.WriteLine("Ignoring Name property: \n" 
+        Console.WriteLine("Ignoring Name property: 
+" 
                         + p.ToCsv(new[] { "Name" }));
-        Console.WriteLine("Ignoring Lastname property: \n" 
+        Console.WriteLine("Ignoring Lastname property: 
+" 
                         + p.ToCsv(new[] { "Lastname" }));
         Console.WriteLine("Ignore by property index:");
-        Console.WriteLine("Ignoring 0->Id and 2->Lastname: \n" 
+        Console.WriteLine("Ignoring 0->Id and 2->Lastname: 
+" 
                         + p.ToCsv(new[] { 0,2 }));
         Console.ReadLine();
     }
