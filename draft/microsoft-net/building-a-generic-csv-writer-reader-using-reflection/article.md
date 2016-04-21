@@ -251,14 +251,14 @@ Output of this code:
 ```
 #### Ignoring Properties
 
-Sometimes you may not need all the public properties in a class. So we need to ignore selected properties either by their name or their index in the list of properties we acquire by reflection.
+Sometimes you may not need all the public properties in a class. So we need to ignore or filter properties either by their name or their index in the list of properties we acquire by reflection.
 
 But what happens in the edge cases such as the beginning or the end? How do we manage commas?
 
 We just need to modify our code a bit to achive what we want. Let's add following methods to our ```CsvableBase``` class.
 
 ```cs
-public virtual string ToCsv(string[] propertiesToIgnore)
+public virtual string ToCsv(string[] propertyNames, bool isIgnore)
 {
     string output = "";
     bool isFirstPropertyWritten = false;
@@ -268,17 +268,36 @@ public virtual string ToCsv(string[] propertiesToIgnore)
 
     for (var i = 0; i < properties.Length; i++)
     {
-        if (!propertiesToIgnore.Contains(properties[i].Name))
+        if (isIgnore)
         {
-            if (isFirstPropertyWritten)
+            if (!propertyNames.Contains(properties[i].Name))
             {
-                output += ",";
-            }
-            output += PreProcess(properties[i].GetValue(this).ToString());
+                if (isFirstPropertyWritten)
+                {
+                    output += ",";
+                }
+                output += PreProcess(properties[i].GetValue(this).ToString());
 
-            if (!isFirstPropertyWritten)
+                if (!isFirstPropertyWritten)
+                {
+                    isFirstPropertyWritten = true;
+                }
+            }
+        }
+        else
+        {
+            if (propertyNames.Contains(properties[i].Name))
             {
-                isFirstPropertyWritten = true;
+                if (isFirstPropertyWritten)
+                {
+                    output += ",";
+                }
+                output += PreProcess(properties[i].GetValue(this).ToString());
+
+                if (!isFirstPropertyWritten)
+                {
+                    isFirstPropertyWritten = true;
+                }
             }
         }
     }
@@ -286,7 +305,7 @@ public virtual string ToCsv(string[] propertiesToIgnore)
     return output;
 }
 
-public virtual string ToCsv(int[] propertiesToIgnore)
+public virtual string ToCsv(int[] propertyIndexes, bool isIgnore)
 {
     string output = "";
 
@@ -296,20 +315,41 @@ public virtual string ToCsv(int[] propertiesToIgnore)
 
     for (var i = 0; i < properties.Length; i++)
     {
-        if (!propertiesToIgnore.Contains(i))
+        if (isIgnore)
         {
-            if (isFirstPropertyWritten)
+            if (!propertyIndexes.Contains(i))
             {
-                output += ",";
-            }
+                if (isFirstPropertyWritten)
+                {
+                    output += ",";
+                }
 
-            output += PreProcess(properties[i].GetValue(this).ToString());
+                output += PreProcess(properties[i].GetValue(this).ToString());
 
-            if (!isFirstPropertyWritten)
-            {
-                isFirstPropertyWritten = true;
+                if (!isFirstPropertyWritten)
+                {
+                    isFirstPropertyWritten = true;
+                }
             }
         }
+        else
+        {
+            if (propertyIndexes.Contains(i))
+            {
+                if (isFirstPropertyWritten)
+                {
+                    output += ",";
+                }
+
+                output += PreProcess(properties[i].GetValue(this).ToString());
+
+                if (!isFirstPropertyWritten)
+                {
+                    isFirstPropertyWritten = true;
+                }
+            }
+        }
+        
     }
 
     return output;
@@ -318,7 +358,7 @@ public virtual string ToCsv(int[] propertiesToIgnore)
 Here, we:
 1. Define a boolean ```isFirstPropertyWritten``` to see if we write the first property yet.
 2. Get all the properties as ```PropertyInfo``` using reflection.
-3. Iterate over the properties, checking if the current property name or index is in the ignore list.
+3. Iterate over the properties, checking if the current property name or index is in the ignore or filter list by ```isIgnore``` flag.
 4. If it is not, we check if the first property is written.
 5. If the first property is not written then we add a comma to output, since we will keep adding properties after that.
 6. Preprocess and add the current property's value to output.
@@ -333,15 +373,17 @@ class Program
     {
         var p = new Person(1,"murat","aykanat");
         Console.WriteLine("Ignore by property name:");
-        Console.WriteLine("Ignoring Id property: " 
-                        + p.ToCsv(new []{"Id"}));
-        Console.WriteLine("Ignoring Name property: " 
-                        + p.ToCsv(new[] { "Name" }));
-        Console.WriteLine("Ignoring Lastname property: " 
-                        + p.ToCsv(new[] { "Lastname" }));
+        Console.WriteLine("Ignoring Id property: \n" 
+        + p.ToCsv(new []{"Id"}, true));
+        Console.WriteLine("Ignoring Name property: \n" 
+        + p.ToCsv(new[] { "Name" }, true));
+        Console.WriteLine("Ignoring Lastname property: \n" 
+        + p.ToCsv(new[] { "Lastname" },true));
         Console.WriteLine("Ignore by property index:");
-        Console.WriteLine("Ignoring 0->Id and 2->Lastname: " 
-                        + p.ToCsv(new[] { 0,2 }));
+        Console.WriteLine("Ignoring 0->Id and 2->Lastname: \n" 
+        + p.ToCsv(new[] { 0,2 },true));
+        Console.WriteLine("Ignoring everything but Id: \n" 
+        + p.ToCsv(new[] { "Id" }, false));
         Console.ReadLine();
     }
 }
@@ -360,6 +402,8 @@ Ignoring Lastname property:
 Ignore by property index:
 Ignoring 0->Id and 2->Lastname:
 murat
+Ignoring everything but Id:
+1
 ```
 
 Finally we are done with ```CsvableBase``` class and ```ToCsv()``` method, now we can move on to the writer itself.
