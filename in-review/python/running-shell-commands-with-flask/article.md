@@ -1,31 +1,22 @@
-[Flask](http://flask.pocoo.org/) is an amazingly lightweight framework, and to my opinion its a great option 
-for writing small simple applications in Python.
+[Flask](http://flask.pocoo.org/) is an amazingly lightweight framework, and in my opinion it's a great option for writing simple applications in Python.
 
 ## Background
 
-An application in my company performs some tasks and then updates a MySql database 
-accordingly. So to know how the application is progressing with the day's tasks one 
-has to ssh into the application server and then run the appropriate queries using 
-mysql client. This is because the application only starts creating the reports once 
-all the tasks are finished. 
+An application in my company performs some tasks and then updates a MySql database accordingly. So to know how the application is progressing with the day's tasks, one has to use SSH (Secure Shell protocol) to get into the application server and run the appropriate queries using MySQL client. This is because the application only starts creating reports once all tasks are finished. 
 
-My task was to figure out a way so that someone without any system administration 
-knowledge might also access this data securely without anyone's help. 
+My objective was to figure out a way for someone without system administration knowledge to access this data securely without additional assistance. 
 
-## So here it goes...
+## Here we go...
 
-My plan was to create a flask application that will be accessible from any web browser. When 
-the correct path will be accessed the application will run some predefined shell command and 
-return the results to the browser. Now this output might be a sensitive information, so we 
-just can't allow anyone to be able to access this. To implement a basic layer of security 
-I have used IP white listing i.e, only allowing certain IPs to acccess the application.
+My plan was to create a flask application that would be accessible from any web browser. In this application, when the correct path is accessed, the software will run some predefined shell command and return the results to the browser. Now this output might be a sensitive information, so we just can't allow anyone to be able to access this. To implement a basic layer of security 
+I have used **IP whitelisting**, or only allowing certain IPs to acccess the application.
 
 > *I ran the below commands on Ubuntu 14.04 Trusty, 
-if you are using a different OS then your commands may vary accordingly*
+if you are using a different OS then your commands may vary accordingly.*
 
 ### Prerequisites
 
-To go along with this tutorial you must have the following installed in your system - 
+_To go along with this tutorial you must have the following installed in your system._ 
 
 * Python3 **(usually installed by default on Ubuntu 14.04)**
 * virtualenv **(sudo apt-get install python-virtualenv)**
@@ -34,7 +25,7 @@ To go along with this tutorial you must have the following installed in your sys
 
 ### Prepare your virtual environment
 
-To prepare your virtual environment use the following commands - 
+Use the following commands to prepare your virtual environment (virtualenv) - 
 
 ~~~bash
 # go to your workspace directory
@@ -54,8 +45,7 @@ mkdir src logs
 
 ### Prepare a sample database
 
-As we would be running a mysql query we first need to prepare a sample database for our task. To create a database do 
-the following,
+Since we will soon run a MySQL query, we need to prepare a sample database for our task.
 
 ~~~bash
 # create the database 
@@ -69,7 +59,7 @@ mysql -uflaskuser -pflask123 -e "INSERT INTO flasktest.tasks (task_title, task_s
 
 ~~~
 
-Now to check whether the database and table creations all went okay do the following,
+Let's check whether the database and table creations went according to plan.
 
 ~~~bash
 mysql -uflaskuser -pflask123 -e "USE flasktest; SELECT COUNT(*) FROM tasks WHERE task_status='Success';"
@@ -84,18 +74,17 @@ mysql -uflaskuser -pflask123 -e "USE flasktest; SELECT COUNT(*) FROM tasks WHERE
 
 ~~~
 
-You may run the commands with where statements for 'Pending' and 'Failed' as well just to make sure. All the 
-queries should give the same result.
+You may run the commands with statements for 'Pending' and 'Failed' as well just to double-check. All the queries should return the same result.
 
 ### The code
 
-Now create a file called **app.py** inside the src directory,
+Create a file called **app.py** inside the src directory,
 
 ~~~bash
 touch ~/workspace/flaskshell/src/app.py
 ~~~
 
-Inside the file put in the below code -
+Inside the file put in the code listed below.
 
 ~~~python
 from flask import Flask
@@ -153,49 +142,35 @@ if __name__ == '__main__':
 
 [Code Gist](https://gist.github.com/redmoses/347a2ad006a518f09fbc)
 
-> **Line 7** >> This is the array for the white listed ips. 
-> You should replace the ips according to your needs. 
-> You may put in virtually as many ips as you want in this array
+> **Line 7** >> This is the array for the whitelisted IPs. 
+> You should replace the IPs as needed. You may put in virtually as many ips as you want in this array
 
-> **Lines 8-10** >> I'm defining the queries here. You may change 
-> the query according to your needs here. 
+> **Lines 8-10** >> I'm defining the queries here. You may change the query to suit your needs. 
 
-> **Lines 13-18** >> The valid_ip() method. It returns true if the 
-> client's ip belongs in the white list, otherwise it returns false.
-> It gets the client ip using the request package from flask that is 
-> defined on **line 2** 
+> **Lines 13-18** >> The valid_ip() method returns true if the client's IP belongs in the white list, otherwise it returns false. It gets the client's IP using the request package from Flask. This request package is defined on **line 2** 
 
-> **Line 21** >> Define the route for accessing the application
+> **Line 21** >> Defines the route for accessing the application
 
-> **Line 23** >> Before processing the request check if the client's
-> ip belong to the white list. If not then show Flask's default 404 
-> page **(lines 43-47)**
+> **Line 23** >> Before processing the request check if the client's IP belongs to the white list. If it does not, show Flask's default 404 page **(lines 43-47)**
 
-> **Lines 24-29** >> Compose the shell commands using the queries 
-> defined earlier
+> **Lines 24-29** >> Compose the shell commands using the queries defined earlier. 
 
-> **Lines 32-37** >> Try running the shell commands if it faces any error 
-> trying then the method will return the error message **(line 39)**. If the 
-> execution is successful then it will return the results **(line 41)**
+> **Lines 32-37** >> Try running the shell commands. The application will either throw an error or, if execution is successful, it will return the results **(line 41)**
 
 
 ### Run the application as a service
 
-To run the application as a service I used supervisor. I'm not using it because 
-its the best process manager, rather I'm just used to it and it seems to do the 
-job.
+To run the application as a service I used [Supervisor](http://supervisord.org/). This is a matter of personal preference; feel free to use any other process controol system.
 
-Define a program on supervisor.
+Define a program on Supervisor.
 
-Create a new supervisor config file,
+Create a new Supervisor config file.
 
 ~~~bash
 sudo vim /etc/supervisor/conf.d/flaskshell.conf
 ~~~
 
-Copy and paste the following code in the file. I'm assuming you have put the 
-app in the location - **/home/user/workspace/flaskshell** . You must change 
-this value accordingly.
+Copy and paste the following code into the file. At this point, you must put the app in - **/home/user/workspace/flaskshell**.
 
 ~~~bash
 [program:stats]
@@ -206,7 +181,7 @@ stdout_logfile = /home/user/workspace/flaskshell/logs/out.log
 stderr_logfile = /home/user/workspace/flaskshell/logs/error.log
 ~~~
 
-Now you should update the supervisor config and start the application
+Now you should update the Supervisor config and start the application.
 
 ~~~bash
 sudo supervisorctl update stats
@@ -215,12 +190,9 @@ sudo supervisorctl start stats
 
 ## Accessing the application
 
-As we have not defined any port for the application it will run on the default 
-port 5000. To change this you may have a look at [here](http://stackoverflow.com/a/29079598/2894655).
+Since we have not defined any port for the application, it will default to port 5000. To change this, follow the instructions I found on [this Stack Overflow page](http://stackoverflow.com/a/29079598/2894655).
 
-So you can find the application at [http://SERVER_IP:5000](#). And the 
-the status updates should be available at [http://SERVER_IP:5000/status/](#).
+You can find the application at [http://SERVER_IP:5000](#). And the status updates should be available at [http://SERVER_IP:5000/status/](#).
 
 
-I hope you've enjoyed the post and it was of help to you. Please feel free 
-to leave any comments below.
+I hope my post was enjoyable and of help to you. Please feel free to leave any comments below with thoughts and feedback.
