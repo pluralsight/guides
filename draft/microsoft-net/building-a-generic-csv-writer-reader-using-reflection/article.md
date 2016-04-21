@@ -113,12 +113,12 @@ Optional considerations:
 
 ### CSV Writer
 
-First of all we need to plan this in a way so that we can write it once and use it everywhere. According to our considerations above we need a method for each class , ```ToCsv()```, that we want to turn to CSV. This can be done 2 ways:
-- Interface implementation
-- Override ToString()
-- Abstract base class
+According to our considerations above we need a method for each class, ```ToCsv()```, that we want to turn to CSV format. This can be done in 3 ways:
+- Interface implementation ```ICsvable``` with a method ```ToCsv()```
+- Override ```ToString()```
+- Abstract base class ```CsvableBase``` having a virtual ```ToCsv()``` method
 
-I didn't want to use the ```ToString()``` override because maybe we need it somewhere else in our code and I want the ```ToCsv()``` to be a seperate method so it will be clear what it is doing. Also, since the code will be same for each class, I will go with the abstract class way. However if your particular class is already inheriting from a certain base class you can go with the interface implementation. You just need to copy paste for each class you want to turn to CSV.
+I didn't want to use the ```ToString()``` override because maybe we need it somewhere else in our code and I want the ```ToCsv()``` to be a seperate method so it will be clear what it is doing. Also, since the code will be same for each class, I will go with the abstract class way. However if your particular class is already inheriting from a certain base class you must go with the interface implementation since you can't inherit from more than one base class in C#. You just need to copy and paste for each class you want to turn to CSV.
 
 #### Basic Implementation
 What we need to do here is use reflection to get all the values of public properties of the class.
@@ -223,17 +223,17 @@ public abstract class CsvableBase
             .Replace('Ş', 'S')
             .Replace('Ü', 'U')
             .Replace('Ğ', 'G')
-            .Replace("\"", "\"\"")
+            .Replace(""", """")
             .Trim();
         if (input.Contains(","))
         {
-            input = "\"" + input + "\"";
+            input = """ + input + """;
         }
         return input;
     }
 }
 ```
-Lets change our ```Person``` object into something that can test our pre-processing method.
+Let's change our ```Person``` object into something that can test our pre-processing method.
 ```cs
 class Program
 {
@@ -251,7 +251,7 @@ Output of this code:
 ```
 #### Ignoring Properties
 
-Sometimes you may not need ALL the public properties in a class. So we need to ignore selected properties either by their name or their index in the list of properties we acquire by reflection.
+Sometimes you may not need all the public properties in a class. So we need to ignore selected properties either by their name or their index in the list of properties we acquire by reflection.
 
 But what happens in the edge cases such as the beginning or the end? How do we manage commas?
 
@@ -315,7 +315,54 @@ public virtual string ToCsv(int[] propertiesToIgnore)
     return output;
 }
 ```
+Here we:
+1 - Define a boolean ```isFirstPropertyWritten``` to see if we write the first property yet.
+2 - Get all the properties as ```PropertyInfo``` using reflection.
+3 - Iterate over the properties, checking if the current property name or index is in the ignore list.
+4 - If it is not, we check if the first property is written.
+5 - If the first property is not written then we add a comma to output, since we will keep adding properties after that.
+6 - Preprocess and add the current property's value to output.
+7 - Set ```isFirstPropertyWritten``` so that we will keep adding commas.
 
+We can now test our code:
 
+```cs
+class Program
+{
+    static void Main(string[] args)
+    {
+        var p = new Person(1,"murat","aykanat");
+        Console.WriteLine("Ignore by property name:");
+        Console.WriteLine("Ignoring Id property: \n" 
+                        + p.ToCsv(new []{"Id"}));
+        Console.WriteLine("Ignoring Name property: \n" 
+                        + p.ToCsv(new[] { "Name" }));
+        Console.WriteLine("Ignoring Lastname property: \n" 
+                        + p.ToCsv(new[] { "Lastname" }));
+        Console.WriteLine("Ignore by property index:");
+        Console.WriteLine("Ignoring 0->Id and 2->Lastname: \n" 
+                        + p.ToCsv(new[] { 0,2 }));
+        Console.ReadLine();
+    }
+}
+```
+
+Output is:
+
+```text
+Ignore by property name:
+Ignoring Id property:
+murat,aykanat
+Ignoring Name property:
+1,aykanat
+Ignoring Lastname property:
+1,murat
+Ignore by property index:
+Ignoring 0->Id and 2->Lastname:
+murat
+```
+
+Finally we are done with ```CsvableBase``` class and ```ToCsv()``` method, now we can move on to the writer itself.
+#### Generic Writer
 ### CSV Reader
 ### Conclusion
