@@ -487,7 +487,7 @@ If we check our application folder we can see our newly created file.
 
 ![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/7753b093-4390-499d-9d05-474212141036.png)
 
-If you open the file you can see output as well:
+If you open the file you can see output as expected:
 ```text
 1,murat,aykanat
 2,john,smith
