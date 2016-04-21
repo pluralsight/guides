@@ -227,7 +227,7 @@ public abstract class CsvableBase
             .Trim();
         if (input.Contains(","))
         {
-            input = "\"" + input + "\"";
+            input = """ + input + """;
         }
         return input;
     }
@@ -239,7 +239,7 @@ class Program
 {
     static void Main(string[] args)
     {
-        var p = new Person(1,""Hello", world!","İĞÜÇÖıüşöç");
+        var p = new Person(1,"\"Hello\", world!","İĞÜÇÖıüşöç");
         Console.WriteLine(p.ToCsv());
         Console.ReadLine();
     }
