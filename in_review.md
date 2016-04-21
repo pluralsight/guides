@@ -78,11 +78,6 @@
 - [Read more from Scott Miller](http://tutorials.pluralsight.com/user/smiller171) <img src="https://avatars.githubusercontent.com/u/3587913?v=3" width="30" height="30" alt="Scott Miller" />
 - Related to: DevOps (Docker, Nagios, Jenkins, Chef, Puppet, etc)
 
-### Running shell commands with Flask by Red Moses
-- [Read the guide](http://tutorials.pluralsight.com/python/running-shell-commands-with-flask?status=in-review)
-- [Read more from Red Moses](http://tutorials.pluralsight.com/user/redmoses) <img src="https://avatars.githubusercontent.com/u/4059490?v=3" width="30" height="30" alt="Red Moses" />
-- Related to: Python
-
 ### Don't swallow InterruptedException. Call Thread.currentThread().interrupt() instead. by Michael Scharf (Github)
 - [Read the guide](http://tutorials.pluralsight.com/java-and-j2ee/don-t-swallow-interruptedexception-call-thread-currentthread-interrupt-instead?status=in-review)
 - [Read more from Michael Scharf (Github)](http://tutorials.pluralsight.com/user/scharf) <img src="https://avatars.githubusercontent.com/u/3731059?v=3" width="30" height="30" alt="Michael Scharf (Github)" />
