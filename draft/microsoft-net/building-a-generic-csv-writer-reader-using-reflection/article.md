@@ -109,9 +109,11 @@ However there are some considerations:
 Optional considerations:
 - Since some CSV readers out there do not support UTF-8 encoding, all local characters must be converted into ASCII format. This may not be possible in some languages, however since I will be giving Turkish as an example, it will be possible in this guide.
 - Unless explicitly defined by quotation marks left and right spaces must be trimmed.
+- Properties can be ignored with their index or their name.
 
 ### CSV Writer
-Now let's get started on the code. First of all we need to plan this in a way so that we can write it once and use it everywhere. According to our considerations above we need a method for each class , ```ToCsv()```, that we want to turn to CSV. This can be done 2 ways:
+
+First of all we need to plan this in a way so that we can write it once and use it everywhere. According to our considerations above we need a method for each class , ```ToCsv()```, that we want to turn to CSV. This can be done 2 ways:
 - Interface implementation
 - Override ToString()
 - Abstract base class
@@ -143,6 +145,40 @@ public abstract class CsvableBase
         return output;
     }
 }
+```
+So what we do here is simple:
+1 - Get all public properties of this class as a collection of ```PropertyInfo```.
+2 - Iterate over them, get their value and add it to the output and put a comma.
+3- If we reach the end, do not put a comma.
+
+Let's test this on the ```Person``` class we created earlier in a console application.
+```cs
+public class Person : CsvableBase
+{
+    public Person(int id, string name, string lastname)
+    {
+        Id = id;
+        Name = name;
+        Lastname = lastname;
+    }
+
+    public int Id { get; set; }
+    public string Name { get; set; }
+    public string Lastname { get; set; }
+}
+class Program
+{
+    static void Main(string[] args)
+    {
+        var p = new Person(1,"murat","aykanat");
+        Console.WriteLine(p.ToCsv());
+        Console.ReadLine();
+    }
+}
+```
+Output of above code:
+```text
+1,murat,aykanat
 ```
 
 ### CSV Reader
