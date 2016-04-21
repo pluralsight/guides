@@ -373,16 +373,21 @@ class Program
     {
         var p = new Person(1,"murat","aykanat");
         Console.WriteLine("Ignore by property name:");
-        Console.WriteLine("Ignoring Id property: \n" 
+        Console.WriteLine("Ignoring Id property: 
+" 
         + p.ToCsv(new []{"Id"}, true));
-        Console.WriteLine("Ignoring Name property: \n" 
+        Console.WriteLine("Ignoring Name property: 
+" 
         + p.ToCsv(new[] { "Name" }, true));
-        Console.WriteLine("Ignoring Lastname property: \n" 
+        Console.WriteLine("Ignoring Lastname property: 
+" 
         + p.ToCsv(new[] { "Lastname" },true));
         Console.WriteLine("Ignore by property index:");
-        Console.WriteLine("Ignoring 0->Id and 2->Lastname: \n" 
+        Console.WriteLine("Ignoring 0->Id and 2->Lastname: 
+" 
         + p.ToCsv(new[] { 0,2 },true));
-        Console.WriteLine("Ignoring everything but Id: \n" 
+        Console.WriteLine("Ignoring everything but Id: 
+" 
         + p.ToCsv(new[] { "Id" }, false));
         Console.ReadLine();
     }
@@ -408,5 +413,85 @@ Ignoring everything but Id:
 
 Finally we are done with ```CsvableBase``` class and ```ToCsv()``` method, now we can move on to the writer itself.
 #### Generic Writer
+Since we did the groundwork in ```CsvableBase```, ```CsvWriter``` itself is very simple:
+
+```cs
+public class CsvWriter<T> where T : CsvableBase
+{
+	public void Write(IEnumerable<T> objects, string destination)
+	{
+		var objs = objects as IList<T> ?? objects.ToList();
+		if (objs.Any())
+		{
+			using (var sw = new StreamWriter(destination))
+			{
+				foreach (var obj in objs)
+				{
+					sw.WriteLine(obj.ToCsv());
+				}
+			}
+		}
+	}
+
+	public void Write(IEnumerable<T> objects, string destination, 
+	                    string[] propertyNames, bool isIgnore)
+	{
+		var objs = objects as IList<T> ?? objects.ToList();
+		if (objs.Any())
+		{
+			using (var sw = new StreamWriter(destination))
+			{
+				foreach (var obj in objs)
+				{
+					sw.WriteLine(obj.ToCsv(propertyNames, isIgnore));
+				}
+			}
+		}
+	}
+
+	public void Write(IEnumerable<T> objects, string destination, 
+	        int[] propertyIndexes, bool isIgnore)
+	{
+		var objs = objects as IList<T> ?? objects.ToList();
+		if (objs.Any())
+		{
+			using (var sw = new StreamWriter(destination))
+			{
+				foreach (var obj in objs)
+				{
+					sw.WriteLine(obj.ToCsv(propertyIndexes, isIgnore));
+				}
+			}
+		}
+	}
+}
+```
+Now let's try our code with our initial example:
+```cs
+class Program
+{
+	static void Main(string[] args)
+	{
+		var people = new List<Person>
+		{
+			new Person(1, "murat", "aykanat"),
+			new Person(2, "john", "smith")
+		};
+
+		var cw = new CsvWriter<Person>();
+		cw.Write(people,"example.csv");
+	}
+}
+```
+If we check our application folder we can see our newly created file.
+
+![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/7753b093-4390-499d-9d05-474212141036.png)
+
+If you open the file you can see output as well:
+```text
+1,murat,aykanat
+2,john,smith
+```
+
 ### CSV Reader
 ### Conclusion
