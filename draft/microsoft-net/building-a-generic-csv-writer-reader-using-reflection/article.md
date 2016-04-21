@@ -223,11 +223,11 @@ public abstract class CsvableBase
             .Replace('Ş', 'S')
             .Replace('Ü', 'U')
             .Replace('Ğ', 'G')
-            .Replace("\"", "\"\"")
+            .Replace(""", """")
             .Trim();
         if (input.Contains(","))
         {
-            input = """ + input + """;
+            input = "\"" + input + "\"";
         }
         return input;
     }
