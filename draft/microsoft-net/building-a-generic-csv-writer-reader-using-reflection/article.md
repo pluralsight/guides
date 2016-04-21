@@ -181,6 +181,49 @@ Output of above code:
 1,murat,aykanat
 ```
 
-This is the basic implementation, however it does not yet satisfy other considerations we set such as special characters, commas and quotation marks.
+This is the basic implementation, however it does not yet satisfy other considerations we set such as special characters, commas and quotation marks. For that, let's add a pre-processing method to our base class.
+
+```cs
+public abstract class CsvableBase
+{
+    public virtual string ToCsv()
+    {
+        string output = "";
+
+        var properties = GetType().GetProperties();
+
+        for (var i = 0; i < properties.Length; i++)
+        {
+            if (i == properties.Length - 1)
+            {
+                output += PreProcess(properties[i].GetValue(this).ToString());
+            }
+            else
+            {
+                output += PreProcess(properties[i].GetValue(this).ToString())
+                + ",";
+            }
+        }
+
+        return output;
+    }
+    private string PreProcess(string input)
+    {
+        input = input.Replace('ı', 'i').Replace('ç', 'c').
+                      Replace('ö', 'o').Replace('ş', 's')
+                      .Replace('ü', 'u').Replace('ğ', 'g')
+                      .Replace('İ', 'I').Replace('Ç', 'C')
+                      .Replace('Ö', 'O').Replace('Ş', 'S')
+                      .Replace('Ü', 'U').Replace('Ğ', 'G')
+                      .Replace("\"", "\"\"")
+                      .Trim();
+        if (input.Contains(","))
+        {
+            input = "\"" + input + "\"";
+        }
+        return input;
+    }
+}
+
 ### CSV Reader
 ### Conclusion
