@@ -1,3 +1,8 @@
+### Running shell commands with Flask by Red Moses
+- [Read the guide](http://tutorials.pluralsight.com/python/running-shell-commands-with-flask)
+- [Read more from Red Moses](http://tutorials.pluralsight.com/author/redmoses) <img src="https://avatars.githubusercontent.com/u/4059490?v=3" width="30" height="30" alt="Red Moses" />
+- Related to: Python
+
 ### Response Streams with Rails 4 and Redis by Adam Fortuna
 - [Read the guide](http://tutorials.pluralsight.com/ruby-ruby-on-rails/response-streams-with-rails-4-and-redis)
 - [Read more from Adam Fortuna](http://tutorials.pluralsight.com/author/adamfortuna) <img src="https://avatars.githubusercontent.com/u/7741?v=3" width="30" height="30" alt="Adam Fortuna" />
