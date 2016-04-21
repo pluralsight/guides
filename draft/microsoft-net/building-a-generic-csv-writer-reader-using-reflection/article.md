@@ -181,5 +181,6 @@ Output of above code:
 1,murat,aykanat
 ```
 
+This is the basic implementation, however it does not yet satisfy other considerations we set such as special characters, commas and quotation marks.
 ### CSV Reader
 ### Conclusion
