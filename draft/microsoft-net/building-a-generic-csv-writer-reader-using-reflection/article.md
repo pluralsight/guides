@@ -333,18 +333,14 @@ class Program
     {
         var p = new Person(1,"murat","aykanat");
         Console.WriteLine("Ignore by property name:");
-        Console.WriteLine("Ignoring Id property: 
-" 
+        Console.WriteLine("Ignoring Id property: " 
                         + p.ToCsv(new []{"Id"}));
-        Console.WriteLine("Ignoring Name property: 
-" 
+        Console.WriteLine("Ignoring Name property: " 
                         + p.ToCsv(new[] { "Name" }));
-        Console.WriteLine("Ignoring Lastname property: 
-" 
+        Console.WriteLine("Ignoring Lastname property: " 
                         + p.ToCsv(new[] { "Lastname" }));
         Console.WriteLine("Ignore by property index:");
-        Console.WriteLine("Ignoring 0->Id and 2->Lastname: 
-" 
+        Console.WriteLine("Ignoring 0->Id and 2->Lastname: " 
                         + p.ToCsv(new[] { 0,2 }));
         Console.ReadLine();
     }
