@@ -78,7 +78,7 @@ id,name,lastname
 1,murat,aykanat
 1,john,smith
 ```
-This is useful when the columns are not differentiable. For example if columns are all numbers, and you send the file to a person who does not know what the columns mean. That would be very confusing for the other person.So it would be better if we include headers in those scenarios to indicate what those column of values mean.
+This is useful when the columns are not clear by its data fields. For example if columns are all numbers, and you send the file to a person who does not know what the columns mean, that would be very confusing for the other person because he or she doesn't know what those numbers mean.So it would be better if we include headers in those scenarios to indicate what those column of values mean.
 
 #### More Details
 
@@ -104,7 +104,46 @@ public class Person
 However there are some considerations:
 - CSV Writer and Reader must abide by the rules of CSV file format mentioned above
 - The process of writing must be automated. What I mean by this is, if we have 2 public properties in a class, it is fairly easy to write those properties to a file. But what if we have 100 or 10000 public properties? We just can't write them one by one.
+- Every object should output its public properties via a method.
+
+Optional considerations:
+- Since some CSV readers out there do not support UTF-8 encoding, all local characters must be converted into ASCII format. This may not be possible in some languages, however since I will be giving Turkish as an example, it will be possible in this guide.
+- Unless explicitly defined by quotation marks left and right spaces must be trimmed.
 
 ### CSV Writer
+Now let's get started on the code. First of all we need to plan this in a way so that we can write it once and use it everywhere. According to our considerations above we need a method for each class , ```ToCsv()```, that we want to turn to CSV. This can be done 2 ways:
+- Interface implementation
+- Override ToString()
+- Abstract base class
+
+I didn't want to use the ```ToString()``` override because maybe we may need it somewhere else and I wantthe ```ToCsv()``` to be a seperate method so it will be clear what it is doing. Since the code will be same for each class, I will go with the abstract class way. However if your particular class is already inheriting from a certain base class you can go with the interface. You just need to copy paste for each class you want to turn to CSV.
+
+What we need to do here is use reflection to get all the values of public properties of the class.
+```cs
+public abstract class CsvableBase
+{
+    public virtual string ToCsv()
+    {
+        string output = "";
+
+        var properties = GetType().GetProperties();
+
+        for (var i = 0; i < properties.Length; i++)
+        {
+            if (i == properties.Length - 1)
+            {
+                output += properties[i].GetValue(this).ToString();
+            }
+            else
+            {
+                output += properties[i].GetValue(this).ToString() + ",";
+            }
+        }
+
+        return output;
+    }
+}
+```
+
 ### CSV Reader
 ### Conclusion
