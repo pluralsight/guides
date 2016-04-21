@@ -148,9 +148,9 @@ public abstract class CsvableBase
 }
 ```
 So what we do here is simple:
-1 - Get all public properties of this class as a collection of ```PropertyInfo```.
-2 - Iterate over them, get their value and add it to the output and put a comma.
-3- If we reach the end, do not put a comma.
+1. Get all public properties of this class as a collection of ```PropertyInfo```.
+2. Iterate over them, get their value and add it to the output and put a comma.
+3. If we reach the end, do not put a comma.
 
 Let's test this on the ```Person``` class we created earlier in a console application.
 ```cs
@@ -239,7 +239,7 @@ class Program
 {
     static void Main(string[] args)
     {
-        var p = new Person(1,"\"Hello\", world!","İĞÜÇÖıüşöç");
+        var p = new Person(1,""Hello", world!","İĞÜÇÖıüşöç");
         Console.WriteLine(p.ToCsv());
         Console.ReadLine();
     }
@@ -315,14 +315,14 @@ public virtual string ToCsv(int[] propertiesToIgnore)
     return output;
 }
 ```
-Here we:
-1 - Define a boolean ```isFirstPropertyWritten``` to see if we write the first property yet.
-2 - Get all the properties as ```PropertyInfo``` using reflection.
-3 - Iterate over the properties, checking if the current property name or index is in the ignore list.
-4 - If it is not, we check if the first property is written.
-5 - If the first property is not written then we add a comma to output, since we will keep adding properties after that.
-6 - Preprocess and add the current property's value to output.
-7 - Set ```isFirstPropertyWritten``` so that we will keep adding commas.
+Here, we:
+1. Define a boolean ```isFirstPropertyWritten``` to see if we write the first property yet.
+2. Get all the properties as ```PropertyInfo``` using reflection.
+3. Iterate over the properties, checking if the current property name or index is in the ignore list.
+4. If it is not, we check if the first property is written.
+5. If the first property is not written then we add a comma to output, since we will keep adding properties after that.
+6. Preprocess and add the current property's value to output.
+7. Set ```isFirstPropertyWritten``` so that we will keep adding commas.
 
 We can now test our code:
 
