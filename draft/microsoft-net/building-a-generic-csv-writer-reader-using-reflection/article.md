@@ -438,7 +438,7 @@ public class Person : CsvableBase
 ```
 The idea is, while iterating over the properties in our code, we need to dedect if the type of the property derives from ```CsvableBase```. Then call the ```ToCsv()``` method of that object instance by using reflection.
 
-To achive this, we need to change our ```ToCsv()``` methods:
+To achive this, we need to modify our ```ToCsv()``` methods:
 
 ```cs
 public virtual string ToCsv()
@@ -634,7 +634,24 @@ public virtual string ToCsv(int[] propertyIndexes, bool isIgnore)
     return output;
 }
 ```
+Now let's try our modified code:
+```cs
+class Program
+{
+    static void Main(string[] args)
+    {
+        var p = new Person(1,"murat","aykanat",
+                            new Address("city1", "country1"));
+        Console.WriteLine(p.ToCsv());
+        Console.ReadLine();
+    }
+}
+```
 
+Output is displayed as:
+```text
+1,murat,aykanat,city1,country1
+```
 #### Generic Writer
 Since we laid the groundwork in ```CsvableBase```, ```CsvWriter``` itself is very simple:
 
@@ -696,13 +713,15 @@ class Program
 	static void Main(string[] args)
 	{
 		var people = new List<Person>
-		{
-			new Person(1, "murat", "aykanat"),
-			new Person(2, "john", "smith")
-		};
+            {
+                new Person(1, "murat", "aykanat",
+                            new Address("city1","country1")),
+                new Person(2, "john", "smith", 
+                            new Address("city2","country2"))
+            };
 
-		var cw = new CsvWriter<Person>();
-		cw.Write(people,"example.csv");
+            var cw = new CsvWriter<Person>();
+            cw.WriteFromEnumerable(people, "example.csv");
 	}
 }
 ```
@@ -712,8 +731,8 @@ If we check our application folder we can see our newly created file.
 
 If you open the file you can see output as expected:
 ```text
-1,murat,aykanat
-2,john,smith
+1,murat,aykanat,city1,country1
+2,john,smith,city2,country2
 ```
 
 ### CSV Reader
