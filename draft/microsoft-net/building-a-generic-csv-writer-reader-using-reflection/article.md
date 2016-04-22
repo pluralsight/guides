@@ -652,6 +652,9 @@ Output is displayed as:
 ```text
 1,murat,aykanat,city1,country1
 ```
+
+Property ignoring works the same way as before, however you need to include parameters through reflection. But since I want to keep things simple at this point, I will not add the ignore feature of properties that derive from ```CsvableBase```.
+
 #### Generic Writer
 Since we laid the groundwork in ```CsvableBase```, ```CsvWriter``` itself is very simple:
 
