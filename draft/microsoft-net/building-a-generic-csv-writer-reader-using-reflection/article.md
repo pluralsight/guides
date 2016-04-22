@@ -405,10 +405,41 @@ murat
 Ignoring everything but Id:
 1
 ```
+#### Properties that Derive from CsvableBase
 
-Finally we are done with ```CsvableBase``` class and ```ToCsv()``` method, now we can move on to the writer itself.
+So far we only used value types as our properties. However what happens if we have a reference type property which also is derived from ```CsvableBase```?
+Below is an example of a such scenario:
+```cs
+public class Address : CsvableBase
+{
+    public Address(string city, string country)
+    {
+        City = city;
+        Country = country;
+    }
+    public string City { get; set; }
+    public string Country { get; set; }
+}
+public class Person : CsvableBase
+{
+    public Person(int id, string name, string lastname, Address address)
+    {
+        Id = id;
+        Name = name;
+        Lastname = lastname;
+        Address = address;
+    }
+
+    public int Id { get; set; }
+    public string Name { get; set; }
+    public string Lastname { get; set; }
+    public Address Address { get; set; }
+}
+```
+The idea is, while iterating over the properties in our code, we need to dedect if the type of the property derives from ```CsvableBase```. Then call the ```ToCsv()``` method of that object instance by using reflection.
+
 #### Generic Writer
-Since we did the groundwork in ```CsvableBase```, ```CsvWriter``` itself is very simple:
+Since we laid the groundwork in ```CsvableBase```, ```CsvWriter``` itself is very simple:
 
 ```cs
 public class CsvWriter<T> where T : CsvableBase
