@@ -1,3 +1,8 @@
+### Building a Generic CSV Writer/Reader using Reflection by Murat Aykanat
+- [Read the guide](http://tutorials.pluralsight.com/microsoft-net/building-a-generic-csv-writer-reader-using-reflection?status=in-review)
+- [Read more from Murat Aykanat](http://tutorials.pluralsight.com/author/aykanatm) <img src="https://avatars.githubusercontent.com/u/9140297?v=3" width="30" height="30" alt="Murat Aykanat" />
+- Related to: Microsoft.NET (C#, ASP.NET, VB.NET, etc)
+
 ### Testing user interfaces with browser automation by Peter Olson
 - [Read the guide](http://tutorials.pluralsight.com/front-end-javascript/testing-user-interfaces-with-browser-automation?status=in-review)
 - [Read more from Peter Olson](http://tutorials.pluralsight.com/author/peterolson) <img src="https://avatars.githubusercontent.com/u/920512?v=3" width="30" height="30" alt="Peter Olson" />
