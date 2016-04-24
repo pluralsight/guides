@@ -715,5 +715,58 @@ If you open the file you can see output as expected:
 ```
 
 ### CSV Reader
-Now, we have to reverse the process to read from our CSV file.
+Now, we have to reverse the process to read from our CSV file. To do this we will follow what we did while reading. By this logic, as we implemented ```ToCsv()```, we need another method to reverse the CSV process in the ```CsvableBase``` class. Let's call this method ```AssignValuesFromCsv()```. Maybe not the most creative name, but we will go with that for now.
+In this method we will do what we did in ```ToCsv()``` method. First we will check whether the current property is derived from CsvableBase or not. After that we will save the data back to the public properties.
+
+```cs
+public virtual void AssignValuesFromCsv(string[] propertyValues)
+{
+    var properties = GetType().GetProperties();
+    for (var i = 0; i < properties.Length; i++)
+    {
+        if (properties[i].PropertyType
+            .IsSubclassOf(typeof (CsvableBase)))
+        {
+            var instance = Activator.CreateInstance(properties[i].PropertyType);
+            var instanceProperties = instance.GetType().GetProperties();
+            var propertyList = new List<string>();
+
+            for (var j = 0; j < instanceProperties.Length; j++)
+            {
+                propertyList.Add(propertyValues[i+j]);
+            }
+            var m = instance.GetType().GetMethod("AssignValuesFromCsv",                               new Type[] { typeof(string[]) });
+            m.Invoke(instance, new object[] {propertyList.ToArray()});
+            properties[i].SetValue(this, instance);
+
+            i += instanceProperties.Length;
+        }
+        else
+        {
+            var type = properties[i].PropertyType.Name;
+            switch (type)
+            {
+                case "Int32":
+                    properties[i].SetValue(this,
+                                    int.Parse(propertyValues[i]));
+                    break;
+                default:
+                    properties[i].SetValue(this, propertyValues[i]);
+                    break;
+            }
+        }
+    }
+}
+```
+Here we:
+
+1. Get all public properties of the object.
+2. Iterate over the properties.
+3. Check if the current property is derived from ```CsvableBase```.
+4. if so, create a temporary instance of that object.
+5. Get its properties.
+6. Call ```AssignValuesFromCsv``` with its properties.
+7. If the property is not derived from Csvable base, just assign it to the property value according to the ```switch```.
+
+
 ### Conclusion
