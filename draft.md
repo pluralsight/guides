@@ -1,8 +1,3 @@
-### Building a Generic CSV Writer/Reader using Reflection by Murat Aykanat
-- [Read the guide](http://tutorials.pluralsight.com/microsoft-net/building-a-generic-csv-writer-reader-using-reflection?status=draft)
-- [Read more from Murat Aykanat](http://tutorials.pluralsight.com/author/aykanatm) <img src="https://avatars.githubusercontent.com/u/9140297?v=3" width="30" height="30" alt="Murat Aykanat" />
-- Related to: Microsoft.NET (C#, ASP.NET, VB.NET, etc)
-
 ### Building a Generic CSV Writer/Reader by Murat Aykanat
 - [Read the guide](http://tutorials.pluralsight.com/microsoft-net/building-a-generic-csv-writer-reader?status=draft)
 - [Read more from Murat Aykanat](http://tutorials.pluralsight.com/author/aykanatm) <img src="https://avatars.githubusercontent.com/u/9140297?v=3" width="30" height="30" alt="Murat Aykanat" />
