@@ -133,13 +133,10 @@ public abstract class CsvableBase
 
         for (var i = 0; i < properties.Length; i++)
         {
-            if (i == properties.Length - 1)
+            output += properties[i].GetValue(this).ToString();
+            if (i != properties.Length - 1)
             {
-                output += properties[i].GetValue(this).ToString();
-            }
-            else
-            {
-                output += properties[i].GetValue(this).ToString() + ",";
+                output += ",";
             }
         }
 
@@ -196,14 +193,10 @@ public abstract class CsvableBase
 
         for (var i = 0; i < properties.Length; i++)
         {
-            if (i == properties.Length - 1)
+            output += PreProcess(properties[i].GetValue(this).ToString());
+            if (i != properties.Length - 1)
             {
-                output += PreProcess(properties[i].GetValue(this).ToString());
-            }
-            else
-            {
-                output += PreProcess(properties[i].GetValue(this).ToString())
-                + ",";
+                output += ",";
             }
         }
 
@@ -449,37 +442,20 @@ public virtual string ToCsv()
 
     for (var i = 0; i < properties.Length; i++)
     {
-        if (i == properties.Length - 1)
+        if (properties[i].PropertyType.IsSubclassOf(typeof (CsvableBase)))
         {
-            if (properties[i].PropertyType
-                .IsSubclassOf(typeof (CsvableBase)))
-            {
-                var m = properties[i].PropertyType
-                        .GetMethod("ToCsv", new Type[0]);
-                output += m.Invoke(properties[i].GetValue(this),
-                                    new object[0]);
-            }
-            else
-            {
-                output += PreProcess(properties[i]
-                                    .GetValue(this).ToString());
-            }
+            var m = properties[i].PropertyType
+                    .GetMethod("ToCsv", new Type[0]);
+            output += m.Invoke(properties[i].GetValue(this),
+                                new object[0]);
         }
         else
         {
-            if (properties[i].PropertyType
-                .IsSubclassOf(typeof(CsvableBase)))
-            {
-                var m = properties[i].PropertyType
-                        .GetMethod("ToCsv", new Type[0]);
-                output += m.Invoke(properties[i].GetValue(this),
-                                    new object[0]);
-            }
-            else
-            {
-                output += PreProcess(properties[i]
-                            .GetValue(this).ToString());
-            }
+            output += PreProcess(properties[i]
+                                .GetValue(this).ToString());
+        }
+        if (i != properties.Length - 1)
+        {
             output += ",";
         }
     }
