@@ -765,8 +765,127 @@ Here we:
 3. Check if the current property is derived from ```CsvableBase```.
 4. if so, create a temporary instance of that object.
 5. Get its properties.
-6. Call ```AssignValuesFromCsv``` with its properties.
+6. Call ```AssignValuesFromCsv()``` with its properties.
 7. If the property is not derived from Csvable base, just assign it to the property value according to the ```switch```.
 
+You may notice we don't have ```float```, ```double``` or ```char``` in your switch statement. That's because in this example we only have ```int``` and ```string``` so I didn't want to make the class bigger.
 
+So, now we have to iterate over the object via our ```CsvReader``` class.
+```cs
+public class CsvReader<T> where T : CsvableBase, new()
+{
+    public IEnumerable<T> Read(string filePath, bool hasHeaders)
+    {
+        var objects = new List<T>();
+        using (var sr = new StreamReader(filePath))
+        {
+            bool headersRead = false;
+            string line;
+            do
+            {
+                line = sr.ReadLine();
+                
+                if (line != null && headersRead)
+                {
+                    var obj = new T();
+                    var propertyValues = line.Split(',');
+                    obj.AssignValuesFromCsv(propertyValues);
+                    objects.Add(obj);
+                }
+                if (!headersRead)
+                {
+                    headersRead = true;
+                }
+            } while ( line != null);
+        }
+
+        return objects;
+    }
+}
+```
+
+Remember when I wrote that we may need ```ToString()``` override somewhere? Well, now we need it to print ```Person``` and ```Address``` objects. Also we need to add a empty constructor for CSV Reader to work.
+
+```cs
+public class Address : CsvableBase
+{
+    public Address()
+    {
+        
+    }
+    public Address(string city, string country)
+    {
+        City = city;
+        Country = country;
+    }
+    public string City { get; set; }
+    public string Country { get; set; }
+    public override string ToString()
+    {
+        return " " +City + " / " + Country;
+    }
+}
+public class Person : CsvableBase
+{
+    public Person()
+    {
+        
+    }
+    public Person(int id, string name, string lastname, Address address)
+    {
+        Id = id;
+        Name = name;
+        Lastname = lastname;
+        Address = address;
+    }
+
+    public int Id { get; set; }
+    public string Name { get; set; }
+    public string Lastname { get; set; }
+    public Address Address { get; set; }
+    public override string ToString()
+    {
+        return Name + " " + Lastname + " " + Address;
+    }
+}
+```
+
+Let's try our code:
+
+```cs
+class Program
+{
+    static void Main(string[] args)
+    {
+        var people = new List<Person>
+        {
+            new Person(1, "murat", "aykanat", new Address("city1","country1")),
+            new Person(2, "john", "smith", new Address("city2","country2"))
+        };
+
+        var cw = new CsvWriter<Person>();
+        cw.WriteFromEnumerable(people, "example.csv", true);
+
+        var cr = new CsvReader<Person>();
+        var csvPeople = cr.Read("example.csv", true);
+        foreach (var person in csvPeople)
+        {
+            Console.WriteLine(person);
+        }
+
+        Console.ReadLine();
+    }
+}
+```
+
+Output:
+```text
+murat aykanat  city1 / country1
+john smith  city2 / country2
+```
 ### Conclusion
+In this guide I explained how you would develop your very own CSV writer and reader class. We used features of reflection to extract properties from classes and process them as needed, so we can just plug any class we want into our reader and writer. One of the benefits of generating your own CSV processing class is that you can modify it as you need different features so you don't get stuck with 3rd party libraries.
+
+I hope this guide will be useful in your projects. Please feel free to post ideas and feedback.
+
+Happy coding!
