@@ -715,4 +715,5 @@ If you open the file you can see output as expected:
 ```
 
 ### CSV Reader
+Now, we have to reverse the process to read from our CSV file.
 ### Conclusion
