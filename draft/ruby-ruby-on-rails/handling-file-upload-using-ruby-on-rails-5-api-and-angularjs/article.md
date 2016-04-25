@@ -38,7 +38,7 @@ If the user enters "John" in the text input, and selects the text file "file1.tx
    --AaB03x--
 
 ```
-Every part of the form is separated by a boundary, which reprsents a different string (<code>AaB03x</code> in the example). Each parts contains information about the <code>Content-Type</code> it contains and the content of the part itself.
+Every part of the form is separated by a boundary, which reprsents a different string (<code>AaB03x</code> in the example). Each parts contains information about the <code>Content-Type</code> it contains and the content of the part itself. Larger files can be broken down in chuncks and assembled in the server, enabling a file to be streamed and to have its integrity maintaned in cases of connection interruprtion.
 
 Let's consider uploading another file. If the user selects another file  "file2.gif", the browser will construct the parts as follows:
 ```
@@ -68,3 +68,25 @@ Let's consider uploading another file. If the user selects another file  "file2.
 
 Here, it can be seen that there is another part added to the <code>form-data</code>. This time, since the file is not in a <code>text/plain</code> format, it is broken down in binary, as it can be inferred from the <code> Content-Transfer-Encoding</code> property. The <code>Content-Type</code> property gives information about the type of the file, also known as its [media (MIME) type](https://en.wikipedia.org/wiki/Media_type). If the <code> Content-Type </code> property  is not defined and  the file is not in text format, its format will default to <code> application/octet-stream </code> which means that the finaly is binary and has no type. When sending data to an API, it is always good to include a <code>Content-Type</code> to each part which contains a file, otherwise there would be no way to validate the contents of the file.
 ## Base64 encoding
+Base64 for is one of the most commonly used binary to text encoding formats. It uses an algorithm to break up binary code in pieces and convert it in ASCII characters (text). It has a wide array of applications - apart from being used to encode files into text in order to send them to an API, it is also used represent images as a content soruce in CSS, HTML and SVG. 
+The structure of base64 encoded files is very simple. It consits of two parts - a MIME type (similar to the multipart <code>Content-Type</code> and the actual base64 encoded string:
+```
+data:image/gif;base64,iVBORw0KGgoAAAANag...//rest of the base64 text
+```
+Usually, a file is encoded into base64 on the client and decoded on the server. The base64 string can be easily attached to a JSON object's attribute:
+```javascript
+ {
+  "file": {
+    "name": "file2",
+    "contents": "data:image/gif;base64, iVBORw0KGgoAAA..."
+  }
+ }
+```
+
+An API would easily be able to pick up the parameter and decode it back to binary.
+
+
+### Base64 encoding vs. Multipart form data
+Base64 encoded files are easy to be used by JSON and XML APIs since they are represented as text and can be easily sent through the standard <code> application/json</code> format. However, the encoding increases the file size by 33%, making if difficult to transfer larger files. Encoding and decoding also adds a computational overhead for both the server and the client. Therefore, base64 is suitable for sending images and small files under 100MB. Multipart forms, on the other hand, are more "unnatural" to the APIs, since the data is encoded in a different format and requires a different way of handling. However, the increased performance with larger files and the ability to stream files makes multipart form data more desirable for uploading larger files such as videos.
+
+
