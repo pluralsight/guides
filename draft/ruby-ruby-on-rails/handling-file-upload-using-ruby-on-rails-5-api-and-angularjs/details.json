@@ -1,0 +1,15 @@
+{
+    "_publish_status": "draft",
+    "author_name": "Kaizeras",
+    "author_real_name": "Hristo Georgiev",
+    "branch": "master",
+    "branches": [],
+    "filename": "article.md",
+    "first_commit": "37e7940b58cdbcc78a83a97bae5d4c9f05dcb98a",
+    "image_url": "https://avatars.githubusercontent.com/u/6340189?v=3",
+    "stacks": [
+        "Ruby, Ruby on Rails"
+    ],
+    "thumbnail_url": null,
+    "title": "Handling file upload using Ruby on Rails 5 API and AngularJS"
+}
