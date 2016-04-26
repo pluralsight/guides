@@ -83,7 +83,7 @@ Usually, a file is encoded into base64 on the client and decoded on the server. 
  }
 ```
 
-An API would easily be able to pick up the parameter and decode it back to binary.
+An API would easily be able to pick up the parameter and decode it back to binary. This makes base64-encoded files uploads convenient for APIs, since the format of  the message containing the file and the way it is transferred does not differ from the standard way messages are sent to an API.
 
 
 ### Base64 encoding vs. Multipart form data
