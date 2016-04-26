@@ -1,3 +1,8 @@
+### Just a quick test by Luke Lee
+- [Read the guide](http://tutorials.pluralsight.com/php/just-a-quick-test?status=draft)
+- [Read more from Luke Lee](http://tutorials.pluralsight.com/author/durden) <img src="https://avatars.githubusercontent.com/u/58063?v=3" width="30" height="30" alt="Luke Lee" />
+- Related to: PHP
+
 ### Handling file upload using Ruby on Rails 5 API and AngularJS by Hristo Georgiev
 - [Read the guide](http://tutorials.pluralsight.com/ruby-ruby-on-rails/handling-file-upload-using-ruby-on-rails-5-api-and-angularjs?status=draft)
 - [Read more from Hristo Georgiev](http://tutorials.pluralsight.com/author/Kaizeras) <img src="https://avatars.githubusercontent.com/u/6340189?v=3" width="30" height="30" alt="Hristo Georgiev" />
