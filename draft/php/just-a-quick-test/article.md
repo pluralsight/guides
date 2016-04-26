@@ -1,0 +1,1 @@
+This a new editor view!
