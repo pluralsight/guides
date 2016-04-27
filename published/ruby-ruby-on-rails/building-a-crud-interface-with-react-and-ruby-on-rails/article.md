@@ -226,15 +226,15 @@ The first thing we need to do is to set-up a jsx file in our components folder.
 ```javascript
 // app/assets/javascripts/components/_main.js.jsx
 
-var Main = React.createClass({
+class Main extends React.Component {
     render() {
         return (
             <div>
                 <h1>Hello, World!</h1>
             </div>
-        )
+        );
     }
-});
+}
 
 ```
 
@@ -247,15 +247,15 @@ The `<Main />` component has two child components; `<Header />` and `<Body />`. 
 
 // app/assets/javascripts/components/_header.js.jsx
 
-var Header = React.createClass({
+class Header extends React.Component {
     render() {
         return (
             <div>
                 <h1>Hello, World!</h1>
             </div>
-        )
+        );
     }
-});
+}
 ```
 
 
@@ -267,16 +267,15 @@ And change our `<Main />` component so that it will render `<Header />` in its r
 
 // app/assets/javascripts/components/_main.js.jsx
 
-var Main = React.createClass({
+class Main extends React.Component {
     render() {
         return (
             <div>
                 <Header />
             </div>
-        )
+        );
     }
-});
-
+}
 ```
 
 Great! We just nested two components together.
@@ -301,36 +300,37 @@ We’ll use `componentDidMount()`, which is called right after the component is 
 ```javascript
 // app/assets/javascripts/components/_all_items.js.jsx
 
-var AllItems = React.createClass({
+class AllItems extends React.Component {
     componentDidMount() {
         console.log('Component mounted');
-    },
-
+    }
+    
     render() {
         return (
             <div>
                 <h1>All items component</h1>
             </div>
-        )
+        );
     }
-});
-
-
+}
 ```
 
 Here’s how you implement the `componentDidMount()` method. Note how the methods are separated:  If we take a closer look at the `React.createClass` function, they’re defined as object properties, and they should be separated by commas. Don’t fret if you don’t see the `console.log()` message in your application - we still haven’t included it in a parent component and it won’t mount into the DOM!
 
-Before we fetch information from the server, we need to know how data is stored in the component. When the component is mounted, its data has to be initialized. This is done by the `getInitialState()` method. 
+Before we fetch information from the server, we need to know how data is stored in the component. When the component is mounted, its data has to be initialized. This is done by setting an initial value for the `state` property of the class instance in the `constructor()` method.
 
 
 ```javascript
 // app/assets/javascripts/components/_all_items.js.jsx
 
-var AllItems = React.createClass({
-    getInitialState() {
-        return { items: [] }
-    },
+class AllItems extends React.Component {
 
+    constructor(){
+        super();
+        this.state = { items: [] };
+    }
+    //...
+}
 ```
 
 Now, we need to get the data from the server and assign it to the items object. Here’s how we do it:
@@ -338,13 +338,15 @@ Now, we need to get the data from the server and assign it to the items object. 
 ```javascript
 // app/assets/javascripts/components/_all_items.js.jsx
 
-getInitialState() {
-        return { items: [] }
-},
+class AllItems extends React.Component {
 
-componentDidMount() {
-    $.getJSON('/api/v1/items.json', (response) => { this.setState({ items: response }) });
-},
+    componentDidMount() {
+        $.getJSON('/api/v1/items.json', (response) => { 
+            this.setState({ items:     response }) 
+        });
+    }
+    //...
+}
 
 ```
 
@@ -356,23 +358,23 @@ Okay, we’ve got the items, but how do we render them? We’re going to iterate
 ```javascript
 // app/assets/javascripts/components/_all_items.js.jsx
 
-//getInitialState and componentDidMount
+class AllItems extends React.Component {
+    //...
+    render() {
+        var items= this.state.items.map((item) => {
+            return (
+                <div>
+                    <h3>{item.name}</h3>
+                    <p>{item.description}</p>
+                </div>
+            );
+        });
 
-render() {
-    var items= this.state.items.map((item) => {
-        return (
+        return(
             <div>
-                <h3>{item.name}</h3>
-                <p>{item.description}</p>
+                {items}
             </div>
-        )
-    });
-
-    return(
-        <div>
-            {items}
-        </div>
-    )
+        );
 }
 
 ```
@@ -410,7 +412,8 @@ Let’s test if everything is working. First, `<Body />` , the parent component 
 
 ```javascript
 // app/assets/javascripts/components/_main.js.jsx_
-var Main = React.createClass({
+
+class Main extends React.Component {
     render() {
         return (
             <div>
@@ -419,8 +422,7 @@ var Main = React.createClass({
             </div>
         )
     }
-});
-
+}
 ```
 
 We must add the `<AllItems />` and `<NewItem />` components into the body component, just like we included. In the `<Body />` component, we’ll include the rest of the nested components, respectively:
@@ -429,7 +431,7 @@ We must add the `<AllItems />` and `<NewItem />` components into the body compon
 ```javascript
 // app/assets/javascripts/components/_body.js.jsx
 
-var Body = React.createClass({
+class Body extends React.Component {
     render() {
         return (
             <div>
@@ -438,9 +440,7 @@ var Body = React.createClass({
             </div>
         )
     }
-});
-
-
+}
 ```
 
 Great! You should now see all the items displayed.
@@ -955,7 +955,7 @@ Next, we’ll move `handleEdit()` to the `<Item />` template. We’ll have a Boo
 
 Let’s move the `handleEdit()` to `<Item />`. We can simply do this by writing the method inside the component and changing the property of the button from `this.props.handleEdit` to `this.handleEdit`.
 
-_app/assets/javascripts/components/_\__item.js.jsx_
+_app/assets/javascripts/components/___item.js.jsx_
 ```javascript
 <button onClick={this.handleEdit}> Edit </button>
 
