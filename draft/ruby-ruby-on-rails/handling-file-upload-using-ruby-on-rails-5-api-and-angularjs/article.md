@@ -86,7 +86,47 @@ Usually, a file is encoded into base64 on the client and decoded on the server. 
 An API would easily be able to pick up the parameter and decode it back to binary. This makes base64-encoded files uploads convenient for APIs, since the format of  the message containing the file and the way it is transferred does not differ from the standard way messages are sent to an API.
 
 
-### Base64 encoding vs. Multipart form data
+## Base64 encoding vs. Multipart form data
 Base64 encoded files are easy to be used by JSON and XML APIs since they are represented as text and can be easily sent through the standard <code> application/json</code> format. However, the encoding increases the file size by 33%, making if difficult to transfer larger files. Encoding and decoding also adds a computational overhead for both the server and the client. Therefore, base64 is suitable for sending images and small files under 100MB. Multipart forms, on the other hand, are more "unnatural" to the APIs, since the data is encoded in a different format and requires a different way of handling. However, the increased performance with larger files and the ability to stream files makes multipart form data more desirable for uploading larger files such as videos.
 
+# Setting up Rails API for file upload
+
+ Let's apply these concepts into a real application. First, let's set up a Rails 5 API application and scaffold a model that is going to be used. 
+ 
+ ### Installing and configuring Rails 5 API
+ 
+  To create a Rails 5 API, you need Ruby 2.2.4 and up installed. After you have a suitable Ruby version, the first step is to install the newest version of Rails using the following command in your terminal/command prompt:
+  
+  ```bash
+    gem install rails --pre --no-ri --no-rdoc
+  ```
+   
+   1. This will give you the ability to run <code> rails new </code> using the most recent version:
+  
+    ```bash
+        rails _5.0.0.beta3_ new fileuploadapp --api
+     ```
+  This will create a brand new Rails 5 app, and with the <code> --api </code> option included in the generator, it will be all set up to be used as an API. 
+ 
+   2. Move to the directory of the new project:
+```bash
+    cd fileuploadapp
+ ```   
+   3. Go to your Gemfile and uncomment <code> JBuilder </code>
+   ```ruby
+       # Gemfile.rb
+       
+         gem 'jbuilder', '~> 2.0' # <-- this must be in your gemfile
+ ```   
+   4. Scaffold a model that is going to be used for uploading files. To make it as general as possible, let's give it a generic name, such as <code> Item </code>
+  
+  ```bash
+    rails g scaffold Item name:string description:string
+ ```
+  This command  scaffolds a model named 'Item' which has a name and description as strings. It generates everything starting from, controller down to the views. Note that there is still no information about the file - it will be included in the model's schema at a later stage. For now, we are all set to go ahead and migrate the model into the database:
+
+```bash
+    rails db:migrate
+ ```
+  This will create a table in the database for the new model. Note that one of the new features in Rails 5 is that you can use <code> rails </code> instead of <code> rake </code> for executing a migration command.
 
