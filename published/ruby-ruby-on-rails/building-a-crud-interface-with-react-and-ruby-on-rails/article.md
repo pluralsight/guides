@@ -395,7 +395,7 @@ But hold on--we’re not done just yet! When we iterate through items in React, 
 
     return(
         <div>
-            {Items}
+            {items}
         </div>
     )
 }
@@ -955,7 +955,7 @@ Next, we’ll move `handleEdit()` to the `<Item />` template. We’ll have a Boo
 
 Let’s move the `handleEdit()` to `<Item />`. We can simply do this by writing the method inside the component and changing the property of the button from `this.props.handleEdit` to `this.handleEdit`.
 
-_app/assets/javascripts/components/_\__item.js.jsx_
+_app/assets/javascripts/components/___item.js.jsx_
 ```javascript
 <button onClick={this.handleEdit}> Edit </button>
 
