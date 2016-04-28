@@ -1,10 +1,10 @@
-The purpose of this article is to demonstrate how TDD works, whether or not you fully grasp the nitty-gritty particulars beforehand. Feel free to skim through just to get the big picture, and don't worry about working through every single detail.
+The purpose of this article is to help you understand the basic concepts of Test-Driven Development (TDD) in JavaScript.
 
 We’ll begin by walking through the development of a small project in a test-driven way. The first part will focus on unit tests, and the last part on code coverage. If you want to experiment with the project on your own, there is a [repository hosted on GitHub that puts together all the code from this article](https://github.com/peterolson/Introduction-to-Test-Driven-Development-in-Javascript).
 
 ## Wait. What is test-driven development?
 
-Definitely a question worth asking before we move forward. In a nutshell, TDD changes our regular workflow. Traditionally, the software development workflow is mostly a loop of the following steps:
+In a nutshell, TDD changes our regular workflow. Traditionally, the software development workflow is mostly a loop of the following steps:
 
  1. Think about what your code is supposed to do.
  2. Write the code to do it.
