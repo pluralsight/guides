@@ -702,7 +702,7 @@ var Body = React.createClass({
         return (
             <div>
                 <NewItem handleSubmit={this.handleSubmit}/>
-                <AllItems  items={this.state.items} /> />
+                <AllItems  items={this.state.items} />
             </div>
         )
     }
