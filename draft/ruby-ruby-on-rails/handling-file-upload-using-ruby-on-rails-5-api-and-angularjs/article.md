@@ -150,7 +150,7 @@ This will create a table in the database for the new model. Note that one of the
  bundle install
 ```  
 
- Generate a migration that will add the attachment to the databse. ** You have to put the same name for the attachment in the model as the one you put in the generator (in this case, it is  <code>picture</code>).**
+First, generate a migration that will add the attachment to the databse. ** You have to put the same name for the attachment in the model as the one you put in the generator (in this case, it is  <code>picture</code>).**
  
 ```bash
  rails g paperclip item picture
@@ -159,7 +159,7 @@ This will create a table in the database for the new model. Note that one of the
 ```bash
  rails db:migrate
 ```   
- Go to the file of your model and add the following code:
+Second, to the file of your model and add the following code:
  ```ruby 
  #app/models/item.rb
 class Item < ApplicationRecord
@@ -169,12 +169,22 @@ class Item < ApplicationRecord
 end
 
 ```
+
 Here is what each method is about:
  1. <code>has_attached_file</code> is the main method for adding a file attachment . The first argument is the attribute of the model that is going to be used for the file attachment (In this case it is<code>:picture</code>, as we know from the database migration). <code>styles:</code> is an **optional** parameter that is going to distribute the uploaded files in different folders according to their file size. In this example, medium photos will be 300x300 pixels and up and will be put into the <code>/images/medium</code> directory. <code> default_url </code> is also an **optional** parameter used to specify the path of a default image that will be returned if the object from the model does not have an attached image. You can put the default image in <code> app/assets/images/(medium or thumb)/</code> . If you are uploading files that are different from images, you may omit the optional arguments.
 
  2. <code>validates_attachmentt</code> is can validate the **content-type** , **presence** and **size** of the file. You can see how the syntax for all the validations [here](http://www.rubydoc.info/github/thoughtbot/paperclip/Paperclip%2FValidators%2FClassMethods%3Avalidates_attachment). In this example, only the presence is checked.
  
  3. <code> do_not_validate_attachment_file_type</code> is used as there are [issues](https://github.com/thoughtbot/paperclip/issues/1429) with the file type validations of paperclip.
+ 
+Third, add a permitted parameter that is going to accept <code>:picture</code>:
+ 
+```ruby 
+#app/controllers/items_controller.rb
+def item_params
+  params.require(:item).permit(:name, :description , :picture) # Add :picture to permitted parameters
+end
+```
   
 The last step is to add the <code>:picture</code> to the jbuilder view, so that when we <code>GET</code> an item, it will return its picture:
 ```ruby   
@@ -183,7 +193,7 @@ json.extract! @item, :id, :name, :description, :picture, :created_at, :updated_a
 
 ### Uploading multiple files
 
-#### Adding document model
+#### Attaching a document model to item
 To make uploading multiple files using Paperclip possible, the most efficient way is to do so is by **adding another model that is going to  be related to the main model** and contain the files. In the current example, let's add the capability for an item to have multiple PDF documents. First, let's generate a model:
 
 ```bash
@@ -216,7 +226,7 @@ end
 ```
 This time, <code> validates attachment </code> checks if the document's type is <code> application/pdf </code>. 
 The model is ready, here is how things have to be handled in the controller in order to handle creation of multiple files:
-#### Modifying the item model
+#### Creating items with documents
 When a new item is created, there has to be another parameter sent, <code>document_data</code> which will contain an array of data about each document, either in multipart or in base64 format:
 
 ```ruby
@@ -225,12 +235,7 @@ When a new item is created, there has to be another parameter sent, <code>docume
       params.require(:item).permit(:name, :description , :document_data => []) #add :documents_data in permit() to accept an array 
     end
 ```
-
-
 Add the logic for creating multiple files in the controller:
-
-
-
 ```ruby
   #app/controllers/items_controller.rb
    #...
@@ -246,6 +251,14 @@ Add the logic for creating multiple files in the controller:
     #...
   end
 ```
+In order to get <code>:document_data</code> into the model, a <code>attr_accessor</code> method needs to be added to the model:
+```ruby
+#app/models/item.rb
+class Item < ApplicationRecord
+  attr_accessor :document_data
+end
+```
+
 After the item is successfully saved, the <code> document_data </code> parameter has to be checked. If it is not empty, the controller will call the <code>save_attachments</code> that will attempt to create the documents. Here is how the model method has to look like:
 ```ruby
 #app/models/item.rb
@@ -272,9 +285,9 @@ json.extract! @item, :id, :name, :description, :picture, :documents, :created_at
 
 #### Testing it out
 ```bash
-curl -F "item[document_data][]=@E:\file2.pdf;type=application/pdf"  -F "item[document_data][]=@E:\file1.pdf;type=application/pdf" -F   "item[picture]=@E:\photo.jpg" -F "item[name]=item" -F "item[description]=desc"  localhost:3000
+curl -F "item[document_data][]=@E:ile2.pdf;type=application/pdf"  -F "item[document_data][]=@E:ile1.pdf;type=application/pdf" -F   "item[picture]=@E:photo.jpg" -F "item[name]=item" -F "item[description]=desc"  localhost:3000
 /items
-``
+```
 ### base64 upload
 To upload a base64-encoded image, the <code>attr_accessor</code> method will be used to get the base64 encoded string in the model. In your item model, add the following line:
  ```ruby
@@ -287,7 +300,7 @@ end
 Now, a method for decoding <code>image_base</code> and assigning it to the <code> picture </code> attribute of the Item.
 
 
- ```ruby 
+```ruby 
   #app/models/item.rb
  class Item < ApplicationRecord
   #paperclip logic
@@ -303,8 +316,8 @@ Now, a method for decoding <code>image_base</code> and assigning it to the <code
 The <code>parse_image </code> method takes <code>image_base</code> and puts it into Paperclip's [IO adapters](http://www.rubydoc.info/gems/paperclip/Paperclip/AdapterRegistry#registered_handlers-instance_method) . They contain a registry which can decode the base64 string back to binary. Because the file name is not stored, you can either ut an arbitrary value (like "file.jpg", even if your file is not in jpg format) or add another <code>atr_accessor</code> for the name itsel. Finally <code> self.photo = image </code> assigns the image to the current instance of the object.
 
 The method is ready, but it has to be called every time a new object is created, so let's add a filter that will call the <code> parse_image </code> method when that happens:
- 
-  ```ruby 
+
+```ruby 
  #app/models/item.rb
 class Item < ApplicationRecord
   before_validation :parse_image
@@ -314,33 +327,13 @@ end
 
 The <code>before_validation</code> method will ensure that the base64 string will be parsed and assigned to the object instance before the validation i.e. before Paperclip validates the size, content type and the rest of the attributes of the file.
   
- Here is how the <code> Item </code> model should look with everything implemented:
-```ruby 
-   #app/models/item.rb
-class Item < ApplicationRecord
-    attr_accessor :image_base
-    has_many :documents
-    before_validation :parse_image
-    
-    has_attached_file :picture, styles: { medium: "300x300>", thumb: "100x100>" }, default_url: "/images/:style/missing.png"
-    validates_attachment :picture, presence: true
-    do_not_validate_attachment_file_type :picture
-    
-    private
-    
-        def parse_image
-        image = Paperclip.io_adapters.for(image_base)
-        image.original_filename = "file.jpg"
-        self.picture = image
-        end
-end
-```
+
  In order to get <code>image_base</code>, it has to be passed as a parameter. This means it has to be white-listed first:
 ```ruby 
-    #app/controllers/items_controller.rb
-    def item_params
-      params.require(:item).permit(:name, :description , :documents, :image_base) #add :imnage_base in permit() 
-    end
+#app/controllers/items_controller.rb
+def item_params
+  params.require(:item).permit(:name, :description , :document_data, :image_base) #add :imnage_base in permit() 
+end
 ```
 
 ##  File upload using Carrierwave
