@@ -95,38 +95,44 @@ Base64 encoded files are easy to be used by JSON and XML APIs since they are rep
  
  ### Installing and configuring Rails 5 API
  
-  To create a Rails 5 API, you need Ruby 2.2.4 and up installed. After you have a suitable Ruby version, the first step is to install the newest version of Rails using the following command in your terminal/command prompt:
-  
-  ```bash
-    gem install rails --pre --no-ri --no-rdoc
-  ```
-   
-   1. This will give you the ability to run <code> rails new </code> using the most recent version:
-  
-    ```bash
-        rails _5.0.0.beta3_ new fileuploadapp --api
-     ```
-  This will create a brand new Rails 5 app, and with the <code> --api </code> option included in the generator, it will be all set up to be used as an API. 
- 
-   2. Move to the directory of the new project:
+To create a Rails 5 API, you need Ruby 2.2.4 and up installed. After you have a suitable Ruby version, the first step is to install the newest version of Rails using the following command in your terminal/command prompt:
+
 ```bash
-    cd fileuploadapp
- ```   
-   3. Go to your Gemfile and uncomment <code> JBuilder </code>
-   ```ruby
-       # Gemfile.rb
-       
-         gem 'jbuilder', '~> 2.0' # <-- this must be in your gemfile
- ```   
-   4. Scaffold a model that is going to be used for uploading files. To make it as general as possible, let's give it a generic name, such as <code> Item </code>
-  
-  ```bash
-    rails g scaffold Item name:string description:string
- ```
-  This command  scaffolds a model named 'Item' which has a name and description as strings. It generates everything starting from, controller down to the views. Note that there is still no information about the file - it will be included in the model's schema at a later stage. For now, we are all set to go ahead and migrate the model into the database:
+gem install rails --pre --no-ri --no-rdoc
+```
+
+This will give you the ability to run <code> rails new </code> using the most recent version:
+
+```bash
+rails _5.0.0.beta3_ new fileuploadapp --api
+```
+
+This will create a brand new Rails 5 app, and with the <code> --api </code> option included in the generator, it will be all set up to be used as an API. Move to the directory of the new project:
+
+```bash
+ cd fileuploadapp
+```
+
+Go to the Gemfile and uncomment <code> gem jbuilder </code>.
+```ruby
+# Gemfile.rb
+ gem 'jbuilder', '~> 2.0' # <-- this must be in your gemfile
+```   
+[JBuilder](https://github.com/rails/jbuilder) is used to create JSOn structures for the responses from the application. In MVC terms, the JSON respones are going to be the view layer of the application and all Jbuilder-generated responses have to be put in <code> app/views/(view for a particular controller action) </code>. 
+Install the gem:
+```bash
+bundle install
+```
+  With the gem installed, the model is going to be scaffolded with Jbuilder-generated views.
+```bash
+rails g scaffold Item name:string description:string
+```
+  A model named 'Item' is going to be scaffolded which has a name and description as strings. Note that there is still no information about the file - it will be included in the model's schema at a later stage. For now, we are all set to go ahead and migrate the model into the database:
 
 ```bash
     rails db:migrate
  ```
   This will create a table in the database for the new model. Note that one of the new features in Rails 5 is that you can use <code> rails </code> instead of <code> rake </code> for executing a migration command.
+  
+  
 
