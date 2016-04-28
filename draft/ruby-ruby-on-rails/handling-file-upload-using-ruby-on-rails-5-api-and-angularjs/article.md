@@ -93,7 +93,7 @@ Base64 encoded files are easy to be used by JSON and XML APIs since they are rep
 
  Let's apply these concepts into a real application. First, let's set up a Rails 5 API application and scaffold a model that is going to be used. 
  
- ### Installing and configuring Rails 5 API
+## Installing and configuring Rails 5 API
  
 To create a Rails 5 API, you need Ruby 2.2.4 and up installed. After you have a suitable Ruby version, the first step is to install the newest version of Rails using the following command in your terminal/command prompt:
 
@@ -118,7 +118,7 @@ Go to the Gemfile and uncomment <code> gem jbuilder </code>.
 # Gemfile.rb
  gem 'jbuilder', '~> 2.0' # <-- this must be in your gemfile
 ```   
-[JBuilder](https://github.com/rails/jbuilder) is used to create JSOn structures for the responses from the application. In MVC terms, the JSON respones are going to be the view layer of the application and all Jbuilder-generated responses have to be put in <code> app/views/(view for a particular controller action) </code>. 
+[JBuilder](https://github.com/rails/jbuilder) is used to create JSON structures for the responses from the application. In MVC terms, the JSON respones are going to be the view layer of the application and all Jbuilder-generated responses have to be put in <code> app/views/(view for a particular controller action) </code>. 
 Install the gem:
 ```bash
 bundle install
@@ -127,12 +127,16 @@ bundle install
 ```bash
 rails g scaffold Item name:string description:string
 ```
-  A model named 'Item' is going to be scaffolded which has a name and description as strings. Note that there is still no information about the file - it will be included in the model's schema at a later stage. For now, we are all set to go ahead and migrate the model into the database:
+A model named 'Item' is going to be scaffolded which has a name and description as strings. Note that there is still no information about the file - it will be included in the model's schema at a later stage. For now, we are all set to go ahead and migrate the model into the database:
 
 ```bash
     rails db:migrate
- ```
-  This will create a table in the database for the new model. Note that one of the new features in Rails 5 is that you can use <code> rails </code> instead of <code> rake </code> for executing a migration command.
-  
-  
+```
+This will create a table in the database for the new model. Note that one of the new features in Rails 5 is that you can use <code> rails </code> instead of <code> rake </code> for executing a migration command.
+ 
+
+ The two most popular gems for uploading files are [Paperclip]() and [Carrierwave](). The functionality of both is similar, so you can pick either of them. 
+##  File upload using Paperclip
+##  File upload using Carrierwave
+
 
