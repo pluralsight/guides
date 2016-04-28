@@ -226,7 +226,7 @@ end
 ```
 This time, <code> validates attachment </code> checks if the document's type is <code> application/pdf </code>. 
 The model is ready, here is how things have to be handled in the controller in order to handle creation of multiple files:
-#### Creating items with documents
+#### Creating an item with documents
 When a new item is created, there has to be another parameter sent, <code>document_data</code> which will contain an array of data about each document, either in multipart or in base64 format:
 
 ```ruby
@@ -283,29 +283,35 @@ Add <code>:documents</code> to the Juilder view so that the documents get return
 json.extract! @item, :id, :name, :description, :picture, :documents, :created_at, :updated_at
 ```  
 
-#### Testing it out
+#### Testing it out with multipart form data
 ```bash
-curl -F "item[document_data][]=@E:ile2.pdf;type=application/pdf"  -F "item[document_data][]=@E:ile1.pdf;type=application/pdf" -F   "item[picture]=@E:photo.jpg" -F "item[name]=item" -F "item[description]=desc"  localhost:3000
-/items
+curl 
+-F "item[document_data][]=@E:\file2.pdf;type=application/pdf" 
+-F "item[document_data][]=@E:\file1.pdf;type=application/pdf"
+-F "item[picture]=@E:photo.jpg" 
+-F "item[name]=item" 
+-F "item[description]=desc"  
+localhost:3000/items
 ```
 ### base64 upload
-To upload a base64-encoded image, the <code>attr_accessor</code> method will be used to get the base64 encoded string in the model. In your item model, add the following line:
+Suppose you want to create items and documents by sending in base64-encoded strings instead of form data. There are several additional steps that should be done for this to be achieved.
+#### Modifying the item 
+
+First, to upload a base64-encoded image for the Item, the <code>attr_accessor</code> method will be used to get the base64 encoded string in the model:
  ```ruby
   #app/models/item.rb
 class Item < ApplicationRecord
  attr_accessor :image_base
-     #paperclip logic
+     #...
 end
 ```
-Now, a method for decoding <code>image_base</code> and assigning it to the <code> picture </code> attribute of the Item.
+Second, add a private method for decoding <code>image_base</code> and assigning it to the <code> picture </code> attribute of the Item.
 
 
 ```ruby 
   #app/models/item.rb
- class Item < ApplicationRecord
-  #paperclip logic
-  private
 
+  private
     def parse_image
     image = Paperclip.io_adapters.for(image_base)
     image.original_filename = "file.jpg"
@@ -321,21 +327,53 @@ The method is ready, but it has to be called every time a new object is created,
  #app/models/item.rb
 class Item < ApplicationRecord
   before_validation :parse_image
+  attr_accessor :image_base
   #...
 end
 ```
 
-The <code>before_validation</code> method will ensure that the base64 string will be parsed and assigned to the object instance before the validation i.e. before Paperclip validates the size, content type and the rest of the attributes of the file.
+The <code>before_validation</code> method will ensure that the base64 string will be parsed and assigned to the object instance before Paperclip validates the size, content type and the rest of the attributes of the file.
   
-
- In order to get <code>image_base</code>, it has to be passed as a parameter. This means it has to be white-listed first:
+In order to get <code>image_base</code>, it has to be permitted as a parameter in the controller:
 ```ruby 
 #app/controllers/items_controller.rb
 def item_params
-  params.require(:item).permit(:name, :description , :document_data, :image_base) #add :imnage_base in permit() 
+  params.require(:item).permit(:name, :description , :image_base , :document_data => []) #change :picture to :image_base
 end
 ```
+#### Modifying the documents
+ Similarly to the item, the document data has to be decoded before being saved. instead of sending a <code>:file </code>  has directly, <code> :file_contents </code> have to be sent:
+ 
+```ruby
+   #app/models/item.rb
+   def save_attachments(params)
+    params[:document_data].each do |doc|
+      self.documents.create(:file_contents => doc) #change from :file to :file_contents
+    end
+  end
+```
 
-##  File upload using Carrierwave
+ Similarly to the Item model, add <code>attr_accessor</code> for the <code> :file_contents </code> and a method to decode the base64-encoded content:
+```ruby 
+ #app/models/document.rb
+ class Document < ApplicationRecord
+  belongs_to :item
+  before_validation :parse_file
+  attr_accessor :file_contents
+  has_attached_file :file
+  validates_attachment :file, presence: true, content_type: { content_type: "application/pdf" }
+
+
+  private
+
+  def parse_file
+    p file_contents
+    file = Paperclip.io_adapters.for(file_contents)
+    file.original_filename = "pdfile.pdf"
+    self.file = file
+  end
+end
+```
+##  File upload using CarrierWave
 
 
