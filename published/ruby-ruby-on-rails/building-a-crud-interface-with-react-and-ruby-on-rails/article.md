@@ -395,7 +395,7 @@ But hold on--we’re not done just yet! When we iterate through items in React, 
 
     return(
         <div>
-            {Items}
+            {items}
         </div>
     )
 }
