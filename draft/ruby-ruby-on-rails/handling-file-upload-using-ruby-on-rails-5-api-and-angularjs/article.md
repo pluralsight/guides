@@ -163,7 +163,7 @@ This will create a table in the database for the new model. Note that one of the
  #app/models/item.rb
 class Item < ApplicationRecord
   has_attached_file :picture, styles: { medium: "300x300>", thumb: "100x100>" }, default_url: "/images/:style/missing.png"
-  validates_attachment_content_type :picture, content_type: /\Aimage\/.*\Z/
+  validates_attachment_content_type :picture, content_type: /Aimage/.*Z/
 end
 
 ```
@@ -220,7 +220,7 @@ The <code>before_validation</code> method will ensure that the base64 string wil
   before_validation :parse_image
 
   has_attached_file :picture, styles: { medium: "300x300>", thumb: "100x100>" }, default_url: "/images/:style/missing.png"
-  validates_attachment_content_type :picture, content_type: /\Aimage\/.*\Z/
+  validates_attachment_content_type :picture, content_type: /Aimage/.*Z/
 
   private
 
@@ -230,7 +230,17 @@ The <code>before_validation</code> method will ensure that the base64 string wil
     self.photo = image
   end
 end
-
+```
+ In order to get <code>image_base</code>, it has to be passed as a parameter. This means it has to be white-listed first:
+```ruby 
+    #app/controllers/item_controller.rb
+    def item_params
+      params.require(:item).permit(:name, :description , :image_base) #add :imnage_base in permit() 
+    end
+```
+The last step is to add the <code>:picture</code> to the jbuilder, so that when we <code>GET</code> an item, it will return its picture:
+```ruby   
+json.extract! @item, :id, :name, :description, :picture, :created_at, :updated_at
 ```
 ##  File upload using Carrierwave
 
