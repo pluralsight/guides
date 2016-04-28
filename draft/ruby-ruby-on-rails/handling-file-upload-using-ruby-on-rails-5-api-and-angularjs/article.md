@@ -130,13 +130,108 @@ rails g scaffold Item name:string description:string
 A model named 'Item' is going to be scaffolded which has a name and description as strings. Note that there is still no information about the file - it will be included in the model's schema at a later stage. For now, we are all set to go ahead and migrate the model into the database:
 
 ```bash
-    rails db:migrate
+rails db:migrate
 ```
 This will create a table in the database for the new model. Note that one of the new features in Rails 5 is that you can use <code> rails </code> instead of <code> rake </code> for executing a migration command.
  
 
- The two most popular gems for uploading files are [Paperclip]() and [Carrierwave](). The functionality of both is similar, so you can pick either of them. 
+ The two most popular gems for uploading files are [Paperclip](https://github.com/thoughtbot/paperclip) and [Carrierwave](). The functionality of both is similar, so you can pick either of them. If you would like to try both approaches, it is recommended that you use version control such as [git](https://git-scm.com/) so that the implementations don't clash.
 ##  File upload using Paperclip
+### Uploading a single file 
+ Include the gem in your gemfile:
+ 
+ ```ruby
+ #Gemfile.rb
+ gem "paperclip", "~> 5.0.0.beta1"
+```
+  And install it:
+ ```bash
+ bundle install
+```  
+
+ Generate a migration that will add the attachment to the databse:
+ 
+```bash
+ rails generate paperclip item picture
+```  
+ After you are done, don't forget to migrate the database:
+```bash
+ rails db:migrate
+```   
+ Go to the file of your model and add the following code:
+ ```ruby 
+ #app/models/item.rb
+class Item < ApplicationRecord
+  has_attached_file :picture, styles: { medium: "300x300>", thumb: "100x100>" }, default_url: "/images/:style/missing.png"
+  validates_attachment_content_type :picture, content_type: /\Aimage\/.*\Z/
+end
+
+```
+
+<code>has_attached_file</code> is the main method for adding a file attachment . The first argument is the attribute of the model that is going to be used for the file attachment (In this case it is<code>:picture</code>, as we know from the migration). <code>styles:</code> is an **optional** parameter that is going to distribute the uploaded files in different folders according to their file size. In this example, medium photos will be 300x300 pixels and up and will be put into the <code>/images/medium</code> directory. <code> default_url </code> is also an **optional** parameter used to specify the path of a default image that will be returned if the object from the model does not have an attached image. You can put the default image in <code> app/assets/images/(medium or thumb)/</code> . If you are uploading files that are different from images, you may omit the optional arguments.
+
+<code>validates_attachment_content</code> is used to validate the <code>Content-Type </code> of the file. In multipart uploads, it is done directly, but in base-64 uploads, it is done after the <code>"data: (content type)"</code> is decoded. In the example, all files with common image types will be accepted - <code>image/png</code> , <code>image/jpeg</code> , <code> image/gif</code> and their subtypes.
+  
+#### base64 upload
+To upload a base64-encoded image, the <code>attr_accessor</code> method will be used to get the base64 encoded string in the model. In your item model, add the following line:
+ ```ruby
+  #app/models/item.rb
+class Item < ApplicationRecord
+ attr_accessor :image_base
+     #paperclip logic
+end
+```
+Now, a method for decoding <code>image_base</code> and assigning it to the <code> picture </code> attribute of the Item.
+
+
+ ```ruby 
+  #app/models/item.rb
+ class Item < ApplicationRecord
+ 
+  #paperclip logic
+  private
+
+    def parse_image
+    image = Paperclip.io_adapters.for(image_base)
+    image.original_filename = "file.jpg"
+    self.photo = image
+  end
+
+``` 
+The <code>parse_image </code> method takes <code>image_base</code> and puts it into Paperclip's [IO adapters](http://www.rubydoc.info/gems/paperclip/Paperclip/AdapterRegistry#registered_handlers-instance_method) . They contain a registry which can decode the base64 string back to binary. Because the file name is not stored, you can either ut an arbitrary value (like "file.jpg", even if your file is not in jpg format) or add another <code>atr_accessor</code> for the name itsel. Finally <code> self.photo = image </code> assigns the image to the current instance of the object.
+
+The method is ready, but it has to be called every time a new object is created, so let's add a filter that will call the <code> parse_image </code> method when that happens:
+ 
+  ```ruby 
+   #app/models/item.rb
+class Item < ApplicationRecord
+  before_validation :parse_image
+  #...
+end
+```
+
+The <code>before_validation</code> method will ensure that the base64 string will be parsed and assigned to the object instance before the validation i.e. before Paperclip validates the size, content type and the rest of the attributes of the file.
+  
+  
+```ruby 
+   #app/models/item.rb
+  class Item < ApplicationRecord
+  attr_accessor :image_base
+  before_validation :parse_image
+
+  has_attached_file :picture, styles: { medium: "300x300>", thumb: "100x100>" }, default_url: "/images/:style/missing.png"
+  validates_attachment_content_type :picture, content_type: /\Aimage\/.*\Z/
+
+  private
+
+  def parse_image
+    image = Paperclip.io_adapters.for(image_json)
+    image.original_filename = "file.jpg"
+    self.photo = image
+  end
+end
+
+```
 ##  File upload using Carrierwave
 
 
