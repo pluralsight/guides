@@ -163,16 +163,25 @@ This will create a table in the database for the new model. Note that one of the
  #app/models/item.rb
 class Item < ApplicationRecord
   has_attached_file :picture, styles: { medium: "300x300>", thumb: "100x100>" }, default_url: "/images/:style/missing.png"
-  validates_attachment_content_type :picture, content_type: /Aimage/.*Z/
+  validates_attachment :picture, presence: true
+  do_not_validate_attachment_file_type :picture
 end
 
 ```
 
 <code>has_attached_file</code> is the main method for adding a file attachment . The first argument is the attribute of the model that is going to be used for the file attachment (In this case it is<code>:picture</code>, as we know from the migration). <code>styles:</code> is an **optional** parameter that is going to distribute the uploaded files in different folders according to their file size. In this example, medium photos will be 300x300 pixels and up and will be put into the <code>/images/medium</code> directory. <code> default_url </code> is also an **optional** parameter used to specify the path of a default image that will be returned if the object from the model does not have an attached image. You can put the default image in <code> app/assets/images/(medium or thumb)/</code> . If you are uploading files that are different from images, you may omit the optional arguments.
 
-<code>validates_attachment_content</code> is used to validate the <code>Content-Type </code> of the file. In multipart uploads, it is done directly, but in base-64 uploads, it is done after the <code>"data: (content type)"</code> is decoded. In the example, all files with common image types will be accepted - <code>image/png</code> , <code>image/jpeg</code> , <code> image/gif</code> and their subtypes.
+<code>validates_attachment_content</code> is used to validate the <code>Content-Type </code> , <code> presence </code> and <code> size</code> of the file. In multipart uploads, it is done directly, but in base-64 uploads, it is done after the <code>"data: (content type)"</code> is decoded. In this example, only the presence is checked.
+ 
+ <code> do_not_validate_attachment_file_type</code> is used as there are [issues](https://github.com/thoughtbot/paperclip/issues/1429) with the file type validations of paperclip.
   
-#### base64 upload
+The last step is to add the <code>:picture</code> to the jbuilder, so that when we <code>GET</code> an item, it will return its picture:
+```ruby   
+json.extract! @item, :id, :name, :description, :picture, :created_at, :updated_at
+```  
+### Uploading multiple files
+
+### base64 upload
 To upload a base64-encoded image, the <code>attr_accessor</code> method will be used to get the base64 encoded string in the model. In your item model, add the following line:
  ```ruby
   #app/models/item.rb
@@ -194,7 +203,7 @@ Now, a method for decoding <code>image_base</code> and assigning it to the <code
     def parse_image
     image = Paperclip.io_adapters.for(image_base)
     image.original_filename = "file.jpg"
-    self.photo = image
+    self.picture = image
   end
 
 ``` 
@@ -220,14 +229,15 @@ The <code>before_validation</code> method will ensure that the base64 string wil
   before_validation :parse_image
 
   has_attached_file :picture, styles: { medium: "300x300>", thumb: "100x100>" }, default_url: "/images/:style/missing.png"
-  validates_attachment_content_type :picture, content_type: /Aimage/.*Z/
+  validates_attachment :picture, presence: true
+  do_not_validate_attachment_file_type :picture
 
   private
 
   def parse_image
-    image = Paperclip.io_adapters.for(image_json)
+    image = Paperclip.io_adapters.for(image_base)
     image.original_filename = "file.jpg"
-    self.photo = image
+    self.picture = image
   end
 end
 ```
@@ -238,10 +248,9 @@ end
       params.require(:item).permit(:name, :description , :image_base) #add :imnage_base in permit() 
     end
 ```
-The last step is to add the <code>:picture</code> to the jbuilder, so that when we <code>GET</code> an item, it will return its picture:
-```ruby   
-json.extract! @item, :id, :name, :description, :picture, :created_at, :updated_at
-```
+
+
+
 ##  File upload using Carrierwave
 
 
