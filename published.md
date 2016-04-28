@@ -1,3 +1,8 @@
+### Testing user interfaces with browser automation by Peter Olson
+- [Read the guide](http://tutorials.pluralsight.com/front-end-javascript/testing-user-interfaces-with-browser-automation)
+- [Read more from Peter Olson](http://tutorials.pluralsight.com/author/peterolson) <img src="https://avatars.githubusercontent.com/u/920512?v=3" width="30" height="30" alt="Peter Olson" />
+- Related to: Front-End JavaScript (Angular, React, Meteor, etc)
+
 ### Running shell commands with Flask by Red Moses
 - [Read the guide](http://tutorials.pluralsight.com/python/running-shell-commands-with-flask)
 - [Read more from Red Moses](http://tutorials.pluralsight.com/author/redmoses) <img src="https://avatars.githubusercontent.com/u/4059490?v=3" width="30" height="30" alt="Red Moses" />
