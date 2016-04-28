@@ -1,46 +1,36 @@
-In this article we will walk through developing a simple web application and testing it automatically by simulating a user interacting with the browser.
+In this article, we will walk through developing a simple web application and testing it automatically by simulating user-browser interactions.
 
 If you want to experiment with this project yourself, there is a [repository hosted on GitHub that contains all the code presented in this article](https://github.com/peterolson/Testing-user-interfaces-with-browser-automation).
 
-## Why do we need browser automation?
+#### For more on test-driven development, see [this awesome guide](http://tutorials.pluralsight.com/front-end-javascript/introduction-to-test-driven-development-in-javascript). 
 
-Testing JavaScript web applications by hand can quickly become an unwieldy task. As the number of features included in an application grows, the different possible combinations of ways to use them together can grow quadratically, sometimes even exponentially. When you are testing everything manually, as the number of things to test grows, you have to either spend more time testing and less time developing, or sacrifice the thoroughness of your testing.
 
-What's more, developers often test their applications rather haphazardly, trying different features as they come to mind, likely forgetting to try some important features in the process. Some of the more "disciplined" developers I have seen will maintain a list of things to test so they don't forget anything. For example, if they were building some sort of social-networking site (e.g. Facebook), part of the list might look something like this:
 
- - Create a post
- - Create some comments on the post
- - Create some replies to some of the comments
- - Edit the post
- - Edit some of the comments
- - Delete some comments
- - Like the post
- - Like some of the comments
- - Delete the post
+# Why do we need browser automation?
 
-As you can imagine, going through the entire list and testing everything to make sure it all works is a very long and tedious process, especially if we involve multiple users and privacy settings where users are only allowed to see content from certain other users. One iteration of testing all the features manually could easily take hours.
+Testing JavaScript web applications by hand can be taxing. As the number of features included in an application grows, the different possible combinations of ways to use them together can grow exponentially. When you are testing everything manually, as the number of cases increases, you have to allocate more time to testing or (if you want to finish your tasks quickly) sacrifice the thoroughness of your testing.
 
-So what do we do when we start to waste time on tedious processes that take a long time to perform manually? The answer to this should be deeply ingrained in the mind of any self-respecting programmer: automate it!
+So what do we do when we start to waste time on tedious processes that take a long time to perform manually? Automate it!
 
-There is a special type of tool designed exactly for automating web interface testing called *browser automation*. With browser automation tools, you can create programs that automatically interact with web pages. These programs can follow links, press buttons, read and enter text, wait for things to appear on the page, and so forth. 
+There is a special type of tool designed exactly for automating web interface testing called *browser automation*. Using browser automation, you can create programs that automatically interact with web pages. These programs can follow links, press buttons, read and enter text, wait for things to appear on the page, and so forth. 
 
 Browser automation provides a number of benefits for the development process:
 
 #### Faster bug reproduction 
 
-Sometimes bugs involve the combination of a number of features used together, and thus take several steps to reproduce. This can make debugging a big hassle because you have to waste time reproducing the bug repeatedly while you investigate what the problem is and how to fix it. With browser automation, you can create a script that automatically performs all the steps required to reproduce the bug so that you can jump straight into the debugging process. 
+Sometimes bugs arise through the combination of numerous application features. Thus, these can take several steps to reproduce. With browser automation, you can create a script that automatically performs all the steps required to reproduce the bug and jump straight into the debugging process. 
 
-#### Regression testing 
+#### Regression testing
 
-Sometimes adding or modifying a feature will have unintended consequences on some other seemingly unrelated part of the program, and ends up breaking something that used to work correctly. When you have this type of change that causes a previously functional program to break, it is called a *regression*. With browser automation, you can create a suite of tests that makes sure that each feature works as intended. When you make a change, you can run the tests to check whether or not the change has caused any regressions.
+Sometimes adding or modifying a feature will have unintended consequences on other program aspects, perhaps breaking something that used to work correctly. When you have this type of change that causes a previously functional program to break, it is called a *regression*. With browser automation, you can create a suite of tests that makes sure that each feature works as intended. Whenever you make changes, you can run this suite to find regressions.
 
 #### Robust applications
 
-Building large JavaScript applications can get messy rather quickly. The application can gradually start to feel fragile, where you have this nagging feeling that there are dozens of undiscovered bugs hiding under your nose. Manual testing does little to alleviate the lack of confidence in the application, since it is difficult to manually test everything thoroughly. An extensive suite of automatic tests contributes greatly toward being confident about the robustness of your applications.
+Building large JavaScript applications can get messy rather quickly. The application can gradually start to feel fragile, where you have this nagging feeling that there are dozens of undiscovered bugs hiding under your nose. An extensive suite of automatic tests contributes greatly toward being confident about the robustness of your applications.
 
-### Browser automation isn't always appropriate
+### Browser automation is not always appropriate
 
-All that said, there are times when manual testing will fit your needs more than browser automation. Setting everything up and writing the tests requires some initial time investment, and there are a few situations where it is not worthwhile.
+All that said, there are times when manual testing will fit your needs more than browser automation. **Setting everything up and writing the tests requires more time up front**, and there are a few situations where it is not worthwhile.
 
 #### Rapid prototyping
 
@@ -50,11 +40,13 @@ Sometimes you don't have a clear idea in mind of what your application will look
 
 If you have a deadline coming up quickly, you might not be able to afford the time investment involved in writing automated tests. You have to be careful with this, though, because if you put it off for too long you can fall deeper into [technical debt](https://en.wikipedia.org/wiki/Technical_debt).
 
-## Getting started
+
+
+# Getting started
 
 The most popular browser automation tool (at the time this article was written) is called [Selenium](http://www.seleniumhq.org/). We will use a JavaScript browser automation framework built on top of Selenium called [Nightwatch.js](http://nightwatchjs.org/).
 
-If you don't already have [Node.js](http://nodejs.org/) installed, you will need to [install it](http://nodejs.org/).
+If you don't already have Node.js installed, you will need to [install it](http://nodejs.org/).
 
 First, create a folder for your project, and create a subfolder named `bin`. [Download the selenium server standalone jar file](http://selenium-release.storage.googleapis.com/2.53/selenium-server-standalone-2.53.0.jar) and place it in the `bin` folder.
 
@@ -89,11 +81,11 @@ In your project root, create a file called `nightwatch.json` with the following 
 
 You can change the `browserName` property if you like (for example to `"firefox"`) if you want to test with a different browser.
 
-Next we'll try out a simple example to make sure everything is working correctly.
+Next, we'll test using a simple example to make sure everything is working correctly.
 
 ### Simple example
 
-To start out with, we will create an example of a script that opens up a search engine, enters a query, presses the search button, and gets the number of results.
+To begin, we will create an example of a script that opens up a search engine, enters a query, presses the search button, and gets the number of results.
 
 In your `tests` folder, create a file named `searchExample.js` with the following content:
 
@@ -123,7 +115,7 @@ Navigate to the project folder in your terminal/Node.js command prompt and run t
 nightwatch -t tests/searchExample
 ```
 
-It should open the browser, run the script, and output something like this to the console:
+This should open the browser, run the script, and output something like this to the console:
 
 ```
 Starting selenium server... started - PID:  4864
@@ -136,7 +128,7 @@ Running:  Search engine example
 No assertions ran.
 ```
 
-If you ran this example and got the expected results, then you should have everything set up correctly. Next we'll develop a simple application with thorough tests.
+Getting this result means that you have set everything up appropriately. Next we'll develop an application with thorough tests.
 
 ## Example application
 
@@ -285,12 +277,14 @@ OK. 142 assertions passed. (22.616s)
 The test code is fairly straightforward, but there are a couple things about the script that is worth pointing out:
 
  - It's a good idea to keep all of the CSS selectors used to access page elements in one object instead of directly passing in strings. This reduces duplication, makes it easier to revise if you change the HTML, and also lets your IDE help you more with code completion.
- - I made separate stages for "Open page" and "Close page". There's no requirement to do this, but it makes things easier if you add more stages later.
+ - I made separate stages for "Open page" and "Close page." This is not required, but it makes things easier if you add more stages later.
  - The script first calls`clearValue` and then `setValue` to fill in the input boxes. This is because `setValue` simulates entering text by individual keystroke and does not remove any content already present in the input boxes.
 
-####Hold on, we're not done yet
+#### Hold on, we're not done yet
 
-It's all nice and good to see everything work and see all of the test expectations met, but our test suite is missing some very important parts. So far, we've only written tests that simulate a "nice" user that inputs normal values and doesn't try to do anything out of the ordinary. We can't assume that all our users will be so nice. We might have more adversarial users come along that do things that our code doesn't account for, such as
+It's all nice and good to see everything work and see all of the test expectations met, but our test suite is missing some very important parts. So far, we've only written tests that simulate a "nice" user that inputs normal values and doesn't try to do anything out of the ordinary. 
+
+We might have more adversarial users that represent edge cases, or things that our code doesn't account for. In this example, edge cases include:
 
  - trying to calculate with empty inputs
  - entering garbage inputs like `blah blah blah` or `Robert'); DROP TABLE students;--`
@@ -298,13 +292,13 @@ It's all nice and good to see everything work and see all of the test expectatio
 
 The calculator does not have any code for doing input validation, so these events might trigger some unexpected behavior.
 
-You might expect that at this point we'll write input validation code and then write tests to verify that the code works correctly. Actually, we'll do those steps in the opposite order. First we'll write tests for input validation, and then we'll write the code to actually implement the input validation.
+You might expect that at this point we'll write input validation code, then write tests to verify that the validation works correctly. Actually, we'll do those steps in the opposite order. **First we'll write tests for input validation, and then we'll write the code to actually implement the input validation.**
 
-Why is the order important? If we write the tests first, then the tests can help us find issues in the code as we write it, and help us keep track of which things we've finished and what we still have left to do. If, on the other hand, we were to write the code first, then we would risk writing the tests to fit the code we already wrote. This would defeat some of the benefit of writing tests (although these tests would still help you find regressions).
+Why is the order important? If we write the tests first, then the tests can help us find issues in the code as we write it, and help us keep track of which things we've finished and what we still have left to do. If, on the other hand, we were to write the code first, then we would risk writing the tests to fit the code we already wrote. *This would defeat the purpose of writing tests* (although these tests would still help you find regressions).
 
-To put it another way, writing tests to match the code we've already written can be like shooting an arrow, then drawing a target around the arrow and bragging that you hit the bull's eye. Just as this target would be useless for assessing your archery skill, tests that over-fit your code don't provide any useful information; they just tell you that the code does what the code does. Even when you don't actively try to make the tests match the behavior of the code, it's hard to avoid the subconscious desire to keep the things you've built from breaking.
+To put it another way, writing tests to match the code we've already written can be like shooting an arrow, then drawing a target around the arrow and bragging that you hit the bull's eye. Just as this target would be useless for assessing your archery skill, tests that over-fit your code don't provide any useful information.
 
-You might notice that I didn't write the tests first at the beginning, and it's a fair question to ask why not. I often make an exception for the initial prototype, since you are still exploring the basic structure of the application and might make lots of changes to your initial ideas of how things should behave. Once you already have the basic structure of your application somewhat settled, it's easier to iteratively build on top of it in a test-driven way.
+You might notice that I didn't write the tests first in the beginning of this tutorial, and it's a fair question to ask why not. I often make an exception for the initial prototype, since you are still exploring the basic structure of the application and might make lots of changes to your initial ideas of how things should behave. Once you already have the basic structure of your application somewhat settled, it's easier to iteratively build on top of it in a test-driven way.
 
 Let's write our tests for input validation. The basic idea is that
 
@@ -321,7 +315,7 @@ var selectors = {
 };
 ```
 
-Then we create a list of test inputs along with whether or not they should trigger an error message:
+Then we'll create a list of test inputs and determine whether each input should trigger an error message:
 
 ```javascript
 var expectedInputValidation = [
@@ -342,7 +336,7 @@ var expectedInputValidation = [
     ["0", "0", false]];
 ```
 
-Finally, we add a test stage:
+Finally, we add a test stage which will run through our array of tests and check each one:
 
 ```javascript
 module.exports = {
@@ -388,7 +382,7 @@ TEST FAILURE: 1 assertions failed, 1 passed (7.02s)
    - Close page
 ```
 
-The tests failed. That's a good thing. If the validation tests passed before we wrote the validation code, that would mean that something is wrong with the tests.
+**The tests failed. That's a good thing. If the validation tests passed before we wrote the validation code, that would mean that something is wrong with the tests.**
 
 To implement the input validation, modify the `BMICalculator.html` file as follows:
 
@@ -449,7 +443,7 @@ To implement the input validation, modify the `BMICalculator.html` file as follo
 </script>
 ```
 
-Now if we run Nightwatch the tests should pass:
+Now, if we run Nightwatch, the tests should pass:
 
 ```
 OK. 172 total assertions passed. (30.673s)
@@ -530,4 +524,4 @@ If you'd like to experiment with this project yourself, you can download all [th
 
 Naturally, there are lots of options and features not covered in this article. I recommend browsing through the [Nightwatch](http://nightwatchjs.org/) and [Selenium](http://www.seleniumhq.org/) documentation to get a fuller sense of what you can do with browser automation.
 
-If you have any questions or corrections, feel free to leave a comment below.
+If you have any questions or corrections, feel free to leave a comment below. I hope you enjoyed reading this tutorial!
