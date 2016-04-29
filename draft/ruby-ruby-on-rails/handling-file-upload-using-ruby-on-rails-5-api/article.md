@@ -537,8 +537,8 @@ And voila, your application can now accept base64-encoded files. It is as simple
  For POSt-ing multipart form data, [cURL](https://curl.haxx.se/docs/manpage.html) is convenient enough. Keep in mind that the paths included are arbitrary and you have to add your own. Another thing - when sending files, make sure to declare their type (<code>type=application/pdf</code>. Otherwise, curl sends them as a binary type (<code> application/octet-stream </code>) , which breaks some of the validations.
 ```bash
 curl 
--F "item[document_data][]=@E:\file2.pdf;type=application/pdf" 
--F "item[document_data][]=@E:\file1.pdf;type=application/pdf"
+-F "item[document_data][]=@E:ile2.pdf;type=application/pdf" 
+-F "item[document_data][]=@E:ile1.pdf;type=application/pdf"
 -F "item[picture]=@E:photo.jpg" 
 -F "item[name]=item" 
 -F "item[description]=desc"  
@@ -546,20 +546,22 @@ localhost:3000/items
 ```
 ### Using base64 strings in JSON
 
- If you want to send base64 data, keep in mind that the strings are long, and cURL might be tedious to use. I would recommend [Postman](https://www.getpostman.com/docs/) . Here is the JSON format that the API is going to accept:
+ If you want to send base64 data, keep in mind that the strings are long, and cURL might be tedious to use. I would recommend [Postman](https://www.getpostman.com/docs/) . **NOte: Replace "picture" with " image_base" if you used Paperclip**.Here is the JSON format that the API is going to accept:
  
  ```json
   {
    "item": {
         "name": "tem",
         "description": "desc",
-        "picture": "data:image/png;base64, Rt2", //"image_base" if you used Paperclip
+        "picture": "data:image/png;base64, Rt2...",
         "document_data": [ "data:application/pdf;base64, fW3..." , "data:application/pdf;base64, pLf..."]
  
          }
   }
  
  ```
+## Conclusion
 
+That was all! Now you know how to upload files. You can now go ahead and set up a client-side application that can consume the API. In case you got lost in the guide, I created a [Github repository](https://github.com/Kaizeras/rails-api-fileupload-tutorial) and added [branches](https://github.com/Kaizeras/rails-api-fileupload-tutorial/branches/all) for each of the steps and the implementations done in the tutorail.
  
  
