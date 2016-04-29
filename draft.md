@@ -1,3 +1,8 @@
+### Implementation of 'Forgot/Reset Password' feature in Django by ruddra
+- [Read the guide](http://tutorials.pluralsight.com/python/implementation-of-forgot-reset-password-feature-in-django?status=draft)
+- [Read more from ruddra](http://tutorials.pluralsight.com/author/ruddra) <img src="https://avatars.githubusercontent.com/u/3099861?v=3" width="30" height="30" alt="ruddra" />
+- Related to: Python
+
 ### Building a Generic CSV Writer/Reader by Murat Aykanat
 - [Read the guide](http://tutorials.pluralsight.com/microsoft-net/building-a-generic-csv-writer-reader?status=draft)
 - [Read more from Murat Aykanat](http://tutorials.pluralsight.com/author/aykanatm) <img src="https://avatars.githubusercontent.com/u/9140297?v=3" width="30" height="30" alt="Murat Aykanat" />
