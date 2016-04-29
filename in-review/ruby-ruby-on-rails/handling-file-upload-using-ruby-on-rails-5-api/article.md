@@ -38,7 +38,7 @@ If the user enters "John" in the text input, and selects the text file "file1.tx
    --AaB03x--
 
 ```
-Every part of the form is separated by a boundary, which reprsents a different string (<code>AaB03x</code> in the example). Each part contains information about the <code>Content-Type</code> it contains and the content of the part itself. Larger files can be broken down in chuncks and assembled in the server, enabling a file to be streamed and to have its integrity maintaned in cases of connection interruprtion.
+Every part of the form is separated by a boundary, which reprsents a different string (<code>AaB03x</code> in the example). The part itself contains binary infomation with a <code>Content-Type</code>. Larger files can be broken down in chuncks and assembled in the server, enabling a file to be streamed and to have its integrity maintaned in cases of connection interruprtion.
 
 Let's consider uploading another file. If the user selects another file  "file2.gif", the browser will construct the parts as follows:j
 ```
@@ -66,14 +66,14 @@ Let's consider uploading another file. If the user selects another file  "file2.
    --BbC04y--
 ```
 
-Here, it can be seen that there is another part added to the <code>form-data</code>. This time, since the file is not in a <code>text/plain</code> format, it is broken down in binary, as it can be inferred from the <code> Content-Transfer-Encoding</code> property. The <code>Content-Type</code> property gives information about the type of the file, also known as its [media (MIME) type](https://en.wikipedia.org/wiki/Media_type). If the <code> Content-Type </code> property  is not defined and  the file is not in text format, its format will default to <code> application/octet-stream </code> which means that the finaly is binary and has no type. When sending data to an API, it is always good to include a <code>Content-Type</code> to each part which contains a file, otherwise there would be no way to validate the contents of the file.
+Here, it can be seen that there is another part added to the <code>form-data</code>. This time, since the file is not in a <code>text/plain</code> format, it is broken down in binary, as it can be inferred from the <code> Content-Transfer-Encoding</code> property. The <code>Content-Type</code> property gives information about the type of the file, also known as its [media (MIME) type](https://en.wikipedia.org/wiki/Media_type). If the <code> Content-Type </code> property  is not defined and  the file is not in text format, its format will default to <code> application/octet-stream </code>, which means that the finaly is binary and has no type. When sending data to an API, it is always good to include a <code>Content-Type</code> to each part which contains a file, otherwise there would be no way to validate the contents of the file.
 ### Base64 encoding
-Base64 for is one of the most commonly used binary to text encoding formats. It uses an algorithm to break up binary code in pieces and convert it in ASCII characters (text). It has a wide array of applications - apart from being used to encode files into text in order to send them to an API, it is also used represent images as a content soruce in CSS, HTML and SVG. 
+Base64 for is one of the most commonly used **binary to text** encoding formats. It uses an algorithm to break up binary code in pieces and convert it in ASCII characters (text). It has a wide array of applications - apart from being used to encode files into text in order to send them to an API, it is also used represent images as a content source in CSS, HTML and SVG. 
 The structure of base64 encoded files is very simple. It consits of two parts - a MIME type (similar to the multipart <code>Content-Type</code> and the actual base64 encoded string:
 ```
 data:image/gif;base64,iVBORw0KGgoAAAANag...//rest of the base64 text
 ```
-Usually, a file is encoded into base64 on the client and decoded on the server. The base64 string can be easily attached to a JSON object's attribute:
+When it comes to uploading, the file is encoded into base64 on the client and decoded on the server. The base64 string can be easily attached to a JSON object's attribute:
 ```javascript
  {
   "file": {
@@ -83,11 +83,11 @@ Usually, a file is encoded into base64 on the client and decoded on the server. 
  }
 ```
 
-An API would easily be able to pick up the parameter and decode it back to binary. This makes base64-encoded files uploads convenient for APIs, since the format of  the message containing the file and the way it is transferred does not differ from the standard way messages are sent to an API.
+An API would easily be able to pick up the parameter and decode it back to binary. This makes base64-encoded file uploads convenient for APIs, since the format of  the message containing the file and the way it is transferred does not differ from the standard way information is sent to an API.
 
 
 ### Base64 encoding vs. Multipart form data
-Base64 encoded files are easy to be used by JSON and XML APIs since they are represented as text and can be easily sent through the standard <code> application/json</code> format. However, the encoding increases the file size by 33%, making if difficult to transfer larger files. Encoding and decoding also adds a computational overhead for both the server and the client. Therefore, base64 is suitable for sending images and small files under 100MB. Multipart forms, on the other hand, are more "unnatural" to the APIs, since the data is encoded in a different format and requires a different way of handling. However, the increased performance with larger files and the ability to stream files makes multipart form data more desirable for uploading larger files such as videos.
+Base64 encoded files are easy to be used by JSON and XML APIs since they are represented as text and can be easily sent through the standard <code> application/json</code> format. However, the encoding increases the file size by 33%, making it difficult to transfer larger files. Encoding and decoding also adds a computational overhead for both the server and the client. Therefore, base64 is suitable for sending images and small files under 100MB. Multipart forms, on the other hand, are more "unnatural" to the APIs, since the data is encoded in a different format and requires a different way of handling. However, the increased performance with larger files and the ability to stream files makes multipart form data more desirable for uploading larger files such as videos.
 
 ## Setting up Rails API for file upload
 
@@ -101,7 +101,7 @@ To create a Rails 5 API, you need Ruby 2.2.4 and up installed. After you have a 
 gem install rails --pre --no-ri --no-rdoc
 ```
 
-This will give you the ability to run <code> rails new </code> using the most recent version:
+This will give you the ability to run <code> rails new </code> using the most recent version (currently 5.0.0.beta3):
 
 ```bash
 rails _5.0.0.beta3_ new fileuploadapp --api
@@ -120,7 +120,7 @@ Go to the Gemfile and uncomment <code>  jbuilder </code> and <code> rack-cors </
  gem 'rack-cors'
 ```   
 
-[JBuilder](https://github.com/rails/jbuilder) is used to create JSON structures for the responses from the application. In MVC terms, the JSON respones are going to be the view layer of the application and all Jbuilder-generated responses have to be put in <code> app/views/(view for a particular controller action) </code>. 
+[JBuilder](https://github.com/rails/jbuilder) is used to create JSON structures for the responses from the application. In MVC terms, the JSON respones are going to be the view layer of the application. Therefoe, all Jbuilder-generated responses have to be put in <code> app/views/(view for a particular controller action) </code>. 
 [rack-cors](https://github.com/cyu/rack-cors) enables cross-origin resource sharing ([CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/Access_control_CORS). Said in the simplest way possible, it will enable browser-based (AngularJS, React) and mobile applications to request information from the API. Go
 to the application configuration file and add the configurations for CORS:
 ```ruby
@@ -137,13 +137,13 @@ module Fileuploadapp
   end
 end
 ```
- This configuration will give full access to the API (<code>*</code> means that everything is accepted), which is not a problem for this guide, since we are going to work only with a local server.
+ This configuration will give full access to the API (<code>*</code> means that everything is accepted) - this is not a problem for this guide, since we are going to work only with a local server.
  
 Install the gems:
 ```bash
 bundle install
 ```
-  With the gems installed, the model is going to be scaffolded with Jbuilder-generated views and be ready to be consumed by client-side applications.
+With the gems installed, the model is going to be scaffolded with Jbuilder-generated views and be ready to be consumed by client-side applications.
 ```bash
 rails g scaffold Item name:string description:string
 ```
@@ -179,7 +179,7 @@ First, generate a migration that will add the attachment to the databse. ** You 
 ```bash
  rails db:migrate
 ```   
-Second, to the file of your model and add the following code:
+Second, add the following lines in the file of the model:
  ```ruby 
  #app/models/item.rb
 class Item < ApplicationRecord
@@ -206,7 +206,7 @@ def item_params
 end
 ```
   
-The last step is to add the <code>:picture</code> to the jbuilder view, so that when we <code>GET</code> an item, it will return its picture:
+The last step is to add the <code>:picture</code> to the Jbuilder view, so that when we <code>GET</code> an item, it will return its picture:
 ```ruby   
 json.extract! @item, :id, :name, :description, :picture, :created_at, :updated_at
 ```  
@@ -245,7 +245,7 @@ With this step finished, the <code> document </code> model is ready to be config
 end
 ```
 This time, <code> validates attachment </code> checks if the document's type is <code> application/pdf </code>. 
-The model is ready, here is how things have to be handled in the controller in order to handle creation of multiple files:
+With this addition, the <code> document </code> model is ready, here is how things have to be handled in the controller in order to handle creation of multiple files:
 #### Creating an item with documents
 When a new item is created, there has to be another parameter sent, <code>document_data</code> which will contain an array of data about each document, either in multipart or in base64 format:
 
@@ -329,7 +329,7 @@ Second, add a private method for decoding <code>image_base</code> and assigning 
   end
 
 ``` 
-The <code>parse_image </code> method takes <code>image_base</code> and puts it into Paperclip's [IO adapters](http://www.rubydoc.info/gems/paperclip/Paperclip/AdapterRegistry#registered_handlers-instance_method) . They contain a registry which can decode the base64 string back to binary. Because the file name is not stored, you can either ut an arbitrary value (like "file.jpg", even if your file is not in jpg format) or add another <code>atr_accessor</code> for the name itsel. Finally <code> self.photo = image </code> assigns the image to the current instance of the object.
+The <code>parse_image </code> method takes <code>image_base</code> and puts it into Paperclip's [IO adapters](http://www.rubydoc.info/gems/paperclip/Paperclip/AdapterRegistry#registered_handlers-instance_method) . They contain a registry which can decode the base64 string back to binary. Because the file name is not stored, you can either put an arbitrary value (like "file.jpg", even if your file is not in jpg format) or add another <code>atr_accessor</code> for the name itself. Finally, <code> self.photo = image </code> assigns the image to the current instance of the object.
 
 The method is ready, but it has to be called every time a new object is created, so let's add a filter that will call the <code> parse_image </code> method when that happens:
 
@@ -410,7 +410,7 @@ Don't forget to migrate the database:
  rails db:migrate
 ``` 
 
-In the generated file, you can find all the configuration options you can play around with. In this particular case, only the file type validation is needed. Since the uploader is used to upload pictures, their content types have to be whitelisted:
+In the generated uploader, you can find all the configuration options you can play around with. In this particular case, only the file type validation is needed. Since the uploader is used to upload pictures, their content types have to be whitelisted:
  ```ruby
  #app/uploaders/picture_uploader
   def extension_white_list  s
@@ -424,7 +424,9 @@ class Item < ApplicationRecord
   mount_uploader :picture, PictureUploader
 end
 ``` 
- This will add another attribute to the model - <code> picture </code>. When a new modal instance is created, the uploader will automatically associate the <code> picture </code> with it. This means that the <code> :picture </code> parameter has to be permitted in the controller:
+ When a new modal instance is created, the uploader will automatically associate the <code> picture </code> with it. The picture will contain the url with the image, which can be reached through <code> Item.pciture.url</code>.
+ 
+ Next, add the <code> :picture </code> parameter as a permitted parameter:
 ```ruby 
  #app/controllers/items_controllerr.rb
  def item_params
