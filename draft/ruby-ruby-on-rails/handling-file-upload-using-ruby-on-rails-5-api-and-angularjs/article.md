@@ -138,8 +138,7 @@ This will create a table in the database for the new model. Note that one of the
 
  The two most popular gems for uploading files are [Paperclip](https://github.com/thoughtbot/paperclip) and [Carrierwave](). The functionality of both is similar, so you can pick either of them. If you would like to try both approaches, it is recommended that you use version control such as [git](https://git-scm.com/) so that the implementations don't clash.
 ##  File upload using Paperclip
-### Uploading a single file 
- Include the gem in your gemfile:
+To get started with Paperclip, first add the gem to your Gemfile:
  
  ```ruby
  #Gemfile.rb
@@ -149,6 +148,8 @@ This will create a table in the database for the new model. Note that one of the
  ```bash
  bundle install
 ```  
+### Uploading a single file 
+
 
 First, generate a migration that will add the attachment to the databse. ** You have to put the same name for the attachment in the model as the one you put in the generator (in this case, it is  <code>picture</code>).**
  
@@ -182,7 +183,7 @@ Third, add a permitted parameter that is going to accept <code>:picture</code>:
 ```ruby 
 #app/controllers/items_controller.rb
 def item_params
-  params.require(:item).permit(:name, :description , :picture) # Add :picture to permitted parameters
+  params.require(:item).permit(:name, :description , :picture) # Add :picture as a permitted parameter
 end
 ```
   
@@ -191,7 +192,7 @@ The last step is to add the <code>:picture</code> to the jbuilder view, so that 
 json.extract! @item, :id, :name, :description, :picture, :created_at, :updated_at
 ```  
 
-### Uploading multiple files
+### Uploading multiple files 
 
 #### Attaching a document model to item
 To make uploading multiple files using Paperclip possible, the most efficient way is to do so is by **adding another model that is going to  be related to the main model** and contain the files. In the current example, let's add the capability for an item to have multiple PDF documents. First, let's generate a model:
@@ -232,7 +233,7 @@ When a new item is created, there has to be another parameter sent, <code>docume
 ```ruby
     #app/contollers/items_controller.rb
     def item_params
-      params.require(:item).permit(:name, :description , :document_data => []) #add :documents_data in permit() to accept an array 
+      params.require(:item).permit(:name, :description , :document_data => []) #Add :documents_data in permit() to accept an array 
     end
 ```
 Add the logic for creating multiple files in the controller:
@@ -283,16 +284,6 @@ Add <code>:documents</code> to the Juilder view so that the documents get return
 json.extract! @item, :id, :name, :description, :picture, :documents, :created_at, :updated_at
 ```  
 
-#### Testing it out with multipart form data
-```bash
-curl 
--F "item[document_data][]=@E:\file2.pdf;type=application/pdf" 
--F "item[document_data][]=@E:\file1.pdf;type=application/pdf"
--F "item[picture]=@E:photo.jpg" 
--F "item[name]=item" 
--F "item[description]=desc"  
-localhost:3000/items
-```
 ### base64 upload
 Suppose you want to create items and documents by sending in base64-encoded strings instead of form data. There are several additional steps that should be done for this to be achieved.
 #### Modifying the item 
@@ -375,5 +366,140 @@ end
 end
 ```
 ##  File upload using CarrierWave
+Add the Carrierwave gem to your Gemfile:
+ 
+ ```ruby
+ #Gemfile.rb
+gem 'carrierwave'
+```
+Run the installation:
+ ```bash
+ bundle install
+```  
+
+### Uploading a single file
+ CarrierWave isolates the logic of the uploaded files from the logic of the models using uploaders. To generate an uploader for the picture of the Item model, run the following command:
+ ```bash 
+ rails g uploader Picture
+ rails g migration add_picture_to_items picture:string
+``` 
+The first generator will createa new directory in the application - <code> app/uploaders </code>. This is where all the uploaders are going to be stored. The second generator will add a picture column as string in the <code> Items </code> table which will store a reference to the file.
 
 
+Don't forget to migrate the database:
+ ```bash 
+ rails db:migrate
+``` 
+
+In the generated file, you can find all the configuration options you can play around with. In this particular case, only the file type validation is needed. Since the uploader is used to upload pictures, their content types have to be whitelisted:
+ ```ruby
+ #app/uploaders/picture_uploader
+  def extension_white_list  s
+    %w(jpg jpeg gif png)
+  end
+``` 
+
+Now, mount the uploader to the item model:
+ ```ruby
+class Item < ApplicationRecord
+  mount_uploader :picture, PictureUploader
+end
+``` 
+ This will add another attribute to the model - <code> picture </code>. When a new modal instance is created, the uploader will automatically associate the <code> picture </code> with it. This means that the <code> :picture </code> parameter has to be permitted in the controller:
+```ruby 
+ #app/controllers/items_controllerr.rb
+ def item_params
+  params.require(:item).permit(:name, :description :picture) # Add :picture as a permitted paramter
+ end
+```
+
+Add the <code>:picture</code> to the jbuilder view, so that when we <code>GET</code> an item, it will return its picture:
+```ruby   
+ #app/views/items/show.json.jbuilder
+json.extract! @item, :id, :name, :description, :picture, :created_at, :updated_at
+```  
+### Uploading multiple files
+ Let's add PDF documents to the item. This will require adding another uploader and a model named document that will belong to the item. This will requries running these two generators:
+ 
+```bash 
+ rails g model document item:references document:string
+ rails g uploader Document
+
+```
+ The first generator generates the <code> document  </code> model with references to the <code> Item </code> and a <code> file </code> column that gives a reference to its CarrierWave file. The second generator creates the uploader in the <code> app/uploaders</code> directory.
+ Add the new <code> document </code> model in the database schema:
+```bash 
+rails db:migrate
+```
+Mount the uploader in the <code> document </code> model:
+```ruby
+ #app/model/document.rb
+class Document < ApplicationRecord
+  belongs_to :item
+  mount_uploader :document, DocumentUploader
+end
+```
+ Because the documents will be PDF only, adjust the whitelist accordingly in the uploader:
+ 
+```ruby 
+#app/uploaders/document_uploader.rb
+def extension_white_list
+    %w(pdf)
+end
+``` 
+In the <code> Item </code> model, add the following lines:
+```ruby 
+ #app/model/item.rb
+class Item < ApplicationRecord
+  mount_uploader :picture, PictureUploader
+  has_many :documents
+  attr_accessor :documnent_data
+end
+```
+<code> has_many :documents </code> adds a relation one-to-many between the item and the documents. <code> attr_accessor :document_data </code> will allow sending extra attributes to the controller that will be permitted. This attribute is going to contain an array with data about every PDF document.
+
+The model is ready, let's proceed to the controllers:
+
+1. Add <code> document_data </code> as a permitted parameter that is an array. Array parameters must always be the last parameter:
+ ```ruby 
+    #app/controllers/item_controller.rb
+    def item_params
+      params.require(:item).permit(:name, :description, :picture, :document_data => []) #add document_data as a permitted parameter
+    end
+```
+2. Add a loop that will create documents after the item is saved:
+ ```ruby 
+ #app/controllers/item_controller.rb
+  def create
+    @item = Item.new(item_params)
+
+    if @item.save
+      #iterate through each of the files
+      params[:item][:document_data].each do |file|
+          @item.documents.create!(:document => file) 
+          #create a document associated with the item that has just been created
+      end
+      render :show, status: :created, location: @item
+    else
+      render json: @item.errors, status: :unprocessable_entity
+    end
+  end
+```
+
+Finally, the cherry on the top is to update your Jbuilder view, so that the documents get returned together with the item:
+```ruby   
+ #app/views/items/show.json.jbuilder
+json.extract! @item, :id, :name, :description, :picture, :documents, :created_at, :updated_at
+```  
+### base 64 upload
+
+## Testing  out with multipart form data
+```bash
+curl 
+-F "item[document_data][]=@E:ile2.pdf;type=application/pdf" 
+-F "item[document_data][]=@E:ile1.pdf;type=application/pdf"
+-F "item[picture]=@E:photo.jpg" 
+-F "item[name]=item" 
+-F "item[description]=desc"  
+localhost:3000/items
+```
