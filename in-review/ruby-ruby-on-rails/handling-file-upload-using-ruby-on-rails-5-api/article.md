@@ -413,7 +413,7 @@ Don't forget to migrate the database:
 In the generated uploader, you can find all the configuration options you can play around with. In this particular case, only the file type validation is needed. Since the uploader is used to upload pictures, their content types have to be whitelisted:
  ```ruby
  #app/uploaders/picture_uploader
-  def extension_white_list  s
+  def extension_white_list  
     %w(jpg jpeg gif png)
   end
 ``` 
@@ -424,7 +424,7 @@ class Item < ApplicationRecord
   mount_uploader :picture, PictureUploader
 end
 ``` 
- When a new modal instance is created, the uploader will automatically associate the <code> picture </code> with it. The picture will contain the url with the image, which can be reached through <code> Item.pciture.url</code>.
+ When a new model instance is created, the uploader will automatically associate the <code> picture </code> with it. The picture will contain the url with the image, which can be reached through <code> Item.pciture.url</code>.
  
  Next, add the <code> :picture </code> parameter as a permitted parameter:
 ```ruby 
@@ -434,7 +434,7 @@ end
  end
 ```
 
-Add the <code>:picture</code> to the jbuilder view, so that when we <code>GET</code> an item, it will return its picture:
+Last, add the <code>:picture</code> to the jbuilder view, so that when we <code>GET</code> an item, it will return its picture:
 ```ruby   
  #app/views/items/show.json.jbuilder
 json.extract! @item, :id, :name, :description, :picture, :created_at, :updated_at
@@ -447,7 +447,7 @@ json.extract! @item, :id, :name, :description, :picture, :created_at, :updated_a
  rails g uploader Document
 
 ```
- The first generator generates the <code> document  </code> model with references to the <code> Item </code> and a <code> file </code> column that gives a reference to its CarrierWave file. The second generator creates the uploader in the <code> app/uploaders</code> directory.
+ The first generator ceates the <code> document  </code> model with references to the <code> Item </code> and a <code> file </code> column that gives a reference to its CarrierWave file. The second generator creates the uploader in the <code> app/uploaders</code> directory.
  Add the new <code> document </code> model in the database schema:
 ```bash 
 rails db:migrate
@@ -479,7 +479,7 @@ end
 ```
 <code> has_many :documents </code> adds a relation one-to-many between the item and the documents. <code> attr_accessor :document_data </code> will allow sending extra attributes to the controller that will be permitted. This attribute is going to contain an array with data about every PDF document.
 
-The model is ready, let's proceed to the controllers:
+We are done with the model! Let's proceed to the controllers:
 
 1. Add <code> document_data </code> as a permitted parameter that is an array. Array parameters must always be the last parameter:
  ```ruby 
@@ -548,7 +548,7 @@ localhost:3000/items
 ```
 ### Using base64 strings in JSON
 
- If you want to send base64 data, keep in mind that the strings are long, and cURL might be tedious to use. I would recommend [Postman](https://www.getpostman.com/docs/) . **NOte: Replace "picture" with " image_base" if you used Paperclip**.Here is the JSON format that the API is going to accept:
+ If you want to send base64 data, keep in mind that the strings are long, and cURL might be tedious to use. I would recommend [Postman](https://www.getpostman.com/docs/) . **Note: Replace "picture" with " image_base" if you used Paperclip**.Here is the JSON format that the API is going to accept:
  
  ```json
   {
@@ -564,6 +564,13 @@ localhost:3000/items
  ```
 ## Conclusion
 
-That was all! Now you know how to upload files. You can now go ahead and set up a client-side application that can consume the API. In case you got lost in the guide, I created a [Github repository](https://github.com/Kaizeras/rails-api-fileupload-tutorial) and added [branches](https://github.com/Kaizeras/rails-api-fileupload-tutorial/branches/all) for each of the steps and the implementations done in the tutorail.
+That was all! Now you know how to upload files. You can now go ahead and set up a client-side application that can consume the API. In case you got lost in the guide, I created a [Github repository](https://github.com/Kaizeras/rails-api-fileupload-tutorial) and added [branches](https://github.com/Kaizeras/rails-api-fileupload-tutorial/branches/all) for each of the steps and the implementations done in the tutorial.
+
+My personal preference for file upload is [CarrieWave](https://github.com/carrierwaveuploader/carrierwave) because it offers a more straightforward approach. The logic for the file is isolated into uploaders, which can be reused repeatedly for multiple models. This makes the code DRYer and more maintinable. Ittook me considerably less time to implement file uploading for both single and multiple items. WIth the [CarrierWave-base64](https://github.com/lebedev-yury/carrierwave-base64) gem, I did not have to add any custom logic for decoding and saving images - changing the name of the mounting method was enough. The only significant drawback is that CarrierWave has a lot of "magic" going behind it. It does not feel as customizable as paperclip and it feels more difficult for debugging.
+
+[Paperclip](https://github.com/thoughtbot/paperclip), on the other hand, offers a more personalized approach to file uploads. All the logic is stored inside the model and there is no need to encapsulate the logic outside the model. Files are treated more like standard fields in the model, rather than an independent part that is only assoiciated with the model. Debugging is somewhat intuitive, since any errors are simply  treated as attribute validation errors. On the other hand, making the image uploading more generic requires more tinkeing and experience (putting methods in <code>ApplicationRecord</code> is one way). Base64 uploads do not come as naturally as they do for CarrierWave and there is need for custom logic. 
  
- 
+To conclude, both CarrierWave and Paperclip have their pros and cons, and the choice which to use depends on the case. Both gems are popular and have big communities around them. The same applies for the different ways to upload files - both base64 and multipart forms are widely used means of uploading files to APIs. 
+
+
+
