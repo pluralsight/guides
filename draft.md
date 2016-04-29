@@ -1,8 +1,3 @@
-### Testing 1 2 3 by Luke Lee
-- [Read the guide](http://tutorials.pluralsight.com/lua/testing-1-2-3?status=draft)
-- [Read more from Luke Lee](http://tutorials.pluralsight.com/author/durden) <img src="https://avatars.githubusercontent.com/u/58063?v=3" width="30" height="30" alt="Luke Lee" />
-- Related to: Lua
-
 ### Implementation of 'Forgot/Reset Password' feature in Django by ruddra
 - [Read the guide](http://tutorials.pluralsight.com/python/implementation-of-forgot-reset-password-feature-in-django?status=draft)
 - [Read more from ruddra](http://tutorials.pluralsight.com/author/ruddra) <img src="https://avatars.githubusercontent.com/u/3099861?v=3" width="30" height="30" alt="ruddra" />
