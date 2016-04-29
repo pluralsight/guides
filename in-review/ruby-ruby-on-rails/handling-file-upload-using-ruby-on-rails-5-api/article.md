@@ -21,7 +21,7 @@ In this guide, the two main approaches of handling file upload, base64 encoding 
  </form>
  
 ```
-If the user enters "John" in the text input, and selects the text file "file1.txt", the user agent might send back the following data:
+If the user enters "John" in the text input, and selects the text file "file1.txt", the browser will send back the following data:
 
 ```
    Content-Type: multipart/form-data; boundary=AaB03x
@@ -38,9 +38,9 @@ If the user enters "John" in the text input, and selects the text file "file1.tx
    --AaB03x--
 
 ```
-Every part of the form is separated by a boundary, which reprsents a different string (<code>AaB03x</code> in the example). Each parts contains information about the <code>Content-Type</code> it contains and the content of the part itself. Larger files can be broken down in chuncks and assembled in the server, enabling a file to be streamed and to have its integrity maintaned in cases of connection interruprtion.
+Every part of the form is separated by a boundary, which reprsents a different string (<code>AaB03x</code> in the example). Each part contains information about the <code>Content-Type</code> it contains and the content of the part itself. Larger files can be broken down in chuncks and assembled in the server, enabling a file to be streamed and to have its integrity maintaned in cases of connection interruprtion.
 
-Let's consider uploading another file. If the user selects another file  "file2.gif", the browser will construct the parts as follows:
+Let's consider uploading another file. If the user selects another file  "file2.gif", the browser will construct the parts as follows:j
 ```
    Content-Type: multipart/form-data; boundary=AaB03x
 
