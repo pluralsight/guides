@@ -453,7 +453,7 @@ In the <code> Item </code> model, add the following lines:
 class Item < ApplicationRecord
   mount_uploader :picture, PictureUploader
   has_many :documents
-  attr_accessor :documnent_data
+  attr_accessor :document_data
 end
 ```
 <code> has_many :documents </code> adds a relation one-to-many between the item and the documents. <code> attr_accessor :document_data </code> will allow sending extra attributes to the controller that will be permitted. This attribute is going to contain an array with data about every PDF document.
@@ -492,8 +492,29 @@ Finally, the cherry on the top is to update your Jbuilder view, so that the docu
 json.extract! @item, :id, :name, :description, :picture, :documents, :created_at, :updated_at
 ```  
 ### base 64 upload
+ Uploading base64-encoded files is a very easy task with Carrierwave. Just add the [carrierwave-base64](https://github.com/lebedev-yury/carrierwave-base64) gem:
+ 
+```ruby
+# Gemfile.rb
+ gem 'carrierwave-base64'
+```  
+Install it:
+```bash
+bundle install
+```  
+ Go to your models and replace <code> mount_uploader </code> with <code>mount_base64_uploader </code>
+```ruby
+#app/models/item.rb
+mount_base64_uploader :picture, PictureUploader
+```   
+```ruby  
+#app/models/document.rb
+mount_base64_uploader :document, DocumentUploader
+```
+And voila, your application can now accept base64-encoded files. It is as simples as that.
+## Does it work?
 
-## Testing  out with multipart form data
+### Using multipart form data
 ```bash
 curl 
 -F "item[document_data][]=@E:ile2.pdf;type=application/pdf" 
@@ -503,3 +524,4 @@ curl
 -F "item[description]=desc"  
 localhost:3000/items
 ```
+### Using base-64 strings in JSON
