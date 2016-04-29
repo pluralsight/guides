@@ -1,6 +1,6 @@
 Sending basic JSON data made out of strings to an API is, in most cases, a simple and straightforward task. But what about sending files, which are made of numerous lines of binary data and consits of various formats? Such data requires a slightly different approach and there are several formats through which files can be sent to the API.
 
-In this guide, the two main approaches of handling file upload, base64 encoding and multipart form data, will be examined. The approaches will be implemented in a Rails 5 API application using both the [paperclip](https://github.com/thoughtbot/paperclip) and the [carrierwave](https://github.com/carrierwaveuploader/carrierwave) gems. A sample AngularJS application will also be written in order to present how the uploads can be handled client-side.
+In this guide, the two main approaches of handling file upload, base64 encoding and multipart form data, will be examined. The approaches will be implemented in a Rails 5 API application using both the [paperclip](https://github.com/thoughtbot/paperclip) and the [carrierwave](https://github.com/carrierwaveuploader/carrierwave) gems. A simple AngularJS application will also be written in order to present how the uploads can be handled client-side.
 
 ## Approaches for sending files to a Rails 5 API 
 ### Multipart form data
@@ -113,18 +113,37 @@ This will create a brand new Rails 5 app, and with the <code> --api </code> opti
  cd fileuploadapp
 ```
 
-Go to the Gemfile and uncomment <code> gem jbuilder </code>.
+Go to the Gemfile and uncomment <code>  jbuilder </code> and <code> rack-cors </code>.
 ```ruby
 # Gemfile.rb
- gem 'jbuilder', '~> 2.0' # <-- this must be in your gemfile
+ gem 'jbuilder', '~> 2.0' 
+ gem 'rack-cors'
 ```   
 
 [JBuilder](https://github.com/rails/jbuilder) is used to create JSON structures for the responses from the application. In MVC terms, the JSON respones are going to be the view layer of the application and all Jbuilder-generated responses have to be put in <code> app/views/(view for a particular controller action) </code>. 
-Install the gem:
+[rack-cors](https://github.com/cyu/rack-cors) enables cross-origin resource sharing ([CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/Access_control_CORS). Said in the simplest way possible, it will enable browser-based (AngularJS, React) and mobile applications to request information from the API. Go
+to the application configuration file and add the configurations for CORS:
+```ruby
+#config/application.rb
+module Fileuploadapp
+  class Application < Rails::Application
+    config.middleware.insert_before 0, "Rack::Cors" do
+      allow do
+        origins '*'
+        resource '*', :headers => :any, :methods => [:get, :post, :options]
+      end
+    end
+    config.api_only = true
+  end
+end
+```
+ This configuration will give full access to the API (<code>*</code> means that everything is accepted), which is not a problem for this guide, since we are going to work only with a local server.
+ 
+Install the gems:
 ```bash
 bundle install
 ```
-  With the gem installed, the model is going to be scaffolded with Jbuilder-generated views.
+  With the gems installed, the model is going to be scaffolded with Jbuilder-generated views and be ready to be consumed by client-side applications.
 ```bash
 rails g scaffold Item name:string description:string
 ```
@@ -136,7 +155,7 @@ rails db:migrate
 This will create a table in the database for the new model. Note that one of the new features in Rails 5 is that you can use <code> rails </code> instead of <code> rake </code> for executing a migration command.
  
 
- The two most popular gems for uploading files are [Paperclip](https://github.com/thoughtbot/paperclip) and [Carrierwave](). The functionality of both is similar, so you can pick either of them. If you would like to try both approaches, it is recommended that you use version control such as [git](https://git-scm.com/) so that the implementations don't clash.
+ **To continue with the guide, you have to choose with which gem would you like to implement your file uploads**. If you would like to do both, I recommended that you use version control such as [git](https://git-scm.com/) so that the implementations don't clash.
 ##  File upload using Paperclip
 To get started with Paperclip, first add the gem to your Gemfile:
  
@@ -511,17 +530,36 @@ mount_base64_uploader :picture, PictureUploader
 #app/models/document.rb
 mount_base64_uploader :document, DocumentUploader
 ```
-And voila, your application can now accept base64-encoded files. It is as simples as that.
-## Does it work?
+And voila, your application can now accept base64-encoded files. It is as simple as that.
+## Format of the request
 
 ### Using multipart form data
+ For POSt-ing multipart form data, [cURL](https://curl.haxx.se/docs/manpage.html) is convenient enough. Keep in mind that the paths included are arbitrary and you have to add your own. Another thing - when sending files, make sure to declare their type (<code>type=application/pdf</code>. Otherwise, curl sends them as a binary type (<code> application/octet-stream </code>) , which breaks some of the validations.
 ```bash
 curl 
--F "item[document_data][]=@E:ile2.pdf;type=application/pdf" 
--F "item[document_data][]=@E:ile1.pdf;type=application/pdf"
+-F "item[document_data][]=@E:\file2.pdf;type=application/pdf" 
+-F "item[document_data][]=@E:\file1.pdf;type=application/pdf"
 -F "item[picture]=@E:photo.jpg" 
 -F "item[name]=item" 
 -F "item[description]=desc"  
 localhost:3000/items
 ```
-### Using base-64 strings in JSON
+### Using base64 strings in JSON
+
+ If you want to send base64 data, keep in mind that the strings are long, and cURL might be tedious to use. I would recommend [Postman](https://www.getpostman.com/docs/) . Here is the JSON format that the API is going to accept:
+ 
+ ```json
+  {
+   "item": {
+        "name": "tem",
+        "description": "desc",
+        "picture": "data:image/png;base64, Rt2", //"image_base" if you used Paperclip
+        "document_data": [ "data:application/pdf;base64, fW3..." , "data:application/pdf;base64, pLf..."]
+ 
+         }
+  }
+ 
+ ```
+
+ 
+ 
