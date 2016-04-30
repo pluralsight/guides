@@ -570,7 +570,7 @@ My personal preference for file upload is [CarrieWave](https://github.com/carrie
 
 [Paperclip](https://github.com/thoughtbot/paperclip), on the other hand, offers a more personalized approach to file uploads. All the logic is stored inside the model and there is no need to encapsulate the logic outside the model. Files are treated more like standard fields in the model, rather than an independent part that is only assoiciated with the model. Debugging is somewhat intuitive, since any errors are simply  treated as attribute validation errors. On the other hand, making the image uploading more generic requires more tinkeing and experience (putting methods in <code>ApplicationRecord</code> is one way). Moreover, Base64 uploads do not come as naturally as they do for CarrierWave and there is need for custom logic. 
  
-To conclude, both CarrierWave and Paperclip have their pros and cons, and the choice which to use depends on the case. Both gems are popular and have big communities around them. The same applies for the different ways to upload files - both base64 and multipart forms are widely used means of uploading files to APIs. The choice depends on your project's scope and requirements.
+To conclude, both CarrierWave and Paperclip have their pros and cons, and the choice which to use depends on the case. Both gems are popular and have big communities around them. The same applies for the different ways to upload files - both base64 and multipart forms are widely used means of uploading files to APIs. The choice depends on the scope and requirements of the project you are working on.
 
 
 
