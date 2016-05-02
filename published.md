@@ -1,3 +1,8 @@
+### Beginner: Linux Navigation Manual by Prakrit Duangsutha
+- [Read the guide](http://tutorials.pluralsight.com/other/beginner-linux-navigation-manual)
+- [Read more from Prakrit Duangsutha](http://tutorials.pluralsight.com/author/brillydev) <img src="https://avatars.githubusercontent.com/u/2718812?v=3" width="30" height="30" alt="Prakrit Duangsutha" />
+- Related to: other
+
 ### Testing user interfaces with browser automation by Peter Olson
 - [Read the guide](http://tutorials.pluralsight.com/front-end-javascript/testing-user-interfaces-with-browser-automation)
 - [Read more from Peter Olson](http://tutorials.pluralsight.com/author/peterolson) <img src="https://avatars.githubusercontent.com/u/920512?v=3" width="30" height="30" alt="Peter Olson" />
