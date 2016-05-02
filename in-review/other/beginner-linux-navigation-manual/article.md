@@ -390,7 +390,7 @@ Redirection overwrites the files each time it is used. Use appends (`>>` and `<<
 
 ### apt-get
 
-Working with computers nowadays usually requires external software from the Internet. You can choose to download them manually, or use a package manager to manage all the stuff for you. `apt-get` (advance packaging tool) is the default package manager for Ubuntu and Debian.
+Working with computers nowadays usually requires external software from the Internet. You can choose to download these external software files manually or use a package manager to manage all the stuff for you. `apt-get` (advance packaging tool) is the default package manager for Ubuntu and Debian.
 
     $ apt-get install vim
     $ apt-get remove vim
@@ -562,16 +562,7 @@ Phew! That was an awful lot of stuff! Use it often, and you’ll remember all th
 
 
 Keep in mind that there are still tons of things which I did not cover in this tutorial. In fact, I didn’t even go into details about how these commands work. Because this tutorial is only designed to be a broad overview (for absolute beginners), I encourage you to dive in further and actually *do stuff* with it.
-But if you’re still not very confident, or maybe you got lost in this tutorial, that’s okay too! There are many alternatives out there on the Internet, but be warned that not a lot of them are beginner-friendly.
 
-Except, maybe, this guy:
-
-[Ryan's Linux Tutorial](http://ryanstutorials.net/linuxtutorial/ "Linux Tutorial")
-
-![Ryan's Linux Tutorial](http://i.imgur.com/1W4VTW5.jpg?1 "Linux Tutorial")
-
-First of all, his tutorials are fantastic. His explanations are extensive and filled with tons of tips and tricks along the way. He also covered many solid aspects of working in the command line — very helpful for those who want to understand how the command line works.
-
-So you want more concrete explanations and use cases? Be sure to visit Ryan’s site!
+But if you’re still not very confident, or maybe you got lost in this tutorial, that’s okay too! There are many alternatives out there on the Internet, but be warned that not a lot of them are beginner-friendly. I also recommend checking out [Ryan's Linux Tutorial](http://ryanstutorials.net/linuxtutorial/ "Linux Tutorial") for more explanations and use cases.
 
 Good luck :)
