@@ -1,3 +1,8 @@
+### testing by Luke Lee
+- [Read the guide](http://tutorials.pluralsight.com/android/testing?status=draft)
+- [Read more from Luke Lee](http://tutorials.pluralsight.com/author/durden) <img src="https://avatars.githubusercontent.com/u/58063?v=3" width="30" height="30" alt="Luke Lee" />
+- Related to: Android
+
 ### AngularJS Models by Prateek Gupta
 - [Read the guide](http://tutorials.pluralsight.com/front-end-javascript/angularjs-models?status=draft)
 - [Read more from Prateek Gupta](http://tutorials.pluralsight.com/author/prtkgpt) <img src="https://avatars.githubusercontent.com/u/2454349?v=3" width="30" height="30" alt="Prateek Gupta" />
