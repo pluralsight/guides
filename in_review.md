@@ -1,8 +1,3 @@
-### Handling file upload using Ruby on Rails 5 API  by Hristo Georgiev
-- [Read the guide](http://tutorials.pluralsight.com/ruby-ruby-on-rails/handling-file-upload-using-ruby-on-rails-5-api?status=in-review)
-- [Read more from Hristo Georgiev](http://tutorials.pluralsight.com/author/Kaizeras) <img src="https://avatars.githubusercontent.com/u/6340189?v=3" width="30" height="30" alt="Hristo Georgiev" />
-- Related to: Ruby, Ruby on Rails
-
 ### Building a Generic CSV Writer/Reader using Reflection by Murat Aykanat
 - [Read the guide](http://tutorials.pluralsight.com/microsoft-net/building-a-generic-csv-writer-reader-using-reflection?status=in-review)
 - [Read more from Murat Aykanat](http://tutorials.pluralsight.com/author/aykanatm) <img src="https://avatars.githubusercontent.com/u/9140297?v=3" width="30" height="30" alt="Murat Aykanat" />
