@@ -26,7 +26,7 @@ try {
 
 ## What is InterruptedException?
 
-There is no way to simply stop a running thread in Java (don't even consider using the deprecated method `stop()`). Stopping threads is cooperative in Java. Calling `Thread.interrupt()` is a way to tell the thread to stop what it is doing. If the thread is in a blocking call, the blocking call will throw an `InterruptedException,` otherwise the interrupted flag of the tread will be set. A Thread or a `Runnable` that is interruptible should check from time to time `Thread.currentThread().isInterrupted()`. If it returns true, the thread should clean-up and return.
+There is no way to simply stop a running thread in Java (don't even consider using the deprecated method `stop()`). Stopping threads is cooperative in Java. Calling `Thread.interrupt()` is a way to tell the thread to stop what it is doing. If the thread is in a blocking call, the blocking call will throw an `InterruptedException,` otherwise the interrupted flag of the thread will be set. A Thread or a `Runnable` that is interruptible should check from time to time `Thread.currentThread().isInterrupted()`. If it returns true, the thread should clean-up and return.
 
 ## Why is InterruptedException thrown?
 
