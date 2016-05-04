@@ -7,3 +7,4 @@ The following URLs are redirected due to title changes, etc.  The format of this
 - /review/elastic-search-with-ruby-on-rails /ruby-ruby-on-rails/elasticsearch-with-ruby-on-rails
 - /android/ionic-framework-a-definitive-10-000-word-guide /front-end-javascript/ionic-framework-a-definitive-10-000-word-guide
 - /review/how-to-create-a-calculator-application-with-ionic-framework-by-using-ionic-creator-for-ui /front-end-javascript/ionic-framework-a-definitive-10-000-word-guide
+- /review/how-to-polish-create-icons-and-splash-screen-images-add-ads-share-and-test-our-calculator-application /front-end-javascript/ionic-framework-a-definitive-10-000-word-guide
