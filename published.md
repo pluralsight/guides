@@ -1,3 +1,8 @@
+### Handling file upload using Ruby on Rails 5 API  by Hristo Georgiev
+- [Read the guide](http://tutorials.pluralsight.com/ruby-ruby-on-rails/handling-file-upload-using-ruby-on-rails-5-api)
+- [Read more from Hristo Georgiev](http://tutorials.pluralsight.com/author/Kaizeras) <img src="https://avatars.githubusercontent.com/u/6340189?v=3" width="30" height="30" alt="Hristo Georgiev" />
+- Related to: Ruby, Ruby on Rails
+
 ### Beginner: Linux Navigation Manual by Prakrit Duangsutha
 - [Read the guide](http://tutorials.pluralsight.com/other/beginner-linux-navigation-manual)
 - [Read more from Prakrit Duangsutha](http://tutorials.pluralsight.com/author/brillydev) <img src="https://avatars.githubusercontent.com/u/2718812?v=3" width="30" height="30" alt="Prakrit Duangsutha" />
