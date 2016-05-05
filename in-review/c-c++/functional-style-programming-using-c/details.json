@@ -4,8 +4,18 @@
     "author_real_name": "Mahmudul FAISAL Al Ameen",
     "branch": "master",
     "branches": [
-        "adityavarshney",
-        "durden"
+        [
+            "adityavarshney",
+            "adityavarshney"
+        ],
+        [
+            "durden",
+            "durden"
+        ],
+        [
+            "durden",
+            "durden-c-c++-functional-style-programming-using-c"
+        ]
     ],
     "filename": "article.md",
     "first_commit": null,
