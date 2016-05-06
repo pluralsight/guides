@@ -83,11 +83,6 @@
 - [Read more from Luke Lee](http://tutorials.pluralsight.com/user/durden) <img src="https://avatars.githubusercontent.com/u/58063?v=3" width="30" height="30" alt="Luke Lee" />
 - Related to: Python
 
-### Functional Style Programming using C by Mahmudul FAISAL Al Ameen
-- [Read the guide](http://tutorials.pluralsight.com/c-c++/functional-style-programming-using-c?status=in-review)
-- [Read more from Mahmudul FAISAL Al Ameen](http://tutorials.pluralsight.com/user/phaysaal) <img src="https://avatars.githubusercontent.com/u/12531542?v=3" width="30" height="30" alt="Mahmudul FAISAL Al Ameen" />
-- Related to: C/C++
-
 ### Simple debugging with meta programming by Luke Lee
 - [Read the guide](http://tutorials.pluralsight.com/python/simple-debugging-with-meta-programming?status=in-review)
 - [Read more from Luke Lee](http://tutorials.pluralsight.com/author/durden) <img src="https://avatars.githubusercontent.com/u/58063?v=3" width="30" height="30" alt="Luke Lee" />
