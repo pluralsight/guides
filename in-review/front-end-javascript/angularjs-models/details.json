@@ -3,7 +3,12 @@
     "author_name": "mnmilner",
     "author_real_name": "Matt Milner",
     "branch": "master",
-    "branches": [],
+    "branches": [
+        [
+            "prtkgpt",
+            "prtkgpt-front-end-javascript-angularjs-models"
+        ]
+    ],
     "filename": "article.md",
     "first_commit": "26b84411d4161e33b0bf9f8c4e2bfdf9297e3232",
     "image_url": "https://avatars3.githubusercontent.com/u/2028582?v=3",
