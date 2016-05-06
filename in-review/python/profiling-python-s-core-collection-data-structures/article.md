@@ -1,4 +1,4 @@
-This guide discusses the basic fundamentals review related to the [Python](http://python.org) collection 'type' data structures and the trader's associated with them.
+This guide discusses the basic fundamentals related to [Python](http://python.org) collection 'type' data structures and the trade offs associated with them.
 
 The trade offs typically boil down to [space-time tradeoff](http://en.wikipedia.org/wiki/Space%E2%80%93time_tradeoff).  The idea is simple; You can reduce computation time if you increase the memory usage or vice-versa.  This tariff is common in all programming languages, but I'll narrow the scope of this discussion to just core [Python](http://python.org) data structures.
 
