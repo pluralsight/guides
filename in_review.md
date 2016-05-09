@@ -85,7 +85,7 @@
 
 ### Decorators as classes or functions? by Luke Lee
 - [Read the guide](http://tutorials.pluralsight.com/python/decorators-as-classes-or-functions?status=in-review)
-- [Read more from Luke Lee](http://tutorials.pluralsight.com/user/durden) <img src="https://avatars.githubusercontent.com/u/58063?v=3" width="30" height="30" alt="Luke Lee" />
+- [Read more from Luke Lee](http://tutorials.pluralsight.com/author/durden) <img src="https://avatars.githubusercontent.com/u/58063?v=3" width="30" height="30" alt="Luke Lee" />
 - Related to: Python
 
 ### Simple debugging with meta programming by Luke Lee
