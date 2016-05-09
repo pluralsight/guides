@@ -1,3 +1,8 @@
+### AngularJS Models by Matt Milner
+- [Read the guide](http://tutorials.pluralsight.com/front-end-javascript/angularjs-models)
+- [Read more from Matt Milner](http://tutorials.pluralsight.com/author/mnmilner) <img src="https://avatars3.githubusercontent.com/u/2028582?v=3" width="30" height="30" alt="Matt Milner" />
+- Related to: Front-End JavaScript (Angular, React, Meteor, etc)
+
 ### Functional Style Programming using C by Mahmudul FAISAL Al Ameen
 - [Read the guide](http://tutorials.pluralsight.com/c-c++/functional-style-programming-using-c)
 - [Read more from Mahmudul FAISAL Al Ameen](http://tutorials.pluralsight.com/author/phaysaal) <img src="https://avatars.githubusercontent.com/u/12531542?v=3" width="30" height="30" alt="Mahmudul FAISAL Al Ameen" />
