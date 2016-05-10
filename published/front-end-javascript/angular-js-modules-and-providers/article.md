@@ -56,8 +56,8 @@ In this updated main.js file, the main module declares a dependency on the secon
 
 Combining the idea of multiple modules with the dependency support, an application can be built from linking those modules together. Often this is accomplished with a main module that has the singular purpose of linking in the other modules as dependencies.
 
+<img src="https://raw.githubusercontent.com/pluralsight/guides/master/images/e2941837-41f3-449f-8038-6b2749ceb0b3.png" width="400" height="500" />`
 
-![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/e2941837-41f3-449f-8038-6b2749ceb0b3.png)
 
 
 In this example the “app” module serves to tie together the other modules used in the application. The core modules include things like services or user interface elements like filters and directives that might be used across modules or even across applications. As shown here, the core modules are listed as dependencies of the main app module and the individual modules where they are used. A different approach would be to only include those dependencies in the modules that use them. I’ve shown both here simply to point out the options.
