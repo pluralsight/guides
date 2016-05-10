@@ -1,7 +1,7 @@
 AngularJS has many different components used to make an application. It is important in any project using JavaScript to be able to manage the code in a reasonable way. AngularJS uses modules, like many modern JavaScript libraries, to encapsulate functionality such as controllers, directives, filters and services. AngularJS is also highly focused on dependency injection and therefore has infrastructure in place to help instantiate the many objects necessary in your application. When you define a controller, for example, and list the dependencies in the constructor function, there are Providers which are responsible for instantiating the dependent objects used by the controller. This model allows AngularJS to correctly create and inject items into your code and provides a powerful means for you to control that object creation. In this article I will examine the module pattern and the different types of providers that can be used in an AngularJS application.
 
 
-#Understanding Modules
+# Understanding Modules
 
 Modules define a unit of code in your Angular application and contain the code you write such as controllers, directives, filters, and services. In simple examples, such as those used in previous articles, it is common to see an application defined as a single module.
 
@@ -56,15 +56,14 @@ In this updated main.js file, the main module declares a dependency on the secon
 
 Combining the idea of multiple modules with the dependency support, an application can be built from linking those modules together. Often this is accomplished with a main module that has the singular purpose of linking in the other modules as dependencies.
 
-<img src="https://raw.githubusercontent.com/pluralsight/guides/master/images/e2941837-41f3-449f-8038-6b2749ceb0b3.png" width="400" height="500" />`
-
-
 
 In this example the “app” module serves to tie together the other modules used in the application. The core modules include things like services or user interface elements like filters and directives that might be used across modules or even across applications. As shown here, the core modules are listed as dependencies of the main app module and the individual modules where they are used. A different approach would be to only include those dependencies in the modules that use them. I’ve shown both here simply to point out the options.
  
 I mentioned the idea of splitting application code into several different files. That may strike some as poor way to manage JavaScript thinking that all those files will have to be downloaded by the browser. However, it is common when working with JavaScript clients to use tools for bundling and minification of code. So having a module defined in 5, 10, or 15 different files will not matter at runtime as they will all be part of one compact file for download to the client. If you are not using these types of tools with your AngularJS application, you should spend some time investigating them and add them to your build process.
 
-##Bootstrapping
+<img src="https://raw.githubusercontent.com/pluralsight/guides/master/images/b779ace3-d850-4975-8b32-b05240ed0520.pptx" width="700" height="500" />
+
+## Bootstrapping
 
 Once all the modules are defined, AngularJS needs to be started and pointed to those modules. The manual way to do this is using a function named “bootstrap” that connects AngularJS to both the DOM (document object model) and the module or modules containing your application code.
 
@@ -73,7 +72,7 @@ angular.bootstrap(document, ['mainModule'])
 
 ```
 
-###Manual bootstrapping
+### Manual bootstrapping
 
 With manual bootstrapping AngularJS needs a reference to the element in the DOM that will be host to the application and a list of dependencies. In the example above, the document is used as the parent to the application and the main module is declared as a dependency. Remember that the main module can, and does in our example, contain its own dependencies as well.
 
@@ -83,12 +82,12 @@ A shortcut used in place of the manual bootstrapping is to use the ng-app direct
 <html ng-app="mainModule">
 ```
 
-###Declarative bootstrapping
+### Declarative bootstrapping
 
 When using this declarative model, the directive is placed on the element that will host the application (the first parameter in the manual approach) and is provided the name of the module to use as the starting point (the second parameter in the manual approach). 
 Using either the manual or declarative bootstrapping method will initialize the application and load the modules. Once the modules are loaded and begin being utilized, they will start to require the dependencies that have been declared. That is where providers come into play.
 
-##Providers
+## Providers
 
 AngularJS provides a strong dependency injection model to simplify development and testing. One key aspect of that model is the notion of providers. Providers are the bits of code that are responsible for instantiating or providing instances of the various dependencies used by your application. For example, to use the $http service or $cookies service in your application, some code has to provide an instance of those services. That is the responsibility of the $httpProvider and $cookiesProvider respectively which are part of the AngularJS framework.
 
@@ -123,7 +122,7 @@ angular.module('mainModule')
 
 As mentioned, this is the basic pattern for a provider and comes with certain benefits including support for dependencies and the ability to be configured. I will talk more about configuration shortly which will help determine if that benefit is required in an application. For many situations though, this is more work that should be required to create an object. For that reason, AngularJS provides several methods on a module which provide shortcuts to create certain types of objects. Each of these methods is simple wrapper over an actual provider created behind the scenes, and each have slightly different characteristics and features.
 
-###Service provider
+### Service provider
 
 The Service provider allows for the creation of a custom object using the constructor pattern. In other words, if you have an object that can be created using the “new” keyword, with or without parameters, then you can use a shortcut to create that service. For example, the following service object retrieves public holidays from a google calendar and invokes a callback with the results. The service has dependencies as indicated by the parameters in the constructor function.
 
@@ -155,7 +154,7 @@ The service method takes a name for the service, a list of dependencies and a si
 
 Once this service provider has been registered with the module it can be declared as a dependency in other modules and their components.
 
-###Factory Provider
+### Factory Provider
 
 In some cases the object returned by a provider is not a custom object but instead a native type such as a string, number, or function. In those cases a factory provider can be used to create the object. This provider is much like the service provider but does not return a custom object. 
 
@@ -169,7 +168,7 @@ angular.module("mainModule")
 In this example the factory method is invoked on the module to register a function to create a computed calendar URL. The function has two dependencies that are used to calculate the value at runtime. This provider type enables the same shortcut over the more verbose provider model and includes support for dependencies. The main difference between this provider and the service provider are in the types that are returned. You can see an example of this factory being used a dependency in the previous example where the service uses it internally to perform some work.
 
 
-###Value Provider
+### Value Provider
 In some cases there may be a need to simply provide a value throughout an application from a centralized code location. For those cases the value provider makes is simple to register a value with the injector which can then be used throughout the application. 
 
 ```javascript
@@ -181,7 +180,7 @@ Here the value method on the module registers a simple string with the injector.
 
 One important distinction between this provider type and others is that the value provider does not support dependencies. A value provider is expected to return an object on its own without the support of other services so it is most useful for primitive types and functions.
  
-###Constant Provider
+### Constant Provider
 
 The final way to create a provider is the constant method on the module to define a constant value as shown here.
 
@@ -192,7 +191,7 @@ angular.module('mainModule')
 
 Like the value provider this provider registers a simple value with the injector to make it available throughout the code. The natural question is why this provider is needed at all and what features is supports that the value provider does not. The short answer is that, unlike the value provider, the constant provider is available at configuration time. The longer answer requires a discussion of provider configuration and the runtime process of loading providers and services.
 
-###Provider and Service Lifecycle
+### Provider and Service Lifecycle
 
 When the bootstrap process runs, an AngularJS application goes through two stages: configuration and run. During the configuration process each provider is instantiated, then each module is configured by calling the config method if it exists. It is in the config method that providers following the full provider model can have functions invoked to configure them.
 
@@ -217,20 +216,20 @@ angular.module('mainModule',['secondModule'])
 
 The config function now has a dependency on the calendarToken constant provider which allows it to be used to pass the token to the calendarProvider upon configuration. This is the big benefit of the constant provider: being accessible at configuration time and run time.
 
-####Choosing a Provider Model
+#### Choosing a Provider Model
 
 To choose between providers models there are a couple of key decision points that will help including the type of object being returned and the requirements around the configuration cycle of the AngularJS application. The flowchart below is one example of a decision process to pick a provider type.
 
 
-![](http://blog.pluralsight.com/wp-content/uploads/2015/12/Screen-Shot-2015-12-10-at-5.01.27-PM-e1449796015719.png)
+<img src="https://raw.githubusercontent.com/pluralsight/guides/master/images/e2941837-41f3-449f-8038-6b2749ceb0b3.png" width="400" height="500" />
 
-####Module and Providers Together
+#### Module and Providers Together
 
 To pull this all back together, modules are the containers for the code in an AngularJS application. As such, they contain controllers, services, and other code. Modules and services can declare dependencies which are resolved by Angular’s injector service. To populate the injector service with singleton instances of services, functions, and values; providers are created and registered with the injector through methods on the module. Each pattern other than the core provider pattern is a simplification for certain cases to make writing and testing code easier.
 
 Another thing to note is that the pattern for creating controllers is the same as the factory provider model. However, there is a difference in how objects created using the two different patterns are instantiated which is why there are separate methods for registering them. A controller is not a singleton like other services and may be instantiated multiple times when a route is invoked or the controller is otherwise activated by AngularJS. It is important to keep in mind these differences in the lifecycle of these special objects and other custom objects or values created in user code. 
 
-###Where are we?
+### Where are we?
 In this article we covered the module and provider patterns used by AngularJS to manage application code and dependency creation. With a good understanding of the patterns and underlying techniques used to manage an application, it is time to move on to understanding the core coding concepts that make up the bulk of each AngularJS application.
 
 Author of this tutorial is [Matt Milner](https://www.pluralsight.com/authors/matt-milner).
