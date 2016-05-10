@@ -61,7 +61,8 @@ In this example the “app” module serves to tie together the other modules us
  
 I mentioned the idea of splitting application code into several different files. That may strike some as poor way to manage JavaScript thinking that all those files will have to be downloaded by the browser. However, it is common when working with JavaScript clients to use tools for bundling and minification of code. So having a module defined in 5, 10, or 15 different files will not matter at runtime as they will all be part of one compact file for download to the client. If you are not using these types of tools with your AngularJS application, you should spend some time investigating them and add them to your build process.
 
-<img src="https://raw.githubusercontent.com/pluralsight/guides/master/images/b779ace3-d850-4975-8b32-b05240ed0520.pptx" width="700" height="500" />
+<img src="https://raw.githubusercontent.com/pluralsight/guides/master/images/fad9503d-c033-462c-83bf-b2e2d10a1d5c.png" width="800" height="600" />
+
 
 ## Bootstrapping
 
@@ -221,7 +222,7 @@ The config function now has a dependency on the calendarToken constant provider 
 To choose between providers models there are a couple of key decision points that will help including the type of object being returned and the requirements around the configuration cycle of the AngularJS application. The flowchart below is one example of a decision process to pick a provider type.
 
 
-<img src="https://raw.githubusercontent.com/pluralsight/guides/master/images/e2941837-41f3-449f-8038-6b2749ceb0b3.png" width="400" height="500" />
+<img src="https://raw.githubusercontent.com/pluralsight/guides/master/images/e2941837-41f3-449f-8038-6b2749ceb0b3.png" width="500" height="600" />
 
 #### Module and Providers Together
 
