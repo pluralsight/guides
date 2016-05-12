@@ -1,5 +1,3 @@
-# Getting started with ECMAScript6
-
 ECMAScript6 (also referred to as ECMAScript2015) is the most recent release of ECMAScript with a finalized specification. Meanwhile, the next version, ECMAScript7, is currently in development and should be finalized sometime this year (2016). 
 
 ES6 was a major update to ES5 and introduces many new features to JavaScript. ES7 and other future versions are planned to be smaller updates that will be released on an annual schedule.
