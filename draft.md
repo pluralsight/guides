@@ -1,3 +1,8 @@
+### Getting started with ECMAScript6 by Peter Olson
+- [Read the guide](http://tutorials.pluralsight.com/front-end-javascript/getting-started-with-ecmascript6?status=draft)
+- [Read more from Peter Olson](http://tutorials.pluralsight.com/author/peterolson) <img src="https://avatars.githubusercontent.com/u/920512?v=3" width="30" height="30" alt="Peter Olson" />
+- Related to: Front-End JavaScript (Angular, React, Meteor, etc)
+
 ### Test 1 by Prateek Gupta
 - [Read the guide](http://tutorials.pluralsight.com/php/test-1?status=draft)
 - [Read more from Prateek Gupta](http://tutorials.pluralsight.com/author/prtkgpt) <img src="https://avatars.githubusercontent.com/u/2454349?v=3" width="30" height="30" alt="Prateek Gupta" />
