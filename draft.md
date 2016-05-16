@@ -1,3 +1,8 @@
+### WPF Uygulamalarında Attached Property'ler ile Çoklu Dil Desteği by Murat Aykanat
+- [Read the guide](http://tutorials.pluralsight.com/microsoft-net/wpf-uygulamalarnda-attached-property-ler-ile-coklu-dil-destegi?status=draft)
+- [Read more from Murat Aykanat](http://tutorials.pluralsight.com/author/aykanatm) <img src="https://avatars.githubusercontent.com/u/9140297?v=3" width="30" height="30" alt="Murat Aykanat" />
+- Related to: Microsoft.NET (C#, ASP.NET, VB.NET, etc)
+
 ### Chip based Credit Cards and Fraud by Prateek Gupta
 - [Read the guide](http://tutorials.pluralsight.com/software-engineering-best-practices/chip-based-credit-cards-and-fraud?status=draft)
 - [Read more from Prateek Gupta](http://tutorials.pluralsight.com/author/prtkgpt) <img src="https://avatars.githubusercontent.com/u/2454349?v=3" width="30" height="30" alt="Prateek Gupta" />
