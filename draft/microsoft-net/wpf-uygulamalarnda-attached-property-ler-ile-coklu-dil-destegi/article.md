@@ -8,12 +8,13 @@ Tezimin dili İngilizce, ancak uygulama Türkiye'de kullanılacağından Türkç
 <TextBlock Text=”English Text” English=”English Text” Turkish=”Türkçe Yazı” />
 ```
 
-After a bit of research I came upon a concept called “attached properties” which can be used to set custom properties on XAML.
+Biraz araştırmadan sonra "eklenmiş özellik (attached property)" adında XAML'da özellik tanımlamaya yarayan bir konsept ile karşılaştım.
 
-### What are attached properties?
+### Attached property kavramı nedir?
 
-According to an [MSDN article](https://msdn.microsoft.com/en-us/library/ms749011%28v=vs.100%29.aspx); “An attached property is a concept defined by Extensible Application Markup Language (XAML). An attached property is intended to be used as a type of global property that is settable on any object. In Windows Presentation Foundation (WPF), attached properties are typically defined as a specialized form of dependency property that does not have the conventional property wrapper”.
-So basically they are the existing properties that we use in everyday WPF development such as:
+Bir [MSND makalesine](https://msdn.microsoft.com/en-us/library/ms749011%28v=vs.100%29.aspx) göre; "Eklenmiş özellik (attached property) Extensible Application Markup Language (XAML) tarafından tanımlanmış, bir konsepttir. Herhangi bir obje üzerine belirlenebilen attached property, global tipte bir özellik olarak kullanılması amaçlanmıştır. Windows Presentation Foundation'da (WPF), geleneksel özellik sarmalayıcısı (property wrapper) olmayan eklenmiş özellikler tipik olarak bağımlılık özelliklerinin (dependency property) özelleştirilmiş bir formu olarak tanımlanmıştır.
+
+Yani, eklemmiş özellikler aslında WPF'de her gün kullandığımız özellikler ile aynıdır. Örnek olarak:
 
 ```xaml
 <DockPanel>
