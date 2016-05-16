@@ -1,8 +1,8 @@
-Recently, as a part of my phD thesis project, I needed an application that works on Windows. I decided to go for a Windows Presentation Foundation (WPF) application, which I ended up developing. But there was a problem. 
+Doktora tezimin bir parçası olarak Windows üzerinde çalışan bir uygulamaya ihtiyaç duydum ve bir Windows Presentation Foundation (WPF) uygulaması yarattım. Ancak uygulamayı bitirdikten sonra bir problem ile yüzyüze geldim.
 
-My thesis was supposed to be in English so the application was supposed to be English. Yet the application was going to be used locally, and had to be in Turkish as well. So I had to **globalize** my application to be both in English and Turkish.
+Tezimin dili İngilizce, ancak uygulama Türkiye'de kullanılacağından Türkçe olmalıydı. Bu sebeple uygulamaya çoklu dil desteği eklemeye karar verdim.
 
-There are many ways to perform globalization, such as setting up string resources, having custom static classes that hold the original and translated text or using some globalization libraries. But I wanted something simple and easily done with Extensible Application Markup Language (XAML). The code would look like:
+Çoklu dil desteğini sağlamak için bir çok yol mevcut. Örnek olarak; string tipinde kaynaklar oluşturmak, çeviriyi barındıran statik sınıflar oluşturmak yada çoklu dil seçeneği sağlayan kütüphaneler kullanmak. Ancak ben daha kolay ve Extensible Application Markup Language (XAML) ile uyumlu bir çözüm istiyordum. Mesela, şöyle basit bir kod satırı ile problemi çözmek istiyordum:
 
 ```xaml
 <TextBlock Text=”English Text” English=”English Text” Turkish=”Türkçe Yazı” />
