@@ -1,5 +1,4 @@
 
-
 In this tutorial, the React and Angular 2 way of setting up an application and streaming data back and forth will be reviewed and the differences will be analyzed.
 
 ### Setting up a sample Rails application
@@ -39,9 +38,25 @@ module Starterapp
 ```
 This configuration will permit all types of requests from any source (<code> * </code> denotes any address) to be accepted. For development, this setup is acceptable. However, for production, you need to replace the asterisk with the URL of your client-side application.
 
+The next step is to make a controller and an action that will return JSON data and make a route for them. For the sake of simplicity and for the tutorial, let's put the action in the application controller:
+
+```ruby
+ #app/controllers/application_controller.rb
+class ApplicationController < ActionController::Base
+  #...
+  def index
+    respond_to do |format|
+      format.json { render json: {some: 'data'} }
+    end
+  end
+  #...
+end
+```
+ An action called  <code> index </code> is going to respond with the  <code> { some: 'data' } </code> JSON object when called. Let's put a route for the action:
 ```ruby
 #config/routes.rb
 Rails.application.routes.draw do
   get '/api' => 'application#index', defaults: { format: :json }
 end
 ```
+
