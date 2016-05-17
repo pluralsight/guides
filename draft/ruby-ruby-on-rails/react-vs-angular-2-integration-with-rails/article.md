@@ -61,12 +61,13 @@ end
 
 ### Integrating Angular 2 
 
-Angular 2 has two specificts  - it is a framework and it uses TypesScript. These specifics come with certain requirements when it comes to integration:
+Angular 2 has two specifics  - it is a framework and it uses TypesScript. These specifics come with certain requirements when it comes to integration:
 
 Because Angular 2 is a framework and not a library, it would be best if is  put in a separate directory where all its files are going to reside. This means that, instead of putting it into the Rails asset pipeline (app/assets), it will reside in the Rails application's <code>public</code> folder, separated from the compilation and the logic of the Rails application. This will allow a clearer separation of concerncs between the Rails and the Angular 2 frameworks and their dependencies.
 
 Angular 2 also TypeScript, which is a superset of JavaScript, Angular 2 will also need a TypeScript transpiler configured in the directory of the Rails application. Transpilers (short for [trascompilers](http://www.computerhope.com/jargon/t/transcompiler.htm) in JavaScript are tools that read to read the TypeScript code (or CoffeScript or similar)  and transpile it to pure JavaScript that can be interpreted by the browser. 
 
+#### Setting up the environment
 There are three files that need to be created in order to fulfill the requirements:
  - **package.json**
  - **typings.json**
@@ -163,6 +164,51 @@ module Starterapp
   end
 end
 ```
+
+#### Setting up the application
+The Rails applicaiton is now ready to load an Angular 2 application that resides in the <code>public</code> directory. There, a root html document has to be created that is going to load all the JavaScript files:
+```html
+<!-- public/index.html -->
+<html>
+<head>
+    <!-- 1. Load libraries -->
+    <script src="/assets/intl/dist/Intl.js"></script>
+    <script src="/assets/intl/locale-data/jsonp/en.js"></script>
+
+    <script src="/assets/es6-shim/es6-shim.min.js"></script>
+    <script src="/assets/systemjs/dist/system-polyfills.js"></script>
+
+    <script src="/assets/angular2/bundles/angular2-polyfills.js"></script>
+    <script src="/assets/systemjs/dist/system.src.js"></script>
+    <script src="/assets/rxjs/bundles/Rx.js"></script>
+    <script src="/assets/angular2/bundles/angular2.dev.js"></script>
+    <script src="/assets/angular2/bundles/http.dev.js"></script>
+    <script src="/assets/angular2/bundles/router.dev.js"></script>
+</head>
+<body>
+<script>
+    System.config({
+        map: {
+            'app': '/app',
+        },
+        packages: {
+            'app': {
+                format: 'register',
+                defaultExtension: 'js'
+            }
+        }
+    });
+    // and to finish, let's boot the app!
+    System.import('app/boot');
+</script>
+
+<base href="/">
+<app-router></app-router>
+</body>
+</html>
+```
+
+Between the *<script></script>* tags, the [systemJS](https://github.com/systemjs/systemjs) library will configure the modules and import the <code>app/boot</code> file, which is going to be included later in the tutorial.
 
 
 React | Angular 2 | Rails   
