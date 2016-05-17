@@ -1,3 +1,8 @@
+### Introduction to testing with BDD and the Spock Framework by Esteban Herrera
+- [Read the guide](http://tutorials.pluralsight.com/java-and-j2ee/introduction-to-testing-with-bdd-and-the-spock-framework?status=in-review)
+- [Read more from Esteban Herrera](http://tutorials.pluralsight.com/author/eh3rrera) <img src="https://avatars.githubusercontent.com/u/11665759?v=3" width="30" height="30" alt="Esteban Herrera" />
+- Related to: Java and J2EE
+
 ### WPF Uygulamalarında Attached Property'ler ile Çoklu Dil Desteği by Murat Aykanat
 - [Read the guide](http://tutorials.pluralsight.com/microsoft-net/wpf-uygulamalarnda-attached-property-ler-ile-coklu-dil-destegi?status=in-review)
 - [Read more from Murat Aykanat](http://tutorials.pluralsight.com/author/aykanatm) <img src="https://avatars.githubusercontent.com/u/9140297?v=3" width="30" height="30" alt="Murat Aykanat" />
