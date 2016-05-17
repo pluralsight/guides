@@ -6,7 +6,7 @@ In this tutorial, the React and Angular 2 way of setting up an application and s
 ```bash
 rails new sampleapp
 ```
- This will scaffold a default Rails application and install all the required dependencies to make it run. Go to the folder of the application and locat the Gemfile. Fo this application, you will need only the following gems:
+ This will scaffold a default Rails application and install all the required dependencies to make it run. Go to the directory of the application and locat the Gemfile. Fo this application, you will need only the following gems:
  
 ```ruby
 #Gemfile.rb
@@ -63,7 +63,7 @@ end
 
 Angular 2 has two specifics  - it is a framework and it uses TypesScript. These specifics come with certain requirements when it comes to integration:
 
-Because Angular 2 is a framework and not a library, it would be best if is  put in a separate directory where all its files are going to reside. This means that, instead of putting it into the Rails asset pipeline (app/assets), it will reside in the Rails application's <code>public</code> folder, separated from the compilation and the logic of the Rails application. This will allow a clearer separation of concerncs between the Rails and the Angular 2 frameworks and their dependencies.
+Because Angular 2 is a framework and not a library, it would be best if is  put in a separate directory where all its files are going to reside. This means that, instead of putting it into the Rails asset pipeline (app/assets), it will reside in the Rails application's <code>public</code> directory, separated from the compilation and the logic of the Rails application. This will allow a clearer separation of concerncs between the Rails and the Angular 2 frameworks and their dependencies.
 
 Angular 2 also TypeScript, which is a superset of JavaScript, Angular 2 will also need a TypeScript transpiler configured in the directory of the Rails application. Transpilers (short for [trascompilers](http://www.computerhope.com/jargon/t/transcompiler.htm) in JavaScript are tools that read to read the TypeScript code (or CoffeScript or similar)  and transpile it to pure JavaScript that can be interpreted by the browser. 
 
@@ -143,14 +143,14 @@ The last file you need to create in the root directory is **tsconfig.json**:
   ]
 }
 ```
-The file contains standard configuration for the behavior of TypeScript in the Angular 2 application. One thing that requires a paricular attention is the <code>rootDir</code> property which defines that the Angular 2 application will reside in the <code> public </code> folder.
+The file contains standard configuration for the behavior of TypeScript in the Angular 2 application. One thing that requires a paricular attention is the <code>rootDir</code> property which defines that the Angular 2 application will reside in the <code> public </code> directory.
 
 After the three files are added, write the following command in your console:
 ```bash
  npm install
 ```
 
-And wait as the packages are installed. Once the command completes, there will be an extra folder named <code> node_modules </code> in the root directory that will contain the installations of all the packages.
+And wait as the packages are installed. Once the command completes, there will be an extra directory named <code> node_modules </code> in the root directory that will contain the installations of all the packages.
 
 The configuration is almost finished, but there is a **gotcha** - the <code> node_modules </code> directory will not load in the application's assets since it is not in the <code>app/assets</code> directory. Thus, it must be added explicitly:
 ```ruby
@@ -208,9 +208,47 @@ The Rails applicaiton is now ready to load an Angular 2 application that resides
 </html>
 ```
 
-Between the *<script></script>* tags, the [systemJS](https://github.com/systemjs/systemjs) library will configure the modules and import the <code>app/boot</code> file, which is going to be included later in the tutorial.
+Between the *<script></script>* tags, the [systemJS](https://github.com/systemjs/systemjs) library will configure the modules and import the <code>app/boot</code> file, which is going to be included later in the guide.
 
+In the <code>public</code> directory, add an <code> app </code> directory. This is where all the Angular 2 files are going to be put. Let's start with the first component - <code> home.component </code>
+```javascript
+import {Component, OnInit} from 'angular2/core'
+import {RouteParams}  from 'angular2/router'
 
+@Component({
+    selector: 'home',
+    templateUrl: '/app/home.component.html'
+})
+export class HomeComponent implements OnInit{
+    constructor(private _routeParams: RouteParams){}
+
+    message: String = 'Rails Ng2 Starter'
+    ngOnInit(){
+
+    }
+
+}
+
+```
+
+#CHANGE TO HAVE HTTP REQ
+```javascript
+import {Component} from 'angular2/core'
+import {RouteConfig, ROUTER_DIRECTIVES} from 'angular2/router'
+import {HomeComponent} from './home.component'
+
+@Component({
+        selector: 'app-router',
+        template: '<router-outlet></router-outlet>',
+        directives: [ROUTER_DIRECTIVES],
+        styles:[]
+    })
+@RouteConfig([
+    { path: '/', name: 'Home', component: HomeComponent }
+])
+export class AppRouterComponent {}
+```
+### Summary
 React | Angular 2 | Rails   
 ------------------- | -------------------- | ------------
 Root/Parent component | Service | View layer
