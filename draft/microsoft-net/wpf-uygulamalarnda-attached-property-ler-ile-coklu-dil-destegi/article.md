@@ -8,13 +8,13 @@ Tezimin dili İngilizce, ancak uygulama Türkiye'de kullanılacağından Türkç
 <TextBlock Text=”English Text” English=”English Text” Turkish=”Türkçe Yazı” />
 ```
 
-Biraz araştırmadan sonra "eklenmiş özellik (attached property)" adında XAML'da özellik tanımlamaya yarayan bir konsept ile karşılaştım.
+Biraz araştırmadan sonra "attached property" adında XAML'da özellik tanımlamaya yarayan bir konsept ile karşılaştım.
 
-### Attached property kavramı nedir?
+### Attached Property Nedir?
 
-Bir [MSND makalesine](https://msdn.microsoft.com/en-us/library/ms749011%28v=vs.100%29.aspx) göre; "Eklenmiş özellik (attached property) Extensible Application Markup Language (XAML) tarafından tanımlanmış, bir konsepttir. Herhangi bir obje üzerine belirlenebilen attached property, global tipte bir özellik olarak kullanılması amaçlanmıştır. Windows Presentation Foundation'da (WPF), geleneksel özellik sarmalayıcısı (property wrapper) olmayan eklenmiş özellikler tipik olarak bağımlılık özelliklerinin (dependency property) özelleştirilmiş bir formu olarak tanımlanmıştır.
+Bir [MSND makalesine](https://msdn.microsoft.com/en-us/library/ms749011%28v=vs.100%29.aspx) göre; "Attached property, Extensible Application Markup Language (XAML) tarafından tanımlanmış, bir konsepttir. Herhangi bir obje üzerine belirlenebilen attached property, global tipte bir özellik olarak kullanılması amaçlanmıştır. Windows Presentation Foundation'da (WPF), geleneksel property wrapper'ı olmayan eklenmiş özellikler tipik olarak dependency property'lerin özelleştirilmiş bir formu olarak tanımlanmıştır."
 
-Yani, eklemmiş özellikler aslında WPF'de her gün kullandığımız özellikler ile aynıdır. Örnek olarak:
+Yani, attached property aslında WPF'de her gün kullandığımız property'ler ile aynıdır. Örnek olarak:
 
 ```xaml
 <DockPanel>
@@ -22,15 +22,17 @@ Yani, eklemmiş özellikler aslında WPF'de her gün kullandığımız özellikl
 </DockPanel>
 ```
 
-Going over the example in the MSDN article; Dockpanel.Dock is an attached property that is predefined for us.
+Örneğe bakacak olursak Dockpanel.Dock property'si aslında bizim için daha önceden tanımlı bir attached property'dir.
 
-Using attached properties, you can create new custom properties that suit your needs.
+Attached property'leri kullanarak daha önce tanımlı property'ler gibi kendiniz istediğiniz özelliklerde bir property tanımlayabilirsiniz.
 
-### Attached Properties in Globalization
+### Çoklu Dil Desteğinde Attached Property'ler
 
-After finding out about attached properties, I aimed to create attached properties that would automatically select the text, header, or tooltip that matches the current language of the application.
+Attached property'leri bulduktan sonraki yeni hedefim, WPF kontrollerinin text, header ve/veya tooltip property'lerini otomatik olarak kullanıcının ayarladığı dile çevirecek bir attached property yaratmak oldu.
 
-As an example I will show how you can use attached properties with TextBlocks. Attached properties work like extension methods, here is the code to add translated text to a ```TextBlock``` :
+Bir örnek olarak, bu yazıda, attached property'leri ```TextBlock``` kontrolü ile kullanmayı göstereceğim.
+
+Attached property'ler aslında extension method'lar şeklinde çalışır. Bu sebeple, çoklu dil desteği için, öncelikle aşağıdaki kodda olduğu gibi bir extension method tanımlamamız gerekir:
 
 ```cs
 namespace SomeNamespace.Extensions
@@ -68,9 +70,9 @@ namespace SomeNamespace.Extensions
 	}
 }
 ```
-The code above is fairly simple. First, we create 2 separate properties for both languages, which are named TurkishText and EnglishText. These properties will be of type ```string``` . Then we define the getters and setters for these properties.
+Bu kodda; öncelikle ```TurkiskText``` ve ```EnglishText``` şeklinde ve ```string``` tipinde İngilizce ve Türkçe için 2 property tanımlıyoruz. Daha sonra bu property'ler için getter ve setter methodlarını tanımlıyoruz.
 
-Now that we defined the properties, we can add them to our XAML code.
+Yeni property'lerimizi tanımladığımıza göre, bunları XAML kodumuza ekleyebiliriz:
 
 ```xaml
 <Window
@@ -83,7 +85,7 @@ Now that we defined the properties, we can add them to our XAML code.
         Title="MainWindow">
 </Window>
 ```
-So now we can use our newly created extension like this:
+Böylece aşağıdaki şekilde yeni property'leri kullanabiliriz:
 
 ```xaml
 <TextBlock Text="Example English Text" 
@@ -91,9 +93,9 @@ So now we can use our newly created extension like this:
 			uiExtensions:UiExtensions.EnglishText="Example English Text"/>
 ```
 
-However, running the application, we see that the text does not actually change. We still need to tell the application that we want to change the language somehow.
+Ancak, uygulamayı çalıştırdığımızda yazının değişmediğini görüyoruz. Bunun sebebi dili nasıl değiştirmesi gerektiğini daha uygulamaya söylemedik.
 
-We can simply write a ```LanguageChanger``` class and a few helper classes to do this job for us.
+Bunun için ```LanguageChanger``` sınıfını ve bir kaç yardımcı sınıfı yazmamız gerekecek.
 
 ```cs
 namespace SomeNamespace.Globalization
@@ -171,10 +173,11 @@ namespace SomeNamespace.Globalization
 }
 ```
 
-The LanguageChanger code should allow our WPF to find all the TextBlocks and change their language to whichever language setting we decide. 
+```LanguageChanger``` kodu tüm TextBlock'ları bularak hangi dil seçeneği aktifse o text property'sini o dile göre ayarlayacak.
 
-However, there is a big problem here. Our application will try and change **ALL** TextBlocks in our XAML. So if it cannot find any EnglishText or TurkishText, the application will default to empty strings which are not very desirable because we do not want **ALL** our TextBlocks to change, just the blocks that are EnglishText.
+Ancak, bir problem var. Uygulamamız TÜM TextBlock'ları değiştirmeye çalışacak. Eğer ```EnglishText``` yada ```TurkishText``` property'lerini bulamazsa, boş string olarak değiştirecek ve biz bunu istemiyoruz. Bizim istediğimiz sadece çevrilmesi gereken TextBlock'ların çevrilmesi.
 
+Bu problemi çözmek için ```LanguageChanger```sınıfında bir flag property'ye ihtiyacımız var.
 To solve this issue we need a flag for the ```LanguageChanger``` class to decide whether or not the application should translate. 
 
 For this we need yet another attached property:
