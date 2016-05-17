@@ -1,4 +1,3 @@
-
 In this tutorial, the React and Angular 2 way of setting up an application and streaming data back and forth will be reviewed and the differences will be analyzed.
 
 ### Setting up a sample Rails application
@@ -59,4 +58,23 @@ Rails.application.routes.draw do
   get '/api' => 'application#index', defaults: { format: :json }
 end
 ```
+
+### Integrating Angular 2 
+
+ Angular 2 has two specificts  - it is a framework and it uses TypesScript. These specifics come with certain requirements when it comes to integration:
+ 
+ Because Angular 2 is a framework and not a library, it would be best if is  put in a separate directory where all its files are going to reside. This means that, instead of putting it into the Rails asset pipeline (app/assets), it will reside in the Rails application's <code>public</code> folder, separated from the compilation and the logic of the Rails application. This will allow a clearer separation of concerncs between the Rails and the Angular 2 frameworks and their dependencies.
+ 
+ Because Angular 2 uses TypeScript, which is a superset of JavaScript, Angular 2 will also need a TypeScript transpiler configured in the directory of the Rails application. Transpilers (short for [trascompilers](http://www.computerhope.com/jargon/t/transcompiler.htm) in JavaScript are tools that read to read the TypeScript code (or CoffeScript or similar)  and transpile it to pure JavaScript that can be interpreted by the browser. 
+ 
+ 
+
+React | Angular 2 | Rails   
+------------------- | -------------------- | ------------
+Root/Parent component | Service | View layer
+
+
+React | Angular 2 | Rails   
+------------------- | -------------------- | ------------
+app/assets/javascripts directory | public or a separate directory| app/views diectory
 
