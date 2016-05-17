@@ -177,10 +177,9 @@ namespace SomeNamespace.Globalization
 
 Ancak, bir problem var. Uygulamamız TÜM TextBlock'ları değiştirmeye çalışacak. Eğer ```EnglishText``` yada ```TurkishText``` property'lerini bulamazsa, boş string olarak değiştirecek ve biz bunu istemiyoruz. Bizim istediğimiz sadece çevrilmesi gereken TextBlock'ların çevrilmesi.
 
-Bu problemi çözmek için ```LanguageChanger```sınıfında bir flag property'ye ihtiyacımız var.
-To solve this issue we need a flag for the ```LanguageChanger``` class to decide whether or not the application should translate. 
-
-For this we need yet another attached property:
+Bu problemi çözmek için ```LanguageChanger```sınıfında çeviri yapması ve yapmamasını işaretlemek için bir bayrak (flag) property'ye ihtiyacımız var.
+ 
+Bunun için yeni bir attached property eklememiz gerekiyor:
 
 ```cs
 namespace SomeNamespace.Extensions
@@ -233,9 +232,9 @@ namespace SomeNamespace.Extensions
 }
 ```
 
-The property we added is of type ```bool``` and it will help ```LanguageChanger``` whether to skip this ```TextBlock``` or not.
+Bu property ```bool``` tipinde olacak ve ```LanguageChanger```sınıfına bir TextBlock'u çevirip çevirmemesini belirtecek.
 
-We also need to change our XAML code accordingly and add our newly created property.
+Ayrıca ```TextBlock``` ile ilgili XAML kodunu da değiştirmemiz gerekecek:
 
 ```xaml
 <TextBlock Text="Example English Text"
@@ -244,9 +243,9 @@ We also need to change our XAML code accordingly and add our newly created prope
 			uiExtensions:UiExtensions.EnglishText="Example English Text"/>
 ```
 
-When ```ChangeLanguage``` is ```true``` then it will process that ```TextBlock```, if ```false```, then it will skip it.
+```ChangeLanguage``` ```true```olduğunda TextBlock'u çevirecek, ```false``` olduğunda çevirmeyecek.
 
-Finally we need to edit our ```LanguageChanger``` :
+Son olarak ```LanguageChanger``` sınıfımızı da değiştirmemiz gerekiyor:
 
 ```cs
 namespace SomeNamespace.Globalization
@@ -292,13 +291,13 @@ namespace SomeNamespace.Globalization
 }
 ```
 
-You can now use your newly-created custom properties to create translations for every ```TextBlock``` in your application purely in XAML.
+Böylece yazdığımız sistem sayesinde sadece XAML üzerinden tüm TextBlock'larda çeviri yapabilmek mümkün oldu.
 
-Do we stop at translating only TextBlocks? Of course not! 
+Sadece TextBlock'ları mı çevirebiliriz? Tabi ki hayır.
 
-We can use attached properties on every type of string we want to translate. For example, headers, context menus, contents etc. Simply create some attached properties, add them to your ```LanguageChanger```, or whatever class you are using for globalization, and edit your XAML code as we did with TextBlocks.
+Attached property'leri tüm ```string``` tipindeki property'leri çevirmek için kullanabiliriz. Örnek olarak, header, context menu, content vb. Yukarıda yazdığımız koda uygun propety'leri ekleyip, daha sonra ```LanguageChanger```sınıfında bu kontrolleri bularak çevirmesini söyleyebiliriz. Daha sonra bu kontrollerin çevirilerini de XAML üzerinden kontrol edebiliriz.
 
-### Conclusion
+### Sonuç
+Attached property'ler WPF'in çok kullanışlı bir parçası olup, yeni property'ler yaratmada veya daha önceden tanımlanmış property'lere yeni özellikler katmada kullanılabilir. Ben kendi projemde attached property'lerin çoklu dil desteğinde çok faydalı olduğunu öğrendim. Umarım bu teknik sizlere de kendi projelerinizde yardımcı olur.
 
-Attached properties are a very useful part of WPF, and their use can be extensive on extending or creating new properties for your controls and objects. I found them especially useful when I was attempting globalization. This technique will hopefully help you in your own projects as well.
 
