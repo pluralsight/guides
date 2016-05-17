@@ -2,7 +2,7 @@ Doktora tezimin bir parçası olarak Windows üzerinde çalışan bir uygulamaya
 
 Tezimin dili İngilizce, ancak uygulama Türkiye'de kullanılacağından Türkçe olmalıydı. Bu sebeple uygulamaya çoklu dil desteği eklemeye karar verdim.
 
-Çoklu dil desteğini sağlamak için bir çok yol mevcut. Örnek olarak; string tipinde kaynaklar oluşturmak, çeviriyi barındıran statik sınıflar oluşturmak yada çoklu dil seçeneği sağlayan kütüphaneler kullanmak. Ancak ben daha kolay ve Extensible Application Markup Language (XAML) ile uyumlu bir çözüm istiyordum. Mesela, şöyle basit bir kod satırı ile problemi çözmek istiyordum:
+Çoklu dil desteğini sağlamak için bir çok yol mevcut. Örnek olarak; ```string``` tipinde kaynaklar oluşturmak, çeviriyi barındıran statik sınıflar oluşturmak yada çoklu dil seçeneği sağlayan kütüphaneler kullanmak. Ancak ben daha kolay ve Extensible Application Markup Language (XAML) ile uyumlu bir çözüm istiyordum. Mesela, şöyle basit bir kod satırı ile problemi çözmek istiyordum:
 
 ```xaml
 <TextBlock Text=”English Text” English=”English Text” Turkish=”Türkçe Yazı” />
