@@ -74,53 +74,53 @@ Why not use IntelliJ IDEA and Gradle? Because setting up Eclipse and Maven is a 
 
 # Setting up the Environment
 
-For Eclipse, first, we need to install the Groovy plugin and some dependencies. Then, we'll create a Maven project, configure all the required dependencies and plugins in the pom.xml file and add a directory where the testing classes will live.
+For Eclipse, first, we need to install the Groovy plugin and some dependencies. Then, we'll create a Maven project, configure all the required dependencies and plugins in the `pom.xml` file and add a directory where the testing classes will live.
 
-Let's start. I'll assume you're using [Eclipse Mars.2](http://www.eclipse.org/downloads/packages/release/Mars/2) (version 4.5.2, but I shouldn't be very different if you're using a different version), so open Eclipse and to Help -> Install new software.
+Let's start. I'll assume you're using [Eclipse Mars.2](http://www.eclipse.org/downloads/packages/release/Mars/2) (version 4.5.2, but I shouldn't be very different if you're using a different version), so open Eclipse and to *Help -> Install new software*.
 
-![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/29b42068-5690-4964-92a7-94f9d6e955e3.png)
+![Help -> Install new software](https://raw.githubusercontent.com/pluralsight/guides/master/images/29b42068-5690-4964-92a7-94f9d6e955e3.png)
 
-Click the Add... button
+Click the *Add...* button
 
-![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/11aa69f1-7561-46b9-8dcb-29b807d7753b.png)
+![Add... button](https://raw.githubusercontent.com/pluralsight/guides/master/images/11aa69f1-7561-46b9-8dcb-29b807d7753b.png)
 
-Enter the following information and press OK (if you're using another version of Eclipse, you can find the correct link to the update site [here](https://github.com/groovy/groovy-eclipse/wiki)):
-Name: Groovy plugin (or any name you want)
-Location: http://dist.springsource.org/snapshot/GRECLIPSE/e4.5/
+Enter the following information and press *OK* (if you're using another version of Eclipse, you can find the correct link to the update site [here](https://github.com/groovy/groovy-eclipse/wiki)):
+**Name:** Groovy plugin (or any name you want)
+**Location:** http://dist.springsource.org/snapshot/GRECLIPSE/e4.5/
 
-![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/8e63bcf4-f2dd-4df4-9572-3e5d600154bc.png)
+![Update site information](https://raw.githubusercontent.com/pluralsight/guides/master/images/8e63bcf4-f2dd-4df4-9572-3e5d600154bc.png)
 
-Wait for it to fetch the information and then select the Groovy-Eclipse and Extra Groovy Compilers options and click Next.
+Wait for it to fetch the information and then select the *Groovy-Eclipse* and *Extra Groovy Compilers* options and click *Next*.
 
-![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/dcbb38b0-1b38-4c38-8506-b044facf0bf1.png)
+![Choose options to install](https://raw.githubusercontent.com/pluralsight/guides/master/images/dcbb38b0-1b38-4c38-8506-b044facf0bf1.png)
 
-Review the items to install and click Next.
+Review the items to install and click *Next*.
 
-![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/66697cfc-8db7-40dd-a464-41abb381001b.png)
+![Review options to install](https://raw.githubusercontent.com/pluralsight/guides/master/images/66697cfc-8db7-40dd-a464-41abb381001b.png)
 
-Accept the terms of the license and click Finish.
+Accept the terms of the license and click *Finish*.
 
-![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/c1d354b6-c862-4485-994a-77222dc0b119.png)
+![Accept license terms](https://raw.githubusercontent.com/pluralsight/guides/master/images/c1d354b6-c862-4485-994a-77222dc0b119.png)
 
 Wait for a while and Eclipse will install the Groovy plugin. You will need to restart Eclipse.
 
-![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/ae2ac7a7-be35-45db-8609-382b8ccf7a33.png)
+![Installing](https://raw.githubusercontent.com/pluralsight/guides/master/images/ae2ac7a7-be35-45db-8609-382b8ccf7a33.png)
 
-Now let's create the project. Go to File -> New -> Other... and choose Maven Project (notice that thanks to the Groovy plugin, you now have the options to create a Groovy class and a Groovy project)
+Now let's create the project. Go to *File -> New -> Other...* and choose *Maven Projec*t (notice that thanks to the Groovy plugin, you now have the options to create a Groovy class and a Groovy project)
 
-![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/76c85138-531f-4047-b9f3-481f1744583b.png)
+![Create new maven project 01](https://raw.githubusercontent.com/pluralsight/guides/master/images/76c85138-531f-4047-b9f3-481f1744583b.png)
 
-In the next window, check the option "Create a simple project (skip archetype selection)" and click Next.
+In the next window, check the option *Create a simple project (skip archetype selection)* and click *Next*.
 
-![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/818dd1cd-4e49-48df-b76d-1ec1af0da977.png)
+![Create new maven project 02](https://raw.githubusercontent.com/pluralsight/guides/master/images/818dd1cd-4e49-48df-b76d-1ec1af0da977.png)
 
-In this window, enter the project information, For example:
-Group ID: com.example
-Artifact ID: spock
-Version: 0.0.1-SNAPSHOT
-Packaging: jar
+In this window, enter the project information, For instance:  
+**Group ID:** com.example
+**Artifact ID:** spock
+**Version:** 0.0.1-SNAPSHOT
+**Packaging:** jar
 
-![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/f6f71099-a857-4e51-a443-95ebe651e7fb.png)
+![Create new maven project 03](https://raw.githubusercontent.com/pluralsight/guides/master/images/f6f71099-a857-4e51-a443-95ebe651e7fb.png)
 
 This will create a project with a `pom.xml` file and the following directories:
 ````
@@ -130,25 +130,25 @@ src/test/java
 src/test/resources
 ````
 
-However, since we're going to use Groovy, the right thing to do is create an src/test/groovy directory. To do so, right-click on the name of the project and choose the option Build Path -> Configure Build Path and then the Source tab.
+However, since we're going to use Groovy, the right thing to do is create an `src/test/groovy` directory. To do so, right-click on the name of the project and choose the option *Build Path -> Configure Build Path* and then the *Source* tab.
 
-![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/bbff597e-1500-4e09-b980-51665c988eff.png)
+![Create src/test/groovy 01](https://raw.githubusercontent.com/pluralsight/guides/master/images/bbff597e-1500-4e09-b980-51665c988eff.png)
 
-Click Add Folder... and create the new folder (relative to `src/test` you should only enter groovy) without inclusion or exclusion patterns.
+Click *Add Folder...* and create the new folder (relative to `src/test` you should only enter groovy) without inclusion or exclusion patterns.
 
-![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/1375d468-dee8-4e1b-9140-6b7c6a9c941c.png)
+![Create src/test/groovy 02](https://raw.githubusercontent.com/pluralsight/guides/master/images/1375d468-dee8-4e1b-9140-6b7c6a9c941c.png)
 
-![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/1380bffd-9ef7-4526-968b-168246b6f6b6.png)
+![Create src/test/groovy 03](https://raw.githubusercontent.com/pluralsight/guides/master/images/1380bffd-9ef7-4526-968b-168246b6f6b6.png)
 
-![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/3f7b03d7-3d13-4c3b-8cdb-0cdb85ba1bd3.png)
+![Create src/test/groovy 04](https://raw.githubusercontent.com/pluralsight/guides/master/images/3f7b03d7-3d13-4c3b-8cdb-0cdb85ba1bd3.png)
 
-Next, select the new directory's option Output Folder and click Edit.
+Next, select the new directory's option *Output Folder* and click *Edit*.
 
-![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/1e1604e1-44f8-47e5-873b-9bb81a8ffd26.png)
+![Create src/test/groovy 05](https://raw.githubusercontent.com/pluralsight/guides/master/images/1e1604e1-44f8-47e5-873b-9bb81a8ffd26.png)
 
-To specify the output directory for tests (`target/test-classes`) and click OK.
+To specify the output directory for tests (`target/test-classes`) and click *OK*.
 
-![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/bab8992a-6ce1-4890-9f7c-4fb9bfb07253.png)
+![Create src/test/groovy 06](https://raw.githubusercontent.com/pluralsight/guides/master/images/bab8992a-6ce1-4890-9f7c-4fb9bfb07253.png)
 
 Regarding the `pom.xml` file, it should look like this:
 
@@ -228,15 +228,15 @@ Regarding the `pom.xml` file, it should look like this:
 &lt;/project&gt;
 ```
 
-In the plugins section, we're adding the gmavenplus-plugin, required to compile groovy code. Optionally, we can also add the maven-surefire-plugin to generate test reports.
+In the plugins section, we're adding the `gmavenplus-plugin`, required to compile groovy code. Optionally, we can also add the `maven-surefire-plugin` to generate test reports.
 
-In the dependencies section, we add the required Spock library (and explicitly specify the groovy version to make sure it matches the Spock version). Optionally, we can also add CGLIB and Objenesis to enable mocking of classes.
+In the dependencies section, we add the required Spock library (and explicitly specify the groovy version to make sure it matches the Spock version). Optionally, we can also add `CGLIB` and `Objenesis` to enable mocking of classes.
 
-Save the file and if the Maven dependencies are not added automatically to the Eclipse project, right-click the name of the project and choose the option Maven -> Update Project...
+Save the file and if the Maven dependencies are not added automatically to the Eclipse project, right-click the name of the project and choose the option *Maven -> Update Project...*.
 
-To test your environment, create `HelloWorld.groovy` (with New -> Other -> Groovy class) in the `spock` package inside the `src/test/groovy` directory:
+To test your environment, create `HelloWorld.groovy` (with *New -> Other -> Groovy class*) in the `spock` package inside the `src/test/groovy` directory:
 
-```groovy
+```
 package spock
 
 import spock.lang.Specification
@@ -253,22 +253,22 @@ class HelloWorldSpec extends Specification {
 }
 ```
 
-And run it like a JUnit test with Run As -> Junit Test. The output should be the famous green bar.
+And run it like a JUnit test with *Run As -> Junit Test*. The output should be the famous green bar.
 
-![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/2eba1335-3029-4c3d-825e-cde3cd90a749.png)
+![First run](https://raw.githubusercontent.com/pluralsight/guides/master/images/2eba1335-3029-4c3d-825e-cde3cd90a749.png)
 
 # The super minimal Groovy knowledge you need for Spock
 
 Groovy is a language that it's compiled to bytecode that is executed by the JVM, and it's very similar to Java, but with features comparable to Ruby, Python, or Javascript.
 
 For example, everything is treated as an object and semicolons are optional:
-```groovy
+```
 int x = 4 // Valid
 x.getClass() // java.lang.Integer
 ```
 
 You can use the `def` keyword instead of a type to declare a variable, Groovy will determine the type of the variable at runtime, which gives us some flexibility:
-```groovy
+```
 int x = 4
 def y = 5
 y = "Hello" // Valid
@@ -276,27 +276,27 @@ x = "World" // Error
 ```
 
 The `def` keyword can also be used to define methods (which makes them public). Methods can accept arguments without types, and the value of the last expression is returned by default (so a return statement is optional):
-```groovy
+```
 def sum(a, b) {
 	a + b
 }
 ```
 
 The parentheses are optional when calling a method with at least one argument:
-```groovy
+```
 sum(1, 2) // Valid
 sum 1, 2 // Also valid
 ```
 
 And you can use a full string as a method name:
-```groovy
+```
 def "sum of two numbers"(a, b) {
 	a + b
 }
 ```
 
 Groovy also supports *string interpolation*, which allows us to substitute any expression into a string:
-```groovy
+```
 def name = "Carl"
 def hello = "Hello $name"
 println hello // "Hello Carl"
@@ -305,26 +305,26 @@ println hello // "Hello Carl"
 In Java, we have the `boolean` (or `Boolean`) type to evaluate true/false expressions. But Groovy treats all variables as `true` unless the variable is:
 - An empty string
 - An empty collection
-- A null reference
+- A `null` reference
 - Zero
 - False
 
 This way, in Groovy, statements like these are valid:
-```groovy
+```
 boolean b = "I'm not false" // Evaluates to true
 if(10) { } // Evaluates to true
 if(map) { } // Equivalent to if(map != null && !map.isEmpty() { }
 ```
 
 An important consideration is that in Groovy, the `==` operator it's like calling the `equals()` method of the object, it doesn't test for identity like in Java:
-```groovy
+```
 def s1 = new String("A String")
 def s2 = new String("A String")
 s1 == s2 // true
 ```
 
 Finally, we have closures. A closure is an anonymous block of code (like a function) which can be assigned to variables or passed as an argument to a function and has access to data of the context where it was defined. It can be as simple as:
-```groovy
+```
 def hi = {
     println "Hi"
 }
@@ -332,7 +332,7 @@ hi();
 ```
 
 By default, closures have one parameter named `it`:
-```groovy
+```
 def hi = {
     println it
 }
@@ -340,7 +340,7 @@ hi("Hi");
 ```
 
 If you don't pass the parameter, it will be null. Of course, you can define your own parameters (you can omit the type to pass anything):
-```groovy
+```
 def hi = { a, b -&gt;
     println "$a, $b"
 }
@@ -350,10 +350,10 @@ hi(1, 2);
 
 As you can see, Groovy is not as bulky as Java. Of course, there's a lot more to learn about Groovy, but this should be enough to start coding some tests with Spock. That is what we will do next.
 
-# Spock Tests Structure
+# Testing using Spock
 
 In Spock, you write *specifications*. Every test class must extend from `spock.lang.Specification`:
-```groovy
+```
 import spock.lang.Specification
 
 class HelloWorldTest extends Specification {
@@ -362,7 +362,7 @@ class HelloWorldTest extends Specification {
 ```
 
 This class can have many methods, where each of them is considered a scenario (a test case):
-```groovy
+```
 import spock.lang.Specification
 
 class HelloWorldTest extends Specification {
@@ -375,8 +375,8 @@ class HelloWorldTest extends Specification {
 }
 ```
 
-In BDD, these scenarios are described in a given-when-then format. Spock supports this style using labels with an optional description. Notice that the assert keyword is optional:
-```groovy
+In BDD, these scenarios are described in a *given-when-then* format. Spock supports this style using labels with an optional description. Notice that the assert keyword is optional:
+```
 import spock.lang.Specification
 
 class HelloWorldTest extends Specification {
@@ -396,7 +396,7 @@ class HelloWorldTest extends Specification {
 ```
 
 If we change one of the conditions so the test fails:
-```groovy
+```
 import spock.lang.Specification
 
 class HelloWorldTest extends Specification {
@@ -438,7 +438,7 @@ Blocks divide a method into sections. They start with a label and extend either 
 
 ## Setup
 In the `setup:` or `given:` (may people prefer this because it's more readable) block you create the objects and do any setup work for the test. Actually, this block is optional can be implicit, anything between the beginning of the method and the first (different) block represents the setup block:
-```groovy
+```
 	setup:
 	def i = 5
 ```
@@ -447,7 +447,7 @@ If any, there can be only one `setup:` or `given:` block.
 
 ## When and Then
 The `when:` and `then:` blocks always go together. They represent a cause (called *stimulus*) and an effect (or response). For that reason, the `when:` block can contain any code but `then:` can only contain conditions, definitions, or interactions. We can have multiple pairs of when-then blocks:
-```groovy
+```
 when:
 i = i * 2
 	 
@@ -462,7 +462,7 @@ i == 20
 ```
 
 Or multiple then blocks after a when (which are evaluated separately):
-```groovy
+```
 when:
 i = i * 2
 	 
@@ -475,7 +475,7 @@ i == 10
 
 ## Expect
 The `expect:` block is the same as `then:`, it can only contain conditions or variable definitions, but it doesn't require a `then:` block:
-```groovy
+```
 expect:
 def i = 5
 i * 2 == 10
@@ -483,7 +483,7 @@ i * 2 == 10
 
 ## Cleanup
 The optional `cleanup:` block is used to free resources and is run even if the code before the block has thrown an exception. It's usually the last block in the method, but it may only be followed by a `where:` block:
-```groovy
+```
 given:
 def file = new File('/temp/1.txt')
 
@@ -495,7 +495,7 @@ file.close()
 
 ## Where
 `where:` is also an optional block that must be the last one because it lets you define values to perform parameterized tests, also known as data-driven tests. It's commonly used with `expect:`:
-```groovy
+```
 def 'data-driven test'() {
     expect:
     x + y == z
@@ -515,7 +515,7 @@ Spock will run as many tests as rows in the where block. In the example, Spock w
 * In the third test, `x` will be `71`, `y` will be `12`, and `z` will be `83`.
 
 The minimum number of columns for this to work is two, so if you only have one variable, you can do something like this:
-```groovy
+```
 where:
 x  | _
 3  | _
@@ -524,7 +524,7 @@ x  | _
 ```
 
 The data can be formatted horizontally also. This way, the previous tests can be written as:
-```groovy
+```
 def 'data-driven test'() {
     expect:
     x + y == z
@@ -535,8 +535,8 @@ def 'data-driven test'() {
     z &lt;&lt; [7, 42, 83]
 }
 ```
-A data pipe (represented by the left-shift operator, `&lt;&lt;`) connects a variable to a data provider. In the example, the values of each variable are provided by a list, but the data provider can be any iterable object, like a Collection, a String, or other implementations of `Iterable`. Also, the data can be fetched from  external sources, like a database:
-```groovy
+A data pipe (represented by the left-shift operator, `<<`) connects a variable to a data provider. In the example, the values of each variable are provided by a list, but the data provider can be any iterable object, like a Collection, a String, or other implementations of `Iterable`. Also, the data can be fetched from  external sources, like a database:
+```
 def 'data-driven test'() {
     def sql = Sql.newInstance("jdbc:h2:mem:", "org.h2.Driver")
 	
@@ -548,7 +548,7 @@ def 'data-driven test'() {
 ```
 
 Values can be ignored with an underscore (`_`):
-```groovy
+```
 def 'data-driven test'() {
     def sql = Sql.newInstance("jdbc:h2:mem:", "org.h2.Driver")
 	
@@ -560,7 +560,7 @@ def 'data-driven test'() {
 ```
 
 Variables can be assigned directly also:
-```groovy
+```
 where:
 x  | y  
 3  | 4  
@@ -570,7 +570,7 @@ z = x + y
 ```
 
 And of course, you can use all of these methods at the same time:
-```groovy
+```
 where:
 x  | _
 3  | _
@@ -581,8 +581,8 @@ z = x + y
 ```
 
 ## And
-Although it's not considered a block, there's also an "and:" label that can be added to any block to describe and individual part of it:
-```groovy
+Although it's not considered a block, there's also an `and:` label that can be added to any block to describe and individual part of it:
+```
 def "scenario 1"() {
     given: "An integer with value 5"
 	def i = 5
@@ -596,7 +596,7 @@ def "scenario 1"() {
 
 # Error reporting with @Unroll
 In a data-driven test, we can test many data sets. If one or more fail, for example:
-```groovy
+```
 def 'data-driven test'() {
 	expect:
 	x    +    y    ==    z
@@ -611,10 +611,10 @@ def 'data-driven test'() {
 
 Something like this is the result:
 
-![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/c7365d7b-9e8c-4cdc-be60-c31091b38a4c.png)
+![Unroll 01](https://raw.githubusercontent.com/pluralsight/guides/master/images/c7365d7b-9e8c-4cdc-be60-c31091b38a4c.png)
 
 But if we want to be more specific about the failing datasets, we can use the `spock.lang.Unroll` annotation:
-```groovy
+```
 @Unroll
 def 'data-driven test'() {
 	expect:
@@ -630,12 +630,12 @@ def 'data-driven test'() {
 
 This way, each dataset will be reported separately:
 
-![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/904aac12-0b9d-4141-848b-21f4f2f13f9f.png)
+![Unroll 02](https://raw.githubusercontent.com/pluralsight/guides/master/images/904aac12-0b9d-4141-848b-21f4f2f13f9f.png)
 
-![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/ced7aa22-cbdd-4174-bf0b-9b67705b61ae.png)
+![Unroll 03](https://raw.githubusercontent.com/pluralsight/guides/master/images/ced7aa22-cbdd-4174-bf0b-9b67705b61ae.png)
 
 And there's more. We can have custom names with placeholders that will be replaced with the values of the variables defined inside the `where:` block. Either on the `@Unroll` annotation:
-```groovy
+```
 @Unroll('#x plus #y should be #z')
 def 'data-driven test'() {
 	expect:
@@ -650,7 +650,7 @@ def 'data-driven test'() {
 ```
 
 Or at the method name directly:
-```groovy
+```
 @Unroll
 def '#x plus #y should be #z'() {
 	expect:
@@ -666,10 +666,10 @@ def '#x plus #y should be #z'() {
 
 The result:
 
-![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/b59b1a54-a1e5-499c-b21a-724b7e2d7b1a.png)
+![Unroll 04](https://raw.githubusercontent.com/pluralsight/guides/master/images/b59b1a54-a1e5-499c-b21a-724b7e2d7b1a.png)
 
 You also can annotate the whole class to avoid annotating each method:
-```groovy
+```
 @Unroll
 class HelloWorldTest extends Specification {
 
@@ -701,7 +701,7 @@ class HelloWorldTest extends Specification {
 Fixture methods execute code before or after tests. There are four of them.
 
 `setup()` and `cleanup()` execute before and after each test case respectively. For example:
-```groovy
+```
 class SetupCleanupTest extends Specification {
 	def list = { 
 		println "creating the object" 
@@ -745,7 +745,7 @@ cleanup()
 As you can see, instance objects are created before each test feature, like if they were defined at the beginning of the `setup()` method.
 
 The other two fixture methods, `setupSpec()` and `cleanupSpec()`, are executed once for the whole class, before and after the test methods. For example:
-```groovy
+```
 class SetupSpecCleanupSpecTest extends Specification {
 	def @Shared dummy = {
 		println "creating shared object"
@@ -791,7 +791,7 @@ As a side note, `cleanup()` and `cleanupSpec()` are executed even when the test 
 
 # Exception Conditions
 Sometimes we need to test if an exception is thrown. In Spock we do it like this:
-```groovy
+```
 def 'should throw exception'() {
 	when:
 	def i = 4 / 0
@@ -802,7 +802,7 @@ def 'should throw exception'() {
 ```
 
 Using the `thrown(Class<Throwable> type)` method to indicate we expect an exception. We can even save a reference to the exception to access its properties:
-```groovy
+```
 def 'should throw exception'() {
 	when:
 	def i = 4 / 0
@@ -822,7 +822,7 @@ Expected exception of type 'java.lang.RuntimeException', but no exception was th
 ```
 
 Certainly, there's a method to indicate that an exception should not be thrown:
-```groovy
+```
 def 'should not throw exception'() {
 	when:
 	def i = 4 / 2
@@ -841,7 +841,7 @@ Other times, you'll want not to run (ignore) some tests- Spock can provide a way
 * `@Requires(predicate)`
 
 A method annotated with `@Ignore` will not be executed by Spock no matter what:
-```groovy
+```
 @Ignore("This test shouldn't be run right now")
 def "Test 1"() {
     //...
@@ -856,7 +856,7 @@ A method annotated with `@IgnoreIf(predicate)` is ignored only if the given pred
 * The `spock.util.environment.Jvm` class through the built-in `jvm` property to access information on the current JVM, such as its Java version
 
 For example:
-```groovy
+```
 @IgnoreIf({ System.getProperty('user.dir') == '/home' })
 def 'should not run if user.dir is /home'() {
     //...
@@ -884,7 +884,7 @@ def 'should not run in Java 7'() {
 ```
 
 A method annotated with `@IgnoreRest` will be executed by Spock, but all the other tests of the class will be ignored. For example:
-```groovy
+```
 class IgnoreTest extends Specification {
     @IgnoreRest
     def 'this one will run'() {
@@ -902,7 +902,7 @@ class IgnoreTest extends Specification {
 ```
 
 A method annotated with `@Requires(predicate)` is the opposite of `@IgnoreIf`, it will be executed only if the given predicate evaluates to true. For example:
-```groovy
+```
 @Requires({ jvm.java8 })
 def 'only run in Java 8'() {
     //...
@@ -913,7 +913,7 @@ def 'only run in Java 8'() {
 
 # Mocks
 Suppose we have a DAO (Data Access Object) interface and a service in Java to interact with a database:
-```groovy
+```
 public class User {
 	private String email;
 	
@@ -956,7 +956,7 @@ Sometimes we want to test the interaction between classes, but don't want to set
 To ensure compatibility with Java, Spock uses JDK dynamic proxies when mocking interfaces and CGLIB proxies when mocking classes to generate these dummy objects at runtime.
 
 Here's a simple example of how to create a mock implementation of `Dao`:
-```groovy
+```
 class MockTest extends Specification {
 	def 'Test service with mock DAO'() {
         given:
@@ -984,7 +984,7 @@ class MockTest extends Specification {
 We can see that to create a mock object, we just have to call the `Mock()` method and define the behavior of the methods on the mock object (since initially, mock objects have no behavior). In the example, we are using the `>>` operator to define the return value of the method. Also, `_ as String` means any object of type `String` (you can pass any type here) and you can catch the parameter passed inside the closure.
 
 We can also specify the return values of a mock method for more than one call:
-```groovy
+```
 class MockTest extends Specification {
 	def 'Test service with mock DAO'() {
         given:
@@ -1005,7 +1005,7 @@ class MockTest extends Specification {
 In the example, we are define that for the first invocation of `UserDao.delete(int)`, this method must return `true`, and for the second and subsequent invocations, `false`.
 
 In the `then:` or `expect:` blocks, we can even specify how many times a method may be called with a number or a range:
-```groovy
+```
 n * method()                   // expect n calls
 (n..m) * method()              // expect n to m calls
 (_..m) * method()              // expect at most m calls
@@ -1019,7 +1019,7 @@ n * _                          // match anything
 ```
 
 For example:
-```groovy
+```
 class MockTest extends Specification {
 	def 'Test service with mock DAO'() {
         given:
