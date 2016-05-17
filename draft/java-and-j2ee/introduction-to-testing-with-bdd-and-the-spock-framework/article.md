@@ -262,13 +262,13 @@ And run it like a JUnit test with *Run As -> Junit Test*. The output should be t
 Groovy is a language that it's compiled to bytecode that is executed by the JVM, and it's very similar to Java, but with features comparable to Ruby, Python, or Javascript.
 
 For example, everything is treated as an object and semicolons are optional:
-```
+```groovy
 int x = 4 // Valid
 x.getClass() // java.lang.Integer
 ```
 
 You can use the `def` keyword instead of a type to declare a variable, Groovy will determine the type of the variable at runtime, which gives us some flexibility:
-```
+```groovy
 int x = 4
 def y = 5
 y = "Hello" // Valid
@@ -276,27 +276,27 @@ x = "World" // Error
 ```
 
 The `def` keyword can also be used to define methods (which makes them public). Methods can accept arguments without types, and the value of the last expression is returned by default (so a return statement is optional):
-```
+```groovy
 def sum(a, b) {
 	a + b
 }
 ```
 
 The parentheses are optional when calling a method with at least one argument:
-```
+```groovy
 sum(1, 2) // Valid
 sum 1, 2 // Also valid
 ```
 
 And you can use a full string as a method name:
-```
+```groovy
 def "sum of two numbers"(a, b) {
 	a + b
 }
 ```
 
 Groovy also supports *string interpolation*, which allows us to substitute any expression into a string:
-```
+```groovy
 def name = "Carl"
 def hello = "Hello $name"
 println hello // "Hello Carl"
@@ -310,21 +310,21 @@ In Java, we have the `boolean` (or `Boolean`) type to evaluate true/false expres
 - False
 
 This way, in Groovy, statements like these are valid:
-```
+```groovy
 boolean b = "I'm not false" // Evaluates to true
 if(10) { } // Evaluates to true
 if(map) { } // Equivalent to if(map != null && !map.isEmpty() { }
 ```
 
 An important consideration is that in Groovy, the `==` operator it's like calling the `equals()` method of the object, it doesn't test for identity like in Java:
-```
+```groovy
 def s1 = new String("A String")
 def s2 = new String("A String")
 s1 == s2 // true
 ```
 
 Finally, we have closures. A closure is an anonymous block of code (like a function) which can be assigned to variables or passed as an argument to a function and has access to data of the context where it was defined. It can be as simple as:
-```
+```groovy
 def hi = {
     println "Hi"
 }
@@ -332,7 +332,7 @@ hi();
 ```
 
 By default, closures have one parameter named `it`:
-```
+```groovy
 def hi = {
     println it
 }
@@ -340,7 +340,7 @@ hi("Hi");
 ```
 
 If you don't pass the parameter, it will be null. Of course, you can define your own parameters (you can omit the type to pass anything):
-```
+```groovy
 def hi = { a, b ->
     println "$a, $b"
 }
@@ -353,7 +353,7 @@ As you can see, Groovy is not as bulky as Java. Of course, there's a lot more to
 # Testing using Spock
 
 In Spock, you write *specifications*. Every test class must extend from `spock.lang.Specification`:
-```
+```groovy
 import spock.lang.Specification
 
 class HelloWorldTest extends Specification {
@@ -362,7 +362,7 @@ class HelloWorldTest extends Specification {
 ```
 
 This class can have many methods, where each of them is considered a scenario (a test case):
-```
+```groovy
 import spock.lang.Specification
 
 class HelloWorldTest extends Specification {
@@ -376,7 +376,7 @@ class HelloWorldTest extends Specification {
 ```
 
 In BDD, these scenarios are described in a *given-when-then* format. Spock supports this style using labels with an optional description. Notice that the assert keyword is optional:
-```
+```groovy
 import spock.lang.Specification
 
 class HelloWorldTest extends Specification {
@@ -396,7 +396,7 @@ class HelloWorldTest extends Specification {
 ```
 
 If we change one of the conditions so the test fails:
-```
+```groovy
 import spock.lang.Specification
 
 class HelloWorldTest extends Specification {
@@ -438,7 +438,7 @@ Blocks divide a method into sections. They start with a label and extend either 
 
 ## Setup
 In the `setup:` or `given:` (may people prefer this because it's more readable) block you create the objects and do any setup work for the test. Actually, this block is optional can be implicit, anything between the beginning of the method and the first (different) block represents the setup block:
-```
+```groovy
 	setup:
 	def i = 5
 ```
@@ -447,7 +447,7 @@ If any, there can be only one `setup:` or `given:` block.
 
 ## When and Then
 The `when:` and `then:` blocks always go together. They represent a cause (called *stimulus*) and an effect (or response). For that reason, the `when:` block can contain any code but `then:` can only contain conditions, definitions, or interactions. We can have multiple pairs of when-then blocks:
-```
+```groovy
 when:
 i = i * 2
 	 
@@ -462,7 +462,7 @@ i == 20
 ```
 
 Or multiple then blocks after a when (which are evaluated separately):
-```
+```groovy
 when:
 i = i * 2
 	 
@@ -475,7 +475,7 @@ i == 10
 
 ## Expect
 The `expect:` block is the same as `then:`, it can only contain conditions or variable definitions, but it doesn't require a `then:` block:
-```
+```groovy
 expect:
 def i = 5
 i * 2 == 10
@@ -483,7 +483,7 @@ i * 2 == 10
 
 ## Cleanup
 The optional `cleanup:` block is used to free resources and is run even if the code before the block has thrown an exception. It's usually the last block in the method, but it may only be followed by a `where:` block:
-```
+```groovy
 given:
 def file = new File('/temp/1.txt')
 
@@ -495,7 +495,7 @@ file.close()
 
 ## Where
 `where:` is also an optional block that must be the last one because it lets you define values to perform parameterized tests, also known as data-driven tests. It's commonly used with `expect:`:
-```
+```groovy
 def 'data-driven test'() {
     expect:
     x + y == z
@@ -515,7 +515,7 @@ Spock will run as many tests as rows in the where block. In the example, Spock w
 * In the third test, `x` will be `71`, `y` will be `12`, and `z` will be `83`.
 
 The minimum number of columns for this to work is two, so if you only have one variable, you can do something like this:
-```
+```groovy
 where:
 x  | _
 3  | _
@@ -524,7 +524,7 @@ x  | _
 ```
 
 The data can be formatted horizontally also. This way, the previous tests can be written as:
-```
+```groovy
 def 'data-driven test'() {
     expect:
     x + y == z
@@ -536,7 +536,7 @@ def 'data-driven test'() {
 }
 ```
 A data pipe (represented by the left-shift operator, `<<`) connects a variable to a data provider. In the example, the values of each variable are provided by a list, but the data provider can be any iterable object, like a Collection, a String, or other implementations of `Iterable`. Also, the data can be fetched from  external sources, like a database:
-```
+```groovy
 def 'data-driven test'() {
     def sql = Sql.newInstance("jdbc:h2:mem:", "org.h2.Driver")
 	
@@ -548,7 +548,7 @@ def 'data-driven test'() {
 ```
 
 Values can be ignored with an underscore (`_`):
-```
+```groovy
 def 'data-driven test'() {
     def sql = Sql.newInstance("jdbc:h2:mem:", "org.h2.Driver")
 	
@@ -560,7 +560,7 @@ def 'data-driven test'() {
 ```
 
 Variables can be assigned directly also:
-```
+```groovy
 where:
 x  | y  
 3  | 4  
@@ -570,7 +570,7 @@ z = x + y
 ```
 
 And of course, you can use all of these methods at the same time:
-```
+```groovy
 where:
 x  | _
 3  | _
@@ -582,7 +582,7 @@ z = x + y
 
 ## And
 Although it's not considered a block, there's also an `and:` label that can be added to any block to describe and individual part of it:
-```
+```groovy
 def "scenario 1"() {
     given: "An integer with value 5"
 	def i = 5
@@ -596,7 +596,7 @@ def "scenario 1"() {
 
 # Error reporting with @Unroll
 In a data-driven test, we can test many data sets. If one or more fail, for example:
-```
+```groovy
 def 'data-driven test'() {
 	expect:
 	x    +    y    ==    z
@@ -614,7 +614,7 @@ Something like this is the result:
 ![Unroll 01](https://raw.githubusercontent.com/pluralsight/guides/master/images/c7365d7b-9e8c-4cdc-be60-c31091b38a4c.png)
 
 But if we want to be more specific about the failing datasets, we can use the `spock.lang.Unroll` annotation:
-```
+```groovy
 @Unroll
 def 'data-driven test'() {
 	expect:
@@ -635,7 +635,7 @@ This way, each dataset will be reported separately:
 ![Unroll 03](https://raw.githubusercontent.com/pluralsight/guides/master/images/ced7aa22-cbdd-4174-bf0b-9b67705b61ae.png)
 
 And there's more. We can have custom names with placeholders that will be replaced with the values of the variables defined inside the `where:` block. Either on the `@Unroll` annotation:
-```
+```groovy
 @Unroll('#x plus #y should be #z')
 def 'data-driven test'() {
 	expect:
@@ -650,7 +650,7 @@ def 'data-driven test'() {
 ```
 
 Or at the method name directly:
-```
+```groovy
 @Unroll
 def '#x plus #y should be #z'() {
 	expect:
@@ -669,7 +669,7 @@ The result:
 ![Unroll 04](https://raw.githubusercontent.com/pluralsight/guides/master/images/b59b1a54-a1e5-499c-b21a-724b7e2d7b1a.png)
 
 You also can annotate the whole class to avoid annotating each method:
-```
+```groovy
 @Unroll
 class HelloWorldTest extends Specification {
 
@@ -701,7 +701,7 @@ class HelloWorldTest extends Specification {
 Fixture methods execute code before or after tests. There are four of them.
 
 `setup()` and `cleanup()` execute before and after each test case respectively. For example:
-```
+```groovy
 class SetupCleanupTest extends Specification {
 	def list = { 
 		println "creating the object" 
@@ -745,7 +745,7 @@ cleanup()
 As you can see, instance objects are created before each test feature, like if they were defined at the beginning of the `setup()` method.
 
 The other two fixture methods, `setupSpec()` and `cleanupSpec()`, are executed once for the whole class, before and after the test methods. For example:
-```
+```groovy
 class SetupSpecCleanupSpecTest extends Specification {
 	def @Shared dummy = {
 		println "creating shared object"
@@ -791,7 +791,7 @@ As a side note, `cleanup()` and `cleanupSpec()` are executed even when the test 
 
 # Exception Conditions
 Sometimes we need to test if an exception is thrown. In Spock we do it like this:
-```
+```groovy
 def 'should throw exception'() {
 	when:
 	def i = 4 / 0
@@ -802,7 +802,7 @@ def 'should throw exception'() {
 ```
 
 Using the `thrown(Class<Throwable> type)` method to indicate we expect an exception. We can even save a reference to the exception to access its properties:
-```
+```groovy
 def 'should throw exception'() {
 	when:
 	def i = 4 / 0
@@ -822,7 +822,7 @@ Expected exception of type 'java.lang.RuntimeException', but no exception was th
 ```
 
 Certainly, there's a method to indicate that an exception should not be thrown:
-```
+```groovy
 def 'should not throw exception'() {
 	when:
 	def i = 4 / 2
@@ -841,7 +841,7 @@ Other times, you'll want not to run (ignore) some tests- Spock can provide a way
 * `@Requires(predicate)`
 
 A method annotated with `@Ignore` will not be executed by Spock no matter what:
-```
+```groovy
 @Ignore("This test shouldn't be run right now")
 def "Test 1"() {
     //...
@@ -856,7 +856,7 @@ A method annotated with `@IgnoreIf(predicate)` is ignored only if the given pred
 * The `spock.util.environment.Jvm` class through the built-in `jvm` property to access information on the current JVM, such as its Java version
 
 For example:
-```
+```groovy
 @IgnoreIf({ System.getProperty('user.dir') == '/home' })
 def 'should not run if user.dir is /home'() {
     //...
@@ -884,7 +884,7 @@ def 'should not run in Java 7'() {
 ```
 
 A method annotated with `@IgnoreRest` will be executed by Spock, but all the other tests of the class will be ignored. For example:
-```
+```groovy
 class IgnoreTest extends Specification {
     @IgnoreRest
     def 'this one will run'() {
@@ -902,7 +902,7 @@ class IgnoreTest extends Specification {
 ```
 
 A method annotated with `@Requires(predicate)` is the opposite of `@IgnoreIf`, it will be executed only if the given predicate evaluates to true. For example:
-```
+```groovy
 @Requires({ jvm.java8 })
 def 'only run in Java 8'() {
     //...
@@ -913,7 +913,7 @@ def 'only run in Java 8'() {
 
 # Mocks
 Suppose we have a DAO (Data Access Object) interface and a service in Java to interact with a database:
-```
+```groovy
 public class User {
 	private String email;
 	
@@ -956,7 +956,7 @@ Sometimes we want to test the interaction between classes, but don't want to set
 To ensure compatibility with Java, Spock uses JDK dynamic proxies when mocking interfaces and CGLIB proxies when mocking classes to generate these dummy objects at runtime.
 
 Here's a simple example of how to create a mock implementation of `Dao`:
-```
+```groovy
 class MockTest extends Specification {
 	def 'Test service with mock DAO'() {
         given:
@@ -984,7 +984,7 @@ class MockTest extends Specification {
 We can see that to create a mock object, we just have to call the `Mock()` method and define the behavior of the methods on the mock object (since initially, mock objects have no behavior). In the example, we are using the `>>` operator to define the return value of the method. Also, `_ as String` means any object of type `String` (you can pass any type here) and you can catch the parameter passed inside the closure.
 
 We can also specify the return values of a mock method for more than one call:
-```
+```groovy
 class MockTest extends Specification {
 	def 'Test service with mock DAO'() {
         given:
@@ -1005,7 +1005,7 @@ class MockTest extends Specification {
 In the example, we are define that for the first invocation of `UserDao.delete(int)`, this method must return `true`, and for the second and subsequent invocations, `false`.
 
 In the `then:` or `expect:` blocks, we can even specify how many times a method may be called with a number or a range:
-```
+```groovy
 n * method()                   // expect n calls
 (n..m) * method()              // expect n to m calls
 (_..m) * method()              // expect at most m calls
@@ -1019,7 +1019,7 @@ n * _                          // match anything
 ```
 
 For example:
-```
+```groovy
 class MockTest extends Specification {
 	def 'Test service with mock DAO'() {
         given:
