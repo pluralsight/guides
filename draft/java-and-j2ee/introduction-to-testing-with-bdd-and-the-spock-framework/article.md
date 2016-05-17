@@ -236,7 +236,7 @@ Save the file and if the Maven dependencies are not added automatically to the E
 
 To test your environment, create `HelloWorld.groovy` (with *New -> Other -> Groovy class*) in the `spock` package inside the `src/test/groovy` directory:
 
-```
+```groovy
 package spock
 
 import spock.lang.Specification
@@ -341,7 +341,7 @@ hi("Hi");
 
 If you don't pass the parameter, it will be null. Of course, you can define your own parameters (you can omit the type to pass anything):
 ```
-def hi = { a, b -&gt;
+def hi = { a, b ->
     println "$a, $b"
 }
 hi("Hi", "Jerry");
@@ -530,9 +530,9 @@ def 'data-driven test'() {
     x + y == z
  
     where:
-    x &lt;&lt; [3, 19, 71]
-    y &lt;&lt; [4, 23, 12]
-    z &lt;&lt; [7, 42, 83]
+    x << [3, 19, 71]
+    y << [4, 23, 12]
+    z << [7, 42, 83]
 }
 ```
 A data pipe (represented by the left-shift operator, `<<`) connects a variable to a data provider. In the example, the values of each variable are provided by a list, but the data provider can be any iterable object, like a Collection, a String, or other implementations of `Iterable`. Also, the data can be fetched from  external sources, like a database:
@@ -543,7 +543,7 @@ def 'data-driven test'() {
 	//...
  
     where:
-    [id, name, email] &lt;&lt; sql.rows("select id, name, email from table")
+    [id, name, email] << sql.rows("select id, name, email from table")
 }
 ```
 
@@ -555,7 +555,7 @@ def 'data-driven test'() {
 	//...
  
     where:
-    [_, name, email] &lt;&lt; sql.rows("select * from table")
+    [_, name, email] << sql.rows("select * from table")
 }
 ```
 
@@ -576,7 +576,7 @@ x  | _
 3  | _
 19 | _
 71 | _
-y &lt;&lt; [4, 23, 12]
+y << [4, 23, 12]
 z = x + y
 ```
 
@@ -967,8 +967,8 @@ class MockTest extends Specification {
         def service = new UserService(dao: daoMock)
 		
         // For any string passed as parameter return a dummy user from Mock
-        daoMock.get(_ as String) &gt;&gt; { 
-			String email -&gt; new User(email: email)
+        daoMock.get(_ as String) >> { 
+			String email -> new User(email: email)
 		}
  
         when:
@@ -991,8 +991,8 @@ class MockTest extends Specification {
 	    // Creating a mock implementation
         def daoMock = Mock(UserDao)
 		// Setting return values
-		daoMock.delete(_) &gt;&gt; true &gt;&gt; false
-		// Or with a list: daoMock.delete(_) &gt;&gt; [true, false]
+		daoMock.delete(_) >> true >> false
+		// Or with a list: daoMock.delete(_) >> [true, false]
  
         expect:
         daoMock.delete(1) == true
@@ -1025,7 +1025,7 @@ class MockTest extends Specification {
         given:
 	    // Creating a mock implementation
         def daoMock = Mock(UserDao)
-		daoMock.get(_ as String) &gt;&gt; null
+		daoMock.get(_ as String) >> null
  
         def service = new UserService(dao: daoMock)
 		
