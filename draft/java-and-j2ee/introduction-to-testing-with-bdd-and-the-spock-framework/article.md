@@ -85,7 +85,9 @@ Click the *Add...* button
 ![Add... button](https://raw.githubusercontent.com/pluralsight/guides/master/images/11aa69f1-7561-46b9-8dcb-29b807d7753b.png)
 
 Enter the following information and press *OK* (if you're using another version of Eclipse, you can find the correct link to the update site [here](https://github.com/groovy/groovy-eclipse/wiki)):
+
 **Name:** Groovy plugin (or any name you want)
+
 **Location:** http://dist.springsource.org/snapshot/GRECLIPSE/e4.5/
 
 ![Update site information](https://raw.githubusercontent.com/pluralsight/guides/master/images/8e63bcf4-f2dd-4df4-9572-3e5d600154bc.png)
@@ -115,9 +117,13 @@ In the next window, check the option *Create a simple project (skip archetype se
 ![Create new maven project 02](https://raw.githubusercontent.com/pluralsight/guides/master/images/818dd1cd-4e49-48df-b76d-1ec1af0da977.png)
 
 In this window, enter the project information, For instance:  
+
 **Group ID:** com.example
+
 **Artifact ID:** spock
+
 **Version:** 0.0.1-SNAPSHOT
+
 **Packaging:** jar
 
 ![Create new maven project 03](https://raw.githubusercontent.com/pluralsight/guides/master/images/f6f71099-a857-4e51-a443-95ebe651e7fb.png)
