@@ -153,79 +153,79 @@ To specify the output directory for tests (`target/test-classes`) and click *OK*
 Regarding the `pom.xml` file, it should look like this:
 
 ```xml
-&lt;project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"&gt;
-	&lt;modelVersion&gt;4.0.0&lt;/modelVersion&gt;
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
 
-	&lt;groupId&gt;com.example&lt;/groupId&gt;
-	&lt;artifactId&gt;spock&lt;/artifactId&gt;
-	&lt;version&gt;0.0.1-SNAPSHOT&lt;/version&gt;
-	&lt;packaging&gt;jar&lt;/packaging&gt;
+	<groupId>com.example</groupId>
+	<artifactId>spock</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<packaging>jar</packaging>
 
-	&lt;name&gt;spock&lt;/name&gt;
-	&lt;url&gt;http://maven.apache.org&lt;/url&gt;
+	<name>spock</name>
+	<url>http://maven.apache.org</url>
 
-	&lt;build&gt;
-		&lt;plugins&gt;
-			&lt;!-- Required plugin --&gt;
-			&lt;plugin&gt;
-				&lt;!-- The gmavenplus plugin is used to compile Groovy code --&gt;
-				&lt;groupId&gt;org.codehaus.gmavenplus&lt;/groupId&gt;
-				&lt;artifactId&gt;gmavenplus-plugin&lt;/artifactId&gt;
-				&lt;version&gt;1.5&lt;/version&gt;
-				&lt;executions&gt;
-					&lt;execution&gt;
-						&lt;goals&gt;
-							&lt;goal&gt;compile&lt;/goal&gt;
-							&lt;goal&gt;testCompile&lt;/goal&gt;
-						&lt;/goals&gt;
-					&lt;/execution&gt;
-				&lt;/executions&gt;
-			&lt;/plugin&gt;
-			&lt;!-- Optional plugin--&gt;
-			&lt;plugin&gt;
-				&lt;artifactId&gt;maven-surefire-plugin&lt;/artifactId&gt;
-				&lt;version&gt;2.6&lt;/version&gt;
-				&lt;configuration&gt;
-					&lt;useFile&gt;false&lt;/useFile&gt;
-					&lt;includes&gt;
-						&lt;include&gt;**/*Spec.groovy&lt;/include&gt;
-					&lt;/includes&gt;
-				&lt;/configuration&gt;
-			&lt;/plugin&gt;
-		&lt;/plugins&gt;
-	&lt;/build&gt;
+	<build>
+		<plugins>
+			<!-- Required plugin -->
+			<plugin>
+				<!-- The gmavenplus plugin is used to compile Groovy code -->
+				<groupId>org.codehaus.gmavenplus</groupId>
+				<artifactId>gmavenplus-plugin</artifactId>
+				<version>1.5</version>
+				<executions>
+					<execution>
+						<goals>
+							<goal>compile</goal>
+							<goal>testCompile</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			<!-- Optional plugin-->
+			<plugin>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>2.6</version>
+				<configuration>
+					<useFile>false</useFile>
+					<includes>
+						<include>**/*Spec.groovy</include>
+					</includes>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
 
-	&lt;dependencies&gt;
-		&lt;!-- Required dependency for using Spock --&gt;
-		&lt;dependency&gt;
-			&lt;groupId&gt;org.spockframework&lt;/groupId&gt;
-			&lt;artifactId&gt;spock-core&lt;/artifactId&gt;
-			&lt;version&gt;1.0-groovy-2.4&lt;/version&gt;
-			&lt;scope&gt;test&lt;/scope&gt;
-		&lt;/dependency&gt;
-		&lt;!-- Optional dependencies for using Spock --&gt;
-		&lt;dependency&gt; &lt;!-- Specify explicitly the Groovy version that matches the spock version --&gt;
-			&lt;groupId&gt;org.codehaus.groovy&lt;/groupId&gt;
-			&lt;artifactId&gt;groovy-all&lt;/artifactId&gt;
-			&lt;version&gt;2.4.1&lt;/version&gt;
-		&lt;/dependency&gt;
-		&lt;!-- Enables mocking of classes (in addition to interfaces) --&gt;
-		&lt;dependency&gt; 
-			&lt;groupId&gt;cglib&lt;/groupId&gt;
-			&lt;artifactId&gt;cglib-nodep&lt;/artifactId&gt;
-			&lt;version&gt;3.1&lt;/version&gt;
-			&lt;scope&gt;test&lt;/scope&gt;
-		&lt;/dependency&gt;
-		 &lt;!-- Enables mocking of classes without default constructor (together with CGLIB) --&gt;
-		&lt;dependency&gt;
-			&lt;groupId&gt;org.objenesis&lt;/groupId&gt;
-			&lt;artifactId&gt;objenesis&lt;/artifactId&gt;
-			&lt;version&gt;2.1&lt;/version&gt;
-			&lt;scope&gt;test&lt;/scope&gt;
-		&lt;/dependency&gt;
-	&lt;/dependencies&gt;
-&lt;/project&gt;
+	<dependencies>
+		<!-- Required dependency for using Spock -->
+		<dependency>
+			<groupId>org.spockframework</groupId>
+			<artifactId>spock-core</artifactId>
+			<version>1.0-groovy-2.4</version>
+			<scope>test</scope>
+		</dependency>
+		<!-- Optional dependencies for using Spock -->
+		<dependency> <!-- Specify explicitly the Groovy version that matches the spock version -->
+			<groupId>org.codehaus.groovy</groupId>
+			<artifactId>groovy-all</artifactId>
+			<version>2.4.1</version>
+		</dependency>
+		<!-- Enables mocking of classes (in addition to interfaces) -->
+		<dependency> 
+			<groupId>cglib</groupId>
+			<artifactId>cglib-nodep</artifactId>
+			<version>3.1</version>
+			<scope>test</scope>
+		</dependency>
+		 <!-- Enables mocking of classes without default constructor (together with CGLIB) -->
+		<dependency>
+			<groupId>org.objenesis</groupId>
+			<artifactId>objenesis</artifactId>
+			<version>2.1</version>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+</project>
 ```
 
 In the plugins section, we're adding the `gmavenplus-plugin`, required to compile groovy code. Optionally, we can also add the `maven-surefire-plugin` to generate test reports.
