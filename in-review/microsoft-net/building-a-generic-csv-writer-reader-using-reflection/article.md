@@ -19,7 +19,7 @@ CSV format is very useful because it is a text file and any operating system can
 ### Formatting of a CSV file
 
 #### Separator Issues
-In some cases, the file may not be comma separated. Especially if you are using a 3rd party program(e.g. Microsoft Excell), depending on the culture of your machine "separator" might be a different character such as **";"**. This is because of the decimal separator is different in different cultures. In some cultures, the decimal separator is **"."** so the CSV separator can be **","**. But in some cultures decimal separator is **","** so the CSV file has to use **";"** as a separator.
+In some cases, the file may not be comma separated. Especially if you are using a 3rd party program(e.g. Microsoft Excell), depending on the culture of your machine "separator" might be a different character such as `;`. This is because of the decimal separator is different in different cultures. In some cultures, the decimal separator is `.` so the CSV separator can be `,`. But in some cultures decimal separator is `,` so the CSV file has to use `;` as a separator.
 
 For example, if your locale is set to some European culture, such as `fr-FR`, default decimal separator becomes `,` and you need to use `;` in CSV file as column separator:
 ```csv
@@ -47,14 +47,14 @@ If you have text values in your CSV file, you might run into a problem where the
 ```csv
 1, Hello, world!
 ```
-In the above example, our first column is 1 and the second is "Hello, world!", however, a CSV reader would divide the row into 3 columns 1, Hello and world!.
+In the above example, our first column is 1 and the second is `Hello, world!`, however, a CSV reader would divide the row into 3 columns 1, Hello and world!.
 
 To solve this issue we must use quotation marks:
 ```csv
 1, "Hello, world!"
 ```
 
-This way we mean that the string Hello, world! is a single data field.
+This way we mean that the string `Hello, world!` is a single data field.
 
 You can also use quotation mark on single word strings, but it is not necessary.
 ```csv
@@ -69,7 +69,7 @@ We can also have actual quotation marks in our data fields. In this case, we nee
 1,murat,""aykanat""
 2,john,""smith""
 ```
-That would read as; name is murat, lastname is "aykanat".
+That would read as; name is murat, lastname is `aykanat`.
 
 #### Headers
 You can also add headers to the columns.
