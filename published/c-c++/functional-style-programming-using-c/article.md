@@ -1,17 +1,17 @@
-> LEARNING PROGRAMMING AND LEARNING PROGRAMMING LANGUAGE ARE NOT THE SAME. MOST OF OUR TEXTBOOKS TEACH US PROGRAMMING LANGUAGES. IN TRUTH, A PROGRAMMING LANGUAGE IS JUST A TOOL THAT WE USE TO IMPLEMENT AN EXECUTABLE PROGRAM. WE NEED RESOURCES THAT TEACH US HOW TO _SOLVE PROBLEMS_ USING A PROGRAMMING LANGUAGE.
+> Learning programming and learning programming language are not the same. most of our textbooks teach us programming languages. In truth, a programming language is just a tool that we use to implement an executable program. We need resources that teach us how to _solve problems_ using a programming language.
 
 Introduction
 ========================================================================================================
 
 As early as elementary school, we learned what is a mathematical function and how to write it. For example, ``` f(x)=x^2``` is a simple quadratic function.
 
-A function describes a mathematical statement. The above function maps the relationship between two sets of natural numbers as given at the right in graph below. Often, it is impossible to show such a mapping graphically when we have a large number of discrete elements in either of the sets. Therefore, for convenience we express a function by writing it as an inherent relation between the sets.
+A function describes a mathematical statement. The above function maps the relationship between two sets of natural numbers as given at the right in the graph below. Often, it is impossible to show such a mapping graphically when we have a large number of discrete elements in either of the sets. Therefore, for convenience, we express a function by writing it as an inherent relation between the sets.
 
 ![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/6a1dd0fd-87a9-4864-a01f-4a916d534c15.jpg)
 
 This is perhaps the simplest way to demonstrate relationships when we deal with sets of numbers (integer, natural number, real numbers, complex numbers, etc.)
 
-We can also think of a function as a machine which has takes in inputs and produces an output by using a mechanism that maps the relationship from input to output. The sets to which the inputs and output belong are also important. A function often has a name that allows us to identify it. Typically a function is deterministic -- it can produce only a single output from an unique set of inputs.
+We can also think of a function as a machine which has taken in inputs and produces an output by using a mechanism that maps the relationship from input to output. The sets to which the inputs and output belong are also important. A function often has a name that allows us to identify it. Typically a function is deterministic, it can produce only a single output from a unique set of inputs.
 
 **Philosophical Background**
 ----------------------------
@@ -24,11 +24,11 @@ The concept of a Turing machine influenced imperative programming paradigm such 
 
 On the other hand, lambda calculus influenced the birth of several functional languages such as <span><span> *LISP*</span></span>, <span><span> *ML*</span></span>, <span><span> *Haskell*</span></span>, and <span><span> *Erlang*</span></span>.
 
-Although we can solve many more problems by using those programming languages than by using high school math, it is often easy to learn programming by solving smaller problems first. In this book (or booklet), we will learn how to solve a problem of known category. At the beginning, we will see how a simple arithmetic function can be converted into a computer program. Later, we will learn to convert more complex functions. We will also learn how to compose a function using other functions. A function can also be built using itself through recursion. We will see how they can be converted using usual pattern matching.
+Although we can solve many more problems by using those programming languages than by using high school math, it is often easy to learn programming by solving smaller problems first. In this book (or booklet), we will learn how to solve a problem of known category. In the beginning, we will see how a simple arithmetic function can be converted into a computer program. Later, we will learn to convert more complex functions. We will also learn how to compose a function using other functions. A function can also be built using itself through recursion. We will see how they can be converted using usual pattern matching.
 
-Rather than learning alien text, we will try to use our common sense, simple IQ and pattern matching to convert a mathematical function into a computer program. Although we will write all the code in the language <span><span> *C*</span></span>, any other language can be used instead. If we use other languages, we may need to transform the given pragrams to that target language. So, if we do not know any other language, it is better to stick to <span><span> *C*</span></span>.
+Rather than learning alien text, we will try to use our common sense, simple IQ and pattern matching to convert a mathematical function into a computer program. Although we will write all the code in the language <span><span> *C*</span></span>, any other language can be used instead. If we use other languages, we may need to transform the given programs to that target language. So, if we do not know any other language, it is better to stick to <span><span> *C*</span></span>.
 
-Anyway, instead of coding (writing in computer to execute it physically) the converted code in this book, we will try to learn the programs by jotting it down independently. Initially, most problems given here are small and easy to write on a notebook (paper) by pen or pencil. In this way, the learner becomes familiar with the relationship between theoretical formulas and the implemented programs.
+Anyway, instead of coding (writing in a computer to execute it physically) the converted code in this book, we will try to learn the programs by jotting it down independently. Initially, most problems given here are small and easy to write on a notebook (paper) by pen or pencil. In this way, the learner becomes familiar with the relationship between theoretical formulas and the implemented programs.
 
 Simple Programs
 ============================================================================================================
@@ -45,7 +45,7 @@ The identity function (or a function in which output mirrors the input) looks li
 ![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/6a1dd0fd-87a9-4864-a01f-4a916d534c15.jpg)
 
 
-function `id(x) = x` can be converted into -
+Function `id(x) = x` can be converted into:
 
 ```c
     int id(int x){
@@ -55,7 +55,7 @@ function `id(x) = x` can be converted into -
 
 ### Successor Function
 
-Successor functions use the `+` operator to add 1 to the input and return its successor. 
+Successor functions use the `+` operator to add `1` to the input and return its successor. 
 
    <span>**Operator**</span> | <span>**Name**</span>
   ---------------------------|-----------------------
@@ -65,7 +65,7 @@ Successor functions use the `+` operator to add 1 to the input and return its su
               `/` | Division
               `%` | Reminder
 
-function `suc(x) = x + 1` can be converted to:
+Function `suc(x) = x + 1` can be converted to:
 
 ```c
     int suc(int x){
@@ -126,7 +126,7 @@ This can be simplified:
 sum_{i=1}^ni = n(n+1)/2
 ```
 
-It can be converted into a programming function as -
+It can be converted into a programming function as:
 ```c
     int sum(int n){
      return n * (n + 1) / 2;
@@ -136,7 +136,7 @@ It can be converted into a programming function as -
 #### Exercise 
 
 Convert the arithmetic functions into
-programming function – 
+programming function:
 
 1. `f1(x) = x + 2$ $f2(x) = x^3$ $f3(x) = 2x^2 + 3`
 
@@ -153,10 +153,10 @@ programming function –
 **Programs for Binary Function**
 --------------------------------
 
-function, such as ‘add’ in arithmetic can be defined as –
+function, such as ‘add’ in arithmetic can be defined as:
 `add(x, y) = x + y`
 
-It can be converted into a programming function as -
+It can be converted into a programming function as:
 ```c
     int add(int x, int y){
      return x + y;
@@ -165,7 +165,7 @@ It can be converted into a programming function as -
 
 function in arithmetic – `addSquare(x, y) = x^2 + 2xy + y^2`
 
-It can be converted into a programming function as -
+It can be converted into a programming function as:
 ```c
     int addSquare(int x, int y){
      return (x * x) + (2 * x * y) + (y * y);
@@ -184,7 +184,7 @@ operator `>`.
 `b`. Otherwise it is `0` (<span>*`False`*</span> in meaning). So, our
 function is – `isLarger(x, y) = x > y`
 
-The corresponding program is –
+The corresponding program is:
 
    <span>**Operator**</span> | <span>**Name**</span>
   ---------------------------|--------------------------
@@ -204,7 +204,7 @@ The corresponding program is –
 #### Exercise 
 
 Convert the arithmetic functions
-into programming function – 
+into programming function:
 
 1. `sub(x,y) = x - y`
 
@@ -225,10 +225,10 @@ equal. determine if the two given numbers are not equal.
 
 ### 3-ary Function
 
-A ternary function takes three parameter. For example –
+A ternary function takes three parameter. For example:
 `avgOfThree(x, y, z) = (x + y + z) / 3`
 
-It can be converted into a programming function as -
+It can be converted into a programming function as:
 ```c
     int avgOfThree(int x, int y, int z){
      return (x + y + z) / 3;
@@ -240,10 +240,10 @@ It can be converted into a programming function as -
 In a n-ary function, number of parameters is n. In this example, square of distance
 is an useful function to compare two distances.
 
-The squareOfDistane function
+The `squareOfDistance` function:
 `squareOfDistance(x_1, y_1, x_2, y_2) = (x_1-x_2)(x_1-x_2) + (y_1-y_2)(y_1-y_2)`
 
-can be converted into a programming function as -
+Can be converted into a programming function as:
 ```c
     int squareOfDistance(int x1, int y1, 
                          int x2, int y2){
@@ -259,12 +259,15 @@ Composition
 
 A function can be composed using other functions. It often simplifies
 the expression. For example, the function, `squareOfDistance` can be
-simplified if we use the function `square`. It is shown here –
-``` square(x) = x 	imes x``` 
-``` squareOfDistance_1(x_1,y_1,x_2,y_2)=square(x_1-x_2)+square(y_1-y_2)``` 
-```c
-Let us write it in programming language.
+simplified if we use the function `square`. It is shown here:
+``` 
+square(x) = x times x
 
+squareOfDistance_1(x_1,y_1,x_2,y_2) = square(x_1-x_2)+square(y_1-y_2)
+``` 
+
+Let us write it in a programming language:
+```c
     int square(int x){
             return x * x;
     }
@@ -287,13 +290,16 @@ chapter in new form using composition.
 
 ### The Function `Poly2`
 
-The old function was defined as – ``` Poly2(x) = x^4 + x^2 + 1``` 
+The old function was defined as `Poly2(x) = x^4 + x^2 + 1`.
 
-Now we will re-define it as `Poly2_1` using the function `square`.
-``` square(x) = x 	imes x``` 
-``` Poly2_1(x) = square(square(x)) + square(x) + 1``` 
+Now we will re-define it as `Poly2_1` using the function `square`:
+``` 
+square(x) = x times x
 
-In programming, we can write it as –
+Poly2_1(x) = square(square(x)) + square(x) + 1
+``` 
+
+In C, we can write it as:
 ```c
     int square(int x){
             return x * x;
@@ -305,13 +311,19 @@ In programming, we can write it as –
 ```
 ### The Function sumOfQube
 
-The old function was defined as – ``` sumOfQube_1(x) = (x(x+1)/2)^2``` 
+The old function was defined as `sumOfQube_1(x) = (x(x+1)/2)^2`.
 
 Now we will re-define it as `sumOfQube` using the function `square` and
-`sum`. ``` square(x) = x 	imes x``` ``` sum(x) = (square(x) + x) / 2``` 
-``` sumOfQube(x) = square(sum(x))``` 
+`sum`:
+```
+square(x) = x times x
 
-In programming, we can write it as –
+sum(x) = (square(x) + x) / 2
+
+sumOfQube(x) = square(sum(x))
+``` 
+
+In C, we can write it as:
 
     int square(int x){
             return x * x;
@@ -327,13 +339,13 @@ In programming, we can write it as –
 
 #### Exercise
 
-1. Prove that – 
+1. Prove that:
 
-  a. `x^3 = x 	imes square(x)`
+  a. `x^3 = x times square(x)`
 
   b. `x^8 = square(square(square(x)))` 
 
-2. Simplify them by composing other functions and write programs accordingly – 
+2. Simplify them by composing other functions and write programs accordingly:
 
  a. `qube_c(x) = x^3`
 
@@ -341,7 +353,7 @@ In programming, we can write it as –
 
  c. `toPower4(x) = x^4`
 
-3. Write programs for – 
+3. Write programs for:
 
  a. `parabola(a,b,c,x) = ax^2 + bx + c`
 
@@ -360,30 +372,35 @@ From this chapter, we will not write same function twice.
 **General Idea**
 ----------------
 
-in a function, we may get different result based on different conditions
+In a function, we may get different result based on different conditions
 on the parameters. For example, the function <span>*absolute*</span>
 negates its parameter if it is negative so that it can be turned into
 positive (negative of negative is positive) to produce the result.
 Otherwise (when parameter is already positive), it returns back the
 result exactly same as the parameter. Thus, the function can be written
-as – 
+as:
 ``` 
-abs(x) = egin{dcases*}
-        x & when `x geq 0`\n        -x & otherwise
+abs(x) = begin{dcases*}
+        x & when `x geq 0`
+        -x & otherwise
         end{dcases*}
 ``` 
 
-compute based on conditions of parameters.
+Compute based on conditions of parameters.
 
-The general idea of a conditional function is as follows –
+The general idea of a conditional function is as follows:
 
 ``` 
-f(x) = egin{dcases*}
-        e_1 & when `1^{st}` condition satisfies\n        e_2 & when `2^{nd}` condition satisfies\n        e_3 & when `3^{rd}` condition satisfies\n        dots & dots \n        e_n & otherwise
+f(x) = begin{dcases*}
+        e_1 & when `1^{st}` condition satisfies
+        e_2 & when `2^{nd}` condition satisfies
+        e_3 & when `3^{rd}` condition satisfies
+        dots & dots 
+        e_n & otherwise
         end{dcases*}
 ``` 
 
-The corresponding code is –
+The corresponding code is:
 ```c
     int f(int x){
             if( 1st condition )
@@ -407,8 +424,9 @@ Now we will present some functions those use conditions.
 ### Absolute
 
 ``` 
-abs(x) = egin{dcases*}
-        x & when `x geq 0`\n        -x & otherwise
+abs(x) = begin{dcases*}
+        x & when `x geq 0`
+        -x & otherwise
         end{dcases*}
 ``` 
 It's code:
@@ -424,11 +442,12 @@ It's code:
 ### Filter
 
 ``` 
-filter_{LT}(x,y) = egin{dcases*}
-        x & when `x geq y`\n        0 & otherwise
+filter_{LT}(x,y) = begin{dcases*}
+        x & when `x geq y`
+        0 & otherwise
         end{dcases*}
 ``` 
-It's code:
+Its code:
 ```c
     int filterLT(int x, int y){
             if( x >= y )
@@ -445,16 +464,17 @@ By composing functions, we can construct many familiar functions.
 Although they are not always more efficient, for obvious reason, we will
 do it.
 
-Here the function <span>*abs*</span> is rewritten as –
+Here the function <span>*abs*</span> is rewritten as:
 ``` 
-switcher(a,b,c,d) = egin{dcases*}
-        c & when `a geq b`\n        d & otherwise
+switcher(a,b,c,d) = begin{dcases*}
+        c & when `a geq b`
+        d & otherwise
         end{dcases*}
-``` 
-``` 
+
 abs_1(x) = switcher(x, 0, x, -x)
 ``` 
 
+In C:
 ```c
     int switcher(int a,int b,int c,int d){
             if(a >= b)
@@ -469,7 +489,7 @@ abs_1(x) = switcher(x, 0, x, -x)
 
 ### Tuition Fee Calculator
 
-Lets think a problem –
+Lets think a problem.
 
 Calculate your total tuition fee due based on the condition that if your
 due of previous semester tuition fee is more that 1000 currency, your
@@ -479,23 +499,25 @@ mathematically.
 
 ``` 
 tftp(p, c)=egin{dcases*}
-        2	imes p + c & when `p > 1000`\n        p + c & otherwise
+        2 times p + c & when `p > 1000`
+        p + c & otherwise
         end{dcases*}
 ``` 
 
-If we use the function `switcher`, we can rewrite it as –
+If we use the function `switcher`, we can rewrite it as:
 
 ``` 
 hbox{em tftp}_1(p, c) = 
-switcher(p, 1001, 2 	imes p, p) + c
+    switcher(p, 1001, 2 times p, p) + c
 ``` 
  or, 
 
-``` hbox{em tftp}_2(p, c) = 
-switcher(p, 1001, p, 0) + p + c
+```
+hbox{em tftp}_2(p, c) = 
+    switcher(p, 1001, p, 0) + p + c
 ``` 
 
-In programming, the functions are –
+In programming, the functions are:
 
 ```c
     int switcher(int a,int b,int c,int d){
@@ -516,7 +538,7 @@ Well, the parameters <span>`p`</span> and <span>`c`</span> does not mean
 anything. So, often it misleads us if we use meaningless names. It is
 also important to be able to read them easily. We can take different
 approaches to avoid confusions and increase readibility. They are shown
-as the function <span>*`tftp2`*</span> is rewritten –
+as the function <span>*`tftp2`*</span> is rewritten as:
 
 ```c
     /*
@@ -530,7 +552,7 @@ as the function <span>*`tftp2`*</span> is rewritten –
             return switcher(p, 1001, p, 0) + p + c;
     }
 ```
-or, in the best style –
+Or, in the best style:
 ```c
     int tftp2(int previousDue, int currentFee){
             return switcher(previousDue, 1000,
@@ -539,14 +561,14 @@ or, in the best style –
                             + currentFee;
     }
 ```
-or, in a good style –
+Or, in a good style:
 ```c
     int tftp2(int preDue, int curFee){
             return switcher(preDue, 1001, preDue, 0) 
                    + preDue + curFee;
     }
 ```
-or, we can write a word to keep it small and yet understandable.
+Or, we can write a word to keep it small and yet understandable:
 ```c
     int tftp2(int due, int fee){
             return switcher(due,1001,due,0)+due+fee;
@@ -571,13 +593,18 @@ given at the right side.
          40-59 | E | 5
    0-39, <0, >100 | F | 6
 
-The function that solves the problem is –
+The function that solves the problem is:
 ``` 
-getGrade(mark) = egin{dcases*}
-        1 & when `mark geq 90` and `mark leq 100`\n        2 & else when `mark geq 80`\n        3 & else when `mark geq 70`\n        4 & else when `mark geq 60`\n        5 & else when `mark geq 40`\n        6 & otherwise
+getGrade(mark) = begin{dcases*}
+        1 & when `mark geq 90` and `mark leq 100`
+        2 & else when `mark geq 80`
+        3 & else when `mark geq 70`
+        4 & else when `mark geq 60`
+        5 & else when `mark geq 40`
+        6 & otherwise
         end{dcases*}
 ``` 
- Hence, the code for the above function is –
+Hence, the code for the above function is:
 ```c
     int getGrade(int mark){
             if( mark >= 90 && mark <= 100)
@@ -599,10 +626,15 @@ In the above example, the function gives us a numeric value that in our
 mind represents a grade. But it is often necessary to give user a direct
 result instead of a numerical representation. If the function can
 generate result with letter grades directly, it will be definitely more
-understandable as shown here – 
+understandable as shown here: 
 ``` 
-getGradeLetter(mark) = egin{dcases*}
-        hbox{'A'} & when `mark geq 90` and `mark leq 100`\n        hbox{'B'} & else when `mark geq 80`\n        hbox{'C'} & else when `mark geq 70`\n        hbox{'D'} & else when `mark geq 60`\n        hbox{'E'} & else when `mark geq 40`\n        hbox{'F'} & otherwise
+getGradeLetter(mark) = begin{dcases*}
+        hbox{'A'} & when `mark geq 90` and `mark leq 100`
+        hbox{'B'} & else when `mark geq 80`
+        hbox{'C'} & else when `mark geq 70`
+        hbox{'D'} & else when `mark geq 60`
+        hbox{'E'} & else when `mark geq 40`
+        hbox{'F'} & otherwise
         end{dcases*}
 ``` 
 Since the letter grades are actually letters or
@@ -619,7 +651,7 @@ set of all characters or visible symbols a computer can show.
   double | large real number
   char | character
 
-The code for the above function is –
+The code for the above function is:
 ```c
     char getGradeLetter(int mark){
             if( mark >= 90 && mark <= 100)
@@ -658,13 +690,21 @@ prices for different item numbers are given at the right.
       Water | 7 | 20.00
    Cold Drinks | 8 | 15.00
 
-The function that solves the problem is –
+The function that solves the problem is:
 ``` 
-{hbox{em getPrice}}({hbox{em item}}) = egin{dcases*}
-        60.00 & when {em item} `= 1`\n        80.00 & when {em item} `= 2`\n        100.50 & when {em item} `= 3`\n        130.75 & when {em item} `= 4`\n        85.00 & when {em item} `= 5`\n        15.25 & when {em item} `= 6`\n        20.00 & when {em item} `= 7`\n        15.00 & when {em item} `= 8`\n        0 & otherwise 
+{hbox{em getPrice}}({hbox{em item}}) = begin{dcases*}
+        60.00 & when {em item} `= 1`
+        80.00 & when {em item} `= 2`
+        100.50 & when {em item} `= 3`
+        130.75 & when {em item} `= 4`
+        85.00 & when {em item} `= 5`
+        15.25 & when {em item} `= 6`
+        20.00 & when {em item} `= 7`
+        15.00 & when {em item} `= 8`
+        0 & otherwise 
         end{dcases*}
 ``` 
-Hence, the code for the above function is –
+Hence, the code for the above function is:
 ```c
     float getPrice(int item){
             switch( item ){
@@ -702,9 +742,9 @@ Hence, the code for the above function is –
 Note: `2^{31}=2,147,483,648` and `2^{63}=9,223,372,036,854,775,808`
 
 For a realistic approach, we can add a simple function with it that
-calculates total price of an item for a quantity -
+calculates total price of an item for a quantity:
 ``` 
-calcTotalPrice(item, quantity) = quantity 	imes getPrice(item)
+calcTotalPrice(item, quantity) = quantity times getPrice(item)
 ``` 
 
 The code:
@@ -716,7 +756,7 @@ The code:
 
 Recursions 
 ============================================================================================================
-> Easy tricks to repeat
+### Easy tricks to repeat
 
 Recursion is a technique that enhances capabilities of programs very
 much. For example, if we want to write an exponential function
@@ -727,12 +767,12 @@ operator for exponential operation. We can also understand `k` times and
 we can repeat this multiplication by counting `1` to `k`.
 
 But how to write the function using multiplication only? We can write
-`exp(x,k)=x 	imes x 	imes dots 	imes x` (`k` times). If we knew `k`
+`exp(x,k)=x times x times dots times x` (`k` times). If we knew `k`
 is `2`, the expression becomes `exp(x,2) = x 	imes x`, if it is `3`,
-the expression is `exp(x, 3) = x 	imes x 	imes x` and so on. But when
+the expression is `exp(x, 3) = x times x times x` and so on. But when
 `k` is unknown, then it is difficult to write in very clear way. Most
 importantly, C programming does not support any expression like
-‘`x 	imes x 	imes dots 	imes x` (`k` times)’.
+‘`x times x times dots times x` (`k` times)’.
 
 **Intuition of Recursive definition**
 -------------------------------------
@@ -744,10 +784,13 @@ twisted at the first time. We will see some analogous definition in our
 society to understand its power.
 
 But just imagine a simple definition of <span><span>
-*human*</span></span> (according to Quran and Bible) - ‘Adam and Eve
+*human*</span></span> (according to Quran and Bible):
+>‘Adam and Eve
 were <span><span> *human*</span></span> and any living mammal that borns
 from another <span><span> *human*</span></span> is a <span><span>
-*human*</span></span>’. This definition certainly covers all the humans.
+*human*</span></span>’. 
+
+This definition certainly covers all the humans.
 Here <span><span> *human*</span></span> is defined from the definition
 of another human and it is called recursion or induction. In recursive
 (or inductive) defintion, there must be at least one base point for
@@ -759,18 +802,28 @@ have all kinds of numbers on our knowledge including real numbers,
 complex numbers, etc.. We need to define natural number. Here is the
 plain definition - `0` is a natural number and `n+1` is a natural number
 if `n` is a natural number. We can use it to write a function to know
-whether a number is natural –
-``` {hbox{em isNatural}}(x)=egin{dcases*}
-        {hbox{em true}}& when `x=0`\n        {hbox{em false}}& when `x<0`\n        {hbox{em isNatural}}(x-1) & otherwise
-        end{dcases*}``` 
+whether a number is natural
+``` 
+{hbox{em isNatural}}(x)=begin{dcases*}
+        {hbox{em true}}& when `x=0`
+        {hbox{em false}}& when `x<0`
+        {hbox{em isNatural}}(x-1) & otherwise
+        end{dcases*}
+``` 
 
 Similarly we can write another function to distinguish an animal as
-human – ``` {hbox{em isHuman}}(x)=egin{dcases*}
-        {hbox{em true}}& when `x=` {em Adam}\n        {hbox{em true}}& when `x=` {em Eve}\n        {hbox{em false}}& when `x=` {em Amoeba}\n        {hbox{em isHuman}}({hbox{em mother of }}x) & otherwise
-        end{dcases*}``` 
+human:
+``` 
+{hbox{em isHuman}}(x)=begin{dcases*}
+        {hbox{em true}}& when `x=` {em Adam}
+        {hbox{em true}}& when `x=` {em Eve}
+        {hbox{em false}}& when `x=` {em Amoeba}
+        {hbox{em isHuman}}({hbox{em mother of }}x) & otherwise
+        end{dcases*}
+``` 
 
 It says, `x` is a human if `x` is <span>*Adam*</span> or
-<span>*Eve*</span>. `x` is not human is `x` is <span>*Amiba*</span>.
+<span>*Eve*</span>. `x` is not human if `x` is <span>*Amiba*</span>.
 Besides `x` is also human if and only if mother of `x` is also human.
 Well, in the real process, to justify an animal as human, we need to
 know the total family tree from <span>*Adam*</span> and
@@ -781,9 +834,9 @@ In mathematics and computer science, this recursive style of definition
 often expresses a fact in a very simple and intuitive way, which helps
 to formalize an algorithm or program in very effective way.
 
-<span> To create a recursive definition of a function, we need to forget
+To create a recursive definition of a function, we need to forget
 how it really works. We simply need to know if the definition is correct
-mathematically. </span>
+mathematically.
 
 For an easy construction of the definition, here we would like to
 present a tips. We have to remember that the function has one (or more)
@@ -798,9 +851,8 @@ driving parameter(s).
 2. Recursion part  
 
    The function itself will be appeared with smaller (typically
-        1 step) value or size of the driving parameter(s). For example,
-        `exp(x-1)`. This is called induction
-        hypothesis (HI).
+   1 step) value or size of the driving parameter(s). For example,
+   `exp(x-1)`. This is called induction hypothesis (HI).
 
     - The induction hypothesis often needs to be computed with
         something else to be equal to the original definition. For
@@ -823,16 +875,16 @@ We will define `exp(x,k)`. Here `x` is the base and `k` is the power. So,
 know that the expression `exp(x,k-1)` exists in this part because the 1
 step smaller value of `k` is `k-1`. `x` will remain same. Now it is
 necessary to multiply it to `x` to be equal to `exp(x,k)`. Therefore, the
-full expression becomes `exp(x,k) = x 	imes exp(x,k-1)`. Now together the
-function is looks like –
+full expression becomes `exp(x,k) = x times exp(x,k-1)`. Now together the
+function is looks like:
 
 ``` 
 exp(x,k) =
         1, when `k=0`
-        x 	imes exp(x,k-1), otherwise
+        x times exp(x,k-1), otherwise
 ``` 
 
-Obviously, the code for the above function is –
+Obviously, the code for the above function is:
 ```c
     int exp(int x, int k){
      if( k == 0 )
@@ -847,7 +899,7 @@ Obviously, the code for the above function is –
 Let us see whether the above function, `exp(x,k)` is really `x^k`. We
 can prove it by using induction on `k`.
 
-Case 1. `k=0`.
+**Case 1.** `k=0`.
 
                . | .
   ---------------|--------------
@@ -856,8 +908,7 @@ Case 1. `k=0`.
   `	herefore exp(x,0) = x^0` | from (1) and (2)
 
 
-Case 2. `k 
-eq 0`.
+**Case 2.** `k eq 0`.
 
 We want to prove that `exp(x,k)=x^k`. So, naturally `exp(x,k-1)`
 supposed to be `x^{k-1}`. We will take this as the induction hypothesis.
@@ -865,9 +916,9 @@ supposed to be `x^{k-1}`. We will take this as the induction hypothesis.
                   . | .
   ------------------|------------------
   `exp(x,k-1) = x^{k-1}` | …(1) by induction hypothesis
-  so, `x 	imes x^{k-1} = x^{k-1+1}` | we know from arithmatic
-  so, `x 	imes x^{k-1} = x^k` | `k-1+1=k`
-  so, `x 	imes exp(x,k-1) = x^k` | from (1)
+  so, `x times x^{k-1} = x^{k-1+1}` | we know from arithmatic
+  so, `x times x^{k-1} = x^k` | `k-1+1=k`
+  so, `x times exp(x,k-1) = x^k` | from (1)
   `	herefore exp(x,k) = x^k` | from the function
 
 
@@ -875,7 +926,7 @@ supposed to be `x^{k-1}`. We will take this as the induction hypothesis.
 -------------
 
 Factorial is another arithmetic function that is informally,
-`x! = x 	imes (x-1) 	imes ... 	imes 1` . We can define it
+`x! = x times (x-1) times ... times 1` . We can define it
 recursively. First, it has the only parameter, `x`. We know that `x` can
 be at least `0` and `factorial(0)=1`. This is our base
 part. Now in the recursion part it must contain
@@ -883,14 +934,14 @@ part. Now in the recursion part it must contain
 make it equal to `factorial(x)`. See the proof later for a
 better understanding.
 
-Now our function looks like –
+Now our function looks like:
 ``` 
 factorial(x)=
         1 , when `x=0`
-        x 	imes factorial(x-1), otherwise
+        x times factorial(x-1), otherwise
 ``` 
 
-Obviously, the code for the above function is –
+Obviously, the code for the above function is:
 ```c
     int factorial(int x){
      if( x == 0 )
@@ -907,7 +958,7 @@ really `x!`. We can prove it by using induction on `x`.
 
 Case 1. `x=0`.
 
-  `factorial(0) = 1 ` by definition, 0! = 1
+  `factorial(0) = 1 ` by definition, `0! = 1`
   ---------------------------------- -- -----------------------
 
 Case 2. `x 
@@ -929,14 +980,16 @@ as the induction hypothesis.
 **Fibonacci**
 -------------
 
-Now our function looks like –
+Now our function looks like:
 ``` 
 {hbox{em fibonacci}}(x)=egin{dcases*}
-        0 & when `x=0`\n        1 & when `x=1`\n        {hbox{em fibonacci}}(x-1) + {hbox{em fibonacci}}(x-2) & otherwise
+        0 & when `x=0`
+        1 & when `x=1`
+        {hbox{em fibonacci}}(x-1) + {hbox{em fibonacci}}(x-2) & otherwise
         end{dcases*}
 ``` 
 
-Obviously, the code for the above function is –
+Obviously, the code for the above function is:
 ```c
     int fibonacci(int x){
      if( x == 0 )
@@ -953,12 +1006,13 @@ Obviously, the code for the above function is –
 ------------
 
 ``` 
-{hbox{em add}}(x,y)=egin{dcases*}
-        x & when `y=0`\n        suc({hbox{em add}}(x,y-1)) & otherwise
+{hbox{em add}}(x,y)=begin{dcases*}
+        x & when `y=0`
+        suc({hbox{em add}}(x,y-1)) & otherwise
         end{dcases*}
 ``` 
 
-Obviously, the code for the above function is –
+Obviously, the code for the above function is:
 ```c
     int suc(int x){
             return x + 1;
@@ -979,13 +1033,17 @@ division of two numbers by using only subtraction.
 **Series**
 ----------
 
-`sum_{i=1}^ni^4 = 1^4 + 2^4 + ldots + n^4` 
-can be rewritten as – 
+```
+sum_{i=1}^ni^4 = 1^4 + 2^4 + ldots + n^4
 ``` 
-{hbox{em sumOfQuad}}(n)=egin{dcases*}
-        1 & when `n=1`\n        {hbox{em exp}}(n,4) + {hbox{em sumOfQuad}}(n-1) & otherwise
+Can be rewritten as:
+``` 
+{hbox{em sumOfQuad}}(n)=begin{dcases*}
+        1 & when `n=1`
+        {hbox{em exp}}(n,4) + {hbox{em sumOfQuad}}(n-1) & otherwise
         end{dcases*}
 ```
+In C:
  
 ```c
     int sumOfQuad(int n){
@@ -999,8 +1057,12 @@ can be rewritten as –
 
 ### A Similar Series
 
-A similar, in fact, more generalized series is –
-`sum_{i=1}^ni^k = 1^k + 2^k + ldots + n^k` It can be rewritten as –
+A similar, in fact, more generalized series is:
+```
+sum_{i=1}^ni^k = 1^k + 2^k + ldots + n^k
+``` 
+
+It can be rewritten as:
 
 ``` 
 {hbox{em sumOfPow}}(n,k)=egin{dcases*}
@@ -1008,7 +1070,7 @@ A similar, in fact, more generalized series is –
         end{dcases*}
 ``` 
 
-It is converted into the program –
+It is converted into the program:
 
 ```c
     int sumOfPow(int n, int k){
@@ -1022,20 +1084,23 @@ It is converted into the program –
 
 ### A Product Series
 
-A general product series can be rewritten as –
-`prod_{i=1}^ni^k = 1^k 	imes 2^k 	imes ldots 	imes n^k` 
+A general product series can be rewritten as:
+```
+prod_{i=1}^ni^k = 1^k 	imes 2^k 	imes ldots 	imes n^k
+``` 
 
 See how we can get a product series from the previous series by only
-changing the base case result and by replacing `+` by `	imes` in the
+changing the base case result and by replacing `+` by `times` in the
 recursion part. Obviously, we should change the name of the function.
 
 ``` 
-{hbox{em prodOfPow}}(n,k)=egin{dcases*}
-        1 & when `n=1`\n        {hbox{em exp}}(n,k) 	imes {hbox{em prodOfPow}}(n-1,k) & otherwise
+{hbox{em prodOfPow}}(n,k)=begin{dcases*}
+        1 & when `n=1`
+        {hbox{em exp}}(n,k) times {hbox{em prodOfPow}}(n-1,k) & otherwise
         end{dcases*}
 ``` 
 
-Here is the code –
+Here is the code:
 ```c
     int prodOfPow(int n, int k){
      if( n == 0 )
@@ -1049,17 +1114,17 @@ Here is the code –
 ### Natural Square Root
 
 In this example, we will calculate the natural square root of a number
-`n`. A natural square root is a natural number that is integer and also
+`n`. A natural square root is a natural number that is an integer and also
 positive. We will examine a very easy function to do that. In this
 function, `0` will first be tested if it is the square root of `n`. If
 the square root of `n` is not a natural number, the smallest larger
 value (`sqrt{n}+1`) will be accepted as an approximation. For each test
 fails, the next natural number will be tested similarly.
 
-The logic behind the condition <span>square(k) >= n</span> is that
-`sqrt{n}=k` if and only if `k^2=n` and `sqrt n+1=k+1` and then
-`(k+1)^2 > n`. Since the value of <span>k</span> is increasing from
-<span>0</span> one by one, either `sqrt n ` of `sqrt n+1` will be
+The logic behind the condition `square(k) >= n` is that
+`sqrt{n} = k` if and only if `k^2 = n` and `sqrt n+1 = k+1` and then
+`(k+1)^2 > n`. Since the value of `k` is increasing from
+`0` one by one, either `sqrt n ` of `sqrt n+1` will be
 accepted as the natural square root of `n`.
 
 ```c
@@ -1100,7 +1165,7 @@ Can you explain how the code below determines a number as a prime?
 
 ### Robot Move
 
-<span>**Problem:**</span> Suppose we have a two dimensional grid of `N`
+<span>**Problem:**</span> Suppose we have a two-dimensional grid of `N`
 columns and `M` rows. We name a cell of it in terms of its vertical and
 horizontal index (`x`,`y`). We have a robot that can move either to one
 cell left or one cell below. It cannot cross the border of the grid
@@ -1113,7 +1178,7 @@ most corner, cell (`0`,`0`).
 The <span>goal</span> of its move is to reach the cell (`0`,`0`). It can
 move only <span>downward</span> or <span>left</span>.
 
-If the robot is placed at the cell (`0`,`0`), it needs `0` move to reach
+If the robot is placed in the cell (`0`,`0`), it needs `0` move to reach
 the goal and hence trivially there is only one way to reach the goal.
 From all the cells in the left-most column ((`0`,`1`), (`0`,`2`),
 `ldots`), the robot can move only downward. So, from each of these
@@ -1125,8 +1190,10 @@ the number of possible ways to reach the goal can be determined by
 adding that of those two cells. So, our function is as follows:
 
 ``` 
-{hbox{em ways}}(x,y)=egin{dcases*}
-        1 & when `x=0` or `y=0`\n        ways(x-1,y)+ways(x,y-1) & otherwise\n        end{dcases*}
+{hbox{em ways}}(x,y)=begin{dcases*}
+        1 & when `x=0` or `y=0`
+        ways(x-1,y)+ways(x,y-1) & otherwise
+        end{dcases*}
 ``` 
 
 Now we can write our function in C very easily:
