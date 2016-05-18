@@ -18,7 +18,7 @@ We can also think of a function as a machine which has taken in inputs and produ
 
 Using different mathematical strategies, we can solve problems under various domains.
 
-One philosophical foundation of computer programming was to represent or express all kinds of mathematical problems by a single language and solve them using generalized mathematics. The result was two equivalent systems -- <span><span> **the Turing machine**</span></span> and <span><span> **lambda calculus**</span></span>.
+One philosophical foundation of computer programming was to represent or express all kinds of mathematical problems by a single language and solve them using generalized mathematics. The result was two equivalent systems, <span><span> **the Turing machine**</span></span> and <span><span> **lambda calculus**</span></span>.
 
 The concept of a Turing machine influenced imperative programming paradigm such as those of <span><span> *Assembly*</span></span>, <span><span> *C*</span></span>, <span><span> *C++*</span></span>, <span><span> *Java*</span></span>, <span><span> *Ruby*</span></span>, <span><span> *Python*</span></span>, and other programming languages. 
 
@@ -498,7 +498,7 @@ fee of current semester. We can write a function to describe it
 mathematically.
 
 ``` 
-tftp(p, c)=egin{dcases*}
+tftp(p, c)=begin{dcases*}
         2 times p + c & when `p > 1000`
         p + c & otherwise
         end{dcases*}
@@ -797,7 +797,7 @@ of another human and it is called recursion or induction. In recursive
 example ‘Adam was <span><span> *human*</span></span> and Eve was
 <span><span> *human*</span></span>’.
 
-Let us take another example - definition of natural numbers. Suppose we
+Let us take another example, the definition of natural numbers. Suppose we
 have all kinds of numbers on our knowledge including real numbers,
 complex numbers, etc.. We need to define natural number. Here is the
 plain definition - `0` is a natural number and `n+1` is a natural number
@@ -982,7 +982,7 @@ as the induction hypothesis.
 
 Now our function looks like:
 ``` 
-{hbox{em fibonacci}}(x)=egin{dcases*}
+{hbox{em fibonacci}}(x)=begin{dcases*}
         0 & when `x=0`
         1 & when `x=1`
         {hbox{em fibonacci}}(x-1) + {hbox{em fibonacci}}(x-2) & otherwise
@@ -1065,7 +1065,7 @@ sum_{i=1}^ni^k = 1^k + 2^k + ldots + n^k
 It can be rewritten as:
 
 ``` 
-{hbox{em sumOfPow}}(n,k)=egin{dcases*}
+{hbox{em sumOfPow}}(n,k)=begin{dcases*}
         1 & when `n=1`\n        {hbox{em exp}}(n,k) + {hbox{em sumOfPow}}(n-1,k) & otherwise
         end{dcases*}
 ``` 
@@ -1086,7 +1086,7 @@ It is converted into the program:
 
 A general product series can be rewritten as:
 ```
-prod_{i=1}^ni^k = 1^k 	imes 2^k 	imes ldots 	imes n^k
+prod_{i=1}^ni^k = 1^k times 2^k times ldots times n^k
 ``` 
 
 See how we can get a product series from the previous series by only
