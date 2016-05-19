@@ -165,7 +165,7 @@ module Starterapp
 end
 ```
 
-#### Setting up the application
+#### Bootstrapping
 The Rails applicaiton is now ready to load an Angular 2 application that resides in the <code>public</code> directory. There, a root html document has to be created that is going to load all the JavaScript files:
 ```html
 <!-- public/index.html -->
@@ -208,10 +208,11 @@ The Rails applicaiton is now ready to load an Angular 2 application that resides
 </html>
 ```
 
-Between the *<script></script>* tags, the [systemJS](https://github.com/systemjs/systemjs) library will configure the modules and import the <code>app/boot</code> file, which is going to be included later in the guide.
+Between the *<script></script>* tags, the [systemJS](https://github.com/systemjs/systemjs) library will configure the modules and import the <code>app/boot</code> file, which is going to be included later in the guide. Another interesting snippet in the file is the<code> app-router</code> tag, where the built-in Angular 2 router component is going to be mounted.
 
 In the <code>public</code> directory, add an <code> app </code> directory. This is where all the Angular 2 files are going to be put. Let's start with the first component - <code> home.component </code>
 ```javascript
+//public/app/home.component.ts
 import {Component, OnInit} from 'angular2/core'
 import {RouteParams}  from 'angular2/router'
 
@@ -233,9 +234,10 @@ export class HomeComponent implements OnInit{
 
 #CHANGE TO HAVE HTTP REQ
 ```javascript
+//public/app/app_router.component.ts
 import {Component} from 'angular2/core'
 import {RouteConfig, ROUTER_DIRECTIVES} from 'angular2/router'
-import {HomeComponent} from './home.component'
+
 
 @Component({
         selector: 'app-router',
@@ -244,10 +246,48 @@ import {HomeComponent} from './home.component'
         styles:[]
     })
 @RouteConfig([
-    { path: '/', name: 'Home', component: HomeComponent }
+
 ])
 export class AppRouterComponent {}
 ```
+In this file, the router component is define and configured. You can see that the component is bound to the  <code> app-router </code> tag. And the built-in router directives are put under the <code> directives </code> property.  <code>@RouteConfig</code> contains an array of route objects. 
+
+A route object can contain a *path* , *name* and a *component* that it uses. Let's add <code>home.component</code> in there:
+1. Import the component
+
+```javascript
+import {HomeComponent} from './home.component'
+```
+2. Put it in <code>@RouteConfig</code>
+
+```javascript
+ @RouteConfig([
+    { path: '/', name: 'Home', component: HomeComponent }
+])
+```
+
+The last thing that needs to be done is to add the <code>boot</code> file that is going to bootstrap the application:
+```javascript
+import {provide} from 'angular2/core'
+import {bootstrap} from 'angular2/platform/browser'
+import {AppRouterComponent} from './app_router.component'
+import {HTTP_PROVIDERS} from 'angular2/http'
+import {ROUTER_PROVIDERS} from 'angular2/router'
+
+bootstrap(
+    AppRouterComponent,
+    [
+        HTTP_PROVIDERS,
+        ROUTER_PROVIDERS
+    ]
+);
+```
+The <code>AppRouterComponent</code> that was defined earlier is going to be bootstrapped and all its routes and components referenced is them will be reachable for rendering through their paths.
+
+
+
+### Integrating React
+
 ### Summary
 React | Angular 2 | Rails   
 ------------------- | -------------------- | ------------
