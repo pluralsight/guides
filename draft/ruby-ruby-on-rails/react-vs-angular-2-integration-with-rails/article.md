@@ -6,7 +6,7 @@ In this tutorial, the React and Angular 2 way of setting up an application and s
 ```bash
 rails new sampleapp
 ```
- This will scaffold a default Rails application and install all the required dependencies to make it run. Go to the directory of the application and locat the Gemfile. Fo this application, you will need only the following gems:
+ This will scaffold a default Rails application and install all the required dependencies to make it run. Go to the directory of the application and locat the Gemfile. For this application, you will need only the following gems:
  
 ```ruby
 #Gemfile.rb
@@ -15,7 +15,7 @@ gem 'sprockets'
 gem 'rack-cors'
 ```
 
-<code> SQLite3 </code> is the gem for the Ruby-based database, <code> Sprockets </code> is for the asset pipeline and <code> rack-cors </code> is used to enable cross-origin HTTP requests (CORS) so that the React/Angular client-side can communicate with the server. In your terminal/command promt, run:
+<code> SQLite3 </code> is the gem for the Ruby-based database, <code> Sprockets </code> is for the asset pipeline and <code> rack-cors </code> is used to enable cross-origin HTTP requests (CORS) so that the React/Angular client-side can communicate with the server. In your console, run:
 
 ```bash
 bundle install
@@ -51,7 +51,7 @@ class ApplicationController < ActionController::Base
   #...
 end
 ```
- An action called  <code> index </code> is going to respond with the  <code> { some: 'data' } </code> JSON object when called. Let's put a route for the action:
+ An action called  <code> index </code> is going to respond with the  <code> { some: 'data' } </code> JSON object when requested through http://localhost:3000/api. Let's put a route for the action:
 ```ruby
 #config/routes.rb
 Rails.application.routes.draw do
@@ -63,19 +63,19 @@ end
 
  Angular 2 has two specifics  - it is a framework and it uses [TypeScript](https://www.typescriptlang.org/). These specifics come with certain requirements when it comes to integration with the  Rails applicaiton:
 
-Because Angular 2 is a framework and not a library, it would be best if is  put in a separate directory where all its files are going to reside. This means that, instead of putting it into the Rails asset pipeline (<code>app/assets</code>), it will reside in the Rails application's <code>public</code> directory, separated from the compilation and the logic of the Rails application. This will allow a clearer separation of concerncs between the Rails and the Angular 2 applications and their dependencies.
+Because Angular 2 is a framework and not a library, it would be best if is  put in a separate directory where all its files are going to reside. This means that, instead of putting it into the Rails asset pipeline (<code>app/assets</code>), the Angular 2 app will reside in the Rails application's <code>public</code> directory, separated from the compilation and the logic of the Rails application. This will allow a clearer separation of concerns between the Rails and the Angular 2 applications and their dependencies.
 
-Angular 2 also TypeScript, a superset of JavaScript. As of today, there hasn't been devised a way for TypeScript to be implemented into Rails' asset which means that a transpiler has to be configured in the directory of the Rails application. Transpilers (short for [transcompilers](http://www.computerhope.com/jargon/t/transcompiler.htm)) in JavaScript are tools that read the TypeScript code (or CoffeScript or similar)  and transpile it to pure JavaScript that can be interpreted by the browser. 
+Angular 2 uses TypeScript, a superset of JavaScript. As of today, there hasn't been devised a way for TypeScript to be implemented into Rails' asset pipeline, which means that a transpiler has to be configured in the root directory of the Rails application. Transpilers (short for [transcompilers](http://www.computerhope.com/jargon/t/transcompiler.htm)) in JavaScript are tools that read   code (or CoffeScript or similar)  and transpile it to pure JavaScript that can be interpreted by the browser. 
 
 #### Setting up the environment for Angular 2
 There hasn't been devised a way for TypeScript to be implemented into Rails' asset pipeline, which means that the transpiler has to be configured in the root directory of the Rails application intead of <code>app/assets</code>.
-Because of TypeScript's requirements, there are three files that need to be created in order the environment to be set up for an Angular 2 application. 
+Because of TypeScript's requirements, there are three files that need to be created in the root directory in order the environment to be set up for an Angular 2 application. 
 
  - *package.json*
  - *typings.json*
  - *tsconfig.json*
  
-**To install these requiurements, you need to have the [Node Package Manager (npm)](https://www.npmjs.com/) installed on your computer.**  Let's go through each of the files:
+**To install these requirements, you need to have the [Node Package Manager (npm)](https://www.npmjs.com/) installed on your computer.**  Let's go through each of the files:
 
  
 ##### package.json
@@ -235,7 +235,7 @@ export class HomeComponent {
     }
 }
 ```
- One of the most notable features of TypeScript is that it provides classes and ability to <code>import</code> and <code>export</code> snippets of code. Such features make the code more maintanable and more familiar to programmers who are not used to JavaScript's idiosyncracies. 
+ One of the most notable features of TypeScript is that it provides classes and ability to <code>import</code> and <code>export</code> snippets of code. Such features make the code more maintainable and more familiar to programmers who are not used to JavaScript's idiosyncracies. 
  
  Here, you can see how the <code>Http</code> provider is imported into the file and then made available in the constructor of the <code>HomeComponent</code> class. Doing http requests is done similarly to Angular 1's <code>$http.get()</code> service, but the syntax of the promise is handled a little bit differently - <code>subscribe</code> acts similarly to <code>$promise.then()</code> and the functions for resolving the promise use EcmaScript 6's arrow syntax. To make it more familiar, the Angular 2 <code>data => this.message = data.json().some</code> translates to <code> function(data) { $scope.message = data.some } </code> in Angular 1. Another interesting feature is that  variables can have a strong type, as it is demonstrated with the <code> message: string; </code> component variable.
  
@@ -314,7 +314,7 @@ Open your browser and go to http://localhost:3000. You should see the <cvode>hom
  
  
 #### Setting up the environment for React
- Because React's JSX easily integrates with the asset pipeline, you can setup the environment by simply installing the [react-rails](https://github.com/reactjs/react-rails) gem. It comes with a great set of useful features - server-side rendering, component generators and other. Add the gem to your Gemfile:
+ Because React's JSX easily integrates with the asset pipeline, you can setup the environment by simply installing the [react-rails](https://github.com/reactjs/react-rails) gem. It comes with a great set of useful features - server-side rendering, component generators and more. Add the gem to your Gemfile:
 
 ```ruby
 # Gemfile.rb
@@ -357,8 +357,6 @@ Rails.application.routes.draw do
 end
 ```
 
-Last, make a view to render the component:
-
 
 This is everything that is required to setup the environment React for the Rails applicaiton. Next, we are going to render the data from the server.
  
@@ -378,9 +376,7 @@ class Item extends React.Component {
         super(props, context);
         this.state = {item: ''};
     };
-    componentDidMount() {
-        $.getJSON('/api', (response) => { this.setState({ item: response.some }) });
-    }
+
 
     render () {
     return (
@@ -414,16 +410,41 @@ class Item extends React.Component {
 ```
 <code> componentDidMount() </code> is a method that will be called when the component becomes mounted into the DOM. Simply said, it is called when the component is rendered on the page. In it, the <code>$.getJSON</code> function makes a request to <code>localhost:300/api</code> and uses EcmaScript 6's arrow function to get the callback when the request succeeds. <code> this.setState() </code> will set the <code> item </code> property with the property of the <code>response</code> object which will contain <code>{ some: 'data' }</code>.
 
+Last, make a view to render the component:
+Go to <code> app/views </code> , create a directory named <code>site </code> and create a file named <code>index.html.erb</code> and put the following snippet in it:
 
+```html
+<!-- app/views/site/index.html.erb -->
+<%= react_component 'Item' %>
+```
+<code> react_component </code> is a built-in helper method provided by react-rails that is going to render the <code>Item</code> component into the Rails view.
 
+ With this step, the Rails application integrates React. Go to http://localhost:3000 and see the results. If you encounter any problems, check the [GitHub repository]() .
 
 ### Summary
+
+Here is a summary of the three different ways the view layer in Rails can be hanlded:
+
+#### Handling server-side data
+
 React | Angular 2 | Rails   
 ------------------- | -------------------- | ------------
 Root/Parent component | Service | View layer
 
+#### Location of the view layer
 
 React | Angular 2 | Rails   
 ------------------- | -------------------- | ------------
 app/assets/javascripts directory | public or a separate directory| app/views diectory
+#### Language
+
+
+React | Angular 2 | Rails   
+------------------- | -------------------- | ------------
+JSX| TypeScript| ERB
+
+
+To sum up, both React and Angular 2 come with their pros and cons. However, in terms of integration and setting up with Rails, React is a clear winner. The integration with the asset pipeline and server-side rendering make React easy to set up and highly configurable with Ruby on Rails.
+Angular 2, on the other hand, tends to be bulkier and trickier to implement. Part of the problem is TypeScript's complexity when it comes to integrating with the asset pipeline, another part is that Angular 2 is quite new and the Rails ecosystem hasn't dug deep in it yet.
+
 
