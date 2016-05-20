@@ -215,7 +215,7 @@ class AuthenticateUser
   end
 end
 ```
-The command takes the parameters and initializes a class instance with `email` and `passowrd` attributes that are accessible within the class. The private method `user` uses the credentials to check if the user exists in the database using `User.find_by_email` . 
+The command takes the parameters and initializes a class instance with `email` and `password` attributes that are accessible within the class. The private method `user` uses the credentials to check if the user exists in the database using `User.find_by_email` . 
 
 If the user is found, the method uses the built-in `authenticate` method (available by putting [has_secure_password](http://api.rubyonrails.org/classes/ActiveModel/SecurePassword/ClassMethods.html) in the User model to check if the user's password is correct. If everything is true, the user will be returned. If not, the method will return `nil`.
 
