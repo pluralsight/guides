@@ -3,11 +3,6 @@
 - [Read more from Andrew Noonan](http://tutorials.pluralsight.com/author/noonhub) <img src="https://avatars.githubusercontent.com/u/942363?v=3" width="30" height="30" alt="Andrew Noonan" />
 - Related to: Interesting APIs (SendGrid, Twilio, etc)
 
-### React vs. Angular 2 integration with Rails by Hristo Georgiev
-- [Read the guide](http://tutorials.pluralsight.com/ruby-ruby-on-rails/react-vs-angular-2-integration-with-rails?status=draft)
-- [Read more from Hristo Georgiev](http://tutorials.pluralsight.com/author/Kaizeras) <img src="https://avatars.githubusercontent.com/u/6340189?v=3" width="30" height="30" alt="Hristo Georgiev" />
-- Related to: Ruby, Ruby on Rails
-
 ### Chip based Credit Cards and Fraud by Prateek Gupta
 - [Read the guide](http://tutorials.pluralsight.com/software-engineering-best-practices/chip-based-credit-cards-and-fraud?status=draft)
 - [Read more from Prateek Gupta](http://tutorials.pluralsight.com/author/prtkgpt) <img src="https://avatars.githubusercontent.com/u/2454349?v=3" width="30" height="30" alt="Prateek Gupta" />
