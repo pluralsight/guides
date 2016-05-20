@@ -212,7 +212,7 @@ The Rails applicaiton is now ready to load an Angular 2 application that resides
 
 Between the *<script></script>* tags, the [systemJS](https://github.com/systemjs/systemjs) library will configure the modules and import the <code>app/boot</code> file, which is going to be included later in the guide. Another interesting snippet in the file is the<code> app-router</code> tag, where the built-in Angular 2 router component is going to be mounted.
 
-##### The first component
+##### The first Angular 2 component
 
 In the <code>public</code> directory, add an <code> app </code> directory. This is where all the Angular 2 files are going to be put. Let's start with the first component - <code> home.component </code>
 ```javascript
@@ -237,7 +237,7 @@ export class HomeComponent {
 ```
  One of the most notable features of TypeScript is that it provides classes and ability to <code>import</code> and <code>export</code> snippets of code. Such features make the code more maintanable and more familiar to programmers who are not used to JavaScript's idiosyncracies. 
  
- Here, you can see how the <code>Http</code> provider is imported into the file and then made available in the constructor of the <code>HomeComponent</code> class. Doing http requests is done similarly to Angular 1's <code>$http.get()</code> service, but the syntax of the promise is handled a little bit differently - <code>subscribe</code> acts similarly to <code>$promise.then()</code> and the functions for resolving the promise use ES6's arrow syntax. To make it more familiar, the Angular 2 <code>data => this.message = data.json().some</code> translates to <code> function(data) { $scope.message = data.some } </code> in Angular 1. Another interesting feature is that  variables can have a strong type, as it is demonstrated with the <code> message: string; </code> component variable.
+ Here, you can see how the <code>Http</code> provider is imported into the file and then made available in the constructor of the <code>HomeComponent</code> class. Doing http requests is done similarly to Angular 1's <code>$http.get()</code> service, but the syntax of the promise is handled a little bit differently - <code>subscribe</code> acts similarly to <code>$promise.then()</code> and the functions for resolving the promise use EcmaScript 6's arrow syntax. To make it more familiar, the Angular 2 <code>data => this.message = data.json().some</code> translates to <code> function(data) { $scope.message = data.some } </code> in Angular 1. Another interesting feature is that  variables can have a strong type, as it is demonstrated with the <code> message: string; </code> component variable.
  
  Let's add the template of the component:
 ```html
@@ -336,10 +336,35 @@ This will create an initialization file named <code>component.js</code> in the <
 //= require react_ujs
 //= require components
 ```
- This is everything that is required to setup the environment React for the Rails applicaiton. Next, we are going to render the data from the server:
- 
-#### The first React component
 
+React is configured, now all we need is to put a controller and a route for our Ruby on Rails application to render the components. First, let's create a simple controller. Go to <code>app/controllers</code> and create a file named <code>site_controller.rb</code>:
+```ruby
+#app/controllers/site_controller.rb
+
+class SiteController < ApplicationController
+  def index
+  end
+end
+```
+Put the controller's <code>index</code> action as a root for your Rails application:
+
+```ruby
+#app/config/routes.rb
+
+Rails.application.routes.draw do
+  root to: site#index
+end
+```
+This is everything that is required to setup the environment React for the Rails applicaiton. Next, we are going to render the data from the server.
+ 
+##### The first React component
+  
+ To make a new component, you can simply run the generator and it will be created for you:
+```javascript 
+ rails generate react:component Item item:string --es6
+```
+ The generator will create an component in <code>app/assets/javascripts/components</code> in EcmaScript 6 syntax.
+ 
 ### Summary
 React | Angular 2 | Rails   
 ------------------- | -------------------- | ------------
