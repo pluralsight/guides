@@ -61,23 +61,25 @@ end
 
 ### Integrating Angular 2 
 
-Angular 2 has two specifics  - it is a framework and it uses TypeScript. These specifics come with certain requirements when it comes to integration:
+ Angular 2 has two specifics  - it is a framework and it uses [TypeScript](https://www.typescriptlang.org/). These specifics come with certain requirements when it comes to integration with the  Rails applicaiton:
 
-Because Angular 2 is a framework and not a library, it would be best if is  put in a separate directory where all its files are going to reside. This means that, instead of putting it into the Rails asset pipeline (app/assets), it will reside in the Rails application's <code>public</code> directory, separated from the compilation and the logic of the Rails application. This will allow a clearer separation of concerncs between the Rails and the Angular 2 applications and their dependencies.
+Because Angular 2 is a framework and not a library, it would be best if is  put in a separate directory where all its files are going to reside. This means that, instead of putting it into the Rails asset pipeline (<code>app/assets</code>), it will reside in the Rails application's <code>public</code> directory, separated from the compilation and the logic of the Rails application. This will allow a clearer separation of concerncs between the Rails and the Angular 2 applications and their dependencies.
 
-Angular 2 also TypeScript, which is a superset of JavaScript, which means that a transpiler has to be configured in the directory of the Rails application. Transpilers (short for [trascompilers](http://www.computerhope.com/jargon/t/transcompiler.htm) in JavaScript are tools that read to read the TypeScript code (or CoffeScript or similar)  and transpile it to pure JavaScript that can be interpreted by the browser. 
+Angular 2 also TypeScript, a superset of JavaScript. As of today, there hasn't been devised a way for TypeScript to be implemented into Rails' asset which means that a transpiler has to be configured in the directory of the Rails application. Transpilers (short for [trascompilers](http://www.computerhope.com/jargon/t/transcompiler.htm)) in JavaScript are tools that read the TypeScript code (or CoffeScript or similar)  and transpile it to pure JavaScript that can be interpreted by the browser. 
 
-#### Setting up the environment
-There are three files that need to be created in order the environment to be set up for an Angular 2 application.
- - **package.json** 
- - **typings.json**
- - **tsconfig.json**
+#### Setting up the environment for Angular 2
+There hasn't been devised a way for TypeScript to be implemented into Rails' asset pipeline, which means that the transpiler has to be configured in the root directory of the Rails application intead of <code>app/assets</code>.
+Because of TypeScript's requirements, there are three files that need to be created in order the environment to be set up for an Angular 2 application. 
+
+ - *package.json*
+ - *typings.json*
+ - *tsconfig.json*
  
-To install these requiurements, you need to have the [Node Package Manager (npm)](https://www.npmjs.com/) installed on your computer. Let's go through each of the files:
+**To install these requiurements, you need to have the [Node Package Manager (npm)](https://www.npmjs.com/) installed on your computer.**  Let's go through each of the files:
 
  
 ##### package.json
- The <b>package.json</b> file that contains a list of all the packages required to integrate Angular 2 with Rails:
+ The *package.json* file that contains a list of all the packages required to integrate Angular 2 with Rails:
 ```json
 {
   "name": "rails-ng2",
@@ -108,12 +110,12 @@ To install these requiurements, you need to have the [Node Package Manager (npm)
 }
  
 ```
-Paste the contents in a file in the root directory of the Rails application and name it <b> package.json </b>.
+Paste the contents in a file in the root directory of the Rails application and name it * package.json*.
 The file contains [typings](https://www.npmjs.com/package/typings), a package that is used for configuring the behaviour of TypeScript and the [typescript](https://www.npmjs.com/package/typescript)  package itself as *devDependencies* (dependencies of the dependencies). Obviously, [angular2]([https://www.npmjs.com/package/angular2) is also one of the packages as well as libraries such as [systemjs](https://github.com/systemjs/systemjs) and [es6-shim](https://github.com/paulmillr/es6-shim) that add EcmaScript 6 functionality, which is requried for Node 5.
 
 
 ##### typings.json
-Also in your root directory, create a file named **typings.json** . This file will be used to configure the dependencies of TypeScript after the packages are installed. You can also do it manually by running <code> typings install </code> in your console.
+Also in your root directory, create a file named *typings.json* . This file will be used to configure the dependencies of TypeScript after the packages are installed. You can also do it manually by running <code> typings install </code> in your console.
 ```json
 {
   "ambientDependencies": {
@@ -165,7 +167,7 @@ module Starterapp
 end
 ```
 
-#### Bootstrapping
+#### Bootstrapping Angular 2
 The Rails applicaiton is now ready to load an Angular 2 application that resides in its <code>public</code> directory. To start off, let's create a root html document has to be created that is going to load all the JavaScript files:
 ```html
 <!-- public/index.html -->
@@ -214,27 +216,36 @@ Between the *<script></script>* tags, the [systemJS](https://github.com/systemjs
 
 In the <code>public</code> directory, add an <code> app </code> directory. This is where all the Angular 2 files are going to be put. Let's start with the first component - <code> home.component </code>
 ```javascript
-//public/app/home.component.ts
+// public/app/home.component.ts
 import {Component, OnInit} from 'angular2/core'
 import {RouteParams}  from 'angular2/router'
-
+import {Http, HTTP_PROVIDERS} from 'angular2/http';
 @Component({
     selector: 'home',
     templateUrl: '/app/home.component.html'
 })
-export class HomeComponent implements OnInit{
-    constructor(private _routeParams: RouteParams){}
-
-    message: String = 'Rails Ng2 Starter'
-    ngOnInit(){
-
+export class HomeComponent {
+    message: string;
+    constructor( public http: Http){
+        this.http.get('http://localhost:3000/api')
+            .subscribe(
+                data => this.message = data.json().some,
+                err => console.log(err)
+            );
     }
-
 }
-
 ```
-
-#CHANGE TO HAVE HTTP REQ
+ One of the most notable features of TypeScript is that it provides classes and ability to <code>import</code> and <code>export</code> snippets of code. Such features make the code more maintanable and more familiar to programmers who are not used to JavaScript's idiosyncracies. 
+ 
+ Here, you can see how the <code>Http</code> provider is imported into the file and then made available in the constructor of the <code>HomeComponent</code> class. Doing http requests is done similarly to Angular 1's <code>$http.get()</code> service, but the syntax of the promise is handled a little bit differently - <code>subscribe</code> acts similarly to <code>$promise.then()</code> and the functions for resolving the promise use ES6's arrow syntax. To make it more familiar, the Angular 2 <code>data => this.message = data.json().some</code> translates to <code> function(data) { $scope.message = data.some } </code> in Angular 1. Another interesting feature is that  variables can have a strong type, as it is demonstrated with the <code> message: string; </code> component variable.
+ 
+ Let's add the template of the component:
+```html
+<!-- public/app/home.component.html-->
+<h2>Rails Angular 2</h2>
+{{message}}
+```
+The template will simply print the message that was fetched from the Rails application.
 
 ##### Routing the component
 
@@ -292,8 +303,42 @@ bootstrap(
 You can regard <code>boot.ts</code> as the initialization file of the Angular 2 application. It imports the <code>AppRouterComponent</code> that was defined earlier and bootstraps it, making all its routes and components reachable through their paths.
 
 
+This step completes the Angular 2 integration into your Rails application. Start the server using:
+```bash
+rails s
+```
+Open your browser and go to http://localhost:3000. You should see the <cvode>home.component</code> with the message displayed on the server. if you encounter any errors, you can check the [GitHub repository](https://github.com/Kaizeras/rails-angular2starter) of what we just implemented.
 
 ### Integrating React
+ Unlike Angular 2, which is a full-fledged framework, React is simply a library that provides bare-bones features for constructing user interfaces. React uses [JSX](https://jsx.github.io/) to render its components, which is much simpler and lighter than TypeScript. Unlike TypeScript, JSX can be integrated into Rails' asset pipeline, which significantly speeds up the integration of React with Rails.
+ 
+ 
+#### Setting up the environment for React
+ Because React's JSX easily integrates with the asset pipeline, you can setup the environment by simply installing the [react-rails](https://github.com/reactjs/react-rails) gem. It comes with a great set of useful features - server-side rendering, component generators and other. Add the gem to your Gemfile:
+
+```ruby
+# Gemfile.rb
+gem 'react-rails'
+```
+And install it:
+```bash
+bundle install
+```
+Run the generator provided by the gem to make the Rails application work with React:
+```bash
+rails g react:install
+```
+This will create an initialization file named <code>component.js</code> in the <code>app/assets</code> directory and a new directory, <code>app/assets/javascripts/components/</code> for the rest of the components. It is also going to add the React dependencies to the asset pipeline:
+```javascript
+//app/assets/javascripts/application.js
+
+//= require react
+//= require react_ujs
+//= require components
+```
+ This is everything that is required to setup the environment React for the Rails applicaiton. Next, we are going to render the data from the server:
+ 
+#### The first React component
 
 ### Summary
 React | Angular 2 | Rails   
