@@ -1,11 +1,11 @@
-(**C**omma **S**eperated **V**alue) CSV file format is a very common way of storing datasets in a simple and portable format. Also since it is plain text, it is very easy to make such a file programmatically in an application. There are libraries around for such tasks but if you want to customize or create something specific it is better to write your own implementation for full control.
+(**C**omma **S**eperated **V**alue) CSV file format is a very common way of storing datasets in a simple and portable format. Also, since it is plain text, it is very easy to make such a file programmatically in an application. There are libraries around for such tasks but if you want to customize or create something specific it is better to write your own implementation for full control.
 
-In this guide I will explain how to write a generic CSV Writer/Reader that will automatically pick data from the public properties of the input objects and generate a CSV file.
+In this guide, I will explain how to write a generic CSV Writer/Reader that will automatically pick data from the public properties of the input objects and generate a CSV file.
 
-Before we dive into the code let me explain what is CSV file format so we have a better understading of what we are dealing with.
+Before we dive into the code, let me explain what is CSV file format so we have a better understanding of what we are dealing with.
 
 ### What is a CSV file?
-A CSV file is a plain text file which holds data in table format. Each line is like a row in a table, and columns are seperated by a comma, hence the name comma sepeated value.
+A CSV file is a plain text file which holds data in table format. Each line is like a row in a table, and columns are separated by a comma. Hence, the name comma separated value.
 
 Below is an example of such a file containing table of first names and last names of people:
 
@@ -14,19 +14,19 @@ Below is an example of such a file containing table of first names and last name
 2,john,smith
 ```
 
-CSV format is very useful because it is a text file and any operating system can read it.For example if your application creates the CSV file on a Windows machine, you can open it up and use it in a Linux machine. So it is a very portable and easily readable file format.
+CSV format is very useful because it is a text file and any operating system can read it. For example, if your application creates the CSV file on a Windows machine, you can open it up and use it on a Linux machine. So it is a very portable and easily readable file format.
 
 ### Formatting of a CSV file
 
-#### Seperator Issues
-In some cases the file may not be comma seperated. Especially if you are using a 3rd party program(e.g. Microsoft Excell), depending on the culture of your machine "seperator" might be a different character such as **";"**. This is because of the decimal sepeator is different in different cultures. In some cultures decimal seperator is **"."** so the CSV seperator can be **","**. But in some cultures decimal seperator is **","** so the CSV file has to use **";"** as seperator.
+#### Separator Issues
+In some cases, the file may not be comma separated. Especially if you are using a 3rd party program(e.g. Microsoft Excell), depending on the culture of your machine "separator" might be a different character such as `;`. This is because of the decimal separator is different in different cultures. In some cultures, the decimal separator is `.` so the CSV separator can be `,`. But in some cultures decimal separator is `,` so the CSV file has to use `;` as a separator.
 
-For example if your locale is set to a european culture, such as "fr-FR", default decimal seperator becomes "," and you need to use ";" in CSV file as column seperator:
+For example, if your locale is set to some European culture, such as `fr-FR`, default decimal separator becomes `,` and you need to use `;` in CSV file as column separator:
 ```csv
 3,5;2,5;5,4
 4,5;6,7;8,9
 ```
-However in a machine which has "en-US" set as default, since decimal seperator is "." by default, same CSV file would look like this:
+However in a machine which has `en-US` set as default, since decimal separator is `.` by default, same CSV file would look like this:
 ```csv
 3.5,2.5,5.4
 4.5,6.7,8.9
@@ -35,7 +35,7 @@ However in a machine which has "en-US" set as default, since decimal seperator i
 #### Number of data fields in each row
 The most critical rule is every row must contain the same number of data fields otherwise it would be impossible to read by any CSV reader also it would not make sense.
 
-If you have an empty data field you can just use an empty string.
+If you have an empty data field, you can just use an empty string.
 
 ```csv
 1,,aykanat
@@ -47,16 +47,16 @@ If you have text values in your CSV file, you might run into a problem where the
 ```csv
 1, Hello, world!
 ```
-In the above example our first column is 1 and the second is "Hello, world!", however it a CSV reader would be divide the row into 3 columns 1, Hello and world!.
+In the above example, our first column is 1 and the second is `Hello, world!`, however, a CSV reader would divide the row into 3 columns 1, Hello and world!.
 
 To solve this issue we must use quotation marks:
 ```csv
 1, "Hello, world!"
 ```
 
-This way we mean that the string Hello, world! is a single data field.
+This way we mean that the string `Hello, world!` is a single data field.
 
-You can also use quotation mark on single word strings but it is not necessary.
+You can also use quotation mark on single word strings, but it is not necessary.
 ```csv
 1,"murat","aykanat"
 1,"john","smith"
@@ -64,12 +64,12 @@ You can also use quotation mark on single word strings but it is not necessary.
 
 #### Quotation marks in a data field
 
-We can also have actual quotation marks in our data fields. In this case we need to double our quotation marks indicating it is included in the data field.
+We can also have actual quotation marks in our data fields. In this case, we need to double our quotation marks indicating it is included in the data field.
 ```csv
 1,murat,""aykanat""
 2,john,""smith""
 ```
-That would read as; name is murat, lastname is "aykanat".
+That would read as; name is murat, lastname is `aykanat`.
 
 #### Headers
 You can also add headers to the columns.
@@ -78,14 +78,14 @@ id,name,lastname
 1,murat,aykanat
 1,john,smith
 ```
-This is useful when the columns are not clear by its data fields. For example if columns are all numbers, and you send the file to a person who does not know what the columns mean, that would be very confusing for the other person because he or she doesn't know what those numbers mean.So it would be better if we include headers in those scenarios to indicate what those column of values mean.
+This is useful when the columns are not clear by its data fields. For example, if columns are all numbers, and you send the file to a person who does not know what the columns mean, that would be very confusing for the other person because he or she doesn't know what those numbers mean.So it would be better if we include headers in those scenarios to indicate what those columns of values mean.
 
 #### More Details
 
 If you would like to know more about CSV file format, you can use the [Wikipedia article](https://en.wikipedia.org/wiki/Comma-separated_values) about CSV and its resources.
 
 ### The Theory
-Our idea is simple, we want to input an array of objects into our CSV Writer and output a CSV file. For the reading part we want to input the file path and output an array of objects back into the memory.
+Our idea is simple, we want to input an array of objects into our CSV Writer and output a CSV file. For the reading part, we want to input the file path and output an array of objects back into the memory.
 
 **Input**
 ```cs
@@ -108,7 +108,7 @@ However there are some considerations:
 
 Optional considerations:
 - Since some CSV readers out there do not support UTF-8 encoding, all "special" characters must be converted into ASCII counterparts if possible. Note that this may not be possible in some languages, however since I will be giving Turkish special characters as an example, it will be possible in this guide.
-- Unless explicitly defined by quotation marks left and right spaces must be trimmed, because in my experience unnecessary left and right spaces are usually a mistake by the person who input the values, especially if the values are copied from some other application. If we absolutely need left and right spaces we can use quotation marks.
+- Unless explicitly defined by quotation marks left and right spaces must be trimmed, because in my experience unnecessary left and right spaces are usually a mistake by the person who input the values, especially if the values are copied from some other application. If we absolutely need left and right spaces, we can use quotation marks.
 - Properties can be ignored with their index or their name.
 
 ### CSV Writer
@@ -118,7 +118,7 @@ According to our considerations above we need a method for each class, ```ToCsv(
 - Override ```ToString()```
 - Abstract base class ```CsvableBase``` having a virtual ```ToCsv()``` method
 
-I didn't want to use the ```ToString()``` override because maybe we need it somewhere else in our code and I want the ```ToCsv()``` to be a seperate method so it will be clear what it is doing. Also, since the code will be same for each class, I will go with the abstract class way. However if your particular class is already inheriting from a certain base class you must go with the interface implementation since you can't inherit from more than one base class in C#. You just need to copy and paste for each class you want to turn to CSV.
+I didn't want to use the ```ToString()``` override because maybe we need it somewhere else in our code, and I want the ```ToCsv()``` to be a separate method so it will be clear what it is doing. Also, since the code will be same for each class, I will go with the abstract class way. However if your particular class is already inheriting from a certain base class, you must go with the interface implementation since you can't inherit from more than one base class in C#. You just need to copy and paste for each class you want to turn to CSV.
 
 #### Basic Implementation
 What we need to do here is use reflection to get all the values of public properties of the class.
@@ -180,7 +180,7 @@ Output of above code:
 ```
 #### Comma, Quotation Marks and Special Characters
 
-To pre-process commas, quotation marks and special characters, let's add a pre-processing method to our base class.
+To pre-process commas, quotation marks, and special characters, let's add a pre-processing method to our base class.
 
 ```cs
 public abstract class CsvableBase
@@ -248,7 +248,7 @@ Sometimes you may not need all the public properties in a class. So we need to i
 
 But what happens in the edge cases such as the beginning or the end? How do we manage commas?
 
-We just need to modify our code a bit to achive what we want. Let's add following methods to our ```CsvableBase``` class.
+We just need to modify our code a bit to achieve what we want. Let's add following methods to our ```CsvableBase``` class.
 
 ```cs
 public virtual string ToCsv(string[] propertyNames, bool isIgnore)
@@ -353,7 +353,7 @@ Here, we:
 - Get all the properties as ```PropertyInfo``` using reflection.
 - Iterate over the properties, checking if the current property name or index is in the ignore or filter list by ```isIgnore``` flag.
 - If it is not, we check if the first property is written.
-- If the first property is not written then we add a comma to output, since we will keep adding properties after that.
+- If the first property is not written then, we add a comma to output, since we will keep adding properties after that.
 - Preprocess and add the current property's value to output.
 - Set ```isFirstPropertyWritten``` so that we will keep adding commas.
 
@@ -401,7 +401,7 @@ Ignoring everything but Id:
 #### Properties that Derive from CsvableBase
 
 So far we only used value types as our properties. However what happens if we have a reference type property which also is derived from ```CsvableBase```?
-Below is an example of a such scenario:
+Below is an example of such scenario:
 ```cs
 public class Address : CsvableBase
 {
@@ -431,7 +431,7 @@ public class Person : CsvableBase
 ```
 The idea is, while iterating over the properties in our code, we need to dedect if the type of the property derives from ```CsvableBase```. Then call the ```ToCsv()``` method of that object instance by using reflection.
 
-To achive this, we need to modify our ```ToCsv()``` methods:
+To achieve this, we need to modify our ```ToCsv()``` methods:
 
 ```cs
 public virtual string ToCsv()
@@ -715,8 +715,8 @@ If you open the file you can see output as expected:
 ```
 
 ### CSV Reader
-Now, we have to reverse the process to read from our CSV file. To do this we will follow what we did while reading. By this logic, as we implemented ```ToCsv()```, we need another method to reverse the CSV process in the ```CsvableBase``` class. Let's call this method ```AssignValuesFromCsv()```. Maybe not the most creative name, but we will go with that for now.
-In this method we will do what we did in ```ToCsv()``` method. First we will check whether the current property is derived from CsvableBase or not. After that we will save the data back to the public properties.
+Now, we have to reverse the process to read from our CSV file. To do this, we will follow what we did while reading. By this logic, as we implemented ```ToCsv()```, we need another method to reverse the CSV process in the ```CsvableBase``` class. Let's call this method ```AssignValuesFromCsv()```. Maybe not the most creative name, but we will go with that for now.
+In this method we will do what we did in ```ToCsv()``` method. First, we will check whether the current property is derived from CsvableBase or not. After that, we will save the data back to the public properties.
 
 ```cs
 public virtual void AssignValuesFromCsv(string[] propertyValues)
@@ -763,7 +763,7 @@ Here we:
 - Get all public properties of the object.
 - Iterate over the properties.
 - Check if the current property is derived from ```CsvableBase```.
-- if so, create a temporary instance of that object.
+- If so, create a temporary instance of that object.
 - Get its properties.
 - Call ```AssignValuesFromCsv()``` with its properties.
 - If the property is not derived from Csvable base, just assign it to the property value according to the ```switch```.
@@ -804,7 +804,7 @@ public class CsvReader<T> where T : CsvableBase, new()
 }
 ```
 
-Remember when I wrote that we may need ```ToString()``` override somewhere? Well, now we need it to print ```Person``` and ```Address``` objects. Also we need to add a empty constructor for CSV Reader to work.
+Remember when I wrote that we may need ```ToString()``` override somewhere? Well, now we need it to print ```Person``` and ```Address``` objects. Also, we need to add an empty constructor for CSV Reader to work.
 
 ```cs
 public class Address : CsvableBase
@@ -884,8 +884,8 @@ murat aykanat  city1 / country1
 john smith  city2 / country2
 ```
 ### Conclusion
-In this guide I explained how you would develop your very own CSV writer and reader class. We used features of reflection to extract properties from classes and process them as needed, so we can just plug any class we want into our reader and writer. One of the benefits of generating your own CSV processing class is that you can modify it as you need different features so you don't get stuck with 3rd party libraries.
+In this guide, I explained how you would develop your very own CSV writer and reader class. We used features of reflection to extract properties from classes and process them as needed, so we can just plug any class we want into our reader and writer. One of the benefits of generating your own CSV processing class is that you can modify it as you need different features so you don't get stuck with 3rd party libraries.
 
-I hope this guide will be useful in your projects. Please feel free to post ideas and feedback.
+I hope this guide will be useful for your projects. Please feel free to post ideas and feedback.
 
 Happy coding!
