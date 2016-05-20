@@ -65,7 +65,7 @@ end
 
 Because Angular 2 is a framework and not a library, it would be best if is  put in a separate directory where all its files are going to reside. This means that, instead of putting it into the Rails asset pipeline (<code>app/assets</code>), it will reside in the Rails application's <code>public</code> directory, separated from the compilation and the logic of the Rails application. This will allow a clearer separation of concerncs between the Rails and the Angular 2 applications and their dependencies.
 
-Angular 2 also TypeScript, a superset of JavaScript. As of today, there hasn't been devised a way for TypeScript to be implemented into Rails' asset which means that a transpiler has to be configured in the directory of the Rails application. Transpilers (short for [trascompilers](http://www.computerhope.com/jargon/t/transcompiler.htm)) in JavaScript are tools that read the TypeScript code (or CoffeScript or similar)  and transpile it to pure JavaScript that can be interpreted by the browser. 
+Angular 2 also TypeScript, a superset of JavaScript. As of today, there hasn't been devised a way for TypeScript to be implemented into Rails' asset which means that a transpiler has to be configured in the directory of the Rails application. Transpilers (short for [transcompilers](http://www.computerhope.com/jargon/t/transcompiler.htm)) in JavaScript are tools that read the TypeScript code (or CoffeScript or similar)  and transpile it to pure JavaScript that can be interpreted by the browser. 
 
 #### Setting up the environment for Angular 2
 There hasn't been devised a way for TypeScript to be implemented into Rails' asset pipeline, which means that the transpiler has to be configured in the root directory of the Rails application intead of <code>app/assets</code>.
@@ -337,7 +337,7 @@ This will create an initialization file named <code>component.js</code> in the <
 //= require components
 ```
 
-React is configured, now all we need is to put a controller and a route for our Ruby on Rails application to render the components. First, let's create a simple controller. Go to <code>app/controllers</code> and create a file named <code>site_controller.rb</code>:
+React is configured, now all we need is to put a controller, a view and a route for our Ruby on Rails application to render the components. First, let's create a simple controller. Go to <code>app/controllers</code> and create a file named <code>site_controller.rb</code>:
 ```ruby
 #app/controllers/site_controller.rb
 
@@ -352,16 +352,21 @@ Put the controller's <code>index</code> action as a root for your Rails applicat
 #app/config/routes.rb
 
 Rails.application.routes.draw do
-  root to: site#index
+   get '/api' => 'application#index', defaults: { format: :json }
+  root to: 'site#index' #add the route for the React component
 end
 ```
+
+Last, make a view to render the component:
+
+
 This is everything that is required to setup the environment React for the Rails applicaiton. Next, we are going to render the data from the server.
  
 ##### The first React component
   
  To make a new component, you can simply run the generator and it will be created for you:
 ```javascript 
- rails generate react:component Item item:string --es6
+ rails generate react:component Item  --es6
 ```
 The generator will create an component in <code>app/assets/javascripts/components</code> in EcmaScript 6 syntax. Let's see what we have:
 
@@ -369,45 +374,49 @@ The generator will create an component in <code>app/assets/javascripts/component
 ```javascript 
 //app/assets/javascripts/components/item.es6.jsx
 class Item extends React.Component {
-  render () {
+    constructor(props, context) {
+        super(props, context);
+        this.state = {item: ''};
+    };
+    componentDidMount() {
+        $.getJSON('/api', (response) => { this.setState({ item: response.some }) });
+    }
+
+    render () {
     return (
       <div>
-        <div>Item: {this.props.item}</div>
+        <h2> Rails React starter </h2>
+        <div> {this.state.item}</div>
       </div>
     );
   }
 }
 
-Item.propTypes = {
-  item: React.PropTypes.string
-};
+
+
 
 ```
-The <code> render()</code> function is used to render html into the component. In this case, it will render the <code> item </code> property of the component. What we want is to render the data from the server, so let's do that:
+<code>constructor()</code> is used to initialize the component's state variables. We are going to create an empty <codeitem</code> object. <code>super<code> is a common Object-Oriented pattern, here itused to inherit the props and context from the <code>React.Component</code> class.
+The <code> render()</code> function is used to render html into the component. In this case, it will render the <code> item </code> state of the component. <code>this.state</code> contains the state of the component, which is usually private or component-specific variables. <code> item </code> is one of them. When there are several nested components however, the data between them is passed through <code> this.props </code>.
+
+What we want is to render the data from the server into <code>item</code>, so let's do that:
 
 ```javascript 
 //app/assets/javascripts/components/item.es6.jsx
 class Item extends React.Component {
-
+   //constructor
     componentDidMount() {
         $.getJSON('/api', (response) => { this.setState({ item: response.some }) });
     }
- // rest of the component..
+  //render
  }
 
 ```
-<code> componentDidMount() </code> is a method that will be called when the component becomes mounted into the DOM. Simply said, it is called when the component is initialized. In it, the <code>$.getJSON</code> function makes a request to <code>localhost:300/api</code> and uses EcmaScript 6's arrow function to get the callback when the request succeeds. <code> this.setState() </code> will set the <code> item </code> property with the property of the <code>response</code> object which will contain <code>{ some: 'data' }</code>.
+<code> componentDidMount() </code> is a method that will be called when the component becomes mounted into the DOM. Simply said, it is called when the component is rendered on the page. In it, the <code>$.getJSON</code> function makes a request to <code>localhost:300/api</code> and uses EcmaScript 6's arrow function to get the callback when the request succeeds. <code> this.setState() </code> will set the <code> item </code> property with the property of the <code>response</code> object which will contain <code>{ some: 'data' }</code>.
 
-The last thing to do is to render the object itself:
-```javascript
-    render () {
-    return (
-      <div>
-        <h2> Rails React starter </h2>
-        <div> {this.props.item}</div>
-      </div>
-    );
-```
+
+
+
 ### Summary
 React | Angular 2 | Rails   
 ------------------- | -------------------- | ------------
