@@ -364,7 +364,10 @@ This is everything that is required to setup the environment React for the Rails
  rails generate react:component Item item:string --es6
 ```
 The generator will create an component in <code>app/assets/javascripts/components</code> in EcmaScript 6 syntax. Let's see what we have:
+
+
 ```javascript 
+//app/assets/javascripts/components/item.es6.jsx
 class Item extends React.Component {
   render () {
     return (
@@ -378,10 +381,33 @@ class Item extends React.Component {
 Item.propTypes = {
   item: React.PropTypes.string
 };
+
 ```
 The <code> render()</code> function is used to render html into the component. In this case, it will render the <code> item </code> property of the component. What we want is to render the data from the server, so let's do that:
 
- 
+```javascript 
+//app/assets/javascripts/components/item.es6.jsx
+class Item extends React.Component {
+
+    componentDidMount() {
+        $.getJSON('/api', (response) => { this.setState({ item: response.some }) });
+    }
+ // rest of the component..
+ }
+
+```
+<code> componentDidMount() </code> is a method that will be called when the component becomes mounted into the DOM. Simply said, it is called when the component is initialized. In it, the <code>$.getJSON</code> function makes a request to <code>localhost:300/api</code> and uses EcmaScript 6's arrow function to get the callback when the request succeeds. <code> this.setState() </code> will set the <code> item </code> property with the property of the <code>response</code> object which will contain <code>{ some: 'data' }</code>.
+
+The last thing to do is to render the object itself:
+```javascript
+    render () {
+    return (
+      <div>
+        <h2> Rails React starter </h2>
+        <div> {this.props.item}</div>
+      </div>
+    );
+```
 ### Summary
 React | Angular 2 | Rails   
 ------------------- | -------------------- | ------------
