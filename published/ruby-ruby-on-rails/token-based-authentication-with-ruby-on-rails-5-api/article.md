@@ -346,7 +346,7 @@ To see how authorization works, there needs to be a resource that has to be requ
   ```
  This will create a resource named `Item` from top to bottom -- a model, a controller, routes and views. Migrate the database:
   ```bash
-  rails db:mgirate
+  rails db:migrate
  ``` 
 
 Now, start the server and use cURL to post the credentials to `localhost:3000/authenticate`. Here is how the request should look:
