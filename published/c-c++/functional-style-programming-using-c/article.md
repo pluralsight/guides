@@ -1,4 +1,4 @@
-> Learning programming and learning programming language are not the same. most of our textbooks teach us programming languages. In truth, a programming language is just a tool that we use to implement an executable program. We need resources that teach us how to _solve problems_ using a programming language.
+> Learning programming and learning programming language are not the same. most of our textbooks teach us programming languages. In truth, a programming language is just a tool that we use to implement an executable program. We need resources that teach us how to solve problems using a programming language.
 
 Introduction
 ========================================================================================================
