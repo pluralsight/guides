@@ -61,20 +61,20 @@ end
 
 ### Integrating Angular 2 
 
-Angular 2 has two specifics  - it is a framework and it uses TypesScript. These specifics come with certain requirements when it comes to integration:
+Angular 2 has two specifics  - it is a framework and it uses TypeScript. These specifics come with certain requirements when it comes to integration:
 
-Because Angular 2 is a framework and not a library, it would be best if is  put in a separate directory where all its files are going to reside. This means that, instead of putting it into the Rails asset pipeline (app/assets), it will reside in the Rails application's <code>public</code> directory, separated from the compilation and the logic of the Rails application. This will allow a clearer separation of concerncs between the Rails and the Angular 2 frameworks and their dependencies.
+Because Angular 2 is a framework and not a library, it would be best if is  put in a separate directory where all its files are going to reside. This means that, instead of putting it into the Rails asset pipeline (app/assets), it will reside in the Rails application's <code>public</code> directory, separated from the compilation and the logic of the Rails application. This will allow a clearer separation of concerncs between the Rails and the Angular 2 applications and their dependencies.
 
-Angular 2 also TypeScript, which is a superset of JavaScript, Angular 2 will also need a TypeScript transpiler configured in the directory of the Rails application. Transpilers (short for [trascompilers](http://www.computerhope.com/jargon/t/transcompiler.htm) in JavaScript are tools that read to read the TypeScript code (or CoffeScript or similar)  and transpile it to pure JavaScript that can be interpreted by the browser. 
+Angular 2 also TypeScript, which is a superset of JavaScript, which means that a transpiler has to be configured in the directory of the Rails application. Transpilers (short for [trascompilers](http://www.computerhope.com/jargon/t/transcompiler.htm) in JavaScript are tools that read to read the TypeScript code (or CoffeScript or similar)  and transpile it to pure JavaScript that can be interpreted by the browser. 
 
 #### Setting up the environment
-There are three files that need to be created in order to fulfill the requirements:
- - **package.json**
+There are three files that need to be created in order the environment to be set up for an Angular 2 application.
+ - **package.json** 
  - **typings.json**
  - **tsconfig.json**
  
+To install these requiurements, you need to have the [Node Package Manager (npm)](https://www.npmjs.com/) installed on your computer. Let's go through each of the files:
 
-To install these requiurements, you need to have the [Node Package Manager (npm)](https://www.npmjs.com/) installed on your computer.
  
 ##### package.json
  The <b>package.json</b> file that contains a list of all the packages required to integrate Angular 2 with Rails:
@@ -145,14 +145,14 @@ The last file you need to create in the root directory is **tsconfig.json**:
 ```
 The file contains standard configuration for the behavior of TypeScript in the Angular 2 application. One thing that requires a paricular attention is the <code>rootDir</code> property which defines that the Angular 2 application will reside in the <code> public </code> directory.
 
-After the three files are added, write the following command in your console:
+After these three files are added to the root directory of the Rails application, write the following command in your console:
 ```bash
  npm install
 ```
 
 And wait as the packages are installed. Once the command completes, there will be an extra directory named <code> node_modules </code> in the root directory that will contain the installations of all the packages.
 
-The configuration is almost finished, but there is a **gotcha** - the <code> node_modules </code> directory will not load in the application's assets since it is not in the <code>app/assets</code> directory. Thus, it must be added explicitly:
+The configuration is almost finished, but there is a **gotcha** - the <code> node_modules </code> directory will not load in the application's assets since it is not in the <code>app/assets</code> directory. Thus, it must be added explicitly in the configuration of the Rails applicaiton:
 ```ruby
 #config/application.rb
 module Starterapp
@@ -166,7 +166,7 @@ end
 ```
 
 #### Bootstrapping
-The Rails applicaiton is now ready to load an Angular 2 application that resides in the <code>public</code> directory. There, a root html document has to be created that is going to load all the JavaScript files:
+The Rails applicaiton is now ready to load an Angular 2 application that resides in its <code>public</code> directory. To start off, let's create a root html document has to be created that is going to load all the JavaScript files:
 ```html
 <!-- public/index.html -->
 <html>
@@ -210,6 +210,8 @@ The Rails applicaiton is now ready to load an Angular 2 application that resides
 
 Between the *<script></script>* tags, the [systemJS](https://github.com/systemjs/systemjs) library will configure the modules and import the <code>app/boot</code> file, which is going to be included later in the guide. Another interesting snippet in the file is the<code> app-router</code> tag, where the built-in Angular 2 router component is going to be mounted.
 
+##### The first component
+
 In the <code>public</code> directory, add an <code> app </code> directory. This is where all the Angular 2 files are going to be put. Let's start with the first component - <code> home.component </code>
 ```javascript
 //public/app/home.component.ts
@@ -233,6 +235,10 @@ export class HomeComponent implements OnInit{
 ```
 
 #CHANGE TO HAVE HTTP REQ
+
+##### Routing the component
+
+ The first component is ready, but there must be a way through which it can be reached withing the Angular 2 application. Because Angular 2 is a framework, it comes with its own built-in router that can be imported and configured to your liking:
 ```javascript
 //public/app/app_router.component.ts
 import {Component} from 'angular2/core'
@@ -250,7 +256,7 @@ import {RouteConfig, ROUTER_DIRECTIVES} from 'angular2/router'
 ])
 export class AppRouterComponent {}
 ```
-In this file, the router component is define and configured. You can see that the component is bound to the  <code> app-router </code> tag. And the built-in router directives are put under the <code> directives </code> property.  <code>@RouteConfig</code> contains an array of route objects. 
+In this file, the router component is imported and configured. You can see that the component is bound to the  <code> app-router </code> tag. And the built-in router directives are put under the <code> directives </code> property.  <code>@RouteConfig</code> contains an array of route objects. 
 
 A route object can contain a *path* , *name* and a *component* that it uses. Let's add <code>home.component</code> in there:
 1. Import the component
@@ -268,6 +274,7 @@ import {HomeComponent} from './home.component'
 
 The last thing that needs to be done is to add the <code>boot</code> file that is going to bootstrap the application:
 ```javascript
+//public/app/boot.ts
 import {provide} from 'angular2/core'
 import {bootstrap} from 'angular2/platform/browser'
 import {AppRouterComponent} from './app_router.component'
@@ -282,7 +289,7 @@ bootstrap(
     ]
 );
 ```
-The <code>AppRouterComponent</code> that was defined earlier is going to be bootstrapped and all its routes and components referenced is them will be reachable for rendering through their paths.
+You can regard <code>boot.ts</code> as the initialization file of the Angular 2 application. It imports the <code>AppRouterComponent</code> that was defined earlier and bootstraps it, making all its routes and components reachable through their paths.
 
 
 
