@@ -363,7 +363,24 @@ This is everything that is required to setup the environment React for the Rails
 ```javascript 
  rails generate react:component Item item:string --es6
 ```
- The generator will create an component in <code>app/assets/javascripts/components</code> in EcmaScript 6 syntax.
+The generator will create an component in <code>app/assets/javascripts/components</code> in EcmaScript 6 syntax. Let's see what we have:
+```javascript 
+class Item extends React.Component {
+  render () {
+    return (
+      <div>
+        <div>Item: {this.props.item}</div>
+      </div>
+    );
+  }
+}
+
+Item.propTypes = {
+  item: React.PropTypes.string
+};
+```
+The <code> render()</code> function is used to render html into the component. In this case, it will render the <code> item </code> property of the component. What we want is to render the data from the server, so let's do that:
+
  
 ### Summary
 React | Angular 2 | Rails   
