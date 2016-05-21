@@ -1,4 +1,4 @@
-In this tutorial, the React and Angular 2 way of setting up an application and streaming data back and forth will be reviewed and the differences will be analyzed.
+ One of the most recent debates in the web development world has been the choice of constructing the view layer of modern applications. In this guide, we will go through [React](https://facebook.github.io/react/) and [Angular 2](https://angular.io/) integration Ruby on Rails. The two approaches will be analyzed in terms of ease of integration and ease of use with the Rails.
 
 ### Setting up a sample Rails application
  Because the focus on the tutorial is on getting React or Angular integrated into a Rails application, the Rails application itself will be as simple as possible - it will contain one action which will return arbitrary JSON that is going to be rendered on the page using React or Angular. Open up your terminal or command prompt and type:
@@ -15,7 +15,7 @@ gem 'sprockets'
 gem 'rack-cors'
 ```
 
-<code> SQLite3 </code> is the gem for the Ruby-based database, <code> Sprockets </code> is for the asset pipeline and <code> rack-cors </code> is used to enable cross-origin HTTP requests (CORS) so that the React/Angular client-side can communicate with the server. In your console, run:
+[SQLite3](https://rubygems.org/gems/sqlite3/versions/1.3.11)  is the gem for the Ruby-based database, [Sprockets](https://github.com/rails/sprockets-rails) is for the asset pipeline and [rack-cors](https://github.com/cyu/rack-cors) is used to enable cross-origin HTTP requests (CORS) so that the React/Angular client-side can communicate with the server. In your console, run:
 
 ```bash
 bundle install
@@ -51,7 +51,7 @@ class ApplicationController < ActionController::Base
   #...
 end
 ```
- An action called  <code> index </code> is going to respond with the  <code> { some: 'data' } </code> JSON object when requested through http://localhost:3000/api. Let's put a route for the action:
+ An action called  <code> index </code> is going to respond with the  <code> { some: 'data' } </code> JSON object when requested through [http://localhost:3000](http://localhost:3000). Let's put a route for the action:
 ```ruby
 #config/routes.rb
 Rails.application.routes.draw do
@@ -308,7 +308,7 @@ This step completes the Angular 2 integration into your Rails application. Start
 ```bash
 rails s
 ```
-Open your browser and go to http://localhost:3000. You should see the <cvode>home.component</code> with the message displayed on the server. if you encounter any errors, you can check the [GitHub repository](https://github.com/Kaizeras/rails-angular2starter) of what we just implemented.
+Open your browser and go to [http://localhost:3000](http://localhost:3000). You should see the <cvode>home.component</code> with the message displayed on the server. if you encounter any errors, you can check the [GitHub repository](https://github.com/Kaizeras/rails-angular2starter) of what we just implemented.
 
 ### Integrating React
  Unlike Angular 2, which is a full-fledged framework, React is simply a library that provides bare-bones features for constructing user interfaces. React uses [JSX](https://jsx.github.io/) to render its components, which is much simpler and lighter than TypeScript. Unlike TypeScript, JSX can be integrated into Rails' asset pipeline, which significantly speeds up the integration of React with Rails.
@@ -423,7 +423,7 @@ Go to <code> app/views </code> , create a directory named <code>site </code> and
 
 ### Summary
 
-Here is a summary of the three different ways the view layer in Rails can be hanlded:
+Here is a overview of the three different ways the view layer in Rails can be hanlded:
 
 #### Handling server-side data
 
