@@ -1,8 +1,3 @@
-### Everything you need to know from Google I/O 2106 by Prateek Gupta
-- [Read the guide](http://tutorials.pluralsight.com/interesting-apis/everything-you-need-to-know-from-google-i-o-2106?status=draft)
-- [Read more from Prateek Gupta](http://tutorials.pluralsight.com/author/prtkgpt) <img src="https://avatars.githubusercontent.com/u/2454349?v=3" width="30" height="30" alt="Prateek Gupta" />
-- Related to: Interesting APIs (SendGrid, Twilio, etc)
-
 ### Uber Rides API by Andrew Noonan
 - [Read the guide](http://tutorials.pluralsight.com/interesting-apis/uber-rides-api?status=draft)
 - [Read more from Andrew Noonan](http://tutorials.pluralsight.com/author/noonhub) <img src="https://avatars.githubusercontent.com/u/942363?v=3" width="30" height="30" alt="Andrew Noonan" />
