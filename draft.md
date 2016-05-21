@@ -1,3 +1,8 @@
+### All Updates from #GoogleIO2016 Keynote from MountainView California by Rahat Khanna
+- [Read the guide](http://tutorials.pluralsight.com/interesting-apis/all-updates-from-googleio2016-keynote-from-mountainview-california?status=draft)
+- [Read more from Rahat Khanna](http://tutorials.pluralsight.com/author/mappmechanic) <img src="https://avatars.githubusercontent.com/u/4088925?v=3" width="30" height="30" alt="Rahat Khanna" />
+- Related to: Interesting APIs (SendGrid, Twilio, etc)
+
 ### Uber Rides API by Andrew Noonan
 - [Read the guide](http://tutorials.pluralsight.com/interesting-apis/uber-rides-api?status=draft)
 - [Read more from Andrew Noonan](http://tutorials.pluralsight.com/author/noonhub) <img src="https://avatars.githubusercontent.com/u/942363?v=3" width="30" height="30" alt="Andrew Noonan" />
