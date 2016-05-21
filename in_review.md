@@ -1,3 +1,8 @@
+### All Updates from #GoogleIO2016 Keynote from MountainView California by Rahat Khanna
+- [Read the guide](http://tutorials.pluralsight.com/interesting-apis/all-updates-from-googleio2016-keynote-from-mountainview-california?status=in-review)
+- [Read more from Rahat Khanna](http://tutorials.pluralsight.com/author/mappmechanic) <img src="https://avatars.githubusercontent.com/u/4088925?v=3" width="30" height="30" alt="Rahat Khanna" />
+- Related to: Interesting APIs (SendGrid, Twilio, etc)
+
 ### React vs. Angular 2 integration with Rails by Hristo Georgiev
 - [Read the guide](http://tutorials.pluralsight.com/ruby-ruby-on-rails/react-vs-angular-2-integration-with-rails?status=in-review)
 - [Read more from Hristo Georgiev](http://tutorials.pluralsight.com/author/Kaizeras) <img src="https://avatars.githubusercontent.com/u/6340189?v=3" width="30" height="30" alt="Hristo Georgiev" />
