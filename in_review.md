@@ -1,3 +1,8 @@
+### React vs. Angular 2 integration with Rails by Hristo Georgiev
+- [Read the guide](http://tutorials.pluralsight.com/ruby-ruby-on-rails/react-vs-angular-2-integration-with-rails?status=in-review)
+- [Read more from Hristo Georgiev](http://tutorials.pluralsight.com/author/Kaizeras) <img src="https://avatars.githubusercontent.com/u/6340189?v=3" width="30" height="30" alt="Hristo Georgiev" />
+- Related to: Ruby, Ruby on Rails
+
 ### Introduction to testing with BDD and the Spock Framework by Esteban Herrera
 - [Read the guide](http://tutorials.pluralsight.com/java-and-j2ee/introduction-to-testing-with-bdd-and-the-spock-framework?status=in-review)
 - [Read more from Esteban Herrera](http://tutorials.pluralsight.com/author/eh3rrera) <img src="https://avatars.githubusercontent.com/u/11665759?v=3" width="30" height="30" alt="Esteban Herrera" />
