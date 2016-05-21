@@ -1,8 +1,3 @@
-### React vs. Angular 2 integration with Rails by Hristo Georgiev
-- [Read the guide](http://tutorials.pluralsight.com/ruby-ruby-on-rails/react-vs-angular-2-integration-with-rails?status=draft)
-- [Read more from Hristo Georgiev](http://tutorials.pluralsight.com/author/Kaizeras) <img src="https://avatars.githubusercontent.com/u/6340189?v=3" width="30" height="30" alt="Hristo Georgiev" />
-- Related to: Ruby, Ruby on Rails
-
 ### Uber Rides API by Andrew Noonan
 - [Read the guide](http://tutorials.pluralsight.com/interesting-apis/uber-rides-api?status=draft)
 - [Read more from Andrew Noonan](http://tutorials.pluralsight.com/author/noonhub) <img src="https://avatars.githubusercontent.com/u/942363?v=3" width="30" height="30" alt="Andrew Noonan" />
