@@ -366,7 +366,7 @@ This is everything that is required to setup the environment React for the Rails
 ```javascript 
  rails generate react:component Item  --es6
 ```
-The generator will create an component in <code>app/assets/javascripts/components</code> in EcmaScript 6 syntax. Let's see what we have:
+The generator will create an component in <code>app/assets/javascripts/components</code> in EcmaScript 6 syntax. Open the file and put the following code snippet:
 
 
 ```javascript 
@@ -376,7 +376,6 @@ class Item extends React.Component {
         super(props, context);
         this.state = {item: ''};
     };
-
 
     render () {
     return (
@@ -392,7 +391,7 @@ class Item extends React.Component {
 
 
 ```
-<code> constructor() </code> is used to initialize the component's state variables. We are going to create an empty <code>item</code> object. <code>super</code> is a common Object-Oriented pattern, here itused to inherit the props and context from the <code>React.Component</code> class.
+<code> constructor() </code> is used to initialize the component's state variables. In the constructor, an empty <code>Item</code> object will be initialized in the component's state. <code>super</code> is a common Object-Oriented pattern, here itused to inherit the props and context from the <code>React.Component</code> class.
 The <code> render()</code> function is used to render html into the component. In this case, it will render the <code> item </code> state of the component. <code>this.state</code> contains the state of the component, which is usually private or component-specific variables. <code> item </code> is one of them. When there are several nested components however, the data between them is passed through <code> this.props </code>.
 
 What we want is to render the data from the server into <code>item</code>, so let's do that:
@@ -408,7 +407,7 @@ class Item extends React.Component {
  }
 
 ```
-<code> componentDidMount() </code> is a method that will be called when the component becomes mounted into the DOM. Simply said, it is called when the component is rendered on the page. In it, the <code>$.getJSON</code> function makes a request to <code>localhost:300/api</code> and uses EcmaScript 6's arrow function to get the callback when the request succeeds. <code> this.setState() </code> will set the <code> item </code> property with the property of the <code>response</code> object which will contain <code>{ some: 'data' }</code>.
+<code> componentDidMount() </code> is a method that will be called when the component becomes mounted into the DOM. Simply said, it is called when the component is rendered on the page. In it, the <code>$.getJSON</code> function makes a request to <code>localhost:300/api</code> and uses EcmaScript 6's arrow function to get the callback when the request succeeds.  [this.setState()](https://facebook.github.io/react/docs/component-api.html#setstate) will set the <code> item </code> property with the property of the <code>response</code> object which will contain <code>{ some: 'data' }</code>.
 
 Last, make a view to render the component:
 Go to <code> app/views </code> , create a directory named <code>site </code> and create a file named <code>index.html.erb</code> and put the following snippet in it:
@@ -419,7 +418,7 @@ Go to <code> app/views </code> , create a directory named <code>site </code> and
 ```
 <code> react_component </code> is a built-in helper method provided by react-rails that is going to render the <code>Item</code> component into the Rails view.
 
- With this step, the Rails application integrates React. Go to http://localhost:3000 and see the results. If you encounter any problems, check the [GitHub repository]() .
+ With this step, the Rails application integrates React. Go to http://localhost:3000 and see the results. If you encounter any problems, check the [GitHub repository](https://github.com/Kaizeras/rails-reactstarter) .
 
 ### Summary
 
