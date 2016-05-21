@@ -270,18 +270,19 @@ export class AppRouterComponent {}
 In this file, the router component is imported and configured. You can see that the component is bound to the  <code> app-router </code> tag. And the built-in router directives are put under the <code> directives </code> property.  <code>@RouteConfig</code> contains an array of route objects. 
 
 A route object can contain a *path* , *name* and a *component* that it uses. Let's add <code>home.component</code> in there:
+
 1. Import the component
 
-```javascript
-import {HomeComponent} from './home.component'
-```
+    ```javascript
+    import {HomeComponent} from './home.component'
+    ```
 2. Put it in <code>@RouteConfig</code>
 
-```javascript
- @RouteConfig([
-    { path: '/', name: 'Home', component: HomeComponent }
-])
-```
+    ```javascript
+     @RouteConfig([
+        { path: '/', name: 'Home', component: HomeComponent }
+    ])
+    ```
 
 The last thing that needs to be done is to add the <code>boot</code> file that is going to bootstrap the application:
 ```javascript
