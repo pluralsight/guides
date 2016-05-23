@@ -1,8 +1,3 @@
-### Everything you need to know from Google I/O 2106 by Prateek Gupta
-- [Read the guide](http://tutorials.pluralsight.com/interesting-apis/everything-you-need-to-know-from-google-i-o-2106?status=in-review)
-- [Read more from Prateek Gupta](http://tutorials.pluralsight.com/author/prtkgpt) <img src="https://avatars.githubusercontent.com/u/2454349?v=3" width="30" height="30" alt="Prateek Gupta" />
-- Related to: Interesting APIs (SendGrid, Twilio, etc)
-
 ### All Updates from #GoogleIO2016 Keynote from MountainView California by Rahat Khanna
 - [Read the guide](http://tutorials.pluralsight.com/interesting-apis/all-updates-from-googleio2016-keynote-from-mountainview-california?status=in-review)
 - [Read more from Rahat Khanna](http://tutorials.pluralsight.com/author/mappmechanic) <img src="https://avatars.githubusercontent.com/u/4088925?v=3" width="30" height="30" alt="Rahat Khanna" />
