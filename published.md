@@ -1,3 +1,8 @@
+### Building a Generic CSV Writer/Reader using Reflection by Murat Aykanat
+- [Read the guide](http://tutorials.pluralsight.com/microsoft-net/building-a-generic-csv-writer-reader-using-reflection)
+- [Read more from Murat Aykanat](http://tutorials.pluralsight.com/author/aykanatm) <img src="https://avatars.githubusercontent.com/u/9140297?v=3" width="30" height="30" alt="Murat Aykanat" />
+- Related to: Microsoft.NET (C#, ASP.NET, VB.NET, etc)
+
 ### AngularJS Models by Matt Milner
 - [Read the guide](http://tutorials.pluralsight.com/front-end-javascript/angularjs-models)
 - [Read more from Matt Milner](http://tutorials.pluralsight.com/author/mnmilner) <img src="https://avatars3.githubusercontent.com/u/2028582?v=3" width="30" height="30" alt="Matt Milner" />
