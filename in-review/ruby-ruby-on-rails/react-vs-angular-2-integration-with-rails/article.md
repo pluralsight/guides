@@ -1,8 +1,4 @@
-
-![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/8ee194bc-0c61-4176-ae80-e4a2d2ae39d6.png)
-
-
-
+![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/784ee786-122e-4b8f-beda-797f9563d733.png)
 
  One of the most recent debates in the web development world has been the choice of constructing the view layer of modern applications. In this guide, we will go through [React](https://facebook.github.io/react/) and [Angular 2](https://angular.io/) integration Ruby on Rails. The two approaches will be analyzed in terms of ease of integration and ease of use with the Rails.
 
