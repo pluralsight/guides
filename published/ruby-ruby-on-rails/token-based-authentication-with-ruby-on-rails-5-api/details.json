@@ -4,7 +4,10 @@
     "author_real_name": "Hristo Georgiev",
     "branch": "master",
     "branches": [
-        "adityavarshney"
+        [
+            "adityavarshney",
+            "adityavarshney"
+        ]
     ],
     "filename": "article.md",
     "first_commit": null,
