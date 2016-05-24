@@ -227,7 +227,7 @@ The token creation is done, but there is no way to check if a token that's been 
   
   Here is how the code is structured:
 ```ruby
-# app/commands/check_if_user_authorized.rb
+# app/commands/authorize_api_request.rb
 
 class AuthorizeApiRequest
   prepend SimpleCommand
