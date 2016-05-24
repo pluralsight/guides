@@ -7,7 +7,7 @@ Before we dive into the code, let me explain what is CSV file format so we have 
 ### What is a CSV file?
 A CSV file is a plain text file which holds data in table format. Each line is like a row in a table, and columns are separated by a comma. Hence, the name comma separated value.
 
-Below is an example of such a file containing table of first names and last names of people:
+Below is an example of such a file containing table of numbers, first names and last names of people:
 
 ```csv
 1,murat,aykanat
@@ -47,7 +47,7 @@ If you have text values in your CSV file, you might run into a problem where the
 ```csv
 1, Hello, world!
 ```
-In the above example, our first column is 1 and the second is `Hello, world!`, however, a CSV reader would divide the row into 3 columns 1, Hello and world!.
+In the above example, our first column is 1 and the second is `Hello, world!`, however, a CSV reader would divide the row into 3 columns `1`, `Hello` and ` world!`.
 
 To solve this issue we must use quotation marks:
 ```csv
@@ -69,7 +69,7 @@ We can also have actual quotation marks in our data fields. In this case, we nee
 1,murat,""aykanat""
 2,john,""smith""
 ```
-That would read as; name is murat, lastname is `aykanat`.
+That would read as; number is `1`, name is `murat`, lastname is `"aykanat"`.
 
 #### Headers
 You can also add headers to the columns.
