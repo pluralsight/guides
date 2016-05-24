@@ -20,7 +20,7 @@ CSV biçiminin en büyük faydası çünkü düz metin olduğundan dolayı tüm 
 
 ### CSV dosyasının biçimi
 
-#### Ayraç (Separator) Sorunları
+#### Ayraç (Separator) sorunları
 Bazı durumlarda dosya virgülle ayrılmış olmayabilir. Özellikle CSV dosyasını 3. parti bir yazılım (ör: Microsoft Excell) ile yarattıysanız, bilgisayarınızın işletim sistemi diline bağlı olarak "ayraç" karakteri `;` karakteri gibi farklı bir karakter olabilir. Bunun sebebi değişik kültürlerde ondalık ayraç karakterinin farklı olmasıdır. Bazı kültürlerde ondalık ayracı `.` 'dır ve o kültürde CSV ayracının `,` olmasında bir problem yoktur. Ancak ondalık ayracının `,` olduğu kültürlerde, CSV ayracı `;` gibi farklı bir karakter olmalıdır.
 
 Örneğin, eğer bilgisayar yereliniz (locale) bir `fr-FR` yada `tr-TR` gibi bir avrupa kültürü ise, varsayılan ondalık ayracınız `,`'dır, bu sebeple CSV ayracınız `;` yada başka bir karakter olmalıdır.
@@ -36,59 +36,65 @@ Ancak eğer bilgisayarınız `en-US` ise, ondalık ayracı `.` olduğundan, vars
 4.5,6.7,8.9
 ```
 
-#### Number of data fields in each row
-The most critical rule is every row must contain the same number of data fields otherwise it would be impossible to read by any CSV reader also it would not make sense.
+#### Her bir satırdaki veri alanlarının sayısı
+Veri alanlarının sayısındaki en kritik kural, her satırda eşit sayıda veri alanı olmasıdır. Eğer aynı sayıda veri alanı olmazsa CSV okuyucular yarattığınız dosyayı okuyamazlar.
 
-If you have an empty data field, you can just use an empty string.
+Eğer bir veri alanını özellikle boş bırakmak istiyorsanız boş `string` değerini kullanabilirsiniz
 
 ```csv
 1,,aykanat
 2,john,smith
 ```
 
-#### Comma in a data field
-If you have text values in your CSV file, you might run into a problem where there is a comma inside one of your rows which would pose a problem because that field would be divided from that comma and you would end up with an extra column in that row.
+#### Veri alanındaki virgül
+CSV dosyanızda metin verileri varsa, veri alanlarınızdan birinin içinde virgül olması kaç adet virgül varsa o kadar ekstra veri eklenmesi gibi bir soruna sebep olur ve CSV dosyasının okunmasında hata olması anlamına gelebilir.
+
 ```csv
 1, Hello, world!
 ```
-In the above example, our first column is 1 and the second is `Hello, world!`, however, a CSV reader would divide the row into 3 columns 1, Hello and world!.
+Yukarıdaki örnekte, birinci sütun 1 ve ikinci sütun `Hello, world!`'dür, ancak CSV okuyucu bu veriyi 3 sütuna bölerek `1`, `Hello`, ` world!` olarak okur.
 
-To solve this issue we must use quotation marks:
+Bu problemi çözmek için tırnak işareti kullanmamız gerekir.
+
 ```csv
 1, "Hello, world!"
 ```
 
-This way we mean that the string `Hello, world!` is a single data field.
+Böylece `Hello, world!` verisinin tek veri alanına olduğunu belirtmiş oluruz.
 
-You can also use quotation mark on single word strings, but it is not necessary.
+Tırnak işaretlerini virgül içermeyen `string` değerlerde de kullanabilirsiniz ancak bu gereksizdir.
+
 ```csv
 1,"murat","aykanat"
 1,"john","smith"
 ```
 
-#### Quotation marks in a data field
+#### Veri alanında tırnak işareti
 
-We can also have actual quotation marks in our data fields. In this case, we need to double our quotation marks indicating it is included in the data field.
+Veri alanlarımızda tırnak işareti kullanmamız gerektiğinde, çift tırnak işareti kullanarak, o tırnak işaretinin veriye dahil olduğunu belirtebiliriz.
+
 ```csv
 1,murat,""aykanat""
 2,john,""smith""
 ```
-That would read as; name is murat, lastname is `aykanat`.
+That would read as; name is `murat`, lastname is `"aykanat"`.
 
-#### Headers
-You can also add headers to the columns.
+#### Başlıklar
+
+Aşağıdaki şekilde sütunlara başlık ekleyebiliriz:
+
 ```csv
 id,name,lastname
 1,murat,aykanat
 1,john,smith
 ```
-This is useful when the columns are not clear by its data fields. For example, if columns are all numbers, and you send the file to a person who does not know what the columns mean, that would be very confusing for the other person because he or she doesn't know what those numbers mean.So it would be better if we include headers in those scenarios to indicate what those columns of values mean.
 
-#### More Details
+Başlık eklemek eğer veri alanları ile ne demek istendiği belli değilse çok yararlı olabilir. Örneğin tüm veriler sayı ise ve bu dosyayı bu sayıların ne anlama geldiğini bilmeyen birine gönderiyorsak, başlıklar olmazsa bu kişinin hangi sayının ne anlama geldiğini anlaması çok zordur. Bu sebeple başlıkları kullanarak daha anlamlı veri kümeleri gönderebiliriz.
 
-If you would like to know more about CSV file format, you can use the [Wikipedia article](https://en.wikipedia.org/wiki/Comma-separated_values) about CSV and its resources.
+#### Daha fazla bilgi
+Eğer CSV biçimi hakkında daha detaylı bilgi almak iserseniz, ilgili [Wikipedia makalesini](https://en.wikipedia.org/wiki/Comma-separated_values) inceleyebilirsiniz.
 
-### The Theory
+### Teori
 Our idea is simple, we want to input an array of objects into our CSV Writer and output a CSV file. For the reading part, we want to input the file path and output an array of objects back into the memory.
 
 **Input**
