@@ -1,4 +1,4 @@
-Bu yazı [Globalization with Attached Properties in WPF](http://tutorials.pluralsight.com/microsoft-net/globalization-with-attached-properties-in-wpf) isimli yazımın Türkçe çevirisidir.
+Bu makale [Globalization with Attached Properties in WPF](http://tutorials.pluralsight.com/microsoft-net/globalization-with-attached-properties-in-wpf) isimli makalemin Türkçe çevirisidir.
 
 Doktora tezimin bir parçası olarak Windows üzerinde çalışan bir uygulamaya ihtiyaç duydum ve bir Windows Presentation Foundation (WPF) uygulaması yarattım. Ancak uygulamayı bitirdikten sonra bir problem ile yüzyüze geldim.
 
