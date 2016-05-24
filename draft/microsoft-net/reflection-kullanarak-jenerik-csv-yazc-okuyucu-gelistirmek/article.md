@@ -9,26 +9,28 @@ Kod yazmaya başlamadan önce, yazdığımız kodu daha iyi anlayabilmek için C
 ### CSV dosyası nedir?
 CSV dosyası verileri tablo biçiminde tutan bir düz metin dosyadır. Her satır, tablodaki bir satıra denk gelir. Sütunlar ise virgülle ayrılmıştır. Bu sebeple de adı virgülle ayrılmış değerlerdir.
 
-Below is an example of such a file containing table of first names and last names of people:
+Aşağıda bir grup kişinin sıra numaraları, isimleri ve soyadlarını tutan bir CSV dosyası örneği görüyoruz:
 
 ```csv
 1,murat,aykanat
 2,john,smith
 ```
 
-CSV format is very useful because it is a text file and any operating system can read it. For example, if your application creates the CSV file on a Windows machine, you can open it up and use it on a Linux machine. So it is a very portable and easily readable file format.
+CSV biçiminin en büyük faydası çünkü düz metin olduğundan dolayı tüm işletim sistemleri tarafından okunabilir olmasıdır. Örneğin, uygulamanız CSV dosyasını Windows işletim sistemi olan bir bilgisayarda yaratsa bile, bu dosyayı Linux işletim sistemi olan bir bilgisayarda açabilir ve kullanabilirsiniz. Bu sebeple CSV kolay okunabilir ve taşınabilir bir biçimdir.
 
-### Formatting of a CSV file
+### CSV dosyasının biçimi
 
-#### Separator Issues
-In some cases, the file may not be comma separated. Especially if you are using a 3rd party program(e.g. Microsoft Excell), depending on the culture of your machine "separator" might be a different character such as `;`. This is because of the decimal separator is different in different cultures. In some cultures, the decimal separator is `.` so the CSV separator can be `,`. But in some cultures decimal separator is `,` so the CSV file has to use `;` as a separator.
+#### Ayraç (Separator) Sorunları
+Bazı durumlarda dosya virgülle ayrılmış olmayabilir. Özellikle CSV dosyasını 3. parti bir yazılım (ör: Microsoft Excell) ile yarattıysanız, bilgisayarınızın işletim sistemi diline bağlı olarak "ayraç" karakteri `;` karakteri gibi farklı bir karakter olabilir. Bunun sebebi değişik kültürlerde ondalık ayraç karakterinin farklı olmasıdır. Bazı kültürlerde ondalık ayracı `.` 'dır ve o kültürde CSV ayracının `,` olmasında bir problem yoktur. Ancak ondalık ayracının `,` olduğu kültürlerde, CSV ayracı `;` gibi farklı bir karakter olmalıdır.
 
-For example, if your locale is set to some European culture, such as `fr-FR`, default decimal separator becomes `,` and you need to use `;` in CSV file as column separator:
+Örneğin, eğer bilgisayar yereliniz (locale) bir `fr-FR` yada `tr-TR` gibi bir avrupa kültürü ise, varsayılan ondalık ayracınız `,`'dır, bu sebeple CSV ayracınız `;` yada başka bir karakter olmalıdır.
+
 ```csv
 3,5;2,5;5,4
 4,5;6,7;8,9
 ```
-However in a machine which has `en-US` set as default, since decimal separator is `.` by default, same CSV file would look like this:
+Ancak eğer bilgisayarınız `en-US` ise, ondalık ayracı `.` olduğundan, varsayılan CSV aşağıdaki şekilde görünür:
+
 ```csv
 3.5,2.5,5.4
 4.5,6.7,8.9
