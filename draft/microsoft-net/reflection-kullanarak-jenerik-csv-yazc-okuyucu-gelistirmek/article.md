@@ -1,3 +1,5 @@
+Bu makale [Building a Generic CSV Writer/Reader using Reflection](http://tutorials.pluralsight.com/microsoft-net/building-a-generic-csv-writer-reader-using-reflection) isimli makalemin Türkçe çevirisidir.
+
 (**C**omma **S**eperated **V**alue (Virgülle Ayrılmış Değerler)) CSV dosya biçimi veri kümelerini basit ve taşınabilir bir biçimde kaydetmenin en sık kullanılan yoludur. Ayrıca, dosya düz metin olduğundan, tüm programlama dillerinde bu tip dosyalar oluşturmak oldukça kolaydır. Bu tip dosyaları okumak yada yazmak için bir çok kütüphane mevcuttur ancak özel bir şekilde CSV dosyası yazmak/okumak ve kütüphane üzerinde tam kontrol sağlamak için kendi uygulamanızı yazmanızda fayda vardır.
 
 Bu makalede, yarattığımız objelerin public property'lerinden verileri otomatik olarak alabilecek ve bu verileri kullanabilecek bir CSV okuyucu/yazıcı nasıl geliştirebileceğinizi anlatacağım.
