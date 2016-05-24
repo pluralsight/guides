@@ -1,3 +1,18 @@
+### WPF Uygulamalarında Attached Property'ler ile Çoklu Dil Desteği by Murat Aykanat
+- [Read the guide](http://tutorials.pluralsight.com/microsoft-net/wpf-uygulamalarnda-attached-property-ler-ile-coklu-dil-destegi)
+- [Read more from Murat Aykanat](http://tutorials.pluralsight.com/author/aykanatm) <img src="https://avatars.githubusercontent.com/u/9140297?v=3" width="30" height="30" alt="Murat Aykanat" />
+- Related to: Microsoft.NET (C#, ASP.NET, VB.NET, etc)
+
+### React vs. Angular 2 integration with Rails by Hristo Georgiev
+- [Read the guide](http://tutorials.pluralsight.com/ruby-ruby-on-rails/react-vs-angular-2-integration-with-rails)
+- [Read more from Hristo Georgiev](http://tutorials.pluralsight.com/author/Kaizeras) <img src="https://avatars.githubusercontent.com/u/6340189?v=3" width="30" height="30" alt="Hristo Georgiev" />
+- Related to: Ruby, Ruby on Rails
+
+### Building a Generic CSV Writer/Reader using Reflection by Murat Aykanat
+- [Read the guide](http://tutorials.pluralsight.com/microsoft-net/building-a-generic-csv-writer-reader-using-reflection)
+- [Read more from Murat Aykanat](http://tutorials.pluralsight.com/author/aykanatm) <img src="https://avatars.githubusercontent.com/u/9140297?v=3" width="30" height="30" alt="Murat Aykanat" />
+- Related to: Microsoft.NET (C#, ASP.NET, VB.NET, etc)
+
 ### AngularJS Models by Matt Milner
 - [Read the guide](http://tutorials.pluralsight.com/front-end-javascript/angularjs-models)
 - [Read more from Matt Milner](http://tutorials.pluralsight.com/author/mnmilner) <img src="https://avatars3.githubusercontent.com/u/2028582?v=3" width="30" height="30" alt="Matt Milner" />

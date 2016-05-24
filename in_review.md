@@ -1,37 +1,17 @@
-### Everything you need to know from Google I/O 2106 by Prateek Gupta
-- [Read the guide](http://tutorials.pluralsight.com/interesting-apis/everything-you-need-to-know-from-google-i-o-2106?status=in-review)
-- [Read more from Prateek Gupta](http://tutorials.pluralsight.com/author/prtkgpt) <img src="https://avatars.githubusercontent.com/u/2454349?v=3" width="30" height="30" alt="Prateek Gupta" />
-- Related to: Interesting APIs (SendGrid, Twilio, etc)
-
 ### All Updates from #GoogleIO2016 Keynote from MountainView California by Rahat Khanna
 - [Read the guide](http://tutorials.pluralsight.com/interesting-apis/all-updates-from-googleio2016-keynote-from-mountainview-california?status=in-review)
 - [Read more from Rahat Khanna](http://tutorials.pluralsight.com/author/mappmechanic) <img src="https://avatars.githubusercontent.com/u/4088925?v=3" width="30" height="30" alt="Rahat Khanna" />
 - Related to: Interesting APIs (SendGrid, Twilio, etc)
-
-### React vs. Angular 2 integration with Rails by Hristo Georgiev
-- [Read the guide](http://tutorials.pluralsight.com/ruby-ruby-on-rails/react-vs-angular-2-integration-with-rails?status=in-review)
-- [Read more from Hristo Georgiev](http://tutorials.pluralsight.com/author/Kaizeras) <img src="https://avatars.githubusercontent.com/u/6340189?v=3" width="30" height="30" alt="Hristo Georgiev" />
-- Related to: Ruby, Ruby on Rails
 
 ### Introduction to testing with BDD and the Spock Framework by Esteban Herrera
 - [Read the guide](http://tutorials.pluralsight.com/java-and-j2ee/introduction-to-testing-with-bdd-and-the-spock-framework?status=in-review)
 - [Read more from Esteban Herrera](http://tutorials.pluralsight.com/author/eh3rrera) <img src="https://avatars.githubusercontent.com/u/11665759?v=3" width="30" height="30" alt="Esteban Herrera" />
 - Related to: Java and J2EE
 
-### WPF Uygulamalarında Attached Property'ler ile Çoklu Dil Desteği by Murat Aykanat
-- [Read the guide](http://tutorials.pluralsight.com/microsoft-net/wpf-uygulamalarnda-attached-property-ler-ile-coklu-dil-destegi?status=in-review)
-- [Read more from Murat Aykanat](http://tutorials.pluralsight.com/author/aykanatm) <img src="https://avatars.githubusercontent.com/u/9140297?v=3" width="30" height="30" alt="Murat Aykanat" />
-- Related to: Microsoft.NET (C#, ASP.NET, VB.NET, etc)
-
 ### Getting started with ECMAScript6 by Peter Olson
 - [Read the guide](http://tutorials.pluralsight.com/front-end-javascript/getting-started-with-ecmascript6?status=in-review)
 - [Read more from Peter Olson](http://tutorials.pluralsight.com/author/peterolson) <img src="https://avatars.githubusercontent.com/u/920512?v=3" width="30" height="30" alt="Peter Olson" />
 - Related to: Front-End JavaScript (Angular, React, Meteor, etc)
-
-### Building a Generic CSV Writer/Reader using Reflection by Murat Aykanat
-- [Read the guide](http://tutorials.pluralsight.com/microsoft-net/building-a-generic-csv-writer-reader-using-reflection?status=in-review)
-- [Read more from Murat Aykanat](http://tutorials.pluralsight.com/author/aykanatm) <img src="https://avatars.githubusercontent.com/u/9140297?v=3" width="30" height="30" alt="Murat Aykanat" />
-- Related to: Microsoft.NET (C#, ASP.NET, VB.NET, etc)
 
 ### Profiling Python's core collection data structures by Luke Lee
 - [Read the guide](http://tutorials.pluralsight.com/python/profiling-python-s-core-collection-data-structures?status=in-review)
