@@ -770,7 +770,7 @@ Here we:
 
 You may notice we don't have ```float```, ```double``` or ```char``` in our switch statement. That's because in this example we only have ```int``` and ```string``` so I didn't want to make the class bigger.
 
-So, now we have to iterate over the object via our ```CsvReader``` class.
+So, now we have to iterate over the objects via our ```CsvReader``` class.
 ```cs
 public class CsvReader<T> where T : CsvableBase, new()
 {
