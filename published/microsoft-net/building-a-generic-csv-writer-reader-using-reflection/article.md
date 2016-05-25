@@ -4,7 +4,7 @@ In this guide, I will explain how to write a generic CSV Writer/Reader that will
 
 Before we dive into the code, let me explain what is CSV file format so we have a better understanding of what we are dealing with.
 
-### What is a CSV file?
+### What is a CSV File?
 A CSV file is a plain text file which holds data in table format. Each line is like a row in a table, and columns are separated by a comma. Hence, the name comma separated value.
 
 Below is an example of such a file containing table of numbers, first names and last names of people:
@@ -16,7 +16,7 @@ Below is an example of such a file containing table of numbers, first names and 
 
 CSV format is very useful because it is a text file and any operating system can read it. For example, if your application creates the CSV file on a Windows machine, you can open it up and use it on a Linux machine. So it is a very portable and easily readable file format.
 
-### Formatting of a CSV file
+### Formatting of a CSV File
 
 #### Separator Issues
 In some cases, the file may not be comma separated. Especially if you are using a 3rd party program(e.g. Microsoft Excell), depending on the culture of your machine "separator" might be a different character such as `;`. This is because of the decimal separator is different in different cultures. In some cultures, the decimal separator is `.` so the CSV separator can be `,`. But in some cultures decimal separator is `,` so the CSV file has to use `;` as a separator.
@@ -32,7 +32,7 @@ However in a machine which has `en-US` set as default, since decimal separator i
 4.5,6.7,8.9
 ```
 
-#### Number of data fields in each row
+#### Number of Data Fields in Each Row
 The most critical rule is every row must contain the same number of data fields otherwise it would be impossible to read by any CSV reader also it would not make sense.
 
 If you have an empty data field, you can just use an empty string.
@@ -42,7 +42,7 @@ If you have an empty data field, you can just use an empty string.
 2,john,smith
 ```
 
-#### Comma in a data field
+#### Comma in a Data Field
 If you have text values in your CSV file, you might run into a problem where there is a comma inside one of your rows which would pose a problem because that field would be divided from that comma and you would end up with an extra column in that row.
 ```csv
 1, Hello, world!
@@ -62,7 +62,7 @@ You can also use quotation mark on single word strings, but it is not necessary.
 1,"john","smith"
 ```
 
-#### Quotation marks in a data field
+#### Quotation Marks in a Data Field
 
 We can also have actual quotation marks in our data fields. In this case, we need to double our quotation marks indicating it is included in the data field.
 ```csv
@@ -768,7 +768,7 @@ Here we:
 - Call ```AssignValuesFromCsv()``` with its properties.
 - If the property is not derived from `CsvableBase`, just assign it to the property value according to the ```switch```.
 
-You may notice we don't have ```float```, ```double``` or ```char``` in your switch statement. That's because in this example we only have ```int``` and ```string``` so I didn't want to make the class bigger.
+You may notice we don't have ```float```, ```double``` or ```char``` in our switch statement. That's because in this example we only have ```int``` and ```string``` so I didn't want to make the class bigger.
 
 So, now we have to iterate over the object via our ```CsvReader``` class.
 ```cs
