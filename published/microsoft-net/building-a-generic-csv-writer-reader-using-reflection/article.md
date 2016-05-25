@@ -804,7 +804,7 @@ public class CsvReader<T> where T : CsvableBase, new()
 }
 ```
 
-Remember when I wrote that we may need ```ToString()``` override somewhere? Well, now we need it to print ```Person``` and ```Address``` objects. Also, we need to add an empty constructor for CSV Reader to work.
+Remember when I wrote that we may need ```ToString()``` override somewhere? Well, now we need it to print ```Person``` and ```Address``` objects. Also, we need to add an empty constructor for `CsvReader` to work.
 
 ```cs
 public class Address : CsvableBase
