@@ -727,8 +727,8 @@ Dosya açıldığında yazılan çıktının beklenildiği şekilde olduğunu g�
 ```
 
 ### CSV Okuyucu
-Now, we have to reverse the process to read from our CSV file. To do this, we will follow what we did while reading. By this logic, as we implemented ```ToCsv()```, we need another method to reverse the CSV process in the ```CsvableBase``` class. Let's call this method ```AssignValuesFromCsv()```. Maybe not the most creative name, but we will go with that for now.
-In this method we will do what we did in ```ToCsv()``` method. First, we will check whether the current property is derived from CsvableBase or not. After that, we will save the data back to the public properties.
+CSV dosyamızdan okumak için yaptığımız işlemleri tersine çevirmemiz gerekiyor. Bunu yapabilmek için, yazarken ne yaptığımızı takip edelim. Önce `ToCsv()` metodunu yazdık, bu mantıkla `CsvableBase` sınıfına bu işlemi tersine çeviren bir metot yazmamız gerekir. Bu metoda `AssignValuesFromCsv()` diyelim. Bu metotta önce o anki property'nin `CsvableBase`'den türeyip türemediğine bakacağız. Daha sonra, verileri public property'ler içine yazacağız.
+
 
 ```cs
 public virtual void AssignValuesFromCsv(string[] propertyValues)
@@ -770,19 +770,21 @@ public virtual void AssignValuesFromCsv(string[] propertyValues)
     }
 }
 ```
-Here we:
 
-- Get all public properties of the object.
-- Iterate over the properties.
-- Check if the current property is derived from ```CsvableBase```.
-- If so, create a temporary instance of that object.
-- Get its properties.
-- Call ```AssignValuesFromCsv()``` with its properties.
-- If the property is not derived from Csvable base, just assign it to the property value according to the ```switch```.
+Burada:
+- Objenin tüm public property'lerini alıyoruz.
+- Property'lere döngü ile tek tek erişiyoruz.
+- Property'nin `CsvableBase`'den türeyip türemediğine karar veriyoruz.
+- Eğer türemişse, geçici bir örneğini(instance) oluşturuyoruz.
+- Yaratılan örneğin tüm property'lerini alıyoruz.
+- ```AssignValuesFromCsv()``` metodunu property'lerinde çağırıyoruz.
+- Eğer `CsvableBase`'den türemişse, switch ile property değerine atıyoruz.
 
-You may notice we don't have ```float```, ```double``` or ```char``` in your switch statement. That's because in this example we only have ```int``` and ```string``` so I didn't want to make the class bigger.
 
-So, now we have to iterate over the object via our ```CsvReader``` class.
+Farkettiyseniz, switch ifademizde `float`, `double`, yada `char` mevcut değil. Bunun sebebi, bu örneği kısa ve anlaşılır tutmak istemem ve örneğimizde sadece `int` ve `string` bulunmasıdır.
+
+Şimdi, objeleri aşağıdaki şekilde `CsvReader` sınıfı ile okuyabiliriz.
+
 ```cs
 public class CsvReader<T> where T : CsvableBase, new()
 {
@@ -816,7 +818,8 @@ public class CsvReader<T> where T : CsvableBase, new()
 }
 ```
 
-Remember when I wrote that we may need ```ToString()``` override somewhere? Well, now we need it to print ```Person``` and ```Address``` objects. Also, we need to add an empty constructor for CSV Reader to work.
+`ToString()`'i kodun başka bir yerinde kullanabiliriz diye yazdığımı hatırlarsınız. Şimdi `Person` ve `Address` objelerini yazdırmak için bu metodu kullanacağız. Ayrıca `CsvReader`'ın çalışabilmesi için boş bir constructor'a ihtiyacımız var.
+
 
 ```cs
 public class Address : CsvableBase
@@ -862,7 +865,7 @@ public class Person : CsvableBase
 }
 ```
 
-Let's try our code:
+Yazdığımız kodu deneyelim:
 
 ```cs
 class Program
@@ -890,14 +893,12 @@ class Program
 }
 ```
 
-Output:
+Çıktı:
 ```text
 murat aykanat  city1 / country1
 john smith  city2 / country2
 ```
 ### Conclusion
-In this guide, I explained how you would develop your very own CSV writer and reader class. We used features of reflection to extract properties from classes and process them as needed, so we can just plug any class we want into our reader and writer. One of the benefits of generating your own CSV processing class is that you can modify it as you need different features so you don't get stuck with 3rd party libraries.
+Bu makalede, kendiniz bir CSV yazıcı ve okuyucuyu nasıl geliştirebileceğinizi anlattım. Kütüphanemizi geliştirken, property'leri bulmak ve işlemek için reflection'ı kullandık. Kendi kütüphanenizi yaratmanızın avantajlarından biri de özelliklerini kendinizin belirlemesi ve 3. parti kütüphanelerin desteklemediği dosya tiplerini kodunuzu değiştirerek işleyebilmenizdir.
 
-I hope this guide will be useful for your projects. Please feel free to post ideas and feedback.
-
-Happy coding!
+Umarım bu makalenim projelerinize yardımı dokunur. Lütfen fikir ve eleştirilerinizi yorum kısmında yazınız.
