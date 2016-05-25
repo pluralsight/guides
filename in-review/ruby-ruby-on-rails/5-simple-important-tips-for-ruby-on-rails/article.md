@@ -1,3 +1,5 @@
+Ruby on Rails is a popular framework used to create online applications. Below I've listed some tips for newcomers to the Ruby system. 
+
 **Callbacks** - Use them wisely! 
 
 - Callbacks are really useful. They can help you achieve really nice things within your Ruby on Rails application. However, using a lot of callbacks, or especially chained callbacks can be really problematic - i.e. what would happen if one fails? Do all of them fail? 
@@ -22,3 +24,17 @@
 **Lean Controllers** 
 
 - So I used to be one of those guys that put everything in the Controllers. We've all done it (and sometimes still do it). But lean controllers are really important, to maintain speed and stability within your app. Refactor everything you can to the model, I bet 40% of your controller code belongs in the model!
+
+____________________________
+
+Check out the guides posted below to learn more about specific Ruby on Rails functions and implementation tips to optimize web development.
+
+- [Handling file upload using RoR5.](http://tutorials.pluralsight.com/ruby-ruby-on-rails/handling-file-upload-using-ruby-on-rails-5-api)
+
+- [Using token-based authentication with RoR5.](http://tutorials.pluralsight.com/ruby-ruby-on-rails/token-based-authentication-with-ruby-on-rails-5-api)
+
+- [Creating a chat using RoR5 Action Cable.](http://tutorials.pluralsight.com/ruby-ruby-on-rails/creating-a-chat-using-rails-action-cable)
+
+_______
+
+Did you find my tips useful? Feel free to post your feedback in the comments section below!
