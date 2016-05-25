@@ -95,9 +95,9 @@ Başlık eklemek eğer veri alanları ile ne demek istendiği belli değilse ço
 Eğer CSV biçimi hakkında daha detaylı bilgi almak iserseniz, ilgili [Wikipedia makalesini](https://en.wikipedia.org/wiki/Comma-separated_values) inceleyebilirsiniz.
 
 ### Teori
-Our idea is simple, we want to input an array of objects into our CSV Writer and output a CSV file. For the reading part, we want to input the file path and output an array of objects back into the memory.
+Yazma işleminde dosyaya yazdırmak istediğimiz objeleri CSV yazıcıya yüklemek, okuma işleminde ise dosyayı okuyup, okunan veri kümesini objelere dönüştürmek istiyoruz.
 
-**Input**
+**Giriş**
 ```cs
 public class Person
 {
@@ -106,20 +106,20 @@ public class Person
     public string Lastname { get; set; }
 }
 ```
-**Output**
+**Çıkış**
 ```csv
 1,murat,aykanat
 2,john,smith
 ```
-However there are some considerations:
-- CSV Writer and Reader must abide by the rules of CSV file format mentioned above
-- The process of writing must be automated. What I mean by this is, if we have 2 public properties in a class, it is fairly easy to write those properties to a file. But what if we have 100 or 10000 public properties? We just can't write them one by one.
-- Every object should output its public properties via a method.
+Ancak, göz önünde bulundurmamız gereken bazı kurallar var:
+- CSV yazıcı ve okuyucu CSV dosya biçimine uygun yazmalı ve okumalı.
+- Yazma ve okuma işlemi otomatik olmalı. Örneğin, bir sınıfta 2 public property bulunuyorsa, bunları elle yazmak kolay olabilir ancak eğer 100 yada 10000 adet public property bulunuyorsa bunları tek tek el ile dosyaya yazmak mümkün değildir.
+- Her obje kendi public property'lerini bir metot ile çıktı olarak vermelidir.
 
-Optional considerations:
-- Since some CSV readers out there do not support UTF-8 encoding, all "special" characters must be converted into ASCII counterparts if possible. Note that this may not be possible in some languages, however since I will be giving Turkish special characters as an example, it will be possible in this guide.
-- Unless explicitly defined by quotation marks left and right spaces must be trimmed, because in my experience unnecessary left and right spaces are usually a mistake by the person who input the values, especially if the values are copied from some other application. If we absolutely need left and right spaces, we can use quotation marks.
-- Properties can be ignored with their index or their name.
+İsteğe bağlı kurallar:
+- Bazı CSV okuyucuları UTF-8 kodlamayı desteklemediği için tüm özel karaklerler ASCII biçimine eğer mümkün ise çevrilmelidir. Bazı dillerde bu mümkün değildir, ancak bu makalede Türkçe karakterleri kullanacağımız için ASCII'ye çevirebileceğiz.
+- Tırnak işaretleriyle özellikle belirtilmemişse, tüm sağ ve sol boşluklar silinmelidir. Bu boşluklar genelde bilgileri giren kişiler tarafından genellikle yanlışlıkla yapıldığından dolayı silinmesi dosyanın düzeni açısından önemlidir.
+- İstenen property'ler sıra sayısı veya ismi kullanılarak yazılmadan geçilebilmelidir.
 
 ### CSV Writer
 
