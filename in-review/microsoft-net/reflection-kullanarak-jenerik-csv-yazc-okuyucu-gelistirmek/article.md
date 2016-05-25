@@ -898,7 +898,7 @@ class Program
 murat aykanat  city1 / country1
 john smith  city2 / country2
 ```
-### Conclusion
+### Sonuç
 Bu makalede, kendiniz bir CSV yazıcı ve okuyucuyu nasıl geliştirebileceğinizi anlattım. Kütüphanemizi geliştirken, property'leri bulmak ve işlemek için reflection'ı kullandık. Kendi kütüphanenizi yaratmanızın avantajlarından biri de özelliklerini kendinizin belirlemesi ve 3. parti kütüphanelerin desteklemediği dosya tiplerini kodunuzu değiştirerek işleyebilmenizdir.
 
 Umarım bu makalenim projelerinize yardımı dokunur. Lütfen fikir ve eleştirilerinizi yorum kısmında yazınız.
