@@ -14,7 +14,7 @@ Biraz araştırmadan sonra "attached property" adında XAML'da özellik tanımla
 
 ### Attached Property Nedir?
 
-Bir [MSND makalesine](https://msdn.microsoft.com/en-us/library/ms749011%28v=vs.100%29.aspx) göre; "Attached property, Extensible Application Markup Language (XAML) tarafından tanımlanmış, bir konsepttir. Herhangi bir obje üzerine belirlenebilen attached property, global tipte bir özellik olarak kullanılması amaçlanmıştır. Windows Presentation Foundation'da (WPF), geleneksel property wrapper'ı olmayan eklenmiş özellikler tipik olarak dependency property'lerin özelleştirilmiş bir formu olarak tanımlanmıştır."
+Bir [MSND makalesine](https://msdn.microsoft.com/en-us/library/ms749011%28v=vs.100%29.aspx) göre; "Attached property, Extensible Application Markup Language (XAML) tarafından tanımlanmış, bir konsepttir. Herhangi bir obje üzerine belirlenebilen attached property'nin, global tipte bir özellik olarak kullanılması amaçlanmıştır. Windows Presentation Foundation'da (WPF), geleneksel property wrapper'ı olmayan eklenmiş özellikler tipik olarak dependency property'lerin özelleştirilmiş bir formu olarak tanımlanmıştır."
 
 Yani, attached property aslında WPF'de her gün kullandığımız property'ler ile aynıdır. Örnek olarak:
 
@@ -72,7 +72,7 @@ namespace SomeNamespace.Extensions
 	}
 }
 ```
-Bu kodda; öncelikle ```TurkiskText``` ve ```EnglishText``` şeklinde ve ```string``` tipinde İngilizce ve Türkçe için 2 property tanımlıyoruz. Daha sonra bu property'ler için getter ve setter methodlarını tanımlıyoruz.
+Bu kodda; öncelikle ```TurkiskText``` ve ```EnglishText``` şeklinde ve ```string``` tipinde İngilizce ve Türkçe için 2 property tanımlıyoruz. Daha sonra bu property'ler için getter ve setter metotlarını tanımlıyoruz.
 
 Yeni property'lerimizi tanımladığımıza göre, bunları XAML kodumuza ekleyebiliriz:
 
