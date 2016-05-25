@@ -1,8 +1,3 @@
-### Reflection Kullanarak Jenerik CSV Yazıcı/Okuyucu Geliştirmek by Murat Aykanat
-- [Read the guide](http://tutorials.pluralsight.com/microsoft-net/reflection-kullanarak-jenerik-csv-yazc-okuyucu-gelistirmek?status=draft)
-- [Read more from Murat Aykanat](http://tutorials.pluralsight.com/author/aykanatm) <img src="https://avatars.githubusercontent.com/u/9140297?v=3" width="30" height="30" alt="Murat Aykanat" />
-- Related to: Microsoft.NET (C#, ASP.NET, VB.NET, etc)
-
 ### Uber Rides API by Andrew Noonan
 - [Read the guide](http://tutorials.pluralsight.com/interesting-apis/uber-rides-api?status=draft)
 - [Read more from Andrew Noonan](http://tutorials.pluralsight.com/author/noonhub) <img src="https://avatars.githubusercontent.com/u/942363?v=3" width="30" height="30" alt="Andrew Noonan" />
