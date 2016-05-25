@@ -715,8 +715,8 @@ If you open the file you can see output as expected:
 ```
 
 ### CSV Reader
-Now, we have to reverse the process to read from our CSV file. To do this, we will follow what we did while reading. By this logic, as we implemented ```ToCsv()```, we need another method to reverse the CSV process in the ```CsvableBase``` class. Let's call this method ```AssignValuesFromCsv()```. Maybe not the most creative name, but we will go with that for now.
-In this method we will do what we did in ```ToCsv()``` method. First, we will check whether the current property is derived from CsvableBase or not. After that, we will save the data back to the public properties.
+Now, we have to reverse the process to read from our CSV file. To do this, we will follow what we did while writing. By this logic, as we implemented ```ToCsv()```, we need another method to reverse the CSV process in the ```CsvableBase``` class. Let's call this method ```AssignValuesFromCsv()```. Maybe not the most creative name, but we will go with that for now.
+In this method we will do what we did in ```ToCsv()``` method. First, we will check whether the current property is derived from `CsvableBase` or not. After that, we will save the data back to the public properties.
 
 ```cs
 public virtual void AssignValuesFromCsv(string[] propertyValues)
