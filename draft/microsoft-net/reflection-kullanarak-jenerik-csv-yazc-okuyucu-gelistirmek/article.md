@@ -121,17 +121,16 @@ Ancak, göz önünde bulundurmamız gereken bazı kurallar var:
 - Tırnak işaretleriyle özellikle belirtilmemişse, tüm sağ ve sol boşluklar silinmelidir. Bu boşluklar genelde bilgileri giren kişiler tarafından genellikle yanlışlıkla yapıldığından dolayı silinmesi dosyanın düzeni açısından önemlidir.
 - İstenen property'ler sıra sayısı veya ismi kullanılarak yazılmadan geçilebilmelidir.
 
-### CSV Writer
+### CSV Yazıcı
+Kurallarımıza göre, her CSV biçime dönüştürmek istediğimiz sınıf için `ToCsv()` şeklinde bir metoda ihtiyacımız var. Bu 3 şekilde yapılabilir:
+- Arayüz (Interface) uygulaması 
+- `ToString()` metodunu override etmek
+- `CsvableBase` absract sınıfı yaratıp, bu sınıfa virtual `ToCsv()` metodu eklemek
 
-According to our considerations above we need a method for each class, ```ToCsv()```, that we want to turn to CSV format. This can be done in 3 ways:
-- Interface implementation ```ICsvable``` with a method ```ToCsv()```
-- Override ```ToString()```
-- Abstract base class ```CsvableBase``` having a virtual ```ToCsv()``` method
+`ToString()`i, kodun başka bir yerinde işe yarayabileceğini düşünerek ve `ToCsv()`metodunun ayrı ve ne yaptığı adından açık olan bir halde olması için kullanmadım. Ayrıca tüm CSV'ye çevirmek istediğimiz sınıflarda `ToCsv()` metodu olması gerektiği için abstact sınıf tekniğini kullanmak istedim. Ancak, eğer CSV'ye çevirmek istediğiniz sınıf veya sınıflar başka bir sınıftan inherit ediyorsa ve C#'da iki ayrı sınıftan inherit edemeceğimiz için arayüz tekniğini kullanabilirsiniz. Ancak bu durumda `ToCsv()`metodunu kopyala/yapıştır şeklinde gereken tüm sınıflara yazmanız gerekir.
 
-I didn't want to use the ```ToString()``` override because maybe we need it somewhere else in our code, and I want the ```ToCsv()``` to be a separate method so it will be clear what it is doing. Also, since the code will be same for each class, I will go with the abstract class way. However if your particular class is already inheriting from a certain base class, you must go with the interface implementation since you can't inherit from more than one base class in C#. You just need to copy and paste for each class you want to turn to CSV.
-
-#### Basic Implementation
-What we need to do here is use reflection to get all the values of public properties of the class.
+#### Basit Uygulama
+Burada yapmamız gereken reflection kullanarak sınıfın tüm public property'lerini bulmaktır.
 ```cs
 public abstract class CsvableBase
 {
@@ -154,12 +153,13 @@ public abstract class CsvableBase
     }
 }
 ```
-So what we do here is simple:
-- Get all public properties of this class as a collection of ```PropertyInfo```.
-- Iterate over them, get their value and add it to the output and put a comma.
-- If we reach the end, do not put a comma.
 
-Let's test this on the ```Person``` class we created earlier in a console application.
+Yani, burada yaptığımız:
+- Sınıfıtım tüm public property'lerini `PropertyInfo`olarak alıyoruz.
+- Döngü ile değerlerini alıp, çıkış değişkenine ekleyip, son olarak da virgül karakterini ekliyoruz.
+- Eğer sona ulaşmışsak, yukarıdaki adımı virgül koymadan gerçekleştiriyoruz.
+
+Şimdi kodumuzu yarattığımız `Person` sınıfı üzerinde bir console uygulaması ile deneyelim.
 ```cs
 public class Person : CsvableBase
 {
@@ -184,13 +184,13 @@ class Program
     }
 }
 ```
-Output of above code:
+Yukarıdaki kodun çıktısı:
 ```text
 1,murat,aykanat
 ```
-#### Comma, Quotation Marks and Special Characters
+#### Virgün, Tırnak İşareti ve Özel Karakterler
 
-To pre-process commas, quotation marks, and special characters, let's add a pre-processing method to our base class.
+Virgül, tırnak işareti ve özel karakterleri düzgün bir biçimde okuyabilmek ve yazabilmek için değerleri bir ön işlemden geçirmek gerekiyor. Şimdi ön işleme kodumuzu ekleyelim.
 
 ```cs
 public abstract class CsvableBase
@@ -236,7 +236,7 @@ public abstract class CsvableBase
     }
 }
 ```
-Let's change our ```Person``` object into something that can test our pre-processing method.
+`Person` objesini yeni metodumuzu test etmek için değiştirelim.
 ```cs
 class Program
 {
@@ -248,17 +248,17 @@ class Program
     }
 }
 ```
-Output of this code:
+Bu kodun çıktısı:
 ```text
 1,"""Hello"", world!",IGUCOiusoc
 ```
-#### Ignoring Properties
+#### Özellikleri eklemek veya çıkarmak
 
-Sometimes you may not need all the public properties in a class. So we need to ignore or filter properties either by their name or their index in the list of properties we acquire by reflection.
+Bazen, bir sınıftaki tüm public property'lere ihtiyaç duyulmaz. Bu sebeple ihtitaç duymadığımız property'leri sıra numarası veya adı ile reflection ile aldığımız property listesinden çıkarmalı yada ekleyebilmeliyiz.
 
-But what happens in the edge cases such as the beginning or the end? How do we manage commas?
+Ancak başta yada sonda olması gibi kanar durumlarda ne yapmalıyız? Virgülleri nasıl işleyeeğiz?
 
-We just need to modify our code a bit to achieve what we want. Let's add following methods to our ```CsvableBase``` class.
+Biraz önce yazdığımız kodu değiştirerek bu problemleri çözebiliriz. Şimdi aşağıdaki metotları `CsvableBase` sınıfına ekleyelim.
 
 ```cs
 public virtual string ToCsv(string[] propertyNames, bool isIgnore)
@@ -358,16 +358,17 @@ public virtual string ToCsv(int[] propertyIndexes, bool isIgnore)
     return output;
 }
 ```
-Here, we:
-- Define a boolean ```isFirstPropertyWritten``` to see if we write the first property yet.
-- Get all the properties as ```PropertyInfo``` using reflection.
-- Iterate over the properties, checking if the current property name or index is in the ignore or filter list by ```isIgnore``` flag.
-- If it is not, we check if the first property is written.
-- If the first property is not written then, we add a comma to output, since we will keep adding properties after that.
-- Preprocess and add the current property's value to output.
-- Set ```isFirstPropertyWritten``` so that we will keep adding commas.
 
-We can now test our code:
+Burada:
+- ```isFirstPropertyWritten``` adında bir `bool` değişken ile ilk property'yi yazıp yazmadığımızı kontrol ediyoruz.
+- Tüm property'leri reflection kullanarak alıyoruz.
+- Döngü ile bu property'lerin isimleri veya sıra numaraları ekleme yada silme listesinde olup olmadığını `isIgnore` değişkeni ile kontrol ediyoruz.
+- Eğer değilse ilk property'nin yazılıp yazılmadığını kontrol ediyoruz.
+- Eğer ilk property yazılmamışsa, çıkış değişkenine virgül ekliyoruz.
+- O andaki property'nin değerini ön işlemden geçiriyoruz.
+- ```isFirstPropertyWritten``` 'ı gelen diğer property'lerden sonra virgül eklenmesi için `true` olarak değiştiriyoruz.
+
+Şimdi yeni yazdığımız kodu test edebiliriz:
 
 ```cs
 class Program
@@ -392,7 +393,7 @@ class Program
 }
 ```
 
-Output is:
+Çıktı:
 
 ```text
 Ignore by property name:
@@ -408,10 +409,11 @@ murat
 Ignoring everything but Id:
 1
 ```
-#### Properties that Derive from CsvableBase
+#### CsvableBase Sınıfından Türeyen Property'ler
 
-So far we only used value types as our properties. However what happens if we have a reference type property which also is derived from ```CsvableBase```?
-Below is an example of such scenario:
+Şimdiye kadar value type cinsinden property'ler kullandık. Ama ya kullandığımız property de `CsvableBase`'den türüyorsa ne yapacağız?
+Aşağıdaki örnekte böyle bir senaryo mevcut:
+
 ```cs
 public class Address : CsvableBase
 {
@@ -439,9 +441,9 @@ public class Person : CsvableBase
     public Address Address { get; set; }
 }
 ```
-The idea is, while iterating over the properties in our code, we need to dedect if the type of the property derives from ```CsvableBase```. Then call the ```ToCsv()``` method of that object instance by using reflection.
+Bu senaryoda, reflection ile aldığımız property'ler de döngü ile tek tek o property'nin `CsvableBase`'den türeyip türemediğini belirlememiz ve daha sonra bu objenin `ToCsv()` metodunu çağırmamız gerekir.
 
-To achieve this, we need to modify our ```ToCsv()``` methods:
+Bunu başarabilmek için `ToCsv()` metodunu değiştirmemiz gerekir:
 
 ```cs
 public virtual string ToCsv()
@@ -620,7 +622,7 @@ public virtual string ToCsv(int[] propertyIndexes, bool isIgnore)
     return output;
 }
 ```
-Now let's try our modified code:
+Şimdi değiştirdiğimiz kodumuzu deneyelim:
 ```cs
 class Program
 {
@@ -634,15 +636,15 @@ class Program
 }
 ```
 
-Output is displayed as:
+Çıktı:
 ```text
 1,murat,aykanat,city1,country1
 ```
 
-Property ignoring works the same way as before, however you need to include parameters through reflection. But since I want to keep things simple at this point, I will not add the ignore feature of properties that derive from ```CsvableBase```.
+`CsvableBase`'den türeyen property'lerde ekleme ve çıkarma da otomatik olarak aynı şekilde çalışacaktır, ancak bu sefer `ToCsv()` metodunu çağırdığımız şekilde ekleme veya çıkarma kodunu da reflection ile çağırmamız gerekir. Bu özelliği makaleyi karmaşıklaştırmamak adına burada yazmıyorum.
 
-#### Generic Writer
-Since we laid the groundwork in ```CsvableBase```, ```CsvWriter``` itself is very simple:
+#### Jenerik Yazıcı
+`CsvableBase`'de gerekli tüm kodları yazdığımız için `CsvWriter` sınıfını yazmak çok kolay olacak:
 
 ```cs
 public class CsvWriter<T> where T : CsvableBase
@@ -695,7 +697,7 @@ public class CsvWriter<T> where T : CsvableBase
 	}
 }
 ```
-Now let's try our code with our initial example:
+Kodumuzu ilk örneğimiz üzerinde deneyelim:
 ```cs
 class Program
 {
@@ -714,17 +716,17 @@ class Program
 	}
 }
 ```
-If we check our application folder we can see our newly created file.
+Eğer uygulama dosyamıza bakarsak, yeni yaratılan dosyayı görebiliriz.
 
 ![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/7753b093-4390-499d-9d05-474212141036.png)
 
-If you open the file you can see output as expected:
+Dosya açıldığında yazılan çıktının beklenildiği şekilde olduğunu görebilirsiniz:
 ```text
 1,murat,aykanat,city1,country1
 2,john,smith,city2,country2
 ```
 
-### CSV Reader
+### CSV Okuyucu
 Now, we have to reverse the process to read from our CSV file. To do this, we will follow what we did while reading. By this logic, as we implemented ```ToCsv()```, we need another method to reverse the CSV process in the ```CsvableBase``` class. Let's call this method ```AssignValuesFromCsv()```. Maybe not the most creative name, but we will go with that for now.
 In this method we will do what we did in ```ToCsv()``` method. First, we will check whether the current property is derived from CsvableBase or not. After that, we will save the data back to the public properties.
 
