@@ -1,4 +1,4 @@
-In this article I am going to  start with the simple example of angularJS implementation with step by step explaination and coding.
+In this article I am going to  start with the basics of angularJS implementation with step by step explaination and coding.
 
 Lets start with the basic file structure :
 
