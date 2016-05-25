@@ -766,7 +766,7 @@ Here we:
 - If so, create a temporary instance of that object.
 - Get its properties.
 - Call ```AssignValuesFromCsv()``` with its properties.
-- If the property is not derived from Csvable base, just assign it to the property value according to the ```switch```.
+- If the property is not derived from `CsvableBase`, just assign it to the property value according to the ```switch```.
 
 You may notice we don't have ```float```, ```double``` or ```char``` in your switch statement. That's because in this example we only have ```int``` and ```string``` so I didn't want to make the class bigger.
 
