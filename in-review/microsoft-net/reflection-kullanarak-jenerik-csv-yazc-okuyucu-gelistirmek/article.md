@@ -18,9 +18,9 @@ Aşağıda bir grup kişinin sıra numaraları, isimleri ve soyadlarını tutan 
 
 CSV biçiminin en büyük faydası düz metin olduğundan dolayı tüm işletim sistemleri tarafından okunabilir olmasıdır. Örneğin, uygulamanız CSV dosyasını Windows işletim sistemi olan bir bilgisayarda yaratsa bile, bu dosyayı Linux işletim sistemi olan bir bilgisayarda açabilir ve kullanabilirsiniz. Bu sebeple CSV kolay okunabilir ve taşınabilir bir biçimdir.
 
-### CSV dosyasının biçimi
+### CSV Dosyasının Biçimi
 
-#### Ayraç (Separator) sorunları
+#### Ayraç (Separator) Sorunları
 Bazı durumlarda dosya virgülle ayrılmış olmayabilir. Özellikle CSV dosyasını 3. parti bir yazılım (ör: Microsoft Excell) ile yarattıysanız, bilgisayarınızın işletim sistemi diline bağlı olarak "ayraç" karakteri `;` karakteri gibi farklı bir karakter olabilir. Bunun sebebi değişik kültürlerde ondalık ayraç karakterinin farklı olmasıdır. Bazı kültürlerde ondalık ayracı `.` 'dır ve o kültürde CSV ayracının `,` olmasında bir problem yoktur. Ancak ondalık ayracının `,` olduğu kültürlerde, CSV ayracı `;` gibi farklı bir karakter olmalıdır.
 
 Örneğin, bilgisayar yereliniz (locale) bir `fr-FR` yada `tr-TR` gibi bir avrupa kültürü ise, varsayılan ondalık ayracınız `,`'dır, bu sebeple CSV ayracınız `;` yada başka bir karakter olmalıdır.
@@ -36,7 +36,7 @@ Ancak eğer bilgisayarınız `en-US` ise, ondalık ayracı `.` olduğundan, vars
 4.5,6.7,8.9
 ```
 
-#### Her bir satırdaki veri alanlarının sayısı
+#### Her Satırdaki Veri Alanlarının Sayısı
 Veri alanlarının sayısındaki en kritik kural, her satırda eşit sayıda veri alanı olmasıdır. Eğer aynı sayıda veri alanı olmazsa CSV okuyucular yarattığınız dosyayı okuyamazlar.
 
 Eğer bir veri alanını özellikle boş bırakmak istiyorsanız boş `string` değerini kullanabilirsiniz
@@ -46,7 +46,7 @@ Eğer bir veri alanını özellikle boş bırakmak istiyorsanız boş `string` d
 2,john,smith
 ```
 
-#### Veri alanındaki virgül
+#### Veri Alanındaki Virgül
 CSV dosyanızda metin veri alanlarınızdan birinin içinde virgül olması, virgül sayısı kadar ekstra veri eklenmesi gibi bir soruna sebep olur ve CSV dosyasının okunmasında hata olması anlamına gelebilir.
 
 ```csv
@@ -69,7 +69,7 @@ Tırnak işaretlerini virgül içermeyen `string` değerlerde de kullanabilirsin
 1,"john","smith"
 ```
 
-#### Veri alanında tırnak işareti
+#### Veri Alanında Tırnak İşareti
 
 Veri alanlarımızda tırnak işareti kullanmamız gerektiğinde, çift tırnak işareti kullanarak, o tırnak işaretinin veriye dahil olduğunu belirtebiliriz.
 
@@ -91,7 +91,7 @@ id,name,lastname
 
 Başlık eklemek eğer veri alanları ile ne demek istendiği belli değilse çok yararlı olabilir. Örneğin tüm veriler sayı ise ve bu dosyayı bu sayıların ne anlama geldiğini bilmeyen birine gönderiyorsak, başlıklar olmazsa bu kişinin hangi sayının ne anlama geldiğini anlaması çok zordur. Bu sebeple başlıkları kullanarak daha anlamlı veri kümeleri gönderebiliriz.
 
-#### Daha fazla bilgi
+#### Daha Fazla Bilgi
 Eğer CSV biçimi hakkında daha detaylı bilgi almak iserseniz, ilgili [Wikipedia makalesini](https://en.wikipedia.org/wiki/Comma-separated_values) inceleyebilirsiniz.
 
 ### Teori
@@ -252,7 +252,7 @@ Bu kodun çıktısı:
 ```text
 1,"""Hello"", world!",IGUCOiusoc
 ```
-#### Özellikleri eklemek veya çıkarmak
+#### Özellikleri Eklemek veya Çıkarmak
 
 Bazen, bir sınıftaki tüm public property'lere ihtiyaç duyulmaz. Bu sebeple ihtitaç duymadığımız property'leri sıra numarası veya adı ile reflection ile aldığımız property listesinden çıkarmalı yada ekleyebilmeliyiz.
 
