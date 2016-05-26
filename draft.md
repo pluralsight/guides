@@ -8,11 +8,6 @@
 - [Read more from Prateek Gupta](http://tutorials.pluralsight.com/author/prtkgpt) <img src="https://avatars.githubusercontent.com/u/2454349?v=3" width="30" height="30" alt="Prateek Gupta" />
 - Related to: Software Engineering Best Practices
 
-### Test 1 by Prateek Gupta
-- [Read the guide](http://tutorials.pluralsight.com/php/test-1?status=draft)
-- [Read more from Prateek Gupta](http://tutorials.pluralsight.com/author/prtkgpt) <img src="https://avatars.githubusercontent.com/u/2454349?v=3" width="30" height="30" alt="Prateek Gupta" />
-- Related to: PHP
-
 ### Implementation of 'Forgot/Reset Password' feature in Django by ruddra
 - [Read the guide](http://tutorials.pluralsight.com/python/implementation-of-forgot-reset-password-feature-in-django?status=draft)
 - [Read more from ruddra](http://tutorials.pluralsight.com/author/ruddra) <img src="https://avatars.githubusercontent.com/u/3099861?v=3" width="30" height="30" alt="ruddra" />
