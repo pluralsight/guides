@@ -1,8 +1,8 @@
-ECMAScript6 (also referred to as ECMAScript2015) is the most recent release of ECMAScript with a finalized specification. Meanwhile, the next version, ECMAScript7, is currently in development and should be finalized sometime this year (2016). 
-
-ES6 was a major update to ES5 and introduces many new features to JavaScript. ES7 and other future versions are planned to be smaller updates that will be released on an annual schedule.
+ECMAScript6 (also referred to as ECMAScript2015) is the most recent recent ECMAScript with a finalized specification. ES6 was a major update to ES5 and introduces many new features to JavaScript.
 
 In this article, we'll walk through how to set things up to develop ES6 applications and get started with some of the most important new features.
+
+*It is important to note that ECMAScript7, is currently in development and should be finalized sometime this year (2016). ES7 and other future versions are planned to be smaller updates that will be released on an annual schedule.*
 
 ## Set up
 
@@ -16,11 +16,11 @@ You can run the following code in your browser's JavaScript console. If your bro
 let [one, two] = [1, 2]; one + two
 ```
 
-Unfortunately, browser market share changes much more gradually than browsers are released, which means that many people still don't use a browser that supports ES6. You should still support these people if you're building a web application that you plan to release to the public.
+Unfortunately, the overall browser market may not be up to date, which means that many people still don't use a browser that supports ES6. You should still support these people if you're building a web application that you plan to release to the public.
 
 Fortunately, there's a project called [Babel](https://babeljs.io/) which allows you to convert your ES6 code into ES5 code. This means that you can still write code in ES6 while developing web applications that anybody with an ES5-compliant browser can use. It takes some effort to figure out how to set everything up the first time, so I've included a step-by-step guide below to help you get started more quickly.
 
-### Setting up Babel and webpack
+## Setting up Babel and webpack
 
 If you do not already have Node.js installed, you will need to [install it](http://nodejs.org/).
 
@@ -99,7 +99,7 @@ var three = 3;
 console.log("One: " + one + ", Two: " + two + ", Three: " + three);
 ```
 
-The `npm run build` script is set up to listen for modifications in the `src` folder, so you can modify the `main.js` file and the `bundle.js` file will update automatically. You can stop watching with <kbd>Ctrl</kbd>+<kbd>C</kbd> in the console.
+The `npm run build` script is set up to listen for modifications in the `src` folder. Now, when you modify the `main.js` file, the `bundle.js` file will update automatically. You can stop watching with <kbd>Ctrl</kbd> + <kbd>C</kbd> in the console.
 
 After you've done this, there's no need to run `npm install` again. When you need to convert your code, you can use `npm run build`.
 
@@ -110,11 +110,11 @@ For a better development experience, you also will probably want to use a code e
 
 ## New features
 
-Here is a short overview of some of the new features in ECMAScript6. This is not intended to be anything close to an exhaustive list. Instead, the purpose of this list is to quickly get you acquainted with some of the most frequently used new features.
+Here is a short overview of some of ECMAScript6's new features. Hopefully this gets you acquainted with some of the language specification's most frequently used new features.
 
 ### Modules
 
-In my opinion, this is the single most important new feature in ES6. This allows you to separate your code into separate files in a modular way without worrying about cluttering the global namespace.
+**In my opinion, the module is the single most important new feature in ES6.** It allows you to separate your code into separate files in a modular way without worrying about cluttering the global namespace.
 
 For example, let's create a file `math.js` with a toy math library that exports the value of pi and a couple of pi-related functions:
 
@@ -128,7 +128,7 @@ export function area(r) {
 }
 ```
 
-Then we can import it from another file. We can import individual components:
+With modules, we can import this library's individual components from another file:
 
 ```javascript
 import {PI, area} from "./math";
@@ -142,7 +142,7 @@ import * as math from "./math";
 console.log(math.area(math.PI));
 ```
 
-You can also export a single value as the *default* value, so that you can import it without needing brackets or a wildcard:
+You can also export a single value as the *default* value, so that you can import it without needing brackets or a [wildcard](http://whatis.techtarget.com/definition/wildcard-character):
 
 ```javascript
 // reverseString.js 
@@ -158,18 +158,18 @@ console.log(reverseString("Hello, world!"));
 
 `const` is used for constant declarations, and `let` is used for variable declarations.
 
-If you try to reassign to a const, there will be a compilation error:
+If you try to reassign to a constant, the compiler will throw an error:
 
 ```javascript
 const one = 1;
 one = 2; // SyntaxError: "one" is read-only
 ```
 
-`let` is similar to `var` but it fixes a number of quirks about `var` that are often stumbling blocks to JavaScript newcomers. For this reason, there's not much reason to use `var` anymore in your code. Instead, it's better to always use either `let` or `const`.
+`let` is similar to `var`, but it fixes a number of quirks about `var` that are often stumbling blocks to JavaScript newcomers. In fact, `var` has become obsolete at this point because it's `let` and `const`have assumed its functionality.
 
 #### `let` is block-scoped
 
-A variable declared with `var` is function-scoped, which means that it is visible anywhere in the surrounding function. A variable declared with `let` is block-scoped, which means it is only visible in its own code block.
+`var` and `let` differ in their scoping mechanisms. A variable declared with `var` is function-scoped, which means that it is visible anywhere in the surrounding function. Meanwhile, a variable declared with `let` is block-scoped, which means it is only visible in its own code block. Calls to the variable outside its code block will lead to errors. 
 
 ```javascript
 // var
@@ -189,11 +189,11 @@ if(1 < 2) {
 console.log(less); // Uncaught ReferenceError: less is not defined
 ```
 
-This is also true with`const`.
+`const` also exhibits this block scoping strategy.
 
 #### Duplicate `let` declarations are forbidden
 
-Redefining the same variable is often indicative of a mistake. Duplicate `var` declarations will behave just like a reassignment, but duplicate `let` declarations are not allowed.
+`let` is designed to catch potential assignment mistakes. While duplicate `var` declarations will behave like normal reassignment, duplicate `let` declarations are not allowed to prevent the common mistake of erroneous reassignment. 
 
 ```javascript
 var x = 1;
@@ -203,9 +203,9 @@ let x = 1;
 let x = 2; // SyntaxError: Identifier 'x' has already been declared
 ```
 
-#### `let` variables are rebound in each loop iteration
+#### `let` variables rebound in each loop iteration
 
-Here is a common error that happens when you have a function defined inside of a loop.
+Here is a common error that occurs when you have a function defined inside of a loop using `var`.
 
 ```javascript
 for(var i = 0; i < 5; i++) {
@@ -216,7 +216,7 @@ for(var i = 0; i < 5; i++) {
 // logs 5 5 5 5 5
 ```
 
-This code will log "5" five times in a row, because the value of `i` will be `5` before the first time `console.log` is called. When we use `let` instead, the `i` inside of the function will correspond to the value on that particular iteration.
+This code will log the number 5 five times in a row, because the value of `i` will be `5` before the first time `console.log` is called. When we use `let` instead, the `i` inside of the function will correspond to the value on that particular iteration of the for-loop.
 
 ```javascript
 for(let i = 0; i < 5; i++) {
@@ -229,7 +229,7 @@ for(let i = 0; i < 5; i++) {
 
 ### Classes
 
-Object-oriented programming in JavaScript is different than classical OOP because it uses prototypes rather than classes. ES6 classes are a syntax shortcut for a common JavaScript pattern used to simulate classes.
+Object-oriented programming in JavaScript is different than classical OOP because it uses prototypes rather than classes. ES6 classes are a syntax shortcut for a common JavaScript pattern used to simulate classes. Below, I lay out prototype creation in ES5 and class creation in ES6.
 
 ```javascript
 // ES5 way
@@ -260,7 +260,7 @@ class Circle {
 }
 ```
 
-You can also extend classes:
+You can also extend classes in a manner consistent to standard object-oriented languages:
 
 ```javascript
 // ES5 way
@@ -288,13 +288,13 @@ var x = 5,
     y = 6;
 
 // ES5 way
-var point = {x: x, y: y};
+var coordinate = {x: x, y: y};
 
 // ES6 way
-let point = {x, y};
+let coordinate = {x, y};
 ```
 
-There is also new syntax for function properties:
+The syntax for function properties has also changed:
 
 ```javascript
 // ES5 way
@@ -397,9 +397,13 @@ var title = book.title,
 let {title, dimensions: [length, width, depth], author: {name}} = book;
 ```
 
+Clear and concise.
+
 ### Arrow functions
 
-JavaScript developers frequently use function expressions, such as callbacks, which can often look messy when the keywords `function` and `return` are repeated many times. ES6 has new syntax to make function expressions less verbose.
+JavaScript developers frequently use function expressions, such as callbacks. However, code can often look messy when the keywords `function` and `return` are repeated many times. ES6 has new syntax to make function expressions less verbose. 
+
+Let's compare ES6 function expression handling with expression handling in previous Ecmascript versions.
 
 ```javascript
 var list = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
@@ -421,7 +425,7 @@ var sumOfSquares = list
 let sumOfSquares = list.map(x => x * x).reduce((a, b) => a + b);
 ```
 
-For functions comprised of more than one statement, you can wrap the right-hand side of the arrow function in curly braces:
+For functions consisting of more than one statement, you can wrap the right-hand side of the arrow function in curly braces:
 
 ```javascript
 // ES5 way
@@ -440,7 +444,7 @@ window.onclick = (e) => {
 
 ### Template strings
 
-There is a new type of string literal that makes it easier to insert dynamic values into strings, and also to deal with multi-line strings. Instead of double quotes or single quotes, template strings are delimited by backticks.
+There is a new type of string literal that makes it easier to insert dynamic values into strings, and also to deal with multi-line strings. Instead of double quotes or single quotes, **template strings are delimited by backticks.**
 
 ```
 var weight = 80,
@@ -458,17 +462,17 @@ Your BMI is ${weight / (height * height)}.`);
 
 ### ...and much much more
 
-I've tried to cover some of the most important new changes, but there are many other cool new features in ES6 that I don't have space to cover in this article. For more information, you can browse a [quick overview of the new features on es6-features.org](http://es6-features.org/), read a [more detailed introduction in the Exploring ES6 book](http://exploringjs.com/es6/index.html), and if you like even more in-depth details, you can read the [ECMAScript 2015 Language Specification](http://exploringjs.com/es6/index.html).
+I've tried to cover some of the most important new changes, but there are many other cool new features in ES6 that I don't have space to cover in this article. For more information, you can browse a [quick overview of the new features on es6-features.org](http://es6-features.org/), read a [more detailed introduction in the Exploring ES6 book](http://exploringjs.com/es6/index.html), and, for even more in-depth details, read the [ECMAScript 2015 Language Specification](http://exploringjs.com/es6/index.html).
 
 ## Example application
 
-I've created a simple example project that you can play around with to get acquainted with ES6. It is an implementation of the [snake game](https://en.wikipedia.org/wiki/Snake_%28video_game%29) in both ECMAScript5 and ECMAScript 6.
+I've created a simple example project that you can play around with to get acquainted with ES6. It is an implementation of the [snake game](https://en.wikipedia.org/wiki/Snake_%28video_game%29) in both ECMAScript5 and ECMAScript6.
 
 You can [play this snake game online](http://peterolson.github.io/es6_snake/ES6Snake.html). My high score is 71, try to see if you can beat it. :)
 
 Instructions for downloading the source code and setting things up can be found on the [GitHub repository for this project](https://github.com/peterolson/es6_snake).
 
-To get your feet wet with ES6, I suggest downloading this project, making sure that you can set everything up, and then play around with the code. In the `src` folder, there is a script called `options.js` that has a number of settings you can tinker around with and see how they change the game.
+To get your feet wet with ES6, I suggest downloading this project, making sure that you can set everything up, and then play around with the code. **In the `src` folder, there is a script called `options.js` that has a number of settings you can tinker around with and see how they change the game.**
 
 If you don't have any ideas about what to try, I would suggest things like changing the color of the snake, changing the speed of the snake, making the snake grow faster, and making the game larger or smaller. These can all be achieved just by modifying the options script.
 
@@ -482,9 +486,9 @@ If you want to try your hand at a more challenging task, here are some ideas:
 
 One annoying thing about having to compile your code to run on the browser is that the code you write and the code you see while debugging are different. This can make debugging an even more frustrating task than it already is.
 
-A common solution for this issue is source maps. Source maps essentially keep track of which parts in the compiled code correspond to which parts in the original code. If you have a browser that supports source maps, you can create break points and do debugging with your original code, even though the compiled code is actually what is being executed.
+A common solution for this issue is source maps. Source maps essentially keep track of the relationships between parts of the compiled code correspond and parts of the original code. If you have a browser that supports source maps (most common commercial browsers will do this), you can create break points and debug with your original code, even though the compiled code is actually what is being executed.
 
-Fortunately, webpack makes this easy to set up. In the `webpack.config.js` fine, just insert this line into the `module.exports` object:
+Fortunately, **webpack** makes this easy to set up. In the `webpack.config.js` file, insert this line into the `module.exports` object:
 
 ```javascript
 devtool: "source-map",
@@ -494,11 +498,12 @@ Now when you run `npm run build`, it should generate a `bundle.js.map` file alon
 
 ![Enable JavaScript source maps](http://i.stack.imgur.com/CNoJL.png)
 
+
 ### Minifying
 
 Minification is a process designed to reduce the size of files that the browser has to download (including HTML, CSS, and JavaScript files). The goal is to minimize the amount of time the user has to wait for resources to downloaded. JavaScript minifiers achieve this by stripping out comments, unnecessary white space, renaming variables to make them shorter, and so forth.
 
-Minification makes the file size smaller, but it also makes the script difficult for humans to read. That said, since we already have source maps set up, we don't need to read the compiled output for debugging, so we might as well minify our code as well.
+Minification makes the file size smaller, but it also makes the script more difficult for humans to read. That said, since we already have source maps set up, we don't need to read the compiled output for debugging, so we might as well minify our code as well.
 
 Webpack has a "production mode" option that includes script minification. To enable it, just add a `-p` flag to the build script in the `package.json` file:
 
@@ -520,7 +525,7 @@ Then you can open one of these scripts, place breakpoints, and debug just like y
 
 ## Linting
 
-Linters are tools that analyze your code and look for mistakes, such as assigning a variable to itself, using `=` instead of `==`, and so forth. If you put your ES6 code through a normal JavaScript linter designed for ES5, it will most likely complain about syntax errors because it doesn't recognize the new features.
+Linters are tools that analyze your code and look for compile-time mistakes, such as assigning a variable to itself, using `=` instead of `==`, and so forth. *If you put your ES6 code through a normal JavaScript linter designed for ES5, it will most likely complain about syntax errors because it doesn't recognize the new features.*
 
 [ESLint](http://eslint.org/) is a popular linting tool for JavaScript, and you can configure it to support ES6. To install it, run
 
@@ -558,16 +563,16 @@ Now you can run ESLint with the following command:
 npm run lint
 ```
 
-If there are any mistakes it catches, it will print it into the console. Otherwise, it will just not print anything.
+If there are any mistakes it catches, it will print them into the console. Otherwise, the linter will not print anything.
 
 ## Conclusion
 
-If you've followed along up to here, then you should be familiar enough with ES6 and the tools needed to develop with it to begin experimenting with it in your own projects.
+If you've followed along up to here, then you should be familiar enough with ES6 and the tools used to develop with ES6 to begin experimenting with the language specification in your own projects.
 
-For more details about ECMAScript 6, you can browse through  [es6-features.org](http://es6-features.org/), read the [Exploring ES6 book](http://exploringjs.com/es6/index.html), or even read the [ECMAScript 2015 Language Specification](http://exploringjs.com/es6/index.html) if you want to know more of the finer details.
+For more details about ECMAScript 6, you can browse through [es6-features.org](http://es6-features.org/), read the [Exploring ES6 book](http://exploringjs.com/es6/index.html), or even read the [ECMAScript 2015 Language Specification](http://exploringjs.com/es6/index.html).
 
-ES7 is coming out soon, and Babel can already be configured to support some ES7 features. You can read more about upcoming features proposed for the next version of ECMAScript on the [official repository for ECMA262 proposals](https://github.com/tc39/ecma262#current-proposals).
+**ES7 is coming out soon**, and Babel can already be configured to support some ES7 features. You can read more about upcoming features proposed for the next version of ECMAScript on the [official repository for ECMA262 proposals](https://github.com/tc39/ecma262#current-proposals).
 
 For more information about the various tools used in this article, you can consult the [Babel website](https://babeljs.io/), the [webpack website](https://webpack.github.io/), and the [ESLint website](http://eslint.org/).
 
-If you have any questions, comment, or corrections, you can post them in the comments below. Feel free to suggest edits to this article or to open issues or pull requests on [the snake game repository](https://github.com/peterolson/es6_snake).
+If you have any questions, comments, or corrections, please post them in the comments below. Feel free to suggest edits to this article or to open issues or pull requests on [the snake game repository](https://github.com/peterolson/es6_snake). Thank you for reading. I hope you enjoyed this tutorial on ES6 features and development.
