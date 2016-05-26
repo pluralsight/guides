@@ -1,3 +1,8 @@
+### Getting started with ECMAScript6 by Peter Olson
+- [Read the guide](http://tutorials.pluralsight.com/front-end-javascript/getting-started-with-ecmascript6)
+- [Read more from Peter Olson](http://tutorials.pluralsight.com/author/peterolson) <img src="https://avatars.githubusercontent.com/u/920512?v=3" width="30" height="30" alt="Peter Olson" />
+- Related to: Front-End JavaScript (Angular, React, Meteor, etc)
+
 ### WPF Uygulamalarında Attached Property'ler ile Çoklu Dil Desteği by Murat Aykanat
 - [Read the guide](http://tutorials.pluralsight.com/microsoft-net/wpf-uygulamalarnda-attached-property-ler-ile-coklu-dil-destegi)
 - [Read more from Murat Aykanat](http://tutorials.pluralsight.com/author/aykanatm) <img src="https://avatars.githubusercontent.com/u/9140297?v=3" width="30" height="30" alt="Murat Aykanat" />
