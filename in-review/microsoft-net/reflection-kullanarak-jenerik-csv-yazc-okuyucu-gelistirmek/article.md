@@ -7,7 +7,7 @@ Bu makalede, yarattığımız objelerin public property'lerinden verileri otomat
 Kod yazmaya başlamadan önce, yazdığımız kodu daha iyi anlayabilmek için CSV dosya biçiminin ne olduğunu ve nasıl kullanıldığını anlatacağım.
 
 ### CSV dosyası nedir?
-CSV dosyası verileri tablo biçiminde tutan bir düz metin dosyadır. Her satır, tablodaki bir satıra denk gelir. Sütunlar ise virgülle ayrılmıştır. Bu sebeple de adı virgülle ayrılmış değerlerdir.
+CSV dosyası verileri tablo biçiminde tutan bir düz metin dosyasıdır. Her satır, tablodaki bir satıra denk gelir. Sütunlar ise virgülle ayrılmıştır. Bu sebeple de adı virgülle ayrılmış değerlerdir.
 
 Aşağıda bir grup kişinin sıra numaraları, isimleri ve soyadlarını tutan bir CSV dosyası örneği görüyoruz:
 
@@ -16,14 +16,14 @@ Aşağıda bir grup kişinin sıra numaraları, isimleri ve soyadlarını tutan 
 2,john,smith
 ```
 
-CSV biçiminin en büyük faydası çünkü düz metin olduğundan dolayı tüm işletim sistemleri tarafından okunabilir olmasıdır. Örneğin, uygulamanız CSV dosyasını Windows işletim sistemi olan bir bilgisayarda yaratsa bile, bu dosyayı Linux işletim sistemi olan bir bilgisayarda açabilir ve kullanabilirsiniz. Bu sebeple CSV kolay okunabilir ve taşınabilir bir biçimdir.
+CSV biçiminin en büyük faydası düz metin olduğundan dolayı tüm işletim sistemleri tarafından okunabilir olmasıdır. Örneğin, uygulamanız CSV dosyasını Windows işletim sistemi olan bir bilgisayarda yaratsa bile, bu dosyayı Linux işletim sistemi olan bir bilgisayarda açabilir ve kullanabilirsiniz. Bu sebeple CSV kolay okunabilir ve taşınabilir bir biçimdir.
 
 ### CSV dosyasının biçimi
 
 #### Ayraç (Separator) sorunları
 Bazı durumlarda dosya virgülle ayrılmış olmayabilir. Özellikle CSV dosyasını 3. parti bir yazılım (ör: Microsoft Excell) ile yarattıysanız, bilgisayarınızın işletim sistemi diline bağlı olarak "ayraç" karakteri `;` karakteri gibi farklı bir karakter olabilir. Bunun sebebi değişik kültürlerde ondalık ayraç karakterinin farklı olmasıdır. Bazı kültürlerde ondalık ayracı `.` 'dır ve o kültürde CSV ayracının `,` olmasında bir problem yoktur. Ancak ondalık ayracının `,` olduğu kültürlerde, CSV ayracı `;` gibi farklı bir karakter olmalıdır.
 
-Örneğin, eğer bilgisayar yereliniz (locale) bir `fr-FR` yada `tr-TR` gibi bir avrupa kültürü ise, varsayılan ondalık ayracınız `,`'dır, bu sebeple CSV ayracınız `;` yada başka bir karakter olmalıdır.
+Örneğin, bilgisayar yereliniz (locale) bir `fr-FR` yada `tr-TR` gibi bir avrupa kültürü ise, varsayılan ondalık ayracınız `,`'dır, bu sebeple CSV ayracınız `;` yada başka bir karakter olmalıdır.
 
 ```csv
 3,5;2,5;5,4
@@ -47,7 +47,7 @@ Eğer bir veri alanını özellikle boş bırakmak istiyorsanız boş `string` d
 ```
 
 #### Veri alanındaki virgül
-CSV dosyanızda metin verileri varsa, veri alanlarınızdan birinin içinde virgül olması kaç adet virgül varsa o kadar ekstra veri eklenmesi gibi bir soruna sebep olur ve CSV dosyasının okunmasında hata olması anlamına gelebilir.
+CSV dosyanızda metin veri alanlarınızdan birinin içinde virgül olması, virgül sayısı kadar ekstra veri eklenmesi gibi bir soruna sebep olur ve CSV dosyasının okunmasında hata olması anlamına gelebilir.
 
 ```csv
 1, Hello, world!
@@ -60,7 +60,7 @@ Bu problemi çözmek için tırnak işareti kullanmamız gerekir.
 1, "Hello, world!"
 ```
 
-Böylece `Hello, world!` verisinin tek veri alanına olduğunu belirtmiş oluruz.
+Böylece `Hello, world!` verisinin tek veri alanına ait olduğunu belirtmiş oluruz.
 
 Tırnak işaretlerini virgül içermeyen `string` değerlerde de kullanabilirsiniz ancak bu gereksizdir.
 
@@ -77,7 +77,7 @@ Veri alanlarımızda tırnak işareti kullanmamız gerektiğinde, çift tırnak 
 1,murat,""aykanat""
 2,john,""smith""
 ```
-That would read as; name is `murat`, lastname is `"aykanat"`.
+Böylece, isim `murat`, soyad `"aykanat"` şeklinde okunur.
 
 #### Başlıklar
 
@@ -111,14 +111,14 @@ public class Person
 1,murat,aykanat
 2,john,smith
 ```
-Ancak, göz önünde bulundurmamız gereken bazı kurallar var:
+Ancak, göz önünde bulundurmamız gereken bazı kurallar vardır. Bu kurallar:
 - CSV yazıcı ve okuyucu CSV dosya biçimine uygun yazmalı ve okumalı.
-- Yazma ve okuma işlemi otomatik olmalı. Örneğin, bir sınıfta 2 public property bulunuyorsa, bunları elle yazmak kolay olabilir ancak eğer 100 yada 10000 adet public property bulunuyorsa bunları tek tek el ile dosyaya yazmak mümkün değildir.
+- Yazma ve okuma işlemi otomatik olmalı. Örneğin, bir sınıfta 2 public property bulunuyorsa, bunları elle yazmak kolay olabilir. Eğer 100 yada 10000 adet public property bulunuyorsa bunları tek tek el ile dosyaya yazmak mümkün değildir.
 - Her obje kendi public property'lerini bir metot ile çıktı olarak vermelidir.
 
 İsteğe bağlı kurallar:
-- Bazı CSV okuyucuları UTF-8 kodlamayı desteklemediği için tüm özel karaklerler ASCII biçimine eğer mümkün ise çevrilmelidir. Bazı dillerde bu mümkün değildir, ancak bu makalede Türkçe karakterleri kullanacağımız için ASCII'ye çevirebileceğiz.
-- Tırnak işaretleriyle özellikle belirtilmemişse, tüm sağ ve sol boşluklar silinmelidir. Bu boşluklar genelde bilgileri giren kişiler tarafından genellikle yanlışlıkla yapıldığından dolayı silinmesi dosyanın düzeni açısından önemlidir.
+- Bazı CSV okuyucuları UTF-8 kodlamayı desteklemediği için eğer mümkün ise tüm özel karaklerler ASCII biçimine çevrilmelidir. Bazı dillerde bu mümkün değildir, ancak bu makalede Türkçe karakterleri kullanacağımız için ASCII'ye çevirebileceğiz.
+- Tırnak işaretleriyle özellikle belirtilmemişse, tüm sağ ve sol boşluklar silinmelidir. Dosyanın düzeni açısından, bu boşlukların genelde bilgileri giren kişiler tarafından yanlışlıkla yapıldığından dolayı silinmesi önemlidir.
 - İstenen property'ler sıra sayısı veya ismi kullanılarak yazılmadan geçilebilmelidir.
 
 ### CSV Yazıcı
@@ -127,7 +127,7 @@ Kurallarımıza göre, her CSV biçime dönüştürmek istediğimiz sınıf içi
 - `ToString()` metodunu override etmek
 - `CsvableBase` absract sınıfı yaratıp, bu sınıfa virtual `ToCsv()` metodu eklemek
 
-`ToString()`i, kodun başka bir yerinde işe yarayabileceğini düşünerek ve `ToCsv()`metodunun ayrı ve ne yaptığı adından açık olan bir halde olması için kullanmadım. Ayrıca tüm CSV'ye çevirmek istediğimiz sınıflarda `ToCsv()` metodu olması gerektiği için abstact sınıf tekniğini kullanmak istedim. Ancak, eğer CSV'ye çevirmek istediğiniz sınıf veya sınıflar başka bir sınıftan inherit ediyorsa ve C#'da iki ayrı sınıftan inherit edemeceğimiz için arayüz tekniğini kullanabilirsiniz. Ancak bu durumda `ToCsv()`metodunu kopyala/yapıştır şeklinde gereken tüm sınıflara yazmanız gerekir.
+`ToCsv()` metodunun adından ne yaptığı anlaşılmasından dolayı ve `ToString()`'in kodun başka bir yerinde de işe yarayabileceğini düşünerek `ToString()`'i burada kullanmadım. Ayrıca tüm CSV'ye çevirmek istediğimiz sınıflarda `ToCsv()` metodu olması gerektiği için abstact sınıf tekniğini kullanmak istedim. Ancak, eğer CSV'ye çevirmek istediğiniz sınıf veya sınıflar başka bir sınıftan inherit ediyorsa ve C#'da iki ayrı sınıftan türetemeyeceğimiz için arayüz tekniğini kullanabilirsiniz. Ancak bu durumda `ToCsv()`metodunu kopyala/yapıştır şeklinde gereken tüm sınıflara yazmanız gerekir.
 
 #### Basit Uygulama
 Burada yapmamız gereken reflection kullanarak sınıfın tüm public property'lerini bulmaktır.
@@ -154,7 +154,7 @@ public abstract class CsvableBase
 }
 ```
 
-Yani, burada yaptığımız:
+Burada yaptığımız:
 - Sınıfıtım tüm public property'lerini `PropertyInfo`olarak alıyoruz.
 - Döngü ile değerlerini alıp, çıkış değişkenine ekleyip, son olarak da virgül karakterini ekliyoruz.
 - Eğer sona ulaşmışsak, yukarıdaki adımı virgül koymadan gerçekleştiriyoruz.
@@ -188,7 +188,7 @@ Yukarıdaki kodun çıktısı:
 ```text
 1,murat,aykanat
 ```
-#### Virgün, Tırnak İşareti ve Özel Karakterler
+#### Virgül, Tırnak İşareti ve Özel Karakterler
 
 Virgül, tırnak işareti ve özel karakterleri düzgün bir biçimde okuyabilmek ve yazabilmek için değerleri bir ön işlemden geçirmek gerekiyor. Şimdi ön işleme kodumuzu ekleyelim.
 
@@ -256,7 +256,7 @@ Bu kodun çıktısı:
 
 Bazen, bir sınıftaki tüm public property'lere ihtiyaç duyulmaz. Bu sebeple ihtitaç duymadığımız property'leri sıra numarası veya adı ile reflection ile aldığımız property listesinden çıkarmalı yada ekleyebilmeliyiz.
 
-Ancak başta yada sonda olması gibi kanar durumlarda ne yapmalıyız? Virgülleri nasıl işleyeeğiz?
+Ancak başta yada sonda olması gibi kenar durumlarda (edge case) ne yapmalıyız? Virgülleri nasıl işleyeceğiz?
 
 Biraz önce yazdığımız kodu değiştirerek bu problemleri çözebiliriz. Şimdi aşağıdaki metotları `CsvableBase` sınıfına ekleyelim.
 
@@ -362,7 +362,7 @@ public virtual string ToCsv(int[] propertyIndexes, bool isIgnore)
 Burada:
 - ```isFirstPropertyWritten``` adında bir `bool` değişken ile ilk property'yi yazıp yazmadığımızı kontrol ediyoruz.
 - Tüm property'leri reflection kullanarak alıyoruz.
-- Döngü ile bu property'lerin isimleri veya sıra numaraları ekleme yada silme listesinde olup olmadığını `isIgnore` değişkeni ile kontrol ediyoruz.
+- Döngü ile bu property'lerin isimlerinin veya sıra numaralarının ekleme yada silme listesinde olup olmadığını `isIgnore` değişkeni ile kontrol ediyoruz.
 - Eğer değilse ilk property'nin yazılıp yazılmadığını kontrol ediyoruz.
 - Eğer ilk property yazılmamışsa, çıkış değişkenine virgül ekliyoruz.
 - O andaki property'nin değerini ön işlemden geçiriyoruz.
@@ -899,6 +899,6 @@ murat aykanat  city1 / country1
 john smith  city2 / country2
 ```
 ### Sonuç
-Bu makalede, kendiniz bir CSV yazıcı ve okuyucuyu nasıl geliştirebileceğinizi anlattım. Kütüphanemizi geliştirken, property'leri bulmak ve işlemek için reflection'ı kullandık. Kendi kütüphanenizi yaratmanızın avantajlarından biri de özelliklerini kendinizin belirlemesi ve 3. parti kütüphanelerin desteklemediği dosya tiplerini kodunuzu değiştirerek işleyebilmenizdir.
+Bu makalede, bir CSV yazıcı ve okuyucuyu nasıl geliştirebileceğinizi anlattım. Kütüphanemizi geliştirken, property'leri bulmak ve işlemek için reflection'ı kullandık. Kendi kütüphanenizi yaratmanızın avantajlarından biri de özelliklerini kendinizin belirlemesi ve 3. parti kütüphanelerin desteklemediği dosya tiplerini kodunuzu değiştirerek işleyebilmenizdir.
 
 Umarım bu makalenim projelerinize yardımı dokunur. Lütfen fikir ve eleştirilerinizi yorum kısmında yazınız.
