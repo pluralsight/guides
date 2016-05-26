@@ -29,16 +29,20 @@ Scopes keep code readable, and they should be part of every model.
 
 **Concerns** 
 
-I include concerns every time I'm using Rails 4. They help ensure things happen in your models, similarly to callbacks, but in a much more cleaner way. 
+I include concerns every time I'm using Rails 4. They help ensure that designated functions actually work in your models. In fact, they operate like callbacks do but are often cleaner, since callbacks are commonly overused.
+
+# Add example here 
 
 **Extract Complex Methods**
 
-I cannot stress this enough! Complex methods are hard to read, they are hell for new developers joining to work on your app. They're also hard to maintain and even tougher when you want to add more stuff. Splitting complex methods will make your life much easier and will give you better, cleaner more robust code base. 
+I cannot stress this enough! Complex methods are hard to read, and they are hell for developers new to your app. They're also hard to debug and even tougher to expand. Splitting complex methods into helper functions will make your life much easier and give you a cleaner, more robust code base. 
+
+# Add example here
 
 
 **Lean Controllers** 
 
-So I used to be one of those guys that put everything in the Controllers. We've all done it (and sometimes still do it). But lean controllers are really important, to maintain speed and stability within your app. Refactor everything you can to the model, I bet 40% of your controller code belongs in the model!
+So I used to be one of those guys who put everything into [Controllers](http://www.tutorialspoint.com/ruby-on-rails/rails-controllers.htm). Pretty much every Rails user has done this at some point in time (and sometimes still do it). But **lean controllers** are really important in maintaining speed and stability within your app. Refactor everything you can to the model; from my experience, 30-40% of controller code actually belongs in the model!
 
 ____________________________
 
