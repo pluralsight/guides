@@ -1,9 +1,4 @@
-
-I learned a valuable lesson recently about being careful what you import into a
-[Python](http://python.org) application. The majority of the time I just find
-the module I need, import, use, and then move on. However, sometimes an
-[unnecessary import](http://pyqt.sourceforge.net/Docs/PyQt4/modules.html) can
-lead to a big waste of memory.
+I learned a valuable lesson recently about importing into a [Python](http://python.org) application. Typically I just find the module I need, import it, and use it without any issues. However, I found out that an [unnecessary import](http://pyqt.sourceforge.net/Docs/PyQt4/modules.html) can sometimes lead to a big waste of memory.
 
 ### Searching imports dynamically
 
