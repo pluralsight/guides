@@ -1,3 +1,8 @@
+### Getting Started with AngularJS by Gaurav Bhavsar
+- [Read the guide](http://tutorials.pluralsight.com/front-end-javascript/getting-started-with-angularjs?status=draft)
+- [Read more from Gaurav Bhavsar](http://tutorials.pluralsight.com/author/gauravbhavsar) <img src="https://avatars.githubusercontent.com/u/5441386?v=3" width="30" height="30" alt="Gaurav Bhavsar" />
+- Related to: Front-End JavaScript (Angular, React, Meteor, etc)
+
 ### test article by Gergo Bogdan
 - [Read the guide](http://tutorials.pluralsight.com/python/test-article?status=draft)
 - [Read more from Gergo Bogdan](http://tutorials.pluralsight.com/author/gergob) <img src="https://avatars.githubusercontent.com/u/1750322?v=3" width="30" height="30" alt="Gergo Bogdan" />
