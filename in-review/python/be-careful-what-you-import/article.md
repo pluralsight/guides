@@ -2,7 +2,7 @@ I learned a valuable lesson recently about importing into a [Python](http://pyth
 
 ### Searching imports dynamically
 
-I learned this lesson while recently writing a [tool](https://gist.github.com/durden/4723305) to search through a [Python](http://python.org) [module](http://docs.python.org/2/tutorial/modules.html) and/or [package](http://docs.python.org/2/tutorial/modules.html#packages) for a given object. The script is interesting and worth another post all on it's own. The [gist](https://gist.github.com/durden/4723305) is you provide the script with two arguments, the module/package to search and a term to search for. The script should then give you a listing of all the places it found an object containing your search term.
+I encountered this problem while writing a [tool](https://gist.github.com/durden/4723305) that intended to search a [Python](http://python.org) [module](http://docs.python.org/2/tutorial/modules.html) and/or [package](http://docs.python.org/2/tutorial/modules.html#packages) for a given object. The script is interesting and worth another post all on it's own. The [gist](https://gist.github.com/durden/4723305): you provide the script with two arguments, the module/package to search and a term to search for. The script should then give you a listing of all the places it found an object containing your search term.
 
 For example, the documentation for
 [PyQt4](http://www.riverbankcomputing.com/software/pyqt/intro) can be pretty
@@ -22,7 +22,7 @@ such as `MinimumExpanding` and `NoEditTriggers`:
     PyQt4.Qwt5.qplt.QSizePolicy.MinimumExpanding = 3
 
 Notice anything odd about the above output? Looks like `MinimumExpanding`
-shows up in two almost identical locations, `PyQt4.Qt` and `PyQt.QtGui`.
+shows up in two almost identical locations -- `PyQt4.Qt` and `PyQt.QtGui`.
 Naturally, I thought there was a bug in my script, but after some debugging and
 reading I found the following jewel on the
 [PyQt4 wikipedia page](http://en.wikipedia.org/wiki/PyQt):
@@ -36,8 +36,7 @@ reading I found the following jewel on the
 > taste.
 
 So, using the `PyQt4.Qt` module is actually redundant and only for convenience.
-The noticeable downside, besides redundancy, is it can actually import a lot of
-*large* modules that aren't typically needed such as
+As a result, we actually import a lot of large modules that aren't typically needed such as
 [QtDesigner](http://pyqt.sourceforge.net/Docs/PyQt4/qtdesigner.html),
 [QtWebKit](http://pyqt.sourceforge.net/Docs/PyQt4/qtwebkit.html), and
 [QtHelp](http://pyqt.sourceforge.net/Docs/PyQt4/qtnetwork.html).
@@ -90,7 +89,7 @@ application was already using and how much your system has available.
 3. Don't forget to try stuff, play, and have some fun coding. A one-off
    [script](https://gist.github.com/durden/4723305) can lead to a nice, useful
    discovery.
-
+____
 [1] You can profile this for yourself with this
     [gist](https://gist.github.com/durden/4956774).
 
