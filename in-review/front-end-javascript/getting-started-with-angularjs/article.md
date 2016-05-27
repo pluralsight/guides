@@ -64,7 +64,7 @@ var child = parent.$new();
 
 In our example, we created scope object as `$scope.name` and done binding in view(html page).
 
-### index.html
+## index.html
 
 ```html
 <html ng-app="myApp">
