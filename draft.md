@@ -1,3 +1,8 @@
+### test article by Gergo Bogdan
+- [Read the guide](http://tutorials.pluralsight.com/python/test-article?status=draft)
+- [Read more from Gergo Bogdan](http://tutorials.pluralsight.com/author/gergob) <img src="https://avatars.githubusercontent.com/u/1750322?v=3" width="30" height="30" alt="Gergo Bogdan" />
+- Related to: Python
+
 ### なぜmarkdown by dai
 - [Read the guide](http://tutorials.pluralsight.com/other/markdown?status=draft)
 - [Read more from dai](http://tutorials.pluralsight.com/author/dai) <img src="https://avatars.githubusercontent.com/u/12391?v=3" width="30" height="30" alt="dai" />
