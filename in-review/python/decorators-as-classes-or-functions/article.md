@@ -130,25 +130,15 @@ class cached_property(object):
         return value
 ```
 
-Notice how this decorator implements `__get__` from the [Descriptor Protocol](http://docs.python.org/2/howto/descriptor.html#descriptor-protocol). This decorator could be written as a function. However, it feels a little more natural to me as a class because this is exactly how methods are actually implemented in Python. [2]
+Notice how this decorator implements `__get__` from the [Descriptor Protocol](http://docs.python.org/2/howto/descriptor.html#descriptor-protocol). This decorator could be written as a function. However, the above feels a little more natural to me as a class because this is exactly how methods are actually implemented in Python. [2]
 
 ## Resolution?
 
-Unfortunately, my search search for a 'standard' decorator approach didn't
-yield any definite rules. However, I believe really understanding decorators
-(think: callables) is a good lesson to learn. Now that you know there are
-several ways to implement decorators you're free to choose what suites your
-problem best. However, keep in mind that more choices is not always better.
-[3]
+Unfortunately, my search for a 'standard' decorator approach didn't yield any definite rules. However, I believe that decorators (think: callables) are important to understand. Now that you know multiple ways to implement decorators, I hope you're able to effectively choose which implementation best suits your needs.
 
-[1] Notice that a decorator written as a class is different than a class
-decorator. A class decorator is a callable that takes a class and returns a
-class. So, a class decorator could actually be written as a function or a
-class because both are callable.
 
-[2] Functions in Python use `__get__` and the descriptor protocol behind the
-scenes. See the
-[descriptor how-to](http://docs.python.org/2/howto/descriptor.html#functions-and-methods)
-for more information.
+____
 
-[3] See [Paradox of Choice: Why More Is Less](http://en.wikipedia.org/wiki/The_Paradox_of_Choice:_Why_More_Is_Less)
+[1] Notice that a decorator written as a class is different than a class decorator. A class decorator is a callable that takes a class and returns a class. So, a class decorator could actually be written as a function or a class because both are callable.
+
+[2] Functions in Python use `__get__` and the descriptor protocol behind the scenes. See the [descriptor how-to](http://docs.python.org/2/howto/descriptor.html#functions-and-methods) for more information.
