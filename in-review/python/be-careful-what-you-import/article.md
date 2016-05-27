@@ -2,16 +2,7 @@ I learned a valuable lesson recently about importing into a [Python](http://pyth
 
 ### Searching imports dynamically
 
-I learned this lesson while recently writing a
-[tool](https://gist.github.com/durden/4723305) to search a
-[Python](http://python.org)
-[module](http://docs.python.org/2/tutorial/modules.html) and/or
-[package](http://docs.python.org/2/tutorial/modules.html#packages) for a given
-object. The script is interesting and worth another post all on it's own. The
-[gist](https://gist.github.com/durden/4723305) is you provide the script with
-two arguments, the module/package to search and a term to search for. The
-script should then give you a listing of all the places it found an object
-containing your search term.
+I learned this lesson while recently writing a [tool](https://gist.github.com/durden/4723305) to search through a [Python](http://python.org) [module](http://docs.python.org/2/tutorial/modules.html) and/or [package](http://docs.python.org/2/tutorial/modules.html#packages) for a given object. The script is interesting and worth another post all on it's own. The [gist](https://gist.github.com/durden/4723305) is you provide the script with two arguments, the module/package to search and a term to search for. The script should then give you a listing of all the places it found an object containing your search term.
 
 For example, the documentation for
 [PyQt4](http://www.riverbankcomputing.com/software/pyqt/intro) can be pretty
