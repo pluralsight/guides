@@ -9,4 +9,4 @@ This article covers the following areas for angularJS with implementation of exa
 
 ## Filter Component
 
-Angular provides [Filter component](https://docs.angularjs.org/api/ng/filter) to 
+Angular provides [Filter component](https://docs.angularjs.org/api/ng/filter) to filter, orgnized and arrange the values according to requirements.
