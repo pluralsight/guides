@@ -3,11 +3,6 @@
 - [Read more from Murat Aykanat](http://tutorials.pluralsight.com/author/aykanatm) <img src="https://avatars.githubusercontent.com/u/9140297?v=3" width="30" height="30" alt="Murat Aykanat" />
 - Related to: Microsoft.NET (C#, ASP.NET, VB.NET, etc)
 
-### Getting Started with AngularJS by Gaurav Bhavsar
-- [Read the guide](http://tutorials.pluralsight.com/front-end-javascript/getting-started-with-angularjs?status=in-review)
-- [Read more from Gaurav Bhavsar](http://tutorials.pluralsight.com/author/gauravbhavsar) <img src="https://avatars.githubusercontent.com/u/5441386?v=3" width="30" height="30" alt="Gaurav Bhavsar" />
-- Related to: Front-End JavaScript (Angular, React, Meteor, etc)
-
 ### All Updates from #GoogleIO2016 Keynote from MountainView California by Rahat Khanna
 - [Read the guide](http://tutorials.pluralsight.com/interesting-apis/all-updates-from-googleio2016-keynote-from-mountainview-california?status=in-review)
 - [Read more from Rahat Khanna](http://tutorials.pluralsight.com/author/mappmechanic) <img src="https://avatars.githubusercontent.com/u/4088925?v=3" width="30" height="30" alt="Rahat Khanna" />
