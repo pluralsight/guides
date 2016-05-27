@@ -6,7 +6,8 @@ Lets start with the basic file structure :
 * controller.js
 * index.html
 
-
+#### Quick note
+Here, `app.js` is a JavaScript file in which I created an instance of angular module. `controller.js` Javascript file has angular controller which is registered with angular module of `app.js` and contains business logic. `index.html` is the view page where I place html code and load `app.js` and `controller.js` script file.
 
 ## app.js
 
