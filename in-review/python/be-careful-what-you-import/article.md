@@ -36,14 +36,13 @@ reading I found the following jewel on the
 > taste.
 
 So, using the `PyQt4.Qt` module is actually redundant and only for convenience.
-As a result, we actually import a lot of large modules that aren't typically needed such as
+As a result, we actually import a lot of bulky and extraneous modules, such as
 [QtDesigner](http://pyqt.sourceforge.net/Docs/PyQt4/qtdesigner.html),
 [QtWebKit](http://pyqt.sourceforge.net/Docs/PyQt4/qtwebkit.html), and
 [QtHelp](http://pyqt.sourceforge.net/Docs/PyQt4/qtnetwork.html).
 
-For example, assume your application is only using the `PyQt4.QtGui` module and
-then you mistakenly decide you need something from `PyQt4.Qt`. This single
-import could essentially double your memory usage [1]:
+For example, assume that your application is only using the `PyQt4.QtGui` module, and you mistakenly decide that you need something from `PyQt4.Qt`. This single
+import could essentially **double your memory usage** [1]:
 
     Line # Mem usage Increment Line Contents
     ================================================
@@ -73,22 +72,20 @@ import could essentially double your memory usage [1]:
 
 Note that just importing 'PyQt4.Qt' increased the application memory usage by
 **6.543 MB**. This could be costly depending on how much memory your
-application was already using and how much your system has available.
+application was already using and how much your system has available. While this situation deals with smaller figures, multiple unnecessary imports can easily compound, leading to more significant memory usage issues.  
 
 ### Moral takeaways
 
-1. Be careful of what you import. It could be redundant or costly, possibly
+1. Be careful of what you import. It could be redundant, costly, or
    both.
 
-2. Carefully read documentation. The
+2. Read documentation carefully. The
    [main PyQt4 documentation](http://pyqt.sourceforge.net/Docs/PyQt4/modules.html)
    alludes to this redundant `PyQt4.Qt` module by describing it with the
    following, "**Consolidates all other modules into a single module for ease
    of use at the expense of memory.**"
 
-3. Don't forget to try stuff, play, and have some fun coding. A one-off
-   [script](https://gist.github.com/durden/4723305) can lead to a nice, useful
-   discovery.
+3. Remember to try stuff, play around, and have some fun coding. A one-off script can lead to a nice, useful    discovery.
 ____
 [1] You can profile this for yourself with this
     [gist](https://gist.github.com/durden/4956774).
