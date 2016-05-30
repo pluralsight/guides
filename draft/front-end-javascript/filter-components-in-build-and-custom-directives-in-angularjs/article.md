@@ -156,7 +156,7 @@ Angular provides [Filter component](https://docs.angularjs.org/api/ng/filter) to
     
         * In HTML Template
         ```html
-        {{ currency_expression | currency : symbol : fractionSize}}
+            {{ currency_expression | currency : symbol : fractionSize}}
         ```
             - Here, currency expression is the numerical value that will be formated by curency filter to price with currency symbol.
             
