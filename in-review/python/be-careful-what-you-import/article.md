@@ -1,22 +1,8 @@
-
-I learned a valuable lesson recently about being careful what you import into a
-[Python](http://python.org) application. The majority of the time I just find
-the module I need, import, use, and then move on. However, sometimes an
-[unnecessary import](http://pyqt.sourceforge.net/Docs/PyQt4/modules.html) can
-lead to a big waste of memory.
+I learned a valuable lesson recently about importing into a [Python](http://python.org) application. Typically I just find the module I need, import it, and use it without any issues. However, I found out that an [unnecessary import](http://pyqt.sourceforge.net/Docs/PyQt4/modules.html) can sometimes lead to a big waste of memory.
 
 ### Searching imports dynamically
 
-I learned this lesson while recently writing a
-[tool](https://gist.github.com/durden/4723305) to search a
-[Python](http://python.org)
-[module](http://docs.python.org/2/tutorial/modules.html) and/or
-[package](http://docs.python.org/2/tutorial/modules.html#packages) for a given
-object. The script is interesting and worth another post all on it's own. The
-[gist](https://gist.github.com/durden/4723305) is you provide the script with
-two arguments, the module/package to search and a term to search for. The
-script should then give you a listing of all the places it found an object
-containing your search term.
+I encountered this problem while writing a [tool](https://gist.github.com/durden/4723305) that intended to search a [Python](http://python.org) [module](http://docs.python.org/2/tutorial/modules.html) and/or [package](http://docs.python.org/2/tutorial/modules.html#packages) for a given object. The script is interesting and worth another post all on it's own. The [gist](https://gist.github.com/durden/4723305): you provide the script with two arguments, the module/package to search and a term to search for. The script should then give you a listing of all the places it found an object containing your search term.
 
 For example, the documentation for
 [PyQt4](http://www.riverbankcomputing.com/software/pyqt/intro) can be pretty
@@ -36,7 +22,7 @@ such as `MinimumExpanding` and `NoEditTriggers`:
     PyQt4.Qwt5.qplt.QSizePolicy.MinimumExpanding = 3
 
 Notice anything odd about the above output? Looks like `MinimumExpanding`
-shows up in two almost identical locations, `PyQt4.Qt` and `PyQt.QtGui`.
+shows up in two almost identical locations -- `PyQt4.Qt` and `PyQt.QtGui`.
 Naturally, I thought there was a bug in my script, but after some debugging and
 reading I found the following jewel on the
 [PyQt4 wikipedia page](http://en.wikipedia.org/wiki/PyQt):
@@ -50,15 +36,13 @@ reading I found the following jewel on the
 > taste.
 
 So, using the `PyQt4.Qt` module is actually redundant and only for convenience.
-The noticeable downside, besides redundancy, is it can actually import a lot of
-*large* modules that aren't typically needed such as
+As a result, we actually import a lot of bulky and extraneous modules, such as
 [QtDesigner](http://pyqt.sourceforge.net/Docs/PyQt4/qtdesigner.html),
 [QtWebKit](http://pyqt.sourceforge.net/Docs/PyQt4/qtwebkit.html), and
 [QtHelp](http://pyqt.sourceforge.net/Docs/PyQt4/qtnetwork.html).
 
-For example, assume your application is only using the `PyQt4.QtGui` module and
-then you mistakenly decide you need something from `PyQt4.Qt`. This single
-import could essentially double your memory usage [1]:
+For example, assume that your application is only using the `PyQt4.QtGui` module, and you mistakenly decide that you need something from `PyQt4.Qt`. This single
+import could essentially **double your memory usage** [1]:
 
     Line # Mem usage Increment Line Contents
     ================================================
@@ -88,23 +72,21 @@ import could essentially double your memory usage [1]:
 
 Note that just importing 'PyQt4.Qt' increased the application memory usage by
 **6.543 MB**. This could be costly depending on how much memory your
-application was already using and how much your system has available.
+application was already using and how much your system has available. While this situation deals with smaller figures, multiple unnecessary imports can easily compound, leading to more significant memory usage issues.  
 
 ### Moral takeaways
 
-1. Be careful of what you import. It could be redundant or costly, possibly
+1. Be careful of what you import. It could be redundant, costly, or
    both.
 
-2. Carefully read documentation. The
+2. Read documentation carefully. The
    [main PyQt4 documentation](http://pyqt.sourceforge.net/Docs/PyQt4/modules.html)
    alludes to this redundant `PyQt4.Qt` module by describing it with the
    following, "**Consolidates all other modules into a single module for ease
    of use at the expense of memory.**"
 
-3. Don't forget to try stuff, play, and have some fun coding. A one-off
-   [script](https://gist.github.com/durden/4723305) can lead to a nice, useful
-   discovery.
-
+3. Remember to try stuff, play around, and have some fun coding. A one-off script can lead to a nice, useful    discovery.
+____
 [1] You can profile this for yourself with this
     [gist](https://gist.github.com/durden/4956774).
 
