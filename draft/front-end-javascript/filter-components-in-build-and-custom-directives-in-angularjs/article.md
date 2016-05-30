@@ -29,9 +29,9 @@ Angular provides [Filter component](https://docs.angularjs.org/api/ng/filter) to
             $filter('filter')(array, expression, comparator)
         ```
         
-        We use use filter in pipe expression as in above. here, between this two call we have a pipe, pipes take the result from fisrt expression and send me output into second expression.
+        In HTML template, we use filter in pipe expression as in above. here, between this two call we have a pipe, pipes take the result from first expression and send me output into second expression.
         
-        **for example** (filter in HTML Template):
+        **Explanation with example** (filter in HTML Template) :
         
         ```html
             <!-- ng-app - attech an application module to the page -->
@@ -79,7 +79,7 @@ Angular provides [Filter component](https://docs.angularjs.org/api/ng/filter) to
         
         [Plunker](https://plnkr.co/edit/buFI2NSz3Ago2KfillkB?p=preview) for filter in HTML Template.
         
-        **for example** (filter in JavaScript):
+        **Explanation with example** (filter in JavaScript) :
         
         ### controller.js
         ```js
@@ -120,7 +120,7 @@ Angular provides [Filter component](https://docs.angularjs.org/api/ng/filter) to
                     <th>Price</th>
                     <th>Quantity</th>
                   </tr>
-                  // use mirrorProducts array to display changes, since, we are override mirrorProducts array each time with original products array. 
+                  <!-- use mirrorProducts array to display changes, since, we are override mirrorProducts array each time with original products array. -->
                   <tr ng-repeat="p in mirrorProducts">
                     <td>{{p.name}}</td>
                     <td>{{p.price}}</td>
@@ -131,7 +131,9 @@ Angular provides [Filter component](https://docs.angularjs.org/api/ng/filter) to
         </body>
         ```
         
-        - When we use filter in angular's controller, we have to load the dependency in controller's function as `$filter`. Since, we are using `$filter('filter')(array, expression, comparator)`.
+        - When we use filter component in angular's controller, we have to load the dependency in controller's function as `$filter`. Since, we are using `$filter('filter')(array, expression, comparator)`.
+        
+        - Type of filter component is `filter`, hence the code `$filter('filter_component')` i.e `$filter('filter')`.
         
         - In the above example, I use `$scope.mirrorProducts` variable and override each time the user press any key in input field, since we are showing only filtered information to the user we have to create subset of actual array and override each time to display a correct result on page.
         
@@ -147,15 +149,35 @@ Angular provides [Filter component](https://docs.angularjs.org/api/ng/filter) to
         [Plunker](https://plnkr.co/edit/kLVpQiianqKOXrTGExbi?p=preview) for filter in JavaScript
         
 2. Currency filter :
-    - [Currency](https://docs.angularjs.org/api/ng/filter/currency) filter formats a number as a currency. 
+    - Angular provides a better way to formating the price and display on page.
+    - [Currency](https://docs.angularjs.org/api/ng/filter/currency) filter formats a number as a currency.
+    - Currency filter formating the number to proper decimal points(like $25.70). 
+    - Currency filter can be used in HTML Template as wel as in JavaScript.
+    
+        * In HTML Template
+        ```html
+        {{ currency_expression | currency : symbol : fractionSize}}
+        ```
+            - Here, currency expression is the numerical value that will be formated by curency filter to price with currency symbol.
+            
+            - Second parameter after the pipe expression is a name of filter component i.e `currency`.
+            
+            - `symbol` and `fractionSize` are the options value.
+            - `symbol` is to put your locale currency symbol to format the number to price and `fractionSize` is a number of decimal placed to round the price. 
+            
+            for example :
+            ```html
+                <p>{{25 | currency }}</p>
+                <!-- this will print result as $25.00-->
+                
+                <p>{{25 | currency : "₹" }}</p>
+                <!--this will print result as ₹25.00-->
+                
+                <p>{{25.46 | currency : "₹" : 4}}</p>
+                <!--This will print result as ₹25.4600 as factionSize is 4 decimal-->
+            ```
         
-        
-        
-        
-        
-        
-        
-
-
-
-
+        * In JavaScript Template
+        ```js
+        $filter('currency')(amount, symbol, fractionSize)
+        ```
