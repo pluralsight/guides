@@ -1,3 +1,8 @@
+### Be careful what you import by Luke Lee
+- [Read the guide](http://tutorials.pluralsight.com/python/be-careful-what-you-import)
+- [Read more from Luke Lee](http://tutorials.pluralsight.com/author/durden) <img src="https://avatars.githubusercontent.com/u/58063?v=3" width="30" height="30" alt="Luke Lee" />
+- Related to: Python
+
 ### Getting started with ECMAScript6 by Peter Olson
 - [Read the guide](http://tutorials.pluralsight.com/front-end-javascript/getting-started-with-ecmascript6)
 - [Read more from Peter Olson](http://tutorials.pluralsight.com/author/peterolson) <img src="https://avatars.githubusercontent.com/u/920512?v=3" width="30" height="30" alt="Peter Olson" />
