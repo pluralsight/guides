@@ -34,12 +34,12 @@ Angular provides [Filter component](https://docs.angularjs.org/api/ng/filter) to
         **for example** (filter in HTML Template):
         
         ```html
-            // ng-app - attech an application module to the page
+            <!-- ng-app - attech an application module to the page -->
             <html ng-app="myApp">
             
-            // ng-controller - attech a controller functions to the page
+            <!-- ng-controller - attech a controller functions to the page -->
             <body ng-controller="myCtrl">
-            // ng-init to initialize products as an array.
+            <!-- ng-init to initialize products as an array -->
             <div ng-init="products = [{ name : 'sony', price : 23, quantity : 4},
                                       { name : 'nokia', price : 45.3, quantity : 3},
                                       { name : 'sumsang', price : 65, quantity : 6},
@@ -48,7 +48,7 @@ Angular provides [Filter component](https://docs.angularjs.org/api/ng/filter) to
                                       { name : 'lenovo', price : 10, quantity : 2}]">
             </div>
             
-            // input filed to type expression to be filter
+            <!-- input filed to type expression to be filter -->
             <div>
                 <label>Search</label>
                 <input ng-model="searchText" class="form-control" />
@@ -61,7 +61,7 @@ Angular provides [Filter component](https://docs.angularjs.org/api/ng/filter) to
                         <th>Price</th>
                         <th>Quantity</th>
                     </tr>
-                    // filter based on value of searchText
+                    <!-- filter based on value of searchText -->
                     <tr ng-repeat="p in products | filter:searchText">
                         <td>{{p.name}}</td>
                         <td>{{p.price}}</td>
@@ -131,9 +131,23 @@ Angular provides [Filter component](https://docs.angularjs.org/api/ng/filter) to
         </body>
         ```
         
+        - When we use filter in angular's controller, we have to load the dependency in controller's function as `$filter`. Since, we are using `$filter('filter')(array, expression, comparator)`.
+        
+        - In the above example, I use `$scope.mirrorProducts` variable and override each time the user press any key in input field, since we are showing only filtered information to the user we have to create subset of actual array and override each time to display a correct result on page.
+        
+        - What if I do not create a mirror copy of actual array ?
+            >Its very simple, If I does not create a mirror copy of actual array then at time of filter an actual array goes to override and we have only filtered value, that means we loss our actual array values.
+        
+        - We uses `$` as expression while filtering an array.
+        
+        - `$` is a special property that can be used to filter on any property of the object.
+        
         #### Source Code :
         
         [Plunker](https://plnkr.co/edit/kLVpQiianqKOXrTGExbi?p=preview) for filter in JavaScript
+        
+2. Currency filter :
+    - [Currency](https://docs.angularjs.org/api/ng/filter/currency) filter formats a number as a currency. 
         
         
         
