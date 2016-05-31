@@ -5,7 +5,7 @@ In this article I am going to introduce step-by-step the basics of using Angular
 * index.html
 
 #### Quick note
-Here, `app.js` is a JavaScript file in which I created an instance of an [Angular module](http://www.w3schools.com/angular/angular_modules.asp). The `controller.js` Javascript file has an [Angular controller](http://www.w3schools.com/angular/angular_controllers.asp) that is registered with the `app.js` Angular module and contains business logic (programming between end UI and database). `index.html` is the view page where I place my html code and loaded `app.js` athend `controller.js` script files.
+Here, `app.js` is a JavaScript file in which I created an instance of an [Angular module](http://www.w3schools.com/angular/angular_modules.asp). The `controller.js` Javascript file has an [Angular controller](http://www.w3schools.com/angular/angular_controllers.asp) that is registered with the `app.js` Angular module and contains business logic (programming between end UI and database). `index.html` is the view page where I place my html code and loaded `app.js` and then `controller.js` script files.
 
 ## app.js
 
@@ -164,4 +164,4 @@ See [plunker](https://plnkr.co/edit/5sxudDgiAOGe8hKYjRLK?p=preview) for live exa
 
 This is how we implement `angular.module`, register ngController to the Angular module, and use the scope variable with the controller and the view to bind with AngularJS's ngModel. 
 
-I hope you found this article infomrative! See you soon with my next article on AngularJS2. 
+I hope you found this article infomrative! See you soon with my next article on AngularJS. 
