@@ -154,7 +154,7 @@ Angular provides [Filter component](https://docs.angularjs.org/api/ng/filter) to
     - Currency filter formating the number to proper decimal points(like $25.70).
     - Currency filter can be used in HTML Template as wel as in JavaScript.
     
-    ** In HTML Template**
+        **In HTML Template**
         
         ```html
         {{ currency_expression | currency : symbol : fractionSize}}
@@ -181,7 +181,7 @@ Angular provides [Filter component](https://docs.angularjs.org/api/ng/filter) to
             <!--This will print result as ₹25.4600 as factionSize is 4 decimal-->
         ```
         
-    **In JavaScript Template**
+        **In JavaScript Template**
         
         ```js
         $filter('currency')(amount, symbol, fractionSize)
