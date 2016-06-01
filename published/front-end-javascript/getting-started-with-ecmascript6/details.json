@@ -3,12 +3,7 @@
     "author_name": "peterolson",
     "author_real_name": "Peter Olson",
     "branch": "master",
-    "branches": [
-        [
-            "adityavarshney",
-            "adityavarshney-front-end-javascript-getting-started-with-ecmascript6"
-        ]
-    ],
+    "branches": [],
     "filename": "article.md",
     "first_commit": "a954461ed30f3038d560d5f8028cb1dafc1d3790",
     "image_url": "https://avatars.githubusercontent.com/u/920512?v=3",
