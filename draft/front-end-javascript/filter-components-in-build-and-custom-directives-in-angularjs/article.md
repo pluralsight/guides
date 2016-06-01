@@ -151,23 +151,25 @@ Angular provides [Filter component](https://docs.angularjs.org/api/ng/filter) to
 2. Currency filter :
     - Angular provides a better way to formating the price and display on page.
     - [Currency](https://docs.angularjs.org/api/ng/filter/currency) filter formats a number as a currency.
-    - Currency filter formating the number to proper decimal points(like $25.70). 
+    - Currency filter formating the number to proper decimal points(like $25.70).
     - Currency filter can be used in HTML Template as wel as in JavaScript.
     
-        * In HTML Template
+    ** In HTML Template**
         
         ```html
         {{ currency_expression | currency : symbol : fractionSize}}
         ```
         
         - Here, currency expression is the numerical value that will be formated by curency filter to display numerical value as price with currency symbol.
-            
+        
         - Second parameter after the pipe expression is a name of filter component i.e `currency`.
-            
+        
         - `symbol` and `fractionSize` are the options value.
+        
         - `symbol` is to put your locale currency symbol to format the number to price and `fractionSize` is a number of decimal placed to round the price. 
             
-        for example :
+            for example :
+        
         ```html
             <p>{{25 | currency }}</p>
             <!-- this will print result as $25.00-->
@@ -179,7 +181,7 @@ Angular provides [Filter component](https://docs.angularjs.org/api/ng/filter) to
             <!--This will print result as ₹25.4600 as factionSize is 4 decimal-->
         ```
         
-        * In JavaScript Template
+    **In JavaScript Template**
         
         ```js
         $filter('currency')(amount, symbol, fractionSize)
@@ -190,8 +192,8 @@ Angular provides [Filter component](https://docs.angularjs.org/api/ng/filter) to
         - `$filter` is an instance of filter component service which is inject to controller's function as an dependency.
             
         for example :
-            
-        JS code
+        
+        Currency Format:
         ```html
             <!--JS code-->
             $scope.price = $filter('currency')(25);
@@ -201,7 +203,10 @@ Angular provides [Filter component](https://docs.angularjs.org/api/ng/filter) to
             
             <!--output-->
             $25.00
-            
+        ```
+        
+        Currency format with cutom symbol :
+        ```html
             <!--JS code-->
             $scope.price = $filter('currency')(25,'₹');
             
@@ -210,11 +215,17 @@ Angular provides [Filter component](https://docs.angularjs.org/api/ng/filter) to
             
             <!--Output-->
             ₹25.00
-            
+        ```
+        
+        Currency format with cusmot decimal points :
+        ```html
             <!--JS code-->
             $scope.price = $filter('currency')(25,'₹',4);
             
             <!---Html Code-->
+            <p>{{price}}</p>
+            
+            <!--Output-->
             ₹25.0000
         ```
             
