@@ -155,42 +155,44 @@ Angular provides [Filter component](https://docs.angularjs.org/api/ng/filter) to
     - Currency filter can be used in HTML Template as wel as in JavaScript.
     
         * In HTML Template
+        
         ```html
-            {{ currency_expression | currency : symbol : fractionSize}}
+        {{ currency_expression | currency : symbol : fractionSize}}
         ```
         
-            - Here, currency expression is the numerical value that will be formated by curency filter to display numerical value as price with currency symbol.
+        - Here, currency expression is the numerical value that will be formated by curency filter to display numerical value as price with currency symbol.
             
-            - Second parameter after the pipe expression is a name of filter component i.e `currency`.
+        - Second parameter after the pipe expression is a name of filter component i.e `currency`.
             
-            - `symbol` and `fractionSize` are the options value.
-            - `symbol` is to put your locale currency symbol to format the number to price and `fractionSize` is a number of decimal placed to round the price. 
+        - `symbol` and `fractionSize` are the options value.
+        - `symbol` is to put your locale currency symbol to format the number to price and `fractionSize` is a number of decimal placed to round the price. 
             
-            for example :
-            ```html
-                <p>{{25 | currency }}</p>
-                <!-- this will print result as $25.00-->
+        for example :
+        ```html
+            <p>{{25 | currency }}</p>
+            <!-- this will print result as $25.00-->
                 
-                <p>{{25 | currency : "₹" }}</p>
-                <!--this will print result as ₹25.00-->
+            <p>{{25 | currency : "₹" }}</p>
+            <!--this will print result as ₹25.00-->
                 
-                <p>{{25.46 | currency : "₹" : 4}}</p>
-                <!--This will print result as ₹25.4600 as factionSize is 4 decimal-->
-            ```
+            <p>{{25.46 | currency : "₹" : 4}}</p>
+            <!--This will print result as ₹25.4600 as factionSize is 4 decimal-->
+        ```
         
         * In JavaScript Template
+        
         ```js
         $filter('currency')(amount, symbol, fractionSize)
         ```
         
-            - `Symbol` and `fractionSize` aur the same as in HTMP Template.
-            - `Amount` is the numerical value which has to convert into currency format.
-            - `$filter` is an instance of filter component service which is inject to controller's function as an dependency.
+        - `Symbol` and `fractionSize` aur the same as in HTMP Template.
+        - `Amount` is the numerical value which has to convert into currency format.
+        - `$filter` is an instance of filter component service which is inject to controller's function as an dependency.
             
-            for example :
+        for example :
             
-            JS code
-            ```html
+        JS code
+        ```html
             <!--JS code-->
             $scope.price = $filter('currency')(25);
             
@@ -214,6 +216,6 @@ Angular provides [Filter component](https://docs.angularjs.org/api/ng/filter) to
             
             <!---Html Code-->
             ₹25.0000
-            ```
+        ```
             
-            see  [plunker](https://plnkr.co/edit/cjYyN9RjvtsxIdmn3PCz?p=preview) for live example.
+        see  [plunker](https://plnkr.co/edit/cjYyN9RjvtsxIdmn3PCz?p=preview) for live example.
