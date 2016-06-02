@@ -13,11 +13,6 @@
 - [Read more from Rahat Khanna](http://tutorials.pluralsight.com/author/mappmechanic) <img src="https://avatars.githubusercontent.com/u/4088925?v=3" width="30" height="30" alt="Rahat Khanna" />
 - Related to: Interesting APIs (SendGrid, Twilio, etc)
 
-### Introduction to testing with BDD and the Spock Framework by Esteban Herrera
-- [Read the guide](http://tutorials.pluralsight.com/java-and-j2ee/introduction-to-testing-with-bdd-and-the-spock-framework?status=in-review)
-- [Read more from Esteban Herrera](http://tutorials.pluralsight.com/author/eh3rrera) <img src="https://avatars.githubusercontent.com/u/11665759?v=3" width="30" height="30" alt="Esteban Herrera" />
-- Related to: Java and J2EE
-
 ### Profiling Python's core collection data structures by Luke Lee
 - [Read the guide](http://tutorials.pluralsight.com/python/profiling-python-s-core-collection-data-structures?status=in-review)
 - [Read more from Luke Lee](http://tutorials.pluralsight.com/author/durden) <img src="https://avatars.githubusercontent.com/u/58063?v=3" width="30" height="30" alt="Luke Lee" />
