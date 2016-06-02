@@ -164,4 +164,4 @@ See [plunker](https://plnkr.co/edit/5sxudDgiAOGe8hKYjRLK?p=preview) for live exa
 
 This is how we implement `angular.module`, register ngController to the Angular module, and use the scope variable with the controller and the view to bind with AngularJS's ngModel. 
 
-I hope you found this article infomrative! See you soon with my next article on AngularJS. 
+I hope you found this article informative! See you soon with my next article on AngularJS. 
