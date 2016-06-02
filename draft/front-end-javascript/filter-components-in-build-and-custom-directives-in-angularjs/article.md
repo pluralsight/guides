@@ -236,7 +236,7 @@ Angular provides [Filter component](https://docs.angularjs.org/api/ng/filter) to
     * [Number](https://docs.angularjs.org/api/ng/filter/number) filter format the number as a Text.
     * Number filter can be used in HTML Template as wel as in JavaScript.
         
-    **HTML Template**
+        **HTML Template**
         ```html
         {{ number_expression | number : fractionSize}}
         ```
@@ -259,7 +259,7 @@ Angular provides [Filter component](https://docs.angularjs.org/api/ng/filter) to
         
         - `fractionSize` provide a result after rounding-up the value. 
         
-    **JavaScript Code**
+        **JavaScript Code**
         ```js
         $filter('number')(number, fractionSize)
         ```
