@@ -230,3 +230,55 @@ Angular provides [Filter component](https://docs.angularjs.org/api/ng/filter) to
         ```
             
         see  [plunker](https://plnkr.co/edit/cjYyN9RjvtsxIdmn3PCz?p=preview) for live example.
+        
+3. Number filter : 
+    
+    * [Number](https://docs.angularjs.org/api/ng/filter/number) filter format the number as a Text.
+    * Number filter can be used in HTML Template as wel as in JavaScript.
+        
+    **HTML Template**
+        ```html
+        {{ number_expression | number : fractionSize}}
+        ```
+        - `number_expression` is the number which has to be formated into text.
+        - `number` to be format.
+        - `fractionSize` is the count of decimal point display after formating.
+        
+        for example :
+        
+        ```html
+        <p>{{24.76 | number}}</p>
+        <!--this will print result as 24.76-->
+        
+        <p>{{24.76 | number : 0}}</p>
+        <!--this will print the result as 24-->
+        
+        <p>{{24.76 | number : 1}}</p>
+        <!--this will print result as 24.8-->
+        ```
+        
+        - `fractionSize` provide a result after rounding-up the value. 
+        
+    **JavaScript Code**
+        ```js
+        $filter('number')(number, fractionSize)
+        ```
+        
+        - `$filter` instance of filter components.
+        - `$flter(number)` type of filter components.
+        - `number` to be format.
+        - `fractionSize` is the count of decimal point display after formating.
+        
+        for example : 
+        ```js
+        $scope.number = $filter('number')(25.76)
+        // this will print a result as 25.76
+        
+        $scope.number = $filter('number')(25.76 : 0)
+        //this will print a result as 25
+        
+        $scope.number = $filter('number')(25.76 : 1)
+        //this will print a result as 25.8
+        ```
+        
+        see [Plunker](https://plnkr.co/edit/Wv5glncChtFVuZiBCEkh?p=preview) for live example.
