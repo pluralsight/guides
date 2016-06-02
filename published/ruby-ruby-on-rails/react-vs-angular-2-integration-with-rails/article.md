@@ -15,6 +15,7 @@ rails new sampleapp
  
 ```ruby
 #Gemfile.rb
+gem 'rails'
 gem 'sqlite3'
 gem 'sprockets'
 gem 'rack-cors'
