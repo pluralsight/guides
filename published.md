@@ -1,3 +1,8 @@
+### Introduction to testing with BDD and the Spock Framework by Esteban Herrera
+- [Read the guide](http://tutorials.pluralsight.com/java-and-j2ee/introduction-to-testing-with-bdd-and-the-spock-framework)
+- [Read more from Esteban Herrera](http://tutorials.pluralsight.com/author/eh3rrera) <img src="https://avatars.githubusercontent.com/u/11665759?v=3" width="30" height="30" alt="Esteban Herrera" />
+- Related to: Java and J2EE
+
 ### Be careful what you import by Luke Lee
 - [Read the guide](http://tutorials.pluralsight.com/python/be-careful-what-you-import)
 - [Read more from Luke Lee](http://tutorials.pluralsight.com/author/durden) <img src="https://avatars.githubusercontent.com/u/58063?v=3" width="30" height="30" alt="Luke Lee" />
