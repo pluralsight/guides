@@ -152,7 +152,7 @@ Angular provides [Filter component](https://docs.angularjs.org/api/ng/filter) to
     
     [Plunker](https://plnkr.co/edit/kLVpQiianqKOXrTGExbi?p=preview) for filter in JavaScript
         
-## Currency :
+## Currency
 - Angular provides a better way to formating the price and display on page.
 - [Currency](https://docs.angularjs.org/api/ng/filter/currency) filter formats a number as a currency.
 - Currency filter formating the number to proper decimal points(like $25.70).
@@ -235,7 +235,7 @@ Angular provides [Filter component](https://docs.angularjs.org/api/ng/filter) to
             
     see  [plunker](https://plnkr.co/edit/cjYyN9RjvtsxIdmn3PCz?p=preview) for live example.
         
-## Number : 
+## Number
     
 - [Number](https://docs.angularjs.org/api/ng/filter/number) filter format the number as a Text.
 - Number filter can be used in HTML Template as wel as in JavaScript.
@@ -288,7 +288,7 @@ Angular provides [Filter component](https://docs.angularjs.org/api/ng/filter) to
         
     see [Plunker](https://plnkr.co/edit/Wv5glncChtFVuZiBCEkh?p=preview) for live example.
         
-## Date :
+## Date
 
 - [Date](https://docs.angularjs.org/api/ng/filter/date) filter provide a better way to represent date in string format (like format `MMM d, y h:mm:ss a` will display `Sep 3, 2010 12:05:08 PM`)
 - **Syntax**
@@ -371,7 +371,7 @@ Element | Details
     <!--Ouput : 10/29/2010 at 9:10AM (insert string/character inside date format as 'at')-->
     ```
 
-## LowerCase/UpperCase :
+## LowerCase/UpperCase
 - [LowerCase](https://docs.angularjs.org/api/ng/filter/lowercase) and [UpperCase](https://docs.angularjs.org/api/ng/filter/uppercase) converts a string into lower case and upper case.
     
 - Lower Case
@@ -394,7 +394,7 @@ Element | Details
     $filter('uppercase')()
     ```
         
-## limitTo :
+## limitTo
 - [limiTo](https://docs.angularjs.org/api/ng/filter/limitTo) filter returns a new array as subset from an array with containing only a specified number of elements.
 - The elements are taken from either the beginning or the end of the source array, string or number, as specified by the value and sign (positive or negative) of limit
 - If a number is used as input tag, it is converted intto a string value.
@@ -416,7 +416,7 @@ Element | Details
     * If the number is negative, limit number of items from the end of the source (array or string) are copied.
     * The limit will be trimmed if more then the value of `array.length` and if limit is undefined, the input will be returned unchanged.
 
-## orderBy :
+## orderBy
 - [OrderBy](https://docs.angularjs.org/api/ng/filter/orderBy) is specified an order of an array by explession.
 - It is ordered alphabetically for strings and numerically for numbers.
 - **Syntax**
