@@ -239,12 +239,13 @@ Angular provides [Filter component](https://docs.angularjs.org/api/ng/filter) to
     
 - [Number](https://docs.angularjs.org/api/ng/filter/number) filter format the number as a Text.
 - Number filter can be used in HTML Template as wel as in JavaScript.
-        
+
     **HTML Template**
-```html
-{{ number_expression | number : fractionSize}}
-```
-        
+
+    ```html
+    {{ number_expression | number : fractionSize}}
+    ```
+    
     * `number_expression` is the number which has to be formated into text.
     * `number` to be format.
     * `fractionSize` is the count of decimal point display after formating.
