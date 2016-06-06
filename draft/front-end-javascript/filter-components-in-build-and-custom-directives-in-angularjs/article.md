@@ -429,9 +429,11 @@ Element | Details
     $filter('orderBy')(array, expression, reverse)
     ```
 - **Explanation**
+
     * `array` is to be sort.
     * `expression` on which comparator predict the order of element.
     * `reverse` the element order.
+    
     
 - minus(-) symbol is use to achieve descending order. See below example for more clearance
     ```html
