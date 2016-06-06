@@ -1,3 +1,8 @@
+### Getting Started with AngularJS by Gaurav Bhavsar
+- [Read the guide](http://tutorials.pluralsight.com/front-end-javascript/getting-started-with-angularjs)
+- [Read more from Gaurav Bhavsar](http://tutorials.pluralsight.com/author/gauravbhavsar) <img src="https://avatars.githubusercontent.com/u/5441386?v=3" width="30" height="30" alt="Gaurav Bhavsar" />
+- Related to: Front-End JavaScript (Angular, React, Meteor, etc)
+
 ### Introduction to testing with BDD and the Spock Framework by Esteban Herrera
 - [Read the guide](http://tutorials.pluralsight.com/java-and-j2ee/introduction-to-testing-with-bdd-and-the-spock-framework)
 - [Read more from Esteban Herrera](http://tutorials.pluralsight.com/author/eh3rrera) <img src="https://avatars.githubusercontent.com/u/11665759?v=3" width="30" height="30" alt="Esteban Herrera" />
