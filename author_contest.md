@@ -1,7 +1,5 @@
 ## 2016 hack.guides() Authoring Contest
 
-![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/def9d89e-21df-4d1b-ba1a-ae32ab131847.png)
-
 We are excited to launch hack.guides() authoring contest where developers around the world will share their experience & best practices by authoring tutorials on any technology you're passionate in!
 
 The hack.guides() authoring contest is unique, and brings the developer community together to create and curate collaborative content. With the Github API on backend, hack.guides() tutorials can be forked, improved, and merged just as simple as a pull request.
@@ -33,11 +31,6 @@ We use MarkDown (rather than WordPress), a simple file format. This is a really 
     <td>Sponsors</td>
     <td>Prize</td>
     <td>Category</td>
-  </tr>
-  <tr>
-    <td>Uber Dev API</td>
-    <td>$500</td>
-    <td>Best use of Uber API</td>
   </tr>
   <tr>
     <td>Ionic Framework</td>
@@ -86,7 +79,6 @@ We use MarkDown (rather than WordPress), a simple file format. This is a really 
   </tr>
 
 
-
 </table>
 
 </body>
@@ -95,7 +87,7 @@ We use MarkDown (rather than WordPress), a simple file format. This is a really 
 
 ### Sponsor list
 
-We are humbled to have partnered with some of the best companies with cutting edge technology. Our sponsors are [Uber Developer Platform](https://developer.uber.com/), [Ionic Framework](http://ionicframework.com/), [RethinkDB](http://rethinkdb.com/), [Pluralsight](http://pluralsight.com/), [PubNub](http://pubnub.com/), [Keen.io](http://keen.io), [SauceLabs](http://saucelabs.com/), and your name here.
+We are humbled to have partnered with some of the best companies with cutting edge technology. Our sponsors are [Ionic Framework](http://ionicframework.com/), [RethinkDB](http://rethinkdb.com/), [Pluralsight](http://pluralsight.com/), [PubNub](http://pubnub.com/), [Keen.io](http://keen.io), [SauceLabs](http://saucelabs.com/), and your name here.
 
 Please email to [Prateek Gupta](Prateek-Gupta@Pluralsight.com) to partner with us!
 
