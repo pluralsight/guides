@@ -36,7 +36,7 @@ Angular provides [Filter component](https://docs.angularjs.org/api/ng/filter) to
     In HTML template, we use filter in pipe expression as in above. here, between this two call we have a pipe, pipes take the result from first expression and send me output into second expression.
     
 - **Explanation with example** (filter in HTML Template) :
-    * 
+     
     ```html
     <!-- ng-app - attech an application module to the page -->
     <html ng-app="myApp">
@@ -452,3 +452,7 @@ Element | Details
       <td>{{friend.age}}</td>
     </tr>
     ```
+    
+These are the Filter Components provided by angular and this is how we use them.
+
+I hope you found this article infomrative! See you soon with my next article on AngularJS.
