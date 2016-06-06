@@ -89,7 +89,7 @@ We use MarkDown (rather than WordPress), a simple file format. This is a really 
 
 We are humbled to have partnered with some of the best companies with cutting edge technology. Our sponsors are [Ionic Framework](http://ionicframework.com/), [RethinkDB](http://rethinkdb.com/), [Pluralsight](http://pluralsight.com/), [PubNub](http://pubnub.com/), [Keen.io](http://keen.io), [SauceLabs](http://saucelabs.com/), and your name here.
 
-Please email to [Prateek Gupta](Prateek-Gupta@Pluralsight.com) to partner with us!
+Please email to [Prateek Gupta](mailto:Prateek-Gupta@Pluralsight.com) to partner with us!
 
 ### Guidelines and suggestions for posts/topics
 
@@ -105,7 +105,7 @@ Feel free to write about any technology that you're passionate about. Generally 
 
 Tutorials/articles ideally range from 1500-3000 words, including code blocks, to be a 'definitive guide' on a technical subject.
 
-Please reach out to Prateek (prateek-gupta@pluralsight.com)! :)
+Please reach out to Prateek (mailto:prateek-gupta@pluralsight.com)! :)
 
 ### Links to example articles
 
