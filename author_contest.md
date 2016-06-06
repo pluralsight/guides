@@ -28,18 +28,69 @@ We use MarkDown (rather than WordPress), a simple file format. This is a really 
 
 ## Prize list
 
-Sponsors | Prize | Category
-------------------- | -------------------- | 
-Uber Dev API | $500 | Best use of Uber API
-Ionic Framework | $500 | Best Hybrid App
-Pluralsight | $500 | Software Best Practices
-Alexa - Amazon | $500 | Best tutorial using Alexa Skills Kit
-PubNub | $500 | Best real-time application
-RethinkDB | $500 | Best RethinkDB use case
-RethinkDB | $500 | Ship an app on Horizon cloud
-Keen IO | $500 | Best Dashboard tutorial
-HelloSign API | $500 | Best use of HelloSign API 
-SauceLabs | $500 | Best Selenium testing tutorial
+<table style="width:100%">
+  <tr>
+    <td>Sponsors</td>
+    <td>Prize</td>
+    <td>Category</td>
+  </tr>
+  <tr>
+    <td>Uber Dev API</td>
+    <td>$500</td>
+    <td>Best use of Uber API</td>
+  </tr>
+  <tr>
+    <td>Ionic Framework</td>
+    <td>$500</td>
+    <td>Best Hybrid App</td>
+  </tr>
+<tr>
+    <td>Pluralsight</td>
+    <td>$500</td>
+    <td>Software Best Practices</td>
+  </tr>
+<tr>
+    <td>Alexa - Amazon</td>
+    <td>$500</td>
+    <td>Best tutorial using Alexa Skills Kit</td>
+  </tr>
+<tr>
+    <td>PubNub</td>
+    <td>$500</td>
+    <td>Best real-time application</td>
+  </tr>
+<tr>
+    <td>RethinkDB</td>
+    <td>$500</td>
+    <td>Best RethinkDB use case</td>
+  </tr>
+<tr>
+    <td>RethinkDB</td>
+    <td>$500</td>
+    <td>Best Horizon tutorial</td>
+  </tr>
+<tr>
+    <td>KeenIO</td>
+    <td>$500</td>
+    <td>Best Dashboard tutorial</td>
+  </tr>
+<tr>
+    <td>HelloSign</td>
+    <td>$500</td>
+    <td>Best use of HelloSign API</td>
+  </tr>
+<tr>
+    <td>SauceLabs</td>
+    <td>$500</td>
+    <td>Best Selenium Testing tutorial</td>
+  </tr>
+
+
+
+</table>
+
+</body>
+</html>
 
 
 ### Sponsor list
