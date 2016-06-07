@@ -384,7 +384,18 @@ Element | Details
     ```js
     $filter('lowercase')()
     ```
-        
+    * For example
+    ```html
+    <html ng-app="myApp">
+        <body ng-controller="myCtrl">
+            <!--this will convert text into lowercase-->
+            <p>Using HTML : {{"HTML CODE TO CONVERT INTO LOWERCASE" | lowercase}}</p>
+        </body>
+    </html>
+    <!--OutPut : html code to convert into lowercase-->
+    ```
+    * see [Plunker](https://plnkr.co/edit/Bb6ciKENeIVkbR74ly9I?p=preview) for live example
+
 - Upper Case
     * In HTML Template Binding
     ```html
@@ -394,6 +405,17 @@ Element | Details
     ```js
     $filter('uppercase')()
     ```
+    * For example
+    ```html
+    <html ng-app="myApp">
+        <body ng-controller="myCtrl">
+            <!--this will convert text into uppercase-->
+            <p>Using HTML : {{"html code to convert into upper case" | uppercase}}</p>
+        </body>
+    </html>
+    <!--OutPut : HTML CODE TO CONVERT INTO UPPER CASE-->
+    ```
+    * see [Plunker](https://plnkr.co/edit/qJChu75CJJggnCRsqQxZ?p=preview) for live example
         
 ## limitTo
 - [limiTo](https://docs.angularjs.org/api/ng/filter/limitTo) filter returns a new array as subset from an array with containing only a specified number of elements.
@@ -416,6 +438,48 @@ Element | Details
     * If the limit number is positive, limit number of items from the beginning of the source (array or string) are copied.
     * If the number is negative, limit number of items from the end of the source (array or string) are copied.
     * The limit will be trimmed if more then the value of `array.length` and if limit is undefined, the input will be returned unchanged.
+    * For example
+    
+    ```html
+    <!-- ng-app - attech an application module to the page -->
+    <html ng-app="myApp">
+        
+    <!-- ng-controller - attech a controller functions to the page -->
+    <body ng-controller="myCtrl">
+    
+    <!-- ng-init to initialize friends as an array -->
+    <div ng-init="friends = [
+                            {name : 'John', phone : '89765', age : 34},
+                            {name : 'Bob', phone : '32722', age : 28},
+                            {name : 'Jake', phone : '87865', age : 30},
+                            {name : 'Pop', phone : '67547', age : 26},
+                            ]">
+    </div>
+    
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Phone</th>
+            <th>Age</th>
+        </tr>
+        <!-- filter based on value of limitTo -->
+        <tr ng-repeat="f in friends | limitTo : 2">
+            <td>{{f.name}}</td>
+            <td>{{f.phone}}</td>
+            <td>{{f.age}}</td>
+        </tr>
+    </table>
+    
+    </body>
+    </html>
+    
+    <!--output show only 2 record as we limitTo : 2
+    Name	Phone	Age
+    John	89765	34
+    Bob 	32722	28
+    -->
+    ```
+    * See [Plunker](https://plnkr.co/edit/SLBIjepAgsxEgcYxUzhv?p=preview) for live example
 
 ## orderBy
 - [OrderBy](https://docs.angularjs.org/api/ng/filter/orderBy) is specified an order of an array by explession.
@@ -436,22 +500,57 @@ Element | Details
     * `reverse` the element order.
     
     
-- minus(-) symbol is use to achieve descending order. See below example for more clearance
-    ```html
-    <!--In the below code `-age` gives a descending order of friends array based on age values -->
-    <tr ng-repeat="friend in friends | orderBy:'-age'">
-    <td>{{friend.name}}</td>
-      <td>{{friend.phone}}</td>
-      <td>{{friend.age}}</td>
-    </tr>
+- minus(-) symbol is use to achieve descending order. 
+- See below example for more clearance
     
-    <!-- where this will gives a acesnding order of friends array based on age values -->
-    <tr ng-repeat="friend in friends | orderBy:'age'">
-    <td>{{friend.name}}</td>
-      <td>{{friend.phone}}</td>
-      <td>{{friend.age}}</td>
-    </tr>
+    ```html
+    <!-- ng-app - attech an application module to the page -->
+    <html ng-app="myApp">
+        
+    <!-- ng-controller - attech a controller functions to the page -->
+    <body ng-controller="myCtrl">
+    
+    <!-- ng-init to initialize friends as an array -->
+    <div ng-init="friends = [
+                            {name : 'John', phone : '89765', age : 34},
+                            {name : 'Bob', phone : '32722', age : 28},
+                            {name : 'Jake', phone : '87865', age : 30},
+                            {name : 'Pop', phone : '67547', age : 26},
+                            ]">
+    </div>
+    
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Phone</th>
+            <th>Age</th>
+        </tr>
+        <!-- Order by ascending order based on value of age -->
+        <tr ng-repeat="f in friends | orderBy : 'age'">
+            <td>{{f.name}}</td>
+            <td>{{f.phone}}</td>
+            <td>{{f.age}}</td>
+        </tr>
+    </table>
+    <br>
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Phone</th>
+            <th>Age</th>
+        </tr>
+        <!-- Order by descending order based on value of age -->
+        <tr ng-repeat="f in friends | orderBy : '-age'">
+            <td>{{f.name}}</td>
+            <td>{{f.phone}}</td>
+            <td>{{f.age}}</td>
+        </tr>
+    </table>
+    
+    </body>
+    </html>
     ```
+    * See [Plunker](https://plnkr.co/edit/CSlQblf57hSPrVwfJVlC) for live example
     
 These are the Filter Components provided by angular and this is how we use them.
 
