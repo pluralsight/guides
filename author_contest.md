@@ -6,7 +6,7 @@ The hack.guides() authoring contest is unique, and brings the developer communit
 
 ## Be an Author
 
-You can win $10,000 worth of cash prizes from our sponsors, and build your brand by teaching new and interesting API, and best practices. This is a great way to contribute and give back to the developer community.
+You can win $10,000 worth of gift cards prizes from our sponsors, and build your brand by teaching new and interesting API, and best practices. This is a great way to contribute and give back to the developer community.
 
 [Start your tutorial now](http://tutorials.pluralsight.com/write/)
 
@@ -26,70 +26,65 @@ We use MarkDown (rather than WordPress), a simple file format. This is a really 
 
 ## Prize list
 
-<table style="width:100%">
+<table>
   <tr>
-    <td>Sponsors</td>
-    <td>Prize</td>
-    <td>Category</td>
+    <th>Uber</th>
+    <th>$500</th>
+    <th>Best use of Uber API</th>
   </tr>
   <tr>
     <td>Ionic Framework</td>
     <td>$500</td>
-    <td>Best Hybrid App</td>
+    <td>Best Ionic App shipped on Market</td>
   </tr>
-<tr>
+  <tr>
+    <td>RethinkDB</td>
+    <td>$500</td>
+    <td>Best tutorial using RethinkDB</td>
+  </tr>
+  <tr>
     <td>Pluralsight</td>
     <td>$500</td>
-    <td>Software Best Practices</td>
+    <td>Best Software Practices</td>
   </tr>
-<tr>
-    <td>Alexa - Amazon</td>
+  <tr>
+    <td>Amazon Alexa</td>
     <td>$500</td>
     <td>Best tutorial using Alexa Skills Kit</td>
   </tr>
-<tr>
+  <tr>
+    <td>Horizon.io</td>
+    <td>$500</td>
+    <td>Best tutorial using Horizon cloud</td>
+  </tr>
+  <tr>
     <td>PubNub</td>
     <td>$500</td>
-    <td>Best real-time application</td>
+    <td>Best real-time app using PubNub</td>
   </tr>
-<tr>
-    <td>RethinkDB</td>
-    <td>$500</td>
-    <td>Best RethinkDB use case</td>
-  </tr>
-<tr>
-    <td>RethinkDB</td>
-    <td>$500</td>
-    <td>Best Horizon tutorial</td>
-  </tr>
-<tr>
-    <td>KeenIO</td>
-    <td>$500</td>
-    <td>Best Dashboard tutorial</td>
-  </tr>
-<tr>
+  <tr>
     <td>HelloSign</td>
     <td>$500</td>
     <td>Best use of HelloSign API</td>
   </tr>
-<tr>
-    <td>SauceLabs</td>
+  <tr>
+    <td>Keen.io</td>
     <td>$500</td>
-    <td>Best Selenium Testing tutorial</td>
+    <td>Best tutorial building a Dashboard </td>
   </tr>
-
-
+  <tr>
+    <td>Sauce Labs</td>
+    <td>$500</td>
+    <td>Best Selenium Testing Tutorial</td>
+  </tr>
 </table>
-
-</body>
-</html>
 
 
 ### Sponsor list
 
-We are humbled to have partnered with some of the best companies with cutting edge technology. Our sponsors are [Ionic Framework](http://ionicframework.com/), [RethinkDB](http://rethinkdb.com/), [Pluralsight](http://pluralsight.com/), [PubNub](http://pubnub.com/), [Keen.io](http://keen.io), [SauceLabs](http://saucelabs.com/), and your name here.
+We are humbled to have partnered with some of the best companies with cutting edge technology. Our sponsors are [Ionic Framework](http://ionicframework.com/), [RethinkDB](http://rethinkdb.com/), [Pluralsight](http://pluralsight.com/), [PubNub](http://pubnub.com/), [Keen.io](http://keen.io), [Amazon Alexa](https://developer.amazon.com/public/solutions/alexa), and [SauceLabs](http://saucelabs.com/).
 
-Please email to [Prateek Gupta](mailto:Prateek-Gupta@Pluralsight.com) to partner with us!
+Please email to Prateek at Prateek-Gupta@Pluralsight.com to sponsor!
 
 ### Guidelines and suggestions for posts/topics
 
@@ -105,7 +100,7 @@ Feel free to write about any technology that you're passionate about. Generally 
 
 Tutorials/articles ideally range from 1500-3000 words, including code blocks, to be a 'definitive guide' on a technical subject.
 
-Please reach out to Prateek (mailto:prateek-gupta@pluralsight.com)! :)
+Please reach out to Prateek at prateek-gupta@pluralsight.com :)
 
 ### Links to example articles
 
