@@ -418,7 +418,7 @@ Element | Details
     * see [Plunker](https://plnkr.co/edit/qJChu75CJJggnCRsqQxZ?p=preview) for live example
         
 ## limitTo
-- [limiTo](https://docs.angularjs.org/api/ng/filter/limitTo) filter returns a new array as subset which limits to the specified number of elements.
+- [limitTo](https://docs.angularjs.org/api/ng/filter/limitTo) filter returns a new array as subset which limits to the specified number of elements.
 - The elements are taken from either the beginning or the end of the source array, string or number, as specified by the value and sign (positive or negative) of limit
 - If a number is used as input tag, it is converted into a string value.
     
@@ -482,7 +482,7 @@ Element | Details
     * See [Plunker](https://plnkr.co/edit/SLBIjepAgsxEgcYxUzhv?p=preview) for live example
 
 ## orderBy
-- [OrderBy](https://docs.angularjs.org/api/ng/filter/orderBy) specifies an order to an array by explession.
+- [OrderBy](https://docs.angularjs.org/api/ng/filter/orderBy) specifies an order to an array by expression.
 - It is ordered alphabetically for strings and numerically for numbers.
 - **Syntax**
     * In HTML Template Binding
