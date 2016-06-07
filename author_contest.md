@@ -9,7 +9,7 @@ The hack.guides() authoring contest is unique, and brings the developer communit
 
 Submit your new tutorial to qualify for a chance to win cash prizes (gift cards) from our sponsors, and build your brand by teaching new and interesting API, and best practices. This is a great way to contribute and give back to the developer community.
 
-### [Start your tutorial now](http://tutorials.pluralsight.com/write/)
+<a href="http://tutorials.pluralsight.com/write/" class="emphasize">Start your tutorial now</a>
 
 ## Why we are doing this
 
