@@ -1,4 +1,4 @@
-In this article I am going to introduce step-by-step the basics of using AngularJS. Lets start with the basic file structure in AngularJS
+In this article I am going to introduce step-by-step the basics of using AngularJS. Lets start with the basic file structure in AngularJS.
 
 * app.js
 * controller.js
