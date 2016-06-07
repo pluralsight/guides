@@ -1,6 +1,6 @@
 In the [previous article](http://tutorials.pluralsight.com/front-end-javascript/getting-started-with-angularjs) we seen the basic implementaion of angularJS. In this article we will look at **Filter Components**.
 
-This article covers the following areas for angularJS with implementation oand examples.
+This article covers the following areas for angularJS with implementation and examples.
 
 * Filter
 * Currency
@@ -46,7 +46,7 @@ Angular provides [Filter component](https://docs.angularjs.org/api/ng/filter) to
     <!-- ng-init to initialize products as an array -->
     <div ng-init="products = [{ name : 'sony', price : 23, quantity : 4},
                               { name : 'nokia', price : 45.3, quantity : 3},
-                              { name : 'sumsang', price : 65, quantity : 6},
+                              { name : 'samsung', price : 65, quantity : 6},
                               { name : 'motorola', price : 12.7, quantity : 8},
                               { name : 'micromax', price : 39.75, quantity : 3},
                               { name : 'lenovo', price : 10, quantity : 2}]">
@@ -554,4 +554,4 @@ Element | Details
     
 These are the Filter Components provided by angular and this is how we use them.
 
-I hope you found this article infomrative! See you soon with my next article on AngularJS.
+I hope you found this article informative! See you soon with my next article on AngularJS.
