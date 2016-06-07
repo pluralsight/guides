@@ -26,9 +26,14 @@ We use MarkDown (rather than WordPress), a simple file format. This is a really 
 
 <table>
   <tr>
-    <th>Uber</th>
-    <th>$500</th>
-    <th>Best use of Uber API</th>
+    <th>Sponsors</th>
+    <th>Prize</th>
+    <th>Category</th>
+  </tr>
+  <tr>
+    <td>Uber</td>
+    <td>$500</td>
+    <td>Best use of Uber API</td>
   </tr>
   <tr>
     <td>Ionic Framework</td>
