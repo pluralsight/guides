@@ -1,9 +1,9 @@
-![Authoring Contest](https://raw.githubusercontent.com/pluralsight/guides/master/images/a76c7abd-8c17-43c6-a639-e3e55e3a774f.png)
+![Authoring Contest](https://raw.githubusercontent.com/pluralsight/guides/master/images/822fd924-4024-41ae-8381-f723a460d140.png)
 
 
-We are excited to launch the hack.guides() authoring contest where developers around the world will share their experience & best practices by authoring tutorials on any technology you're passionate in!
+We are excited to launch the hack.guides() 2016 Tutorial Contest where developers around the world will share their experience & best practices by writing tutorials on any technology you're passionate in!
 
-The hack.guides() authoring contest is unique, and brings the developer community together to create and curate collaborative content. With the Github API as a storage backend, hack.guides() tutorials can be forked, improved, and merged as easy as a pull request.
+The hack.guides() tutorial contest is unique, and brings the developer community together to create and curate collaborative content. With the Github API as a storage backend, hack.guides() tutorials can be forked, improved, and merged as easy as a pull request.
 
 ## Be an Author
 
