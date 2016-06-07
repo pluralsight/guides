@@ -9,7 +9,7 @@ The hack.guides() authoring contest is unique, and brings the developer communit
 
 Submit your new tutorial to qualify for a chance to win cash prizes (gift cards) from our sponsors, and build your brand by teaching new and interesting API, and best practices. This is a great way to contribute and give back to the developer community.
 
-[Start your tutorial now](http://tutorials.pluralsight.com/write/)
+### [Start your tutorial now](http://tutorials.pluralsight.com/write/)
 
 ## Why we are doing this
 
@@ -104,7 +104,7 @@ Feel free to write about any technology that you're passionate about. Generally 
 
 Tutorials/articles ideally range from 1500-3000 words, including code blocks, to be a 'definitive guide' on a technical subject.
 
-[Start your tutorial now](http://tutorials.pluralsight.com/write/)
+### [Start your tutorial now](http://tutorials.pluralsight.com/write/)
 
 
 ## Links to example articles
