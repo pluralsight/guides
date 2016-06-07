@@ -13,9 +13,7 @@ Submit your new tutorial to qualify for a chance to win cash prizes (gift cards)
 
 ## Why we are doing this
 
-We want to be "wikipedia" for technical tutorials,and guides currently exist in silos. They live on individual blogs, and are fragmented and varying in quality. Those guides don't typically reach a wide audience since individual blogs have limited reach.
-
-Once a guide is created, it becomes stale and out of date. If the author doesn’t maintain their content, then it becomes less useful. There isn’t a strong way for developers to improve their content through peer review. 
+Our collective aim is working together to educate the world while improving our knowledge at the same time. Think of this as a "Wikipedia" for technical guides and tutorials, or "Medium.com for developers" as another analogy.
 
 >We love Open-Source
 
@@ -115,15 +113,12 @@ Tutorials/articles ideally range from 1500-3000 words, including code blocks, to
 
 ## Contest Rules
 
-Tutorials submission between June 8th - July 30th will be 
+Tutorials submission between June 8th - July 30th will qualify for a chance to win $500 in prize category. Winners will be announced on August 15th, 2016 based on following reviewing criteria.
 
-Winners will be judged based on following reviewing criteria.
-
-use of technology/integrations + # of hearts + # of (legit) social media shares
+>use of technology/integrations + # of hearts + # of (legit) social media shares
 
 Our sponsors will help us review the best use of their API.
 
 Join our [Slack Community](https://hackguides.herokuapp.com/).
-
 
 ### [Start your tutorial now](http://tutorials.pluralsight.com/write/)
