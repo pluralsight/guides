@@ -1,6 +1,6 @@
-In the [previous article](http://tutorials.pluralsight.com/front-end-javascript/getting-started-with-angularjs) we seen the basic implementaion of angularJS. In this articles I will talk about **Filter Components**.
+In the [previous article](http://tutorials.pluralsight.com/front-end-javascript/getting-started-with-angularjs) we seen the basic implementaion of angularJS. In this article we will look at **Filter Components**.
 
-This article covers the following areas for angularJS with implementation of exapmles.
+This article covers the following areas for angularJS with implementation oand examples.
 
 * Filter
 * Currency
@@ -12,12 +12,12 @@ This article covers the following areas for angularJS with implementation of exa
 
 ### **Filter Component**
 
-Angular provides [Filter component](https://docs.angularjs.org/api/ng/filter) to filter, orgnized and arrange the values according to requirements.
+Angular provides [Filter component](https://docs.angularjs.org/api/ng/filter) to filter, organize and arrange the values according to requirements.
 
 ## Filter
-- [Filter](https://docs.angularjs.org/api/ng/filter/filter) returns a new array as subset from an array after filtering it based on expression and condition.
+- [Filter](https://docs.angularjs.org/api/ng/filter/filter) returns a subset of new array based on the conditions and expressions from an array.
     
-- filter can be used in HTML Template as wel as in JavaScript.
+- filter can be used in HTML Template as well as in JavaScript.
 
 - **Syntax**
     
@@ -33,7 +33,7 @@ Angular provides [Filter component](https://docs.angularjs.org/api/ng/filter) to
         $filter('filter')(array, expression, comparator)
     ```
     
-    In HTML template, we use filter in pipe expression as in above. here, between this two call we have a pipe, pipes take the result from first expression and send me output into second expression.
+    In HTML template, we use filter in pipe expression `|` as in above. here, between this two call we have a pipe, pipes take the result from first expression and send output to second expression.
     
 - **Explanation with example** (filter in HTML Template) :
      
@@ -77,7 +77,7 @@ Angular provides [Filter component](https://docs.angularjs.org/api/ng/filter) to
     </body>
     <html>
     ```
-    * In above example `products` is an actual array and shows a filtered values based on the key entering in searchText.
+    * In the above example `products` is an actual array and shows a filtered values based on the key entering in searchText.
         
     ##### Source Code :
         
@@ -139,14 +139,14 @@ Angular provides [Filter component](https://docs.angularjs.org/api/ng/filter) to
     
     - Type of filter component is `filter`, hence the code `$filter('filter_component')` i.e `$filter('filter')`.
     
-    - In the above example, I use `$scope.mirrorProducts` variable and override each time the user press any key in input field, since we are showing only filtered information to the user we have to create subset of actual array and override each time to display a correct result on page.
+    - In the above example, I use `$scope.mirrorProducts` variable and override each time the user press any key in input field, since we are showing only filtered information to the user, we have to create subset of actual array and override it each time to display correct results on page.
         
     - What if I do not create a mirror copy of actual array ?
-        >Its very simple, If I does not create a mirror copy of actual array then at time of filter an actual array goes to override and we have only filtered value, that means we loss our actual array values.
+        >Its very simple, If I do not create a mirror copy of actual array then at time of filter an actual array goes to override and we have only filtered value, that means we loss our actual array values.
     
-    - We uses `$` as expression while filtering an array.
+    - We use `$` as expression while filtering an array.
     
-    - `$` is a special property that can be used to filter on any property of the object.
+    - `$` is a special property that can be used to apply filter on any property of the object.
     
     ##### Source Code :
     
@@ -154,9 +154,9 @@ Angular provides [Filter component](https://docs.angularjs.org/api/ng/filter) to
         
 ## Currency
 - Angular provides a better way to formating the price and display on page.
-- [Currency](https://docs.angularjs.org/api/ng/filter/currency) filter formats a number as a currency.
-- Currency filter formating the number to proper decimal points(like $25.70).
-- Currency filter can be used in HTML Template as wel as in JavaScript.
+- [Currency](https://docs.angularjs.org/api/ng/filter/currency) filter formats number as currency.
+- Currency filter formats the number to proper decimal points(like $25.70).
+- Currency filter can be used in HTML Template as well as in JavaScript.
 
     **In HTML Template**
         
@@ -164,11 +164,11 @@ Angular provides [Filter component](https://docs.angularjs.org/api/ng/filter) to
     {{ currency_expression | currency : symbol : fractionSize}}
     ```
     
-    * Here, currency expression is the numerical value that will be formated by curency filter to display numerical value as price with currency symbol.
+    * Here, currency expression is the numerical value that will be formated by currency filter to display numerical value as price with currency symbol.
         
     * Second parameter after the pipe expression is a name of filter component i.e `currency`.
         
-    * `symbol` and `fractionSize` are the options value.
+    * `symbol` and `fractionSize` are the option values.
         
     * `symbol` is to put your locale currency symbol to format the number to price and `fractionSize` is a number of decimal placed to round the price. 
             
@@ -191,9 +191,9 @@ Angular provides [Filter component](https://docs.angularjs.org/api/ng/filter) to
     $filter('currency')(amount, symbol, fractionSize)
     ```
         
-    * `Symbol` and `fractionSize` aur the same as in HTMP Template.
+    * `Symbol` and `fractionSize` are the same as in HTMP Template.
     * `Amount` is the numerical value which has to convert into currency format.
-    * `$filter` is an instance of filter component service which is inject to controller's function as an dependency.
+    * `$filter` is an instance of filter component service which is injected to controller's function as a dependency.
             
     for example :
         
@@ -209,7 +209,7 @@ Angular provides [Filter component](https://docs.angularjs.org/api/ng/filter) to
     $25.00
     ```
     
-    Currency format with cutom symbol :
+    Currency format with custom symbol :
     ```html
     <!--JS code-->
     $scope.price = $filter('currency')(25,'₹');
@@ -221,7 +221,7 @@ Angular provides [Filter component](https://docs.angularjs.org/api/ng/filter) to
     ₹25.00
     ```
     
-    Currency format with cusmot decimal points :
+    Currency format with custom decimal points :
     ```html
     <!--JS code-->
     $scope.price = $filter('currency')(25,'₹',4);
@@ -238,7 +238,7 @@ Angular provides [Filter component](https://docs.angularjs.org/api/ng/filter) to
 ## Number
     
 - [Number](https://docs.angularjs.org/api/ng/filter/number) filter format the number as a Text.
-- Number filter can be used in HTML Template as wel as in JavaScript.
+- Number filter can be used in HTML Template as well as in JavaScript.
 
     **HTML Template**
 
@@ -248,7 +248,7 @@ Angular provides [Filter component](https://docs.angularjs.org/api/ng/filter) to
     
     * `number_expression` is the number which has to be formated into text.
     * `number` to be format.
-    * `fractionSize` is the count of decimal point display after formating.
+    * `fractionSize` is the count of decimal point display after formatting.
         
     for example :
             
@@ -273,7 +273,7 @@ Angular provides [Filter component](https://docs.angularjs.org/api/ng/filter) to
     * `$filter` instance of filter components.
     * `$flter(number)` type of filter components.
     * `number` to be format.
-    * `fractionSize` is the count of decimal point display after formating.
+    * `fractionSize` is the count of decimal point display after formatting.
         
     for example : 
     ```js
@@ -291,7 +291,7 @@ Angular provides [Filter component](https://docs.angularjs.org/api/ng/filter) to
         
 ## Date
 
-- [Date](https://docs.angularjs.org/api/ng/filter/date) filter provide a better way to represent date in string format (like format `MMM d, y h:mm:ss a` will display `Sep 3, 2010 12:05:08 PM`)
+- [Date](https://docs.angularjs.org/api/ng/filter/date) filter provide a better way to represent date in string format (like `MMM d, y h:mm:ss a` display `Sep 3, 2010 12:05:08 PM`)
 - **Syntax**
     * In HTML Template Binding
     ```html
@@ -355,7 +355,7 @@ Element | Details
 `'mediumTime'` | equivalent to 'h:mm:ss a' for en_US locale (e.g. 12:05:08 PM)
 `'shortTime'` | equivalent to 'h:mm a' for en_US locale (e.g. 12:05 PM)
 
--  Implemetation of `Date` filter is same as the above filter `number` and `filer`.
+-  Implemetation of `Date` filter is same as the above filters `number` and `filter`.
 -  Let's implement simple example
    
     ```html
@@ -418,9 +418,9 @@ Element | Details
     * see [Plunker](https://plnkr.co/edit/qJChu75CJJggnCRsqQxZ?p=preview) for live example
         
 ## limitTo
-- [limiTo](https://docs.angularjs.org/api/ng/filter/limitTo) filter returns a new array as subset from an array with containing only a specified number of elements.
+- [limiTo](https://docs.angularjs.org/api/ng/filter/limitTo) filter returns a new array as subset which limits to the specified number of elements.
 - The elements are taken from either the beginning or the end of the source array, string or number, as specified by the value and sign (positive or negative) of limit
-- If a number is used as input tag, it is converted intto a string value.
+- If a number is used as input tag, it is converted into a string value.
     
 - **Syntax**
     * In HTML Template Binding
@@ -434,10 +434,10 @@ Element | Details
 - **Explanations** :
     
     * `input` is a source array, number or string which has to be limited.
-    * `limit` is the length of a subset array, string of number.
+    * `limit` is the length of a subset array, string or number.
     * If the limit number is positive, limit number of items from the beginning of the source (array or string) are copied.
     * If the number is negative, limit number of items from the end of the source (array or string) are copied.
-    * The limit will be trimmed if more then the value of `array.length` and if limit is undefined, the input will be returned unchanged.
+    * The limit will be trimmed if more than the value of `array.length` and if limit is undefined, the input will be returned unchanged.
     * For example
     
     ```html
@@ -482,7 +482,7 @@ Element | Details
     * See [Plunker](https://plnkr.co/edit/SLBIjepAgsxEgcYxUzhv?p=preview) for live example
 
 ## orderBy
-- [OrderBy](https://docs.angularjs.org/api/ng/filter/orderBy) is specified an order of an array by explession.
+- [OrderBy](https://docs.angularjs.org/api/ng/filter/orderBy) specifies an order to an array by explession.
 - It is ordered alphabetically for strings and numerically for numbers.
 - **Syntax**
     * In HTML Template Binding
@@ -496,7 +496,7 @@ Element | Details
 - **Explanation**
 
     * `array` is to be sort.
-    * `expression` on which comparator predict the order of element.
+    * `expression` on which comparator predicts the order of element.
     * `reverse` the element order.
     
     
