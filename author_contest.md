@@ -98,6 +98,7 @@ Feel free to write about any technology that you're passionate about. Generally 
 - Advanced guide to programming with X
 - Top 10 tips when programming with X
 - X vs Y [where Y is a competing technology or is no technology]
+
 ...or any other ideas you might have. 
 
 Tutorials/articles ideally range from 1500-3000 words, including code blocks, to be a 'definitive guide' on a technical subject.
