@@ -84,7 +84,7 @@ We use MarkDown (rather than WordPress), a simple file format. This is a really 
 
 ## Sponsor list
 
-We are so excited to have teamed up with some of the best companies with cutting edge technology. Our sponsors are [Uber Developers](https://developer.uber.com/), [Ionic Framework](http://ionicframework.com/), [RethinkDB](http://rethinkdb.com/), [Horion Cloud](http://horizon.io), [Pluralsight](http://pluralsight.com/), [PubNub](http://pubnub.com/), [Keen.io](http://keen.io), [Amazon Alexa](https://developer.amazon.com/public/solutions/alexa/alexa-skills-kit), and [SauceLabs](http://saucelabs.com/).
+We are so excited to have teamed up with some of the best companies with cutting edge technology. Our sponsors are [Uber Developers](https://developer.uber.com/), [Ionic Framework](http://ionicframework.com/), [RethinkDB](http://rethinkdb.com/), [Horion Cloud](http://horizon.io), [Pluralsight](http://pluralsight.com/), [PubNub](http://pubnub.com/), [Keen.io](http://keen.io), [Amazon Alexa](https://developer.amazon.com/public/solutions/alexa/alexa-skills-kit), [HelloSign](https://www.hellosign.com/api) and [SauceLabs](http://saucelabs.com/).
 
 Please email to Prateek at Prateek-Gupta@Pluralsight.com to sponsor!
 
