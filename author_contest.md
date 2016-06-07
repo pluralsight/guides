@@ -1,10 +1,12 @@
+![authoring contest](https://raw.githubusercontent.com/pluralsight/guides/master/images/85399d1c-0377-4f74-b55a-b5789c8300b1.png)
+
 We are excited to launch hack.guides() authoring contest where developers around the world will share their experience & best practices by authoring tutorials on any technology you're passionate in!
 
 The hack.guides() authoring contest is unique, and brings the developer community together to create and curate collaborative content. With the Github API on backend, hack.guides() tutorials can be forked, improved, and merged just as simple as a pull request.
 
 ## Be an Author
 
-You can win $10,000 worth of gift cards prizes from our sponsors, and build your brand by teaching new and interesting API, and best practices. This is a great way to contribute and give back to the developer community.
+You can win thousands of dollars in gift cards as prizes from our sponsors, and build your brand by teaching new and interesting API, and best practices. This is a great way to contribute and give back to the developer community.
 
 [Start your tutorial now](http://tutorials.pluralsight.com/write/)
 
@@ -85,7 +87,7 @@ We use MarkDown (rather than WordPress), a simple file format. This is a really 
 
 ### Sponsor list
 
-We are humbled to have partnered with some of the best companies with cutting edge technology. Our sponsors are [Ionic Framework](http://ionicframework.com/), [RethinkDB](http://rethinkdb.com/), [Pluralsight](http://pluralsight.com/), [PubNub](http://pubnub.com/), [Keen.io](http://keen.io), [Amazon Alexa](https://developer.amazon.com/public/solutions/alexa), and [SauceLabs](http://saucelabs.com/).
+We are humbled to have partnered with some of the best companies with cutting edge technology. Our sponsors are [Uber Developers](https://developer.uber.com/), [Ionic Framework](http://ionicframework.com/), [RethinkDB](http://rethinkdb.com/), [Horion Cloud](http://horizon.io), [Pluralsight](http://pluralsight.com/), [PubNub](http://pubnub.com/), [Keen.io](http://keen.io), [Amazon Alexa](https://developer.amazon.com/public/solutions/alexa), and [SauceLabs](http://saucelabs.com/).
 
 Please email to Prateek at Prateek-Gupta@Pluralsight.com to sponsor!
 
@@ -111,8 +113,13 @@ Please reach out to Prateek at prateek-gupta@pluralsight.com :)
 
 - [Getting started with ECMAScript6](http://tutorials.pluralsight.com/front-end-javascript/getting-started-with-ecmascript6)
 
-### Rules/FAQ
+### Contest Rules
 
+Winners will be judged based on following reviewing criteria.
 
+use of technology/integrations + # of hearts + # of (legit) social media shares
 
-### Contact us links
+Our sponsors will help us review the best use of their API.
+
+### Contact us
+Join our [Slack Community](https://hackguides.herokuapp.com/).
