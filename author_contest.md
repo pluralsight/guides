@@ -1,12 +1,13 @@
-![authoring contest](https://raw.githubusercontent.com/pluralsight/guides/master/images/2bbfa0e2-06a2-478a-b4e0-462a909739ca.png)
+![Authoring Contest](https://raw.githubusercontent.com/pluralsight/guides/master/images/a76c7abd-8c17-43c6-a639-e3e55e3a774f.png)
 
-We are excited to launch hack.guides() authoring contest where developers around the world will share their experience & best practices by authoring tutorials on any technology you're passionate in!
+
+We are excited to launch the hack.guides() authoring contest where developers around the world will share their experience & best practices by authoring tutorials on any technology you're passionate in!
 
 The hack.guides() authoring contest is unique, and brings the developer community together to create and curate collaborative content. With the Github API on backend, hack.guides() tutorials can be forked, improved, and merged just as simple as a pull request.
 
 ## Be an Author
 
-You can win thousands of dollars in gift cards as prizes from our sponsors, and build your brand by teaching new and interesting API, and best practices. This is a great way to contribute and give back to the developer community.
+Submit your new tutorial to qualify for a chance to win cash prizes (gift cards) from our sponsors, and build your brand by teaching new and interesting API, and best practices. This is a great way to contribute and give back to the developer community.
 
 [Start your tutorial now](http://tutorials.pluralsight.com/write/)
 
@@ -16,9 +17,7 @@ We want to be "wikipedia" for technical tutorials,and guides currently exist in 
 
 Once a guide is created, it becomes stale and out of date. If the author doesn’t maintain their content, then it becomes less useful. There isn’t a strong way for developers to improve their content through peer review. 
 
->Wordpress isn't great for that.
-
-#### We love Open-Source
+>We love Open-Source
 
 *The tutorials on this site are open-sourced on Github, which many developers use daily and love.*
 
@@ -65,7 +64,7 @@ We use MarkDown (rather than WordPress), a simple file format. This is a really 
   <tr>
     <td>PubNub</td>
     <td>$500</td>
-    <td>Best real-time app using PubNub</td>
+    <td>Best realtime app using PubNub</td>
   </tr>
   <tr>
     <td>HelloSign</td>
@@ -87,7 +86,7 @@ We use MarkDown (rather than WordPress), a simple file format. This is a really 
 
 ## Sponsor list
 
-We are humbled to have partnered with some of the best companies with cutting edge technology. Our sponsors are [Uber Developers](https://developer.uber.com/), [Ionic Framework](http://ionicframework.com/), [RethinkDB](http://rethinkdb.com/), [Horion Cloud](http://horizon.io), [Pluralsight](http://pluralsight.com/), [PubNub](http://pubnub.com/), [Keen.io](http://keen.io), [Amazon Alexa](https://developer.amazon.com/public/solutions/alexa), and [SauceLabs](http://saucelabs.com/).
+We are so excited to have teamed up with some of the best companies with cutting edge technology. Our sponsors are [Uber Developers](https://developer.uber.com/), [Ionic Framework](http://ionicframework.com/), [RethinkDB](http://rethinkdb.com/), [Horion Cloud](http://horizon.io), [Pluralsight](http://pluralsight.com/), [PubNub](http://pubnub.com/), [Keen.io](http://keen.io), [Amazon Alexa](https://developer.amazon.com/public/solutions/alexa/alexa-skills-kit), and [SauceLabs](http://saucelabs.com/).
 
 Please email to Prateek at Prateek-Gupta@Pluralsight.com to sponsor!
 
@@ -105,7 +104,8 @@ Feel free to write about any technology that you're passionate about. Generally 
 
 Tutorials/articles ideally range from 1500-3000 words, including code blocks, to be a 'definitive guide' on a technical subject.
 
-Please reach out to Prateek at prateek-gupta@pluralsight.com :)
+[Start your tutorial now](http://tutorials.pluralsight.com/write/)
+
 
 ## Links to example articles
 
@@ -123,5 +123,7 @@ use of technology/integrations + # of hearts + # of (legit) social media shares
 
 Our sponsors will help us review the best use of their API.
 
-## Contact us
 Join our [Slack Community](https://hackguides.herokuapp.com/).
+
+
+[Start your tutorial now](http://tutorials.pluralsight.com/write/)
