@@ -1,8 +1,3 @@
-### Filter components in AngularJS by Gaurav Bhavsar
-- [Read the guide](http://tutorials.pluralsight.com/front-end-javascript/filter-components-in-angularjs?status=draft)
-- [Read more from Gaurav Bhavsar](http://tutorials.pluralsight.com/author/gauravbhavsar) <img src="https://avatars.githubusercontent.com/u/5441386?v=3" width="30" height="30" alt="Gaurav Bhavsar" />
-- Related to: Front-End JavaScript (Angular, React, Meteor, etc)
-
 ### 2016 hack.guides() Authoring Contest by Prateek Gupta
 - [Read the guide](http://tutorials.pluralsight.com/software-engineering-best-practices/2016-hack-guides-authoring-contest?status=draft)
 - [Read more from Prateek Gupta](http://tutorials.pluralsight.com/author/prtkgpt) <img src="https://avatars.githubusercontent.com/u/2454349?v=3" width="30" height="30" alt="Prateek Gupta" />
