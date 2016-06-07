@@ -1,4 +1,4 @@
-![authoring contest](https://raw.githubusercontent.com/pluralsight/guides/master/images/85399d1c-0377-4f74-b55a-b5789c8300b1.png)
+![authoring contest](https://raw.githubusercontent.com/pluralsight/guides/master/images/2bbfa0e2-06a2-478a-b4e0-462a909739ca.png)
 
 We are excited to launch hack.guides() authoring contest where developers around the world will share their experience & best practices by authoring tutorials on any technology you're passionate in!
 
@@ -114,6 +114,8 @@ Please reach out to Prateek at prateek-gupta@pluralsight.com :)
 - [Getting started with ECMAScript6](http://tutorials.pluralsight.com/front-end-javascript/getting-started-with-ecmascript6)
 
 ### Contest Rules
+
+Tutorials submission between June 8th - July 30th will be 
 
 Winners will be judged based on following reviewing criteria.
 
