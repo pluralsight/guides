@@ -18,7 +18,7 @@ Once a guide is created, it becomes stale and out of date. If the author doesnâ€
 
 >Wordpress isn't great for that.
 
-### We love Open-Source
+#### We love Open-Source
 
 *The tutorials on this site are open-sourced on Github, which many developers use daily and love.*
 
@@ -85,13 +85,13 @@ We use MarkDown (rather than WordPress), a simple file format. This is a really 
 </table>
 
 
-### Sponsor list
+## Sponsor list
 
 We are humbled to have partnered with some of the best companies with cutting edge technology. Our sponsors are [Uber Developers](https://developer.uber.com/), [Ionic Framework](http://ionicframework.com/), [RethinkDB](http://rethinkdb.com/), [Horion Cloud](http://horizon.io), [Pluralsight](http://pluralsight.com/), [PubNub](http://pubnub.com/), [Keen.io](http://keen.io), [Amazon Alexa](https://developer.amazon.com/public/solutions/alexa), and [SauceLabs](http://saucelabs.com/).
 
 Please email to Prateek at Prateek-Gupta@Pluralsight.com to sponsor!
 
-### Guidelines and suggestions for posts/topics
+## Guidelines and suggestions for posts/topics
 
 Feel free to write about any technology that you're passionate about. Generally speaking, one of the following:
 
@@ -107,13 +107,13 @@ Tutorials/articles ideally range from 1500-3000 words, including code blocks, to
 
 Please reach out to Prateek at prateek-gupta@pluralsight.com :)
 
-### Links to example articles
+## Links to example articles
 
 - [React vs. Angular2 when integrating with Rails](http://tutorials.pluralsight.com/ruby-ruby-on-rails/react-vs-angular-2-integration-with-rails)
 
 - [Getting started with ECMAScript6](http://tutorials.pluralsight.com/front-end-javascript/getting-started-with-ecmascript6)
 
-### Contest Rules
+## Contest Rules
 
 Tutorials submission between June 8th - July 30th will be 
 
@@ -123,5 +123,5 @@ use of technology/integrations + # of hearts + # of (legit) social media shares
 
 Our sponsors will help us review the best use of their API.
 
-### Contact us
+## Contact us
 Join our [Slack Community](https://hackguides.herokuapp.com/).
