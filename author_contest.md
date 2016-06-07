@@ -1,5 +1,3 @@
-## 2016 hack.guides() Authoring Contest
-
 We are excited to launch hack.guides() authoring contest where developers around the world will share their experience & best practices by authoring tutorials on any technology you're passionate in!
 
 The hack.guides() authoring contest is unique, and brings the developer community together to create and curate collaborative content. With the Github API on backend, hack.guides() tutorials can be forked, improved, and merged just as simple as a pull request.
