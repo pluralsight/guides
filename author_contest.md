@@ -3,7 +3,7 @@
 
 We are excited to launch the hack.guides() authoring contest where developers around the world will share their experience & best practices by authoring tutorials on any technology you're passionate in!
 
-The hack.guides() authoring contest is unique, and brings the developer community together to create and curate collaborative content. With the Github API on backend, hack.guides() tutorials can be forked, improved, and merged just as simple as a pull request.
+The hack.guides() authoring contest is unique, and brings the developer community together to create and curate collaborative content. With the Github API as a storage backend, hack.guides() tutorials can be forked, improved, and merged as easy as a pull request.
 
 ## Be an Author
 
@@ -19,7 +19,7 @@ Our collective aim is working together to educate the world while improving our 
 
 *The tutorials on this site are open-sourced on Github, which many developers use daily and love.*
 
-We use MarkDown (rather than WordPress), a simple file format. This is a really simple text-based file format that takes around 60 seconds to understand. It's really easy to make things bold, italics, code blocks, etc. Markdown is used in many places, such as Github README files. Even this file is a Markdown file. You can help us edit and improve it.
+We use Markdown (rather than WordPress), a simple file format. This is a simple text-based file format that takes around 60 seconds to understand. It's easy to make things bold, italics, code blocks, etc. Markdown is used in many places, such as Github README files. Even this file is a Markdown file. You can help us edit and improve it.
 
 ## Prize list
 
