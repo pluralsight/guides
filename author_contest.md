@@ -126,4 +126,4 @@ Our sponsors will help us review the best use of their API.
 Join our [Slack Community](https://hackguides.herokuapp.com/).
 
 
-[Start your tutorial now](http://tutorials.pluralsight.com/write/)
+### [Start your tutorial now](http://tutorials.pluralsight.com/write/)
