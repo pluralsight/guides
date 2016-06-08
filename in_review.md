@@ -1,3 +1,8 @@
+### Tutorial Contest FAQ by Prateek Gupta
+- [Read the guide](http://tutorials.pluralsight.com/software-engineering-best-practices/tutorial-contest-faq?status=in-review)
+- [Read more from Prateek Gupta](http://tutorials.pluralsight.com/author/prtkgpt) <img src="https://avatars.githubusercontent.com/u/2454349?v=3" width="30" height="30" alt="Prateek Gupta" />
+- Related to: Software Engineering Best Practices
+
 ### Filter components in AngularJS by Gaurav Bhavsar
 - [Read the guide](http://tutorials.pluralsight.com/front-end-javascript/filter-components-in-angularjs?status=in-review)
 - [Read more from Gaurav Bhavsar](http://tutorials.pluralsight.com/author/gauravbhavsar) <img src="https://avatars.githubusercontent.com/u/5441386?v=3" width="30" height="30" alt="Gaurav Bhavsar" />
