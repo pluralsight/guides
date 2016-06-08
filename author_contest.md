@@ -60,7 +60,7 @@ Tutorials submitted between June 8th - July 30th will qualify for a chance to wi
 
 * 1/3 of your score is based on the number of hearts (or "likes") that your articles receive on this site from your peers
 * 1/3 of your score is based on the number of legitimate social shares (Facebook/Twitter/etc) of your articles
-* 1/3 of your score is determined a panel of our API judges, who gauge your writing style, communication ability, effective use of their technologies/APIs, and overall quality
+* 1/3 of your score is determined by a panel of our API judges, who gauge your writing style, communication ability, effective use of their technologies/APIs, and overall quality
 
 The hack.guides() team will be solely administering the contest and prize distribution of the $500 prizes.  No payment nor purchase is required to participate.  Eligilibility of prizes is open to all participants who use a sponsored API in their tutorials.  In the highly unlikely case of a tied numerical score for two articles on the same API, the winner will be determined by an API judge panel vote.
 
