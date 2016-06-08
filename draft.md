@@ -1,8 +1,3 @@
-### Tutorial Contest FAQ by Prateek Gupta
-- [Read the guide](http://tutorials.pluralsight.com/software-engineering-best-practices/tutorial-contest-faq?status=draft)
-- [Read more from Prateek Gupta](http://tutorials.pluralsight.com/author/prtkgpt) <img src="https://avatars.githubusercontent.com/u/2454349?v=3" width="30" height="30" alt="Prateek Gupta" />
-- Related to: Software Engineering Best Practices
-
 ### AngularJS Pragmatics by Shaun Wakashige
 - [Read the guide](http://tutorials.pluralsight.com/front-end-javascript/angularjs-pragmatics?status=draft)
 - [Read more from Shaun Wakashige](http://tutorials.pluralsight.com/author/swak) <img src="https://avatars.githubusercontent.com/u/666058?v=3" width="30" height="30" alt="Shaun Wakashige" />
