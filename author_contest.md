@@ -39,16 +39,20 @@ Feel free to write about any technology that you're passionate about. Generally 
 
 ...or any other ideas you might have. 
 
-Tutorials/articles ideally range from 1500-3000 words, including code blocks, to be a 'definitive guide' on a technical subject.
-
-### [Start your tutorial now](http://tutorials.pluralsight.com/write/)
-
-
-## Links to example articles
+Tutorials/articles ideally range from 1500-3000 words, including code blocks, to be a 'definitive guide' on a technical subject.  Here are a few examples of articles written in the past, that could serve as inspiration for you.
 
 - [React vs. Angular2 when integrating with Rails](http://tutorials.pluralsight.com/ruby-ruby-on-rails/react-vs-angular-2-integration-with-rails)
 
 - [Getting started with ECMAScript6](http://tutorials.pluralsight.com/front-end-javascript/getting-started-with-ecmascript6)
+
+Note: If you're interested in qualifying for sponsor prizes, then you'll need to incorporate one of their APIs into your tutorial (this is similar to how sponsored hackathons work).  There are lots of creative ways to do this.  For example:
+
+* You could write a tutorial on the API itself
+* You could write a tutorial on a related useful topic, and use an API as a building-block to create your tutorial
+* You could write a tutorial on building a sample application on a framework or programming language, and use the API as part of that sample application
+
+### [Start your tutorial now](http://tutorials.pluralsight.com/write/)
+
 
 ## Contest Rules
 
@@ -62,9 +66,20 @@ The hack.guides() team will be solely administering the contest and prize distri
 
 ## Prize list
 
-We've teamed up with some of the best companies with cutting-edge technologies and APIs. Our sponsors are [Uber Developers](https://developer.uber.com/), [Ionic Framework](http://ionicframework.com/), [RethinkDB](http://rethinkdb.com/), [Horion Cloud](http://horizon.io), [Pluralsight](http://pluralsight.com/), [PubNub](http://pubnub.com/), [Keen.io](http://keen.io), [Amazon Alexa](https://developer.amazon.com/public/solutions/alexa/alexa-skills-kit), [HelloSign](https://www.hellosign.com/api) and [SauceLabs](http://saucelabs.com/).
+We've teamed up with some of the best companies with cutting-edge technologies and APIs. Our sponsors are:
 
-Want to join as a sponsor? Please email us at Prateek-Gupta@Pluralsight.com.
+* [Uber Developers](https://developer.uber.com/)
+* [Ionic Framework](http://ionicframework.com/)
+* [RethinkDB](http://rethinkdb.com/)
+* [Horion Cloud](http://horizon.io)
+* [Pluralsight](http://pluralsight.com/)
+* [PubNub](http://pubnub.com/)
+* [Keen.io](http://keen.io)
+* [Amazon Alexa](https://developer.amazon.com/public/solutions/alexa/alexa-skills-kit)
+* [HelloSign](https://www.hellosign.com/api)
+* [Sauce Labs](http://saucelabs.com/).
+
+Want to join as a sponsor? Please email us at Prateek-Gupta@Pluralsight.com.  (sponsoring is great, since you're helping to spread useful developer knowledge, while also achieving your developer relations goals by having written content that uses your APIs!).
 
 <table>
   <tr>
