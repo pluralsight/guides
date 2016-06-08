@@ -90,7 +90,7 @@ Want to join as a sponsor? Please email us at Prateek-Gupta@Pluralsight.com.  (s
   <tr>
     <td>Uber</td>
     <td>$500</td>
-    <td>Best use of Uber API</td>
+    <td>Best Uber API Tutorial</td>
   </tr>
   <tr>
     <td>Ionic Framework</td>
