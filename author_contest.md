@@ -64,7 +64,7 @@ The hack.guides() team will be solely administering the contest and prize distri
 
 We've teamed up with some of the best companies with cutting-edge technologies and APIs. Our sponsors are [Uber Developers](https://developer.uber.com/), [Ionic Framework](http://ionicframework.com/), [RethinkDB](http://rethinkdb.com/), [Horion Cloud](http://horizon.io), [Pluralsight](http://pluralsight.com/), [PubNub](http://pubnub.com/), [Keen.io](http://keen.io), [Amazon Alexa](https://developer.amazon.com/public/solutions/alexa/alexa-skills-kit), [HelloSign](https://www.hellosign.com/api) and [SauceLabs](http://saucelabs.com/).
 
-Want to join as a sponsor? Please email us Prateek at Prateek-Gupta@Pluralsight.com!
+Want to join as a sponsor? Please email us at Prateek-Gupta@Pluralsight.com.
 
 <table>
   <tr>
@@ -127,6 +127,7 @@ Want to join as a sponsor? Please email us Prateek at Prateek-Gupta@Pluralsight.
 ### Have questions?
 
 Join our [Slack Community](https://hackguides.herokuapp.com/).
-Email us at Prateek-Gupta@Pluralsight.com.
+
+Or email us at Prateek-Gupta@Pluralsight.com.
 
 ### [Start your tutorial now](http://tutorials.pluralsight.com/write/)
