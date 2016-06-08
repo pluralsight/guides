@@ -1,4 +1,4 @@
-![Authoring Contest](https://raw.githubusercontent.com/pluralsight/guides/master/images/822fd924-4024-41ae-8381-f723a460d140.png)
+![Authoring Contest](https://raw.githubusercontent.com/pluralsight/guides/master/images/4c80dc5c-c501-413d-ae25-44859cb6bfde.png)
 
 
 Are you passionate about helping other developers learn about your favorite technologies and APIs?  If so, this event is for you!
