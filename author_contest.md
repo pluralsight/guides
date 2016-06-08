@@ -119,7 +119,7 @@ Tutorials submission between June 8th - July 30th will qualify for a chance to w
 
 Our sponsors will help us review the best use of their API.
 
-hack.guides() team solely administering the contest and prize distribution via gift cards worth $500 based on winning authors location.
+The hack.guides() team will be solely administering the contest and prize distribution via gift cards worth $500 based on the winning authors’ locations.
 
 Join our [Slack Community](https://hackguides.herokuapp.com/).
 
