@@ -97,7 +97,6 @@ Feel free to write about any technology that you're passionate about. Generally 
 - Guide to what’s new in the latest version of X
 - Advanced guide to programming with X
 - Top 10 tips when programming with X
-- X vs Y [where Y is a competing technology or is no technology]
 
 ...or any other ideas you might have. 
 
