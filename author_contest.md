@@ -22,7 +22,7 @@ Our collective aim is working together to educate the world while improving our 
 
 >We love Open-Source.  The tutorials on this site are open-sourced on Github, which we use daily and love.
 
-We use Markdown (rather than WordPress), a simple file format. This is a simple text-based file format that takes around 60 seconds to understand. It's easy to make things bold, italics, code blocks, etc. Markdown is used in many places, such as Github README files. Even this file is a Markdown file.
+We use Markdown (rather than WordPress), a simple file format. This is a simple text-based file format that takes around 60 seconds to understand. It's easy to make things bold, italics, code blocks, etc. Markdown is used in many places, such as Github README files.
 
 Your technical guides are stored in Github as open-source, and you retain 100% ownership of your content.  With the Github API as a storage backend, hack.guides() tutorials can be forked, improved, and merged as easy as a pull request.  That way we can help each other create better, useful content.  Even this article is stored in Github, and you can help us edit and improve it :)
 
