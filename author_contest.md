@@ -68,16 +68,16 @@ The hack.guides() team will be solely administering the contest and prize distri
 
 We've teamed up with some of the best companies with cutting-edge technologies and APIs. Our sponsors are:
 
-* [Uber Developers](https://developer.uber.com/)
-* [Ionic Framework](http://ionicframework.com/)
-* [RethinkDB](http://rethinkdb.com/)
-* [Horion Cloud](http://horizon.io)
-* [Pluralsight](http://pluralsight.com/)
-* [PubNub](http://pubnub.com/)
-* [Keen.io](http://keen.io)
 * [Amazon Alexa](https://developer.amazon.com/public/solutions/alexa/alexa-skills-kit)
 * [HelloSign](https://www.hellosign.com/api)
-* [Sauce Labs](http://saucelabs.com/).
+* [Horion Cloud](http://horizon.io)
+* [Ionic Framework](http://ionicframework.com/)
+* [Keen.io](http://keen.io)
+* [Pluralsight](http://pluralsight.com/)
+* [PubNub](http://pubnub.com/)
+* [RethinkDB](http://rethinkdb.com/)
+* [Sauce Labs](http://saucelabs.com/)
+* [Uber Developers](https://developer.uber.com/)
 
 Want to join as a sponsor? Please email us at Prateek-Gupta@Pluralsight.com.  (sponsoring is great, since you're helping to spread useful developer knowledge, while also achieving your developer relations goals by having written content that uses your APIs!).
 
@@ -88,39 +88,9 @@ Want to join as a sponsor? Please email us at Prateek-Gupta@Pluralsight.com.  (s
     <th>Category</th>
   </tr>
   <tr>
-    <td>Uber</td>
-    <td>$500</td>
-    <td>Best Uber API Tutorial</td>
-  </tr>
-  <tr>
-    <td>Ionic Framework</td>
-    <td>$500</td>
-    <td>Best Ionic App shipped on Market</td>
-  </tr>
-  <tr>
-    <td>RethinkDB</td>
-    <td>$500</td>
-    <td>Best tutorial using RethinkDB</td>
-  </tr>
-  <tr>
-    <td>Pluralsight</td>
-    <td>$500</td>
-    <td>Best Software Practices</td>
-  </tr>
-  <tr>
     <td>Amazon Alexa</td>
     <td>$500</td>
     <td>Best tutorial using Alexa Skills Kit</td>
-  </tr>
-  <tr>
-    <td>Horizon.io</td>
-    <td>$500</td>
-    <td>Best tutorial using Horizon cloud</td>
-  </tr>
-  <tr>
-    <td>PubNub</td>
-    <td>$500</td>
-    <td>Best realtime app using PubNub</td>
   </tr>
   <tr>
     <td>HelloSign</td>
@@ -128,16 +98,46 @@ Want to join as a sponsor? Please email us at Prateek-Gupta@Pluralsight.com.  (s
     <td>Best use of HelloSign API</td>
   </tr>
   <tr>
+    <td>Horizon.io</td>
+    <td>$500</td>
+    <td>Best tutorial using Horizon cloud</td>
+  </tr>
+  <tr>
+    <td>Ionic Framework</td>
+    <td>$500</td>
+    <td>Best Ionic App shipped on Market</td>
+  </tr>
+  <tr>
     <td>Keen.io</td>
     <td>$500</td>
     <td>Best tutorial building a Dashboard </td>
+  </tr>
+  <tr>
+    <td>Pluralsight</td>
+    <td>$500</td>
+    <td>Best Software Practices</td>
+  </tr>
+  <tr>
+    <td>PubNub</td>
+    <td>$500</td>
+    <td>Best realtime app using PubNub</td>
+  </tr>
+  <tr>
+    <td>RethinkDB</td>
+    <td>$500</td>
+    <td>Best tutorial using RethinkDB</td>
   </tr>
   <tr>
     <td>Sauce Labs</td>
     <td>$500</td>
     <td>Best Selenium Testing Tutorial</td>
   </tr>
-</table>
+  <tr>
+    <td>Uber</td>
+    <td>$500</td>
+    <td>Best Uber API Tutorial</td>
+  </tr>
+ </table>
 
 ### Have questions?
 
