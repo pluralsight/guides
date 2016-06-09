@@ -306,11 +306,11 @@ Angular provides [Filter component](https://docs.angularjs.org/api/ng/filter) to
     
 Param | Type | Details 
 ----- | ---- | -------
-date | `Date` `Number` `string` | Date to format either as Date object, milliseconds (string or number) or various ISO 8601 datetime string formats (e.g. yyyy-MM-ddTHH:mm:ss.sssZ and its shorter versions like yyyy-MM-ddTHH:mmZ, yyyy-MM-dd or yyyyMMddTHHmmssZ). If no timezone is specified in the string input, the time is considered to be in the local timezone.
-format (optional) | `string` | Formatting rules. If not specified, `mediumDate` is used.
-timezone (optional) | `string` | Timezone to be used for formatting. It understands UTC/GMT and the continental US time zone abbreviations, but for general use, use a time zone offset, for example, '+0430' (4 hours, 30 minutes east of the Greenwich meridian) If not specified, the timezone of the browser will be used.
+date | `Date` `Number` `string` | date, an expressionn to be formated as date object, string or number.
+format (optional) | `string` | Format of date, string or number based o requirement like `'M/d/yy h:mm a'` (e.g. 9/3/10 12:05 PM). If format is not specified, `mediumDate` is used by default.
+timezone (optional) | `string` | Timezone to be used for formatting, the timezone of the browser will be used when time zone offset is not present.
 
-* `Date` filter has predefined element to formatting the date listed below,
+* `Date` filter has predefined element to formatting the date listed below, as based on [angular Documentation on date](https://docs.angularjs.org/api/ng/filter/date)
 
 Element | Details
 ------- | -------
