@@ -1,4 +1,4 @@
-Here's a quick run-down of our most common questions regarding the hack.guides() 2016 Tutorial Contest. This is a work in progress. Please reach out prateek-gupta@pluralsight.com if you're any concerns.
+Here's a quick run-down of our most common questions regarding the hack.guides() 2016 Tutorial Contest. This is a work in progress.
 
 #### How many tutorials can I submit?
 You can author as many as tutorials you want to author. If you submit more than five tutorials during the contest, we will send you a t-shirt swag.
