@@ -1,3 +1,8 @@
+### ionic by kimifdw
+- [Read the guide](http://tutorials.pluralsight.com/java-and-j2ee/ionic?status=draft)
+- [Read more from kimifdw](http://tutorials.pluralsight.com/author/kimifdw) <img src="https://avatars.githubusercontent.com/u/3738675?v=3" width="30" height="30" alt="kimifdw" />
+- Related to: Java and J2EE
+
 ### AngularJS Pragmatics by Shaun Wakashige
 - [Read the guide](http://tutorials.pluralsight.com/front-end-javascript/angularjs-pragmatics?status=draft)
 - [Read more from Shaun Wakashige](http://tutorials.pluralsight.com/author/swak) <img src="https://avatars.githubusercontent.com/u/666058?v=3" width="30" height="30" alt="Shaun Wakashige" />
