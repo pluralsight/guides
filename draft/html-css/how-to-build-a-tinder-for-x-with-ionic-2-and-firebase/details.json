@@ -1,0 +1,15 @@
+{
+    "_publish_status": "draft",
+    "author_name": "carlosrojaso",
+    "author_real_name": "Carlos Rojas",
+    "branch": "master",
+    "branches": [],
+    "filename": "article.md",
+    "first_commit": "01043fce420ad745ef19243a3a46026c55a7b376",
+    "image_url": "https://avatars.githubusercontent.com/u/6164354?v=3",
+    "stacks": [
+        "HTML/CSS"
+    ],
+    "thumbnail_url": null,
+    "title": "How to build a tinder for x with Ionic 2 and Firebase"
+}
