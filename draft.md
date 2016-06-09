@@ -1,3 +1,8 @@
+### How to build a tinder for x with Ionic 2 and Firebase by Carlos Rojas
+- [Read the guide](http://tutorials.pluralsight.com/html-css/how-to-build-a-tinder-for-x-with-ionic-2-and-firebase?status=draft)
+- [Read more from Carlos Rojas](http://tutorials.pluralsight.com/author/carlosrojaso) <img src="https://avatars.githubusercontent.com/u/6164354?v=3" width="30" height="30" alt="Carlos Rojas" />
+- Related to: HTML/CSS
+
 ### ionic by kimifdw
 - [Read the guide](http://tutorials.pluralsight.com/java-and-j2ee/ionic?status=draft)
 - [Read more from kimifdw](http://tutorials.pluralsight.com/author/kimifdw) <img src="https://avatars.githubusercontent.com/u/3738675?v=3" width="30" height="30" alt="kimifdw" />
