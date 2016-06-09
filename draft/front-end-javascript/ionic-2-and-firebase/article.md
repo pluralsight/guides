@@ -37,6 +37,13 @@ Google recently purchased firebase and has changed the way things are setup so i
 
 We will create a new project called todoer
 ## Building the App
+
+Lets go over the key features of this application. 
+1. Create todos
+2. Mark todos checked or unchecked
+3. filter todos by if they are checked or not
+4. delete a todo
+
 ### Firebase config
 
 ### Creating the data service
@@ -62,8 +69,17 @@ Then in the component add Data to the providers;
 #### Observers and Observables
 For our application to feel as real time as possible we are going to make use of the observer pattern. Observers are built in to angular 2 and currently (at the time of writing) are using RxJS. However, that will be replaced with angulars own implimentation. 
 
-The concept for the pattern is pretty simple. An oberver can subscribe and "observe" an observable. When data is pushed to the observable the observer recieves it until the observable ends. Basically it is a publish subscribe pattern. 
+The concept for the pattern is pretty simple. An oberver can subscribe and "observe" an observable. When data is pushed to the observable the observer recieves it until the observable ends. Basically it is a publish subscribe pattern. This is a far over simplification but you get the idea.
 
+Lets examine our data. we have a todo:
+```
+{
+    title: 'My todo',
+    complete: false,
+}
+```
+
+Every time a todo is created we want our application to update
 ### Creating a todo
 ### Listing the todos
 ### Editing a todo
