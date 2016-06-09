@@ -33,8 +33,43 @@ $ cd todoer
 ```
 
 ## Setting up firebase
-Google recently purchased firebase and has changed the way things are setup so if you already have a firebase account you can skip to the next section. If not lets set one up now.
+Google recently purchased firebase and has changed the way things are setup so if you already have a firebase account sign in. If not set one up now.
 
-go to google.firebase.com and click sign up.
+We will create a new project called todoer
+## Building the App
+### Firebase config
+
+### Creating the data service
+To act as our mediator between firebase and our app we will be building a data service. For the purpose of this guide we will be housing all of our data in one service. For larger applications you may want to split this out to multiple services. 
+
+First lets create a provider.
+```
+$ ionic g provider data
+```
+this will create an @injectable component which we will inject into the root of our app. Why the root you ask? Because we want this service to live for the life time of our application, and not everytime we load a page. Providers that are inject on a per component basis are created at time of injection. So if we want our data to persist we must inject it into the the main app component.
+
+Open up the app.ts file and at the top add:
+```
+import {Data} from '../../providers/data/data';
+```
+Then in the component add Data to the providers;
+```
+@component({
+    providers: [Data]
+});
+```
+
+#### Observers and Observables
+For our application to feel as real time as possible we are going to make use of the observer pattern. Observers are built in to angular 2 and currently (at the time of writing) are using RxJS. However, that will be replaced with angulars own implimentation. 
+
+The concept for the pattern is pretty simple. An oberver can subscribe and "observe" an observable. When data is pushed to the observable the observer recieves it until the observable ends. Basically it is a publish subscribe pattern. 
+
+### Creating a todo
+### Listing the todos
+### Editing a todo
+
+## Part 2 -> login
+## Part 3 -> proximi
+## Part 4 -> publish
 
 
