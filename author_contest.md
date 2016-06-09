@@ -140,6 +140,7 @@ Want to join as a sponsor? Please email us at Prateek-Gupta@Pluralsight.com.  (s
  </table>
 
 ### Have questions?
+Please check out our [Tutorial Contest FAQ](http://tutorials.pluralsight.com/software-engineering-best-practices/tutorial-contest-faq) page.
 
 Join our [Slack Community](https://hackguides.herokuapp.com/).
 
