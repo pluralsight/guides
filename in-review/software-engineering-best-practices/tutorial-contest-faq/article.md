@@ -1,26 +1,26 @@
-Here's a quick run-down of our most common questions regarding the hack.guides() 2016 Tutorial Contest. This is a work in progress.
-
-#### How many tutorials can I submit?
-You can author as many as tutorials you want to author. If you submit more than five tutorials during the contest, we will send you a t-shirt swag.
+Here's a quick run-down of the most common questions we've received so far about the hack.guides() 2016 Tutorial Contest. 
 
 #### Are there any limitations on tutorial topics or technology or language?
-No. You are free to write about any technology or API or programming language of your choice.
+No limits! You are free to write about any technology, API, or programming language of your choice. However, submitted tutorials are being judged by our sponsors and our large community of coders, so make sure your tutorial topics are intriguing.
 
-#### How do I qualify for a chance to win $500 prize for my tutorial?
-Your tutorial should feature a use of sponsored APIs & platforms to be qualified for the category prize.
+#### How do I qualify for a chance to win a $500 prize for my tutorial?
+To qualify for the category prize, your tutorial should identify and describe a particular use of one of the sponsored APIs or platforms.
 
 #### Can I win multiple category prizes for the same tutorial?
 Yes, absolutely. Tutorial featuring the best integrations of sponsored APIs in their app and reviewed panel of our API judges, who gauge your writing style, communication ability, effective use of their technologies/APIs, and overall quality.
 
+#### How many tutorials can I submit?
+You may author as many as tutorials you would like to author. If you submit more than five tutorials during the contest, we will send you a free t-shirt. Swag.
+
 #### My tutorial didn't qualify. Why?
 
-The chances are that the design did not meet one of the guidelines listed below:
+Chances are that the design did not meet one of the guidelines listed below:
 
-**Plagiarism**: Tutorials created during this contest should be exclusive, and original. Content must be the sole ownership of the entrant, and/or their team. Please be the original author.
+**Plagiarism**: Tutorials created during this contest should be exclusive, and original. Content must be the sole ownership of the entrant, and/or their team.
 
-**Obscenity**: We will automatically reject any obscene language (please don't even try).  That includes any defamatory, or indecent, threats to a person, business, place, or group.
+**Obscenity**: We will automatically reject any tutorials with obscene language. That includes any defamatory remarks, indecency, and/or threats to a person, business, place, or group.
 
 Please be respectful & enjoy collaborating with the community.
 
 #### How do I know if my tutorial won an award?
-We will be announcing the winners on **August 15**. The contest will run from June 8th - July 30th. Please make sure to submit your tutorial for a chance to win any category prizes.
+We will be announcing the winners on **August 15**. The contest will run from June 8th to July 30th. Please make sure to submit your tutorial within this timeframe for a chance to win category prizes.
