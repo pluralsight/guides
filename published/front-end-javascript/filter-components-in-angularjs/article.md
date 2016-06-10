@@ -354,19 +354,19 @@ Element | Details
 
 Implementation of the `Date` filter is same as the implementation of `number` and `filter`. Let's implement a simple example:
    
-    ```html
-    <span>{{1288323623006 | date:'medium'}}</span><br>
-    <!--output : Oct 29, 2010 9:10:23 AM -->
+```html
+<span>{{1288323623006 | date:'medium'}}</span><br>
+<!--output : Oct 29, 2010 9:10:23 AM -->
         
-    <span>{{1288323623006 | date:'yyyy-MM-dd HH:mm:ss Z'}}</span><br>
-    <!--output : 2010-10-29 09:10:23 +0530 (date format with time zone)-->
+<span>{{1288323623006 | date:'yyyy-MM-dd HH:mm:ss Z'}}</span><br>
+<!--output : 2010-10-29 09:10:23 +0530 (date format with time zone)-->
         
-    <span>{{'1288323623006' | date:'MM/dd/yyyy @ h:mma'}}</span><br>
-    <!--Output : 10/29/2010 @ 9:10AM (insert string/character inside date format as '@')-->
+<span>{{'1288323623006' | date:'MM/dd/yyyy @ h:mma'}}</span><br>
+<!--Output : 10/29/2010 @ 9:10AM (insert string/character inside date format as '@')-->
         
-    <span>{{'1288323623006' | date:"MM/dd/yyyy 'at' h:mma"}}</span><br>
-    <!--Ouput : 10/29/2010 at 9:10AM (insert string/character inside date format as 'at')-->
-    ```
+<span>{{'1288323623006' | date:"MM/dd/yyyy 'at' h:mma"}}</span><br>
+<!--Ouput : 10/29/2010 at 9:10AM (insert string/character inside date format as 'at')-->
+```
 
 ## LowerCase/UpperCase
 - [LowerCase](https://docs.angularjs.org/api/ng/filter/lowercase) and [UpperCase](https://docs.angularjs.org/api/ng/filter/uppercase) converts a string into lower case and upper case.
@@ -436,46 +436,46 @@ The [limitTo](https://docs.angularjs.org/api/ng/filter/limitTo) filter returns a
 
 Let's see an example:
     
-    ```html
-    <!-- ng-app - attach an application module to the page -->
-    <html ng-app="myApp">
+```html
+<!-- ng-app - attach an application module to the page -->
+<html ng-app="myApp">
         
-    <!-- ng-controller - attach a controller functions to the page -->
-    <body ng-controller="myCtrl">
+<!-- ng-controller - attach a controller functions to the page -->
+<body ng-controller="myCtrl">
     
-    <!-- ng-init - to initialize "friends" as an array -->
-    <div ng-init="friends = [
-                            {name : 'John', phone : '89765', age : 34},
-                            {name : 'Bob', phone : '32722', age : 28},
-                            {name : 'Jake', phone : '87865', age : 30},
-                            {name : 'Pop', phone : '67547', age : 26},
-                            ]">
-    </div>
+<!-- ng-init - to initialize "friends" as an array -->
+<div ng-init="friends = [
+                        {name : 'John', phone : '89765', age : 34},
+                        {name : 'Bob', phone : '32722', age : 28},
+                        {name : 'Jake', phone : '87865', age : 30},
+                        {name : 'Pop', phone : '67547', age : 26},
+                        ]">
+</div>
     
-    <table>
-        <tr>
-            <th>Name</th>
-            <th>Phone</th>
-            <th>Age</th>
-        </tr>
-        <!-- filter based on value of limitTo -->
-        <tr ng-repeat="f in friends | limitTo : 2">
-            <td>{{f.name}}</td>
-            <td>{{f.phone}}</td>
-            <td>{{f.age}}</td>
-        </tr>
-    </table>
+<table>
+    <tr>
+        <th>Name</th>
+        <th>Phone</th>
+        <th>Age</th>
+    </tr>
+    <!-- filter based on value of limitTo -->
+    <tr ng-repeat="f in friends | limitTo : 2">
+        <td>{{f.name}}</td>
+        <td>{{f.phone}}</td>
+        <td>{{f.age}}</td>
+    </tr>
+</table>
     
-    </body>
-    </html>
+</body>
+</html>
     
-    <!--output shows only 2 records because we restricted limitTo to just 2
-    Name	Phone	Age
-    John	89765	34
-    Bob 	32722	28
-    -->
-    ```
-    * See [Plunker](https://plnkr.co/edit/SLBIjepAgsxEgcYxUzhv?p=preview) for more.
+<!--output shows only 2 records because we restricted limitTo to just 2
+Name	Phone	Age
+John	89765	34
+Bob 	32722	28
+-->
+```
+* See [Plunker](https://plnkr.co/edit/SLBIjepAgsxEgcYxUzhv?p=preview) for more.
 
 ## orderBy
 
