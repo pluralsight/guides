@@ -57,7 +57,7 @@ this will create an @injectable component which we will inject into the root of 
 
 Open up the app.ts file and at the top add:
 ```
-import {Data} from '../../providers/data/data';
+import {Data} from './providers/data/data';
 ```
 Then in the component add Data to the providers;
 ```
@@ -65,11 +65,70 @@ Then in the component add Data to the providers;
     providers: [Data]
 });
 ```
+#### Firebase reference
+Firebase is a realtime nosql database. The way we access data in it is by a query path. For example if our data looks like this.
+```
+{
+  todos: {
+    $todoId: {
+      title: 'todo1',
+      complete: false
+    },
+    $todoId: {
+      title: 'todo2',
+      complete: true
+    }
+  }
+}
+```
+The way we could get access to our list of todos could be ``` firebase.database().ref('/todos');``` If we wanted to get a specific todo we would use ``` firebase.database().ref('/todos/$todoId'); ``` where ``` $todoId ``` is the unique id of the todo. All data in firebase is stored as an object however we can retrive it as an array if we would like. However, we will not be doing that in this tutorial. 
 
+So, lets add firebase to the data provider
+
+```
+import {Injectable] from '@angular/core';
+
+@Injectable()
+export class Data {
+    private _db: any;
+    private _todosRef: any;
+    
+    constructor() {
+      this._db = firebase.database().ref('/'); // Get a firebase reference to the root
+      this._todosRef = firebase.database().ref('todos'); // Get a firebase reference to the todos
+      
+    }
+```
 #### Observers and Observables
 For our application to feel as real time as possible we are going to make use of the observer pattern. Observers are built in to angular 2 and currently (at the time of writing) are using RxJS. However, that will be replaced with angulars own implimentation. 
 
 The concept for the pattern is pretty simple. An oberver can subscribe and "observe" an observable. When data is pushed to the observable the observer recieves it until the observable ends. Basically it is a publish subscribe pattern. This is a far over simplification but you get the idea.
+
+In our Data class lets create a ReplaySubject. What is a ReplaySubject? A Subject is both an Observer and an Observerable. Normally an observable will only send the last event to a new subscriber a ReplaySubject however, will send every message to a new subscriber in the order they were sent. This way we will not miss any old todos.
+
+```
+import {Injectable] from '@angular/core';
+import {ReplaySubject} from 'rxjs/ReplaySubject';
+
+@Injectable()
+export class Data {
+    private _todos$: any;
+    private _db: any;
+    private _todosRef: any;
+    
+    constructor() {
+      this._db = firebase.database().ref('/');
+      this._todosRef = firebase.database().ref('todos');
+      this._todos$ = new ReplaySubject();
+    }
+    get todos()
+    {
+        return this._todo$;
+    }
+    
+}
+```
+
 
 Lets examine our data. we have a todo:
 ```
