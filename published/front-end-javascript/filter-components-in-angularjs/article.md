@@ -155,82 +155,82 @@ A [filter](https://docs.angularjs.org/api/ng/filter/filter) returns a subset of 
 
 Angular provides a better way to format a price and display it on page. The [currency](https://docs.angularjs.org/api/ng/filter/currency) filter formats a number as currency, setting hte number to the proper decimal value (like $25.70). This filter can be used in HTML Template as well as in JavaScript.
 
-    **In HTML Template**
+**In HTML Template**
         
-    ```html
-    {{ currency_expression | currency : symbol : fractionSize}}
-    ```
+```html
+{{ currency_expression | currency : symbol : fractionSize}}
+```
     
-    * Here, currency expression is the numerical value that will be formatted by currency filter to display numerical value as a price with a specified currency symbol.
+* Here, currency expression is the numerical value that will be formatted by currency filter to display numerical value as a price with a specified currency symbol.
         
-    * The second parameter after the pipe expression is a name of filter component i.e `currency`.
+* The second parameter after the pipe expression is a name of filter component i.e `currency`.
         
-    * `symbol` and `fractionSize` are the option values.
+* `symbol` and `fractionSize` are the option values.
         
-    * `symbol` is to put your locale currency symbol to format the number to price and `fractionSize` determines the number of digits after the decimal point to which the price will be recorded. 
+* `symbol` is to put your locale currency symbol to format the number to price and `fractionSize` determines the number of digits after the decimal point to which the price will be recorded. 
             
-    for example :
+for example :
         
-    ```html
-    <p>{{25 | currency }}</p>
-    <!-- This will print result as $25.00. Note that the default fractionSize is 2. -->
+```html
+<p>{{25 | currency }}</p>
+<!-- This will print result as $25.00. Note that the default fractionSize is 2. -->
+
+<p>{{25 | currency : "₹" }}</p>
+<!--This will print result as ₹25.00. -->
         
-    <p>{{25 | currency : "₹" }}</p>
-    <!--This will print result as ₹25.00. -->
+<p>{{25.46 | currency : "₹" : 4}}</p>
+<!--This will print result as ₹25.4600 because fractionSize is 4 decimal places. -->
+```
         
-    <p>{{25.46 | currency : "₹" : 4}}</p>
-    <!--This will print result as ₹25.4600 because fractionSize is 4 decimal places. -->
-    ```
+**In JavaScript Template**
         
- **In JavaScript Template**
+```js
+$filter('currency')(amount, symbol, fractionSize)
+```
         
-    ```js
-    $filter('currency')(amount, symbol, fractionSize)
-    ```
-        
-    * `symbol` and `fractionSize` are the same in JS as in HTMP Template.
-    * `Amount` is the numerical value which has to be converted into currency format.
-    * `$filter` is an instance of the filter component service which is injected to controller's function as a dependency.
+* `symbol` and `fractionSize` are the same in JS as in HTMP Template.
+* `Amount` is the numerical value which has to be converted into currency format.
+* `$filter` is an instance of the filter component service which is injected to controller's function as a dependency.
             
-    for example :
+for example :
         
-    Currency Format:
-    ```html
-    <!--JS code-->
-    $scope.price = $filter('currency')(25);
+Currency Format:
+```html
+<!--JS code-->
+$scope.price = $filter('currency')(25);
         
-    <!--html code-->
-    <p>{{price}}</p>
+<!--html code-->
+<p>{{price}}</p>
     
-    <!--output-->
-    $25.00
-    ```
+<!--output-->
+$25.00
+```
     
-    Currency format with custom symbol:
-    ```html
-    <!--JS code-->
-    $scope.price = $filter('currency')(25,'₹');
+Currency format with custom symbol:
+```html
+<!--JS code-->
+$scope.price = $filter('currency')(25,'₹');
     
-    <!--html code-->
-    <p>{{price}}</p>
+<!--html code-->
+<p>{{price}}</p>
+
+<!--Output-->
+₹25.00
+```
     
-    <!--Output-->
-    ₹25.00
-    ```
+Currency format with custom decimal points:
+```html
+<!--JS code-->
+$scope.price = $filter('currency')(25,'₹',4);
     
-    Currency format with custom decimal points:
-    ```html
-    <!--JS code-->
-    $scope.price = $filter('currency')(25,'₹',4);
+<!---Html Code-->
+<p>{{price}}</p>
     
-    <!---Html Code-->
-    <p>{{price}}</p>
-    
-    <!--Output-->
-    ₹25.0000
-    ```
+<!--Output-->
+₹25.0000
+```
             
-    see  [Plunker](https://plnkr.co/edit/cjYyN9RjvtsxIdmn3PCz?p=preview) for more examples.
+see  [Plunker](https://plnkr.co/edit/cjYyN9RjvtsxIdmn3PCz?p=preview) for more examples.
         
 ## Number
     
