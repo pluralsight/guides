@@ -249,16 +249,16 @@ The [number](https://docs.angularjs.org/api/ng/filter/number) filter formats a n
 for example :
             
 ```html
-    <p>{{24.76 | number}}</p>
-    <!--this will print result as 24.76-->
+<p>{{24.76 | number}}</p>
+<!--this will print result as 24.76-->
             
-    <p>{{24.76 | number : 0}}</p>
-    <!--this will print the result as 24-->
+<p>{{24.76 | number : 0}}</p>
+<!--this will print the result as 24-->
             
-    <p>{{24.76 | number : 1}}</p>
-    <!--this will print result as 24.8-->
+<p>{{24.76 | number : 1}}</p>
+<!--this will print result as 24.8-->
 ```
-        
+
 * `fractionSize` provide a result after rounding-up the value. 
         
 **JavaScript Code**
@@ -273,21 +273,21 @@ $filter('number')(number, fractionSize)
         
 for example : 
 ```js
-    $scope.number = $filter('number')(25.76)
-    // this will print a result as 25.76
+$scope.number = $filter('number')(25.76)
+// this will print a result as 25.76
         
-    $scope.number = $filter('number')(25.76 : 0)
-    //this will print a result as 25
+$scope.number = $filter('number')(25.76 : 0)
+//this will print a result as 25
     
-    $scope.number = $filter('number')(25.76 : 1)
-    //this will print a result as 25.8
-    ```
+$scope.number = $filter('number')(25.76 : 1)
+//this will print a result as 25.8
+```
         
 see [Plunker](https://plnkr.co/edit/Wv5glncChtFVuZiBCEkh?p=preview) for more.
         
 ## Date
 
-- The [date](https://docs.angularjs.org/api/ng/filter/date) filter provides a better way to represent date in string format (`MMM d, y h:mm:ss a` will show as `Sep 3, 2010 12:05:08 PM`)
+The [date](https://docs.angularjs.org/api/ng/filter/date) filter provides a better way to represent date in string format (`MMM d, y h:mm:ss a` will show as `Sep 3, 2010 12:05:08 PM`)
 - **Syntax**
     * In HTML Template Binding
     ```html
