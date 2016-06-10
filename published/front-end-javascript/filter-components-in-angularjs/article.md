@@ -236,19 +236,19 @@ Angular provides a better way to format a price and display it on page. The [cur
     
 The [number](https://docs.angularjs.org/api/ng/filter/number) filter formats a number as text. This filter can be used in HTML Template as well as in JavaScript.
 
-    **HTML Template**
+**HTML Template**
 
-    ```html
-    {{ number_expression | number : fractionSize}}
-    ```
+```html
+{{ number_expression | number : fractionSize}}
+```
     
-    * `number_expression` is the number which has to be formatted into text.
-    * `number` is the value to be formatted.
-    * `fractionSize` is the number of spaces after the decimal point to display after formatting.
+* `number_expression` is the number which has to be formatted into text.
+* `number` is the value to be formatted.
+* `fractionSize` is the number of spaces after the decimal point to display after formatting.
         
-    for example :
+for example :
             
-    ```html
+```html
     <p>{{24.76 | number}}</p>
     <!--this will print result as 24.76-->
             
@@ -257,22 +257,22 @@ The [number](https://docs.angularjs.org/api/ng/filter/number) filter formats a n
             
     <p>{{24.76 | number : 1}}</p>
     <!--this will print result as 24.8-->
-    ```
+```
         
-    * `fractionSize` provide a result after rounding-up the value. 
+* `fractionSize` provide a result after rounding-up the value. 
         
-  **JavaScript Code**
-    ```js
-    $filter('number')(number, fractionSize)
-    ```
+**JavaScript Code**
+```js
+$filter('number')(number, fractionSize)
+```
         
-    * `$filter` instance of filter components.
-    * `$flter(number)` type of filter components.
-    * `number` to be format.
-    * `fractionSize` is the count of decimal point display after formatting.
+* `$filter` instance of filter components.
+* `$flter(number)` type of filter components.
+* `number` to be format.
+* `fractionSize` is the count of decimal point display after formatting.
         
-    for example : 
-    ```js
+for example : 
+```js
     $scope.number = $filter('number')(25.76)
     // this will print a result as 25.76
         
@@ -283,7 +283,7 @@ The [number](https://docs.angularjs.org/api/ng/filter/number) filter formats a n
     //this will print a result as 25.8
     ```
         
-    see [Plunker](https://plnkr.co/edit/Wv5glncChtFVuZiBCEkh?p=preview) for more.
+see [Plunker](https://plnkr.co/edit/Wv5glncChtFVuZiBCEkh?p=preview) for more.
         
 ## Date
 
