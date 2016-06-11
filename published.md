@@ -184,8 +184,8 @@
 - Related to: Software Engineering Best Practices
 
 ### How to analyze employee data using SQL by Ben Sullins
-- [Read the guide](http://tutorials.pluralsight.com/review/how-to-analyze-employee-data-using-sql)
-- [Read more from Ben Sullins](http://tutorials.pluralsight.com/user/bsullins) <img src="https://avatars.githubusercontent.com/u/3732908?v=3" width="30" height="30" alt="Ben Sullins" />
+- [Read the guide](http://tutorials.pluralsight.com/sql/how-to-analyze-employee-data-using-sql)
+- [Read more from Ben Sullins](http://tutorials.pluralsight.com/author/bsullins) <img src="https://avatars.githubusercontent.com/u/3732908?v=3" width="30" height="30" alt="Ben Sullins" />
 - Related to: SQL
 
 ### A call for HackerNews Contributors by Prateek Gupta
