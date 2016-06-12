@@ -1,0 +1,15 @@
+{
+    "_publish_status": "draft",
+    "author_name": "Kaizeras",
+    "author_real_name": "Hristo Georgiev",
+    "branch": "master",
+    "branches": [],
+    "filename": "article.md",
+    "first_commit": "b3181e14e0018fdd33872273969741f7b13e364e",
+    "image_url": "https://avatars.githubusercontent.com/u/6340189?v=3",
+    "stacks": [
+        "Interesting APIs (SendGrid, Twilio, etc)"
+    ],
+    "thumbnail_url": null,
+    "title": "Reactive analytics using Keen.IO and AcitonCable in Rails 5"
+}
