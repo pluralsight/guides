@@ -1,3 +1,8 @@
+### Test by Enz Tom
+- [Read the guide](http://tutorials.pluralsight.com/html-css/test?status=draft)
+- [Read more from Enz Tom](http://tutorials.pluralsight.com/author/motzne) <img src="https://avatars.githubusercontent.com/u/255519?v=3" width="30" height="30" alt="Enz Tom" />
+- Related to: HTML/CSS
+
 ### Reactrb Showcase  by Barrie Hadfield
 - [Read the guide](http://tutorials.pluralsight.com/ruby-ruby-on-rails/reactrb-showcase?status=draft)
 - [Read more from Barrie Hadfield](http://tutorials.pluralsight.com/author/barriehadfield) <img src="https://avatars.githubusercontent.com/u/3940251?v=3" width="30" height="30" alt="Barrie Hadfield" />
