@@ -1,3 +1,8 @@
+### Reactive analytics using Keen.IO and AcitonCable in Rails 5 by Hristo Georgiev
+- [Read the guide](http://tutorials.pluralsight.com/interesting-apis/reactive-analytics-using-keen-io-and-acitoncable-in-rails-5?status=draft)
+- [Read more from Hristo Georgiev](http://tutorials.pluralsight.com/author/Kaizeras) <img src="https://avatars.githubusercontent.com/u/6340189?v=3" width="30" height="30" alt="Hristo Georgiev" />
+- Related to: Interesting APIs (SendGrid, Twilio, etc)
+
 ### Ionic 2 and Firebase by Steve Emmerich
 - [Read the guide](http://tutorials.pluralsight.com/front-end-javascript/ionic-2-and-firebase?status=draft)
 - [Read more from Steve Emmerich](http://tutorials.pluralsight.com/author/SteveEmmerich) <img src="https://avatars.githubusercontent.com/u/310086?v=3" width="30" height="30" alt="Steve Emmerich" />
