@@ -1,3 +1,8 @@
+### Reactrb Showcase  by Barrie Hadfield
+- [Read the guide](http://tutorials.pluralsight.com/ruby-ruby-on-rails/reactrb-showcase?status=draft)
+- [Read more from Barrie Hadfield](http://tutorials.pluralsight.com/author/barriehadfield) <img src="https://avatars.githubusercontent.com/u/3940251?v=3" width="30" height="30" alt="Barrie Hadfield" />
+- Related to: Ruby, Ruby on Rails
+
 ### Reactive analytics using Keen.IO and AcitonCable in Rails 5 by Hristo Georgiev
 - [Read the guide](http://tutorials.pluralsight.com/interesting-apis/reactive-analytics-using-keen-io-and-acitoncable-in-rails-5?status=draft)
 - [Read more from Hristo Georgiev](http://tutorials.pluralsight.com/author/Kaizeras) <img src="https://avatars.githubusercontent.com/u/6340189?v=3" width="30" height="30" alt="Hristo Georgiev" />
