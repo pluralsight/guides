@@ -1,8 +1,3 @@
-### Tutotial pour écrire un tutorial by Thomas LOSBAR
-- [Read the guide](http://tutorials.pluralsight.com/java-and-j2ee/tutotial-pour-ecrire-un-tutorial?status=draft)
-- [Read more from Thomas LOSBAR](http://tutorials.pluralsight.com/author/Jaf270) <img src="https://avatars.githubusercontent.com/u/6214934?v=3" width="30" height="30" alt="Thomas LOSBAR" />
-- Related to: Java and J2EE
-
 ### Reactrb Showcase  by Barrie Hadfield
 - [Read the guide](http://tutorials.pluralsight.com/ruby-ruby-on-rails/reactrb-showcase?status=draft)
 - [Read more from Barrie Hadfield](http://tutorials.pluralsight.com/author/barriehadfield) <img src="https://avatars.githubusercontent.com/u/3940251?v=3" width="30" height="30" alt="Barrie Hadfield" />
