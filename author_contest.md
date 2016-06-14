@@ -1,5 +1,4 @@
-![Authoring Contest](https://raw.githubusercontent.com/pluralsight/guides/master/images/214aa6b8-781a-4410-a04a-b8829f392e9b.png)
-
+![Authoring Contest](https://raw.githubusercontent.com/pluralsight/guides/master/images/1c2eefbd-3917-41f1-9fa6-087d9ecb6580.png)
 
 Are you passionate about helping other developers learn about your favorite technologies and APIs?  If so, this event is for you!
 
@@ -69,6 +68,7 @@ The hack.guides() team will be solely administering the contest and prize distri
 We've teamed up with some of the best companies with cutting-edge technologies and APIs. Our sponsors are:
 
 * [Amazon Alexa](https://developer.amazon.com/public/solutions/alexa/alexa-skills-kit)
+* [Fanout.io](https://fanout.io/)
 * [HelloSign](https://www.hellosign.com/api)
 * [Horizon Cloud](http://horizon.io)
 * [Ionic Framework](http://ionicframework.com/)
@@ -91,6 +91,10 @@ Want to join as a sponsor? Please email Prateek at Prateek-Gupta@Pluralsight.com
     <td>Amazon Alexa</td>
     <td>$500</td>
     <td>Best tutorial using Alexa Skills Kit</td>
+  </tr>
+  <td>Fanout.io</td>
+    <td>$500</td>
+    <td>Best realtime app using Pushpin or Fanout Cloud tutorial</td>
   </tr>
   <tr>
     <td>HelloSign</td>
