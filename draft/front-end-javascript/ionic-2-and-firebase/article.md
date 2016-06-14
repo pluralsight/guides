@@ -99,6 +99,26 @@ export class Data {
       
     }
 ```
+Now that we have our references to the database how do we get the data?
+
+### Firebase Queries
+Firebase has an event base query system which allows you to setup listeners for certian events. For our use case we are going to listen for the ``` child_add``` event. For a complete list of events see firebase's api documentation.
+
+Lets add the query to the constructor of our data service class.
+```
+import {Injectable] from '@angular/core';
+
+@Injectable()
+export class Data {
+    private _db: any;
+    private _todosRef: any;
+    
+    constructor() {
+      this._db = firebase.database().ref('/'); // Get a firebase reference to the root
+      
+    }
+```
+
 #### Observers and Observables
 For our application to feel as real time as possible we are going to make use of the observer pattern. Observers are built in to angular 2 and currently (at the time of writing) are using RxJS. However, that will be replaced with angulars own implimentation. 
 
