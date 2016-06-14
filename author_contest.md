@@ -70,7 +70,7 @@ We've teamed up with some of the best companies with cutting-edge technologies a
 
 * [Amazon Alexa](https://developer.amazon.com/public/solutions/alexa/alexa-skills-kit)
 * [HelloSign](https://www.hellosign.com/api)
-* [Horion Cloud](http://horizon.io)
+* [Horizon Cloud](http://horizon.io)
 * [Ionic Framework](http://ionicframework.com/)
 * [Keen.io](http://keen.io)
 * [Pluralsight](http://pluralsight.com/)
