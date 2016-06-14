@@ -79,7 +79,7 @@ We've teamed up with some of the best companies with cutting-edge technologies a
 * [Sauce Labs](http://saucelabs.com/)
 * [Uber Developers](https://developer.uber.com/)
 
-Want to join as a sponsor? Please email us at Prateek-Gupta@Pluralsight.com.  (sponsoring is great, since you're helping to spread useful developer knowledge, while also achieving your developer relations goals by having written content that uses your APIs!).
+Want to join as a sponsor? Please email Prateek at Prateek-Gupta@Pluralsight.com. (sponsoring is great, since you're helping to spread useful developer knowledge, while also achieving your developer relations goals by having written content that uses your APIs!).
 
 <table>
   <tr>
