@@ -188,11 +188,6 @@
 - [Read more from di1](http://tutorials.pluralsight.com/author/di1) <img src="https://avatars.githubusercontent.com/u/9478611?v=3" width="30" height="30" alt="di1" />
 - Related to: Scala
 
-### Semantic HTML: Add Structure and Meaning to your Webpage by Klarence
-- [Read the guide](http://tutorials.pluralsight.com/html-css/semantic-html-add-structure-and-meaning-to-your-webpage?status=draft)
-- [Read more from Klarence](http://tutorials.pluralsight.com/author/Klarence) <img src="https://avatars.githubusercontent.com/u/1621537?v=3" width="30" height="30" alt="Klarence" />
-- Related to: HTML/CSS
-
 ### Hello Guide by Bojan Bedrac
 - [Read the guide](http://tutorials.pluralsight.com/php/hello-guide?status=draft)
 - [Read more from Bojan Bedrac](http://tutorials.pluralsight.com/author/xbojch) <img src="https://avatars.githubusercontent.com/u/4233387?v=3" width="30" height="30" alt="Bojan Bedrac" />
