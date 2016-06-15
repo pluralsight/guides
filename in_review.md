@@ -1,8 +1,3 @@
-### A call for HackerNews Contributors by Prateek Gupta
-- [Read the guide](http://tutorials.pluralsight.com/other/a-call-for-hackernews-contributors?status=in-review)
-- [Read more from Prateek Gupta](http://tutorials.pluralsight.com/author/prtkgpt) <img src="https://avatars1.githubusercontent.com/u/2454349?v=3" width="30" height="30" alt="Prateek Gupta" />
-- Related to: other
-
 ### Amazon Alexa Skill Tutorial by Brian Donohue
 - [Read the guide](http://tutorials.pluralsight.com/node-js/amazon-alexa-skill-tutorial?status=in-review)
 - [Read more from Brian Donohue](http://tutorials.pluralsight.com/author/Donohue) <img src="https://avatars.githubusercontent.com/u/1069050?v=3" width="30" height="30" alt="Brian Donohue" />
