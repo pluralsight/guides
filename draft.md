@@ -1,3 +1,8 @@
+### Amazon Alexa Skill Tutorial by Brian Donohue
+- [Read the guide](http://tutorials.pluralsight.com/node-js/amazon-alexa-skill-tutorial?status=draft)
+- [Read more from Brian Donohue](http://tutorials.pluralsight.com/author/Donohue) <img src="https://avatars.githubusercontent.com/u/1069050?v=3" width="30" height="30" alt="Brian Donohue" />
+- Related to: Node.js
+
 ### Handling APIs -During Automation Testing by Prassanna-S
 - [Read the guide](http://tutorials.pluralsight.com/software-engineering-best-practices/handling-apis-during-automation-testing?status=draft)
 - [Read more from Prassanna-S](http://tutorials.pluralsight.com/author/Prassanna-S) <img src="https://avatars.githubusercontent.com/u/17286182?v=3" width="30" height="30" alt="Prassanna-S" />
