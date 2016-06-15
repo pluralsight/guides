@@ -68,7 +68,7 @@ The hack.guides() team will be solely administering the contest and prize distri
 We've teamed up with some of the best companies with cutting-edge technologies and APIs. Our sponsors are:
 
 * [Amazon Alexa](https://developer.amazon.com/public/solutions/alexa/alexa-skills-kit)
-* [Fanout.io](https://fanout.io/)
+* [Fanout](https://fanout.io/)
 * [HelloSign](https://www.hellosign.com/api)
 * [Horizon Cloud](http://horizon.io)
 * [Ionic Framework](http://ionicframework.com/)
@@ -92,7 +92,7 @@ Want to join as a sponsor? Please email Prateek at Prateek-Gupta@Pluralsight.com
     <td>$500</td>
     <td>Best tutorial using Alexa Skills Kit</td>
   </tr>
-  <td>Fanout.io</td>
+  <td>Fanout</td>
     <td>$500</td>
     <td>Best realtime app using Pushpin or Fanout Cloud tutorial</td>
   </tr>
