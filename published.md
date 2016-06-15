@@ -1,3 +1,8 @@
+### Profiling memory usage in Python by Luke Lee
+- [Read the guide](http://tutorials.pluralsight.com/python/profiling-memory-usage-in-python)
+- [Read more from Luke Lee](http://tutorials.pluralsight.com/author/durden) <img src="https://avatars.githubusercontent.com/u/58063?v=3" width="30" height="30" alt="Luke Lee" />
+- Related to: Python
+
 ### Filter components in AngularJS by Gaurav Bhavsar
 - [Read the guide](http://tutorials.pluralsight.com/front-end-javascript/filter-components-in-angularjs)
 - [Read more from Gaurav Bhavsar](http://tutorials.pluralsight.com/author/gauravbhavsar) <img src="https://avatars.githubusercontent.com/u/5441386?v=3" width="30" height="30" alt="Gaurav Bhavsar" />
