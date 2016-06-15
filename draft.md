@@ -1,3 +1,8 @@
+### Ionic 2 and Firebase 3 Complete Auth System by Jorge Vergara
+- [Read the guide](http://tutorials.pluralsight.com/front-end-javascript/ionic-2-and-firebase-3-complete-auth-system?status=draft)
+- [Read more from Jorge Vergara](http://tutorials.pluralsight.com/author/javebratt) <img src="https://avatars.githubusercontent.com/u/7296623?v=3" width="30" height="30" alt="Jorge Vergara" />
+- Related to: Front-End JavaScript (Angular, React, Meteor, etc)
+
 ### Test by Enz Tom
 - [Read the guide](http://tutorials.pluralsight.com/html-css/test?status=draft)
 - [Read more from Enz Tom](http://tutorials.pluralsight.com/author/motzne) <img src="https://avatars.githubusercontent.com/u/255519?v=3" width="30" height="30" alt="Enz Tom" />
