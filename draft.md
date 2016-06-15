@@ -1,3 +1,8 @@
+### A call for HackerNews Contributors by Prateek Gupta
+- [Read the guide](http://tutorials.pluralsight.com/other/a-call-for-hackernews-contributors?status=draft)
+- [Read more from Prateek Gupta](http://tutorials.pluralsight.com/author/prtkgpt) <img src="https://avatars1.githubusercontent.com/u/2454349?v=3" width="30" height="30" alt="Prateek Gupta" />
+- Related to: other
+
 ### Handling APIs -During Automation Testing by Prassanna-S
 - [Read the guide](http://tutorials.pluralsight.com/software-engineering-best-practices/handling-apis-during-automation-testing?status=draft)
 - [Read more from Prassanna-S](http://tutorials.pluralsight.com/author/Prassanna-S) <img src="https://avatars.githubusercontent.com/u/17286182?v=3" width="30" height="30" alt="Prassanna-S" />
