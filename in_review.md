@@ -43,11 +43,6 @@
 - [Read more from Tom Greco](http://tutorials.pluralsight.com/user/thomasjosephgreco) <img src="https://avatars.githubusercontent.com/u/6646552?v=3" width="30" height="30" alt="Tom Greco" />
 - Related to: Front-End JavaScript (Angular, React, Meteor, etc)
 
-### Profiling memory usage in Python by Luke Lee
-- [Read the guide](http://tutorials.pluralsight.com/python/profiling-memory-usage-in-python?status=in-review)
-- [Read more from Luke Lee](http://tutorials.pluralsight.com/user/durden) <img src="https://avatars.githubusercontent.com/u/58063?v=3" width="30" height="30" alt="Luke Lee" />
-- Related to: Python
-
 ### How To Install Ruby on Rails on CentOS 7 by Consigliere
 - [Read the guide](http://tutorials.pluralsight.com/ruby-ruby-on-rails/how-to-install-ruby-on-rails-on-centos-7?status=in-review)
 - [Read more from Consigliere](http://tutorials.pluralsight.com/author/clthck) <img src="https://avatars.githubusercontent.com/u/14348482?v=3" width="30" height="30" alt="Consigliere" />
