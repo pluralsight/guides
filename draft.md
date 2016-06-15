@@ -13,8 +13,8 @@
 - [Read more from Enz Tom](http://tutorials.pluralsight.com/author/motzne) <img src="https://avatars.githubusercontent.com/u/255519?v=3" width="30" height="30" alt="Enz Tom" />
 - Related to: HTML/CSS
 
-### Reactive analytics using Keen.IO and AcitonCable in Rails 5 by Hristo Georgiev
-- [Read the guide](http://tutorials.pluralsight.com/interesting-apis/reactive-analytics-using-keen-io-and-acitoncable-in-rails-5?status=draft)
+### Reactive analytics using Keen.IO and ActionCable in Rails 5 by Hristo Georgiev
+- [Read the guide](http://tutorials.pluralsight.com/interesting-apis/reactive-analytics-using-keen-io-and-actioncable-in-rails-5?status=draft)
 - [Read more from Hristo Georgiev](http://tutorials.pluralsight.com/author/Kaizeras) <img src="https://avatars.githubusercontent.com/u/6340189?v=3" width="30" height="30" alt="Hristo Georgiev" />
 - Related to: Interesting APIs (SendGrid, Twilio, etc)
 
