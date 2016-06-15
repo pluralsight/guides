@@ -115,9 +115,17 @@ export class Data {
     
     constructor() {
       this._db = firebase.database().ref('/'); // Get a firebase reference to the root
+      this._todosRef = firebase.database().ref('todos'); // Get a firebase reference to the todos
+      this._todosRef.on('child_add', this.handleData, this);
       
     }
+    handleData(snap)
+    {
+        //Do something with the data
+    }
 ```
+
+The line we added setup a listener for when a child is added to the todos path. ``` this.handleData ``` is passed in to handle the data snapshot sent back from firebase. Last we pass ``` this ``` as the context for our handler function.
 
 #### Observers and Observables
 For our application to feel as real time as possible we are going to make use of the observer pattern. Observers are built in to angular 2 and currently (at the time of writing) are using RxJS. However, that will be replaced with angulars own implimentation. 
@@ -139,6 +147,7 @@ export class Data {
     constructor() {
       this._db = firebase.database().ref('/');
       this._todosRef = firebase.database().ref('todos');
+       this._todosRef.on('child_add', this.handleData, this);
       this._todos$ = new ReplaySubject();
     }
     get todos()
@@ -146,6 +155,10 @@ export class Data {
         return this._todo$;
     }
     
+    handleData(snap)
+    {
+        //Do something with the data
+    }
 }
 ```
 
