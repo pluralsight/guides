@@ -11,5 +11,5 @@
         "Interesting APIs (SendGrid, Twilio, etc)"
     ],
     "thumbnail_url": null,
-    "title": "Reactive analytics using Keen.IO and AcitonCable in Rails 5"
+    "title": "Reactive analytics using Keen.IO and ActionCable in Rails 5"
 }
