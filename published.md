@@ -193,10 +193,6 @@
 - [Read more from Ben Sullins](http://tutorials.pluralsight.com/author/bsullins) <img src="https://avatars.githubusercontent.com/u/3732908?v=3" width="30" height="30" alt="Ben Sullins" />
 - Related to: SQL
 
-### A call for HackerNews Contributors by Prateek Gupta
-- [Read the guide](http://tutorials.pluralsight.com/review/a-call-for-hackernews-contributors)
-- [Read more from Prateek Gupta](http://tutorials.pluralsight.com/user/prtkgpt) <img src="https://avatars1.githubusercontent.com/u/2454349?v=3" width="30" height="30" alt="Prateek Gupta" />
-
 ### Ionic Framework: A definitive 10,000 word guide by Nikola Breznjak
 - [Read the guide](http://tutorials.pluralsight.com/review/ionic-framework-a-definitive-10-000-word-guide)
 - [Read more from Nikola Breznjak](http://tutorials.pluralsight.com/user/Hitman666) <img src="https://avatars.githubusercontent.com/u/1001064?v=3&" width="30" height="30" alt="Nikola Breznjak" />
