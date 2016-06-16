@@ -1,4 +1,4 @@
-# Build your first Alexa skill
+### Build your first Alexa skill
 
 ![Alexa Skill Terminology](https://cdn-images-1.medium.com/max/1200/1*E3155-o18xfC9hVHCriTbQ.png)
 
