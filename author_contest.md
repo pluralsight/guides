@@ -94,7 +94,7 @@ Want to join as a sponsor? Please email Prateek at Prateek-Gupta@Pluralsight.com
   </tr>
   <td>Fanout</td>
     <td>$500</td>
-    <td>Best realtime app using Pushpin or Fanout Cloud tutorial</td>
+    <td>Best realtime app using Pushpin or Fanout Cloud</td>
   </tr>
   <tr>
     <td>HelloSign</td>
