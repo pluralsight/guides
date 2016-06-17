@@ -1,9 +1,8 @@
-# Introduction
-Hello everyone, this tutorial aims to show you how in simple steps to create your first application in real time using Node.JS and RethinkDB.
+# Creating a Simple Application with Node.JS and Rethinkdb
 
-RethinkDB, is an open source database-oriented documents (using JSON format) which can be used in building applications as it integrates easily from drivers languages like Javascript, Java, Ruby and Python.
+Hello everyone!, this tutorial aims to show you how in simple steps to create your first application in real time using Node.JS and RethinkDB.
 
-RethinkDB, is known for investing the architecture of traditional database to support the development of real-time applications of non-invasive, simple and efficient. Thus instead of performing constant polling for data changes, you can delegate this task to RethinkDB get updates whenever a change occurs. As a result, we can develop applications in less complex and easier to maintain and scale real time.
+RethinkDB, is an open source database-oriented documents (using JSON format) which can be used in building applications as it integrates easily from drivers languages like Javascript, Java, Ruby and Python. This database reverses the architecture of traditional database to support the developing non-invasive, simple and efficient of real-time applications. Thus instead of performing constant polling for data changes, you can delegate this task to RethinkDB and get updates whenever a change occurs. As a result, we can develop applications less complex and easier to maintain and scale.
 
 
 For the development of the application we will use the following technologies:
@@ -13,112 +12,120 @@ For the development of the application we will use the following technologies:
 - Socket.IO [1.4.6]
 - RethinkDB [2.3.2]
 
-# Requirements
+## Requirements
 
-## Install Node.js
+### Install Node.js
 To learn how to install Node.JS, follow the link below: https://nodejs.org/en/download/
 
-## Install express-generator
-While not mandatory, with Express-Generator we will very easily be able to build the structure of our application.
+### Install express-generator
 
-- Install express-generator with the following command:
+> While not mandatory, with express-generator we will very easily be able to build the structure of our application.
 
-        $ npm install express-generator -g
-- Create the application. For this tutorial, we'll call real-time-league:
-        $ express real-time-league
-- Then install dependencies:
-        $ cd real-time-league
-        $ npm install
+- Install **express-generator** with the following command:
+```
+$ npm install express-generator -g
+```
+- Create the application. For this tutorial, we'll call **real-time-league**:
+```
+$ express real-time-league
+```
+- Then, install dependencies:
+```
+$ cd real-time-league
+$ npm install
+```
 
-# Let's do it!
+## Let's do it!
 The application that we will build, will allow us to know in real time the results of football matches. And believe it or not, we will in a few steps ;)
 
-First, we will install RethinkDB >> https://www.rethinkdb.com/docs/install/
-Once installed, we access the administration console: http://localhost:8080 and and click on the menu "Data Explorer".
-## Creating our data model
+First, we will install [RethinkDB](https://www.rethinkdb.com/docs/install/). Once installed, we access the [administration console](http://localhost:8080) and click on the menu [Data Explorer](http://localhost:8080/#dataexplorer).
+
+### Creating our data model
 
 Suppose, we have to create a database for the local football league where teams and different tournament games are stored. The structure of the tables would be the following:
 
-        team: {
-        	data_base: "league",
-        	table_name: "teams",
-        	description: "A team",
-        	data: {
-        		id: {
-        			description: "First three letters of the team's name"
-        		},
-        		name: {
-        			description: "Full team name"
-        		}
-        	},
-        	example: {
-        		id: "RIV",
-        		name: "River Plate"
-        	}
-        }
-        
-        match: {
-        	data_base: "league",
-        	table_name: "matches",
-        	description: "A match",
-        	data: {
-        		id: {
-        			description: "Auto-generated ID"
-        		},
-        		home: {
-        			description: "Home team ID"
-        		},
-        		away: {
-        			description: "Away team ID"
-        		},
-        		goal_home: {
-        			description: "Number of home team's goals"
-        		},
-        		gol_away: {
-        			description: "Number of away team's goals"
-        		}	
-        	},
-        	example: {
-        		id: '76ab9148-a527-41a4-aeec-a6ea0994a167',
-        		local: "RIV",
-        		visitante: "BOC",
-        		goal_home: 1,
-        		goal_away: 0
-        	}
-        }
+```json
+team: {
+	data_base: "league",
+	table_name: "teams",
+	description: "A team",
+	data: {
+		id: {
+			description: "First three letters of the team's name"
+		},
+		name: {
+			description: "Full team name"
+		}
+	},
+	example: {
+		id: "RIV",
+		name: "River Plate"
+	}
+}
+```
+```json
+match: {
+	data_base: "league",
+	table_name: "matches",
+	description: "A match",
+	data: {
+		id: {
+			description: "Auto-generated ID"
+		},
+		home: {
+			description: "Home team ID"
+		},
+		away: {
+			description: "Away team ID"
+		},
+		goal_home: {
+			description: "Number of home team's goals"
+		},
+		gol_away: {
+			description: "Number of away team's goals"
+		}	
+	},
+	example: {
+		id: '76ab9148-a527-41a4-aeec-a6ea0994a167',
+		local: "RIV",
+		visitante: "BOC",
+		goal_home: 1,
+		goal_away: 0
+	}
+}
+```
+**Create the database**
+```
+r.dbCreate('league');
+```
+**Create tables**
+```
+r.db('league').tableCreate('teams');
+r.db('league').tableCreate('matches');
+```
+**Insert documents**
+```
+r.db('league').table('teams').insert([
+  { name: 'River', id: 'RIV' },
+  { name: 'Boca', id: 'BOC' },
+  { name: 'Racing', id: 'RAC' },
+  { name: 'Independiente', id: 'IND' },
+  { name: 'Huracan', id: 'HUR' },
+  { name: 'San Lorenzo', id: 'SLA' },
+  { name: 'Ferro', id: 'FER' },
+  { name: 'Velez', id: 'VEL' }
+]);
 
-- Go to Data Explorer: http://localhost:8080/#dataexplorer
-
-- Create the database:
-        r.dbCreate('league');
-
-- Create tables:
-        r.db('league').tableCreate('teams');
-        r.db('league').tableCreate('matches');
-
-- Insert documents
-        r.db('league').table('teams').insert([
-          { name: 'River', id: 'RIV' },
-          { name: 'Boca', id: 'BOC' },
-          { name: 'Racing', id: 'RAC' },
-          { name: 'Independiente', id: 'IND' },
-          { name: 'Huracan', id: 'HUR' },
-          { name: 'San Lorenzo', id: 'SLA' },
-          { name: 'Ferro', id: 'FER' },
-          { name: 'Velez', id: 'VEL' }
-        ]);
-        
-        r.db('league').table('matches').insert([
-         { home:'RIV', goal_home:0, away:'BOC', goal_away:0 }, 
-         { home:'RAC', goal_home:0, away:'IND', goal_away:0 }, 
-         { home:'HUR', goal_home:0, away:'SLA', goal_away:0 }, 
-         { home:'VEL', goal_home:0, away:'FER', goal_away:0 }
-        ]);
-
-
+r.db('league').table('matches').insert([
+ { home:'RIV', goal_home:0, away:'BOC', goal_away:0 }, 
+ { home:'RAC', goal_home:0, away:'IND', goal_away:0 }, 
+ { home:'HUR', goal_home:0, away:'SLA', goal_away:0 }, 
+ { home:'VEL', goal_home:0, away:'FER', goal_away:0 }
+]);
 ```
 
-You can query the tables if you wish
+
+**You can query the tables if you wish:**
 
 ```
 r.db('league').table('teams');
@@ -130,45 +137,40 @@ r.db('league').table('matches');
 ```
 ![](https://i.imgur.com/FzNt1OK.png)
 
-## Install Socket.io
+### Install Socket.io
+[Socket.IO](http://socket.io/) is a JavaScript library for realtime web applications. Socket.IO enables real-time bidirectional event-based communication. We will use Socket.IO to inform the customer of any changes in our database. To do so, within the project root execute the following command: `npm install socket.io --save`
 
-`
-npm install socket.io --save
-`
-Installs Socket.io and save it to the file  `package.json`
+### Installing RethinkDB client drivers
+RethinkDB has several client drivers which can be found [here](https://rethinkdb.com/docs/install-drivers/). For our application, we use the official driver for JavaScript.
+We installed with the following command in the root of the project:`npm install rethinkdb --save`
 
-## Install client driver RethinkDB
-`npm install rethinkdb --save`
+If you want, take a moment to review the previous steps and return here and continue with the example. In short, up here we did the following:
+- [x] Install Node.JS and RethinkDB.
+- [x] Create the skeleton of our application with express-generator.
+- [x] Create the database and tables.
+- [x] Install Socket.IO and RethinkDB client driver for JavaScript.
+
+What are we missing?
+- [ ] Connect to RethinkDB.
+- [ ] Create the page for today's game.
+- [ ] Updating a football match and receive real-time notification.
+
+### Connecting the application to RethinkDB
 
 
+We will work with the `www` file which is located inside the `real-time-league\bin\` folder.
 
-
-
-
-
-
-
-
-Next, we will create th page that will display the matches and update the information for view results in real time.
-
-Then, you need to edit the file `www` in: 
-`<application-home>/bin/`
-
-```
+```javascript
 /**
  * Module dependencies.
  */
 ...
-
 var rethinkdb = require('rethinkdb');
-
 ...
-
 /**
  * Listen on provided port, on all network interfaces.
  */
 ...
-
 var io = require('socket.io').listen(server);
 
 /**
@@ -181,8 +183,6 @@ var configdb = {
 };
 
 var name_database = 'league';
-
-
 
 //function to connect Rethinkdb
 function connect() {
@@ -203,7 +203,7 @@ function connect() {
 
 //execute function connect
 connect().then(function (result) {
-        console.log("app >> connection success to Rethinkdb.");
+        console.log("app >> connection success to RethinkDB.");
 
         //store connection data as global variables
 		app.set('r', result.r);
@@ -261,21 +261,7 @@ io.sockets.on('connection', function (socket) {
 });
 
 ...
-
 ```
-
-## Link application to RethinkDB
-
-1. Create a folder 'services' 
-
-Crear dentro del proyecto, una carpeta llamada services y adentro crear el archivo 
-
-rethinkdb.service.js el cual nos permitira realizar consultas hacia la base de datos.
-
-
-
-
-
 
 
 
