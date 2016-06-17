@@ -88,13 +88,15 @@ Suppose, we have to create a database for the local football league where teams 
         }
 
 - Go to Data Explorer: http://localhost:8080/#dataexplorer
+
 - Create the database:
         r.dbCreate('league');
+
 - Create tables:
         r.db('league').tableCreate('teams');
         r.db('league').tableCreate('matches');
-- Insert documents
 
+- Insert documents
         r.db('league').table('teams').insert([
           { name: 'River', id: 'RIV' },
           { name: 'Boca', id: 'BOC' },
@@ -113,6 +115,21 @@ Suppose, we have to create a database for the local football league where teams 
          { home:'VEL', goal_home:0, away:'FER', goal_away:0 }
         ]);
 
+
+```
+
+You can query the tables if you wish
+
+```
+r.db('league').table('teams');
+```
+![](https://i.imgur.com/iqxeowD.png)
+
+```
+r.db('league').table('matches');
+```
+![](https://i.imgur.com/FzNt1OK.png)
+
 ## Install Socket.io
 
 `
@@ -130,19 +147,7 @@ Installs Socket.io and save it to the file  `package.json`
 
 
 
-```
 
-You can query the tables if you wish
-
-```
-r.db('league').table('teams');
-```
-![](https://i.imgur.com/iqxeowD.png)
-
-```
-r.db('league').table('matches');
-```
-![](https://i.imgur.com/FzNt1OK.png)
 
 Next, we will create th page that will display the matches and update the information for view results in real time.
 
