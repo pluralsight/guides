@@ -1,3 +1,8 @@
+### Creating a Simple Application with Node.JS and Rethinkdb by fdferrari
+- [Read the guide](http://tutorials.pluralsight.com/nosql-databases/creating-a-simple-application-with-node-js-and-rethinkdb?status=draft)
+- [Read more from fdferrari](http://tutorials.pluralsight.com/author/fdferrari) <img src="https://avatars.githubusercontent.com/u/19995201?v=3" width="30" height="30" alt="fdferrari" />
+- Related to: NoSQL Databases (MongoDB, Cassandra, etc)
+
 ### A call for HackerNews Contributors by Prateek Gupta
 - [Read the guide](http://tutorials.pluralsight.com/other/a-call-for-hackernews-contributors?status=draft)
 - [Read more from Prateek Gupta](http://tutorials.pluralsight.com/author/prtkgpt) <img src="https://avatars1.githubusercontent.com/u/2454349?v=3" width="30" height="30" alt="Prateek Gupta" />
