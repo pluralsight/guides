@@ -44,7 +44,7 @@ First, we will install [RethinkDB](https://www.rethinkdb.com/docs/install/). Onc
 
 Suppose, we have to create a database for the local football league where teams and different tournament games are stored. The structure of the tables would be the following:
 
-```json
+```
 team: {
 	data_base: "league",
 	table_name: "teams",
