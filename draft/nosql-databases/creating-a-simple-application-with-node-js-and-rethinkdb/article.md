@@ -63,7 +63,7 @@ team: {
 	}
 }
 ```
-```json
+```
 match: {
 	data_base: "league",
 	table_name: "matches",
