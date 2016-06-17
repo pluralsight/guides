@@ -1,4 +1,4 @@
-# Creating a Simple Application with Node.JS and Rethinkdb
+# Introduction
 
 Hello everyone!, this tutorial aims to show you how in simple steps to create your first application in real time using Node.JS and RethinkDB.
 
