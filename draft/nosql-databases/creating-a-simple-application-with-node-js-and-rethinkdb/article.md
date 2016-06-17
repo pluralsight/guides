@@ -13,48 +13,105 @@ For the development of the application we will use the following technologies:
 - Socket.IO [1.4.6]
 - RethinkDB [2.3.2]
 
-## Requirements
+# Requirements
 
-### Install Node.js
+## Install Node.js
 To learn how to install Node.JS, follow the link below: https://nodejs.org/en/download/
 
-### Install express-generator to create an application skeleton
+## Install express-generator
 While not mandatory, with Express-Generator we will very easily be able to build the structure of our application.
 
-`npm install express-generator -g`
+- Install express-generator with the following command:
 
+        $ npm install express-generator -g
+- Create the application. For this tutorial, we'll call real-time-league:
+        $ express real-time-league
+- Then install dependencies:
+        $ cd real-time-league
+        $ npm install
 
-`express real-time-league`
+# Let's do it!
+The application that we will build, will allow us to know in real time the results of football matches. And believe it or not, we will in a few steps ;)
 
+First, we will install RethinkDB >> https://www.rethinkdb.com/docs/install/
+Once installed, we access the administration console: http://localhost:8080 and and click on the menu "Data Explorer".
+## Creating our data model
 
-```
-create : real-time-league
-   create : real-time-league/package.json
-   create : real-time-league/app.js
-   create : real-time-league/public/stylesheets
-   create : real-time-league/public/stylesheets/style.css
-   create : real-time-league/public/javascripts
-   create : real-time-league/public/images
-   create : real-time-league/public
-   create : real-time-league/routes
-   create : real-time-league/routes/index.js
-   create : real-time-league/routes/users.js
-   create : real-time-league/views
-   create : real-time-league/views/index.jade
-   create : real-time-league/views/layout.jade
-   create : real-time-league/views/error.jade
-   create : real-time-league/bin
-   create : real-time-league/bin/www
+Suppose, we have to create a database for the local football league where teams and different tournament games are stored. The structure of the tables would be the following:
 
-   install dependencies:
-     $ cd real-time-league && npm install
+        team: {
+        	data_base: "league",
+        	table_name: "teams",
+        	description: "A team",
+        	data: {
+        		id: {
+        			description: "First three letters of the team's name"
+        		},
+        		name: {
+        			description: "Full team name"
+        		}
+        	},
+        	example: {
+        		id: "RIV",
+        		name: "River Plate"
+        	}
+        }
+        
+        match: {
+        	data_base: "league",
+        	table_name: "matches",
+        	description: "A match",
+        	data: {
+        		id: {
+        			description: "Auto-generated ID"
+        		},
+        		home: {
+        			description: "Home team ID"
+        		},
+        		away: {
+        			description: "Away team ID"
+        		},
+        		goal_home: {
+        			description: "Number of home team's goals"
+        		},
+        		gol_away: {
+        			description: "Number of away team's goals"
+        		}	
+        	},
+        	example: {
+        		id: '76ab9148-a527-41a4-aeec-a6ea0994a167',
+        		local: "RIV",
+        		visitante: "BOC",
+        		goal_home: 1,
+        		goal_away: 0
+        	}
+        }
 
-   run the app:
-     $ DEBUG=real-time-league:* npm start
+- Go to Data Explorer: http://localhost:8080/#dataexplorer
+- Create the database:
+        r.dbCreate('league');
+- Create tables:
+        r.db('league').tableCreate('teams');
+        r.db('league').tableCreate('matches');
+- Insert documents
 
-```
-
-Execute the above commands to install the dependencies and run the application.
+        r.db('league').table('teams').insert([
+          { name: 'River', id: 'RIV' },
+          { name: 'Boca', id: 'BOC' },
+          { name: 'Racing', id: 'RAC' },
+          { name: 'Independiente', id: 'IND' },
+          { name: 'Huracan', id: 'HUR' },
+          { name: 'San Lorenzo', id: 'SLA' },
+          { name: 'Ferro', id: 'FER' },
+          { name: 'Velez', id: 'VEL' }
+        ]);
+        
+        r.db('league').table('matches').insert([
+         { home:'RIV', goal_home:0, away:'BOC', goal_away:0 }, 
+         { home:'RAC', goal_home:0, away:'IND', goal_away:0 }, 
+         { home:'HUR', goal_home:0, away:'SLA', goal_away:0 }, 
+         { home:'VEL', goal_home:0, away:'FER', goal_away:0 }
+        ]);
 
 ## Install Socket.io
 
@@ -67,104 +124,12 @@ Installs Socket.io and save it to the file  `package.json`
 `npm install rethinkdb --save`
 
 
-## Install Rethinkdb
-
-On windows 
-https://www.rethinkdb.com/docs/install/windows/
-
-## Create Database Model
-
-Supongamos, que tenemos que crear una base de datos para la liga de futbol local donde se almacenen los equipos y los diferentes partidos del torneo. La estructura de las tablas seria la siguiente:
-
-```
-team: {
-	data_base: "league",
-	table_name: "teams",
-	description: "A team",
-	data: {
-		id: {
-			description: "First three letters of the team's name"
-		},
-		name: {
-			description: "Full team name"
-		}
-	},
-	example: {
-		id: "RIV",
-		name: "River Plate"
-	}
-}
-
-match: {
-	data_base: "league",
-	table_name: "matches",
-	description: "A match",
-	data: {
-		id: {
-			description: "Auto-generated ID"
-		},
-		home: {
-			description: "Home team ID"
-		},
-		away: {
-			description: "Away team ID"
-		},
-		goal_home: {
-			description: "Number of home team's goals"
-		},
-		gol_away: {
-			description: "Number of away team's goals"
-		}	
-	},
-	example: {
-		id: '76ab9148-a527-41a4-aeec-a6ea0994a167',
-		local: "RIV",
-		visitante: "BOC",
-		goal_home: 1,
-		goal_away: 0
-	}
-}
-```
-## Create database
-
-1. Go to dataexplorer >> http://localhost:8080/#dataexplorer
-
-2. Create the database
-
-        `r.dbCreate('league');`
 
 
-3. Create tables
 
-        ```
-        r.db('league').tableCreate('teams');
-        r.db('league').tableCreate('matches');
-        ```
 
-4. Insert documents
 
-**TEAMS**
-```
-r.db('league').table('teams').insert([
-  { name: 'River', id: 'RIV' },
-  { name: 'Boca', id: 'BOC' },
-  { name: 'Racing', id: 'RAC' },
-  { name: 'Independiente', id: 'IND' },
-  { name: 'Huracan', id: 'HUR' },
-  { name: 'San Lorenzo', id: 'SLA' },
-  { name: 'Ferro', id: 'FER' },
-  { name: 'Velez', id: 'VEL' }
-]);
-```
 
-**MATCHES**
-```
-r.db('league').table('matches').insert([
- { home:'RIV', goal_home:0, away:'BOC', goal_away:0 }, 
- { home:'RAC', goal_home:0, away:'IND', goal_away:0 }, 
- { home:'HUR', goal_home:0, away:'SLA', goal_away:0 }, 
- { home:'VEL', goal_home:0, away:'FER', goal_away:0 }
-]);
 ```
 
 You can query the tables if you wish
