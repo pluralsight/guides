@@ -3,7 +3,12 @@
     "author_name": "fdferrari",
     "author_real_name": "fdferrari",
     "branch": "master",
-    "branches": [],
+    "branches": [
+        [
+            "Kebscito",
+            "Kebscito-nosql-databases-creating-a-simple-application-with-node-js-and-rethinkdb"
+        ]
+    ],
     "filename": "article.md",
     "first_commit": "e22ce13ce0930fbfcc1d1ef9c246586edfe677b8",
     "image_url": "https://avatars.githubusercontent.com/u/19995201?v=3",
