@@ -143,14 +143,16 @@ You can also combine multiple queries and collections to make more complex analy
  
  ### Creating and saving queries
  
- 1. In your explorer, select **count** as analysis time, collection type as **products** and and a time frame as **this month**.
+In your explorer, select **count** as analysis time, collection type as **products** and and a time frame as **this month**.
  
 ![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/598cead5-cffe-410b-83ea-40d4925e4305.39)
 
- Voila! You just created your first query. You can save your query and use it any time you want. 
+ Voila! You just created your first query. You can save your query and use it any time you want. You can also visualize the data differently if applicable by chosing from the different types of visualizations in the top right , next to the field for the query name.
+ 
+
  The next step is to click on the **embed** button on the right and get the code for displaying the query for the next step in the guide:
  
- 
+
 ```javascript
 var client = new Keen({
   projectId: "YOURKEENPROJECTID",
@@ -171,19 +173,88 @@ Keen.ready(function(){
   });
   
 });
-
-javascript
-
+```
+You can continue playing with the explorer and create one or two more queries. Make sure you save them so because you are going to need the code for embedding in the next step of the guide.
 
 # Visualising your data reactively
-5. include js "//cdn.jsdelivr.net/keen.js/3.4.1/keen.min.js"
+
+After collecting data and analyzing it, it is time to build the dashboard.
+First, include the [Keen.IO JavaScript SDK ](https://github.com/keen/keen-js) in the Ruby on Rails application. There are many ways to do this, but for the sake of simplicity, you can do this by simply adding it to your applicaiton layout:
+
+```html
+<!-- app/views/layouts/applicaiton.html.erb -->
+<html>
+  <head>
+    <!-- Paste this line in the head section of the layout -->
+    <%= javascript_include_tag "//cdn.jsdelivr.net/keen.js/3.4.1/keen.min.js" ,'data-turbolinks-track': 'reload'%>
+  </head>
+  <!-- content -->
+</html>
+```
+
+Next, let's create an action and a view for the dashboard:
+
+```ruby
+#app/controllers/products_controller.rb
+class ProductsController < ApplicationController
+  #...
   def dashboard
   end
+  #...
+end
+```
 
+Add the following line to <code>routes.rb </code> in order to make the dashboard the root action of the application:
+```
+#app/routes.rb
+Rails.application.routes.draw do
+  root to: 'products#dashboard' #set the dashboard as your root
+  resources :products
+end
+```
+Lastly, create a view for your <code> dashboard </code> action:
 
-  root to: 'products#dashboard'
-  and a view
-  
+```html
+<!-- app/views/products/dashboard.html.erb -->
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">
+        Keen Dashboard
+      </a>
+    </div>
+    <ul class="nav navbar-nav navbar-right">
+      <li><%= link_to 'All products', products_path%></li>
+    </ul>
+  </div>
+
+</nav>
+<div class="container-fluid">
+  <div id="alert-placeholder"></div>
+  <div class="row">
+    <div class="col-md-6" id="chart-wrapper">
+
+    </div>
+
+    <div class="col-md-6" id="pie-wrapper">
+
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6" >
+      <div class="col-md-6" id="total-wrapper">
+
+      </div>
+    </div>
+  </div>
+
+</div>
+```
+The view contains a simple bootstrap header and a few columns with ids. The <code>chart-wrapper</code> , <code>pie-wrapper</code> and <code>total-wrapper</code> divs are going to be used as a reference for putting the analytics elements into the document.
+
+### Making analytics reactive
+ Reactive analytics means that the visualization of the data is going to change automatically as you change the data in Keen.IO without the need to restart the page. Rails 5 make
+
 
 
 
@@ -215,6 +286,3 @@ class Product < ApplicationRecord
 end
 
 
-15. show dash and how to create queries. create 3 sample queres
-16. client-side cable
-17. bs
