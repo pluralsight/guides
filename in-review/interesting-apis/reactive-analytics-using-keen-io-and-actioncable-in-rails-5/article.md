@@ -135,7 +135,7 @@ You can also input query parameters to group your data orfilter it data in terms
 You can also combine multiple queries and collections to make more complex analytics using [funnels](https://keen.io/docs/api/#funnels).
 
 
-## Query explorer
+## Exploring data
  You can start playing with the events collected in Keen.IO using its explorer. To access it, go to your project overview and click on the explorer tab on the top right. [You can also download the explorer and use it locally ](https://github.com/keen/explorer).
  
 
