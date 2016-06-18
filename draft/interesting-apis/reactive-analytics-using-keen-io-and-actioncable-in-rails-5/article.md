@@ -386,4 +386,17 @@ Here is an example with three queries displayed in the different div wrappers:
     client.draw favoritesDist, document.getElementById('pie-wrapper'), {}
     client.draw allProducts, document.getElementById('total-wrapper'), {}
 ```
+First, we initialize the client with the credentials of the project provided by Keen.IO. <code> Keen.ready </code> is called when the HTML document is loaded and the queries are ready to be visualized. <code> Keen.Query </code> takes two arguments - the first argument is the analytics type and the second arugment is an object that contains details about the collection, interval and filters. Have look at [Keen.IO's JavaScript SDK](https://github.com/keen/keen-js) for more information on creating queries.
+
+<code> client.draw </code> is the function that does the drawing. The first argument is the query and the second argument is the selected element from the HTML document.
+
+Go to [http://localhost:3000](http://localhost:3000) and see the results. You now have a functioning dashboard.
+
+#### Testing out reacivity
+
+ Open two browser windows and try to insert some data through [http://localhost:3000/products/new](http://localhost:3000/products/new) one of them while looking at [http://localhost:3000](http://localhost:3000).
+ 
+ 
+![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/25050fd2-fba8-434d-a4e4-28ae2ca42f36.004)
+
 
