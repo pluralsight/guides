@@ -1,3 +1,8 @@
+### GLOBAL VARIABLE TIPS (Ionic 2) by Hervé de CHAVIGNY
+- [Read the guide](http://tutorials.pluralsight.com/html-css/global-variable-tips-ionic-2?status=draft)
+- [Read more from Hervé de CHAVIGNY](http://tutorials.pluralsight.com/author/vevedh) <img src="https://avatars.githubusercontent.com/u/1430389?v=3" width="30" height="30" alt="Hervé de CHAVIGNY" />
+- Related to: HTML/CSS
+
 ### Build Location Tracking App with Horizon by kiichi
 - [Read the guide](http://tutorials.pluralsight.com/nosql-databases/build-location-tracking-app-with-horizon?status=draft)
 - [Read more from kiichi](http://tutorials.pluralsight.com/author/kiichi) <img src="https://avatars.githubusercontent.com/u/396816?v=3" width="30" height="30" alt="kiichi" />
