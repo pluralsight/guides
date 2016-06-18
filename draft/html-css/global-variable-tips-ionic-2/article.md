@@ -10,7 +10,7 @@ You can use this Global Variables Provider in  file _app.ts_ add:
 
 > import { AppDatas } from './providers/app-datas/app-datas';
 
-> ionicBootstrap(MyApp,[..,AppDatas]
+> ionicBootstrap(MyApp,[..,AppDatas],...);
 
 You can use in all others components pages :
 
