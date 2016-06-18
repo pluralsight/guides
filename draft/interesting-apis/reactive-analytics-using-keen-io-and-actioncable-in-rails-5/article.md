@@ -116,11 +116,14 @@ You are now ready to start analyzing the information you just entered.
 # Analyzing your data
 
 
-
-
-5. include js "//cdn.jsdelivr.net/keen.js/3.4.1/keen.min.js"
 6. https://keen.io/docs/data-analysis/?s=gh-gem - overview, good to have
-9. create action
+
+
+## Creating queries
+
+
+# Visualising your data reactively
+5. include js "//cdn.jsdelivr.net/keen.js/3.4.1/keen.min.js"
   def dashboard
   end
 
@@ -129,7 +132,6 @@ You are now ready to start analyzing the information you just entered.
   and a view
   
 
-adding should work now, check console
 
 
 11. channel analytics
