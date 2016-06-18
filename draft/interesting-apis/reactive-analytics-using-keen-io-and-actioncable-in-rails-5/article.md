@@ -92,7 +92,6 @@ Let's start populating data into Keen.IO . Add tollowing snippet to your model:
 
 class Product < ApplicationRecord
   after_save { Keen.publish 'products' , self }
- 
 end
 ```
 <code>after_save</code> is a [callback hook](http://api.rubyonrails.org/classes/ActiveRecord/Callbacks.html) which is executed every time a product  in our application's database. The <code>Keen.publish</code>  method provided by the Keen.IO's Ruby SDK accepts two parameters. The first parameter is the collection that is going to be interacted with and the second parameter is the data. In this case, <code>self</code> refers to the particular instance of the model itself, which means that we are going to send all the parameters of the Product model (name, price, favorites, etc) every time a particular object is created.
@@ -114,12 +113,66 @@ After you have added a few products, go to your Keen.IO's project dashboard. Und
 
 You are now ready to start analyzing the information you just entered.
 # Analyzing your data
+The next step is to start  making sense out of the whole data. At this point, a team would nornally try to devise the numerous ways to represent the data in a meaningful format. Thankfully, [Keen.IO's data analysis API does all this for you](https://keen.io/docs/data-analysis/?s=gh-gem) . It gives you options to select the core analysis types:
+ - **Sum** - calculate the sum of numeric values in a collection
+ - **Average** - calculate the average of numeric values in a collection
+ - **Minimum** - return the mininu, of all numeric values in a property
+ - **Maximum** - return the maximum of all numeric values in a property
+ - **Percentile** - calculate a percent of a given property in a colleciton
+ - **Median** - get the median value of all numeric values of a given property
+ - **Count and count_unique** - count either all or the unique occurences of values of a given property
+ - **Select and select_unique** - select a list of values found for a given property
+ 
+ 
+You can also input query parameters to group your data orfilter it data in terms of:
+- **Timeframe** - Calculate values for a given timerframe
+- **Interval** - Calculate values from the currenty minute up to the current year.
+- **Filter** - Refine your serach by filtering out values for given properties
+
+You can also combine multiple queries and collections to make more complex analytics using [funnels](https://keen.io/docs/api/#funnels).
 
 
-6. https://keen.io/docs/data-analysis/?s=gh-gem - overview, good to have
+## Exploring your data
+ You can start playing with the events collected in Keen.IO using its explorer. To access it, go to your project overview and click on the explorer tab on the top right. [You can also download the explorer and use it locally ](https://github.com/keen/explorer).
+ 
+ 
+![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/3aefb156-064d-493e-bdaa-5b2e6b6162e3.28)
 
+ 
+ Using the explorer's UI , you can leverage all the analysis types and apply  the filters easily. For this tutorial, we are going to create three different queries:
+ 
+ ### Creating and saving queries
+ 
+ 1. In your explorer, select **count** as analysis time, collection type as **products** and and a time frame as **this month**.
+ 
+![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/598cead5-cffe-410b-83ea-40d4925e4305.39)
 
-## Creating queries
+ Voila! You just created your first query. You can save your query and use it any time you want. 
+ The next step is to click on the **embed** button on the right and get the code for displaying the query for the next step in the guide:
+ 
+ 
+```javascript
+var client = new Keen({
+  projectId: "YOURKEENPROJECTID",
+  readKey: "YOURKEENREADKEY"
+
+});
+
+Keen.ready(function(){
+  
+  var query = new Keen.Query("count", {
+    eventCollection: "product",
+    timeframe: "this_14_days",
+    timezone: "UTC"
+  });
+  
+  client.draw(query, document.getElementById("my_chart"), {
+    // Custom configuration here
+  });
+  
+});
+
+javascript
 
 
 # Visualising your data reactively
