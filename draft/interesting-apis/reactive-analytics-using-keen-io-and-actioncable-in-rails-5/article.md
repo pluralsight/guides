@@ -309,5 +309,81 @@ end
 That's it! The back-end is set up. Let's move to the front-end and put the Keen.IO JavaScript SDK library that was previously added in the appication to use.
 ### Visualizing queries
 
+ Go to <code>app/assets/javascripts/channels/analytics.coffee</code>
+ 
+ There, you can see two functions - <code>connected() </code> , <code> disconnected() </code> and <code> received() </code> . <code> connected() </code> is called when the client connects to the server-side websocket, <code> disconnected() </code> is called in the opposite case, and <code> received()</code> is called when data is broadast from the server.
 
+ Outside of these functions, declare a **global** function that is going to be called to reload all the queries and visualize them on the dashboard:
+ 
+ App.analytics = App.cable.subscriptions.create "AnalyticsChannel",
+
+```javascript
+  connected: ->
+      loadAnalytics();
+
+  disconnected: ->
+    # Called when the subscription has been terminated by the server
+
+  received: (data) ->
+      loadAnalytics();
+ 
+
+@loadAnalytics = () =>
+  #paste the embed code from Keen.IO here
+
+ ```
+ 
+ <code> @loadAnalytics </code> (**@** denotes a global function in CoffeeScript) is going to be called in three places - when the client connects to the server-side channel, when there is data received from the channel and in the view itself. The only thing that is missing is the call from the view itself, so let's add it:
+ 
+```html
+<!-- app/views/products/dashboard.html.erb -->
+
+<!-- put this in the bottom of the document -->
+    <script>
+        loadAnalytics()
+    </script>
+```
+
+Now, go to your Keen.IO explorer and start getting the embed code from your favorite queries. Use [js2.coffee](http://js2.coffee) to transpile the javascript to coffeesscript.
+
+
+![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/f631fa39-6494-470c-af0c-e30241b021e2.003)
+
+Here is an example with three queries displayed in the different div wrappers:
+```js
+@loadAnalytics = () =>
+  client = new Keen(
+    projectId: 'YOURKEENPROJECTID'
+    readKey: 'YOURKEENREADKEY')
+  Keen.ready ->
+
+    allProducts = new Keen.Query("count", {
+      eventCollection: "product",
+      timeframe: "this_1_months",
+      timezone: "UTC"
+    });
+
+
+    favoritesDist = new Keen.Query("count_unique", {
+      eventCollection: "product",
+      groupBy: [
+        "name"
+      ],
+      targetProperty: "favorites",
+      timeframe: "this_14_days",
+      timezone: "UTC"
+    });
+
+    productsCreatedToday =  new Keen.Query("sum", {
+      eventCollection: "product",
+      interval: "daily",
+      targetProperty: "id",
+      timeframe: "this_14_days",
+      timezone: "UTC"
+    });
+
+    client.draw productsCreatedToday , document.getElementById('chart-wrapper'), {}
+    client.draw favoritesDist, document.getElementById('pie-wrapper'), {}
+    client.draw allProducts, document.getElementById('total-wrapper'), {}
+```
 
