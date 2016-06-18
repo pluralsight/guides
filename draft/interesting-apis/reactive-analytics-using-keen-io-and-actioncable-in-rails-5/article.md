@@ -109,7 +109,9 @@ Start your Rails server
 Go to [http://localhost:3000/products/new](http://localhost:3000/products/new)  and create some products.
 After you have added a few products, go to your Keen.IO's project dashboard. Under the overview tab you will be able to see your newly created collection and all the times in which you just  created in the Rails application.
 
-![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/98d417c4-eed0-4aaf-8abe-6c16a20d2e68.17)
+
+![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/6392586c-2c7f-4325-8ca6-6cfcf27a717c.001)
+
 
 You are now ready to start analyzing the information you just entered.
 # Analyzing your data
@@ -135,17 +137,16 @@ You can also combine multiple queries and collections to make more complex analy
 ## Query explorer
  You can start playing with the events collected in Keen.IO using its explorer. To access it, go to your project overview and click on the explorer tab on the top right. [You can also download the explorer and use it locally ](https://github.com/keen/explorer).
  
- 
-![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/3aefb156-064d-493e-bdaa-5b2e6b6162e3.28)
 
- 
  Using the explorer's UI , you can leverage all the analysis types and apply  the filters easily. For this tutorial, we are going to create three different queries:
  
  ### Creating and saving queries
  
 In your explorer, select **count** as analysis time, collection type as **products** and and a time frame as **this month**.
  
-![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/598cead5-cffe-410b-83ea-40d4925e4305.39)
+
+![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/a6da99de-4a13-4f19-b36b-c9c383c013ea.002)
+
 
  Voila! You just created your first query. You can save your query and use it any time you want. You can also visualize the data differently if applicable by chosing from the different types of visualizations in the top right , next to the field for the query name.
  
