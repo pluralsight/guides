@@ -252,37 +252,61 @@ Lastly, create a view for your <code> dashboard </code> action:
 ```
 The view contains a simple bootstrap header and a few columns with ids. The <code>chart-wrapper</code> , <code>pie-wrapper</code> and <code>total-wrapper</code> divs are going to be used as a reference for putting the analytics elements into the document.
 
-### Making analytics reactive
- Reactive analytics means that the visualization of the data is going to change automatically as you change the data in Keen.IO without the need to restart the page. Rails 5 make
+### Implementing reactivity
+ Reactive analytics means that the visualization of the data is going to change automatically as you change the data in Keen.IO without the need to restart the page. Ruby on Rails 5 make this easy by introducing  [ActionCable](https://github.com/rails/rails/tree/master/actioncable). ActionCable is a Rails 5 module that introduces an API for working with [WebSockets](https://developer.mozilla.org/en-US/docs/Web/API/WebSockets_API) in Ruby on Rails.
+ 
+ The first step is to generate a channel. In your terminal, execute:
+ ```bash
+  rails g channel analytics
+ ```
+The command will create a server side representation of the channel in <code>app/channels</code>  directory and a coffeescript file in <code>app/assets/channels</code> for handling the client side of the channel.
 
+First, you need to explicitly define the name of the channel through which the analytics information is going to be streamed.
+ ```
+ #app/channels/analytics_channel.rb
+class AnalyticsChannel < ApplicationCable::Channel
+  def subscribed
+    stream_from "analytics_channel"
+  end
+  #...
+end
+ ```
+<code>steam_from</code> is used to further specify the channel. It is used because a channel has multiple instances. For example, one channel can broadcast to multiple users. In that case, the parameters entered in <code>stream_from</code> would include an unique identifier. In this case, we are doing the simple way, by simply hardcoding a string.
 
+Second, you need to make a [job](http://edgeguides.rubyonrails.org/active_job_basics.html) which is going to broadcast to the analytics channel every time the application publishes an event. The idea of putting a broadcast in a job is because jobs can run in parallel with other processes which happening in the application. This ensures that your application will be able to queue multiple requests for broadcasts that occur simultaneously.
 
-
-11. channel analytics
- rails g channel analytics
-
-12. rails g job UpdateAnalytics
-13. 
-
+Open your terminal and generate the job.
+```bash
+ rails g job UpdateAnalytics
 ```
- class UpdateAnalyticsJob < ApplicationJob
+In order to maintain reactivity, the job has to be queued every time an event is published to Keen.IO. In this guide, we are doing it only once - when creating a new product:
+```ruby
+#app/models/product.rb
+class Product < ApplicationRecord
+  after_create_commit do
+    #publish the product creation event to Keen.IO
+    Keen.publish 'products' , self
+    #broadcast the job to update the analytics
+    UpdateAnalyticsJob.perform_later self 
+   end
+
+    #...
+end
+```
+In the job for the job itself, add a call to broadcast to the <code>analytics_channel</code>:
+```ruby
+#app/jobs/update_analytics_job.rb
+class UpdateAnalyticsJob < ApplicationJob
   queue_as :default
-  def perform
-    ActionCable.server.broadcast 'analytics_channel' 
+
+  def perform(product)
+    ActionCable.server.broadcast 'analytics_channel', product: product
   end
 end
 ```
-class Product < ApplicationRecord
-  after_create_commit {
-    Keen.publish 'products' , self
-    UpdateAnalyticsJob.perform_later self
-  }
 
+That's it! The back-end is set up. Let's move to the front-end and put the Keen.IO JavaScript SDK library that was previously added in the appication to use.
+### Visualizing queries
 
-  after_destroy {
-    Keen.delete 'products' , self
-    UpdateAnalyticsJob.perform_later self
-  }
-end
 
 
