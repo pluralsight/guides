@@ -107,7 +107,7 @@ Start your Rails server
  rails s
 ```
 
-Go to http://localhost:3000/products/new and create some products.
+Go to [http://localhost:3000/products/new](http://localhost:3000/products/new)  and create some products.
 After you have added a few products, go to your Keen.IO's project dashboard. Under the overview tab you will be able to see your newly created collection and all the times in which you just  created in the Rails application.
 
 ![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/98d417c4-eed0-4aaf-8abe-6c16a20d2e68.17)
