@@ -7,7 +7,7 @@ In this guide, we are going to build a reactive dashboard from scratch by buildi
 
 # Setting up
 
-## Connecting your Rails app with Keen.IO
+### Connecting your Rails app with Keen.IO
 
  First, open your terminal and make a new Rails 5 application. You need to have [Ruby 2.2.4](https://www.ruby-lang.org/en/) and up in order to do that : 
  
