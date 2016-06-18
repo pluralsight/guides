@@ -16,5 +16,10 @@ You can use in all others components pages :
 
 > import { AppDatas } from './providers/app-datas/app-datas';
 
+> contructor ( ... , public appDatas: AppDatas,...) {
+  ...
+  this.appDatas.uid = "ASDGJGJDGJGDJGD";
+  }
+
 Sample you can set a variable **_uid_** and init data in **app.ts** and show data in a other component page:
 
