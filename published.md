@@ -1,3 +1,8 @@
+### Amazon Alexa Skill Tutorial by Brian Donohue
+- [Read the guide](http://tutorials.pluralsight.com/node-js/amazon-alexa-skill-tutorial)
+- [Read more from Brian Donohue](http://tutorials.pluralsight.com/author/Donohue) <img src="https://avatars.githubusercontent.com/u/1069050?v=3" width="30" height="30" alt="Brian Donohue" />
+- Related to: Node.js
+
 ### Profiling memory usage in Python by Luke Lee
 - [Read the guide](http://tutorials.pluralsight.com/python/profiling-memory-usage-in-python)
 - [Read more from Luke Lee](http://tutorials.pluralsight.com/author/durden) <img src="https://avatars.githubusercontent.com/u/58063?v=3" width="30" height="30" alt="Luke Lee" />
