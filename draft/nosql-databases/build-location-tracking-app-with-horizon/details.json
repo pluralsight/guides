@@ -1,0 +1,15 @@
+{
+    "_publish_status": "draft",
+    "author_name": "kiichi",
+    "author_real_name": "kiichi",
+    "branch": "master",
+    "branches": [],
+    "filename": "article.md",
+    "first_commit": "d13e362572608405e32ff0c0ca4cfdebeca4360c",
+    "image_url": "https://avatars.githubusercontent.com/u/396816?v=3",
+    "stacks": [
+        "NoSQL Databases (MongoDB, Cassandra, etc)"
+    ],
+    "thumbnail_url": null,
+    "title": "Build Location Tracking App with Horizon"
+}
