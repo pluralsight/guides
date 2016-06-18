@@ -1,3 +1,8 @@
+Data analytics is an ever-growing trend in the software industry. An increasing number of industries rely on data in order to grow and gain competitive advantage. Almost all software products, from sleep cycle mobile apps to enterprise logistics software come coupled with in-depth analytics.  
+
+However, making sense out of data tends to be a tedious, long and volatile process. Building
+
+
 1 rails _5.0.0_ new reactivedashboard
 
 2.cd reactivedashboard
