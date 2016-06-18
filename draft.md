@@ -1,3 +1,8 @@
+### Build Location Tracking App with Horizon by kiichi
+- [Read the guide](http://tutorials.pluralsight.com/nosql-databases/build-location-tracking-app-with-horizon?status=draft)
+- [Read more from kiichi](http://tutorials.pluralsight.com/author/kiichi) <img src="https://avatars.githubusercontent.com/u/396816?v=3" width="30" height="30" alt="kiichi" />
+- Related to: NoSQL Databases (MongoDB, Cassandra, etc)
+
 ### Creating a Simple Application with Node.JS and Rethinkdb by fdferrari
 - [Read the guide](http://tutorials.pluralsight.com/nosql-databases/creating-a-simple-application-with-node-js-and-rethinkdb?status=draft)
 - [Read more from fdferrari](http://tutorials.pluralsight.com/author/fdferrari) <img src="https://avatars.githubusercontent.com/u/19995201?v=3" width="30" height="30" alt="fdferrari" />
