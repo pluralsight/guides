@@ -1,0 +1,15 @@
+{
+    "_publish_status": "draft",
+    "author_name": "terrenjpeterson",
+    "author_real_name": "Terren Peterson",
+    "branch": "master",
+    "branches": [],
+    "filename": "article.md",
+    "first_commit": "bc74b042f918dd20b240bba3dc19c06f8b1cec02",
+    "image_url": "https://avatars.githubusercontent.com/u/4663474?v=3",
+    "stacks": [
+        "Node.js"
+    ],
+    "thumbnail_url": null,
+    "title": "Skill leveraging S3 storage"
+}
