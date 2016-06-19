@@ -195,8 +195,8 @@ But we don't have any document, so let's add one with `insert()`:
 r.db('myDb').table('myTable').insert({
     "name": "Andrew",
 	"age": 20,
-	"interests": ["reading", "playing guitar", "pop music"], // An array
-	"contact info": {                                        // An object
+	"interests": ["reading", "playing guitar", "pop music"], 
+	"contact info": { 
 		"email": "andrew@example.com",
 		"phone": "5555555555"
 	}
@@ -242,8 +242,8 @@ You can also insert more than one document in an insert command using an array (
 r.db('myDb').table('myTable').insert([{
     "name": "Carl",
 	"age": 25,
-	"interests": ["sports", "pizza", "poetry"], // An array
-	"contact info": {                           // An object
+	"interests": ["sports", "pizza", "poetry"], 
+	"contact info": {
 		"email": "carl@example.com",
 		"phone": "5555555555"
 	}
@@ -251,8 +251,8 @@ r.db('myDb').table('myTable').insert([{
 {
     "name": "Sophia",
 	"age": 21,
-	"interests": ["playing golf", "solving puzzles", "rock music"], // An array
-	"contact info": {                                               // An object
+	"interests": ["playing golf", "solving puzzles", "rock music"], 
+	"contact info": { 
 		"email": "sophia@example.com",
 		"phone": "5555555555"
 	}
