@@ -398,7 +398,9 @@ Go to [http://localhost:3000](http://localhost:3000) and see the results. You no
  To test out reactivity, two browser windows with [http://localhost:3000/products/new](http://localhost:3000/products/new) and  [http://localhost:3000](http://localhost:3000). Then, try to create a new product.
  
  
-![visualizing data](https://raw.githubusercontent.com/pluralsight/guides/master/images/25050fd2-fba8-434d-a4e4-28ae2ca42f36.004)
+
+![visualize](https://raw.githubusercontent.com/pluralsight/guides/master/images/998aa6a8-84d4-42c2-a6bd-0e304886fc1e.gif)
+
 
 
 That was all! I hope you found this tutorial interesting. If you missed out some of the parts or need a reference on the code, I have create a [GitHub repository](https://github.com/Kaizeras/keen.io-actioncable) with the code from the tutorial.
