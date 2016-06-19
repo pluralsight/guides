@@ -1,3 +1,8 @@
+### Reactive analytics using Keen.IO and ActionCable in Rails 5 by Hristo Georgiev
+- [Read the guide](http://tutorials.pluralsight.com/interesting-apis/reactive-analytics-using-keen-io-and-actioncable-in-rails-5?status=in-review)
+- [Read more from Hristo Georgiev](http://tutorials.pluralsight.com/author/Kaizeras) <img src="https://avatars.githubusercontent.com/u/6340189?v=3" width="30" height="30" alt="Hristo Georgiev" />
+- Related to: Interesting APIs (SendGrid, Twilio, etc)
+
 ### A Practical Introduction to RethinkDB by Esteban Herrera
 - [Read the guide](http://tutorials.pluralsight.com/nosql-databases/a-practical-introduction-to-rethinkdb?status=in-review)
 - [Read more from Esteban Herrera](http://tutorials.pluralsight.com/author/eh3rrera) <img src="https://avatars.githubusercontent.com/u/11665759?v=3" width="30" height="30" alt="Esteban Herrera" />
