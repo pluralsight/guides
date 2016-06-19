@@ -1,22 +1,22 @@
-Data analytics is one of the biggest trends in the recent years. An increasing number of industries rely on data in order to take decisions and gain competitive advantage. All software products, from sleep cycle mobile apps to enterprise logistics software come coupled with in-depth analytics.  
+Data analytics is one of today's biggest trends. An increasing number of industries rely on metadata analysis to make decisions and gain competitive advantage. As such, more and more software products, from sleep-cycle mobile apps to enterprise logistics software are becoming coupled with in-depth analytics.  
 
-However, making sense out of data tends to be a tedious, long and volatile process. Building a meaningful dashboard requires a lot of changes both to your back-end architecture and to your front-end visualizations. This is where [Keen.IO](https://keen.io/) can be very helpful. 
+However, making sense out of data tends to be a tedious and tricky process. Building a meaningful dashboard requires a lot of changes both to your back-end architecture and to your front-end visualizations. This is where [Keen.IO](https://keen.io/) can be very helpful. 
 
-[Keen.IO](https://keen.io/) is a SaaS solution that makes analyzing data and building dashboards easy, fast and efficient. It comes with a developer-friendly [API](https://keen.io/docs/) that covers the whole process from collecting data, analyzing it and visualizing it. It also comes with [SDKs](https://keen.io/docs/sdks/) for a great variety of technologies.
+[Keen.IO](https://keen.io/) is a SaaS (Software-as-a-Service) solution that makes analyzing data and building dashboards easy, fast, and efficient. It comes with a developer-friendly [API](https://keen.io/docs/) that covers the whole process: collecting data, analyzing it and visualizing it. It also comes with [SDKs](https://keen.io/docs/sdks/) that can be used in a plethora of technologies.
 
-In this guide, we are going to build a reactive dashboard from scratch by building a Ruby on Rails 5 web applciation using the newly-introduced [ActionCable](https://github.com/rails/rails/tree/master/actioncable) and [Keen.IO's Ruby SDK](https://github.com/keenlabs/keen-gem). Let's get started!
+In this guide, we are going to creating a reactive web dashboard from scratch by using Ruby on Rails 5 and its newly-introduced [ActionCable](https://github.com/rails/rails/tree/master/actioncable), as well as [Keen.IO's Ruby SDK](https://github.com/keenlabs/keen-gem). Let's get started!
 
 
 # Setting up
 
 ### Connecting your Rails app with Keen.IO
 
- First, open your terminal and make a new Rails 5 application. You need to have [Ruby 2.2.4](https://www.ruby-lang.org/en/) and up in order to do that : 
+ First, open your terminal and make a new Rails 5 application. *You need to have [Ruby 2.2.4](https://www.ruby-lang.org/en/) up in order to do this*: 
  
 ```bash
 rails _5.0.0_ new reactivedashboard
 ```
-Once the application is generated, move to its directory:
+Once the application is generated, go to its directory:
 ```bash
 cd reactivedashboard
 ```
@@ -29,12 +29,12 @@ gem "dotenv-rails"
 gem 'bootstrap-sass', '~> 3.3.6'
 gem 'sass-rails', '>= 3.2'
 ```
-And install them:
+Install the gems:
 ```bash
 bundle install
 ```
 
-The [keen](https://github.com/keenlabs/keen-gem) gem will make Keen.IO's Ruby SDK available in the Rails app, [dotenv-rails](https://github.com/bkeepers/dotenv) will let you save your Keen.IO APi credentials securely and [bootstrap-sass](https://github.com/twbs/bootstrap-sass) will be used to make everything look nice and crisp.
+What do these gems do? The [keen](https://github.com/keenlabs/keen-gem) gem makes Keen.IO's Ruby SDK available in the Rails app, [dotenv-rails](https://github.com/bkeepers/dotenv) lets you save your Keen.IO APi credentials securely, and [bootstrap-sass](https://github.com/twbs/bootstrap-sass) gives things a cleaner and crisper look.
   
  In order to set up Boostrap, go to <code>app/assets/stylesheets/application.scss</code>:
 and insert the following lines:
@@ -48,9 +48,9 @@ and insert the following lines:
  Now that the bootstrap CSS is set, let's move  onto the more important things: 
  
 ### Getting your credentials
-Connecting to Keen.IO is done with the standard approach with using environment variables. [Environment variables](http://railsapps.github.io/rails-environment-variables.html) are used to configure an application's behaviour in different environments (development, staging, production, etc.). The environment variables must be **always** kept secret, since some of them may give out sensitive information about your application. One way to do this is using  [dotenv-rails]((https://github.com/bkeepers/dotenv) that is included in the list of required gems above.
+Connect to Keen.IO by using environment variables. [Environment variables](http://railsapps.github.io/rails-environment-variables.html) configure an application's behavior in different environments (development, staging, production, etc.). Environment variables must **always** be kept secret, since some of them may give out sensitive information about your application. One way to do this is using the [dotenv-rails]((https://github.com/bkeepers/dotenv) gem, which is included in the list of required gems above.
 
-  Go to [Keen.IO](https://keen.io/)'s website and register your free account. Once you register, log in and create your first project. Once you've created it, in its  overview tab, you will have the credentials of your project:
+  Go to [Keen.IO](https://keen.io/)'s website and register your free account. Once you register, log in and create your first project. Once you've created this project you will see project credentials in the overview tab. Some things that will be available to you:
  
 - **Project ID**: The unique identifier of your project
 - **API credentials**:
@@ -72,23 +72,22 @@ Then, open up your first Keen.IO project's dashboard and replace the placeholder
   
 # Publishing your data
 
-Keen.IO uses [collections](https://keen.io/guides/data-modeling-guide/) that represent different types of events that happen in your application. An collection can contain all sorts of data you would like to record - clicks of an user, purchases made through your application, searches and so on. 
+Keen.IO uses [collections](https://keen.io/guides/data-modeling-guide/) that represent different types of events which occur in your application. A collection can contain all sorts of data you would like to record, from clicks made by a user to purchases made through your application. 
 
 
-In this guide, Keen.IO will keep track of the times a particular model is created. Let's cal the will call the colleciton <code>products</code> or <code>products_created</code>. A <code>product_created</code> event will have a name, a description, number of times it is favorited and a price. 
+In this guide, Keen.IO will keep track of the times a particular model is created. Let's call the collection <code>products</code> or <code>products_created</code>. A <code>product_created</code> event will have a name, a description, the number of times it's been favorited, and a price. 
 
 Let's scaffold the product model:
 
 ```
 rails g scaffold product price:decimal name:string description:text favorites:integer
 ```
-<code>rails g scaffold</code> will generate all the views, controller actions, model and database migrations you need to make to have [CRUD](https://en.wikipedia.org/wiki/Create,_read,_update_and_delete)<code>product</code> model. 
-Add the model to your database:
+<code>rails g scaffold</code> will generate all the views, controller actions, model and database migrations you need to make to have a [CRUD](https://en.wikipedia.org/wiki/Create,_read,_update_and_delete)<code>product</code> model. Add the model to your database:
 ```
 rails db:migrate
 ```
 
-To start populating data into Keen.IO . Add tollowing snippet to your <code>product</code> model:
+To start populating data into Keen.IO, add tollowing snippet to your <code>product</code> model:
 ```ruby
 #app/models/product.rb
 
@@ -96,7 +95,7 @@ class Product < ApplicationRecord
   after_save { Keen.publish 'products' , self }
 end
 ```
-<code>after_save</code> is a [callback hook](http://api.rubyonrails.org/classes/ActiveRecord/Callbacks.html) which is executed every time a product  in our application's database. The <code>Keen.publish</code>  method provided by the Keen.IO's Ruby SDK accepts two parameters. The first parameter is the collection that is going to be interacted with and the second parameter is the data. In this case, <code>self</code> refers to the particular instance of the model itself, which means that we are going to send all the parameters of the Product model (name, price, favorites, etc) every time a particular object is created.
+<code>after_save</code> is a [callback hook](http://api.rubyonrails.org/classes/ActiveRecord/Callbacks.html) that is executed every time a product in our application's database is created. The <code>Keen.publish</code>  method provided by the Keen.IO's Ruby SDK accepts two parameters. The first parameter is the collection that is going to be interacted with and the second parameter is the data. In this case, <code>self</code> refers to the particular instance of the model itself, which means that we are going to send all the parameters of the Product model (name, price, favorites, etc) every time a particular object is created.
 
 > **Recording events vs recording entities**
 > When you are doing analytics, you must always think about data in terms of events, not collections. In this tutorial, we are not recording the products themselves, we are only recording the event of their creation. The product entity should stay in the database of the application. What's important is the data each event generates. Read more on the topic [here](https://keen.io/blog/53958349217/analytics-for-hackers-how-to-think-about-event-data).
