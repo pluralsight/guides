@@ -1,3 +1,8 @@
+### A Practical Introduction to RethinkDB by Esteban Herrera
+- [Read the guide](http://tutorials.pluralsight.com/nosql-databases/a-practical-introduction-to-rethinkdb?status=draft)
+- [Read more from Esteban Herrera](http://tutorials.pluralsight.com/author/eh3rrera) <img src="https://avatars.githubusercontent.com/u/11665759?v=3" width="30" height="30" alt="Esteban Herrera" />
+- Related to: NoSQL Databases (MongoDB, Cassandra, etc)
+
 ### Skill leveraging S3 storage by Terren Peterson
 - [Read the guide](http://tutorials.pluralsight.com/node-js/skill-leveraging-s3-storage?status=draft)
 - [Read more from Terren Peterson](http://tutorials.pluralsight.com/author/terrenjpeterson) <img src="https://avatars.githubusercontent.com/u/4663474?v=3" width="30" height="30" alt="Terren Peterson" />
