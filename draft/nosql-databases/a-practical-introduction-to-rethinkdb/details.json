@@ -1,0 +1,15 @@
+{
+    "_publish_status": "draft",
+    "author_name": "eh3rrera",
+    "author_real_name": "Esteban Herrera",
+    "branch": "master",
+    "branches": [],
+    "filename": "article.md",
+    "first_commit": "05a90fde2580bb7ea4e0e01605191d4f0303f966",
+    "image_url": "https://avatars.githubusercontent.com/u/11665759?v=3",
+    "stacks": [
+        "NoSQL Databases (MongoDB, Cassandra, etc)"
+    ],
+    "thumbnail_url": null,
+    "title": "A Practical Introduction to RethinkDB"
+}
