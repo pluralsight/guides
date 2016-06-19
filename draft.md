@@ -1,3 +1,8 @@
+### Skill leveraging S3 storage by Terren Peterson
+- [Read the guide](http://tutorials.pluralsight.com/node-js/skill-leveraging-s3-storage?status=draft)
+- [Read more from Terren Peterson](http://tutorials.pluralsight.com/author/terrenjpeterson) <img src="https://avatars.githubusercontent.com/u/4663474?v=3" width="30" height="30" alt="Terren Peterson" />
+- Related to: Node.js
+
 ### GLOBAL VARIABLE TIPS (Ionic 2) by Hervé de CHAVIGNY
 - [Read the guide](http://tutorials.pluralsight.com/html-css/global-variable-tips-ionic-2?status=draft)
 - [Read more from Hervé de CHAVIGNY](http://tutorials.pluralsight.com/author/vevedh) <img src="https://avatars.githubusercontent.com/u/1430389?v=3" width="30" height="30" alt="Hervé de CHAVIGNY" />
