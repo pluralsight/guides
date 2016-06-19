@@ -861,7 +861,7 @@ r.connect({host: 'localhost', port: 28015}).then(function(conn) {
 
 Notice that the only difference with executing queries in the Node.js API is that they require the `run()` function at the end to execute. This function takes the connection object as an argument and optionally, a callback function that is executed when the query is complete. If no callback is provided, a promise is returned (like in the example).
 
-# RethinkDB's real-time functionality
+# RethinkDB real-time functionality
 
 RethinkDB's real-time functionality relies in something called *changefeeds*, that allows clientes to receive changes on a table or document as they happen.
 
