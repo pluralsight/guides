@@ -399,7 +399,10 @@ Go to [http://localhost:3000](http://localhost:3000) and see the results. You no
  
  
 ![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/25050fd2-fba8-434d-a4e4-28ae2ca42f36.004)
-
+df
 
 That was all! I hope you found this tutorial interesting. If you missed out some of the parts or need a reference on the code, I have create a [GitHub repository](https://github.com/Kaizeras/keen.io-actioncable) with the code from the tutorial.
 
+
+## Bonus: Visualizing data using Keen.IO's dashboard builder
+--
