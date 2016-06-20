@@ -12,7 +12,7 @@ It doesn't stop there. When you are done with a stream you have to dispose of it
 So when you think about audio this way, even just playing an audio file gets very complicated very fast.
 
 ### NAudio to the Rescue
-Lucky for us, there is a audio library for .NET called NAudio that will do most of this work for us. We will still be working with streams; there is no avoiding that when it comes to audio, however NAudio is a great library that abstracts us from the details of simple playing and recording of audio files. The good thing about NAudio is, it can be used in every type of project. If you simply want build and application to play or record audio files, you can do that without delving deep into streams. If you want something complex such as manipulating audio or creating filters it provides very good tools for that too.
+Lucky for us, there is a audio library for .NET -NAudio- that will do most of this work for us. We will still be working with streams; there is no avoiding that when it comes to audio, however NAudio is a great library that abstracts us from the details of simple playing and recording of audio files. The good thing about NAudio is, it can be used in every type of project. If you simply want build and application to play or record audio files, you can do that without delving deep into streams. If you want something complex such as manipulating audio or creating filters it provides very good tools for that too.
 
 There are 3 ways of getting NAudio:
 - [NAudio codeplex page](https://naudio.codeplex.com/)
@@ -24,10 +24,20 @@ I usually go with NuGet since it is the easiest of them all, however if you want
 ### Media Player
 
 The main purpose of this tutorial is to build a simple media player which will have some common features of various media players such as:
-- Play audio files with various formats (wave, mp3, ogg, flac etc)
+- Play audio files with various formats (wav, mp3, ogg, flac etc)
+- Skip to beginning, skip to end, play/pause, stop, shuffle buttons
+- Have a volume control
+- Have a seekbar
 - Have a playlist
-- Add files to this playlist
-- Add folders of files to this playlist
+- Add a file to this playlist
+- Add a folder of files to this playlist
+- Save and load playlists
+
+It should look like this at the end (with my Witcher 3 soundtrack playlist):
+![Our finalized media player](https://raw.githubusercontent.com/pluralsight/guides/master/images/71e4ccf5-4301-4b3f-8cb2-7fde9b7a816e.png)
+
+
+
 
 
 
