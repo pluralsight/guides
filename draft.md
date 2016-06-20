@@ -1,3 +1,8 @@
+### Building a WPF Media Player using NAudio by Murat Aykanat
+- [Read the guide](http://tutorials.pluralsight.com/microsoft-net/building-a-wpf-media-player-using-naudio?status=draft)
+- [Read more from Murat Aykanat](http://tutorials.pluralsight.com/author/aykanatm) <img src="https://avatars.githubusercontent.com/u/9140297?v=3" width="30" height="30" alt="Murat Aykanat" />
+- Related to: Microsoft.NET (C#, ASP.NET, VB.NET, etc)
+
 ### Skill leveraging S3 storage by Terren Peterson
 - [Read the guide](http://tutorials.pluralsight.com/node-js/skill-leveraging-s3-storage?status=draft)
 - [Read more from Terren Peterson](http://tutorials.pluralsight.com/author/terrenjpeterson) <img src="https://avatars.githubusercontent.com/u/4663474?v=3" width="30" height="30" alt="Terren Peterson" />

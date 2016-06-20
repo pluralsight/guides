@@ -1314,7 +1314,21 @@ model.getMovies = function (callback) {
 </html>
 ```
 
-`index.ejs` is a simple HTML file that presents the movies retrieved (in no particular order) and a form to post a new movie.
+`index.ejs` is a simple HTML file that uses [EJS](https://github.com/mde/ejs) as templating language and presents the movies retrieved (in no particular order) along with a form to post a new movie.
+
+In EJS, the `<% %>` tag is used to control flow. In this case, to iterate over the movies collection:
+```javascript
+<% movies.forEach(function(movie, index){ %>
+...
+<% }) %>
+```
+
+While the `<%= %>` tag outputs the (escaped) value of a variable:
+```javascript
+...
+<li class='movie' id='<%= movie.id %>'>
+...
+```
 
 When you submit the form, this snippet of code in `public/voting.js` is executed:
 ```javascript

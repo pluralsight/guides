@@ -1,3 +1,8 @@
+### Reactrb Showcase  by Barrie Hadfield
+- [Read the guide](http://tutorials.pluralsight.com/ruby-ruby-on-rails/reactrb-showcase)
+- [Read more from Barrie Hadfield](http://tutorials.pluralsight.com/author/barriehadfield) <img src="https://avatars.githubusercontent.com/u/3940251?v=3" width="30" height="30" alt="Barrie Hadfield" />
+- Related to: Ruby, Ruby on Rails
+
 ### Amazon Alexa Skill Tutorial by Brian Donohue
 - [Read the guide](http://tutorials.pluralsight.com/node-js/amazon-alexa-skill-tutorial)
 - [Read more from Brian Donohue](http://tutorials.pluralsight.com/author/Donohue) <img src="https://avatars.githubusercontent.com/u/1069050?v=3" width="30" height="30" alt="Brian Donohue" />

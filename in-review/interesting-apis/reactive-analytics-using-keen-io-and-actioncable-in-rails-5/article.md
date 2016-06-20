@@ -111,7 +111,7 @@ Go to [http://localhost:3000/products/new](http://localhost:3000/products/new)  
 After you have added a few products, go to your Keen.IO's project dashboard. Under the overview tab you will be able to see your newly created collection and all the times in which you just  created in the Rails application.
 
 
-![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/6392586c-2c7f-4325-8ca6-6cfcf27a717c.001)
+![recording events](https://raw.githubusercontent.com/pluralsight/guides/master/images/6392586c-2c7f-4325-8ca6-6cfcf27a717c.001)
 
 
 # Analyzing your data
@@ -145,7 +145,7 @@ You can also combine multiple queries and collections to make more complex analy
 In your explorer, select **count** as analysis time, collection type as **products** and and a time frame as **this month**. Click on the *run* button and see the results unveil.
  
 
-![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/a6da99de-4a13-4f19-b36b-c9c383c013ea.002)
+![query explorer](https://raw.githubusercontent.com/pluralsight/guides/master/images/a6da99de-4a13-4f19-b36b-c9c383c013ea.002)
 
 
  Voila! You just created your first query. You can save your query and use it any time you want. You can also visualize the data differently if applicable by chosing from the different types of visualizations in the top right , next to the field for the query name.
@@ -397,8 +397,13 @@ Go to [http://localhost:3000](http://localhost:3000) and see the results. You no
  To test out reactivity, two browser windows with [http://localhost:3000/products/new](http://localhost:3000/products/new) and  [http://localhost:3000](http://localhost:3000). Then, try to create a new product.
  
  
-![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/25050fd2-fba8-434d-a4e4-28ae2ca42f36.004)
+
+![visualize](https://raw.githubusercontent.com/pluralsight/guides/master/images/998aa6a8-84d4-42c2-a6bd-0e304886fc1e.gif)
+
 
 
 That was all! I hope you found this tutorial interesting. If you missed out some of the parts or need a reference on the code, I have create a [GitHub repository](https://github.com/Kaizeras/keen.io-actioncable) with the code from the tutorial.
 
+
+## Bonus: Visualizing data using Keen.IO's dashboard builder
+--

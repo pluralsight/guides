@@ -1,17 +1,12 @@
-### A Practical Introduction to RethinkDB by Esteban Herrera
-- [Read the guide](http://tutorials.pluralsight.com/nosql-databases/a-practical-introduction-to-rethinkdb?status=in-review)
-- [Read more from Esteban Herrera](http://tutorials.pluralsight.com/author/eh3rrera) <img src="https://avatars.githubusercontent.com/u/11665759?v=3" width="30" height="30" alt="Esteban Herrera" />
-- Related to: NoSQL Databases (MongoDB, Cassandra, etc)
-
 ### Reactive analytics using Keen.IO and ActionCable in Rails 5 by Hristo Georgiev
 - [Read the guide](http://tutorials.pluralsight.com/interesting-apis/reactive-analytics-using-keen-io-and-actioncable-in-rails-5?status=in-review)
 - [Read more from Hristo Georgiev](http://tutorials.pluralsight.com/author/Kaizeras) <img src="https://avatars.githubusercontent.com/u/6340189?v=3" width="30" height="30" alt="Hristo Georgiev" />
 - Related to: Interesting APIs (SendGrid, Twilio, etc)
 
-### Reactrb Showcase  by Barrie Hadfield
-- [Read the guide](http://tutorials.pluralsight.com/ruby-ruby-on-rails/reactrb-showcase?status=in-review)
-- [Read more from Barrie Hadfield](http://tutorials.pluralsight.com/author/barriehadfield) <img src="https://avatars.githubusercontent.com/u/3940251?v=3" width="30" height="30" alt="Barrie Hadfield" />
-- Related to: Ruby, Ruby on Rails
+### A Practical Introduction to RethinkDB by Esteban Herrera
+- [Read the guide](http://tutorials.pluralsight.com/nosql-databases/a-practical-introduction-to-rethinkdb?status=in-review)
+- [Read more from Esteban Herrera](http://tutorials.pluralsight.com/author/eh3rrera) <img src="https://avatars.githubusercontent.com/u/11665759?v=3" width="30" height="30" alt="Esteban Herrera" />
+- Related to: NoSQL Databases (MongoDB, Cassandra, etc)
 
 ### Tutorial Contest FAQ by Prateek Gupta
 - [Read the guide](http://tutorials.pluralsight.com/software-engineering-best-practices/tutorial-contest-faq?status=in-review)

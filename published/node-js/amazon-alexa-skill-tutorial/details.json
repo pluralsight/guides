@@ -5,10 +5,6 @@
     "branch": "master",
     "branches": [
         [
-            "adityavarshney",
-            "adityavarshney-node-js-amazon-alexa-skill-tutorial"
-        ],
-        [
             "prtkgpt",
             "prtkgpt-node-js-amazon-alexa-skill-tutorial"
         ]
