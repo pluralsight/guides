@@ -5,7 +5,7 @@ Not only I was shocked to find no core libraries, I was also amazed how audio is
 I believe to learn something properly, you need to create something basic using it. So in this tutorial I will explain how audio works on a programming level and how to build a simple media player from ground up using a very popular .NET audio library NAudio.
 
 ### Welcome to the World of Streams
-My first challenge was to wrap my head around the concept that audio is not an object, but a stream object. A stream is usually a sequence of bytes. If you want to read it, it has to be read like an array. Also it cannot be manipulated easily, you have to dig into the byte array and figure out what to do with each byte to achive what you want. There are also considerations when it comes to audio such as, number of channels, frequency, file formats etc.
+The first challenge is the concept that audio is not an object, but a stream object. A stream is usually a sequence of bytes. If you want to read it, it has to be read like an array. Also it cannot be manipulated easily, you have to dig into the byte array and figure out what to do with each byte to achive what you want. There are also considerations when it comes to audio such as, number of channels, frequency, file formats etc.
 
 It doesn't stop there. When you are done with a stream you have to dispose of it properly otherwise it will stay in the memory causing a memory leak. For example, if you are working with hundereds of audio you could run out of memory really fast and your application may crash. So in essence, you have to manually manage memory.
 
