@@ -75,7 +75,7 @@ Then, open up your first Keen.IO project's dashboard and replace the placeholder
 Keen.IO uses [collections](https://keen.io/guides/data-modeling-guide/) that represent different types of events which occur in your application. A collection can contain all sorts of data you would like to record, from clicks made by a user to purchases made through your application. 
 
 
-In this guide, Keen.IO will keep track of the times a particular model is created. Let's call the collection <code>products</code> or <code>products_created</code>. A <code>product_created</code> event will have a name, a description, the number of times it's been favorited, and a price. 
+In this guide, Keen.IO will keep track of the instances when a particular model is created. Let's call the collection <code>products</code> or <code>products_created</code>. A <code>product_created</code> event will have a name, a description, the number of times it's been favorited, and a price. 
 
 Let's scaffold the product model:
 
@@ -95,61 +95,58 @@ class Product < ApplicationRecord
   after_save { Keen.publish 'products' , self }
 end
 ```
-<code>after_save</code> is a [callback hook](http://api.rubyonrails.org/classes/ActiveRecord/Callbacks.html) that is executed every time a product in our application's database is created. The <code>Keen.publish</code>  method provided by the Keen.IO's Ruby SDK accepts two parameters. The first parameter is the collection that is going to be interacted with and the second parameter is the data. In this case, <code>self</code> refers to the particular instance of the model itself, which means that we are going to send all the parameters of the Product model (name, price, favorites, etc) every time a particular object is created.
+<code>after_save</code> is a [callback hook](http://api.rubyonrails.org/classes/ActiveRecord/Callbacks.html) which is executed every time a product in our application's database is created. The <code>Keen.publish</code>  method provided by the Keen.IO's Ruby SDK accepts two parameters. The first is the collection to be interacted with and the second parameter is the data/event that we would like to track or publish. In this case, <code>self</code> refers to the particular instance of the model itself. Thus, every time a particular object is created, we are going to send the parameters associated with the Product model (name, price, favorites, etc).
 
 > **Recording events vs recording entities**
 > When you are doing analytics, you must always think about data in terms of events, not collections. In this tutorial, we are not recording the products themselves, we are only recording the event of their creation. The product entity should stay in the database of the application. What's important is the data each event generates. Read more on the topic [here](https://keen.io/blog/53958349217/analytics-for-hackers-how-to-think-about-event-data).
-
-
 
 Start your Rails server
 ```bash
  rails s
 ```
 
-Go to [http://localhost:3000/products/new](http://localhost:3000/products/new)  and create some products.
-After you have added a few products, go to your Keen.IO's project dashboard. Under the overview tab you will be able to see your newly created collection and all the times in which you just  created in the Rails application.
+Go to [http://localhost:3000/products/new](http://localhost:3000/products/new) and create some products.
+After you have added a few products, go to your Keen.IO's project dashboard. Under the overview tab you will be able to see your newly-created collection and event occurrence times.
 
 
-![recording events](https://raw.githubusercontent.com/pluralsight/guides/master/images/6392586c-2c7f-4325-8ca6-6cfcf27a717c.001)
+![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/6392586c-2c7f-4325-8ca6-6cfcf27a717c.001)
 
 
 # Analyzing your data
-The next step is to start  making sense out of the whole data that has been entered. At this point, a software development team would try to devise the numerous ways to represent the data in a meaningful format. Thankfully, [Keen.IO's data analysis API does all this for you](https://keen.io/docs/data-analysis/?s=gh-gem) . It gives you options to select the core analysis types:
+The next step is to start  making sense out of the whole data that has been entered. At this point, a software development team would try to devise the numerous ways to represent the data in a meaningful format. Thankfully, [Keen.IO's data analysis API does all this for you](https://keen.io/docs/data-analysis/?s=gh-gem). It gives you options to select the core analysis types:
  - **Sum** - calculate the sum of numeric values in a collection
  - **Average** - calculate the average of numeric values in a collection
- - **Minimum** - return the mininu, of all numeric values in a property
+ - **Minimum** - return the minimum, of all numeric values in a property
  - **Maximum** - return the maximum of all numeric values in a property
  - **Percentile** - calculate a percent of a given property in a colleciton
  - **Median** - get the median value of all numeric values of a given property
- - **Count and count_unique** - count either all or the unique occurences of values of a given property
+ - **Count and count_unique** - count either all instances or just the unique occurences of values of a given property
  - **Select and select_unique** - select a list of values found for a given property
  
  
-You can also input query parameters to group your data orfilter it data in terms of:
+You can also input query parameters to group your data, sort, or filter it in terms of:
 - **Timeframe** - Calculate values for a given timerframe
 - **Interval** - Calculate values from the currenty minute up to the current year.
 - **Filter** - Refine your serach by filtering out values for given properties
 
-You can also combine multiple queries and collections to make more complex analytics using [funnels](https://keen.io/docs/api/#funnels).
+You can also combine multiple queries and collections using [funnels](https://keen.io/docs/api/#funnels) for more advanced analytics.
 
 
 ## Exploring data
  You can start playing with the events collected in Keen.IO using its explorer. To access it, go to your project overview and click on the explorer tab on the top right. [You can also download the explorer and use it locally ](https://github.com/keen/explorer).
  
 
- Using the explorer's UI , you can leverage all the analysis types and apply  the filters easily:
+ Using the explorer's UI, you can leverage all the analysis types and apply the filters easily:
  
  ### Creating and saving queries
  
-In your explorer, select **count** as analysis time, collection type as **products** and and a time frame as **this month**. Click on the *run* button and see the results unveil.
+In your explorer, select **count** as the analysis time, **products** as the collection type, and **this month** as the time frame. Click on the *run* button to unveil the results.
  
 
-![query explorer](https://raw.githubusercontent.com/pluralsight/guides/master/images/a6da99de-4a13-4f19-b36b-c9c383c013ea.002)
+![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/a6da99de-4a13-4f19-b36b-c9c383c013ea.002)
 
 
- Voila! You just created your first query. You can save your query and use it any time you want. You can also visualize the data differently if applicable by chosing from the different types of visualizations in the top right , next to the field for the query name.
- 
+ Voila! You just created your first query. You can save your query and reuse it any time you want. You can also visualize the data differently (if applicable) by choosing from the different types of visualizations in the top right (next to the field for the query name).
 
  The next step is to click on the **embed** button on the right and get the code for displaying the query for the next step in the guide:
  
@@ -179,11 +176,11 @@ You can continue playing with the explorer and create one or two more queries. M
 
 # Visualising your data reactively
 
-After collecting data and analyzing it, it is time to build the dashboard.
-First, include the [Keen.IO JavaScript SDK ](https://github.com/keen/keen-js) in the Ruby on Rails application. There are many ways to do this, but for the sake of simplicity, you can simply incldue the javascript file from a CDN into your applicaiton layout:
+After collecting data and analyzing it, we will build the dashboard.
+First, include the [Keen.IO JavaScript SDK ](https://github.com/keen/keen-js) in the Ruby on Rails application. There are many ways to do this, but for the sake of simplicity, you can simply include the javascript file from a CDN (content delivery network) into your application layout:
 
 ```html
-<!-- app/views/layouts/applicaiton.html.erb -->
+<!-- app/views/layouts/application.html.erb -->
 <html>
   <head>
     <!-- Paste this line in the head section of the layout -->
@@ -251,10 +248,10 @@ Lastly, create a view for your <code> dashboard </code> action:
 
 </div>
 ```
-The view contains a simple bootstrap header and a few columns with <code>id</code>. The div tags with id  <code>chart-wrapper</code> , <code>pie-wrapper</code> and <code>total-wrapper</code>  are going to be used as a reference for putting the analytics elements into the document.
+The view contains a simple bootstrap header and a few columns with <code>id</code>. The div tags with id  <code>chart-wrapper</code>, <code>pie-wrapper</code>, and <code>total-wrapper</code> are going to be used as references for putting the analytics elements into the document.
 
 ### Implementing reactivity
- Reactive analytics means that the visualization of the data is going to change automatically as you change the data in Keen.IO without the need to restart the page. Ruby on Rails 5 make this easy by introducing  [ActionCable](https://github.com/rails/rails/tree/master/actioncable). ActionCable is a Rails 5 module that introduces an API for working with [WebSockets](https://developer.mozilla.org/en-US/docs/Web/API/WebSockets_API) in Ruby on Rails.
+ Reactive analytics means that our data visualization strategy will change automatically (without refreshing the page) as the data in Keen.IO changes. Ruby on Rails 5 make this easy through  [ActionCable](https://github.com/rails/rails/tree/master/actioncable). ActionCable is a Rails 5 module that introduces an API for working with [WebSockets](https://developer.mozilla.org/en-US/docs/Web/API/WebSockets_API) in Ruby on Rails.
  
  The first step is to generate a channel. In your terminal, execute:
  ```bash
@@ -272,15 +269,15 @@ class AnalyticsChannel < ApplicationCable::Channel
   #...
 end
  ```
-<code>steam_from</code> is used to further specify the channel. It is used because a channel usually has multiple instances. For example, one channel can have instances that broadcast to multiple users. In such cases, the parameters entered in <code>stream_from</code> would include an unique identifier. But in this guide, we are doing it the simple way, by hardcoding a string.
+A channel usually has multiple instances. As such, <code>steam_from</code> is used to further specify the channel. For example, one channel can have instances that broadcast to multiple users. In such cases, the parameters entered in <code>stream_from</code> would include a unique identifier. But, in this guide, we are doing it the simpler way, by hardcoding a string.
 
-Second, you need to make a [job](http://edgeguides.rubyonrails.org/active_job_basics.html) which is going to broadcast to the <code>analytics_channel</code> every time the an event is published e to Keen.IO. The idea of putting the broadcast in a job is because jobs can run in parallel with other processes happening in the application. This ensures that your application will be able to queue multiple requests for broadcasts that occur simultaneously.
+Second, you need to create a [job](http://edgeguides.rubyonrails.org/active_job_basics.html) that is going to broadcast to the <code>analytics_channel</code> every time the an event is published to Keen.IO. **We are putting our broadcast in a job because jobs can run parallel to other application processes.** This ensures that your application will be able to queue multiple simultaneous requests for broadcasts.
 
 Open your terminal and generate the job.
 ```bash
  rails g job UpdateAnalytics
 ```
-In order to maintain reactivity, the job has to be queued to broadcast every time an event is published to Keen.IO. In this guide, we are doing it only once - when creating a new product:
+In order to maintain reactivity, the job has to be queued to broadcast every time that an event is published to Keen.IO. In this guide, we are doing it only once -- when creating a new product:
 ```ruby
 #app/models/product.rb
 class Product < ApplicationRecord
@@ -307,15 +304,17 @@ end
 ```
 
 That's it! The back-end is set up. Let's move to the front-end and put the Keen.IO JavaScript SDK library that was previously added in the appication's layout to use.
+
+
 ### Visualizing queries
 
  Go to <code>app/assets/javascripts/channels/analytics.coffee</code>
  
- There, you can see three functions - <code>connected() </code> , <code> disconnected() </code> and <code> received() </code> . <code> connected() </code> is called when the client connects to the server-side websocket, <code> disconnected() </code> is called in the opposite case, and <code> received()</code> is called when data is broadast from the server.
+ There, you can see three functions: <code>connected()</code>, <code>disconnected()</code>, and <code>received()</code>. 
+ 
+ <code> connected()</code> is called when the client connects to the server-side websocket, <code>disconnected()</code> is called in the opposite case, and <code>received()</code> is called when data is broadcasted from the server.
 
  Outside of these functions, declare a **global** function that is going to be called to reload all the queries and visualize them on the dashboard:
- 
-
 
 ```javascript
  App.analytics = App.cable.subscriptions.create "AnalyticsChannel",
@@ -334,7 +333,9 @@ That's it! The back-end is set up. Let's move to the front-end and put the Keen.
 
  ```
  
- <code> @loadAnalytics </code> (**@** denotes a global function in CoffeeScript) is going to be called in three places - when the client connects to the server-side channel, when there is data received from the channel and in the view itself. The only thing that is missing is the call from the view itself, so let's add it:
+ <code> @loadAnalytics </code> (**@** denotes a global function in CoffeeScript) is going to be called when the client connects to the server-side channel, when there is data received from the channel, and when displayed in the view itself. 
+ 
+ Remember that we've already established the server-side and client-side operations, so the only thing missing is the call from the view itself. Let's add it:
  
 ```html
 <!-- app/views/products/dashboard.html.erb -->
@@ -387,23 +388,19 @@ Here is an example with three queries displayed in the different div wrappers:
     client.draw favoritesDist, document.getElementById('pie-wrapper'), {}
     client.draw allProducts, document.getElementById('total-wrapper'), {}
 ```
-First, we initialize the client with the credentials of the project provided by Keen.IO. <code> Keen.ready </code> is called when the HTML document is loaded and the queries are ready to be visualized. <code> Keen.Query </code> takes two arguments - the first argument is the analytics type and the second arugment is an object that contains details about the collection, interval and filters. Have look at [Keen.IO's JavaScript SDK](https://github.com/keen/keen-js) for more information on creating queries.
 
-<code> client.draw </code> is the function that does the drawing. The first argument is the query and the second argument is the selected element from the HTML document.
+First, we initialize the client with the credentials of the project provided by Keen.IO. <code>Keen.ready</code> is called when the HTML document is loaded and the queries are ready to be visualized. <code>Keen.Query</code> takes two arguments. The first argument is the analytics type, and the second argument is an object that contains details about the collection, interval and filters. Have look at [Keen.IO's JavaScript SDK](https://github.com/keen/keen-js) for more information on creating queries.
 
-Go to [http://localhost:3000](http://localhost:3000) and see the results. You now have a functioning dashboard.
+<code> client.draw </code> is the function that does the drawing. The first argument is the query, and the second argument is the selected element from the HTML document.
 
+Go to [http://localhost:3000](http://localhost:3000) and see the results. You now have a functioning dashboard that displays and automatically synchronizes each time that the `product` collection is modified.
 
- To test out reactivity, two browser windows with [http://localhost:3000/products/new](http://localhost:3000/products/new) and  [http://localhost:3000](http://localhost:3000). Then, try to create a new product.
+ To test out reactivity, open browser windows with [http://localhost:3000/products/new](http://localhost:3000/products/new) and  [http://localhost:3000](http://localhost:3000). Then, try to create a new product.
  
  
-
-![visualize](https://raw.githubusercontent.com/pluralsight/guides/master/images/998aa6a8-84d4-42c2-a6bd-0e304886fc1e.gif)
-
+![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/25050fd2-fba8-434d-a4e4-28ae2ca42f36.004)
 
 
-That was all! I hope you found this tutorial interesting. If you missed out some of the parts or need a reference on the code, I have create a [GitHub repository](https://github.com/Kaizeras/keen.io-actioncable) with the code from the tutorial.
+That was all! I hope you found this tutorial interesting. If you missed out some of the parts or need a reference on the code, I have created a [GitHub repository](https://github.com/Kaizeras/keen.io-actioncable) that contains the code from the tutorial.
 
-
-## Bonus: Visualizing data using Keen.IO's dashboard builder
---
+Please favorite this tutorial and leave your comments and feedback in the comments below!
