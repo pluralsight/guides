@@ -12,7 +12,7 @@ It doesn't stop there. When you are done with a stream you have to dispose of it
 So when you think about audio this way, even just playing an audio file gets very complicated very fast.
 
 ### NAudio to the Rescue
-Lucky for us, there is a audio library for .NET -NAudio- that will do most of this work for us. We will still be working with streams; there is no avoiding that when it comes to audio, however NAudio is a great library that abstracts us from the details of simple playing and recording of audio files. The good thing about NAudio is, it can be used in every type of project. If you simply want build and application to play or record audio files, you can do that without delving deep into streams. If you want something complex such as manipulating audio or creating filters it provides very good tools for that too.
+Lucky for us, there is an audio library for .NET -NAudio- that will do most of this work for us. We will still be working with streams; there is no avoiding that when it comes to audio, however NAudio is a great library that abstracts us from the details of simple playing and recording of audio files. The good thing about NAudio is, it can be used in every type of project. If you simply want build and application to play or record audio files, you can do that without delving deep into streams. If you want something complex such as manipulating audio or creating filters it provides very good tools for that too.
 
 There are 3 ways of getting NAudio:
 - [NAudio codeplex page](https://naudio.codeplex.com/)
