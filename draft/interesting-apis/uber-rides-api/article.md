@@ -7,3 +7,4 @@ Blah blah blah
 ## Get started
 
 
+## Rendering
