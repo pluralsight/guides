@@ -1,5 +1,3 @@
-# Reactrb Showcase - DRAFT
-
 This is a simple Rails application showcasing Reactrb, Opal, NPM, Webpack, React Bootstrap and other associated technologies.  This showcase is intended to be a companion project to the excellent Reactrb tutorials already written which you can find in [Further Reading](#further-reading) below.
 
 + [Introduction](#introduction)
