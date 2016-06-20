@@ -8,11 +8,6 @@
 - [Read more from Esteban Herrera](http://tutorials.pluralsight.com/author/eh3rrera) <img src="https://avatars.githubusercontent.com/u/11665759?v=3" width="30" height="30" alt="Esteban Herrera" />
 - Related to: NoSQL Databases (MongoDB, Cassandra, etc)
 
-### Reactrb Showcase  by Barrie Hadfield
-- [Read the guide](http://tutorials.pluralsight.com/ruby-ruby-on-rails/reactrb-showcase?status=in-review)
-- [Read more from Barrie Hadfield](http://tutorials.pluralsight.com/author/barriehadfield) <img src="https://avatars.githubusercontent.com/u/3940251?v=3" width="30" height="30" alt="Barrie Hadfield" />
-- Related to: Ruby, Ruby on Rails
-
 ### Tutorial Contest FAQ by Prateek Gupta
 - [Read the guide](http://tutorials.pluralsight.com/software-engineering-best-practices/tutorial-contest-faq?status=in-review)
 - [Read more from Prateek Gupta](http://tutorials.pluralsight.com/author/prtkgpt) <img src="https://avatars.githubusercontent.com/u/2454349?v=3" width="30" height="30" alt="Prateek Gupta" />
