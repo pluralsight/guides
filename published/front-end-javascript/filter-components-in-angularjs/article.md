@@ -1,4 +1,4 @@
-In my [previous article on AngularJS](http://tutorials.pluralsight.com/front-end-javascript/getting-started-with-angularjs), we got a look at the basic implementaion of AngularJS. In this article we will look at **Filter Components**, which are integral parts to angular.
+In my [previous article on AngularJS](http://tutorials.pluralsight.com/front-end-javascript/getting-started-with-angularjs), we got a look at the basic implementaion of AngularJS. In this article we will look at **Filter Components**, which are integral parts to angular. hello
 
 This article covers the following areas for angularJS with implementation and examples.
 
