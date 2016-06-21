@@ -7,6 +7,10 @@
         [
             "prtkgpt",
             "prtkgpt-ruby-ruby-on-rails-reactrb-showcase"
+        ],
+        [
+            "catmando",
+            "catmando-ruby-ruby-on-rails-reactrb-showcase"
         ]
     ],
     "filename": "article.md",
