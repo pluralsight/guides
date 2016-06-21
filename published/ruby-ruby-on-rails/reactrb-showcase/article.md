@@ -102,8 +102,16 @@ And finally a view app/views/home/show.erb
 And if all has gone well, you should be rewarded with `Home::Show` in your browser. If you open your JavaScript console you can also check which version of React has been loaded
 
 	React.version
+	
+*Remember this version number, you will need it later!*
 
-A note on React versions: Reactrb includes the [React Rails](https://github.com/reactjs/react-rails) gem which includes a copy of the React source. Multiple copies of React being included cause untold problems so pay particular attention to the version of React you have (via the React Rails gem) and the version we are about to install via NPM. We will need to ensure these versions are the same. At the time writing, the React version being installed is 15.0.2 so we install the same version via NPN. To change this, see [React Rails versions](https://github.com/reactjs/react-rails/blob/master/VERSIONS.md) which will then let you specify which version of React to include via the React Rails gem.
+A note on React versions: Reactrb is compatible with react versions 13+.  However each version of react-rails is compatible with a specific version of react.  So its important that you are using the version of react that is compatible with react-rails.  
+
+The reactrb-rails-generator includes [React Rails](https://github.com/reactjs/react-rails) gem and also adds a `require 'react'` directive to the *components manifest*.  This brings in the version of react that is compatible with react-rails.   
+
+In step 4 we are going to start using webpack to bring in javascript components, so we have to make sure that we get webpack to include the same version of react that react-rails expects.   
+
+If you want to change the version of react, see [React Rails versions](https://github.com/reactjs/react-rails/blob/master/VERSIONS.md) for more details on which version of react-rails to lock onto to use a specific version of react.
 
 ### Step 3: Webpack for managing front-end assets
 
@@ -128,9 +136,21 @@ Assuming that you have NPM already installed (if you do not then you need to ins
 
 which will download `webpack-dev-server` and other components into your `node-modules` folder.
 
-One final thing we need to do is add the entry point to our Rails application so Webpack can hot-load its assets in development mode
+One final thing we need to do is add the webpack entry point to our Rails application so Webpack can hot-load its assets in development mode.  Add this line:
 
 `<%= javascript_include_tag *webpack_asset_paths("application") %>`
+
+at the *beginning* of the application layout *before* any other assets are loaded.  In otherwords you application.html.erb file should look like this:
+
+```erb
+<head>
+  <title>ReactrbShowcase</title>
+  <%= javascript_include_tag *webpack_asset_paths('application') %>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+```
 
 Assuming all went well you can now start your rails server agin using foreman
 
@@ -140,19 +160,26 @@ At this point you should have a working server with Webpack hot-loading any comp
 
 ### Step 4: Installing React using NPM and Webpack
 
-One consideration that you need to pay close attention to is the version of React being included by the [React Rails](https://github.com/reactjs/react-rails) gem and the version being included by Webpack via NPM. I would suggest you use the React version supplied by the gem and set the NPM version accordingly. This will create a happy medium where you will know that React Rails is using a supported version of React and all your front-end assets versions are locked to the same React version by Webpack.    
-
 Installing React is very simple via NPM (note the @version which matches the version of React you have installed via the React Rails gem)
 
 	npm install react@15.0.2 react-dom@15.0.2 --save
 
 This will install React and also ReactDOM into your `node-modules` folder and also add the fact that these are installed to your `package.json`. You can now delete your `node-modules` folder at any time and simply `npm install` to install everything listed in `package.json`. Webpack does an excellent job of managing dependancies between NPM assets but you might find yourself deleting your `node-modules` folder fairly often as that is often the advice to resolve strange conflicts.
 
-add ReactDOM to your `webpack/application.js`
+add React and ReactDOM to your `webpack/application.js`
 
+	React = require'(react')
 	ReactDOM = require('react-dom')
+	
 
-If you refresh your browser and check the React version should see the latest version ("15.1.0" at time of writing). If you are seeing that version number and no React warnings then all has worked properly and we are ready to start writing some Reactrb components.
+If you refresh your browser you will see the following in the console log:
+
+```log
+************************ React Prerendering Context Initialized Show ***********************
+************************ React Browser Context Initialized ****************************
+```
+
+type `React.version and check and you should see the latest version ("15.1.0" at time of writing). If you are seeing that version number and no React warnings then all has worked properly and we are ready to start writing some Reactrb components.
 
 ## Working with React Bootstrap
 
