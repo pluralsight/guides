@@ -65,7 +65,7 @@ So now that we choose our architecture we need to generate the right namespaces 
     - Images
   - Project: NaudioWrapper
 
-#### The UI
+#### Mocking up the UI
 I always like to start with the UI part when it comes to WPF projects because it provides me with a feature list I need to implement in a visual way. So I will start coding by first generating a UI mock-up so we can see what features we need to code.
 
 Before we start on the UI however, I will provide you the link for the images I used for the buttons so you will have them ready. For icons I used Google's free material design icons. You can get them from Google's material design [page](https://material.google.com/resources/sticker-sheets-icons.html#). When you download the icons, do a quick search of "play" or "pause" in the download directory to find the relevant icons.
@@ -83,7 +83,7 @@ However, in my experience adding those in Visual Studio doesn't always work. So 
 
 Now everything ready for our UI code.
 
-Here is our XAML code for the UI:
+Here is our E**x**tensible **A**pplication **M**arkup **L**anguage (XAML) code for the UI:
 ```xaml
 <Window x:Class="NaudioPlayer.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
@@ -177,10 +177,29 @@ Here is our XAML code for the UI:
 </Window>
 ```
 
+So by looking at our XAML code, in our ``MainWindowViewModel`` viewmodel, we need to implement the following commands;
 
+- **SavePlaylistCommand:** This command will save our `Playlist` into a text file, simply by writing the path of each `Track` in the `Playlist` as `<filename>.playlist`.
+- **LoadPlaylistCommand:** This command will read the `.playlist` file of our choosing and generate a `Playlist` for us.
+- **ExitApplicationCommand:** This command will dispose all our audio streams and close the application.
+- AddFileToPlaylistCommand
+- AddFolderToPlaylistCommand
+- RewindToStartCommand
+- StartPlaybackCommand
+- StopPlaybackCommand
+- ForwardToEndCommand
+- ShuffleCommand
+- TrackControlMouseDownCommand
+- TrackControlMouseUpCommand
+- VolumeControlValueChangedCommand
 
+and properties:
 
-
+- CurrentTrackPosition
+- CurrentVolume
+- Playlist
+- CurrentTrack
+- PlayPauseImageSource
 
 
 
