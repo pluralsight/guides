@@ -23,6 +23,6 @@ At this point I want to explain why log your program is an important task when y
 
 Logging allows you to know more about the behaviour and performance of your app to take decisions and provide the neccesary fixes to solve a problem.  Likewise, logging provides you information about the broken point of your app.
 
-Nowdays to check the results of a logging process is very hard because every log resides either into a server, virtualization, virtual server or cloud services.
+Nowdays to check the results of a logging process is very hard because every log resides either into a server, virtualization, virtual server or cloud service.
 
 
