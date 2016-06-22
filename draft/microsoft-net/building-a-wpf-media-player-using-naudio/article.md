@@ -70,13 +70,16 @@ I always like to start with the UI part when it comes to WPF projects because it
 
 Before we start on the UI however, I will provide you the link for the images I used for the buttons so you will have them ready. For icons I used Google's free material design icons. You can get them from Google's material design [page](https://material.google.com/resources/sticker-sheets-icons.html#). When you download the icons, do a quick search of "play" or "pause" in the download directory to find the relevant icons.
 
-We also need `System.Windows.Interactivity` and `Microsoft.Expression.Interaction` namespaces for our event bindings. I said we won't use event driven architecture but sometimes there is no way avoiding events. So these namespaces provide events the MVVM way. Adding these namespaces can be tricky and might not always work as you expect them to work. These namespaces actually come with Blend, a UI development tool for XAML based projects. So if you have Blend installed (it comes with the Visual Studio installer), you can find those DLL files from `C:\Program Files (x86)\Microsoft SDKs\Expression\Blend\.NETFramework\v4.5\Libraries` or if your project is .NET 4.0 from `C:\Program Files (x86)\Microsoft SDKs\Expression\Blend\.NETFramework\v4.0\Libraries`.
+We also need `System.Windows.Interactivity` and `Microsoft.Expression.Interaction` namespaces for our event bindings. I said we won't use event driven architecture but sometimes there is no way avoiding events. So these namespaces provide events the MVVM way. Adding these namespaces can be tricky and might not always work as you expect them to work. These namespaces actually come with Blend, a UI development tool for XAML based projects. So if you have Blend installed (it comes with the Visual Studio installer), you can find those DLL files from:
+
+- For .NET 4.5+ `C:\Program Files (x86)\Microsoft SDKs\Expression\Blend\.NETFramework\v4.5\Libraries`
+- For .NET 4.0 `C:\Program Files (x86)\Microsoft SDKs\Expression\Blend\.NETFramework\v4.0\Libraries`
 
 If you don't have Blend installed just run the Visual Studio installer and modify/add it to your installation.
 
 However, in my experience adding those in Visual Studio doesn't always work. So what I usually do:
 - Create the WPF project in Visual Studio
-- Add `xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"` namespace to the `Window`.
+- Add `xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"` to the `Window`.
 - Close Visual Studio and open the project in Blend.
 - From the menu click Project->Add Reference and add the references from that menu.
 - Close Blend and open the project back in Visual Studio
@@ -197,13 +200,321 @@ So by looking at our XAML code, in our ``MainWindowViewModel`` viewmodel, we nee
   - **VolumeControlValueChangedCommand:** This command will run when we change the value of the volume control slider.
 
 and properties:
+- **Title:** Title of the window.
+- **CurrentTrackPosition:** While the audio is playing, this property is used to store the current position in seconds.
+- **CurrentVolume:** This property sets the volume.
+- **Playlist:** This property represents our playlist.
+- **CurrentTrack:** This property represents currently selected track in our playlist.
+- **PlayPauseImageSource:** This property sets either play or pause images depending on whether the audio is playing or paused to our play button.
 
-- **CurrentTrackPosition:**
-- **CurrentVolume:**
-- **Playlist:**
-- **CurrentTrack:**
-- **PlayPauseImageSource:**
+### The ViewModel
+Before we implement the ViewModel we need to define how commands work. We will use the commonly used `RelayCommand` class to do this:
+```cs
+public class RelayCommand : ICommand
+{
+    private readonly Action<object> _execute;
+    private readonly Predicate<object> _canExecute;
 
+    public RelayCommand(Action<object> execute, Predicate<object> canExecute)
+    {
+        _execute = execute;
+        _canExecute = canExecute;
+    }
+    public bool CanExecute(object parameter)
+    {
+        bool result = _canExecute == null ? true : _canExecute(parameter);
+        return result;
+    }
+
+    public void Execute(object parameter)
+    {
+        _execute(parameter);
+    }
+
+    public event EventHandler CanExecuteChanged
+    {
+        add { CommandManager.RequerySuggested += value; }
+        remove { CommandManager.RequerySuggested -= value; }
+    }
+}
+```
+
+Now, let's stub out our ViewModel:
+
+```cs
+public class MainWindowViewModel : INotifyPropertyChanged
+{
+    private string _title;
+    private double _currentTrackLenght;
+    private double _currentTrackPosition;
+    private string _playPauseImageSource;
+    private float _currentVolume;
+
+    private Track _currentTrack;        
+    private ObservableCollection<Track> _playlist;        
+
+    public string Title
+    {
+        get { return _title; }
+        set
+        {
+            if (value == _title) return;
+            _title = value;
+            OnPropertyChanged(nameof(Title));
+        }
+    }
+
+    public string PlayPauseImageSource
+    {
+        get { return _playPauseImageSource; }
+        set
+        {
+            if (value == _playPauseImageSource) return;
+            _playPauseImageSource = value;
+            OnPropertyChanged(nameof(PlayPauseImageSource));
+        }
+    }
+
+    public float CurrentVolume
+    {
+        get { return _currentVolume; }
+        set
+        {
+
+            if (value == _currentVolume) return;
+            _currentVolume = value;
+            OnPropertyChanged(nameof(CurrentVolume));
+        }
+    }
+
+    public double CurrentTrackLenght
+    {
+        get { return _currentTrackLenght; }
+        set
+        {
+            if (value.Equals(_currentTrackLenght)) return;
+            _currentTrackLenght = value;
+            OnPropertyChanged(nameof(CurrentTrackLenght));
+        }
+    }
+
+    public double CurrentTrackPosition
+    {
+        get { return _currentTrackPosition; }
+        set
+        {
+            if (value.Equals(_currentTrackPosition)) return;
+            _currentTrackPosition = value;
+            OnPropertyChanged(nameof(CurrentTrackPosition));
+        }
+    }
+
+    public Track CurrentTrack
+    {
+        get { return _currentTrack; }
+        set
+        {
+            if (Equals(value, _currentTrack)) return;
+            _currentTrack = value;
+            OnPropertyChanged(nameof(CurrentTrack));
+        }
+    }        
+
+    public ObservableCollection<Track> Playlist
+    {
+        get { return _playlist; }
+        set
+        {
+            if (Equals(value, _playlist)) return;
+            _playlist = value;
+            OnPropertyChanged(nameof(Playlist));
+        }
+    }
+
+    public ICommand ExitApplicationCommand { get; set; }
+    public ICommand AddFileToPlaylistCommand { get; set; }
+    public ICommand AddFolderToPlaylistCommand { get; set; }
+    public ICommand SavePlaylistCommand { get; set; }
+    public ICommand LoadPlaylistCommand { get; set; }
+
+    public ICommand RewindToStartCommand { get; set; }
+    public ICommand StartPlaybackCommand { get; set; }
+    public ICommand StopPlaybackCommand { get; set; }
+    public ICommand ForwardToEndCommand { get; set; }
+    public ICommand ShuffleCommand { get; set; }
+
+    public ICommand TrackControlMouseDownCommand { get; set; }
+    public ICommand TrackControlMouseUpCommand { get; set; }
+    public ICommand VolumeControlValueChangedCommand { get; set; }
+
+    public event PropertyChangedEventHandler PropertyChanged;
+
+    public MainWindowViewModel()
+    {		
+        LoadCommands();
+		
+        Playlist = new ObservableCollection<Track>();            
+		
+		Title = "NaudioPlayer";
+        PlayPauseImageSource = "../Images/play.png";            
+    }       
+
+    private void LoadCommands()
+    {
+        // Menu commands
+        ExitApplicationCommand = new RelayCommand(ExitApplication,CanExitApplication);
+        AddFileToPlaylistCommand = new RelayCommand(AddFileToPlaylist, CanAddFileToPlaylist);
+        AddFolderToPlaylistCommand = new RelayCommand(AddFolderToPlaylist, CanAddFolderToPlaylist);
+        SavePlaylistCommand = new RelayCommand(SavePlaylist, CanSavePlaylist);
+        LoadPlaylistCommand = new RelayCommand(LoadPlaylist, CanLoadPlaylist);
+
+        // Player commands
+        RewindToStartCommand = new RelayCommand(RewindToStart, CanRewindToStart);
+        StartPlaybackCommand = new RelayCommand(StartPlayback, CanStartPlayback);
+        StopPlaybackCommand = new RelayCommand(StopPlayback, CanStopPlayback);
+        ForwardToEndCommand = new RelayCommand(ForwardToEnd, CanForwardToEnd);
+        ShuffleCommand = new RelayCommand(Shuffle, CanShuffle);
+
+        // Event commands
+        TrackControlMouseDownCommand = new RelayCommand(TrackControlMouseDown, CanTrackControlMouseDown);
+        TrackControlMouseUpCommand = new RelayCommand(TrackControlMouseUp, CanTrackControlMouseUp);
+        VolumeControlValueChangedCommand = new RelayCommand(VolumeControlValueChanged, CanVolumeControlValueChanged);
+    }
+
+    // Menu commands
+    private void ExitApplication(object p)
+    {
+        
+    }
+    private bool CanExitApplication(object p)
+    {
+        return true;
+    }
+
+    private void AddFileToPlaylist(object p)
+    {
+        
+    }
+    private bool CanAddFileToPlaylist(object p)
+    {
+        return true;
+    }
+
+    private void AddFolderToPlaylist(object p)
+    {
+        
+    }
+
+    private bool CanAddFolderToPlaylist(object p)
+    {
+        return true;
+    }
+
+    private void SavePlaylist(object p)
+    {
+        
+    }
+
+    private bool CanSavePlaylist(object p)
+    {
+        return true;
+    }
+
+    private void LoadPlaylist(object p)
+    {
+        
+    }
+
+    private bool CanLoadPlaylist(object p)
+    {
+        return true;
+    }
+
+    // Player commands
+    private void RewindToStart(object p)
+    {
+        
+    }
+    private bool CanRewindToStart(object p)
+    {
+        return true;
+    }
+
+    private void StartPlayback(object p)
+    {
+        
+    }
+
+    private bool CanStartPlayback(object p)
+    {
+        return true;
+    }
+
+    private void StopPlayback(object p)
+    {
+        
+    }
+    private bool CanStopPlayback(object p)
+    {
+        return true;
+    }
+
+    private void ForwardToEnd(object p)
+    {
+        
+    }
+    private bool CanForwardToEnd(object p)
+    {
+        return true;
+    }
+
+    private void Shuffle(object p)
+    {
+        
+    }
+    private bool CanShuffle(object p)
+    {
+        return true;
+    }
+
+    // Events
+    private void TrackControlMouseDown(object p)
+    {
+        
+    }
+
+    private void TrackControlMouseUp(object p)
+    {
+        
+    }
+
+    private bool CanTrackControlMouseDown(object p)
+    {
+        return true;
+    }
+
+    private bool CanTrackControlMouseUp(object p)
+    {
+        return true;
+    }
+
+    private void VolumeControlValueChanged(object p)
+    {
+        
+    }
+
+    private bool CanVolumeControlValueChanged(object p)
+    {
+        return true;
+    }
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
+    {
+        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+}
+```
 
 
 
