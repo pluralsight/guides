@@ -81,7 +81,7 @@ However, in my experience adding those in Visual Studio doesn't always work. So 
 - From the menu click Project->Add Reference and add the references from that menu.
 - Close Blend and open the project back in Visual Studio
 
-
+Now everything ready for our UI code.
 
 Here is our XAML code for the UI:
 ```xaml
