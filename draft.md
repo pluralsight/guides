@@ -1,3 +1,8 @@
+### How to write effective Docstrings by Ennis Massey
+- [Read the guide](http://tutorials.pluralsight.com/other/how-to-write-effective-docstrings?status=draft)
+- [Read more from Ennis Massey](http://tutorials.pluralsight.com/author/MicroTransactionsMatterToo) <img src="https://avatars.githubusercontent.com/u/12421108?v=3" width="30" height="30" alt="Ennis Massey" />
+- Related to: other
+
 ### My Hack Guid by Trim Bresa
 - [Read the guide](http://tutorials.pluralsight.com/front-end-javascript/my-hack-guid?status=draft)
 - [Read more from Trim Bresa](http://tutorials.pluralsight.com/author/trimbresa) <img src="https://avatars.githubusercontent.com/u/12497011?v=3" width="30" height="30" alt="Trim Bresa" />
