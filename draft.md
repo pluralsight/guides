@@ -1,3 +1,8 @@
+### My Hack Guid by Trim Bresa
+- [Read the guide](http://tutorials.pluralsight.com/front-end-javascript/my-hack-guid?status=draft)
+- [Read more from Trim Bresa](http://tutorials.pluralsight.com/author/trimbresa) <img src="https://avatars.githubusercontent.com/u/12497011?v=3" width="30" height="30" alt="Trim Bresa" />
+- Related to: Front-End JavaScript (Angular, React, Meteor, etc)
+
 ### Building a WPF Media Player using NAudio by Murat Aykanat
 - [Read the guide](http://tutorials.pluralsight.com/microsoft-net/building-a-wpf-media-player-using-naudio?status=draft)
 - [Read more from Murat Aykanat](http://tutorials.pluralsight.com/author/aykanatm) <img src="https://avatars.githubusercontent.com/u/9140297?v=3" width="30" height="30" alt="Murat Aykanat" />
