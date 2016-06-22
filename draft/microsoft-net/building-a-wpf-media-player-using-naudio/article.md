@@ -5,7 +5,7 @@ Not only I was shocked to find no core libraries, I was also amazed how audio is
 I believe, to learn something properly, you need to create a basic project using it. So in this tutorial I will explain how to build a simple media player from ground up using a very popular .NET audio library NAudio.
 
 ### Why Build Your Own Media Player?
-Other than the fact that it is fun work on your own pet projects:
+Other than the fact that it is fun:
 - You might have a project where you need to make a in-app media player to achieve your goals like my situation.
 - You might need a very special feature that no other media player provides.
 - You might also not trust 3rd party media players in your secure environment where you absolutely have to use a media player.
