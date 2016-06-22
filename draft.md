@@ -1,3 +1,8 @@
+### Enforcing Immutability with ES2015 by Graham Marlow
+- [Read the guide](http://tutorials.pluralsight.com/front-end-javascript/enforcing-immutability-with-es2015?status=draft)
+- [Read more from Graham Marlow](http://tutorials.pluralsight.com/author/mgmarlow) <img src="https://avatars.githubusercontent.com/u/3778552?v=3" width="30" height="30" alt="Graham Marlow" />
+- Related to: Front-End JavaScript (Angular, React, Meteor, etc)
+
 ### Log information of your app through Lonline by Dynamicloud by Eleazar
 - [Read the guide](http://tutorials.pluralsight.com/node-js/log-information-of-your-app-through-lonline-by-dynamicloud?status=draft)
 - [Read more from Eleazar](http://tutorials.pluralsight.com/author/egomezr) <img src="https://avatars.githubusercontent.com/u/1632973?v=3" width="30" height="30" alt="Eleazar" />
