@@ -398,7 +398,9 @@ Go to [http://localhost:3000](http://localhost:3000) and see the results. You no
  To test out reactivity, open browser windows with [http://localhost:3000/products/new](http://localhost:3000/products/new) and  [http://localhost:3000](http://localhost:3000). Then, try to create a new product.
  
  
-![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/25050fd2-fba8-434d-a4e4-28ae2ca42f36.004)
+
+![reactive](https://raw.githubusercontent.com/pluralsight/guides/master/images/bc512a8b-d117-48b4-8118-47bf5dad9007.gif)
+
 
 
 ## Creating a dashboard through Keen.IO
