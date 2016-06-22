@@ -70,6 +70,19 @@ I always like to start with the UI part when it comes to WPF projects because it
 
 Before we start on the UI however, I will provide you the link for the images I used for the buttons so you will have them ready. For icons I used Google's free material design icons. You can get them from Google's material design [page](https://material.google.com/resources/sticker-sheets-icons.html#). When you download the icons, do a quick search of "play" or "pause" in the download directory to find the relevant icons.
 
+We also need `System.Windows.Interactivity` and `Microsoft.Expression.Interaction` namespaces for our event bindings. I said we won't use event driven architecture but sometimes there is no way avoiding events. So these namespaces provide events the MVVM way. Adding these namespaces can be tricky and might not always work as you expect them to work. These namespaces actually come with Blend, a UI development tool for XAML based projects. So if you have Blend installed (it comes with the Visual Studio installer), you can find those DLL files from `C:\Program Files (x86)\Microsoft SDKs\Expression\Blend\.NETFramework\v4.5\Libraries` or if your project is .NET 4.0 from `C:\Program Files (x86)\Microsoft SDKs\Expression\Blend\.NETFramework\v4.0\Libraries`.
+
+If you don't have Blend installed just run the Visual Studio installer and modify/add it to your installation.
+
+However, in my experience adding those in Visual Studio doesn't always work. So what I usually do:
+- Create the WPF project in Visual Studio
+- Add `xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"` namespace to the `Window`.
+- Close Visual Studio and open the project in Blend.
+- From the menu click Project->Add Reference and add the references from that menu.
+- Close Blend and open the project back in Visual Studio
+
+
+
 Here is our XAML code for the UI:
 ```xaml
 <Window x:Class="NaudioPlayer.MainWindow"
