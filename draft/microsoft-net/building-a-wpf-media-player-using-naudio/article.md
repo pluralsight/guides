@@ -177,29 +177,32 @@ Here is our E**x**tensible **A**pplication **M**arkup **L**anguage (XAML) code f
 </Window>
 ```
 
-So by looking at our XAML code, in our ``MainWindowViewModel`` viewmodel, we need to implement the following commands;
+So by looking at our XAML code, in our ``MainWindowViewModel`` viewmodel, we need to implement the following commands
 
-- **SavePlaylistCommand:** This command will save our `Playlist` into a text file, simply by writing the path of each `Track` in the `Playlist` as `<filename>.playlist`.
-- **LoadPlaylistCommand:** This command will read the `.playlist` file of our choosing and generate a `Playlist` for us.
-- **ExitApplicationCommand:** This command will dispose all our audio streams and close the application.
-- AddFileToPlaylistCommand
-- AddFolderToPlaylistCommand
-- RewindToStartCommand
-- StartPlaybackCommand
-- StopPlaybackCommand
-- ForwardToEndCommand
-- ShuffleCommand
-- TrackControlMouseDownCommand
-- TrackControlMouseUpCommand
-- VolumeControlValueChangedCommand
+- Menu Commands
+  - **SavePlaylistCommand:** This command will save our `Playlist` into a text file, simply by writing the path of each `Track` in the `Playlist` as `<filename>.playlist`.
+  - **LoadPlaylistCommand:** This command will read the `.playlist` file of our choosing and generate a `Playlist` for us.
+  - **ExitApplicationCommand:** This command will dispose all our audio streams and close the application.
+  - **AddFileToPlaylistCommand:** This command will add a single audio file to our `Playlist`.
+  - **AddFolderToPlaylistCommand:** This command will add a folder of files to our `Playlist`.
+- Player Commands
+  - **RewindToStartCommand:** This command will set the `CurrentTrackPosition` to 0, effectively skipping to start.
+  - **StartPlaybackCommand:** This command will start playback of the `CurrentTrack`. When pressed during playback, it will pause the playback.
+  - **StopPlaybackCommand:** This command will stop the playback.
+  - **ForwardToEndCommand:** This command will skip to the last second of the currently playing audio file.
+  - **ShuffleCommand:** This command will shuffle our `Playlist` randomly.
+- MVVM Events
+  - **TrackControlMouseDownCommand:** This command will run when we press mouse button on the seekbar slider control.
+  - **TrackControlMouseUpCommand:** This command will run when we release mouse button from the seekbar slider control.
+  - **VolumeControlValueChangedCommand:** This command will run when we change the value of the volume control slider.
 
 and properties:
 
-- CurrentTrackPosition
-- CurrentVolume
-- Playlist
-- CurrentTrack
-- PlayPauseImageSource
+- **CurrentTrackPosition:**
+- **CurrentVolume:**
+- **Playlist:**
+- **CurrentTrack:**
+- **PlayPauseImageSource:**
 
 
 
