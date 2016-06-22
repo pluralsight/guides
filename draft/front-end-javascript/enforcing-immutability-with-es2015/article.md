@@ -7,7 +7,7 @@ Unfortunately JavaScript does not make it very easy to enforce immutability when
 ## Arrays 
 The `push()` method, although convenient, cannot be used when we want to enforce immutability. Here is an example of how the `push()` method affects variables passed into a function. 
 
-``` 
+```javascript
 function addTwo (arr) { 
   return arr.push(2);
 } 
@@ -23,7 +23,7 @@ We can get around this by using the `concat()` operator instead of `push()`. `co
  
 The above example now becomes: 
 
-``` 
+```javascript
 function addTwo (arr) { 
   return arr.concat(2); 
 } 
@@ -38,7 +38,7 @@ We now have a function that appends the number 2 to an array without modifying t
  
 With ES2015, we can simply the syntax by using the spread operator (`…`) instead of the `concat()` method.  
 
-``` 
+```javascript
 // ES2015 
 function addTwo (arr) { 
   return [...arr, 2]; 
@@ -47,7 +47,7 @@ function addTwo (arr) {
  
 In a similar fashion, we can actually remove an element from an array using the spread operator while still enforcing immutability. In this example, `slice()` is used as a safe method that returns a shallow copy of an array. 
  
-``` 
+```javascript
 function removeItem (arr, index) { 
   return [ 
     ...arr.slice(0, index),
@@ -66,7 +66,7 @@ console.log(newArray); // ["a", "b", "d"]
 Since Objects are also reference variables, we cannot pass one into a function and modify it directly without mutating the original variable. Much like arrays, we have to figure out a way to create a function that modifies an object by returning a brand new object. Luckily, ES2015 gives us an extremely useful method, [`Object.assign()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/assign).
 
 Say we have a todo-list application that modifies todos of the form:
-```
+```javascript
 exampleTodo = {
   id: 0,
   text: 'Learn immutability',
@@ -77,7 +77,7 @@ and we want to create a function that toggles whether or not a todo is completed
 
 Let's instead use `Object.assign()` to create a function that will toggle the `completed` property by returning a new todo. `Object.assign()` works by copying the its parameters' property values into a new object. The first parameter of the `Object.assign()` method defines the target object that we want to create, which in our case is an empty object, `{}`. All other parameters define the properties that we want to copy into this new object.
 
-```
+```javascript
 function toggleTodo (todo) {
   // Copy todo properties into a new object and
   // overwrite the completed property with
