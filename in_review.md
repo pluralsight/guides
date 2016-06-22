@@ -1,3 +1,8 @@
+### Enforcing Immutability with ES2015 by Graham Marlow
+- [Read the guide](http://tutorials.pluralsight.com/front-end-javascript/enforcing-immutability-with-es2015?status=in-review)
+- [Read more from Graham Marlow](http://tutorials.pluralsight.com/author/mgmarlow) <img src="https://avatars.githubusercontent.com/u/3778552?v=3" width="30" height="30" alt="Graham Marlow" />
+- Related to: Front-End JavaScript (Angular, React, Meteor, etc)
+
 ### Reactive analytics using Keen.IO and ActionCable in Rails 5 by Hristo Georgiev
 - [Read the guide](http://tutorials.pluralsight.com/interesting-apis/reactive-analytics-using-keen-io-and-actioncable-in-rails-5?status=in-review)
 - [Read more from Hristo Georgiev](http://tutorials.pluralsight.com/author/Kaizeras) <img src="https://avatars.githubusercontent.com/u/6340189?v=3" width="30" height="30" alt="Hristo Georgiev" />
