@@ -42,6 +42,7 @@ The main purpose of this tutorial is to build a simple media player which will h
 - Add a file to this playlist
 - Add a folder of files to this playlist
 - Save and load playlists
+- When a track finishes, it will move to the next track in the playlist automatically.
 
 It should look like this at the end (with my Witcher 3 soundtrack playlist):
 ![Our finalized media player](https://raw.githubusercontent.com/pluralsight/guides/master/images/71e4ccf5-4301-4b3f-8cb2-7fde9b7a816e.png)
@@ -207,6 +208,18 @@ and properties:
 - **CurrentTrack:** This property represents currently selected track in our playlist.
 - **PlayPauseImageSource:** This property sets either play or pause images depending on whether the audio is playing or paused to our play button.
 
+### NaudioWrapper
+Before we move on to the ViewModel we need the basic features abstracted away from the core NAudio code. To do this I will create an `AudioPlayer` class to hold all these features in its methods and our ViewModel can access these public methods to interact with it.
+
+Looking at our feature list, 
+```cs
+public class AudioPlayer
+{
+
+}
+```
+
+
 ### The ViewModel
 Before we implement the ViewModel we need to define how commands work. We will use the commonly used `RelayCommand` class to do this:
 ```cs
@@ -281,7 +294,7 @@ public class MainWindowViewModel : INotifyPropertyChanged
         set
         {
 
-            if (value == _currentVolume) return;
+            if (value.Equals(_currentVolume)) return;
             _currentVolume = value;
             OnPropertyChanged(nameof(CurrentVolume));
         }
@@ -515,6 +528,8 @@ public class MainWindowViewModel : INotifyPropertyChanged
     }
 }
 ```
+
+
 
 
 
