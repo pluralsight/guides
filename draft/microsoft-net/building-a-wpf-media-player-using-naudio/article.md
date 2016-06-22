@@ -209,13 +209,24 @@ and properties:
 - **PlayPauseImageSource:** This property sets either play or pause images depending on whether the audio is playing or paused to our play button.
 
 ### NaudioWrapper
-Before we move on to the ViewModel we need the basic features abstracted away from the core NAudio code. To do this I will create an `AudioPlayer` class to hold all these features in its methods and our ViewModel can access these public methods to interact with it.
+Before we move on to the ViewModel we need the basic features abstracted away from the core NAudio code. To do this, first we must add NAudio to this project via NuGet. Then we must create an `AudioPlayer` class to hold all these features in its methods and our ViewModel can access these public methods to interact with it.
 
-Looking at our feature list, 
+Looking at our feature list, first and foremost, we need to actually play an audio file. To do this in NAudio, first we must set the file path of the audio and read the file with a reader. There are many specific readers for specific filetypes. However you can simply use `AudioFileReader` to read all supported files. To play the file, we need to set an output. We want to play all kinds of audio files so we will use `DirectSoundOut`. You can also use `WasapiOut`, however currently there is a problem of not firing stopped event in `WasapiOut`. So we better use `DirectSoundOut` in this example.
+
+Then We must create some events to let ViewModel know that we are playing, paused or stopped. These events will come in handy to manipulate our UI accordingly.
+
 ```cs
 public class AudioPlayer
 {
+    private AudioFileReader _audioFileReader;
 
+    private DirectSoundOut _output;
+
+    private string _filepath;
+    
+    public event Action PlaybackResumed;
+    public event Action PlaybackStopped;
+    public event Action PlaybackPaused;
 }
 ```
 
