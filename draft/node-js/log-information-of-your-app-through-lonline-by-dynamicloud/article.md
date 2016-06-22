@@ -5,7 +5,8 @@
 This word is very important when the most important thing is offer a reliable system.  But, how to offer that kind of system, how can I create something that makes me feel confortable.
 
 ------------------------
-##### ** Features of a reliable system  **
+
+### Features of a reliable system
 
 * Always available
 * A huge suite of test cases
@@ -16,7 +17,7 @@ This word is very important when the most important thing is offer a reliable sy
 
 ------------------------
 
-##### **Log every error in real time**
+### Log every error in real time
 
 At this point I want to explain why log your program is an important task when you deliver an app to a production environment.  
 
