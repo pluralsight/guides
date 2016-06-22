@@ -1,3 +1,8 @@
+### Setting up Learning Locker in AWS Elastic Beanstalk by Adrian Murillo
+- [Read the guide](http://tutorials.pluralsight.com/php/setting-up-learning-locker-in-aws-elastic-beanstalk?status=draft)
+- [Read more from Adrian Murillo](http://tutorials.pluralsight.com/author/adrianmurillo) <img src="https://avatars.githubusercontent.com/u/1044938?v=3" width="30" height="30" alt="Adrian Murillo" />
+- Related to: PHP
+
 ### How to write effective Docstrings by Ennis Massey
 - [Read the guide](http://tutorials.pluralsight.com/python/how-to-write-effective-docstrings?status=draft)
 - [Read more from Ennis Massey](http://tutorials.pluralsight.com/author/MicroTransactionsMatterToo) <img src="https://avatars.githubusercontent.com/u/12421108?v=3" width="30" height="30" alt="Ennis Massey" />
