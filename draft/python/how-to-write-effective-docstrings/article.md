@@ -1,5 +1,3 @@
-## How to write effective and concise docstrings
------
 #### Table of Contents
 
 1. ##### Introduction
