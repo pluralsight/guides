@@ -1,3 +1,8 @@
+### HTML BASICS by Nikolas Danaj
+- [Read the guide](http://tutorials.pluralsight.com/html-css/html-basics?status=draft)
+- [Read more from Nikolas Danaj](http://tutorials.pluralsight.com/author/NIkolasDanaj) <img src="https://avatars.githubusercontent.com/u/19437693?v=3" width="30" height="30" alt="Nikolas Danaj" />
+- Related to: HTML/CSS
+
 ### Introduction to Appium Development in Fedora by forethoughtde
 - [Read the guide](http://tutorials.pluralsight.com/python/introduction-to-appium-development-in-fedora?status=draft)
 - [Read more from forethoughtde](http://tutorials.pluralsight.com/author/forethoughtde) <img src="https://avatars.githubusercontent.com/u/9781577?v=3" width="30" height="30" alt="forethoughtde" />
