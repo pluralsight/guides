@@ -1,8 +1,3 @@
-### C# : Using Interfaces and Delegates by jigneshBeladiya
-- [Read the guide](http://tutorials.pluralsight.com/microsoft-net/c-using-interfaces-and-delegates?status=draft)
-- [Read more from jigneshBeladiya](http://tutorials.pluralsight.com/author/jigneshBeladiya) <img src="https://avatars.githubusercontent.com/u/11713657?v=3" width="30" height="30" alt="jigneshBeladiya" />
-- Related to: Microsoft.NET (C#, ASP.NET, VB.NET, etc)
-
 ### Learning by doing by jeewan2015
 - [Read the guide](http://tutorials.pluralsight.com/html-css/learning-by-doing?status=draft)
 - [Read more from jeewan2015](http://tutorials.pluralsight.com/author/jeewan2015) <img src="https://avatars.githubusercontent.com/u/11834745?v=3" width="30" height="30" alt="jeewan2015" />
