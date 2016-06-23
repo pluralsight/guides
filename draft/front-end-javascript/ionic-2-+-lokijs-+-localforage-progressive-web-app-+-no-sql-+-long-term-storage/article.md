@@ -9,9 +9,7 @@ Here's how we'll built an Ionic 2 app using a LokiJS database with LocalForage f
 3. simple, legible code and as few adapters as possible
 4. platform agnostic
 
-That 4th point is the kicker.  That knocks out IndexedDB and the like.  For more details, see [CanIUse.Com](http://CanIUse.Com). I began writing for PouchDB but found that it was far too slow, and saving the database to a server was much more burdensome than their streamlined tutorials show.  I also wanted more granular control of its cloud sync process.  
-
-**The main reasons I opted for LokiJS**
+**The Main Reasons I Opted for LokiJS**
 
 * simple, familiar JavaScript objects
 * good documentation on [lokijs.org](http://lokijs.org)
@@ -19,15 +17,9 @@ That 4th point is the kicker.  That knocks out IndexedDB and the like.  For more
 * ability to store full DB as a JSON token (awesome for small DBs!)
 * microscopic footprint
 
-**The main reasons for writing this tutorial**
+**My Environment in Ionic 2** 
 
-* LokiJS and LocalForage are great tools
-* I'm yet to find an Ionic-centric tutorial on them online
-* I need to improve my TypeScript, so this is a good exercise for myself
-
-So let's begin...!
-
-**My Environment** 
+Ionic 2 is growing & maturing quickly.  Here's the environment I used to create this tutorial.
 
 `Cordova CLI: 6.1.1`
 `Ionic Framework Version: 2.0.0-beta.9`
@@ -39,9 +31,9 @@ So let's begin...!
 `Node Version: v5.7.1`
 `Xcode version: Xcode 7.3 Build version 7D175`
 
-**Generating the skeleton code**
+**Generating the Initial Code Base**
 
-In your terminal, type the commands...
+In your terminal, type the commands
 
 	ionic start LokiDB blank --v2
 	cd LokiDB
@@ -50,15 +42,18 @@ In your terminal, type the commands...
 	npm install lokijs
 	npm install localforage
 
-All of our code will be modified in app > pages > home > _home.html_ and _home.ts_.
+This will build our skeleton app.  All of our hacking will take place in app > pages > home > _home.html_ and _home.ts_.
 
-**Coding Strategy**
+**Tutorial Strategy**
 
-1. add LokiJS without persistence
-2. add interactive elements to our LokiJS database
-3. add LocalForage to gain persistence
+There are 3 major sections, below.
 
-**Adding LokiJS without persistence**
+Our Three Sections
+    1. Ionic 2 app with a simple, observable LokiJS database
+    2. add interactive elements to our LokiJS database
+    3. add LocalForage to gain long-term storage
+
+**Adding LokiJS without Persistence**
 
 1. In _home.ts_, just under the `import` statements, add
 
@@ -67,8 +62,8 @@ All of our code will be modified in app > pages > home > _home.html_ and _home.t
 	
 2. Inside the HomePage class, we need to declare 2 objects: one for our database and one for its collection of documents
 
-    	db: any;                        // LokiJS database
-        robots: any;                    // our DB's document collection object
+    	db: any;            // LokiJS database
+        robots: any;        // our DB's document collection object
 
 3. Let's set up these objects inside the constructor
 
@@ -194,9 +189,7 @@ All of our code will be modified in app > pages > home > _home.html_ and _home.t
             </ion-card-content>
         </ion-card>
 
-**Long-term Storage**
-
-Ready for the last part?  Let's go!
+**Adding LocalForage for Long-term Storage**
 
 We're going to allow for saving to file and importing from that file.  For more info on how LocalForage prioritizes storage, see [http://mozilla.github.io/localForage/](http://mozilla.github.io/localForage/)
 
