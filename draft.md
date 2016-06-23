@@ -1,3 +1,8 @@
+### Ionic 2 + LokiJS + LocalForage (Progressive Web App, no-SQL db, and long-term storage) by ryanlogsdon
+- [Read the guide](http://tutorials.pluralsight.com/front-end-javascript/ionic-2-+-lokijs-+-localforage-progressive-web-app-no-sql-db-and-long-term-storage?status=draft)
+- [Read more from ryanlogsdon](http://tutorials.pluralsight.com/author/ryanlogsdon) <img src="https://avatars.githubusercontent.com/u/7528211?v=3" width="30" height="30" alt="ryanlogsdon" />
+- Related to: Front-End JavaScript (Angular, React, Meteor, etc)
+
 ### Building a real-time chat app using React Native by Nguyen Cao Nhat Linh
 - [Read the guide](http://tutorials.pluralsight.com/front-end-javascript/building-a-real-time-chat-app-using-react-native?status=draft)
 - [Read more from Nguyen Cao Nhat Linh](http://tutorials.pluralsight.com/author/ncnlinh) <img src="https://avatars.githubusercontent.com/u/7568367?v=3" width="30" height="30" alt="Nguyen Cao Nhat Linh" />
