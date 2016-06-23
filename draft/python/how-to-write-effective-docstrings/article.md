@@ -122,7 +122,41 @@ For example:
         return tmp
 ```
 
-The above will be used by test systems, such as `nose` and `unittests`. These tools use these embedded tests to run a test, taking the user input, (sections labeled with >>>), and execute it. If the returned value doesn't match the one below, the test will fail. This also doubles as an example of usage for other developers. 
+The above will be used by test systems, such as `nose` and `unittests`. These tools use these embedded tests to run a test, taking the user input, (sections labeled with `>>>`), and execute it. If the returned value doesn't match the one below, the test will fail. This also doubles as an example of usage for other developers. 
 
-Another immensely useful functionality for documentation is the fact that docstrings use [ReStructuredText](http://docutils.sourceforge.net/rst.html), or ReST, to allow for formatting. While bearing similarities to Markdown, it can do alot more. 
+Another immensely useful functionality for documentation is the fact that docstrings use [ReStructuredText](http://docutils.sourceforge.net/rst.html), or ReST, to allow for formatting. While bearing similarities to Markdown, it can do alot more. This is where docstrings really come into their own. As well as allowing you to just write, you can also specify what arguments it takes, what it returns amongst several other sections. While easy to read in raw, tools like Sphinx, will use these for formatting. 
+
+Here are some examples:
+
+```python
+def lowerfirst(string):
+    """Returns the given string with the first letter lowered
+    This is the documentation for the `lowerstring()` function, it will include the use of all common ReST sections
+    Args:
+        string (str): the string to process
+    
+    Returns:
+        tmp (str): The string processed and lowered as necessary
+    
+    """
+    
+    """
+    fix this markdown hates python docstrings, so I have to do this to fix it in the meantime
+    """
+    
+    
+    if string == "I":
+        return string
+    else:
+        tmp = string[0].lower()
+        for i in range(1,len(str)):
+            tmp += i
+        return tmp
+```
+
+So, what does the above do. Well, in the given example there are several elements at play. I will explain these now
+
+Elements of this docstring:
+- \``localstring()`\`: The `, or backtick, is used just like in Markdown, to mark inline code highlighting
+- `Returns:`: This marks the beginning of return values and type specification. 
 
