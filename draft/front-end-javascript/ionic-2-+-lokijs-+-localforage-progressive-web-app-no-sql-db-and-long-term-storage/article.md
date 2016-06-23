@@ -41,17 +41,21 @@ In your terminal, type the commands
 	ionic platform add android
 	npm install lokijs
 	npm install localforage
+	
+If your Ionic Framework version is older than beta 9, you'll need add "--ts" to the first command.
 
-This will build our skeleton app.  All of our hacking will take place in app > pages > home > _home.html_ and _home.ts_.
+    ionic start LokiDB blank --v2 --ts
+
+These commands will build our skeleton app.  All of our hacking will take place in app > pages > home > _home.html_ and _home.ts_.
 
 **Tutorial Strategy**
 
-There are 3 major sections, below.
-
-Our Three Sections
+There are 3 major sections, below. Our three sections are:
     1. Ionic 2 app with a simple, observable LokiJS database
     2. add interactive elements to our LokiJS database
     3. add LocalForage to gain long-term storage
+
+So let's begin...!
 
 **Adding LokiJS without Persistence**
 
