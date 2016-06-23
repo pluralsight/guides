@@ -173,11 +173,6 @@
 - [Read more from Nikola Brežnjak](http://tutorials.pluralsight.com/author/Hitman666) <img src="https://avatars.githubusercontent.com/u/1001064?v=3" width="30" height="30" alt="Nikola Brežnjak" />
 - Related to: Front-End JavaScript (Angular, React, Meteor, etc)
 
-### test by 108Robots
-- [Read the guide](http://tutorials.pluralsight.com/android/test?status=draft)
-- [Read more from 108Robots](http://tutorials.pluralsight.com/author/chaabni) <img src="https://avatars.githubusercontent.com/u/9287363?v=3" width="30" height="30" alt="108Robots" />
-- Related to: Android
-
 ### Getting weather updates via sms  by Kristianne Nerona
 - [Read the guide](http://tutorials.pluralsight.com/interesting-apis/getting-weather-updates-via-sms?status=draft)
 - [Read more from Kristianne Nerona](http://tutorials.pluralsight.com/author/itiannerona) <img src="https://avatars.githubusercontent.com/u/17387645?v=3" width="30" height="30" alt="Kristianne Nerona" />
