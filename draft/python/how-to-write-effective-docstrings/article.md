@@ -65,8 +65,9 @@ def lowerfirst(string):
     """
     
     """
-    fix this markdown hates python docstrings, so I have to do this to fix it in the meantime
+    fix
     """
+    
     
     
     if string == "I":
