@@ -1,3 +1,8 @@
+### User role using middle ware  by Nadim
+- [Read the guide](http://tutorials.pluralsight.com/php/user-role-using-middle-ware?status=draft)
+- [Read more from Nadim](http://tutorials.pluralsight.com/author/nadimsajib) <img src="https://avatars.githubusercontent.com/u/6728894?v=3" width="30" height="30" alt="Nadim" />
+- Related to: PHP
+
 ### Top 10 tips when programming for Arduino by AymArbyn
 - [Read the guide](http://tutorials.pluralsight.com/c-c++/top-10-tips-when-programming-for-arduino?status=draft)
 - [Read more from AymArbyn](http://tutorials.pluralsight.com/author/AymArbyn) <img src="https://avatars.githubusercontent.com/u/1721465?v=3" width="30" height="30" alt="AymArbyn" />
