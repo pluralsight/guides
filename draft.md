@@ -1,3 +1,8 @@
+### How to install CKAN 2.5 from source on Debian 8 "Jessie" by Miguel Gouveia
+- [Read the guide](http://tutorials.pluralsight.com/other/how-to-install-ckan-2-5-from-source-on-debian-8-jessie?status=draft)
+- [Read more from Miguel Gouveia](http://tutorials.pluralsight.com/author/miguelbgouveia) <img src="https://avatars.githubusercontent.com/u/1122917?v=3" width="30" height="30" alt="Miguel Gouveia" />
+- Related to: other
+
 ### Introduction to Appium Development in Fedora by forethoughtde
 - [Read the guide](http://tutorials.pluralsight.com/python/introduction-to-appium-development-in-fedora?status=draft)
 - [Read more from forethoughtde](http://tutorials.pluralsight.com/author/forethoughtde) <img src="https://avatars.githubusercontent.com/u/9781577?v=3" width="30" height="30" alt="forethoughtde" />
