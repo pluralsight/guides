@@ -1,3 +1,2 @@
-# Introduction to Appium Development in Fedora
+# Introduction to Appium
 
-Or load the live markdown tutorial to check the syntax.
