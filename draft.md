@@ -1,3 +1,8 @@
+### Learning by doing by jeewan2015
+- [Read the guide](http://tutorials.pluralsight.com/html-css/learning-by-doing?status=draft)
+- [Read more from jeewan2015](http://tutorials.pluralsight.com/author/jeewan2015) <img src="https://avatars.githubusercontent.com/u/11834745?v=3" width="30" height="30" alt="jeewan2015" />
+- Related to: HTML/CSS
+
 ### User role using middle ware  by Nadim
 - [Read the guide](http://tutorials.pluralsight.com/php/user-role-using-middle-ware?status=draft)
 - [Read more from Nadim](http://tutorials.pluralsight.com/author/nadimsajib) <img src="https://avatars.githubusercontent.com/u/6728894?v=3" width="30" height="30" alt="Nadim" />
