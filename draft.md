@@ -1,3 +1,8 @@
+### Building a real-time chat app using React Native by Nguyen Cao Nhat Linh
+- [Read the guide](http://tutorials.pluralsight.com/front-end-javascript/building-a-real-time-chat-app-using-react-native?status=draft)
+- [Read more from Nguyen Cao Nhat Linh](http://tutorials.pluralsight.com/author/ncnlinh) <img src="https://avatars.githubusercontent.com/u/7568367?v=3" width="30" height="30" alt="Nguyen Cao Nhat Linh" />
+- Related to: Front-End JavaScript (Angular, React, Meteor, etc)
+
 ### Building a Chat App with Ionic 2 and Firebase  by Dave Ackerman
 - [Read the guide](http://tutorials.pluralsight.com/front-end-javascript/building-a-chat-app-with-ionic-2-and-firebase?status=draft)
 - [Read more from Dave Ackerman](http://tutorials.pluralsight.com/author/dmackerman) <img src="https://avatars.githubusercontent.com/u/289938?v=3" width="30" height="30" alt="Dave Ackerman" />
