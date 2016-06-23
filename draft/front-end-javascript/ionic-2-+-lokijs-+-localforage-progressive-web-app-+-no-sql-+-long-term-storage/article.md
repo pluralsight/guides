@@ -1,6 +1,6 @@
 Hi All,
 
-Here's how we'll built a LokiJS database with LocalForage for persistent storage.  All feedback is welcomed.
+Here's how we'll built an Ionic 2 app using a LokiJS database with LocalForage for persistent storage.  All feedback is welcomed.
 
 **My Requirements / App Wish List**
 1. a no-SQL database
