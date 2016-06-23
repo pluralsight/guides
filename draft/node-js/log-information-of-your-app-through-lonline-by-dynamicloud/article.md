@@ -42,18 +42,18 @@ Lonline allows to log your program into the cloud and is powered by Dynamicloud 
   2. [Additional data](#additional-data)
   3. [Execute reports](#execute-reports)
 
-##### **Dependencies**
+#Dependencies
 **Lonline has one dependendency:** [Dynamicloud Nodejs API](https://github.com/dynamicloud/dynamicloud_nodejs_api "Dynamicloud Nodejs API")
 
 [Dynamicloud](https://www.dynamicloud.org "Dynamicloud") provides APIs for Java and Ruby language, so you can use Loline in Java or Ruby programs.
 
-##### **Installation**
+#Installation
 
 You can install this module in your system using the npm command:
  
 `npm install lonline`
 
-##### **Settings**
+#Settings
 
 Lonline needs a basic settings to be configured, the settings of Lonline are within a settings file.
 
@@ -140,7 +140,7 @@ var ops = {
 }
 ```
 
-##### **Dynamicloud account**
+#Dynamicloud account
 
 Lonline needs API credentials from a Dynamicloud account, these credentials allow Lonline to access your account's structure (Model).  The mandatory model in your account should be composed for a model with at least three fields.  For further information about models and fields in Dynamicloud visit its documentation at [Models & Fields](https://www.dynamicloud.org/documents/mfdoc "Dynamicloud documentation")
 
@@ -207,7 +207,7 @@ At this moment you have the necessary to start to log your program into the clou
 #How to use
 Lonline is easy to use, one line of code logs and stores into the cloud.
 
-##### **Log using the six levels**
+#Log using the six levels
 
 ```javascript
 var lonline = require('lonline');
@@ -221,7 +221,7 @@ logger.error('Unable to load setting file');
 logger.fatal('The app has crashed and its state is unavailable');
 ```
 
-##### **Additional data**
+#Additional data
 Lonline allows you to log further data.  If you want to log more information (For example: The module in your application who has executed the log.) just pass a LonlineLog object with the attributes and values.  Remember that these additional attributes must match with the fields in your model, so you need to add these fields before to log.
 
 **To log additional information, follow the code below:**
@@ -235,7 +235,7 @@ logger.trace('Calling method Y', null/*This is the error object*/, {
 });
 ```
 
-##### **Execute reports**
+#Execute reports
 Lonline allows you to execute reports about the executed logs and count how many logs have been created so far.
 
 ```javascript
