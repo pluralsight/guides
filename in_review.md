@@ -1,3 +1,8 @@
+### Ionic 2 + LokiJS + LocalForage (Progressive Web App, no-SQL db, and long-term storage) by ryanlogsdon
+- [Read the guide](http://tutorials.pluralsight.com/front-end-javascript/ionic-2-+-lokijs-+-localforage-progressive-web-app-no-sql-db-and-long-term-storage?status=in-review)
+- [Read more from ryanlogsdon](http://tutorials.pluralsight.com/author/ryanlogsdon) <img src="https://avatars.githubusercontent.com/u/7528211?v=3" width="30" height="30" alt="ryanlogsdon" />
+- Related to: Front-End JavaScript (Angular, React, Meteor, etc)
+
 ### Log information of your app through Lonline by Dynamicloud by Eleazar
 - [Read the guide](http://tutorials.pluralsight.com/node-js/log-information-of-your-app-through-lonline-by-dynamicloud?status=in-review)
 - [Read more from Eleazar](http://tutorials.pluralsight.com/author/egomezr) <img src="https://avatars.githubusercontent.com/u/1632973?v=3" width="30" height="30" alt="Eleazar" />
