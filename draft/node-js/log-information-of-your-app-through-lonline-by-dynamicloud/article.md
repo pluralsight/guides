@@ -2,22 +2,22 @@
 
 > *Availability of a system is typically measured as a factor of its reliability – as reliability increases, so does availability. - Wikipedia*
 
-This word is very important when the most important thing is offer a reliable system.  But, how to offer that kind of system, how can I create something that makes me feel confortable.
+This word is very important when the most important thing is offer a reliable system.  But, how to offer that kind of system, how can I create/provide something that makes me feel confortable.
 
 ------------------------
 
-### Features of a reliable system
+### Features of a reliable system/app
 
 * Always available
 * A huge suite of test cases
 * Integrated diagnostic tools
 * Real time monitoring
 * Restrict access from external clients
-* **Log every error in real time**
+* **Log every potential error in real time**
 
 ------------------------
 
-### Log every error in real time
+### Log every potential error in real time
 
 At this point I want to explain why log your program is an important task when you deliver an app to a production environment.  
 
@@ -25,4 +25,10 @@ Logging allows you to know more about the behaviour and performance of your app 
 
 Nowdays to check the results of a logging process is very hard because every log resides either into a server, virtualization, virtual server or cloud service.
 
+### Log program using Lonline
 
+##### Introduction
+
+Lonline allows to log your program into the cloud and is powered by Dynamicloud service. Lonline allows you to log your program's execution into the cloud to avoid server access and disk space usage
+
+Lonline provides 6 levels of logging and 2 methods to execute reports. Lonline is a library to log your program through a storing service called Dynamicloud. With Dynamicloud we can store data dynamically and very easy, Lonline allows you to set more features and this way log more than only text, level and program trace.
