@@ -158,6 +158,10 @@ def lowerfirst(string):
 So, what does the above do. Well, in the given example there are several elements at play. I will explain these now
 
 Elements of this docstring:
-- \``localstring()`\`: The `, or backtick, is used just like in Markdown, to mark inline code highlighting
-- `Returns:`: This marks the beginning of return values and type specification. 
+- \``localstring()`\` The `, or backtick, is used just like in Markdown, to mark inline code highlighting
+- `Returns:` This marks the beginning of return values and type specification. 
+- `Args:` This marks the beginning of argument specifications
+
+
+Well, the code blocks make sense, but what purpose do the `Args` and `Returns` serve outside of readability. The true power of this lies in the use of Sphinx, or other documentation utilities, to generate HTML docs. The `Args` header servers to give developers a list of accepted args. Optionally, one can specify the type of the argument e.g. `str` or `int`. In the event one wishes to do so, this format is generally used, `<varname>[(<type>)]: <argument info>`. This also applies to the `Returns` section, allowing one to specify 
 
