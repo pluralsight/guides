@@ -1,3 +1,8 @@
+### Building a Chat App with Ionic 2 and Firebase  by Dave Ackerman
+- [Read the guide](http://tutorials.pluralsight.com/front-end-javascript/building-a-chat-app-with-ionic-2-and-firebase?status=draft)
+- [Read more from Dave Ackerman](http://tutorials.pluralsight.com/author/dmackerman) <img src="https://avatars.githubusercontent.com/u/289938?v=3" width="30" height="30" alt="Dave Ackerman" />
+- Related to: Front-End JavaScript (Angular, React, Meteor, etc)
+
 ### HTML BASICS by Nikolas Danaj
 - [Read the guide](http://tutorials.pluralsight.com/html-css/html-basics?status=draft)
 - [Read more from Nikolas Danaj](http://tutorials.pluralsight.com/author/NIkolasDanaj) <img src="https://avatars.githubusercontent.com/u/19437693?v=3" width="30" height="30" alt="Nikolas Danaj" />
