@@ -185,50 +185,56 @@ So let's begin...!
 
 4. Finally, we need to allow for document deletion, so let's change the original card so we have a Delete button:
 
-	    <!-- list all database elements -->
-        <ion-card *ngFor="let robot of convert2Array(robots.data)">
-            <ion-card-header>
-                {{robot.name}}
-            </ion-card-header>
-            <ion-card-content>
-                {{robot.tvShow}}
-                <button (click)="deleteDocument($event, robot)">Delete</button>
-            </ion-card-content>
-        </ion-card>
+    ```html
+    <!-- list all database elements -->
+    <ion-card *ngFor="let robot of convert2Array(robots.data)">
+        <ion-card-header>
+            {{robot.name}}
+        </ion-card-header>
+        <ion-card-content>
+            {{robot.tvShow}}
+            <button (click)="deleteDocument($event, robot)">Delete</button>
+        </ion-card-content>
+    </ion-card>
+    ```
 
 **Adding LocalForage for Long-term Storage**
 
 We're going to allow for saving to file and importing from that file.  For more info on how LocalForage prioritizes storage, see [http://mozilla.github.io/localForage/](http://mozilla.github.io/localForage/)
 
 1. _home.ts_ needs a localForage object. Add this just below your `var loki = ...` code:
-
-	    var localforage = require('localforage');
+    ```js
+    var localforage = require('localforage');
+	```
 
 2. Add in functions for saving the database and retrieving it.  LocalForage uses key-value maps, and since we're only interested in saving 1 value (the entire database), we'll hard-code our key as `storeKey`.
 
-	    saveAll() {
-            localforage.setItem('storeKey', JSON.stringify(this.db)).then(function (value) {
-                console.log('database successfully saved');
-            }).catch(function(err) {
-                console.log('error while saving: ' + err);
-            });
-        }
-        
-        importAll() {
-            var self = this;
-            localforage.getItem('storeKey').then(function(value) {
-                console.log('the full database has been retrieved');
-                self.db.loadJSON(value);
-                self.robots = self.db.getCollection('robots');        // slight hack! we're manually reconnecting the collection variable
-            }).catch(function(err) {
-                console.log('error importing database: ' + err);
-            });
-        }
+    ```js
+    saveAll() {
+        localforage.setItem('storeKey', JSON.stringify(this.db)).then(function (value) {
+            console.log('database successfully saved');
+        }).catch(function(err) {
+            console.log('error while saving: ' + err);
+        });
+    }
+    
+    importAll() {
+        var self = this;
+        localforage.getItem('storeKey').then(function(value) {
+            console.log('the full database has been retrieved');
+            self.db.loadJSON(value);
+            self.robots = self.db.getCollection('robots');        // slight hack! we're manually reconnecting the collection variable
+        }).catch(function(err) {
+            console.log('error importing database: ' + err);
+        });
+    }
+    ```
 
 3. In _home.html_, we're going to hook up the new storage functions to 2 new buttons. Next to our "Add" button, include these:
-
-                <button (click)="saveAll()">Save All</button>
-                <button (click)="importAll()">Import All</button>
+    ```html
+    <button (click)="saveAll()">Save All</button>
+    <button (click)="importAll()">Import All</button>
+    ```
 
 That's all it takes to build a persistent, no-SQL database in Ionic 2!
 
