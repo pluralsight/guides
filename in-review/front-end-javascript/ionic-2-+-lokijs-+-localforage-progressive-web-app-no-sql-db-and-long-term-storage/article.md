@@ -200,7 +200,7 @@ So let's begin...!
 
 We're going to allow for saving to file and importing from that file.  For more info on how LocalForage prioritizes storage, see [http://mozilla.github.io/localForage/](http://mozilla.github.io/localForage/)
 
-1. _home.ts_ needs a localForage object. Add this just below your 'var loki...' code:
+1. _home.ts_ needs a localForage object. Add this just below your `var loki = ...` code:
 
 	    var localforage = require('localforage');
 
