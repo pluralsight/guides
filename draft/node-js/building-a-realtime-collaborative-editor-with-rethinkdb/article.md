@@ -377,6 +377,13 @@ And here is a recorded demo of using the editor...
 ![Imgur](http://i.imgur.com/e1QhrZk.gif)
 
 
+## Summary
+
+Using this you can create a very simple editor with realtime collaboration features. However this is just the beginning. If you want to make the editor become something even better then you will need to implement a login system, chats, data validation, and much much more. One thing that you should learn next is something called Operational Transformation. It is what bigger collaborative editors use to make sure every edit you make doesn't overwrite something else someone is doing. It also handles collision of data, and can help relay information correctly with more than just text data. In the future I will write an article about operational transformation. I'll discuss all of the aspects of it, as well as how to add it into your current projects.
+
+For now I bid you farewell. I hope this tutorial peaks your interest, and you can go off and make amazing apps with RethinkDB.
+
+
 If your application is breaking and you do not know why, then here is exactly what your two files should be looking like by now...
 
 Here is `index.js`:
