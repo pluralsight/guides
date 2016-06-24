@@ -211,13 +211,22 @@ and properties:
 ### NaudioWrapper
 Before we move on to the ViewModel we need the basic features abstracted away from the core NAudio code. To do this, first we must add NAudio to this project via NuGet. Then we must create an `AudioPlayer` class to hold all these features in its methods and our ViewModel can access these public methods to interact with it.
 
-Looking at our feature list, first and foremost, we need to actually play an audio file. To do this in NAudio, first we must set the file path of the audio and read the file with a reader. There are many specific readers for specific filetypes. However you can simply use `AudioFileReader` to read all supported files. To play the file, we need to set an output. We want to play all kinds of audio files so we will use `DirectSoundOut`. You can also use `WasapiOut`, however currently there is a problem of not firing stopped event in `WasapiOut`. So we better use `DirectSoundOut` in this example.
+Looking at our feature list, first and foremost, we need to actually play an audio file. To do this in NAudio, first we must set the file path of the audio and read the file with a reader. There are many specific readers for specific filetypes. However you can simply use `AudioFileReader` to read all supported files. To play the file, we need to set an output. We want to play all kinds of audio files so we will use `DirectSoundOut`. You can use many other output types, however we will use `DirectSoundOut` in this example.
 
-Then We must create some events to let ViewModel know that we are playing, paused or stopped. These events will come in handy to manipulate our UI accordingly.
+We must also create some events to let ViewModel know that we are playing, paused or stopped. These events will come in handy to manipulate our UI accordingly.
+
+And lastly, we must create a flag to set or get the stop type. This is needed because we need to know if we are stopping to play the next file in our playlist or if we are stopping because user wants to stop playing the current file.
 
 ```cs
 public class AudioPlayer
 {
+    public enum PlaybackStopTypes
+    {
+        PlaybackStoppedByUser, PlaybackStoppedReachingEndOfFile
+    }
+
+    public PlaybackStopTypes PlaybackStopType { get; set; }
+    
     private AudioFileReader _audioFileReader;
 
     private DirectSoundOut _output;
@@ -230,6 +239,160 @@ public class AudioPlayer
 }
 ```
 
+Let's take a look at our methods. In the constructor we must initialize all our fields and their events.
+```cs
+public AudioPlayer(string filepath, float volume)
+{
+    PlaybackStopType = PlaybackStopTypes.PlaybackStoppedReachingEndOfFile;
+
+    _audioFileReader = new AudioFileReader(filepath) { Volume = volume };
+
+    _output = new DirectSoundOut(200);
+    _output.PlaybackStopped += _output_PlaybackStopped;
+
+    var wc = new WaveChannel32(_audioFileReader);
+    wc.PadWithZeroes = false;
+
+    _output.Init(wc);
+}
+```
+As default we go for `PlaybackStopTypes.PlaybackStoppedReachingEndOfFile` for our `PlaybackStopType`, because usually that's why our playback would stop. Here the most important bit is `wc.PadWithZeroes = false` because typically `PlaybackStopped` event fires if the reader finds byte value 0 and if we dont pad with zeros then playback would go on forever and there would be no way for us to know if the clip is finished.
+
+Now that we initialized everything, we can implement the rest of our methods. We need methods for:
+- `PlaybackStopped` event
+- Playing
+- Pausing
+- Stopping
+- Toggling between Play and Pause
+- Getting and setting current track position for our UI
+- Getting and setting current volume for our UI
+- And a `Dispose()` method to clear up the memory
+
+```cs
+public void Play(PlaybackState playbackState, double currentVolumeLevel)
+{
+    if (playbackState == PlaybackState.Stopped || playbackState == PlaybackState.Paused)
+    {
+        _output.Play();
+    }
+
+    _audioFileReader.Volume = (float) currentVolumeLevel;
+
+    if (PlaybackResumed != null)
+    {
+        PlaybackResumed();
+    }
+}
+
+private void _output_PlaybackStopped(object sender, StoppedEventArgs e)
+{
+    Dispose();
+    if (PlaybackStopped != null)
+    {
+        PlaybackStopped();
+    }
+}
+
+public void Stop()
+{
+    if (_output != null)
+    {
+        _output.Stop();
+    }
+}
+
+public void Pause()
+{
+    if (_output != null)
+    {
+        _output.Pause();
+
+        if (PlaybackPaused != null)
+        {
+            PlaybackPaused();
+        }
+    }
+}
+
+public void TogglePlayPause(double currentVolumeLevel)
+{
+    if (_output != null)
+    {
+        if (_output.PlaybackState == PlaybackState.Playing)
+        {
+            Pause();
+        }
+        else
+        {
+            Play(_output.PlaybackState, currentVolumeLevel);
+        }
+    }
+    else
+    {
+        Play(PlaybackState.Stopped, currentVolumeLevel);
+    }
+}
+
+public void Dispose()
+{
+    if (_output != null)
+    {
+        if (_output.PlaybackState == PlaybackState.Playing)
+        {
+            _output.Stop();
+        }
+        _output.Dispose();
+        _output = null;
+    }
+    if (_audioFileReader != null)
+    {
+        _audioFileReader.Dispose();
+        _audioFileReader = null;
+    }
+}
+
+public double GetLenghtInSeconds()
+{
+    if (_audioFileReader != null)
+    {
+        return _audioFileReader.TotalTime.TotalSeconds;
+    }
+    else
+    {
+        return 0;
+    }
+}
+
+public double GetPositionInSeconds()
+{
+    return _audioFileReader != null ? _audioFileReader.CurrentTime.TotalSeconds : 0;
+}
+
+public float GetVolume()
+{
+    if (_audioFileReader != null)
+    {
+        return _audioFileReader.Volume;
+    }
+    return 1;
+}
+
+public void SetPosition(double value)
+{
+    if (_audioFileReader != null)
+    {
+        _audioFileReader.CurrentTime = TimeSpan.FromSeconds(value);
+    }
+}
+
+public void SetVolume(float value)
+{
+    if (_output != null)
+    {
+        _audioFileReader.Volume = value;
+    }
+}
+```
 
 ### The ViewModel
 Before we implement the ViewModel we need to define how commands work. We will use the commonly used `RelayCommand` class to do this:
