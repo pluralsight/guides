@@ -702,7 +702,7 @@ public class MainWindowViewModel : INotifyPropertyChanged
     }
 }
 ```
-
+##### Exiting the Application
 Let's start with the easy but the important one, exiting our application. We must consider two ways to quit:
 - User clicks exit in the menu
 - User clicks the red X
@@ -754,8 +754,8 @@ private void MainWindow_Closing(object sender, CancelEventArgs e)
     }
 }
 ```
-
-We can now exit our application without any issues. Lets move on to creating our playlist by adding a single file. However we do not want to modify our playlist while a clip is running. So we need a flag to see if we are playing a clip. We must add another field and modify the constructor for this.
+##### Adding Files to Playlist
+Now, let's move on to creating our playlist by adding a single file. However we do not want to modify our playlist while a clip is running. So we need a flag to see if we are playing a clip. We must add another field and modify the constructor for this.
 ```cs
 private enum PlaybackState
 {
@@ -838,7 +838,8 @@ private bool CanAddFolderToPlaylist(object p)
 }
 ```
 
-We can now add files to our playlist. To even add more to playlist functionality we must be able to save and load our playlists. Let's choose ".playlist" for our file extension.
+##### Saving and Loading The Playlist
+To even add more to playlist functionality we must be able to save and load our playlists. Let's choose ".playlist" for our file extension.
 
 To save a playlist:
 ```cs
@@ -879,7 +880,9 @@ private bool CanLoadPlaylist(object p)
 }
 ```
 
-We are finally done with our menu commands, we can move to the player buttons that deals with the actual audio.
+We are finally done with our menu commands, we can move to the player buttons that deals with the actual audio. Let's go from left to right.
+
+
 
 
 
