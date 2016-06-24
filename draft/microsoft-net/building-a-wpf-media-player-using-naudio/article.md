@@ -395,7 +395,7 @@ public void SetVolume(float value)
 ```
 
 ### The ViewModel
-Before we implement the ViewModel we need to define how commands work. We will use the commonly used `RelayCommand` class to do this:
+After coding our abstraction layer, we can move on the ViewModel. However, before we implement the ViewModel we need to define how commands work as in every MVVM project. We will use the commonly used `RelayCommand` class to do this:
 ```cs
 public class RelayCommand : ICommand
 {
