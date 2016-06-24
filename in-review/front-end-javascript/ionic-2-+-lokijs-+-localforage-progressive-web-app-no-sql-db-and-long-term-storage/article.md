@@ -52,7 +52,9 @@ These commands will build our skeleton app.  All of our hacking will take place 
 
 There are 3 major sections, below. Our three sections are:
     1. Ionic 2 app with a simple, observable LokiJS database
+    
     2. add interactive elements to our LokiJS database
+    
     3. add LocalForage to gain long-term storage
 
 So let's begin...!
