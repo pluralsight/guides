@@ -161,6 +161,12 @@ After these three files are added to the root directory of the Rails application
 
 Wait as the packages are installed. Once the command completes, there will be an extra directory named <code> node_modules </code> in the root directory that will contain the installations of all the packages.
 
+In order to run the configuration of the typescript, run:
+```bash
+ npm run tsc
+```
+
+
 The configuration is almost finished, but there is a **gotcha** - the <code>node_modules</code> directory will not load in the application's assets since it is not in the <code>app/assets</code> directory. Thus, the directory must be added explicitly in the configuration of the Rails application:
 ```ruby
 #config/application.rb
