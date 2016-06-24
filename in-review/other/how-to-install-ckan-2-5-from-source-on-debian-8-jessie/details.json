@@ -3,7 +3,12 @@
     "author_name": "miguelbgouveia",
     "author_real_name": "Miguel Gouveia",
     "branch": "master",
-    "branches": [],
+    "branches": [
+        [
+            "MicroTransactionsMatterToo",
+            "MicroTransactionsMatterToo-other-how-to-install-ckan-2-5-from-source-on-debian-8-jessie"
+        ]
+    ],
     "filename": "article.md",
     "first_commit": "070ebfe60904dba3698ecab4d80cbeccd54a0b0a",
     "image_url": "https://avatars.githubusercontent.com/u/1122917?v=3",
