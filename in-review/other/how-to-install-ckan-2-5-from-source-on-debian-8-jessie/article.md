@@ -34,13 +34,13 @@ virtualenv --no-site-packages /usr/lib/ckan/default
 
 The final command above activates your virtualenv. The virtualenv has to remain active for the rest of the installation and deployment process, or commands will fail. You can tell when a virtualenv is active because its name appears in front of your shell prompt, and will look something like this:
 
-```bash
+```sh
 (default) $ _
 ```
 
 For example, if you close your current terminal session, your virtualenv will no longer be activated. You can always reactivate the virtualenv with this command:
 
-```bash
+```sh
 . /usr/lib/ckan/default/bin/activate
 
 ```
