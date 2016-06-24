@@ -3,7 +3,12 @@
     "author_name": "ryanlogsdon",
     "author_real_name": "ryanlogsdon",
     "branch": "master",
-    "branches": [],
+    "branches": [
+        [
+            "MicroTransactionsMatterToo",
+            "MicroTransactionsMatterToo-front-end-javascript-ionic-2-+-lokijs-+-localforage-progressive-web-app-no-sql-db-and-long-term-storage"
+        ]
+    ],
     "filename": "article.md",
     "first_commit": "f34bd1f5aae17192181b3639e9f5578b52b53128",
     "image_url": "https://avatars.githubusercontent.com/u/7528211?v=3",
