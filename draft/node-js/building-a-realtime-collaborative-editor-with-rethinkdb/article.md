@@ -1,5 +1,3 @@
-# Building a Realtime Collaborative Editor with RethinkDB
-
 Today we are going to tackle an interesting app. We are going to build a collaborative editor that uses RethinkDB to sync data between users. First off we have to answer the blarring question out there.
 
 ## What is RethinkDB? [https://www.rethinkdb.com/](https://www.rethinkdb.com/)
