@@ -880,9 +880,193 @@ private bool CanLoadPlaylist(object p)
 }
 ```
 
-We are finally done with our menu commands, we can move to the player buttons that deals with the actual audio. Let's go from left to right.
+We are finally done with our menu commands, we can move to the player buttons that deals with the actual audio.
 
+##### Skip to Beginning
+To skip to beginning, we need to set the current track position to zero while the audio is playing. The code for that is:
 
+```cs
+private void RewindToStart(object p)
+{
+    _audioPlayer.SetPosition(0);
+}
+private bool CanRewindToStart(object p)
+{
+    if (_playbackState == PlaybackState.Playing)
+    {
+        return true;
+    }
+    return false;
+}
+```
+
+##### Toggle for Play/Pause
+
+```cs
+private void StartPlayback(object p)
+{
+    if (CurrentlySelectedTrack != null)
+    {
+        // If we are selecting the clip that is playing, just do play/pause otherwise create a new AudioPlayer to play another clip
+        if (CurrentlyPlayingTrack != CurrentlySelectedTrack)
+        {
+            if (CurrentlyPlayingTrack == null || _playbackState == PlaybackState.Stopped)
+            {
+                _audioPlayer = new AudioPlayer(CurrentlySelectedTrack.Filepath, CurrentVolume);
+                _audioPlayer.PlaybackStopType = AudioPlayer.PlaybackStopTypes.PlaybackStoppedReachingEndOfFile;
+                _audioPlayer.PlaybackPaused += _audioPlayer_PlaybackPaused;
+                _audioPlayer.PlaybackResumed += _audioPlayer_PlaybackResumed;
+                _audioPlayer.PlaybackStopped += _audioPlayer_PlaybackStopped;
+                CurrentTrackLenght = _audioPlayer.GetLenghtInSeconds();
+                CurrentlyPlayingTrack = CurrentlySelectedTrack;
+            }
+            else
+            {
+                if (_audioPlayer != null)
+                {
+                    StopPlayback(null);
+                    // This is here to stop stuttering of audio while one clip ends other begins
+                    Thread.Sleep(500);
+                }
+            }
+        }
+        if (_playbackState == PlaybackState.Stopped)
+        {
+            _audioPlayer = new AudioPlayer(CurrentlySelectedTrack.Filepath, CurrentVolume);
+            _audioPlayer.PlaybackStopType = AudioPlayer.PlaybackStopTypes.PlaybackStoppedReachingEndOfFile;
+            _audioPlayer.PlaybackPaused += _audioPlayer_PlaybackPaused;
+            _audioPlayer.PlaybackResumed += _audioPlayer_PlaybackResumed;
+            _audioPlayer.PlaybackStopped += _audioPlayer_PlaybackStopped;
+            CurrentTrackLenght = _audioPlayer.GetLenghtInSeconds();
+            CurrentlyPlayingTrack = CurrentlySelectedTrack;
+        }
+        _audioPlayer.TogglePlayPause(CurrentVolume);
+    }
+}
+private bool CanStartPlayback(object p)
+{
+    if (CurrentlySelectedTrack != null)
+    {
+        return true;
+    }
+    return false;
+}
+```
+
+##### Stop
+
+```cs
+private void StopPlayback(object p)
+{
+    if (_audioPlayer != null)
+    {
+        _audioPlayer.PlaybackStopType = AudioPlayer.PlaybackStopTypes.PlaybackStoppedByUser;
+        _audioPlayer.Stop();
+    }
+}
+private bool CanStopPlayback(object p)
+{
+    if (_playbackState == PlaybackState.Playing || _playbackState == PlaybackState.Paused)
+    {
+        return true;
+    }
+    return false;
+}
+```
+
+##### Skip to Next Track
+```cs
+private void ForwardToEnd(object p)
+{
+    if (_audioPlayer != null)
+    {
+        _audioPlayer.PlaybackStopType = AudioPlayer.PlaybackStopTypes.PlaybackStoppedReachingEndOfFile;
+        _audioPlayer.SetPosition(_audioPlayer.GetLenghtInSeconds());
+    }
+}
+private bool CanForwardToEnd(object p)
+{
+    if (_playbackState == PlaybackState.Playing)
+    {
+        return true;
+    }
+    return false;
+}
+```
+
+##### Shuffle
+```cs
+private void Shuffle(object p)
+{
+    
+}
+private bool CanShuffle(object p)
+{
+    if (_playbackState == PlaybackState.Stopped)
+    {
+        return true;
+    }
+    return false;
+}
+```
+
+For the last part we need to deal with our MVVM event commands.
+
+##### PreviewMouseDown and PreviewMouseUp Events on Seekbar
+```cs
+private void TrackControlMouseDown(object p)
+{
+    if (_audioPlayer != null)
+    {
+        _audioPlayer.Pause();
+    }
+}
+
+private void TrackControlMouseUp(object p)
+{
+    if (_audioPlayer != null)
+    {
+        _audioPlayer.SetPosition(CurrentTrackPosition);
+        _audioPlayer.Play(NAudio.Wave.PlaybackState.Paused, CurrentVolume);
+    }
+}
+
+private bool CanTrackControlMouseDown(object p)
+{
+    if (_playbackState == PlaybackState.Playing)
+    {
+        return true;
+    }
+    return false;
+}
+
+private bool CanTrackControlMouseUp(object p)
+{
+    if (_playbackState == PlaybackState.Paused)
+    {
+        return true;
+    }
+    return false;
+}
+```
+
+##### Volume Control Event
+```cs
+private void VolumeControlValueChanged(object p)
+{
+    if (_audioPlayer != null)
+    {
+        _audioPlayer.SetVolume(CurrentVolume);
+    }
+}
+
+private bool CanVolumeControlValueChanged(object p)
+{
+    return true;
+}
+```
+
+### Conclusion
 
 
 
