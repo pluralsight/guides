@@ -703,11 +703,183 @@ public class MainWindowViewModel : INotifyPropertyChanged
 }
 ```
 
+Let's start with the easy but the important one, exiting our application. We must consider two ways to quit:
+- User clicks exit in the menu
+- User clicks the red X
 
+For the menu part:
+```cs
+private void ExitApplication(object p)
+{
+    if (_audioPlayer != null)
+    {
+        _audioPlayer.Dispose();
+    }
+    
+    Application.Current.Shutdown();
+}
+private bool CanExitApplication(object p)
+{
+    return true;
+}
+```
 
+Here we must manage the memory in case user played some audio clips and `AudioPlayer` might not be null. Even if we close the application audio clip as a stream would remain in the memory so we have to `Dispose()` it to release the memory.
 
+For the red X button, first we must add an event in the constructor, letting ViewModel know that we are exiting.
 
+```cs
+public MainWindowViewModel()
+{
+    Application.Current.MainWindow.Closing += MainWindow_Closing;
 
+    Title = "NaudioPlayer";
+
+    LoadCommands();
+
+    Playlist = new ObservableCollection<Track>();
+
+    PlayPauseImageSource = "../Images/play.png";
+    CurrentVolume = 1;
+}
+```
+
+Then add the method:
+```cs
+private void MainWindow_Closing(object sender, CancelEventArgs e)
+{
+    if (_audioPlayer != null)
+    {
+        _audioPlayer.Dispose();
+    }
+}
+```
+
+We can now exit our application without any issues. Lets move on to creating our playlist by adding a single file. However we do not want to modify our playlist while a clip is running. So we need a flag to see if we are playing a clip. We must add another field and modify the constructor for this.
+```cs
+private enum PlaybackState
+{
+    Playing, Stopped, Paused
+}
+
+private PlaybackState _playbackState;
+
+public MainWindowViewModel()
+{
+    Application.Current.MainWindow.Closing += MainWindow_Closing;
+
+    Title = "NaudioPlayer";
+
+    LoadCommands();
+
+    Playlist = new ObservableCollection<Track>();
+    
+    _playbackState = PlaybackState.Stopped;
+
+    PlayPauseImageSource = "../Images/play.png";
+    CurrentVolume = 1;
+}
+```
+And to add a file, we do it with an `OpenFileDialog`:
+```cs
+private void AddFileToPlaylist(object p)
+{
+    var ofd = new OpenFileDialog();
+    ofd.Filter = "Audio files (*.wav, *.mp3, *.wma, *.ogg, *.flac) | *.wav; *.mp3; *.wma; *.ogg; *.flac";
+    var result = ofd.ShowDialog();
+    if (result == true)
+    {
+        var friendlyName = ofd.SafeFileName.Remove(ofd.SafeFileName.Length - 4);
+        var track = new Track(ofd.FileName, friendlyName);
+        Playlist.Add(track);
+    }
+}
+private bool CanAddFileToPlaylist(object p)
+{
+    if (_playbackState == PlaybackState.Stopped)
+    {
+        return true;
+    }
+    return false;
+}
+```
+
+We also need to implement add a folder of files. To do this first we need a way to select a folder like we did with the file with `CommonOpenFileDialog()`. However core libraries do not have this class so we need to add this class via NuGet. The name of he package is Microsoft.WindowsAPICodePack-Core. This code can only be used on machines with Vista or above.
+
+```cs
+private void AddFolderToPlaylist(object p)
+{
+    var cofd = new CommonOpenFileDialog();
+    cofd.IsFolderPicker = true;
+    var result = cofd.ShowDialog();
+    if (result == CommonFileDialogResult.Ok)
+    {
+        var folderName = cofd.FileName;
+        var audioFiles = Directory.EnumerateFiles(folderName, "*.*", SearchOption.AllDirectories)
+                                  .Where(f=>f.EndsWith(".wav") || f.EndsWith(".mp3") || f.EndsWith(".wma") || f.EndsWith(".ogg") || f.EndsWith(".flac"));
+        foreach (var audioFile in audioFiles)
+        {
+            var removePath = audioFile.RemovePath();
+            var friendlyName = removePath.Remove(removePath.Length - 4);
+            var track = new Track(audioFile, friendlyName);
+            Playlist.Add(track);
+        }
+        Playlist = new ObservableCollection<Track>(Playlist.OrderBy(z => z.FriendlyName).ToList());
+    }
+}
+
+private bool CanAddFolderToPlaylist(object p)
+{
+    if (_playbackState == PlaybackState.Stopped)
+    {
+        return true;
+    }
+    return false;
+}
+```
+
+We can now add files to our playlist. To even add more to playlist functionality we must be able to save and load our playlists. Let's choose ".playlist" for our file extension.
+
+To save a playlist:
+```cs
+private void SavePlaylist(object p)
+{
+    var sfd = new SaveFileDialog();
+    sfd.CreatePrompt = false;
+    sfd.OverwritePrompt = true;
+    sfd.Filter = "PLAYLIST files (*.playlist) | *.playlist";
+    if (sfd.ShowDialog() == true)
+    {
+        var ps = new PlaylistSaver();
+        ps.Save(Playlist, sfd.FileName);
+    }
+}
+
+private bool CanSavePlaylist(object p)
+{
+    return true;
+}
+```
+
+To load a playlist:
+```cs
+private void LoadPlaylist(object p)
+{
+    var ofd = new OpenFileDialog();
+    ofd.Filter = "PLAYLIST files (*.playlist) | *.playlist";
+    if (ofd.ShowDialog() == true)
+    {
+        Playlist = new PlaylistLoader().Load(ofd.FileName).ToObservableCollection();
+    }
+}
+
+private bool CanLoadPlaylist(object p)
+{
+    return true;
+}
+```
+
+We are finally done with our menu commands, we can move to the player buttons that deals with the actual audio.
 
 
 
