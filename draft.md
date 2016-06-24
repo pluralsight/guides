@@ -1,8 +1,3 @@
-### Building a Realtime Collaborative Editor with RethinkDB by Shannon Duncan
-- [Read the guide](http://tutorials.pluralsight.com/node-js/building-a-realtime-collaborative-editor-with-rethinkdb?status=draft)
-- [Read more from Shannon Duncan](http://tutorials.pluralsight.com/author/shadowcodex) <img src="https://avatars.githubusercontent.com/u/1348053?v=3" width="30" height="30" alt="Shannon Duncan" />
-- Related to: Node.js
-
 ### Building a real-time chat app using React Native by Nguyen Cao Nhat Linh
 - [Read the guide](http://tutorials.pluralsight.com/front-end-javascript/building-a-real-time-chat-app-using-react-native?status=draft)
 - [Read more from Nguyen Cao Nhat Linh](http://tutorials.pluralsight.com/author/ncnlinh) <img src="https://avatars.githubusercontent.com/u/7568367?v=3" width="30" height="30" alt="Nguyen Cao Nhat Linh" />
