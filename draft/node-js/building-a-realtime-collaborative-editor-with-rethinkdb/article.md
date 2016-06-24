@@ -87,7 +87,7 @@ Install Codemirror with the following command `bower install --save codemirror`
 
 ## Writing Actual Code
 
-By now you have your project setup and ready to use the techonlogies that we have installed. The first thing we want to do is create the two files that we will need. To do this in the folder of your project, and in your console run `touch index.html` and `touch index.js`. This will create two blank files.
+By now you have your project setup and ready to use the technologies that we have installed. The first thing we want to do is create the two files that we will need. To do this in the folder of your project, and in your console run `touch index.html` and `touch index.js`. This will create two blank files.
 
 In the HTML you want to put the following Code:
 
@@ -208,7 +208,7 @@ r.connect({ host: 'localhost', port: 28015 }, function(err, conn) {
 });
 ```
 
-When you install RethinkDB it automatically sets up a test database. We are going to use that for our project. (feel free to try and modify your code to add a new database for you to use, if you want). This makes it easy, and quick. The first part of this connects to rethinkDB. Then anytying we wantot o do with rethink needs to happen within that connection block. The second thing we do is call a `.tableList()` on the database. We want to see if our edit table is already created, if it is we are just going to list the current tables in the database. If the table doesn't exist then we are going to create it. It is a simple way to create the database on the first run, and skip that code every run after that. Otherwise we would get an error that the table already exists everytime we tried to created it.
+When you install RethinkDB it automatically sets up a test database. We are going to use that for our project. (feel free to try and modify your code to add a new database for you to use, if you want). This makes it easy, and quick. The first part of this connects to rethinkDB. Then any thing we want to do with rethink needs to happen within that connection block. The second thing we do is call a `.tableList()` on the database. We want to see if our edit table is already created, if it is we are just going to list the current tables in the database. If the table doesn't exist then we are going to create it. It is a simple way to create the database on the first run, and skip that code every run after that. Otherwise we would get an error that the table already exists every time we tried to created it.
 
 Now most of the stuff we are going to be doing with data is going to require the rethinkDB so replace the rethinkDB and Socket.io sections to look like this:
 
@@ -264,7 +264,7 @@ socket.on('document-update', function(msg){
   });
 ```
 
-The first set of code makes it so that everytime a keypress goes up on the codemirror editor, we will do something. In this case we are going to send a socket emit labeled `document-update` with the value of the editor's contents. 
+The first set of code makes it so that every time a keypress goes up on the codemirror editor, we will do something. In this case we are going to send a socket emit labeled `document-update` with the value of the editor's contents. 
 
 In the second set of code we are going to recieve that socket message and store it into the rethinkdb table. Notice that it is an insert and that I have a piece of code that looks like `{conflict: "update"}`. This allows me to insert data when it comes in. If it is new data, then it will insert a new record into rethinkDB. However, if the data coming in matches a room id that is already present in the rethinkDB database then we will update that record instead of inserting a new one.
 
@@ -296,7 +296,7 @@ socket.on('doc', function(msg){
 
 The first block of code works the magic that is RethinkDB. We are using their changes function to watch a table of data. Anytime a row of data changes it will inform us. When it does inform us of the change we will send that document out through the socket to all connected clients. This will happen in realtime as new data is pushed to the server.
 
-The second block of code receives the data on the `doc` socket and checks to make sure it is for this client. If the data is for the current room and it wasn't submitted by the current user then we want it. The reason we don't want data submitted by the current user is because it can cause a typing glitch. As data is sent to the server it is sent back to us, and when we retrive it we are storing it into the codemirror editor. If we were the ones that sent it we may have already typed a new letter before we recieved the update. This would cause our typed letter to disappear. By checking that the data wasn't sent by the current user, then we can avoid this issue completely.
+The second block of code receives the data on the `doc` socket and checks to make sure it is for this client. If the data is for the current room and it wasn't submitted by the current user then we want it. The reason we don't want data submitted by the current user is because it can cause a typing glitch. As data is sent to the server it is sent back to us, and when we retrieve it we are storing it into the codemirror editor. If we were the ones that sent it we may have already typed a new letter before we recieved the update. This would cause our typed letter to disappear. By checking that the data wasn't sent by the current user, then we can avoid this issue completely.
 
 Next let's add a few more details. Add the following code to `index.js` It needs to be added within the rethinkDB connection block:
 
