@@ -1,4 +1,3 @@
-
 # Table of Contents
 
 1. ##### [Introduction](#introduction2)
@@ -183,17 +182,27 @@ While this guide focuses on the [Google Style](http://sphinxcontrib-napoleon.rea
 
 - [Epytext](http://epydoc.sourceforge.net/epytext.html)
 - [Raw ReST](http://docutils.sourceforge.net/docutils/statemachine.py)
+- [NumpyDocs](https://github.com/numpy/numpy/blob/master/doc/HOWTO_DOCUMENT.rst.txt)
 
 amongst many others
 
 Below is a table of common sections identifiers equivalents in each language
 
-Epytext                 | Google                      | ReST  
------------------------ | --------------------------- | --------------------------  
-`@param <var> : <desc>` | \*`<var> (<type>): <desc>`  | `:param <varname>: <desc>`  
-`@return <var>: <desc>` | \* `<var> (<type>): <desc>` | `:returns <varname>: <desc>`  
-`@type <var>`           | See notes                   | `:rtype <varname>: <type>`   
+Epytext                 | Google                      | ReST                        | NumpyDocs
+----------------------- | --------------------------- | ----------------------------|--------------
+`@param <var> : <desc>` | \*`<var> (<type>): <desc>`  | `:param <varname>: <desc>`  | \** `<varname> : <type> <desc>`
+`@return <var>: <desc>` | \* `<var> (<type>): <desc>` | `:returns <varname>: <desc>`| \** `<type> : <desc>`
+`@type <var>`           | See notes                   | `:rtype <varname>: <type>`  | See notes
 
->Note: Entries marked with a \* must be inside and `Args` or `Returns` block respectively
+
+> Note: Entries marked with a \* must be inside and `Args` or `Returns` block respectively
 >
->Note: Types for Google Docstrings are indicated in the brackets e.g. `foo (int): a thing` is a variable, with the name of `foo` which is an `int`
+> Note: Types for Google Docstrings are indicated in the brackets e.g. `foo (int): a thing` is a variable, with the name of `foo` which is an `int`
+> Note: Numpy style docstrings must be under the appropriate section heading. Visit the [Docs](https://github.com/numpy/numpy/blob/master/doc/HOWTO_DOCUMENT.rst.txt) for more info
+
+## 2.2 Sections
+------
+So far you've seen section titles like `Args` and `Returns`, but there are a lot more. Below is a list of section headers, and what to use them for
+****
+ `Args` or `Arguments`: Items in this section should give a clear indication of what arguments can be passed to the function/class being documented, what type they ought to be, and what they do
+****
