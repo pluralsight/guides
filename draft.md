@@ -1,3 +1,8 @@
+### Rubens by victorrss
+- [Read the guide](http://tutorials.pluralsight.com/android/rubens?status=draft)
+- [Read more from victorrss](http://tutorials.pluralsight.com/author/victorrss) <img src="https://avatars.githubusercontent.com/u/3205338?v=3" width="30" height="30" alt="victorrss" />
+- Related to: Android
+
 ### Hack code  by Karan Verma
 - [Read the guide](http://tutorials.pluralsight.com/microsoft-net/hack-code?status=draft)
 - [Read more from Karan Verma](http://tutorials.pluralsight.com/author/karanverma) <img src="https://avatars.githubusercontent.com/u/8354175?v=3" width="30" height="30" alt="Karan Verma" />
