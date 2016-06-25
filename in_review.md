@@ -1,3 +1,8 @@
+### Building a real-time application with React, React Router, Horizon.io, and OAuth by Esteban Herrera
+- [Read the guide](http://tutorials.pluralsight.com/interesting-apis/building-a-real-time-application-with-react-react-router-horizon-io-and-oauth?status=in-review)
+- [Read more from Esteban Herrera](http://tutorials.pluralsight.com/author/eh3rrera) <img src="https://avatars.githubusercontent.com/u/11665759?v=3" width="30" height="30" alt="Esteban Herrera" />
+- Related to: Interesting APIs (SendGrid, Twilio, etc)
+
 ### HTML BASICS by Nikolas Danaj
 - [Read the guide](http://tutorials.pluralsight.com/html-css/html-basics?status=in-review)
 - [Read more from Nikolas Danaj](http://tutorials.pluralsight.com/author/NIkolasDanaj) <img src="https://avatars.githubusercontent.com/u/19437693?v=3" width="30" height="30" alt="Nikolas Danaj" />
