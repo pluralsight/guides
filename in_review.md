@@ -1,3 +1,8 @@
+### HTML BASICS by Nikolas Danaj
+- [Read the guide](http://tutorials.pluralsight.com/html-css/html-basics?status=in-review)
+- [Read more from Nikolas Danaj](http://tutorials.pluralsight.com/author/NIkolasDanaj) <img src="https://avatars.githubusercontent.com/u/19437693?v=3" width="30" height="30" alt="Nikolas Danaj" />
+- Related to: HTML/CSS
+
 ### Building a Realtime Collaborative Editor with RethinkDB by Shannon Duncan
 - [Read the guide](http://tutorials.pluralsight.com/node-js/building-a-realtime-collaborative-editor-with-rethinkdb?status=in-review)
 - [Read more from Shannon Duncan](http://tutorials.pluralsight.com/author/shadowcodex) <img src="https://avatars.githubusercontent.com/u/1348053?v=3" width="30" height="30" alt="Shannon Duncan" />
