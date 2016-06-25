@@ -1,3 +1,8 @@
+### Integrating React, React Router, and Horizon.io with OAuth authentication by Esteban Herrera
+- [Read the guide](http://tutorials.pluralsight.com/interesting-apis/integrating-react-react-router-and-horizon-io-with-oauth-authentication?status=draft)
+- [Read more from Esteban Herrera](http://tutorials.pluralsight.com/author/eh3rrera) <img src="https://avatars.githubusercontent.com/u/11665759?v=3" width="30" height="30" alt="Esteban Herrera" />
+- Related to: Interesting APIs (SendGrid, Twilio, etc)
+
 ### Building a real-time chat app using React Native by Nguyen Cao Nhat Linh
 - [Read the guide](http://tutorials.pluralsight.com/front-end-javascript/building-a-real-time-chat-app-using-react-native?status=draft)
 - [Read more from Nguyen Cao Nhat Linh](http://tutorials.pluralsight.com/author/ncnlinh) <img src="https://avatars.githubusercontent.com/u/7568367?v=3" width="30" height="30" alt="Nguyen Cao Nhat Linh" />
