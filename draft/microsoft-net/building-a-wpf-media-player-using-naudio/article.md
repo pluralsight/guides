@@ -924,35 +924,12 @@ private bool CanRewindToStart(object p)
 ```
 
 ##### Toggle for Play/Pause
-
+In this part we need to decide if we are playing or pausing. If we are stopped, it is easy, we just need to instantiate another `AudioPlayer` and play the clip. However if we are playing or in pause mode, we need to check if the playing clip is the same as selected clip on the UI and then call `TogglePlayPause()` to resume or pause the clip.
 ```cs
 private void StartPlayback(object p)
 {
     if (CurrentlySelectedTrack != null)
     {
-        // If we are selecting the clip that is playing, just do play/pause otherwise create a new AudioPlayer to play another clip
-        if (CurrentlyPlayingTrack != CurrentlySelectedTrack)
-        {
-            if (CurrentlyPlayingTrack == null || _playbackState == PlaybackState.Stopped)
-            {
-                _audioPlayer = new AudioPlayer(CurrentlySelectedTrack.Filepath, CurrentVolume);
-                _audioPlayer.PlaybackStopType = AudioPlayer.PlaybackStopTypes.PlaybackStoppedReachingEndOfFile;
-                _audioPlayer.PlaybackPaused += _audioPlayer_PlaybackPaused;
-                _audioPlayer.PlaybackResumed += _audioPlayer_PlaybackResumed;
-                _audioPlayer.PlaybackStopped += _audioPlayer_PlaybackStopped;
-                CurrentTrackLenght = _audioPlayer.GetLenghtInSeconds();
-                CurrentlyPlayingTrack = CurrentlySelectedTrack;
-            }
-            else
-            {
-                if (_audioPlayer != null)
-                {
-                    StopPlayback(null);
-                    // This is here to stop stuttering of audio while one clip ends other begins
-                    Thread.Sleep(500);
-                }
-            }
-        }
         if (_playbackState == PlaybackState.Stopped)
         {
             _audioPlayer = new AudioPlayer(CurrentlySelectedTrack.Filepath, CurrentVolume);
@@ -963,7 +940,10 @@ private void StartPlayback(object p)
             CurrentTrackLenght = _audioPlayer.GetLenghtInSeconds();
             CurrentlyPlayingTrack = CurrentlySelectedTrack;
         }
-        _audioPlayer.TogglePlayPause(CurrentVolume);
+        if (CurrentlySelectedTrack == CurrentlyPlayingTrack)
+        {
+            _audioPlayer.TogglePlayPause(CurrentVolume);
+        }
     }
 }
 private bool CanStartPlayback(object p)
@@ -975,7 +955,47 @@ private bool CanStartPlayback(object p)
     return false;
 }
 ```
+##### Events for the AudioPlayer
+You might have noticed when we instantiated an `AudioPlayer`, we also subscribed to some events. These events are vital for the UI to know what "mode" we are in. In all 3 methods, We first set the `PlaybackState`, then load the correct image for the "play" button. However in `PlaybackStopped` event we will have to also refresh UI by `CommandManager.InvalidateRequerySuggested()` and set the current track position to zero indicating we finished the playback. Also if the playback is finished because we reached the end of a clip, we need to start playing the next clip. To find the next item, we need to setup an extension method for it.
+```cs
+public static T NextItem<T>(this ObservableCollection<T> collection, T currentItem)
+{
+    var currentIndex = collection.IndexOf(currentItem);
+    if (currentIndex < collection.Count - 1)
+    {
+        return collection[currentIndex + 1];
+    }
+    return collection[0];
+}
+```
 
+```cs
+private void _audioPlayer_PlaybackStopped()
+{
+    _playbackState = PlaybackState.Stopped;
+    PlayPauseImageSource = "../Images/play.png";
+    CommandManager.InvalidateRequerySuggested();
+    CurrentTrackPosition = 0;
+    
+    if (_audioPlayer.PlaybackStopType == AudioPlayer.PlaybackStopTypes.PlaybackStoppedReachingEndOfFile)
+    {
+        CurrentlySelectedTrack = Playlist.NextItem(CurrentlyPlayingTrack);
+        StartPlayback(null);
+    }
+}
+
+private void _audioPlayer_PlaybackResumed()
+{
+    _playbackState = PlaybackState.Playing;
+    PlayPauseImageSource = "../Images/pause.png";
+}
+
+private void _audioPlayer_PlaybackPaused()
+{
+    _playbackState = PlaybackState.Paused;
+    PlayPauseImageSource = "../Images/play.png";
+}
+```
 ##### Stop
 For stopping first we need to indicate why we are stopping. We are stopping because user clicked stop or we are stopping because we reached the end of the current clip. Then stop the current clip and dispose it.
 ```cs
@@ -1116,9 +1136,13 @@ private bool CanVolumeControlValueChanged(object p)
 }
 ```
 
+Finally, we finished developing a fully functional media player!
+
 ### Conclusion
 
+In this tutorial, we built a media player using NAudio library from scratch. You can test it by loading your favorite music folder and play it. I hope this guide will be useful for your audio projects. Please feel free to post ideas and feedback.
 
+Have fun and happy coding!
 
 
 
