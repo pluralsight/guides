@@ -424,3 +424,636 @@ It should look like this:
 ![React Checkpoint](https://raw.githubusercontent.com/pluralsight/guides/master/images/24244a55-7ecf-48ec-8004-7a6ce00e3e3a.gif)
 
 # Adding real-time functionality with Horizon
+
+Now let's use Horizon to add real-time functionality to the application.
+
+First, add the Horizon client dependency to `package.json`:
+```
+npm install --save @horizon/client
+```
+
+Then, we are going to create a container for the Horizon object, `src/horizon-container.js`. This will help us to use Horizon in any part of the application with the same settings and wrap functions of it to use them easily. Right now, it will contain just:
+```javascript
+import Horizon from '@horizon/client'
+
+const _horizon = Horizon();
+
+export default {
+  get: () => _horizon
+}
+```
+
+The `Horizon()` object accepts some optional arguments that you can see [in this page](http://horizon.io/api/horizon/). Here we're just using the defaults.
+
+In `components/message-container.js`, we're going to create a Horizon collection to hold the messages. A collection represents a table in RethinkDB, and it lets you store, retrieve, and filter documents. [In this page](http://horizon.io/api/collection) you can know about its API.
+
+Here's the code:
+```javascript
+import React, {Component} from 'react';
+import Messages from './messages';
+import Horizon from '../horizon-container'
+
+const _horizon = Horizon.get();
+const _messageCollection = _horizon('messages');
+
+export default class MessageContainer extends Component {
+
+    constructor(props) {
+	    super(props);
+	    this.state = {text: '', errorDescription: ''};
+	}
+
+	handleChangeText = (e) =>  {
+	    this.setState({text: e.target.value});
+	};  
+
+	handleSubmit = () =>  {
+        if (this.state.text === '' || this.state.author === '') {
+        this.setState({errorDescription: 'The message is required'});
+        } else {
+            this.storeMessage('', this.state.text);
+        }
+	};
+
+    storeMessage = (user, text) => {
+        const message = {
+            text: text,
+            author: user
+        };
+        _messageCollection.store(message);
+        this.setState({text: '', errorDescription: ''});
+	};   
+
+    render() {
+        return (
+	        <div>
+                <div className={'message-container'}>
+                    <div>{this.state.errorDescription}</div>
+                    <input onChange={this.handleChangeText} className={'message-input'} type='text' placeholder='Enter your message' value={this.state.text}/>
+                    <button className={'message-btn'} onClick={this.handleSubmit}>Submit</button>
+                    <Messages messages={_messageCollection}/>
+                </div>
+            </div>
+        );
+    }
+}
+```
+
+Notice how we create the `message` collection:
+```javascript
+const _messageCollection = _horizon('messages');
+```
+
+And how a message is inserted:
+```javascript
+_messageCollection.store(message);
+```
+
+In the next section we'll add the authenticated user ID. For now, we just pass an empty string.
+
+Also, notice that the component binds the method using arrow functions (since they capture the correct value of `this` in the actual context) instead of using a regular function and `bind(this)`:
+```javascript
+<button className={'message-btn'} onClick={this.handleSubmit.bind(this)}>Submit</button>
+```
+
+Then, the `message` collection is passed to a `Messages` component:
+```javascript
+import React, {Component} from 'react';
+import Message from './message';
+
+export default class Messages extends Component {
+  
+	constructor(props) {
+        super(props);
+        this.messageCollection = this.props.messages;
+        this.state = {messages: []};
+	}
+
+	componentDidMount() {
+        this.messageCollection.watch().subscribe(
+            (collection) => {
+                if(collection) {
+                    this.setState({messages: collection});
+                }
+            },
+            (err) => {
+                console.log(err);
+            }
+        );   
+	}
+  
+	render() {
+        const messagesMapped = this.state.messages.map((result, index) => {
+            return <Message message={result}/>
+        });
+        
+        return <div>{messagesMapped}</div>;
+	}
+}
+```
+
+The `watch()` method allows us to listen for changes in the collection in real-time. It returns an object that receives the entire collection of documents even when a single one changes, which fits perfectly with the way React works.
+
+This way, everything a change is detected, the state of the component changes, and this is re-rendered.
+
+The final piece is the `Message` component, which prints a single message:
+```javascript
+import React, {Component} from 'react';
+
+export default class Message extends Component {
+
+    constructor(props) {
+        super(props);
+    }
+
+    render() {
+        const {text, author} = this.props.message;
+        return (
+            <div className={'message-row'}>
+                <div><b>Author:</b> {author}</div>
+                <div><b>Text:</b> {text}</div>
+            </div>
+        );
+    }
+}
+```
+
+If we run the application at this point, it should look like this:
+
+![Horizon Checkpoint](https://raw.githubusercontent.com/pluralsight/guides/master/images/cf11fbd5-47c7-42a9-8a0d-eab8e5dbebe5.gif)
+
+And in the console, the following messages will be shown:
+```
+warn: Auto-creating collection (dev mode): messages
+warn: Collection created (dev mode): "messages"
+```
+
+If you go to the RethinkDB web interface (remember to look for the URL when you start the server), you'll notice the table for the collection (in this case, `messages_313e2785a3ee`):
+![RethinkDB collection table](https://raw.githubusercontent.com/pluralsight/guides/master/images/219fb574-6c07-4f87-b400-48418d21f0ac.png)
+
+If you query this table, you'll see the stored message:
+![RethinkDB collection query](https://raw.githubusercontent.com/pluralsight/guides/master/images/3d84b313-2457-4fbd-bc18-c815443538f9.png)
+
+# Adding Horizon OAuth authentication
+Let's add authentication to our app by using Horizon's support for OAuth. For simplicity, we're going to use Github only, but the steps and configuration are almost the same for other providers (like Google or Twitter).
+
+We'll need a client ID and a client secret. Go to https://github.com/settings/applications/new and enter the following information:
+
+- **Application name:** react_horizon (any name will do)
+- **Homepage URL:** https://localhost:8181 (or whatever your URL is, just remember the *https* part)
+
+![Registering a new OAuth application on Github](https://raw.githubusercontent.com/pluralsight/guides/master/images/c6ad685a-49f4-4d03-8026-8a2241639c8b.png)
+
+When you register the application, the client ID and client secret will be presented:
+![Client ID and Client secret screen](https://raw.githubusercontent.com/pluralsight/guides/master/images/895f04e8-1953-46d7-8e1b-847f0a44795d.png)
+
+These values are configured in the `.hz/config.toml` file. At the end of that file, you can find this section:
+```
+###############################################################################
+# Authentication Options
+# Each auth subsection will add an endpoint for authenticating through the
+# specified provider.
+# 'token_secret' is the key used to sign jwts
+# 'allow_anonymous' issues new accounts to users without an auth provider
+# 'allow_unauthenticated' allows connections that are not tied to a user id
+# 'auth_redirect' specifies where users will be redirected to after login
+#------------------------------------------------------------------------------
+token_secret = "8E7cch2dl2w17uwyMOPxJGoi03N42uGOh0bP1fTuXSyXbut+meGIs2Je5dpsPozEgUEeH+KAC9/oOLBorC60Jg=="
+# allow_anonymous = false
+# allow_unauthenticated = false
+# auth_redirect = "/"
+#
+# [auth.facebook]
+# id = "000000000000000"
+# secret = "00000000000000000000000000000000"
+#
+# [auth.google]
+# id = "00000000000-00000000000000000000000000000000.apps.googleusercontent.com"
+# secret = "000000000000000000000000"
+#
+# [auth.twitter]
+# id = "0000000000000000000000000"
+# secret = "00000000000000000000000000000000000000000000000000"
+#
+# [auth.github]
+# id = "00000000000000000000"
+# secret = "0000000000000000000000000000000000000000"
+#
+# [auth.twitch]
+# id = "0000000000000000000000000000000"
+# secret = "0000000000000000000000000000000"
+```
+
+Horizon uses [JSON Web Tokens (JWTS)](https://jwt.io/) for user authentication. When the `.hz/config.toml` file is created, a `token_secret` is generated to sign JWTS.
+
+Replace the client ID and the client secret and uncomment the Github section:
+```
+[auth.github]
+id = "ea89158619f776d0703c"
+secret = "df0ab9c5bff3aae9209ac08241cc7fbdd4ab4144"
+```
+
+Now, let's modify the file `src/horizon-container.js` to support authentication. First, configure Horizon to support authentication with JWTS with:
+```
+const _horizon = Horizon({authType: 'token'});
+```
+
+Then, add the method `clearAuthTokens()` to delete the token on logout and a method to get the current user. The code should look like this:
+```javascript
+import Horizon from '@horizon/client'
+
+const _horizon = Horizon({authType: 'token'});
+
+export default {
+  get: () => _horizon,
+  clearAuthTokens: () => Horizon.clearAuthTokens(),
+  getCurrentUser: (callback) => {
+      _horizon.connect();
+      _horizon.currentUser().fetch().subscribe(user => callback(user));
+  }
+}
+```
+
+Due to a [bug](https://github.com/rethinkdb/horizon/issues/567) with the Horizon version used (1.1.3), to get the current user with `currentUser()`, we need to call first `connect()` or make another query.
+
+There are more than one way to implement authentication in a React/React Router application. The one that we'll use in this tutorial is [high-order components](https://medium.com/@dan_abramov/mixins-are-dead-long-live-higher-order-components-94a0d2f9e750).
+
+A high-order component is a function that takes another component and returns another one that wraps it. In our case, a high-order component will be used to wrap the route to protected by checking if the user is authenticated before rendering it.
+
+This is what `src/authenticate-route.js` does. Here's the code:
+```javascript
+import React, { Component, PropTypes } from 'react'
+import Login from './components/login';
+import Horizon from './horizon-container'
+
+const _horizon = Horizon.get();
+
+export default (ChildComponent) => {
+	class AuthenticatedComponent extends Component {
+
+        constructor(props) {
+            super(props);
+            this.state = {currentUser: ''};
+        }
+
+        componentDidMount() {
+            if(_horizon.hasAuthToken()) {
+                Horizon.getCurrentUser( (user) => { 
+                    this.setState({currentUser: user.id});
+                } );
+            }
+                
+        }
+
+        render () {
+            return (_horizon.hasAuthToken()
+                ? <ChildComponent {...this.props} user={this.state.currentUser} />
+                : <Login />
+            )
+        }
+    }
+
+  return AuthenticatedComponent;
+}
+```
+
+The user ID will be stored in the state and passed to the component that wraps. This way, when it changes (because it's fetched asynchronously), the child component will be re-rendered.
+
+If the authentication token is present, the child component is rendered. Otherwise, the login page is presented.
+
+Next, we have to add to the `Login` component the logic to present the Github login with the method `authEndpoint()`:
+```javascript
+import React, {Component} from 'react';
+import Horizon from '../horizon-container'
+
+const _horizon = Horizon.get();
+
+export default class Login extends Component {
+
+    handleAuth = () => {
+        _horizon.authEndpoint('github').subscribe((endpoint) => {
+            window.location.pathname = endpoint;
+        });
+    };
+
+    render() {
+        return (
+	        <div>
+                <button className={'login-btn'} onClick={this.handleAuth}>Login with Github</button>
+            </div>
+        );
+    }
+}
+```
+
+So we can protect a route (in this case `/message`) this way:
+```javascript
+import authenticate from './authenticate-route'
+
+...
+
+export default (
+  <Router history={browserHistory}>
+    <Route path="/" component={MainLayout}>
+      <IndexRoute component={Home} />
+      <Route path="messages" component={authenticate(MessageContainer)} />
+      <Route path="login" component={Login} />
+    </Route>
+  </Router>
+);
+```
+
+For this application, we're going to show a different menu for authenticated users. Open the file `src/components/menu.js` and modify it so it looks like this:
+```javascript
+import React, {Component} from 'react';
+import { Link, IndexLink } from 'react-router';
+import Horizon from '../horizon-container';
+
+export default class Menu extends Component {
+
+    logout = (e) =>  {
+	    e.preventDefault();
+	    Horizon.clearAuthTokens();
+	    this.context.router.push("/")
+    }
+
+    render() {
+        var menu = Horizon.get().hasAuthToken()
+            ?   <div className={'menu'}>
+                    <IndexLink to="/" className={'menu-option'} activeClassName="active">Home</IndexLink>
+                    <Link to="/messages" className={'menu-option'} activeClassName="active">Messages</Link>
+                    <a href="#" className={'menu-option'} onClick={this.logout}>Log out</a>
+                </div>
+            :   <div className={'menu'}>
+                    <IndexLink to="/" className={'menu-option'} activeClassName="active">Home</IndexLink>
+                    <Link to="/login" className={'menu-option'} activeClassName="active">Login</Link>
+                </div>;
+        
+        return (
+	        menu
+        );
+    }
+}
+
+Menu.contextTypes = {
+  router: React.PropTypes.object
+};
+```
+
+Using the method `hasAuthToken()`, we're going to show a menu with the *Messages* and *Logout* options for authenticated users.
+
+The `logout` function deletes the token and redirects the user to the home page. In order to do this, we need the router object, and since we're using an ES6 class, we have to inject it like this:
+```javascript
+Menu.contextTypes = {
+  router: React.PropTypes.object
+};
+```
+
+The authentication component passes to the child the ID of the user, so let's modify the message components to use it.
+
+In `components/message-container.js` you just need to update the `handleSubmit()` method to get the ID from the properties:
+```javascript
+handleSubmit = () =>  {
+	if (this.state.text === '' || this.state.author === '') {
+	this.setState({errorDescription: "The message is required"});
+	} else {
+		this.storeMessage(this.props.user, this.state.text);
+	}
+};
+```
+
+And pass it to the `Messages` component:
+```javascript
+render() {
+	return (
+		<div>
+			<div className={'message-container'}>
+				<div>{this.state.errorDescription}</div>
+				<input onChange={this.handleChangeText} className={'message-input'} type='text' placeholder='Enter your message' value={this.state.text}/>
+				<button className={'message-btn'} onClick={this.handleSubmit}>Submit</button>
+				<Messages messages={_messageCollection} user={this.props.user}/>
+			</div>
+		</div>
+	);
+}
+```
+
+This way, the `Messages` component can use it to filter the messages:
+```javascript
+export default class Messages extends Component {
+  
+	constructor(props) {
+        super(props);
+        this.messageCollection = this.props.messages;
+        this.userId = '';
+        this.state = {messages: []};
+	}
+
+	componentWillReceiveProps(nextProps) {
+        if (nextProps.user !== this.userId) {
+            this.userId = nextProps.user;
+            this.messageCollection.findAll({author: this.userId}).watch().subscribe(
+                (collection) => {
+                    if(collection) {
+                        this.setState({messages: collection});
+                    }
+                },
+                (err) => {
+                    console.log(err);
+                }
+            );
+        }     
+	}
+  
+	render() {
+        ...
+	}
+}
+```
+
+Notice that we have to replace `componentDidMount()` by `componentWillReceiveProps(nextProps)`.
+
+The reason is that the `componentDidMount()` method of the child components is invoked before that of parent components. So, when the user ID is received, the child components are re-rendered but the `componentDidMount()` method of `components/messages.js` is not executed again with this value, so the changes of that user are not received.
+
+`componentWillReceiveProps(nextProps)` is invoked when a component is receiving new properties and we can use it to update the state due to a property change before `render()` is executed.
+
+However, this will make the component continuously re-render (because of the state changes of `components/message-container.js`), so we have to put a condition to only execute the `watch()` query when we first receive the user ID:
+```javascript
+componentWillReceiveProps(nextProps) {
+	if (nextProps.user !== this.userId) {
+		this.userId = nextProps.user;
+		this.messageCollection.findAll({author: this.userId}).watch().subscribe(
+			...
+		);
+	}     
+}
+```
+
+Now we're ready to test the authentication. Execute `npm start` to pack the changes and start the server.
+
+The first time you log into the application, it will prompt you to authorize it on Github:`
+![Github authentication](https://raw.githubusercontent.com/pluralsight/guides/master/images/c8e2b979-c020-453c-8a80-843540310c74.gif)
+
+Notice that the menu now changes for (un)authenticated users and, since we're filtering by user ID, the previously entered messages are not shown.
+
+In the logs of the server, you should also see this line:
+```
+warn: Auto-creating index on collection "messages" (dev mode): ["author"]
+```
+
+In development mode, Horizon will create an index to speed up the queries automatically.
+
+After this, every time you log into the application, if you have a session on Github, it should log you in automatically, otherwise, it will prompt you for your credentials.
+
+Additionally, you can go to https://github.com/settings/developers to view the number of registered user in your application and change the settings if you want.
+
+# Integrating Express and Horizon
+Now that we have the authentication part done, we just have one final problem to solve.
+
+The routes work by clicking on the links, but what happens when we enter directly the route in the browser:
+![Router problem](https://raw.githubusercontent.com/pluralsight/guides/master/images/ab9af1ad-1d1d-40b2-82ff-d825210fa7a0.gif)
+
+This is because the Horizon server doesn't know about the routes configured in React, it just serves whatever there is in the `dist` directory.
+
+The solution is to integrate Horizon with a web server that redirects all requests to `index.html`. For this app, we are going to use [Express](http://expressjs.com/), but integrating other frameworks like [Koa](http://koajs.com/) or [Happi](http://hapijs.com/) with Horizon is very similar.
+
+We are going to make some major changes:
+- We 're not going to start the server with `hz serve`, which means that a RethinkDB server won't be automatically started.
+- We'll need to configure Express for HTTPS
+- When using Horizon on the client side, the file `.hz/config.toml` holds the configuration of the framework. When using Horizon on the server side, we need to pass all these configurations to the server when we create it.
+
+Let's start by adding the dependencies we're going to need to our `package.json` file:
+```
+npm install --save express path @horizon/server
+```
+
+Next, let's add a `server.js` file to the root directory, importing the libraries we're going to need and creating the Express object:
+```javascript
+const  express = require('express');
+const  https = require('https');
+const  path = require('path');
+const fs = require('fs');
+const horizon = require('@horizon/server');
+
+const  app = express();
+```
+
+Let's configure the routes for the public files and to redirect all requests to index.html
+```javascript
+// Serve our static stuff like index.css
+app.use(express.static(path.join(__dirname, 'dist')));
+
+// Send all requests to index.html
+app.get('*', function (req, res) {
+  res.sendFile(path.join(__dirname, 'dist', 'index.html'));
+})
+```
+
+We have been working with HTTPS, so let's configure Express to use this protocol. We can reuse our self-signed certificates:
+```javascript
+const  options = {
+    key: fs.readFileSync('horizon-key.pem'),
+    cert: fs.readFileSync('horizon-cert.pem'),
+};
+const  PORT = process.env.PORT || 8181;
+
+const server = https.createServer(options, app);
+
+server.listen(PORT, function() {
+  console.log('Express server running at localhost:' + PORT);
+});
+```
+
+Now that we have an HTTPS server, we configure Horizon to use it. We'll need to copy the `token_secret` and Github client ID and client secret from the `.hz/config.toml` file:
+```javascript
+const horizon_server = horizon(server, {
+    project_name: 'react_horizon',
+    permissions: true,
+    auth: {       
+      token_secret: '8E7cch2dl2w17uwyMOPxJGoi03N42uGOh0bP1fTuXSyXbut+meGIs2Je5dpsPozEgUEeH+KAC9/oOLBorC60Jg=='
+    }
+});
+
+// Add Github authentication
+horizon_server.add_auth_provider(horizon.auth.github, {
+    path: 'github',
+    id: '2660ef72dc60e109b08d',
+    secret: 'a844d51e652d74a6760ab71815050cba58a70d84',
+});
+```
+
+As you can see, the server is passed to Horizon along with options that are similar to the ones defined in the `.hz/config.toml` file. In the above code, we set the project name, enable permissions (more of this in a moment), and use token authentication. You can find more information about all the options [here](http://horizon.io/docs/embed/).
+
+Finally, we use the `add_auth_provider` method to set up the OAuth Github provider. You can extract all this configuration data to an external file if you want.
+
+By default, Horizon will connect to a RethinkDB server on `localhost:28015`. We're also enabling permissions (which is actually the default option).
+
+Horizon doesn't allow access to collections by default, even for authenticated users, which means that we won't be able to use neither our `message` collection nor getting the user ID (from the `users` table).
+
+To fix this, we need to manually import the permission rules to the database we're going to use. If you execute this command:
+```
+hz get-schema -n react_horizon --start-rethinkdb yes -o schema.toml
+```
+
+Horizon will start the development RethinkDB server, and extract the schema, validation rules, collection and index specifications of the `react_horizon` application (it won't extract the collection's data) as a TOML file, schema.toml. Here's what this file contains:
+```
+# This is a TOML document
+
+[collections.messages]
+indexes = ["author"]
+
+[groups.admin]
+[groups.admin.rules.carte_blanche]
+template = "any()"
+```
+
+Since we were using Horizon in development mode (where no permissions are enforced), there are no permissions rules set up, so we will have to add the following:
+```
+[groups.authenticated.rules.read_own_messages]
+template = "collection('messages').findAll({author: userId()})"
+
+[groups.authenticated.rules.write_own_messages]
+template = "collection('messages').store({author: userId(), text: any()})"
+
+[groups.default.rules.read_current_user]
+template = "collection('users').find({id: userId()})"
+```
+
+You can learn about permission rules in this [page](http://horizon.io/docs/permissions/), but what the above lines do is to allow the  authenticated user to read and write their own messages, and to read the `users` table to get the data by their ID.
+
+To import these rules to our new database, first you have to start it (in another terminal) with:
+```
+rethinkdb
+```
+
+And then, execute this command:
+```
+hz set-schema -n react_horizon -c localhost:28015 schema.toml
+```
+
+If you go to http://localhost:8080/#tables, you should see the imported databases:
+![Rethinkdb Imported Databases](https://raw.githubusercontent.com/pluralsight/guides/master/images/965707e9-5207-49d1-958e-ba8fbd4ecf42.png)
+
+And now that we won't be using the `.hz/config.toml` file and the `rethinkdb-data` directory, you can delete them.
+
+Finally, change the `start` script on `package.json` to start the Express server instead of the Horizon development server:
+```
+{
+  ...
+  "scripts": {
+    "start": "webpack && node server.js"
+  },
+  ...
+}
+```
+
+When you run the application (don't forget to start the RethinkDB server also), the problem should be solved:
+![Routes working](https://raw.githubusercontent.com/pluralsight/guides/master/images/1bd7d1c9-1f2d-40cb-a03d-1d7a40b550c3.gif)
+
+You can also test the rest of the functionality to make sure everything is working correctly.
+
+# Conclusion
+
+There are some [limitations](http://horizon.io/docs/limitations/) of what you can do with Horizon because, at the time of this writing, it is a relatively new framework. However, it has a lot of features that make real-time programming easier, not without mentioning its growing and strong [community](http://horizon.io/community/).
+
+Again, the code of the application is on [Github](https://github.com/eh3rrera/react-horizon) and if you have any questions or comments, don' hesitate to contact me.
