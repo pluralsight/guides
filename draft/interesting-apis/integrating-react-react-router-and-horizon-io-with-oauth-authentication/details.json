@@ -1,0 +1,15 @@
+{
+    "_publish_status": "draft",
+    "author_name": "eh3rrera",
+    "author_real_name": "Esteban Herrera",
+    "branch": "master",
+    "branches": [],
+    "filename": "article.md",
+    "first_commit": "7ce79e5913d38137616fa1754b7a0482803a4506",
+    "image_url": "https://avatars.githubusercontent.com/u/11665759?v=3",
+    "stacks": [
+        "Interesting APIs (SendGrid, Twilio, etc)"
+    ],
+    "thumbnail_url": null,
+    "title": "Integrating React, React Router, and Horizon.io with OAuth authentication"
+}
