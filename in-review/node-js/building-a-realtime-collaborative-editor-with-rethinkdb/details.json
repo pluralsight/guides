@@ -7,6 +7,10 @@
         [
             "prtkgpt",
             "prtkgpt-node-js-building-a-realtime-collaborative-editor-with-rethinkdb"
+        ],
+        [
+            "adityavarshney",
+            "adityavarshney-node-js-building-a-realtime-collaborative-editor-with-rethinkdb"
         ]
     ],
     "filename": "article.md",
