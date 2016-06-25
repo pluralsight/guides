@@ -1,3 +1,8 @@
+### Hack code  by Karan Verma
+- [Read the guide](http://tutorials.pluralsight.com/microsoft-net/hack-code?status=draft)
+- [Read more from Karan Verma](http://tutorials.pluralsight.com/author/karanverma) <img src="https://avatars.githubusercontent.com/u/8354175?v=3" width="30" height="30" alt="Karan Verma" />
+- Related to: Microsoft.NET (C#, ASP.NET, VB.NET, etc)
+
 ### Tutorial Prueba by Gonzalo Sola
 - [Read the guide](http://tutorials.pluralsight.com/java-and-j2ee/tutorial-prueba?status=draft)
 - [Read more from Gonzalo Sola](http://tutorials.pluralsight.com/author/chalo2812) <img src="https://avatars.githubusercontent.com/u/6732307?v=3" width="30" height="30" alt="Gonzalo Sola" />
