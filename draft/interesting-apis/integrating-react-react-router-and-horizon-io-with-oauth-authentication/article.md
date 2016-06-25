@@ -424,4 +424,4 @@ It should look like this:
 
 ![React Checkpoint](https://raw.githubusercontent.com/pluralsight/guides/master/images/24244a55-7ecf-48ec-8004-7a6ce00e3e3a.gif)
 
-# Adding Horizon to the mix
+# Adding real-time functionality with Horizon
