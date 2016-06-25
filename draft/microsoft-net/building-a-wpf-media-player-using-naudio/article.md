@@ -165,7 +165,15 @@ Here is our E**x**tensible **A**pplication **M**arkup **L**anguage (XAML) code f
                 </i:Interaction.Triggers>
             </Slider>
         </Grid>
-        <ListView x:Name="Playlist" ItemsSource="{Binding Playlist}" SelectedItem="{Binding CurrentTrack, Mode=TwoWay}">
+        <Grid DockPanel.Dock="Bottom">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="70"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <TextBlock Grid.Column="0" Text="Now playing: "></TextBlock>
+            <TextBlock Grid.Column="1" Text="{Binding CurrentlyPlayingTrack.FriendlyName, Mode=OneWay}"/>
+        </Grid>
+        <ListView x:Name="Playlist" ItemsSource="{Binding Playlist}" SelectedItem="{Binding CurrentlySelectedTrack, Mode=TwoWay}">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <Grid>
@@ -179,6 +187,7 @@ Here is our E**x**tensible **A**pplication **M**arkup **L**anguage (XAML) code f
         </ListView>
     </DockPanel>
 </Window>
+
 ```
 
 So by looking at our XAML code, in our ``MainWindowViewModel`` viewmodel, we need to implement the following commands
@@ -205,7 +214,8 @@ and properties:
 - **CurrentTrackPosition:** While the audio is playing, this property is used to store the current position in seconds.
 - **CurrentVolume:** This property sets the volume.
 - **Playlist:** This property represents our playlist.
-- **CurrentTrack:** This property represents currently selected track in our playlist.
+- **CurrentlySelectedTrack:** This property represents currently selected track in our playlist.
+- **CurrentlyPlayingTrack:** This property represents currently playing track in our playlist.
 - **PlayPauseImageSource:** This property sets either play or pause images depending on whether the audio is playing or paused to our play button.
 
 ### NaudioWrapper
@@ -437,8 +447,10 @@ public class MainWindowViewModel : INotifyPropertyChanged
     private string _playPauseImageSource;
     private float _currentVolume;
 
-    private Track _currentTrack;        
-    private ObservableCollection<Track> _playlist;        
+    private ObservableCollection<Track> _playlist;
+    private Track _currentlyPlayingTrack;
+    private Track _currentlySelectedTrack;
+    private AudioPlayer _audioPlayer;
 
     public string Title
     {
@@ -496,16 +508,27 @@ public class MainWindowViewModel : INotifyPropertyChanged
         }
     }
 
-    public Track CurrentTrack
+    public Track CurrentlySelectedTrack
     {
-        get { return _currentTrack; }
+        get { return _currentlySelectedTrack; }
         set
         {
-            if (Equals(value, _currentTrack)) return;
-            _currentTrack = value;
-            OnPropertyChanged(nameof(CurrentTrack));
+            if (Equals(value, _currentlySelectedTrack)) return;
+            _currentlySelectedTrack = value;
+            OnPropertyChanged(nameof(CurrentlySelectedTrack));
         }
-    }        
+    }
+
+    public Track CurrentlyPlayingTrack
+    {
+        get { return _currentlyPlayingTrack; }
+        set
+        {
+            if (Equals(value, _currentlyPlayingTrack)) return;
+            _currentlyPlayingTrack = value;
+            OnPropertyChanged(nameof(CurrentlyPlayingTrack));
+        }
+    }      
 
     public ObservableCollection<Track> Playlist
     {
@@ -954,7 +977,7 @@ private bool CanStartPlayback(object p)
 ```
 
 ##### Stop
-
+For stopping first we need to indicate why we are stopping. We are stopping because user clicked stop or we are stopping because we reached the end of the current clip. Then stop the current clip and dispose it.
 ```cs
 private void StopPlayback(object p)
 {
@@ -975,6 +998,7 @@ private bool CanStopPlayback(object p)
 ```
 
 ##### Skip to Next Track
+When we reach to the end of the track we automatically move to the next track, however with this button we can skip to the end of the current track to trigger the move. We do this by setting the position to the last second of the current track.
 ```cs
 private void ForwardToEnd(object p)
 {
@@ -995,10 +1019,33 @@ private bool CanForwardToEnd(object p)
 ```
 
 ##### Shuffle
+First we need to make an extension method for `ObservableCollection<T>`. We will use a commonly used shuffle method from [this StackOverflow post](http://stackoverflow.com/questions/5383498/shuffle-rearrange-randomly-a-liststring).
+
+```cs
+public static ObservableCollection<T> Shuffle<T>(this ObservableCollection<T> input)
+{
+    var provider = new RNGCryptoServiceProvider();
+    var n = input.Count;
+    while (n > 1)
+    {
+        var box = new byte[1];
+        do provider.GetBytes(box);
+        while (!(box[0] < n * (Byte.MaxValue / n)));
+        var k = (box[0] % n);
+        n--;
+        var value = input[k];
+        input[k] = input[n];
+        input[n] = value;
+    }
+
+    return input;
+}
+```
+And for the command:
 ```cs
 private void Shuffle(object p)
 {
-    
+    Playlist = Playlist.Shuffle();
 }
 private bool CanShuffle(object p)
 {
@@ -1013,6 +1060,8 @@ private bool CanShuffle(object p)
 For the last part we need to deal with our MVVM event commands.
 
 ##### PreviewMouseDown and PreviewMouseUp Events on Seekbar
+Here, we need to think what we are actually doing while we are scrubbing left and right in the seekbar. First we click and hold our mouse button, then while button is held we move and release the button. So here we need two events; one is for `MouseDown` and the other is `MouseUp`. While we are holding the mouse key we need to pause the clip, when we release we set the current seekbar value to the current track's position to move the clip there.
+
 ```cs
 private void TrackControlMouseDown(object p)
 {
@@ -1051,6 +1100,7 @@ private bool CanTrackControlMouseUp(object p)
 ```
 
 ##### Volume Control Event
+Volume control code is very similar to the seekbar but it is way easier because we can just change the volume without needing to know where we are on the track. We just set the current value of the slider to the volume itself.
 ```cs
 private void VolumeControlValueChanged(object p)
 {
