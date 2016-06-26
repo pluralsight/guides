@@ -1,3 +1,8 @@
+### My Hack guide By Smriti Singh by Smriti Singh
+- [Read the guide](http://tutorials.pluralsight.com/c-c++/my-hack-guide-by-smriti-singh?status=draft)
+- [Read more from Smriti Singh](http://tutorials.pluralsight.com/author/smritisingh) <img src="https://avatars.githubusercontent.com/u/3615549?v=3" width="30" height="30" alt="Smriti Singh" />
+- Related to: C/C++
+
 ### Hack code  by Karan Verma
 - [Read the guide](http://tutorials.pluralsight.com/microsoft-net/hack-code?status=draft)
 - [Read more from Karan Verma](http://tutorials.pluralsight.com/author/karanverma) <img src="https://avatars.githubusercontent.com/u/8354175?v=3" width="30" height="30" alt="Karan Verma" />
