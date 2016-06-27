@@ -1,3 +1,8 @@
+### Log information of your app through Lonline by Dynamicloud by Eleazar
+- [Read the guide](http://tutorials.pluralsight.com/node-js/log-information-of-your-app-through-lonline-by-dynamicloud?status=in-review)
+- [Read more from Eleazar](http://tutorials.pluralsight.com/author/egomezr) <img src="https://avatars.githubusercontent.com/u/1632973?v=3" width="30" height="30" alt="Eleazar" />
+- Related to: Node.js
+
 ### Introduction to asynchronous JavaScript by Peter Olson
 - [Read the guide](http://tutorials.pluralsight.com/front-end-javascript/introduction-to-asynchronous-javascript?status=in-review)
 - [Read more from Peter Olson](http://tutorials.pluralsight.com/author/peterolson) <img src="https://avatars.githubusercontent.com/u/920512?v=3" width="30" height="30" alt="Peter Olson" />
