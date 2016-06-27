@@ -28,11 +28,6 @@
 - [Read more from ryanlogsdon](http://tutorials.pluralsight.com/author/ryanlogsdon) <img src="https://avatars.githubusercontent.com/u/7528211?v=3" width="30" height="30" alt="ryanlogsdon" />
 - Related to: Front-End JavaScript (Angular, React, Meteor, etc)
 
-### Log information of your app through Lonline by Dynamicloud by Eleazar
-- [Read the guide](http://tutorials.pluralsight.com/node-js/log-information-of-your-app-through-lonline-by-dynamicloud?status=in-review)
-- [Read more from Eleazar](http://tutorials.pluralsight.com/author/egomezr) <img src="https://avatars.githubusercontent.com/u/1632973?v=3" width="30" height="30" alt="Eleazar" />
-- Related to: Node.js
-
 ### How to write effective Docstrings by Ennis Massey
 - [Read the guide](http://tutorials.pluralsight.com/python/how-to-write-effective-docstrings?status=in-review)
 - [Read more from Ennis Massey](http://tutorials.pluralsight.com/author/MicroTransactionsMatterToo) <img src="https://avatars.githubusercontent.com/u/12421108?v=3" width="30" height="30" alt="Ennis Massey" />
