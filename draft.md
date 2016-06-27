@@ -1,8 +1,3 @@
-### Introduction to asynchronous JavaScript by Peter Olson
-- [Read the guide](http://tutorials.pluralsight.com/front-end-javascript/introduction-to-asynchronous-javascript?status=draft)
-- [Read more from Peter Olson](http://tutorials.pluralsight.com/author/peterolson) <img src="https://avatars.githubusercontent.com/u/920512?v=3" width="30" height="30" alt="Peter Olson" />
-- Related to: Front-End JavaScript (Angular, React, Meteor, etc)
-
 ### My Hack guide By Smriti Singh by Smriti Singh
 - [Read the guide](http://tutorials.pluralsight.com/c-c++/my-hack-guide-by-smriti-singh?status=draft)
 - [Read more from Smriti Singh](http://tutorials.pluralsight.com/author/smritisingh) <img src="https://avatars.githubusercontent.com/u/3615549?v=3" width="30" height="30" alt="Smriti Singh" />
