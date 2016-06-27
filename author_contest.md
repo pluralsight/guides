@@ -72,7 +72,7 @@ We've teamed up with some of the best companies with cutting-edge technologies a
 * [HelloSign](https://www.hellosign.com/api)
 * [Horizon Cloud](http://horizon.io)
 * [Ionic Framework](http://ionicframework.com/)
-* [Keen.io](http://keen.io)
+* [KeenIO](http://keen.io)
 * [Pluralsight](http://pluralsight.com/)
 * [PubNub](http://pubnub.com/)
 * [RethinkDB](http://rethinkdb.com/)
@@ -113,7 +113,7 @@ Want to join as a sponsor? Please email Prateek at Prateek-Gupta@Pluralsight.com
     <td>Best Ionic App shipped on Market</td>
   </tr>
   <tr>
-    <td>Keen.io</td>
+    <td>KeenIO</td>
     <td>$500</td>
     <td>Best tutorial building a Dashboard </td>
   </tr>
