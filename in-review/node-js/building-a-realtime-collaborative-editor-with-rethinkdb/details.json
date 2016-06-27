@@ -5,10 +5,6 @@
     "branch": "master",
     "branches": [
         [
-            "adityavarshney",
-            "adityavarshney-node-js-building-a-realtime-collaborative-editor-with-rethinkdb"
-        ],
-        [
             "prtkgpt",
             "prtkgpt-node-js-building-a-realtime-collaborative-editor-with-rethinkdb"
         ]
