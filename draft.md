@@ -1,3 +1,8 @@
+### Integrating Laravel with Keen IO by William Notowidagdo
+- [Read the guide](http://tutorials.pluralsight.com/php/integrating-laravel-with-keen-io?status=draft)
+- [Read more from William Notowidagdo](http://tutorials.pluralsight.com/author/williamn) <img src="https://avatars.githubusercontent.com/u/27722?v=3" width="30" height="30" alt="William Notowidagdo" />
+- Related to: PHP
+
 ### My Hack guide By Smriti Singh by Smriti Singh
 - [Read the guide](http://tutorials.pluralsight.com/c-c++/my-hack-guide-by-smriti-singh?status=draft)
 - [Read more from Smriti Singh](http://tutorials.pluralsight.com/author/smritisingh) <img src="https://avatars.githubusercontent.com/u/3615549?v=3" width="30" height="30" alt="Smriti Singh" />
