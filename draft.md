@@ -1,3 +1,8 @@
+### Writing Ansible Modules Complete With Tests by Mark Maglana
+- [Read the guide](http://tutorials.pluralsight.com/python/writing-ansible-modules-complete-with-tests?status=draft)
+- [Read more from Mark Maglana](http://tutorials.pluralsight.com/author/relaxdiego) <img src="https://avatars.githubusercontent.com/u/110545?v=3" width="30" height="30" alt="Mark Maglana" />
+- Related to: Python
+
 ### Integrating Laravel with Keen IO by William Notowidagdo
 - [Read the guide](http://tutorials.pluralsight.com/php/integrating-laravel-with-keen-io?status=draft)
 - [Read more from William Notowidagdo](http://tutorials.pluralsight.com/author/williamn) <img src="https://avatars.githubusercontent.com/u/27722?v=3" width="30" height="30" alt="William Notowidagdo" />
