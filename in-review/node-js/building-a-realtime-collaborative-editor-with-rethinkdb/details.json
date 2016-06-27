@@ -3,12 +3,7 @@
     "author_name": "shadowcodex",
     "author_real_name": "Shannon Duncan",
     "branch": "master",
-    "branches": [
-        [
-            "prtkgpt",
-            "prtkgpt-node-js-building-a-realtime-collaborative-editor-with-rethinkdb"
-        ]
-    ],
+    "branches": [],
     "filename": "article.md",
     "first_commit": "976802e90eb4c1dc5f8f45daa2d23908a765087d",
     "image_url": "https://avatars.githubusercontent.com/u/1348053?v=3",
