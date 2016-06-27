@@ -1,10 +1,10 @@
 # Introduction
-In this tutorial, we're going to develop an application that shows how to integrate React, React Router, and Horizon.io with OAuth authentication from beginning to end.
+In this tutorial, we're going to build an application that shows how to integrate React, React Router, and Horizon.io with OAuth authentication from beginning to end.
 
 The application is simple. It just stores and presents messages in real-time:
 ![Demo App](https://raw.githubusercontent.com/pluralsight/guides/master/images/06bc5c51-4a09-4c4e-9aa6-61c1fd1e0440.gif)
 
-You can find the code on [Github](https://github.com/eh3rrera/react-horizon).
+The entire source code is available on [Github](https://github.com/eh3rrera/react-horizon).
 
 # Requirements
 [Horizon.io](http://horizon.io/) is a real-time backend for Javascript apps built on top of [RethinkDB](https://rethinkdb.com/). If you don't know this NoSQL database, [here's a tutorial that shows how it works](http://tutorials.pluralsight.com/nosql-databases/a-practical-introduction-to-rethinkdb).
@@ -13,14 +13,14 @@ So first, you'll need to install RethinkDB. There are packages for all major ope
 
 Horizon is a [Node.js](https://nodejs.org/) application, so you'll also need version 4.4 or higher of Node.js and npm installed. You can download an installer for your platform [here](https://nodejs.org/en/download/).
 
-Then, install Horizon by executing:
+Then, install Horizon (globally) by executing:
 ```
 npm install -g horizon
 ```
 
 About [React](https://facebook.github.io/react/), you don't need to be a guru to follow this tutorial, but you'll need to have some basic knowledge about components and how this library works.
 
-Let's get started.
+Now that we have all we need, let's get started.
 
 # Creating an Horizon app
 First, execute the following command:
@@ -28,12 +28,12 @@ First, execute the following command:
 hz init react-horizon
 ```
 
-This will create a Horizon application in the directory `react-horizon` with following structure:
+This will create a Horizon application in the directory `react-horizon` with the following structure:
 ```
 .hz
-    config.toml
+ |- config.toml
 dist	
-	index.html
+ |- index.html
 src	
 ```
 
@@ -41,9 +41,13 @@ src
 
 `dist` is the directory where the public and static files will be stored.
 
-For authentication, Horizon requires us to work with `https`, so we need to configure a certificate. Luckily, Horizon comes with a tool to create a self-signed certificate (you just need to have OpenSSL installed), so `cd` into this directory and execute the command:
+For authentication, Horizon requires us to work with `https`, so we need to hava a SSL certificate. Luckily, Horizon comes with a tool to create a self-signed certificates (you just need to have [OpenSSL](https://github.com/openssl/openssl) installed), so `cd` into this directory 
 ```
 cd react-horizon
+```
+
+And execute the command:
+```
 hz create-cert
 ```
 
@@ -59,12 +63,12 @@ This will create `horizon-cert.pem` and `horizon-key.pem`. By default, Horizon w
 # cert_file = "horizon-cert.pem"
 ```
 
-Now, the command to start the server in a dev environment is:
+Now, the command to start the server in a development environment is:
 ```
 hz serve --dev
 ```
 
-The `--dev` flag will set the following flags:
+The `--dev` option will set the following flags:
 - `--start-rethinkdb` that will start a RethinkDB server automatically
 - `--secure no` that will start an insecure server (with no SSL)
 - `--permissions no` that will disable the permissions system
@@ -90,21 +94,21 @@ If you go to https://localhost:8181 you should see this (after accepting the war
 
 ![Horizon initial app](https://raw.githubusercontent.com/pluralsight/guides/master/images/decc6b53-04af-41a9-9360-0034b5f82d56.gif)
 
-Moreover, a RethinkDB server will be started automatically and a `rethinkdb-data` directory will be created. When you go to http://localhost:33361 (or whatever address Horizon gives you in the console), to the *Tables* section you should see the following:
+Moreover, a RethinkDB server will be started automatically and a `rethinkdb-data` directory will be created. When you go to http://localhost:33361 (or whatever address Horizon gives you in the console), and then to the *Tables* section, you should see the following:
 
 ![RethinkDB dashboard](https://raw.githubusercontent.com/pluralsight/guides/master/images/550bcc76-6bea-4c52-b251-df9bb2be1235.png)
 
-As you can see, Horizon has created two databases with the name of the project. `react_horizon` will store the data used by the application into collections, while `react_horizon_internal` stores metadata about these collections, users, and groups.
+As you can see, Horizon has created two databases with the name of the project. `react_horizon` will store the data used by collections in the application, while `react_horizon_internal` stores metadata about these collections, users, and groups.
 
 # Setting up React
-We're going to use ECMAScript 2015 so let's set up [Babel](https://babeljs.io/) to transform this syntax to one most browser can understand:
+We're going to use ECMAScript 2015 so let's set up [Babel](https://babeljs.io/) to transform this syntax to one most browsers can understand by creating its configuration file:
 ```
 echo '{ "presets": ["react", "es2015", "stage-0"] }' > .babelrc
 ```
 
 Babel 6.x does not ship with any transformations enabled, so you need to explicitly tell it what transformations to run by using a preset.
 
-I think the first two are very self-descriptive. The stage-x presets are changes to the language that haven’t been approved to be part of a release of Javascript.
+The first two are very self-descriptive. The stage-x presets are changes to the language that haven’t been approved to be part of a release of Javascript.
 
 The [TC39](https://github.com/tc39) categorizes proposals into 4 stages:
 
@@ -116,7 +120,7 @@ The [TC39](https://github.com/tc39) categorizes proposals into 4 stages:
 
 `stage-0` includes all plugins from presets of all levels. `stage-1` includes all plugins from presets 1 to 4 and so on.
 
-To execute Babel and bundle our scripts with their dependencies, we'll use [Webpack](https://webpack.github.io) and npm. So let's installed (globally) with:
+To execute Babel and bundle our scripts with their dependencies, we'll use [Webpack](https://webpack.github.io) and npm. Let's install Webpack (globally) with:
 ```
 npm install -g webpack
 ```
@@ -170,7 +174,7 @@ module.exports = {
 
 This way, Webpack will create a `dist/js/bundle.js` file with all the JavaScript code of the application (from the script `/src/app.js`).
 
-Finally, let's add to `package.json` the following `start` script to start our application:
+Finally, let's add to `package.json` the following `start` script that packs our application and starts the Horizon server:
 ```
 {
   ...
@@ -283,7 +287,7 @@ h1 {
 }
 ```
 
-`src` will store the JavaScript code of our application, so let's start by defining the starting point, `app.js`:
+`src` will store the JavaScript code of our application. The starting file will be `app.js`:
 ```javascript
 import React from 'react';
 import ReactDOM from 'react-dom';
@@ -320,7 +324,7 @@ export default (
 We'll have three nested routes (so `MainLayout` can serve as a template):
 - `/` is our home
 - `/login` is our login page
-- `messages` is the page with the message functionality
+- `/messages` is the page with the message functionality
 
 Now let's create the components that represent these pages in the `components` directory.
 
@@ -368,7 +372,7 @@ export default class Menu extends Component {
 }
 ```
 
-An `<IndexLink>` is like a `<Link>`, but it's only active when the current route is exactly the linked route (otherwise, since all these are nested routes, `/` and `/messages` will be marked as active at the same time).
+An `<IndexLink>` is like a `<Link>`, but it's only active when the current route is exactly the linked route (otherwise, since all of these are nested routes, `/` and `/messages` will be marked as active at the same time).
 
 For now, `components/login.js` will just contain a button to login with Github:
 ```javascript
@@ -432,7 +436,7 @@ First, add the Horizon client dependency to `package.json`:
 npm install --save @horizon/client
 ```
 
-Then, we are going to create a container for the Horizon object, `src/horizon-container.js`. This will help us to use Horizon in any part of the application with the same settings and wrap functions of it to use them easily. Right now, it will contain just:
+Then, we are going to create a container for the Horizon object, `src/horizon-container.js`. This will allow us to use Horizon in any part of the application with the same settings, and wrap functions to use them easily. However, right now, it will contain just:
 ```javascript
 import Horizon from '@horizon/client'
 
@@ -509,7 +513,9 @@ And how a message is inserted:
 _messageCollection.store(message);
 ```
 
-In the next section we'll add the authenticated user ID. For now, we just pass an empty string.
+The complete collection API is [here](http://horizon.io/api/collection).
+
+In the next section we'll add the authenticated user ID. For now, we are just passing an empty string.
 
 Also, notice that the component binds the method using arrow functions (since they capture the correct value of `this` in the actual context) instead of using a regular function and `bind(this)`:
 ```javascript
@@ -552,11 +558,11 @@ export default class Messages extends Component {
 }
 ```
 
-The `watch()` method allows us to listen for changes in the collection in real-time. It returns an object that receives the entire collection of documents even when a single one changes, which fits perfectly with the way React works.
+The `watch()` method allows us to listen for changes in the collection in real-time. It returns an object that receives the entire collection of documents, even when a single one changes, which fits perfectly with the way React works.
 
 This way, everything a change is detected, the state of the component changes, and this is re-rendered.
 
-The final piece is the `Message` component, which prints a single message:
+The final piece is the `Message` component, which just prints a single message:
 ```javascript
 import React, {Component} from 'react';
 
@@ -597,7 +603,7 @@ If you query this table, you'll see the stored message:
 # Adding Horizon OAuth authentication
 Let's add authentication to our app by using Horizon's support for OAuth. For simplicity, we're going to use Github only, but the steps and configuration are almost the same for other providers (like Google or Twitter).
 
-We'll need a client ID and a client secret. Go to https://github.com/settings/applications/new and enter the following information:
+We'll need a client ID and a client secret. Go to https://github.com/settings/applications/new to register an application and enter the following information:
 
 - **Application name:** react_horizon (any name will do)
 - **Homepage URL:** https://localhost:8181 (or whatever your URL is, just remember the *https* part)
@@ -607,7 +613,7 @@ We'll need a client ID and a client secret. Go to https://github.com/settings/ap
 When you register the application, the client ID and client secret will be presented:
 ![Client ID and Client secret screen](https://raw.githubusercontent.com/pluralsight/guides/master/images/895f04e8-1953-46d7-8e1b-847f0a44795d.png)
 
-These values are configured in the `.hz/config.toml` file. At the end of that file, you can find this section:
+Then, you have to configure these values in the section at the end of the `.hz/config.toml` file:
 ```
 ###############################################################################
 # Authentication Options
@@ -644,16 +650,14 @@ token_secret = "8E7cch2dl2w17uwyMOPxJGoi03N42uGOh0bP1fTuXSyXbut+meGIs2Je5dpsPozE
 # secret = "0000000000000000000000000000000"
 ```
 
-Horizon uses [JSON Web Tokens (JWTS)](https://jwt.io/) for user authentication. When the `.hz/config.toml` file is created, a `token_secret` is generated to sign JWTS.
-
-Replace the client ID and the client secret and uncomment the Github section:
+Horizon uses [JSON Web Tokens (JWTS)](https://jwt.io/) for user authentication. When the `.hz/config.toml` file is created, a `token_secret` is generated to sign JWTS, so just replace the client ID and the client secret and uncomment the Github section:
 ```
 [auth.github]
 id = "ea89158619f776d0703c"
 secret = "df0ab9c5bff3aae9209ac08241cc7fbdd4ab4144"
 ```
 
-Now, let's modify the file `src/horizon-container.js` to support authentication. First, configure Horizon to support authentication with JWTS with:
+Now, let's modify the file `src/horizon-container.js` to support authentication. First, configure Horizon to support authentication with JWTS:
 ```
 const _horizon = Horizon({authType: 'token'});
 ```
@@ -676,11 +680,11 @@ export default {
 
 Due to a [bug](https://github.com/rethinkdb/horizon/issues/567) with the Horizon version used (1.1.3), to get the current user with `currentUser()`, we need to call first `connect()` or make another query.
 
-There are more than one way to implement authentication in a React/React Router application. The one that we'll use in this tutorial is [high-order components](https://medium.com/@dan_abramov/mixins-are-dead-long-live-higher-order-components-94a0d2f9e750).
+There is more than one way to implement authentication in a React/React Router application. The one that we'll use in this tutorial is [high-order components](https://medium.com/@dan_abramov/mixins-are-dead-long-live-higher-order-components-94a0d2f9e750).
 
-A high-order component is a function that takes another component and returns another one that wraps it. In our case, a high-order component will be used to wrap the route to protected by checking if the user is authenticated before rendering it.
+A high-order component is a function that takes another component and returns another one that wraps it. In our case, a high-order component will be used to wrap the route to protect by checking if the user is authenticated before rendering it.
 
-This is what `src/authenticate-route.js` does. Here's the code:
+This will be the job of `src/authenticate-route.js`. Here's the code:
 ```javascript
 import React, { Component, PropTypes } from 'react'
 import Login from './components/login';
@@ -719,9 +723,9 @@ export default (ChildComponent) => {
 
 The user ID will be stored in the state and passed to the component that wraps. This way, when it changes (because it's fetched asynchronously), the child component will be re-rendered.
 
-If the authentication token is present, the child component is rendered. Otherwise, the login page is presented.
+In the `render()` function, we check if the authentication token is present so the child component can be rendered. Otherwise, the login page is presented.
 
-Next, we have to add to the `Login` component the logic to present the Github login with the method `authEndpoint()`:
+In the `Login` component, we add the logic to present the Github login with the method `authEndpoint()`:
 ```javascript
 import React, {Component} from 'react';
 import Horizon from '../horizon-container'
@@ -746,7 +750,7 @@ export default class Login extends Component {
 }
 ```
 
-So we can protect a route (in this case `/message`) this way:
+This way, we protect a route (in this case `/message`) like this:
 ```javascript
 import authenticate from './authenticate-route'
 
@@ -763,7 +767,7 @@ export default (
 );
 ```
 
-For this application, we're going to show a different menu for authenticated users. Open the file `src/components/menu.js` and modify it so it looks like this:
+Also, for this application we're going to show a different menu for authenticated users. Open the file `src/components/menu.js` and modify it so it looks like this:
 ```javascript
 import React, {Component} from 'react';
 import { Link, IndexLink } from 'react-router';
@@ -873,9 +877,9 @@ export default class Messages extends Component {
 
 Notice that we have to replace `componentDidMount()` by `componentWillReceiveProps(nextProps)`.
 
-The reason is that the `componentDidMount()` method of the child components is invoked before that of parent components. So, when the user ID is received, the child components are re-rendered but the `componentDidMount()` method of `components/messages.js` is not executed again with this value, so the changes of that user are not received.
+The reason is that `componentDidMount()` of the child components is invoked before that of parent components. So, when the user ID is received, the child components are re-rendered but the `componentDidMount()` method of `components/messages.js` is not executed again with this value, so the changes of that user are not received.
 
-`componentWillReceiveProps(nextProps)` is invoked when a component is receiving new properties and we can use it to update the state due to a property change before `render()` is executed.
+`componentWillReceiveProps(nextProps)` is invoked when a component is receiving new properties and we can be used to update the state due to a property change before `render()` is executed.
 
 However, this will make the component continuously re-render (because of the state changes of `components/message-container.js`), so we have to put a condition to only execute the `watch()` query when we first receive the user ID:
 ```javascript
@@ -889,7 +893,7 @@ componentWillReceiveProps(nextProps) {
 }
 ```
 
-Now we're ready to test the authentication. Execute `npm start` to pack the changes and start the server.
+Finally, we're ready to test the authentication. Execute `npm start` to pack the changes and start the server.
 
 The first time you log into the application, it will prompt you to authorize it on Github:`
 ![Github authentication](https://raw.githubusercontent.com/pluralsight/guides/master/images/c8e2b979-c020-453c-8a80-843540310c74.gif)
@@ -913,14 +917,14 @@ Now that we have the authentication part done, we just have one final problem to
 The routes work by clicking on the links, but what happens when we enter directly the route in the browser:
 ![Router problem](https://raw.githubusercontent.com/pluralsight/guides/master/images/ab9af1ad-1d1d-40b2-82ff-d825210fa7a0.gif)
 
-This is because the Horizon server doesn't know about the routes configured in React, it just serves whatever there is in the `dist` directory.
+This is because the Horizon server doesn't know about the routes configured in React, it just serves whatever files are in the `dist` directory.
 
 The solution is to integrate Horizon with a web server that redirects all requests to `index.html`. For this app, we are going to use [Express](http://expressjs.com/), but integrating other frameworks like [Koa](http://koajs.com/) or [Happi](http://hapijs.com/) with Horizon is very similar.
 
-We are going to make some major changes:
+However, we need to make some major changes:
 - We 're not going to start the server with `hz serve`, which means that a RethinkDB server won't be automatically started.
-- We'll need to configure Express for HTTPS
 - When using Horizon on the client side, the file `.hz/config.toml` holds the configuration of the framework. When using Horizon on the server side, we need to pass all these configurations to the server when we create it.
+- Because of this, we'll need to configure Express for HTTPS
 
 Let's start by adding the dependencies we're going to need to our `package.json` file:
 ```
@@ -938,9 +942,9 @@ const horizon = require('@horizon/server');
 const  app = express();
 ```
 
-Let's configure the routes for the public files and to redirect all requests to index.html
+Now configure the routes for the public files and to redirect all requests to index.html
 ```javascript
-// Serve our static stuff like index.css
+// Serve our static stuff like css
 app.use(express.static(path.join(__dirname, 'dist')));
 
 // Send all requests to index.html
@@ -949,7 +953,7 @@ app.get('*', function (req, res) {
 })
 ```
 
-We have been working with HTTPS, so let's configure Express to use this protocol. We can reuse our self-signed certificates:
+Next, configure Express to use HTTPS. We can reuse our self-signed certificates:
 ```javascript
 const  options = {
     key: fs.readFileSync('horizon-key.pem'),
@@ -984,18 +988,18 @@ horizon_server.add_auth_provider(horizon.auth.github, {
 
 As you can see, the server is passed to Horizon along with options that are similar to the ones defined in the `.hz/config.toml` file. In the above code, we set the project name, enable permissions (more of this in a moment), and use token authentication. You can find more information about all the options [here](http://horizon.io/docs/embed/).
 
-Finally, we use the `add_auth_provider` method to set up the OAuth Github provider. You can extract all this configuration data to an external file if you want.
+Finally, we use the `add_auth_provider` method to set up the OAuth Github provider. You can extract all this configuration data to an external file if you want (like a `config.js` file).
 
 By default, Horizon will connect to a RethinkDB server on `localhost:28015`. We're also enabling permissions (which is actually the default option).
 
-Horizon doesn't allow access to collections by default, even for authenticated users, which means that we won't be able to use neither our `message` collection nor getting the user ID (from the `users` table).
+In this configuration, Horizon doesn't allow access to collections by default, even for authenticated users, which means that we won't be able to use neither our `message` collection nor getting the user ID (from the `users` table).
 
 To fix this, we need to manually import the permission rules to the database we're going to use. If you execute this command:
 ```
 hz get-schema -n react_horizon --start-rethinkdb yes -o schema.toml
 ```
 
-Horizon will start the development RethinkDB server, and extract the schema, validation rules, collection and index specifications of the `react_horizon` application (it won't extract the collection's data) as a TOML file, schema.toml. Here's what this file contains:
+Horizon will start the development RethinkDB server, and extract the schema, validation rules, collection and index specifications of the `react_horizon` application (it won't extract the collection's data) as a TOML file, `schema.toml`. Here's what this file contains:
 ```
 # This is a TOML document
 
@@ -1047,13 +1051,15 @@ Finally, change the `start` script on `package.json` to start the Express server
 }
 ```
 
-When you run the application (don't forget to start the RethinkDB server also), the problem should be solved:
+When you run the application (don't forget to start the RethinkDB server also), the problem with entering the URL directly in the browser should be solved:
 ![Routes working](https://raw.githubusercontent.com/pluralsight/guides/master/images/1bd7d1c9-1f2d-40cb-a03d-1d7a40b550c3.gif)
 
 You can also test the rest of the functionality to make sure everything is working correctly.
 
 # Conclusion
 
+There you have it. We created a single page application with authentication and real-time capabilities using React, React Router, Webpack, Babel, Node.js, Express, and of course, Horizon.
+
 There are some [limitations](http://horizon.io/docs/limitations/) of what you can do with Horizon because, at the time of this writing, it is a relatively new framework. However, it has a lot of features that make real-time programming easier, not without mentioning its growing and strong [community](http://horizon.io/community/).
 
-Again, the code of the application is on [Github](https://github.com/eh3rrera/react-horizon) and if you have any questions or comments, don' hesitate to contact me.
+Remember that the code of the application is on [Github](https://github.com/eh3rrera/react-horizon) and if you have any questions or comments, don' hesitate to contact me.

@@ -1,3 +1,13 @@
+### Integrating Laravel with Keen IO by William Notowidagdo
+- [Read the guide](http://tutorials.pluralsight.com/php/integrating-laravel-with-keen-io?status=draft)
+- [Read more from William Notowidagdo](http://tutorials.pluralsight.com/author/williamn) <img src="https://avatars.githubusercontent.com/u/27722?v=3" width="30" height="30" alt="William Notowidagdo" />
+- Related to: PHP
+
+### My Hack guide By Smriti Singh by Smriti Singh
+- [Read the guide](http://tutorials.pluralsight.com/c-c++/my-hack-guide-by-smriti-singh?status=draft)
+- [Read more from Smriti Singh](http://tutorials.pluralsight.com/author/smritisingh) <img src="https://avatars.githubusercontent.com/u/3615549?v=3" width="30" height="30" alt="Smriti Singh" />
+- Related to: C/C++
+
 ### Hack code  by Karan Verma
 - [Read the guide](http://tutorials.pluralsight.com/microsoft-net/hack-code?status=draft)
 - [Read more from Karan Verma](http://tutorials.pluralsight.com/author/karanverma) <img src="https://avatars.githubusercontent.com/u/8354175?v=3" width="30" height="30" alt="Karan Verma" />
@@ -8,11 +18,6 @@
 - [Read more from Gonzalo Sola](http://tutorials.pluralsight.com/author/chalo2812) <img src="https://avatars.githubusercontent.com/u/6732307?v=3" width="30" height="30" alt="Gonzalo Sola" />
 - Related to: Java and J2EE
 
-### Building a real-time application with React, React Router, Horizon.io, and OAuth by Esteban Herrera
-- [Read the guide](http://tutorials.pluralsight.com/interesting-apis/building-a-real-time-application-with-react-react-router-horizon-io-and-oauth?status=draft)
-- [Read more from Esteban Herrera](http://tutorials.pluralsight.com/author/eh3rrera) <img src="https://avatars.githubusercontent.com/u/11665759?v=3" width="30" height="30" alt="Esteban Herrera" />
-- Related to: Interesting APIs (SendGrid, Twilio, etc)
-
 ### Building a real-time chat app using React Native by Nguyen Cao Nhat Linh
 - [Read the guide](http://tutorials.pluralsight.com/front-end-javascript/building-a-real-time-chat-app-using-react-native?status=draft)
 - [Read more from Nguyen Cao Nhat Linh](http://tutorials.pluralsight.com/author/ncnlinh) <img src="https://avatars.githubusercontent.com/u/7568367?v=3" width="30" height="30" alt="Nguyen Cao Nhat Linh" />
@@ -22,11 +27,6 @@
 - [Read the guide](http://tutorials.pluralsight.com/front-end-javascript/building-a-chat-app-with-ionic-2-and-firebase?status=draft)
 - [Read more from Dave Ackerman](http://tutorials.pluralsight.com/author/dmackerman) <img src="https://avatars.githubusercontent.com/u/289938?v=3" width="30" height="30" alt="Dave Ackerman" />
 - Related to: Front-End JavaScript (Angular, React, Meteor, etc)
-
-### HTML BASICS by Nikolas Danaj
-- [Read the guide](http://tutorials.pluralsight.com/html-css/html-basics?status=draft)
-- [Read more from Nikolas Danaj](http://tutorials.pluralsight.com/author/NIkolasDanaj) <img src="https://avatars.githubusercontent.com/u/19437693?v=3" width="30" height="30" alt="Nikolas Danaj" />
-- Related to: HTML/CSS
 
 ### Introduction to Appium Development in Fedora by forethoughtde
 - [Read the guide](http://tutorials.pluralsight.com/python/introduction-to-appium-development-in-fedora?status=draft)
@@ -57,11 +57,6 @@
 - [Read the guide](http://tutorials.pluralsight.com/front-end-javascript/my-hack-guid?status=draft)
 - [Read more from Trim Bresa](http://tutorials.pluralsight.com/author/trimbresa) <img src="https://avatars.githubusercontent.com/u/12497011?v=3" width="30" height="30" alt="Trim Bresa" />
 - Related to: Front-End JavaScript (Angular, React, Meteor, etc)
-
-### Building a WPF Media Player using NAudio by Murat Aykanat
-- [Read the guide](http://tutorials.pluralsight.com/microsoft-net/building-a-wpf-media-player-using-naudio?status=draft)
-- [Read more from Murat Aykanat](http://tutorials.pluralsight.com/author/aykanatm) <img src="https://avatars.githubusercontent.com/u/9140297?v=3" width="30" height="30" alt="Murat Aykanat" />
-- Related to: Microsoft.NET (C#, ASP.NET, VB.NET, etc)
 
 ### Skill leveraging S3 storage by Terren Peterson
 - [Read the guide](http://tutorials.pluralsight.com/node-js/skill-leveraging-s3-storage?status=draft)

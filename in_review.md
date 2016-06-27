@@ -1,3 +1,23 @@
+### Introduction to asynchronous JavaScript by Peter Olson
+- [Read the guide](http://tutorials.pluralsight.com/front-end-javascript/introduction-to-asynchronous-javascript?status=in-review)
+- [Read more from Peter Olson](http://tutorials.pluralsight.com/author/peterolson) <img src="https://avatars.githubusercontent.com/u/920512?v=3" width="30" height="30" alt="Peter Olson" />
+- Related to: Front-End JavaScript (Angular, React, Meteor, etc)
+
+### Building a real-time application with React, React Router, Horizon.io, and OAuth by Esteban Herrera
+- [Read the guide](http://tutorials.pluralsight.com/interesting-apis/building-a-real-time-application-with-react-react-router-horizon-io-and-oauth?status=in-review)
+- [Read more from Esteban Herrera](http://tutorials.pluralsight.com/author/eh3rrera) <img src="https://avatars.githubusercontent.com/u/11665759?v=3" width="30" height="30" alt="Esteban Herrera" />
+- Related to: Interesting APIs (SendGrid, Twilio, etc)
+
+### HTML BASICS by Nikolas Danaj
+- [Read the guide](http://tutorials.pluralsight.com/html-css/html-basics?status=in-review)
+- [Read more from Nikolas Danaj](http://tutorials.pluralsight.com/author/NIkolasDanaj) <img src="https://avatars.githubusercontent.com/u/19437693?v=3" width="30" height="30" alt="Nikolas Danaj" />
+- Related to: HTML/CSS
+
+### Building a WPF Media Player using NAudio by Murat Aykanat
+- [Read the guide](http://tutorials.pluralsight.com/microsoft-net/building-a-wpf-media-player-using-naudio?status=in-review)
+- [Read more from Murat Aykanat](http://tutorials.pluralsight.com/author/aykanatm) <img src="https://avatars.githubusercontent.com/u/9140297?v=3" width="30" height="30" alt="Murat Aykanat" />
+- Related to: Microsoft.NET (C#, ASP.NET, VB.NET, etc)
+
 ### Building a Realtime Collaborative Editor with RethinkDB by Shannon Duncan
 - [Read the guide](http://tutorials.pluralsight.com/node-js/building-a-realtime-collaborative-editor-with-rethinkdb?status=in-review)
 - [Read more from Shannon Duncan](http://tutorials.pluralsight.com/author/shadowcodex) <img src="https://avatars.githubusercontent.com/u/1348053?v=3" width="30" height="30" alt="Shannon Duncan" />
