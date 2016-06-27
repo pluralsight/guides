@@ -1,3 +1,8 @@
+### Log information of your app through Lonline by Dynamicloud by Eleazar
+- [Read the guide](http://tutorials.pluralsight.com/node-js/log-information-of-your-app-through-lonline-by-dynamicloud?status=draft)
+- [Read more from Eleazar](http://tutorials.pluralsight.com/author/egomezr) <img src="https://avatars.githubusercontent.com/u/1632973?v=3" width="30" height="30" alt="Eleazar" />
+- Related to: Node.js
+
 ### Integrating Laravel with Keen IO by William Notowidagdo
 - [Read the guide](http://tutorials.pluralsight.com/php/integrating-laravel-with-keen-io?status=draft)
 - [Read more from William Notowidagdo](http://tutorials.pluralsight.com/author/williamn) <img src="https://avatars.githubusercontent.com/u/27722?v=3" width="30" height="30" alt="William Notowidagdo" />
