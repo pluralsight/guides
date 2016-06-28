@@ -1,8 +1,3 @@
-### Writing Ansible Modules Complete With Tests by Mark Maglana
-- [Read the guide](http://tutorials.pluralsight.com/python/writing-ansible-modules-complete-with-tests?status=in-review)
-- [Read more from Mark Maglana](http://tutorials.pluralsight.com/author/relaxdiego) <img src="https://avatars.githubusercontent.com/u/110545?v=3" width="30" height="30" alt="Mark Maglana" />
-- Related to: Python
-
 ### Log information of your app through Lonline by Dynamicloud by Eleazar
 - [Read the guide](http://tutorials.pluralsight.com/node-js/log-information-of-your-app-through-lonline-by-dynamicloud?status=in-review)
 - [Read more from Eleazar](http://tutorials.pluralsight.com/author/egomezr) <img src="https://avatars.githubusercontent.com/u/1632973?v=3" width="30" height="30" alt="Eleazar" />
