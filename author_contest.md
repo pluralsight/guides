@@ -74,7 +74,7 @@ We've teamed up with some of the best companies with cutting-edge technologies a
 * [Ionic Framework](http://ionicframework.com/)
 * [Keen IO](http://keen.io)
 * [LigaData](http://kamanja.org/)
-* [Netatamo](https://www.netatmo.com/en-US/site/connect#/getstarted)
+* [Netatmo](https://www.netatmo.com/en-US/site/connect#/getstarted)
 * [Pluralsight](http://pluralsight.com/)
 * [PubNub](http://pubnub.com/)
 * [RethinkDB](http://rethinkdb.com/)
@@ -125,9 +125,9 @@ Want to join as a sponsor? Please email Prateek at Prateek-Gupta@Pluralsight.com
     <td>the best tutorial using Kamanja</td>
   </tr>
   <tr>
-    <td>Netatamo</td>
+    <td>Netatmo</td>
     <td>$500</td>
-    <td>Best tutorial using Netatamo Connect</td>
+    <td>Best tutorial using Netatmo Connect</td>
   </tr>
   <tr>
     <td>Pluralsight</td>
