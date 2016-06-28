@@ -1,3 +1,8 @@
+### Writing Ansible Modules Complete With Tests by Mark Maglana
+- [Read the guide](http://tutorials.pluralsight.com/python/writing-ansible-modules-complete-with-tests)
+- [Read more from Mark Maglana](http://tutorials.pluralsight.com/author/relaxdiego) <img src="https://avatars.githubusercontent.com/u/110545?v=3" width="30" height="30" alt="Mark Maglana" />
+- Related to: Python
+
 ### Reactive analytics using Keen.IO and ActionCable in Rails 5 by Hristo Georgiev
 - [Read the guide](http://tutorials.pluralsight.com/interesting-apis/reactive-analytics-using-keen-io-and-actioncable-in-rails-5)
 - [Read more from Hristo Georgiev](http://tutorials.pluralsight.com/author/Kaizeras) <img src="https://avatars.githubusercontent.com/u/6340189?v=3" width="30" height="30" alt="Hristo Georgiev" />
