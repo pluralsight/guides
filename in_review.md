@@ -1,3 +1,8 @@
+### How to install CKAN 2.5 from source on Debian 8 "Jessie" by Miguel Gouveia
+- [Read the guide](http://tutorials.pluralsight.com/other/how-to-install-ckan-2-5-from-source-on-debian-8-jessie?status=in-review)
+- [Read more from Miguel Gouveia](http://tutorials.pluralsight.com/author/miguelbgouveia) <img src="https://avatars.githubusercontent.com/u/1122917?v=3" width="30" height="30" alt="Miguel Gouveia" />
+- Related to: other
+
 ### Log information of your app through Lonline by Dynamicloud by Eleazar
 - [Read the guide](http://tutorials.pluralsight.com/node-js/log-information-of-your-app-through-lonline-by-dynamicloud?status=in-review)
 - [Read more from Eleazar](http://tutorials.pluralsight.com/author/egomezr) <img src="https://avatars.githubusercontent.com/u/1632973?v=3" width="30" height="30" alt="Eleazar" />
