@@ -1,4 +1,4 @@
-![2016 Tutorial Contest](https://raw.githubusercontent.com/pluralsight/guides/master/images/dbc251e4-1282-44ad-9d55-a7e6b18d21d0.jpg)
+![2016 Tutorial Contest](https://raw.githubusercontent.com/pluralsight/guides/master/images/dbdcdc09-9f35-4b50-8476-94ab49471112.jpg)
 
 Are you passionate about helping other developers learn about your favorite technologies and APIs?  If so, this event is for you!
 
@@ -74,7 +74,6 @@ We've teamed up with some of the best companies with cutting-edge technologies a
 * [Ionic Framework](http://ionicframework.com/)
 * [Keen IO](http://keen.io)
 * [LigaData](http://kamanja.org/)
-* [Netatmo](https://www.netatmo.com/en-US/site/connect#/getstarted)
 * [Pluralsight](http://pluralsight.com/)
 * [PubNub](http://pubnub.com/)
 * [RethinkDB](http://rethinkdb.com/)
@@ -123,11 +122,6 @@ Want to join as a sponsor? Please email Prateek at Prateek-Gupta@Pluralsight.com
     <td>LigaData</td>
     <td>$500</td>
     <td>the best tutorial using Kamanja</td>
-  </tr>
-  <tr>
-    <td>Netatmo</td>
-    <td>$500</td>
-    <td>Best tutorial using Netatmo Connect</td>
   </tr>
   <tr>
     <td>Pluralsight</td>
