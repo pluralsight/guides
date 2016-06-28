@@ -58,7 +58,7 @@ If you’re installing CKAN for development, you may want to install the latest 
 pip install -e 'git+https://github.com/ckan/ckan.git#egg=ckan'
 ```
 
-Just remember the this version may contain bugs.
+Just remember that this version may contain bugs.
 
 Install the Python modules that CKAN requires into your virtualenv:
 
@@ -82,7 +82,7 @@ List existing databases:
 sudo -u postgres psql -l
 ```
 
-Check that the encoding of any existing is UTF8, else you may run into problems with non-ascii characters (e.g. 蠨,ဂ). Since changing the encoding of PostgreSQL may mean deleting existing databases, it is suggested that you remedy this before continuing with the CKAN install.
+Check that the encoding of any existing database is UTF8, else you may run into problems with non-ascii characters (e.g. 蠨,ဂ). Since changing the encoding of PostgreSQL may mean deleting existing databases, it is suggested that you remedy this before continuing with the CKAN install.
 
 Next you’ll need to create a database user if one doesn’t already exist. Create a new PostgreSQL database user called ckan_default, and enter a password for the user when prompted. You’ll need this password later:
 
