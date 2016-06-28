@@ -38,11 +38,6 @@
 - [Read more from Ennis Massey](http://tutorials.pluralsight.com/author/MicroTransactionsMatterToo) <img src="https://avatars.githubusercontent.com/u/12421108?v=3" width="30" height="30" alt="Ennis Massey" />
 - Related to: Python
 
-### How to install CKAN 2.5 from source on Debian 8 "Jessie" by Miguel Gouveia
-- [Read the guide](http://tutorials.pluralsight.com/other/how-to-install-ckan-2-5-from-source-on-debian-8-jessie?status=in-review)
-- [Read more from Miguel Gouveia](http://tutorials.pluralsight.com/author/miguelbgouveia) <img src="https://avatars.githubusercontent.com/u/1122917?v=3" width="30" height="30" alt="Miguel Gouveia" />
-- Related to: other
-
 ### C# : Using Interfaces and Delegates by jigneshBeladiya
 - [Read the guide](http://tutorials.pluralsight.com/microsoft-net/c-using-interfaces-and-delegates?status=in-review)
 - [Read more from jigneshBeladiya](http://tutorials.pluralsight.com/author/jigneshBeladiya) <img src="https://avatars.githubusercontent.com/u/11713657?v=3" width="30" height="30" alt="jigneshBeladiya" />
