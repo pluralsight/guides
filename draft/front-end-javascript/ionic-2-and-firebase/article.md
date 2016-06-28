@@ -255,7 +255,7 @@ in our ```<ion-content>``` tags add:
 ```
 ### Listing the todos
 
-Generate a new page for the list ```ionic g page list-todo```
+Generate a new page for the list ```$ ionic g page list-todo```
 ### Editing a todo
 
 ## Part 2 -> login
