@@ -1,0 +1,15 @@
+{
+    "_publish_status": "draft",
+    "author_name": "ian-a-hickey",
+    "author_real_name": "Ian Hickey",
+    "branch": "master",
+    "branches": [],
+    "filename": "article.md",
+    "first_commit": "7cb5d64ebc61ee26d2cc5b6f2bf2c3c9488588da",
+    "image_url": "https://avatars.githubusercontent.com/u/10375721?v=3",
+    "stacks": [
+        "Front-End JavaScript (Angular, React, Meteor, etc)"
+    ],
+    "thumbnail_url": null,
+    "title": "Not Done Yet"
+}
