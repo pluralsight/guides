@@ -1,12 +1,52 @@
-### Reactive analytics using Keen.IO and ActionCable in Rails 5 by Hristo Georgiev
-- [Read the guide](http://tutorials.pluralsight.com/interesting-apis/reactive-analytics-using-keen-io-and-actioncable-in-rails-5?status=in-review)
-- [Read more from Hristo Georgiev](http://tutorials.pluralsight.com/author/Kaizeras) <img src="https://avatars.githubusercontent.com/u/6340189?v=3" width="30" height="30" alt="Hristo Georgiev" />
-- Related to: Interesting APIs (SendGrid, Twilio, etc)
+### How to install CKAN 2.5 from source on Debian 8 "Jessie" by Miguel Gouveia
+- [Read the guide](http://tutorials.pluralsight.com/other/how-to-install-ckan-2-5-from-source-on-debian-8-jessie?status=in-review)
+- [Read more from Miguel Gouveia](http://tutorials.pluralsight.com/author/miguelbgouveia) <img src="https://avatars.githubusercontent.com/u/1122917?v=3" width="30" height="30" alt="Miguel Gouveia" />
+- Related to: other
 
-### A Practical Introduction to RethinkDB by Esteban Herrera
-- [Read the guide](http://tutorials.pluralsight.com/nosql-databases/a-practical-introduction-to-rethinkdb?status=in-review)
-- [Read more from Esteban Herrera](http://tutorials.pluralsight.com/author/eh3rrera) <img src="https://avatars.githubusercontent.com/u/11665759?v=3" width="30" height="30" alt="Esteban Herrera" />
-- Related to: NoSQL Databases (MongoDB, Cassandra, etc)
+### Log information of your app through Lonline by Dynamicloud by Eleazar
+- [Read the guide](http://tutorials.pluralsight.com/node-js/log-information-of-your-app-through-lonline-by-dynamicloud?status=in-review)
+- [Read more from Eleazar](http://tutorials.pluralsight.com/author/egomezr) <img src="https://avatars.githubusercontent.com/u/1632973?v=3" width="30" height="30" alt="Eleazar" />
+- Related to: Node.js
+
+### Introduction to asynchronous JavaScript by Peter Olson
+- [Read the guide](http://tutorials.pluralsight.com/front-end-javascript/introduction-to-asynchronous-javascript?status=in-review)
+- [Read more from Peter Olson](http://tutorials.pluralsight.com/author/peterolson) <img src="https://avatars.githubusercontent.com/u/920512?v=3" width="30" height="30" alt="Peter Olson" />
+- Related to: Front-End JavaScript (Angular, React, Meteor, etc)
+
+### HTML BASICS by Nikolas Danaj
+- [Read the guide](http://tutorials.pluralsight.com/html-css/html-basics?status=in-review)
+- [Read more from Nikolas Danaj](http://tutorials.pluralsight.com/author/NIkolasDanaj) <img src="https://avatars.githubusercontent.com/u/19437693?v=3" width="30" height="30" alt="Nikolas Danaj" />
+- Related to: HTML/CSS
+
+### Building a WPF Media Player using NAudio by Murat Aykanat
+- [Read the guide](http://tutorials.pluralsight.com/microsoft-net/building-a-wpf-media-player-using-naudio?status=in-review)
+- [Read more from Murat Aykanat](http://tutorials.pluralsight.com/author/aykanatm) <img src="https://avatars.githubusercontent.com/u/9140297?v=3" width="30" height="30" alt="Murat Aykanat" />
+- Related to: Microsoft.NET (C#, ASP.NET, VB.NET, etc)
+
+### Building a Realtime Collaborative Editor with RethinkDB by Shannon Duncan
+- [Read the guide](http://tutorials.pluralsight.com/node-js/building-a-realtime-collaborative-editor-with-rethinkdb?status=in-review)
+- [Read more from Shannon Duncan](http://tutorials.pluralsight.com/author/shadowcodex) <img src="https://avatars.githubusercontent.com/u/1348053?v=3" width="30" height="30" alt="Shannon Duncan" />
+- Related to: Node.js
+
+### Ionic 2 + LokiJS + LocalForage (Progressive Web App, no-SQL db, and long-term storage) by ryanlogsdon
+- [Read the guide](http://tutorials.pluralsight.com/front-end-javascript/ionic-2-+-lokijs-+-localforage-progressive-web-app-no-sql-db-and-long-term-storage?status=in-review)
+- [Read more from ryanlogsdon](http://tutorials.pluralsight.com/author/ryanlogsdon) <img src="https://avatars.githubusercontent.com/u/7528211?v=3" width="30" height="30" alt="ryanlogsdon" />
+- Related to: Front-End JavaScript (Angular, React, Meteor, etc)
+
+### How to write effective Docstrings by Ennis Massey
+- [Read the guide](http://tutorials.pluralsight.com/python/how-to-write-effective-docstrings?status=in-review)
+- [Read more from Ennis Massey](http://tutorials.pluralsight.com/author/MicroTransactionsMatterToo) <img src="https://avatars.githubusercontent.com/u/12421108?v=3" width="30" height="30" alt="Ennis Massey" />
+- Related to: Python
+
+### C# : Using Interfaces and Delegates by jigneshBeladiya
+- [Read the guide](http://tutorials.pluralsight.com/microsoft-net/c-using-interfaces-and-delegates?status=in-review)
+- [Read more from jigneshBeladiya](http://tutorials.pluralsight.com/author/jigneshBeladiya) <img src="https://avatars.githubusercontent.com/u/11713657?v=3" width="30" height="30" alt="jigneshBeladiya" />
+- Related to: Microsoft.NET (C#, ASP.NET, VB.NET, etc)
+
+### Enforcing Immutability with ES2015 by Graham Marlow
+- [Read the guide](http://tutorials.pluralsight.com/front-end-javascript/enforcing-immutability-with-es2015?status=in-review)
+- [Read more from Graham Marlow](http://tutorials.pluralsight.com/author/mgmarlow) <img src="https://avatars.githubusercontent.com/u/3778552?v=3" width="30" height="30" alt="Graham Marlow" />
+- Related to: Front-End JavaScript (Angular, React, Meteor, etc)
 
 ### Tutorial Contest FAQ by Prateek Gupta
 - [Read the guide](http://tutorials.pluralsight.com/software-engineering-best-practices/tutorial-contest-faq?status=in-review)

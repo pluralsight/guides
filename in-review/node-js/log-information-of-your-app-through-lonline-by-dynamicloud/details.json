@@ -1,0 +1,20 @@
+{
+    "_publish_status": "in-review",
+    "author_name": "egomezr",
+    "author_real_name": "Eleazar",
+    "branch": "master",
+    "branches": [
+        [
+            "adityavarshney",
+            "adityavarshney-node-js-log-information-of-your-app-through-lonline-by-dynamicloud"
+        ]
+    ],
+    "filename": "article.md",
+    "first_commit": "b26d6822b926a722eac8c259c728fe141a5f9132",
+    "image_url": "https://avatars.githubusercontent.com/u/1632973?v=3",
+    "stacks": [
+        "Node.js"
+    ],
+    "thumbnail_url": null,
+    "title": "Log information of your app through Lonline by Dynamicloud"
+}

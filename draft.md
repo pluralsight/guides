@@ -1,7 +1,67 @@
-### Building a WPF Media Player using NAudio by Murat Aykanat
-- [Read the guide](http://tutorials.pluralsight.com/microsoft-net/building-a-wpf-media-player-using-naudio?status=draft)
-- [Read more from Murat Aykanat](http://tutorials.pluralsight.com/author/aykanatm) <img src="https://avatars.githubusercontent.com/u/9140297?v=3" width="30" height="30" alt="Murat Aykanat" />
+### 5 reasons WebRTC will revolutionize web applications! by Akansh Murthy
+- [Read the guide](http://tutorials.pluralsight.com/interesting-apis/5-reasons-webrtc-will-revolutionize-web-applications?status=draft)
+- [Read more from Akansh Murthy](http://tutorials.pluralsight.com/author/akanshmurthy) <img src="https://avatars.githubusercontent.com/u/11954634?v=3" width="30" height="30" alt="Akansh Murthy" />
+- Related to: Interesting APIs (SendGrid, Twilio, etc)
+
+### Integrating Laravel with Keen IO by William Notowidagdo
+- [Read the guide](http://tutorials.pluralsight.com/php/integrating-laravel-with-keen-io?status=draft)
+- [Read more from William Notowidagdo](http://tutorials.pluralsight.com/author/williamn) <img src="https://avatars.githubusercontent.com/u/27722?v=3" width="30" height="30" alt="William Notowidagdo" />
+- Related to: PHP
+
+### My Hack guide By Smriti Singh by Smriti Singh
+- [Read the guide](http://tutorials.pluralsight.com/c-c++/my-hack-guide-by-smriti-singh?status=draft)
+- [Read more from Smriti Singh](http://tutorials.pluralsight.com/author/smritisingh) <img src="https://avatars.githubusercontent.com/u/3615549?v=3" width="30" height="30" alt="Smriti Singh" />
+- Related to: C/C++
+
+### Hack code  by Karan Verma
+- [Read the guide](http://tutorials.pluralsight.com/microsoft-net/hack-code?status=draft)
+- [Read more from Karan Verma](http://tutorials.pluralsight.com/author/karanverma) <img src="https://avatars.githubusercontent.com/u/8354175?v=3" width="30" height="30" alt="Karan Verma" />
 - Related to: Microsoft.NET (C#, ASP.NET, VB.NET, etc)
+
+### Tutorial Prueba by Gonzalo Sola
+- [Read the guide](http://tutorials.pluralsight.com/java-and-j2ee/tutorial-prueba?status=draft)
+- [Read more from Gonzalo Sola](http://tutorials.pluralsight.com/author/chalo2812) <img src="https://avatars.githubusercontent.com/u/6732307?v=3" width="30" height="30" alt="Gonzalo Sola" />
+- Related to: Java and J2EE
+
+### Building a real-time chat app using React Native by Nguyen Cao Nhat Linh
+- [Read the guide](http://tutorials.pluralsight.com/front-end-javascript/building-a-real-time-chat-app-using-react-native?status=draft)
+- [Read more from Nguyen Cao Nhat Linh](http://tutorials.pluralsight.com/author/ncnlinh) <img src="https://avatars.githubusercontent.com/u/7568367?v=3" width="30" height="30" alt="Nguyen Cao Nhat Linh" />
+- Related to: Front-End JavaScript (Angular, React, Meteor, etc)
+
+### Building a Chat App with Ionic 2 and Firebase  by Dave Ackerman
+- [Read the guide](http://tutorials.pluralsight.com/front-end-javascript/building-a-chat-app-with-ionic-2-and-firebase?status=draft)
+- [Read more from Dave Ackerman](http://tutorials.pluralsight.com/author/dmackerman) <img src="https://avatars.githubusercontent.com/u/289938?v=3" width="30" height="30" alt="Dave Ackerman" />
+- Related to: Front-End JavaScript (Angular, React, Meteor, etc)
+
+### Introduction to Appium Development in Fedora by forethoughtde
+- [Read the guide](http://tutorials.pluralsight.com/python/introduction-to-appium-development-in-fedora?status=draft)
+- [Read more from forethoughtde](http://tutorials.pluralsight.com/author/forethoughtde) <img src="https://avatars.githubusercontent.com/u/9781577?v=3" width="30" height="30" alt="forethoughtde" />
+- Related to: Python
+
+### Learning by doing by jeewan2015
+- [Read the guide](http://tutorials.pluralsight.com/html-css/learning-by-doing?status=draft)
+- [Read more from jeewan2015](http://tutorials.pluralsight.com/author/jeewan2015) <img src="https://avatars.githubusercontent.com/u/11834745?v=3" width="30" height="30" alt="jeewan2015" />
+- Related to: HTML/CSS
+
+### User role using middle ware  by Nadim
+- [Read the guide](http://tutorials.pluralsight.com/php/user-role-using-middle-ware?status=draft)
+- [Read more from Nadim](http://tutorials.pluralsight.com/author/nadimsajib) <img src="https://avatars.githubusercontent.com/u/6728894?v=3" width="30" height="30" alt="Nadim" />
+- Related to: PHP
+
+### Top 10 tips when programming for Arduino by AymArbyn
+- [Read the guide](http://tutorials.pluralsight.com/c-c++/top-10-tips-when-programming-for-arduino?status=draft)
+- [Read more from AymArbyn](http://tutorials.pluralsight.com/author/AymArbyn) <img src="https://avatars.githubusercontent.com/u/1721465?v=3" width="30" height="30" alt="AymArbyn" />
+- Related to: C/C++
+
+### Setting up Learning Locker in AWS Elastic Beanstalk by Adrian Murillo
+- [Read the guide](http://tutorials.pluralsight.com/php/setting-up-learning-locker-in-aws-elastic-beanstalk?status=draft)
+- [Read more from Adrian Murillo](http://tutorials.pluralsight.com/author/adrianmurillo) <img src="https://avatars.githubusercontent.com/u/1044938?v=3" width="30" height="30" alt="Adrian Murillo" />
+- Related to: PHP
+
+### My Hack Guid by Trim Bresa
+- [Read the guide](http://tutorials.pluralsight.com/front-end-javascript/my-hack-guid?status=draft)
+- [Read more from Trim Bresa](http://tutorials.pluralsight.com/author/trimbresa) <img src="https://avatars.githubusercontent.com/u/12497011?v=3" width="30" height="30" alt="Trim Bresa" />
+- Related to: Front-End JavaScript (Angular, React, Meteor, etc)
 
 ### Skill leveraging S3 storage by Terren Peterson
 - [Read the guide](http://tutorials.pluralsight.com/node-js/skill-leveraging-s3-storage?status=draft)
@@ -132,11 +192,6 @@
 - [Read the guide](http://tutorials.pluralsight.com/front-end-javascript/how-to-create-an-advanced-production-ready-shopping-todo-application-with-ionic-firebase-and-material-design?status=draft)
 - [Read more from Nikola Brežnjak](http://tutorials.pluralsight.com/author/Hitman666) <img src="https://avatars.githubusercontent.com/u/1001064?v=3" width="30" height="30" alt="Nikola Brežnjak" />
 - Related to: Front-End JavaScript (Angular, React, Meteor, etc)
-
-### test by Paulo Cheque
-- [Read the guide](http://tutorials.pluralsight.com/python/test?status=draft)
-- [Read more from Paulo Cheque](http://tutorials.pluralsight.com/author/paulocheque) <img src="https://avatars.githubusercontent.com/u/94350?v=3" width="30" height="30" alt="Paulo Cheque" />
-- Related to: Python
 
 ### Getting weather updates via sms  by Kristianne Nerona
 - [Read the guide](http://tutorials.pluralsight.com/interesting-apis/getting-weather-updates-via-sms?status=draft)

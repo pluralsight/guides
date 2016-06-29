@@ -398,9 +398,25 @@ Go to [http://localhost:3000](http://localhost:3000) and see the results. You no
  To test out reactivity, open browser windows with [http://localhost:3000/products/new](http://localhost:3000/products/new) and  [http://localhost:3000](http://localhost:3000). Then, try to create a new product.
  
  
-![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/25050fd2-fba8-434d-a4e4-28ae2ca42f36.004)
+
+![reactive](https://raw.githubusercontent.com/pluralsight/guides/master/images/bc512a8b-d117-48b4-8118-47bf5dad9007.gif)
+
+
+
+## Creating a dashboard through Keen.IO
+
+If you'd want to test out a dashboard layout or see how your queries visualize all at once, Keen.IO offers a dashboard builder. 
+
+![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/ed15c3ad-3434-4944-8321-092f4b9d6f91.gif)
+
+
+![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/51279ed4-6084-4964-a73b-7e63269cb362.40)
+
+
+Dashboard items are distributed in rows in columns, the same way it is done when building a web applicaiton.You can pick your saved queries and distribute them in the dashboard.
 
 
 That was all! I hope you found this tutorial interesting. If you missed out some of the parts or need a reference on the code, I have created a [GitHub repository](https://github.com/Kaizeras/keen.io-actioncable) that contains the code from the tutorial.
 
 Please favorite this tutorial and leave your comments and feedback in the comments below!
+

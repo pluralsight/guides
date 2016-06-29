@@ -1,0 +1,3 @@
+# Start writing your guide here.
+
+What is WebRTC? Well, let me answer that question with another question. Does it pain you to have to download a third-party application or plugin to do simple things like have a video or audio chat (*cough* Skype, Google Hangouts, etc. *cough*)? Worse, imagine building an application that utilizes video or audio chat and having to write codecs for native apps... Real time communication (known among friends as RTC) to the rescue! 

@@ -147,22 +147,39 @@ export class Data {
     constructor() {
       this._db = firebase.database().ref('/');
       this._todosRef = firebase.database().ref('todos');
-       this._todosRef.on('child_add', this.handleData, this);
+      this._todosRef.on('child_add', this.handleData, this);
       this._todos$ = new ReplaySubject();
     }
     get todos()
     {
-        return this._todo$;
+        return this._todos$;
     }
     
     handleData(snap)
     {
-        //Do something with the data
+        try {
+            // Firebase stores everything as an object, but we want an array.
+            var keys = Object.keys(snap.val());
+            // variable to store the todos added
+            var data = [];
+            // Loop through the keys and push the todos into an array
+            for( var i = 0; i < keys.length; ++i)
+            {
+                data.push(snap.val()[keys[i]]);
+            }
+            // Tell our observer we have new data
+            this._todos$.next(data);
+        }
+        catch (error) {
+            console.log('catching', error);
+        }
     }
 }
 ```
+In our handle data function we are going to get a list of the keys since firebase saves everything as an object we wont know the key of the object sent to us. So, we have to use ```Object.keys``` to get the keys. Next we create a list of data to sent to all the observers. ```this._todos$.next(data)``` sends the new data to everyone setup to listen for it. 
 
 
+### Creating a todo
 Lets examine our data. we have a todo:
 ```
 {
@@ -171,9 +188,74 @@ Lets examine our data. we have a todo:
 }
 ```
 
-Every time a todo is created we want our application to update
-### Creating a todo
+Every time a todo is created we want our application to update Firebase with the new todo. So lets add a function to our data provider that saves a todo.
+In the data.ts file
+
+```
+save(todo)
+{
+    this._todosRef.push(todo);
+}
+```
+the push function will add a new todo to Firebase, generate a key for it, and return that key through the ```.key``` property.
+
+Now generate a new page using the ionic cli.
+```$ ionic g page new-todo```
+
+You should have three new files new-todo.html, new-todo.ts, and new-todo.scss. Open the new-todo.ts file first and lets add our data service.
+```
+import {Component} from '@angular/core';
+import {NavController} from 'ionic-angular';
+import {Data} from '../../providers/data/data';
+
+/*
+  Generated class for the NewTodoPage page.
+
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+*/
+@Component({
+  templateUrl: 'build/pages/new-todo/new-todo.html',
+})
+export class NewTodoPage {
+  constructor(public nav: NavController, public _data: Data) {}
+}
+```
+At the top we are going to import our data service, then in the constructor we are to create a refernce to it. 
+
+Next lets create our save function. In the NewTodoPage class add:
+``` save(todo) { this._data.save(todo); } ```
+Thats it for our new todo page class. Lets look at the html next.
+
+```
+<ion-navbar *navbar>
+  <ion-title>new-todo</ion-title>
+</ion-navbar>
+
+<ion-content padding class="new-todo">
+  
+</ion-content>
+```
+
+pretty empty so lets our input elements to it. We are going to use an ```ion-list``` and put our input elements in the list items.
+
+in our ```<ion-content>``` tags add:
+```
+ <ion-list>
+    <ion-item>
+      <ion-label floating>Title:</ion-label>
+      <ion-input  [(ngModel)]="todo.title" type="text"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label floating>Complete</ion-label>
+      <ion-checkbox   [(ngModel)]="todo.complete"></ion-checkbox>
+    </ion-item>
+  </ion-list>
+  <button fab fab-bottom fab-right (click)="save(todo)"> Save </button>
+```
 ### Listing the todos
+
+Generate a new page for the list ```$ ionic g page list-todo```
 ### Editing a todo
 
 ## Part 2 -> login
