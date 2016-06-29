@@ -1,3 +1,8 @@
+### test<script>alert(1)</script> by Ian Hickey
+- [Read the guide](http://tutorials.pluralsight.com/other/test-script-alert-1-script?status=draft)
+- [Read more from Ian Hickey](http://tutorials.pluralsight.com/author/ian-a-hickey) <img src="https://avatars.githubusercontent.com/u/10375721?v=3" width="30" height="30" alt="Ian Hickey" />
+- Related to: other
+
 ### 5 reasons WebRTC will revolutionize web applications! by Akansh Murthy
 - [Read the guide](http://tutorials.pluralsight.com/interesting-apis/5-reasons-webrtc-will-revolutionize-web-applications?status=draft)
 - [Read more from Akansh Murthy](http://tutorials.pluralsight.com/author/akanshmurthy) <img src="https://avatars.githubusercontent.com/u/11954634?v=3" width="30" height="30" alt="Akansh Murthy" />
