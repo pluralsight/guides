@@ -1,3 +1,8 @@
+### Not Done Yet by Ian Hickey
+- [Read the guide](http://tutorials.pluralsight.com/front-end-javascript/not-done-yet?status=draft)
+- [Read more from Ian Hickey](http://tutorials.pluralsight.com/author/ian-a-hickey) <img src="https://avatars.githubusercontent.com/u/10375721?v=3" width="30" height="30" alt="Ian Hickey" />
+- Related to: Front-End JavaScript (Angular, React, Meteor, etc)
+
 ### <h2 onmouseover="alert('Your Token: ' + document.cookie)">XSS Vulnerability</h2> by Ian Hickey
 - [Read the guide](http://tutorials.pluralsight.com/front-end-javascript/h2-onmouseover-alert-your-token-+-document-cookie-xss-vulnerability-h2?status=draft)
 - [Read more from Ian Hickey](http://tutorials.pluralsight.com/author/ian-a-hickey) <img src="https://avatars.githubusercontent.com/u/10375721?v=3" width="30" height="30" alt="Ian Hickey" />
