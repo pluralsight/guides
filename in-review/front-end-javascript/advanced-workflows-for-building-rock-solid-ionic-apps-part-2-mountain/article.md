@@ -1,4 +1,4 @@
-![image](https://raw.githubusercontent.com/gruppjo/blogs/master/16-june-ionic/img/blog-02.png)
+![image](https://raw.githubusercontent.com/gruppjo/blogs/master/16-06-advanced-workflows-for-building-rock-solid-ionic-apps/img/blog-02.png)
 
 Welcome to serious-app-development-mountain! In the second part of our series on developing Ionic apps with [Generator-M-Ionic](https://github.com/mwaylabs/generator-m-ionic) you'll be learning about wonderful ingredients like testing, sub-generators, plugins and ecosystem integration into platforms like the [Ionic Platform](http://ionic.io/). We are building on top of the project we created in part 1 of this series.
 
@@ -20,7 +20,7 @@ You've set up your project, created your first commit and are now ready to start
 #### Linting
 Your Generator-M-Ionic project comes with established coding guidelines and workflows already baked in using [ESLint](http://eslint.org/). On every iteration of `gulp watch` Gulp will check all your application JavaScript files for guideline violations.
 
-![image](https://raw.githubusercontent.com/gruppjo/blogs/master/16-june-ionic/img/eslint.png)
+![image](https://raw.githubusercontent.com/gruppjo/blogs/master/16-06-advanced-workflows-for-building-rock-solid-ionic-apps/img/eslint.png)
 
 To additionally get linting notifications as you develop in your editor or to learn how to configure the default set of rules, check out our [ESLint Guide](https://github.com/mwaylabs/generator-m-ionic/blob/master/docs/guides/eslint.md). If you are working with JSON files in your `app/` folder -for instance to handle translations- the generator's linting will validate those too! This keeps your development trouble free.
 
@@ -58,7 +58,7 @@ For instance we use the pair-subgenerator a lot. It creates a controller, with a
 ```sh
 yo m-ionic:pair phone
 ```
-![image](https://raw.githubusercontent.com/gruppjo/blogs/master/16-june-ionic/img/sub_generator.png)
+![image](https://raw.githubusercontent.com/gruppjo/blogs/master/16-06-advanced-workflows-for-building-rock-solid-ionic-apps/img/sub_generator.png)
 
 Now we only need to add a state to the `main.js`:
 ```js
@@ -84,7 +84,7 @@ Then add a navigation item in our `tabs.html` file which you'll find in `app/mai
 That's it. A new navigation item, a new route, controller, test file and template in about two minutes. Here's the result:
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/gruppjo/blogs/master/16-june-ionic/img/nav_phone.png" width="330px">
+  <img src="https://raw.githubusercontent.com/gruppjo/blogs/master/16-06-advanced-workflows-for-building-rock-solid-ionic-apps/img/nav_phone.png" width="330px">
 </p>
 
 #### Adding Sass
@@ -179,7 +179,7 @@ The best part about using livereload is, you can make changes to your code and s
 
 Your glorious app is ready to be tested on your device!
 
-![image](https://raw.githubusercontent.com/gruppjo/blogs/master/16-june-ionic/img/device.jpg)
+![image](https://raw.githubusercontent.com/gruppjo/blogs/master/16-06-advanced-workflows-for-building-rock-solid-ionic-apps/img/device.jpg)
 
 
 If you don't want to rely on your development machine to keep the livereload command running, you can run a full build of your app which is then pushed onto your device.
