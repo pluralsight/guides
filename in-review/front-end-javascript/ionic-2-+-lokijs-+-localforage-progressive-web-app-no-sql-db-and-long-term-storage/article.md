@@ -1,15 +1,13 @@
-Hi All,
-
-Here's how we'll build an Ionic 2 app using a LokiJS database with LocalForage for persistent storage.  All feedback is welcomed.
-
-**My Requirements / App Wish List**
+In this guide, we'll build an Ionic 2 app using a LokiJS database with LocalForage for persistent storage. My app won't be your ordinary database-related app, though. Here are my app requirements:
 
 1. a no-SQL database
 2. long-term data persistence
 3. simple, legible code and as few adapters as possible
 4. platform agnostic
 
-**The Main Reasons I Opted for LokiJS**
+### **The Main Reasons I Opted for LokiJS**
+
+LokiJS offers some distinct advantages.
 
 * simple, familiar JavaScript objects
 * good documentation on [lokijs.org](http://lokijs.org)
@@ -17,21 +15,29 @@ Here's how we'll build an Ionic 2 app using a LokiJS database with LocalForage f
 * ability to store full DB as a JSON token (awesome for small DBs!)
 * microscopic footprint
 
-**My Environment in Ionic 2** 
+### **My Environment in Ionic 2** 
 
-Ionic 2 is growing & maturing quickly.  Here's the environment I used to create this tutorial.
+Ionic 2 is growing and maturing quickly.  Here's the environment I used to create this tutorial.
 
 `Cordova CLI: 6.1.1`
+
 `Ionic Framework Version: 2.0.0-beta.9`
+
 `Ionic CLI Version: 2.0.0-beta.25`
+
 `Ionic App Lib Version: 2.0.0-beta.15`
+
 `ios-deploy version: 1.8.6`
+
 `ios-sim version: 5.0.8` 
+
 `OS: Mac OS X El Capitan`
+
 `Node Version: v5.7.1`
+
 `Xcode version: Xcode 7.3 Build version 7D175`
 
-**Generating the Initial Code Base**
+### **Generating the Initial Code Base**
 
 In your terminal, type the commands
 
@@ -45,7 +51,7 @@ npm install lokijs
 npm install localforage
 ```
 
-If your Ionic Framework version is older than beta 9, you'll need add "--ts" to the first command.
+If your Ionic Framework version is older than beta 9, you'll need add "--ts" to the first command:
 
 ```bash
 ionic start LokiDB blank --v2 --ts
@@ -53,19 +59,19 @@ ionic start LokiDB blank --v2 --ts
 
 These commands will build our skeleton app.  All of our hacking will take place in app > pages > home > _home.html_ and _home.ts_.
 
-**Tutorial Strategy**
+### **Tutorial Contents**
 
-There are 3 major sections, below. Our three sections are:
+There are 3 major sections below. Our three sections are:
 
-1. Ionic 2 app with a simple, observable LokiJS database
+1. [Ionic 2 app with a simple, observable LokiJS database](#Adding LokiJS without Persistence)
 
-2. add interactive elements to our LokiJS database
+2. [Adding interactive elements to our LokiJS database](#Adding interactive elements to our LokiJS database)
 
-3. add LocalForage to gain long-term storage
+3. [Adding LocalForage to gain long-term storage](#Adding LocalForage for Long-term Storage)
 
-So let's begin...!
+Let's get started!
 
-**Adding LokiJS without Persistence**
+#### Adding LokiJS without Persistence
 
 1. In _home.ts_, just under the `import` statements, add
 
@@ -88,7 +94,7 @@ So let's begin...!
     this.robots = this.db.addCollection('robots');
     ```
 
-4. Next, we'll insert a few documents (for those who aren't used to no-SQL databases ... me included... a document is just an object held by the database).  We're using JSON style insertion because that's how LokiJS receives the data.  Don't worry about making TypeScript interfaces; that will only add to code we'd need to write.
+4. Next, we'll insert a few documents (for those who aren't used to no-SQL databases, a document is just an object held by the database). We're using JSON-style insertion because LokiJS receives the data as JSON. *Don't worry about creating TypeScript interfaces because they will only increase the amount of code we need to write*.
 
     ```ts
 	this.robots.insert({ name: 'Bender', tvShow: 'Futurama' });
@@ -96,8 +102,7 @@ So let's begin...!
     this.robots.insert({ name: 'K1', tvShow: 'Dr. Who' });
     ```
     
-5. The final thing to do in the TS file is to add a helper function.  We want the HTML file to display these results, but `*ngFor` will not iterate over custom data types, so we're going to write a simple, generic object-to-Array function:
-6. 
+5. The final thing to do in the TS file is to add a helper function.  We want the HTML file to display these results, but `*ngFor` will not iterate over custom data types. As a result, we're going to write a simple, generic object-to-Array function:
     ```ts
 	convert2Array(val) {
         return Array.from(val);
@@ -151,9 +156,9 @@ So let's begin...!
     ```
 
 
-**Adding interactive elements to our LokiJS database**
+#### Adding interactive elements to our LokiJS database
 
-1. Inside _home.ts_, add 2 variables for user input
+1. Inside _home.ts_, add 2 variables for user input. Let's call them `robotName` and `robotTVShow`.
 
     ```ts
     robotName: string;
@@ -170,7 +175,7 @@ So let's begin...!
 
         this.robots.insert({ name: this.robotName, tvShow: this.robotTVShow });
 
-        // LokiJS is one's-based, so the final element is at <length>, not <length - 1>
+        // LokiJS is not zero-indexed, so the final element is at <length>, not <length - 1>
         console.log("inserted document: " + this.robots.get(length));
         console.log("robots.data.length: " + this.robots.data.length);
     }
@@ -184,7 +189,7 @@ So let's begin...!
     }
     ```
 
-3. Let's add one more card to _home.html_
+3. Let's add one more [card](http://www.tutorialspoint.com/ionic/ionic_cards.htm) to _home.html_.
     
     ```html
     <!-- add items to LokiJS database -->
@@ -207,7 +212,7 @@ So let's begin...!
     </ion-card>
     ```
 
-4. Finally, we need to allow for document deletion, so let's change the original card so we have a Delete button:
+4. Finally, we need to allow for document deletion. Let's change the original card so that we have a Delete button:
 
     ```html
     <!-- list all database elements -->
@@ -222,7 +227,7 @@ So let's begin...!
     </ion-card>
     ```
 
-**Adding LocalForage for Long-term Storage**
+#### Adding LocalForage for Long-term Storage
 
 We're going to allow for saving to file and importing from that file.  For more info on how LocalForage prioritizes storage, see [http://mozilla.github.io/localForage/](http://mozilla.github.io/localForage/)
 
@@ -231,7 +236,7 @@ We're going to allow for saving to file and importing from that file.  For more 
     var localforage = require('localforage');
 	```
 
-2. Add in functions for saving the database and retrieving it.  LocalForage uses key-value maps, and since we're only interested in saving 1 value (the entire database), we'll hard-code our key as `storeKey`.
+2. Add in functions for saving the database and retrieving it. **LocalForage uses key-value maps**, and since we're only interested in saving a single value (the entire database), we'll hard-code our key as `storeKey`.
 
     ```ts
     saveAll() {
@@ -262,5 +267,4 @@ We're going to allow for saving to file and importing from that file.  For more 
 
 That's all it takes to build a persistent, no-SQL database in Ionic 2!
 
-Thanks for reading,
-Ryan Logsdon
+I hope you found this tutorial informative and enjoyable. Please leave all feedback and questions in the comments section below. Thank you for reading!
