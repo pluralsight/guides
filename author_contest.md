@@ -1,4 +1,4 @@
-![2016 Tutorial Contest](https://raw.githubusercontent.com/pluralsight/guides/master/images/dbdcdc09-9f35-4b50-8476-94ab49471112.jpg)
+![2016 Tutorial Contest](https://raw.githubusercontent.com/pluralsight/guides/master/images/cc685ede-833b-4f14-b9b0-661f266d7820.jpg)
 
 Are you passionate about helping other developers learn about your favorite technologies and APIs?  If so, this event is for you!
 
@@ -79,6 +79,7 @@ We've teamed up with some of the best companies with cutting-edge technologies a
 * [RethinkDB](http://rethinkdb.com/)
 * [Sauce Labs](http://saucelabs.com/)
 * [Tierion](https://tierion.com/docs)
+* [Twilio](https://www.twilio.com/api)
 * [Uber Developers](https://developer.uber.com/)
 
 Want to join as a sponsor? Please email Prateek at Prateek-Gupta@Pluralsight.com. (sponsoring is great, since you're helping to spread useful developer knowledge, while also achieving your developer relations goals by having written content that uses your APIs!).
@@ -147,6 +148,11 @@ Want to join as a sponsor? Please email Prateek at Prateek-Gupta@Pluralsight.com
     <td>Tierion</td>
     <td>$500</td>
     <td>Best Blockchain tutorial using Tierion APIs</td>
+  </tr>
+    <tr>
+    <td>Twilio</td>
+    <td>$500</td>
+    <td>Best tutorial using Twilio</td>
   </tr>
   <tr>
     <td>Uber</td>
