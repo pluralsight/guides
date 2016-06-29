@@ -1,3 +1,8 @@
+### Log information of your app through Lonline by Dynamicloud by Eleazar
+- [Read the guide](http://tutorials.pluralsight.com/node-js/log-information-of-your-app-through-lonline-by-dynamicloud)
+- [Read more from Eleazar](http://tutorials.pluralsight.com/author/egomezr) <img src="https://avatars.githubusercontent.com/u/1632973?v=3" width="30" height="30" alt="Eleazar" />
+- Related to: Node.js
+
 ### Building a real-time application with React, React Router, Horizon.io, and OAuth by Esteban Herrera
 - [Read the guide](http://tutorials.pluralsight.com/interesting-apis/building-a-real-time-application-with-react-react-router-horizon-io-and-oauth)
 - [Read more from Esteban Herrera](http://tutorials.pluralsight.com/author/eh3rrera) <img src="https://avatars.githubusercontent.com/u/11665759?v=3" width="30" height="30" alt="Esteban Herrera" />
