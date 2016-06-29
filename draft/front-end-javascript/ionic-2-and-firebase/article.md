@@ -255,7 +255,15 @@ in our ```<ion-content>``` tags add:
 ```
 ### Listing the todos
 
-Generate a new page for the list ```$ ionic g page list-todo```
+Instead of generating a new page for the list we are going to use the already generated home page. This way as soon as a user accesses the app they see their todos. 
+
+Like with the new page we are going to add the data service to the constructor. We are, also, going to add a subsciption to our todo observable so we will get updates as soon as they happen.
+
+```
+
+```
+
+
 ### Editing a todo
 
 ## Part 2 -> login
