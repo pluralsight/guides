@@ -88,7 +88,7 @@ However, in my experience adding those in Visual Studio doesn't always work. So 
 Now everything is ready for our UI code.
 
 Here is our E**x**tensible **A**pplication **M**arkup **L**anguage (XAML) code for the UI:
-```xaml
+```xml
 <Window x:Class="NaudioPlayer.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
