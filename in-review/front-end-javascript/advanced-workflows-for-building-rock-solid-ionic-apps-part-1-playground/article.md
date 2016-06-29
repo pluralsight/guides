@@ -1,4 +1,6 @@
-![image](https://raw.githubusercontent.com/gruppjo/blogs/master/16-june-ionic/img/blog-01.png)
+### Advanced workflows for building rock-solid Ionic apps. Part 1: Playground
+
+![image](https://raw.githubusercontent.com/gruppjo/blogs/master/16-06-advanced-workflows-for-building-rock-solid-ionic-apps/img/blog-01.png)
 
 At [M-Way Solutions](http://www.mwaysolutions.com/) we've been building large-scale enterprise-level apps with [Ionic](http://ionicframework.com/) for the past two years. The challenges we faced sparked the creation of [Generator-M-Ionic](https://github.com/mwaylabs/generator-m-ionic), a powerful open-source collection of development tools, that put the fruits of our extensive experience right at the end of your fingertips.
 
@@ -46,7 +48,7 @@ This post is part of a series on kick-starting your development with Ionic and G
 
 So pack your shovels, buckets and the rest of your building-equipment and meet me in the playground to set up your first app!
 
-![image](https://raw.githubusercontent.com/gruppjo/blogs/master/16-june-ionic/img/tech_stack.png)
+![image](https://raw.githubusercontent.com/gruppjo/blogs/master/16-06-advanced-workflows-for-building-rock-solid-ionic-apps/img/tech_stack.png)
 
 ### Get your hands dirty
 
@@ -72,11 +74,11 @@ yo m-ionic
 
 You'll be asked a series of questions regarding the project you're creating, like this one:
 
-![image](https://raw.githubusercontent.com/gruppjo/blogs/master/16-june-ionic/img/generator_question.png)
+![image](https://raw.githubusercontent.com/gruppjo/blogs/master/16-06-advanced-workflows-for-building-rock-solid-ionic-apps/img/generator_question.png)
 
 If you're not sure what some of these mean, they are explained in the [Questions introduction document](https://github.com/mwaylabs/generator-m-ionic/tree/master/docs/start/questions.md). For the rest of this series I'm going with `tabs` as a starter template. When you've answered all the questions, all the node and bower dependencies will be installed for your project. This might take a while but luckily you'll only have to do this once for each project.
 
-![image](https://raw.githubusercontent.com/gruppjo/blogs/master/16-june-ionic/img/npm_install.png)
+![image](https://raw.githubusercontent.com/gruppjo/blogs/master/16-06-advanced-workflows-for-building-rock-solid-ionic-apps/img/npm_install.png)
 
 After everything's done run:
 ```sh
@@ -85,7 +87,7 @@ gulp watch
 Your default browser will open up automatically. If you don't want that, adding the `--no-open` flag will prevent opening your browser or a new window. Now activating your developer tools (`cmd+alt+i` in Chrome on OS X) will let you see your app as below.
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/gruppjo/blogs/master/16-june-ionic/img/gulp_watch.png" width="330px">
+  <img src="https://raw.githubusercontent.com/gruppjo/blogs/master/16-06-advanced-workflows-for-building-rock-solid-ionic-apps/img/gulp_watch.png" width="330px">
 </p>
 
 Congratulations you've built your first app! This might not look like much now, but the generator has done A LOT of work for you already. Let's have a closer look:
