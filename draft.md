@@ -1,8 +1,3 @@
-### Advanced workflows for building rock-solid Ionic apps. Part 1: Playground by Jonathan Grupp
-- [Read the guide](http://tutorials.pluralsight.com/front-end-javascript/advanced-workflows-for-building-rock-solid-ionic-apps-part-1-playground?status=draft)
-- [Read more from Jonathan Grupp](http://tutorials.pluralsight.com/author/gruppjo) <img src="https://avatars.githubusercontent.com/u/1370779?v=3" width="30" height="30" alt="Jonathan Grupp" />
-- Related to: Front-End JavaScript (Angular, React, Meteor, etc)
-
 ### 5 reasons WebRTC will revolutionize web applications! by Akansh Murthy
 - [Read the guide](http://tutorials.pluralsight.com/interesting-apis/5-reasons-webrtc-will-revolutionize-web-applications?status=draft)
 - [Read more from Akansh Murthy](http://tutorials.pluralsight.com/author/akanshmurthy) <img src="https://avatars.githubusercontent.com/u/11954634?v=3" width="30" height="30" alt="Akansh Murthy" />
