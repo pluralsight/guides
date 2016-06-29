@@ -1,37 +1,35 @@
 ### **Lets get started thinking about availability**
 
-> *Availability of a system is typically measured as a factor of its reliability – as reliability increases, so does availability. - Wikipedia*
+> "Availability of a system is typically measured as a factor of its reliability – as reliability increases, so does availability." (Wikipedia)
 
-This word is very important when the most important thing is offer a reliable system.  But, how to offer that kind of system, how can I create/provide something that makes me feel confortable.
+Availability is very important when trying to create a reliable system.  But, how do we offer that kind of system and how can we create/provide something that makes us feel confortable?
 
 ------------------------
 
-### Features of a reliable system/app
+### Features of a reliable system or application
 
 * Always available
-* A huge suite of test cases
-* Integrated diagnostic tools
-* Real time monitoring
-* Restrict access from external clients
-* **Log every potential error in real time**
+* Built using a complete suite of test cases
+* Contains integrated diagnostic tools
+* Has real-time monitoring
+* Restricts access from external clients
+* **Logs every potential error in real time**
 
 ------------------------
 
-### Log every potential error in real time
+### Logging every potential error in real time
 
-At this point I want to explain why log your program is an important task when you deliver an app to a production environment.  
+Logging your program is an important task when producing an app because it allows you to know more about the behavior and performance of your app. That way, you can make fixes and other decisions whenever you find bugs in your product.
 
-Logging allows you to know more about the behaviour and performance of your app to take decisions and provide the neccesary fixes to solve a problem.  Likewise, logging provides you information about the broken point of your app.
+Nowdays checking log results is rather difficult because logs typically reside either within a server, a virtualization, a virtual server, or a cloud service.
 
-Nowdays to check the results of a logging process is very hard because every log resides either into a server, virtualization, virtual server or cloud service.
-
-### Log program using Lonline
+### Logging using Lonline
 
 ##### Introduction
 
-Lonline allows to log your program into the cloud and is powered by Dynamicloud service. Lonline allows you to log your program's execution into the cloud to avoid server access and disk space usage.  Lonline provides 6 levels of logging and 2 methods to execute reports. Lonline is a library to log your program through a storing service called Dynamicloud. With Dynamicloud we can store data dynamically and very easy, Lonline allows you to set more features and this way log more than only text, level and program trace.
+**Lonline** allows you to log your program into the cloud and is powered by the Dynamicloud service. Cloud-based logging avoids server access and disk usage.  Lonline provides 6 levels of logging and 2 methods of executing reports. Its Dynamicloud service facilitates data storage and access. Furthermore, Lonline allows you to set more features, and thus track more than just text, level, and program traces.
 
-**This documentation has the following content:**
+**In this guide, I will cover the following content:**
 
 1. [Dependencies](#dependencies)
 2. [Settings](#settings)
@@ -46,17 +44,17 @@ Lonline allows to log your program into the cloud and is powered by Dynamicloud 
 # Dependencies
 **Lonline has one dependendency:** [Dynamicloud Nodejs API](https://github.com/dynamicloud/dynamicloud_nodejs_api "Dynamicloud Nodejs API")
 
-[Dynamicloud](https://www.dynamicloud.org "Dynamicloud") provides APIs for Java and Ruby language, so you can use Loline in Java or Ruby programs.
+[Dynamicloud](https://www.dynamicloud.org "Dynamicloud") provides APIs for Java and Ruby language, so you can currently only use Lonline in Java or Ruby programs.
 
 # Installation
 
-You can install this module in your system using the npm command:
+You can install this module in your system using the Node Package Manager (npm) command:
  
 `npm install lonline`
 
 # Settings
 
-Lonline needs a basic settings to be configured, the settings of Lonline are within a settings file.
+Lonline needs basic settings to be configured. These settings are within a "Settings" file that comes with the Lonline package.
 
 **These are the settings of Lonline:**
 
@@ -121,7 +119,8 @@ var ops = {
 };
 ```
 
-**Lonline allows you to put the settings into a file.  The file's path must be passed through the attribute `fileName`**
+
+**Lonline allows you to put the settings into a file.  The file's path must be passed through the attribute `fileName`**.
 
 ```javascript
  //OPTIONAL: This attribute indicates the path to load the settings, if this attribute is present all the
@@ -143,11 +142,11 @@ var ops = {
 
 # Dynamicloud account
 
-Lonline needs API credentials from a Dynamicloud account, these credentials allow Lonline to access your account's structure (Model).  The mandatory model in your account should be composed for a model with at least three fields.  For further information about models and fields in Dynamicloud visit its documentation at [Models & Fields](https://www.dynamicloud.org/documents/mfdoc "Dynamicloud documentation")
+Lonline needs API credentials from a Dynamicloud account. These credentials allow Lonline to access your account's structure (Model). The mandatory model in your account should be composed for a model with at least three fields. For further information about models and fields in Dynamicloud, visit its documentation at [Models & Fields](https://www.dynamicloud.org/documents/mfdoc "Dynamicloud documentation")
 
-**We are going to explain step by step how to setup your account in Dynamicloud, trust us it's very easy:**
+*Let's set up your account in Dynamicloud. Don't worry, it is very easy:**
 
-1. Sign up in Dynamicloud (You can use either Google, Linkedin or Github account to speed up the registration)
+1. Sign up in Dynamicloud (You can use a Google, Linkedin, or Github account to speed up registration)
 2. Click on **Add Field** link at your **Real time Dashboard**.  Here you need to add three fields:
   
 a. **Fields:**
@@ -157,6 +156,7 @@ a. **Fields:**
 | `lonlinetext` | Log text | Contains the trace of this log | Textarea | **Yes** |
 | `lonlinelevel` | Log level | Contains the log level | Combobox | **Yes** |
 | `lonlinetrace` | Complete Trace | Contains the complete trace of the log | Textarea | **No** |  
+
   
 b. **`lonlinelevel` is a combobox.  You need to add the following options:**
   
@@ -171,14 +171,14 @@ b. **`lonlinelevel` is a combobox.  You need to add the following options:**
 
 **To add these options follow the steps below:**
 
-1. Click on **Global Fields** link at your **Real time Dashboard**
-2. In the table of fields find the row with the identifier `lonlinelevel`
-3. Click on **Manage items** link.  An empty list of items will be shown, there click on **Add new** button and fill the value and text field
-4. The step number three should be executed six times according to the available levels (Fatal, Error, Warn, Info, Debug and Trace).
+1. Click on the **Global Fields** link at your **Real time Dashboard**
+2. In the table of fields, find the row with the identifier `lonlinelevel`
+3. Click on the **Manage items** link.  An empty list of items will be shown, there click on **Add new** button and fill the value and text field
+4. Step number three should be executed six times: once for each one of the available levels (Fatal, Error, Warn, Info, Debug and Trace).
 
 c. **Add model**
   
-A model is the cointainer of these fields, to add a model follow the next steps:
+A model is the container of these fields. To add a model:
 
 1. Click on **Add model** link at your **Real time Dashboard**
 2. Fill the mandatory field name and set a description (Optional)
@@ -193,8 +193,8 @@ A model is the cointainer of these fields, to add a model follow the next steps:
 
 ##### The last step is to copy the API credentials (CSK and ACI keys) to put them in your `settings.json` file.
 
-1. Click on **Your name link at left top of your account**
-2. Copy the CSK and ACI keys and put them into your `settings.json` file.
+1. Click on the **Your name** link at left top of your account
+2. Copy the CSK and ACI keys, and put them into your `settings.json` file.
 
 ```json
 {
@@ -203,12 +203,13 @@ A model is the cointainer of these fields, to add a model follow the next steps:
 }
 ```
 
-At this moment you have the necessary to start to log your program into the cloud.
+At this moment you can start to log your program into the cloud.
 
-# How to use
-Lonline is easy to use, one line of code logs and stores into the cloud.
+# How to use Lonline
 
-# Log using the six levels
+Lonline is easy to use; one line of code logs and stores into the cloud.
+
+## Log using the six levels
 
 ```javascript
 var lonline = require('lonline');
@@ -222,8 +223,8 @@ logger.error('Unable to load setting file');
 logger.fatal('The app has crashed and its state is unavailable');
 ```
 
-# Additional data
-Lonline allows you to log further data.  If you want to log more information (For example: The module in your application who has executed the log.) just pass a LonlineLog object with the attributes and values.  Remember that these additional attributes must match with the fields in your model, so you need to add these fields before to log.
+## Additional data
+Lonline allows you to log additional data.  If you want to log more information (for example, whether the module in your application has executed the log), just pass a LonlineLog object with the corresponding attributes and values.  Remember that these additional attributes must match with the fields in your model, so you need to add these fields to the model before logging.
 
 **To log additional information, follow the code below:**
 
@@ -231,12 +232,12 @@ Lonline allows you to log further data.  If you want to log more information (Fo
 var lonline = require('lonline');
 var logger = lonline.getLogger({fileName: 'settings.json'});
 
-logger.trace('Calling method Y', null/*This is the error object*/, {
+logger.trace('Calling method Y', null /*This is the error object*/, {
     "module": "financialModule"
 });
 ```
 
-# Execute reports
+## Execute reports
 Lonline allows you to execute reports about the executed logs and count how many logs have been created so far.
 
 ```javascript
@@ -267,9 +268,12 @@ reporter.count(reporter.FATAL, fromDate, tomorrow, function (count) {
 ```
 # Troubleshooting
 
-**The common problems when you're configuring Lonline are the followings:**
+**Below are some common problems that arise when you configure Lonline**
 
-1. Probably you put in your setting.json file the wrong ModelId from Dynamicloud.
-2. Probably you put in your setting.json file the wrong CSK and ACI from Dynamicloud, these are the credentials to gain access to the service.
-3. The fields in your model don't follow the right configuration, name, values, type, etc.
-4. For any questions Dynamicloud has a Contact form at [Dynamicloud contact form](https://www.dynamicloud.org/contact "Dynamicloud contact")
+1. `setting.json` file in the wrong Dynamicloud ModelId.
+2. `setting.json` file contains the wrong CSK and ACI from Dynamicloud. These are the credentials to gain access to the service, so they need to be authentic.
+3. The fields in your model don't follow the right configurations (names, values, types, etc.)
+
+Dynamicloud has a Contact form online in case you need additional troubleshooting. See the [Dynamicloud contact form](https://www.dynamicloud.org/contact "Dynamicloud contact").
+
+Hopefully this guide helps you raise app efficiency through the Lonline logging method. If you found this tutorial informative, don't hesitate to hit the like button. Please leave all feedback in the comments section!
