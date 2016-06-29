@@ -1,3 +1,8 @@
+### 5 reasons WebRTC will revolutionize web applications! by Akansh Murthy
+- [Read the guide](http://tutorials.pluralsight.com/interesting-apis/5-reasons-webrtc-will-revolutionize-web-applications?status=draft)
+- [Read more from Akansh Murthy](http://tutorials.pluralsight.com/author/akanshmurthy) <img src="https://avatars.githubusercontent.com/u/11954634?v=3" width="30" height="30" alt="Akansh Murthy" />
+- Related to: Interesting APIs (SendGrid, Twilio, etc)
+
 ### Integrating Laravel with Keen IO by William Notowidagdo
 - [Read the guide](http://tutorials.pluralsight.com/php/integrating-laravel-with-keen-io?status=draft)
 - [Read more from William Notowidagdo](http://tutorials.pluralsight.com/author/williamn) <img src="https://avatars.githubusercontent.com/u/27722?v=3" width="30" height="30" alt="William Notowidagdo" />
