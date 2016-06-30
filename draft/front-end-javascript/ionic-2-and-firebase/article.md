@@ -1,5 +1,4 @@
-
-In this guide I will walk you though creating a data service using ionic 2 and Googles Firebase realtime database.
+In this guide I will walk you though creating a data service using ionic 2 and Google's Firebase realtime database.
 
 ---
 
@@ -41,7 +40,7 @@ Lets go over the key features of this application.
 
 
 ## Setting up firebase
-Google recently purchased firebase and has changed the way things are setup so if you already have a firebase account sign in. If not set one up now.
+If you already have a firebase account sign in. If not set one up now.
 
 Once you have your account setup a new project called todoer. After your project is generated click on "add firebase to your web app." this will provide you will all of your api information to connect to firebase. It should look something like this: 
 ```
@@ -59,9 +58,9 @@ Once you have your account setup a new project called todoer. After your project
 ```
 Copy that and save it for later.
 
-Now go to the database and select rules. Firebase by default requires you to be authenticated. We are going to change that so anyone can access our app and add authentication later. This way we can get our core functionality done without having to type a username and password everytime we run. Remember this will be changed in a later part.
+Now go to the database and select rules. Firebase by default requires you to be authenticated. We are going to change that so anyone can access our app, and we add authentication later. This way we can get our core functionality done without having to type a username and password everytime we run. Remember this will be changed in a later part.
 
-Change your rules to be this and publish them: 
+Change your rules to this and publish them: 
 ```
 {
   "rules": {
@@ -76,7 +75,7 @@ Select data and add the key `"todos"` to the tree.
 
 ### Firebase config
 
-open up your ```www/index.html``` file and paste the you config information from firebase before your other script tags and after the ```<ion-app></ion-app>``` tag.
+Open up your ```www/index.html``` file, and paste the config information from firebase before your other script tags and after the ```<ion-app></ion-app>``` tag.
 
 ```
 <!DOCTYPE html>
@@ -130,7 +129,7 @@ First lets create a provider.
 ```
 $ ionic g provider data
 ```
-this will create an @injectable component which we will inject into the root of our app. Why the root you ask? Because we want this service to live for the life time of our application, and not everytime we load a page. Providers that are inject on a per component basis are created at time of injection. So if we want our data to persist we must inject it into the the main app component.
+This will create an @injectable component which we will inject into the root of our app. Why the root you ask? We want this service to live for the life time of our application, and not everytime we load a page. Providers that are inject on a per component basis are created at time of injection. So, if we want our data to persist we must inject it into the the main app component.
 
 Open up the app.ts file and at the top add:
 ```
@@ -158,7 +157,7 @@ Firebase is a realtime nosql database. The way we access data in it is by a quer
   }
 }
 ```
-The way we could get access to our list of todos could be ``` firebase.database().ref('/todos');``` If we wanted to get a specific todo we would use ``` firebase.database().ref('/todos/$todoId'); ``` where ``` $todoId ``` is the unique id of the todo. All data in firebase is stored as an object we can retrive it as an array if we would like. However, we will not be doing that in this tutorial. 
+The way we could get access to our list of todos could be ``` firebase.database().ref('/todos');``` If we wanted to get a specific todo we would use ``` firebase.database().ref('/todos/$todoId'); ``` where ``` $todoId ``` is the unique id of the todo. All data in firebase is stored as an object.
 
 So, lets add firebase to the data provider
 
@@ -248,13 +247,6 @@ In our handle data function we are going to get a snapshot of the data in our da
 
 
 ### Creating a todo
-Lets examine our data. we have a todo:
-```
-{
-    title: 'My todo',
-    complete: false,
-}
-```
 
 Every time a todo is created we want our application to update Firebase with the new todo. So lets add a function to our data provider that saves a todo.
 In the data.ts file
@@ -262,15 +254,15 @@ In the data.ts file
 ```
 save(todo)
 {
-    this._todosRef.push(todo);
+   return this._todosRef.push(todo).key;
 }
 ```
-the push function will add a new todo to Firebase, generate a key for it, and return that key through the ```.key``` property.
+The push function will add a new todo to Firebase, generate a key for it, and return that key through the ```.key``` property.
 
 Now generate a new page using the ionic cli.
 ```$ ionic g page new-todo```
 
-You should have three new files new-todo.html, new-todo.ts, and new-todo.scss. Open the new-todo.ts file first and lets add our data service.
+You should have three new files new-todo.html, new-todo.ts, and new-todo.scss. Open the new-todo.ts file first, and add our data service.
 ```
 import {Component} from '@angular/core';
 import {NavController} from 'ionic-angular';
@@ -289,9 +281,9 @@ export class NewTodoPage {
   constructor(public nav: NavController, public _data: Data) {}
 }
 ```
-At the top we are going to import our data service, then in the constructor we are to create a reference to it. 
+At the top we are going to import our data service. Then in the constructor we are to create a reference to it. 
 
-Now our todo has a defined structure to it and we know what types our data members are. So lets make a class object for our todo. Before your NewTodoPage add:
+Now our todo has a defined structure to it, and we know what types our data members are going to be. So, lets make a class object for our todo. Before your NewTodoPage class add:
 ```
 class Todo {
   public title: string;
@@ -323,7 +315,7 @@ save() {
     }
 }
 ```
-
+We check the key to make sure our push was successful. Firebase will return null if it did not create the todo.
 
 Thats it for now in our new todo page class. Lets look at the html next.
 
@@ -337,26 +329,27 @@ Thats it for now in our new todo page class. Lets look at the html next.
 </ion-content>
 ```
 
-pretty empty so lets our input elements to it. We are going to use an ```ion-list``` and put our input elements in the list items.
+Pretty empty. Lets our input elements to it. We are going to use an ```ion-list``` and put our input elements in the list items.
 
 in our ```<ion-content>``` tags add:
 ```
  <ion-list>
     <ion-item>
       <ion-label floating>Title:</ion-label>
-      <ion-input  [(ngModel)]="todo.title" type="text"></ion-input>
+      <ion-input [(ngModel)]="todo.title" type="text"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label floating>Complete</ion-label>
-      <ion-checkbox   [(ngModel)]="todo.complete"></ion-checkbox>
+      <ion-checkbox [(ngModel)]="todo.complete"></ion-checkbox>
     </ion-item>
   </ion-list>
   <button clear (click)="save()">Save</button>
 ```
 
-So here we see some new Angular 2 things. First the syntax for ``ng-model`` has changed to ``[(ngModel)]``. This new syntax is an expression of its binding model. `{{}}` and `[]` are one-way binding from the data source to the view, `()` is one-way binding from the view to the data source, and the combination `[()]` is two way binding. So our `title` and `complete` are bound to both the data source and the view. Now the ``(click)`` which is a 'statement'. Statements respond to events raised by the element, directive, or component that they are bound to. In our chase that event is a click raised by the button element. Since it is wrapped in `()` we know that it is only going to send data one way; from our veiw to our component. 
+So, here we see some new Angular 2 things. The syntax for ``ng-model`` has changed to ``[(ngModel)]``. This new syntax is an expression of its binding model. `{{}}` and `[]` are one-way binding from the data source to the view, `()` is one-way binding from the view to the data source, and the combination `[()]` is two way binding. So our `title` and `complete` are bound to both the data source and the view. Now the ``(click)`` which is a 'statement'. Statements respond to events raised by the element, directive, or component that they are bound to. In our chase that event is a click raised by the button element. Since it is wrapped in `()` we know that it is only going to send data one way; from our veiw to our component. 
 
 For a far more in depth look at this check out Angular 2's docs.
+
 "Ok I made a todo, but I didn't see anything happen?" You are right lets add some user feed back for saving a todo.
 
 Ionic2 has a lot of nice built in components to choose from like Toast. That will provide some nice feed back. To add a Toast to our new todo page first we will need to import it. 
@@ -383,7 +376,7 @@ var key = this._Data.save(todo);
     }
 
 ```
-If we receive a key from firebase create a new toast and present it. Once dissmised we will remove the page from the stack.Ionic2's routing works like a stack you push on new views and you pop off old ones.
+If we receive a key from firebase create a new toast and present it. Once dissmised we will remove the page from the stack. Ionic2's routing works like a stack you push on new views and you pop off old ones.
 
 Home (push)=> New Todo (push)=> otherView <= user sees, but the other views are still there. When the user hits the back button the top state pops off of the stack. 
 Home (push)=> New Todo <=(pop) <= user sees. 
@@ -417,7 +410,7 @@ export class HomePage {
   }
 }
 ```
-Notice we, also, imported our new-todo page and added a newTodo method. This is what we will call when changing to make a new todo. In that method we are calling our nav controllers push method. 
+Notice we, also, imported our new-todo page, and added a newTodo method. This is what we will call when changing to the newTodoPage. In that method we are calling our nav controllers push method. 
 
 Now that we have our data setup lets render it. In our html we will have this:
 ```
