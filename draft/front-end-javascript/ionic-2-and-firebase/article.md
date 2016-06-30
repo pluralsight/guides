@@ -1,4 +1,3 @@
-# Part 1
 
 In this guide I will walk you though creating a data service using ionic 2 and Googles Firebase realtime database.
 
