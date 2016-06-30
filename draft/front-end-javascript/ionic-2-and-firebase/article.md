@@ -31,7 +31,7 @@ Lets take a look at the command.
 ```
 $ cd todoer
 ```
-We will create a new project called todoer
+
 ## Building the App
 
 Lets go over the key features of this application. 
@@ -39,7 +39,8 @@ Lets go over the key features of this application.
 2. Mark todos checked or unchecked
 3. filter todos by if they are checked or not
 4. delete a todo
-5. 
+
+
 ## Setting up firebase
 Google recently purchased firebase and has changed the way things are setup so if you already have a firebase account sign in. If not set one up now.
 
@@ -305,7 +306,10 @@ Now our todo has a defined structure to it and we know what types our data membe
 class Todo {
   public title: string;
   public completed: boolean;
-  constructor() {}
+  constructor() {
+    this.title = '';
+    this.completed = false;
+  }
 }
 ```
 Then add a member variable to the NewTodoPage class that has a type of `Todo`.
