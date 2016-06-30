@@ -159,7 +159,7 @@ Firebase is a realtime nosql database. The way we access data in it is by a quer
   }
 }
 ```
-The way we could get access to our list of todos could be ``` firebase.database().ref('/todos');``` If we wanted to get a specific todo we would use ``` firebase.database().ref('/todos/$todoId'); ``` where ``` $todoId ``` is the unique id of the todo. All data in firebase is stored as an object however we can retrive it as an array if we would like. However, we will not be doing that in this tutorial. 
+The way we could get access to our list of todos could be ``` firebase.database().ref('/todos');``` If we wanted to get a specific todo we would use ``` firebase.database().ref('/todos/$todoId'); ``` where ``` $todoId ``` is the unique id of the todo. All data in firebase is stored as an object we can retrive it as an array if we would like. However, we will not be doing that in this tutorial. 
 
 So, lets add firebase to the data provider
 
@@ -236,17 +236,8 @@ export class Data {
     handleData(snap)
     {
         try {
-            // Firebase stores everything as an object, but we want an array.
-            var keys = Object.keys(snap.val());
-            // variable to store the todos added
-            var data = [];
-            // Loop through the keys and push the todos into an array
-            for( var i = 0; i < keys.length; ++i)
-            {
-                data.push(snap.val()[keys[i]]);
-            }
             // Tell our observer we have new data
-            this._todos$.next(data);
+            this._todos$.next(snap.val());
         }
         catch (error) {
             console.log('catching', error);
@@ -254,7 +245,7 @@ export class Data {
     }
 }
 ```
-In our handle data function we are going to get a list of the keys since firebase saves everything as an object we wont know the key of the object sent to us. So, we have to use ```Object.keys``` to get the keys. Next we create a list of data to sent to all the observers. ```this._todos$.next(data)``` sends the new data to everyone setup to listen for it. 
+In our handle data function we are going to get a snapshot of the data in our database. By calling ```.val()``` function we can get the value associated with that snapshot and we will pass that to our observers. ```this._todos$.next(data)``` sends the new data to everyone setup to listen for it. 
 
 
 ### Creating a todo
@@ -416,10 +407,10 @@ import {NewTodoPage} from '../new-todo/new-todo';
   templateUrl: 'build/pages/home/home.html'
 })
 export class HomePage {
-  public todos: any;
+  public todos: any[] = [];
   constructor(private _navController: NavController, private _data: Data) {
     let that = this;
-    this._data.todos.subscribe((data) => {that.todos = data;}, (err) => {console.error(err);});
+    this._data.todos.subscribe((data) => {that.todos.push(data);}, (err) => {console.error(err);});
   }
   newTodo()
   {
@@ -440,7 +431,8 @@ Now that we have our data setup lets render it. In our html we will have this:
 <ion-content class="home">
   <ion-list *ngIf="todos">
     <ion-item *ngFor="let todo of todos">
-      <ion-checkbox [(ngModel)]="todo.complete"> {{todo.title}} </ion-checkbox>
+      <ion-label>{{todo.title}}</ion-label>
+      <ion-checkbox [(ngModel)]="todo.complete"></ion-checkbox>
     </ion-item>
   </ion-list>
   <p *ngIf="!todos"> No todos </p>
@@ -451,10 +443,9 @@ Some more new concepts here angular2's new ```*ngIf``` as compared to Angular 1'
 
 You might be asking what is with that `*` before these directives? That is syntax that angular 2 uses to help with reading and writing directives that modifiy html.
 
-### Editing a todo
 
-## Part 2 -> login
-## Part 3 -> proximi
-## Part 4 -> publish
+That concludes part 1 in part 2 we will edit a todo and add user authentication.
+
+
 
 
