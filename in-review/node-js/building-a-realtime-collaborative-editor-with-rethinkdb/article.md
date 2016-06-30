@@ -118,7 +118,7 @@ In the HTML, you want to put the following Code:
 
 The code block above is going to be the basis for the editor's HTML page. In the block, we create a text area with an ID of the editor that we can refer to later. Below this, we include all of the javascript files that we want to use. These include files for CodeMirror, Socket.IO (which will be served by Socket.IO itself), and jQuery. We then initialize the CodeMirror editor, with which the user will interact. 
 
-Next , open up `index.js`, and input the following code:
+Next, open up `index.js`, and input the following code:
 
 ```javascript
 var r = require('rethinkdb');
