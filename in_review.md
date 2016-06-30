@@ -1,3 +1,8 @@
+### Ionic 2 and Firebase by Steve Emmerich
+- [Read the guide](http://tutorials.pluralsight.com/front-end-javascript/ionic-2-and-firebase?status=in-review)
+- [Read more from Steve Emmerich](http://tutorials.pluralsight.com/author/SteveEmmerich) <img src="https://avatars.githubusercontent.com/u/310086?v=3" width="30" height="30" alt="Steve Emmerich" />
+- Related to: Front-End JavaScript (Angular, React, Meteor, etc)
+
 ### Advanced workflows for building rock-solid Ionic apps. Part 3: Orbit by Jonathan Grupp
 - [Read the guide](http://tutorials.pluralsight.com/front-end-javascript/advanced-workflows-for-building-rock-solid-ionic-apps-part-3-orbit?status=in-review)
 - [Read more from Jonathan Grupp](http://tutorials.pluralsight.com/author/gruppjo) <img src="https://avatars.githubusercontent.com/u/1370779?v=3" width="30" height="30" alt="Jonathan Grupp" />
