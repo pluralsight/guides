@@ -18,11 +18,6 @@
 - [Read more from Miguel Gouveia](http://tutorials.pluralsight.com/author/miguelbgouveia) <img src="https://avatars.githubusercontent.com/u/1122917?v=3" width="30" height="30" alt="Miguel Gouveia" />
 - Related to: other
 
-### Introduction to asynchronous JavaScript by Peter Olson
-- [Read the guide](http://tutorials.pluralsight.com/front-end-javascript/introduction-to-asynchronous-javascript?status=in-review)
-- [Read more from Peter Olson](http://tutorials.pluralsight.com/author/peterolson) <img src="https://avatars.githubusercontent.com/u/920512?v=3" width="30" height="30" alt="Peter Olson" />
-- Related to: Front-End JavaScript (Angular, React, Meteor, etc)
-
 ### HTML BASICS by Nikolas Danaj
 - [Read the guide](http://tutorials.pluralsight.com/html-css/html-basics?status=in-review)
 - [Read more from Nikolas Danaj](http://tutorials.pluralsight.com/author/NIkolasDanaj) <img src="https://avatars.githubusercontent.com/u/19437693?v=3" width="30" height="30" alt="Nikolas Danaj" />
