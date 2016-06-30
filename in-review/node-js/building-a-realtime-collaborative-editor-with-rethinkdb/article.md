@@ -562,5 +562,5 @@ Stay tuned, as I plan on writing an article about Operational Transformation. I'
 
 I hope this tutorial piques your interest, and you can go off and make amazing apps with RethinkDB.
 
-Shannon Duncan is an Author at [Unrestricted Coding](http://unrestrictedcoding.com). He mentors and teaches people of all ages how to code and enjoy the art of programming. Find him on [twitter](https://twitter.com/TheUCofficial), [linked-in](https://www.linkedin.com/in/jsduncan98), and [github](https://github.com/shadowcodex).
+Shannon Duncan is an Author at [Unrestricted Coding](http://unrestrictedcoding.com). He mentors and teaches people of all ages how to code and enjoy the art of programming. Find him on [Twitter](https://twitter.com/TheUCofficial), [Linkedin](https://www.linkedin.com/in/jsduncan98), and [GitHub](https://github.com/shadowcodex).
 
