@@ -1,22 +1,22 @@
-In JavaScript we often need to deal with asynchronous behavior, which can be confusing for programmers who only have experience with synchronous code. This article will explain what asynchronous code is, some common difficulties encountered in asynchronous code, and strategies for confronting these difficulties.
+In JavaScript we often need to deal with asynchronous behavior, which can be confusing for programmers who only have experience with synchronous code. This article will explain what asynchronous code is, some of the difficulties of using asynchronous code, and ways of handling these difficulties.
 
-## What's the difference between synchronous and asynchronous code?
+## What is the difference between synchronous and asynchronous code?
 
 #### Synchronous code
 
-In *synchronous* programs, if you have two lines of code, L1 followed by L2, then L2 cannot begin running until L1 has finished executing.
+In *synchronous* programs, if you have two lines of code (L1 followed by L2), then L2 cannot begin running until L1 has finished executing.
 
 You can imagine this as if you are in a line of people waiting to buy train tickets. You can't begin to buy a train ticket until all the people in front of you have finished buying theirs. Similarly, the people behind you can't start buying their tickets until you have bought yours.
 
 #### Asynchronous code
 
-In *asynchronous* programs, you can have two lines of code, L1 followed by L2, where L1 schedules some task to be run in the future, but L2 runs before that task completes.
+In *asynchronous* programs, you can have two lines of code (L1 followed by L2), where L1 schedules some task to be run in the future, but L2 runs before that task completes.
 
 You can imagine as if you are eating at a sit-down restaurant. Other people order their food. You can also order your food. You don't have to wait for them to receive their food and finish eating before you order. Similarly, other people don't have to wait for you to get your food and finish eating before they can order. Everybody will get their food as soon as it is finished cooking. 
 
-The sequence people receive their food in is often correlated with the sequence they ordered food in, but it is not unusual for there to be differences in these sequences. For example, if you order a steak, and then I order a glass of water, I will likely receive my order first, since it typically doesn't take as much time to prepare a glass of water as it does to prepare a steak.
+The sequence in which people receive their food is often correlated with the sequence in which they ordered food, but these sequences do not always have to be identical. For example, if you order a steak, and then I order a glass of water, I will likely receive my order first, since it typically doesn't take as much time to serve a glass of water as it does to prepare and serve a steak.
 
-Note that *asynchronous* does not mean the same thing as *concurrent* or *multi-threaded*. JavaScript can have asynchronous code, but it is generally single-threaded. This is like a restaurant with a single worker who does all of the waiting and cooking. If this worker works quickly enough and can switch between tasks efficiently enough, then he can simulate a restaurant that has multiple workers.
+Note that *asynchronous* does not mean the same thing as *concurrent* or *multi-threaded*. **JavaScript can have asynchronous code, but it is generally single-threaded.** This is like a restaurant with a single worker who does all of the waiting and cooking. But if this worker works quickly enough and can switch between tasks efficiently enough, then the restaurant seemingly has multiple workers.
 
 ### Examples
 
@@ -48,7 +48,7 @@ But `setTimeout` does not pause the execution of the code. It only schedules som
 
 #### Getting data from AJAX requests
 
-Confusion between the behavior of synchronous code and asynchronous code is a common problem for beginners dealing with AJAX request in JavaScript. Often they will write jQuery code that looks something like this:
+Confusion between the behavior of synchronous code and asynchronous code is a common problem for beginners dealing with AJAX requests in JavaScript. Often they will write jQuery code that looks something like this:
 
 ```javascript
 function getData() {
@@ -63,7 +63,7 @@ var data = getData();
 console.log("The data is: " + data);
 ```
 
-This does not behave as you would expect from a synchronous point-of-view. Similar to `setTimeout` in the example above, `$.get` does not pause the execution of the code, it just schedules some code to run once the server responds. That means the `return data;` line will run before `data = response`, so the code above will always print "The data is: undefined".
+This does not behave as you would expect from a synchronous point-of-view. Similar to `setTimeout` in the example above, `$.get` does not pause the execution of the code, it just schedules some code to run once the server responds. **That means the `return data;` line will run before `data = response`, so the code above will always print "The data is: undefined".**
 
 Asynchronous code needs to be structured in a different way than synchronous code, and the most basic way to do that is with *callback functions*.
 
@@ -91,7 +91,7 @@ getData(function (data) {
 });
 ```
 
-Of course, how does `getData` know that we're passing in a function? How does it get called, and how is the `data` parameter populated? Right now, none of this is happening; we need to change the `getData` function as well, so that it will know about the callback function we are passing in.
+Of course, how does `getData` know that we're passing in a function? How does it get called, and how is the `data` parameter populated? Right now, none of this is happening; we need to change the `getData` function as well, so it will know that a callback function is its parameter. 
 
 ```javascript
 function getData(callback) {
@@ -103,7 +103,7 @@ function getData(callback) {
 
 You'll notice that we were already passing in a callback function to `$.get` before, perhaps without realizing what it was. We also passed in a callback to the `setTimeout(callback, delay)` function in the first example.
 
-Since `$.get` already accepts a callback, we don't need to create another one in `getData`, we can just directly pass in the callback that we were given:
+Since `$.get` already accepts a callback, we don't need to manually create another one in `getData`, we can just directly pass in the callback that we were given:
 
 ```javascript
 function getData(callback) {
@@ -111,7 +111,7 @@ function getData(callback) {
 }
 ```
 
-Callback functions are used very frequently in JavaScript, and if you've spent any amount of time writing code in JavaScript, more likely than not you have used them even if you didn't realize it. Almost all web applications will make use of callbacks either through events (e.g. `window.onclick`), `setTimeout` and `setInterval`, or AJAX requests.
+Callback functions are used very frequently in JavaScript, and if you've spent any amount of time writing code in JavaScript, it's highly likel ythat you have used them (perhaps inadvertently). Almost all web applications will make use of callbacks either through events (e.g. `window.onclick`), `setTimeout` and `setInterval`, or AJAX requests.
 
 ## Common problems with asynchronous code
 
@@ -126,11 +126,11 @@ function pause(duration) {
 }
 ```
 
-Similarly, when doing an AJAX call, it is possible to set an option to make it synchronous instead (although this option is thankfully being deprecated and slowly losing browser support). There are also synchronous alternatives to many asynchronous functions in Node.js.
+Similarly, when doing an AJAX call, it is possible to set an option to make the call synchronous rather than asynchronous (although this option is slowly losing browser support). There are also synchronous alternatives to many asynchronous functions in Node.js.
 
-Trying to avoid asynchronous code and replacing it with synchronous code is almost always a bad idea in JavaScript. The reason is that JavaScript only has a single thread (except when using Web Workers). That means the webpage will be unresponsive while the script is running. If you use the synchronous `pause` function above, or a synchronous AJAX call, then the user will not be able to do anything while they are running.
+**Trying to avoid asynchronous code and replacing it with synchronous code is almost always a bad idea in JavaScript** because JavaScript only has a single thread (except when using Web Workers). That means the webpage will be unresponsive while the script is running. If you use the synchronous `pause` function above, or a synchronous AJAX call, then the user will not be able to do anything while they are running.
 
-The issue is even worse when using server-side JavaScript: the server will not be able to respond to any requests while waiting for synchronous functions to complete, which means that every user making a request to the server will have to wait to get a response.
+The issue is even worse when using server-side JavaScript: the server will not be able to respond to any requests while waiting for synchronous functions to complete, which means that *every user* making a request to the server will have to wait to get a response.
 
 ### Scope issues with callbacks inside loops
 
@@ -160,7 +160,7 @@ But the code actually outputs the following:
 4 second(s) elapsed.
 ```
 
-The problem is that `console.log(i + " second(s) elapsed");` is in the callback of an asynchronous function. By the time it runs, the for-loop will have already terminated and the variable `i` will be equal to `4`.
+The problem is that `console.log(i + " second(s) elapsed");` is in the callback of an asynchronous function. By the time it runs, the for-loop will have already terminated and the variable `i` will be equal to `4`. 
 
 There are various workarounds to this problem, but the most common one is to wrap the call to `setTimeout` in a closure, which will create a new scope with a different `i` in each iteration:
 
@@ -215,7 +215,7 @@ readFile(fileName, function(text) {
 
 This kind of code is difficult to read and can be a real pain to try to reorganize whenever you need to make changes to it. If you have deeply nested callbacks like this, it is usually a good idea to arrange the code differently. There are several different strategies for refactoring deeply nested callbacks.
 
-#### Split up into different named functions
+#### Split the code into different functions with appropriate names
 
 You can give names to the callback functions so that you can reference them by their names. This helps to make the code more shallow, and it also naturally divides the code into small logical sections.
 
@@ -246,7 +246,7 @@ This solution is not as flexible as the one above, but if you have a simple pipe
 function performTasks(input, tasks) {
   if(tasks.length === 1) return tasks[0](input);
   tasks[0](input, function(output) {
-    performTasks(output, tasks.slice(1));
+    performTasks(output, tasks.slice(1));           //Performs the tasks in the 'tasks[]' array
   });
 }
 performTasks(fileName, 
@@ -259,7 +259,7 @@ performTasks(fileName,
 
 ### Async libraries
 
-If you are using lots of asynchronous functions it can be worthwhile to use a library built for it, instead of having to create your own utility functions, such as the one in the example above. [Async.js](https://github.com/caolan/async) is a popular library that has many useful tools for dealing with asynchronous code.
+If you are using lots of asynchronous functions, it can be worthwhile to use an asynchronous function library, instead of having to create your own utility functions. [Async.js](https://github.com/caolan/async) is a popular library that has many useful tools for dealing with asynchronous code.
 
 ###  Promises
 
@@ -288,17 +288,17 @@ getData({name: "John"}, function(err, data) {
 });
 ```
 
-We can change the `getData` function so that it returns a promise. We can create a promise with `new Promise(callback)`, where `callback` is a function with two arguments: `resolve` and `reject`. We will call `resolve` if we successfully obtain the data, and `reject` if something goes wrong.
+We can change the `getData` function so that it returns a promise. We can create a promise with `new Promise(callback)`, where `callback` is a function with two arguments: `resolve` and `reject`. We will call `resolve` if we successfully obtain the data. If something goes wrong, we will call `reject`.
 
 Once we have a function that returns a promise, we can use the `.then` method on it to specify what should happen once `resolve` or `reject` is called.
 
 ```
 function getData(options) {
-  return new Promise(function(resolve, reject) {
+  return new Promise(function(resolve, reject) {                    //create a new promise
     $.get("example.php", options, function(response) {
-      resolve(JSON.parse(response));
+      resolve(JSON.parse(response));                                //in case everything goes as planned
     }, function() {
-      reject(new Error("AJAX request failed!"));
+      reject(new Error("AJAX request failed!"));                    //in case something goes wrong
     });
   });
 }
@@ -311,7 +311,7 @@ getData({name: "John"}).then(function(data) {
 });
 ```
 
-The error handling feels a bit nicer, but for one small function, it's hard to see how we're making things any better. You can see the advantage when we rewrite the callback hell example we had above with promises:
+The error handling feels a bit nicer, but it's difficult to see how we are making things any better given the size of the function. The advantage is clearer when we rewrite our [callback hell](#callbackhell) example using promises:
 
 ```javascript
 readFile("fileName")
@@ -330,8 +330,8 @@ readFile("fileName")
 
 ## Conclusion
 
-If you've read through this far, you should have basic familiarity with different strategies for confronting the difficulties that arise when writing asynchronous programs.
+At this point, you should be familiar with strategies for confronting some of the difficulties that arise when using asynchronous code. 
 
-In this article I only gave a quick introduction to promises, but it is a large subject and there are many details that I left out. If you decide to use promises I would recommend reading a [more in-depth introduction](http://www.html5rocks.com/en/tutorials/es6/promises/) to them.
+In this article I only gave a quick introduction to promises, but it is a large subject and there are many details that I left out. If you decide to use promises I would recommend reading a [more in-depth introduction](http://www.html5rocks.com/en/tutorials/es6/promises/) to them. 
 
-If you have any questions or corrections, feel free to leave a comment for me below.
+I hope you enjoyed this tutorial. If you have any questions or feedback, feel free to leave a comment for me below.
