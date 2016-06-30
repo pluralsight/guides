@@ -118,11 +118,6 @@
 - [Read more from Enz Tom](http://tutorials.pluralsight.com/author/motzne) <img src="https://avatars.githubusercontent.com/u/255519?v=3" width="30" height="30" alt="Enz Tom" />
 - Related to: HTML/CSS
 
-### Ionic 2 and Firebase by Steve Emmerich
-- [Read the guide](http://tutorials.pluralsight.com/front-end-javascript/ionic-2-and-firebase?status=draft)
-- [Read more from Steve Emmerich](http://tutorials.pluralsight.com/author/SteveEmmerich) <img src="https://avatars.githubusercontent.com/u/310086?v=3" width="30" height="30" alt="Steve Emmerich" />
-- Related to: Front-End JavaScript (Angular, React, Meteor, etc)
-
 ### How to build a tinder for x with Ionic 2 and Firebase by Carlos Rojas
 - [Read the guide](http://tutorials.pluralsight.com/html-css/how-to-build-a-tinder-for-x-with-ionic-2-and-firebase?status=draft)
 - [Read more from Carlos Rojas](http://tutorials.pluralsight.com/author/carlosrojaso) <img src="https://avatars.githubusercontent.com/u/6164354?v=3" width="30" height="30" alt="Carlos Rojas" />
