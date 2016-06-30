@@ -1,3 +1,8 @@
+### 3 reasons why WebRTC will rock your socks! by Akansh Murthy
+- [Read the guide](http://tutorials.pluralsight.com/interesting-apis/3-reasons-why-webrtc-will-rock-your-socks?status=draft)
+- [Read more from Akansh Murthy](http://tutorials.pluralsight.com/author/akanshmurthy) <img src="https://avatars.githubusercontent.com/u/11954634?v=3" width="30" height="30" alt="Akansh Murthy" />
+- Related to: Interesting APIs (SendGrid, Twilio, etc)
+
 ### Not Done Yet by Ian Hickey
 - [Read the guide](http://tutorials.pluralsight.com/front-end-javascript/not-done-yet?status=draft)
 - [Read more from Ian Hickey](http://tutorials.pluralsight.com/author/ian-a-hickey) <img src="https://avatars.githubusercontent.com/u/10375721?v=3" width="30" height="30" alt="Ian Hickey" />
