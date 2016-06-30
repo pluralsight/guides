@@ -1,3 +1,8 @@
+### Building a Slackbot with a Horizon Backend by Chris Hranj
+- [Read the guide](http://tutorials.pluralsight.com/other/building-a-slackbot-with-a-horizon-backend?status=draft)
+- [Read more from Chris Hranj](http://tutorials.pluralsight.com/author/Brodan) <img src="https://avatars.githubusercontent.com/u/12822268?v=3" width="30" height="30" alt="Chris Hranj" />
+- Related to: other
+
 ### 3 reasons why WebRTC will rock your socks! by Akansh Murthy
 - [Read the guide](http://tutorials.pluralsight.com/interesting-apis/3-reasons-why-webrtc-will-rock-your-socks?status=draft)
 - [Read more from Akansh Murthy](http://tutorials.pluralsight.com/author/akanshmurthy) <img src="https://avatars.githubusercontent.com/u/11954634?v=3" width="30" height="30" alt="Akansh Murthy" />
