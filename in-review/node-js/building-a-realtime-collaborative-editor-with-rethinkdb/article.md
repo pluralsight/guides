@@ -554,7 +554,7 @@ Here is `index.html`:
 
 ## Summary
 
-Using this method, you can create a very simple editor with realtime collaboration features. However. this is just the beginning! To make the editor even better,  you can implement a login system, chats, data validation, and much, much more. 
+Using this method, you can create a very simple editor with realtime collaboration features. However, this is just the beginning! To make the editor even better,  you can implement a login system, chats, data validation, and much, much more. 
 
 If you are interested in designing a larger collaborative editor, make sure that you understand [Operational Transformation](https://en.wikipedia.org/wiki/Operational_transformation). This is what large-scale collaborative editors use to make sure that every edit you make doesn't overwrite something else that someone is doing. It also handles collision of data, and can help relay information correctly with more than just text data.
 
