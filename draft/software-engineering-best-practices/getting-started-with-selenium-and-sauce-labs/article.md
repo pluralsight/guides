@@ -996,7 +996,7 @@ And in Sauce Labs:
 
 ![Sauce Labs Results](https://raw.githubusercontent.com/pluralsight/guides/master/images/9fe584d6-1826-4e88-b66c-cfd20d9d8c96.png)
 
-You can consult the results of these tests in the following links:
+You can check the results of these tests in the following links:
 
 https://saucelabs.com/beta/tests/1401c0fe49164e8b8d3651b443151166/commands  
 https://saucelabs.com/beta/tests/ba23b84c3464424593dd65909f78e8b3/commands  
