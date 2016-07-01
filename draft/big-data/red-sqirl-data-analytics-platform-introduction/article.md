@@ -1,4 +1,4 @@
-Data Analysis with no Data analyse skills
+
 Over the last 2 years I have been working in a program to make it possible to work with Data analytics by just knowing the basics.
 
 # Introduction
