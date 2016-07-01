@@ -1,3 +1,8 @@
+### How to implement a simple wait using Java and Selenium by dcboycm
+- [Read the guide](http://tutorials.pluralsight.com/other/how-to-implement-a-simple-wait-using-java-and-selenium?status=in-review)
+- [Read more from dcboycm](http://tutorials.pluralsight.com/author/dcboycm) <img src="https://avatars.githubusercontent.com/u/5580819?v=3" width="30" height="30" alt="dcboycm" />
+- Related to: other
+
 ### Ionic 2 and Firebase by Steve Emmerich
 - [Read the guide](http://tutorials.pluralsight.com/front-end-javascript/ionic-2-and-firebase?status=in-review)
 - [Read more from Steve Emmerich](http://tutorials.pluralsight.com/author/SteveEmmerich) <img src="https://avatars.githubusercontent.com/u/310086?v=3" width="30" height="30" alt="Steve Emmerich" />
