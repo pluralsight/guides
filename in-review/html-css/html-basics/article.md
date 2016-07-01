@@ -14,7 +14,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Page Title</title>vwc
+<title>Page Title</title>
 <body>
 
 <h1>My First Heading</h1>
@@ -118,4 +118,4 @@ Open the saved HTML file in your favorite browser. The result will look much lik
 * [HTML - Wikipedia](https://en.wikipedia.org/wiki/HTML)
 
 
-Thanks You.
+Thank You.
