@@ -11,6 +11,9 @@ You can find more in www.redsqirl.com
 Video version of this tutorial: https://youtu.be/LL6adYq4YL4 
 
 
+![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/0626d3ba-21d9-4a25-bc9c-035ef81a5b47.png)
+
+
 ## Let's get started 
 - The idea here is to give a first overall view of Red Sqirl and what it can do.
 
