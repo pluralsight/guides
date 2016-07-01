@@ -3,11 +3,6 @@
 - [Read more from Igor Souza](http://tutorials.pluralsight.com/author/igfasouza) <img src="https://avatars.githubusercontent.com/u/6233869?v=3" width="30" height="30" alt="Igor Souza" />
 - Related to: Big Data (Hadoop, Spark, etc)
 
-### Data Analysis with no Data analyse skills - Red Sqirl introduction by Igor Souza
-- [Read the guide](http://tutorials.pluralsight.com/big-data/data-analysis-with-no-data-analyse-skills-red-sqirl-introduction?status=draft)
-- [Read more from Igor Souza](http://tutorials.pluralsight.com/author/igfasouza) <img src="https://avatars.githubusercontent.com/u/6233869?v=3" width="30" height="30" alt="Igor Souza" />
-- Related to: Big Data (Hadoop, Spark, etc)
-
 ### Building a Slackbot with a Horizon Backend by Chris Hranj
 - [Read the guide](http://tutorials.pluralsight.com/other/building-a-slackbot-with-a-horizon-backend?status=draft)
 - [Read more from Chris Hranj](http://tutorials.pluralsight.com/author/Brodan) <img src="https://avatars.githubusercontent.com/u/12822268?v=3" width="30" height="30" alt="Chris Hranj" />
