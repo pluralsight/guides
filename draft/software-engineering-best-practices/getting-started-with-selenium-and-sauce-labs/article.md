@@ -44,7 +44,7 @@ Open the Selenium IDE with either option to check it was installed properly:
 
 
 ### Sauce Labs
-We'll need Sauce Labs to run the test in the cloud.
+We'll need [Sauce Labs](https://saucelabs.com) to run the test in the cloud.
 
 You can either sign up for a 14-day free trial or for a free account if you want to test an open-source project. For the latter, you just need the repository URL of the project and go to https://saucelabs.com/opensauce/ to fill the details.
 
@@ -250,7 +250,7 @@ Also, choose other options to see how the Selenium IDE commands are translated i
 
 # Understanding Selenium commands
 
-First, let's configure a Java project in Eclipse to run our test class. Go to *File -> New -> Other...* and choose Maven Project:
+First, let's configure in Eclipse a Java project to run our test class. Go to *File -> New -> Other...* and choose Maven Project:
 
 ![Create Maven Project](https://raw.githubusercontent.com/pluralsight/guides/master/images/3d439588-37f8-4473-91dd-ef413d4f90cd.png)
 
@@ -315,7 +315,7 @@ We're adding the dependencies for the test framework (JUnit), Selenium and the S
 
 Save the file and if the Maven dependencies are not added automatically to the Eclipse project, right-click the name of the project and choose the option *Maven -> Update Project...*.
 
-Next, copy the exported file of the previous section to the `src/test/java` directory in Eclipse. It should compile with some warnings but without errors:
+Next, copy the exported file of the previous section to the `src/test/java` directory. It should compile with some warnings but without errors:
 
 ![Copy class to Eclipse](https://raw.githubusercontent.com/pluralsight/guides/master/images/f14a8172-79c2-4b66-b82f-af23ca36dbbe.png)
 
@@ -325,7 +325,7 @@ Finally, right-click on the class, choose the option *Run As -> JUnit Test*, and
 
 Now let's explain what the code does in detail.
 
-The `setup()` method, which is executed before every test method, instantiates the driver and set up the base URL and time-out for the test:
+The `setup()` method, which is executed before every test method, instantiates the driver and set up the base URL and the time-out for the test:
 ```java
 @Before
 public void setUp() throws Exception {
@@ -347,7 +347,7 @@ public void tearDown() throws Exception {
 }
 ```
 
-The `testSampleTestCaseWebdriver()` method first opens the web page to test:
+Now let's explain the `testSampleTestCaseWebdriver()` method. It first opens the web page to test:
 ```java
 driver.get(baseUrl + "/markdowntutorial/tutorial/emphasis.html");
 ```
@@ -362,7 +362,7 @@ The next line finds a button by its CSS class and performs a click:
 driver.findElement(By.cssSelector("button.button-primary.button-next")).click();
 ```
 
-And then verifies (actually, asserts) that the button to show the answer is present:
+And then verifies (actually, asserts) that the button that shows the answer is present:
 ```java
 try {
 	assertTrue(isElementPresent(By.id("btn_answer_1-1")));
@@ -371,7 +371,7 @@ try {
 }
 ```
 
-Compare this with the Selenium IDE commands:
+Again, compare those lines with the Selenium IDE commands:
 ```
 click                  css=button.button-primary.button-next
 verifyElementPresent   id=btn_answer_1-1
@@ -379,7 +379,7 @@ verifyElementPresent   id=btn_answer_1-1
 
 Notice that the verify step is implemented with an `assert` and a `try-catch` (remember that when an `assert` fails, the test is aborted, and when a `verify` fails, the failure is logged and the test continues).
 
-`assertTrue()` uses this method to know if an element is present:
+In addition, `assertTrue()` uses this method to know if an element is present:
 ```java
 private boolean isElementPresent(By by) {
 	try {
@@ -391,29 +391,29 @@ private boolean isElementPresent(By by) {
 }
 ```
 
-Next, the text box where we enter the answer of the exercise is cleared (which is a good practice):
+Next, the text box where we enter the answer to the exercise is cleared (which is a good practice):
 ```java
 driver.findElement(By.id("editor_1-1")).clear();
 ```
 
-And then, with the `sendKeys()` method, the text box is filled with text:
+And then, with the `sendKeys()` method, we enter some text:
 ```java
 driver.findElement(By.id("editor_1-1")).sendKeys("The music video for Rihanna's song **American Oxygen** depicts various moments from American history, including the inauguration of Barack Obama.");
 ```
 
-Here's the Selenium IDE command:
+Here's the Selenium IDE command that does the same:
 ```
 type    id=editor_1-1    The music video for Rihanna's song **American Oxygen** depicts various moments from American history, including the inauguration of Barack Obama.
 ```
 
-You may be wondering about the comment below that line:
+You may be wondering about the comment:
 ```java
 // ERROR: Caught exception [ERROR: Unsupported command [fireEvent | id=editor_1-1 | keyup]]
 ```
 
-Unlike Selenium IDE, WebDriver doesn't support the `fireEvent` command, because `sendKeys()` fires the events as if the data was entered manually.
+Unlike Selenium IDE, WebDriver doesn't support the `fireEvent` command, because `sendKeys()` fires the events as if the text was entered manually.
 
-The "verification" for this action is done this way:
+The verification for this action is done this way:
 ```java
 try {
 	assertTrue(isElementPresent(By.xpath("//body/div[5]")));
@@ -449,22 +449,24 @@ private String closeAlertAndGetItsText() {
 }
 ```
 
-Now let's take a moment to talk about an important concept, the ways Selenium uses to locate elements with `findElement()` and the methods of the `By` class. You can use:
+Now let's take a moment to talk about an important concept, the ways Selenium uses to locate elements with `findElement()` and the methods of the `By` class. 
+
+You can use as locators:
 - **ID**. This is the best way to locate an element because an ID should be unique. Unfortunately, either this is not always true or not all elements have one.
 - **Class Name**. More than one element can use the same CSS class name, so it's better to use `findElements()` (that returns a list of matching elements) instead of `findElement()` (that returns the first matching element found).
 - **Link Text**. This finds a link with the exact text in it.
 - **Partial Link Text**. It also uses the text of a link, but in this case, a wildcard can be used.
 - **Name**. This finds all elements with a given `name` attribute.
-- **Tag Name**. This finds all elements of a given task, like `div` or `p`.
+- **Tag Name**. This finds all elements of a given tag, like `div` or `p`.
 - **CSS Selector**. This searches for elements that match a CSS selector, such as `#container > img`.
 - **XPath Expression**. This searches for elements  that match a XPath query, such as `//body/ul[@class='container']/li`.
 
-Surely, when useing CSS selectors or XPath expressions, you can use *absolute* paths:
+When using CSS selectors or XPath expressions, you can use *absolute* paths:
 ```java
 driver.findElement(By.xpath("/html/body/div[1]/img[2]"));
 ```
 
-However, this is not really recommended since one change in s part of the path can break the entire expression.
+However, this is not really recommended since one change in a part of the path can break the entire expression.
 
 It's better to use *relative* paths, by getting first the closest parent and then the child element, for example:
 
@@ -480,9 +482,9 @@ Back to analyzing the code produced by Selenium IDE (and in general, by any Reco
 - The resulting code is an identical copy of the recording, which doesn't make the test flexible.
 - Strictly speaking, by having actions of the users and assertions (verifications) in the same class, we are violating the [Single Responsibility Principle](https://en.wikipedia.org/wiki/Single_responsibility_principle).
 
-For those reasons, it's recommended to use the scripts of tools like Selenium IDE as starting points. Record the user interaction, add assertions and verifications, check that the script is working correctly, and then, export the script as source code.
+For those reasons, it's recommended to use the scripts of tools like Selenium IDE only as starting points. What you can do is to record the user interaction, add assertions and verifications, check that the script is working correctly, and then, export the script as source code.
 
-Once you have the source code of the test, you can make adjustments and refactorings to have better-designed tests. One technique to achieve this is the Page Object pattern, which will be the topic of the next section.
+Once you have the source code of the test, you can make adjustments to have better-designed tests. One technique to achieve this is the Page Object pattern, which will be the topic of the next section.
 
 
 
@@ -491,9 +493,11 @@ Once you have the source code of the test, you can make adjustments and refactor
 # The Page Object Pattern
 In simple words, this pattern is about having one class representing a page and everything it can do.
 
-This allows us to separate the implementation from the specification. For example, if we change the ID/name/class of the text box where we enter the answer to an exercise in the Markdown tutorial (the implementation), the specification of testing if what we enter is correct doesn't change, so we have to update all the tests that use this element. Thi way, page objects encapsulate implementation details in a single class to save us a lot of problems when they change.
+This allows us to separate the implementation from the specification. For example, if we change the ID/name/class of the text box where we enter the answer to an exercise in the Markdown tutorial (the implementation), the specification of testing if what we enter is correct doesn't change, so we have to update all the tests that use this element. 
 
-So in this pattern, pages (or sections within a page) are represented as objects and actions that you perform on that page are represented as methods, for example:
+In contrast, page objects encapsulate implementation details in a single class to save us a lot of problems when they change.
+
+So in this pattern, pages (or sections within a page) are represented as objects, and actions that you perform on that page are represented as methods. For example:
 ```java
 public class LessonPage {
 	private WebDriver driver;
@@ -518,7 +522,7 @@ public class LessonPage {
 }
 ```
 
-This example shows a way to get the elements of a page. However, Selenium gives us the chance to get the elements by using annotations and a PageFactory` object:
+Selenium also gives us the chance to get the elements by using annotations and a `PageFactory` object:
 ```java
 public class LessonPage {
 	@FindBy(id="editor_1-1")
@@ -534,15 +538,15 @@ public class LessonPage {
 
 `@FindBy` accepts all the ways of locating elements previously discussed (like tag names and CSS selectors).
 
-The `PageFactory` object instantiates a page object (if a class object is passed instead of an instance), finds its annotated fields and then initialize them to the associated elements of the page. By default, the name of the field in the Java class is assumed to be the ID or name of the element on the page.
+The `PageFactory` object instantiates a page object (if a class object is passed instead of an instance), finds its annotated fields and then, initialize them to the associated elements of the page. 
 
-You can either use this annotation by specifying one of the location strategies with an appropriate value (like `id` in the example above) or by specifying both `how` and `using` this way:
+By default, the name of the field in the Java class is assumed to be the ID or name of the element on the page. But you can either use this annotation by specifying one of the location strategies with an appropriate value (like `id` in the example above) or by specifying both `how` and `using` this way:
 ```java
 @FindBy(how = How.ID, using = "editor_1-1")
 private WebElement textBox;
 ```
 
-Now, our tests will be free of implementation  details:
+Now, the code of our tests will be free of implementation  details:
 ```java
 LessonPage emphasis = LessonPage.getPage(driver);
 
@@ -556,7 +560,7 @@ This is how the page object pattern improves the separation of concerns, flexibi
 
 It also increases readability, but here's one tip. If you want to take readability to the next level, use Behaviour Driven Development (BDD) with a tool like [Cucumber](https://cucumber.io/), which has [implementations in many languages](https://cucumber.io/docs), or if you're working with Java/Groovy, use the [Spock Framework](https://github.com/spockframework/spock) ([here you can find an intro to BDD and the Spock Framework](http://tutorials.pluralsight.com/java-and-j2ee/introduction-to-testing-with-bdd-and-the-spock-framework)).
 
-On the other hand, the page object pattern increases complexity and, since choosing the right approach to design or implement a page object can be a difficult task, it can quickly become harder to use and maintain.
+On the other hand, the Page Object pattern increases complexity and, since choosing the right approach to design or implement a page object can be a difficult task, it can quickly become harder to use and maintain.
 
 With this in mind, let's turn the generated Selenium IDE test into a page object pattern test.
 
@@ -586,7 +590,7 @@ public abstract class Page {
 }
 ```
 
-Next, let's split the page into two classes, first the initial `LessonPage`:
+Next, let's split into two classes the page under test. First, the initial `LessonPage`:
 ```java
 package com.example.pages;
 
@@ -618,7 +622,7 @@ public class LessonPage extends Page {
 }
 ```
 
-This extends from the previous `Page` class. In the constructor, it navigates to the lesson page and gets a reference to the *Start Exercises* button. It also has a method to get the `ExercisePage`. This page is initialized with the `PageFactory` object, here's its code:
+This class extends from the previous `Page` class. In the constructor, it navigates to the lesson page and gets a reference to the *Start Exercises* button. It also has a method to get the `ExercisePage`. This page is initialized with the `PageFactory` object, here's its code:
 ```java
 package com.example.pages;
 
@@ -699,7 +703,7 @@ public class SampleTestCasePageObject {
 
 As you can see, this class looks cleaner now. If you run this class as a JUnit test, everything should work as expected.
 
-However, we went from one class to four classes. So always evaluate the tradeoffs, for example, on a test suite of only a couple of tests, it may be better to improve the code by refactoring than by creating page objects.
+However, we went from one class to four classes. So always evaluate the tradeoffs. For example, on a test suite of only a couple of tests, it may be better to improve the code by refactoring than by creating page objects.
 
 In the last section of this tutorial, we'll use this implementation to execute our test with Sauce Labs.
 
@@ -707,13 +711,15 @@ In the last section of this tutorial, we'll use this implementation to execute o
 
 # Testing with Sauce Labs
 
-Just like developing for multiple browsers, testing in multiple browsers can be a frustrating experience. Some browsers cause more problems than others, so we need to test in many browsers and configurations as possible. 
+Just like developing for multiple browsers, testing in multiple browsers can be a frustrating experience. Some browsers cause more problems than others, so we need to test in as many browsers and configurations as we can. 
 
-Sauce Labs solves this problem by automating cross-browser testing in the cloud, starting virtual machines (in parallel if required) to test in more than [700 OS/browser combinations](https://wiki.saucelabs.com/display/DOCS/Supported+Browsers+and+Operating+Systems+for+the+Web+Interface). The only downside is that the execution of the tests can become slow since it's not the same to test locally than to communicate with remote browsers.
+Sauce Labs solves this problem by automating cross-browser testing in the cloud, starting virtual machines (in parallel if required) to test in more than [700 OS/browser combinations](https://wiki.saucelabs.com/display/DOCS/Supported+Browsers+and+Operating+Systems+for+the+Web+Interface).
 
-However, I can confidently say that all of its features outweigh this problem. Other companies that offer similar services are [BrowserStack](https://www.browserstack.com) and [Xamarin Test Cloud](https://www.xamarin.com/test-cloud).
+The only downside is that the execution of the tests can become slow, since it's not the same to test locally than to communicate with remote browsers.
 
-There's a [Github repo with some example scripts](https://github.com/saucelabs-sample-scripts/Java-Selenium) for how to run Java-based Selenium tests with Sauce Labs. For example, here's how a basic Sauce Labs test looks like:
+However, all of its features outweigh this problem. Other companies that offer similar services are [BrowserStack](https://www.browserstack.com) and [Xamarin Test Cloud](https://www.xamarin.com/test-cloud).
+
+There's a [Github repo with some example scripts](https://github.com/saucelabs-sample-scripts/Java-Selenium) for how to run Java-based Selenium tests with Sauce Labs. For example, here's a basic (hello world style) Sauce Labs test:
 ```java
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
@@ -747,12 +753,12 @@ public class SampleSauceTest {
 }
 ```
 
-When you replace your Sauce Labs username and access key (remember that you can get it from your *My Account* option when you log in to Sauce Labs) and run this program, the output will be:
+When you replace your Sauce Labs username and access key (remember that you can get it from your *My Account* option when you log in to Sauce Labs) to run this program, the output will be:
 ```
 title of page is: I am a page title - Sauce Labs
 ```
 
-And when you go to the *Automated Tests* section on Sauce Labs Dashboard, you should see the record of the test:
+And when you go to the *Automated Tests* section on Sauce Labs Dashboard, you should see the record of this test:
 
 ![Sample test record](https://raw.githubusercontent.com/pluralsight/guides/master/images/3457b738-aed3-4e89-b957-ae89ef653107.png)
 
@@ -760,9 +766,9 @@ If you click this record, a detail page will be shown with information about the
 
 ![Sample test details](https://raw.githubusercontent.com/pluralsight/guides/master/images/84ab8069-6aa7-40bc-9ef0-34d9c8cdd4ca.png)
 
-You can see the complete results [here](https://saucelabs.com/beta/tests/291d04d57e3c4e24a6e3715064533120/commands).
+You can review these results [here](https://saucelabs.com/beta/tests/291d04d57e3c4e24a6e3715064533120/commands).
 
-As you can see, to use a tool like Sauce Labs, you would need to test a publicly available website. If you don't have one, you can set up a tunnel with Sauce Connect:
+As you can see, to use a tool like Sauce Labs, you'll need to test a publicly available website. If you don't have one, you can set up a tunnel with Sauce Connect:
 
 ![Sauce Connect Instructions](https://raw.githubusercontent.com/pluralsight/guides/master/images/17c45642-0583-40ed-93e6-c4a5bc2be39c.png)
 
@@ -772,7 +778,7 @@ By the way, here's another repo where you can find more complete examples:
 
 https://github.com/saucelabs-sample-test-frameworks
 
-For our example, let's start three parallel tests (the open-source account allows 5 parallel virtual machines at most) for Internet Explorer versions 9, 10, and 11. 
+To work with our example, let's start three parallel tests (the open-source account allows up to five parallel virtual machines) for Internet Explorer versions 9, 10, and 11. 
 
 Create a new class `SampleTestCaseSauceLabs` annotated with `@RunWith(ConcurrentParameterized.class)`:
 ```java
@@ -784,7 +790,7 @@ public class SampleTestCaseSauceLabs {
 
 The annotation will allow the test to use multiple browsers in parallel.
 
-Also, instead of hardcoding the username and access key, we're going to take their value from environment properties:
+Also, instead of hardcoding the username and access key, we're going to take their values from environment properties:
 ```java
 @RunWith(ConcurrentParameterized.class)
 public class SampleTestCaseSauceLabs {
@@ -831,7 +837,7 @@ public class SampleTestCaseSauceLabs {
 }
 ```
 
-The values will be saved as fields of the class because they will be used in the `setUp()` method to configure the capabilities of the test:
+The values will be stored as fields of the class because they will be used in the `setUp()` method to configure the capabilities of the test:
 ```java
 @RunWith(ConcurrentParameterized.class)
 public class SampleTestCaseSauceLabs {
@@ -854,7 +860,7 @@ public class SampleTestCaseSauceLabs {
 }
 ```
 
-Notice how the session ID is retrieved from the `RemoteWebDriver`.
+Also, notice how the session ID is retrieved from the `RemoteWebDriver`.
 
 At the end, the code should look like this:
 ```java
@@ -965,19 +971,21 @@ public class SampleTestCaseSauceLabs {
 }
 ```
 
-To execute the test, configure the username and the access key as environment variables. In Linux:
+To execute the test, configure the username and the access key as environment variables.
+
+In Linux:
 ```
 $ export SAUCE_USERNAME=<your Sauce Labs username>
 $ export SAUCE_ACCESS_KEY=<your Sauce Labs access key>
 ```
 
-In Windows go to the *System Properties* window, click on the *Advanced* tab, and then click the *Environment Variables* button.
+In Windows, go to the *System Properties* window, click on the *Advanced* tab, and then click the *Environment Variables* button.
 
 In Eclipse, you can configure the *JUnit Run Configuration* to set these variables:
 
 ![Configure Environment Variables in Eclipse](https://raw.githubusercontent.com/pluralsight/guides/master/images/285a9515-521b-433f-b8bf-43a2eb4e535e.png)
 
-You can see the session IDs of the tests in the output, for example:
+When you run the test, you can see the session IDs of the executions in the output. For example:
 ```
 SauceOnDemandSessionID=dfb20d14455c4a37b38e7a33cac478aa
 SauceOnDemandSessionID=1401c0fe49164e8b8d3651b443151166
@@ -996,7 +1004,9 @@ https://saucelabs.com/beta/tests/dfb20d14455c4a37b38e7a33cac478aa/commands
 
 # Conclusion
 
-You got an overview of how to test with Selenium and Sauce Labs. Here's a summary of the best practices described in this tutorial:
+You got an overview of how to test with Selenium and Sauce Labs and you should be able to start programming your own tests.
+
+Here's a summary of the best practices described in this tutorial:
 - Know the structure of the page you're going to test.
 - Use the scripts generated by Selenium IDE (or any other Record/Playback tool) as a starting point.
 - Don't Use Brittle Locators in Your Tests. Preferably, use IDs and relative paths.
@@ -1006,4 +1016,4 @@ You got an overview of how to test with Selenium and Sauce Labs. Here's a summar
 
 In this [page you can see additional best practices and tips](https://wiki.saucelabs.com/display/DOCS/Best+Practices+and+Tips).
 
-Remember that you can find the source code of [all the tests on Github](https://github.com/eh3rrera/selenium-saucelabs-example) and if you have questions or comments, don't hesitate to contact me.
+And remember that you can find the source code of [all the tests on Github](https://github.com/eh3rrera/selenium-saucelabs-example). If you have questions or comments, don't hesitate to contact me.
