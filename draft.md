@@ -1,8 +1,3 @@
-### How to implement a simple wait using Java and Selenium by dcboycm
-- [Read the guide](http://tutorials.pluralsight.com/other/how-to-implement-a-simple-wait-using-java-and-selenium?status=draft)
-- [Read more from dcboycm](http://tutorials.pluralsight.com/author/dcboycm) <img src="https://avatars.githubusercontent.com/u/5580819?v=3" width="30" height="30" alt="dcboycm" />
-- Related to: other
-
 ### Building a Slackbot with a Horizon Backend by Chris Hranj
 - [Read the guide](http://tutorials.pluralsight.com/other/building-a-slackbot-with-a-horizon-backend?status=draft)
 - [Read more from Chris Hranj](http://tutorials.pluralsight.com/author/Brodan) <img src="https://avatars.githubusercontent.com/u/12822268?v=3" width="30" height="30" alt="Chris Hranj" />
