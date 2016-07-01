@@ -13,7 +13,7 @@ In the hack.guides() 2016 Tutorial Contest, you'll have the chance to share your
 
 Check out our full mission statement [here](http://tutorials.pluralsight.com/faq/).
 
-### [Start your tutorial now](http://tutorials.pluralsight.com/write/)
+### [![Start your tutorial now](https://raw.githubusercontent.com/pluralsight/guides/master/images/12f9f343-393b-4d20-a7fd-7125a9058d7c.png)](http://tutorials.pluralsight.com/write/)
 
 ## Why we are doing this
 
@@ -50,8 +50,7 @@ Note: If you're interested in qualifying for sponsor prizes, then you'll need to
 * You could write a tutorial on a related useful topic, and use an API as a building-block to create your tutorial
 * You could write a tutorial on building a sample application on a framework or programming language, and use the API as part of that sample application
 
-### [Start your tutorial now](http://tutorials.pluralsight.com/write/)
-
+### [![Start your tutorial now](https://raw.githubusercontent.com/pluralsight/guides/master/images/12f9f343-393b-4d20-a7fd-7125a9058d7c.png)](http://tutorials.pluralsight.com/write/)
 
 ## Contest Rules
 
@@ -168,4 +167,4 @@ Join our [Slack Community](https://hackguides.herokuapp.com/).
 
 Or email us at Prateek-Gupta@Pluralsight.com.
 
-### [Start your tutorial now](http://tutorials.pluralsight.com/write/)
+### [![Start your tutorial now](https://raw.githubusercontent.com/pluralsight/guides/master/images/12f9f343-393b-4d20-a7fd-7125a9058d7c.png)](http://tutorials.pluralsight.com/write/)
