@@ -1,8 +1,8 @@
-As developers, we are used to unit test model classes or other components, but sometimes, some functionality must be tested at the user interface level, especially in web applications. Selenium is a tool that automates this kind of testing. 
+As developers, we are used to unit test classes or other components, but sometimes, some functionality must be tested at the user interface level, especially in web applications. Selenium is a tool that automates this kind of testing. 
 
 In this tutorial, you'll learn how to create a Selenium test through the following steps:
 - First, by using the [Selenium IDE](http://www.seleniumhq.org/projects/ide/), a Firefox plugin to record actions on the browser so they can be replayed later.
-- Then, you'll turn that test into Java code and redesign it using the Page Object pattern. 
+- Then, you'll export that test into Java code and redesign it using the Page Object pattern. 
 - Finally, you'll modify the test so it can run in the cloud using [Sauce Labs](https://saucelabs.com/).
 
 As mentioned, we'll use Java to code the tests, but the tools (like Selenium IDE and Sauce Labs) and concepts (like the Page Object pattern) apply to all the other languages supported by Selenium (Ruby, C#, Python, Node.js, JavaScript, and PHP).
@@ -14,7 +14,7 @@ The source code of all the tests (is available on Github](https://github.com/eh3
 ### Java Environment
 You must have [JDK 1.6 or higher installed](http://www.oracle.com/technetwork/es/java/javase/downloads/index.html).
 
-We'll use [Eclipse](https://eclipse.org/downloads/) and [Maven](https://maven.apache.org/install.html), so you should have these installed also.
+We'll use [Eclipse](https://eclipse.org/downloads/) and [Maven](https://maven.apache.org/install.html), so you should have these installed too.
 
 
 ### Selenium IDE
@@ -49,7 +49,9 @@ We'll need Sauce Labs to run the test in the cloud.
 You can either sign up for a 14-day free trial or for a free account if you want to test an open-source project. For the latter, you just need the repository URL of the project and go to https://saucelabs.com/opensauce/ to fill the details.
 
 Once you have access to Sauce Labs, go to the *My Account* option and look for you Access Key:
-![Sauce Labs Access Key](00-sauce-labs-access-key.png)
+
+![Sauce Labs Access Key](https://raw.githubusercontent.com/pluralsight/guides/master/images/7a20fc10-e7df-4c73-a259-9e6ff40f43fe.png)
+
 
 Save it as we'll need it later.
 
