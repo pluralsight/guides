@@ -60,11 +60,11 @@ Save it as we'll need it later.
 
 
 # The Record and Playback pattern
-As its name implies, this pattern is about allowing the users to record their interactions with an application and play them back through a tool later.
+As its name implies, this pattern is about allowing the users to record their interactions with an application and play them back later.
 
-This provides an easy start to testing since it doesn't require any experience with a programming language, and it's a fast way to build a test suite.
+This provides an easy start to testing since it doesn't require any experience with a programming language, not to mention it's a fast way to build a test suite.
 
-To show the Record/Playback style of writing test, we're going to use the Selenium IDE and the first lesson of a Markdown tutorial that you can find in http://eherrera.net/markdowntutorial.
+To show how the Record/Playback style of writing tests works, we're going to use the Selenium IDE and the first lesson of a Markdown tutorial that you can find in http://eherrera.net/markdowntutorial.
 
 To enter the first lesson of the tutorial, go to http://eherrera.net/markdowntutorial/tutorial/emphasis.html:
 
@@ -76,30 +76,30 @@ Now open the Selenium IDE. It will start recording all our actions, so click on 
 
 These commands, often called *seleneses*, tell Selenium what to do. For now, just notice how everything you do in the browser is recorded.
 
-Back to the page, it now presents the first exercise. Let's make our test verify this. We have some options to do it, for example:
+Back to the page, it now presents the first exercise. Let's verify this. We have some options to do it, for example:
 - We can check that the text *In this exercise, make the words "American Oxygen" bold* is shown.
 - We can check that the text box where we enter the solution is shown.
 - We can check that the button for revealing the answer is shown.
 
-Think about what is more convenient. The text can change in future revisions of the page, so maybe is not a good choice. The other two options sound like they should always be present at this point of the flow, maybe the text box more than the button for showing the answer (which could disappear under some conditions). For demonstration purposes, let's choose to verify the existence of the button anyway.
+Think about what is more convenient. The text can change in future revisions of the page, so maybe is not a good choice. The other two options sound like they should always be present at this point of the flow, maybe the text box more than the button for showing the answer (which could disappear under some conditions). However, for demonstration purposes, let's choose to verify the existence of the button.
 
-If we right-click the *Show me the answer* button and choose the *Show All Available Commands*, the following menu will be shown:
+If we right-click the *Show me the answer* button and choose *Show All Available Commands*, the following menu will be shown:
 
 ![Right Click Menu to Show Commands](https://raw.githubusercontent.com/pluralsight/guides/master/images/f77e3a8e-a3ca-475f-8920-52c992f06420.png)
 
 The context menu shows some suggested commands with parameters for testing the current element/page. There are three types of Selenium commands:
-- Actions are commands that do things like clicking buttons of links. If an Action fails for some reason, the execution of the current test is stopped.
-- Accessors examine the state of the application and store the results in variables, like *storeTitle*.
-- Assertions check that the state of the application is as expected. There are three types: 
-    - *assert* that aborts the test when the assertion fails.
-	- *verify* that doesn't abort the test when the assertion fails, it just logs the failure.
-	- *waitFor* that waits for some condition to become true (useful for testing Ajax applications). They will succeed immediately if the condition is already true. However, they will fail and halt the test if the condition does not become true within the current timeout setting.
+- **Actions** are commands that do things like clicking buttons of links. If an Action fails for some reason, the execution of the current test is stopped.
+- **Accessors** examine the state of the application and store the results in variables, like *storeTitle*.
+- **Assertions** check that the state of the application is as expected. There are three types: 
+    - **assert** that aborts the test when the assertion fails.
+	- **verify** that doesn't abort the test when the assertion fails, it just logs the failure.
+	- **waitFor** that waits for some condition to become true (useful for testing Ajax applications). They will succeed immediately if the condition is already true. However, they will fail and halt the test if the condition does not become true within the current timeout setting.
 	
 So let's choose *verifyElementPresent*. The Selenium IDE window will be updated to show this:
 
 ![Record Verification Command](https://raw.githubusercontent.com/pluralsight/guides/master/images/1f2c9c92-c809-4b5d-8585-ab395e3c95ce.png)
 
-However, the test isn't over. Let's do the exercise and make the words "American Oxygen" bold by surrounding them with `**`. Once we do this, the following popup will be shown:
+Now let's do the exercise and make the words "American Oxygen" bold by surrounding them with `**`. Once we do this, the following popup will be shown:
 
 ![Input correct answer](https://raw.githubusercontent.com/pluralsight/guides/master/images/d7b8d4c8-8e49-4513-8a5b-851693c301cf.png)
 
@@ -107,7 +107,7 @@ And the Selenium IDE window will be updated to show the command to input the tex
 
 ![Selenium IDE window updated](https://raw.githubusercontent.com/pluralsight/guides/master/images/fdd773ce-2354-4d3d-9dfb-9b8fb89aac02.png)
 
-Now let's add another verification. Right-click the popup window and choose *verifyElementPresent //body/div[5]* (Notice that the command was added to the main contextual menu. As you use the IDE, it will try to predict the command you'll want to use):
+Now let's add another verification. Right-click the popup window and choose *verifyElementPresent //body/div[5]* (notice that the command was added to the main contextual menu. As you use the IDE, it will try to predict the command you'll want to use):
 
 ![Choose command to verify result](https://raw.githubusercontent.com/pluralsight/guides/master/images/847328e8-84ed-4b9f-acba-bfbc3099a705.png)
 
@@ -115,7 +115,7 @@ Again, the Selenium IDE window will be updated:
 
 ![Command to verify result](https://raw.githubusercontent.com/pluralsight/guides/master/images/4a54fb47-b774-4b9b-ae84-defc1250a9c3.png)
 
-Notice that, in my case, a *selectWindow* command was added. We can delete this command by selecting it with a right-click and choosing the *Delete* option:
+Notice that in this case, a *selectWindow* command was added. We can delete this command by selecting it with a right-click and choosing the *Delete* option:
 
 ![Delete unwanted command](https://raw.githubusercontent.com/pluralsight/guides/master/images/3489692c-8482-4a83-87e6-018705567235.png)
 
@@ -176,13 +176,13 @@ The test case will be saved as an HTML file. This is how the saved file looks li
 </html>
 ```
 
-To execute the test case, choose the first command (`open`) and click one of the green arrow buttons of the top-left corner of the window (the first will play the entire suite of tests and the second just the current test).
+To execute the test, choose the first command (`open`) and click one of the green arrow buttons of the top-left corner of the window (the first will play the entire suite of tests and the second just the current test).
 
 When you do it, you'll see that the test fails:
 
 ![Test Error](https://raw.githubusercontent.com/pluralsight/guides/master/images/fdd475d9-df52-4702-8c01-86f447067095.png)
 
-Look the *Log* tab at the bottom of the IDE window and the browser. The problem is that the correct answer popup didn't show up.
+Look at the *Log* tab at the bottom of the IDE window, and the browser. The problem is that the correct answer's popup didn't show up.
 
 Let's analyze how the page works. When the user writes something in the text box, the markdown is generated and compared to the answer to the exercise, which is stored in an array. If there's a match, the popup is shown. Here's the piece of code that does this:
 ```javascript
@@ -209,7 +209,7 @@ $('.editor').each(function() {
 });
 ```
 
-As you can see, this happens in the `keyup` event, so we need to fire this event in the test before the verification step.
+As you can see, the magic happens in the `keyup` event, so we need to fire this event in the test before the verification step.
 
 Return to the Selenium IDE window, right-click the last step, and choose *Insert New Command*:
 
@@ -219,11 +219,11 @@ Below the command table, open the *Command* menu:
 
 ![Command Menu](https://raw.githubusercontent.com/pluralsight/guides/master/images/c72094d6-58a7-4873-9d11-406eab94230d.png)
 
-Look at all the commands you have at your disposal. Among them, there's a `fireEvent` command. Select it:
+Look at all the stuff you have at your disposal. Among all of this, there's a `fireEvent` command. Select it:
 
 ![Fire Event Command](https://raw.githubusercontent.com/pluralsight/guides/master/images/fda44be7-74d3-4b67-bdf7-535a7ef82efe.png)
 
-In the *Target* field, we will input `id=editor-1-1` to reference out text box. We know how to reference this element because of the previous `type` command, but in case we don't know the value of this field, we can click on the *Select* button next to the text box and select and element on the browser to get the value.
+In the *Target* field, we will input `id=editor-1-1` to reference our text box. We know how to reference this element because of the previous `type` command, but in case we don't know, we can click on the *Select* button next to the text box and select and element on the browser to get the value.
 
 In the *Value* field, we will input `keyup`, the event to fire.
 
@@ -231,18 +231,18 @@ Once we have made this change, select the first command (`open`) and run the tes
 
 ![Test passed](https://raw.githubusercontent.com/pluralsight/guides/master/images/1880a138-622f-4932-9e6f-43d298cdb742.png)
 
-You can see the value of knowing how the web page works and is structured. 
+Did you see it? It's very important to know how the web page works and how it's structured. 
 
 Save the test and export it as a *Java / JUnit 4 / WebDriver* test case:
 
 ![Export Test](https://raw.githubusercontent.com/pluralsight/guides/master/images/e5727186-95ae-4e38-9833-4039936b4e1a.png)
 
-Choose other options to see how the Selenium IDE commands are translated into other languages. Across the supported languages, you can find three versions:
+Also, choose other options to see how the Selenium IDE commands are translated into other languages. Across the supported languages, you can find three versions:
 - *WebDriver*, which uses Selenium 2 WebDriver API (this is the preferred option).
 - *WebDriver Backed*, which uses Selenium 2 WebDriver to implement the (old) Selenium 1 Remote Control API.
 - *Remote Control (RC)*, which uses the (old) Selenium 1 Remote Control API.
 
-If you want to know more about the Selenium IDE [here](http://docs.seleniumhq.org/docs/02_selenium_ide.jsp).
+[Here you can find more information about the Selenium IDE](http://docs.seleniumhq.org/docs/02_selenium_ide.jsp).
 
 
 
