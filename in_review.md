@@ -53,11 +53,6 @@
 - [Read more from jigneshBeladiya](http://tutorials.pluralsight.com/author/jigneshBeladiya) <img src="https://avatars.githubusercontent.com/u/11713657?v=3" width="30" height="30" alt="jigneshBeladiya" />
 - Related to: Microsoft.NET (C#, ASP.NET, VB.NET, etc)
 
-### Enforcing Immutability with ES2015 by Graham Marlow
-- [Read the guide](http://tutorials.pluralsight.com/front-end-javascript/enforcing-immutability-with-es2015?status=in-review)
-- [Read more from Graham Marlow](http://tutorials.pluralsight.com/author/mgmarlow) <img src="https://avatars.githubusercontent.com/u/3778552?v=3" width="30" height="30" alt="Graham Marlow" />
-- Related to: Front-End JavaScript (Angular, React, Meteor, etc)
-
 ### Tutorial Contest FAQ by Prateek Gupta
 - [Read the guide](http://tutorials.pluralsight.com/software-engineering-best-practices/tutorial-contest-faq?status=in-review)
 - [Read more from Prateek Gupta](http://tutorials.pluralsight.com/author/prtkgpt) <img src="https://avatars.githubusercontent.com/u/2454349?v=3" width="30" height="30" alt="Prateek Gupta" />
