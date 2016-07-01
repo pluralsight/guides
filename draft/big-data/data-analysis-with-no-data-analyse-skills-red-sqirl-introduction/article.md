@@ -187,16 +187,16 @@ T09
 10. Click on the radio button beside “pig_tutorial_data.mrtxt”- if you cannot find it, refresh the view by clicking on the search button- and click OK.
 11. And now our data is in the source action. At this stage, you will see the data correctly displayed on the screen, the name of the fields are “Field1 Long, Field2 Long...”
 12. In this next step we can change the field name and their type by clicking the edit button on the top-left of the table
-Here we’ll rename the fields.
-13. Copy and paste “subscriber_number STRING , Friend STRING , offpeak_voice INT , offpeak_sms INT , offpeak_mms INT ,peak_voice INT,peak_sms INT , peak_mms INT , sna_weight INT , subscriber_onnet INT ,friend_onnet INT” into the value field
-Click OK. You will have the confirmation that the Header is correct.
-Click OK to exit from the Configuration window.
-If you leave the mouse cursor on the source action you will be able to see some configuration details
-Save the Workflow by going into File > Save, name it “pig_tutorial”. By default it is saved in redsqirl-save HDFS directory and the file will have the extension ‘.rs’. Click OK to save.
+- Here we’ll rename the fields.
+- Copy and paste “subscriber_number STRING , Friend STRING , offpeak_voice INT , offpeak_sms INT , offpeak_mms INT ,peak_voice INT,peak_sms INT , peak_mms INT , sna_weight INT , subscriber_onnet INT ,friend_onnet INT” into the value field
+1. Click OK. You will have the confirmation that the Header is correct.
+2. Click OK to exit from the Configuration window.
+3. If you leave the mouse cursor on the source action you will be able to see some configuration details
+4. Save the Workflow by going into File > Save, name it “pig_tutorial”. By default it is saved in redsqirl-save HDFS directory and the file will have the extension ‘.rs’. Click OK to save.
 
 
 
-Now we can see the data with the new field names we just changed.
+<b>Now we can see the data with the new field names we just changed.</b>
 
 
 
@@ -215,9 +215,9 @@ T010
 
 
 So let’s re-cap:
-We’ve gone through the interface
-We’ve copied our data into HDFS
-And we’ve set up our source file and configured it
+- We’ve gone through the interface
+- We’ve copied our data into HDFS
+- And we’ve set up our source file and configured it
 
 Now we’re ready to start the data processing.
 
@@ -227,42 +227,41 @@ Pig Aggregator is an action in which aggregation methods are allowed to be used 
 
 On the Pig footer menu, we can select the aggregator action. 
 
-Drag a pig aggregator action to the canvas.
-Create a link between the source that was just configured and the new pig aggregator action by clicking between the image and the arc of the source action and then clicking on the pig aggregator image. (you’ll see an arrow connecting the two icons)
-Open the new pig aggregator icon, name the element “nl_sum” and Click OK.
-Now this first page, lets us choose the field that we want to aggregate by. For this we want to aggregate by “subscriber_number” Select “subscriber_number” and click "Select" in the Group by interaction.
-Click next.
-On this second page we can do the operation field by field. 
-Select the copy from the dropdown menu on the generator interaction and click OK. We can also have a more granular choice of generation by clicking on the “Configure” button.
-Each Tab is a different configuration option
-We can also sort the rows - On the top of the table click the “+” symbol to add a new row to the table.
+1. Drag a pig aggregator action to the canvas.
+2. Create a link between the source that was just configured and the new pig aggregator action by clicking between the image and the arc of the source action and then clicking on the pig aggregator image. (you’ll see an arrow connecting the two icons)
+3. Open the new pig aggregator icon, name the element “nl_sum” and Click OK.
+4. Now this first page, lets us choose the field that we want to aggregate by. For this we want to aggregate by “subscriber_number” Select “subscriber_number” and click "Select" in the Group by interaction.
+5. Click next.
+6. On this second page we can do the operation field by field. 
+7. Select the copy from the dropdown menu on the generator interaction and click OK. We can also have a more granular choice of generation by clicking on the “Configure” button.
+- Each Tab is a different configuration option
+8. We can also sort the rows - On the top of the table click the “+” symbol to add a new row to the table.
 
-*One thing to note:  the check box on each row is only used for sorting and deleting, we don’t need to have each row ticked in order to continue
+One thing to note:  the check box on each row is only used for sorting and deleting, we don’t need to have each row ticked in order to continue
 
-Click on the pen in Operation field of the new row and click the “SUM()” function and add the parameters “communication.offpeak_voice” and “communication.peak_voice”. In between the parameters add a “+” symbol so that the operation would read “SUM(communication.offpeak_voice + communication.peak_voice)”
-click OK.
-In the Field Name, type “total_voice” for the new column and change the type to DOUBLE.
-Click next.
-The next page shows that we can sort the data, we won't sort it now so click next.
-The following page is about filter and format, click OK to leave the default parameters.
-The filtering option is another text editor where we can just create a condition. 
-We can choose the delimiter of the output, let’s use comma in the delimiter box 
-By default, the output type is compressed. In Red Sqirl the output format is important for linking one action to the next, the two types need to be compatible.
+1. Click on the pen in Operation field of the new row and click the “SUM()” function and add the parameters “communication.offpeak_voice” and “communication.peak_voice”. In between the parameters add a “+” symbol so that the operation would read “SUM(communication.offpeak_voice + communication.peak_voice)”
+2. click OK.
+3. In the Field Name, type “total_voice” for the new column and change the type to DOUBLE.
+4. Click next.
+5. The next page shows that we can sort the data, we won't sort it now so click next.
+6. The following page is about filter and format, click OK to leave the default parameters.
+- The filtering option is another text editor where we can just create a condition. 
+- We can choose the delimiter of the output, let’s use comma in the delimiter box 
+- By default, the output type is compressed. In Red Sqirl the output format is important for linking one action to the next, the two types need to be compatible.
 If we want we can also choose to do an audit of the output. 
-Press ok;
+
+1. Press ok;
 
 
-Step 4.
-Ok so now let’s run the workflow.
+###### Step 4. Ok so now let’s run the workflow.
 
 Go on menu click Project and click on “Save & Run” 
 
- Now since the Pig Action is using Map-Reduce this’ll take a minute or so to run.
-While this is running, the canvas can’t be modified 
-But what we can do, is create more workflows while it’s running, click on a new tab and drag and drop something onto a new canvas
-We can create and run multiple workflows at the same time.
-
-Also while the workflow is running we can check it’s progress in the Process Manager on the right hand side 
+Now since the Pig Action is using Map-Reduce this’ll take a minute or so to run.
+- While this is running, the canvas can’t be modified 
+- But what we can do, is create more workflows while it’s running, click on a new tab and drag and drop something onto a new canvas
+- We can create and run multiple workflows at the same time.
+- Also while the workflow is running we can check it’s progress in the Process Manager on the right hand side 
 
 T011
 
@@ -270,74 +269,76 @@ T011
 
 
 - click on the Process Manager tab and hit refresh
-In here we’ll see all of our processes 
-and if we want, we can pause or kill any of them
-We can also check the logs in the Oozie Control - click on the left green button 
+- In here we’ll see all of our processes 
+- and if we want, we can pause or kill any of them
+- We can also check the logs in the Oozie Control - click on the left green button 
 
 
 And that’s it! 
-As soon as the process is finished, we can see the results. 
-We can just go to the Pig Aggregator action and go into options and click on “data output” 
-And here we can see the results 
-We can see the path, where we can find it at the top, and we can download it as a CSV 
+As soon as the process is finished, we can see the results.
+- We can just go to the Pig Aggregator action and go into options and click on “data output” 
+- And here we can see the results 
+- We can see the path, where we can find it at the top, and we can download it as a CSV 
 
 
 
 
 
-Pig Aggregator Action
-Drop another pig aggregator onto the canvas.
-Make a link between the source and the new pig aggregator.
-Open it, and give it the name "comm_groupbyall" and click OK.
-This time leave the group by list alone so nothing is selected and click next.
-Create a new row (+ button).
-In this new row copy and paste “AVG(communication.offpeak_voice + communication.peak_voice)”.
-Call the field “total_voice_avg” and select the DOUBLE type.
-Click next.
-Click next on the sorting page.
-Click OK on the final page.
+###### Pig Aggregator Action
 
-Perform a Pig Join Action
-To make each dataset interactable with each other it is necessary to perform a join on them.
-Drop a pig join onto the canvas.
-Create a link from “comm_groupbyall” to the new pig join action.
-Create a link from “nl_sum” to the new pig join action.
-Double click the pig join and call it “nl_vs_total”.
-The first page list the table aliases, click next.
-On the following page, make sure that “copy” is selected as the generator and click OK.
-Click next.
-This page has two interactions that specify the join type and the fields to join on, we use the default join type which is “Join” so this does not need to be changed.
-In “Join Field” column, type “1” in the two rows. This condition will join the two tables together.
-Click next.
-Click next on the sorting page.
-Click OK on the final page.
+1. Drop another pig aggregator onto the canvas.
+2. Make a link between the source and the new pig aggregator.
+3. Open it, and give it the name "comm_groupbyall" and click OK.
+4. This time leave the group by list alone so nothing is selected and click next.
+5. Create a new row (+ button).
+6. In this new row copy and paste “AVG(communication.offpeak_voice + communication.peak_voice)”.
+7. Call the field “total_voice_avg” and select the DOUBLE type.
+8. Click next.
+9. Click next on the sorting page.
+10. Click OK on the final page.
+
+###### Perform a Pig Join Action
+
+<b>To make each dataset interactable with each other it is necessary to perform a join on them.</b>
+
+1. Drop a pig join onto the canvas.
+2. Create a link from “comm_groupbyall” to the new pig join action.
+3. Create a link from “nl_sum” to the new pig join action.
+4. Double click the pig join and call it “nl_vs_total”.
+5. The first page list the table aliases, click next.
+6. On the following page, make sure that “copy” is selected as the generator and click OK.
+7. Click next.
+8. This page has two interactions that specify the join type and the fields to join on, we use the default join type which is “Join” so this does not need to be changed.
+9. In “Join Field” column, type “1” in the two rows. This condition will join the two tables together.
+10. Click next.
+11. Click next on the sorting page.
+12. Click OK on the final page.
 
 
-Step 5.
-Filter a Data set
+###### Step 5. Filter a Data set
+
 Now we want to make a condition to see what subscribers have a higher total voice calls than the average of the entire dataset. The easiest would be to add the condition in Join but we will create a new select for demonstration purposes.
-Drop a new pig select action onto the canvas.
-Create a link from the pig join action to the new pig select action
-Open it and change the element id to be “high_voice”.
-In the generation drop-down menu, select copy and click OK.
-Click next.
-In the Sorting page, select “nl_sum_total_voice” and “DESCENDING” order.
-Click Next.
-Click on the Pen in the Condition section and write “nl_sum_total_voice > comm_groupbyall_total_voice_av”.
-Click OK and then finish the action by clicking OK.
+
+1. Drop a new pig select action onto the canvas.
+2. Create a link from the pig join action to the new pig select action
+3. Open it and change the element id to be “high_voice”.
+4. In the generation drop-down menu, select copy and click OK.
+5. Click next.
+6. In the Sorting page, select “nl_sum_total_voice” and “DESCENDING” order.
+7. Click Next.
+8. Click on the Pen in the Condition section and write “nl_sum_total_voice > comm_groupbyall_total_voice_av”.
+9. Click OK and then finish the action by clicking OK.
+
 We would now like to keep “nl_vs_total” intermediate result before running the workflow.
-Leave your mouse on “nl_vs_total”. Click Options button and select “Data Output” from the drop-down menu.
-Select “BUFFERED” instead of “TEMPORARY”.
-Click OK.
+
+1. Leave your mouse on “nl_vs_total”. Click Options button and select “Data Output” from the drop-down menu.
+2. Select “BUFFERED” instead of “TEMPORARY”.
+3. Click OK.
+
 You can now “Save and Run”, and see your result in the Data Output of “nl_vs_total” and “high_voice”
 To see the results, leave your mouse on the action “nl_vs_total” or “high_voice”, > Options > Data Output.
 You can close it by hitting “Cancel” or “OK”
 Once you are happy with the result you can clean all the data generated by this workflow by clicking on “Select All” and then “Clean Actions” in the “Edit” top menu.
-
-
-
-
-
 
 
 
