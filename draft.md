@@ -1,8 +1,3 @@
-### Getting started with Selenium and Sauce Labs by Esteban Herrera
-- [Read the guide](http://tutorials.pluralsight.com/software-engineering-best-practices/getting-started-with-selenium-and-sauce-labs?status=draft)
-- [Read more from Esteban Herrera](http://tutorials.pluralsight.com/author/eh3rrera) <img src="https://avatars.githubusercontent.com/u/11665759?v=3" width="30" height="30" alt="Esteban Herrera" />
-- Related to: Software Engineering Best Practices
-
 ### Building a Slackbot with a Horizon Backend by Chris Hranj
 - [Read the guide](http://tutorials.pluralsight.com/other/building-a-slackbot-with-a-horizon-backend?status=draft)
 - [Read more from Chris Hranj](http://tutorials.pluralsight.com/author/Brodan) <img src="https://avatars.githubusercontent.com/u/12822268?v=3" width="30" height="30" alt="Chris Hranj" />
