@@ -1,30 +1,30 @@
-In this guide I will walk you though creating a data service using ionic 2 and Google's Firebase realtime database.
+#### In this guide I will walk you though creating a data service using Ionic 2 and Google's Firebase realtime database.
 
 ---
 
 ## Creating the project
 
-First make sure the ionic cli is installed and up to date. 
+First make sure that the Ionic CLI (Command Line Utility) is installed and up to date. 
 ```
 $ npm install -g ionic@beta 
 $ npm install -g cordova 
 ```
-Next lets generate our project. We will be making a simple to do list.
+Next, let's generate our project. We will be making a simple to-do list.
 
 ```
 $ ionic start todoer blank --v2 --ts
 ```
-Lets take a look at the command. 
-* ionic start 
- * creates a new project
-* todoer
- * the name of our project
-* blank
- * the template we want to use. We are starting a blank project
-* --v2
- * Use ionic 2. Since ionic 2 is still in beta start will default to version 1
-* --ts
- * Use typescript. Both angular 2 and ionic 2 are writen in typescript, and it appears to be the defacto going forward. So, we will use it too. 
+Lets take a closer look at the commands we just used: 
+* `ionic start` 
+ * creates a new Ionic project
+* `todoer`
+ * names our project
+* `blank`
+ * identifies the template we want to use. In this case, we are starting a blank project.
+* `--v2`
+ * Identifies that we are using ionic 2. Since ionic 2 is still in beta, start defaults to version 1 unless another version is specified
+* `--ts`
+ * Use TypeScript. Both Angular 2 and Ionic 2 are writen in TypeScript, and it appears to be the default going forward. So, we will use it too. 
 
 ```
 $ cd todoer
@@ -33,16 +33,16 @@ $ cd todoer
 ## Building the App
 
 Lets go over the key features of this application. 
-1. Create todos
-2. Mark todos checked or unchecked
-3. filter todos by if they are checked or not
-4. delete a todo
+1. Create tasks (or todos)
+2. Mark tasks as checked or unchecked
+3. Filter tasks by if they are checked or not
+4. Delete a task
 
 
 ## Setting up firebase
-If you already have a firebase account sign in. If not set one up now.
+Sign into or create your Google Firebase account. Firebase is Google's realtime database.
 
-Once you have your account setup a new project called todoer. After your project is generated click on "add firebase to your web app." this will provide you will all of your api information to connect to firebase. It should look something like this: 
+Once you have your account ready, create a new project called "todoer". After this, click on "Add Firebase to your web app." This will provide you with all of your API information to connect to Firebase. It should look something like this: 
 ```
 <script src="https://www.gstatic.com/firebasejs/3.1.0/firebase.js"></script>
 <script>
@@ -58,9 +58,9 @@ Once you have your account setup a new project called todoer. After your project
 ```
 Copy that and save it for later.
 
-Now go to the database and select rules. Firebase by default requires you to be authenticated. We are going to change that so anyone can access our app, and we add authentication later. This way we can get our core functionality done without having to type a username and password everytime we run. Remember this will be changed in a later part.
+Now go to the database and select **rules**. Firebase by default requires you to be authenticated. We are going to change that so anyone can access our app, and we add authentication later. This way we can get our core functionality done without having to type a username and password everytime we run. Remember this will be changed in a later part.
 
-Change your rules to this and publish them: 
+Publish your adjusted rules using the following command: 
 ```
 {
   "rules": {
@@ -75,7 +75,7 @@ Select data and add the key `"todos"` to the tree.
 
 ### Firebase config
 
-Open up your ```www/index.html``` file, and paste the config information from firebase before your other script tags and after the ```<ion-app></ion-app>``` tag.
+Open up your ```www/index.html``` file, and paste the config information from Firebase after your ```<ion-app></ion-app>``` tag and before your other script tags.
 
 ```
 <!DOCTYPE html>
@@ -93,6 +93,7 @@ Open up your ```www/index.html``` file, and paste the config information from fi
   <link wp-href="build/css/app.wp.css" rel="stylesheet">
 </head>
 
+
 <body>
   <ion-app></ion-app>
   <script src="https://www.gstatic.com/firebasejs/3.1.0/firebase.js"></script>
@@ -106,6 +107,7 @@ Open up your ```www/index.html``` file, and paste the config information from fi
     };
     firebase.initializeApp(config);
   </script>
+  
   <!-- cordova.js required for cordova apps -->
   <script src="cordova.js"></script>
   <!-- Polyfill needed for platforms without Promise and Collection support -->
@@ -120,7 +122,7 @@ Open up your ```www/index.html``` file, and paste the config information from fi
 </html>
 
 ```
-That's it firebase is ready to go.
+Firebase is now ready to go.
 
 ### Creating the data service
 To act as our mediator between firebase and our app we will be building a data service. For the purpose of this guide we will be housing all of our data in one service. For larger applications you may want to split this out to multiple services. 
@@ -175,12 +177,12 @@ export class Data {
       
     }
 ```
-Now that we have our references to the database how do we get the data?
+Now that we have our references to the database, how do we get the data?
 
 ### Firebase Queries
-Firebase has an event base query system which allows you to setup listeners for certian events. For our use case we are going to listen for the ``` child_added``` event. For a complete list of events see firebase's api documentation.
+Firebase has an event base query system which allows you to setup listeners for certain events. For our use case, we are going to listen for the ``` child_added``` event. For a complete list of events, see Firebase's API documentation.
 
-Lets add the query to the constructor of our data service class.
+Let's add the query to the constructor of our data service class.
 ```
 import {Injectable] from '@angular/core';
 
@@ -192,7 +194,7 @@ export class Data {
     constructor() {
       this._db = firebase.database().ref('/'); // Get a firebase reference to the root
       this._todosRef = firebase.database().ref('todos'); // Get a firebase reference to the todos
-      this._todosRef.on('child_added', this.handleData, this);
+      this._todosRef.on('child_added', this.handleData, this); // ***ADD THIS LINE***
       
     }
     handleData(snap)
@@ -201,14 +203,15 @@ export class Data {
     }
 ```
 
-The line we added setup a listener for when a child is added to the todos path. ``` this.handleData ``` is passed in to handle the data snapshot sent back from firebase. Last we pass ``` this ``` as the context for our handler function.
+The line we added to our constructor set up a listener for when a child is added to the `todos` path. ``` this.handleData ``` is passed in to handle the data snapshot sent back from Firebase. Last we pass ``` this ``` as the context for our handler function.
 
 #### Observers and Observables
-For our application to feel as real time as possible we are going to make use of the observer pattern. Observers are built in to angular 2 and currently (at the time of writing) are using RxJS. However, that will be replaced with angulars own implimentation. 
 
-The concept for the pattern is pretty simple. An oberver can subscribe and "observe" an observable. When data is pushed to the observable the observer recieves it until the observable ends. Basically it is a publish subscribe pattern. This is a far over simplification but you get the idea.
+For our application to feel as close to realtime as possible, we are going to make use of the observer pattern. Observers are built into Angular 2 and (at the time of writing) use RxJS (ReactiveX library for JavaScript). However, that library will be replaced with Angular's own library implementation. 
 
-In our Data class lets create a ReplaySubject. What is a ReplaySubject? A Subject is both an Observer and an Observerable. Normally an observable will only send the last event to a new subscriber a ReplaySubject however, will send every message to a new subscriber in the order they were sent. This way we will not miss any old todos.
+The concept for the pattern is pretty simple. An observer can subscribe to and "observe" an observable. When data is pushed to the observable, the observer receives it until the observable ends. To oversimplify, the observe-observable relationship is a publish-subscribe pattern.
+
+Now that we understand observers, let's move on with our app. In your Data class, create a ReplaySubject. What is a ReplaySubject? A Subject is both an Observer and an Observable. Normally an observable will only send the **last event** to a new subscriber. A ReplaySubject however, will send **every message** to a new subscriber in the order they were sent. Slightly less efficient, but this way we will not miss any old todos.
 
 ```
 import {Injectable] from '@angular/core';
@@ -243,13 +246,14 @@ export class Data {
     }
 }
 ```
-In our handle data function we are going to get a snapshot of the data in our database. By calling ```.val()``` function we can get the value associated with that snapshot and we will pass that to our observers. ```this._todos$.next(data)``` sends the new data to everyone setup to listen for it. 
+In our `handleData()` function, we are going to get a snapshot (hence `snap`) of the data in our database. By calling the ```.val()``` function we can get the value associated with that snapshot and we will pass that to our observers. ```this._todos$.next(data)``` sends the new data to everyone setup to listen for it. 
 
 
-### Creating a todo
+### Creating a task
 
-Every time a todo is created we want our application to update Firebase with the new todo. So lets add a function to our data provider that saves a todo.
-In the data.ts file
+Every time a todo is created we want our application to update Firebase. So let's add a function to our data provider that saves a todo.
+
+In your `data.ts` file, add the following method:
 
 ```
 save(todo)
@@ -259,10 +263,10 @@ save(todo)
 ```
 The push function will add a new todo to Firebase, generate a key for it, and return that key through the ```.key``` property.
 
-Now generate a new page using the ionic cli.
+Now, generate a new page using this Ionic shell command.
 ```$ ionic g page new-todo```
 
-You should have three new files new-todo.html, new-todo.ts, and new-todo.scss. Open the new-todo.ts file first, and add our data service.
+You should have three new files:  `new-todo.ts`, `new-todo.html`, and `new-todo.scss`. Open the `new-todo.ts` file first, and add our data service.
 ```
 import {Component} from '@angular/core';
 import {NavController} from 'ionic-angular';
@@ -281,9 +285,9 @@ export class NewTodoPage {
   constructor(public nav: NavController, public _data: Data) {}
 }
 ```
-At the top we are going to import our data service. Then in the constructor we are to create a reference to it. 
+At the top we are going to import our data service. Then in the constructor we are to create a reference to the data service. 
 
-Now our todo has a defined structure to it, and we know what types our data members are going to be. So, lets make a class object for our todo. Before your NewTodoPage class add:
+Now our todo has a definite structure to it, and we know what our data types will be. So, let's make a class object for our todo. Before your NewTodoPage class add:
 ```
 class Todo {
   public title: string;
@@ -305,7 +309,7 @@ export class NewTodoPage {
 ```
 We define a new todo each time the constructor is called to make sure `this.todo` is not undefined. 
 
-Next lets create our save method. In the NewTodoPage class add:
+Next comes the `save()` method. In the NewTodoPage class add:
 ``` 
 save() { 
     var key = this._data.save(this.todo); 
@@ -315,9 +319,9 @@ save() {
     }
 }
 ```
-We check the key to make sure our push was successful. Firebase will return null if it did not create the todo.
+We check the key to make sure our push was successful. Firebase will return null if it did **not** create the todo.
 
-Thats it for now in our new todo page class. Lets look at the html next.
+That is it for now in our NewTodoPage class. Let's look at the html next.
 
 ```
 <ion-navbar *navbar>
@@ -329,7 +333,7 @@ Thats it for now in our new todo page class. Lets look at the html next.
 </ion-content>
 ```
 
-Pretty empty. Lets our input elements to it. We are going to use an ```ion-list``` and put our input elements in the list items.
+Pretty empty. Let's add our input elements to it. We are going to use an ```ion-list``` and put our input elements into the list items.
 
 in our ```<ion-content>``` tags add:
 ```
@@ -346,18 +350,20 @@ in our ```<ion-content>``` tags add:
   <button clear (click)="save()">Save</button>
 ```
 
-So, here we see some new Angular 2 things. The syntax for ``ng-model`` has changed to ``[(ngModel)]``. This new syntax is an expression of its binding model. `{{}}` and `[]` are one-way binding from the data source to the view, `()` is one-way binding from the view to the data source, and the combination `[()]` is two way binding. So our `title` and `complete` are bound to both the data source and the view. Now the ``(click)`` which is a 'statement'. Statements respond to events raised by the element, directive, or component that they are bound to. In our chase that event is a click raised by the button element. Since it is wrapped in `()` we know that it is only going to send data one way; from our veiw to our component. 
+So, here we see some new Angular 2 things. The syntax for ``ng-model`` has changed to ``[(ngModel)]``. This new syntax is an expression of its binding model. `{{}}` and `[]` are one-way binding from the data source to the view and `()` is one-way binding from the view to the data source. The combination `[()]` is **two-way binding**. So our `title` and `complete` are bound to both the data source and the view, hence the realtime nature of the application. 
 
-For a far more in depth look at this check out Angular 2's docs.
+Now let's discuss ``(click)``, a kind of statement. Statements respond to events raised by the element, directive, or component that they are bound to. In our case, that event is a click raised by the button element. Since it is wrapped in `()` we know that it is only going to send data one way; from our veiw to our component. 
 
-"Ok I made a todo, but I didn't see anything happen?" You are right lets add some user feed back for saving a todo.
+For a far more in depth look at statements, check out Angular 2's docs.
 
-Ionic2 has a lot of nice built in components to choose from like Toast. That will provide some nice feed back. To add a Toast to our new todo page first we will need to import it. 
+"Ok. I made a todo, but I didn't see anything happen?" Correct! We still need to add some user feedback for saving a todo.
+
+Ionic 2 has a lot of nice built-in components to choose from, including the Toast component. Toasts are a great way to provide feedback. To add a Toast to our new todo page, we will first need to import Toasts from Ionic 2. 
 ```
 import {NavController, Toast} from 'ionic-angular';
 ```
 
-In our save method lets add:
+In our `save()` method, lets add:
 ```
 var key = this._Data.save(todo); 
     if(key)
@@ -372,22 +378,27 @@ var key = this._Data.save(todo);
         console.log('Dismissed toast');
       });
     
-      this.nav.present(toast);
+      this.nav.present(toast); /**Add this line*/
     }
 
 ```
-If we receive a key from firebase create a new toast and present it. Once dissmised we will remove the page from the stack. Ionic2's routing works like a stack you push on new views and you pop off old ones.
+If we receive a key from Firebase, we'll create a new toast and present it. Once dissmised we will remove the page from the stack. 
 
-Home (push)=> New Todo (push)=> otherView <= user sees, but the other views are still there. When the user hits the back button the top state pops off of the stack. 
-Home (push)=> New Todo <=(pop) <= user sees. 
+Ionic 2's routing works like a stack; you push on new views and you pop off old ones.
 
-Once we make our todos we will want to see them in our list view right? Lets do that now.
+**Home (push) => New Todo (push) => otherView <= user sees, but the other views are still there. **
+
+When the user hits the back button, the top state pops off of the stack. 
+
+**Home (push) => New Todo (pop) <= user sees.**
+
+Once we make our todos, we will want to see them in our list-view right? Lets do that now.
 
 ### Listing the todos
 
-Instead of generating a new page for the list we are going to use the already generated home page. This way as soon as a user accesses the app they see their todos. 
+Instead of generating a new page for the list, we are going to use the existing home page. This way, as soon as a user accesses the app, they see their todos. 
 
-Like with the new page we are going to add the data service to the constructor. We are, also, going to add a subsciption to our todo observable so we will get updates as soon as they happen.
+Like with the new page we are going to add the data service to the constructor. We are also going to add a subsciption to our todo observable so we will get updates as soon as they happen.
 
 ```
 import {Component} from "@angular/core";
@@ -410,9 +421,9 @@ export class HomePage {
   }
 }
 ```
-Notice we, also, imported our new-todo page, and added a newTodo method. This is what we will call when changing to the newTodoPage. In that method we are calling our nav controllers push method. 
+Notice we also imported our new-todo page, and added a newTodo method. This is what we will call when changing to the newTodoPage. In that method, we are calling our nav controller's push method. 
 
-Now that we have our data setup lets render it. In our html we will have this:
+Now that we have our data set up, let's render it. In our html we will have this:
 ```
 <ion-navbar *navbar>
   <ion-title>
@@ -431,12 +442,18 @@ Now that we have our data setup lets render it. In our html we will have this:
   <button fab fab-bottom fab-right (click)="newTodo()"> New </button>
 </ion-content>
 ```
-Some more new concepts here angular2's new ```*ngIf``` as compared to Angular 1's ```ng-hide``` and ```ng-show``` to check if we have any todos to show. If we do we are looping through our todos using the ``*ngFor`` replacement for ``ng-repeat`` then we display our todo using the ngModel syntax we saw earlier. If we do not have any todos we are doing a simple paragraph to tell the user that. Then finally we are calling the method we made earlier to take us to create a todo. 
+Some more new concepts here: Angular2's new ```*ngIf``` is used, as opposed to Angular 1's ```ng-hide``` and ```ng-show```, in order to check if we have any todos to show. 
 
-You might be asking what is with that `*` before these directives? That is syntax that angular 2 uses to help with reading and writing directives that modifiy html.
+If we do have todos to show, we will loop through our todos using the ``*ngFor`` replacement for ``ng-repeat``. Then we display our todo using the two-way ngModel syntax we saw earlier. 
 
+If we do not have any todos, we are doing a simple paragraph to tell the user that we do not have todos to show. Then we call the `newTodo()` method we created earlier to take us to create a todo. 
 
-That concludes part 1 in part 2 we will edit a todo and add user authentication.
+You might be wondering about the `*` before these directives. That is syntax that Angular 2 uses to help with reading and writing directives that modifiy html.
+____
+
+##### That concludes part 1! In part 2, we will edit a todo and add user authentication.
+____
+Thank you for reading this tutorial. Please upvote if you found it useful and/or interesting. Also, feel free to make comments and give feedback in the discussion section below.
 
 
 
