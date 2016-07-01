@@ -318,3 +318,690 @@ Next, copy the exported file of the previous section to the `src/test/java` dire
 ![Copy class to Eclipse](https://raw.githubusercontent.com/pluralsight/guides/master/images/f14a8172-79c2-4b66-b82f-af23ca36dbbe.png)
 
 Finally, right-click on the class, choose the option *Run As -> JUnit Test*, and see how the test is executed:
+
+![Run test](https://raw.githubusercontent.com/pluralsight/guides/master/images/a0003e9e-8d43-4517-bb37-a694cad37d42.gif)
+
+Now let's explain what the code does in detail.
+
+The `setup()` method, which is executed before every test method, instantiates the driver and set up the base URL and time-out for the test:
+```java
+@Before
+public void setUp() throws Exception {
+	driver = new FirefoxDriver();
+	baseUrl = "http://eherrera.net/";
+    driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+}
+```
+
+The `tearDown()` method, which is executed after every test method, closes the driver and if any errors were collected during the test, the test is failed explicitly:
+```java
+@After
+public void tearDown() throws Exception {
+    driver.quit();
+    String verificationErrorString = verificationErrors.toString();
+    if (!"".equals(verificationErrorString)) {
+		fail(verificationErrorString);
+    }
+}
+```
+
+The `testSampleTestCaseWebdriver()` method first opens the web page to test:
+```java
+driver.get(baseUrl + "/markdowntutorial/tutorial/emphasis.html");
+```
+
+Compare this with the Selenium IDE command:
+```
+open    /markdowntutorial/tutorial/emphasis.html
+```
+
+The next line finds a button by its CSS class and performs a click:
+```java
+driver.findElement(By.cssSelector("button.button-primary.button-next")).click();
+```
+
+And then verifies (actually, asserts) that the button to show the answer is present:
+```java
+try {
+	assertTrue(isElementPresent(By.id("btn_answer_1-1")));
+} catch (Error e) {
+	verificationErrors.append(e.toString());
+}
+```
+
+Compare this with the Selenium IDE commands:
+```
+click                  css=button.button-primary.button-next
+verifyElementPresent   id=btn_answer_1-1
+```
+
+Notice that the verify step is implemented with an `assert` and a `try-catch` (remember that when an `assert` fails, the test is aborted, and when a `verify` fails, the failure is logged and the test continues).
+
+`assertTrue()` uses this method to know if an element is present:
+```java
+private boolean isElementPresent(By by) {
+	try {
+		driver.findElement(by);
+		return true;
+    } catch (NoSuchElementException e) {
+		return false;
+    }
+}
+```
+
+Next, the text box where we enter the answer of the exercise is cleared (which is a good practice):
+```java
+driver.findElement(By.id("editor_1-1")).clear();
+```
+
+And then, with the `sendKeys()` method, the text box is filled with text:
+```java
+driver.findElement(By.id("editor_1-1")).sendKeys("The music video for Rihanna's song **American Oxygen** depicts various moments from American history, including the inauguration of Barack Obama.");
+```
+
+Here's the Selenium IDE command:
+```
+type    id=editor_1-1    The music video for Rihanna's song **American Oxygen** depicts various moments from American history, including the inauguration of Barack Obama.
+```
+
+You may be wondering about the comment below that line:
+```java
+// ERROR: Caught exception [ERROR: Unsupported command [fireEvent | id=editor_1-1 | keyup]]
+```
+
+Unlike Selenium IDE, WebDriver doesn't support the `fireEvent` command, because `sendKeys()` fires the events as if the data was entered manually.
+
+The "verification" for this action is done this way:
+```java
+try {
+	assertTrue(isElementPresent(By.xpath("//body/div[5]")));
+} catch (Error e) {
+	verificationErrors.append(e.toString());
+}
+```
+
+Finally, the class has two methods that are not used in this test:
+```java
+private boolean isAlertPresent() {
+    try {
+		driver.switchTo().alert();
+		return true;
+    } catch (NoAlertPresentException e) {
+		return false;
+    }
+  }
+
+private String closeAlertAndGetItsText() {
+	try {
+		Alert alert = driver.switchTo().alert();
+		String alertText = alert.getText();
+		if (acceptNextAlert) {
+			alert.accept();
+		} else {
+			alert.dismiss();
+		}
+		return alertText;
+    } finally {
+		acceptNextAlert = true;
+    }
+}
+```
+
+Now let's take a moment to talk about an important concept, the ways Selenium uses to locate elements with `findElement()` and the methods of the `By` class. You can use:
+- **ID**. This is the best way to locate an element because an ID should be unique. Unfortunately, either this is not always true or not all elements have one.
+- **Class Name**. More than one element can use the same CSS class name, so it's better to use `findElements()` (that returns a list of matching elements) instead of `findElement()` (that returns the first matching element found).
+- **Link Text**. This finds a link with the exact text in it.
+- **Partial Link Text**. It also uses the text of a link, but in this case, a wildcard can be used.
+- **Name**. This finds all elements with a given `name` attribute.
+- **Tag Name**. This finds all elements of a given task, like `div` or `p`.
+- **CSS Selector**. This searches for elements that match a CSS selector, such as `#container > img`.
+- **XPath Expression**. This searches for elements  that match a XPath query, such as `//body/ul[@class='container']/li`.
+
+Surely, when useing CSS selectors or XPath expressions, you can use *absolute* paths:
+```java
+driver.findElement(By.xpath("/html/body/div[1]/img[2]"));
+```
+
+However, this is not really recommended since one change in s part of the path can break the entire expression.
+
+It's better to use *relative* paths, by getting first the closest parent and then the child element, for example:
+
+```java
+WebElement div = driver.findElement(By.className("container"));
+List<WebElements> imgs = div.findElements(By.tagName("img));
+WebElement img = (imgs.size() >= 2) ? imgs.get(1) : null;
+```
+
+Back to analyzing the code produced by Selenium IDE (and in general, by any Record/Playback tool), you can see it presents some problems:
+- The test data and locators are hardcoded.
+- We can't really say that the quality of the code is high.
+- The resulting code is an identical copy of the recording, which doesn't make the test flexible.
+- Strictly speaking, by having actions of the users and assertions (verifications) in the same class, we are violating the [Single Responsibility Principle](https://en.wikipedia.org/wiki/Single_responsibility_principle).
+
+For those reasons, it's recommended to use the scripts of tools like Selenium IDE as starting points. Record the user interaction, add assertions and verifications, check that the script is working correctly, and then, export the script as source code.
+
+Once you have the source code of the test, you can make adjustments and refactorings to have better-designed tests. One technique to achieve this is the Page Object pattern, which will be the topic of the next section.
+
+
+
+
+
+# The Page Object Pattern
+In simple words, this pattern is about having one class representing a page and everything it can do.
+
+This allows us to separate the implementation from the specification. For example, if we change the ID/name/class of the text box where we enter the answer to an exercise in the Markdown tutorial (the implementation), the specification of testing if what we enter is correct doesn't change, so we have to update all the tests that use this element. Thi way, page objects encapsulate implementation details in a single class to save us a lot of problems when they change.
+
+So in this pattern, pages (or sections within a page) are represented as objects and actions that you perform on that page are represented as methods, for example:
+```java
+public class LessonPage {
+	private WebDriver driver;
+	private WebElement textBox;
+
+	// ...
+
+	public LessonPage(WebDriver driver) {
+		this.driver = driver;
+		textBox = driver.findElement(By.id("editor_1-1"));
+	}
+
+	public void enterAnswer(String text){
+		textBox.sendKeys(text);
+    }
+
+	public String getAnswer(){
+		textBox.getText();
+    }
+	
+	// ...
+}
+```
+
+This example shows a way to get the elements of a page. However, Selenium gives us the chance to get the elements by using annotations and a PageFactory` object:
+```java
+public class LessonPage {
+	@FindBy(id="editor_1-1")
+	private WebElement textBox;
+
+	public static LessonPage getPage(WebDriver driver) {
+		return PageFactory.initElements(driver, LessonPage.class);
+	}
+
+	// ...
+}
+```
+
+`@FindBy` accepts all the ways of locating elements previously discussed (like tag names and CSS selectors).
+
+The `PageFactory` object instantiates a page object (if a class object is passed instead of an instance), finds its annotated fields and then initialize them to the associated elements of the page. By default, the name of the field in the Java class is assumed to be the ID or name of the element on the page.
+
+You can either use this annotation by specifying one of the location strategies with an appropriate value (like `id` in the example above) or by specifying both `how` and `using` this way:
+```java
+@FindBy(how = How.ID, using = "editor_1-1")
+private WebElement textBox;
+```
+
+Now, our tests will be free of implementation  details:
+```java
+LessonPage emphasis = LessonPage.getPage(driver);
+
+String answer = "...";
+emphasis.setText(answer);
+
+assertTrue(answer.equals(emphasis.getAnswer());
+```
+
+This is how the page object pattern improves the separation of concerns, flexibility, and maintainability of our tests.
+
+It also increases readability, but here's one tip. If you want to take readability to the next level, use Behaviour Driven Development (BDD) with a tool like [Cucumber](https://cucumber.io/), which has [implementations in many languages](https://cucumber.io/docs), or if you're working with Java/Groovy, use the [Spock Framework](https://github.com/spockframework/spock) ([here you can find an intro to BDD and the Spock Framework](http://tutorials.pluralsight.com/java-and-j2ee/introduction-to-testing-with-bdd-and-the-spock-framework)).
+
+On the other hand, the page object pattern increases complexity and, since choosing the right approach to design or implement a page object can be a difficult task, it can quickly become harder to use and maintain.
+
+With this in mind, let's turn the generated Selenium IDE test into a page object pattern test.
+
+Create a `Page` abstract class to hold some common methods and fields:
+```java
+package com.example.pages;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
+import org.openqa.selenium.WebDriver;
+
+public abstract class Page {
+	protected WebDriver driver;
+    protected final String baseUrl = "http://eherrera.net/markdowntutorial/tutorial/";
+    
+    protected boolean isElementPresent(By by) {
+    	boolean present = true;
+        try {
+        	driver.findElement(by);
+        } catch (NoSuchElementException e) {
+        	present = false;
+        }
+        
+        return present;
+	}
+
+}
+```
+
+Next, let's split the page into two classes, first the initial `LessonPage`:
+```java
+package com.example.pages;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.PageFactory;
+
+public class LessonPage extends Page {
+	
+	private WebElement startExerciseBtn;
+	
+	public LessonPage (WebDriver driver, String lesson) {
+		this.driver = driver;
+		driver.get(baseUrl + lesson + ".html");
+		startExerciseBtn = driver.findElement(By.cssSelector("button.button-primary.button-next"));
+	}
+	
+	public ExercisePage getExercise() {
+		startExerciseBtn.click();
+		
+		ExercisePage page = new ExercisePage(driver);
+		
+		PageFactory.initElements(driver, page);
+		
+		return page;
+	}
+
+}
+```
+
+This extends from the previous `Page` class. In the constructor, it navigates to the lesson page and gets a reference to the *Start Exercises* button. It also has a method to get the `ExercisePage`. This page is initialized with the `PageFactory` object, here's its code:
+```java
+package com.example.pages;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+
+public class ExercisePage extends Page {
+	@FindBy(id="editor_1-1")
+	private WebElement textBox;
+	
+	@FindBy(id="btn_answer_1-1")
+	private WebElement showAnswerBtn;
+	
+	public ExercisePage (WebDriver driver) {
+		this.driver = driver;
+	}
+	
+	public boolean isShowAnswerBtnPresent() {
+		return isElementPresent(By.id("btn_answer_1-1"));
+	}
+	
+	public boolean isAnswerCorrect() {
+		return isElementPresent(By.xpath("//body/div[5]"));
+	}
+
+	public void enterAnswer(String text) {
+		textBox.clear();
+		textBox.sendKeys(text);
+	}
+}
+```
+
+It gets its elements through annotations and has two methods to check if two elements are present and one to enter a text on the text box.
+
+Now, let's create another class to do the actual test:
+```java
+package com.example.tests;
+
+import static org.junit.Assert.assertTrue;
+
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+
+import com.example.pages.ExercisePage;
+import com.example.pages.LessonPage;
+
+public class SampleTestCasePageObject {
+	private WebDriver driver;
+	  
+	@Before
+	public void setUp() throws Exception {
+		driver = new FirefoxDriver();
+	}
+	  
+	@Test
+	public void testSampleTestCasePageObject() {
+		LessonPage lessonPage = new LessonPage(driver, "emphasis");
+		ExercisePage exercisePage = lessonPage.getExercise();
+		
+		assertTrue(exercisePage.isShowAnswerBtnPresent());
+		
+		exercisePage.enterAnswer("The music video for Rihanna's song **American Oxygen** depicts various moments from American history, including the inauguration of Barack Obama.");
+		
+		assertTrue(exercisePage.isAnswerCorrect());
+	}
+	  
+	@After
+	public void tearDown() throws Exception {
+		driver.quit();
+	}
+}
+```
+
+As you can see, this class looks cleaner now. If you run this class as a JUnit test, everything should work as expected.
+
+However, we went from one class to four classes. So always evaluate the tradeoffs, for example, on a test suite of only a couple of tests, it may be better to improve the code by refactoring than by creating page objects.
+
+In the last section of this tutorial, we'll use this implementation to execute our test with Sauce Labs.
+
+
+
+# Testing with Sauce Labs
+
+Just like developing for multiple browsers, testing in multiple browsers can be a frustrating experience. Some browsers cause more problems than others, so we need to test in many browsers and configurations as possible. 
+
+Sauce Labs solves this problem by automating cross-browser testing in the cloud, starting virtual machines (in parallel if required) to test in more than [700 OS/browser combinations](https://wiki.saucelabs.com/display/DOCS/Supported+Browsers+and+Operating+Systems+for+the+Web+Interface). The only downside is that the execution of the tests can become slow since it's not the same to test locally than to communicate with remote browsers.
+
+However, I can confidently say that all of its features outweigh this problem. Other companies that offer similar services are [BrowserStack](https://www.browserstack.com) and [Xamarin Test Cloud](https://www.xamarin.com/test-cloud).
+
+There's a [Github repo with some example scripts](https://github.com/saucelabs-sample-scripts/Java-Selenium) for how to run Java-based Selenium tests with Sauce Labs. For example, here's how a basic Sauce Labs test looks like:
+```java
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.remote.RemoteWebDriver;
+
+import java.net.URL;
+
+public class SampleSauceTest {
+
+  public static final String USERNAME = "YOUR_USERNAME";
+  public static final String ACCESS_KEY = "YOUR_ACCESS_KEY";
+  public static final String URL = "http://" + USERNAME + ":" + ACCESS_KEY + "@ondemand.saucelabs.com:80/wd/hub";
+
+  public static void main(String[] args) throws Exception {
+
+    DesiredCapabilities caps = DesiredCapabilities.chrome();
+    caps.setCapability("platform", "Windows XP");
+    caps.setCapability("version", "43.0");
+
+    WebDriver driver = new RemoteWebDriver(new URL(URL), caps);
+
+    /**
+     * Goes to Sauce Lab's guinea-pig page and prints title
+     */
+
+    driver.get("https://saucelabs.com/test/guinea-pig");
+    System.out.println("title of page is: " + driver.getTitle());
+
+    driver.quit();
+  }
+}
+```
+
+When you replace your Sauce Labs username and access key (remember that you can get it from your *My Account* option when you log in to Sauce Labs) and run this program, the output will be:
+```
+title of page is: I am a page title - Sauce Labs
+```
+
+And when you go to the *Automated Tests* section on Sauce Labs Dashboard, you should see the record of the test:
+
+![Sample test record](https://raw.githubusercontent.com/pluralsight/guides/master/images/3457b738-aed3-4e89-b957-ae89ef653107.png)
+
+If you click this record, a detail page will be shown with information about the test and options to play a video of the actual test, download a log and a screenshot and open a manual test session:
+
+![Sample test details](https://raw.githubusercontent.com/pluralsight/guides/master/images/84ab8069-6aa7-40bc-9ef0-34d9c8cdd4ca.png)
+
+You can see the complete results [here](https://saucelabs.com/beta/tests/291d04d57e3c4e24a6e3715064533120/commands).
+
+As you can see, to use a tool like Sauce Labs, you would need to test a publicly available website. If you don't have one, you can set up a tunnel with Sauce Connect:
+
+![Sauce Connect Instructions](https://raw.githubusercontent.com/pluralsight/guides/master/images/17c45642-0583-40ed-93e6-c4a5bc2be39c.png)
+
+You can find more information [about Sauce Connect here](https://wiki.saucelabs.com/display/DOCS/Setting+Up+Sauce+Connect).
+
+By the way, here's another repo where you can find more complete examples: 
+
+https://github.com/saucelabs-sample-test-frameworks
+
+For our example, let's start three parallel tests (the open-source account allows 5 parallel virtual machines at most) for Internet Explorer versions 9, 10, and 11. 
+
+Create a new class `SampleTestCaseSauceLabs` annotated with `@RunWith(ConcurrentParameterized.class)`:
+```java
+@RunWith(ConcurrentParameterized.class)
+public class SampleTestCaseSauceLabs {
+
+}
+```
+
+The annotation will allow the test to use multiple browsers in parallel.
+
+Also, instead of hardcoding the username and access key, we're going to take their value from environment properties:
+```java
+@RunWith(ConcurrentParameterized.class)
+public class SampleTestCaseSauceLabs {
+	public static final String USERNAME = System.getenv("SAUCE_USERNAME");
+	public static final String ACCESS_KEY = System.getenv("SAUCE_ACCESS_KEY");
+	public static final String URL = "http://" + USERNAME + ":" + ACCESS_KEY + "@ondemand.saucelabs.com:80/wd/hub";
+}
+```
+
+Next, let's create the method that will return the browser combinations using the annotation `@ConcurrentParameterized.Parameters`:
+```java
+@RunWith(ConcurrentParameterized.class)
+public class SampleTestCaseSauceLabs {
+	// ...
+	@ConcurrentParameterized.Parameters
+    public static LinkedList<String[]> browsersStrings() {
+        LinkedList<String[]> browsers = new LinkedList<String[]>();
+
+        // windows 7, IE 9
+        browsers.add(new String[]{"Windows 7", "9", "internet explorer"});
+
+        // windows 8, IE 10
+        browsers.add(new String[]{"Windows 8", "10", "internet explorer"});
+
+        // windows 8.1, IE 11
+        browsers.add(new String[]{"Windows 8.1", "11", "internet explorer"});
+
+        return browsers;
+    }
+}
+```
+
+The values of the returned list will be injected to the constructor of the class. The order of the parameters will be the same as that of the elements within the list:
+```java
+@RunWith(ConcurrentParameterized.class)
+public class SampleTestCaseSauceLabs {
+	// ...
+	public SampleTestCaseSauceLabs(String os, String version, String browser) {
+        super();
+        this.os = os;
+        this.version = version;
+        this.browser = browser;
+    }
+}
+```
+
+The values will be saved as fields of the class because they will be used in the `setUp()` method to configure the capabilities of the test:
+```java
+@RunWith(ConcurrentParameterized.class)
+public class SampleTestCaseSauceLabs {
+	// ...
+	@Before
+	public void setUp() throws Exception {
+		DesiredCapabilities capabilities = new DesiredCapabilities();
+		capabilities.setCapability(CapabilityType.BROWSER_NAME, browser);
+        capabilities.setCapability(CapabilityType.VERSION, version);
+
+        capabilities.setCapability(CapabilityType.PLATFORM, os);
+		
+		driver = new RemoteWebDriver(new URL(URL), capabilities);
+		
+		this.sessionId = (((RemoteWebDriver) driver).getSessionId()).toString();
+
+		String message = String.format("SauceOnDemandSessionID=%1$s", this.sessionId);
+	    System.out.println(message);
+	}
+}
+```
+
+Notice how the session ID is retrieved from the `RemoteWebDriver`.
+
+At the end, the code should look like this:
+```java
+/**
+ * Demonstrates how to write a JUnit test that runs tests against Sauce Labs using multiple browsers in parallel.
+ */
+@RunWith(ConcurrentParameterized.class)
+public class SampleTestCaseSauceLabs {
+	
+	public static final String USERNAME = System.getenv("SAUCE_USERNAME");
+	
+	public static final String ACCESS_KEY = System.getenv("SAUCE_ACCESS_KEY");
+	
+	public static final String URL = "http://" + USERNAME + ":" + ACCESS_KEY + "@ondemand.saucelabs.com:80/wd/hub";
+	
+	/**
+     * Represents the browser to be used as part of the test run.
+     */
+    protected String browser;
+    /**
+     * Represents the operating system to be used as part of the test run.
+     */
+    protected String os;
+    /**
+     * Represents the version of the browser to be used as part of the test run.
+     */
+    protected String version;
+    /**
+     * Instance variable which contains the Sauce Job Id.
+     */
+    protected String sessionId;
+
+    /**
+     * The {@link WebDriver} instance which is used to perform browser interactions with.
+     */
+    protected WebDriver driver;
+
+    /**
+     * Constructs a new instance of the test.  The constructor requires three string parameters, which represent the operating
+     * system, version and browser to be used when launching a Sauce VM.  The order of the parameters should be the same
+     * as that of the elements within the {@link #browsersStrings()} method.
+     * @param os
+     * @param version
+     * @param browser
+     * @param deviceName
+     * @param deviceOrientation
+     */
+
+    public SampleTestCaseSauceLabs(String os, String version, String browser) {
+        super();
+        this.os = os;
+        this.version = version;
+        this.browser = browser;
+    }
+
+    /**
+     * @return a LinkedList containing String arrays representing the browser combinations the test should be run against. The values
+     * in the String array are used as part of the invocation of the test constructor
+     */
+    @ConcurrentParameterized.Parameters
+    public static LinkedList<String[]> browsersStrings() {
+        LinkedList<String[]> browsers = new LinkedList<String[]>();
+
+        // windows 7, IE 9
+        browsers.add(new String[]{"Windows 7", "9", "internet explorer"});
+
+        // windows 8, IE 10
+        browsers.add(new String[]{"Windows 8", "10", "internet explorer"});
+
+        // windows 8.1, IE 11
+        browsers.add(new String[]{"Windows 8.1", "11", "internet explorer"});
+
+        return browsers;
+    }
+	  
+	@Before
+	public void setUp() throws Exception {
+		DesiredCapabilities capabilities = new DesiredCapabilities();
+		capabilities.setCapability(CapabilityType.BROWSER_NAME, browser);
+        capabilities.setCapability(CapabilityType.VERSION, version);
+
+        capabilities.setCapability(CapabilityType.PLATFORM, os);
+		
+		driver = new RemoteWebDriver(new URL(URL), capabilities);
+		
+		this.sessionId = (((RemoteWebDriver) driver).getSessionId()).toString();
+
+		String message = String.format("SauceOnDemandSessionID=%1$s", this.sessionId);
+	    System.out.println(message);
+	}
+	  
+	@Test
+	public void testSampleTestCaseSauceLabs() {
+		LessonPage lessonPage = new LessonPage(driver, "emphasis");
+		ExercisePage exercisePage = lessonPage.getExercise();
+		
+		assertTrue(exercisePage.isShowAnswerBtnPresent());
+		
+		exercisePage.enterAnswer("The music video for Rihanna's song **American Oxygen** depicts various moments from American history, including the inauguration of Barack Obama.");
+		
+		assertTrue(exercisePage.isAnswerCorrect());
+	}
+	  
+	@After
+	public void tearDown() throws Exception {
+		driver.quit();
+	}
+}
+```
+
+To execute the test, configure the username and the access key as environment variables. In Linux:
+```
+$ export SAUCE_USERNAME=<your Sauce Labs username>
+$ export SAUCE_ACCESS_KEY=<your Sauce Labs access key>
+```
+
+In Windows go to the *System Properties* window, click on the *Advanced* tab, and then click the *Environment Variables* button.
+
+In Eclipse, you can configure the *JUnit Run Configuration* to set these variables:
+
+![Configure Environment Variables in Eclipse](https://raw.githubusercontent.com/pluralsight/guides/master/images/285a9515-521b-433f-b8bf-43a2eb4e535e.png)
+
+You can see the session IDs of the tests in the output, for example:
+```
+SauceOnDemandSessionID=dfb20d14455c4a37b38e7a33cac478aa
+SauceOnDemandSessionID=1401c0fe49164e8b8d3651b443151166
+SauceOnDemandSessionID=ba23b84c3464424593dd65909f78e8b3
+```
+
+And in Sauce Labs:
+
+![Sauce Labs Results](https://raw.githubusercontent.com/pluralsight/guides/master/images/9fe584d6-1826-4e88-b66c-cfd20d9d8c96.png)
+
+You can consult the results of these tests in the following links:
+
+https://saucelabs.com/beta/tests/1401c0fe49164e8b8d3651b443151166/commands  
+https://saucelabs.com/beta/tests/ba23b84c3464424593dd65909f78e8b3/commands  
+https://saucelabs.com/beta/tests/dfb20d14455c4a37b38e7a33cac478aa/commands  
+
+# Conclusion
+
+You got an overview of how to test with Selenium and Sauce Labs. Here's a summary of the best practices described in this tutorial:
+- Know the structure of the page you're going to test.
+- Use the scripts generated by Selenium IDE (or any other Record/Playback tool) as a starting point.
+- Don't Use Brittle Locators in Your Tests. Preferably, use IDs and relative paths.
+- Learn to design your tests with the Page Object pattern.
+- Combine the Page Object pattern with Behaviour Driven Development to improve readability even more.
+- Don't hardcode your account information, use Environment Variables.
+
+In this [page you can see additional best practices and tips](https://wiki.saucelabs.com/display/DOCS/Best+Practices+and+Tips).
+
+Remember that you can find the source code of [all the tests on Github](https://github.com/eh3rrera/selenium-saucelabs-example) and if you have questions or comments, don't hesitate to contact me.
