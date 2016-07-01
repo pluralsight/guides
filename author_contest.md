@@ -42,7 +42,7 @@ Tutorials/articles ideally range from 1500-3000 words, including code blocks, to
 
 - [React vs. Angular2 when integrating with Rails](http://tutorials.pluralsight.com/ruby-ruby-on-rails/react-vs-angular-2-integration-with-rails)
 
-- [Getting started with ECMAScript6](http://tutorials.pluralsight.com/front-end-javascript/getting-started-with-ecmascript6)
+- [Building a realtime collaborative editor with RethinkDB](http://tutorials.pluralsight.com/node-js/building-a-realtime-collaborative-editor-with-rethinkdb)
 
 Note: If you're interested in qualifying for sponsor prizes, then you'll need to incorporate one of their APIs into your tutorial (this is similar to how sponsored hackathons work).  There are lots of creative ways to do this.  For example:
 
