@@ -1,3 +1,8 @@
+### Getting started with Selenium and Sauce Labs by Esteban Herrera
+- [Read the guide](http://tutorials.pluralsight.com/software-engineering-best-practices/getting-started-with-selenium-and-sauce-labs?status=in-review)
+- [Read more from Esteban Herrera](http://tutorials.pluralsight.com/author/eh3rrera) <img src="https://avatars.githubusercontent.com/u/11665759?v=3" width="30" height="30" alt="Esteban Herrera" />
+- Related to: Software Engineering Best Practices
+
 ### How to implement a simple wait using Java and Selenium by dcboycm
 - [Read the guide](http://tutorials.pluralsight.com/other/how-to-implement-a-simple-wait-using-java-and-selenium?status=in-review)
 - [Read more from dcboycm](http://tutorials.pluralsight.com/author/dcboycm) <img src="https://avatars.githubusercontent.com/u/5580819?v=3" width="30" height="30" alt="dcboycm" />
