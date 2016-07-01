@@ -118,7 +118,7 @@ Notice that, in my case, a *selectWindow* command was added. We can delete this 
 ![Delete unwanted command](https://raw.githubusercontent.com/pluralsight/guides/master/images/3489692c-8482-4a83-87e6-018705567235.png)
 
 
-At this point, the Selenium IDE window should look similar to this:
+At this point, the Selenium IDE window should look like this:
 
 ![Final script](https://raw.githubusercontent.com/pluralsight/guides/master/images/c9899760-6e59-4e6a-942d-5473e854fcda.png)
 
@@ -129,3 +129,192 @@ Now stop recording and save the test case by going to the *File* menu and choosi
 
 
 The test case will be saved as an HTML file. This is how the saved file looks like:
+```html
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head profile="http://selenium-ide.openqa.org/profiles/test-case">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="selenium.base" href="http://eherrera.net/" />
+<title>sample-test-case-selenium-ide</title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">sample-test-case-selenium-ide</td></tr>
+</thead><tbody>
+<tr>
+	<td>open</td>
+	<td>/markdowntutorial/tutorial/emphasis.html</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=button.button-primary.button-next</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyElementPresent</td>
+	<td>id=btn_answer_1-1</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=editor_1-1</td>
+	<td>The music video for Rihanna's song **American Oxygen** depicts various moments from American history, including the inauguration of Barack Obama.</td>
+</tr>
+<tr>
+	<td>verifyElementPresent</td>
+	<td>//body/div[5]</td>
+	<td></td>
+</tr>
+
+</tbody></table>
+</body>
+</html>
+```
+
+To execute the test case, choose the first command (`open`) and click one of the green arrow buttons of the top-left corner of the window (the first will play the entire suite of tests and the second just the current test).
+
+When you do it, you'll see that the test fails:
+
+![Test Error](https://raw.githubusercontent.com/pluralsight/guides/master/images/fdd475d9-df52-4702-8c01-86f447067095.png)
+
+Look the *Log* tab at the bottom of the IDE window and the browser. The problem is that the correct answer popup didn't show up.
+
+Let's analyze how the page works. When the user writes something in the text box, the markdown is generated and compared to the answer to the exercise, which is stored in an array. If there's a match, the popup is shown. Here's the piece of code that does this:
+```javascript
+// Set up markdown editors
+$('.editor').each(function() {
+	var elementId = $(this)[0].id;
+	var exerciseId = getExerciseId(elementId);
+	
+	// Set up event to update markdown/html when the user writes something
+	$(this).on('keyup', function(event){
+		var md = generateMd(exerciseId);
+		
+		if(exercises[exerciseId] != undefined && md.trim() == exercises[exerciseId]["answer"]) {
+			if(exerciseId == "15-1") {
+				swal({title:"Excellent job!", text: "You are now a Markdown Master", type: "success"});
+			} else {
+				swal({title:"Good job!", text: "That's correct. Now you can go to the next exercise.", type: "success"});
+			}
+		}
+	});
+	
+	// For the initial text
+	generateMd(exerciseId);
+});
+```
+
+As you can see, this happens in the `keyup` event, so we need to fire this event in the test before the verification step.
+
+Return to the Selenium IDE window, right-click the last step, and choose *Insert New Command*:
+
+![Insert-New-Command](https://raw.githubusercontent.com/pluralsight/guides/master/images/4421c091-bc6f-4511-98d3-d4f7ce7fddc4.png)
+
+Below the command table, open the *Command* menu:
+
+![Command Menu](https://raw.githubusercontent.com/pluralsight/guides/master/images/c72094d6-58a7-4873-9d11-406eab94230d.png)
+
+Look at all the commands you have at your disposal. Among them, there's a `fireEvent` command. Select it:
+
+![Fire Event Command](https://raw.githubusercontent.com/pluralsight/guides/master/images/fda44be7-74d3-4b67-bdf7-535a7ef82efe.png)
+
+In the *Target* field, we will input `id=editor-1-1` to reference out text box. We know how to reference this element because of the previous `type` command, but in case we don't know the value of this field, we can click on the *Select* button next to the text box and select and element on the browser to get the value.
+
+In the *Value* field, we will input `keyup`, the event to fire.
+
+Once we have made this change, select the first command (`open`) and run the test again. This time, everything should be fine (also notice how the actions are replayed on the browser):
+
+![Test passed](https://raw.githubusercontent.com/pluralsight/guides/master/images/1880a138-622f-4932-9e6f-43d298cdb742.png)
+
+You can see the value of knowing how the web page works and is structured. 
+
+Save the test and export it as a *Java / JUnit 4 / WebDriver* test case:
+
+![Export Test](https://raw.githubusercontent.com/pluralsight/guides/master/images/e5727186-95ae-4e38-9833-4039936b4e1a.png)
+
+Choose other options to see how the Selenium IDE commands are translated into other languages. Across the supported languages, you can find three versions:
+- *WebDriver*, which uses Selenium 2 WebDriver API (this is the preferred option).
+- *WebDriver Backed*, which uses Selenium 2 WebDriver to implement the (old) Selenium 1 Remote Control API.
+- *Remote Control (RC)*, which uses the (old) Selenium 1 Remote Control API.
+
+If you want to know more about the Selenium IDE [here](http://docs.seleniumhq.org/docs/02_selenium_ide.jsp).
+
+
+
+
+
+# Understanding Selenium commands
+
+First, let's configure a Java project in Eclipse to run our test class. Go to *File -> New -> Other...* and choose Maven Project:
+
+![Create Maven Project](https://raw.githubusercontent.com/pluralsight/guides/master/images/3d439588-37f8-4473-91dd-ef413d4f90cd.png)
+
+In the next window, check the option *Create a simple project (skip archetype selection)* and click *Next*:
+
+![Create Maven Project](https://raw.githubusercontent.com/pluralsight/guides/master/images/761c2aec-eab7-4f48-a369-2733204a3aff.png)
+
+In the following window, enter the project information, for example:
+
+**Group ID:** com.example
+
+**Artifact ID:** selenium
+
+**Version:** 0.0.1-SNAPSHOT
+
+**Packaging:** jar
+
+
+![Create Maven Project](https://raw.githubusercontent.com/pluralsight/guides/master/images/5caae031-abc4-4c90-8116-09308e6a6e75.png)
+
+This will create a project with a `pom.xml` file and the following directories:
+```
+src/main/java
+src/main/resources
+src/test/java
+src/test/resources
+```
+
+Open the `pom.xml` file and modify so it looks like this:
+```
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.example</groupId>
+	<artifactId>selenium</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+
+	<dependencies>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.12</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.seleniumhq.selenium</groupId>
+			<artifactId>selenium-java</artifactId>
+			<version>2.53.0</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.saucelabs</groupId>
+			<artifactId>sauce_junit</artifactId>
+			<version>2.1.21</version>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+</project>
+```
+
+We're adding the dependencies for the test framework (JUnit), Selenium and the Sauce Java Helper Library, which will update automatically your Sauce Labs dashboard with information about the tests.
+
+Save the file and if the Maven dependencies are not added automatically to the Eclipse project, right-click the name of the project and choose the option *Maven -> Update Project...*.
+
+Next, copy the exported file of the previous section to the `src/test/java` directory in Eclipse. It should compile with some warnings but without errors:
+
+![Copy class to Eclipse](https://raw.githubusercontent.com/pluralsight/guides/master/images/f14a8172-79c2-4b66-b82f-af23ca36dbbe.png)
+
+Finally, right-click on the class, choose the option *Run As -> JUnit Test*, and see how the test is executed:
