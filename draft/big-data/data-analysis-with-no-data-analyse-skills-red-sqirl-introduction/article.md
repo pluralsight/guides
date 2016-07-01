@@ -1,7 +1,7 @@
 Data Analysis with no Data analyse skills
 Over the last 2 years I have been working in a program to make it possible to work with Data analytics by just knowing the basics.
 
-Introduction
+# Introduction
 
 Red Sqirl is a web-based big data application that simplifies the analysis of large data sets. With Red Sqirl, you can quickly access the power of the Hadoop eco-system, enhancing the productivity of data scientists and analysts. Red Sqirl analyzes massive amounts of data rapidly and cost-effectively. An open platform that users can extend, which simplifies the Hadoop ecosystem (Hadoop, Hive, Pig, HBase, Oozie, etc), so you don't have to master each of those underlying technologies.
 Red Sqirl accesses your data through third-party processing and storage engines and organises them into packages. For example, the Red Sqirl Pig package gives you access to Apache Pig. Red Sqirl also classifies a reusable piece of analyses into models. 
@@ -11,16 +11,16 @@ You can find more in www.redsqirl.com
 Video version of this tutorial: https://youtu.be/LL6adYq4YL4 
 
 
-Let's get started 
+## Let's get started 
 - The idea here is to give a first overall view of Red Sqirl and what it can do.
 
-Summary
+###### Summary
 
-Step 1: Learn about the Red Sqirl interface, 
-Step 2: Learn how to copy data into HDFS,
-Step 3: Learn how to build a workflow, 
-Step 4: Learn how to run that workflow 
-Step 5: and finally how to extract the result from that workflow.
+<b>Step 1:</b> Learn about the Red Sqirl interface, </br>
+<b>Step 2:</b> Learn how to copy data into HDFS, </br>
+<b>Step 3:</b> Learn how to build a workflow, </br>
+<b>Step 4:</b> Learn how to run that workflow </br>
+<b>Step 5:</b> and finally how to extract the result from that workflow. </br>
 
 
 Red Sqirl is a platform, that you can install directly on top of a Hadoop Cluster. This tutorial is based on the Red Sqirl Docker image.  https://hub.docker.com/r/redsqirl/cloudera/
@@ -46,13 +46,14 @@ T02
 ![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/a58c5aba-7f25-4da7-ac60-891d84745ed9.png)
 
 
-Step 1. 
-So this is our Red Sqirl interface it’s made up of 3 main sections.
+###### Step 1. So this is our Red Sqirl interface it’s made up of 3 main sections.
+
 So let’s outline the 3 main sections of Red Sqirl.
 
-Section 1. On the left we have two tabs:
-The flow-chart canvas, this is where the workflow will be executed.
-The remote file system  - where we can connect to any ssh server.
+<b>Section 1. On the left we have two tabs:</b>
+
+- The flow-chart canvas, this is where the workflow will be executed.
+- The remote file system  - where we can connect to any ssh server.
 
 T03
 
@@ -60,7 +61,8 @@ T03
 
 
 
-The flow chart canvas:
+<b>The flow chart canvas: </b>
+
 The flow chart canvas is where we create a data analysis workflow, and the actions that we can use for our analyses, we’ll find it at the bottom, in the canvas footer. 
 
 T04
@@ -82,12 +84,13 @@ T05
 ![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/c764c58f-1acf-4c63-bf9b-32fd4c628c22.png)
 
 
-Section 2. On the top right is the help tab.
- The help tab is made up of
-a main section where we can find the generic options
-And an action section
-We can find the action section by clicking this Home button,
- This section describes each of the drag & drop actions that we can use.
+###### Section 2. On the top right is the help tab.
+
+The help tab is made up of
+- a main section where we can find the generic options
+-  And an action section
+    - We can find the action section by clicking this Home button,
+    -  This section describes each of the drag & drop actions that we can use.
 
 
 T06
@@ -95,7 +98,7 @@ T06
 ![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/906cb99d-9526-4843-8a58-f1ef94a7d5ec.png)
 
 
-Section 3. On the bottom right, we have the Hadoop Distributed File System
+###### Section 3. On the bottom right, we have the Hadoop Distributed File System
 
 
 
@@ -107,8 +110,7 @@ T07
 
 So those are the three main parts of the Red Sqirl interface.
 
-Step 2.
-Now, our next step is to get some data for us to analyse. 
+###### Step 2. Now, our next step is to get some data for us to analyse. 
 
 Inside the Red Sqirl installation folder we’ve already given you some data for this tutorial.
 So what we need to do now, is copy this data into our HDFS.
@@ -116,25 +118,24 @@ So what we need to do now, is copy this data into our HDFS.
 
 
 So to do this,
-We’ll first go back  to the Remote File System,
-We need to go into the Red Sqirl installation folder, in my case it is /opt/redsqirl-2.4.0-0.12
-We now just find the folder called “tutorial_data” and drag it over and drop it anywhere into our HDFS window.
-There are a few different files in this folder. For this tutorial we’ll be using the file named getting_started.txt
-Now we can click on tutorial_data and click on the getting_started.txt file, 
+- We’ll first go back  to the Remote File System,
+- We need to go into the Red Sqirl installation folder, in my case it is /opt/redsqirl-2.4.0-0.12
+- We now just find the folder called “tutorial_data” and drag it over and drop it anywhere into our HDFS window.
+- There are a few different files in this folder. For this tutorial we’ll be using the file named getting_started.txt
+- Now we can click on tutorial_data and click on the getting_started.txt file, 
 
 
-Step 3.
-Ok, so now that we have data in our HDFS, we can start an analyses! 
+###### Step 3. Ok, so now that we have data in our HDFS, we can start an analyses! 
 
 To do this we just have to go back to the flowchart canvas section. 
 
 So, now for our analysis, what we’re going to do is:
-Configure the source for a hdfs file
-Select the sum of two columns
-Get the average of a column
-Get the sum of a column when grouping by another
-Join the two tables
-Filter a table with a condition
+1. Configure the source for a hdfs file
+2. Select the sum of two columns
+3. Get the average of a column
+4. Get the sum of a column when grouping by another
+5. Join the two tables
+6. Filter a table with a condition
 
 To do all of this we first need to change the footer.
 The action footer is the little frame on the bottom left of the FlowChart tab.
@@ -144,48 +145,50 @@ T08
 ![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/778b6f58-50e4-41b8-90f1-a60f40daab06.png)
 
 
-Click the green information symbol.
-Once the configuration popup has appeared in the left column click “+”.
-Type “extraPig” on the new empty line.
-Click the “...” symbol.
-On the new window, select redsqirl_pig in the drop-down menu
-Click on the check box next to pig_audit, and click on the Select button.
-Click OK.
-Click OK.
+1. Click the green information symbol.
+2. Once the configuration popup has appeared in the left column click “+”.
+3. Type “extraPig” on the new empty line.
+4. Click the “...” symbol.
+5. On the new window, select redsqirl_pig in the drop-down menu
+6. Click on the check box next to pig_audit, and click on the Select button.
+7. Click OK.
+8. Click OK.
+
 You should see a new footer tab called “extraPig” with “Pig Audit” inside. To remove this new menu, you need to do the following.
-Click the green information symbol.
-Click on the check box beside “extraPig”.
-Click on the Delete button (bin icon) in the table header.
-Click OK.
+
+1. Click the green information symbol.
+2. Click on the check box beside “extraPig”.
+3. Click on the Delete button (bin icon) in the table header.
+4. Click OK.
 
 
 
-So let’s start to analyse the data. 
+<b>So let’s start to analyse the data. </b>
   
 
 
-An analysis always starts with a source action, so let’s set this up first.
-In the actions footer drag a new source icon onto the canvas.
+1. An analysis always starts with a source action, so let’s set this up first.
+2. In the actions footer drag a new source icon onto the canvas.
 
 T09
 
 ![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/8ac59bb6-73b3-4071-962a-2e5daf8165d3.png)
 
 
-Now we just double click on it to configure it
-Name the action “communication“.
-Comment the action “Configure tutorial data“.
-Click OK.
-Now we’ll see a step-by-step window. 
-Select “Hadoop Distributed File System“ as the data type then click next.
-Select “TEXT MAP-REDUCE DIRECTORY” as the data subtype and click next.
-Next we have to chose the path, that we saved our file into.
-Click on the search button, and click the refresh button, then find the tutorial data file and then the getting started file pig_tutorial_data.mrtxt
-Click on the radio button beside “pig_tutorial_data.mrtxt”- if you cannot find it, refresh the view by clicking on the search button- and click OK.
-And now our data is in the source action. At this stage, you will see the data correctly displayed on the screen, the name of the fields are “Field1 Long, Field2 Long...”
-In this next step we can change the field name and their type by clicking the edit button on the top-left of the table
-Here we’ll rename the fields. 
-Copy and paste “subscriber_number STRING , Friend STRING , offpeak_voice INT , offpeak_sms INT , offpeak_mms INT ,peak_voice INT,peak_sms INT , peak_mms INT , sna_weight INT , subscriber_onnet INT ,friend_onnet INT” into the value field
+1. Now we just double click on it to configure it
+2. Name the action “communication“.
+3. Comment the action “Configure tutorial data“.
+4. Click OK.
+5. Now we’ll see a step-by-step window. 
+6. Select “Hadoop Distributed File System“ as the data type then click next.
+7. Select “TEXT MAP-REDUCE DIRECTORY” as the data subtype and click next.
+8. Next we have to chose the path, that we saved our file into.
+9. Click on the search button, and click the refresh button, then find the tutorial data file and then the getting started file pig_tutorial_data.mrtxt
+10. Click on the radio button beside “pig_tutorial_data.mrtxt”- if you cannot find it, refresh the view by clicking on the search button- and click OK.
+11. And now our data is in the source action. At this stage, you will see the data correctly displayed on the screen, the name of the fields are “Field1 Long, Field2 Long...”
+12. In this next step we can change the field name and their type by clicking the edit button on the top-left of the table
+Here we’ll rename the fields.
+13. Copy and paste “subscriber_number STRING , Friend STRING , offpeak_voice INT , offpeak_sms INT , offpeak_mms INT ,peak_voice INT,peak_sms INT , peak_mms INT , sna_weight INT , subscriber_onnet INT ,friend_onnet INT” into the value field
 Click OK. You will have the confirmation that the Header is correct.
 Click OK to exit from the Configuration window.
 If you leave the mouse cursor on the source action you will be able to see some configuration details
@@ -348,18 +351,19 @@ T012
 
 
 
-Conclusion
+# Conclusion
+
 Red Sqirl is a program that makes it possible to create and use data analyses ideas in an easy way. Fast to create, fast to share and easy to reuse.
 
-We’ve covered the interface
-We copied data into HDFS
-We built a workflow
-And then we extracted the results from that workflow
-We configured the source for a hdfs file
-Selected the sum of two columns
-Got  the average of a column
-Got the sum of a column when grouping by another
-We joined the two tables
-And filtered a table with a condition
+- We’ve covered the interface
+- We copied data into HDFS
+- We built a workflow
+- And then we extracted the results from that workflow
+- We configured the source for a hdfs file
+- Selected the sum of two columns
+- Got  the average of a column
+- Got the sum of a column when grouping by another
+- We joined the two tables
+- And filtered a table with a condition
 
 
