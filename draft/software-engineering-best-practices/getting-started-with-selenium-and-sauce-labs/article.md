@@ -7,7 +7,7 @@ In this tutorial, you'll learn how to create a Selenium test through the followi
 
 As mentioned, we'll use Java to code the tests, but the tools (like Selenium IDE and Sauce Labs) and concepts (like the Page Object pattern) apply to all the other languages supported by Selenium (Ruby, C#, Python, Node.js, JavaScript, and PHP).
 
-The source code of all the tests (is available on Github](https://github.com/eh3rrera/selenium-saucelabs-example).
+The source code of all the tests [is available on Github](https://github.com/eh3rrera/selenium-saucelabs-example).
 
 # Requirements
 
