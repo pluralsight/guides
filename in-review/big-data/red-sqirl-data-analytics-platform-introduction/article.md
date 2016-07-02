@@ -2,7 +2,7 @@
 
 # Introduction
 
-Red Sqirl is a web-based big data application that simplifies the analysis of large data sets. With Red Sqirl, you can quickly access the power of the Hadoop eco-system, enhancing the productivity of data scientists and analysts. Red Sqirl analyzes massive amounts of data rapidly and cost-effectively. It is an open platform that users can extend, thereby simplifying the Hadoop ecosystem (Hadoop, Hive, Pig, HBase, Oozie, etc) because you no longer have to master each of those underlying technologies.
+Red Sqirl is a web-based big data application that simplifies the analysis of large data sets. With Red Sqirl, you can quickly access the power of the Hadoop eco-system, analyzing massive amounts of data rapidly and cost-effectively. It is an open platform that users can extend, thereby simplifying the Hadoop ecosystem (Hadoop, Hive, Pig, HBase, Oozie, etc) because you no longer have to master each of those underlying technologies. This makes Red Sqirl optimal for enhancing the productivity of data scientists.
 
 Red Sqirl accesses your data through third-party processing and storage engines and organizes them into packages. For example, the Red Sqirl Pig package gives you access to Apache Pig. Red Sqirl also classifies a reusable piece of analyses into models. 
 
@@ -22,8 +22,8 @@ You can learn more at www.redsqirl.com
 
 ### Summary
 
-<b>Step 1:</b> Learn about the Red Sqirl interface </br>
-<b>Step 2:</b> Learn how to copy data into HDFS </br>
+[<b>Step 1:</b> Learn about the Red Sqirl interface </br>](#step-1)
+[<b>Step 2:</b> Learn how to copy data into HDFS </br>](#step-2-get-some-data-that-we-will-analyze)
 <b>Step 3:</b> Learn how to build a workflow </br>
 <b>Step 4:</b> Learn how to run that workflow </br>
 <b>Step 5:</b> Learn how to extract the result from that workflow </br>
@@ -98,7 +98,7 @@ The help tab is made up of:
 
 These are the three main parts of the Red Sqirl interface.
 
-###### Step 2. Get some data that we will analyze. 
+#### Step 2. Get some data that we will analyze. 
 
 Inside the Red Sqirl installation folder we’ve already given you some data for this tutorial.
 So what we need to do now is copy this data into our HDFS (Hadoop Distributed File System).
