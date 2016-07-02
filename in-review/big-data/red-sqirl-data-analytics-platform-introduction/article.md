@@ -22,7 +22,7 @@ You can learn more at www.redsqirl.com
 
 ### Summary
 
-[<b>Step 1:</b> Learn about the Red Sqirl interface </br>](#### Step 1)
+<b>Step 1:</b> Learn about the Red Sqirl interface </br>
 <b>Step 2:</b> Learn how to copy data into HDFS </br>
 <b>Step 3:</b> Learn how to build a workflow </br>
 <b>Step 4:</b> Learn how to run that workflow </br>
