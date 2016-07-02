@@ -1,3 +1,8 @@
+### C# : Using Interfaces and Delegates by jigneshBeladiya
+- [Read the guide](http://tutorials.pluralsight.com/microsoft-net/c-using-interfaces-and-delegates)
+- [Read more from jigneshBeladiya](http://tutorials.pluralsight.com/author/jigneshBeladiya) <img src="https://avatars.githubusercontent.com/u/11713657?v=3" width="30" height="30" alt="jigneshBeladiya" />
+- Related to: Microsoft.NET (C#, ASP.NET, VB.NET, etc)
+
 ### Enforcing Immutability with ES2015 by Graham Marlow
 - [Read the guide](http://tutorials.pluralsight.com/front-end-javascript/enforcing-immutability-with-es2015)
 - [Read more from Graham Marlow](http://tutorials.pluralsight.com/author/mgmarlow) <img src="https://avatars.githubusercontent.com/u/3778552?v=3" width="30" height="30" alt="Graham Marlow" />
