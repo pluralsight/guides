@@ -22,8 +22,8 @@ You can learn more at www.redsqirl.com
 
 ### Summary
 
-[<b>Step 1:</b> Learn about the Red Sqirl interface </br>](#step-1)
-[<b>Step 2:</b> Learn how to copy data into HDFS </br>](#step-2-get-some-data-that-we-will-analyze)
+<b>Step 1:</b> Learn about the Red Sqirl interface </br>
+<b>Step 2:</b> Learn how to copy data into HDFS </br>
 <b>Step 3:</b> Learn how to build a workflow </br>
 <b>Step 4:</b> Learn how to run that workflow </br>
 <b>Step 5:</b> Learn how to extract the result from that workflow </br>
