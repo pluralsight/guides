@@ -58,11 +58,6 @@
 - [Read more from Ennis Massey](http://tutorials.pluralsight.com/author/MicroTransactionsMatterToo) <img src="https://avatars.githubusercontent.com/u/12421108?v=3" width="30" height="30" alt="Ennis Massey" />
 - Related to: Python
 
-### C# : Using Interfaces and Delegates by jigneshBeladiya
-- [Read the guide](http://tutorials.pluralsight.com/microsoft-net/c-using-interfaces-and-delegates?status=in-review)
-- [Read more from jigneshBeladiya](http://tutorials.pluralsight.com/author/jigneshBeladiya) <img src="https://avatars.githubusercontent.com/u/11713657?v=3" width="30" height="30" alt="jigneshBeladiya" />
-- Related to: Microsoft.NET (C#, ASP.NET, VB.NET, etc)
-
 ### Tutorial Contest FAQ by Prateek Gupta
 - [Read the guide](http://tutorials.pluralsight.com/software-engineering-best-practices/tutorial-contest-faq?status=in-review)
 - [Read more from Prateek Gupta](http://tutorials.pluralsight.com/author/prtkgpt) <img src="https://avatars.githubusercontent.com/u/2454349?v=3" width="30" height="30" alt="Prateek Gupta" />
