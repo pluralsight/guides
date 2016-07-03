@@ -1,3 +1,8 @@
+### Ionic 2 and Firebase by Steve Emmerich
+- [Read the guide](http://tutorials.pluralsight.com/front-end-javascript/ionic-2-and-firebase)
+- [Read more from Steve Emmerich](http://tutorials.pluralsight.com/author/SteveEmmerich) <img src="https://avatars.githubusercontent.com/u/310086?v=3" width="30" height="30" alt="Steve Emmerich" />
+- Related to: Front-End JavaScript (Angular, React, Meteor, etc)
+
 ### C# : Using Interfaces and Delegates by jigneshBeladiya
 - [Read the guide](http://tutorials.pluralsight.com/microsoft-net/c-using-interfaces-and-delegates)
 - [Read more from jigneshBeladiya](http://tutorials.pluralsight.com/author/jigneshBeladiya) <img src="https://avatars.githubusercontent.com/u/11713657?v=3" width="30" height="30" alt="jigneshBeladiya" />
