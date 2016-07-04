@@ -3,12 +3,7 @@
     "author_name": "mgmarlow",
     "author_real_name": "Graham Marlow",
     "branch": "master",
-    "branches": [
-        [
-            "adityavarshney",
-            "adityavarshney-front-end-javascript-enforcing-immutability-with-es2015"
-        ]
-    ],
+    "branches": [],
     "filename": "article.md",
     "first_commit": "1a5fdf0ee7c811062c186b88d2068664cd12b79a",
     "image_url": "https://avatars.githubusercontent.com/u/3778552?v=3",
