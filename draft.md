@@ -1,3 +1,8 @@
+### Instant Delivery Store using Ruby on Rails, Stripe and UberRUSH API by Ty Shaikh
+- [Read the guide](http://tutorials.pluralsight.com/ruby-ruby-on-rails/instant-delivery-store-using-ruby-on-rails-stripe-and-uberrush-api?status=draft)
+- [Read more from Ty Shaikh](http://tutorials.pluralsight.com/author/ty-shaikh) <img src="https://avatars.githubusercontent.com/u/18148869?v=3" width="30" height="30" alt="Ty Shaikh" />
+- Related to: Ruby, Ruby on Rails
+
 ### Jaffa  by rahul-rt
 - [Read the guide](http://tutorials.pluralsight.com/other/jaffa?status=draft)
 - [Read more from rahul-rt](http://tutorials.pluralsight.com/author/rahul-rt) <img src="https://avatars.githubusercontent.com/u/20288606?v=3" width="30" height="30" alt="rahul-rt" />
