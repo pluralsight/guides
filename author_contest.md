@@ -1,4 +1,4 @@
-![2016 Tutorial Contest](https://raw.githubusercontent.com/pluralsight/guides/master/images/cc685ede-833b-4f14-b9b0-661f266d7820.jpg)
+![2016 Tutorial Contest](https://raw.githubusercontent.com/pluralsight/guides/master/images/7e7d97e2-fbf2-4146-9f81-8d0c558c2542.jpg)
 
 Are you passionate about helping other developers learn about your favorite technologies and APIs?  If so, this event is for you!
 
@@ -75,6 +75,7 @@ We've teamed up with some of the best companies with cutting-edge technologies a
 * [LigaData](http://kamanja.org/)
 * [Pluralsight](http://pluralsight.com/)
 * [PubNub](http://pubnub.com/)
+* [Pusher](https://pusher.com/developers)
 * [RethinkDB](http://rethinkdb.com/)
 * [Sauce Labs](http://saucelabs.com/)
 * [Tierion](https://tierion.com/docs)
@@ -132,6 +133,11 @@ Want to join as a sponsor? Please email Prateek at Prateek-Gupta@Pluralsight.com
     <td>PubNub</td>
     <td>$500</td>
     <td>Best realtime app using PubNub</td>
+  </tr>
+   <tr>
+    <td>Pusher</td>
+    <td>$500</td>
+    <td>Best tutorial using Pusher.com platform</td>
   </tr>
   <tr>
     <td>RethinkDB</td>
