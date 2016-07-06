@@ -123,19 +123,19 @@ Here is the code for the index file.
 
     # views/products/index.html.erb
     
-    <section class="main">
-      <div class="flex three">
-        <% @products.each do |product| %>
-          <article class="card">
-            <img src="<%= product.picture %>">
-            <footer>
-              <h3><%= product.title %></h3>
-              <%= link_to "Deets", product_path(product), class: "button" %>
-            </footer>
-          </article>
-        <% end %>
-      </div>
-    </section>
+    <div class="flex three">
+      <% @products.each do |product| %>
+        <article class="card">
+          <img src="<%= product.picture %>">
+          <footer>
+            <h3><%= product.title %></h3>
+            <%= link_to "Deets", product_path(product), class: "button" %>
+          </footer>
+        </article>
+      <% end %>
+    </div>
+
+
 
 Create a navigation partial.
 
@@ -162,7 +162,9 @@ Add it to the main layout file.
     
     <body>
       <%= render 'layouts/navigation' %>
-      <%= yield %>
+      <section class="main">
+          <%= yield %>
+      </section>
     </body>
 
 
@@ -173,42 +175,63 @@ The root path should look something like this depending on your seed data.
 
 Here is the code for the show file.
 
-    <section class="main">
-      <div class="flex two">
-        <div class="product-image">
-          <img src="<%= @product.picture %>" />
-        </div>
-        <div>
-          <h1><%= @product.title %></h1>
-          <p>
-            <%= @product.description %>
-          </p>
-    
-          <h2><%= number_to_currency(@product.price) %></h2>
-          <hr />
-          <h3>Instant Shipping</h3>
-    
-          <img src="http://www.ilos.com.br/web/wp-content/uploads/UberRUSH-logo.png" />
-    
-          <div id="shipping-quote">
-            <%= form_tag "/quote", method: 'post', remote: true do %>
-              <%= text_field_tag :address, nil, placeholder: "Street Address" %>
-              <%= text_field_tag :city, nil, placeholder: "City" %>
-              <%= text_field_tag :postal_code, nil, placeholder: "Postal Code" %>
-              <%= submit_tag "Get a Delivery Quote" %>
-            <% end %>
-          </div>
-          <br />
-    
-          <div id="quote-info" class="hidden">
-            <h3>Quote Details</h3>
-            <p>Cost Estimate: <span id="shipping-cost"></span></p>
-            <p>Time Estimate: <span id="eta"></span></p>
-          </div>
-    
-        </div>
+    <div class="flex two">
+      <div class="product-image">
+        <img src="<%= @product.picture %>" />
       </div>
-    </section>
+      <div>
+        <h1><%= @product.title %></h1>
+        <p>
+          <%= @product.description %>
+        </p>
+    
+        <h2><%= number_to_currency(@product.price) %></h2>
+        <hr />
+        <h3>Instant Shipping</h3>
+    
+        <img src="http://www.ilos.com.br/web/wp-content/uploads/UberRUSH-logo.png" />
+    
+        <div id="shipping-quote">
+          <%= form_tag "/quote", method: 'post', remote: true do %>
+            <%= text_field_tag :address, nil, placeholder: "Street Address" %>
+            <%= text_field_tag :city, nil, placeholder: "City" %>
+            <%= text_field_tag :postal_code, nil, placeholder: "Postal Code" %>
+            <%= submit_tag "Get a Delivery Quote" %>
+          <% end %>
+        </div>
+        <br />
+    
+        <div id="quote-info" class="hidden">
+          <h3>Quote Details</h3>
+          <p>Cost Estimate: <span id="shipping-cost"></span></p>
+          <p>Time Estimate: <span id="eta"></span></p>
+        </div>
+    
+        <div id="checkout" class="hidden">
+          <h3>Order Product</h3>
+          <%= form_tag "/order", method: 'post' do %>
+            <%= text_field_tag :first_name, nil, placeholder: "First Name" %>
+            <%= text_field_tag :last_name, nil, placeholder: "Last Name" %>
+            <%= text_field_tag :email, nil, placeholder: "Email" %>
+            <%= text_field_tag :number, nil, placeholder: "Cell Phone" %>
+            <%= text_field_tag :address, nil, placeholder: "Street Address" %>
+            <%= text_field_tag :city, nil, placeholder: "City" %>
+            <%= text_field_tag :postal_code, nil, placeholder: "Postal Code" %>
+    
+            <%= hidden_field_tag :title , @product.title %>
+            <%= hidden_field_tag :price , @product.price %>
+    
+            <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+                data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+                data-description="Shoes"
+                data-amount="">
+            </script>
+          <% end %>
+        </div>
+    
+      </div>
+    </div>
+
 
 The show path should look like this. The forms on this page will be using AJAX calls and jQuery for DOM manipulation.
 
@@ -513,26 +536,33 @@ Now let's add the controller logic to combine the UberRUSH delivery with the Str
         
         end
         
-    
+
 Add the order completed page.
 
     # view/products/done.html.erb
     
-    <section class="main">
-      <h1>Thank you for the order!</h1>
-      <p>
-        Total Cost with Shipping: <%= number_to_currency(params[:amount].to_i / 100) %>
-      </p>
+    <h1>Thank you for the order!</h1>
     
-      <p>
-        A copy of the invoice has been sent to your email, and you will recieve SMS updates from the UberRUSH courier.
-      </p>
-    </section>
+    <p>Total Cost with Shipping: <strong><%= number_to_currency(params[:amount].to_i / 100) %></strong></p>
+    
+    <p>Your Shoes will Arrive: <strong><%= params[:time] %> minutes</strong></p>
+    
+    <p>A copy of the invoice has been sent to your email, and you will recieve SMS updates from the UberRUSH courier.</p>
+
+
+Let's test it out with some data. The CC info will validate on Stripe.
+
+![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/383cc27c-9e66-44e3-8216-afa804165228.41)
+
+![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/b4ee0009-315a-408d-80c6-2a0aae97d515.41)
+
 
 Stripe will send an invoice via email and Uber will provide SMS updates to the customer. Currently, all the API's are in test / sandbox mode so neither of those will actually happen right now.
 
 
-![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/242526e2-55b1-4067-9463-82d1ccf87a69.29)
+
+![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/676e9462-d474-42f1-9d2c-c6d6ec194326.41)
+
 
 That's it! We are done with the project!
 
