@@ -70,7 +70,7 @@ Publish your adjusted rules using the following command:
 }
 
 ```
-Select data and add the key `"todos"` to the tree.
+Select data and add the key `"todos"` and the value of `''` to the tree.
 
 
 ### Firebase config
