@@ -104,9 +104,41 @@ I will be using the Picnic CSS library, since every other tutorial uses Bootstra
     
       <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/picnicss/6.1.1/picnic.min.css">
 
-Here is the code for the index file. There is a responsive navigation with all the products displayed as cards.
+Add this to your application CSS file. This will be some extra styling for the index and show page.
+
+    # assets/stylesheets/application.css
+    
+    .main {
+      padding-top: 100px;
+      width: 80%;
+      margin: 0 auto;
+    }
+    
+    #quote-info {
+      display: none;
+    }
+
+Here is the code for the index file. 
 
     # views/products/index.html.erb
+    
+    <section class="main">
+      <div class="flex three">
+        <% @products.each do |product| %>
+          <article class="card">
+            <img src="<%= product.picture %>">
+            <footer>
+              <h3><%= product.title %></h3>
+              <%= link_to "Deets", product_path(product), class: "button" %>
+            </footer>
+          </article>
+        <% end %>
+      </div>
+    </section>
+
+Create a navigation partial.
+
+    # views/layouts/_navigation.html.erb
     
     <nav>
       <a href="/" class="brand">
@@ -122,47 +154,198 @@ Here is the code for the index file. There is a responsive navigation with all t
         <a href="#" class="button icon-puzzle">Contact</a>
       </div>
     </nav>
-    
-    <section class="main">
-      <div class="flex three">
-        <% @products.each do |product| %>
-          <article class="card">
-            <img src="<%= product.picture %>">
-            <footer>
-              <h3><%= product.title %></h3>
-              <%= link_to "Deets", product_path(product), class: "button" %>
-            </footer>
-          </article>
-        <% end %>
-      </div>
-    </section>
-    
-Add this to your application CSS file to make the index page look nice.
 
-    # assets/stylesheets/application.css
+Add it to the main layout file.
     
-    .main {
-      padding-top: 100px;
-      width: 80%;
-      margin: 0 auto;
-    }
+    # views/layouts/application.html.erb
+    
+    <body>
+      <%= render 'layouts/navigation' %>
+      <%= yield %>
+    </body>
 
-It should look like this:
+
+The root path should look something like this depending on your seed data.
 
 ![Index Page Screenshot](https://raw.githubusercontent.com/pluralsight/guides/master/images/52b756fb-cd27-468f-b4aa-804aae99550b.png)
 
 
 Here is the code for the show file.
 
-Here is the code for the done file.
+    <section class="main">
+      <div class="flex two">
+        <div class="product-image">
+          <img src="<%= @product.picture %>" />
+        </div>
+        <div>
+          <h1><%= @product.title %></h1>
+          <p>
+            <%= @product.description %>
+          </p>
+    
+          <h2><%= number_to_currency(@product.price) %></h2>
+          <hr />
+          <h3>Instant Shipping</h3>
+    
+          <img src="http://www.ilos.com.br/web/wp-content/uploads/UberRUSH-logo.png" />
+    
+          <div id="shipping-quote">
+            <%= form_tag "/quote", method: 'post', remote: true do %>
+              <%= text_field_tag :address, nil, placeholder: "Street Address" %>
+              <%= text_field_tag :city, nil, placeholder: "City" %>
+              <%= text_field_tag :postal_code, nil, placeholder: "Postal Code" %>
+              <%= submit_tag "Get a Delivery Quote" %>
+            <% end %>
+          </div>
+          <br />
+    
+          <div id="quote-info">
+            <hr />
+            <h3>Quote Details</h3>
+            <p>Cost Estimate: <span id="shipping-cost"></span></p>
+            <p>Time Estimate: <span id="eta"></span></p>
+          </div>
+    
+        </div>
+      </div>
+    </section>
+
+The show path should look like this. The forms on this page will be using AJAX calls and jQuery for DOM manipulation.
+
+
+![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/f56a00de-c9dc-42f3-925a-25095ccb6b69.30)
 
 
 
+This is it for our initial views. Let's get the API in the mix and start getting some quotes.
+
+---
+
+### UberRUSH API Wrapper 
+
+I will show you the code shortly for the Ruby API wrapper that will communicate with UberRUSH. First, let's add some gems that we will need.
+
+    # Gemfile
+    
+    gem 'httparty'
+    gem 'stripe'
+    gem 'figaro'
+    
+Bundle install these. [httparty](https://github.com/jnunemaker/httparty) is for the API wrapper, [Stripe](https://github.com/stripe/stripe-ruby) is for credit card payments and [Figaro](https://github.com/laserlemon/figaro) is for environment variables.
+
+Here is the API wrapper code. The major points are as follows:
+1. I set the pickup location to a single address.
+2. The base uri is the UberRUSH sandbox API. You will have to change that in production.
+3. To get the Uber Client ID / Client Secret, you need to [create an Uber Developer Account](https://developer.uber.com/).
+4. The API require OAuth tokens on each call.
+5. I have included all the basic endpoints, though we will only need to use a few of them.
+6. Deliveries need a pickup location object, a dropoff location object and an items array. Read more on the [official documentation](https://developer.uber.com/docs/rush).
 
 
+    module Uber
+    
+      # Default pickup location, for single-store implementations
+      PICKUP =
+        {
+          location: {
+            address: "40 W 57th Street",
+            city: "New York",
+            state: "New York",
+            postal_code: "10019",
+            country: "US"
+          },
+          contact: {
+            company_name: "Instant Kicks",
+            email: "admin@instantkicks.com",
+            phone: {
+              number: "+12129541234",
+              sms_enabled: true
+            }
+          }
+        }
+    
+      class UberRush
+        include HTTParty
+        attr_reader :base_path
+    
+        # Sandbox URI, Change to Production when Ready
+        base_uri 'https://sandbox-api.uber.com/v1/deliveries'
+    
+        # Gets OAuth Token on new Instance
+        def initialize
+          url = "https://login.uber.com/oauth/v2/token"
+    
+          token = self.class.post(url,
+            body: {
+              client_id: ENV['uber_rush_client_id'],
+              client_secret: ENV['uber_rush_client_secret'],
+              grant_type: 'client_credentials',
+              scope: 'delivery'
+            }
+          )["access_token"]
+    
+          @base_path = "?access_token=#{token}"
+        end
+    
+        # Gets all deliveries on your account
+        def all_deliveries
+          url = "#{base_path}"
+          self.class.get(url)
+        end
+    
+        # Gets one specified delivery on your account
+        def one_delivery(id)
+          url = "/#{id}#{base_path}"
+          self.class.get(url)
+        end
+    
+        # Returns a delivery quote
+        def delivery_quote(pickup_obj = Uber::PICKUP, dropoff_obj)
+          url = "/quote#{base_path}"
+    
+          self.class.post(url,
+            body: { pickup: pickup_obj, dropoff: dropoff_obj }.to_json,
+            headers: { 'Content-Type' => 'application/json' }
+          )
+        end
+    
+        # Creates a delivery and returns a delivery object
+        def create_delivery(items_arr, pickup_obj = Uber::PICKUP, dropoff_obj)
+          url = "#{base_path}"
+    
+          self.class.post(url,
+            body: { items: items_arr, pickup: pickup_obj, dropoff: dropoff_obj }.to_json,
+            headers: { 'Content-Type' => 'application/json' }
+          )
+        end
+    
+        # Changes delivery status to client_canceled
+        def cancel_delivery(id)
+          url = "/#{id}/cancel#{base_path}"
+          self.class.post(url)
+        end
+      end
+    end
+    
+Let's add some JavaScript and see how the API works.
+
+    # views/products/quote.js.erb
+    
+    $('#shipping-cost').html("$<%=  @quote["fee"] %>0");
+    $('#eta').html("<%=  @quote["pickup_eta"] + @quote["dropoff_eta"] %> minutes");
+    $('#shipping-quote').hide();
+
+Go to the product page and enter an address in Manhattan.
 
 
+![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/abec67dc-a2d8-42f2-8e0e-a61035c09402.31)
 
+Click 'Get a Delivery Quote' to see the results.
+
+
+![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/b5d66215-1293-4db2-af71-0007db065abe.24)
+
+In a production application, you should calculate a target time and round-up to account for traffic and other potential time delays. [UberRUSH's design guidelines](https://d1a3f4spazzrp4.cloudfront.net/uberex/UberRUSH_API_guidelines_v2.pdf) has a much more detailed work-flow. This tutorial is just to cover the basics.
 
 
 
