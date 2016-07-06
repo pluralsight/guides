@@ -463,11 +463,11 @@ The page should now look like this after a quote is entered.
 ![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/d9a978ac-ee8c-4487-84a9-301fa097bcd1.47)
 
 
-Now let's add the controller logic to combine the UberRUSH delivery with the Stripe charge. The logic is as follows
+Now let's add the controller logic to combine the UberRUSH delivery with the Stripe charge. The logic is as follows:
 
 1. Stripe will create a customer and validate the card, if that fails the page will refresh.
-2. An UberRUSH delivery is created with the store pickup, the user dropoff and the item information. Only 1 item in the array for now.
-3. Total is calculated using the price of the object plus the fee from the UberRUSH delivery response object.
+2. An UberRUSH delivery is created with the store pickup, the user inputted dropoff location and the shoe information. Our call will work for 1 item at a time.
+3. The total is calculated using the price of the object plus the fee from the UberRUSH delivery response object.
 4. Stripe will charge the customer and redirect them to the order confirmation page.
 
 
@@ -558,7 +558,7 @@ Stripe will send an invoice via email and Uber will provide SMS updates to the c
 
 That's it! We are done with the project!
 
-This was my first coding tutorial, so there is a lot more that could be added in regards to validation and error-checking. I wanted to create an API wrapper and show a basic use case for it. Feel free to leave feedback in the comments below or fork this guide. I skipped over some minor details, since I assumed all the readers would have some experience with Rails, Stripe and configuration.
+This was my first coding tutorial, so there is a lot more that could be added in regards to validation and error-checking (and of course TDD). I wanted to create an API wrapper and show a basic use case for it. Feel free to leave feedback in the comments below or fork this guide. I skipped over some minor details, since I assumed all the readers would have some experience with Rails, Stripe and configuration.
 
 [The Github code is here.](https://github.com/ty-shaikh/uber-rush-tutorial)
 
