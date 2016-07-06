@@ -34,7 +34,11 @@ This is the list of all your skills and you can click the top right button to cr
 
 #### Interaction Model
 
-```{
+
+![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/f35c7195-4064-408d-9c4a-e62ab30d54f1.png)
+
+
+` ``{
   "intents": [
     {
       "intent": "GetNewFactIntent"
@@ -49,8 +53,8 @@ This is the list of all your skills and you can click the top right button to cr
       "intent": "AMAZON.CancelIntent"
     }
   ]
- }```
-
+ }`` `
+ 
 
 #### Configuration
 
