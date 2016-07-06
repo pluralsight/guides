@@ -1,3 +1,8 @@
+### Introduction to Angular test-driven development by Hristo Georgiev
+- [Read the guide](http://tutorials.pluralsight.com/front-end-javascript/introduction-to-angular-test-driven-development?status=draft)
+- [Read more from Hristo Georgiev](http://tutorials.pluralsight.com/author/Kaizeras) <img src="https://avatars.githubusercontent.com/u/6340189?v=3" width="30" height="30" alt="Hristo Georgiev" />
+- Related to: Front-End JavaScript (Angular, React, Meteor, etc)
+
 ### ES6 Draft by Sebastian
 - [Read the guide](http://tutorials.pluralsight.com/node-js/es6-draft?status=draft)
 - [Read more from Sebastian](http://tutorials.pluralsight.com/author/sbastidasr) <img src="https://avatars.githubusercontent.com/u/4912810?v=3" width="30" height="30" alt="Sebastian" />
