@@ -96,6 +96,7 @@ Open up your ```www/index.html``` file, and paste the config information from Fi
 
 <body>
   <ion-app></ion-app>
+  <!-- Start Add -->
   <script src="https://www.gstatic.com/firebasejs/3.1.0/firebase.js"></script>
   <script>
     // Initialize Firebase
@@ -107,7 +108,7 @@ Open up your ```www/index.html``` file, and paste the config information from Fi
     };
     firebase.initializeApp(config);
   </script>
-  
+  <!-- End Add -->
   <!-- cordova.js required for cordova apps -->
   <script src="cordova.js"></script>
   <!-- Polyfill needed for platforms without Promise and Collection support -->
