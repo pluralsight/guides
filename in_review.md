@@ -1,8 +1,3 @@
-### Red Sqirl - Data Analytics platform introduction by Igor Souza
-- [Read the guide](http://tutorials.pluralsight.com/big-data/red-sqirl-data-analytics-platform-introduction?status=in-review)
-- [Read more from Igor Souza](http://tutorials.pluralsight.com/author/igfasouza) <img src="https://avatars.githubusercontent.com/u/6233869?v=3" width="30" height="30" alt="Igor Souza" />
-- Related to: Big Data (Hadoop, Spark, etc)
-
 ### Getting started with Selenium and Sauce Labs by Esteban Herrera
 - [Read the guide](http://tutorials.pluralsight.com/software-engineering-best-practices/getting-started-with-selenium-and-sauce-labs?status=in-review)
 - [Read more from Esteban Herrera](http://tutorials.pluralsight.com/author/eh3rrera) <img src="https://avatars.githubusercontent.com/u/11665759?v=3" width="30" height="30" alt="Esteban Herrera" />
