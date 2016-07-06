@@ -1,5 +1,3 @@
-# Alexa HackGuides Tutorial 2016
-
 ### Important information about how Alexa works.
 
 Alexa is based on a question->response similar to Siri and Google Now services.
