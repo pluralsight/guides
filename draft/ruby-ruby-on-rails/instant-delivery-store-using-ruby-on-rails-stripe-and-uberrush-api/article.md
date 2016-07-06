@@ -110,13 +110,14 @@ Add this to your application CSS file. This will be some extra styling for the i
     
     .main {
       padding-top: 100px;
-      width: 80%;
+      width: 90%;
       margin: 0 auto;
     }
     
-    #quote-info {
+    .hidden {
       display: none;
     }
+
 
 Here is the code for the index file. 
 
@@ -199,8 +200,7 @@ Here is the code for the show file.
           </div>
           <br />
     
-          <div id="quote-info">
-            <hr />
+          <div id="quote-info" class="hidden">
             <h3>Quote Details</h3>
             <p>Cost Estimate: <span id="shipping-cost"></span></p>
             <p>Time Estimate: <span id="eta"></span></p>
@@ -242,6 +242,8 @@ Here is the API wrapper code. The major points are as follows:
 6. Deliveries need a pickup location object, a dropoff location object and an items array. Read more on the [official documentation](https://developer.uber.com/docs/rush).
 
 
+    # config/initializers/uber_rush.rb
+    
     module Uber
     
       # Default pickup location, for single-store implementations
@@ -358,11 +360,11 @@ We take the first quote from the UberRUSH API response, since it is the first on
         end
       end
 
-Let's add some JavaScript and see how the API works. We will add the pickup and dropoff ETA to come up with an estimate.
+Let's add some JavaScript and see how the API works. We will extract the fee amount, and add the pickup and dropoff ETA to come up with an estimate.
 
     # views/products/quote.js.erb
     
-    $('#shipping-cost').html("<%=  number_to_currency)@quote["fee"]) %>");
+    $('#shipping-cost').html("<%= number_to_currency(@quote["fee"]) %>");
     $('#eta').html("<%=  @quote["pickup_eta"] + @quote["dropoff_eta"] %> minutes");
     
     $('#shipping-quote').hide();
@@ -377,9 +379,10 @@ Go to the product page and enter an address in Manhattan.
 Click 'Get a Delivery Quote' to see the results.
 
 
-![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/b5d66215-1293-4db2-af71-0007db065abe.24)
+![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/a12e42d4-eef6-41e3-bf92-e70848cd88b5.49)
 
-Awesome, we have got a quote! 
+
+Awesome, we got a quote! 
 
 In a production application, you should calculate a target time and round-up to account for traffic and other potential time delays. [UberRUSH's design guidelines](https://d1a3f4spazzrp4.cloudfront.net/uberex/UberRUSH_API_guidelines_v2.pdf) have a much more detailed work-flow. This tutorial is just to cover the basics.
 
@@ -389,8 +392,151 @@ In the next section, we are going to add Stripe, create a sandbox UberRUSH deliv
 
 ### Stripe and Checkout
 
+Create a Stripe account, if you do not already have one, and put the test publishable key and test secret key into your environment variables. Add a config file to the project.
+
+    # config/initializers/stripe.rb
+
+    Rails.configuration.stripe = {
+      publishable_key: ENV['stripe_publishable_key'],
+      secret_key: ENV['stripe_secret_key']
+    }
+    
+    Stripe.api_key = Rails.configuration.stripe[:secret_key]
+
+Now we can update our views. Add this form below the "quote-info" div. The hidden field tags will pass along some info needed for the UberRUSH delivery.
+
+    # views/products/show.html.erb
+    
+      <div id="checkout" class="hidden">
+        <h3>Order Product</h3>
+        <%= form_tag "/order", method: 'post' do %>
+          <%= text_field_tag :first_name, nil, placeholder: "First Name" %>
+          <%= text_field_tag :last_name, nil, placeholder: "Last Name" %>
+          <%= text_field_tag :email, nil, placeholder: "Email" %>
+          <%= text_field_tag :number, nil, placeholder: "Cell Phone" %>
+          <%= text_field_tag :address, nil, placeholder: "Street Address" %>
+          <%= text_field_tag :city, nil, placeholder: "City" %>
+          <%= text_field_tag :postal_code, nil, placeholder: "Postal Code" %>
+
+          <%= hidden_field_tag :title , @product.title %>
+          <%= hidden_field_tag :price , @product.price %>
+
+          <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+              data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+              data-description="Shoes"
+              data-amount="">
+          </script>
+        <% end %>
+      </div>
+
+Let's update our JavaScript to return the first form params to the second form. This way the customer only has to enter a few more required inputs.
+
+    # views/products/quote.js.erb
+
+    $('#shipping-cost').html("<%= number_to_currency(@quote["fee"]) %>");
+    $('#eta').html("<%=  @quote["pickup_eta"] + @quote["dropoff_eta"] %> minutes");
+    
+    $('#shipping-quote').hide();
+    $('#quote-info').show();
+    $('#checkout').show();
+    
+    $('input[name=address]').val('<%= @dropoff[:location][:address]  %>');
+    $('input[name=city]').val('<%= @dropoff[:location][:city]  %>');
+    $('input[name=postal_code]').val('<%= @dropoff[:location][:postal_code]  %>');
+
+The page should now look like this after a quote is entered.
 
 
+![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/7f72d80c-2d74-4b23-9b58-2ff8d260c82a.09)
+
+Now let's add the controller logic to combine the UberRUSH delivery with the Stripe charge. The logic is as follows
+
+1. Stripe will create a customer and validate the card, if that fails the page will refresh.
+2. An UberRUSH delivery is created with the store pickup, the user dropoff and the item information. Only 1 item in the array for now.
+3. Total is calculated using the price of the object plus the fee from the UberRUSH delivery response object.
+4. Stripe will charge the customer and redirect them to the order confirmation page.
+
+
+        # controllers/products_controller.rb
+        
+        def order
+          customer = Stripe::Customer.create(
+            :email => params[:email],
+            :card  => params[:stripeToken]
+          )
+        
+          ur = Uber::UberRush.new
+          pickup_obj = Uber::PICKUP
+        
+          dropoff_obj = {
+            location: {
+              address: params[:address],
+              city: params[:city],
+              state: "New York",
+              postal_code: params[:postal_code],
+              country: "US",
+            },
+            contact: {
+              first_name: params[:first_name],
+              last_name: params[:last_name],
+              email: params[:email],
+              phone: {
+                number: "+1" + params[:number],
+                sms_enabled: true
+              }
+            }
+          }
+        
+          items = [
+            {
+              title: params[:title],
+              quantity: 1,
+              price: params[:price]
+            }
+          ]
+        
+          response = ur.create_delivery(items, pickup_obj, dropoff_obj)
+          @amount = ((params[:price].to_f + response["fee"]) * 100).to_i
+        
+          charge = Stripe::Charge.create(
+            :customer    => customer.id,
+            :amount      => @amount,
+            :description => params[:title],
+            :currency    => 'usd'
+          )
+        
+          redirect_to done_path(amount: @amount)
+        
+        rescue Stripe::CardError => e
+          flash[:error] = e.message
+          redirect_to :back
+        
+        end
+        
+    
+Add the order completed page.
+
+    # view/products/done.html.erb
+    
+    <section class="main">
+      <h1>Thank you for the order!</h1>
+      <p>
+        Total Cost with Shipping: <%= number_to_currency(params[:amount].to_i / 100) %>
+      </p>
+    
+      <p>
+        A copy of the invoice has been sent to your email, and you will recieve SMS updates from the UberRUSH courier.
+      </p>
+    </section>
+
+Stripe will send an invoice via email and Uber will provide SMS updates to the customer. Currently, all the API's are in test / sandbox mode so neither of those will actually happen right now.
+
+
+![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/242526e2-55b1-4067-9463-82d1ccf87a69.29)
+
+That's it! We are done with the project!
+
+This was my first coding tutorial, so there is a lot more that could be added in regards to validation and error-checking. I wanted to create an API wrapper and show a basic use case for it. Feel free to leave feedback in the comments below or fork this guide. I skipped over some minor details, since I assumed all the readers would have some experience with Rails, Stripe and configuration.
 
 ##### API Wrapper / UberRUSH
 
