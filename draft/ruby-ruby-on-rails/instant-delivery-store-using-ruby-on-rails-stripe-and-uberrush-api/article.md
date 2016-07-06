@@ -327,13 +327,47 @@ Here is the API wrapper code. The major points are as follows:
       end
     end
     
-Let's add some JavaScript and see how the API works.
+We need to update our controller code so the form can call the API wrapper. Here I am creating a new instance of the UberRUSH class and generating an OAuth token. We then set the pickup location to our default store address, and populate the dropoff object with the user inputs. UberRUSH is highly location-dependent, so these examples are coded to work in Manhattan. Tweak the code if you want to try SF / Chicago.
+
+We take the first quote from the UberRUSH API response, since it is the first one is for on-demand delivery. THe other quotes are for each available delivery window for the day. There is more detail in developer documation if desired.
+
+    # controller/product_controller.rb
+    
+      def quote
+        ur = Uber::UberRush.new
+    
+        pickup_obj = Uber::PICKUP
+    
+        dropoff_obj = {
+          location: {
+            address: params[:address],
+            city: params[:city],
+            state: "New York",
+            postal_code: params[:postal_code],
+            country: "US",
+          }
+        }
+    
+        response = ur.delivery_quote(pickup_obj, dropoff_obj)
+    
+        respond_to do |format|
+          format.html
+          format.js do
+            @quote = response["quotes"][0]
+          end
+        end
+      end
+
+Let's add some JavaScript and see how the API works. We will add the pickup and dropoff ETA to come up with an estimate.
 
     # views/products/quote.js.erb
     
-    $('#shipping-cost').html("$<%=  @quote["fee"] %>0");
+    $('#shipping-cost').html("<%=  number_to_currency)@quote["fee"]) %>");
     $('#eta').html("<%=  @quote["pickup_eta"] + @quote["dropoff_eta"] %> minutes");
+    
     $('#shipping-quote').hide();
+    $('#quote-info').show();
+
 
 Go to the product page and enter an address in Manhattan.
 
@@ -345,7 +379,15 @@ Click 'Get a Delivery Quote' to see the results.
 
 ![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/b5d66215-1293-4db2-af71-0007db065abe.24)
 
-In a production application, you should calculate a target time and round-up to account for traffic and other potential time delays. [UberRUSH's design guidelines](https://d1a3f4spazzrp4.cloudfront.net/uberex/UberRUSH_API_guidelines_v2.pdf) has a much more detailed work-flow. This tutorial is just to cover the basics.
+Awesome, we have got a quote! 
+
+In a production application, you should calculate a target time and round-up to account for traffic and other potential time delays. [UberRUSH's design guidelines](https://d1a3f4spazzrp4.cloudfront.net/uberex/UberRUSH_API_guidelines_v2.pdf) have a much more detailed work-flow. This tutorial is just to cover the basics.
+
+In the next section, we are going to add Stripe, create a sandbox UberRUSH delivery (instead of just a quote) and simulate the checkout process.
+
+---
+
+### Stripe and Checkout
 
 
 
