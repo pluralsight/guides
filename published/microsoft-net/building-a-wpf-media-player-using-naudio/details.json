@@ -3,7 +3,12 @@
     "author_name": "aykanatm",
     "author_real_name": "Murat Aykanat",
     "branch": "master",
-    "branches": [],
+    "branches": [
+        [
+            "adityavarshney",
+            "adityavarshney-microsoft-net-building-a-wpf-media-player-using-naudio"
+        ]
+    ],
     "filename": "article.md",
     "first_commit": "c405d35eacc39776a21b540c0060ee98cb4513ad",
     "image_url": "https://avatars.githubusercontent.com/u/9140297?v=3",
