@@ -20,11 +20,9 @@ I will be creating a simple shoe store with a home page and a product page.
 ### Setting up the Rails App
 
 
-First, let's initialize an empty Rails application and open it in your text editor.
+First, let's initialize an new Rails application and open it in your text editor.
 
     $ rails new instant_delivery
-    $ cd instant_delivery
-    $ atom .
 
 ---
 #### Models
@@ -52,9 +50,7 @@ Then seed the database.
 ---
 #### Controllers
 
-We will use a single Products controller to handle all the actions. There will be an index page for all the products, a show page for the individual product, a route to get an UberRUSH quote, a route to charge the credit card and create an UberRUSH delivery and final an order confirmation page.
-
-I will fill out the other actions that deal with the API later.
+We will use a single Products controller to handle all the actions. There will be an index action for all the products, a show action for the individual product, an action to get an UberRUSH quote, an action to charge a credit card and create an UberRUSH delivery and final an order confirmation action.
 
     # controllers/products_controller.rb
     
@@ -181,7 +177,7 @@ The root path should look something like this depending on your seed data.
 ![Index Page Screenshot](https://raw.githubusercontent.com/pluralsight/guides/master/images/52b756fb-cd27-468f-b4aa-804aae99550b.png)
 
 
-Here is the code for the show file.
+Here is the code for the show file. We will only be using the bare minimum data for UberRUSH deliveries. I will hide the "quote-info" div for now. It will show and populate on an AJAX call later.
 
     <div class="flex two">
       <div class="product-image">
@@ -248,8 +244,8 @@ Here is the API wrapper code. The major points are as follows:
 1. I set the pickup location to a single address.
 2. The base uri is the UberRUSH sandbox API. You will have to change that in production.
 3. To get the Uber Client ID / Client Secret, you need to [create an Uber Developer Account](https://developer.uber.com/).
-4. The API require OAuth tokens on each call.
-5. I have included all the basic endpoints, though we will only need to use a few of them.
+4. The API requires an OAuth token on each call.
+5. I have included all the basic endpoints, though we will only need to use 2 of them for this tutorial.
 6. Deliveries need a pickup location object, a dropoff location object and an items array. Read more on the [official documentation](https://developer.uber.com/docs/rush).
 
 
@@ -277,7 +273,7 @@ Here is the API wrapper code. The major points are as follows:
           }
         }
     
-      class UberRush
+      class RUSH
         include HTTParty
         attr_reader :base_path
     
@@ -342,12 +338,12 @@ Here is the API wrapper code. The major points are as follows:
     
 We need to update our controller code so the form can call the API wrapper. Here I am creating a new instance of the UberRUSH class and generating an OAuth token. We then set the pickup location to our default store address, and populate the dropoff object with the user inputs. UberRUSH is highly location-dependent, so these examples are coded to work in Manhattan. Tweak the code if you want to try SF / Chicago.
 
-We take the first quote from the UberRUSH API response, since it is the first one is for on-demand delivery. The other quotes are for each available delivery window for the day. There is more detail in the developer documentation if desired.
+We take the first quote from the UberRUSH API response, since the first one is for on-demand delivery. The other quotes are for each available delivery window later in the day. Checkout the developer documentation if you are interested in future scheduling deliveries.
 
     # controller/product_controller.rb
     
       def quote
-        ur = Uber::UberRush.new
+        ur = Uber::RUSH.new
     
         pickup_obj = Uber::PICKUP
     
@@ -483,7 +479,7 @@ Now let's add the controller logic to combine the UberRUSH delivery with the Str
             :card  => params[:stripeToken]
           )
         
-          ur = Uber::UberRush.new
+          ur = Uber::RUSH.new
           pickup_obj = Uber::PICKUP
         
           dropoff_obj = {
