@@ -10,13 +10,15 @@ Now, running `babel code/index.js -d build/` will make a `build/index.js` direct
 
 Now, run `babel --presets es2015,stage-0 code/index.js -o build/app.js`. This will transpile your code to build/app.js that you can now launch with node `node build/app.js`
 
-# Let's go Crazy.
 
-## New variable declarators. 
 
+# 1. New variable declarators. 
+
+## Let
 `let` is the new, improved `var`. It fixes some things that may cause bugs if you are not aware of them. You can completely replace `var` with `let` and `const`.
 
-Block scope: Variables declared using var "leak out" of their scopes. Let's say:
+### Block scope: 
+Variables declared using var "leak out" of their scopes. Let's say:
 
 ```
 if(myCat==="awesomefluff") {
@@ -27,34 +29,73 @@ console.log(awesome); // true, leaked out var!
 ```
 Let variables are block-scoped. Meaning they will only be available inside the {}, which is how most of the languages work. Trying to use them outside the block will cause an error: `Uncaught ReferenceError: awesome is not defined`
 
+### Duplicates
+Variables declared using `let` cannot be re-declared. This helps prevent errors and overriding variables without noticing. Again, this is how most other object oriented languages work. For example:
+```
+let awesome = true;
+let awesome = false; // SyntaxError: Identifier 'awesome' has already been declared
+```
 
-Duplicate let declarations are forbidden
-let is designed to catch potential assignment mistakes. While duplicate var declarations will behave like normal reassignment, duplicate let declarations are not allowed to prevent the common mistake of erroneous reassignment.
+## Const
+`const` means that an identifier can't be reassigned. Trying to reassign a constant will throw an error. Keep in ming this is NOT the same as immutability. Let's say:
 
-var x = 1;
-var x = 2; // x equals 2
+``` 
+const myCats = ["awesomefluff", "mrBillGates"];
+myCats = ["otherUncoolCat"]; //throws a Type error, you cannot reassign a const. 
+```
 
-let x = 1;
-let x = 2; // SyntaxError: Identifier 'x' has already been declared
-let variables rebound in each loop iteration
-Here is a common error that occurs when you have a function defined inside of a loop using var.
-
-for(var i = 0; i < 5; i++) {
-    setTimeout(function() {
-        console.log(i);
-    }, 10);
-};
-// logs 5 5 5 5 5
-This code will log the number 5 five times in a row, because the value of i will be 5 before the first time console.log is called. When we use let instead, the i inside of the function will correspond to the value on that particular iteration of the for-loop.
-
-for(let i = 0; i < 5; i++) {
-    setTimeout(() => {
-        console.log(i);
-    }, 10);
-};
-// logs 0 1 2 3 4
+However, you can modify the objects my const references to. So, if I buy a new cat:
+``` 
+myCats.push("stephenHawking"); // This is ok!
+```
 
 
+# 2. Arrow functions
+One of the best parts of JavaScript is that it can be used for functional programming. We often do things such as .map .reduce with nameless functions. They are used only once inside this methods. Declaring them with `function` and `return` quickly becomes too verbose. Let's see:
+
+```
+// Regular function
+function(x){
+    return x + 5;
+}
+
+// ES6 Arrow 
+x => x + 5;
+```
+
+```
+// Regular function
+function(x, y){
+     var z = 5;
+    return (x * y) + z;
+}
+
+// ES6 Arrow with params and multiple statements
+(x, y) => {
+    var z = 5;
+    return (x * y) + z;
+}
+```
+
+Using map and reduce:
+```
+var ages = [{name:"Travis", age:22}, {name:"Mark", age:23}];
+
+// Regular 
+var sumOfAges = 0;
+for(var i = 0; i < sumOfAges.length; i++) {
+    var age = sumOfAges[i].age,
+    sumOfAges += age;
+}
+
+// ES5 way
+var sumOfAges = ages
+    .map(function(x) { return x.age; })
+    .reduce(function(a, b) { return a + b; });
+
+// ES6 way
+let sumOfAges = ages.map(x => x.age).reduce((a, b) => a + b);
+```
 
 
 
@@ -63,18 +104,6 @@ for(let i = 0; i < 5; i++) {
 
 
 
-
-
-
-`const` declares constants and will throw errors when overwritten.
-
-
-const is used for constant declarations, and let is used for variable declarations.
-
-If you try to reassign to a constant, the compiler will throw an error:
-
-const one = 1;
-one = 2; // SyntaxError: "one" is read-only
 
 
 Read more at http://tutorials.pluralsight.com/front-end-javascript/getting-started-with-ecmascript6#vGqB99BOjBJmku6K.99
