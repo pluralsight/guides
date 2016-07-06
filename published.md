@@ -1,3 +1,8 @@
+### Red Sqirl - Data Analytics platform introduction by Igor Souza
+- [Read the guide](http://tutorials.pluralsight.com/big-data/red-sqirl-data-analytics-platform-introduction)
+- [Read more from Igor Souza](http://tutorials.pluralsight.com/author/igfasouza) <img src="https://avatars.githubusercontent.com/u/6233869?v=3" width="30" height="30" alt="Igor Souza" />
+- Related to: Big Data (Hadoop, Spark, etc)
+
 ### Ionic 2 + LokiJS + LocalForage (Progressive Web App, no-SQL db, and long-term storage) by ryanlogsdon
 - [Read the guide](http://tutorials.pluralsight.com/front-end-javascript/ionic-2-+-lokijs-+-localforage-progressive-web-app-no-sql-db-and-long-term-storage)
 - [Read more from ryanlogsdon](http://tutorials.pluralsight.com/author/ryanlogsdon) <img src="https://avatars.githubusercontent.com/u/7528211?v=3" width="30" height="30" alt="ryanlogsdon" />
