@@ -1,13 +1,21 @@
 In this guide, I will walk through how to build a simple store front that offers on-demand delivery. Since UberRUSH is currently only available in San Francisco, Chicago and New York City, the store will be based in Manhattan.
 
-This application will be built using Ruby on Rails on the backend, an embedded Stripe from to simulate store checkout as well as an API wrapper for UberRUSH. For simple store setups, UberRUSH's API only has a few necessary endpoints. [Checkout the documentation here](https://developer.uber.com/docs/rush), it is through and easy to read.
+This application will be built using Ruby on Rails on the backend, an embedded Stripe from to simulate store checkout as well as an API wrapper for UberRUSH. For simple store setups, UberRUSH's API only has a few necessary endpoints. [Checkout the documentation here](https://developer.uber.com/docs/rush), it is thorough and easy to read.
+
+
+-----
+### App Mockups
+
+I will be creating a simple shoe store with a home page and a product page.
+
+
+![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/32c5a47b-b47f-4d33-9b01-aa2911d1f7a8.45)
+
+![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/489e5305-e125-486f-a369-e60ecbc479b3.44)
 
 
 
-# App mockups----------
-
-
-# ------
+------
 
 ### Setting up the Rails App
 
@@ -189,7 +197,7 @@ Here is the code for the show file.
         <hr />
         <h3>Instant Shipping</h3>
     
-        <img src="http://www.ilos.com.br/web/wp-content/uploads/UberRUSH-logo.png" />
+    <img src="https://www.pivofy.com/wp-content/uploads/2015/10/uber-rush-logo-300x54.png" />
     
         <div id="shipping-quote">
           <%= form_tag "/quote", method: 'post', remote: true do %>
@@ -207,28 +215,6 @@ Here is the code for the show file.
           <p>Time Estimate: <span id="eta"></span></p>
         </div>
     
-        <div id="checkout" class="hidden">
-          <h3>Order Product</h3>
-          <%= form_tag "/order", method: 'post' do %>
-            <%= text_field_tag :first_name, nil, placeholder: "First Name" %>
-            <%= text_field_tag :last_name, nil, placeholder: "Last Name" %>
-            <%= text_field_tag :email, nil, placeholder: "Email" %>
-            <%= text_field_tag :number, nil, placeholder: "Cell Phone" %>
-            <%= text_field_tag :address, nil, placeholder: "Street Address" %>
-            <%= text_field_tag :city, nil, placeholder: "City" %>
-            <%= text_field_tag :postal_code, nil, placeholder: "Postal Code" %>
-    
-            <%= hidden_field_tag :title , @product.title %>
-            <%= hidden_field_tag :price , @product.price %>
-    
-            <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-                data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
-                data-description="Shoes"
-                data-amount="">
-            </script>
-          <% end %>
-        </div>
-    
       </div>
     </div>
 
@@ -236,7 +222,9 @@ Here is the code for the show file.
 The show path should look like this. The forms on this page will be using AJAX calls and jQuery for DOM manipulation.
 
 
-![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/f56a00de-c9dc-42f3-925a-25095ccb6b69.30)
+
+![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/4f6d63dc-2290-48cd-97d3-e12d9c6fd718.47)
+
 
 
 
@@ -354,7 +342,7 @@ Here is the API wrapper code. The major points are as follows:
     
 We need to update our controller code so the form can call the API wrapper. Here I am creating a new instance of the UberRUSH class and generating an OAuth token. We then set the pickup location to our default store address, and populate the dropoff object with the user inputs. UberRUSH is highly location-dependent, so these examples are coded to work in Manhattan. Tweak the code if you want to try SF / Chicago.
 
-We take the first quote from the UberRUSH API response, since it is the first one is for on-demand delivery. THe other quotes are for each available delivery window for the day. There is more detail in developer documation if desired.
+We take the first quote from the UberRUSH API response, since it is the first one is for on-demand delivery. The other quotes are for each available delivery window for the day. There is more detail in the developer documentation if desired.
 
     # controller/product_controller.rb
     
@@ -379,6 +367,7 @@ We take the first quote from the UberRUSH API response, since it is the first on
           format.html
           format.js do
             @quote = response["quotes"][0]
+            @dropoff = dropoff_obj
           end
         end
       end
@@ -397,12 +386,17 @@ Let's add some JavaScript and see how the API works. We will extract the fee amo
 Go to the product page and enter an address in Manhattan.
 
 
-![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/abec67dc-a2d8-42f2-8e0e-a61035c09402.31)
+![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/b454649a-4a54-4ab4-826f-dfd4f5fbaf54.47)
+
+
 
 Click 'Get a Delivery Quote' to see the results.
 
 
-![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/a12e42d4-eef6-41e3-bf92-e70848cd88b5.49)
+
+![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/90ea6f42-2393-4c1a-9893-ef8b3c36ecc9.png)
+
+
 
 
 Awesome, we got a quote! 
@@ -470,7 +464,8 @@ Let's update our JavaScript to return the first form params to the second form. 
 The page should now look like this after a quote is entered.
 
 
-![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/7f72d80c-2d74-4b23-9b58-2ff8d260c82a.09)
+![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/d9a978ac-ee8c-4487-84a9-301fa097bcd1.47)
+
 
 Now let's add the controller logic to combine the UberRUSH delivery with the Stripe charge. The logic is as follows
 
@@ -543,14 +538,15 @@ Add the order completed page.
     
     <h1>Thank you for the order!</h1>
     
-    <p>Total Cost with Shipping: <strong><%= number_to_currency(params[:amount].to_i / 100) %></strong></p>
+    <p>Total Cost with Shipping: <strong><%= number_to_currency(params[:amount].to_i / 100.00) %></strong></p>
     
     <p>Your Shoes will Arrive: <strong><%= params[:time] %> minutes</strong></p>
     
     <p>A copy of the invoice has been sent to your email, and you will recieve SMS updates from the UberRUSH courier.</p>
 
 
-Let's test it out with some data. The CC info will validate on Stripe.
+
+Let's test it out with some data. The CC info will validate on Stripe for testing purposes.
 
 ![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/383cc27c-9e66-44e3-8216-afa804165228.41)
 
@@ -567,6 +563,8 @@ Stripe will send an invoice via email and Uber will provide SMS updates to the c
 That's it! We are done with the project!
 
 This was my first coding tutorial, so there is a lot more that could be added in regards to validation and error-checking. I wanted to create an API wrapper and show a basic use case for it. Feel free to leave feedback in the comments below or fork this guide. I skipped over some minor details, since I assumed all the readers would have some experience with Rails, Stripe and configuration.
+
+[The Github code is here.](https://github.com/ty-shaikh/uber-rush-tutorial)
 
 ##### API Wrapper / UberRUSH
 
