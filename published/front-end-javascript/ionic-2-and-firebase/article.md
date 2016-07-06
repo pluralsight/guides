@@ -35,7 +35,7 @@ $ cd todoer
 Lets go over the key features of this application. 
 1. Create tasks (or todos)
 2. Mark tasks as checked or unchecked
-3. Filter tasks by if they are checked or not
+3. Filter checked/unchecked tasks
 4. Delete a task
 
 
@@ -58,7 +58,7 @@ Once you have your account ready, create a new project called "todoer". After th
 ```
 Copy that and save it for later.
 
-Now go to the database and select **rules**. Firebase by default requires you to be authenticated. We are going to change that so anyone can access our app, and we add authentication later. This way we can get our core functionality done without having to type a username and password everytime we run. Remember this will be changed in a later part.
+Now go to the database and select **rules**. Firebase by default requires you to be authenticated. We are going to change that so anyone can access our app, and we add authentication later. This way we can get our core functionality done without having to type a username and password everytime we run. Remember, this will be changed later.
 
 Publish your adjusted rules using the following command: 
 ```
