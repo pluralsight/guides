@@ -1,3 +1,8 @@
+### Alexa Tutorial 2016 by Tyler Steck
+- [Read the guide](http://tutorials.pluralsight.com/node-js/alexa-tutorial-2016?status=draft)
+- [Read more from Tyler Steck](http://tutorials.pluralsight.com/author/steckdev) <img src="https://avatars.githubusercontent.com/u/1010935?v=3" width="30" height="30" alt="Tyler Steck" />
+- Related to: Node.js
+
 ### Instant Delivery Store using Ruby on Rails, Stripe and UberRUSH API by Ty Shaikh
 - [Read the guide](http://tutorials.pluralsight.com/ruby-ruby-on-rails/instant-delivery-store-using-ruby-on-rails-stripe-and-uberrush-api?status=draft)
 - [Read more from Ty Shaikh](http://tutorials.pluralsight.com/author/ty-shaikh) <img src="https://avatars.githubusercontent.com/u/18148869?v=3" width="30" height="30" alt="Ty Shaikh" />
