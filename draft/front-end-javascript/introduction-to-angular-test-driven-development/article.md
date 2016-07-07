@@ -2,9 +2,13 @@ If you have ever taken the step to build something more complex than a simple to
 
 Unit testing helps you answer all the *'Is this going to work if I insert X?'* or *Does X still return the same results now that I have implemented Y?'* scnearios. It does it by simulating actions with mock data and checking if everything is outputted in the format you expect it to be.
 
+This guide is a great starting point for your journey in testing Angular applications. In order to get the most out of the guide, you need to have some knowledge of JavaScipt and building Angular applications.
+
+
 Angular is built with [testing in mind](https://docs.angularjs.org/guide/unit-testing). If you are new to writing unit tests, starting off with Angular the starting point to get deeper into the topic. The framework allows simulation of server-side requests and abstraction of the [document object model](https://en.wikipedia.org/wiki/Document_Object_Model) , thus providing an environment for testing out numerous scenarios. Additionally, Angular's dependency injection allows every component to be mocked and tested in different scopes.
 
-In this tutorial, we are going to get through through the gist of test-driven development in Angular. We'll start off by setting up the environment and looking at how [Jasmine](http://jasmine.github.io/2.4/introduction.html), [Karma](https://karma-runner.github.io/1.0/index.html) and [Angular Mocks](https://docs.angularjs.org/api/ngMock) work together to provide an easy and seamless testing experience in Angular.
+
+ We'll start off by setting up the environment and looking at how [Jasmine](http://jasmine.github.io/2.4/introduction.html), [Karma](https://karma-runner.github.io/1.0/index.html) and [Angular Mocks](https://docs.angularjs.org/api/ngMock) work together to provide an easy and seamless testing experience in Angular. Then, we will have a look at the different building blocks of tests. Lastly, we will use the newly acquired knowledge to build sample tests for controllers, services, directives and filters.
 
 
 ## Getting started
@@ -159,12 +163,11 @@ module.exports = function(config) {
 ```
 Once you are done with this step, you are ready to dive into testing features.
 
-## Writing your first test
+## Building blocks
 
 Writing tests revolves around events and their expected outcomes. When you start writing the tests for your applicaiton, you must always think in terms of desired outcomes your app components wants to produce. 
 
-### Building blocks
-Although the concepts are specific for Jasmine, they share many similarities with other behaviour-driven testing frameworks:
+Although the concepts that are going to be used are specific for Jasmine, they share many similarities with other behaviour-driven testing frameworks:
 
 - **Suites** - Are the top-level element of the testing framework. They accept a title (explanation) and a function containing one or more specifications. 
 
@@ -217,7 +220,12 @@ beforeEach(function(){
  
  #### Injecting
  
- Remember that we installed Angular mocks in the beginning of the guide? 
+ Injecting is essential feature of unit testing Angular applicaitons. It is characterised by the <code> inject </code> function that is provided by the Angular mocks module. Injecting can be regarded as a way of accessing Angular's built-in constructs or your applicaiton's constructs by giving the correct arguments. This gives you the ability to access the code of your application and put mock data through it in order to test it.
+ 
+ Injecting gives access to  Angular's building blocks - *$service*, *$controller*, *$filter* , *$directive*, *$factory*. Additionally, it allows to mock built-in variables such as *$rootScope* and *$q*. It also provides *$httpBackend* to simulate server-side requests in the testing envirionemnt.
+ 
+ 
+```javascript
  
  // Using _serviceProvider_ notation
 var $q;
@@ -238,5 +246,11 @@ beforeEach(inject(function ($q) {
 }));
  
  
+```
 
+In the code snippet above, you can see three ways of injecting and instantiating the Angular [$q](https://docs.angularjs.org/api/ng/service/$q) variable, which is used for asynchronous requests, in the testing environment. 
+
+## Writing your first test
+
+Time to put all that knowledge to use. We'll 
 
