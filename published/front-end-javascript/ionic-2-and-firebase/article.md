@@ -202,6 +202,7 @@ export class Data {
     {
         //Do something with the data
     }
+}
 ```
 
 The line we added to our constructor set up a listener for when a child is added to the `todos` path. ``` this.handleData ``` is passed in to handle the data snapshot sent back from Firebase. Last we pass ``` this ``` as the context for our handler function.
@@ -366,7 +367,7 @@ import {NavController, Toast} from 'ionic-angular';
 
 In our `save()` method, lets add:
 ```
-var key = this._Data.save(todo); 
+var key = this._data.save(todo); 
     if(key)
     {
       let toast = Toast.create({
@@ -379,7 +380,7 @@ var key = this._Data.save(todo);
         console.log('Dismissed toast');
       });
     
-      this.nav.present(toast); /**Add this line*/
+      this.nav.present(toast);
     }
 
 ```
