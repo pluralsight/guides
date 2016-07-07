@@ -38,6 +38,8 @@ $ ionic state save
 
 ### Firebase Configuration & Initialization
 
+### Create Firebase Service
+
 ### Get Image From Gallery
 
 ### Convert Image to Blob
@@ -49,6 +51,63 @@ Firebase wants a blob to upload so we will follow the information in the Camera 
 
 ### Save Image to Firebase Storage
 
+We are going to add the code below to the `FirebaseService.ts` file we created earlier.
+
+```
+uploadPhotoFromFile(_imageData) {
+
+    return new Observable(observer => {
+    
+        // create a name for the file using the current time
+        var _time = new Date().getTime()
+        var _fileName = 'images/sample-' + _time + '.jpg';
+        var fileRef = firebase.storage().ref(_fileName)
+        var uploadTask = fileRef.put(_imageData);
+
+        // track here the progress of the file upload
+        uploadTask.on('state_changed', function (snapshot) {
+            console.log('state_changed: file upload info', snapshot);
+            
+        }, function (error) {
+            // if we got an error, return the information
+            console.log(JSON.stringify(error));
+            observer.error(error)
+            
+        }, function () {
+            // Handle successful uploads on complete
+
+                // completed in next section
+                saveImageReference(_uploadTask, _fileName)
+                
+                observer.next(uploadTask)
+            }).catch(function (error) {
+                // An error occurred!
+                console.log(JSON.stringify(error));                
+                observer.error(error)
+            });
+
+        });
+    });
+}
+```    
+
 ### Save Reference to Image in Firebase Realtime Database
+
+Since you cannot query the data storage directly, we need to keep information regarding the upload images in the Firebase Realtime Database also. The code below will save basic information regardin the image in a new reference path `images`.
+
+Add the code below to the `FirebaseService.ts` file we created earlier.
+
+```
+function saveImageReference(_uploadTask, _fileName) {
+    // save a reference to the image for listing purposes,
+    // in the realtime database
+    var ref = firebase.database().ref('images');
+    ref.push({
+        'imageURL': _uploadTask.snapshot.downloadURL,
+        'fileName': _fileName,
+        'when': new Date().getTime(),
+    });
+}
+```
 
 ### List Images
