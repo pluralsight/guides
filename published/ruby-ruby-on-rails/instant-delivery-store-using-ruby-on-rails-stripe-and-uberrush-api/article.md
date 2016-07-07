@@ -123,13 +123,18 @@ Add the following to your application CSS file. This will be some extra styling 
     .hidden {
       display: none;
     }
+    
+    .logo {
+      width: 100%;
+    }
+
 
 
 Here is the code for the index file. 
 
     # views/products/index.html.erb
     
-    <div class="flex three">
+    <div class="flex one three-1000">
       <% @products.each do |product| %>
         <article class="card">
           <img src="<%= product.picture %>">
@@ -180,7 +185,7 @@ The root path should look something like this depending on your seed data:
 
 Here is the code for the show file. We will only be using the bare minimum data for UberRUSH deliveries. I will hide the "quote-info" div for now. It will show and populate on an AJAX call later.
 
-    <div class="flex two">
+    <div class="flex one two-1000">
       <div class="product-image">
         <img src="<%= @product.picture %>" />
       </div>
@@ -192,10 +197,13 @@ Here is the code for the show file. We will only be using the bare minimum data 
     
         <h2><%= number_to_currency(@product.price) %></h2>
         <hr />
+        
         <h3>Instant Shipping</h3>
-    
-    <img src="https://www.pivofy.com/wp-content/uploads/2015/10/uber-rush-logo-300x54.png" />
-    
+        <img src="https://s31.postimg.org/cjyo11eqj/uber_rush.png" class="logo"/>
+        <p>
+            <small>UberRUSH is an on-demand delivery network powered by Uber. Once your order is picked up, you’ll receive a text message with a link to track your delivery in real time on the map. So you always know exactly when it will arrive. </small>
+        </p>
+        
         <div id="shipping-quote">
           <%= form_tag "/quote", method: 'post', remote: true do %>
             <%= text_field_tag :address, nil, placeholder: "Street Address" %>
@@ -219,8 +227,8 @@ Here is the code for the show file. We will only be using the bare minimum data 
 The show path should look like this:
 
 
+![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/2fce40ae-bce8-420e-89a5-eb7dafbbc2bb.26)
 
-![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/4f6d63dc-2290-48cd-97d3-e12d9c6fd718.47)
 
 The forms on this page will be using AJAX calls and jQuery for DOM (Document Object Model) manipulation.
 
@@ -383,15 +391,18 @@ Let's add some JavaScript and see how the API works. We will extract the fee amo
 Go to the product page and enter an address in Manhattan.
 
 
-![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/b454649a-4a54-4ab4-826f-dfd4f5fbaf54.47)
 
+
+
+![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/ef3cf37b-4f27-48d1-979f-df4b1645bb98.28)
 
 
 Click 'Get a Delivery Quote' to see the results.
 
 
 
-![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/90ea6f42-2393-4c1a-9893-ef8b3c36ecc9.png)
+
+![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/6eaef89e-5beb-4999-808c-c1da75b6ecba.28)
 
 
 
@@ -460,9 +471,7 @@ Let's update our JavaScript to return the first form's parameters to the second 
 
 The page should now look like this once a quote is entered.
 
-
-![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/d9a978ac-ee8c-4487-84a9-301fa097bcd1.47)
-
+![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/b2da1557-12fe-4ccb-91e2-a7bc9d420206.28)
 
 Now let's add the controller logic to combine the UberRUSH delivery with the Stripe charge. The logic is as follows:
 
