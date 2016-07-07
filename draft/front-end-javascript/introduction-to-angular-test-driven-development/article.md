@@ -35,6 +35,8 @@ Then, create a directory where you'll store your project files.
  mkdir myitemsapp
  cd myitemsapp
  ```
+ #### Installing packages
+ 
  Once you are int he directory, start setting up your project dependencies. 
  First, initialize your <code>package.json</code> file:
 
@@ -80,19 +82,89 @@ You can use one for [Chrome](npm install karma-chrome-launcher --save-dev) , [Fi
 ```
 npm install karma-chrome-launcher --save-dev
 ```
-Create two folders in  your working directory.
 
-mkdir app //your script files, controllers,filters etc.
-mkdir tests //here we will keep our tests.
+#### Configuring Karma
+ Configuring your testing environment is done through a configuration file (<code>karma.conf.js</code>), similarly to configuring <code> package.json </code>, which we used to configure the project environment.
+ 
+There is a [great number of options](http://karma-runner.github.io/1.0/config/configuration-file.html) for configuring Karma. The most essential are the following:
 
- karma.conf.js
+- **Frameworks** - the testing frameworks that are going to be used. In this guide, we are using jasmine.
+- **Files** - files that will be used for the tests. You would normally include both the framework files (in this case, Angular) as well as the project and the testing files themselves.
+- **Browsers** - You can specify which browsers must Karma use in order to run its tests.
+
+Before starting, create two folders in  your working directory.
+
+```
+mkdir app 
+mkdir tests 
+```
+We'll use <code> app </code> to store our applicaton code and <code>tests</code> to keep our tests. This way, we'll keep the two separated. In more advanced cases you would opt for a more generic approach by using wildcards and storing the test and application files together. 
+
+With your terminal in the directory of the project, run:
+
+```bash
 karma init
-Select Jasmine as your testing framework.
-Select browser
+```
+Answer the questsions as following:
+- Select Jasmine as your testing framework.
+- Select 'Chrome' as your browser.
+- Specify the paths to your js and spec files: <code> 'app/\**.js', 'test/*\*.js' </code>
+- Specify the path to your Angular and ngMocks files: <code>'node_modules/angular/angular.js','node_modules/angular-mocks/angular-mocks.js'</code>
 
-Specify the paths to your js and spec files. Eg. 'app/*.js', 'test/*.js‘.
 
-Open up your karama.conf.js and add the location of angular.js in to the files array.
-node_modules/angular/angular.js
-Add the location for ngMock just below that.
-node_modules/angular-mocks/angular-mocks.js
+In the end, you should end up with a <code>karma.conf.js</code> file looking like this: 
+```javascript
+module.exports = function(config) {
+  config.set({
+    // base path that will be used to resolve all patterns (eg. files, exclude)
+    basePath: '',
+    // frameworks to use
+    // available frameworks: https://npmjs.org/browse/keyword/karma-adapter
+    frameworks: ['jasmine'],
+    // list of files / patterns to load in the browser
+    files: [
+      'node_modules/angular/angular.js',
+      'node_modules/angular-mocks/angular-mocks.js',
+      'app/app.js',  //use wildcards in real apps
+      'tests/tests.js' //use wildcards in real apps
+    ],
+    // list of files to exclude
+    exclude: [
+    ],
+    // preprocess matching files before serving them to the browser
+    // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
+    preprocessors: {
+    },
+    // test results reporter to use
+    // possible values: 'dots', 'progress'
+    // available reporters: https://npmjs.org/browse/keyword/karma-reporter
+    reporters: ['progress'],
+    // web server port
+    port: 9876,
+    // enable / disable colors in the output (reporters and logs)
+    colors: true,
+    // level of logging
+    // possible values: config.LOG_DISABLE || config.LOG_ERROR || config.LOG_WARN || config.LOG_INFO || config.LOG_DEBUG
+    logLevel: config.LOG_INFO,
+    // enable / disable watching file and executing tests whenever any file changes
+    autoWatch: true,
+    // start these browsers
+    // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
+    browsers: ['Chrome'],
+    // Continuous Integration mode
+    // if true, Karma captures browsers, runs the tests and exits
+    singleRun: false
+  })
+}
+```
+Once you are done with this step, you are ready to dive into testing features.
+
+## Writing your first test
+
+Writing tests revolves around events and their expected outcomes. When you start writing the tests for your applicaiton, you must always think in terms of desired outcomes your app components wants to prodice.  Although the concepts are specific for Jasmine, they share many similarities with other behaviour-driven testing frameworks:
+
+Suites— describe(string, function) functions, take a title and a function containing one or more specs.
+Specs— it(string, function) functions, take a title and a function containing one or more expectations.
+Expectations— are assertions that evaluate to true or false. Basic syntax reads expect(actual).toBe(expected)
+Matchers — are predefined helpers for common assertions. Eg: toBe(expected), toEqual(expected). Find a complete list here.
+
