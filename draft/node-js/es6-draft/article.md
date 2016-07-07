@@ -98,6 +98,153 @@ let sumOfAges = ages.map(x => x.age).reduce((a, b) => a + b);
 ```
 
 
+# 3. Strings
+
+## Template strings
+This isn't as much as an innovation as it is something that should have been there a long time ago. Instead of concatenating strings, we now use template strings that insert values dynamically.
+
+```
+// ES5 way
+console.log("Hello " + name + " you are user #: " + userNumber);
+
+// ES6 way
+console.log(`Hello ${name} you are user #: ${userNumber}`);
+```
+## Multiline Strings!
+````
+var roadPoem = `This is the first line, 
+                this one is second,
+                this is third.`
+```
+
+
+
+
+# 4. Classes
+The difference between JavaScript and other classic Object Oriented languages such as Javais the way of inheritance. JS use prototypal inheritance rather than classes. ES6 now somulates classes using the class keyword. You may or may not like this on JS, but it is widely used on mainstream libraries like React. So, let's take a look
+
+```
+// ES5 using prototypes
+function Cat(name){
+    this.name=name
+}
+Cat.prototype.wakeUp = function (){
+    "Hey " + this.name + " wake up!"
+}
+
+// ES6 classes
+class Cat{
+    constructor(name){
+        this.name=name;
+    }
+    wakeUp = function (){
+    "Hey " + this.name + " wake up!"
+    }
+}
+```
+
+# 2. Default Parameters
+
+To get default parameters on prevous versions we had to assign them manually at the beggining of the cunction.
+
+
+Remember we had to do these statements to define default parameters:
+```
+var catTalk = function (name, phrase) {
+    var name = name || 'No One'
+    var phrase = phrase || 'Hi'
+    return name + ', says ' + phrase;
+}
+```
+des
+Now, in ES6 we can do:
+```
+var link = function(name = 'No One', phrase = 'Hi') { }
+```
+
+
+# 5. Modules
+
+There us no native way of using modules in JS before ES6. To solve this problem, the communities have developed AMD, CommonJS and many other solutions for this. If you have been developing with node, you are familiar with the CommonJS syntax that can also be used on the browser with Browserify.
+
+Now we have a native alternative in ES6. Let's take a look.
+
+```
+// config.js
+module.exports = {
+  port: 3000
+}
+
+// index.js
+var service = require('config.js')
+console.log(service.port) // 3000
+```
+
+On ES6, we import/export stuff.
+
+```
+// config.js
+export const port = 3000;
+export function getENVSettings(r) {
+    ...
+}
+
+// index.js Option 1
+// As you can see, you can export many values and import them as needed.
+import {port, envSettings} from "./config";
+console.log(port);
+
+// index.js Option 2
+import * as config from "./config";
+config.getENVSettings();
+```
+
+I don't think node will be changing their module system anytime soon. But it's good to have options. The important thing is to write modular code. 
+
+# 6. Assignments
+
+In ES6, you can do many assignments at once instead of doing it line by line. Assigning a name for your cats just became simpler with array destructuring.
+
+```
+// ES6 Way
+let [cat1, cat2, cat3] = ["Mark", "Travis", "Tom"];
+
+// ES5 Way
+var cat1 = catNames[0];
+var cat2 = catNames[1];
+```
+
+An example of swapping values:
+
+```
+// ES6 way
+[cat1, cat2] = [cat2, cat1];
+
+// ES5 way
+var tmp = cat1;
+cat1 = cat2;
+cat2 = tmp;
+```
+It works for objects too!
+
+```
+var catInfo Data = {
+    name: "Mr. Catcat",
+    radioactive: true
+};
+
+// ES6 way
+let {name, radioactive} = catInfo;
+
+// ES5 way
+var name = catInfo.name;
+var radioactive: catInfo.radioactive;
+```
+
+This is amazing because you can do this: 
+```
+var {username, password} = req.body
+```
 
 
 
@@ -106,4 +253,4 @@ let sumOfAges = ages.map(x => x.age).reduce((a, b) => a + b);
 
 
 
-Read more at http://tutorials.pluralsight.com/front-end-javascript/getting-started-with-ecmascript6#vGqB99BOjBJmku6K.99
+
