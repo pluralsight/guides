@@ -23,23 +23,63 @@ Every great developer knows what his tools are for. Knowing the role of each of 
 
  To ensure a speedy and efficient setup, I recommend using the [Node Package Manager (npm)](https://www.npmjs.com/) to maintain the dependencies of your Angular project. 
  
- Ope
-1. npm install angular
-npm install angular --save
-2.Install Karma
-npm install -g karma --save-dev
-3.Install Jasmine
-npm install karma-jasmine jasmine-core --save-dev
-npm install jasmine-core -g
-4.Install ngMock
+ First, let's install the packages we'll need to run the tests globally (done by appending <code> -g </code>) . 
+Open your terminal and run the following commands:
+ ```
+  npm install -g karma
+  npm install -g jasmine-core 
+```
+Then, create a directory where you'll store your project files.
+ 
+ ```bash
+ mkdir myitemsapp
+ cd myitemsapp
+ ```
+ Once you are int he directory, start setting up your project dependencies. 
+ First, initialize your <code>package.json</code> file:
 
+```bash
+ npm init
+ ```
+ You will get asked several questions regarding your project's details. You can skip them and simply copy the contents below in your <code> package.json </code> file.
+ 
+```json
+ {
+  "name": "myitemsapp",
+  "version": "1.0.0",
+  "description": "",
+  "main": "karma.conf.js",
+  "directories": {
+    "test": "tests"
+  },
+  "dependencies": {
+    "angular": "^1.5.7",
+    "save": "^2.3.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
+
+```
+ Then start installing your project's dependencies, starting off with Angular:
+```bash
+npm install angular --save
+npm install karma --save-dev
+npm install karma-jasmine jasmine-core --save-dev
 npm install angular-mocks --save-dev
 
-ngMock allows you to inject and mock angular services to help you test your application.
-
-- Browsers
-Install browser launcher on which you want karma to run your tests. We need to install atleast one browser. I’ll use PhantomJs.
-- npm install karma-phantomjs-launcher --save-dev
+```
+Next, you have to choose a browser launcher for Karma to use:
+You can use one for [Chrome](npm install karma-chrome-launcher --save-dev) , [Firefox](https://github.com/karma-runner/karma-firefox-launcher) and [PhantomJS](https://github.com/karma-runner/karma-phantomjs-launcher).
+ I will go with Chrome:
+ 
+```
+npm install karma-chrome-launcher --save-dev
+```
 Create two folders in  your working directory.
 
 mkdir app //your script files, controllers,filters etc.
