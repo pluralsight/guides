@@ -357,7 +357,7 @@ Now let's discuss ``(click)``, a kind of statement. Statements respond to events
 
 For a far more in depth look at statements, check out Angular 2's docs.
 
-"Ok. I made a todo, but I didn't see anything happen?" Correct! We still need to add some user feedback for saving a todo.
+Now if our user makes a todo they have no way of knowing if it was successful. So lets add some user feedback.
 
 Ionic 2 has a lot of nice built-in components to choose from, including the Toast component. Toasts are a great way to provide feedback. To add a Toast to our new todo page, we will first need to import Toasts from Ionic 2. 
 ```
@@ -450,6 +450,8 @@ If we do have todos to show, we will loop through our todos using the ``*ngFor``
 If we do not have any todos, we are doing a simple paragraph to tell the user that we do not have todos to show. Then we call the `newTodo()` method we created earlier to take us to create a todo. 
 
 You might be wondering about the `*` before these directives. That is syntax that Angular 2 uses to help with reading and writing directives that modifiy html.
+
+Now run `ionic serve` from your command line to start our application and check it out.
 ____
 
 ##### That concludes part 1! In part 2, we will edit a todo and add user authentication.
