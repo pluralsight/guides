@@ -1,0 +1,15 @@
+{
+    "_publish_status": "draft",
+    "author_name": "aaronksaunders",
+    "author_real_name": "Aaron K Saunders",
+    "branch": "master",
+    "branches": [],
+    "filename": "article.md",
+    "first_commit": "c89a9f79ec671dea6ddba923f60fe526334a657c",
+    "image_url": "https://avatars.githubusercontent.com/u/524953?v=3",
+    "stacks": [
+        "Front-End JavaScript (Angular, React, Meteor, etc)"
+    ],
+    "thumbnail_url": null,
+    "title": "Ionic 2 and Firebase Storage"
+}
