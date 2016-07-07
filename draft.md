@@ -1,3 +1,8 @@
+### 7 Reasons yo should start using ES6 by Sebastian
+- [Read the guide](http://tutorials.pluralsight.com/node-js/7-reasons-yo-should-start-using-es6?status=draft)
+- [Read more from Sebastian](http://tutorials.pluralsight.com/author/sbastidasr) <img src="https://avatars.githubusercontent.com/u/4912810?v=3" width="30" height="30" alt="Sebastian" />
+- Related to: Node.js
+
 ### Ionic 2 and Firebase Storage by Aaron K Saunders
 - [Read the guide](http://tutorials.pluralsight.com/front-end-javascript/ionic-2-and-firebase-storage?status=draft)
 - [Read more from Aaron K Saunders](http://tutorials.pluralsight.com/author/aaronksaunders) <img src="https://avatars.githubusercontent.com/u/524953?v=3" width="30" height="30" alt="Aaron K Saunders" />
