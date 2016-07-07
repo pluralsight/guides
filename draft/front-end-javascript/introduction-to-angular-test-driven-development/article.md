@@ -250,7 +250,89 @@ beforeEach(inject(function ($q) {
 
 In the code snippet above, you can see three ways of injecting and instantiating the Angular [$q](https://docs.angularjs.org/api/ng/service/$q) variable, which is used for asynchronous requests, in the testing environment. 
 
-## Writing your first test
+## Writing your first tests
 
-Time to put all that knowledge to use. We'll 
+Time to put all that knowledge to use. Let's do go through some scenarios you might encounter when writing your tests:
+
+### Testing a controller
+First, let's instantiate an Angular applicaiton in <code> app.js </code>
+
+```javascript
+// app/app.js
+
+angular.module('ItemsApp', [])
+```
+
+Then, write a simple controller:
+
+
+```javascript
+//app/app.js
+angular.module('ItemsApp', [])
+  .controller('MainCtrl', function($scope) {
+      $scope.title = 'Hello Pluralsight';
+    });
+}])
+```
+We have a controller with one simple $scope variable attached to it. Let's write a test to see if the scope variable contains the value we expect it to have:
+
+```javascript
+// Suite
+describe('Testing a Hello Pluralsight controller', function() {
+
+});
+```
+Let's go thorugh building the code step-by-step. First, we use the <code> describe </code> function to make a new testing suite for the controller. It contains a message as its first argument and a function that is going to contain the tests in the  second argument
+Next, let's inject the controller in the suite:
+
+
+```javascript
+describe('Testing a Hello Pluralsight controller', function() {
+  var $controller;
+
+  // Setup for all tests
+  beforeEach(function(){
+    // loads the app module
+    module('ItemsApp');
+    inject(function(_$controller_){
+      // inject removes the underscores and finds the $controller Provider
+      $controller = _$controller_;
+    });
+  });
+
+});
+
+```
+Here, using <code>beforeEach </code>, we define our teardown flow. Before each of the tests, we are going to inject the controller provider from Angular and make it available for testing.
+Next, we'll move to the gist  - the tests themselves:
+
+```javascript
+// Suite
+describe('Testing a Hello Pluralsight controller', function() {
+  var $controller;
+
+  // Setup for all tests
+  beforeEach(function(){
+    // loads the app module
+    module('ItemsApp');
+    inject(function(_$controller_){
+      // inject removes the underscores and finds the $controller Provider
+      $controller = _$controller_;
+    });
+  });
+
+  // Test (spec)
+  it('should say \'Hello Pluralsight\'', function() {
+    var $scope = {};
+    // $controller takes an object containing a reference to the $scope
+    var controller = $controller('MainCtrl', { $scope: $scope });
+    // the assertion checks the expected result
+    expect($scope.title).toEqual('Hello Pluralsight');
+  });
+
+  // ... Other tests here ...
+});
+```
+We start our first test specification (spec) with the <code> it </code> function. The first argument is a message, an hte second argument is the function wit the test. First we instantiate <code> MainCtrl </code> that we created in the application. Then, we use a matcher to check its <code> $scope.title </code> variable if it is equal to the value we assigned in the application.
+### Testing a service
 
