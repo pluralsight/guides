@@ -161,10 +161,82 @@ Once you are done with this step, you are ready to dive into testing features.
 
 ## Writing your first test
 
-Writing tests revolves around events and their expected outcomes. When you start writing the tests for your applicaiton, you must always think in terms of desired outcomes your app components wants to prodice.  Although the concepts are specific for Jasmine, they share many similarities with other behaviour-driven testing frameworks:
+Writing tests revolves around events and their expected outcomes. When you start writing the tests for your applicaiton, you must always think in terms of desired outcomes your app components wants to produce. 
 
-Suites— describe(string, function) functions, take a title and a function containing one or more specs.
-Specs— it(string, function) functions, take a title and a function containing one or more expectations.
-Expectations— are assertions that evaluate to true or false. Basic syntax reads expect(actual).toBe(expected)
-Matchers — are predefined helpers for common assertions. Eg: toBe(expected), toEqual(expected). Find a complete list here.
+### Building blocks
+Although the concepts are specific for Jasmine, they share many similarities with other behaviour-driven testing frameworks:
+
+- **Suites** - Are the top-level element of the testing framework. They accept a title (explanation) and a function containing one or more specifications. 
+
+<code>describe(string, function)</code>
+- **Specs** -  Are constructs that take a title and a function containing one or more expectations. Specs are nested into suites.
+
+<code>it(string, function)</code>
+- **Expectations** — are assertions that evaluate to true or false.
+
+<code>expect(actual).toBe(expected)</code> 
+- **Matchers** - Are redefined helpers for common assertions. They are the constructs that do the evaluations and decide whether a test has failed or not.
+- 
+<code>toEqual(expected)</code>
+
+To give you a better idea of what matchers can do, here is a list of the most essential matchers:
+
+```javascript
+expect(fn).toThrow(e);
+expect(instance).toBe(instance);
+expect(mixed).toBeDefined();
+expect(mixed).toBeFalsy();
+expect(number).toBeGreaterThan(number);
+expect(number).toBeLessThan(number);
+expect(mixed).toBeNull();
+expect(mixed).toBeTruthy();
+expect(mixed).toBeUndefined();
+expect(array).toContain(member);
+expect(string).toContain(substring);
+expect(mixed).toEqual(mixed);
+expect(mixed).toMatch(pattern);
+
+```
+[Here is the full list of matchers.](https://github.com/JamieMason/Jasmine-Matchers)
+
+#### Teardown
+
+Teardowns are another building blocks of tests that is used to "prepare" the code for its specs in a particular suite. Suppose that before or after each spec (i.e a <code>describe</code> function) to do certain setups so that you can test a particular functionality. Instead of doing it for every spec, you can write a <code> beforeEach </code> or an <code> afterEach </code> function in your sute to do that.
+
+```javascript
+// single line
+beforeEach(module('itemsApp'));
+
+// multiple lines
+beforeEach(function(){
+  module('itemsApp');
+  //...
+});
+```
+ In the block above you can see two ways in which you can initiallize the Angular module in a testing suite using teardown.
+ 
+ #### Injecting
+ 
+ Remember that we installed Angular mocks in the beginning of the guide? 
+ 
+ // Using _serviceProvider_ notation
+var $q;
+beforeEach(inject(function (_$q_) {
+    $q = _$q_;
+}));
+
+// Using $injector
+var $q;
+beforeEach(inject(function ($injector) {
+    $q = $injector.get('$q');
+}));
+
+// Using an alias Eg: $$q, q, _q
+var $$q;
+beforeEach(inject(function ($q) {
+    $$q = $q;
+}));
+ 
+ 
+
 
