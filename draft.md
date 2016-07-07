@@ -1,3 +1,8 @@
+### Ionic 2 and Firebase Storage by Aaron K Saunders
+- [Read the guide](http://tutorials.pluralsight.com/front-end-javascript/ionic-2-and-firebase-storage?status=draft)
+- [Read more from Aaron K Saunders](http://tutorials.pluralsight.com/author/aaronksaunders) <img src="https://avatars.githubusercontent.com/u/524953?v=3" width="30" height="30" alt="Aaron K Saunders" />
+- Related to: Front-End JavaScript (Angular, React, Meteor, etc)
+
 ### Instant Delivery Store using Ruby on Rails, Stripe and UberRUSH API by Ty Shaikh
 - [Read the guide](http://tutorials.pluralsight.com/ruby-ruby-on-rails/instant-delivery-store-using-ruby-on-rails-stripe-and-uberrush-api?status=draft)
 - [Read more from Ty Shaikh](http://tutorials.pluralsight.com/author/ty-shaikh) <img src="https://avatars.githubusercontent.com/u/18148869?v=3" width="30" height="30" alt="Ty Shaikh" />
