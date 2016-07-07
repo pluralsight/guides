@@ -1,6 +1,8 @@
-In this guide, I will walk through how to build a simple store front that offers on-demand delivery. Since UberRUSH is currently only available in San Francisco, Chicago and New York City, the store will be based in Manhattan.
+In this guide, I will walk through how to build a simple store front that offers on-demand delivery. Since UberRUSH is currently only available in San Francisco, Chicago and New York City, our store will be based in Manhattan.
 
-This application will be built using Ruby on Rails on the backend, an embedded Stripe from to simulate store checkout as well as an API wrapper for UberRUSH. For simple store setups, UberRUSH's API only has a few necessary endpoints. [Checkout the documentation here](https://developer.uber.com/docs/rush), it is thorough and easy to read.
+This application will be built using Ruby on Rails on the backend, an embedded Stripe to simulate store checkout, as well as an API wrapper for UberRUSH. In this tutorial, I assume that readers are proficient with Rails, Stripe, and configuration.
+
+For simple store setups, UberRUSH's API has just a few necessary endpoints. [Checkout the documentation here](https://developer.uber.com/docs/rush). It is thorough and easy to read.
 
 
 -----
@@ -20,7 +22,7 @@ I will be creating a simple shoe store with a home page and a product page.
 ### Setting up the Rails App
 
 
-First, let's initialize an new Rails application and open it in your text editor.
+First, let's initialize a new Rails application and open it in a text editor.
 
     $ rails new instant_delivery
 
@@ -50,7 +52,7 @@ Then seed the database.
 ---
 #### Controllers
 
-We will use a single Products controller to handle all the actions. There will be an index action for all the products, a show action for the individual product, an action to get an UberRUSH quote, an action to charge a credit card and create an UberRUSH delivery and final an order confirmation action.
+We will use a single Products controller to handle all the actions. For example, there will be an index action for all the products, a show action for the individual product, and an action to get an UberRUSH quote. There will also be actions to charge a credit card and create an UberRUSH delivery and finalize/confirm an order.
 
     # controllers/products_controller.rb
     
@@ -79,7 +81,7 @@ We will use a single Products controller to handle all the actions. There will b
 ---
 #### Routes
     
-Here are the routes we will be using for the application. Based on the initial mockups, I will only have 3 views and the rest of the controller actions will be using AJAX.
+Here are the routes we will be using for the application. Based on the initial mockups, I will only have 3 views (index, show, and done). The rest of the controller's actions will use AJAX.
 
     # config/routes.rb
     
@@ -102,13 +104,13 @@ In the views folder, create a Products folder and 3 view files.
     touch show.html.erb
     touch done.html.erb
 
-I will be using the Picnic CSS library, since every other tutorial uses Bootstrap. Add this to the head of your application layout.
+**I will be using the Picnic CSS library, since every other tutorial uses Bootstrap.** Add this to the head of your application layout.
 
     # views/layouts/application.html.erb
     
       <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/picnicss/6.1.1/picnic.min.css">
 
-Add this to your application CSS file. This will be some extra styling for the index and show page.
+Add the following to your application CSS file. This will be some extra styling for the index and show page.
 
     # assets/stylesheets/application.css
     
@@ -138,7 +140,6 @@ Here is the code for the index file.
         </article>
       <% end %>
     </div>
-
 
 
 Create a navigation partial.
@@ -172,7 +173,7 @@ Add it to the main layout file.
     </body>
 
 
-The root path should look something like this depending on your seed data.
+The root path should look something like this depending on your seed data:
 
 ![Index Page Screenshot](https://raw.githubusercontent.com/pluralsight/guides/master/images/52b756fb-cd27-468f-b4aa-804aae99550b.png)
 
@@ -215,16 +216,16 @@ Here is the code for the show file. We will only be using the bare minimum data 
     </div>
 
 
-The show path should look like this. The forms on this page will be using AJAX calls and jQuery for DOM manipulation.
+The show path should look like this:
 
 
 
 ![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/4f6d63dc-2290-48cd-97d3-e12d9c6fd718.47)
 
+The forms on this page will be using AJAX calls and jQuery for DOM (Document Object Model) manipulation.
 
 
-
-This is it for our initial views. Let's get the API in the mix and start getting some quotes.
+Our initial views are now complete. Let's get the API in the mix and start getting some quotes.
 
 ---
 
@@ -238,7 +239,7 @@ I will show you the code shortly for the Ruby API wrapper that will communicate 
     gem 'stripe'
     gem 'figaro'
     
-Bundle install these. [httparty](https://github.com/jnunemaker/httparty) is for the API wrapper, [Stripe](https://github.com/stripe/stripe-ruby) is for credit card payments and [Figaro](https://github.com/laserlemon/figaro) is for environment variables.
+Bundle-install these. [httparty](https://github.com/jnunemaker/httparty) is for the API wrapper, [Stripe](https://github.com/stripe/stripe-ruby) is for credit card payments, and [Figaro](https://github.com/laserlemon/figaro) is for environment variables.
 
 Here is the API wrapper code. The major points are as follows:
 1. I set the pickup location to a single address.
@@ -336,9 +337,9 @@ Here is the API wrapper code. The major points are as follows:
       end
     end
     
-We need to update our controller code so the form can call the API wrapper. Here I am creating a new instance of the UberRUSH class and generating an OAuth token. We then set the pickup location to our default store address, and populate the dropoff object with the user inputs. UberRUSH is highly location-dependent, so these examples are coded to work in Manhattan. Tweak the code if you want to try SF / Chicago.
+We need to update our controller code so that the form can call the API wrapper. To accomplish this, I am creating a new instance of the UberRUSH class and generating an OAuth token. We then set the pickup location to our default store address, and populate the dropoff object with the user inputs. UberRUSH is highly location-dependent, so these examples are coded to work in Manhattan. Tweak the code if you want to try SF / Chicago.
 
-We take the first quote from the UberRUSH API response, since the first one is for on-demand delivery. The other quotes are for each available delivery window later in the day. Checkout the developer documentation if you are interested in future scheduling deliveries.
+We take the first quote from the UberRUSH API response, since the first one is for on-demand delivery. The other quotes are for each available delivery window later in the day. Check out the developer documentation if you are interested in learning more about future scheduling deliveries.
 
     # controller/product_controller.rb
     
@@ -395,17 +396,17 @@ Click 'Get a Delivery Quote' to see the results.
 
 
 
-Awesome, we got a quote! 
+Awesome, we've got a quote! 
 
-In a production application, you should calculate a target time and round-up to account for traffic and other potential time delays. [UberRUSH's design guidelines](https://d1a3f4spazzrp4.cloudfront.net/uberex/UberRUSH_API_guidelines_v2.pdf) have a much more detailed work-flow. This tutorial is just to cover the basics.
+In a production application, you should calculate a target time and round-up to account for traffic and other potential time delays. [UberRUSH's design guidelines](https://d1a3f4spazzrp4.cloudfront.net/uberex/UberRUSH_API_guidelines_v2.pdf) have a much more detailed work-flow for professional-grade applications. This tutorial is just to cover the basics.
 
-In the next section, we are going to add Stripe, create a sandbox UberRUSH delivery (instead of just a quote) and simulate the checkout process.
+In the next section, we are going to add Stripe, create a sandbox UberRUSH delivery (instead of just a quote), and simulate the checkout process.
 
 ---
 
 ### Stripe and Checkout
 
-Create a Stripe account, if you do not already have one, and put the test publishable key and test secret key into your environment variables. Add a config file to the project.
+Create a Stripe account, if you do not already have one, and put the **test publishable key** and **test secret key** into your environment variables. Add a config file to the project.
 
     # config/initializers/stripe.rb
 
@@ -416,7 +417,7 @@ Create a Stripe account, if you do not already have one, and put the test publis
     
     Stripe.api_key = Rails.configuration.stripe[:secret_key]
 
-Now we can update our views. Add this form below the "quote-info" div. The hidden field tags will pass along some info needed for the UberRUSH delivery.
+Now we can update our views. Add this form below the "quote-info" div. The hidden field tags will pass along some info that is necessary for the UberRUSH delivery.
 
     # views/products/show.html.erb
     
@@ -442,7 +443,7 @@ Now we can update our views. Add this form below the "quote-info" div. The hidde
         <% end %>
       </div>
 
-Let's update our JavaScript to return the first form params to the second form. This way the customer only has to enter a few more required inputs.
+Let's update our JavaScript to return the first form's parameters to the second form. This minimizes the number of inputs that the user or customer has to add.
 
     # views/products/quote.js.erb
 
@@ -457,7 +458,7 @@ Let's update our JavaScript to return the first form params to the second form. 
     $('input[name=city]').val('<%= @dropoff[:location][:city]  %>');
     $('input[name=postal_code]').val('<%= @dropoff[:location][:postal_code]  %>');
 
-The page should now look like this after a quote is entered.
+The page should now look like this once a quote is entered.
 
 
 ![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/d9a978ac-ee8c-4487-84a9-301fa097bcd1.47)
@@ -465,8 +466,8 @@ The page should now look like this after a quote is entered.
 
 Now let's add the controller logic to combine the UberRUSH delivery with the Stripe charge. The logic is as follows:
 
-1. Stripe will create a customer and validate the card, if that fails the page will refresh.
-2. An UberRUSH delivery is created with the store pickup, the user inputted dropoff location and the shoe information. Our call will work for 1 item at a time.
+1. Stripe will create a customer and validate the card. If that fails, the page will refresh.
+2. An UberRUSH delivery is created with the store pickup, the user inputted dropoff location and the shoe information. Our call will work for a single item at a time.
 3. The total is calculated using the price of the object plus the fee from the UberRUSH delivery response object.
 4. Stripe will charge the customer and redirect them to the order confirmation page.
 
@@ -549,20 +550,16 @@ Let's test it out with some data. The CC info will validate on Stripe for testin
 ![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/b4ee0009-315a-408d-80c6-2a0aae97d515.41)
 
 
-Stripe will send an invoice via email and Uber will provide SMS updates to the customer. Currently, all the API's are in test / sandbox mode so neither of those will actually happen right now.
-
-
+Stripe will send an invoice via email and Uber will provide SMS updates to the customer. Howevery, all the APIs are currently in test/sandbox mode, so neither the Stripe message nor the Uber message will actually be created just yet.
 
 ![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/676e9462-d474-42f1-9d2c-c6d6ec194326.41)
 
 
-That's it! We are done with the project!
+That's it! Our project is complete.
 
 This was my first coding tutorial, so there is a lot more that could be added in regards to validation and error-checking (and of course TDD). I wanted to create an API wrapper and show a basic use case for it. Feel free to leave feedback in the comments below or fork this guide. I skipped over some minor details, since I assumed all the readers would have some experience with Rails, Stripe and configuration.
 
 [The Github code is here.](https://github.com/ty-shaikh/uber-rush-tutorial)
 
-##### API Wrapper / UberRUSH
-
-##### Stripe
+Thank you for reading!
 
