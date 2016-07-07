@@ -1,8 +1,3 @@
-### Instant Delivery Store using Ruby on Rails, Stripe and UberRUSH API by Ty Shaikh
-- [Read the guide](http://tutorials.pluralsight.com/ruby-ruby-on-rails/instant-delivery-store-using-ruby-on-rails-stripe-and-uberrush-api)
-- [Read more from Ty Shaikh](http://tutorials.pluralsight.com/author/ty-shaikh) <img src="https://avatars.githubusercontent.com/u/18148869?v=3" width="30" height="30" alt="Ty Shaikh" />
-- Related to: Ruby, Ruby on Rails
-
 ### Red Sqirl - Data Analytics platform introduction by Igor Souza
 - [Read the guide](http://tutorials.pluralsight.com/big-data/red-sqirl-data-analytics-platform-introduction)
 - [Read more from Igor Souza](http://tutorials.pluralsight.com/author/igfasouza) <img src="https://avatars.githubusercontent.com/u/6233869?v=3" width="30" height="30" alt="Igor Souza" />
