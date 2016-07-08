@@ -1,13 +1,13 @@
 This tutorial will show you how to use channel groups with PubNub's Stream Controller API by building a web app to visualize tweets with certain hashtags in real-time. 
 
 This is the stack we're going to use:
-- **Node.js** as the server-side language,
-- **Express** as a web framework,
-- **Handlebars** as the template library,
-- **Twitter Streaming API** to get the tweets in real-time,
-- **PubNub's Stream Controller** with channel groups to control the tweets to show,
-- **jQuery** for client-side interaction, and
-- **CSS3 animations** to visualize the tweets.
+- [Node.js](https://nodejs.org/en/) as the server-side language,
+- [Express](http://expressjs.com/) as a web framework,
+- [Handlebars](http://handlebarsjs.com/) as the template library,
+- [Twitter Streaming API](https://dev.twitter.com/streaming/overview) to get the tweets in real-time,
+- [PubNub's Stream Controller](https://www.pubnub.com/products/stream-controller/) with channel groups to control the tweets to show,
+- [jQuery](https://jquery.com/) for client-side interaction, and
+- [CSS3 animations](http://www.w3schools.com/css/css3_animations.asp) to visualize the tweets.
 
 The app will track tweets with the following hashtags (these are configurable):
 - **#news**
@@ -156,7 +156,7 @@ module.exports = {
 With this in mind, let's review the server-side code.
 
 # Creating the server
-The `app.js` file will contain the server code of the app. Start by importing the dependencies:
+The `app.js` file will contain code for the server. Start by importing the dependencies:
 ```javascript
 var express = require('express');
 var app = express();
@@ -183,7 +183,7 @@ var pubnub = Pubnub({
 });
 ```
 
-In the `config.js` file, we define the hashtags to track with the `#` character, however, since we are going to use these tags in parameters and other places, it's useful to have a version of this array without this character:
+In the `config.js` file, we define the hashtags to track with the `#` character, however, since we are going to use these tags as parameters and in other places, it'd be useful to have a version of this array without this character:
 ```javascript
 var tagsToTrack = config.hashtagsToTrack.map(function(val) {
     return val.substr(1);
@@ -203,9 +203,9 @@ app.engine('.hbs', hbs.engine);
 app.set('view engine', '.hbs');
 ```
 
-However, when rendering the template, we'll need to know if a certain hashtag is *active* (it's part of the channel group). This can be done with a [helper function](https://github.com/ericf/express-handlebars#helpers).
+However, when rendering the template, we'll need to know if a certain hashtag is *active* (it's part of the channel group). This can be done with a [helper function](https://github.com/ericf/express-handlebars#helpers) in Handlebars.
 
-This helper will take as arguments the hashtag and the group of active hashtags (in addition to the `options` argument required to build the helper), and it will add a boolean attribute (`active`) to indicate if the hashtag is active or not:
+This helper will take as arguments the hashtag and the group of active hashtags (in addition to the `options` argument required by the helper), and it will add a boolean attribute (`active`) to indicate if the hashtag is active or not:
 ```javascript
 var hbs = exphbs.create({
     extname: '.hbs',
@@ -245,7 +245,7 @@ app.use('/', indexRoutes);
 app.use('/admin', adminRoutes);
 ```
 
-To set up the web server, let's create first the channel group:
+To set up the web server, create the channel group first:
 ```javascript
 app.listen(config.port, function() {
     console.log('Server up and listening on port %d', config.port);
@@ -264,11 +264,11 @@ app.listen(config.port, function() {
 });
 ```
 
-[PubNub's Stream Controller](https://www.pubnub.com/products/stream-controller/) allows you to receive messages on multiple channels from a single network connection, and you can use it in two ways:
+[PubNub's Stream Controller](https://www.pubnub.com/products/stream-controller/) allows you to receive messages on multiple channels from a single network connection. You can use it in two ways:
 - **Multiplexing.** It enables you to subscribe to 50 channels over one TCP socket.
 - **Channel Groups.** It allows you to create groups of channels that can all be subscribed to with a single call. The channel limit per group is 2,000, and each client connection can subscribe to 10 channel groups.
 
-In the code above, you're adding to a channel group the hashtags to track in addition to defining success and error callbacks. For example, on success, the following object will be printed to the console:
+In the code above, you're adding to a channel group the hashtags to track in addition to defining success and error callbacks. When the channel group is successfully created, the following object will be printed to the console:
 ```javascript
 {
     "status": 200,
@@ -289,7 +289,7 @@ stream.on('tweet', function (tweet) {
 
 Using the `statuses/filter` endpoint of the API, we'll start to [track](https://dev.twitter.com/streaming/overview/request-parameters#track) tweets that contain the configured hashtags.
 
-The tweets are delivered as JSON objects. Here's an example:
+Tweets are delivered as JSON objects. Here's a sample tweet object:
 ```javascript
 { created_at: 'Mon Jul 04 05:06:34 +0000 2016',
   id: 749831746275930100,
@@ -365,9 +365,9 @@ The tweets are delivered as JSON objects. Here's an example:
   timestamp_ms: '1467608794169' }
 ```
 
-Now what we need to do is determine which of the tracked hashtags the tweet belongs to.
+Now, what we need to do is determine which of the tracked hashtags the tweet belongs to.
 
-Since the tweet can contain more than one hashtag (and it can even have two or more of the hashtags we're tracking), let's stop at the first that matches one of our tracked hashtags and store it in the `channel` variable:
+Since the tweet can contain more than one hashtag (and it can even have two or more of the hashtags we're tracking), let's stop at the first that matches one of our tracked hashtags, and let's store it in the `channel` variable:
 ```javascript
 stream.on('tweet', function (tweet) {
 	var channel = '';
@@ -391,7 +391,8 @@ if(channel !== '') {
 	var obj = {
 		"text": tweet.text, 
 		"url": 'https://twitter.com/' + tweet.user.screen_name + '/status/' + tweet.id_str, 
-		"hashtag": channel};
+		"hashtag": channel
+	};
 
 	pubnub.publish({
 		channel : channel,
@@ -406,12 +407,12 @@ if(channel !== '') {
 }
 ```
 
-Once the message is published successfully, the callback prints an object similar to the following to the console:
+Once the message is published successfully, the callback prints to the console an object like this:
 ```javascript
 [ 1, 'Sent', '14679535214898372' ]
 ```
 
-This way, `routes/index.js` will contain the following code:
+Back to the routes, `routes/index.js` will contain the following code:
 ```javascript
 var express = require('express');
 var config = require('../config');
@@ -437,7 +438,7 @@ router.get('/', function (req, res, next) {
 module.exports = router;
 ```
 
-When the `/` route is requested, we'll get the channels active in the group at that moment first. The `channel_group_list_channels` method returns an object like the following on success:
+When the `/` route is requested, we'll get the active channels in the group at that moment. The `channel_group_list_channels` method returns an object like the following on success:
 ```javascript
 {
     "channels": [
@@ -452,9 +453,18 @@ When the `/` route is requested, we'll get the channels active in the group at t
 }
 ```
 
-Then, we pass this object and others as parameters to render the view.
+Then, we pass these channels and others objects as parameters to render the view:
+```javascript
+callback : function(m){
+    res.render('index', {
+        hashtagsToTrack: req.app.get('tagsToTrack'),
+        hashtagsInGroup: m.channels,
+        config: config
+    });
+},
+```
 
-On the other hand, the `routes/admin.js` will contain the code to execute when the `/admin` route is requested (identical to the previous route):
+On the other hand, the `routes/admin.js` will contain the code to execute when the `/admin` route is requested (just like the previous route):
 ```javascript
 var express = require('express');
 var config = require('../config');
@@ -521,7 +531,7 @@ router.put('/remove/:channel', function (req, res, next) {
 module.exports = router;
 ```
 
-The next section will explain how the views (for the client and admin) work.
+And that's it. The next section will explain how the views (for the client and admin) work.
 
 # Creating the user page
 The index page (`views/index.hbs`) is simple:
@@ -575,21 +585,21 @@ The index page (`views/index.hbs`) is simple:
 In the menu `div` we iterate over the hashtags to track and, by using the `active` helper, only the active hashtags are shown (the inactive ones are hidden).
 ```html
 <div class="menu">
-            {{#each hashtagsToTrack}}
-            {{#active this ../hashtagsInGroup}}
-                {{#if @active}}
-                    <div id="{{this}}" class="hashtag">
-                {{else}}
-                    <div id="{{this}}" class="hashtag" style="visibility:hidden;">
-                {{/if}}
-            {{/active}}
-                <span class="swatch {{this}}"></span><span>#{{this}}</span>
-            </div>
-            {{/each}}
-        </div>
+    {{#each hashtagsToTrack}}
+    {{#active this ../hashtagsInGroup}}
+        {{#if @active}}
+            <div id="{{this}}" class="hashtag">
+        {{else}}
+            <div id="{{this}}" class="hashtag" style="visibility:hidden;">
+        {{/if}}
+    {{/active}}
+        <span class="swatch {{this}}"></span><span>#{{this}}</span>
+    </div>
+    {{/each}}
+</div>
 ```
 
-At the end of the page, you can see how the variables from the `config.js` file are printed in a `script` tag so they can be used in the client as well:
+At the end of the page, you can see how the variables from the `config.js` file are printed in a `<script>` tag so they can be used in the client as well:
 ```javascript
 <script>
 	var pubnubConfig = {
@@ -600,7 +610,7 @@ At the end of the page, you can see how the variables from the `config.js` file 
 </script>
 ```
 
-This way, we only have to deal with configuration data in one place.
+This way, we only have to deal with configuration data in one place (in `config.js`).
 
 The file `js/index.js` contains the code that listens for messages on the channel group:
 ```javascript
@@ -693,7 +703,7 @@ This `a` element is present as a circle thanks to the next CSS style defined in 
 }
 ```
 
-The pulsating animation, defined as `heart`, is done with three [keyframes](http://www.w3schools.com/cssref/css3_pr_animation-keyframes.asp), changing the scale and opacity of the element in each step:
+The pulsating animation (defined as `heart`) is done in three [keyframes](http://www.w3schools.com/cssref/css3_pr_animation-keyframes.asp), changing the scale and opacity of the element in each step:
 ```css
 @keyframes heart {
   0% {
@@ -746,7 +756,7 @@ $(document).ready(function() {
 ```
 
 # Creating the admin page
-The admin page (`views/admin.hbs`) is simple (and similar to the user page) too:
+The admin page (`views/admin.hbs`) is simple too:
 ```html
 <!DOCTYPE html>
 <html>
@@ -797,6 +807,7 @@ The admin page (`views/admin.hbs`) is simple (and similar to the user page) too:
 ```
 
 The style for the checkboxes was generated on the following page:
+
 https://proto.io/freebies/onoff/
 
 Using the `active` helper, each checkbox is checked or unchecked depending whether the hashtag is active or not:
@@ -817,7 +828,7 @@ Again, the `pubnubConfig` object and the channel names are configured at the end
 </script>
 ```
 
-This way, the script in `js/admin.js` can add/remove a channel and publish a message when a hashtag is turned on/off:
+This way, the script in `js/admin.js` can add or remove a channel and publish a message when a hashtag is turned on/off:
 ```javascript
 $(document).ready(function() {
 
