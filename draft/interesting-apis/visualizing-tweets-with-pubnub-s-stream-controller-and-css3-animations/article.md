@@ -522,3 +522,336 @@ module.exports = router;
 ```
 
 The next section will explain how the views (for the client and admin) work.
+
+# Creating the user page
+The index page (`views/index.hbs`) is simple:
+```html
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Tweet Visualizer</title>
+
+    <link rel="stylesheet" href="css/hashtags.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <header>
+        <div class="menu">
+            {{#each hashtagsToTrack}}
+            {{#active this ../hashtagsInGroup}}
+                {{#if @active}}
+                    <div id="{{this}}" class="hashtag">
+                {{else}}
+                    <div id="{{this}}" class="hashtag" style="visibility:hidden;">
+                {{/if}}
+            {{/active}}
+                <span class="swatch {{this}}"></span><span>#{{this}}</span>
+            </div>
+            {{/each}}
+        </div>
+        <h1>Tweet Visualizer</h1>
+    </header>
+    <div class="container">
+        <div class="area"></div>
+    </div>
+
+    <script>
+        var pubnubConfig = {
+            subscribe_key: '{{config.pubnub.subscribe_key}}'
+        };
+        var channelGroup = '{{config.channelGroup}}';
+        var channelUpdates = '{{config.channelUpdates}}';
+    </script>
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+    <script src="https://cdn.pubnub.com/pubnub-3.15.2.min.js"></script>
+    <script src="js/index.js"></script>
+
+</body>
+</html>
+```
+
+In the menu `div` we iterate over the hashtags to track and, by using the `active` helper, only the active hashtags are shown (the inactive ones are hidden).
+```html
+<div class="menu">
+            {{#each hashtagsToTrack}}
+            {{#active this ../hashtagsInGroup}}
+                {{#if @active}}
+                    <div id="{{this}}" class="hashtag">
+                {{else}}
+                    <div id="{{this}}" class="hashtag" style="visibility:hidden;">
+                {{/if}}
+            {{/active}}
+                <span class="swatch {{this}}"></span><span>#{{this}}</span>
+            </div>
+            {{/each}}
+        </div>
+```
+
+At the end of the page, you can see how the variables from the `config.js` file are printed in a `script` tag so they can be used in the client as well:
+```javascript
+<script>
+	var pubnubConfig = {
+		subscribe_key: '{{config.pubnub.subscribe_key}}'
+	};
+	var channelGroup = '{{config.channelGroup}}';
+	var channelUpdates = '{{config.channelUpdates}}';
+</script>
+```
+
+The file `js/index.js` contains the code that listens for messages on the channel group:
+```javascript
+$(document).ready(function() {
+
+    var pubnub = PUBNUB(pubnubConfig);
+
+    // Listen for tweets to add to the window
+    pubnub.subscribe({
+        message : function(m) {
+            //console.log(m);
+
+            var x = Math.random() * 100;
+            var y = Math.random() * 100;
+            var style = 'top:' + y + '%; left:' + x + '%;';
+            (function (el) {
+                setTimeout(function () {
+                    el.remove();
+                }, 10000);
+            }(
+                $('<a href="' + m.url + '" class="' + m.hashtag + '" title="' + m.text +'" style="' + style +'" target="_blank"></a>')
+                    .appendTo('.area'))
+            );
+        },
+        connect : function () {
+            console.log('Connected to receive tweets');
+        },
+        error : function (error) {
+            console.log(JSON.stringify(error));
+        },
+        channel_group: channelGroup
+    });
+
+    ...
+});
+```
+
+When a tweet arrives, an `a` tag is appended to the `area` div. The name of the hashtag is configured as a CSS class in `css/hashtags.css` to give it a color:
+```css
+.news {
+	background: #3498db;
+}
+
+.family {
+	background: #9b59b6;
+}
+
+.quote {
+	background: #e67e22;
+}
+
+.love {
+	background: #f1c40f;
+}
+
+.today {
+	background: #ff0000;
+}
+
+.programming {
+	background: #eb0980;
+}
+```
+
+Also, notice that a reference to this element is not saved, but passed as an argument (`appendTo()` returns the appended element) to a closure that removes it after 10 seconds: 
+```javascript
+(function (el) {
+	setTimeout(function () {
+		el.remove();
+	}, 10000);
+ }(
+	$('<a href="' + m.url + '" class="' + m.hashtag + '" title="' + m.text +'" style="' + style +'" target="_blank"></a>')
+		.appendTo('.area')
+   )
+);
+```
+
+This `a` element is present as a circle thanks to the next CSS style defined in `css/style.css`:
+```css
+.area a {
+	-moz-border-radius: 50%;
+	-webkit-border-radius: 50%;
+	border-radius: 50%;
+	-moz-animation: heart 3s infinite;
+	-webkit-animation: heart 3s infinite;
+	animation: heart 3s infinite;
+	position: absolute;
+	width: 20px;
+	height: 20px;
+}
+```
+
+The pulsating animation, defined as `heart`, is done with three [keyframes](http://www.w3schools.com/cssref/css3_pr_animation-keyframes.asp), changing the scale and opacity of the element in each step:
+```css
+@keyframes heart {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(2);
+    opacity: 0.7;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+```
+
+The other part of `js/index.js` listens for updates to the channel group (adding/removing hashtags by the administrator) to show or hide the hashtag labels and their tweets:
+```javascript
+$(document).ready(function() {
+
+    var pubnub = PUBNUB(pubnubConfig);
+
+    ...
+
+    // Listen for updates to the channel group
+    pubnub.subscribe({
+        message : function(m) {
+            console.log(m);
+
+            if(m.add) {
+                $('#' + m.hashtag).css("visibility", "visible"); // show the added hashtag
+            } else {
+                $('#' + m.hashtag).css("visibility", "hidden"); // hide the removed hashtag
+                $('a.' + m.hashtag).each(function () { // hide all the tweets shown that belong to that hashtag
+                    var $this = $(this);
+                    $this.hide();
+                });
+            }
+        },
+        connect : function () {
+            console.log('Connected to receive hashtags updates');
+        },
+        error : function (error) {
+            console.log(JSON.stringify(error));
+        },
+        channel: channelUpdates
+    });
+});
+```
+
+# Creating the admin page
+The admin page (`views/admin.hbs`) is simple (and similar to the user page) too:
+```html
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Tweet Visualizer Admin</title>
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/admin.css">
+    <link rel="stylesheet" href="css/switch.css">
+</head>
+<body>
+
+    <header>
+        <h1>Tweet Visualizer Admin</h1>
+    </header>
+    <div class="container">
+        <div class="settings">
+            {{#each hashtagsToTrack}}
+            <div class="row">
+                <div class="left">#{{this}}</div>
+                <div class="right">
+                    <div class="onoffswitch">
+                        <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="{{this}}" 
+                            {{#active this ../hashtagsInGroup}} {{#if @active}} checked {{/if}} {{/active}} />
+                        <label class="onoffswitch-label" for="{{this}}"></label>
+                    </div>
+                </div>
+            </div>
+	        {{/each}}
+        </div>
+    </div>
+
+    <script>
+        var pubnubConfig = {
+            subscribe_key: '{{config.pubnub.subscribe_key}}',
+            publish_key: '{{config.pubnub.publish_key}}'
+        };
+        var channelGroup = '{{config.channelGroup}}';
+        var channelUpdates = '{{config.channelUpdates}}';
+    </script>
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+    <script src="https://cdn.pubnub.com/pubnub-3.15.2.min.js"></script>
+    <script src="js/admin.js"></script>
+
+</body>
+</html>
+```
+
+The style for the checkboxes was generated on the following page:
+https://proto.io/freebies/onoff/
+
+Using the `active` helper, each checkbox is checked or unchecked depending whether the hashtag is active or not:
+```html
+<input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="{{this}}" 
+	{{#active this ../hashtagsInGroup}} {{#if @active}} checked {{/if}} {{/active}} />
+```
+
+Again, the `pubnubConfig` object and the channel names are configured at the end of the page with the values of `config.js`:
+```javascript
+<script>
+	var pubnubConfig = {
+		subscribe_key: '{{config.pubnub.subscribe_key}}',
+		publish_key: '{{config.pubnub.publish_key}}'
+	};
+	var channelGroup = '{{config.channelGroup}}';
+	var channelUpdates = '{{config.channelUpdates}}';
+</script>
+```
+
+This way, the script in `js/admin.js` can add/remove a channel and publish a message when a hashtag is turned on/off:
+```javascript
+$(document).ready(function() {
+
+    var pubnub = PUBNUB(pubnubConfig);
+
+    // Add/Remove a channel from the group and publish an event to notifiy users
+    $('input[type="checkbox"]').change(function() {
+        var hashtag = this.id;
+        var isChecked = this.checked;
+        var url = isChecked ? '/admin/add/' : '/admin/remove/';
+        $.ajax({
+            type: 'PUT',
+            url: url + hashtag,
+            success: function(data) {
+                pubnub.publish({
+                    channel  : channelUpdates,
+                    message  : { 
+                        "hashtag": hashtag,
+                        "add":  isChecked
+                    },
+                    callback : function(m){
+                        console.log(m)
+                    }
+                });
+            }
+        });
+    });
+});
+```
+
+And that's all. The app is now complete.
+
+# Conclusion
+
+Using the API of PubNub's Stream Controller for channel groups as the foundation, and with the help of some CSS3 styles, we have created a simple but nice visualization. 
+
+Now you can play with the app by changing the tracked hashtags, the size and color of the tweets, the time to delete them, etc.
+
+I hope you find this tutorial useful. Remember that [the code is on Github](https://github.com/eh3rrera/visual-tweets) and thanks for reading.
