@@ -40,9 +40,11 @@ The entire source code [is available on Github](https://github.com/eh3rrera/visu
 # Requirements
 
 ### Twitter
-Log in to your Twitter account and go to https://dev.twitter.com/apps/new to create a new application (you must add your mobile phone to your Twitter profile before creating an application. Please read https://support.twitter.com/articles/110250-adding-your-mobile-number-to-your-account-via-web for more information).
+Log in to your Twitter account and go to https://dev.twitter.com/apps/new to create a new application.
 
-Enter the following information:
+You must add your mobile phone to your Twitter profile before creating an application. Please read https://support.twitter.com/articles/110250-adding-your-mobile-number-to-your-account-via-web for more information.
+
+You'll have to enter the following:
 - **Name** (your application name, for instance, *sample_eh3rrera*)
 - **Description** (your application description)
 - **Website** (your application's publicly accessible home page. We're not going to use it, so you can just enter *http://127.0.0.1*).
@@ -57,7 +59,7 @@ Now go to the *Keys and Access Token* section and create you access token by cli
 ![Twitter keys and tokens](https://raw.githubusercontent.com/pluralsight/guides/master/images/cf78b26f-d185-468e-8fe4-ff1e0edf386d.png)
 
 
-Now save your consumer key, consumer secret, access token, and access token secret since we'll need it later.
+Save your consumer key, consumer secret, access token, and access token secret since we'll need it later.
 
 ### PubNub
 Go to https://admin.pubnub.com/#/register and register a new account. When you log in, you will be presented with this screen:
