@@ -58,3 +58,26 @@ Now go to the *Keys and Access Token* section and create you access token by cli
 
 
 Now save your consumer key, consumer secret, access token, and access token secret since we'll need it later.
+
+### PubNub
+Go to https://admin.pubnub.com/#/register and register a new account. When you log into your account, it should look like this:
+
+![Pubnub dashboard](https://raw.githubusercontent.com/pluralsight/guides/master/images/ec80305c-c419-45bd-b73b-f3ba81524ef4.png)
+
+
+You can either create a new app or use the demo app already created. When you click on this app, you'll something like the following:
+
+![Pubnub dashboard](https://raw.githubusercontent.com/pluralsight/guides/master/images/d6c81f7c-1d5b-4938-9d86-96e31c707a5b.png)
+
+
+Save your publish and subscribe keys since we'll need it later. Now click on the keyset panel and go to the *Application add-ons* section, enable the *Stream Controller*, add-on and save the changes:
+
+![Pubnub addons](https://raw.githubusercontent.com/pluralsight/guides/master/images/29501408-f15b-45ac-8ca6-7c7f279c1dd9.png)
+
+
+### Node.js
+
+We'll need to have the latest version of [Node.js](https://nodejs.org/en/download/) installed.
+
+
+Now that we have all we'll need, let's get started.
