@@ -808,7 +808,7 @@ The admin page (`views/admin.hbs`) is simple too:
 </html>
 ```
 
-The style for the checkboxes was generated on the following page:
+The HTML and CSS style for the checkboxes was generated on the following page:
 
 https://proto.io/freebies/onoff/
 
