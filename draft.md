@@ -1,8 +1,3 @@
-### Visualizing tweets with PubNub's Stream Controller and CSS3 animations by Esteban Herrera
-- [Read the guide](http://tutorials.pluralsight.com/interesting-apis/visualizing-tweets-with-pubnub-s-stream-controller-and-css3-animations?status=draft)
-- [Read more from Esteban Herrera](http://tutorials.pluralsight.com/author/eh3rrera) <img src="https://avatars.githubusercontent.com/u/11665759?v=3" width="30" height="30" alt="Esteban Herrera" />
-- Related to: Interesting APIs (SendGrid, Twilio, etc)
-
 ### 7 Reasons yo should start using ES6 by Sebastian
 - [Read the guide](http://tutorials.pluralsight.com/node-js/7-reasons-yo-should-start-using-es6?status=draft)
 - [Read more from Sebastian](http://tutorials.pluralsight.com/author/sbastidasr) <img src="https://avatars.githubusercontent.com/u/4912810?v=3" width="30" height="30" alt="Sebastian" />
