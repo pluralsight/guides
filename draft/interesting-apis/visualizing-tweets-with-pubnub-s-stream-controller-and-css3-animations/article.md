@@ -5,11 +5,11 @@ This is the stack we're going to use:
 - **Express** as a web framework,
 - **Handlebars** as the template library,
 - **Twitter Streaming API** to get the tweets in real-time,
-- **PubNub Stream Controller** with channel groups to control what tweets to show,
+- **PubNub's Stream Controller** with channel groups to control the tweets to show,
 - **jQuery** for client-side interaction, and
 - **CSS3 animations** to visualize the tweets.
 
-The app will track tweets with the following six hashtags (they're configurable):
+The app will track tweets with the following hashtags (these are configurable):
 - **#news**
 - **#family**
 - **#quote**
@@ -17,13 +17,13 @@ The app will track tweets with the following six hashtags (they're configurable)
 - **#today**
 - **#programming**
 
-Each hashtag will have its own PubNub channel (where the tweets will be published), and the six channels will belong to a channel group.
+Each hashtag will have its own PubNub channel (where the tweets will be published). All the channels will belong to a channel group.
 
-The client will listen to messages on this channel group to present tweets as pulsating circles of different colors (each tag has it own color) like this:
+The client will listen to messages on this channel group to present tweets as pulsating circles of different colors (each hashtag has it own color):
 
 ![Main page](https://raw.githubusercontent.com/pluralsight/guides/master/images/9fcb4ad8-1a47-4261-a05e-8ef846c5832d.gif)
 
-There's also an admin page that will "turn-on/turn-off" the listening of hashtags by adding/removing channels to the PubNub channel group:
+There's also an admin page that will turn on/off each hashtag by adding or removing channels to the PubNub channel group:
 
 ![Admin page](https://raw.githubusercontent.com/pluralsight/guides/master/images/1cbaa490-f36f-47d2-8fe8-b5d95132a81f.png)
 
@@ -43,11 +43,11 @@ The entire source code [is available on Github](https://github.com/eh3rrera/visu
 Log in to your Twitter account and go to https://dev.twitter.com/apps/new to create a new application (you must add your mobile phone to your Twitter profile before creating an application. Please read https://support.twitter.com/articles/110250-adding-your-mobile-number-to-your-account-via-web for more information).
 
 Enter the following information:
-- **Name** (your application name, for example, *sample_eh3rrera*)
+- **Name** (your application name, for instance, *sample_eh3rrera*)
 - **Description** (your application description)
-- **Website** (your application's publicly accessible home page where users can go to  use it. We're not going to use it, so you can just enter *http://127.0.0.1*).
+- **Website** (your application's publicly accessible home page. We're not going to use it, so you can just enter *http://127.0.0.1*).
 
-Agree to Twitter's developer agreement and create your application:
+After you agree to Twitter's developer agreement, your application will be created:
 
 ![Creating Twitter app](https://raw.githubusercontent.com/pluralsight/guides/master/images/a7e48adb-e0ad-48ef-8c74-84df27527c57.png)
 
@@ -60,7 +60,7 @@ Now go to the *Keys and Access Token* section and create you access token by cli
 Now save your consumer key, consumer secret, access token, and access token secret since we'll need it later.
 
 ### PubNub
-Go to https://admin.pubnub.com/#/register and register a new account. When you log into your account, it should look like this:
+Go to https://admin.pubnub.com/#/register and register a new account. When you log in, you will be presented with this screen:
 
 ![Pubnub dashboard](https://raw.githubusercontent.com/pluralsight/guides/master/images/ec80305c-c419-45bd-b73b-f3ba81524ef4.png)
 
@@ -70,7 +70,7 @@ You can either create a new app or use the demo app already created. When you cl
 ![Pubnub dashboard](https://raw.githubusercontent.com/pluralsight/guides/master/images/d6c81f7c-1d5b-4938-9d86-96e31c707a5b.png)
 
 
-Save your publish and subscribe keys since we'll need it later. Now click on the keyset panel and go to the *Application add-ons* section, enable the *Stream Controller*, add-on and save the changes:
+Save your publish and subscribe keys since we'll need it later. Now click on the keyset panel and go to the *Application add-ons* section to enable the *Stream Controller* add-on and save the changes:
 
 ![Pubnub addons](https://raw.githubusercontent.com/pluralsight/guides/master/images/29501408-f15b-45ac-8ca6-7c7f279c1dd9.png)
 
@@ -80,7 +80,7 @@ Save your publish and subscribe keys since we'll need it later. Now click on the
 We'll need to have the latest version of [Node.js](https://nodejs.org/en/download/) installed.
 
 
-Now that we have all we'll need, let's get started.
+Now let's get started.
 
 # Creating the app structure
 
@@ -110,7 +110,7 @@ Add them with the following command:
 npm install --save twit pubnub express express-handlebars
 ```
 
-The project has this directory structure:
+The project will have this directory structure:
 ```
 |— public
 | |— css
@@ -132,7 +132,7 @@ The project has this directory structure:
 | |— package.json
 ```
 
-The `config.js` file stores all the important configuration (like API keys) in this way (don't forget to use your own keys):
+The `config.js` file stores all the important configuration in this way (don't forget to use your own keys):
 ```javascript
 module.exports = {
 	twitter: {
@@ -170,10 +170,10 @@ var Pubnub = require("pubnub");
 Then, create the objects to work with the Twitter and PubNub APIs:
 ```javascript
 var T = new Twit({
-  consumer_key        :  config.twitter.consumer_key,
-  consumer_secret     :  config.twitter.consumer_secret,
-  access_token        :  config.twitter.access_token,
-  access_token_secret :  config.twitter.access_token_secret
+    consumer_key        :  config.twitter.consumer_key,
+    consumer_secret     :  config.twitter.consumer_secret,
+    access_token        :  config.twitter.access_token,
+    access_token_secret :  config.twitter.access_token_secret
 });
 
 var pubnub = Pubnub({
@@ -599,6 +599,8 @@ At the end of the page, you can see how the variables from the `config.js` file 
 	var channelUpdates = '{{config.channelUpdates}}';
 </script>
 ```
+
+This way, we only have to deal with configuration data in one place.
 
 The file `js/index.js` contains the code that listens for messages on the channel group:
 ```javascript
