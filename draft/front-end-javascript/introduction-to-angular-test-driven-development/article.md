@@ -334,5 +334,21 @@ describe('Testing a Hello Pluralsight controller', function() {
 });
 ```
 We start our first test specification (spec) with the <code> it </code> function. The first argument is a message, an hte second argument is the function wit the test. First we instantiate <code> MainCtrl </code> that we created in the application. Then, we use a matcher to check its <code> $scope.title </code> variable if it is equal to the value we assigned in the application.
+
 ### Testing a service
 
+
+
+## Testing patterns and next steps
+
+**From the tests we just wrote, we can see a clear pattern emerging:**
+
+1. Describe the spec with a type and name
+2. Load the object's module.
+3. Load mock modules if needed.
+4. Inject dependencies and spy on methods.
+5.Initialize the object:
+ 5.1.Services just need to get injected.
+ 5.2.Controllers are instantiated using the <code>$controller</code> service.
+ 5.3 We need to <code>$compile</code> directives.
+6.Write expectations grouped in describe blocks.
