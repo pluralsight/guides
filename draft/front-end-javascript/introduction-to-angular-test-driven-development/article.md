@@ -515,7 +515,7 @@ Promises are the standard tool for handling client-server communication. Angular
 For this example, we are going to take the <code>ItemsService </code> and mock it so that it simulates server-side interaction. 
 
 
-# Testing patterns and directory structure
+# Patterns and directory structure
 
 
 **From the tests we just wrote, we can see a clear pattern emerging:**
