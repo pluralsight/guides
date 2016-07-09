@@ -80,7 +80,8 @@ npm install angular-mocks --save-dev
 
 ```
 Next, you have to choose a browser launcher for Karma to use:
-You can use one for [Chrome](npm install karma-chrome-launcher --save-dev) , [Firefox](https://github.com/karma-runner/karma-firefox-launcher) and [PhantomJS](https://github.com/karma-runner/karma-phantomjs-launcher).
+You can use one for [Chrome](npm install karma-chrome-launcher --save-dev) , [Firefox](https://github.com/karma-runner/karma-firefox-launcher) , [Internet Explorer](https://github.com/karma-runner/karma-ie-launcher), [Opera](https://github.com/karma-runner/karma-opera-launcher), [PhantomJS](https://github.com/karma-runner/karma-phantomjs-launcher) and others.
+
  I will go with Chrome:
  
 ```
