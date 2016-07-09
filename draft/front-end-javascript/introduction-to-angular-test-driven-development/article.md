@@ -2,10 +2,10 @@ If you have ever taken the step to build something more complex than a simple to
 
 Unit testing helps you answer all the *'Is this going to work if I insert X?'* or *Does X still return the same results now that I have implemented Y?'* scnearios. It does it by simulating actions with mock data and checking if everything is outputted in the format you expect it to be.
 
-This guide is a great starting point for your journey in testing Angular applications. In order to get the most out of the guide, you need to have some knowledge of JavaScipt and building Angular applications.
+This guide is a great starting point for your journey in testing Angular applications and unit teting in general. In order to get the most out of the guide, you need to have some knowledge of JavaScipt and building Angular applications.
 
 
-Angular is built with [testing in mind](https://docs.angularjs.org/guide/unit-testing). If you are new to writing unit tests, Angular is a great starting point to get deeper into the topic. The framework allows simulation of server-side requests and abstraction of the [document object model](https://en.wikipedia.org/wiki/Document_Object_Model) , thus providing an environment for testing out numerous scenarios. Additionally, Angular's dependency injection allows every component to be mocked and tested in different scopes.
+Angular is built with [testing in mind](https://docs.angularjs.org/guide/unit-testing). The framework allows simulation of server-side requests and abstraction of the [document object model](https://en.wikipedia.org/wiki/Document_Object_Model) , thus providing an environment for testing out numerous scenarios. Additionally, Angular's dependency injection allows every component to be mocked and tested in different scopes.
 
 
  We'll start off by setting up the environment and looking at how [Jasmine](http://jasmine.github.io/2.4/introduction.html), [Karma](https://karma-runner.github.io/1.0/index.html) and [Angular Mocks](https://docs.angularjs.org/api/ngMock) work together to provide an easy and seamless testing experience in Angular. Then, we will have a look at the different building blocks of tests. Lastly, we will use the newly acquired knowledge to build sample tests for controllers, services, directives, filters, routes and promises.
@@ -475,9 +475,10 @@ When you're done, the <code>element</code> variable will be filled with HTML gen
 Filters are used to transform data in Angular applications. Compared to other constructs, they are relatively easy to test. For this guide, we are going to create a filter that reverses strings:
 
 **Code**
-
 ```javascript
-
+//app/app.js
+angular.module('ItemsApp', [])
+//rest of the app
 .filter('reverse',[function(){
     return function(string){
         return string.split('').reverse().join('');
@@ -488,6 +489,8 @@ Filters are used to transform data in Angular applications. Compared to other co
 
 **Test**
 ```javascript
+//tests/tests.js
+
 describe('Testing reverse filter',function(){
     var reverse;
     beforeEach(function(){
@@ -514,6 +517,96 @@ Promises are the standard tool for handling client-server communication. Angular
 
 For this example, we are going to take the <code>ItemsService </code> and mock it so that it simulates server-side interaction. 
 
+**Code**
+```javascript
+//app/app.js
+angular.module('ItemsApp', [])
+//rest of the app
+.factory('ItemsServiceServer', ['$http', '$q', function($http, $q){
+  var is = {};
+  is.get = function() {
+    var deferred = $q.defer();
+    $http.get('items.json') //'items.json will be mocked in the test'
+    .then(function(response){
+        deferred.resolve(response);
+     })
+    .catch(function(error){
+      deferred.reject(error);
+    });
+    return deferred.promise;
+  }
+  return is;
+}])
+```
+The service structure is simple - you have a method <code> get() </code> that uses [$http](https://docs.angularjs.org/api/ng/service/$http) with a promise ([$q](https://docs.angularjs.org/api/ng/service/$q)) to resolve the request. If the request succeeds, the promise is resolved, if it doesn't, the promise is rejected.
+
+**Test**
+```javascript
+//tests/tests.js
+describe('Testing Items Service - server-side', function(){
+  var ItemsServiceServer,
+    $httpBackend,
+    jsonResponse = ['hat', 'book', 'pen'];//this is what the mock service is going to return
+
+  beforeEach(function(){
+    module('ItemsApp');
+    inject(function($injector){
+       ItemsServiceServer = $injector.get('ItemsServiceServer');
+      // set up the mock http service
+      $httpBackend = $injector.get('$httpBackend');
+
+      // backend definition response common for all tests
+      $httpBackend.whenGET('items.json') //must match the 'url' called by $http in the code
+        .respond( jsonResponse );
+    });
+  });
+
+  it('should return all items', function(done) {
+    // service returns a promise
+    var promise = ItemsServiceServer.get();
+    // use promise as usual
+    promise.then(function(items){
+      // same tests as before
+      expect(items.data).toContain('hat');
+      expect(items.data).toContain('book');
+      expect(items.data).toContain('pen');
+      expect(items.data.length).toEqual(3);
+      // Spec waits till done is called or Timeout kicks in
+      done()
+    });
+    // flushes pending requests
+    $httpBackend.flush();
+  });
+});
+```
+As you can see, there are several differences in testing a service with and without promises.Here, Angular Mocks' [$httpBackend](https://docs.angularjs.org/api/ngMock/service/$httpBackend) is  used to simulate a server-side request. First, we instantiate a variable <code>jsonResponse</code> that has to be structured in the same way we expect to retreive the server-side data.
+Then, in the <code>beforeEach</code> block, we inject <code>$httpBackend</code> and use  <code> whenGET() </code> to assign <code> jsonResponse</code> as the response of <code> items.json </code>.
+
+The testing part is similar to the one we did with the service. Note that <code>items.data</code> is used instead of <code> items </code> because the data of the response (<code> jsonResponse </code>) is contained into the <code> data </code> property of the response object. 
+
+We call <code> done() </code> to finish the test after the promise returns. If <code>done()</code> is not called, then the promise has timed out, and the test fails.
+
+We end the spec with a <code> $httpBackend.flush() </code>, which lets <code>$httpBackend</code> to respond to other request directed to it in the rest of the tests.
+
+## Testing events
+The last thing we'll test will be events. Events can be spawned with <code>$braodcast</code> and catched with <code>$on</code> . We'll make a service that will broadcast when a new item is added and we'll test if the event is broadcast, catched by a controller and if its contents match the contents of the broadcast.
+
+**Code**
+```javascript
+ //app/app.js
+angular.module('ItemsApp', [])
+//rest of the app
+.factory("appBroadcaster", ['$rootScope', function($rootScope) {
+  var abc = {};
+
+  abc.itemAdded = function(item) {
+    $rootScope.$broadcast("item:added",item);
+  };
+
+  return abc;
+}])
+```
+**Test**
 
 # Patterns and directory structure
 
