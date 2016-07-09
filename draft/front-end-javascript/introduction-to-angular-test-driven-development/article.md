@@ -605,9 +605,63 @@ angular.module('ItemsApp', [])
 
   return abc;
 }])
+
+
+```
+In your <code>MainController</code> , add a listener:
+```javascript
+//app/app.js
+angular.module('ItemsApp', [])
+//rest of the app
+
+//update MainCtrl by injecting $rootScope and adding a listener 
+.controller('MainCtrl', function($scope, $rootScope) {
+$scope.title = 'Hello Pluralsight';
+
+  $rootScope.$on("item:added", function(event, item) {
+    $scope.item = item;
+  });
+})
 ```
 **Test**
+```javascript
+//tests/tests.js
+describe("appBroadcaster", function() {
+    var appBroadcaster, $rootScope, $scope, $controller,
+      item = { name: "Pillow", id: 1 };//what is going to be broadcast
 
+    beforeEach(function() {
+      module("ItemsApp");
+      inject(function($injector) {
+          appBroadcaster = $injector.get("appBroadcaster");//get the service
+          $rootScope = $injector.get("$rootScope");//get the $rootScope
+          $controller = $injector.get('$controller');
+          $scope = $rootScope.$new();
+      });
+      spyOn($rootScope, '$broadcast').and.callThrough();//spy on $rootScope $broadcast event
+      spyOn($rootScope, '$on').and.callThrough();//spy on $rootScope $on event
+    });
+
+    it("should broadcast 'item:added' message", function() {
+        // avoid calling $broadcast implementation
+        $rootScope.$broadcast.and.stub();
+        appBroadcaster.itemAdded(item);
+        expect($rootScope.$broadcast).toHaveBeenCalled();//check if there was a broadcast
+        expect($rootScope.$broadcast).toHaveBeenCalledWith("item:added", item);//check if the broadcasted message is right
+    });
+
+    it("should trigger 'item:added' listener", function() {
+        // instantiate controller
+        $controller('MainCtrl', { $scope: $scope });
+        // trigger event
+        appBroadcaster.itemAdded(item);//pass the item variable for broadcasting
+        expect($rootScope.$on).toHaveBeenCalled();
+        expect($rootScope.$on).toHaveBeenCalledWith('item:added', jasmine.any(Function));
+        expect($scope.item).toEqual(item);//match the broadcasted message with the received message
+    });
+});
+```
+To check if a function gets called, Jasmine provides spies. Here, we can see an implementation of spies by using <code>spyOn() </code> with <code> .and.callThrough() </code> . <code> callThrough() </code> and <code>stub();</code> enables you not only to detects if the funciton is called, but also enables you to get the original implementation of the function and check its arguments.
 # Patterns and directory structure
 
 
@@ -625,4 +679,13 @@ angular.module('ItemsApp', [])
 6.Write expectations grouped in describe blocks.
 
 This guide featured only two files being tested - <code>app.js</code> for the code and <code>tests.js</code> for the tests. However, In larger and more complex projects, you have to opt for a different file structure:
-sd
+
+ .spec.js suffix to differentiate test files.
+```
+app/some-controller.js
+app/some-controller.spec.js
+app/some-directive.js
+app/some-directive.spec.js
+app/some-service.js
+app/some-service.spec.js
+```
