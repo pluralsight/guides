@@ -131,13 +131,11 @@ First add a package.json file to your root directory (same place as your Gemfile
 
 Notice how similar this is to your Gemfile.
 
-Note:  `react-rails` depends on a specific version of `react`, but we want webpack to manage all of our javascript packages and their interdependencies.  So we have to manually determine which version of `react` that `react-rails` wants, and then make sure that is the version we specify in `package.json`.  Check to make sure the version in the console matches the version listed above for both `react`, and `react-dom`.  More on maintaining this later...
-
 Now run `npm install` which will make sure you have all these packages.
 
 So that we can run webpack from the command line do a `npm install webpack -g`
 
-Now that we have webpack, we need to add some 3 boiler plate files to configure it.  As you add more javascript packages you will be updating these files.  Again this is similar to updating your Gemfile when you add new gems to a project.
+Now that we have webpack, we need to add 3 boiler plate files to configure it.  As you add more javascript packages you will be updating these files.  Again this is similar to updating your Gemfile when you add new gems to a project.
 
 Add webpack.config.js to the root of your project:
 
@@ -188,7 +186,7 @@ React = require('react')
 console.log('client_only.js loaded')
 ```
 
-Now run `webpack` from the command line.  This will grab all necessary dependencies and package them up into the `client_and_server.js` and `client_only.js` bundles.  If you look in the app/assets/javascripts/webpack directory you should see the two files there.
+Now run `webpack` from the command line.  This will grab all necessary dependencies and package them up into the `client_and_server.js` and `client_only.js` bundles.  If you look in the `app/assets/javascripts/webpack` directory you should see the two files there.
 
 Finally we need to require these two bundles into our rails asset pipeline.
 
@@ -196,7 +194,7 @@ Edit `app/assets/javascript/application.js` and add
 ```javascript
 //= require 'webpack/client_only'
 ```
-just *above* the line that reads `Opal.load('components');`.  This will pull any webpack assets that can only run on the client in.
+just *above* the line that reads `Opal.load('components');`.  This will pull in any webpack assets that can only run on the client.
 
 Then edit `app/views/components.rb` and replace the `require 'react'` line with 
 ```ruby
@@ -214,6 +212,7 @@ client_and_server.js loaded
 Reactive record prerendered data being loaded: [Object]
 ```
 
+Congratulations you are setup and ready to begin adding javascript packages to your application.
 
 ## Working with React Bootstrap
 
@@ -378,7 +377,7 @@ A few things to notice in the code above:
 
 We add React Bootstrap components simply by `ReactBootstrap::Name` where `Name` is the component you want to render. All the components are documented in the React Bootstrap [documentation](https://react-bootstrap.github.io/components.html)
 
-Notice how I have added an `.on(:click)` even handler to the `MenuItem` component while setting `href: '#'` as this will allow us to handle the event instead of navigating to a new page.
+Notice how I have added an `.on(:click)` event handler to the `MenuItem` component while setting `href: '#'` as this will allow us to handle the event instead of navigating to a new page.
 
 Hopefully you have realized that almost all of this tutorial is just setting up webpack boiler plate.  Once things are setup using a new js package in Reactrb is as easy as doing an `npm install` and requiring it.  
 
