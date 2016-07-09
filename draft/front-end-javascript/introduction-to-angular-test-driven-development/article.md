@@ -5,10 +5,10 @@ Unit testing helps you answer all the *'Is this going to work if I insert X?'* o
 This guide is a great starting point for your journey in testing Angular applications. In order to get the most out of the guide, you need to have some knowledge of JavaScipt and building Angular applications.
 
 
-Angular is built with [testing in mind](https://docs.angularjs.org/guide/unit-testing). If you are new to writing unit tests, starting off with Angular the starting point to get deeper into the topic. The framework allows simulation of server-side requests and abstraction of the [document object model](https://en.wikipedia.org/wiki/Document_Object_Model) , thus providing an environment for testing out numerous scenarios. Additionally, Angular's dependency injection allows every component to be mocked and tested in different scopes.
+Angular is built with [testing in mind](https://docs.angularjs.org/guide/unit-testing). If you are new to writing unit tests, Angular is a great starting point to get deeper into the topic. The framework allows simulation of server-side requests and abstraction of the [document object model](https://en.wikipedia.org/wiki/Document_Object_Model) , thus providing an environment for testing out numerous scenarios. Additionally, Angular's dependency injection allows every component to be mocked and tested in different scopes.
 
 
- We'll start off by setting up the environment and looking at how [Jasmine](http://jasmine.github.io/2.4/introduction.html), [Karma](https://karma-runner.github.io/1.0/index.html) and [Angular Mocks](https://docs.angularjs.org/api/ngMock) work together to provide an easy and seamless testing experience in Angular. Then, we will have a look at the different building blocks of tests. Lastly, we will use the newly acquired knowledge to build sample tests for controllers, services, directives and filters.
+ We'll start off by setting up the environment and looking at how [Jasmine](http://jasmine.github.io/2.4/introduction.html), [Karma](https://karma-runner.github.io/1.0/index.html) and [Angular Mocks](https://docs.angularjs.org/api/ngMock) work together to provide an easy and seamless testing experience in Angular. Then, we will have a look at the different building blocks of tests. Lastly, we will use the newly acquired knowledge to build sample tests for controllers, services, directives, filters, routes and promises.
 
 
 ## Getting started
@@ -80,7 +80,8 @@ npm install angular-mocks --save-dev
 
 ```
 Next, you have to choose a browser launcher for Karma to use:
-You can use one for [Chrome](npm install karma-chrome-launcher --save-dev) , [Firefox](https://github.com/karma-runner/karma-firefox-launcher) and [PhantomJS](https://github.com/karma-runner/karma-phantomjs-launcher).
+You can use one for [Chrome](npm install karma-chrome-launcher --save-dev) , [Firefox](https://github.com/karma-runner/karma-firefox-launcher) , [Internet Explorer](https://github.com/karma-runner/karma-ie-launcher), [Opera](https://github.com/karma-runner/karma-opera-launcher), [PhantomJS](https://github.com/karma-runner/karma-phantomjs-launcher) and others.
+
  I will go with Chrome:
  
 ```
@@ -162,6 +163,15 @@ module.exports = function(config) {
 }
 ```
 Once you are done with this step, you are ready to dive into testing features.
+
+#### Running your tests
+
+ To run your tests, you can run any of these two commands in the terminal:
+ 
+```
+karma start
+npm test
+```
 
 ## Building blocks
 
@@ -257,6 +267,7 @@ Time to put all that knowledge to use. Let's do go through some scenarios you mi
 ### Testing a controller
 First, let's instantiate an Angular applicaiton in <code> app.js </code>
 
+**Code**
 ```javascript
 // app/app.js
 
@@ -271,12 +282,14 @@ Then, write a simple controller:
 angular.module('ItemsApp', [])
   .controller('MainCtrl', function($scope) {
       $scope.title = 'Hello Pluralsight';
-    });
+    })
 }])
 ```
 We have a controller with one simple $scope variable attached to it. Let's write a test to see if the scope variable contains the value we expect it to have:
 
+**Test**
 ```javascript
+//tests/tests.js
 // Suite
 describe('Testing a Hello Pluralsight controller', function() {
 
@@ -287,6 +300,8 @@ Next, let's inject the controller in the suite:
 
 
 ```javascript
+//tests/tests.js
+
 describe('Testing a Hello Pluralsight controller', function() {
   var $controller;
 
@@ -307,6 +322,8 @@ Here, using <code>beforeEach </code>, we define our teardown flow. Before each o
 Next, we'll move to the gist  - the tests themselves:
 
 ```javascript
+//tests/tests.js
+
 // Suite
 describe('Testing a Hello Pluralsight controller', function() {
   var $controller;
@@ -337,9 +354,127 @@ We start our first test specification (spec) with the <code> it </code> function
 
 ### Testing a service
 
+Next, we are going to add a service to our application in order to test it. We'll write a service with one method, <code>get() </code> that returns an array. Just below your controller code, add the following snippet:
+
+**Code**
+```
+//app/app.js
+
+angular.module('ItemsApp', [])
+//..
+// MainController
+//..
+.factory('ItemsService', function(){
+  var is = {}, 
+    _items = ['hat', 'book', 'pen'];
+  
+  is.get = function() {
+    return _items;
+  }
+  
+  return is;
+})
 
 
-## Testing patterns and next steps
+```
+
+Here is how we are going to test it:
+
+**Test**
+```
+describe('Testing Languages Service', function(){
+  var LanguagesService;
+  
+  beforeEach(function(){
+    module('ItemsApp');
+    inject(function($injector){
+      ItemsService = $injector.get('ItemsService');
+    });
+  });
+  
+  it('should return all items', function() {
+    var items = ItemsService.get();
+    expect(items).toContain('hat');
+    expect(items).toContain('book');
+    expect(items).toContain('pen');
+    expect(items.length).toEqual(3);
+  });
+});
+
+```
+Even though we have only one spec, we stick to the good practice to using <code>beforeEach</code> in our suite in order to instantiate what we need.
+
+In the spec, we use the <code>toContain</code> matcher to check the contents of the array that the <code>get() </code> method returns. In the end, we use <code>languages.length</code> with the <code> toEqual </code> matcher to check the length of the array.
+
+### Testing directives
+
+Directives differ in terms of purpose and structure than services and controllers, and they are tested using different approach. Directives have their own encapsulated scope which gets its data from an outer scope, a controller, for example. What happens to directives is that they first get "compiled" (in Angular.js sense)  and then their scope gets filled with data. In order to properly test them, we must simulate the same process and see if we get the desirable outcomes.
+
+We are going to add a simple directive that will display the user's profile. It will get its profile data from outside and apply it into its scope.
+
+
+**Code**
+```javascript
+//app/app.js
+angular.module('ItemsApp', [])
+//rest of the app
+
+.directive('userProfile', function(){
+  return {
+    restrict: 'E',
+    template: '<div>{{user.name}}</div>',
+    scope: {
+        user: '=data'
+    },
+    replace: true
+  };  
+})
+
+```
+
+**Test**
+
+```javascript
+//tests/tests.js
+describe('Testing user-profile directive', function() {
+  var $rootScope, $compile, element, scope;
+  
+  beforeEach(function(){
+    module('ItemsApp');
+    inject(function($injector){
+      $rootScope = $injector.get('$rootScope');
+      $compile = $injector.get('$compile');
+      element = angular.element('<user-profile data="user"></user-profile>');
+      scope = $rootScope.$new();
+      // wrap scope changes using $apply
+      scope.$apply(function(){
+        scope.user = { name: "John" };
+        $compile(element)(scope);
+      });
+    });
+  });
+
+  it('Name should be rendered', function() {
+    expect(element[0].innerText).toEqual('John');
+  });
+});
+
+
+```
+
+The code might be confusing at first, but if you have some basic idea how Angular works, it's pretty straightforward: 
+1. You create a scope to which you apply the directive. First, you get the <code>$rootScope</code> and create a new one using <code> $rootScope.$new() </code>. 
+2. Once you have a scope, you create a new DOM <code>element</code> using <code>angular.element() </code>.
+3. You attach the element to the DOM using [$compile](https://docs.angularjs.org/api/ng/service/$compile). <code> $compile </code> will get the element and apply a scope to it. Essentially, it's the function that parses the HTML element, finds the directive it corresponds to, and attaches its template and scope into the outer scope.
+4. We have to simulate an action of putting data in a scope, but there is no browser and no DOM. In such cases, we use [$apply](https://docs.angularjs.org/api/ng/type/$rootScope.Scope). It is used to add a variable to the scope (<code> {name: 'John'} </code>) to a scope.
+
+
+When you're done, the <code>element</code> variable will be filled with HTML generated by the directive in your code. All you need to do is use a spec to test if it returned the result you wanted.
+
+### Testing filters
+
+## Testing patterns and directory structure
+
 
 **From the tests we just wrote, we can see a clear pattern emerging:**
 
@@ -352,3 +487,6 @@ We start our first test specification (spec) with the <code> it </code> function
  5.2.Controllers are instantiated using the <code>$controller</code> service.
  5.3 We need to <code>$compile</code> directives.
 6.Write expectations grouped in describe blocks.
+
+This guide featured only two files being tested - <code>app.js</code> for the code and <code>tests.js</code> for the tests. However, In larger and more complex projects, you have to opt for a different file structure:
+sd
