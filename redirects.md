@@ -9,3 +9,4 @@ The following URLs are redirected due to title changes, etc.  The format of this
 - /review/how-to-create-a-calculator-application-with-ionic-framework-by-using-ionic-creator-for-ui /front-end-javascript/ionic-framework-a-definitive-10-000-word-guide
 - /review/how-to-polish-create-icons-and-splash-screen-images-add-ads-share-and-test-our-calculator-application /front-end-javascript/ionic-framework-a-definitive-10-000-word-guide
 - /front-end-javascript/ionic-framework-a-definitive-10-000-word- /front-end-javascript/ionic-framework-a-definitive-10-000-word-guide
+- /interesting-apis/reactive-analytics-using-keen-io-and-acitoncable-in-rails-5 /interesting-apis/reactive-analytics-using-keen-io-and-actioncable-in-rails-5

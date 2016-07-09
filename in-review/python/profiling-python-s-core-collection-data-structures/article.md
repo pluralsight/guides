@@ -31,7 +31,7 @@ Now we have a high-level understanding of what each collection can do for us, so
 The differences between lists and sets introduce a few trade-offs:
 
 1. Set insertion is slower because each insertion must check for a duplicate.
-2. The size of [sets](http://docs.python.org/2/tutorial/datastructures.html#sets) are larger, mostly due metadata needed to detect duplicates quickly.
+2. The size of [sets](http://docs.python.org/2/tutorial/datastructures.html#sets) is larger, mostly due to metadata needed to detect duplicates quickly.
 3. Sets will decrease potential memory usage if you're storing duplicate data.
 
 ### 1. Memory size *
@@ -54,9 +54,9 @@ There isn't much else to the memory size trade-off.  Just keep in mind a [list](
 
 ### 2. Computation time
 
-This is where things get a bit fuzzy and start to depend heavily the specific requirements of your application.  You'll need to decide what operations you should optimize for, i.e the operations that occur most frequently.
+This is where things get a bit fuzzy and start to depend heavily on the specific requirements of your application.  You'll need to decide what operations you should optimize for, i.e the operations that occur most frequently.
 
-Optimizing algorithms is another [science](http://en.wikipedia.org/wiki/Mathematical_optimization) all by itself, so let's use narrow the algorithm discussion and just use a single example, determining if an entry is in our collection or not.
+Optimizing algorithms is another [science](http://en.wikipedia.org/wiki/Mathematical_optimization) all by itself, so let's  narrow the algorithm discussion and just use a single example, determining if an entry is in our collection or not.
 
 ```python
     >>> import timeit
@@ -65,7 +65,7 @@ Optimizing algorithms is another [science](http://en.wikipedia.org/wiki/Mathemat
                     setup='x = [ii for ii in xrange(100000)]')
     >>> sum(t.repeat(3, 1)) / 3.0
     0.0018588701883951824
-    >>> # Timeing lookup for a set
+    >>> # Timing lookup for a set
     >>> t = timeit.Timer('100000 in x', 
                          setup='x = {ii for ii in xrange(100000)}')
     >>> sum(t.repeat(3, 1)) / 3.0
@@ -79,7 +79,7 @@ Optimizing algorithms is another [science](http://en.wikipedia.org/wiki/Mathemat
 
 Notice how much slower the list lookup is.  So, a [list](http://docs.python.org/2/tutorial/datastructures.html#more-on-lists) is a poor choice for any application where you will be doing lots of lookup operations on a relatively large collection.
 
-Please note that this particular metric might not be useful for your application.  For example, in your application is inserting elements very common?  If so, you'll want to choose a type collection that is very fast at insertion and finding an element might be less important.
+Please note that this particular metric might not be useful for your application.  For example, if your application is inserting elements very common?  If so, you'll want to choose a type collection that is very fast at insertion and finding an element might be less important.
 
 Unfortunately, the decision is usually not as simple as finding what is fastest.  Remember the [space-time tradeoff](http://en.wikipedia.org/wiki/Space%E2%80%93time_tradeoff)?
 

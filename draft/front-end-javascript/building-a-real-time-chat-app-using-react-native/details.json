@@ -1,0 +1,15 @@
+{
+    "_publish_status": "draft",
+    "author_name": "ncnlinh",
+    "author_real_name": "Nguyen Cao Nhat Linh",
+    "branch": "master",
+    "branches": [],
+    "filename": "article.md",
+    "first_commit": "2ae8f43f83ce90379f06fadaccbc85ef6207919b",
+    "image_url": "https://avatars.githubusercontent.com/u/7568367?v=3",
+    "stacks": [
+        "Front-End JavaScript (Angular, React, Meteor, etc)"
+    ],
+    "thumbnail_url": null,
+    "title": "Building a real-time chat app using React Native"
+}

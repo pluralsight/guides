@@ -1,3 +1,73 @@
+### Instant Delivery Store using Ruby on Rails, Stripe and UberRUSH API by Ty Shaikh
+- [Read the guide](http://tutorials.pluralsight.com/ruby-ruby-on-rails/instant-delivery-store-using-ruby-on-rails-stripe-and-uberrush-api)
+- [Read more from Ty Shaikh](http://tutorials.pluralsight.com/author/ty-shaikh) <img src="https://avatars.githubusercontent.com/u/18148869?v=3" width="30" height="30" alt="Ty Shaikh" />
+- Related to: Ruby, Ruby on Rails
+
+### Red Sqirl - Data Analytics platform introduction by Igor Souza
+- [Read the guide](http://tutorials.pluralsight.com/big-data/red-sqirl-data-analytics-platform-introduction)
+- [Read more from Igor Souza](http://tutorials.pluralsight.com/author/igfasouza) <img src="https://avatars.githubusercontent.com/u/6233869?v=3" width="30" height="30" alt="Igor Souza" />
+- Related to: Big Data (Hadoop, Spark, etc)
+
+### Ionic 2 + LokiJS + LocalForage (Progressive Web App, no-SQL db, and long-term storage) by ryanlogsdon
+- [Read the guide](http://tutorials.pluralsight.com/front-end-javascript/ionic-2-+-lokijs-+-localforage-progressive-web-app-no-sql-db-and-long-term-storage)
+- [Read more from ryanlogsdon](http://tutorials.pluralsight.com/author/ryanlogsdon) <img src="https://avatars.githubusercontent.com/u/7528211?v=3" width="30" height="30" alt="ryanlogsdon" />
+- Related to: Front-End JavaScript (Angular, React, Meteor, etc)
+
+### Building a WPF Media Player using NAudio by Murat Aykanat
+- [Read the guide](http://tutorials.pluralsight.com/microsoft-net/building-a-wpf-media-player-using-naudio)
+- [Read more from Murat Aykanat](http://tutorials.pluralsight.com/author/aykanatm) <img src="https://avatars.githubusercontent.com/u/9140297?v=3" width="30" height="30" alt="Murat Aykanat" />
+- Related to: Microsoft.NET (C#, ASP.NET, VB.NET, etc)
+
+### Ionic 2 and Firebase by Steve Emmerich
+- [Read the guide](http://tutorials.pluralsight.com/front-end-javascript/ionic-2-and-firebase)
+- [Read more from Steve Emmerich](http://tutorials.pluralsight.com/author/SteveEmmerich) <img src="https://avatars.githubusercontent.com/u/310086?v=3" width="30" height="30" alt="Steve Emmerich" />
+- Related to: Front-End JavaScript (Angular, React, Meteor, etc)
+
+### C# : Using Interfaces and Delegates by jigneshBeladiya
+- [Read the guide](http://tutorials.pluralsight.com/microsoft-net/c-using-interfaces-and-delegates)
+- [Read more from jigneshBeladiya](http://tutorials.pluralsight.com/author/jigneshBeladiya) <img src="https://avatars.githubusercontent.com/u/11713657?v=3" width="30" height="30" alt="jigneshBeladiya" />
+- Related to: Microsoft.NET (C#, ASP.NET, VB.NET, etc)
+
+### Enforcing Immutability with ES2015 by Graham Marlow
+- [Read the guide](http://tutorials.pluralsight.com/front-end-javascript/enforcing-immutability-with-es2015)
+- [Read more from Graham Marlow](http://tutorials.pluralsight.com/author/mgmarlow) <img src="https://avatars.githubusercontent.com/u/3778552?v=3" width="30" height="30" alt="Graham Marlow" />
+- Related to: Front-End JavaScript (Angular, React, Meteor, etc)
+
+### Building a Realtime Collaborative Editor with RethinkDB by Shannon Duncan
+- [Read the guide](http://tutorials.pluralsight.com/node-js/building-a-realtime-collaborative-editor-with-rethinkdb)
+- [Read more from Shannon Duncan](http://tutorials.pluralsight.com/author/shadowcodex) <img src="https://avatars.githubusercontent.com/u/1348053?v=3" width="30" height="30" alt="Shannon Duncan" />
+- Related to: Node.js
+
+### Introduction to asynchronous JavaScript by Peter Olson
+- [Read the guide](http://tutorials.pluralsight.com/front-end-javascript/introduction-to-asynchronous-javascript)
+- [Read more from Peter Olson](http://tutorials.pluralsight.com/author/peterolson) <img src="https://avatars.githubusercontent.com/u/920512?v=3" width="30" height="30" alt="Peter Olson" />
+- Related to: Front-End JavaScript (Angular, React, Meteor, etc)
+
+### Log information of your app through Lonline by Dynamicloud by Eleazar
+- [Read the guide](http://tutorials.pluralsight.com/node-js/log-information-of-your-app-through-lonline-by-dynamicloud)
+- [Read more from Eleazar](http://tutorials.pluralsight.com/author/egomezr) <img src="https://avatars.githubusercontent.com/u/1632973?v=3" width="30" height="30" alt="Eleazar" />
+- Related to: Node.js
+
+### Building a real-time application with React, React Router, Horizon.io, and OAuth by Esteban Herrera
+- [Read the guide](http://tutorials.pluralsight.com/interesting-apis/building-a-real-time-application-with-react-react-router-horizon-io-and-oauth)
+- [Read more from Esteban Herrera](http://tutorials.pluralsight.com/author/eh3rrera) <img src="https://avatars.githubusercontent.com/u/11665759?v=3" width="30" height="30" alt="Esteban Herrera" />
+- Related to: Interesting APIs (SendGrid, Twilio, etc)
+
+### Writing Ansible Modules Complete With Tests by Mark Maglana
+- [Read the guide](http://tutorials.pluralsight.com/python/writing-ansible-modules-complete-with-tests)
+- [Read more from Mark Maglana](http://tutorials.pluralsight.com/author/relaxdiego) <img src="https://avatars.githubusercontent.com/u/110545?v=3" width="30" height="30" alt="Mark Maglana" />
+- Related to: Python
+
+### Reactive analytics using Keen.IO and ActionCable in Rails 5 by Hristo Georgiev
+- [Read the guide](http://tutorials.pluralsight.com/interesting-apis/reactive-analytics-using-keen-io-and-actioncable-in-rails-5)
+- [Read more from Hristo Georgiev](http://tutorials.pluralsight.com/author/Kaizeras) <img src="https://avatars.githubusercontent.com/u/6340189?v=3" width="30" height="30" alt="Hristo Georgiev" />
+- Related to: Interesting APIs (SendGrid, Twilio, etc)
+
+### A Practical Introduction to RethinkDB by Esteban Herrera
+- [Read the guide](http://tutorials.pluralsight.com/nosql-databases/a-practical-introduction-to-rethinkdb)
+- [Read more from Esteban Herrera](http://tutorials.pluralsight.com/author/eh3rrera) <img src="https://avatars.githubusercontent.com/u/11665759?v=3" width="30" height="30" alt="Esteban Herrera" />
+- Related to: NoSQL Databases (MongoDB, Cassandra, etc)
+
 ### Reactrb Showcase  by Barrie Hadfield
 - [Read the guide](http://tutorials.pluralsight.com/ruby-ruby-on-rails/reactrb-showcase)
 - [Read more from Barrie Hadfield](http://tutorials.pluralsight.com/author/barriehadfield) <img src="https://avatars.githubusercontent.com/u/3940251?v=3" width="30" height="30" alt="Barrie Hadfield" />

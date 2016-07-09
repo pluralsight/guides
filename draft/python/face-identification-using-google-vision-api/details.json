@@ -1,0 +1,15 @@
+{
+    "_publish_status": "draft",
+    "author_name": "onidzelskyi",
+    "author_real_name": "Oleksii",
+    "branch": "master",
+    "branches": [],
+    "filename": "article.md",
+    "first_commit": "dcad912d3a6a7aea0c52197b3fee98abd8b0b08c",
+    "image_url": "https://avatars.githubusercontent.com/u/5829208?v=3",
+    "stacks": [
+        "Python"
+    ],
+    "thumbnail_url": null,
+    "title": "Face Identification Using Google Vision API"
+}

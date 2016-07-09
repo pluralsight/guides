@@ -1,12 +1,42 @@
-### Reactive analytics using Keen.IO and ActionCable in Rails 5 by Hristo Georgiev
-- [Read the guide](http://tutorials.pluralsight.com/interesting-apis/reactive-analytics-using-keen-io-and-actioncable-in-rails-5?status=in-review)
-- [Read more from Hristo Georgiev](http://tutorials.pluralsight.com/author/Kaizeras) <img src="https://avatars.githubusercontent.com/u/6340189?v=3" width="30" height="30" alt="Hristo Georgiev" />
+### Visualizing tweets with PubNub's Stream Controller and CSS3 animations by Esteban Herrera
+- [Read the guide](http://tutorials.pluralsight.com/interesting-apis/visualizing-tweets-with-pubnub-s-stream-controller-and-css3-animations?status=in-review)
+- [Read more from Esteban Herrera](http://tutorials.pluralsight.com/author/eh3rrera) <img src="https://avatars.githubusercontent.com/u/11665759?v=3" width="30" height="30" alt="Esteban Herrera" />
 - Related to: Interesting APIs (SendGrid, Twilio, etc)
 
-### A Practical Introduction to RethinkDB by Esteban Herrera
-- [Read the guide](http://tutorials.pluralsight.com/nosql-databases/a-practical-introduction-to-rethinkdb?status=in-review)
+### Getting started with Selenium and Sauce Labs by Esteban Herrera
+- [Read the guide](http://tutorials.pluralsight.com/software-engineering-best-practices/getting-started-with-selenium-and-sauce-labs?status=in-review)
 - [Read more from Esteban Herrera](http://tutorials.pluralsight.com/author/eh3rrera) <img src="https://avatars.githubusercontent.com/u/11665759?v=3" width="30" height="30" alt="Esteban Herrera" />
-- Related to: NoSQL Databases (MongoDB, Cassandra, etc)
+- Related to: Software Engineering Best Practices
+
+### How to implement a simple wait using Java and Selenium by dcboycm
+- [Read the guide](http://tutorials.pluralsight.com/other/how-to-implement-a-simple-wait-using-java-and-selenium?status=in-review)
+- [Read more from dcboycm](http://tutorials.pluralsight.com/author/dcboycm) <img src="https://avatars.githubusercontent.com/u/5580819?v=3" width="30" height="30" alt="dcboycm" />
+- Related to: other
+
+### Advanced workflows for building rock-solid Ionic apps. Part 3: Orbit by Jonathan Grupp
+- [Read the guide](http://tutorials.pluralsight.com/front-end-javascript/advanced-workflows-for-building-rock-solid-ionic-apps-part-3-orbit?status=in-review)
+- [Read more from Jonathan Grupp](http://tutorials.pluralsight.com/author/gruppjo) <img src="https://avatars.githubusercontent.com/u/1370779?v=3" width="30" height="30" alt="Jonathan Grupp" />
+- Related to: Front-End JavaScript (Angular, React, Meteor, etc)
+
+### Advanced workflows for building rock-solid Ionic apps. Part 2: Mountain by Jonathan Grupp
+- [Read the guide](http://tutorials.pluralsight.com/front-end-javascript/advanced-workflows-for-building-rock-solid-ionic-apps-part-2-mountain?status=in-review)
+- [Read more from Jonathan Grupp](http://tutorials.pluralsight.com/author/gruppjo) <img src="https://avatars.githubusercontent.com/u/1370779?v=3" width="30" height="30" alt="Jonathan Grupp" />
+- Related to: Front-End JavaScript (Angular, React, Meteor, etc)
+
+### How to install CKAN 2.5 from source on Debian 8 "Jessie" by Miguel Gouveia
+- [Read the guide](http://tutorials.pluralsight.com/other/how-to-install-ckan-2-5-from-source-on-debian-8-jessie?status=in-review)
+- [Read more from Miguel Gouveia](http://tutorials.pluralsight.com/author/miguelbgouveia) <img src="https://avatars.githubusercontent.com/u/1122917?v=3" width="30" height="30" alt="Miguel Gouveia" />
+- Related to: other
+
+### HTML BASICS by Nikolas Danaj
+- [Read the guide](http://tutorials.pluralsight.com/html-css/html-basics?status=in-review)
+- [Read more from Nikolas Danaj](http://tutorials.pluralsight.com/author/NIkolasDanaj) <img src="https://avatars.githubusercontent.com/u/19437693?v=3" width="30" height="30" alt="Nikolas Danaj" />
+- Related to: HTML/CSS
+
+### How to write effective Docstrings by Ennis Massey
+- [Read the guide](http://tutorials.pluralsight.com/python/how-to-write-effective-docstrings?status=in-review)
+- [Read more from Ennis Massey](http://tutorials.pluralsight.com/author/MicroTransactionsMatterToo) <img src="https://avatars.githubusercontent.com/u/12421108?v=3" width="30" height="30" alt="Ennis Massey" />
+- Related to: Python
 
 ### Tutorial Contest FAQ by Prateek Gupta
 - [Read the guide](http://tutorials.pluralsight.com/software-engineering-best-practices/tutorial-contest-faq?status=in-review)
