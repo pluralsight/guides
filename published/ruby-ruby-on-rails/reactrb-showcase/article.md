@@ -279,7 +279,7 @@ And then we need to `require` it in `webpack/client_and_server.js` by adding thi
 	
 Run the `webpack` command again, and restart your rails server.
 
-If you refresh your browser now and open the JavaScript console we will be able to interact with React Bootstrap
+If you refresh your browser now and open the JavaScript console we will be able to interact with React Bootstrap by typing:
 
 	ReactBootstrap
 
