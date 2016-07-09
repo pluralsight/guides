@@ -1,3 +1,8 @@
+### Guide for using PF4J framework for making extensible Java applications  by Mukarram Tailor
+- [Read the guide](http://tutorials.pluralsight.com/java-and-j2ee/guide-for-using-pf4j-framework-for-making-extensible-java-applications?status=draft)
+- [Read more from Mukarram Tailor](http://tutorials.pluralsight.com/author/Mukarr) <img src="https://avatars.githubusercontent.com/u/9568504?v=3" width="30" height="30" alt="Mukarram Tailor" />
+- Related to: Java and J2EE
+
 ### 7 Reasons yo should start using ES6 by Sebastian
 - [Read the guide](http://tutorials.pluralsight.com/node-js/7-reasons-yo-should-start-using-es6?status=draft)
 - [Read more from Sebastian](http://tutorials.pluralsight.com/author/sbastidasr) <img src="https://avatars.githubusercontent.com/u/4912810?v=3" width="30" height="30" alt="Sebastian" />

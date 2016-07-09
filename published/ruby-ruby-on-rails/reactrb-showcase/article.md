@@ -1,5 +1,7 @@
 This is a simple Rails application showcasing Reactrb, Opal, NPM, Webpack, React Bootstrap and other associated technologies.  This showcase is intended to be a companion project to the excellent Reactrb tutorials already written which you can find in [Further Reading](#further-reading) below.
 
+The source code for this tutorial can be found [here](https://github.com/barriehadfield/reactrb-showcase)
+
 + [Introduction](#introduction)
 + [Setup](#setup)
 + [Working with React Bootstrap](#working-with-react-bootstrap)
