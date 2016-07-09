@@ -1,7 +1,5 @@
 This is a simple Rails application showcasing Reactrb, Opal, NPM, Webpack, React Bootstrap and other associated technologies.  This showcase is intended to be a companion project to the excellent Reactrb tutorials already written which you can find in [Further Reading](#further-reading) below.
 
-The source code for this tutorial can be found [here](https://github.com/barriehadfield/reactrb-showcase)
-
 + [Introduction](#introduction)
 + [Setup](#setup)
 + [Working with React Bootstrap](#working-with-react-bootstrap)
@@ -27,15 +25,14 @@ The source code for this tutorial can be found [here](https://github.com/barrieh
 
 Ruby libraries are distributed as gems, and are managed in your Rails app using the Gemfile and bundler.
 
-In the Javascript world things are still evolving but I have the easiest way to manage Javascript libraries is using NPM (Node Package Manager) and Webpack.  Pretty much every front end library is packaged with NPM these days so it is easy to get help and most things just work.  
+In the Javascript world things are still evolving but I have found that the easiest way to manage Javascript libraries is using NPM (Node Package Manager) and Webpack.  Pretty much every front end library is packaged with NPM these days so it is easy to get help and most things just work.  
 
 Happily NPM, Webpack, Rails, and Reactrb can all play together very nicely.
 
+This tutorial requires that Ruby, Rails, and NPM  are installed. Please see their websites for installation instructions.
 
 + [NPM](https://www.npmjs.com/)
-+ [Webpack](https://www.npmjs.com/package/webpack)
-
-This tutorial requires that Ruby, Rails, and NPM  are installed. Please see their websites for installation instructions.
++ [Rails](http://rubyonrails.org/)
 
 ### Technologies highlighted in this showcase app
 
@@ -109,10 +106,6 @@ Fire up the server with `bundle exec rails s`, refresh your browser and if all h
 	
 Remember this value, as we will need to use it later.
 
-A note on React versions: The reactrb-rails-generator gem has installed the [React Rails](https://github.com/reactjs/react-rails) gem which includes a copy of the React source. Multiple copies of React being included cause untold problems so pay particular attention to the version of React you currently have (via the React Rails gem) and the version we are about to install via NPM. We will need to ensure these versions are the same. At the time writing, the React version being installed by react-rails is 15.0.2 so we want to install the same version via NPM. 
-
-If you need to use a specific version of react, you will need to make sure you use the corresponding version of react-rails.  See [React Rails versions](https://github.com/reactjs/react-rails/blob/master/VERSIONS.md) and then specify the specific version of react-rails you need in your gem file.
-
 ### Step 3: Setup Webpack for managing javascript libraries
 
 There are three parts to this step:  
@@ -137,10 +130,6 @@ First add a package.json file to your root directory (same place as your Gemfile
         "webpack": "^1.13.1",
       },
       "devDependencies": {
-        "css-loader": "^0.23.1",
-        "file-loader": "^0.9.0",
-        "style-loader": "^0.13.1",
-        "url-loader": "^0.5.7"
       }
     }
 
@@ -276,9 +265,9 @@ Lets implement a Navbar in this project using React Bootstrap in Reactrb. First,
 Note: The `--save` option will update the package.json file.
 
 And then we need to `require` it in `webpack/client_and_server.js` by adding this line:
-
-	ReactBootstrap = require('react-bootstrap')
-	
+```javascript
+ReactBootstrap = require('react-bootstrap')
+```
 Run the `webpack` command again, and restart your rails server.
 
 If you refresh your browser now and open the JavaScript console we will be able to interact with React Bootstrap by typing:
@@ -287,57 +276,122 @@ If you refresh your browser now and open the JavaScript console we will be able 
 
 and you will see the ReactBootstrap object with all its components like Accordion, Alert, Badge, Breadcrumb, etc. This is great news, React Bootstrap is installed and ready to use. Accessing the JavaScript object in this way is a really great way to see what you have to work with. Sometimes the documentation of a component is not as accurate as actually seeing what you have in the component itself.
 
-Lets recap for a second. We have Reactrb working with an initial component and we have React Bootstrap installed and ready to use, but there is a key piece of the puzzle missing. How do we bridge between Ruby and JavaScript so that we can use a JavaScript based library alongside our beautiful Ruby based components?
+Reactrb can automatically access our components loaded by Webpack, but we have to opt in to this behavior.  Edit `app/views/components.rb` and add 
+```ruby
+require 'reactrb/auto-import'
+```
+immediately after `require 'reactrb'` (which is right near the top of the file.)  Auto-import will now search the javascript name space, and import into ruby any components that are referenced by your Reactrb components.
 
-Reactrb makes this unbelievably easy which is a testament to its elegance, power and simplicity. We simply wrap the JavaScript library in a Ruby class and access it through Ruby. Lets do that next then we will be ready to write our Bootstrap Nav component in Ruby.
+To make sure everything is working lets add a *Button* to our our Show component like this:
+```ruby
+module Components
+  module Home
+    class Show < React::Component::Base
+      def render
+        ReactBootstrap::Button(bsStyle: 'success', bsSize: "small") do
+          'Success'
+        end.on(:click) do
+    	  alert('you clicked me!')
+    	end
+      end
+    end
+  end
+end
+```
+Notice that we reference `ReactBoostrap` in ruby using the same identifer that was in the require statement in our `client_and_server.js` webpack bundle.  The first time Reactrb hits the `ReactBootstrap` constant it will not be defined. This triggers a search of the javascript name space for something that looks either like a component or library of components.  It then defines the appropriate module or component class wrapper in ruby.
 
-Create a new folder `views/components/shared` and add a file `bootstrap.rb` (I like to keep all my shared components in a specific folder and then one folder per application concept)
+Visit your page and if all is well you will see a clickable button.  However it will not have any styles.  This is because ReactBootstrap does not automatically depend on any particular style sheet, so we will have to supply one.  An easy way to do this is to just copy the css file from the bootstrap repo, and stuff it our rails assets directory, however with a little upfront work we can setup webpack to do it all for us.
 
-	module Components
-		class Bs < React::NativeLibrary
-			imports 'ReactBootstrap'
-		end
-	end
+First lets add four webpack *loaders* using npm:
+```text
+    npm install css-loader file-loader style-loader url-loader --save-dev
+```
+Notice we use `--save-dev` instead of just `--save` as these packages are only used in the development process. 
 
-The code above defines a new class `Bs` which `imports` the JavaScript based React Bootstrap library for us to use in Ruby with our Reactrb components. We are wrapping a JavaScript library with a Ruby class.
+Now edit your `webpack.config.js` file, and update the loaders section so it looks like this:
+```javascript
+var path = require("path");
 
-Lets go ahead and create our Navbar::Show component in `views/components/navbar/show.rb`
+module.exports = {
+...
+    module: {
+        loaders: [
+            { test: /\.css$/, loader: "style-loader!css-loader" },
+            { test: /\.(woff|woff2)(\?v=\d+\.\d+\.\d+)?$/, loader: 'url?limit=10000&mimetype=application/font-woff' },
+            { test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/, loader: 'url?limit=10000&mimetype=application/octet-stream' },
+            { test: /\.eot(\?v=\d+\.\d+\.\d+)?$/, loader: 'file' },
+            { test: /\.svg(\?v=\d+\.\d+\.\d+)?$/, loader: 'url?limit=10000&mimetype=image/svg+xml' }
+        ]
+    },
+...
+};
+```
 
-	module Components
-		module Navbar
-			class Show < React::Component::Base
+We have set webpack up so that when a css file is required it uses the style loader to process the file.  Because the bootstrap css file will require font face files, we also have 4 font loaders.  All this will package up everything when we require any css file.
 
-				def say_hello
-					alert "Hello!"
-				end
+Now we are ready to require CSS files, and have webpack build a complete bundle including the css and any fonts referenced.
 
-				def render
-					div {
-						div(id: "main-navbar") {
-							Bs.Navbar(bsStyle: :inverse) {
-								Bs.Nav {
-									Bs.NavbarBrand { a(href: '#') {"Reactrb Showcase"} }
-									Bs.NavDropdown(eventKey: 1, title: "Things", id: :drop_down) {
-										(1..5).each do |n|
-											Bs.MenuItem(key: n, eventKey: "1.#{n.to_s}", href: '#' ) {
-												"Number #{n.to_s}"
-											}.on(:click) { say_hello }
-										end
-									}
-								}
-							}
-						}
-					}
-				end
-			end
-		end
-	end
+To bundle in the bootstrap css file add this line to `webpack/client_only.js`
+```javascript
+require('bootstrap/dist/css/bootstrap.css');
+```
+
+And install the bootstrap package 
+```
+npm install bootstrap --save
+```
+
+Now run `webpack` to update our bundles, and restart your server.  Now our button is properly styled. 
+
+Now that everything is loaded, lets update our component to use a few more of the Bootstrap components.  Update our Show component so that it looks like this:
+
+```ruby
+module Components
+  module Home
+    class Show < React::Component::Base
+
+      def say_hello(i)
+        alert "Hello from number #{i}"
+      end
+
+      def render 
+        ReactBootstrap::Navbar(bsStyle: :inverse) do
+          ReactBootstrap::Nav() do
+            ReactBootstrap::NavbarBrand() do
+              a(href: '#') { 'Reactrb Showcase' }
+            end
+            ReactBootstrap::NavDropdown(eventKey: 1, title: 'Things', id: :drop_down) do
+              (1..5).each do |n|
+                ReactBootstrap::MenuItem(href: '#', key: n, eventKey: "1.#{n}") do
+                  "Number #{n}"
+                end.on(:click) { say_hello(n) }
+              end
+            end
+          end
+        end
+      end
+    end
+  end
+end
+```
+
 
 A few things to notice in the code above:
 
-We add React Bootstrap components simply by `Bs.Name` where `Name` is the component you want to create. All the components are documented in the React Bootstrap [documentation](https://react-bootstrap.github.io/components.html)
+We add React Bootstrap components simply by `ReactBootstrap::Name` where `Name` is the component you want to render. All the components are documented in the React Bootstrap [documentation](https://react-bootstrap.github.io/components.html)
 
 Notice how I have added an `.on(:click)` even handler to the `MenuItem` component while setting `href: '#'` as this will allow us to handle the event instead of navigating to a new page.
+
+Hopefully you have realized that almost all of this tutorial is just setting up webpack boiler plate.  Once things are setup using a new js package in Reactrb is as easy as doing an `npm install` and requiring it.  
+
+### Keeping in sync with React Rails
+
+A note on React versions: The reactrb-rails-generator gem has installed the [React Rails](https://github.com/reactjs/react-rails) gem which includes a copy of the React source.
+
+Because we have already have the React source being loaded we place the react code in its own bundle in webpack, which is never loaded.  This allows Webpack to build the correct dependency trees, without loading React twice.  The only thing we have to do is make sure that the version of React (and ReactDOM) specified in npm's package.json file is the same as is being included with react-rails.  
+
+Use the javascript console or see [React Rails versions](https://github.com/reactjs/react-rails/blob/master/VERSIONS.md) to determine which version of react is included with the version of react-rails you are using.  Once everything is working, its strongly suggested that you lock in the specific version of react-rails in your Gemfile, so it does not accidentally get updated.
+
 
 TODO:
 
