@@ -1,3 +1,8 @@
+### Introduction to Angular test-driven development by Hristo Georgiev
+- [Read the guide](http://tutorials.pluralsight.com/front-end-javascript/introduction-to-angular-test-driven-development?status=in-review)
+- [Read more from Hristo Georgiev](http://tutorials.pluralsight.com/author/Kaizeras) <img src="https://avatars.githubusercontent.com/u/6340189?v=3" width="30" height="30" alt="Hristo Georgiev" />
+- Related to: Front-End JavaScript (Angular, React, Meteor, etc)
+
 ### Visualizing tweets with PubNub's Stream Controller and CSS3 animations by Esteban Herrera
 - [Read the guide](http://tutorials.pluralsight.com/interesting-apis/visualizing-tweets-with-pubnub-s-stream-controller-and-css3-animations?status=in-review)
 - [Read more from Esteban Herrera](http://tutorials.pluralsight.com/author/eh3rrera) <img src="https://avatars.githubusercontent.com/u/11665759?v=3" width="30" height="30" alt="Esteban Herrera" />
