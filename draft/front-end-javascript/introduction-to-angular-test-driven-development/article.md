@@ -690,4 +690,4 @@ app/some-service.js
 app/some-service.spec.js
 ```
 
-This is everything you need to know in order to start testing your application. I have made a [Github repository]() with the code from the guide in case you missed something.
+This is everything you need to know in order to start testing your application. I have made a [Github repository](https://github.com/Kaizeras/angular-tests) with the code from the guide in case you missed something.
