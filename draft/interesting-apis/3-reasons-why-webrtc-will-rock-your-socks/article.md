@@ -35,20 +35,8 @@ var video = document.querySelector('video');
 
 navigator.getUserMedia = navigator.webkitGetUserMedia;
 
-function successCallback(stream) {
-  window.stream = stream;
-  if (window.URL) {
-    video.src = window.URL.createObjectURL(stream);
-  } else {
-    video.src = stream;
-  }
-}
+navigator.getUserMedia({video: true}, function(stream) { videoOne.src = window.URL.createObjectURL(stream);}, function() { console.log("No stream")});
 
-function errorCallback(error) {
-  console.log('navigator.getUserMedia error: ', error);
-}
-
-navigator.getUserMedia({video: true}, successCallback, errorCallback);
 ```
 
 That's it! That's all the code you need to start using WebRTC's first API: getUserMedia(). The code above gets a stream from your webcam and sets it as the video source. Try it out: you should be seeing a live stream of your beautiful self :)
