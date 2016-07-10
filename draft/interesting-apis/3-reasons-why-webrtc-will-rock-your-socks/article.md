@@ -35,7 +35,7 @@ var video = document.querySelector('video');
 
 navigator.getUserMedia = navigator.webkitGetUserMedia;
 
-navigator.getUserMedia({video: true}, function(stream) { videoOne.src = window.URL.createObjectURL(stream);}, function() { console.log("No stream")});
+navigator.getUserMedia({video: true}, (stream) => { video.src = window.URL.createObjectURL(stream) }, () => { console.log("No stream") });
 
 ```
 
