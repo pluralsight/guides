@@ -8,7 +8,7 @@ This guide is a great starting point for your journey in testing Angular applica
 Angular is built with [testing in mind](https://docs.angularjs.org/guide/unit-testing). The framework allows simulation of server-side requests and abstraction of the [document object model](https://en.wikipedia.org/wiki/Document_Object_Model) , thus providing an environment for testing out numerous scenarios. Additionally, Angular's dependency injection allows every component to be mocked and tested in different scopes.
 
 
- We'll start off by setting up the environment and looking at how [Jasmine](http://jasmine.github.io/2.4/introduction.html), [Karma](https://karma-runner.github.io/1.0/index.html) and [Angular Mocks](https://docs.angularjs.org/api/ngMock) work together to provide an easy and seamless testing experience in Angular. Then, we will have a look at the different building blocks of tests. Lastly, we will use the newly acquired knowledge to build sample tests for controllers, services, directives, filters, routes and promises.
+ We'll start off by setting up the environment and looking at how [Jasmine](http://jasmine.github.io/2.4/introduction.html), [Karma](https://karma-runner.github.io/1.0/index.html) and [Angular Mocks](https://docs.angularjs.org/api/ngMock) work together to provide an easy and seamless testing experience in Angular. Then, we will have a look at the different building blocks of tests. Lastly, we will use the newly acquired knowledge to build sample tests for controllers, services, directives, filters, promises and events.
 
 
 # Getting started
@@ -17,11 +17,11 @@ Every great developer knows what his tools are for. Knowing the role of each of 
 
 ## What does what?
 
-** Karma**  an environment which runs the tests of your applicaiton. Simply put, it's your testing server. Originally started as a [university thesis](https://github.com/karma-runner/karma/raw/master/thesis.pdf), Karma aims to make a framework agnostic environment that automates the running of your unit tests. In its core, it is a [Node](https://nodejs.org/en/) server that watches for changes in your testing and application files, and when such changes occur, it runs them into a browser and checks for mistakes.
+** Karma**  is an environment which runs the tests of your application. Simply put, it's your testing server. Originally started as a [university thesis](https://github.com/karma-runner/karma/raw/master/thesis.pdf), Karma aims to make a framework-agnostic environment that automates the running of your unit tests. In its core, it is a [Node](https://nodejs.org/en/) server that watches for changes in your testing and application files, and when such changes occur, it runs them into a browser and checks for mistakes.
 
-** Jasmine ** is an unit testing framework for JavaScript. It is the most popular framework for testing JavaScript applications, mostly because it is quite simple to start with and flexible enough to cover a wide range of scnearios
+** Jasmine ** is an unit testing framework for JavaScript. It is the most popular framework for testing JavaScript applications, mostly because it is quite simple to start with and flexible enough to cover a wide range of scnearios.
 
-** Angular mocks ** is an Angular module that is used to mock compontents that already exist in the applicaiton. Its role is to inject various components of your Angular applicaiton (controllers, services, factories, directives, filters) and make them available for unit tests. It can be said that Angular Mocks is the middleman between the Angular components in your applicaiton and the unit testing environment.
+** Angular mocks ** is an Angular module that is used to mock compontents that already exist in the applicaiton. Its role is to inject various components of your Angular application (controllers, services, factories, directives, filters) and make them available for unit tests. It can be said that Angular Mocks is the middleman between the Angular components in your applicaiton and the unit testing environment.
 
 ### Setting up the testing environment
 
@@ -41,7 +41,7 @@ Then, create a directory where you'll store your project files.
  ```
  #### Installing packages
  
- Once you are int he directory, start setting up your project dependencies. 
+ Once you are in the directory, start setting up your project dependencies. 
  First, initialize your <code>package.json</code> file:
 
 ```bash
@@ -71,7 +71,7 @@ Then, create a directory where you'll store your project files.
 }
 
 ```
- Then start installing your project's dependencies, starting off with Angular:
+ Then, start installing your project's dependencies, starting off with Angular:
 ```bash
 npm install angular --save
 npm install karma --save-dev
@@ -93,7 +93,7 @@ npm install karma-chrome-launcher --save-dev
  
 There is a [great number of options](http://karma-runner.github.io/1.0/config/configuration-file.html) for configuring Karma. The most essential are the following:
 
-- **Frameworks** - the testing frameworks that are going to be used. In this guide, we are using jasmine.
+- **Frameworks** - the testing frameworks that are going to be used. In this guide, we are using Jasmine.
 - **Files** - files that will be used for the tests. You would normally include both the framework files (in this case, Angular) as well as the project and the testing files themselves.
 - **Browsers** - You can specify which browsers must Karma use in order to run its tests.
 
@@ -189,7 +189,7 @@ Although the concepts that are going to be used are specific for Jasmine, they s
 
 <code>expect(actual).toBe(expected)</code> 
 - **Matchers** - Are redefined helpers for common assertions. They are the constructs that do the evaluations and decide whether a test has failed or not.
-- 
+
 <code>toEqual(expected)</code>
 
 To give you a better idea of what matchers can do, here is a list of the most essential matchers:
@@ -214,7 +214,7 @@ expect(mixed).toMatch(pattern);
 
 #### Teardown
 
-Teardowns are another building blocks of tests that is used to "prepare" the code for its specs in a particular suite. Suppose that before or after each spec (i.e a <code>describe</code> function) to do certain setups so that you can test a particular functionality. Instead of doing it for every spec, you can write a <code> beforeEach </code> or an <code> afterEach </code> function in your sute to do that.
+Teardowns are а building block fоr tests that is used to "prepare" the code for its specs in a particular suite. Suppose that before or after each spec (i.e a <code>describe</code> function) certain setups have to be done so that you can test a  functionality. Instead of doing it for every spec, you can write a <code> beforeEach </code> or an <code> afterEach </code> function in your sute to do that.
 
 ```javascript
 // single line
@@ -230,7 +230,7 @@ beforeEach(function(){
  
  #### Injecting
  
- Injecting is essential feature of unit testing Angular applicaitons. It is characterised by the <code> inject </code> function that is provided by the Angular mocks module. Injecting can be regarded as a way of accessing Angular's built-in constructs or your applicaiton's constructs by giving the correct arguments. This gives you the ability to access the code of your application and put mock data through it in order to test it.
+ Injecting is essential feature of unit testing Angular applications. It is characterised by the <code> inject </code> function that is provided by the Angular mocks module. Injecting can be regarded as a way of accessing Angular's built-in constructs or your applicaiton's constructs by giving the correct arguments. This gives you the ability to access the code of your application and put mock data through it in order to test it.
  
  Injecting gives access to  Angular's building blocks - *$service*, *$controller*, *$filter* , *$directive*, *$factory*. Additionally, it allows to mock built-in variables such as *$rootScope* and *$q*. It also provides *$httpBackend* to simulate server-side requests in the testing envirionemnt.
  
@@ -295,7 +295,7 @@ describe('Testing a Hello Pluralsight controller', function() {
 
 });
 ```
-Let's go thorugh building the code step-by-step. First, we use the <code> describe </code> function to make a new testing suite for the controller. It contains a message as its first argument and a function that is going to contain the tests in the  second argument
+Let's go through building our first test step-by-step. First, we use the <code> describe </code> function to make a new testing suite for the controller. It contains a message as its first argument and a function that is going to contain the tests in the  second argument
 Next, let's inject the controller in the suite:
 
 
@@ -350,7 +350,7 @@ describe('Testing a Hello Pluralsight controller', function() {
   // ... Other tests here ...
 });
 ```
-We start our first test specification (spec) with the <code> it </code> function. The first argument is a message, an hte second argument is the function wit the test. First we instantiate <code> MainCtrl </code> that we created in the application. Then, we use a matcher to check its <code> $scope.title </code> variable if it is equal to the value we assigned in the application.
+We start our first test specification (spec) with the <code> it </code> function. The first argument is a message, and the second argument is the function with the test. First, we instantiate <code> MainCtrl </code> that we created in the application. Then, we use a matcher to check its <code> $scope.title </code> variable if it is equal to the value we assigned in the application.
 
 ## Testing a service
 
@@ -408,7 +408,7 @@ In the spec, we use the <code>toContain</code> matcher to check the contents of 
 
 ## Testing directives
 
-Directives differ in terms of purpose and structure than services and controllers, and they are tested using different approach. Directives have their own encapsulated scope which gets its data from an outer scope, a controller, for example. What happens to directives is that they first get "compiled" (in Angular.js sense)  and then their scope gets filled with data. In order to properly test them, we must simulate the same process and see if we get the desirable outcomes.
+Directives differ in terms of purpose and structure than services and controllers. Thus, they are tested using different approach. Directives have their own encapsulated scope which gets its data from an outer scope, a controller, for example. What happens to directives is that they first get "compiled" (in the Angular.js sense)  and then their scope gets filled with data. In order to properly test them, we must simulate the same process and see if we get the desirable outcomes.
 
 We are going to add a simple directive that will display the user's profile. It will get its profile data from outside and apply it into its scope.
 
@@ -680,7 +680,7 @@ To check if a function gets called, Jasmine provides spies. Here, we can see an 
 
 This guide featured only two files being tested - <code>app.js</code> for the code and <code>tests.js</code> for the tests. However, In larger and more complex projects, you have to opt for a different file structure:
 
- .spec.js suffix to differentiate test files.
+ You'd want to group your code files and test file together , using <code> .spec.js </code> suffix to differentiate test files.
 ```
 app/some-controller.js
 app/some-controller.spec.js
@@ -689,3 +689,5 @@ app/some-directive.spec.js
 app/some-service.js
 app/some-service.spec.js
 ```
+
+This is everything you need to know in order to start testing your application. I have made a [Github repository]() with the code from the guide in case you missed something.
