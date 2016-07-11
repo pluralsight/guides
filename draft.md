@@ -1,3 +1,8 @@
+### Getting started with Angular 2 by building a Giphy search application by Nikola Brežnjak
+- [Read the guide](http://tutorials.pluralsight.com/front-end-javascript/getting-started-with-angular-2-by-building-a-giphy-search-application?status=draft)
+- [Read more from Nikola Brežnjak](http://tutorials.pluralsight.com/author/Hitman666) <img src="https://avatars.githubusercontent.com/u/1001064?v=3" width="30" height="30" alt="Nikola Brežnjak" />
+- Related to: Front-End JavaScript (Angular, React, Meteor, etc)
+
 ### Getting Started with Ionic 2 by Olulana Kolawole
 - [Read the guide](http://tutorials.pluralsight.com/android/getting-started-with-ionic-2?status=draft)
 - [Read more from Olulana Kolawole](http://tutorials.pluralsight.com/author/kolawoletech) <img src="https://avatars.githubusercontent.com/u/4382405?v=3" width="30" height="30" alt="Olulana Kolawole" />
