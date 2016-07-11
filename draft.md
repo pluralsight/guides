@@ -1,3 +1,8 @@
+### Getting Started with Ionic 2 by Olulana Kolawole
+- [Read the guide](http://tutorials.pluralsight.com/android/getting-started-with-ionic-2?status=draft)
+- [Read more from Olulana Kolawole](http://tutorials.pluralsight.com/author/kolawoletech) <img src="https://avatars.githubusercontent.com/u/4382405?v=3" width="30" height="30" alt="Olulana Kolawole" />
+- Related to: Android
+
 ### Getting Started with RethinkDB Horizon and OAuth Using Twitch by Chris Hranj
 - [Read the guide](http://tutorials.pluralsight.com/node-js/getting-started-with-rethinkdb-horizon-and-oauth-using-twitch?status=draft)
 - [Read more from Chris Hranj](http://tutorials.pluralsight.com/author/Brodan) <img src="https://avatars.githubusercontent.com/u/12822268?v=3" width="30" height="30" alt="Chris Hranj" />
