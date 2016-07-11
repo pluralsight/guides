@@ -12,11 +12,12 @@ WebRTC is an [open source project](https://webrtc.org/) with many spin-offs in v
 # Supported
 WebRTC is compatible with Firefox, Opera, and Chrome: desktop and mobile. There's even a cool browser that is built on top of WebRTC; it's called [Bowser](http://www.openwebrtc.org/bowser/) and was developed by Ericsson Research.
 
-![Lots of stars!](https://raw.githubusercontent.com/pluralsight/guides/master/images/74b0733b-47a2-4fd4-85b2-46d815a0c065.24)
+- ![Lots of stars!](https://raw.githubusercontent.com/pluralsight/guides/master/images/74b0733b-47a2-4fd4-85b2-46d815a0c065.24)
 
-![Build passing!](https://raw.githubusercontent.com/pluralsight/guides/master/images/adc73fd4-643e-4368-a52a-cde90d8b6594.25)
+- ![Build passing!](https://raw.githubusercontent.com/pluralsight/guides/master/images/adc73fd4-643e-4368-a52a-cde90d8b6594.25)
 
-![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/0c38196c-3612-4a1b-8edf-dc265cc9963b.29)
+- ![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/0c38196c-3612-4a1b-8edf-dc265cc9963b.29)
+
 
 I've personally used it on Chrome, iOS, and Android and it works well.
 
@@ -142,4 +143,12 @@ The third API of WebRTC is RTCDataChannel. We won't cover that in this tutorial 
 
 # Demo time
 
-As I mentioned earlier, PubNub offers a We
+In the code above, we simulated peer connections on the same screen so there was no need for the STUN/TURN signaling servers I had mentioned in the beginning of this tutorial. But, as I also mentioned earlier, companies like PubNub offer services that do that dirty work for you. So, let's take advantage of that to build and deploy a revolutionary new app for any doctor in the world to log on and video chat with a patient in the browser with no additional downloads needed. We'll call it DocToc because I'm a poet and I know it.
+
+PubNub makes it astonishingly simple to utilize WebRTC with the following calls (no pun intended):
+- phone.dial
+- phone.receive
+
+
+
+What can you come up with? Post below!
