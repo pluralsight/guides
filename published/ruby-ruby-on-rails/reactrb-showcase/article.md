@@ -1,7 +1,5 @@
 This is a simple Rails application showcasing Reactrb, Opal, NPM, Webpack, React Bootstrap and other associated technologies.  This showcase is intended to be a companion project to the excellent Reactrb tutorials already written which you can find in [Further Reading](#further-reading) below.
 
-The source code for this tutorial can be found [here](https://github.com/barriehadfield/reactrb-showcase)
-
 + [Introduction](#introduction)
 + [Setup](#setup)
 + [Working with React Bootstrap](#working-with-react-bootstrap)
@@ -25,14 +23,16 @@ The source code for this tutorial can be found [here](https://github.com/barrieh
 
 ### Using NPM and Webpack alongside Rails
 
-I like to keep my front-end and back-end assets separate and in an ideal world, all my Rails related assets would be Ruby Gems and all the front-end assets will be Node Modules installed by NPM. This is however not always achievable.
+Ruby libraries are distributed as gems, and are managed in your Rails app using the Gemfile and bundler.
 
-I have found Webpack and Rails to be an excellent combination which allows for all the front end assets to be installed via NPM which then play very nicely with Webpack which will co-exist happily with Sprockets. Pretty much every front end library is packaged with NPM these days so it is easy to get help and most things just work.
+In the Javascript world things are still evolving but I have found that the easiest way to manage Javascript libraries is using NPM (Node Package Manager) and Webpack.  Pretty much every front end library is packaged with NPM these days so it is easy to get help and most things just work.  
+
+Happily NPM, Webpack, Rails, and Reactrb can all play together very nicely.
+
+This tutorial requires that Ruby, Rails, and NPM  are installed. Please see their websites for installation instructions.
 
 + [NPM](https://www.npmjs.com/)
-+ [Webpack](https://www.npmjs.com/package/webpack)
-
-This tutorial requires that Ruby, Rails, NPM and Webpack are installed. Please see their websites for installation instructions.
++ [Rails](http://rubyonrails.org/)
 
 ### Technologies highlighted in this showcase app
 
@@ -52,7 +52,7 @@ This tutorial requires that Ruby, Rails, NPM and Webpack are installed. Please s
 
 You should have a empty Rails application
 
-	rails s
+	bundle exec rails s
 
 And in your browser
 
@@ -64,97 +64,155 @@ You should be seeing the Rails Welcome aboard page. Great, Rails is now installe
 
 [We will use the Reactrb Rails Generator Gem](https://github.com/loicboutet/reactive-rails-generator)
 
-In your `Gemfile`
+In your `Gemfile` under the development group add
 
 	gem "reactrb-rails-generator"
 
-then
+then do
 
-	bundle update
-	rails g reactrb:install
+	bundle install
+	bundle exec rails g reactrb:install --all
 	bundle update
 
-At this stage Reactrb is installed but we don't have any components yet. Lets create via the generator:
+At this stage Reactrb is installed but we don't have any components yet. Lets create one via the generator:
 
 	rails g reactrb:component Home::Show
 
 This will add a new Component at app/views/components/home/show.rb
 
-Have a look at this component as it provides the basis for all other Reactrb components you will write. Note that all Reactrb components inherit from `React::Component::Base` but you are free to `include React::Component::Base` instead if you prefer your components inheriting from other classes. Also note how `params` are declared and the `before_mount` (and friends) macros as you will use these extensively. Finally note that every component must have one `render` methord which must return just one DOM `element` which in this example case is a `div`.
+Have a look at this component as the generator creates a boiler plate component and instructions for using the most common Reactrb macros. Note that Reactrb components normally inherit from class `React::Component::Base` but you are free to `include React::Component` instead if you need your component to inherit from some other class. 
+
+Also note how `params` are declared and how `before_mount` macros (and friends) macros are used. Finally note that every component must have one `render` method which must return just one DOM `element` which in this example case is a `div`.
 
 Next let's get this simple component rendering on a page. For that we will need a rails controller and a route.
 
-	rails generate controller home
+	rails g controller home
 
 And add a route to your `routes.rb`
 
-	get 'home' => 'home#show'
+	root => 'home#show'
 
-A method in the HomeController which will render the component.
+And a `show` method in the HomeController which will render the component using the `render_component` helper.
 
 	class HomeController < ApplicationController
 	  def show
+	    render_component
 	  end
 	end
 
-And finally a view app/views/home/show.erb
+Fire up the server with `bundle exec rails s`, refresh your browser and if all has gone well, you should be rewarded with `Home::Show` in your browser. 
+	
+### Step 3: Setup Webpack for managing javascript libraries
 
-	<%= react_component "Home::Show" %>
+There are three parts to this step:  
 
-And if all has gone well, you should be rewarded with `Home::Show` in your browser. If you open your JavaScript console you can also check which version of React has been loaded
+* Setting up NPM (node package manager) for the project
+* Setting up Webpack
+* Updating the rails asset pipeline to use the bundles generated by Webpack
 
-	React.version
+This is just a matter of adding 4 boiler plate files, and updating two of your rails files.
 
-A note on React versions: Reactrb includes the [React Rails](https://github.com/reactjs/react-rails) gem which includes a copy of the React source. Multiple copies of React being included cause untold problems so pay particular attention to the version of React you have (via the React Rails gem) and the version we are about to install via NPM. We will need to ensure these versions are the same. At the time writing, the React version being installed is 15.0.2 so we install the same version via NPN. To change this, see [React Rails versions](https://github.com/reactjs/react-rails/blob/master/VERSIONS.md) which will then let you specify which version of React to include via the React Rails gem.
+First add a package.json file to your root directory (same place as your Gemfile) like this:
 
-### Step 3: Webpack for managing front-end assets
+    // package.json
+    {
+      "name": "reactrb-showcase",
+      "version": "0.0.1",
+      "dependencies": {
+        "bootstrap": "^3.3.6",
+        "react": "^0.14.2",      
+        "react-dom": "^0.14.2", 
+        "react-bootstrap": "^0.29.5",
+        "webpack": "^1.13.1",
+      },
+      "devDependencies": {
+      }
+    }
 
-[We will use the Webpack Rails Gem](https://github.com/mipearson/webpack-rails)
+Notice how similar this is to your Gemfile.
 
-Run through the Installation instructions and you will end up with the following new files:
+Now run `npm install` which will make sure you have all these packages.
 
-	package.json (for managing your NPM modules)
-	procfile (for starting webpack-dev-server alongside your rails server)
-	webpack\application.js (for requiring JavaScript libraries for inclusion by Webpack)
-	config\webpack.config.js (for configuring Webpack)
+So that we can run webpack from the command line do a `npm install webpack -g`
 
-Also note that your `.gitignore` now includes
+Now that we have webpack, we need to add 3 boiler plate files to configure it.  As you add more javascript packages you will be updating these files.  Again this is similar to updating your Gemfile when you add new gems to a project.
 
-	# Added by webpack-rails
-	/node_modules
-	/public/webpack
+Add webpack.config.js to the root of your project:
 
-Assuming that you have NPM already installed (if you do not then you need to install it now), run
+```javascript
+var path = require("path");
 
-	npm install
+module.exports = {
+    context: __dirname,
+    entry: {
+        client_only:  "./webpack/client_only.js",
+        client_and_server: "./webpack/client_and_server.js"
+    },
+    externals: {
+        "react": "React",
+        "react-dom": "ReactDOM"
+    },
+    output: {
+        path: path.join(__dirname, 'app', 'assets', 'javascripts', 'webpack'),
+        filename: "[name].js",
+        publicPath: "/js/"
+    },
+    module: {
+        loaders: [
+          // add any loaders here
+        ]
+    },
+    resolve: {
+      root: path.join(__dirname, '..', 'webpack')
+    },
+};
+```
 
-which will download `webpack-dev-server` and other components into your `node-modules` folder.
+and create a folder called `webpack` and add the following two files:
 
-One final thing we need to do is add the entry point to our Rails application so Webpack can hot-load its assets in development mode
+```javascript
+// webpack/client_only.js
+// any packages that depend specifically on the DOM go here
+// for example the webpack css loader generates code that will break prerendering
+console.log('client_and_server.js loaded');
+```
 
-`<%= javascript_include_tag *webpack_asset_paths("application") %>`
+```javascript
+// webpack/client_and_server.js
+// all other packages that you can run on both server (prerendering) and client go here
+// most well behaved packages can be required here
+ReactDOM = require('react-dom')
+React = require('react')
+console.log('client_only.js loaded')
+```
 
-Assuming all went well you can now start your rails server agin using foreman
+Now run `webpack` from the command line.  This will grab all necessary dependencies and package them up into the `client_and_server.js` and `client_only.js` bundles.  If you look in the `app/assets/javascripts/webpack` directory you should see the two files there.
 
-	foreman start
+Finally we need to require these two bundles into our rails asset pipeline.
 
-At this point you should have a working server with Webpack hot-loading any components added via NPM.
+Edit `app/assets/javascript/application.js` and add 
+```javascript
+//= require 'webpack/client_only'
+```
+just *above* the line that reads `Opal.load('components');`.  This will pull in any webpack assets that can only run on the client.
 
-### Step 4: Installing React using NPM and Webpack
+Then edit `app/views/components.rb` and replace the `require 'react'` line with 
+```ruby
+require 'webpack/client_and_server.js'
+```
+In otherwords instead of pulling in react from the react-rails gem, we are going to pull in react *and* any other javascript packages we want from our webpack bundle.  
 
-One consideration that you need to pay close attention to is the version of React being included by the [React Rails](https://github.com/reactjs/react-rails) gem and the version being included by Webpack via NPM. I would suggest you use the React version supplied by the gem and set the NPM version accordingly. This will create a happy medium where you will know that React Rails is using a supported version of React and all your front-end assets versions are locked to the same React version by Webpack.    
+Now run `bundle exec rails s` and refresh the browser.  Look at the console and you should see something like this: 
+```text
+client_and_server.js loaded
+client_only.js loaded
+client_and_server.js loaded
+************************ React Prerendering Context Initialized Show ***********************
+************************ React Browser Context Initialized ****************************
+Reactive record prerendered data being loaded: [Object]
+```
 
-Installing React is very simple via NPM (note the @version which matches the version of React you have installed via the React Rails gem)
-
-	npm install react@15.0.2 react-dom@15.0.2 --save
-
-This will install React and also ReactDOM into your `node-modules` folder and also add the fact that these are installed to your `package.json`. You can now delete your `node-modules` folder at any time and simply `npm install` to install everything listed in `package.json`. Webpack does an excellent job of managing dependancies between NPM assets but you might find yourself deleting your `node-modules` folder fairly often as that is often the advice to resolve strange conflicts.
-
-add ReactDOM to your `webpack/application.js`
-
-	ReactDOM = require('react-dom')
-
-If you refresh your browser and check the React version should see the latest version ("15.1.0" at time of writing). If you are seeing that version number and no React warnings then all has worked properly and we are ready to start writing some Reactrb components.
+Congratulations you are setup and ready to begin adding javascript packages to your application.
 
 ## Working with React Bootstrap
 
@@ -200,70 +258,129 @@ So I hear you ask: why if I prefer the non-React Bootstrap syntax why am worryin
 Lets implement a Navbar in this project using React Bootstrap in Reactrb. First, we need to install Bootstrap and React Bootstrap:
 
 	npm install bootstrap react-bootstrap --save
+	
+Note: The `--save` option will update the package.json file.
 
-And then we need to `require` it in webpack/application.js
+And then we need to `require` it in `webpack/client_and_server.js` by adding this line:
+```javascript
+ReactBootstrap = require('react-bootstrap')
+```
+Run the `webpack` command again, and restart your rails server.
 
-	ReactBootstrap = require('react-bootstrap')
-
-I have also downloaded `bootstrap.css` and added it `assets/stylesheets`. This is a bit of a cheat as I am sure it can be included by Webpack, but for simplicity I have opted for this approach.
-
-If you refresh your browser now and open the JavaScript console we will be able to interact with React Bootstrap
+If you refresh your browser now and open the JavaScript console we will be able to interact with React Bootstrap by typing:
 
 	ReactBootstrap
 
 and you will see the ReactBootstrap object with all its components like Accordion, Alert, Badge, Breadcrumb, etc. This is great news, React Bootstrap is installed and ready to use. Accessing the JavaScript object in this way is a really great way to see what you have to work with. Sometimes the documentation of a component is not as accurate as actually seeing what you have in the component itself.
 
-Lets recap for a second. We have Reactrb working with an initial component and we have React Bootstrap installed and ready to use, but there is a key piece of the puzzle missing. How do we bridge between Ruby and JavaScript so that we can use a JavaScript based library alongside our beautiful Ruby based components?
+Reactrb can automatically access our components loaded by Webpack, but we have to opt in to this behavior.  Edit `app/views/components.rb` and add 
+```ruby
+require 'reactrb/auto-import'
+```
+immediately after `require 'reactrb'` (which is right near the top of the file.)  Auto-import will now search the javascript name space, and import into ruby any components that are referenced by your Reactrb components.
 
-Reactrb makes this unbelievably easy which is a testament to its elegance, power and simplicity. We simply wrap the JavaScript library in a Ruby class and access it through Ruby. Lets do that next then we will be ready to write our Bootstrap Nav component in Ruby.
+To make sure everything is working lets add a *Button* to our our Show component like this:
+```ruby
+module Components
+  module Home
+    class Show < React::Component::Base
+      def render
+        ReactBootstrap::Button(bsStyle: 'success', bsSize: "small") do
+          'Success'
+        end.on(:click) do
+    	  alert('you clicked me!')
+    	end
+      end
+    end
+  end
+end
+```
+Notice that we reference `ReactBoostrap` in ruby using the same identifer that was in the require statement in our `client_and_server.js` webpack bundle.  The first time Reactrb hits the `ReactBootstrap` constant it will not be defined. This triggers a search of the javascript name space for something that looks either like a component or library of components.  It then defines the appropriate module or component class wrapper in ruby.
 
-Create a new folder `views/components/shared` and add a file `bootstrap.rb` (I like to keep all my shared components in a specific folder and then one folder per application concept)
+Visit your page and if all is well you will see a clickable button.  However it will not have any styles.  This is because ReactBootstrap does not automatically depend on any particular style sheet, so we will have to supply one.  An easy way to do this is to just copy the css file from the bootstrap repo, and stuff it our rails assets directory, however with a little upfront work we can setup webpack to do it all for us.
 
-	module Components
-		class Bs < React::NativeLibrary
-			imports 'ReactBootstrap'
-		end
-	end
+First lets add four webpack *loaders* using npm:
+```text
+    npm install css-loader file-loader style-loader url-loader --save-dev
+```
+Notice we use `--save-dev` instead of just `--save` as these packages are only used in the development process. 
 
-The code above defines a new class `Bs` which `imports` the JavaScript based React Bootstrap library for us to use in Ruby with our Reactrb components. We are wrapping a JavaScript library with a Ruby class.
+Now edit your `webpack.config.js` file, and update the loaders section so it looks like this:
+```javascript
+var path = require("path");
 
-Lets go ahead and create our Navbar::Show component in `views/components/navbar/show.rb`
+module.exports = {
+...
+    module: {
+        loaders: [
+            { test: /\.css$/, loader: "style-loader!css-loader" },
+            { test: /\.(woff|woff2)(\?v=\d+\.\d+\.\d+)?$/, loader: 'url?limit=10000&mimetype=application/font-woff' },
+            { test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/, loader: 'url?limit=10000&mimetype=application/octet-stream' },
+            { test: /\.eot(\?v=\d+\.\d+\.\d+)?$/, loader: 'file' },
+            { test: /\.svg(\?v=\d+\.\d+\.\d+)?$/, loader: 'url?limit=10000&mimetype=image/svg+xml' }
+        ]
+    },
+...
+};
+```
 
-	module Components
-		module Navbar
-			class Show < React::Component::Base
+We have set webpack up so that when a css file is required it uses the style loader to process the file.  Because the bootstrap css file will require font face files, we also have 4 font loaders.  All this will package up everything when we require any css file.
 
-				def say_hello
-					alert "Hello!"
-				end
+Now we are ready to require CSS files, and have webpack build a complete bundle including the css and any fonts referenced.
 
-				def render
-					div {
-						div(id: "main-navbar") {
-							Bs.Navbar(bsStyle: :inverse) {
-								Bs.Nav {
-									Bs.NavbarBrand { a(href: '#') {"Reactrb Showcase"} }
-									Bs.NavDropdown(eventKey: 1, title: "Things", id: :drop_down) {
-										(1..5).each do |n|
-											Bs.MenuItem(key: n, eventKey: "1.#{n.to_s}", href: '#' ) {
-												"Number #{n.to_s}"
-											}.on(:click) { say_hello }
-										end
-									}
-								}
-							}
-						}
-					}
-				end
-			end
-		end
-	end
+To bundle in the bootstrap css file add this line to `webpack/client_only.js`
+```javascript
+require('bootstrap/dist/css/bootstrap.css');
+```
+
+And install the bootstrap package 
+```
+npm install bootstrap --save
+```
+
+Now run `webpack` to update our bundles, and restart your server.  Now our button is properly styled. 
+
+Now that everything is loaded, lets update our component to use a few more of the Bootstrap components.  Update our Show component so that it looks like this:
+
+```ruby
+module Components
+  module Home
+    class Show < React::Component::Base
+
+      def say_hello(i)
+        alert "Hello from number #{i}"
+      end
+
+      def render 
+        ReactBootstrap::Navbar(bsStyle: :inverse) do
+          ReactBootstrap::Nav() do
+            ReactBootstrap::NavbarBrand() do
+              a(href: '#') { 'Reactrb Showcase' }
+            end
+            ReactBootstrap::NavDropdown(eventKey: 1, title: 'Things', id: :drop_down) do
+              (1..5).each do |n|
+                ReactBootstrap::MenuItem(href: '#', key: n, eventKey: "1.#{n}") do
+                  "Number #{n}"
+                end.on(:click) { say_hello(n) }
+              end
+            end
+          end
+        end
+      end
+    end
+  end
+end
+```
+
 
 A few things to notice in the code above:
 
-We add React Bootstrap components simply by `Bs.Name` where `Name` is the component you want to create. All the components are documented in the React Bootstrap [documentation](https://react-bootstrap.github.io/components.html)
+We add React Bootstrap components simply by `ReactBootstrap::Name` where `Name` is the component you want to render. All the components are documented in the React Bootstrap [documentation](https://react-bootstrap.github.io/components.html)
 
-Notice how I have added an `.on(:click)` even handler to the `MenuItem` component while setting `href: '#'` as this will allow us to handle the event instead of navigating to a new page.
+Notice how I have added an `.on(:click)` event handler to the `MenuItem` component while setting `href: '#'` as this will allow us to handle the event instead of navigating to a new page.
+
+Hopefully you have realized that almost all of this tutorial is just setting up webpack boiler plate.  Once things are setup using a new js package in Reactrb is as easy as doing an `npm install` and requiring it.  
+
 
 TODO:
 
