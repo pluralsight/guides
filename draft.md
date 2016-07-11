@@ -1,3 +1,8 @@
+### Static code analysis for Python by Luke Lee
+- [Read the guide](http://tutorials.pluralsight.com/other/static-code-analysis-for-python?status=draft)
+- [Read more from Luke Lee](http://tutorials.pluralsight.com/author/durden) <img src="https://avatars.githubusercontent.com/u/58063?v=3" width="30" height="30" alt="Luke Lee" />
+- Related to: other
+
 ### Getting started with Angular 2 by building a Giphy search application by Nikola Brežnjak
 - [Read the guide](http://tutorials.pluralsight.com/front-end-javascript/getting-started-with-angular-2-by-building-a-giphy-search-application?status=draft)
 - [Read more from Nikola Brežnjak](http://tutorials.pluralsight.com/author/Hitman666) <img src="https://avatars.githubusercontent.com/u/1001064?v=3" width="30" height="30" alt="Nikola Brežnjak" />
