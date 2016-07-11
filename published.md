@@ -1,3 +1,8 @@
+### Getting started with Selenium and Sauce Labs by Esteban Herrera
+- [Read the guide](http://tutorials.pluralsight.com/software-engineering-best-practices/getting-started-with-selenium-and-sauce-labs)
+- [Read more from Esteban Herrera](http://tutorials.pluralsight.com/author/eh3rrera) <img src="https://avatars.githubusercontent.com/u/11665759?v=3" width="30" height="30" alt="Esteban Herrera" />
+- Related to: Software Engineering Best Practices
+
 ### Instant Delivery Store using Ruby on Rails, Stripe and UberRUSH API by Ty Shaikh
 - [Read the guide](http://tutorials.pluralsight.com/ruby-ruby-on-rails/instant-delivery-store-using-ruby-on-rails-stripe-and-uberrush-api)
 - [Read more from Ty Shaikh](http://tutorials.pluralsight.com/author/ty-shaikh) <img src="https://avatars.githubusercontent.com/u/18148869?v=3" width="30" height="30" alt="Ty Shaikh" />
