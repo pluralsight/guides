@@ -149,6 +149,55 @@ PubNub makes it astonishingly simple to utilize WebRTC with the following calls 
 - phone.dial
 - phone.receive
 
+Similar to before, let's set up our files.
 
+/index.html
+```
+<body>
+  <h1>DocTalk</h1>
 
-What can you come up with? Post below!
+  <div id="video"></div>
+
+  <form name="loginForm" id="login" action="#" onsubmit="return selectUser(this);">
+      <input type="text" name="username" id="username" placeholder="Pick a username!" />
+      <input type="submit" name="login_submit" value="Select">
+  </form>
+
+  <form name="callForm" id="call" action="#" onsubmit="return makeCall(this);">
+  	<input type="text" name="number" placeholder="Enter user to dial!" />
+  	<input type="submit" value="Call"/>
+  </form>
+
+  <script src="js/main.js"></script>
+</body>
+```
+
+/main/main.js
+```
+var video = document.getElementById("video");
+
+function selectUser(form) {
+	var phone = window.phone = PHONE({
+	    number        : form.username.value || "Anonymous",
+	    publish_key   : 'pub-c-a7775e85-ea67-4ecf-84d1-09f306ed9939',
+	    subscribe_key : 'sub-c-df5175dc-2dcb-11e6-8bc8-0619f8945a4f',
+	});
+
+	phone.ready(function(){ form.username.style.background="#55ff5b"; });
+
+	phone.receive(function(session){
+	    session.connected(function(session) { video.appendChild(session.video); });
+	    session.ended(function(session) { video.innerHTML=''; });
+	});
+	return false;
+}
+
+function makeCall(form){
+	phone.dial(form.number.value);
+	return false;
+}
+```
+
+What's happening here? First, we grab the video element from the DOM. Then, we establish the functions to select a username and call someone else. The phone is established by providing your PubNub keys. Then, callbacks are attached to the phone so that it can append a video feed when it receives a call and remove it once the call is ended. Making the call itself is simply done by dialing with the username to call. Pretty cool! Deploy and test it out with friends.
+
+What use-case can you think of for WebRTC? Post below!
