@@ -22,7 +22,7 @@ WebRTC is compatible with Firefox, Opera, and Chrome: desktop and mobile. There'
 I've personally used it on Chrome, iOS, and Android and it works well.
 
 # Simple
-Considering that my team and I were able to build an entire healthcare application using WebRTC for our company hackathon in a day or so, it isn't hard to use, assuming you've got the signaling nailed down. It has three simple APIs. Let's explore them now. Obviously, the code below is bare-bones. We can get fancy with styling, error handling, and helpful tracing.
+Considering that my team and I were able to build an entire healthcare application using WebRTC for our company hackathon in a day or so, it isn't hard to use, assuming you've got the signaling nailed down. It has three simple APIs. Let's explore them now. The code below is purely for demonstration purposes: it is bare-bones and lacks fancy styling, error handling, and tracing.
 
 Let's say this is your HTML file.
 
