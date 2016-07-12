@@ -14,5 +14,10 @@ A plugin is a way for a third party to extend the functionality of an applicatio
 - **Plugin** is the base class for all plugins types. Each plugin is loaded into a separate class loader to avoid conflicts.
 - **PluginManager**  is used for all aspects of plugins management (loading, starting, stopping).
 - **ExtensionPoint** is a point in the application where custom code can be invoked. It's a java interface marker. Any java interface or abstract class can be marked as an extension point (implements ExtensionPoint interface).
-- ** Extension**  is an implementation of an extension point. It's a java annotation on a class.
+- **Extension**  is an implementation of an extension point. It's a java annotation on a class.
 
+
+
+### References
+- https://github.com/decebals/pf4j/blob/master/README.md
+- https://groups.google.com/forum/#!forum/pf4j
