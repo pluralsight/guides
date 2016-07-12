@@ -51,7 +51,7 @@ navigator.getUserMedia({video: true}, (stream) => { video.src = window.URL.creat
 
 ```
 
-That's it! That's all the code you need to start using WebRTC's first API: getUserMedia(). The code above gets a stream from your webcam and sets it as the video source. Try it out: you should be seeing a live stream of your beautiful self :)
+That's it! That's all the code you need to start using WebRTC's first API: getUserMedia(). The code above gets a stream from your webcam and sets it as the video source using a bit of ES6 syntax as well. Try it out: you should be seeing a live stream of your beautiful self :)
 
 The second API that WebRTC uses is RTCPeerConnection, which is what's responsible for exchanging data between peers. Let's go ahead and add a second video element to our HTML file and add ids to differentiate between the two.
 
