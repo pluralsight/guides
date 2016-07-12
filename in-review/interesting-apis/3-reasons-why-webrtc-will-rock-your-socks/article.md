@@ -143,7 +143,7 @@ The third API of WebRTC is RTCDataChannel. We won't cover that in this tutorial 
 
 # Demo time
 
-In the code above, we simulated peer connections on the same screen so there was no need for the STUN/TURN signaling servers I had mentioned in the beginning of this tutorial. But, as I also mentioned earlier, companies like PubNub offer services that do that dirty work for you. So, let's take advantage of that to build and deploy a revolutionary new app for any doctor in the world to log on and video chat with a patient in the browser with no additional downloads needed. We'll call it DocToc because I'm a poet and I know it.
+In the code above, we simulated peer connections on the same screen so there was no need for the STUN/TURN signaling servers I had mentioned in the beginning of this tutorial. But, as I also mentioned earlier, companies like PubNub offer services that do that dirty work for you. So, let's take advantage of that to build and deploy a revolutionary new app for any doctor in the world to log on and video chat with a patient in the browser with no additional downloads needed. We'll call it DocTalk because I'm a poet and I know it.
 
 PubNub makes it astonishingly simple to utilize WebRTC with the following calls (no pun intended):
 - phone.dial
