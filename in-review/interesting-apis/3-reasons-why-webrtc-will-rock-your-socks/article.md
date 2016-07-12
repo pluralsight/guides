@@ -149,6 +149,8 @@ PubNub makes it astonishingly simple to utilize WebRTC with the following calls 
 - phone.dial
 - phone.receive
 
+Check out PubNub's documentation for additional features: https://github.com/stephenlb/webrtc-sdk
+
 Similar to before, let's set up our files.
 
 /index.html
