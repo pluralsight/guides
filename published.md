@@ -1,3 +1,13 @@
+### Getting started with Angular 2 by building a Giphy search application by Nikola Brežnjak
+- [Read the guide](http://tutorials.pluralsight.com/front-end-javascript/getting-started-with-angular-2-by-building-a-giphy-search-application)
+- [Read more from Nikola Brežnjak](http://tutorials.pluralsight.com/author/Hitman666) <img src="https://avatars.githubusercontent.com/u/1001064?v=3" width="30" height="30" alt="Nikola Brežnjak" />
+- Related to: Front-End JavaScript (Angular, React, Meteor, etc)
+
+### Advanced workflows for building rock-solid Ionic apps. Part 2: Mountain by Jonathan Grupp
+- [Read the guide](http://tutorials.pluralsight.com/front-end-javascript/advanced-workflows-for-building-rock-solid-ionic-apps-part-2-mountain)
+- [Read more from Jonathan Grupp](http://tutorials.pluralsight.com/author/gruppjo) <img src="https://avatars.githubusercontent.com/u/1370779?v=3" width="30" height="30" alt="Jonathan Grupp" />
+- Related to: Front-End JavaScript (Angular, React, Meteor, etc)
+
 ### Getting started with Selenium and Sauce Labs by Esteban Herrera
 - [Read the guide](http://tutorials.pluralsight.com/software-engineering-best-practices/getting-started-with-selenium-and-sauce-labs)
 - [Read more from Esteban Herrera](http://tutorials.pluralsight.com/author/eh3rrera) <img src="https://avatars.githubusercontent.com/u/11665759?v=3" width="30" height="30" alt="Esteban Herrera" />

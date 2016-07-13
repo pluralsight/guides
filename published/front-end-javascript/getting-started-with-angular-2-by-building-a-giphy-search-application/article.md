@@ -1,4 +1,4 @@
-In this post you'll learn how to get started with Angular 2 by building a Giphy search application. You don't need to be familiar with Angular 1, although some familiarity with JavaScript is needed ([there](https://www.codecademy.com/learn/javascript) [are](https://developer.mozilla.org/en-US/Learn/JavaScript) [plenty](https://www.codementor.io/learn-javascript-online) resources online to get you started; even [free](https://github.com/getify/You-Dont-Know-JS) [books](http://jsbooks.revolunet.com/)). Everything else we'll cover here. For those who come from the Angular 1 world, I will draw a comparison in certain areas.
+In this post you'll learn how to get started with Angular 2 by building a Giphy search application. You don't need to be familiar with Angular 1, although some familiarity with JavaScript is needed [there](https://www.pluralsight.com/courses/javascript-from-scratch) [are](https://developer.mozilla.org/en-US/Learn/JavaScript) plenty resources online to get you started; even [free](https://github.com/getify/You-Dont-Know-JS) [books](http://jsbooks.revolunet.com/)). Everything else we'll cover here. For those who come from the Angular 1 world, I will draw a comparison in certain areas.
 
 ## TL;DR
 
@@ -21,6 +21,10 @@ With all this said, fasten your seatbelts, take a venti (or trenta) sized cup of
 As said in the TL;DR, in this introduction tutorial we'll build an application for searching (and showing) gifs from the [Giphy](http://giphy.com/) website by using [their API](https://github.com/Giphy/GiphyAPI). In the end, we'll also deploy our app to [Github pages](https://pages.github.com/).
 
 You can [try the app here](https://hitman666.github.io/giphy-search/), and you can fork the complete source code on [Github](https://github.com/Hitman666/GiphySearch_Angular2).
+
+In case the demo app is not working for you, make sure to "Load unsafe scripts" by clicking the "shield" (in Chrome):
+
+![](http://i.imgur.com/DJvHNym.png)
 
 ## Prerequisites
 I'm pretty sure that if you're reading this tutorial that you have the following tools installed (or that you've at least heard of them), but in case you don't please install them:

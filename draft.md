@@ -1,7 +1,7 @@
-### Getting started with Angular 2 by building a Giphy search application by Nikola Brežnjak
-- [Read the guide](http://tutorials.pluralsight.com/front-end-javascript/getting-started-with-angular-2-by-building-a-giphy-search-application?status=draft)
-- [Read more from Nikola Brežnjak](http://tutorials.pluralsight.com/author/Hitman666) <img src="https://avatars.githubusercontent.com/u/1001064?v=3" width="30" height="30" alt="Nikola Brežnjak" />
-- Related to: Front-End JavaScript (Angular, React, Meteor, etc)
+### A Complete Guide for PF4J by Mukarram Tailor
+- [Read the guide](http://tutorials.pluralsight.com/java-and-j2ee/a-complete-guide-for-pf4j?status=draft)
+- [Read more from Mukarram Tailor](http://tutorials.pluralsight.com/author/Mukarr) <img src="https://avatars.githubusercontent.com/u/9568504?v=3" width="30" height="30" alt="Mukarram Tailor" />
+- Related to: Java and J2EE
 
 ### Getting Started with Ionic 2 by Olulana Kolawole
 - [Read the guide](http://tutorials.pluralsight.com/android/getting-started-with-ionic-2?status=draft)
@@ -12,11 +12,6 @@
 - [Read the guide](http://tutorials.pluralsight.com/node-js/getting-started-with-rethinkdb-horizon-and-oauth-using-twitch?status=draft)
 - [Read more from Chris Hranj](http://tutorials.pluralsight.com/author/Brodan) <img src="https://avatars.githubusercontent.com/u/12822268?v=3" width="30" height="30" alt="Chris Hranj" />
 - Related to: Node.js
-
-### Guide for using PF4J framework for making extensible Java applications  by Mukarram Tailor
-- [Read the guide](http://tutorials.pluralsight.com/java-and-j2ee/guide-for-using-pf4j-framework-for-making-extensible-java-applications?status=draft)
-- [Read more from Mukarram Tailor](http://tutorials.pluralsight.com/author/Mukarr) <img src="https://avatars.githubusercontent.com/u/9568504?v=3" width="30" height="30" alt="Mukarram Tailor" />
-- Related to: Java and J2EE
 
 ### 7 Reasons yo should start using ES6 by Sebastian
 - [Read the guide](http://tutorials.pluralsight.com/node-js/7-reasons-yo-should-start-using-es6?status=draft)
@@ -47,11 +42,6 @@
 - [Read the guide](http://tutorials.pluralsight.com/other/building-a-slackbot-with-a-horizon-backend?status=draft)
 - [Read more from Chris Hranj](http://tutorials.pluralsight.com/author/Brodan) <img src="https://avatars.githubusercontent.com/u/12822268?v=3" width="30" height="30" alt="Chris Hranj" />
 - Related to: other
-
-### 3 reasons why WebRTC will rock your socks! by Akansh Murthy
-- [Read the guide](http://tutorials.pluralsight.com/interesting-apis/3-reasons-why-webrtc-will-rock-your-socks?status=draft)
-- [Read more from Akansh Murthy](http://tutorials.pluralsight.com/author/akanshmurthy) <img src="https://avatars.githubusercontent.com/u/11954634?v=3" width="30" height="30" alt="Akansh Murthy" />
-- Related to: Interesting APIs (SendGrid, Twilio, etc)
 
 ### Not Done Yet by Ian Hickey
 - [Read the guide](http://tutorials.pluralsight.com/front-end-javascript/not-done-yet?status=draft)

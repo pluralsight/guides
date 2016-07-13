@@ -22,7 +22,7 @@ WebRTC is compatible with Firefox, Opera, and Chrome: desktop and mobile. There'
 I've personally used it on Chrome, iOS, and Android and it works well.
 
 # Simple
-Considering that my team and I were able to build an entire healthcare application using WebRTC for our company hackathon in a day or so, it isn't hard to use, assuming you've got the signaling nailed down. It has three simple APIs. Let's explore them now. Obviously, the code below is bare-bones. We can get fancy with styling, error handling, and helpful tracing.
+Considering that my team and I were able to build an entire healthcare application using WebRTC for our company hackathon in a day or so, it isn't hard to use, assuming you've got the signaling nailed down. It has three simple APIs. Let's explore two of them now. The code below is purely for demonstration purposes: it is bare-bones and lacks fancy styling, error handling, and tracing.
 
 Let's say this is your HTML file.
 
@@ -51,7 +51,7 @@ navigator.getUserMedia({video: true}, (stream) => { video.src = window.URL.creat
 
 ```
 
-That's it! That's all the code you need to start using WebRTC's first API: getUserMedia(). The code above gets a stream from your webcam and sets it as the video source. Try it out: you should be seeing a live stream of your beautiful self :)
+That's it! That's all the code you need to start using WebRTC's first API: getUserMedia(). The code above gets a stream from your webcam and sets it as the video source using a bit of ES6 syntax as well. Try it out: you should be seeing a live stream of your beautiful self :)
 
 The second API that WebRTC uses is RTCPeerConnection, which is what's responsible for exchanging data between peers. Let's go ahead and add a second video element to our HTML file and add ids to differentiate between the two.
 
@@ -143,12 +143,63 @@ The third API of WebRTC is RTCDataChannel. We won't cover that in this tutorial 
 
 # Demo time
 
-In the code above, we simulated peer connections on the same screen so there was no need for the STUN/TURN signaling servers I had mentioned in the beginning of this tutorial. But, as I also mentioned earlier, companies like PubNub offer services that do that dirty work for you. So, let's take advantage of that to build and deploy a revolutionary new app for any doctor in the world to log on and video chat with a patient in the browser with no additional downloads needed. We'll call it DocToc because I'm a poet and I know it.
+In the code above, we simulated peer connections on the same screen so there was no need for the STUN/TURN signaling servers I had mentioned in the beginning of this tutorial. But, as I also mentioned earlier, companies like PubNub offer services that do that dirty work for you. So, let's take advantage of that to build and deploy a revolutionary new app for any doctor in the world to log on and video chat with a patient in the browser with no additional downloads needed. We'll call it DocTalk because I'm a poet and I know it.
 
 PubNub makes it astonishingly simple to utilize WebRTC with the following calls (no pun intended):
 - phone.dial
 - phone.receive
 
+Check out PubNub's documentation for additional features: https://github.com/stephenlb/webrtc-sdk
 
+Similar to before, let's set up our files.
 
-What can you come up with? Post below!
+/index.html
+```
+<body>
+  <h1>DocTalk</h1>
+
+  <div id="video"></div>
+
+  <form name="loginForm" id="login" action="#" onsubmit="return selectUser(this);">
+      <input type="text" name="username" id="username" placeholder="Pick a username!" />
+      <input type="submit" name="login_submit" value="Select">
+  </form>
+
+  <form name="callForm" id="call" action="#" onsubmit="return makeCall(this);">
+  	<input type="text" name="number" placeholder="Enter user to dial!" />
+  	<input type="submit" value="Call"/>
+  </form>
+
+  <script src="js/main.js"></script>
+</body>
+```
+
+/main/main.js
+```
+var video = document.getElementById("video");
+
+function selectUser(form) {
+	var phone = window.phone = PHONE({
+	    number        : form.username.value || "Anonymous",
+	    publish_key   : 'pub-c-a7775e85-ea67-4ecf-84d1-09f306ed9939',
+	    subscribe_key : 'sub-c-df5175dc-2dcb-11e6-8bc8-0619f8945a4f',
+	});
+
+	phone.ready(function(){ form.username.style.background="#55ff5b"; });
+
+	phone.receive(function(session){
+	    session.connected(function(session) { video.appendChild(session.video); });
+	    session.ended(function(session) { video.innerHTML=''; });
+	});
+	return false;
+}
+
+function makeCall(form){
+	phone.dial(form.number.value);
+	return false;
+}
+```
+
+What's happening here? First, we grab the video element from the DOM. Then, we establish the functions to select a username and call someone else. The phone is established by providing your PubNub keys. Then, callbacks are attached to the phone so that it can append a video feed when it receives a call and remove it once the call is ended. Making the call itself is simply done by dialing with the username to call. Pretty cool! Deploy and test it out with friends.
+
+What use-case can you think of for WebRTC? Post below!
