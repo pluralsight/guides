@@ -18,11 +18,6 @@
 - [Read more from dcboycm](http://tutorials.pluralsight.com/author/dcboycm) <img src="https://avatars.githubusercontent.com/u/5580819?v=3" width="30" height="30" alt="dcboycm" />
 - Related to: other
 
-### Advanced workflows for building rock-solid Ionic apps. Part 3: Orbit by Jonathan Grupp
-- [Read the guide](http://tutorials.pluralsight.com/front-end-javascript/advanced-workflows-for-building-rock-solid-ionic-apps-part-3-orbit?status=in-review)
-- [Read more from Jonathan Grupp](http://tutorials.pluralsight.com/author/gruppjo) <img src="https://avatars.githubusercontent.com/u/1370779?v=3" width="30" height="30" alt="Jonathan Grupp" />
-- Related to: Front-End JavaScript (Angular, React, Meteor, etc)
-
 ### How to install CKAN 2.5 from source on Debian 8 "Jessie" by Miguel Gouveia
 - [Read the guide](http://tutorials.pluralsight.com/other/how-to-install-ckan-2-5-from-source-on-debian-8-jessie?status=in-review)
 - [Read more from Miguel Gouveia](http://tutorials.pluralsight.com/author/miguelbgouveia) <img src="https://avatars.githubusercontent.com/u/1122917?v=3" width="30" height="30" alt="Miguel Gouveia" />
