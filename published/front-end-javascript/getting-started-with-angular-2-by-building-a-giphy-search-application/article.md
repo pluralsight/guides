@@ -22,7 +22,7 @@ As said in the TL;DR, in this introduction tutorial we'll build an application f
 
 You can [try the app here](https://hitman666.github.io/giphy-search/), and you can fork the complete source code on [Github](https://github.com/Hitman666/GiphySearch_Angular2).
 
-_edit:_ in case the demo app is not working for you, make sure to "Load unsafe scripts" by clicking the "shield" (in Chrome):
+In case the demo app is not working for you, make sure to "Load unsafe scripts" by clicking the "shield" (in Chrome):
 
 ![](http://i.imgur.com/DJvHNym.png)
 
