@@ -1,8 +1,3 @@
-### Red Sqirl - Data Analytics platform introduction by Igor Souza
-- [Read the guide](http://tutorials.pluralsight.com/big-data/red-sqirl-data-analytics-platform-introduction?status=in-review)
-- [Read more from Igor Souza](http://tutorials.pluralsight.com/author/igfasouza) <img src="https://avatars.githubusercontent.com/u/6233869?v=3" width="30" height="30" alt="Igor Souza" />
-- Related to: Big Data (Hadoop, Spark, etc)
-
 ### 3 reasons why WebRTC will rock your socks! by Akansh Murthy
 - [Read the guide](http://tutorials.pluralsight.com/interesting-apis/3-reasons-why-webrtc-will-rock-your-socks?status=in-review)
 - [Read more from Akansh Murthy](http://tutorials.pluralsight.com/author/akanshmurthy) <img src="https://avatars.githubusercontent.com/u/11954634?v=3" width="30" height="30" alt="Akansh Murthy" />
