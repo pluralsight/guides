@@ -1,3 +1,8 @@
+### Advanced workflows for building rock-solid Ionic apps. Part 1: Playground by Jonathan Grupp
+- [Read the guide](http://tutorials.pluralsight.com/front-end-javascript/advanced-workflows-for-building-rock-solid-ionic-apps-part-1-playground?status=draft)
+- [Read more from Jonathan Grupp](http://tutorials.pluralsight.com/author/gruppjo) <img src="https://avatars.githubusercontent.com/u/1370779?v=3" width="30" height="30" alt="Jonathan Grupp" />
+- Related to: Front-End JavaScript (Angular, React, Meteor, etc)
+
 ### A Complete Guide for PF4J by Mukarram Tailor
 - [Read the guide](http://tutorials.pluralsight.com/java-and-j2ee/a-complete-guide-for-pf4j?status=draft)
 - [Read more from Mukarram Tailor](http://tutorials.pluralsight.com/author/Mukarr) <img src="https://avatars.githubusercontent.com/u/9568504?v=3" width="30" height="30" alt="Mukarram Tailor" />
