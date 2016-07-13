@@ -3,7 +3,12 @@
     "author_name": "gruppjo",
     "author_real_name": "Jonathan Grupp",
     "branch": "master",
-    "branches": [],
+    "branches": [
+        [
+            "prtkgpt",
+            "prtkgpt-front-end-javascript-advanced-workflows-for-building-rock-solid-ionic-apps-part-3-orbit"
+        ]
+    ],
     "filename": "article.md",
     "first_commit": "4f19864b593fba1eb85edf8e77a584c6d4bde51a",
     "image_url": "https://avatars.githubusercontent.com/u/1370779?v=3",
