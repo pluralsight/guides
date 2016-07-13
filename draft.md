@@ -1,3 +1,8 @@
+### Red Sqirl - Data Analytics platform introduction by Igor Souza
+- [Read the guide](http://tutorials.pluralsight.com/big-data/red-sqirl-data-analytics-platform-introduction?status=draft)
+- [Read more from Igor Souza](http://tutorials.pluralsight.com/author/igfasouza) <img src="https://avatars.githubusercontent.com/u/6233869?v=3" width="30" height="30" alt="Igor Souza" />
+- Related to: Big Data (Hadoop, Spark, etc)
+
 ### A Complete Guide for PF4J by Mukarram Tailor
 - [Read the guide](http://tutorials.pluralsight.com/java-and-j2ee/a-complete-guide-for-pf4j?status=draft)
 - [Read more from Mukarram Tailor](http://tutorials.pluralsight.com/author/Mukarr) <img src="https://avatars.githubusercontent.com/u/9568504?v=3" width="30" height="30" alt="Mukarram Tailor" />
