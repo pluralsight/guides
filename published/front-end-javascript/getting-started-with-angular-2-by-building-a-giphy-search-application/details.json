@@ -1,9 +1,14 @@
 {
-    "_publish_status": "draft",
+    "_publish_status": "published",
     "author_name": "Hitman666",
     "author_real_name": "Nikola Bre\u017enjak",
     "branch": "master",
-    "branches": [],
+    "branches": [
+        [
+            "adityavarshney",
+            "adityavarshney-front-end-javascript-getting-started-with-angular-2-by-building-a-giphy-search-application"
+        ]
+    ],
     "filename": "article.md",
     "first_commit": "e69767f558e59567a5f52abd40101793cb545804",
     "image_url": "https://avatars.githubusercontent.com/u/1001064?v=3",

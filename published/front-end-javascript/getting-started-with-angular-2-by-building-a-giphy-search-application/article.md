@@ -24,6 +24,10 @@ As said in the Objective paragraph, we'll build an application for searching (an
 
 You can [try the app here](https://hitman666.github.io/giphy-search/), and you can fork the complete source code on [Github](https://github.com/Hitman666/GiphySearch_Angular2).
 
+In case the demo app is not working for you, make sure to "Load unsafe scripts" by clicking the "shield" (in Chrome):
+
+![](http://i.imgur.com/DJvHNym.png)
+
 ## Prerequisites
 Make sure that the following tools are installed:
 
