@@ -1,6 +1,8 @@
-![image](https://raw.githubusercontent.com/gruppjo/blogs/master/16-06-advanced-workflows-for-building-rock-solid-ionic-apps/img/blog-03.png)
+![Advanced workflows for building rock-solid Ionic apps. Part 3: Orbit](https://raw.githubusercontent.com/gruppjo/blogs/master/16-06-advanced-workflows-for-building-rock-solid-ionic-apps/img/blog-03.png)
 
-The air is getting a little thin in app-develop-orbit! Luckily part 3 of this series about developing Ionic apps with Generator-M-Ionic comes with a sweet oxygen mask full of life-saving elements: environments, CORS proxies and build tools for app icons, splash screens, build variables and app delivery. Take a deep deep breath and extend the project we made space-ready in part 2.
+The air is getting a little thin in app-develop-orbit! Luckily part 3 of this series about developing Ionic apps with Generator-M-Ionic comes with a sweet oxygen mask full of life-saving elements: environments, CORS proxies and build tools for app icons, splash screens, build variables and app delivery. Take a deep deep breath and extend the project we made space-ready in [part
+
+ 2](http://tutorials.pluralsight.com/front-end-javascript/advanced-workflows-for-building-rock-solid-ionic-apps-part-2-mountain).
 
 ### Gulp environments
 So you have your app all set up, added plugins and other components while implementing your app logic and at some point you will probably want to exchange data with an external backend.
@@ -160,7 +162,7 @@ gulp defaults --set="watch --no-open --proxyPath=/proxy --proxyMapTo=https://ech
 ```
 Now every time I run `gulp watch`, Gulp will add those three flags for me. Wohoo! It even reminds me which flags I've set on every run so I don't get confused.
 
-![image](https://raw.githubusercontent.com/gruppjo/blogs/master/16-06-advanced-workflows-for-building-rock-solid-ionic-apps/img/gulp_defaults.png)
+![gulp defaults task](https://raw.githubusercontent.com/gruppjo/blogs/master/16-06-advanced-workflows-for-building-rock-solid-ionic-apps/img/gulp_defaults.png)
 
 Neat! Learn more about Gulp defaults, how to clear, overwrite and share defaults across your team via Git in our [Gulp defaults Guide](https://github.com/mwaylabs/generator-m-ionic/blob/master/docs/guides/gulp_defaults.md).
 
@@ -300,4 +302,6 @@ Feedback, ideas, comments regarding this blog post or any of the features discus
 ### Credits
 Author: [Jonathan Grupp](https://github.com/gruppjo)  
 Headline illustrations: [Christian Kahl](http://www.art-noir.net/)  
-Special thanks to Volker Hahn & Mathias Maier
+Special thanks to Volker Hahn, Mathias Maier & Tim Lancina
+
+> Originally published July 7, 2016 on the [Ionic Blog](http://blog.ionic.io/advanced-workflows-for-building-rock-solid-ionic-apps-part-3/) in a slightly modified version.
