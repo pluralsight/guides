@@ -1,0 +1,20 @@
+{
+    "_publish_status": "published",
+    "author_name": "Hitman666",
+    "author_real_name": "Nikola Bre\u017enjak",
+    "branch": "master",
+    "branches": [
+        [
+            "adityavarshney",
+            "adityavarshney-front-end-javascript-getting-started-with-angular-2-by-building-a-giphy-search-application"
+        ]
+    ],
+    "filename": "article.md",
+    "first_commit": "e69767f558e59567a5f52abd40101793cb545804",
+    "image_url": "https://avatars.githubusercontent.com/u/1001064?v=3",
+    "stacks": [
+        "Front-End JavaScript (Angular, React, Meteor, etc)"
+    ],
+    "thumbnail_url": null,
+    "title": "Getting started with Angular 2 by building a Giphy search application"
+}

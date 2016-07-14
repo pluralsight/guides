@@ -1,0 +1,15 @@
+{
+    "_publish_status": "draft",
+    "author_name": "fdferrari",
+    "author_real_name": "fdferrari",
+    "branch": "master",
+    "branches": [],
+    "filename": "article.md",
+    "first_commit": "e22ce13ce0930fbfcc1d1ef9c246586edfe677b8",
+    "image_url": "https://avatars.githubusercontent.com/u/19995201?v=3",
+    "stacks": [
+        "NoSQL Databases (MongoDB, Cassandra, etc)"
+    ],
+    "thumbnail_url": null,
+    "title": "Creating a Simple Application with Node.JS and Rethinkdb"
+}

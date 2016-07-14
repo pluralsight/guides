@@ -1,0 +1,15 @@
+{
+    "_publish_status": "published",
+    "author_name": "eh3rrera",
+    "author_real_name": "Esteban Herrera",
+    "branch": "master",
+    "branches": [],
+    "filename": "article.md",
+    "first_commit": "bac93e379d2376600f2388d56715af7f93dead47",
+    "image_url": "https://avatars.githubusercontent.com/u/11665759?v=3",
+    "stacks": [
+        "Interesting APIs (SendGrid, Twilio, etc)"
+    ],
+    "thumbnail_url": null,
+    "title": "Building a real-time application with React, React Router, Horizon.io, and OAuth"
+}

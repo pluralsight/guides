@@ -23,4 +23,10 @@ Chances are that the design did not meet one of the guidelines listed below:
 Please be respectful & enjoy collaborating with the community.
 
 #### How do I know if my tutorial won an award?
-We will be announcing the winners on **August 15**. The contest will run from June 8th to July 30th. Please make sure to submit your tutorial within this timeframe for a chance to win category prizes.
+We will be announcing the winners on **August 15**. The contest will run from June 8th - July 30th. Please make sure to submit your tutorial for a chance to win any category prizes.
+
+#### I don't live in US, can I still participate?
+Yes, developers from around the world are participating in the contest. Any developer of any age and from any country is eligible to submit their tutorials to participate for a chance to win $500.
+
+#### How do winners will get their cash-prize?
+hack.guides() team will be distributing $500 to winning authors via gift-cards or electronic transfer based on the location/country of the winner.

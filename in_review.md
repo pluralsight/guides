@@ -1,3 +1,43 @@
+### 3 reasons why WebRTC will rock your socks! by Akansh Murthy
+- [Read the guide](http://tutorials.pluralsight.com/interesting-apis/3-reasons-why-webrtc-will-rock-your-socks?status=in-review)
+- [Read more from Akansh Murthy](http://tutorials.pluralsight.com/author/akanshmurthy) <img src="https://avatars.githubusercontent.com/u/11954634?v=3" width="30" height="30" alt="Akansh Murthy" />
+- Related to: Interesting APIs (SendGrid, Twilio, etc)
+
+### Introduction to Angular test-driven development by Hristo Georgiev
+- [Read the guide](http://tutorials.pluralsight.com/front-end-javascript/introduction-to-angular-test-driven-development?status=in-review)
+- [Read more from Hristo Georgiev](http://tutorials.pluralsight.com/author/Kaizeras) <img src="https://avatars.githubusercontent.com/u/6340189?v=3" width="30" height="30" alt="Hristo Georgiev" />
+- Related to: Front-End JavaScript (Angular, React, Meteor, etc)
+
+### Visualizing tweets with PubNub's Stream Controller and CSS3 animations by Esteban Herrera
+- [Read the guide](http://tutorials.pluralsight.com/interesting-apis/visualizing-tweets-with-pubnub-s-stream-controller-and-css3-animations?status=in-review)
+- [Read more from Esteban Herrera](http://tutorials.pluralsight.com/author/eh3rrera) <img src="https://avatars.githubusercontent.com/u/11665759?v=3" width="30" height="30" alt="Esteban Herrera" />
+- Related to: Interesting APIs (SendGrid, Twilio, etc)
+
+### How to implement a simple wait using Java and Selenium by dcboycm
+- [Read the guide](http://tutorials.pluralsight.com/other/how-to-implement-a-simple-wait-using-java-and-selenium?status=in-review)
+- [Read more from dcboycm](http://tutorials.pluralsight.com/author/dcboycm) <img src="https://avatars.githubusercontent.com/u/5580819?v=3" width="30" height="30" alt="dcboycm" />
+- Related to: other
+
+### Advanced workflows for building rock-solid Ionic apps. Part 3: Orbit by Jonathan Grupp
+- [Read the guide](http://tutorials.pluralsight.com/front-end-javascript/advanced-workflows-for-building-rock-solid-ionic-apps-part-3-orbit?status=in-review)
+- [Read more from Jonathan Grupp](http://tutorials.pluralsight.com/author/gruppjo) <img src="https://avatars.githubusercontent.com/u/1370779?v=3" width="30" height="30" alt="Jonathan Grupp" />
+- Related to: Front-End JavaScript (Angular, React, Meteor, etc)
+
+### How to install CKAN 2.5 from source on Debian 8 "Jessie" by Miguel Gouveia
+- [Read the guide](http://tutorials.pluralsight.com/other/how-to-install-ckan-2-5-from-source-on-debian-8-jessie?status=in-review)
+- [Read more from Miguel Gouveia](http://tutorials.pluralsight.com/author/miguelbgouveia) <img src="https://avatars.githubusercontent.com/u/1122917?v=3" width="30" height="30" alt="Miguel Gouveia" />
+- Related to: other
+
+### HTML BASICS by Nikolas Danaj
+- [Read the guide](http://tutorials.pluralsight.com/html-css/html-basics?status=in-review)
+- [Read more from Nikolas Danaj](http://tutorials.pluralsight.com/author/NIkolasDanaj) <img src="https://avatars.githubusercontent.com/u/19437693?v=3" width="30" height="30" alt="Nikolas Danaj" />
+- Related to: HTML/CSS
+
+### How to write effective Docstrings by Ennis Massey
+- [Read the guide](http://tutorials.pluralsight.com/python/how-to-write-effective-docstrings?status=in-review)
+- [Read more from Ennis Massey](http://tutorials.pluralsight.com/author/MicroTransactionsMatterToo) <img src="https://avatars.githubusercontent.com/u/12421108?v=3" width="30" height="30" alt="Ennis Massey" />
+- Related to: Python
+
 ### Tutorial Contest FAQ by Prateek Gupta
 - [Read the guide](http://tutorials.pluralsight.com/software-engineering-best-practices/tutorial-contest-faq?status=in-review)
 - [Read more from Prateek Gupta](http://tutorials.pluralsight.com/author/prtkgpt) <img src="https://avatars.githubusercontent.com/u/2454349?v=3" width="30" height="30" alt="Prateek Gupta" />
@@ -37,11 +77,6 @@
 - [Read the guide](http://tutorials.pluralsight.com/front-end-javascript/getting-accustomed-to-angular-2-0?status=in-review)
 - [Read more from Tom Greco](http://tutorials.pluralsight.com/user/thomasjosephgreco) <img src="https://avatars.githubusercontent.com/u/6646552?v=3" width="30" height="30" alt="Tom Greco" />
 - Related to: Front-End JavaScript (Angular, React, Meteor, etc)
-
-### Profiling memory usage in Python by Luke Lee
-- [Read the guide](http://tutorials.pluralsight.com/python/profiling-memory-usage-in-python?status=in-review)
-- [Read more from Luke Lee](http://tutorials.pluralsight.com/user/durden) <img src="https://avatars.githubusercontent.com/u/58063?v=3" width="30" height="30" alt="Luke Lee" />
-- Related to: Python
 
 ### How To Install Ruby on Rails on CentOS 7 by Consigliere
 - [Read the guide](http://tutorials.pluralsight.com/ruby-ruby-on-rails/how-to-install-ruby-on-rails-on-centos-7?status=in-review)

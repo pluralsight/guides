@@ -1,0 +1,15 @@
+{
+    "_publish_status": "published",
+    "author_name": "eh3rrera",
+    "author_real_name": "Esteban Herrera",
+    "branch": "master",
+    "branches": [],
+    "filename": "article.md",
+    "first_commit": "2dff660c13751f00f8f71fdafaf8557c948aa1b1",
+    "image_url": "https://avatars.githubusercontent.com/u/11665759?v=3",
+    "stacks": [
+        "Software Engineering Best Practices"
+    ],
+    "thumbnail_url": null,
+    "title": "Getting started with Selenium and Sauce Labs"
+}

@@ -1106,7 +1106,7 @@ Here is the code:
      if( n == 0 )
                     return 1;
             else
-                    return exp( n, k ) + 
+                    return exp( n, k ) * 
                            prodOfPow( n - 1, k );
     }
 ```

@@ -1,5 +1,4 @@
-![Authoring Contest](https://raw.githubusercontent.com/pluralsight/guides/master/images/214aa6b8-781a-4410-a04a-b8829f392e9b.png)
-
+![2016 Tutorial Contest](https://raw.githubusercontent.com/pluralsight/guides/master/images/7e7d97e2-fbf2-4146-9f81-8d0c558c2542.jpg)
 
 Are you passionate about helping other developers learn about your favorite technologies and APIs?  If so, this event is for you!
 
@@ -14,7 +13,7 @@ In the hack.guides() 2016 Tutorial Contest, you'll have the chance to share your
 
 Check out our full mission statement [here](http://tutorials.pluralsight.com/faq/).
 
-### [Start your tutorial now](http://tutorials.pluralsight.com/write/)
+### [![Start your tutorial now](https://raw.githubusercontent.com/pluralsight/guides/master/images/12f9f343-393b-4d20-a7fd-7125a9058d7c.png)](http://tutorials.pluralsight.com/write/)
 
 ## Why we are doing this
 
@@ -43,7 +42,7 @@ Tutorials/articles ideally range from 1500-3000 words, including code blocks, to
 
 - [React vs. Angular2 when integrating with Rails](http://tutorials.pluralsight.com/ruby-ruby-on-rails/react-vs-angular-2-integration-with-rails)
 
-- [Getting started with ECMAScript6](http://tutorials.pluralsight.com/front-end-javascript/getting-started-with-ecmascript6)
+- [Building a realtime collaborative editor with RethinkDB](http://tutorials.pluralsight.com/node-js/building-a-realtime-collaborative-editor-with-rethinkdb)
 
 Note: If you're interested in qualifying for sponsor prizes, then you'll need to incorporate one of their APIs into your tutorial (this is similar to how sponsored hackathons work).  There are lots of creative ways to do this.  For example:
 
@@ -51,8 +50,7 @@ Note: If you're interested in qualifying for sponsor prizes, then you'll need to
 * You could write a tutorial on a related useful topic, and use an API as a building-block to create your tutorial
 * You could write a tutorial on building a sample application on a framework or programming language, and use the API as part of that sample application
 
-### [Start your tutorial now](http://tutorials.pluralsight.com/write/)
-
+### [![Start your tutorial now](https://raw.githubusercontent.com/pluralsight/guides/master/images/12f9f343-393b-4d20-a7fd-7125a9058d7c.png)](http://tutorials.pluralsight.com/write/)
 
 ## Contest Rules
 
@@ -69,17 +67,22 @@ The hack.guides() team will be solely administering the contest and prize distri
 We've teamed up with some of the best companies with cutting-edge technologies and APIs. Our sponsors are:
 
 * [Amazon Alexa](https://developer.amazon.com/public/solutions/alexa/alexa-skills-kit)
+* [Fanout](https://fanout.io/)
 * [HelloSign](https://www.hellosign.com/api)
-* [Horion Cloud](http://horizon.io)
+* [Horizon Cloud](http://horizon.io)
 * [Ionic Framework](http://ionicframework.com/)
-* [Keen.io](http://keen.io)
+* [Keen IO](http://keen.io)
+* [LigaData](http://kamanja.org/)
 * [Pluralsight](http://pluralsight.com/)
 * [PubNub](http://pubnub.com/)
+* [Pusher](https://pusher.com/developers)
 * [RethinkDB](http://rethinkdb.com/)
 * [Sauce Labs](http://saucelabs.com/)
+* [Tierion](https://tierion.com/docs)
+* [Twilio](https://www.twilio.com/api)
 * [Uber Developers](https://developer.uber.com/)
 
-Want to join as a sponsor? Please email us at Prateek-Gupta@Pluralsight.com.  (sponsoring is great, since you're helping to spread useful developer knowledge, while also achieving your developer relations goals by having written content that uses your APIs!).
+Want to join as a sponsor? Please email Prateek at Prateek-Gupta@Pluralsight.com. (sponsoring is great, since you're helping to spread useful developer knowledge, while also achieving your developer relations goals by having written content that uses your APIs!).
 
 <table>
   <tr>
@@ -91,6 +94,10 @@ Want to join as a sponsor? Please email us at Prateek-Gupta@Pluralsight.com.  (s
     <td>Amazon Alexa</td>
     <td>$500</td>
     <td>Best tutorial using Alexa Skills Kit</td>
+  </tr>
+  <td>Fanout</td>
+    <td>$500</td>
+    <td>Best realtime app using Pushpin or Fanout Cloud</td>
   </tr>
   <tr>
     <td>HelloSign</td>
@@ -108,9 +115,14 @@ Want to join as a sponsor? Please email us at Prateek-Gupta@Pluralsight.com.  (s
     <td>Best Ionic App shipped on Market</td>
   </tr>
   <tr>
-    <td>Keen.io</td>
+    <td>Keen IO</td>
     <td>$500</td>
-    <td>Best tutorial building a Dashboard </td>
+    <td>Best tutorial building a Dashboard</td>
+  </tr>
+  <tr>
+    <td>LigaData</td>
+    <td>$500</td>
+    <td>the best tutorial using Kamanja</td>
   </tr>
   <tr>
     <td>Pluralsight</td>
@@ -122,6 +134,11 @@ Want to join as a sponsor? Please email us at Prateek-Gupta@Pluralsight.com.  (s
     <td>$500</td>
     <td>Best realtime app using PubNub</td>
   </tr>
+   <tr>
+    <td>Pusher</td>
+    <td>$500</td>
+    <td>Best tutorial using Pusher.com platform</td>
+  </tr>
   <tr>
     <td>RethinkDB</td>
     <td>$500</td>
@@ -131,6 +148,16 @@ Want to join as a sponsor? Please email us at Prateek-Gupta@Pluralsight.com.  (s
     <td>Sauce Labs</td>
     <td>$500</td>
     <td>Best Selenium Testing Tutorial</td>
+  </tr>
+  <tr>
+    <td>Tierion</td>
+    <td>$500</td>
+    <td>Best Blockchain tutorial using Tierion APIs</td>
+  </tr>
+    <tr>
+    <td>Twilio</td>
+    <td>$500</td>
+    <td>Best tutorial using Twilio</td>
   </tr>
   <tr>
     <td>Uber</td>
@@ -146,4 +173,4 @@ Join our [Slack Community](https://hackguides.herokuapp.com/).
 
 Or email us at Prateek-Gupta@Pluralsight.com.
 
-### [Start your tutorial now](http://tutorials.pluralsight.com/write/)
+### [![Start your tutorial now](https://raw.githubusercontent.com/pluralsight/guides/master/images/12f9f343-393b-4d20-a7fd-7125a9058d7c.png)](http://tutorials.pluralsight.com/write/)

@@ -1,0 +1,15 @@
+{
+    "_publish_status": "published",
+    "author_name": "mgmarlow",
+    "author_real_name": "Graham Marlow",
+    "branch": "master",
+    "branches": [],
+    "filename": "article.md",
+    "first_commit": "1a5fdf0ee7c811062c186b88d2068664cd12b79a",
+    "image_url": "https://avatars.githubusercontent.com/u/3778552?v=3",
+    "stacks": [
+        "Front-End JavaScript (Angular, React, Meteor, etc)"
+    ],
+    "thumbnail_url": null,
+    "title": "Enforcing Immutability with ES2015"
+}

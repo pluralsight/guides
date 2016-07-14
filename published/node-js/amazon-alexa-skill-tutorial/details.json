@@ -1,0 +1,15 @@
+{
+    "_publish_status": "published",
+    "author_name": "Donohue",
+    "author_real_name": "Brian Donohue",
+    "branch": "master",
+    "branches": [],
+    "filename": "article.md",
+    "first_commit": "a35772fdd18b94138b203f0596666cc869b67f3b",
+    "image_url": "https://avatars.githubusercontent.com/u/1069050?v=3",
+    "stacks": [
+        "Node.js"
+    ],
+    "thumbnail_url": null,
+    "title": "Amazon Alexa Skill Tutorial"
+}
