@@ -1,0 +1,15 @@
+{
+    "_publish_status": "draft",
+    "author_name": "catmando",
+    "author_real_name": "Mitch VanDuyn",
+    "branch": "master",
+    "branches": [],
+    "filename": "article.md",
+    "first_commit": "eadf7234f1681058c9bba65456f5e5a501d9e5a0",
+    "image_url": "https://avatars.githubusercontent.com/u/63146?v=3",
+    "stacks": [
+        "Front-End JavaScript (Angular, React, Meteor, etc)"
+    ],
+    "thumbnail_url": null,
+    "title": "Middleman, Github, Reactrb, and Webpack"
+}
