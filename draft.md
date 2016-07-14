@@ -1,3 +1,8 @@
+### Middleman, Github, Reactrb, and Webpack by Mitch VanDuyn
+- [Read the guide](http://tutorials.pluralsight.com/front-end-javascript/middleman-github-reactrb-and-webpack?status=draft)
+- [Read more from Mitch VanDuyn](http://tutorials.pluralsight.com/author/catmando) <img src="https://avatars.githubusercontent.com/u/63146?v=3" width="30" height="30" alt="Mitch VanDuyn" />
+- Related to: Front-End JavaScript (Angular, React, Meteor, etc)
+
 ### A Complete Guide for PF4J by Mukarram Tailor
 - [Read the guide](http://tutorials.pluralsight.com/java-and-j2ee/a-complete-guide-for-pf4j?status=draft)
 - [Read more from Mukarram Tailor](http://tutorials.pluralsight.com/author/Mukarr) <img src="https://avatars.githubusercontent.com/u/9568504?v=3" width="30" height="30" alt="Mukarram Tailor" />
