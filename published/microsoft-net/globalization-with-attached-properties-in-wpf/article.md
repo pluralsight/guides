@@ -1,6 +1,6 @@
 Recently, as a part of my phD thesis project, I needed an application that works on Windows. I decided to go for a Windows Presentation Foundation (WPF) application, which I ended up developing. But there was a problem. 
 
-My thesis was supposed to be in English so the application was supposed to be English. Yet the application was going to be used locally, and had to be in Turkish as well. So I had to **globalize** my application to be both in English and Turkish.
+My thesis was supposed to be in English so the application was supposed to be English. Yet the application was going to be used locally, and had to be in Turkish as well. So I had to globalize my application to be both in English and Turkish.
 
 There are many ways to perform globalization, such as setting up string resources, having custom static classes that hold the original and translated text or using some globalization libraries. But I wanted something simple and easily done with Extensible Application Markup Language (XAML). The code would look like:
 
@@ -27,7 +27,7 @@ Using attached properties, you can create new custom properties that suit your n
 
 ### Attached Properties in Globalization
 
-After finding out about attached properties, I aimed to create attached properties that would automatically select the text, header, or tooltip that matches the current language of the application.
+After finding out about attached properties, I aimed to create attached properties that would automatically select the ```Text```, ```Header```, or ```Tooltip``` that matches the current language of the application.
 
 As an example I will show how you can use attached properties with TextBlocks. Attached properties work like extension methods, here is the code to add translated text to a ```TextBlock``` :
 
@@ -67,7 +67,7 @@ namespace SomeNamespace.Extensions
 	}
 }
 ```
-The code above is fairly simple. First, we create 2 separate properties for both languages, which are named TurkishText and EnglishText. These properties will be of type ```string``` . Then we define the getters and setters for these properties.
+The code above is fairly simple. First, we create 2 separate properties for both languages, which are named ```TurkishText``` and ```EnglishText```. These properties will be of type ```string``` . Then we define the getters and setters for these properties.
 
 Now that we defined the properties, we can add them to our XAML code.
 
@@ -172,7 +172,7 @@ namespace SomeNamespace.Globalization
 
 The LanguageChanger code should allow our WPF to find all the TextBlocks and change their language to whichever language setting we decide. 
 
-However, there is a big problem here. Our application will try and change **ALL** TextBlocks in our XAML. So if it cannot find any EnglishText or TurkishText, the application will default to empty strings which are not very desirable because we do not want **ALL** our TextBlocks to change, just the blocks that are EnglishText.
+However, there is a big problem here. Our application will try and change **ALL** TextBlocks in our XAML. So if it cannot find any ```EnglishText``` or ```TurkishText```, the application will default to empty strings which are not very desirable because we do not want **ALL** our TextBlocks to change, just the blocks that are ```EnglishText```.
 
 To solve this issue we need a flag for the ```LanguageChanger``` class to decide whether or not the application should translate. 
 

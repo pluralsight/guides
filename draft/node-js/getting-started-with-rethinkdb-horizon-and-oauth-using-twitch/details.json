@@ -1,0 +1,15 @@
+{
+    "_publish_status": "draft",
+    "author_name": "Brodan",
+    "author_real_name": "Chris Hranj",
+    "branch": "master",
+    "branches": [],
+    "filename": "article.md",
+    "first_commit": "886bafe8f43fc7b0485dec849aa2c19320ed8ebe",
+    "image_url": "https://avatars.githubusercontent.com/u/12822268?v=3",
+    "stacks": [
+        "Node.js"
+    ],
+    "thumbnail_url": null,
+    "title": "Getting Started with RethinkDB Horizon and OAuth Using Twitch"
+}

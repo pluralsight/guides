@@ -1,0 +1,15 @@
+{
+    "_publish_status": "published",
+    "author_name": "aykanatm",
+    "author_real_name": "Murat Aykanat",
+    "branch": "master",
+    "branches": [],
+    "filename": "article.md",
+    "first_commit": null,
+    "image_url": "https://avatars.githubusercontent.com/u/9140297?v=3",
+    "stacks": [
+        "Microsoft.NET (C#, ASP.NET, VB.NET, etc)"
+    ],
+    "thumbnail_url": null,
+    "title": "Building a Generic CSV Writer/Reader using Reflection"
+}

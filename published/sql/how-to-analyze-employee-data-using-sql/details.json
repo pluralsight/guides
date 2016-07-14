@@ -1,11 +1,12 @@
 {
+    "_publish_status": "published",
     "author_name": "bsullins",
     "author_real_name": "Ben Sullins",
     "branch": "master",
     "branches": [],
     "filename": "article.md",
+    "first_commit": null,
     "image_url": "https://avatars.githubusercontent.com/u/3732908?v=3",
-    "publish_status": "published",
     "stacks": [
         "SQL"
     ],

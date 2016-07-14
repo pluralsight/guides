@@ -395,7 +395,7 @@ But hold on--we’re not done just yet! When we iterate through items in React, 
 
     return(
         <div>
-            {Items}
+            {items}
         </div>
     )
 }
@@ -409,7 +409,7 @@ Let’s test if everything is working. First, `<Body />` , the parent component 
 
 
 ```javascript
-// app/assets/javascripts/components/_main.js.jsx_
+// app/assets/javascripts/components/_main.js.jsx
 var Main = React.createClass({
     render() {
         return (
@@ -702,7 +702,7 @@ var Body = React.createClass({
         return (
             <div>
                 <NewItem handleSubmit={this.handleSubmit}/>
-                <AllItems  items={this.state.items} /> />
+                <AllItems  items={this.state.items} />
             </div>
         )
     }
@@ -955,8 +955,8 @@ Next, we’ll move `handleEdit()` to the `<Item />` template. We’ll have a Boo
 
 Let’s move the `handleEdit()` to `<Item />`. We can simply do this by writing the method inside the component and changing the property of the button from `this.props.handleEdit` to `this.handleEdit`.
 
-_app/assets/javascripts/components/_\__item.js.jsx_
 ```javascript
+// _app/assets/javascripts/components/_item.js.jsx
 <button onClick={this.handleEdit}> Edit </button>
 
 ```

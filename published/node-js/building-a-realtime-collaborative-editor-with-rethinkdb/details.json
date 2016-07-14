@@ -1,0 +1,15 @@
+{
+    "_publish_status": "published",
+    "author_name": "shadowcodex",
+    "author_real_name": "Shannon Duncan",
+    "branch": "master",
+    "branches": [],
+    "filename": "article.md",
+    "first_commit": "976802e90eb4c1dc5f8f45daa2d23908a765087d",
+    "image_url": "https://avatars.githubusercontent.com/u/1348053?v=3",
+    "stacks": [
+        "Node.js"
+    ],
+    "thumbnail_url": null,
+    "title": "Building a Realtime Collaborative Editor with RethinkDB"
+}

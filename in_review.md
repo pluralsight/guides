@@ -1,3 +1,58 @@
+### 3 reasons why WebRTC will rock your socks! by Akansh Murthy
+- [Read the guide](http://tutorials.pluralsight.com/interesting-apis/3-reasons-why-webrtc-will-rock-your-socks?status=in-review)
+- [Read more from Akansh Murthy](http://tutorials.pluralsight.com/author/akanshmurthy) <img src="https://avatars.githubusercontent.com/u/11954634?v=3" width="30" height="30" alt="Akansh Murthy" />
+- Related to: Interesting APIs (SendGrid, Twilio, etc)
+
+### Introduction to Angular test-driven development by Hristo Georgiev
+- [Read the guide](http://tutorials.pluralsight.com/front-end-javascript/introduction-to-angular-test-driven-development?status=in-review)
+- [Read more from Hristo Georgiev](http://tutorials.pluralsight.com/author/Kaizeras) <img src="https://avatars.githubusercontent.com/u/6340189?v=3" width="30" height="30" alt="Hristo Georgiev" />
+- Related to: Front-End JavaScript (Angular, React, Meteor, etc)
+
+### Visualizing tweets with PubNub's Stream Controller and CSS3 animations by Esteban Herrera
+- [Read the guide](http://tutorials.pluralsight.com/interesting-apis/visualizing-tweets-with-pubnub-s-stream-controller-and-css3-animations?status=in-review)
+- [Read more from Esteban Herrera](http://tutorials.pluralsight.com/author/eh3rrera) <img src="https://avatars.githubusercontent.com/u/11665759?v=3" width="30" height="30" alt="Esteban Herrera" />
+- Related to: Interesting APIs (SendGrid, Twilio, etc)
+
+### How to implement a simple wait using Java and Selenium by dcboycm
+- [Read the guide](http://tutorials.pluralsight.com/other/how-to-implement-a-simple-wait-using-java-and-selenium?status=in-review)
+- [Read more from dcboycm](http://tutorials.pluralsight.com/author/dcboycm) <img src="https://avatars.githubusercontent.com/u/5580819?v=3" width="30" height="30" alt="dcboycm" />
+- Related to: other
+
+### How to install CKAN 2.5 from source on Debian 8 "Jessie" by Miguel Gouveia
+- [Read the guide](http://tutorials.pluralsight.com/other/how-to-install-ckan-2-5-from-source-on-debian-8-jessie?status=in-review)
+- [Read more from Miguel Gouveia](http://tutorials.pluralsight.com/author/miguelbgouveia) <img src="https://avatars.githubusercontent.com/u/1122917?v=3" width="30" height="30" alt="Miguel Gouveia" />
+- Related to: other
+
+### HTML BASICS by Nikolas Danaj
+- [Read the guide](http://tutorials.pluralsight.com/html-css/html-basics?status=in-review)
+- [Read more from Nikolas Danaj](http://tutorials.pluralsight.com/author/NIkolasDanaj) <img src="https://avatars.githubusercontent.com/u/19437693?v=3" width="30" height="30" alt="Nikolas Danaj" />
+- Related to: HTML/CSS
+
+### How to write effective Docstrings by Ennis Massey
+- [Read the guide](http://tutorials.pluralsight.com/python/how-to-write-effective-docstrings?status=in-review)
+- [Read more from Ennis Massey](http://tutorials.pluralsight.com/author/MicroTransactionsMatterToo) <img src="https://avatars.githubusercontent.com/u/12421108?v=3" width="30" height="30" alt="Ennis Massey" />
+- Related to: Python
+
+### Tutorial Contest FAQ by Prateek Gupta
+- [Read the guide](http://tutorials.pluralsight.com/software-engineering-best-practices/tutorial-contest-faq?status=in-review)
+- [Read more from Prateek Gupta](http://tutorials.pluralsight.com/author/prtkgpt) <img src="https://avatars.githubusercontent.com/u/2454349?v=3" width="30" height="30" alt="Prateek Gupta" />
+- Related to: Software Engineering Best Practices
+
+### Kick start with Node Js (Part 1) by Ankit Parekh
+- [Read the guide](http://tutorials.pluralsight.com/other/kick-start-with-node-js-part-1?status=in-review)
+- [Read more from Ankit Parekh](http://tutorials.pluralsight.com/author/AkkiParekh) <img src="https://avatars.githubusercontent.com/u/12481933?v=3" width="30" height="30" alt="Ankit Parekh" />
+- Related to: other
+
+### Reflection Kullanarak Jenerik CSV Yazıcı/Okuyucu Geliştirmek by Murat Aykanat
+- [Read the guide](http://tutorials.pluralsight.com/microsoft-net/reflection-kullanarak-jenerik-csv-yazc-okuyucu-gelistirmek?status=in-review)
+- [Read more from Murat Aykanat](http://tutorials.pluralsight.com/author/aykanatm) <img src="https://avatars.githubusercontent.com/u/9140297?v=3" width="30" height="30" alt="Murat Aykanat" />
+- Related to: Microsoft.NET (C#, ASP.NET, VB.NET, etc)
+
+### All Updates from #GoogleIO2016 Keynote from MountainView California by Rahat Khanna
+- [Read the guide](http://tutorials.pluralsight.com/interesting-apis/all-updates-from-googleio2016-keynote-from-mountainview-california?status=in-review)
+- [Read more from Rahat Khanna](http://tutorials.pluralsight.com/author/mappmechanic) <img src="https://avatars.githubusercontent.com/u/4088925?v=3" width="30" height="30" alt="Rahat Khanna" />
+- Related to: Interesting APIs (SendGrid, Twilio, etc)
+
 ### Profiling Python's core collection data structures by Luke Lee
 - [Read the guide](http://tutorials.pluralsight.com/python/profiling-python-s-core-collection-data-structures?status=in-review)
 - [Read more from Luke Lee](http://tutorials.pluralsight.com/author/durden) <img src="https://avatars.githubusercontent.com/u/58063?v=3" width="30" height="30" alt="Luke Lee" />
@@ -17,16 +72,6 @@
 - [Read the guide](http://tutorials.pluralsight.com/front-end-javascript/getting-accustomed-to-angular-2-0?status=in-review)
 - [Read more from Tom Greco](http://tutorials.pluralsight.com/user/thomasjosephgreco) <img src="https://avatars.githubusercontent.com/u/6646552?v=3" width="30" height="30" alt="Tom Greco" />
 - Related to: Front-End JavaScript (Angular, React, Meteor, etc)
-
-### Beginner: Linux Navigation Manual by Prakrit Duangsutha
-- [Read the guide](http://tutorials.pluralsight.com/other/beginner-linux-navigation-manual?status=in-review)
-- [Read more from Prakrit Duangsutha](http://tutorials.pluralsight.com/user/brillydev) <img src="https://avatars.githubusercontent.com/u/2718812?v=3" width="30" height="30" alt="Prakrit Duangsutha" />
-- Related to: other
-
-### Profiling memory usage in Python by Luke Lee
-- [Read the guide](http://tutorials.pluralsight.com/python/profiling-memory-usage-in-python?status=in-review)
-- [Read more from Luke Lee](http://tutorials.pluralsight.com/user/durden) <img src="https://avatars.githubusercontent.com/u/58063?v=3" width="30" height="30" alt="Luke Lee" />
-- Related to: Python
 
 ### How To Install Ruby on Rails on CentOS 7 by Consigliere
 - [Read the guide](http://tutorials.pluralsight.com/ruby-ruby-on-rails/how-to-install-ruby-on-rails-on-centos-7?status=in-review)
@@ -73,16 +118,6 @@
 - [Read more from Scott Miller](http://tutorials.pluralsight.com/user/smiller171) <img src="https://avatars.githubusercontent.com/u/3587913?v=3" width="30" height="30" alt="Scott Miller" />
 - Related to: DevOps (Docker, Nagios, Jenkins, Chef, Puppet, etc)
 
-### Running shell commands with Flask by Red Moses
-- [Read the guide](http://tutorials.pluralsight.com/python/running-shell-commands-with-flask?status=in-review)
-- [Read more from Red Moses](http://tutorials.pluralsight.com/user/redmoses) <img src="https://avatars.githubusercontent.com/u/4059490?v=3" width="30" height="30" alt="Red Moses" />
-- Related to: Python
-
-### Response Streams with Rails 4 and Redis by Adam Fortuna
-- [Read the guide](http://tutorials.pluralsight.com/ruby-ruby-on-rails/response-streams-with-rails-4-and-redis?status=in-review)
-- [Read more from Adam Fortuna](http://tutorials.pluralsight.com/user/adamfortuna) <img src="https://avatars.githubusercontent.com/u/7741?v=3" width="30" height="30" alt="Adam Fortuna" />
-- Related to: Ruby, Ruby on Rails
-
 ### Don't swallow InterruptedException. Call Thread.currentThread().interrupt() instead. by Michael Scharf (Github)
 - [Read the guide](http://tutorials.pluralsight.com/java-and-j2ee/don-t-swallow-interruptedexception-call-thread-currentthread-interrupt-instead?status=in-review)
 - [Read more from Michael Scharf (Github)](http://tutorials.pluralsight.com/user/scharf) <img src="https://avatars.githubusercontent.com/u/3731059?v=3" width="30" height="30" alt="Michael Scharf (Github)" />
@@ -90,13 +125,8 @@
 
 ### Decorators as classes or functions? by Luke Lee
 - [Read the guide](http://tutorials.pluralsight.com/python/decorators-as-classes-or-functions?status=in-review)
-- [Read more from Luke Lee](http://tutorials.pluralsight.com/user/durden) <img src="https://avatars.githubusercontent.com/u/58063?v=3" width="30" height="30" alt="Luke Lee" />
+- [Read more from Luke Lee](http://tutorials.pluralsight.com/author/durden) <img src="https://avatars.githubusercontent.com/u/58063?v=3" width="30" height="30" alt="Luke Lee" />
 - Related to: Python
-
-### Functional Style Programming using C by Mahmudul FAISAL Al Ameen
-- [Read the guide](http://tutorials.pluralsight.com/c-c++/functional-style-programming-using-c?status=in-review)
-- [Read more from Mahmudul FAISAL Al Ameen](http://tutorials.pluralsight.com/user/phaysaal) <img src="https://avatars.githubusercontent.com/u/12531542?v=3" width="30" height="30" alt="Mahmudul FAISAL Al Ameen" />
-- Related to: C/C++
 
 ### Simple debugging with meta programming by Luke Lee
 - [Read the guide](http://tutorials.pluralsight.com/python/simple-debugging-with-meta-programming?status=in-review)
@@ -107,11 +137,6 @@
 - [Read the guide](http://tutorials.pluralsight.com/other/how-i-wrote-an-%7E100b-grid-system?status=in-review)
 - [Read more from IonicaBizau](http://tutorials.pluralsight.com/user/IonicaBizau) <img src="https://avatars.githubusercontent.com/u/2864371?v=3" width="30" height="30" alt="IonicaBizau" />
 - Related to: other
-
-### Be careful what you import by Luke Lee
-- [Read the guide](http://tutorials.pluralsight.com/python/be-careful-what-you-import?status=in-review)
-- [Read more from Luke Lee](http://tutorials.pluralsight.com/user/durden) <img src="https://avatars.githubusercontent.com/u/58063?v=3" width="30" height="30" alt="Luke Lee" />
-- Related to: Python
 
 ### Defining roles with concerns by arturcp
 - [Read the guide](http://tutorials.pluralsight.com/ruby-ruby-on-rails/defining-roles-with-concerns?status=in-review)

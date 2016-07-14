@@ -3,9 +3,7 @@
     "author_name": "Kaizeras",
     "author_real_name": "Hristo Georgiev",
     "branch": "master",
-    "branches": [
-        "adityavarshney"
-    ],
+    "branches": [],
     "filename": "article.md",
     "first_commit": null,
     "image_url": "https://avatars.githubusercontent.com/u/6340189?v=3",
@@ -13,5 +11,5 @@
         "Ruby, Ruby on Rails"
     ],
     "thumbnail_url": null,
-    "title": "Token-based authentication with  Ruby on Rails 5 API"
+    "title": "Token-based authentication with Ruby on Rails 5 API"
 }

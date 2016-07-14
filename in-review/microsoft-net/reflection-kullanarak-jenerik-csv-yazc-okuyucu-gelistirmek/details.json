@@ -1,0 +1,15 @@
+{
+    "_publish_status": "in-review",
+    "author_name": "aykanatm",
+    "author_real_name": "Murat Aykanat",
+    "branch": "master",
+    "branches": [],
+    "filename": "article.md",
+    "first_commit": "390a17981516fbe50db7245edd10fa3073a60754",
+    "image_url": "https://avatars.githubusercontent.com/u/9140297?v=3",
+    "stacks": [
+        "Microsoft.NET (C#, ASP.NET, VB.NET, etc)"
+    ],
+    "thumbnail_url": null,
+    "title": "Reflection Kullanarak Jenerik CSV Yaz\u0131c\u0131/Okuyucu Geli\u015ftirmek"
+}

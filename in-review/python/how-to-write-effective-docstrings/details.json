@@ -1,0 +1,15 @@
+{
+    "_publish_status": "in-review",
+    "author_name": "MicroTransactionsMatterToo",
+    "author_real_name": "Ennis Massey",
+    "branch": "master",
+    "branches": [],
+    "filename": "article.md",
+    "first_commit": "ce23b34ce749dbc734607050a926d07b7c37fbfa",
+    "image_url": "https://avatars.githubusercontent.com/u/12421108?v=3",
+    "stacks": [
+        "Python"
+    ],
+    "thumbnail_url": null,
+    "title": "How to write effective Docstrings"
+}

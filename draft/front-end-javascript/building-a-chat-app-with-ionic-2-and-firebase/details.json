@@ -1,0 +1,15 @@
+{
+    "_publish_status": "draft",
+    "author_name": "dmackerman",
+    "author_real_name": "Dave Ackerman",
+    "branch": "master",
+    "branches": [],
+    "filename": "article.md",
+    "first_commit": "0f481e943334dd2cdd0ec68f98c53f2a6aa89fd3",
+    "image_url": "https://avatars.githubusercontent.com/u/289938?v=3",
+    "stacks": [
+        "Front-End JavaScript (Angular, React, Meteor, etc)"
+    ],
+    "thumbnail_url": null,
+    "title": "Building a Chat App with Ionic 2 and Firebase "
+}

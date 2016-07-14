@@ -1,0 +1,15 @@
+{
+    "_publish_status": "published",
+    "author_name": "ty-shaikh",
+    "author_real_name": "Ty Shaikh",
+    "branch": "master",
+    "branches": [],
+    "filename": "article.md",
+    "first_commit": "9cae6e73adbea709299457d54651aedaf7b61a6e",
+    "image_url": "https://avatars.githubusercontent.com/u/18148869?v=3",
+    "stacks": [
+        "Ruby, Ruby on Rails"
+    ],
+    "thumbnail_url": null,
+    "title": "Instant Delivery Store using Ruby on Rails, Stripe and UberRUSH API"
+}

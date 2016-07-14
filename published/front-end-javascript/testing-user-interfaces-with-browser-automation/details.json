@@ -1,0 +1,15 @@
+{
+    "_publish_status": "published",
+    "author_name": "peterolson",
+    "author_real_name": "Peter Olson",
+    "branch": "master",
+    "branches": [],
+    "filename": "article.md",
+    "first_commit": null,
+    "image_url": "https://avatars.githubusercontent.com/u/920512?v=3",
+    "stacks": [
+        "Front-End JavaScript (Angular, React, Meteor, etc)"
+    ],
+    "thumbnail_url": null,
+    "title": "Testing user interfaces with browser automation"
+}

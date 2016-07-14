@@ -1,0 +1,15 @@
+{
+    "_publish_status": "draft",
+    "author_name": "williamn",
+    "author_real_name": "William Notowidagdo",
+    "branch": "master",
+    "branches": [],
+    "filename": "article.md",
+    "first_commit": "163fe9ee9be1f15e863924629817509d1259fa93",
+    "image_url": "https://avatars.githubusercontent.com/u/27722?v=3",
+    "stacks": [
+        "PHP"
+    ],
+    "thumbnail_url": null,
+    "title": "Integrating Laravel with Keen IO"
+}

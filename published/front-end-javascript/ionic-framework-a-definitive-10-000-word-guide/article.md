@@ -30,7 +30,7 @@ You can make an app specifically for iOS and Android by using their specific SDK
 If you want to build a native application for Android you have to:
 
 + download the appropriate SDKs
-+ buy the [Google Developer license](https://play.google.com/apps/publish/signup/) which is 25$ per year
++ buy the [Google Developer license](https://play.google.com/apps/publish/signup/) which is 25$ [one time registration fee](https://support.google.com/googleplay/android-developer/answer/6112435?hl=en)
 
 One of the pros of a native applications would be it's **speed** and direct access to a **native API**. A definite con of a native applications is that you need to build two (or more) applications, one for each desired platform.
 

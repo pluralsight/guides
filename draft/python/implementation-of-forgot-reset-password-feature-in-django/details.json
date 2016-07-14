@@ -1,0 +1,15 @@
+{
+    "_publish_status": "draft",
+    "author_name": "ruddra",
+    "author_real_name": "ruddra",
+    "branch": "master",
+    "branches": [],
+    "filename": "article.md",
+    "first_commit": "9d58b8ceb4eb9d5db9253f9e3a30d7ff8a82d9e4",
+    "image_url": "https://avatars.githubusercontent.com/u/3099861?v=3",
+    "stacks": [
+        "Python"
+    ],
+    "thumbnail_url": null,
+    "title": "Implementation of 'Forgot/Reset Password' feature in Django"
+}

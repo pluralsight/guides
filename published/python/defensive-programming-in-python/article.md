@@ -52,8 +52,6 @@ good starting point:
 
 What I'm really talking about is a combination of the following guidelines:
 
-Guidelines
-
 - Every line of code is a liability
 - Codify your assumptions
 - Executable documentation is preferable [1]

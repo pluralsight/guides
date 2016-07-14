@@ -18,8 +18,8 @@ If we were answering these questions independently it the following SQL would su
 ``` sql
 select count(1)
 from emps
-where HireDate >= '2005-07-01'
-and TermDate < '2005-07-01'
+where HireDate <= '2005-07-01'
+and TermDate > '2005-07-01'
 ```
 
 Rinse and repeat this for every date. But what about employees that have been rehired?

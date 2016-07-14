@@ -1,11 +1,12 @@
 {
+    "_publish_status": "in-review",
     "author_name": "arturcp",
     "author_real_name": "arturcp",
     "branch": "master",
     "branches": [],
     "filename": "article.md",
+    "first_commit": null,
     "image_url": "https://avatars.githubusercontent.com/u/523071?v=3",
-    "publish_status": "in-review",
     "stacks": [
         "Ruby, Ruby on Rails"
     ],

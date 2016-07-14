@@ -1,0 +1,15 @@
+{
+    "_publish_status": "draft",
+    "author_name": "noonhub",
+    "author_real_name": "Andrew Noonan",
+    "branch": "master",
+    "branches": [],
+    "filename": "article.md",
+    "first_commit": "0d450751e6da1d38b3c9b706036927dd61b51896",
+    "image_url": "https://avatars.githubusercontent.com/u/942363?v=3",
+    "stacks": [
+        "Interesting APIs (SendGrid, Twilio, etc)"
+    ],
+    "thumbnail_url": null,
+    "title": "Uber Rides API"
+}

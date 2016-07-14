@@ -1,0 +1,15 @@
+{
+    "_publish_status": "in-review",
+    "author_name": "miguelbgouveia",
+    "author_real_name": "Miguel Gouveia",
+    "branch": "master",
+    "branches": [],
+    "filename": "article.md",
+    "first_commit": "070ebfe60904dba3698ecab4d80cbeccd54a0b0a",
+    "image_url": "https://avatars.githubusercontent.com/u/1122917?v=3",
+    "stacks": [
+        "other"
+    ],
+    "thumbnail_url": null,
+    "title": "How to install CKAN 2.5 from source on Debian 8 \"Jessie\""
+}

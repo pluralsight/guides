@@ -1,0 +1,15 @@
+{
+    "_publish_status": "published",
+    "author_name": "gauravbhavsar",
+    "author_real_name": "Gaurav Bhavsar",
+    "branch": "master",
+    "branches": [],
+    "filename": "article.md",
+    "first_commit": "20ff9478b88bc2978d9c85aaaa97af9b563858bb",
+    "image_url": "https://avatars.githubusercontent.com/u/5441386?v=3",
+    "stacks": [
+        "Front-End JavaScript (Angular, React, Meteor, etc)"
+    ],
+    "thumbnail_url": null,
+    "title": "Getting Started with AngularJS"
+}
