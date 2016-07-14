@@ -1,5 +1,3 @@
-# Middleman, Github Pages, Reactrb, and Webpack
-
 In this guide we will set up a static webpage using middleman, then host it on github, then give it some interactivity using Reactrb, and finally add some react components using Webpack.
 
 - #### Setting up Middleman
@@ -27,4 +25,7 @@ You will need to have ruby gems installed for this to work.  If you don't middle
 This adds the middleman gem which will give you some new commands, that will initialize new middleman projects, run a server so you can test your changes, and deploy (or publish) your website.
 
 ```bash
-midd
+middleman initi middleman-fun
+```
+
+This will run 
