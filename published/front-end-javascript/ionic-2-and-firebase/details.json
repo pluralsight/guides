@@ -1,0 +1,15 @@
+{
+    "_publish_status": "published",
+    "author_name": "SteveEmmerich",
+    "author_real_name": "Steve Emmerich",
+    "branch": "master",
+    "branches": [],
+    "filename": "article.md",
+    "first_commit": "2264342339888dd181fba3d17c15d06d51f1d741",
+    "image_url": "https://avatars.githubusercontent.com/u/310086?v=3",
+    "stacks": [
+        "Front-End JavaScript (Angular, React, Meteor, etc)"
+    ],
+    "thumbnail_url": null,
+    "title": "Ionic 2 and Firebase"
+}

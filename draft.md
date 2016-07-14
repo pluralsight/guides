@@ -1,7 +1,62 @@
-### 5 reasons WebRTC will revolutionize web applications! by Akansh Murthy
-- [Read the guide](http://tutorials.pluralsight.com/interesting-apis/5-reasons-webrtc-will-revolutionize-web-applications?status=draft)
-- [Read more from Akansh Murthy](http://tutorials.pluralsight.com/author/akanshmurthy) <img src="https://avatars.githubusercontent.com/u/11954634?v=3" width="30" height="30" alt="Akansh Murthy" />
-- Related to: Interesting APIs (SendGrid, Twilio, etc)
+### A Complete Guide for PF4J by Mukarram Tailor
+- [Read the guide](http://tutorials.pluralsight.com/java-and-j2ee/a-complete-guide-for-pf4j?status=draft)
+- [Read more from Mukarram Tailor](http://tutorials.pluralsight.com/author/Mukarr) <img src="https://avatars.githubusercontent.com/u/9568504?v=3" width="30" height="30" alt="Mukarram Tailor" />
+- Related to: Java and J2EE
+
+### Getting Started with Ionic 2 by Olulana Kolawole
+- [Read the guide](http://tutorials.pluralsight.com/android/getting-started-with-ionic-2?status=draft)
+- [Read more from Olulana Kolawole](http://tutorials.pluralsight.com/author/kolawoletech) <img src="https://avatars.githubusercontent.com/u/4382405?v=3" width="30" height="30" alt="Olulana Kolawole" />
+- Related to: Android
+
+### Getting Started with RethinkDB Horizon and OAuth Using Twitch by Chris Hranj
+- [Read the guide](http://tutorials.pluralsight.com/node-js/getting-started-with-rethinkdb-horizon-and-oauth-using-twitch?status=draft)
+- [Read more from Chris Hranj](http://tutorials.pluralsight.com/author/Brodan) <img src="https://avatars.githubusercontent.com/u/12822268?v=3" width="30" height="30" alt="Chris Hranj" />
+- Related to: Node.js
+
+### 7 Reasons yo should start using ES6 by Sebastian
+- [Read the guide](http://tutorials.pluralsight.com/node-js/7-reasons-yo-should-start-using-es6?status=draft)
+- [Read more from Sebastian](http://tutorials.pluralsight.com/author/sbastidasr) <img src="https://avatars.githubusercontent.com/u/4912810?v=3" width="30" height="30" alt="Sebastian" />
+- Related to: Node.js
+
+### Ionic 2 and Firebase Storage by Aaron K Saunders
+- [Read the guide](http://tutorials.pluralsight.com/front-end-javascript/ionic-2-and-firebase-storage?status=draft)
+- [Read more from Aaron K Saunders](http://tutorials.pluralsight.com/author/aaronksaunders) <img src="https://avatars.githubusercontent.com/u/524953?v=3" width="30" height="30" alt="Aaron K Saunders" />
+- Related to: Front-End JavaScript (Angular, React, Meteor, etc)
+
+### ES6 Draft by Sebastian
+- [Read the guide](http://tutorials.pluralsight.com/node-js/es6-draft?status=draft)
+- [Read more from Sebastian](http://tutorials.pluralsight.com/author/sbastidasr) <img src="https://avatars.githubusercontent.com/u/4912810?v=3" width="30" height="30" alt="Sebastian" />
+- Related to: Node.js
+
+### Alexa Tutorial 2016 by Tyler Steck
+- [Read the guide](http://tutorials.pluralsight.com/node-js/alexa-tutorial-2016?status=draft)
+- [Read more from Tyler Steck](http://tutorials.pluralsight.com/author/steckdev) <img src="https://avatars.githubusercontent.com/u/1010935?v=3" width="30" height="30" alt="Tyler Steck" />
+- Related to: Node.js
+
+### Jaffa  by rahul-rt
+- [Read the guide](http://tutorials.pluralsight.com/other/jaffa?status=draft)
+- [Read more from rahul-rt](http://tutorials.pluralsight.com/author/rahul-rt) <img src="https://avatars.githubusercontent.com/u/20288606?v=3" width="30" height="30" alt="rahul-rt" />
+- Related to: other
+
+### Building a Slackbot with a Horizon Backend by Chris Hranj
+- [Read the guide](http://tutorials.pluralsight.com/other/building-a-slackbot-with-a-horizon-backend?status=draft)
+- [Read more from Chris Hranj](http://tutorials.pluralsight.com/author/Brodan) <img src="https://avatars.githubusercontent.com/u/12822268?v=3" width="30" height="30" alt="Chris Hranj" />
+- Related to: other
+
+### Not Done Yet by Ian Hickey
+- [Read the guide](http://tutorials.pluralsight.com/front-end-javascript/not-done-yet?status=draft)
+- [Read more from Ian Hickey](http://tutorials.pluralsight.com/author/ian-a-hickey) <img src="https://avatars.githubusercontent.com/u/10375721?v=3" width="30" height="30" alt="Ian Hickey" />
+- Related to: Front-End JavaScript (Angular, React, Meteor, etc)
+
+### <h2 onmouseover="alert('Your Token: ' + document.cookie)">XSS Vulnerability</h2> by Ian Hickey
+- [Read the guide](http://tutorials.pluralsight.com/front-end-javascript/h2-onmouseover-alert-your-token-+-document-cookie-xss-vulnerability-h2?status=draft)
+- [Read more from Ian Hickey](http://tutorials.pluralsight.com/author/ian-a-hickey) <img src="https://avatars.githubusercontent.com/u/10375721?v=3" width="30" height="30" alt="Ian Hickey" />
+- Related to: Front-End JavaScript (Angular, React, Meteor, etc)
+
+### test<script>alert(1)</script> by Ian Hickey
+- [Read the guide](http://tutorials.pluralsight.com/other/test-script-alert-1-script?status=draft)
+- [Read more from Ian Hickey](http://tutorials.pluralsight.com/author/ian-a-hickey) <img src="https://avatars.githubusercontent.com/u/10375721?v=3" width="30" height="30" alt="Ian Hickey" />
+- Related to: other
 
 ### Integrating Laravel with Keen IO by William Notowidagdo
 - [Read the guide](http://tutorials.pluralsight.com/php/integrating-laravel-with-keen-io?status=draft)
@@ -102,11 +157,6 @@
 - [Read the guide](http://tutorials.pluralsight.com/html-css/test?status=draft)
 - [Read more from Enz Tom](http://tutorials.pluralsight.com/author/motzne) <img src="https://avatars.githubusercontent.com/u/255519?v=3" width="30" height="30" alt="Enz Tom" />
 - Related to: HTML/CSS
-
-### Ionic 2 and Firebase by Steve Emmerich
-- [Read the guide](http://tutorials.pluralsight.com/front-end-javascript/ionic-2-and-firebase?status=draft)
-- [Read more from Steve Emmerich](http://tutorials.pluralsight.com/author/SteveEmmerich) <img src="https://avatars.githubusercontent.com/u/310086?v=3" width="30" height="30" alt="Steve Emmerich" />
-- Related to: Front-End JavaScript (Angular, React, Meteor, etc)
 
 ### How to build a tinder for x with Ionic 2 and Firebase by Carlos Rojas
 - [Read the guide](http://tutorials.pluralsight.com/html-css/how-to-build-a-tinder-for-x-with-ionic-2-and-firebase?status=draft)

@@ -14,7 +14,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Page Title</title>vwc
+<title>Page Title</title>
 <body>
 
 <h1>My First Heading</h1>

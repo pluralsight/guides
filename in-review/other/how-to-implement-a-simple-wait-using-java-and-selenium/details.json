@@ -1,0 +1,15 @@
+{
+    "_publish_status": "in-review",
+    "author_name": "dcboycm",
+    "author_real_name": "dcboycm",
+    "branch": "master",
+    "branches": [],
+    "filename": "article.md",
+    "first_commit": "08597c50903116a22b673ed1e4445a176ba99ba1",
+    "image_url": "https://avatars.githubusercontent.com/u/5580819?v=3",
+    "stacks": [
+        "other"
+    ],
+    "thumbnail_url": null,
+    "title": "How to implement a simple wait using Java and Selenium"
+}

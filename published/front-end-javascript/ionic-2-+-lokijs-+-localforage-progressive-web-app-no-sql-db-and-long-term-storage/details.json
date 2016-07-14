@@ -1,0 +1,15 @@
+{
+    "_publish_status": "published",
+    "author_name": "ryanlogsdon",
+    "author_real_name": "ryanlogsdon",
+    "branch": "master",
+    "branches": [],
+    "filename": "article.md",
+    "first_commit": "f34bd1f5aae17192181b3639e9f5578b52b53128",
+    "image_url": "https://avatars.githubusercontent.com/u/7528211?v=3",
+    "stacks": [
+        "Front-End JavaScript (Angular, React, Meteor, etc)"
+    ],
+    "thumbnail_url": null,
+    "title": "Ionic 2 + LokiJS + LocalForage (Progressive Web App, no-SQL db, and long-term storage)"
+}

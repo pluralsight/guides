@@ -1,0 +1,15 @@
+{
+    "_publish_status": "published",
+    "author_name": "gruppjo",
+    "author_real_name": "Jonathan Grupp",
+    "branch": "master",
+    "branches": [],
+    "filename": "article.md",
+    "first_commit": "834a71f04eb2edae762c81aac87b2b0c22b597f5",
+    "image_url": "https://avatars.githubusercontent.com/u/1370779?v=3",
+    "stacks": [
+        "Front-End JavaScript (Angular, React, Meteor, etc)"
+    ],
+    "thumbnail_url": null,
+    "title": "Advanced workflows for building rock-solid Ionic apps. Part 1: Playground"
+}
