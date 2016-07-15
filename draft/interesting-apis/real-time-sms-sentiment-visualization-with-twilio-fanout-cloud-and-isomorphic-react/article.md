@@ -1,23 +1,23 @@
-In this tutorial, we're going to build an application to visualize in real-time SMS messages sent to a Twilio phone number along with their sentiment analysis provided by the Marchex Sentiment Analysis plugin.
+In this tutorial, we're going to build an application to visualize, in real-time, SMS messages sent to a [Twilio](https://www.twilio.com) phone number along with their sentiment analysis provided by the Marchex Sentiment Analysis plugin.
 
-We'll be using Node.js with Express for the web server, Ngrok to expose our local server publicly, Fanout Cloud for the real-time functionality, and React for the view.
+We'll be using [Node.js](https://nodejs.org) with [Express](http://expressjs.com/) for the web server, [Ngrok](https://ngrok.com/) to expose our local server publicly, [Fanout Cloud](https://fanout.io/) for the real-time functionality, and ([isomorphic](http://isomorphic.net/)) [React](https://facebook.github.io/react/) for the view.
 
-When a SMS is sent to the Twilio Number, information about the SMS (along with its sentiment analysis) is sent to our Node.js server.
+When a SMS is sent to the Twilio Number, information about the SMS is sent to our Node.js server.
 
-Then, we extract the relevant information and publish it to a Fanout Cloud's channel. This is received by the clients in a web page that shows the information in this way:
+Then, we extract the relevant information and publish it to a Fanout Cloud's channel. This is received in a web page that shows the information in this way:
 
 ![App demo](https://raw.githubusercontent.com/pluralsight/guides/master/images/17a85122-2db2-4e84-865e-7c58df8ed809.gif)
 
 
-Notice how the background changes depending on the sentiment. Furthermore, there are transitions when new messages appear. The design was inspired by this [pen](http://codepen.io/bundleio/pen/regPeX).
+Notice how the background changes depending on the sentiment. Moreover, there are transitions when new messages appear. The design was inspired by this [pen](http://codepen.io/bundleio/pen/regPeX).
 
-The gauge comes from [Epoch](http://epochjs.github.io/epoch/), a real-time charting library that uses jQuery. Some would say React and jQuery should never be used together (because of the way React create the components), and we could have chosen another [gauge component with better React integration](http://michigan-com.github.io/react-gauge), but the truth is that React can play well with libraries like jQuery and sometimes, you have no option but to use a jQuery plugin in a React application. Besides, Epoch charts are very good looking.
+The gauge comes from [Epoch](http://epochjs.github.io/epoch/), a real-time charting library that uses [jQuery](https://jquery.com). Some would say React and jQuery should never be used together (because of the way React creates its components). We could have chosen another [gauge component with better React integration](http://michigan-com.github.io/react-gauge), but the truth is that React can play well with libraries like jQuery and sometimes, you have no option but to use a jQuery plugin in a React application. Besides, Epoch charts look better than others.
 
 Finally, with a couple of modifications, we'll make this application isomorphic (universal).
 
 The source code of the final version of the application is available on [Github](https://github.com/eh3rrera/sms-sentiment).
 
-Let's start by setting up everything that is required for this application.
+Let's start by setting up everything that is required for the application.
 
 # Requirements
 ### Twilio
