@@ -22,11 +22,7 @@ With all this said, fasten your seatbelts, take a venti (or trenta) sized cup of
 ## Demo app
 As said in the Objective paragraph, we'll build an application for searching (and showing) gifs from the [Giphy](http://giphy.com/) website by using [their API](https://github.com/Giphy/GiphyAPI). In the end, we'll also deploy our app to [Github pages](https://pages.github.com/).
 
-You can [try the app here](https://hitman666.github.io/giphy-search/), and you can fork the complete source code on [Github](https://github.com/Hitman666/GiphySearch_Angular2).
-
-In case the demo app is not working for you, make sure to "Load unsafe scripts" by clicking the "shield" (in Chrome):
-
-![](http://i.imgur.com/DJvHNym.png)
+You can [try the app here](http://hitman666.github.io/giphy-search/), and you can fork the complete source code on [Github](https://github.com/Hitman666/GiphySearch_Angular2).
 
 ## Prerequisites
 Make sure that the following tools are installed:
@@ -624,7 +620,7 @@ Add new files, commit them, and push them:
 
 `git push origin master`
 
-Now you'll have your app accessible at yourusername.github.io/giphy-search. In my case, the link is [https://hitman666.github.io/giphy-search/](https://hitman666.github.io/giphy-search/).
+Now you'll have your app accessible at yourusername.github.io/giphy-search. In my case, the link is [http://hitman666.github.io/giphy-search/](http://hitman666.github.io/giphy-search/).
 
 In case you would like to deploy this to your own server, just make sure you execute `ng build` and then copy the contents of the `dist` folder to your web server's proper folder. Also, don't forget about the proper base url setting.
 

@@ -12,7 +12,7 @@ These terms are the most used terms in the Docker world, and they are the main t
 
 I will also cover the creation and packaging of a **Java** application that runs on [Tomcat Server](https://www.quora.com/What-is-the-function-of-Apache-Tomcat-and-how-do-I-use-it).
 
-### 0. Kitematic Installation
+## 0. Kitematic Installation
 
 Docker only runs above _Linux_ but you can use it with _Mac OS_ or _Windows OS_ using **Kitematic**. Kitematic creates **VirtualBox Machines** that let you run Docker on them. 
 
@@ -24,7 +24,7 @@ curl -sSL https://get.docker.com/ | sh
 
 _If you are using Mac or Windows, I suggest that you not use the Kitematic interface early on. It will be better if you start creating and manipulating everything from the command line. In this way you will learn more._
 
-### 1. Creating a Dockerfile
+## 1. Creating a Dockerfile
 
 You start by creating your Dockerfile that describes the steps in order to create the base image. Here is an example (comments on each line describe the code):
 
@@ -62,7 +62,7 @@ EXPOSE 8080
 CMD ["/usr/local/tomcat/catalina.sh", "run"]
 ```
 
-### 2. Creating an Image
+## 2. Creating an Image
 
 After you create this Dockerfile you need to create your image.
 You need to navigate through your directory to where the Dockerfile was saved. Use this command line prompt: 
@@ -78,7 +78,7 @@ A couple quick definitions:
 
 After all steps have been executed, you can test your code's functionality by typing docker images and you will see your image there: tomcat.
 
-### 3. Starting a container
+## 3. Starting a container
 
 You can now start a container from an image by running this:
 
@@ -96,7 +96,7 @@ But we solve this port issue by using p parameter.
 
 **p parameter** - Establishes a connection between container's port(s) to the host_. By using **port1:port2** you make  **port1** match with **port2**. After that, you can use **port2** in order to access the service that is opened on **port1** inside the container. Thus, the container is now connected with outside environments.
 
-### 4. Checking for containers
+## 4. Checking for containers
 
 After you run a container you can check that it exists by typing the following sequence:
 
@@ -112,7 +112,7 @@ docker ps -a
 
 The above command displays all containers (running or not).
 
-### 5. Extras
+## 5. Extras
 
 After you started a container you can stop it by using **docker stop [name]**. You can restart the container by typing **docker start [name]**.
 
