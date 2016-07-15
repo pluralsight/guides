@@ -1,6 +1,6 @@
 In this tutorial, we're going to build an application to visualize, in real-time, SMS messages sent to a [Twilio](https://www.twilio.com) phone number along with their sentiment analysis provided by the Marchex Sentiment Analysis plugin.
 
-We'll be using [Node.js](https://nodejs.org) with [Express](http://expressjs.com/) for the web server, [Ngrok](https://ngrok.com/) to expose our local server publicly, [Fanout Cloud](https://fanout.io/) for the real-time functionality, and ([isomorphic](http://isomorphic.net/)) [React](https://facebook.github.io/react/) for the view.
+We'll be using [Node.js](https://nodejs.org) with [Express](http://expressjs.com/) for the web server, [ngrok](https://ngrok.com/) to expose our local server publicly, [Fanout Cloud](https://fanout.io/) for the real-time functionality, and ([isomorphic](http://isomorphic.net/)) [React](https://facebook.github.io/react/) for the view.
 
 When a SMS is sent to the Twilio Number, information about the SMS is sent to our Node.js server.
 
@@ -217,7 +217,7 @@ var path = require('path');
 var config = require('./config');
 ```
 
-Now create the express object:
+Now create the Express object:
 ```javascript
 var app = express();
 ```
@@ -239,7 +239,7 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 ```
 
-Next, let's add the following code to respond to the `/` route with an `index` template:
+Next, let's add the following code to respond to the `/` route with the `index` template:
 ```javascript
 app.get('/', function (req, res) {
 	res.render('index', {});
@@ -277,7 +277,7 @@ In the next section, we'll expose our server to the Internet with ngrok.
 
 
 
-# Setting up Ngrok
+# Setting up ngrok
 In a new terminal window, navigate to the directory where you unzipped ngrok. 
 
 We'll start ngrok by telling it which port we want to expose to the Internet, in our example, the port `3000`:
@@ -294,7 +294,7 @@ Now, you should see something like this:
 
 ![Ngrok Window](https://raw.githubusercontent.com/pluralsight/guides/master/images/d58ac65f-7849-498b-9beb-e6920a65802b.png)
 
-See that URL in the *Forwarding* row(s) with the `ngrok.io` domain? That's your public URL. Your's will be different, ngrok generates a random URL every time you run it.
+See that URL in the *Forwarding* row(s) with the `ngrok.io` domain? That's your public URL. Your's will be different than mine, since ngrok generates a random URL every time you run it.
 
 If you open in a browser `http://[YOUR_GENERATED_SUBDOMAIN].ngrok.io`, you should see the same page found on `http://localhost:3000`:
 
@@ -303,16 +303,16 @@ If you open in a browser `http://[YOUR_GENERATED_SUBDOMAIN].ngrok.io`, you shoul
 
 Open this ngrok URL in another computer if you want. Once again, you should see the same page. Our local server is now available publicly.
 
-The only disadvantage is that this URL is not permanent. If you restart ngrok, it will give you another URL.
+The only disadvantage is that this URL is not permanent. If you restart ngrok, it will give you another one.
 
-You can specify a subdomain, for example, to get the URL  `http://sms.ngrok.io` use the command:
+You can specify a fixed subdomain. For example, to get the URL  `http://sms.ngrok.io` use the command:
 ```
 ngrok http -subdomain=sms 3000
 ```
 
-However, this requires a paid plan. You can get more info in this [page](https://ngrok.com/product).
+However, this requires a paid plan. You can get more info about it in this [page](https://ngrok.com/product).
 
-Nevertheless, as long as you don't stop or restart ngrok, the URL won't change, so forget about that terminal window and let's leave it running for now.
+Nevertheless, as long as you don't stop or restart ngrok, the URL won't change, so forget about that terminal window, let's leave it running for now.
 
 In the next section, we'll review the Twilio API for receiving/sending SMS messages.
 
@@ -325,12 +325,12 @@ Go to your [Phone Numbers Console](https://www.twilio.com/console/phone-numbers/
 
 ![Phone Numbers console](https://raw.githubusercontent.com/pluralsight/guides/master/images/c731fc4b-86f0-4e10-8e7d-163428a66c3c.png)
 
-Let's say that Twilio will call the `/sms` route in our server, so enter your ngrok URL in the corresponding field of the *Messaging* section:
+Let's say that Twilio will call the `/sms` route in our server, so enter your ngrok URL with this route in the corresponding field of the *Messaging* section:
 
 ![Twilio Phone Number Webhook](https://raw.githubusercontent.com/pluralsight/guides/master/images/6a8aaddd-59b4-4061-ad99-bccfcb561afc.png)
 
 
-Also, make sure the HTTP request type is set to *POST* and save your changes.
+Also, make sure the HTTP request type is set to *POST*. Save your changes.
 
 Now, we'll add the code to receive the message on the `/sms` route.
 
@@ -347,18 +347,16 @@ app.post('/sms', Twilio.webhook(config.twilio),function(req, res) {
 });
 ```
 
-This will define the `/sms` POST route and the [Twilio.webhook](http://twilio.github.io/twilio-node/#webhook) function, which acts as a [Express middleware function](http://expressjs.com/en/guide/using-middleware.html) that determines if the request was sent by Twilio, and makes the Express response object aware of TwimlResponse objects.
+This will define the `/sms` POST route and the [Twilio.webhook](http://twilio.github.io/twilio-node/#webhook) function, which acts as a [Express middleware](http://expressjs.com/en/guide/using-middleware.html) that determines if the request was sent by Twilio, in addition to make the Express response object aware of TwimlResponse objects.
 
-However, the `config.twilio` object we specify defines the `validate` option as `false`, which disables this validation. If the validation is enabled (which you'll need to do in a production application if you don't want to receive requests from anyone), this function will look to the environment variable TWILIO_AUTH_TOKEN for your Twilio auth token to validate the request. 
+However, the `config.twilio` object we specify defines the `validate` option as `false`, which disables this validation. If the validation is enabled (you'll need to enable it if you don't want to receive requests from anyone), this function will look to the environment variable `TWILIO_AUTH_TOKEN` for your Twilio auth token to validate the request. 
 
-When Twilio sends an HTTP request to your server, it includes a value in the header that is signed with your auth token.
-
-So, if you enable this option, make sure to export this variable before running the server. On Linux, for example, do it this way:
+When Twilio sends an HTTP request to your server, it includes a value in the header that is signed with your auth token. So, if you enable this option, make sure to export this variable before running the server. On Linux, for example, do it this way:
 ```
 export TWILIO_AUTH_TOKEN=xxx0xxx00xx0xxxxxxx0xxxx0xxxx00xxx0
 ```
 
-Moving on, when an SMS is received on your Twilio number, your server will get an object like the following:
+Moving on, when an SMS is sent to your Twilio number, your server will get an object like the following:
 ```
 {
  ToCountry: 'US',
@@ -399,7 +397,7 @@ Moving on, when an SMS is received on your Twilio number, your server will get a
 }
 ```
 
-As you can see, there's a lot of information on this object. For this application, we'll only use the text of the message, the number, and the country from which it was sent, and the sentiment result.
+As you can see, there's a lot of information on this object. For this application, we'll only use the text of the message, the number, the country from which it was sent, and the sentiment result.
 
 So let's extract this information with the following code:
 ```javascript
@@ -444,23 +442,23 @@ Sent from your Twilio trial account:
 Message received
 ```
 
-Ngrok also keeps a log of all the traffic going through it. Go to http://localhost:4040 and you should see something like this:
+Ngrok also keeps a log of all the traffic going through it. Go to [http://localhost:4040](http://localhost:4040) and you should see something like this:
 
 ![Ngrok Request](https://raw.githubusercontent.com/pluralsight/guides/master/images/8e3d1e58-564c-4171-8bb9-1031dbd99f7b.png)
 
-You can even replay a request with the *Replay* button in the right top of the window when you select one request from the list on the left.
+You can even replay a request with the *Replay* button located in the right top of the window when you select one request from the list on the left.
 
 Also, at the bottom of the same window, you can see the TwiML response:
 ```xml
 <?xml version="1.0" encoding="UTF-8"?><Response><Message>Message received</Message></Response>
 ```
 
-And if you select your Twilio number on your [Phone Numbers Console](https://www.twilio.com/console/phone-numbers/incoming) and then select the *View Messages Inbound* option, you'll see the message you sent:
+If you select your Twilio number on your [Phone Numbers Console](https://www.twilio.com/console/phone-numbers/incoming) and then select the *View Messages Inbound* option, you'll see the message you just sent:
 
 ![Twilio incoming SMS messages](https://raw.githubusercontent.com/pluralsight/guides/master/images/ab494749-6399-481e-987d-eb6dc5f900ba.png)
 
 
-The same applies to the messages sent by Twilio with the *View Messages Outbound* option.
+The same applies to the response sent by Twilio with the *View Messages Outbound* option.
 
 Now let's talk about Fanout Cloud.
 
@@ -468,23 +466,23 @@ Now let's talk about Fanout Cloud.
 
 [Fanout](https://fanout.io) is a publish/subscribe service that makes it easy to build real-time APIs and applications.
 
-It's based on [Pushpin](http://pushpin.org/), an open source reverse proxy that makes it easy to create [WebSocket, HTTP streaming, and HTTP long-polling](http://pushpin.org/about/) services using any web stack as the back-end.
+It's based on [Pushpin](http://pushpin.org/), an open source reverse proxy that in turn, makes it easy to create [WebSocket, HTTP streaming, and HTTP long-polling](http://pushpin.org/about/) services using any web stack as the back-end.
 
 There are two main ways you can use Fanout:
-- Publish/Subscribe Messaging. To send data using protocols such as Bayeux and XMPP (WebSockets are supported automatically when possible).
-- Custom real-time API. To send data using five low-level network transports: HTTP long-polling, HTTP streaming, WebSockets, Webhooks (outbound HTTP), and XMPP.
+- **Publish/Subscribe Messaging**. To send data using protocols such as Bayeux and XMPP (WebSockets are supported automatically when possible).
+- **Custom real-time API**. To send data using five low-level network transports: HTTP long-polling, HTTP streaming, WebSockets, Webhooks (outbound HTTP), and XMPP.
 
-You can find more information on its [quickstart guide](https://fanout.io/docs/devguide.html#quickstart).
+You can find more information about this on its [quickstart guide](https://fanout.io/docs/devguide.html#quickstart).
 
-This application will use Fanout's publish/subscribe service to get the SMS information in real-time. This will be done with [Faye](https://faye.jcoglan.com/), a Bayeux-compatible client library.
+The application will use Fanout's publish/subscribe service to get the SMS information in real-time. This will be done with [Faye](https://faye.jcoglan.com/), a Bayeux-compatible client library.
 
-Why use Fanout Cloud when we can do the same with a simple WebSocket library like [Socket.IO](http://socket.io/)? Well, in the first place, [you might not need to use WebSockets](http://blog.fanout.io/2014/06/24/you-might-not-need-a-websocket/), and on the other hand, by using Fanout infrastructure, you don't have to worry about neither scalability nor additional server to manage.
+Why use Fanout Cloud when we can do the same with a simple WebSocket library like [Socket.IO](http://socket.io/)? Well, in the first place, [you might not need to use WebSockets](http://blog.fanout.io/2014/06/24/you-might-not-need-a-websocket/), and on the other hand, by using Fanout's infrastructure, you don't have to worry about neither scalability nor additional server to manage.
 
 Fanout is organized by realms and channels. A realm can contain any number of channels and different realms may use the same channel names without any problem. Messages are published to channels, and messages are relayed to the subscribers of each channel for that realm.
 
-When you create a Fanout account, one realm will be automatically created for you. However, channels are created on demand at any time.
+When you create a Fanout account, one realm will be automatically created for you. In contrast, channels are created on demand at any time.
 
-For sending our object with SMS information, we'll use the Node.js Fanout library.
+To send the object with the SMS information, we'll use the Node.js Fanout library.
 
 At the beginning of the `server.js` file, import the Fanout module:
 ```javascript
