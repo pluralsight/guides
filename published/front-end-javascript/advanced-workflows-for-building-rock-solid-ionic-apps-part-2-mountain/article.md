@@ -1,4 +1,4 @@
-![image](https://raw.githubusercontent.com/gruppjo/blogs/master/16-06-advanced-workflows-for-building-rock-solid-ionic-apps/img/blog-02.png)
+![Advanced workflows for building rock-solid Ionic apps. Part 2: Mountain](https://raw.githubusercontent.com/gruppjo/blogs/master/16-06-advanced-workflows-for-building-rock-solid-ionic-apps/img/blog-02.png)
 
 Welcome to Serious-App-Development Mountain! 
 
@@ -23,7 +23,7 @@ You've set up your project, created your first commit, and discovered that you'r
 #### Linting
 Your Generator-M-Ionic project comes with established coding guidelines and workflows already baked in using [ESLint](http://eslint.org/). On every iteration of `gulp watch` Gulp will check all your application JavaScript files for guideline violations.
 
-![image](https://raw.githubusercontent.com/gruppjo/blogs/master/16-06-advanced-workflows-for-building-rock-solid-ionic-apps/img/eslint.png)
+![eslint in terminal](https://raw.githubusercontent.com/gruppjo/blogs/master/16-06-advanced-workflows-for-building-rock-solid-ionic-apps/img/eslint.png)
 
 To get linting notifications as you develop in your editor or to learn how to configure the default set of rules, check out our [ESLint Guide](https://github.com/mwaylabs/generator-m-ionic/blob/master/docs/guides/eslint.md). If you are working with JSON files in your `app/` folder (for instance, to handle translations), the generator's linting will validate those too! This keeps your development trouble free.
 
@@ -62,7 +62,7 @@ For instance, we use the pair-subgenerator a lot. It creates a controller, with 
 ```sh
 yo m-ionic:pair phone
 ```
-![image](https://raw.githubusercontent.com/gruppjo/blogs/master/16-06-advanced-workflows-for-building-rock-solid-ionic-apps/img/sub_generator.png)
+![pair sub-generator](https://raw.githubusercontent.com/gruppjo/blogs/master/16-06-advanced-workflows-for-building-rock-solid-ionic-apps/img/sub_generator.png)
 
 Now we only need to add a state to the `main.js`:
 ```js
@@ -88,7 +88,7 @@ Then add a navigation item in our `tabs.html` file, which you'll find in `app/ma
 That's it. A new navigation item, a new route, controller, test file and template in about two minutes. Here's the result:
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/gruppjo/blogs/master/16-06-advanced-workflows-for-building-rock-solid-ionic-apps/img/nav_phone.png" width="330px">
+  <img alt="See new navigation item in app" src="https://raw.githubusercontent.com/gruppjo/blogs/master/16-06-advanced-workflows-for-building-rock-solid-ionic-apps/img/nav_phone.png" width="330px">
 </p>
 
 #### Adding Sass
@@ -107,7 +107,7 @@ If we don't add some nice [Cordova Plugins](http://ngcordova.com/docs/plugins/) 
 
 Your project comes with a local installation of the latest version of the [Cordova CLI](https://cordova.apache.org/docs/en/latest/guide/cli/index.html), which you can invoke through Gulp. We install it locally, so you don't have to worry about hunting for file, project, and version. The syntax is almost exactly the same as using a global CLI installation. For instance, to install the Cordova camera plugin, run:
 ```sh
-gulp --cordova "plugin add org.apache.cordova.camera --save"
+gulp --cordova "plugin add cordova-plugin-camera --save"
 ```
 You want to develop your app for Windows as well? Install the appropriate [Cordova Platform requirements](https://cordova.apache.org/docs/en/latest/guide/platforms/win8/index.html) and type:
 ```sh
@@ -187,7 +187,7 @@ The best part about using `livereload` is that you can make changes to your code
 
 Your glorious app is ready to be tested on your device!
 
-![image](https://raw.githubusercontent.com/gruppjo/blogs/master/16-06-advanced-workflows-for-building-rock-solid-ionic-apps/img/device.jpg)
+![See your app on your device](https://raw.githubusercontent.com/gruppjo/blogs/master/16-06-advanced-workflows-for-building-rock-solid-ionic-apps/img/device.jpg)
 
 
 If you don't want to rely on your development machine to keep the `livereload` command running, you can run a full build of your app which is then pushed onto your device.
@@ -224,7 +224,8 @@ Luckily there's a series of choices of platforms to handle those tasks for you: 
 The [Ecosystems section of our Guides](https://github.com/mwaylabs/generator-m-ionic#ecosystems) lists some of these platforms with nice set up guides, generated sample code and templates. Most of the work we've done for you already, so focusing on building your app is easier than ever.
 
 ### Congratulations!
-You have conquered Serious-App-Development Mountain and learned how to season your app with a lot of interesting spices: sub-generators, Sass, plugins, ecosystems and bower packages. Hone your skills further in part 3 of this series by owning environments, proxies, and build tools and handling app icons, splash screens, continuous integration and build variables. And, at the very end, see what the future of Generator-M-Ionic has to offer for you!
+
+You have conquered app-development-mountain and learned how to season your app with a lot of interesting spices: sub-generators, Sass, plugins, ecosystems and bower packages. Be proud! Ascend your development skills to out-of-this-world levels in [part 3](http://tutorials.pluralsight.com/front-end-javascript/advanced-workflows-for-building-rock-solid-ionic-apps-part-3-orbit) of this series by owning environments, proxies and build tools, handling app icons, splash screens, continuous integration and build variables. And at the very end, see what the future of Generator-M-Ionic has to offer for you!
 
 ### Get in touch
 Feedback, ideas, comments regarding this blog post or any of the features discussed here are very welcome in either the comments section below, at our [Generator-M-Ionic's Github repository](https://github.com/mwaylabs/generator-m-ionic) or the [Generator-M-Ionic Gitter Chat](https://gitter.im/mwaylabs/generator-m-ionic).
@@ -232,4 +233,6 @@ Feedback, ideas, comments regarding this blog post or any of the features discus
 ### Credits
 Author: [Jonathan Grupp](https://github.com/gruppjo)  
 Headline illustrations: [Christian Kahl](http://www.art-noir.net/)  
-Special thanks to Volker Hahn & Mathias Maier
+Special thanks to Volker Hahn, Mathias Maier & Tim Lancina
+
+> Originally published July 6, 2016 on the [Ionic Blog](http://blog.ionic.io/advanced-workflows-for-building-rock-solid-ionic-apps-part-2/) in a slightly modified version.

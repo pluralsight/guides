@@ -20,11 +20,7 @@ With all this said, fasten your seatbelts, take a venti (or trenta) sized cup of
 ## Demo app
 As said in the TL;DR, in this introduction tutorial we'll build an application for searching (and showing) gifs from the [Giphy](http://giphy.com/) website by using [their API](https://github.com/Giphy/GiphyAPI). In the end, we'll also deploy our app to [Github pages](https://pages.github.com/).
 
-You can [try the app here](https://hitman666.github.io/giphy-search/), and you can fork the complete source code on [Github](https://github.com/Hitman666/GiphySearch_Angular2).
-
-In case the demo app is not working for you, make sure to "Load unsafe scripts" by clicking the "shield" (in Chrome):
-
-![](http://i.imgur.com/DJvHNym.png)
+You can [try the app here](http://hitman666.github.io/giphy-search/), and you can fork the complete source code on [Github](https://github.com/Hitman666/GiphySearch_Angular2).
 
 ## Prerequisites
 I'm pretty sure that if you're reading this tutorial that you have the following tools installed (or that you've at least heard of them), but in case you don't please install them:
@@ -604,7 +600,7 @@ Deployed! Visit https://hitman666.github.io/giphy-search/
 Github pages might take a few minutes to show the deployed site.
 ```
 
-However, in my case, this just wasn't working. When I opened the [link](https://hitman666.github.io/giphy-search/) I got the 404. After searching, I found [this solution](http://developer.telerik.com/featured/quick-angular-2-hosting-angular-cli-github-pages/). But again, it didn't the issue.
+However, in my case, this just wasn't working. When I opened the [link](http://hitman666.github.io/giphy-search/) I got the 404. After searching, I found [this solution](http://developer.telerik.com/featured/quick-angular-2-hosting-angular-cli-github-pages/). But again, it didn't the issue.
 
 Then, I figured that I already have the Github pages repo from way back. This command may work in your case, but if it doesn't then first create your own Github pages, by following the [official instructions](https://pages.github.com/).
 
@@ -628,7 +624,7 @@ and, finally, push them:
 
 `git push origin master`
 
-Now you'll have your app accessible at yourusername.github.io/giphy-search. In my case, the link is [https://hitman666.github.io/giphy-search/](https://hitman666.github.io/giphy-search/).
+Now you'll have your app accessible at yourusername.github.io/giphy-search. In my case, the link is [http://hitman666.github.io/giphy-search/](http://hitman666.github.io/giphy-search/).
 
 In case you would like to deploy this to your own server, just make sure you execute `ng build` and then copy the contents of the `dist` folder to your web server's proper folder. Also, don't forget about the proper base url setting.
 

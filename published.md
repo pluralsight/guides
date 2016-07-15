@@ -1,11 +1,26 @@
-### Getting started with Angular 2 by building a Giphy search application by Nikola Brežnjak
-- [Read the guide](http://tutorials.pluralsight.com/front-end-javascript/getting-started-with-angular-2-by-building-a-giphy-search-application)
-- [Read more from Nikola Brežnjak](http://tutorials.pluralsight.com/author/Hitman666) <img src="https://avatars.githubusercontent.com/u/1001064?v=3" width="30" height="30" alt="Nikola Brežnjak" />
+### Advanced workflows for building rock-solid Ionic apps. Part 3: Orbit by Jonathan Grupp
+- [Read the guide](http://tutorials.pluralsight.com/front-end-javascript/advanced-workflows-for-building-rock-solid-ionic-apps-part-3-orbit)
+- [Read more from Jonathan Grupp](http://tutorials.pluralsight.com/author/gruppjo) <img src="https://avatars.githubusercontent.com/u/1370779?v=3" width="30" height="30" alt="Jonathan Grupp" />
 - Related to: Front-End JavaScript (Angular, React, Meteor, etc)
 
 ### Advanced workflows for building rock-solid Ionic apps. Part 2: Mountain by Jonathan Grupp
 - [Read the guide](http://tutorials.pluralsight.com/front-end-javascript/advanced-workflows-for-building-rock-solid-ionic-apps-part-2-mountain)
 - [Read more from Jonathan Grupp](http://tutorials.pluralsight.com/author/gruppjo) <img src="https://avatars.githubusercontent.com/u/1370779?v=3" width="30" height="30" alt="Jonathan Grupp" />
+- Related to: Front-End JavaScript (Angular, React, Meteor, etc)
+
+### Advanced workflows for building rock-solid Ionic apps. Part 1: Playground by Jonathan Grupp
+- [Read the guide](http://tutorials.pluralsight.com/front-end-javascript/advanced-workflows-for-building-rock-solid-ionic-apps-part-1-playground)
+- [Read more from Jonathan Grupp](http://tutorials.pluralsight.com/author/gruppjo) <img src="https://avatars.githubusercontent.com/u/1370779?v=3" width="30" height="30" alt="Jonathan Grupp" />
+- Related to: Front-End JavaScript (Angular, React, Meteor, etc)
+
+### Red Sqirl - Data Analytics platform introduction by Igor Souza
+- [Read the guide](http://tutorials.pluralsight.com/big-data/red-sqirl-data-analytics-platform-introduction)
+- [Read more from Igor Souza](http://tutorials.pluralsight.com/author/igfasouza) <img src="https://avatars.githubusercontent.com/u/6233869?v=3" width="30" height="30" alt="Igor Souza" />
+- Related to: Big Data (Hadoop, Spark, etc)
+
+### Getting started with Angular 2 by building a Giphy search application by Nikola Brežnjak
+- [Read the guide](http://tutorials.pluralsight.com/front-end-javascript/getting-started-with-angular-2-by-building-a-giphy-search-application)
+- [Read more from Nikola Brežnjak](http://tutorials.pluralsight.com/author/Hitman666) <img src="https://avatars.githubusercontent.com/u/1001064?v=3" width="30" height="30" alt="Nikola Brežnjak" />
 - Related to: Front-End JavaScript (Angular, React, Meteor, etc)
 
 ### Getting started with Selenium and Sauce Labs by Esteban Herrera
@@ -17,11 +32,6 @@
 - [Read the guide](http://tutorials.pluralsight.com/ruby-ruby-on-rails/instant-delivery-store-using-ruby-on-rails-stripe-and-uberrush-api)
 - [Read more from Ty Shaikh](http://tutorials.pluralsight.com/author/ty-shaikh) <img src="https://avatars.githubusercontent.com/u/18148869?v=3" width="30" height="30" alt="Ty Shaikh" />
 - Related to: Ruby, Ruby on Rails
-
-### Red Sqirl - Data Analytics platform introduction by Igor Souza
-- [Read the guide](http://tutorials.pluralsight.com/big-data/red-sqirl-data-analytics-platform-introduction)
-- [Read more from Igor Souza](http://tutorials.pluralsight.com/author/igfasouza) <img src="https://avatars.githubusercontent.com/u/6233869?v=3" width="30" height="30" alt="Igor Souza" />
-- Related to: Big Data (Hadoop, Spark, etc)
 
 ### Ionic 2 + LokiJS + LocalForage (Progressive Web App, no-SQL db, and long-term storage) by ryanlogsdon
 - [Read the guide](http://tutorials.pluralsight.com/front-end-javascript/ionic-2-+-lokijs-+-localforage-progressive-web-app-no-sql-db-and-long-term-storage)
