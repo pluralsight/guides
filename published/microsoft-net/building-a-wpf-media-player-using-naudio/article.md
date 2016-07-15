@@ -1,48 +1,51 @@
-Last year I needed to build a **W**indows **P**resentation **F**oundation (WPF) application for an electronic stethoscope which is able to record respiratory audio, save them to wave files, and if user wants, play the wave files at a later time. At this point my only experience with audio in general was with Unity3D -which has some great tools for it- and Matlab back in my university days. I remember thinking to myself "How hard can it be? I already know C# can play wave files, there must be some advanced tools in the core libraries!". I was, of course, very, *very* wrong.
+Last year I needed to build a **W**indows **P**resentation **F**oundation (WPF) application for an electronic stethoscope to record respiratory audio, save it to wave files, and play the wave files at a later time upon user request. At that point my only experience with audio in general was my experiences with Unity3D - which has some great tools for handling audio - and with Matlab. I remember thinking to myself "How hard can it be? I already know C# can play wave files. There must be some advanced tools in the core libraries!". I was, of course, *very* wrong.
 
 Not only I was shocked to find no core libraries, I was also amazed how audio is a very deep and challenging subject in programming. Lucky for me, Pluralsight has great courses on [audio in general](https://www.pluralsight.com/courses/digital-audio-fundamentals) and on [NAudio](https://www.pluralsight.com/courses/audio-programming-naudio), so I was able to finish my project successfully.
 
-I believe, to learn something properly, you need to create a basic project using it. So in this tutorial I will explain how to build a simple media player from ground up using a very popular .NET audio library NAudio.
+I believe that, to learn something properly, you need to create a basic project using it. So in this tutorial I will explain how to build a simple media player from the ground-up using a very popular .NET audio library, NAudio.
 
 ### Why Build Your Own Media Player?
-Other than the fact that it is fun:
+
 - You might have a project where you need to make a in-app media player to achieve your goals like my situation.
 - You might need a very special feature that no other media player provides.
 - You might also not trust 3rd party media players in your secure environment where you absolutely have to use a media player.
+- Building a media player is a coding project that results in a tool that you can use and feel good about on a daily basis.
 
 Whatever your reason is, you have challenges waiting for you down the road when it comes to audio programming.
 
-### Challenges
-The first challenge is the concept that audio is not a traditional object, but a stream object. A stream is usually a sequence of bytes. If you want to read it, it has to be read like an array. Also it can't be manipulated easily, you have to dig into the byte array and figure out what to do with each byte to achieve what you want. They are not very easy to debug either. There are also considerations when it comes to audio such as, number of channels, frequency, file formats etc. Especially when it comes to debugging it can be a mess.
+### Challenges associated with audio programming
 
-There are questions need answering such as "How do we know if we reach the end of an audio file?", "How do we stop or pause the stream?", "How do we resume where we left off?". Of course there are many more issues you need to address but these are the core issues.
+The first challenge arises from the fact that audio is not a traditional object, but **a stream object.** A stream is usually a sequence of bytes. If you want to read the stream, you must treat it like an array. However, streams can't be manipulated easily; you have to dig into the byte array and figure out what to do with each byte to achieve what you want. Furthermore, due to the numerous considerations (or variables) when it comes to audio, such as the number of channels, frequency, file formats, and so on, debugging an audio program can become messy.
 
-Finally there are memory management issues. Typically, when you are done with a stream you have to dispose of it properly otherwise it will stay in the memory causing a memory leak. For example, if you are working with hundreds of audio and you don't dispose them properly, you could run out of memory really fast and your application may crash. So in essence, you have to manually manage memory.
+Additionally, there are key memory management issues. Typically, when you are done with a stream you need to dispose of it properly. Otherwise, it will stay in the memory causing a memory leak. For example, if you are working with hundreds of audio streams and you don't dispose them properly, you could quickly run out of memory, and your application may crash. So in essence, you have to manually manage memory.
 
-So when you think about audio considering these challenges, even a simple action such as playing an audio file, gets very complicated very fast.
+When you think about this project, you might have many questions. "How do we know if we reach the end of an audio file?", "How do we stop or pause the stream?", "How do we resume where we left off?". Of course there are many more issues you need to address but these are the core challenges that we need to tackle.
+
+Considering these challenges, a simple action such as playing an audio file now seems rather complicated!
 
 ### NAudio to the Rescue
-Lucky for us, there is an audio library for .NET - NAudio - that will do most of this work for us. We will still be working with streams and we will have to face several challenges that comes with them, however NAudio is a great library that abstracts us from the details of simple playing and recording of audio files. The good thing about NAudio libarary is, it can be used in every type of project. If you simply want build and application to play or record audio files, you can do that without delving deep into streams. If you want something complex such as manipulating audio or creating filters it provides very good tools for that too.
+
+Luckily there is an audio library for .NET called NAudio which will do most of this work for us. We will still be working with streams and we will have to face several challenges that comes with them. However NAudio removes the menial complexity of simple playing and recording audio files. The good thing about NAudio library is, it can be used in every type of project. If you simply want build and application to play or record audio files, you can do that without delving deep into streams. If you want something complex such as a platform for manipulating audio or creating filter, NAudio provides very good tools for that as well.
 
 There are 3 ways of getting NAudio:
-- [NAudio codeplex page](https://naudio.codeplex.com/)
+- [NAudio Codeplex page](https://naudio.codeplex.com/)
 - [NAudio GitHub page](https://github.com/naudio/NAudio)
-- And finally via [NuGet](https://www.nuget.org/packages/NAudio/)
+- [NAudio via NuGet](https://www.nuget.org/packages/NAudio/)
 
 I usually go with NuGet since it is the easiest of them all, however if you want to see how it actually works there are great examples and documentation on the Codeplex and GitHub pages.
 
 ### Media Player
 
-The main purpose of this tutorial is to build a simple media player which will have some common features of various media players such as:
+The main purpose of this tutorial is to build a simple media player which will be able to:
 - Play audio files with various formats (wav, mp3, ogg, flac etc)
 - Skip to beginning, skip to end, play/pause, stop, shuffle buttons and their functionality
 - Have a volume control
 - Have a seekbar
-- Have a playlist
+- Create and manipulate a playlist
 - Add a file to this playlist
 - Add a folder of files to this playlist
 - Save and load playlists
-- When a track finishes, it will move to the next track in the playlist automatically.
+- Automatically switch to the next song in the playlist after the prior song finishes.
 
 It should look like this at the end (with my Witcher 3 soundtrack playlist):
 ![Our finalized media player](https://raw.githubusercontent.com/pluralsight/guides/master/images/71e4ccf5-4301-4b3f-8cb2-7fde9b7a816e.png)
@@ -50,13 +53,15 @@ It should look like this at the end (with my Witcher 3 soundtrack playlist):
 ### Implementation
 In the solution, we will have two projects. One for the actual application and one for the NAudio abstraction. NAudio is great in abstracting us from details but I want to make it very easy for us to do everything with a few methods, rather than calling NAudio codes for playing, pausing, stopping etc.
 
-However there is a choice we have to make when it comes to the main project where the UI is; do we use the traditional event driven architecture or do we use **M**odel **V**iew **V**iew**M**odel architecture (MVVM). You might think that you would use MVVM because that's all the cool kids use nowadays, however both architectures have advantages and disadvantages especially when it comes to developing a real time application such as this. I developed media players using both architectures on two different projects:
-- If you use MVVM you write way less code, however in this case, property binding has a nasty habit of breaking down and causing bugs if you bind the wrong way. Especially when it comes to implementing a real time changing two-way bound seekbar control.
-- If you use the good old event driven architecture you get to write a lot more **U**ser **I**nterface (UI) event code, however you will have full control over what happens during those events so it is easier to implement a real time control such as a seekbar.
+However there is a choice we have to make when it comes to the main project where the UI (User Interface) is: do we use the traditional event driven architecture or do we use **M**odel **V**iew **V**iew**M**odel architecture (MVVM). You might think that you would use MVVM because that's what all the cool kids use nowadays. However both architectures have advantages and disadvantages especially when it comes to developing a real-time application such as this. 
 
-Since this is a brand new project I would go with MVVM, so in this tutorial I will use the MVVM architecture. However since this is not an MVVM tutorial I won't go into details on how MVVM works.
+I developed media players using both architectures on two different projects:
+- If you use MVVM you write way less code. In this case, however, [property binding](https://www.polymer-project.org/1.0/docs/devguide/data-binding) has a nasty habit of breaking down and causing bugs if done incorrectly. This becomes problematic when it comes to implementing a real-time two-way bound seekbar control.
+- If you use the good old event-driven architecture, you will undoubtedly write a lot more UI event code. But you will also have full control over what happens during those events, so it is easier to implement a real time control such as a seekbar.
 
-So now that we choose our architecture we need to generate the right namespaces in our project. Our solution structure will be like this:
+In this tutorial, I will use the MVVM architecture. **However since this is not an MVVM tutorial I won't go into details on how MVVM works.** [For more on MVVM, check out CodeProject's tutorial](http://www.codeproject.com/Articles/278901/MVVM-Pattern-Made-Simple)
+
+Now that we've chosen our architecture, we need to generate the right namespaces in our project. Our solution structure will be like this:
 - Solution
   - Project: NaudioPlayer
     - Models
@@ -66,17 +71,19 @@ So now that we choose our architecture we need to generate the right namespaces 
     - Images
   - Project: NaudioWrapper
 
-#### Mocking up the UI
-I always like to start with the UI part when it comes to WPF projects because it provides me with a feature list I need to implement in a visual way. So I will start coding by first generating a UI mock-up so we can see what features we need to code.
+#### Creating the UI
+I always like to start with the UI part when it comes to WPF projects because it provides me with a visual list of features that I need to implement.
 
-Before we start on the UI however, I will provide you the link for the images I used for the buttons so you will have them ready. For icons I used Google's free material design icons. You can get them from Google's material design [page](https://material.google.com/resources/sticker-sheets-icons.html#). When you download the icons, do a quick search of "play" or "pause" in the download directory to find the relevant icons.
+##### Images, Namespaces, and Blend
 
-We also need `System.Windows.Interactivity` and `Microsoft.Expression.Interaction` namespaces for our event bindings. I said we won't use event driven architecture but sometimes there is no way avoiding events. So these namespaces provide events the MVVM way. Adding these namespaces can be tricky and might not always work as you expect them to work. These namespaces actually come with Blend, a UI development tool for XAML based projects. So if you have Blend installed (it comes with the Visual Studio installer), you can find those DLL files from:
+Before we start on the UI, however, I will provide you the link for the images I used for the buttons so you will have them ready. For icons I used Google's free material design icons. You can get them from Google's material design [page](https://material.google.com/resources/sticker-sheets-icons.html#). After you download the icons, do a quick search of "play" or "pause" in the download directory to find the relevant icons.
+
+We also need `System.Windows.Interactivity` and `Microsoft.Expression.Interaction` namespaces for our event bindings. I said we won't use event-driven architecture, but sometimes we cannot avoid events. In this case, namespaces provide events the MVVM way. Adding these namespaces can be tricky and might not always work as expected. These namespaces actually come with Blend, a UI development tool for XAML based projects. So if you have Blend installed (it comes with the Visual Studio installer), you can find those DLL (Dynamic Link-Library) files from:
 
 - For .NET 4.5+ `C:\Program Files (x86)\Microsoft SDKs\Expression\Blend\.NETFramework\v4.5\Libraries`
 - For .NET 4.0 `C:\Program Files (x86)\Microsoft SDKs\Expression\Blend\.NETFramework\v4.0\Libraries`
 
-If you don't have Blend installed just run the Visual Studio installer and modify/add it to your installation.
+If you don't have Blend installed, just run the Visual Studio installer and modify/add it to your installation.
 
 However, in my experience adding those in Visual Studio doesn't always work. So what I usually do:
 - Create the WPF project in Visual Studio
@@ -86,6 +93,8 @@ However, in my experience adding those in Visual Studio doesn't always work. So 
 - Close Blend and open the project back in Visual Studio
 
 Now everything is ready for our UI code.
+
+##### UI Code
 
 Here is our E**x**tensible **A**pplication **M**arkup **L**anguage (XAML) code for the UI:
 ```xml
@@ -190,7 +199,9 @@ Here is our E**x**tensible **A**pplication **M**arkup **L**anguage (XAML) code f
 
 ```
 
-So by looking at our XAML code, in our ``MainWindowViewModel`` viewmodel, we need to implement the following commands
+#### UI-based Commands
+
+So by looking at our XAML code, in our ``MainWindowViewModel`` viewmodel, we need to implement the following commands:
 
 - Menu Commands
   - **SavePlaylistCommand:** This command will save our `Playlist` into a text file, simply by writing the path of each `Track` in the `Playlist` as `<filename>.playlist`.
@@ -210,22 +221,25 @@ So by looking at our XAML code, in our ``MainWindowViewModel`` viewmodel, we nee
   - **VolumeControlValueChangedCommand:** This command will run when we change the value of the volume control slider.
 
 and properties:
-- **Title:** Title of the window.
+- **Title:** The title of the window.
 - **CurrentTrackPosition:** While the audio is playing, this property is used to store the current position in seconds.
 - **CurrentVolume:** This property sets the volume.
 - **Playlist:** This property represents our playlist.
-- **CurrentlySelectedTrack:** This property represents currently selected track in our playlist.
-- **CurrentlyPlayingTrack:** This property represents currently playing track in our playlist.
+- **CurrentlySelectedTrack:** This property represents the currently selected track in our playlist.
+- **CurrentlyPlayingTrack:** This property represents the currently playing track in our playlist.
 - **PlayPauseImageSource:** This property sets either play or pause images depending on whether the audio is playing or paused to our play button.
 
 ### NaudioWrapper
-Before we move on to the ViewModel we need the basic features abstracted away from the core NAudio code. To do this, first we must add NAudio to this project via NuGet. Then we must create an `AudioPlayer` class to hold all these features in its methods and our ViewModel can access these public methods to interact with it.
 
-Looking at our feature list, first and foremost, we need to actually play an audio file. To do this in NAudio, first we must set the file path of the audio and read the file with a reader. There are many specific readers for specific filetypes. However you can simply use `AudioFileReader` to read all supported files. To play the file, we need to set an output. We want to play all kinds of audio files so we will use `DirectSoundOut`. You can use many other output types, however we will use `DirectSoundOut` in this example.
+Before we move on to the ViewModel we need the basic features abstracted away from the core NAudio code. To do this, we must first add NAudio to this project via NuGet. Then we must create an `AudioPlayer` class to hold all these features in its methods, so our ViewModel can access and use the class and its public methods.
+
+Looking at our feature list, we need to be able to actually play an audio file. To do this in NAudio, first we must **set the file path of the audio** and read the file with a reader. There are many specific readers for specific file types. However you can simply use `AudioFileReader` to read all supported files. 
+
+To play the file, we need to set an output. We want to play all kinds of audio files so we will use `DirectSoundOut`. You can use many other output types, however we will use `DirectSoundOut` in this example.
 
 We must also create some events to let ViewModel know that we are playing, paused or stopped. These events will come in handy to manipulate our UI accordingly.
 
-And lastly, we must create a flag to set or get the stop type. This is needed because we need to know if we are stopping to play the next file in our playlist or if we are stopping because user wants to stop playing the current file.
+And lastly, we must create a flag to set or get the stop type. This is necessary because we need to know if we are stopping to play the next file in our playlist or if we are stopping because the user wants to stop playing the current file.
 
 ```cs
 public class AudioPlayer
@@ -266,9 +280,13 @@ public AudioPlayer(string filepath, float volume)
     _output.Init(wc);
 }
 ```
-As default we go for `PlaybackStopTypes.PlaybackStoppedReachingEndOfFile` for our `PlaybackStopType`, because usually that's why our playback would stop. Here the most important bit is `wc.PadWithZeroes = false` because typically `PlaybackStopped` event fires if the reader finds byte value 0 and if we don't pad with zeros then playback would go on forever and there would be no way for us to know if the clip is finished.
+We default for `PlaybackStopTypes.PlaybackStoppedReachingEndOfFile` as our `PlaybackStopType` because our playback would typically stop once the audio file is over. Here, the most important bit is `wc.PadWithZeroes = false` because typically the `PlaybackStopped` event fires when the reader finds byte value 0. If we don't pad with zeros, then playback would go on forever, and there would be no way for us to know if the clip is finished.
 
-Now that we initialized everything, we can implement the rest of our methods. We need methods for:
+### Implementing the remaining methods
+
+Now that we have initialized everything, we can implement the rest of our methods. 
+
+We need methods for:
 - `PlaybackStopped` event
 - Playing
 - Pausing
@@ -725,12 +743,16 @@ public class MainWindowViewModel : INotifyPropertyChanged
     }
 }
 ```
-##### Exiting the Application
-Let's start with the easy but the important one, exiting our application. We must consider two ways to quit:
-- User clicks exit in the menu
-- User clicks the red X
+## Menu Commands
 
-For the menu part:
+### Exiting the Application
+
+Let's start with an easy yet important feature: exiting our application. We must consider two ways to quit:
+
+- User clicks "Exit" in the menu
+- User clicks the red "X"
+
+To implement the first way:
 ```cs
 private void ExitApplication(object p)
 {
@@ -747,9 +769,9 @@ private bool CanExitApplication(object p)
 }
 ```
 
-Here we must manage the memory in case user played some audio clips and `AudioPlayer` might not be null. Even if we close the application audio clip as a stream would remain in the memory so we have to `Dispose()` it to release the memory.
+As you can see above, we must manage the memory in case the user played some audio clips and `AudioPlayer` is therefore not equal to null. Even if we close the application, the audio clip would remain in the memory as a stream, so we have to `Dispose()` it to release the memory.
 
-For the red X button, first we must add an event in the constructor, letting ViewModel know that we are exiting.
+For the red X button, we must add an event in the constructor to let ViewModel know that we are exiting.
 
 ```cs
 public MainWindowViewModel()
@@ -777,8 +799,10 @@ private void MainWindow_Closing(object sender, CancelEventArgs e)
     }
 }
 ```
-##### Adding Files to Playlist
-Now, let's move on to creating our playlist by adding a single file. However we do not want to modify our playlist while a clip is running. So we need a flag to see if we are playing a clip. We must add another field and modify the constructor for this.
+### Adding Files to Playlist
+
+Now, let's create our playlist by adding a single file. However, we do not want to modify our playlist while a clip is running. So we need a flag to see if we are playing a clip while attempting to modify our playlist. We must add another field and modify the constructor to set up this flag:
+
 ```cs
 private enum PlaybackState
 {
@@ -827,7 +851,7 @@ private bool CanAddFileToPlaylist(object p)
 }
 ```
 
-We also need to implement add a folder of files. To do this first we need a way to select a folder like we did with the file with `CommonOpenFileDialog()`. However core libraries do not have this class so we need to add this class via NuGet. The name of he package is Microsoft.WindowsAPICodePack-Core. This code can only be used on machines with Vista or above.
+We also need to implement add a folder of files. To do this first we need a way to select a folder like we did with the file with `CommonOpenFileDialog()`. However core libraries do not have this class so we need to add this class via NuGet. The name of the package is `Microsoft.WindowsAPICodePack-Core`. *This code can only be used on machines with Windows Vista or above.*
 
 ```cs
 private void AddFolderToPlaylist(object p)
@@ -861,8 +885,9 @@ private bool CanAddFolderToPlaylist(object p)
 }
 ```
 
-##### Saving and Loading The Playlist
-To even add more to playlist functionality we must be able to save and load our playlists. Let's choose ".playlist" for our file extension.
+### Saving and Loading The Playlist
+
+To add even more to our playlist's functionality, we must be able to save and load our playlists. Let's choose `.playlist` as our file extension.
 
 To save a playlist:
 ```cs
@@ -875,7 +900,7 @@ private void SavePlaylist(object p)
     if (sfd.ShowDialog() == true)
     {
         var ps = new PlaylistSaver();
-        ps.Save(Playlist, sfd.FileName);
+        ps.Save(Playlist, sfd.FileName); // save the playlist
     }
 }
 
@@ -893,7 +918,7 @@ private void LoadPlaylist(object p)
     ofd.Filter = "PLAYLIST files (*.playlist) | *.playlist";
     if (ofd.ShowDialog() == true)
     {
-        Playlist = new PlaylistLoader().Load(ofd.FileName).ToObservableCollection();
+        Playlist = new PlaylistLoader().Load(ofd.FileName).ToObservableCollection(); // load the playlist
     }
 }
 
@@ -903,15 +928,17 @@ private bool CanLoadPlaylist(object p)
 }
 ```
 
-We are finally done with our menu commands, we can move to the player buttons that deals with the actual audio.
+We are finally done with our menu commands. Let's move onto the player buttons that deal with the actual audio.
 
-##### Skip to Beginning
-To skip to beginning, we need to set the current track position to zero while the audio is playing. The code for that is:
+## Player buttons
+
+### Skip to Beginning
+To skip to the beginning, we need to set the current track position to zero while the audio is playing. The code for that is:
 
 ```cs
 private void RewindToStart(object p)
 {
-    _audioPlayer.SetPosition(0);
+    _audioPlayer.SetPosition(0); // set position to zero
 }
 private bool CanRewindToStart(object p)
 {
@@ -923,8 +950,10 @@ private bool CanRewindToStart(object p)
 }
 ```
 
-##### Toggle for Play/Pause
+### Play/Pause Toggling
+
 In this part we need to decide if we are playing or pausing. If we are stopped, it is easy, we just need to instantiate another `AudioPlayer` and play the clip. However if we are playing or in pause mode, we need to check if the playing clip is the same as selected clip on the UI and then call `TogglePlayPause()` to resume or pause the clip.
+
 ```cs
 private void StartPlayback(object p)
 {
@@ -955,8 +984,15 @@ private bool CanStartPlayback(object p)
     return false;
 }
 ```
-##### Events for the AudioPlayer
-You might have noticed when we instantiated an `AudioPlayer`, we also subscribed to some events. These events are vital for the UI to know what "mode" we are in. In all 3 methods, We first set the `PlaybackState`, then load the correct image for the "play" button. However in `PlaybackStopped` event we will have to also refresh UI by `CommandManager.InvalidateRequerySuggested()` and set the current track position to zero indicating we finished the playback. Also if the playback is finished because we reached the end of a clip, we need to start playing the next clip. To find the next item, we need to setup an extension method for it.
+
+## Events for the AudioPlayer
+
+You might have noticed that, when we instantiated an `AudioPlayer`, we also subscribed to some events. These events are vital for the UI to know what "mode" we are in. 
+
+In all 3 methods, we first set the `PlaybackState`, then load the correct image for the "play" button. However in the `PlaybackStopped` event, we will have to also refresh UI using `CommandManager.InvalidateRequerySuggested()` and set the current track position to zero indicating we finished the playback. 
+
+If the playback is finished because we have reached the end of a clip, we need to start playing the next clip. To find the next item, we need to setup an extension method for it.
+
 ```cs
 public static T NextItem<T>(this ObservableCollection<T> collection, T currentItem)
 {
@@ -996,7 +1032,7 @@ private void _audioPlayer_PlaybackPaused()
     PlayPauseImageSource = "../Images/play.png";
 }
 ```
-##### Stop
+### Stop
 For stopping first we need to indicate why we are stopping. We are stopping because user clicked stop or we are stopping because we reached the end of the current clip. Then stop the current clip and dispose it.
 ```cs
 private void StopPlayback(object p)
@@ -1017,8 +1053,9 @@ private bool CanStopPlayback(object p)
 }
 ```
 
-##### Skip to Next Track
-When we reach to the end of the track we automatically move to the next track, however with this button we can skip to the end of the current track to trigger the move. We do this by setting the position to the last second of the current track.
+### Skip to Next Track
+When we reach to the end of the track, we must automatically move to the next track. However, with the "Skip to Next Track" button, we can skip to the end of the current track and play the next one. We do this by setting the position to the last second of the current track.
+
 ```cs
 private void ForwardToEnd(object p)
 {
@@ -1038,8 +1075,9 @@ private bool CanForwardToEnd(object p)
 }
 ```
 
-##### Shuffle
-First we need to make an extension method for `ObservableCollection<T>`. We will use a commonly used shuffle method from [this StackOverflow post](http://stackoverflow.com/questions/5383498/shuffle-rearrange-randomly-a-liststring).
+### Shuffle
+
+First, we need to make an extension method for `ObservableCollection<T>`. We will use a commonly-used shuffle method. See [this StackOverflow post](http://stackoverflow.com/questions/5383498/shuffle-rearrange-randomly-a-liststring) for more.
 
 ```cs
 public static ObservableCollection<T> Shuffle<T>(this ObservableCollection<T> input)
@@ -1061,7 +1099,9 @@ public static ObservableCollection<T> Shuffle<T>(this ObservableCollection<T> in
     return input;
 }
 ```
+
 And for the command:
+
 ```cs
 private void Shuffle(object p)
 {
@@ -1077,10 +1117,14 @@ private bool CanShuffle(object p)
 }
 ```
 
-For the last part we need to deal with our MVVM event commands.
+## MVVM event commands
 
-##### PreviewMouseDown and PreviewMouseUp Events on Seekbar
-Here, we need to think what we are actually doing while we are scrubbing left and right in the seekbar. First we click and hold our mouse button, then while button is held we move and release the button. So here we need two events; one is for `MouseDown` and the other is `MouseUp`. While we are holding the mouse key we need to pause the clip, when we release we set the current seekbar value to the current track's position to move the clip there.
+For the last part, we need to deal with our MVVM event commands.
+
+### PreviewMouseDown and PreviewMouseUp Events on Seekbar
+Here, we need to think about what we are actually doing while we are scrubbing left and right in the seekbar. 
+
+First, we click and hold our mouse button. Then, while button is held, we move the mouse. Finally, we release the button. It turns out that we need two events; one is for `MouseDown` and the other is `MouseUp`. While we are holding the mouse key, we need to pause the clip, and when we release, we set the current seekbar value to the current track's position to move the clip there.
 
 ```cs
 private void TrackControlMouseDown(object p)
@@ -1119,14 +1163,14 @@ private bool CanTrackControlMouseUp(object p)
 }
 ```
 
-##### Volume Control Event
-Volume control code is very similar to the seekbar but it is way easier because we can just change the volume without needing to know where we are on the track. We just set the current value of the slider to the volume itself.
+### Volume Control Event
+Volume control code is very similar to the seekbar, but it is way easier to implement because we can change the volume without knowing where we are on the track. We just set the current value of the slider to the volume itself.
 ```cs
 private void VolumeControlValueChanged(object p)
 {
     if (_audioPlayer != null)
     {
-        _audioPlayer.SetVolume(CurrentVolume);
+        _audioPlayer.SetVolume(CurrentVolume); // set value of the slider to current volume
     }
 }
 
@@ -1136,11 +1180,11 @@ private bool CanVolumeControlValueChanged(object p)
 }
 ```
 
-Finally, we finished developing a fully functional media player!
+Finally, we've finished developing a fully functional media player!
 
 ### Conclusion
 
-In this tutorial, we built a media player using NAudio library from scratch. You can test it by loading your favorite music folder and play it. I hope this guide will be useful for your audio projects. Please feel free to post ideas and feedback.
+In this tutorial, we built a media player from scratch using the NAudio library. You can test it by loading your favorite music folder and playing it on the player. I hope this guide will help you on future audio projects. Please feel free to post your ideas and feedback in the comments section below.
 
 Have fun and happy coding!
 
