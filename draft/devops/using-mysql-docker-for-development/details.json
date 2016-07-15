@@ -1,0 +1,15 @@
+{
+    "_publish_status": "draft",
+    "author_name": "redmoses",
+    "author_real_name": "Red Moses",
+    "branch": "master",
+    "branches": [],
+    "filename": "article.md",
+    "first_commit": "a902dacd4cb750ff215bec5133a054b8ab0760e2",
+    "image_url": "https://avatars.githubusercontent.com/u/4059490?v=3",
+    "stacks": [
+        "DevOps (Docker, Nagios, Jenkins, Chef, Puppet, etc)"
+    ],
+    "thumbnail_url": null,
+    "title": "Using MySql Docker for development"
+}
