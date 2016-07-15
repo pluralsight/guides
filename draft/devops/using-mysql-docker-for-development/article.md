@@ -1,3 +1,5 @@
-# Start writing your guide here.
+# MySql in Docker for development
 
-Docker has actually freed the developers with tinkering with their base system. I beleive the base system should be free of 
+Gone are the days when a developer had to make a mess of their base OS by installing loads of software, because Docker has come to save the day.
+
+In this article I'm going to talk about using MySql dockers for 
