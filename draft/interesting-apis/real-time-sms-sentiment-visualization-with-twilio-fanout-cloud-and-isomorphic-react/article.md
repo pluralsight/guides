@@ -38,12 +38,12 @@ Now go to [Messaging - Programmable SMS - Add-ons](https://www.twilio.com/consol
 ![Add-ons](https://raw.githubusercontent.com/pluralsight/guides/master/images/eddfbbd2-397e-472e-ad2a-2b26765c3fc0.png)
 
 
-Choose Marchex Sentiment Analysis for SMS:
+To choose the plug-in Marchex Sentiment Analysis for SMS:
 
 ![Choose add-on](https://raw.githubusercontent.com/pluralsight/guides/master/images/dfacd190-ad1c-40ab-ae03-92b01feb91d5.png)
 
 
-The Marchex Sentiment Analysis add-on takes an SMS message and computes a sentiment score between `0.0` and `1.0` where `0.0` is most negative sentiment and `1.0` is the most positive sentiment:
+The Marchex Sentiment Analysis add-on takes an SMS message and computes a sentiment score between `0.0` and `1.0`, where `0.0` is most negative sentiment and `1.0` is the most positive sentiment:
 
 ![Marchex Sentiment Analysis add-on](https://raw.githubusercontent.com/pluralsight/guides/master/images/b45dcac5-5e84-4457-a684-5a43ccc9a5a5.png)
 
@@ -64,7 +64,7 @@ When an SMS is sent to our Twilio number, a webhook will be triggered (think of 
 
 Ngrok proxies external requests to your local machine by creating a secure tunnel and giving you a public URL.
 
-ngrok is a Go program, distributed as a single executable file (no additional dependencies). So for now, just download it from [https://ngrok.com/download](https://ngrok.com/download) and unzip the compressed file.
+It is a Go program, distributed as a single executable file (with no additional dependencies). So for now, just download it from [https://ngrok.com/download](https://ngrok.com/download) and unzip the compressed file.
 
 
 ### Fanout Cloud
@@ -75,8 +75,7 @@ When the account is activated, go to your dashboard:
 
 ![Fanout Dashboard](https://raw.githubusercontent.com/pluralsight/guides/master/images/8bcde085-ddf6-4d11-b1c5-eede0fa00b84.png)
 
-
-Copy your Realm ID and Realm Key since we'll need them later.
+To copy your Realm ID and Realm Key, we'll need them later.
 
 ### Node.js
 
@@ -140,9 +139,9 @@ Do the same with Webpack:
 npm install --save-dev webpack
 ```
 
-We're using `--save-dev` because these dependencies are only required to develop the application, so they can be listed under the `devDependencies` section of `package.json`. 
+We're using `--save-dev` because these dependencies are only required to develop the application. For that reason, they can be listed under the `devDependencies` section of `package.json`. 
 
-For running the application, we'll need Express, React, Twilio, Fanout, and other dependencies, let's add them with:
+For running the application, we'll need Express, React, Twilio, Fanout, and other dependencies. Let's add them with:
 ```
 npm install --save express ejs body-parser path react react-dom twilio fanoutpub faye
 ```
