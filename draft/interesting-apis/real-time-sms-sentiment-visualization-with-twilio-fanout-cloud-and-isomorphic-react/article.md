@@ -465,4 +465,560 @@ The same applies to the messages sent by Twilio with the *View Messages Outbound
 
 Now let's talk about Fanout Cloud.
 
-# Publishing a message with Fanout Cloud
+# Publishing messages with Fanout Cloud
+
+[Fanout](https://fanout.io) is a publish/subscribe service that makes it easy to build real-time APIs and applications.
+
+It's based on [Pushpin](http://pushpin.org/), an open source reverse proxy that makes it easy to create [WebSocket, HTTP streaming, and HTTP long-polling](http://pushpin.org/about/) services using any web stack as the back-end.
+
+There are two main ways you can use Fanout:
+- Publish/Subscribe Messaging. To send data using protocols such as Bayeux and XMPP (WebSockets are supported automatically when possible).
+- Custom real-time API. To send data using five low-level network transports: HTTP long-polling, HTTP streaming, WebSockets, Webhooks (outbound HTTP), and XMPP.
+
+You can find more information on its [quickstart guide](https://fanout.io/docs/devguide.html#quickstart).
+
+This application will use Fanout's publish/subscribe service to get the SMS information in real-time. This will be done with [Faye](https://faye.jcoglan.com/), a Bayeux-compatible client library.
+
+Why use Fanout Cloud when we can do the same with a simple WebSocket library like [Socket.IO](http://socket.io/)? Well, in the first place, [you might not need to use WebSockets](http://blog.fanout.io/2014/06/24/you-might-not-need-a-websocket/), and on the other hand, by using Fanout infrastructure, you don't have to worry about neither scalability nor additional server to manage.
+
+Fanout is organized by realms and channels. A realm can contain any number of channels and different realms may use the same channel names without any problem. Messages are published to channels, and messages are relayed to the subscribers of each channel for that realm.
+
+When you create a Fanout account, one realm will be automatically created for you. However, channels are created on demand at any time.
+
+For sending our object with SMS information, we'll use the Node.js Fanout library.
+
+At the beginning of the `server.js` file, import the Fanout module:
+```javascript
+var Fanout = require('fanoutpub');
+```
+
+Before the definition of the `/sms` route, initialize the Fanout object passing your Realm ID and Realm Key in this way:
+```javascript
+var fanout = new Fanout.Fanout(config.fanout.realm_id, config.fanout.realm_key);
+```
+
+And to publish the object with the SMS information, just call the function that takes the channel in which the object represented by the second parameter will be published:
+```javascript
+fanout.publish(config.channel, msg);
+```
+
+Just like that, we're on our way to make a real-time application. In the following section, we'll set up a client with React and finish the application.
+
+
+# Creating the view with React
+
+Let's start by defining the HTML that will contain our React application. Modify `views/index.ejs` so it looks like the following:
+```html
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>SMS Sentiment</title>
+
+    <link rel="stylesheet" href="css/simplegrid.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/epoch/0.8.4/epoch.min.css">
+</head>
+<body class="epoch-my-gauge-theme">
+
+    <div id="root"></div>
+
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.17/d3.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/epoch/0.8.4/epoch.min.js"></script>
+    <script src="/js/bundle.js"></script>
+
+</body>
+</html>
+```
+
+We'll use [Simple Grid](http://thisisdallas.github.io/Simple-Grid/) to create the layout, so create the `public/css` directories and download the file [https://github.com/ThisIsDallas/Simple-Grid/blob/master/simplegrid.css](https://github.com/ThisIsDallas/Simple-Grid/blob/master/simplegrid.css).
+
+Next, create the `style.css` file:
+```css
+html, body, #root {
+	height: 100%;
+	width: 100%;
+    margin: 0;
+}
+
+#container {
+    min-width: 100%;
+    min-height: 100%;
+    overflow-y: auto;
+    overflow-x: hidden;
+    color: #fff;
+    transition: all 7s ease-in-out; 
+}
+
+.epoch-my-gauge-theme .epoch .gauge-labels .value{fill:#fff;}
+
+.epoch-my-gauge-theme .epoch .gauge .arc.outer{stroke:#fff;}
+
+.epoch-my-gauge-theme .epoch .gauge .arc.inner{stroke:#fff;}
+
+.epoch-my-gauge-theme .epoch .gauge .tick{stroke:#fff;}
+
+.epoch-my-gauge-theme .epoch .gauge .needle{fill:orange;}
+
+.epoch-my-gauge-theme .epoch .gauge .needle-base{fill:#fff;}
+
+#real-time-gauge {
+    margin: 0 auto;
+}
+
+.msgs {
+	list-style: none;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 1.5em 2em;
+}
+
+.msgs .msg {
+    margin-bottom: 1.5em;
+    padding-top: 1.5em;
+}
+
+.msgs .msg + .msg {
+    border-top: 1px solid #fff;
+}
+
+.msgs .msg-from {
+    margin-bottom: 0.4em;
+    font-weight: bold;
+}
+
+.msgs .msg-text {
+    font-style: italic;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.msgs .msg-text:before, .msg .msg-text:after {
+    content: '"';
+}
+
+.msgs .msg-info {
+    margin-top: 1.5em;
+    padding: 0;
+    overflow: hidden;
+    list-style: none;
+}
+
+.msgs .msg-info li {
+    float: left;
+}
+
+.msgs .msg-info li + li {
+    margin-left: 1em;
+}
+
+.msgs .msg-info li span {
+    font-style: italic;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.center-align {
+    text-align: center;
+}
+```
+
+As said before, we'll be using the Epoch library, so here we're just defining a custom style (`epoch-my-gauge-theme`) for the gauge along with styles for the SMS messages.
+
+Back to the HTML file, we're also adding:
+- The Epoch CSS file (`epoch.min.css`)
+- The element where the React elements will be injected (`<div id="root"></div>`)
+- The required JS files needed by Epoch, jQuery, and the D3 visualization library (although the last version of this library at the time of this writing is 4.1.1, Epoch requires its version 3.X.X).
+- The `bundle.js` file built by Webpack.
+
+The `src` directory will store the JavaScript code of our application. Create this directory along with the `app.js` file, which will be the starting point of our app.
+
+Inside `src`, we're going to structure the application in the following way:
+```
+src
+|— components
+| | |— gauge.js
+| | |— gauge-container.js
+| | |— index.js
+| | |— message.js
+| | |— messages.js
+| |— app.js
+```
+
+The starting point will be `app.js`:
+```javascript
+import React, { Component } from 'react';
+import ReactDOM from 'react-dom';
+
+import Index from './components/index';
+
+ReactDOM.render(<Index />, document.getElementById("root"));
+```
+
+It just render the component defined in `components/index.js` in the element with ID `root`. Structuring the initial point of our app will helps us later to make it isomorphic.
+
+The `index` component will be the main container for our application. In this level, the app will subscribe to the Fanout channel to listen for SMS messages. 
+
+So let's first import everything we'll need:
+```javascript
+import React, { Component } from 'react';
+import ReactDOM from 'react-dom';
+
+import GaugeContainer from './gauge-container';
+import Messages from './messages';
+
+import Faye from 'faye';
+import config from '../../config';
+```
+
+
+And create the Faye client pointing to your Realm ID:
+```javascript
+var fanout = new Faye.Client(`http://${config.fanout.realm_id}.fanoutcdn.com/bayeux`);
+```
+
+Then, in the constructor of the exported component, define the state properties we're going to use:
+```javascript
+export default class App extends Component {
+  
+	constructor(props) {
+        super(props);
+        this.state = {
+            messages: [], 
+            background: 'linear-gradient(135deg, #2979FF 0%, #FF1744 100%)',
+            sentiment: 0
+        };
+	}
+	
+}
+```
+
+The state of the component includes:
+- `messages`, the array that will store the objects (with the SMS information) received via Fanout  
+- `background`, the style to show the gradient background that will change depending on the sentiment of the last message.
+- `sentiment`, the sentiment value of the last message
+
+Now let's subscribe to the Fanout channel in the `componentDidMount()` method (notice the `/` to refer to the channel):
+```javascript
+componentDidMount() {
+	fanout.subscribe('/' + config.channel, this.updateMessages).then(() => {
+		console.log('Subscribed to ' + config.channel);
+	});
+}
+
+updateMessages = (data) =>{
+	var p1 = 0, p2 = 100;
+	if(data.sentiment < 0.5) {
+		p1 = (0.5 - data.sentiment) * 100;
+	} else {
+		p2 = (1 - (data.sentiment - 0.5)) * 100;
+	}
+	
+	this.setState({
+			messages: [ data, ...this.state.messages ],
+			background: `linear-gradient(135deg, #2979FF ${p1}%, #FF1744 ${p2}%)`,
+			sentiment: data.sentiment
+	});
+}
+```
+
+According to the [React Component Lifecycle Specification](https://facebook.github.io/react/docs/component-specs.html), `componentDidMount()` is executed once, only on the client (not on the server, remember this point when we make our application isomorphic), and it's the method to use to integrate other JavaScript frameworks, or send AJAX requests.
+
+When a message arrives, the `updateMessages` function is executed. Notice how the sentiment is used to calculate the percentage of the gradient for each color (I'm sure there are better algorithms to achieve it, but this does the job) and how the new message is prepended to the existing array of messages.
+
+In this case, [the spread operator](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_operator) (`...`) is used [to get all the elements of the array and form a new one](http://tutorials.pluralsight.com/front-end-javascript/enforcing-immutability-with-es2015). React works best with immutable objects, so instead of simply adding the new element to the existing array with a function like [splice()](http://www.w3schools.com/jsref/jsref_splice.asp), we create a new one.
+
+In the `render()` method, we use the state properties for the background style and pass the information to the subcomponents:
+```javascript
+render() {
+	const style = { background: this.state.background };
+
+	return (
+		<div id="container" className={'grid'} style={style}>
+			<GaugeContainer sentiment={this.state.sentiment}  />
+			<Messages messages={this.state.messages} />
+		</div>
+	);
+}
+```
+
+The `GaugeContainer` component is a wrapper for the `Gauge` component:
+```javascript
+import React, { Component } from 'react';
+import Gauge from './gauge';
+
+export default class GaugeContainer extends Component {
+
+    constructor(props) {
+        super(props);
+    }
+
+    render() {
+        return (
+            <div className={'col-1-1'}>
+                <div className={'content center-align'}>
+                    <h1>SMS Sentiment</h1>
+                    <Gauge sentiment={this.props.sentiment} />
+                </div>
+            </div>
+        );
+    }
+}
+```
+
+This `Gauge` component uses the `componentDidMount()` function to create the actual gauge using the Epoch library (as recommended by the official documentation):
+```javascript
+import React, { Component } from 'react';
+
+export default class Gauge extends Component {
+
+    constructor(props) {
+        super(props);
+    }
+
+    componentDidMount() {
+        // store the object on `this.gauge` so we can access elsewhere
+        this.gauge = $(this.refs.gauge).epoch({ type: 'time.gauge', value: this.props.sentiment });
+    }
+
+    componentWillReceiveProps(nextProps) {
+        this.gauge.update(nextProps.sentiment);   
+	}
+
+    render() {
+        return (
+            <div id="real-time-gauge" className={'epoch gauge-large'} ref="gauge"></div>
+        );
+    }
+}
+```
+
+Notice how the `div` element in which the component is rendered is referenced with `ref` and `this.refs`. You may have seen in other tutorials that you can get the DOM element of a component by using the `ReactDOM.getDOMNode()` or the `ReactDOM.finDOMNode()` method, but [since React 0.14](https://facebook.github.io/react/blog/2015/10/07/react-v0.14.html), `this.refs` is the recommended way to do this (remember that React works with a Virtual DOM while jQuery works with the *real* DOM).
+
+We saved a reference to the Epoch gauge component (`this.gauge`) so when the sentiment property is updated, the gauge can be updated too in the (`componentWillReceiveProps` function).
+
+To render the messages, `messages.js` acts like the message container:
+```javascript
+import React, { Component } from 'react';
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
+import Message from './message';
+
+export default class Messages extends Component {
+  
+	constructor(props) {
+        super(props);
+	}
+  
+	render() {
+        const messagesMapped = this.props.messages.map((result, index) => {
+            const key = this.props.messages.length - index;
+            return <Message message={result} key={key} />
+        });
+        
+        return <div className={'col-1-1'}>
+                    <div className={'content'}>
+                        <ReactCSSTransitionGroup component="ul" className="msgs" transitionName="msg-transition" transitionEnterTimeout={500} transitionLeaveTimeout={500}>
+                        {messagesMapped}
+                        </ReactCSSTransitionGroup>
+                    </div>
+                </div>;
+	}
+}
+```
+
+There are two important things in this code. 
+
+First, React requires every message component in a collection to have a unique identifier defined by the `key` property. This help it to know when elements are added or removed. As new elements are prepended instead of appended, we can't give the first element the index `0` as key since this will only work the first time an element is added (for the next added elements, there will be an element with key `0` already). Therefore, keys are assigned this way:
+```javascript
+const key = this.props.messages.length - index;
+```
+
+The second thing is that if we want to animate the insertion of a new SMS message on the page, we use the `ReactCSSTransitionGroup` add-on component.
+
+Maybe we can do the same thing by [using just plain CSS](https://www.christianheilmann.com/2015/08/30/quicky-fading-in-a-newly-created-element-using-css/), but let's show how to do it the React way.
+
+So first install this module with NPM:
+```
+npm install --save react-addons-css-transition-group
+```
+
+`ReactCSSTransitionGroup` wraps the elements you want to animate. By default, it renders a `span` to wrap them, but since we're going to work with `li` elements, we specify the wrapper tag `ul` with the `component` property. `className` becomes a property of the rendered component, as any other property that doesn't belong to `ReactCSSTransitionGroup`.
+
+`transitionName` is the prefix used to identify the CSS classes to perform the animation. Based on this, add the following classes to `public/css/style.css`:
+```css
+.msg-transition-enter {
+	opacity: 0.01;
+}
+
+.msg-transition-enter.msg-transition-enter-active {
+    opacity: 1;
+    transition: opacity 500ms ease-in;
+}
+
+.msg-transition-leave {
+    opacity: 1;
+}
+
+.msg-transition-leave.msg-transition-leave-active {
+    opacity: 0.01;
+    transition: opacity 500ms ease-in;
+}
+```
+
+Notice that animation durations need to be specified in both the CSS and as component properties.
+
+You can find more information about [animations in React here](https://facebook.github.io/react/docs/animation.html).
+
+Finally, the `Message` component renders the SMS information in the following way:
+```javascript
+import React, { Component } from 'react';
+
+export default class Message extends Component {
+
+    constructor(props) {
+        super(props);
+    }
+
+    render() {
+        const {from, text, country, sentiment} = this.props.message;
+        return (
+            <li className={'msg'}>
+                <div className={'msg-from'}>+XXXXX - XXX - {from.slice(-4)}</div>
+                <div className={'msg-text'}>{text}</div>
+                <ul className={'msg-info'}>
+                    <li>
+                        Country: <span>{country}</span>
+                    </li>
+                    <li>
+                        Sentiment: <span>{sentiment}</span>
+                    </li>
+                </ul>
+            </li>
+        );
+    }
+}
+```
+
+Now if we run the application using `npm start`, Webpack will bundle all the client files and you should see this page in the browser:
+
+![Application](https://raw.githubusercontent.com/pluralsight/guides/master/images/9124f561-d035-487b-8bc1-c66394e4c229.png)
+
+Now you can play with the application either by sending SMS messages to your Twilio number or [by replaying the request with Ngrok](http://localhost:4040/) (if you have the webhook validation disabled).
+
+And if you go to your Fanout Control Panel and then to click on the *Stats* button, you'll see the following information:
+
+![Fanout Stats](https://raw.githubusercontent.com/pluralsight/guides/master/images/5f811ac9-fad7-4f75-9479-9956f950d2ba.gif)
+
+# Isomorphic React
+We now have a fully functional application, but why stop here? Let's turn this application into an isomorphic one.
+
+Isomorphic ([or universal](https://medium.com/@mjackson/universal-javascript-4761051b7ae9#.rfgasv9bh)) is a term that means that the same javascript code can run on the client and server without modification, so the server can generate the page and serve it as plain HTML.
+
+In esscence, server rendering is a simple concept achieved with only one function call on Node.js:
+```javascript
+const appHTML = renderToString(<App/>)
+```
+
+However, Node.js doesn't know about JSX (the syntax used by React, like `<App>`), so what we can do is to use Webpack to build a server bundle, just like the client bundle.
+
+Create the file `webpack.server.config.js` with the following content:
+```javascript
+var fs = require('fs')
+var path = require('path')
+
+module.exports = {
+
+    entry: path.resolve(__dirname, 'server.js'),
+
+    output: {
+        filename: 'server.bundle.js'
+    },
+
+    target: 'node',
+
+    externals: fs.readdirSync(path.resolve(__dirname, 'node_modules')).concat([
+        'react-dom/server', 'react/addons',
+    ]).reduce(function (ext, mod) {
+        ext[mod] = 'commonjs ' + mod
+        return ext
+    }, {}),
+
+	node: {
+	    __filename: true,
+	    __dirname: true
+    },
+
+	module: {
+        loaders: [
+            {
+                loader: 'babel',
+                exclude: /node_modules/
+            }
+        ]
+    }
+
+}
+```
+
+This file tells Webpack to take `server.js` as the entry point to generate the `server.bundle.js` file with all its dependencies bundled together. 
+
+The `target: 'node'` option tells webpack not to touch any Node.js built-in modules, however, Webpack will load modules from the `node_modules` directory and bundle them too. To avoid this, we use the `externals` option. A module listed as an external won't be bundled.
+
+Unfortunately, `externals` assumes a browser environment, so something like `require('twilio')` is turned into the global variable `twilio`. To keep the `require` we need to create an object with a key/value of each module name, and prefixing the value with `commonjs`. 
+
+Next, [options](https://webpack.github.io/docs/configuration.html#node) are passed so `__filename` and `__dirname` work as expected.
+
+Now, open `server.js` and import the React modules that we'll use (thanks to Webpack and Babel, we can now use `import` instead of `require`):
+```javascript
+import React from 'react'
+import { renderToString } from 'react-dom/server'
+import App from './src/components/index'
+```
+
+Replace the `/` route definition with the following:
+```javascript
+app.get('/', function (req, res) {
+	const appHtml = renderToString(<App/>);
+
+    res.render('index', {
+        appHtml: appHtml
+    });
+});
+```
+
+Notice that we're using `src/components/index.js` instead of `src/app.js` to render the app on the server side. The reason is that `src/app.js` references the DOM (Document Object Model), which is a browser concept that doesn't exist in the server side.
+
+Likewise, since `componentDidMount` can contain a reference to the DOM, it won't be executed on the server side, but don't worry. When the React app is loaded in the client (remember that the entry point in the client is still `src/app.js`), these functions will be executed.
+
+Modify `/views/index.ejs` so it can render the generated HTML:
+```html
+...
+<div id="root"><%- appHtml %></div>
+...
+```
+
+In EJS, the `<%-` tag outputs the unescaped value of the object into the template (in contrast to the most commonly used `<%=`).
+
+Also, make sure to not leave any space between the opening and closing `div` tag, otherwise, React will complain about the blank space.
+
+Finally, we have to modify the `start` script from `package.json`. Let's organize it in this way:
+```javascript
+...
+"scripts": {
+    "start": "npm run build && node server.bundle.js",
+    "build:client": "webpack",
+    "build:server": "webpack --config webpack.server.config.js",
+    "build": "npm run build:client && npm run build:server"
+},
+...
+```
+
+`npm run build` will trigger the generation of the server and client bundles and `node server.bundle.js` will start the server with the generated bundle instead of `server.js`.
+
+So type `npm start` and try the app. It should work like before but with the [advantages of isomorphic javascript](http://www.capitalone.io/blog/why-is-everyone-talking-about-isomorphic-javascript/).
+
+# Conclusion
+We have created a single page application with React that gets SMS information with the help of [Twilio](https://www.twilio.com/) and [Ngrok](https://ngrok.com) and shows it in real-time using [Fanout Cloud](https://fanout.io). Then, we made it isomorphic (universal) with little modifications. Combining the right APIs, you can get simple but powerful applications.
+
+Remember that the code is [on Github](https://github.com/eh3rrera/sms-sentiment) and thanks for reading.
+
