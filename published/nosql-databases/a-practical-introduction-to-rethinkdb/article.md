@@ -1,37 +1,40 @@
-In this tutorial we'll cover how to work with [RethinkDB](http://rethinkdb.com/), a document-based NoSQL database, from its installation to developing a simple application in [Node.js](https://nodejs.org) that will show its real-time capabilities. 
+In this tutorial we'll cover how to work with [RethinkDB](http://rethinkdb.com/), a document-based NoSQL database. This guide spans from RethinKDB installation to developing a simple application in [Node.js](https://nodejs.org) that will show the database's real-time capabilities. 
 
 # Introducing RethinkDB
 
-RethinkDB is an open-source database that, unlike traditional database systems, stores the information in the JSON (JavaScript Object Notation) format. Because of this, it's considered a NoSQL (Not Only SQL) database, like MongoDB and CouchDB, for example. 
+RethinkDB is an open-source database that, unlike traditional database systems, stores the information in JSON (JavaScript Object Notation) format. Because of this, it's considered a NoSQL (Not Only SQL) database, such as MongoDB, Cassandra, and CouchDB. 
+
 NoSQL databases share the following features: 
-- You don't have to define a schema or table structure for storing the information, which gives us flexibility. 
-- They are distributed in nature, so they are easy to scale horizontally (in clusters 
-- Because of that, instead of following the concept of ACID (Atomicity, Consistency, Isolation, Durability) transactions, most NoSQL databases follow the CAP theorem, which states that a distributed system cannot provide at the same time all these guarantees: 
+- No required schema or table structure for storing the information. 
+- [Distributed architecture](https://docs.oracle.com/cd/B28359_01/server.111/b28310/ds_concepts001.htm) so they are easy to scale horizontally (in clusters)
+- Typically stray from the ACID model (Atomicity, Consistency, Isolation, Durability) of transactions. Follow the CAP theorem instead, which states that a distributed system cannot simultaneously provide the following guarantees: 
     - Consistency (the same data can be read by all the clients of the system) 
     - Availability (even in case of failure, clients receive a response) 
     - Partition Tolerance (even in the case of network failure, the system continues to operate) 
 
 Many NoSQL databases sacrifice consistency in favor of availability and partition tolerance, offering the concept of *eventual consistency*, where the changes received in one part of the cluster are *eventually* replicated to the rest of it. Other NoSQL databases don't mind sacrificing availability or partition tolerance to prioritize consistency. 
 
-In the case of RethinkDB, it chooses to keep data consistent (over availability) in the case of a network partition. This means that after a write operation, a read operation will always return the latest version of the data.
+In the case of RethinkDB, it chooses to keep data consistent (over available) in the case of a network partition. This means that after a write operation, a read operation will always return the latest version of the data.
 
-To make this work, in RethinkDB the data is assigned to a primary server (or individual partitions called shards) and all queries are routed to it. This is the default behavior, but if the data is replicated to other nodes within the cluster, we can instruct the query that is acceptable to return out-of-date information so RethinkDB can direct the query to the closest available replica and not necessarily to the primary. 
+To make this work, in RethinkDB the data is assigned to a primary server (or individual partitions called shards), and all queries are routed to it. This is the default behavior, but if the data is replicated to other nodes within the cluster, we can instruct the query that it is acceptable to return out-of-date information. As a result, RethinkDB can direct the query to the closest available replica and not necessarily to the primary. 
 
 Besides all this, RethinkDB has the following unique features:   
 - It's easy to use and configure in a cluster with replication and sharding (the process of splitting a table across multiple machines). 
-- It has powerful query language, ReQL, that even supports joining tables like in traditional database systems. 
+- It has powerful query language, ReQL, that even supports joining tables (common in traditional database systems). 
 - It can also perform map-reduce and geospatial queries. 
-- And perhaps the most important and popular, it allows us to build real-time applications easily by publishing the table's changes as they happen. 
+- It allows us to build real-time applications easily by publishing the table's changes as they occur. This is perhaps RethinkDB's most important and most popular feature.
 
 Now that you know what is RethinkDB all about, let's install it.
 
 # Installation
 Basically, you have three options to start using RethinkDB:
+
 - Using Docker. There's [an official RethinkDB repository](https://hub.docker.com/_/rethinkdb/) on Docker Hub. If you have Docker version 1.11.2 or greater, just execute a command like the following:
     ```
     docker run -P --name rethink-server -d rethinkdb
     ```
 	Docker will automatically download the image and start an instance.
+	
 - Using an official installer package. RethinkDB has installers for Linux, OS X, and Windows. For Linux, there are official packages for Ubuntu, CentOS, and Debian, but you can find community packages for other distributions. For example, in Ubuntu you type the following commands:
     ```
 	source /etc/lsb-release && echo "deb http://download.rethinkdb.com/apt $DISTRIB_CODENAME main" | sudo tee /etc/apt/sources.list.d/rethinkdb.list
@@ -45,9 +48,9 @@ Basically, you have three options to start using RethinkDB:
     ```
 	brew update && brew install rethinkdb
 	```
-- Building it from source. Use this when there's no way to use one of the previous options, you want to customize in some way the database, or if you want to run multiple versions of RethinkDB at the same time. You just need to install a bunch of dependencies, download and extract the source tarball (or clone it from [Github](https://github.com/rethinkdb/rethinkdb.git)) and build it depending on your platform. [Here](https://www.rethinkdb.com/docs/build/) you can find more information.
+- Building it from source. Use this only if the previous options aren't available, or if you want to customize the database in some way, or if you want to run multiple versions of RethinkDB at the same time. To build from source, you need to install a bunch of dependencies, download and extract the source tarball (or clone it from [Github](https://github.com/rethinkdb/rethinkdb.git)) and build it depending on your platform. Find more information [here](https://www.rethinkdb.com/docs/build/).
 
-Either way, this will install the database server. To start an instance of RethinkDB, just execute the following command:
+Following any of these methods will successfully install RethinkDB. To start an instance of the database, just execute the following command:
 ```
 rethinkdb
 ```
@@ -58,7 +61,7 @@ This command will:
 - Start listening for cluster connections on port 29015
 - Start a web administration interface on port 8080
 
-By default, this server will only listen for local connections, which means that clients on other machines won't be able to access the database (for security purposes). If you don't want this, you can bind to all IPs with the option:
+By default, this server will only listen for local connections, which means that clients on other machines won't be able to access the database (for security purposes). If you want global access, you can bind to all IPs with the option:
 ```
 rethinkdb --bind all
 ```
@@ -68,7 +71,7 @@ If you want to start a second instance to create a cluster on a single machine, 
 rethinkdb --port-offset 1 --directory rethinkdb_data2 --join localhost:29015
 ```
 
-This will create another instance on port 28016 (`--port-offset 1`), use `/home/user/rethinkdb_data2` as data directory, and connect to the first instance to create a cluster (`--join localhost:29015`).
+This will create another instance on port 28016 (`--port-offset 1`), use `/home/user/rethinkdb_data2` as its data directory, and connect to the first instance to create a cluster (`--join localhost:29015`).
 
 If you're using two machines, start RethinkDB on one machine with the command:
 ```
@@ -77,12 +80,12 @@ rethinkdb --bind all
 
 And then, assuming that the IP of the first machine is `192.168.0.1`, start the second instance on the other machine with the command:
 ```
-rethinkdb --join 192.168.0.1:29015 --bind all
+rethinkdb --join 192.168.0.1:29015 --bind all //Change the IP accordingly
 ```
 
 For a complete list of options that can be used on the command line, type `rethinkdb --help` or read this [page](https://www.rethinkdb.com/docs/cli-options).
 
-Also, if you want to run RethinkDB as a service, you have to create a configuration file for initialization options and use `init.d` or `systemd` for Linux, or `launchd` in OS X (if used Homebrew for the installation, this is already done for you). You can refer to this [page](https://www.rethinkdb.com/docs/start-on-startup/) for more information.
+If you want to run RethinkDB as a service, you have to create a configuration file for initialization options and use `init.d` or `systemd` for Linux, or `launchd` in OS X (if used Homebrew for the installation, this is already done for you). You can refer to this [page](https://www.rethinkdb.com/docs/start-on-startup/) for more information.
 
 # RethinkDB Administration Interfaces
 Now that the database is running, we can go to http://localhost:8080 (or any IP your instance is bound to) to access the RethinkDB web interface:
@@ -106,7 +109,7 @@ r.db("myDb").table("myTable")
 
 We even get syntax auto-completion and contextual help.
 
-If you're more a command-line person, there are two excellent projects that provide a command line interface (CLI) to RethinkDB. They are both made in javascript with Node.js so you'll need to have node and npm (Node Package Manager) installed.
+If you're more of a command line person, there are two excellent projects that provide a Command Line Interface (CLI) to RethinkDB. They are both made in javascript with Node.js so you'll need to have `node.js` and `npm` (Node Package Manager) installed.
 
 The first one is [recli](https://github.com/stiang/recli) that can either take a ReQL expression as an argument or be used as a REPL (read–eval–print loop, or in other words, an interactive shell):
 ```
@@ -139,7 +142,8 @@ reql-cli>
 Now that you know how to execute queries, let's know more about this ReQL language.
 
 # ReQL Query Language
-Just as in a traditional database, RethinkDB works with tables, but instead of records, it works with documents, which are objects written in JSON like in the following example:
+
+Just as in a traditional database, RethinkDB works with tables. But instead of working with records, it works with documents, which are objects written in JSON, such as in the following example:
 ```javascript
 {
     "name": "Andrew",
@@ -169,28 +173,22 @@ Arrays and objects (which actually are embedded documents) are also accepted:
 }
 ```
 
-RethinkDB also has specific data types like streams (lazy loaded lists) and geometry data types (points, lines, and polygons).
+RethinkDB also has specific data types, such as streams (lazy loaded lists) and geometry data types (points, lines, and polygons).
 
 ReQL is the language to make queries in RethinkDB using JSON documents. As you saw in the previous section, a simple ReQL query looks like this:
 ```
 r.db("myDb").table("myTable")
 ```
 
-Think of ReQL as a [fluent API](https://en.wikipedia.org/wiki/Fluent_interface) (where functions are chained to provide readability). You start a query with the identifier `r` and with the `.` operator, you add operations at the end.
+Let's break down this line of code. Think of ReQL as a [fluent API](https://en.wikipedia.org/wiki/Fluent_interface) (where functions are chained to provide readability). You start a query with the identifier `r` and with the `.` operator. Then you add operations at the end.
 
-Then, you have to choose a database:
-```
-db("myDb")
-```
+For instance, you choose a database: `db("myDb")`
 
-If you don’t specify a database, the default one is `test`. The following step is to select the table:
-```
-table("myTable")
-```
+If you don’t specify a database, the default one is `test`. `table("myTable")` selects the table.
 
 This will return all the documents of that table.
 
-But we don't have any document, so let's add one with `insert()`:
+But we don't have any document, we need to add one with `insert()`:
 ```
 r.db('myDb').table('myTable').insert({
     "name": "Andrew",
@@ -202,7 +200,7 @@ r.db('myDb').table('myTable').insert({
 	}
 })
 ```
-The output will be something like this:
+The output will look like this:
 ```
 {
     "deleted": 0 ,
@@ -298,8 +296,9 @@ The output:
 "name":  "Sophia"
 }
 ```
+### Query strategies
 
-If you want to get `n` number of documents, you can use `limit()`, for example, to get one document (you might not get the same document every time):
+If you want to get `n` number of documents, you can use `limit()`. For example, to get a single document (you might not get the same document every time):
 ```
 r.db('myDb').table('myTable').limit(1)
 ```
@@ -311,7 +310,7 @@ r.db('myDb').table('myTable').filter({name: "Andrew"})
 
 Returns the document with a `name` field with value `Andrew`. Documents that don't contain a `name` field are skipped.
 
-RethinkDB is case-sensitive, so the above query is different than:
+RethinkDB is case-sensitive, so the previous query is different from the one below:
 ```
 r.db('myDb').table('myTable').filter({Name: "Andrew"})
 ```
@@ -321,12 +320,12 @@ You have to be careful about data types. The following query won't return any do
 r.db('myDb').table('myTable').filter({age: "21"})
 ```
 
-The first query can be also written as:
+If you prefer the standard data table format, you can rewrite the first query as:
 ```
 r.db('myDb').table('myTable').filter(r.row("name").eq("Andrew"))
 ```
 
-`r.row("name")` refers to the value of the field `name` of the current document. With this syntax, you can write more complex queries. For example, to get people with more twenty-two years:
+`r.row("name")` refers to the value of the field `name` of the current document. This syntax allows for more complex queries. For example, to get people over twenty-two years old:
 ```
 r.db('myDb').table('myTable').filter(r.row("age").gt(22))
 ```
@@ -350,7 +349,7 @@ Using `pluck()`, you can indicate the keys to be returned, for example:
 ```
 r.db('myDb').table('myTable').pluck("name", "interests")
 ```
-Will output:
+This query will output:
 ```
 {
     "interests": [
@@ -385,12 +384,13 @@ To sort documents by the `name` field in ascending order:
 r.db("myDb").table("myTable").orderBy("name")
 ```
 
-In descending order:
+To sort in descending order, add `r.desc()` in the `orderBy()`field:
 ```
 r.db("myDb").table("myTable").orderBy(r.desc("name"))
 ```
+### Updating the document
 
-When making updates, there are two cases. When the document to be updated doesn't have the field to be updated, this is added to the document. For example, if you want to add the field `gender` to all the documents of `myTable`, execute this query:
+There are two cases for making updates. When the document to be updated does not contain the field to be updated, the update is added to the document. For example, if you want to add the field `gender` to all the documents of `myTable`, execute this query:
 ```
 r.db('myDb').table('myTable').update({gender: "male"})
 ```
@@ -423,6 +423,7 @@ The output:
     "unchanged": 0
 }
 ```
+### Deleting documents, tables, and databases
 
 To delete a document or set of documents, first you need to select them and then call `delete()`:
 ```
@@ -452,7 +453,7 @@ To delete all the documents of a table:
 r.db('myDb').table('myTable').delete()
 ```
 
-This way, `count()` will return zero as the number od documents the table contains:
+This way, `count()`, or the number of documents that the table contains, will return zero:
 ```
 r.db('myDb').table('myTable').count()
 ```
@@ -514,7 +515,9 @@ The output:
 }
 ```
 
-You can recreate the database with:
+### Recreating elements
+
+Recreate the database with:
 ```
 r.dbCreate('myDb')
 ```
@@ -535,7 +538,7 @@ The output:
 }
 ```
 
-And let's create now a table with a more meaningful name:
+Now let's create a table with a more meaningful name:
 ```
 r.db('myDb').tableCreate("people")
 ```
@@ -570,12 +573,12 @@ The output:
 }
 ```
 
-Let's check that the database was created correctly by getting the list of all databases on the server:
+Let's check that the database was created correctly by accessing the list of all databases on the server:
 ```
 r.dbList()
 ```
 
-Also, we can get the list of all the tables in our database:
+We can get the list of all the tables in our database:
 ```
 r.db("myDb").tableList()
 ```
@@ -654,7 +657,7 @@ In this case, you need to create a secondary index on the *foreing key*:
 r.db("myDb").table("interests").indexCreate("people_id")
 ```
 
-The, you can use the `eqJoin()` command this way:
+Then, you can use the `eqJoin()` command as follows to join the tables:
 ```
 r.db("myDb").table("people").eqJoin(
     "id", 
@@ -719,7 +722,7 @@ The output will be:
 }
 ```
 
-The result set of `eqJoin()` is an array of objects. Each object returned set will be an object of the form `{ left: <left-document>, right: <right-document> }`, where the field `left` contains the information from the left table in the query (in this case, `people`) and the field `right` contains the information from the right table in the query (in this case, `interests`). You can use `zip()` to merge those two fields together. See the last section of this [page](https://www.rethinkdb.com/docs/table-joins/) for more information.
+The result set of `eqJoin()` is an array of objects. Each object returned set will be an object of the form `{ left: <left-document>, right: <right-document> }`, where the field `left` contains the information from the left table in the query (in this case, `people`), and the field `right` contains the information from the right table in the query (in this case, `interests`). You can use `zip()` to merge those two fields together. See the last section of this [page](https://www.rethinkdb.com/docs/table-joins/) for more information.
 
 Another way to model the relationship can be:
 ```
@@ -761,10 +764,11 @@ function (person) {
     }
 }) 
 ```
+### Commands with functions as parameters 
 
-Many ReQL commands accept a function as a parameter. `merge()` merges two or more objects together to construct a new object with properties from all, in this case, tables `people` and `interests`.
+Many ReQL commands accept a function as a parameter. `merge()` joins two or more objects together to construct a new object with properties from all merged objects, in this case, tables `people` and `interests`.
 
-The function used by `merge()` takes as an argument the document to be processed and it will return a new field that will be merged with the rest of the fields of the document of `people` (since this new field is called `interest_ids`, it will replace the original `interest_ids` field.)
+The function used by `merge()` takes the document to be processed as an argument. It returns a new field that will be merged with the rest of the fields of the document of `people` (since this new field is called `interest_ids`, it will replace the original `interest_ids` field.)
 
 Inside the function, the `interests` table is filtered, only if the id of an interest document is present in the `interest_ids` field of the `people` document, it will be returned.
 
@@ -802,30 +806,34 @@ RethinkDB has official client drivers (APIs) for the following languages:
 - [Python](https://www.rethinkdb.com/api/python/)
 - [Java](https://www.rethinkdb.com/api/java/)
 
-Although there are community-supported drivers for a lot more languages.
+However, there are community-supported drivers for a lot more languages.
 
-We are going to focus in the [Node.js](https://nodejs.org) API, so you'll need to have installed the latest stable version of [Node.js](https://nodejs.org).
+For now, we are going to focus in the [Node.js](https://nodejs.org) API, so you'll need to have installed the latest stable version of [Node.js](https://nodejs.org).
 
 With NPM, the package manager used by Node.js to install dependencies, we can execute the following command to get RethinkDB's module:
+
 ```
 sudo npm install rethinkdb
 ```
 
-This command will download RethinkDB and its dependencies. By default, NPM works in local mode, so it will install them into the `node_modules` directory of the current directory.
+This command will download RethinkDB and its dependencies. By default, NPM works in local mode, so it will install these files into the `node_modules` directory of the current directory.
 
 RethinkDB API is very similar to ReQL. To use it, we import the module with:
+
 ```javascript
 r = require('rethinkdb');
 ```
 
 And connect to the database with:
+
 ```javascript
 r.connect({host: 'localhost', port: 28015})
 ```
 
 Optionally, `r.connect` also accepts the name of the database and authentication information.
 
-Node.js is asynchronus by nature, so to make a query, this function returns a *promise*, an object that represents the eventual result of an operation. The library used for promises by RethinkDB is [bluebird](http://bluebirdjs.com/docs/getting-started.html):
+Node.js is asynchronous by nature, so, to make a query, this function returns a **promise**, or an object that represents the eventual result of an operation. RethinkDB uses the [bluebird][bluebird](http://bluebirdjs.com/docs/getting-started.html) library for promises. 
+
 ```javascript
 r.connect({host: 'localhost', port: 28015}).then(function(conn) {
 	// You are now connected to the database
@@ -834,9 +842,10 @@ r.connect({host: 'localhost', port: 28015}).then(function(conn) {
 });
 ```
 
-If the connection succeeds, the function passed to `then()` will be executed, otherwise, the function passed to `error()` will be executed.
+If the connection succeeds, the function passed to `then()` will be executed; otherwise, the function passed to `error()` will be executed.
 
-If you don't want to work with promises, we can use a callback function as the second argument to `r.connect()` to have the same functionality:
+If you don't want to work with promises, we can use a **callback function** as the second argument to `r.connect()` to have the same functionality:
+
 ```javascript
 r.connect({host: 'localhost', port: 28015}, function(error, conn) {
 	if(error) {
@@ -848,9 +857,10 @@ r.connect({host: 'localhost', port: 28015}, function(error, conn) {
 });
 ```
 
-Most functions of the API work by either taking a callback function as an argument or returning a promise.
+Most functions of the API work by returning a promise or by taking a callback function as an argument.
 
 Either way, once we have a valid connection, we can execute a ReQL query:
+
 ```javascript
 r.connect({host: 'localhost', port: 28015}).then(function(conn) {
 	r.db("myDb").table("people").run(conn).then(function(result) {
@@ -859,17 +869,16 @@ r.connect({host: 'localhost', port: 28015}).then(function(conn) {
 })
 ```
 
-Notice that the only difference with executing queries in the Node.js API is that they require the `run()` function at the end to execute. This function takes the connection object as an argument and optionally, a callback function that is executed when the query is complete. If no callback is provided, a promise is returned (like in the example).
+Notice that the only difference with executing queries in the Node.js API is that they require the `run()` function at the end to execute. This function takes the connection object as an argument and, optionally, a callback function that is executed when the query is complete. If no callback is provided, a promise is returned (like in the example).
 
-# RethinkDB real-time functionality
+# RethinkDB's real-time functionality
 
-RethinkDB's real-time functionality relies in something called *changefeeds*, that allows clientes to receive changes on a table or document as they happen.
+RethinkDB's real-time functionality relies on something called *changefeeds*, which allow clients to receive changes on a table or document as they occur.
 
-Almost any ReQL query can be converted into a changefeed with `changes()`:
+Almost any ReQL query can be converted into a changefeed with the `changes()` command. 
 ```
 r.db("myDb").table("interests").changes()
 ```
-
 
 ![Changefeed](https://raw.githubusercontent.com/pluralsight/guides/master/images/de00bf94-5fbf-468f-938d-7d81b187b967.gif)
 
@@ -881,7 +890,7 @@ r.db("myDb").table("people").changes().run(conn).then(function(cursor) {
 	cursor.each(console.log);
 });
 ```
-`changes()` return an infinite cursor that you can iterate to get the changes (with the same `old_val`/`new_val` object format).
+`changes()` returns an infinite cursor that you can iterate to get the changes (with the same `old_val`/`new_val` object format).
 
 You can also monitor a single document or a set of documents:
 ```
@@ -895,27 +904,27 @@ r.db("myDb").table("people").changes({squash: 5})
 The values of this parameter are `true`, `false` and a numeric value:
 - With `true`, when multiple changes to the same document occur before a batch of notifications is sent, the changes are “squashed” into one change. 
 - With `false`, all changes will be sent to the client.
-- A numeric value `n` is like `true` but the server will wait `n` seconds to respond in order to squash as many changes together as possible to reduce network traffic.
+- A numeric value `n` is similar to `true`, but the server will wait `n` seconds to respond in order to squash as many changes together as possible to reduce network traffic.
 
 If the database server becomes unavailable, the changefeed will be disconnected, and a runtime exception will be thrown.
 
-Changefeeds is what allows us to build real-time applications, where users receive information as soon as it is available (with extremely low latency). A good example of this type of application is Twitter, tweets appear as soon as they get published without needing to refresh the page.
+Changefeeds allow us to build real-time applications, where users receive information as soon as it is available (with extremely low latency). A good example of this type of application is Twitter; tweets appear as soon as they get published, without users needing to refresh the page.
 
-One solution to the problem of building real-time applications in the web is to continuously send requests to the server, waiting for a response. This is called *polling*, and it's very inefficient.
+One solution to the problem of building real-time applications in the web is to continuously send requests to the server, waiting for a response. This is called *polling*. As you can imagine, polling is very inefficient.
 
-With the arrival of HTML5, one of the most popular ways to implement real-time functionality is WebSockets, a technology thta opens a bidirectional communication channel between the client and the server so this can push data directly to the client when needed.
+With the arrival of HTML5, WebSockets has replaced polling to become one of the most popular ways to implement real-time functionality. Websockets is a technology thta opens a bidirectional communication channel between the client and the server so this can push data directly to the client when needed.
 
 A popular library that implements WebSockets is Socket.IO. This library, combined with changefeeds, will allow us to build real-time web applications easily in Node.js.
 	
-# A simple real-time example application
+# A Simple Real-Time Example Application
 
-We are going to build a simple voting app. The theme here is movies, but you actually can input any text you want. I won't have authentication, vote throttling, or vote-base sorting. 
+We are going to build a simple voting app. The theme here is movies, but you actually can input any text you want. This app will not contain have authentication, vote throttling, or vote-base sorting. 
 
-It has been kept simple on purpose in order to show clearly the integration of RethinkDB's API and how to develop a real-time application.
+It has been kept simple on purpose to demonstrate the integration of RethinkDB's API and how to develop a real-time application.
 
 The stack is also simple: RethinkDB + Node.js + Expresss + EJS (as templating language) + Socket.IO + jQuery.
 
-The full code and installation instructions are on Github: https://github.com/eh3rrera/rethinkdb-example.
+The full code and installation instructions are on [this Github repository](https://github.com/eh3rrera/rethinkdb-example).
 
 The final application looks like this:
 
@@ -927,7 +936,7 @@ This is the directory structure and files of the application:
 
 - `controllers/index.js` contains the route configuration of the application. It receive the requests and call the model to send a response.
 - `models/movies.js` communicates with RethinkDB to implement the database operations.
-- `node_modules` directory where the dependencies of the application are stored.
+- `node_modules` contains the dependencies of the application.
 - `public/style.css` contains the CSS classes to style the web page.
 - `public/voting.js` contains the client-side javascript to respond to click events, form submision and receive Socket.IO events.
 - `views/index.ejs` is the template of the web page.
@@ -980,12 +989,12 @@ About to write to /home/eh/rethinkdb-example/package.json:
 Is this ok? (yes) 
 ```
 
-This will create a `package.json` file that contains the configuration of the project. Now let's add the dependencies of the project to this file by executing this command:
+This will create a `package.json` file that contains the configuration of the project. Now, let's add the dependencies of the project to this file by executing this command:
 ```
 npm install body-parser ejs express path rethinkdb socket.io --save
 ```
 
-In addition to download the latest versions of all these dependencies to the `node_modules` directory, the `--save` option of this command will add them to `package.json`:
+In addition to downloading the latest versions of all these dependencies to the `node_modules` directory, the `--save` option of this command will add them to `package.json`:
 ```
 {
   ...
@@ -1027,7 +1036,7 @@ module.exports = {
 
 If they are not defined as environment variables, they take the default values provided in this file (change them if you want).
 
-In the main file of the application, `app.js`, let's import the modules we'll use:
+In the main file of the application, `app.js`, import the modules we'll use:
 ```javascript
 var express = require('express');
 var app = express();
@@ -1039,7 +1048,8 @@ var config = require('./config');
 var model = require('./models/movies');
 ```
 
-And configure Express to indicate that we will receive JSON from the client, define the directory where the view templates can be found, the path for the static resources, and the view engine to use (EJS, which is a simple template language to generate HTML):
+Next, configure Express to indicate that we will receive JSON from the client and define the directory where the view templates can be found, the path for the static resources, and the view engine to use (EJS, which is a simple template language to generate HTML):
+
 ```javascript
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -1080,7 +1090,7 @@ module.exports = function (app) {
 };
 ```
 
-Back to `app.js`, we then initialize the server to listen for connections in the port specified in the `config.js` file:
+Back in `app.js`, we then initialize the server to listen for connections in the port specified in the `config.js` file:
 ```javascript
 server.listen(config.port, function() {
     console.log('Server up and listening on port %d', config.port);
@@ -1088,9 +1098,10 @@ server.listen(config.port, function() {
 }
 ```
 
-To avoid errors and typing a few commands, let's automate the process of creating the database and table used by the application.
+To avoid errors and minimize our number of commands, let's automate the process of creating the database and table used by the application.
 
-In the file `models.movie.js` we'll have a setup method to perform these actions that will take a callback as an argument. The callback will be executed at the end when everything is set up, more on that in a moment.
+In the file `models.movie.js` we'll have a setup method to perform these actions that will take a callback as an argument. The callback will be executed at the end when everything is set up -- more on that in a moment.
+
 ```javascript
 var model = module.exports;
 
@@ -1101,12 +1112,14 @@ model.setup = function (callback) {
 ```
 
 Let's also import RethinkDB's module and the configuration file:
+
 ```javascript
 var r = require('rethinkdb');
 var config = require('../config');
 ```
 
-Now let's connect with the database:
+Now let's connect with the RethinkDB database:
+
 ```javascript
 model.setup = function (callback) {
     console.log("Setting up RethinkDB...");
@@ -1119,7 +1132,7 @@ model.setup = function (callback) {
 }
 ```
 
-`config.database` (defined in `config.js`) just happen to have the same format required for the `connect()` method to connect to a database. To verify if the database exists, let's try to create it. If an error is thrown, it means that the database already exists:
+`config.database` (defined in `config.js`) just happens to have the same format required for the `connect()` method to connect to a database. To verify if the database exists, let's try to create it. *If an error is thrown, it means that the database already exists:*
 ```javascript
 r.connect(config.database).then(function(conn) {
 	// Does the database exist?
@@ -1154,7 +1167,7 @@ r.dbCreate(config.database.db).run(conn).then(function(result) {
 });
 ```
 
-We test if a table exists by performing a simple query. The name of the table is held in the `MOVIES_TABLE` variable. This time, using a callback instead  of a promise, we'll create the table (in case of an error) or get the result of the query (in case the table already exists).
+We test if a table exists by performing a simple query. The name of the table is held in the `MOVIES_TABLE` variable. This time, using a callback instead of a promise, we'll create the table (in case of an error) or get the result of the query (in case the table already exists).
 
 The structure of the documents stored in the movie table is very simple, we'll just store the title and the number of likes and unlikes, for example:
 ```javascript
@@ -1166,9 +1179,7 @@ The structure of the documents stored in the movie table is very simple, we'll j
 }
 ```
 
-Now, remember that we are working with asynchronous operations, so we need a way to know when either of these operations is done, so we need to save the promise returned by these operations.
-
-With the promise reference, we can hook up the code that will be executed when is safe to assume that the movies table exists.
+Now, remember that we are working with asynchronous operations, so we need a way to know when any of these operations is done. As such, we need to save the promise returned by these operations. Then, with the promise references in hand, we can hook up the code that will be executed when is safe to assume that the movies table exists.
 
 This last piece of code will set up a changefeed that will monitor the table for changes:
 ```javascript
@@ -1212,9 +1223,10 @@ server.listen(config.port, function() {
     });
 });
 ```
-The job of this callback function is to emit a Socket.IO event to the client when RethinkDB's changefeed notify us about a change. Remember from the previous section that the object returned by the changefeed has two fields, `old_val` and `new_val`. If both fields are set, we are receiving an update. If only `new_val` is set, we are receiving a new movie. Based on this, we send a different event.
+The job of this callback function is to emit a Socket.IO event to the client when RethinkDB's changefeed notifies us about a change. Remember from the previous section that the object returned by the changefeed has two fields, `old_val` and `new_val`. **If both fields are set, we are receiving an update. If only `new_val` is set, we are receiving a new movie.** Based on this, we send a different event.
 
-These events are received by the client. `public/voting.js` is the file that contains the javascript code on the client side. Using jQuery, when the HTML document is ready, we set up Socket.IO to listen for events this way:
+These events are received by the client. `public/voting.js` is the file that contains the javascript code on the client side. Using jQuery, we'll set up Socket.IO to listen for events when the HTML document is ready:
+
 ```javascript
 $(document).ready(function () {
     var socket = io();
@@ -1254,7 +1266,7 @@ app.get('/', function (req, res) {
 });
 ```
 
-`model.getMovies()` just get the documents of the movie table:
+`model.getMovies()` gets the documents of the movie table:
 ```javascript
 model.getMovies = function (callback) {
     r.connect(config.database).then(function(conn) {
@@ -1316,14 +1328,14 @@ model.getMovies = function (callback) {
 
 `index.ejs` is a simple HTML file that uses [EJS](https://github.com/mde/ejs) as templating language and presents the movies retrieved (in no particular order) along with a form to post a new movie.
 
-In EJS, the `<% %>` tag is used to control flow. In this case, to iterate over the movies collection:
+In EJS, the `<% ... %>` tag is used to control flow. In this case, to iterate over the movies collection:
 ```javascript
 <% movies.forEach(function(movie, index){ %>
 ...
 <% }) %>
 ```
 
-While the `<%= %>` tag outputs the (escaped) value of a variable:
+Meanwhile, the `<%= ... %>` tag outputs the (escaped) value of a variable:
 ```javascript
 ...
 <li class='movie' id='<%= movie.id %>'>
@@ -1388,12 +1400,7 @@ $('.movies').on('click', 'span.btnLike', function (e) {
 
 Since the element (the movie) might not exist when at the time the click event was bound (because it was added later), we have to bind the event the container (`.movie`), which always exists, and then select the child of that element that will trigger the click event (`span.btnLike`). This way, the event will be received correctly.
 
-Then, the line:
-```javascript
-var movieId = $(this).parent('div').parent('div').parent('li')[0].id;
-```
-
-Will navigate through the DOM (Document Object Model) to find the element that contains the movie identifier. Since the like button is the source of the click event, the search starts relative to this element (that's why we have to go up three levels).
+Then, the line `var movieId = $(this).parent('div').parent('div').parent('li')[0].id;` will navigate through the DOM (Document Object Model) to find the element that contains the movie identifier. Since the "like" button is the source of the click event, the search starts relative to this element (that's why we have to go up three levels).
 
 Once the request reaches the server, the following route is executed:
 ```javascript
@@ -1402,7 +1409,7 @@ app.put('/movie/like/:id', function (req, res) {
 });
 ```
 
-Since like and unlike are very similar, we extract the functionality of both to the private (because is not part of the exported section of the module) `vote()` function:
+Since "like" and "unlike" are very similar, we extract the functionality of both to the private (because is not part of the exported section of the module) `vote()` function:
 ```javascript
 var vote = function (req, res, action) {
     var movie = {
@@ -1436,13 +1443,15 @@ model.updateMovie = function (movie, field, callback) {
 }
 ```
 
-To perform the update we use a function instead of an object (remember that in ReQL, some operations can take a function as an argument), so we can dynamically specify the field to update with:
+To perform the update, we use a function instead of an object. *Remember that in ReQL, some operations can take a function as an argument*. As a result, we can dynamically specify the field to update with:
 ```javascript
 r.object(field, movie(field).add(1)); 
 ```
 
-The movie document to be updated is passed as an argument to the function so we can get the current value and add one (like or unlike) to set the new value.
+The movie document to be updated is passed as an argument to the function so we can get the current value and add one ("like" or "unlike") to set the new value.
 
-This cover all the functionality of the application. To run it, start RethinkDB and then type `npm start`.
+This covers all the functionality of our basic application. To run it, start RethinkDB and then type `npm start`.
 
-This concludes this introduction to RethinkDB. Again, the code of the whole application is on [Github](https://github.com/eh3rrera/rethinkdb-example) and if you have any comments, don't hesitate to contact me.
+__________________________
+
+This concludes this introduction to RethinkDB. Once again, the code for the whole example application is on [Github](https://github.com/eh3rrera/rethinkdb-example). Please leave your feedback in the comments section below or simply contact me. Please don't forget to favorite this tutorial if you found it informative!
