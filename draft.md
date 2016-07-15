@@ -1,3 +1,8 @@
+### Using MySql Docker for development by Red Moses
+- [Read the guide](http://tutorials.pluralsight.com/devops/using-mysql-docker-for-development?status=draft)
+- [Read more from Red Moses](http://tutorials.pluralsight.com/author/redmoses) <img src="https://avatars.githubusercontent.com/u/4059490?v=3" width="30" height="30" alt="Red Moses" />
+- Related to: DevOps (Docker, Nagios, Jenkins, Chef, Puppet, etc)
+
 ### Middleman, Github, Reactrb, and Webpack by Mitch VanDuyn
 - [Read the guide](http://tutorials.pluralsight.com/front-end-javascript/middleman-github-reactrb-and-webpack?status=draft)
 - [Read more from Mitch VanDuyn](http://tutorials.pluralsight.com/author/catmando) <img src="https://avatars.githubusercontent.com/u/63146?v=3" width="30" height="30" alt="Mitch VanDuyn" />
