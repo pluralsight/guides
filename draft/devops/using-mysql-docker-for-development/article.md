@@ -47,7 +47,7 @@ The directory structure would look like below at the end of this guide -
 ├── Makefile
 ├── README.md
 ├── config
-│   └── login.sh
+│   └── mysql.sh
 └── docker-compose.yml
 ```
 
@@ -67,14 +67,23 @@ mysql:
     - MYSQL_USER=testuser
     - MYSQL_PASSWORD=testpass
   volumes:
-    - ./config/login.sh:/root/login.sh
+    - ./config/mysql.sh:/root/mysql.sh
     - ./data:/var/lib/mysql
 ```
-Explanation
+**Explanation**
+
+For detailed information regarding the `docker-compose` file please see [here](https://docs.docker.com/compose/compose-file/).
+
 * `mysql` This is the name of the docker-compose service
 * `image` The image to start the container from
 * `container_name` A custom container name
-* `environment` Environment variables for the container as per [mysql docker documentation](https://hub.docker.com/_/mysql/).
+* `environment` Environment variables for the container
 * `volumes` Volumes to mount when running the container
 
-For detailed information regarding the docker-compose file please see [here](https://docs.docker.com/compose/compose-file/)
+The `environment` variables
+* `MYSQL_ROOT_PASSWORD` The root password of your database server
+* `MYSQL_DATABASE` The name of the default database to start the container with. You can ignore this if you don't want the server to start with an already created database.
+* `MYSQL_USER` If you've created a default database then the user defined here will have all permissions over that database.
+* `MYSQL_PASSWORD` The default user's password
+
+More information regarding the mysql docker image can be found [here](https://hub.docker.com/_/mysql/)
