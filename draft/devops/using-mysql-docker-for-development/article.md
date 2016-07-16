@@ -34,4 +34,14 @@ I'd be using Makefile to control the docker container and everything else and tt
 
 ### Directory Structure
 
+The directory structure should look like below at the end of this guide -
+```bash
+.
+├── Makefile
+├── README.md
+├── config
+│   └── login.sh
+└── docker-compose.yml
+```
+
 The first step is to create the ```docker-compose.yml``` file. 
