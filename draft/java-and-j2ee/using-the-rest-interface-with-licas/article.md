@@ -16,17 +16,17 @@ The easiest way to start a server is to run the batch file provided with the <a 
 <p>The licas system is about providing a platform on which to run services for a user. The base service classes provided by the package are the Service, Behaviour or the Auto classes. These are all abstract and so you would extend one and implement the abstract methods to write your own service. There are a number of examples in the main package – DataService and InformationService, for example. To write your own service, you can extend any of these abstract classes, or any of the fully implemented versions. For a very basic service, for example, you could write the following:</p>
 <br/><br/>
 <code class="lang-javascript hljs">
-public class MyInfoService extends Service<br/>
-{<br/>
-    /** The logger */<br/>
-    private static Logger logger;<br/>
+\tpublic class MyInfoService extends Service<br/>
+\t{<br/>
+\t\t    /** The logger */<br/>
+\t\t    private static Logger logger;<br/>
         <br/>
-     static<br/>
-    {<br/>
-        // get the logger<br/>
-        logger = LoggerHandler.getLogger(MyInfoService.class.getName());<br/>
-        logger.setDebug(false);<br/>
-    }<br/>
+\t\t     static<br/>
+\t\t    {<br/>
+\t\t        // get the logger<br/>
+\t\t\t        logger = LoggerHandler.getLogger(MyInfoService.class.getName());<br/>
+\t\t\t        logger.setDebug(false);<br/>
+\t\t    }<br/>
 <br/>
 <br/>
     public TestService() throws Exception<br/>
