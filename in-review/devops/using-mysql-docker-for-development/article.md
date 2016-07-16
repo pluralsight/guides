@@ -61,6 +61,7 @@ mysql:
     - MYSQL_PASSWORD=testpass
   volumes:
     - ./config/mysql.sh:/root/mysql.sh
+    - ./config/custom.cnf:/etc/mysql/conf.d/custom.cnf
     - ./data:/var/lib/mysql
 ```
 
