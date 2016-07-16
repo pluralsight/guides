@@ -66,7 +66,7 @@ mysql:
 For detailed information regarding the `docker-compose` file please see [here](https://docs.docker.com/compose/compose-file/).
 
 * `mysql` The name of the docker-compose service
-* `image` The image to start the container from
+* `image` The image to start the container from. I'm using the latest tag here which means it will get the latest mysql version available. If you want to work with some specific version you can check out the list of available tags [here](https://hub.docker.com/r/library/mysql/tags/).
 * `container_name` A custom container name
 * `environment` Environment variables for the container
 * `volumes` Volumes to mount when running the container
