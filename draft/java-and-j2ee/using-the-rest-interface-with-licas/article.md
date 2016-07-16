@@ -29,50 +29,50 @@ The easiest way to start a server is to run the batch file provided with the <a 
 <span class="hljs-string">}</span>
 <br/>
 <br/>
-    public TestService() throws Exception<br/>
-    {<br/>
-        super();<br/>
-    }<br/>
+<span class="hljs-string">public TestService() throws Exception</span>
+<span class="hljs-string">{</span>>
+<span class="hljs-string">super();</span>
+<span class="hljs-string">}</span>
  <br/>   
-    public TestService(String thisPassword, String thisAdminKey) throws Exception<br/>
-    {<br/>
-        super(thisPassword, thisAdminKey);<br/>
-    }<br/>
+<span class="hljs-string">public TestService(String thisPassword, String thisAdminKey) throws Exception</span>
+<span class="hljs-string">{</span>
+<span class="hljs-string">super(thisPassword, thisAdminKey);</span>
+<span class="hljs-string">}</span>
     <br/>
-    public TestService(String thisPassword, String thisAdminKey, Element adminXml)  throws Exception<br/>
-    {<br/>
-        super(thisPassword, thisAdminKey, adminXml);<br/>
-    }<br/>
+<span class="hljs-string">public TestService(String thisPassword, String thisAdminKey, Element adminXml)  throws Exception</span>
+<span class="hljs-string">{</span>
+<span class="hljs-string">super(thisPassword, thisAdminKey, adminXml);</span>
+<span class="hljs-string">}</span>
 <br/>
 <br/>
-    public String GET() throws Exception<br/>
-    {<br/>
-        String dataValue;                           //the data value<br/>
+<span class="hljs-string">public String GET() throws Exception</span>
+<span class="hljs-string">{</span>
+<span class="hljs-string">String dataValue;                           //the data value</span>
         <br/>
-        dataValue = "";<br/>
-        dataObj = getNextValue(…);<br/>
-        if (dataObj != null)<br/>
-        {<br/>
-            if (dataObj instanceof byte[])<br/>
-            {<br/>
-                dataValue = (TypeConst.BINARYFILE + Const.RNDSEP + new String((byte[])dataObj));<br/>
-            }<br/>
-            else if (dataObj instanceof Element)<br/>
-            {<br/>
-                dataValue = (TypeConst.XMLFILE + Const.RNDSEP + 
-			XmlHandler.xmlToString((Element)dataObj));<br/>
-            }<br/>
-            else<br/>
-            {
-                dataValue = (dataType + Const.RNDSEP + String.valueOf(dataObj));<br/>
-            }<br/>
-        }<br/>
+<span class="hljs-string">dataValue = "";</span>
+<span class="hljs-string">dataObj = getNextValue(…);</span>
+<span class="hljs-string">if (dataObj != null)</span>
+<span class="hljs-string">{</span>
+<span class="hljs-string">if (dataObj instanceof byte[])</span>
+<span class="hljs-string">{</span>
+<span class="hljs-string">dataValue = (TypeConst.BINARYFILE + Const.RNDSEP + new String((byte[])dataObj));</span>
+<span class="hljs-string">}</span>
+<span class="hljs-string">else if (dataObj instanceof Element)</span>
+<span class="hljs-string">{</span>
+<span class="hljs-string">dataValue = (TypeConst.XMLFILE + Const.RNDSEP +
+			XmlHandler.xmlToString((Element)dataObj));</span>
+<span class="hljs-string">}</span>
+<span class="hljs-string">else</span>
+<span class="hljs-string">{</span>
+<span class="hljs-string">dataValue = (dataType + Const.RNDSEP + String.valueOf(dataObj));</span>
+<span class="hljs-string">}</span>>
+<span class="hljs-string">}</span>
         <br/>
-        return dataValue;<br/>
-    }<br/>
+<span class="hljs-string">return dataValue;</span>
+<span class="hljs-string">}</span>
 <br/>
-    ...<br/>
-}<br/>
+<span class="hljs-string">...</span>
+<span class="hljs-string">}</span>
 </code></pre>
 <br/><br/>
 <p>The logger is the default licas logger. The constructors can all pass the parameters to the parent service class. This service has then implemented the GET method, which is of interest for the REST interface. If you type the service address into a browser, then the request is directed to the get method of the related service, not a web page. The service can then perform any functionality in its GET method and return any String result. The service will automatically parse this first to check for a data type, where Const.RNDSEP is used as the default tokenizer (data type – reply). The browser can then automatically display the reply, for example and so this is a quick way to ask a service to perform some function. 
