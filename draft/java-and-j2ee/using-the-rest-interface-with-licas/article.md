@@ -79,12 +79,12 @@ public class MyInfoService extends Service
 <p>The logger is the default licas logger. The constructors can all pass the parameters to the parent service class. This service has then implemented the GET method, which is of interest for the REST interface. If you type the service address into a browser, then the request is directed to the get method of the related service, not a web page. The service can then perform any functionality in its GET method and return any String result. The service will automatically parse this first to check for a data type, where Const.RNDSEP is used as the default tokenizer (data type – reply). The browser can then automatically display the reply, for example and so this is a quick way to ask a service to perform some function. 
 
 The server can also be asked directly to return a file from its web directory. Therefore:
-<code class="lang-javascript hljs">
-http://192.168.2.2:8080/html/default.html
+<code>
+http:://192.168.2.2:8080/html/default.html
 </code>
 would ask the server to return the default.html file from its web html directory, but
-<code class="lang-javascript hljs">
-http://192.168.2.2:8080/service1
+<code>
+http:://192.168.2.2:8080/service1
 </code>
 would ask service1 to return the result of its GET method.
 </p>
@@ -98,8 +98,8 @@ On the client side, when making a remote call, you would create the appropriate 
 <h3>Create a Service Path Handle</h3>
 <p>This is typically used by the internal XML-RPC process, but it is also the URI path definition for any service that runs on a server. It has a specific format that is created by the Handle class. The address of a service uniquely defines it on a server and over the Internet and includes a number of parts. Each of these parts is stored inside of an XML element of a specific type. The outermost element is simply called 'Handle'. Then it is required to define the server address and the service name. The first part is the URL of the server that is hosting the service. This is stored in a 'U' element. Each base service running on a server is then required to have a unique UUID. This is stored in an 'S' element. Nested services can also be declared by adding ‘S’ elements, one after the other. If the path is for a method invocation, then a final element that stores the method name is called 'M', although this part is typically added by the system. A full path description without a method could look something like:
 
-<code class="lang-javascript hljs">
- <Handle><U>http://123.4.5.6:8888</U><S>Service1</S></Handle>
+<code>
+ <Handle><U>http:://123.4.5.6:8888</U><S>Service1</S></Handle>
 </code>
 </p>
 
