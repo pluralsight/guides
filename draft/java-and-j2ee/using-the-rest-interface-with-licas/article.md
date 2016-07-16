@@ -78,22 +78,22 @@ public class MyInfoService extends Service
     }
 </code></pre>
 
-<p>The logger is the default licas logger. The constructors can all pass the parameters to the parent service class. This service has then implemented the GET method, which is of interest for the REST interface. If you type the service address into a browser, then the request is directed to the get method of the related service, not a web page. The service can then perform any functionality in its GET method and return any String result. The service will automatically parse this first to check for a data type, where Const.RNDSEP is used as the default tokenizer (data type – reply). The browser can then automatically display the reply, for example and so this is a quick way to ask a service to perform some function. 
+<p>The logger is the default licas logger. The constructors can all pass the parameters to the parent service class. This service has then implemented the <code>GET</code> method, which is of interest for the REST interface. If you type the service address into a browser, then the request is directed to the get method of the related service, not a web page. The service can then perform any functionality in its GET method and return any String result. The server will automatically parse this first to check for a data type, where <code>Const.RNDSEP</code> is used as the default tokenizer (data type – reply). The browser can then automatically display the reply, for example and so this is a quick way to ask a service to perform some function. 
 
-The server can also be asked directly to return a file from its web directory. Therefore:
+The server can also be asked directly to return a file from its web directory. Therefore:<br/>
 <code>
 http:://192.168.2.2:8080/html/default.html
-</code>
-would ask the server to return the default.html file from its web html directory, but
+</code><br/>
+would ask the server to return the default.html file from its web html directory, but<br/>
 <code>
 http:://192.168.2.2:8080/service1
-</code>
+</code><br/>
 would ask service1 to return the result of its GET method.
 </p>
 
 <h3>Communication Protocols</h3>
 <p>Licas uses an XML-RPC mechanism internally, but this tutorial describes the REST interface specifically. XML-RPC is maybe better for programmable interfaces or computer-to-computer interactions, allowing complex objects to be passed easily. The REST interface is supported with Resources and an Information Service, so that basic media types can be stored and returned upon request. It is also useful for the IoT possibilities. 
-
+<br/>
 On the client side, when making a remote call, you would create the appropriate MethodInfo object and execute it on a CallObject. The MethodFactory class is useful here and provides 3 static methods that will create the info object for you – createMethodCall, createRestCall or createSoapCall. There are lots of other parameters that can be set, but those are the main components. The address of the service to invoke can be a URI description, or for local interactions, it can be a direct reference to the object itself. The system will check for this and use method invocation when appropriate. 
 </p>
 
