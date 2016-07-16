@@ -14,6 +14,9 @@ This tutorial describes how to write and add a service to a licas server, before
 <br/>
 The easiest way to start a server is to run the batch file provided with the <a href="http://licas.sourceforge.net" target="_blank">download</a>. Alternatively, the free All-in-One <a href="http://distributedcomputingsystems.co.uk/licas.html" target="_blank">GUI</a> includes a built-in server and access to all of the main functionality. The <code>Run_HttpServer</code> class has a command line interface that you can configure to change the run settings. The batch file and the user guides give more details on this.</p>
 
+<h3>Passwords</h3>
+<p>The server extends the Service class, where all services are protected by 2 passwords. The first is to allow some other client or service to invoke methods. The second admin key is to allow an administrator to make more permanent changes. These can both be set when the service is created.</p>
+
 <h2>Writing a Service</h2>
 <p>The licas system is about providing a platform on which to run services for a user. The base service classes provided by the package are the <code>Service</code>, <code>Behaviour</code> or the <code>Auto</code> classes. These are all abstract and so you would extend one and implement the abstract methods to write your own service. There are a number of examples in the main package – <code>DataService</code> and <code>InformationService</code>, for example. To write your own service, you can extend any of these abstract classes, or any of the fully implemented versions. For a very basic service, for example, you could write the following:</p>
 <br/><br/>
@@ -107,6 +110,36 @@ The address of a service uniquely defines it on a server and over the Internet a
 </code>
 </p>
 
+<h3>Add a Service to a Server</h3>
+<p>To add a service to a server, you use one of the addService methods. This can be either remotely using the communication mechanism or locally through a direct reference to the server. For a local reference you need to know both the server’s password and admin key, and you then call:
+</p>
+<pre><code>
+HttpServer.getHttpServer(password).getESB(adminKey).addService(…);
+</code></pre>
+<p>For a remote invocation, you pass the class type of the service to load, through the method parameters list and use the calling mechanism to invoke an addService method on the server. The user guide of the download package and the examples on the web site explain this in more detail, for example:
+</p>
+<pre><code>
+methodInfo = new MethodInfo();
+methodInfo.setName(MethodConst.ADDSERVICE);	
+methodInfo.setRtnType(TypeConst.BOOLEAN);	
+methodInfo.setServiceURI(serviceUri);			
+methodInfo.setServerPassword(passwordHandler.getServicePassword(serverUri));
+methodInfo.setPassword(getServicePassword(parentService));
+methodInfo.addParam(getServicePassword(parentService));	
+methodInfo.addParam(newServiceUuid);
+methodInfo.addParam(newServiceType);
+methodInfo.addParam(jarFiles);
+methodInfo.addParam(newServiceClass);
+methodInfo.addParam(false);
+methodInfo.addParam(params);
+			
+//method parameters are a single list to the MethodInfo object 
+//but then the constructor ‘params’ is also a list that gets added
+			
+//then invoke the add service method
+isOK = ((Boolean)call.call(methodInfo)).booleanValue();
+</code></pre>
+<br/>
 <h2>The REST Interface</h2>
 <p>While XML-RPC is the internal method, the server can also receive and parse a REST interface, with key-value pairs. The user guide with the download package describes how the default MethodInfo object can be described by REST key-value  pairs. For a client to send a REST request, instead of calling MethodFactory.createMethodCall for the XML-RPC interface, you would use MethodFactory.createRestCall to get the REST client object. The code section might typically include the following:
 
