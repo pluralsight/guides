@@ -29,18 +29,20 @@ The easiest way to start a server is to run the batch file provided with the <a 
 <span class="hljs-string">}</span>
 <br/>
 <span class="hljs-string">public TestService() throws Exception</span>
-<span class="hljs-string">{</span>>
+<span class="hljs-string">{</span>
 <span class="hljs-string">super();</span>
 <span class="hljs-string">}</span>
+
 <span class="hljs-string">public TestService(String thisPassword, String thisAdminKey) throws Exception</span>
 <span class="hljs-string">{</span>
 <span class="hljs-string">super(thisPassword, thisAdminKey);</span>
 <span class="hljs-string">}</span>
+
 <span class="hljs-string">public TestService(String thisPassword, String thisAdminKey, Element adminXml)  throws Exception</span>
 <span class="hljs-string">{</span>
 <span class="hljs-string">super(thisPassword, thisAdminKey, adminXml);</span>
 <span class="hljs-string">}</span>
-<br/>
+
 <span class="hljs-string">public String GET() throws Exception</span>
 <span class="hljs-string">{</span>
 <span class="hljs-string">String dataValue;                           //the data value</span>
