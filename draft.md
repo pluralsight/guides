@@ -163,11 +163,6 @@
 - [Read more from Jorge Vergara](http://tutorials.pluralsight.com/author/javebratt) <img src="https://avatars.githubusercontent.com/u/7296623?v=3" width="30" height="30" alt="Jorge Vergara" />
 - Related to: Front-End JavaScript (Angular, React, Meteor, etc)
 
-### Test by Luke Lee
-- [Read the guide](http://tutorials.pluralsight.com/swift/test?status=draft)
-- [Read more from Luke Lee](http://tutorials.pluralsight.com/author/durden) <img src="https://avatars.githubusercontent.com/u/58063?v=3" width="30" height="30" alt="Luke Lee" />
-- Related to: Swift
-
 ### How to build a tinder for x with Ionic 2 and Firebase by Carlos Rojas
 - [Read the guide](http://tutorials.pluralsight.com/html-css/how-to-build-a-tinder-for-x-with-ionic-2-and-firebase?status=draft)
 - [Read more from Carlos Rojas](http://tutorials.pluralsight.com/author/carlosrojaso) <img src="https://avatars.githubusercontent.com/u/6164354?v=3" width="30" height="30" alt="Carlos Rojas" />
