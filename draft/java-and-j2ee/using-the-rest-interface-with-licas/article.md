@@ -6,11 +6,11 @@ This tutorial describes how to write and add a service to a licas server, before
 <h2>Running a Server</h2>
 <p>To use the licas framework, you start a server running, write and add a service to it and then invoke methods on the service. The framework provides a default server called <code>HttpServer</code> and its embedded <code>Enterprise Service Bus</code> that manages most of the interactions. The server is an HTTP server that you can start simply by running the main program, or ideally, extend it in your own code and start it from there. It can be password protected, or left open and configured using admin scripts. There are two base classes that are used to run and manage the server:<br/>
 
-<ol>
+<ul>
 <li>The HttpServer class is the default server that loops continuously to accept incoming HTTP request calls and replies with HTTP responses. There is a second server class called ESB that is loaded onto the HttpServer. ESB is a type of enterprise service bus and you in fact interact with that to access any of the running services. The server itself only receives message requests and gives out low level information. The HttpServer can be statically accessed as well, which makes practical sense if you are running your program on the same JVM and do not want to bother making every call through the calling mechanism.</li>
 <li>The ESB is the object that stores and interacts directly with the services. It provides all of the functionality, while the parent server class mostly accepts http requests and passes them on. For security reasons then, there is no static access and you need to know the password. Thus, any services that are stored also cannot be accessed directly, without knowing the server password as well. This provides a good level of protection at the base of the server.</li>
 <li>The Run_HttpServer class configures and starts the server running on a JVM. You might typically add a copy of this class to your own code and set it as Main to start a server. Note that both the http and the https protocol can be used.</li>
-</ol>
+</ul>
 <br/>
 The easiest way to start a server is to run the batch file provided with the <a href="http://licas.sourceforge.net" target="_blank">download</a>. Alternatively, the free All-in-One <a href="http://distributedcomputingsystems.co.uk/licas.html" target="_blank">GUI</a> includes a built-in server and access to all of the main functionality. The Run_HttpServer class has a command line interface that you can configure to change the run settings. The batch file and the user guides give more details on this.</p>
 
