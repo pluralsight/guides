@@ -19,5 +19,7 @@ To follow this guide you must have Docker already installed in your system. Plea
 * [Linux](https://docs.docker.com/engine/installation/linux/)
 * [Windows](https://download.docker.com/win/beta/InstallDocker.msi)
 
+One more requirement is to have docker-compose installed as well. You can install it by following the instructions [here](https://docs.docker.com/compose/install/).
+
 > I'll be using OSX for running the below commands, but they can be used on Linux systems as well
 
