@@ -44,4 +44,4 @@ The directory structure should look like below at the end of this guide -
 └── docker-compose.yml
 ```
 
-The first step is to create the ```docker-compose.yml``` file. 
+#### ```docker-compose.yml```
