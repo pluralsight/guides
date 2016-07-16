@@ -1,8 +1,3 @@
-### Using the REST Interface with Licas by discompsys
-- [Read the guide](http://tutorials.pluralsight.com/java-and-j2ee/using-the-rest-interface-with-licas?status=draft)
-- [Read more from discompsys](http://tutorials.pluralsight.com/author/discompsys) <img src="https://avatars.githubusercontent.com/u/20437503?v=3" width="30" height="30" alt="discompsys" />
-- Related to: Java and J2EE
-
 ### Middleman, Github, Reactrb, and Webpack by Mitch VanDuyn
 - [Read the guide](http://tutorials.pluralsight.com/front-end-javascript/middleman-github-reactrb-and-webpack?status=draft)
 - [Read more from Mitch VanDuyn](http://tutorials.pluralsight.com/author/catmando) <img src="https://avatars.githubusercontent.com/u/63146?v=3" width="30" height="30" alt="Mitch VanDuyn" />
