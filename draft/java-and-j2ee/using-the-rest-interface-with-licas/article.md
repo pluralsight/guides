@@ -65,10 +65,10 @@ The easiest way to start a server is to run the batch file provided with the <a 
 <span class="hljs-string">dataValue = (dataType + Const.RNDSEP + String.valueOf(dataObj));</span>
 <span class="hljs-string">}</span>
 <span class="hljs-string">}</span>
-        <br/>
+
 <span class="hljs-string">return dataValue;</span>
 <span class="hljs-string">}</span>
-<br/>
+
 <span class="hljs-string">...</span>
 <span class="hljs-string">}</span>
 </code></pre>
