@@ -117,8 +117,6 @@ The request is invoked on the endpoint address and the reply is a String that ca
 <br/>
 <br/>
 
- http://distributedcomputingsystems.co.uk/licas.html.
-</p>
 
 
 
