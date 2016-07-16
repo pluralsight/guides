@@ -28,6 +28,8 @@ I can't think of any more at the moment, although the people at Docker has put u
 
 I usually prefer to keep all my work related files in the location `~/Workspace`. So I'd be using this location through out the guide. If you prefer to keep them somewhere else please make the appropriate changes.
 
+I've also created a [github repo](https://github.com/redmoses/mysql-docker) to help you along, if you want to skip the steps.
+
 The first step would be to create the directory
 ```bash
 mkdir ~/Workspace/mysql-docker
@@ -106,7 +108,6 @@ logs:
 shell:
 	docker exec -ti mysql-db01 bash -e /root/mysql.sh
 ```
-
 
 If you closely look into the contents of `Makefile` then you'd see that all the commands are just running different `docker-compose` commands except the `shell` command. This is why the `Makefile` exists because of the inability of `docker-compose` to execute commands on a running container.
 
@@ -187,3 +188,7 @@ If you want to start fresh and delete all old data you can do the following -
 ```bash
 $ mysql down && sudo rm -rf ~/Workspace/mysql-docker/data && mysql up
 ```
+
+---
+
+Hope this guide helps you in making your coidng days easier.
