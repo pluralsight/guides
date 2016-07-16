@@ -104,7 +104,7 @@ The request is invoked on the endpoint address and the reply is a String that ca
 </p>
 <br/><br/>
 <h2>Conclusions</h2>
-<p>The licas framework offers a rich set of features and a flexible communication mechanism, to allow you to invoke local or remote objects of different types. It is relevant to the IoT, with an Information Service and related resource objects and the related communication mechanisms. Its AI packages then add something new that would allow for research and development in this new technological area. Note that licas also works on Android now.</p>
+<p>The licas framework offers a rich set of features and a flexible communication mechanism, to allow you to invoke local or remote objects of different types. It is relevant to the IoT, with an Information Service and related resource objects and the related communication mechanisms. Its AI packages then add something new that would allow for research and development in this new technological area. Licas also works on Android now.</p>
 <br/><br/>
 <h3>References</h3>
 <p>
