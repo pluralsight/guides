@@ -1,10 +1,9 @@
-# Start writing your guide here.
 This tutorial describes how to write and add a service to a licas server, before invoking it through the REST interface. 
 
-<h1>Summary</h1>
+<h2>Summary</h2>
 <p>The software package licas [ref] (lightweight Internet-based communication for autonomic services) is a Java-based framework that allows a user to build distributed service-based networks that can also self-organise/self-optimise. Functionality is provided to allow for REST or XML-based RPC message passing and dynamic linking between services. Web services invocation and autonomic management are also provided for. The framework is very lightweight and the architecture and adaptive capabilities through dynamic linking, add something new that is not available in other similar systems. The licas system is mostly a p2p server and provides quite a lot of AI algorithms for more intelligent processing of information. It is also about providing a platform on which to run services that can provide some functionality for a user. Therefore, the primary architecture would be an SOA, or something similar.</p>
 
-<h1>Starting a Server</h1>
+<h2>Starting a Server</h2>
 <p>To use the licas framework, you start a server running, write and add a service to it and then invoke methods on the service. The framework provides a default server called HttpServer and its embedded Enterprise Service Bus that manages most of the interactions. The server is an HTTP server that you can start simply by running the main program, or ideally, extend it in your own code and start it from there. It can be password protected, or left open and configured using admin scripts. There are two base classes that are used to run and manage the server:<br/>
 <br/>
 •	The HttpServer class is the default server that loops continuously to accept incoming HTTP request calls and replies with HTTP responses. There is a second server class called ESB that is loaded onto the HttpServer. ESB is a type of enterprise service bus and you in fact interact with that to access any of the running services. The server itself only receives message requests and gives out low level information. The HttpServer can be statically accessed as well, which makes practical sense if you are running your program on the same JVM and do not want to bother making every call through the calling mechanism.<br/>
@@ -13,4 +12,71 @@ This tutorial describes how to write and add a service to a licas server, before
 <br/>
 The easiest way to start a server is to run the batch file provided with the download [ref]. Alternatively, the free All-in-One GUI [ref] includes a built-in server and access to all of the main functionality. The Run_HttpServer class has a command line interface that you can configure to change the run settings. The batch file and the user guides give more details on this.</p>
 
-Or load the live markdown tutorial to check the syntax.
+<h2>Writing a Service</h2>
+<p>The licas system is about providing a platform on which to run services for a user. The base service classes provided by the package are the Service, Behaviour or the Auto classes. These are all abstract and so you would extend one and implement the abstract methods to write your own service. There are a number of examples in the main package – DataService and InformationService, for example. To write your own service, you can extend any of these abstract classes, or any of the fully implemented versions. For a very basic service, for example, you could write the following:</p>
+<br/><br/>
+public class MyInfoService extends Service
+{
+    /** The logger */
+    private static Logger logger;
+        
+     static
+    {
+        // get the logger
+        logger = LoggerHandler.getLogger(MyInfoService.class.getName());
+        logger.setDebug(false);
+    }
+
+
+    public TestService() throws Exception
+    {
+        super();
+    }
+    
+    public TestService(String thisPassword, String thisAdminKey) throws Exception
+    {
+        super(thisPassword, thisAdminKey);
+    }
+    
+    public TestService(String thisPassword, String thisAdminKey, Element adminXml)  throws Exception
+    {
+        super(thisPassword, thisAdminKey, adminXml);
+    }
+
+
+    public String GET() throws Exception
+    {
+        String dataValue;                           //the data value
+        
+        dataValue = "";
+        dataObj = getNextValue(…);
+        if (dataObj != null)
+        {
+            if (dataObj instanceof byte[])
+            {
+                dataValue = (TypeConst.BINARYFILE + Const.RNDSEP + new String((byte[])dataObj));
+            }
+            else if (dataObj instanceof Element)
+            {
+                dataValue = (TypeConst.XMLFILE + Const.RNDSEP + 
+			XmlHandler.xmlToString((Element)dataObj));
+            }
+            else
+            {
+                dataValue = (dataType + Const.RNDSEP + String.valueOf(dataObj));
+            }
+        }
+        
+        return dataValue;
+    }
+
+}
+<br/><br/>
+<p>The logger is the default licas logger. The constructors can all pass the parameters to the parent service class. This service has then implemented the GET method, which is of interest for the REST interface. If you type the service address into a browser, then the request is directed to the get method of the related service, not a web page. The service can then perform any functionality in its GET method and return any String result. The service will automatically parse this first to check for a data type, where Const.RNDSEP is used as the default tokenizer (data type – reply). The browser can then automatically display the reply, for example and so this is a quick way to ask a service to perform some function. 
+<br/><br/>
+The server can also be asked directly to return a file from its web directory. Therefore:
+http://192.168.2.2:8080/html/default.html
+would ask the server to return the default.html file from its web html directory, but
+http://192.168.2.2:8080/service1
+would ask service1 to return the result of its GET method.
+</p>
