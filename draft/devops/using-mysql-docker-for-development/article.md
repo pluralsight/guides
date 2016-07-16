@@ -66,22 +66,15 @@ mysql:
 For detailed information regarding the `docker-compose` file please see [here](https://docs.docker.com/compose/compose-file/).
 
 * `mysql` The name of the docker-compose service
-
 * `image` The image to start the container from
-
 * `container_name` A custom container name
-
 * `environment` Environment variables for the container
-
 * `volumes` Volumes to mount when running the container
 
 The `environment` variables
 * `MYSQL_ROOT_PASSWORD` The root password of your database server
-
 * `MYSQL_DATABASE` The name of the default database to start the container with. You can ignore this if you don't want the server to start with an already created database.
-
 * `MYSQL_USER` If you've created a default database then the user defined here will have all permissions over that database.
-
 * `MYSQL_PASSWORD` The default user's password
 
 More information regarding the mysql docker image can be found [here](https://hub.docker.com/_/mysql/)
@@ -119,14 +112,9 @@ shell:
 
 If you closely look into the contents of `Makefile` then you'd see that all the commands are just running different `docker-compose` commands except the `shell` command. This is why the `Makefile` exists because of the inability of `docker-compose` to execute commands on a running container.
 
-* The `up` command will download the mysql docker image if it's not already there, then it will start it up according to the `docker-compose.yml` configuration. The `-d` argument ensures that the container will run in daemon mode (in the background)
-
-* The `down` command will stop the container and delete it
-
-* The `start`, `stop`, and `restart` commands will control the container accordingly
-
-* The `status` command will show the current status of the container
-
-* The `logs` command will show the current logs of the container
-
-* The `shell` command will log into the mysql shell with root credentials
+* `up` command will download the mysql docker image if it's not already there, then it will start it up according to the `docker-compose.yml` configuration. The `-d` argument ensures that the container will run in daemon mode (in the background)
+* `down` command will stop the container and delete it
+* `start`, `stop`, and `restart` commands will control the container accordingly
+* `status` command will show the current status of the container
+* `logs` command will show the current logs of the container
+* `shell` command will log into the mysql shell with root credentials
