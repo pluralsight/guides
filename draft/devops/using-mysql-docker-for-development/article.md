@@ -23,7 +23,7 @@ To follow this guide you must have Docker already installed in your system. Plea
 * [Windows](https://download.docker.com/win/beta/InstallDocker.msi)
 
 ##### docker-compose
-One more requirement is to have ```docker-compose``` installed as well. You can install it by following the instructions [here](https://docs.docker.com/compose/install/).
+One more requirement is to have `docker-compose` installed as well. You can install it by following the instructions [here](https://docs.docker.com/compose/install/).
 
 ##### make
 I'd be using Makefile to control the docker container and everything else and tt just makes life easier.
@@ -32,9 +32,16 @@ I'd be using Makefile to control the docker container and everything else and tt
 * [Windows](http://gnuwin32.sourceforge.net/packages/make.htm)
 
 
-### Directory Structure
+### Set it all up
 
-The directory structure should look like below at the end of this guide -
+I usually prefer to keep all my work related files in the location `~/Workspace`. So I'd be using this location through out the guide. If you prefer to keep them somewhere else please make the appropriate changes.
+
+##### Create the directory
+```bash
+mkdir ~/Workspace/mysql-docker
+```
+
+The directory structure would look like below at the end of this guide -
 ```bash
 .
 ├── Makefile
@@ -44,4 +51,25 @@ The directory structure should look like below at the end of this guide -
 └── docker-compose.yml
 ```
 
-#### ```docker-compose.yml```
+##### `docker-compose.yml`
+
+Inside the `mysql-docker` directory create `docker-compose.yml` file with the below contents 
+
+```yaml
+mysql:
+  image: mysql:latest
+  container_name: mysql-db01
+  ports:
+    - "3306:3306"
+  environment:
+    - MYSQL_ROOT_PASSWORD=root1234
+    - MYSQL_DATABASE=testdb
+    - MYSQL_USER=testuser
+    - MYSQL_PASSWORD=testpass
+  volumes:
+    - ./config/login.sh:/root/login.sh
+    - ./data:/var/lib/mysql
+```
+
+`mysql`
+`image`
