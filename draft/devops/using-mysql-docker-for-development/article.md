@@ -61,7 +61,6 @@ mysql:
     - ./config/mysql.sh:/root/mysql.sh
     - ./data:/var/lib/mysql
 ```
-**Explanation**
 
 For detailed information regarding the `docker-compose` file please see [here](https://docs.docker.com/compose/compose-file/).
 
@@ -108,7 +107,6 @@ shell:
 	docker exec -ti mysql-db01 bash -e /root/mysql.sh
 ```
 
-**Explanation**
 
 If you closely look into the contents of `Makefile` then you'd see that all the commands are just running different `docker-compose` commands except the `shell` command. This is why the `Makefile` exists because of the inability of `docker-compose` to execute commands on a running container.
 
@@ -127,5 +125,6 @@ Inside the `mysql-docker` directory create a directory called `config`. Now crea
 mysql -uroot -p$MYSQL_ROOT_PASSWORD
 
 ```
-As we are defining the mysql root password in the environment variable `MYSQL_ROOT_PASSWORD` the script uses this to log into the mysql shell using root credentials.
+As we are defining the mysql root password in the environment variable `MYSQL_ROOT_PASSWORD` the script uses this to log into the mysql shell using root credentials. This script is mounted on `/root/mysql.sh` and is executed by the `Makefile` command `shell`.
+
 
