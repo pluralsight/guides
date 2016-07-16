@@ -45,7 +45,6 @@ The directory structure would look like below at the end of this guide -
 ```bash
 .
 ├── Makefile
-├── README.md
 ├── config
 │   └── mysql.sh
 └── docker-compose.yml
@@ -55,7 +54,7 @@ The directory structure would look like below at the end of this guide -
 
 Inside the `mysql-docker` directory create `docker-compose.yml` file with the below contents 
 
-```yaml
+```
 mysql:
   image: mysql:latest
   container_name: mysql-db01
@@ -74,16 +73,68 @@ mysql:
 
 For detailed information regarding the `docker-compose` file please see [here](https://docs.docker.com/compose/compose-file/).
 
-* `mysql` This is the name of the docker-compose service
+* `mysql` The name of the docker-compose service
+
 * `image` The image to start the container from
+
 * `container_name` A custom container name
+
 * `environment` Environment variables for the container
+
 * `volumes` Volumes to mount when running the container
 
 The `environment` variables
 * `MYSQL_ROOT_PASSWORD` The root password of your database server
+
 * `MYSQL_DATABASE` The name of the default database to start the container with. You can ignore this if you don't want the server to start with an already created database.
+
 * `MYSQL_USER` If you've created a default database then the user defined here will have all permissions over that database.
+
 * `MYSQL_PASSWORD` The default user's password
 
 More information regarding the mysql docker image can be found [here](https://hub.docker.com/_/mysql/)
+
+##### `Makefile`
+
+Inside the `mysql-docker` directory create a file called `Makefile` with the below contents 
+```
+up:
+	docker-compose up -d
+
+down:
+	docker-compose down
+
+start:
+	docker-compose start
+
+stop:
+	docker-compose stop
+
+restart:
+	docker-compose restart
+
+status:
+	docker-compose ps
+
+logs:
+	docker-compose logs
+
+shell:
+	docker exec -ti mysql-db01 bash -e /root/mysql.sh
+```
+
+**Explanation**
+
+If you closely look into the contents of `Makefile` then you'd see that all the commands are just running different `docker-compose` commands except the `shell` command. This is why the `Makefile` exists because of the inability of `docker-compose` to execute commands on a running container.
+
+* The `up` command will download the mysql docker image if it's not already there, then it will start it up according to the `docker-compose.yml` configuration. The `-d` argument ensures that the container will run in daemon mode (in the background)
+
+* The `down` command will stop the container and delete it
+
+* The `start`, `stop`, and `restart` commands will control the container accordingly
+
+* The `status` command will show the current status of the container
+
+* The `logs` command will show the current logs of the container
+
+* The `shell` command will log into the mysql shell with root credentials
