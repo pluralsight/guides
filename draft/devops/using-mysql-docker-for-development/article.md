@@ -32,3 +32,6 @@ I'd be using Makefile to control the docker container and everything else and tt
 * [Windows](http://gnuwin32.sourceforge.net/packages/make.htm)
 
 
+### Directory Structure
+
+The first step is to create the ```docker-compose.yml``` file. 
