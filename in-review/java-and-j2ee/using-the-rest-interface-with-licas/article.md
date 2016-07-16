@@ -111,7 +111,7 @@ The address of a service uniquely defines it on a server and over the Internet a
 </p>
 
 <h3>Add a Service to a Server</h3>
-<p>To add a service to a server, you use one of the addService methods. This can be either remotely using the communication mechanism or locally through a direct reference to the server. For a local reference you need to know both the server’s password and admin key, and you then call:
+<p>To add a service to a server, you use one of the <code>addService</code> methods. This can be either remotely using the communication mechanism or locally through a direct reference to the server. For a local reference you need to know both the server’s password and admin key, and you then call:
 </p>
 <pre><code>
 HttpServer.getHttpServer(password).getESB(adminKey).addService(…);
@@ -139,7 +139,7 @@ methodInfo.addParam(params);
 //then invoke the add service method
 isOK = ((Boolean)call.call(methodInfo)).booleanValue();
 </code></pre>
-<br/>
+
 <h2>The REST Interface</h2>
 <p>While XML-RPC is the internal method, the server can also receive and parse a REST interface, with key-value pairs. The user guide with the download package describes how the default MethodInfo object can be described by REST key-value  pairs. For a client to send a REST request, instead of calling MethodFactory.createMethodCall for the XML-RPC interface, you would use MethodFactory.createRestCall to get the REST client object. The code section might typically include the following:
 
