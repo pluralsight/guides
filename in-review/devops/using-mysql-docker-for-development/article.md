@@ -38,10 +38,11 @@ mkdir ~/Workspace/mysql-docker
 The directory structure would look like below at the end of this guide -
 ```bash
 .
-├── docker-compose.yml
 ├── Makefile
 ├── config
-└   └── mysql.sh
+│   ├── custom.cnf
+│   └── mysql.sh
+└── docker-compose.yml
 ```
 
 ##### `docker-compose.yml`
@@ -182,6 +183,11 @@ $ mysql shell
 **Data location**
 
 The data will be stored in the location `~/Workspace/mysql-docker/data`
+
+**MySql configurations**
+
+If you want to have custom mysql settings you can edit the file `config/custom.cnf` according to your needs.
+
 
 **Refreshing the database**
 
