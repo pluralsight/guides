@@ -4,7 +4,7 @@ Gone are the days when a developer had to make a mess of their base OS by instal
 
 In this article I'm going to talk about using MySql docker container instead of installng the database server in your system. 
 
-##### Some advantages of using Docker in this scenario - 
+##### Some advantages of using Docker in this scenario
 
  * Does not start or stop with your system by default. You run it only when you need, it frees up your system's memory and also improves your system start up time.
  * Does not make any changes to your base OS.
