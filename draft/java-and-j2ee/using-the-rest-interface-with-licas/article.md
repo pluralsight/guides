@@ -16,10 +16,10 @@ The easiest way to start a server is to run the batch file provided with the <a 
 <p>The licas system is about providing a platform on which to run services for a user. The base service classes provided by the package are the Service, Behaviour or the Auto classes. These are all abstract and so you would extend one and implement the abstract methods to write your own service. There are a number of examples in the main package – DataService and InformationService, for example. To write your own service, you can extend any of these abstract classes, or any of the fully implemented versions. For a very basic service, for example, you could write the following:</p>
 <br/><br/>
 <pre><code class="lang-javascript hljs">
-<span class="hljs-string"><style="text-index: 10px">public class MyInfoService extends Service</span>
-<span class="hljs-string"><style="text-index: 10px">{</span>
-<span class="hljs-string"><style="text-index: 20px">/** The logger */</span>
-<span class="hljs-string"><style="text-index: 20px">private static Logger logger;</span>
+<span class="hljs-string">public class MyInfoService extends Service</span>
+<span class="hljs-string">{</span>
+<span class="hljs-string">/** The logger */</span>
+<span class="hljs-string">private static Logger logger;</span>
         <br/>
 <span class="hljs-string">static</span>
 <span class="hljs-string">{</span>
@@ -76,9 +76,13 @@ The easiest way to start a server is to run the batch file provided with the <a 
 <p>The logger is the default licas logger. The constructors can all pass the parameters to the parent service class. This service has then implemented the GET method, which is of interest for the REST interface. If you type the service address into a browser, then the request is directed to the get method of the related service, not a web page. The service can then perform any functionality in its GET method and return any String result. The service will automatically parse this first to check for a data type, where Const.RNDSEP is used as the default tokenizer (data type – reply). The browser can then automatically display the reply, for example and so this is a quick way to ask a service to perform some function. 
 <br/><br/>
 The server can also be asked directly to return a file from its web directory. Therefore:
+<code class="lang-javascript hljs">
 http://192.168.2.2:8080/html/default.html
+</code>
 would ask the server to return the default.html file from its web html directory, but
+<code class="lang-javascript hljs">
 http://192.168.2.2:8080/service1
+</code>
 would ask service1 to return the result of its GET method.
 </p>
 
@@ -91,26 +95,29 @@ On the client side, when making a remote call, you would create the appropriate 
 <h3>Create a Service Path Handle</h3>
 <p>This is typically used by the internal XML-RPC process, but it is also the URI path definition for any service that runs on a server. It has a specific format that is created by the Handle class. The address of a service uniquely defines it on a server and over the Internet and includes a number of parts. Each of these parts is stored inside of an XML element of a specific type. The outermost element is simply called 'Handle'. Then it is required to define the server address and the service name. The first part is the URL of the server that is hosting the service. This is stored in a 'U' element. Each base service running on a server is then required to have a unique UUID. This is stored in an 'S' element. Nested services can also be declared by adding ‘S’ elements, one after the other. If the path is for a method invocation, then a final element that stores the method name is called 'M', although this part is typically added by the system. A full path description without a method could look something like:
 <br/><br/>
+<code class="lang-javascript hljs">
 <Handle><U>http://123.4.5.6:8888</U><S>Service1</S></Handle>
+</code>
 </p>
 
 <h2>The REST Interface</h2>
 <p>While XML-RPC is the internal method, the server can also receive and parse a REST interface, with key-value pairs. The user guide describes how the default MethodInfo object can be described in REST. For a client to send a REST request, instead of calling MethodFactory.createMethodCall for the XML-RPC interface, you would use MethodFactory.createRestCall to get the REST client object. The code section might typically include the following:
 <br/><br/>
+<pre><code class="lang-javascript hljs">
 CallObject call = new CallObject();
 MethodInfo methodInfo = MethodFactory.createRestCall((String)endpoint, (String)rest_request);
 String reply = (String)call.call(methodInfo);
+</code></pre>
 <br/><br/>
 The request is invoked on the endpoint address and the reply is a String that can be processed as required. Note that this works the same way for invoking a licas server or any other external source, such as a web service.
 </p>
 
 <h2>Conclusions</h2>
 <p>The licas framework offers a rich set of features and a flexible communication mechanism, to allow you to invoke local or remote objects of different types. It is relevant to the IoT, with an Information Service and related resource objects and the related communication mechanisms. Its AI packages then add something new that would allow for research and development in this new technological area. Licas also works on Android now.</p>
+<br/>
+<br/>
 
-<h3>References</h3>
-<p>
-[1]	Licas, (2016). http://licas.sourceforge.net.<br/>
-[2]	Licas DCS, (2016). http://distributedcomputingsystems.co.uk/licas.html.
+ http://distributedcomputingsystems.co.uk/licas.html.
 </p>
 
 
