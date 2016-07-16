@@ -46,7 +46,7 @@ The easiest way to start a server is to run the batch file provided with the <a 
 <span class="hljs-string">public String GET() throws Exception</span>
 <span class="hljs-string">{</span>
 <span class="hljs-string">String dataValue;                           //the data value</span>
-        <br/>
+
 <span class="hljs-string">dataValue = "";</span>
 <span class="hljs-string">dataObj = getNextValue(…);</span>
 <span class="hljs-string">if (dataObj != null)</span>
