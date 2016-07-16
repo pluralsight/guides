@@ -70,6 +70,11 @@ mysql:
     - ./config/login.sh:/root/login.sh
     - ./data:/var/lib/mysql
 ```
+Explanation
+* `mysql` This is the name of the docker-compose service
+* `image` The image to start the container from
+* `container_name` A custom container name
+* `environment` Environment variables for the container as per [mysql docker documentation](https://hub.docker.com/_/mysql/).
+* `volumes` Volumes to mount when running the container
 
-`mysql`
-`image`
+For detailed information regarding the docker-compose file please see [here](https://docs.docker.com/compose/compose-file/)
