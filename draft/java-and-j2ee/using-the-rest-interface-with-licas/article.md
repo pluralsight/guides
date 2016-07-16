@@ -80,3 +80,10 @@ would ask the server to return the default.html file from its web html directory
 http://192.168.2.2:8080/service1
 would ask service1 to return the result of its GET method.
 </p>
+<br/><br/>
+<h3>Communication Protocols</h3>
+<p>Licas uses an XML-RPC mechanism internally, but this tutorial describes the REST interface specifically. XML-RPC is maybe better for programmable interfaces or computer-to-computer interactions, allowing complex objects to be passed easily. The REST interface is supported with Resources and an Information Service, so that basic media types can be stored and returned upon request. It is also useful for the IoT possibilities. 
+<br/><br/>
+On the client side, when making a remote call, you would create the appropriate MethodInfo object and execute it on a CallObject. The MethodFactory class is useful here and provides 3 static methods that will create the info object for you – createMethodCall, createRestCall or createSoapCall. There are lots of other parameters that can be set, but those are the main components. The address of the service to invoke can be a URI description, or for local interactions, it can be a direct reference to the object itself. The system will check for this and use method invocation when appropriate. 
+</p>
+
