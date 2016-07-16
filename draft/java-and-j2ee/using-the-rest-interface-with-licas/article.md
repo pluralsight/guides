@@ -16,61 +16,63 @@ The easiest way to start a server is to run the batch file provided with the <a 
 <p>The licas system is about providing a platform on which to run services for a user. The base service classes provided by the package are the Service, Behaviour or the Auto classes. These are all abstract and so you would extend one and implement the abstract methods to write your own service. There are a number of examples in the main package – DataService and InformationService, for example. To write your own service, you can extend any of these abstract classes, or any of the fully implemented versions. For a very basic service, for example, you could write the following:</p>
 <br/><br/>
 <pre><code class="lang-javascript hljs">
-<span class="hljs-string">public class MyInfoService extends Service</span>
-<span class="hljs-string">{</span>
-<span class="hljs-string">/** The logger */</span>
-<span class="hljs-string">private static Logger logger;</span>
-        <br/>
-<span class="hljs-string">static</span>
-<span class="hljs-string">{</span>
-<span class="hljs-string">// get the logger</span>
-<span class="hljs-string">logger = LoggerHandler.getLogger(MyInfoService.class.getName());</span>
-<span class="hljs-string">logger.setDebug(false);</span>
-<span class="hljs-string">}</span>
+public class MyInfoService extends Service
+{
+    /** The logger */
+    private static Logger logger;>
+
+    ...
+    
+    static
+    {
+        // get the logger
+        logger = LoggerHandler.getLogger(MyInfoService.class.getName());
+        logger.setDebug(false);
+    }
 <br/>
-<span class="hljs-string">public TestService() throws Exception</span>
-<span class="hljs-string">{</span>
-<span class="hljs-string">super();</span>
-<span class="hljs-string">}</span>
+    public TestService() throws Exception
+    {
+        super();
+    }
 
-<span class="hljs-string">public TestService(String thisPassword, String thisAdminKey) throws Exception</span>
-<span class="hljs-string">{</span>
-<span class="hljs-string">super(thisPassword, thisAdminKey);</span>
-<span class="hljs-string">}</span>
+    public TestService(String thisPassword, String thisAdminKey) throws Exception
+    {
+        super(thisPassword, thisAdminKey);
+    }
 
-<span class="hljs-string">public TestService(String thisPassword, String thisAdminKey, Element adminXml)  throws Exception</span>
-<span class="hljs-string">{</span>
-<span class="hljs-string">super(thisPassword, thisAdminKey, adminXml);</span>
-<span class="hljs-string">}</span>
+    public TestService(String thisPassword, String thisAdminKey, Element adminXml)  throws Exception
+    {
+        super(thisPassword, thisAdminKey, adminXml);
+    }
 
-<span class="hljs-string">public String GET() throws Exception</span>
-<span class="hljs-string">{</span>
-<span class="hljs-string">String dataValue;                           //the data value</span>
+    public String GET() throws Exception
+    {
+        String dataValue;       //the data value
 
-<span class="hljs-string">dataValue = "";</span>
-<span class="hljs-string">dataObj = getNextValue(…);</span>
-<span class="hljs-string">if (dataObj != null)</span>
-<span class="hljs-string">{</span>
-<span class="hljs-string">if (dataObj instanceof byte[])</span>
-<span class="hljs-string">{</span>
-<span class="hljs-string">dataValue = (TypeConst.BINARYFILE + Const.RNDSEP + new String((byte[])dataObj));</span>
-<span class="hljs-string">}</span>
-<span class="hljs-string">else if (dataObj instanceof Element)</span>
-<span class="hljs-string">{</span>
-<span class="hljs-string">dataValue = (TypeConst.XMLFILE + Const.RNDSEP +
-			XmlHandler.xmlToString((Element)dataObj));</span>
-<span class="hljs-string">}</span>
-<span class="hljs-string">else</span>
-<span class="hljs-string">{</span>
-<span class="hljs-string">dataValue = (dataType + Const.RNDSEP + String.valueOf(dataObj));</span>
-<span class="hljs-string">}</span>
-<span class="hljs-string">}</span>
+        dataValue = "";
+        dataObj = getNextValue(…);
+        if (dataObj != null)
+        {
+            if (dataObj instanceof byte[])
+            {
+                dataValue = (TypeConst.BINARYFILE + Const.RNDSEP + new String((byte[])dataObj));
+            }
+            else if (dataObj instanceof Element)
+            {
+                dataValue = (TypeConst.XMLFILE + Const.RNDSEP +
+			XmlHandler.xmlToString((Element)dataObj));
+            }
+            else
+            {
+                dataValue = (dataType + Const.RNDSEP + String.valueOf(dataObj));
+            }
+        }
 
-<span class="hljs-string">return dataValue;</span>
-<span class="hljs-string">}</span>
+        return dataValue;
+    }
 
-<span class="hljs-string">...</span>
-<span class="hljs-string">}</span>
+    ...
+    }
 </code></pre>
 
 <p>The logger is the default licas logger. The constructors can all pass the parameters to the parent service class. This service has then implemented the GET method, which is of interest for the REST interface. If you type the service address into a browser, then the request is directed to the get method of the related service, not a web page. The service can then perform any functionality in its GET method and return any String result. The service will automatically parse this first to check for a data type, where Const.RNDSEP is used as the default tokenizer (data type – reply). The browser can then automatically display the reply, for example and so this is a quick way to ask a service to perform some function. 
