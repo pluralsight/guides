@@ -21,7 +21,7 @@ I can't think of any more at the moment, although the people at Docker has put u
 
 * `docker-compose` You can install it by following the instructions [here](https://docs.docker.com/compose/install/).
 
-* `make` I'd be using Makefile to control the docker container
+* `make` I'd be using Makefile to control the docker container. If you don't have `make` installed please follow the resepctive link
     * [Mac](http://stackoverflow.com/a/11494872/2894655)
     * [Linux](http://www.cyberciti.biz/faq/debian-linux-install-gnu-gcc-compiler/)
     * [Windows](http://gnuwin32.sourceforge.net/packages/make.htm)
