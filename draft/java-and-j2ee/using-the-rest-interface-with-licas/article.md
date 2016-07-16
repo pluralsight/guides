@@ -16,62 +16,63 @@ The easiest way to start a server is to run the batch file provided with the <a 
 <p>The licas system is about providing a platform on which to run services for a user. The base service classes provided by the package are the Service, Behaviour or the Auto classes. These are all abstract and so you would extend one and implement the abstract methods to write your own service. There are a number of examples in the main package – DataService and InformationService, for example. To write your own service, you can extend any of these abstract classes, or any of the fully implemented versions. For a very basic service, for example, you could write the following:</p>
 <br/><br/>
 <code class="lang-javascript hljs">
-public class MyInfoService extends Service
-{
-    /** The logger */
-    private static Logger logger;
-        
-     static
-    {
-        // get the logger
-        logger = LoggerHandler.getLogger(MyInfoService.class.getName());
-        logger.setDebug(false);
-    }
-
-
-    public TestService() throws Exception
-    {
-        super();
-    }
-    
-    public TestService(String thisPassword, String thisAdminKey) throws Exception
-    {
-        super(thisPassword, thisAdminKey);
-    }
-    
-    public TestService(String thisPassword, String thisAdminKey, Element adminXml)  throws Exception
-    {
-        super(thisPassword, thisAdminKey, adminXml);
-    }
-
-
-    public String GET() throws Exception
-    {
-        String dataValue;                           //the data value
-        
-        dataValue = "";
-        dataObj = getNextValue(…);
-        if (dataObj != null)
-        {
-            if (dataObj instanceof byte[])
-            {
-                dataValue = (TypeConst.BINARYFILE + Const.RNDSEP + new String((byte[])dataObj));
-            }
-            else if (dataObj instanceof Element)
-            {
+public class MyInfoService extends Service<br/>
+{<br/>
+    /** The logger */<br/>
+    private static Logger logger;<br/>
+        <br/>
+     static<br/>
+    {<br/>
+        // get the logger<br/>
+        logger = LoggerHandler.getLogger(MyInfoService.class.getName());<br/>
+        logger.setDebug(false);<br/>
+    }<br/>
+<br/>
+<br/>
+    public TestService() throws Exception<br/>
+    {<br/>
+        super();<br/>
+    }<br/>
+ <br/>   
+    public TestService(String thisPassword, String thisAdminKey) throws Exception<br/>
+    {<br/>
+        super(thisPassword, thisAdminKey);<br/>
+    }<br/>
+    <br/>
+    public TestService(String thisPassword, String thisAdminKey, Element adminXml)  throws Exception<br/>
+    {<br/>
+        super(thisPassword, thisAdminKey, adminXml);<br/>
+    }<br/>
+<br/>
+<br/>
+    public String GET() throws Exception<br/>
+    {<br/>
+        String dataValue;                           //the data value<br/>
+        <br/>
+        dataValue = "";<br/>
+        dataObj = getNextValue(…);<br/>
+        if (dataObj != null)<br/>
+        {<br/>
+            if (dataObj instanceof byte[])<br/>
+            {<br/>
+                dataValue = (TypeConst.BINARYFILE + Const.RNDSEP + new String((byte[])dataObj));<br/>
+            }<br/>
+            else if (dataObj instanceof Element)<br/>
+            {<br/>
                 dataValue = (TypeConst.XMLFILE + Const.RNDSEP + 
-			XmlHandler.xmlToString((Element)dataObj));
-            }
-            else
+			XmlHandler.xmlToString((Element)dataObj));<br/>
+            }<br/>
+            else<br/>
             {
-                dataValue = (dataType + Const.RNDSEP + String.valueOf(dataObj));
-            }
-        }
-        
-        return dataValue;
-    }
-
-}
+                dataValue = (dataType + Const.RNDSEP + String.valueOf(dataObj));<br/>
+            }<br/>
+        }<br/>
+        <br/>
+        return dataValue;<br/>
+    }<br/>
+<br/>
+    ...<br/>
+}<br/>
 </code>
 <br/><br/>
 <p>The logger is the default licas logger. The constructors can all pass the parameters to the parent service class. This service has then implemented the GET method, which is of interest for the REST interface. If you type the service address into a browser, then the request is directed to the get method of the related service, not a web page. The service can then perform any functionality in its GET method and return any String result. The service will automatically parse this first to check for a data type, where Const.RNDSEP is used as the default tokenizer (data type – reply). The browser can then automatically display the reply, for example and so this is a quick way to ask a service to perform some function. 
