@@ -1,4 +1,4 @@
-# MySql in Docker for development
+# MySql Docker for development
 
 Gone are the days when a developer had to make a mess of their base OS by installing loads of software, because Docker has come to save the day.
 
@@ -13,9 +13,11 @@ Some advantages of using Docker in this scenario -
  
 I can't think of any more at the moment, although the people at Docker has put up some amazing documentation on their site. Feel free to have a look if you want to know [more](https://docs.docker.com/).
 
-The obvious requirement to this guide would be to have Docker already installed in your system. For Mac users I'd recommend installing the Docker for Mac version (it doesn't require you to have Virtual Box). 
+To follow this guide you must have Docker already installed in your system. Please follow the [installation guide](https://docs.docker.com/engine/installation/) for assistance or you can get it by using the direct links below
 
-Please follow the [installation guide](https://docs.docker.com/engine/installation/) for assistance.
-
+* [Mac](https://download.docker.com/mac/beta/Docker.dmg)
+* [Linux](https://docs.docker.com/engine/installation/linux/)
+* [Windows](https://download.docker.com/win/beta/InstallDocker.msi)
 
 > I'll be using OSX for running the below commands, but they can be used on Linux systems as well
+
