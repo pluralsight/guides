@@ -80,19 +80,19 @@ would ask the server to return the default.html file from its web html directory
 http://192.168.2.2:8080/service1
 would ask service1 to return the result of its GET method.
 </p>
-<br/><br/>
+
 <h3>Communication Protocols</h3>
 <p>Licas uses an XML-RPC mechanism internally, but this tutorial describes the REST interface specifically. XML-RPC is maybe better for programmable interfaces or computer-to-computer interactions, allowing complex objects to be passed easily. The REST interface is supported with Resources and an Information Service, so that basic media types can be stored and returned upon request. It is also useful for the IoT possibilities. 
 <br/><br/>
 On the client side, when making a remote call, you would create the appropriate MethodInfo object and execute it on a CallObject. The MethodFactory class is useful here and provides 3 static methods that will create the info object for you – createMethodCall, createRestCall or createSoapCall. There are lots of other parameters that can be set, but those are the main components. The address of the service to invoke can be a URI description, or for local interactions, it can be a direct reference to the object itself. The system will check for this and use method invocation when appropriate. 
 </p>
-<br/><br/>
+
 <h3>Create a Service Path Handle</h3>
 <p>This is typically used by the internal XML-RPC process, but it is also the URI path definition for any service that runs on a server. It has a specific format that is created by the Handle class. The address of a service uniquely defines it on a server and over the Internet and includes a number of parts. Each of these parts is stored inside of an XML element of a specific type. The outermost element is simply called 'Handle'. Then it is required to define the server address and the service name. The first part is the URL of the server that is hosting the service. This is stored in a 'U' element. Each base service running on a server is then required to have a unique UUID. This is stored in an 'S' element. Nested services can also be declared by adding ‘S’ elements, one after the other. If the path is for a method invocation, then a final element that stores the method name is called 'M', although this part is typically added by the system. A full path description without a method could look something like:
 <br/><br/>
 <Handle><U>http://123.4.5.6:8888</U><S>Service1</S></Handle>
 </p>
-<br/><br/>
+
 <h2>The REST Interface</h2>
 <p>While XML-RPC is the internal method, the server can also receive and parse a REST interface, with key-value pairs. The user guide describes how the default MethodInfo object can be described in REST. For a client to send a REST request, instead of calling MethodFactory.createMethodCall for the XML-RPC interface, you would use MethodFactory.createRestCall to get the REST client object. The code section might typically include the following:
 <br/><br/>
@@ -102,10 +102,10 @@ String reply = (String)call.call(methodInfo);
 <br/><br/>
 The request is invoked on the endpoint address and the reply is a String that can be processed as required. Note that this works the same way for invoking a licas server or any other external source, such as a web service.
 </p>
-<br/><br/>
+
 <h2>Conclusions</h2>
 <p>The licas framework offers a rich set of features and a flexible communication mechanism, to allow you to invoke local or remote objects of different types. It is relevant to the IoT, with an Information Service and related resource objects and the related communication mechanisms. Its AI packages then add something new that would allow for research and development in this new technological area. Licas also works on Android now.</p>
-<br/><br/>
+
 <h3>References</h3>
 <p>
 [1]	Licas, (2016). http://licas.sourceforge.net.<br/>
