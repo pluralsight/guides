@@ -108,7 +108,7 @@ The request is invoked on the endpoint address and the reply is a String that ca
 <br/><br/>
 <h3>References</h3>
 <p>
-[1]	Licas, (2016). http://licas.sourceforge.net.
+[1]	Licas, (2016). http://licas.sourceforge.net.<br/>
 [2]	Licas DCS, (2016). http://distributedcomputingsystems.co.uk/licas.html.
 </p>
 
