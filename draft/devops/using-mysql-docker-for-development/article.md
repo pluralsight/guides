@@ -44,7 +44,7 @@ The directory structure would look like below at the end of this guide -
 
 ##### `docker-compose.yml`
 
-Inside the `mysql-docker` directory create `docker-compose.yml` file with the below contents 
+Inside the `mysql-docker` directory create `docker-compose.yml` file  
 
 ```
 mysql:
@@ -80,7 +80,7 @@ More information regarding the mysql docker image can be found [here](https://hu
 
 ##### `Makefile`
 
-Inside the `mysql-docker` directory create a file called `Makefile` with the below contents 
+Inside the `mysql-docker` directory create a file called `Makefile` 
 ```
 up:
 	docker-compose up -d
@@ -118,13 +118,72 @@ If you closely look into the contents of `Makefile` then you'd see that all the 
 * `shell` command will log into the mysql shell with root credentials
 
 ##### `mysql.sh`
-Inside the `mysql-docker` directory create a directory called `config`. Now create a file called `mysql.sh` inside the `config` directory you just created and fill the file with the below contents 
+Inside the `mysql-docker` directory create a directory called `config`. Now create a file called `mysql.sh` inside the `config` directory you just created
 
 ```bash
 #!/bin/sh
 mysql -uroot -p$MYSQL_ROOT_PASSWORD
-
 ```
 As we are defining the mysql root password in the environment variable `MYSQL_ROOT_PASSWORD` the script uses this to log into the mysql shell using root credentials. This script is mounted on `/root/mysql.sh` and is executed by the `Makefile` command `shell`.
 
+##### Create an alias
+This is just to simplify things for us. I use `zsh` as my shell so I'd add the following line in `~/.zshrc` file, but if you use `bash` you should be adding to `~/.bashrc`
+```bash
+alias mysql='cd ~/Workspace/mysql-docker/ && make '
+```
 
+Once you've created the alias load it in your environment
+```bash
+$ source ~/.zshrc
+```
+---
+**Initialize MySql**
+
+Now we are all set up. So lets start using the mysql docker. The first time you run the docker you have to run the initialize command. This command will download mysql docker image if it's not already there. Then it will start it up according to the `docker-compose.yml` configuration.
+```
+$ mysql up
+```
+
+Once you've initialized the docker you can open up your terminal and use the following commands accordingly.
+
+**Start MySql**
+
+Start up the mysql container
+```
+$ mysql start
+```
+**Stop MySql**
+
+Stop the mysql container
+```
+$ mysql stop
+```
+**Restart MySql**
+
+Restart the mysql container
+```
+$ mysql restart
+```
+**MySql logs**
+
+Show the logs of the running container
+```
+$ mysql logs
+```
+**MySql shell**
+
+To connect to mysql shell
+```
+$ mysql shell
+```
+
+**Data location**
+
+The data will be stored in the location `~/Workspace/mysql-docker/data`
+
+**Refreshing the database**
+
+If you want to start fresh and delete all old data you can do the following -
+```bash
+$ mysql down && sudo rm -rf ~/Workspace/mysql-docker/data && mysql up
+```
