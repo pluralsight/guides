@@ -15,7 +15,7 @@ The easiest way to start a server is to run the batch file provided with the <a 
 <h2>Writing a Service</h2>
 <p>The licas system is about providing a platform on which to run services for a user. The base service classes provided by the package are the Service, Behaviour or the Auto classes. These are all abstract and so you would extend one and implement the abstract methods to write your own service. There are a number of examples in the main package – DataService and InformationService, for example. To write your own service, you can extend any of these abstract classes, or any of the fully implemented versions. For a very basic service, for example, you could write the following:</p>
 <br/><br/>
-<pre><code class="lang-javascript hljs">
+<code class="lang-javascript hljs">
 <span class="hljs-string" style="text-index: 10px">public class MyInfoService extends Service</span>
 <span class="hljs-string" style="text-index: 10px">{</span>
 <span class="hljs-string" style="text-index: 20px">/** The logger */</span>
@@ -71,7 +71,7 @@ The easiest way to start a server is to run the batch file provided with the <a 
 
 <span class="hljs-string">...</span>
 <span class="hljs-string">}</span>
-</code></pre>
+</code>
 <br/><br/>
 <p>The logger is the default licas logger. The constructors can all pass the parameters to the parent service class. This service has then implemented the GET method, which is of interest for the REST interface. If you type the service address into a browser, then the request is directed to the get method of the related service, not a web page. The service can then perform any functionality in its GET method and return any String result. The service will automatically parse this first to check for a data type, where Const.RNDSEP is used as the default tokenizer (data type – reply). The browser can then automatically display the reply, for example and so this is a quick way to ask a service to perform some function. 
 <br/><br/>
