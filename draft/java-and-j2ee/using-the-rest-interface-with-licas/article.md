@@ -92,8 +92,25 @@ On the client side, when making a remote call, you would create the appropriate 
 <br/><br/>
 <Handle><U>http://123.4.5.6:8888</U><S>Service1</S></Handle>
 </p>
-
-
+<br/><br/>
+<h2>The REST Interface</h2>
+<p>While XML-RPC is the internal method, the server can also receive and parse a REST interface, with key-value pairs. The user guide describes how the default MethodInfo object can be described in REST. For a client to send a REST request, instead of calling MethodFactory.createMethodCall for the XML-RPC interface, you would use MethodFactory.createRestCall to get the REST client object. The code section might typically include the following:
+<br/><br/>
+CallObject call = new CallObject();
+MethodInfo methodInfo = MethodFactory.createRestCall((String)endpoint, (String)rest_request);
+String reply = (String)call.call(methodInfo);
+<br/><br/>
+The request is invoked on the endpoint address and the reply is a String that can be processed as required. Note that this works the same way for invoking a licas server or any other external source, such as a web service.
+</p>
+<br/><br/>
+<h2>Conclusions</h2>
+<p>The licas framework offers a rich set of features and a flexible communication mechanism, to allow you to invoke local or remote objects of different types. It is relevant to the IoT, with an Information Service and related resource objects and the related communication mechanisms. Its AI packages then add something new that would allow for research and development in this new technological area. Note that licas also works on Android now.</p>
+<br/><br/>
+<h3>References</h3>
+<p>
+[1]	Licas, (2016). http://licas.sourceforge.net.
+[2]	Licas DCS, (2016). http://distributedcomputingsystems.co.uk/licas.html.
+</p>
 
 
 
