@@ -72,6 +72,7 @@ public class MyInfoService extends Service
     }
 
     ...
+    
     }
 </code></pre>
 
@@ -105,7 +106,7 @@ On the client side, when making a remote call, you would create the appropriate 
 <h2>The REST Interface</h2>
 <p>While XML-RPC is the internal method, the server can also receive and parse a REST interface, with key-value pairs. The user guide describes how the default MethodInfo object can be described in REST. For a client to send a REST request, instead of calling MethodFactory.createMethodCall for the XML-RPC interface, you would use MethodFactory.createRestCall to get the REST client object. The code section might typically include the following:
 
-<pre><code class="lang-javascript hljs">
+<pre><code>
 CallObject call = new CallObject();
 MethodInfo methodInfo = MethodFactory.createRestCall((String)endpoint, (String)rest_request);
 String reply = (String)call.call(methodInfo);
