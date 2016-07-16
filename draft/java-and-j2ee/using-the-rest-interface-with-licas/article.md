@@ -18,15 +18,15 @@ The easiest way to start a server is to run the batch file provided with the <a 
 <pre><code class="lang-javascript hljs">
 <span class="hljs-string">public class MyInfoService extends Service</span>
 <span class="hljs-string">{</span>
-/t/t    /** The logger */<br/>
-/t/t    private static Logger logger;<br/>
+<span class="hljs-string">/** The logger */</span>
+<span class="hljs-string">private static Logger logger;</span>
         <br/>
-\t\t     static<br/>
-\t\t    {<br/>
-\t\t        // get the logger<br/>
-\t\t\t        logger = LoggerHandler.getLogger(MyInfoService.class.getName());<br/>
-\t\t\t        logger.setDebug(false);<br/>
-\t\t    }<br/>
+<span class="hljs-string">static</span>
+<span class="hljs-string">{</span>
+<span class="hljs-string">// get the logger</span>
+<span class="hljs-string">logger = LoggerHandler.getLogger(MyInfoService.class.getName());</span>
+<span class="hljs-string">logger.setDebug(false);</span>
+<span class="hljs-string">}</span>
 <br/>
 <br/>
     public TestService() throws Exception<br/>
