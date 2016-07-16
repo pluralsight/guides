@@ -28,7 +28,7 @@ I can't think of any more at the moment, although the people at Docker has put u
 
 I usually prefer to keep all my work related files in the location `~/Workspace`. So I'd be using this location through out the guide. If you prefer to keep them somewhere else please make the appropriate changes.
 
-##### Create the directory
+The first step would be to create the directory
 ```bash
 mkdir ~/Workspace/mysql-docker
 ```
@@ -36,10 +36,10 @@ mkdir ~/Workspace/mysql-docker
 The directory structure would look like below at the end of this guide -
 ```bash
 .
+├── docker-compose.yml
 ├── Makefile
 ├── config
-│   └── mysql.sh
-└── docker-compose.yml
+└   └── mysql.sh
 ```
 
 ##### `docker-compose.yml`
@@ -66,7 +66,7 @@ mysql:
 For detailed information regarding the `docker-compose` file please see [here](https://docs.docker.com/compose/compose-file/).
 
 * `mysql` The name of the docker-compose service
-* `image` The image to start the container from. I'm using the latest tag here which means it will get the latest mysql version available. If you want to work with some specific version you can check out the list of available tags [here](https://hub.docker.com/r/library/mysql/tags/).
+* `image` The image to start the container from. I'm using the `latest` tag here which means it will get the latest mysql version available. If you want to work with some specific version you can check out the list of available tags [here](https://hub.docker.com/r/library/mysql/tags/).
 * `container_name` A custom container name
 * `environment` Environment variables for the container
 * `volumes` Volumes to mount when running the container
@@ -118,3 +118,14 @@ If you closely look into the contents of `Makefile` then you'd see that all the 
 * `status` command will show the current status of the container
 * `logs` command will show the current logs of the container
 * `shell` command will log into the mysql shell with root credentials
+
+##### `mysql.sh`
+Inside the `mysql-docker` directory create a directory called `config`. Now create a file called `mysql.sh` inside the `config` directory you just created and fill the file with the below contents 
+
+```bash
+#!/bin/sh
+mysql -uroot -p$MYSQL_ROOT_PASSWORD
+
+```
+As we are defining the mysql root password in the environment variable `MYSQL_ROOT_PASSWORD` the script uses this to log into the mysql shell using root credentials.
+
