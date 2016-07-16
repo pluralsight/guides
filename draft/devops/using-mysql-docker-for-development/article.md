@@ -10,6 +10,7 @@ Gone are the days when a developer had to make a mess of their base OS by instal
  
 I can't think of any more at the moment, although the people at Docker has put up some amazing documentation on their site. Feel free to have a look if you want to know [more](https://docs.docker.com/).
 
+
 > I'll be using OSX for this guide. These commands should be usable on Linux as well. For Windows users I'd try my best to provide the appropriate links but you might need to make some tweaks before you can use this.
 
 ### Prerequisites
