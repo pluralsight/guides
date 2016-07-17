@@ -1,4 +1,4 @@
-This tutorial describes how to write and add a service to a licas server, before invoking it through the REST interface. Some extra characters have been added to the example URI path descriptions to prevent them being live links.
+This tutorial describes how to write and add a service to a licas server, before invoking it through the REST interface.
 
 <h2>Summary</h2>
 <p>The software package <a href="http://licas.sourceforge.net" target="_blank">licas</a> (lightweight Internet-based communication for autonomic services) is a Java-based framework that allows a user to build distributed service-based networks that can also self-organise/self-optimise. Functionality is provided to allow for REST or XML-based RPC message passing and dynamic linking between services. Web services invocation and autonomic management are also provided for. The framework is very lightweight and the architecture and adaptive capabilities through dynamic linking, add something new that is not available in other similar systems. The licas system is mostly about the p2p server and more intelligent processing of information through its AI algorithms. It is also about providing a platform on which to run services that can provide some functionality for a user. Therefore, the primary architecture would be an SOA, or something similar.</p>
@@ -85,11 +85,11 @@ public class MyInfoService extends Service
 
 The server can also be asked directly to return a file from its web directory. Therefore:<br/>
 <code>
-http:://192.168.2.2:8080/html/default.html
+http:&#8260;&#8260;192.168.2.2:8080/html/default.html
 </code><br/>
 would ask the server to return the default.html file from its web html directory, but<br/>
 <code>
-http:://192.168.2.2:8080/service1
+http:&#8260;&#8260;192.168.2.2:8080/service1
 </code><br/>
 would ask service1 to return the result of its GET method.
 </p>
@@ -106,7 +106,7 @@ On the client side, when making a remote call, you would create the appropriate 
 The address of a service uniquely defines it on a server and over the Internet and includes a number of parts. Each of these parts is stored inside of an XML element of a specific type. The outermost element is simply called 'Handle'. Then it is required to define the server address and the service name. The first part is the URL of the server that is hosting the service. This is stored in a 'U' element. Each base service running on a server is then required to have a unique UUID. This is stored in an 'S' element. Nested services can also be declared by adding ‘S’ elements, one after the other. If the path is for a method invocation, then a final element that stores the method name is called 'M', although this part is typically added by the system. A full path description without a method could look something like:
 
 <code>
- <-Handle><-U>http:://123.4.5.6:8888<-/U><-S>Service1<-/S><-/Handle>
+ &lt;Handle>&lt;U&gt;http:&#8260;&#8260;123.4.5.6:8888&lt;/U&gt;&lt;S&gt;Service1&lt;/S&gt;&lt;/Handle&gt;
 </code>
 </p>
 
