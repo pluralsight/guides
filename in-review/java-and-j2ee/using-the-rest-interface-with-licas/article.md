@@ -2,7 +2,7 @@ This tutorial describes how to write and add a service to a licas server, before
 
 <h2>Summary</h2>
 <p>The software package <a href="http://licas.sourceforge.net" target="_blank">licas</a> (lightweight Internet-based communication for autonomic services) is a Java-based framework that allows a user to build distributed service-based networks that can also self-organise/self-optimise. Functionality is provided to allow for REST or XML-based RPC message passing and dynamic linking between services. Web services invocation and autonomic management are also provided for. The framework is very lightweight and the architecture and adaptive capabilities through dynamic linking, add something new that is not available in other similar systems. The licas system is mostly about the p2p server and more intelligent processing of information through its AI algorithms. It is also about providing a platform on which to run services that can provide some functionality for a user. Therefore, the primary architecture would be an SOA, or something similar.</p>
-
+<br/>
 <h2>Running a Server</h2>
 <p>To use the licas framework, you start a server running, write and add a service to it and then invoke methods on the service. The framework provides a default server called <code>HttpServer</code> and its embedded <code>Enterprise Service Bus</code> that manages most of the interactions. The server is an HTTP server that you can start simply by running the main program, or ideally, extend it in your own code and start it from there. It can be password protected, or left open and configured using admin scripts. There are two base classes that are used to run and manage the server:<br/>
 
@@ -16,7 +16,7 @@ The easiest way to start a server is to run the batch file provided with the <a 
 
 <h3>Passwords</h3>
 <p>The server extends the Service class, where all services are protected by 2 passwords. The first is to allow some other client or service to invoke methods. The second admin key is to allow an administrator to make more permanent changes. These can both be set when the service is created.</p>
-
+<br/>
 <h2>Writing a Service</h2>
 <p>The licas system is about providing a platform on which to run services for a user. The base service classes provided by the package are the <code>Service</code>, <code>Behaviour</code> or the <code>Auto</code> classes. These are all abstract and so you would extend one and implement the abstract methods to write your own service. There are a number of examples in the main package – <code>DataService</code> and <code>InformationService</code>, for example. To write your own service, you can extend any of these abstract classes, or any of the fully implemented versions. For a very basic service, for example, you could write the following:</p>
 <br/><br/>
@@ -139,7 +139,7 @@ methodInfo.addParam(params);
 //then invoke the add service method
 isOK = ((Boolean)call.call(methodInfo)).booleanValue();
 </code></pre>
-
+<br/>
 <h2>The REST Interface</h2>
 <p>While XML-RPC is the internal method, the server can also receive and parse a REST interface, with key-value pairs. The user guide with the download package describes how the default MethodInfo object can be described by REST key-value  pairs. For a client to send a REST request, instead of calling MethodFactory.createMethodCall for the XML-RPC interface, you would use MethodFactory.createRestCall to get the REST client object. The code section might typically include the following:
 
@@ -151,10 +151,10 @@ String reply = (String)call.call(methodInfo);
 
 The request is invoked on the endpoint address and the reply is a String that can be processed as required. Note that this works the same way for invoking a licas server or any other external source, such as a web service.
 </p>
-
+<br/>
 <h2>Conclusions</h2>
 <p>The licas framework offers a rich set of features and a flexible communication mechanism, to allow you to invoke local or remote objects of different types. It is relevant to the IoT, with an Information Service, related resource objects and the related communication mechanisms. Its AI packages then add something new that would allow for research and development in this new technological area. Licas also works on Android now.</p>
-<br/>
+<br/><br/>
 <br/>
 
 
