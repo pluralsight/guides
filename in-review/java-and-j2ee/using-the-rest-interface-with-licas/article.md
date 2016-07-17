@@ -78,7 +78,7 @@ public class MyInfoService extends Service
 
     ...
     
-    }
+}
 </code></pre>
 
 <p>The logger is the default licas logger. The constructors can all pass the parameters to the parent service class. This service has then implemented the <code>GET</code> method, which is of interest for the REST interface. If you type the service address into a browser, then the request is directed to the get method of the related service, not a web page. The service can then perform any functionality in its GET method and return any String result. The server will automatically parse this first to check for a data type, where <code>Const.RNDSEP</code> is used as the default tokenizer (data type – reply). The browser can then automatically display the reply, for example and so this is a quick way to ask a service to perform some function. 
