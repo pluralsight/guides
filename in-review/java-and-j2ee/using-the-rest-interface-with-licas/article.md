@@ -19,7 +19,7 @@ The easiest way to start a server is to run the batch file provided with the <a 
 <br/>
 <h2>Writing a Service</h2>
 <p>The licas system is about providing a platform on which to run services for a user. The base service classes provided by the package are the <code>Service</code>, <code>Behaviour</code> or the <code>Auto</code> classes. These are all abstract and so you would extend one and implement the abstract methods to write your own service. There are a number of examples in the main package – <code>DataService</code> and <code>InformationService</code>, for example. To write your own service, you can extend any of these abstract classes, or any of the fully implemented versions. For a very basic service, for example, you could write the following:</p>
-<br/>
+
 <pre><code>
 public class MyInfoService extends Service
 {
