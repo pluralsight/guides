@@ -86,7 +86,7 @@ public class MyInfoService extends Service
 </code></pre>
 
 
-This is just an extra check and the data type does not need to be added. The browser can then automatically display the reply, for example and so this is a quick way to ask a service to perform some function. 
+This is just an extra check in <code>ServerMethodHandler.convertResponse</code>and the data type does not need to be added. The browser can then automatically display the reply, for example and so this is a quick way to ask a service to perform some function. 
 
 The server can also be asked directly to return a file from its web directory. Therefore:<br/>
 <code>
@@ -146,8 +146,7 @@ isOK = ((Boolean)call.call(methodInfo)).booleanValue();
 <h2>The REST Interface</h2>
 <p>While XML-RPC is the internal method, the server can also receive and parse a REST interface, with key-value pairs. The user guide with the download package describes how the default MethodInfo object can be described by REST key-value  pairs. For a client to send a REST request, instead of calling MethodFactory.createMethodCall for the XML-RPC interface, you would use MethodFactory.createRestCall to get the REST client object. The code section might typically include the following:
 
-<pre><code>
-CallObject call = new CallObject();
+<pre><code>CallObject call = new CallObject();
 MethodInfo methodInfo = MethodFactory.createRestCall((String)endpoint, (String)rest_request);
 String reply = (String)call.call(methodInfo);
 </code></pre>
