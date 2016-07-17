@@ -3,11 +3,6 @@
 - [Read more from discompsys](http://tutorials.pluralsight.com/author/discompsys) <img src="https://avatars.githubusercontent.com/u/20437503?v=3" width="30" height="30" alt="discompsys" />
 - Related to: Java and J2EE
 
-### Using MySql Docker for development by Red Moses
-- [Read the guide](http://tutorials.pluralsight.com/devops/using-mysql-docker-for-development?status=in-review)
-- [Read more from Red Moses](http://tutorials.pluralsight.com/author/redmoses) <img src="https://avatars.githubusercontent.com/u/4059490?v=3" width="30" height="30" alt="Red Moses" />
-- Related to: DevOps (Docker, Nagios, Jenkins, Chef, Puppet, etc)
-
 ### Real-time SMS Sentiment Visualization with Twilio, Fanout Cloud, and Isomorphic React by Esteban Herrera
 - [Read the guide](http://tutorials.pluralsight.com/interesting-apis/real-time-sms-sentiment-visualization-with-twilio-fanout-cloud-and-isomorphic-react?status=in-review)
 - [Read more from Esteban Herrera](http://tutorials.pluralsight.com/author/eh3rrera) <img src="https://avatars.githubusercontent.com/u/11665759?v=3" width="30" height="30" alt="Esteban Herrera" />
