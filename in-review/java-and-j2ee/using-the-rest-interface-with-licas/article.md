@@ -35,17 +35,17 @@ public class MyInfoService extends Service
         logger.setDebug(false);
     }
 <br/>
-    public TestService() throws Exception
+    public MyInfoService() throws Exception
     {
         super();
     }
 
-    public TestService(String thisPassword, String thisAdminKey) throws Exception
+    public MyInfoService(String thisPassword, String thisAdminKey) throws Exception
     {
         super(thisPassword, thisAdminKey);
     }
 
-    public TestService(String thisPassword, String thisAdminKey, Element adminXml)  throws Exception
+    public MyInfoService(String thisPassword, String thisAdminKey, Element adminXml)  throws Exception
     {
         super(thisPassword, thisAdminKey, adminXml);
     }
@@ -60,16 +60,15 @@ public class MyInfoService extends Service
         {
             if (dataObj instanceof byte[])
             {
-                dataValue = (TypeConst.BINARYFILE + Const.RNDSEP + new String((byte[])dataObj));
+                dataValue = new String((byte[])dataObj);
             }
             else if (dataObj instanceof Element)
             {
-                dataValue = (TypeConst.XMLFILE + Const.RNDSEP +
-			XmlHandler.xmlToString((Element)dataObj));
+                dataValue = XmlHandler.xmlToString((Element)dataObj);
             }
             else
             {
-                dataValue = (dataType + Const.RNDSEP + String.valueOf(dataObj));
+                dataValue = String.valueOf(dataObj);
             }
         }
 
@@ -81,7 +80,13 @@ public class MyInfoService extends Service
 }
 </code></pre>
 
-<p>The logger is the default licas logger. The constructors can all pass the parameters to the parent service class. This service has then implemented the <code>GET</code> method, which is of interest for the REST interface. If you type the service address into a browser, then the request is directed to the get method of the related service, not a web page. The service can then perform any functionality in its GET method and return any String result. The server will automatically parse this first to check for a data type, where <code>Const.RNDSEP</code> is used as the default tokenizer (data type – reply). The browser can then automatically display the reply, for example and so this is a quick way to ask a service to perform some function. 
+<p>The logger is the default licas logger. The constructors can all pass the parameters to the parent service class. This MyInfoService has then implemented the <code>GET</code> method, which is of interest for the REST interface. If you type the service address into a browser, then the request is directed to the get method of the related service, not a web page. The service can then perform any functionality in its GET method and return any String result. The server will automatically parse this first and can check for a data type, where <code>Const.RNDSEP</code> is used as the default tokenizer (data type – reply). So, for example, the following can also be returned:
+
+<pre><code>(TypeConst.BINARYFILE + Const.RNDSEP + new String((byte[])dataObj));
+</code></pre>
+
+
+This is just an extra check and the data type does not need to be added. The browser can then automatically display the reply, for example and so this is a quick way to ask a service to perform some function. 
 
 The server can also be asked directly to return a file from its web directory. Therefore:<br/>
 <code>
@@ -113,13 +118,11 @@ The address of a service uniquely defines it on a server and over the Internet a
 <h3>Add a Service to a Server</h3>
 <p>To add a service to a server, you use one of the <code>addService</code> methods. This can be either remotely using the communication mechanism or locally through a direct reference to the server. For a local reference you need to know both the server’s password and admin key, and you then call:
 </p>
-<pre><code>
-HttpServer.getHttpServer(password).getESB(adminKey).addService(…);
+<pre><code>HttpServer.getHttpServer(password).getESB(adminKey).addService(…);
 </code></pre>
 <p>For a remote invocation, you pass the class type of the service to load, through the method parameters list and use the calling mechanism to invoke an addService method on the server. The user guide of the download package and the examples on the web site explain this in more detail, for example:
 </p>
-<pre><code>
-methodInfo = new MethodInfo();
+<pre><code>methodInfo = new MethodInfo();
 methodInfo.setName(MethodConst.ADDSERVICE);	
 methodInfo.setRtnType(TypeConst.BOOLEAN);	
 methodInfo.setServiceURI(serviceUri);			
