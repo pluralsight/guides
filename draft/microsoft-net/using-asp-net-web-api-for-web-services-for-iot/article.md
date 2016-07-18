@@ -1,4 +1,3 @@
-
 ## Introduction and Background
 I have been writing many guides and tutorials about IoT programming on the device itself, or the programming of web services separately, however since a while I had been finding the best possible way to allow the IoT devices to be able to communicate, while also keeping things really very easy and simple. This guide is for you, if you:
 
@@ -48,7 +47,7 @@ If you think that just the way WCF required to run entire project, ASP.NET Web A
 
 Yes, that is right, entire code to host your Web API in the console program is the following, 
 
-```
+``` csharp
 // Namespace references
 using System.Web.Http;
 using System.Web.Http.SelfHost;            
@@ -100,7 +99,7 @@ Which means that a native service would be  consumed on every platform and you d
 ### Building a small web service
 ASP.NET Web API controllers are used to target and control how the URL mapping is performed to provide the results and responses to the clients. To create a new Controller, `System.Web.Http.ApiController` class is used as the base class for the object. Later, the HTTP verb functions are set for that route. Routing is set using the `Route` attribute of ASP.NET Web API framework. Rest of the stuff is just based C# programming, to return the values from the functions and accept values to the functions as parameters. 
 
-```
+``` csharp
 // Add the namespace imports
 namespace Sample {
 
@@ -138,7 +137,7 @@ This is a complete Web API for your controllers. Although, this doesn't support 
 #### Writing other HTTP URL helpers
 Since the program is very simple, I wanted to show you how you can add more URLs to be handled in this specific controller of your application. Note that we have routed our application to the HTTP requests using the `Route[("path")]` attribute over the actions of the controllers. We can use them on other actions, to define different routes in the same controller. Have a look above, and see that are having an HTTP GET action handler. What if we wanted to handle another GET request? For that, we can change the URL where we want to map that, and still handle that request under this controller. Such as like this, 
 
-```
+``` csharp
 [Route("api/microcontrollers/anotherurl")]
 public string Get() {
    return "Hello world, from another URL.";
@@ -154,7 +153,7 @@ Like other `IDisposable` objects, `HttpClient` also allows you to leave the rest
 
 Let me now show you how to connect to the services using `HttpClient` object in .NET applications. Note that you can use `HttpClient` in any project, any application if you can target `System.Net.Http` namespace in your application. So the project's main function of the program would look something like this:
 
-```
+``` csharp
 // // Namespace import
 using System.Net.Http;
 
@@ -166,7 +165,7 @@ using (var client = new HttpClient()) {
 
 This is the template that you will be using for consuming the application service. So the very basic program to actually get the Hello world message from the API would be like this, 
 
-```
+``` csharp
 using (var client = new HttpClient())
 {
     // It is recommended to add a base address, instead of pushing this to the HTTP request functions.
