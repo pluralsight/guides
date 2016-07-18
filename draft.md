@@ -1,3 +1,8 @@
+### A beginner's Pro Ionic App by dk
+- [Read the guide](http://tutorials.pluralsight.com/other/a-beginner-s-pro-ionic-app?status=draft)
+- [Read more from dk](http://tutorials.pluralsight.com/author/dimkostopoulos) <img src="https://avatars.githubusercontent.com/u/8162389?v=3" width="30" height="30" alt="dk" />
+- Related to: other
+
 ### Using MySql Docker for development by Red Moses
 - [Read the guide](http://tutorials.pluralsight.com/devops/using-mysql-docker-for-development?status=draft)
 - [Read more from Red Moses](http://tutorials.pluralsight.com/author/redmoses) <img src="https://avatars.githubusercontent.com/u/4059490?v=3" width="30" height="30" alt="Red Moses" />
