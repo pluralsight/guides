@@ -1,3 +1,8 @@
+### Using ASP.NET Web API for web services for IoT by Afzaal Ahmad Zeeshan
+- [Read the guide](http://tutorials.pluralsight.com/microsoft-net/using-asp-net-web-api-for-web-services-for-iot?status=draft)
+- [Read more from Afzaal Ahmad Zeeshan](http://tutorials.pluralsight.com/author/afzaal-ahmad-zeeshan) <img src="https://avatars.githubusercontent.com/u/3237834?v=3" width="30" height="30" alt="Afzaal Ahmad Zeeshan" />
+- Related to: Microsoft.NET (C#, ASP.NET, VB.NET, etc)
+
 ### Ionic Firebase Part 2 by Steve Emmerich
 - [Read the guide](http://tutorials.pluralsight.com/front-end-javascript/ionic-firebase-part-2?status=draft)
 - [Read more from Steve Emmerich](http://tutorials.pluralsight.com/author/SteveEmmerich) <img src="https://avatars.githubusercontent.com/u/310086?v=3" width="30" height="30" alt="Steve Emmerich" />
