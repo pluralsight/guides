@@ -1,3 +1,8 @@
+### Introduction to Angular test-driven development by Hristo Georgiev
+- [Read the guide](http://tutorials.pluralsight.com/front-end-javascript/introduction-to-angular-test-driven-development)
+- [Read more from Hristo Georgiev](http://tutorials.pluralsight.com/author/Kaizeras) <img src="https://avatars.githubusercontent.com/u/6340189?v=3" width="30" height="30" alt="Hristo Georgiev" />
+- Related to: Front-End JavaScript (Angular, React, Meteor, etc)
+
 ### Advanced workflows for building rock-solid Ionic apps. Part 3: Orbit by Jonathan Grupp
 - [Read the guide](http://tutorials.pluralsight.com/front-end-javascript/advanced-workflows-for-building-rock-solid-ionic-apps-part-3-orbit)
 - [Read more from Jonathan Grupp](http://tutorials.pluralsight.com/author/gruppjo) <img src="https://avatars.githubusercontent.com/u/1370779?v=3" width="30" height="30" alt="Jonathan Grupp" />
