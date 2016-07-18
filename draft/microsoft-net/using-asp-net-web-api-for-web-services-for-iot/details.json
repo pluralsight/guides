@@ -1,0 +1,15 @@
+{
+    "_publish_status": "draft",
+    "author_name": "afzaal-ahmad-zeeshan",
+    "author_real_name": "Afzaal Ahmad Zeeshan",
+    "branch": "master",
+    "branches": [],
+    "filename": "article.md",
+    "first_commit": "668ccad775e0d2a9d3d338db59aa14606968fc40",
+    "image_url": "https://avatars.githubusercontent.com/u/3237834?v=3",
+    "stacks": [
+        "Microsoft.NET (C#, ASP.NET, VB.NET, etc)"
+    ],
+    "thumbnail_url": null,
+    "title": "Using ASP.NET Web API for web services for IoT"
+}
