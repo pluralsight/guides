@@ -61,9 +61,7 @@ using System.Web.Http.SelfHost;
 var configuration = new HttpSelfHostConfiguration("http://localhost:12345");
 
 // Add the routing scheme, this is required. 
-config.Routes.MapHttpRoute(
-    "API Default", "api/{controller}/{id}", 
-    new { id = RouteParameter.Optional });
+config.Routes.MapHttpRoute("Default", "api/{controller}/{id}", new { id = RouteParameter.Optional });
 
 // Start the service. 
 using (var apiServer = new HttpSelfHostServer(configuration))
