@@ -1,8 +1,3 @@
-### Log information of your app through Lonline by Dynamicloud by Eleazar
-- [Read the guide](http://tutorials.pluralsight.com/node-js/log-information-of-your-app-through-lonline-by-dynamicloud?status=draft)
-- [Read more from Eleazar](http://tutorials.pluralsight.com/author/egomezr) <img src="https://avatars.githubusercontent.com/u/1632973?v=3" width="30" height="30" alt="Eleazar" />
-- Related to: Node.js
-
 ### Ionic Firebase Part 2 by Steve Emmerich
 - [Read the guide](http://tutorials.pluralsight.com/front-end-javascript/ionic-firebase-part-2?status=draft)
 - [Read more from Steve Emmerich](http://tutorials.pluralsight.com/author/SteveEmmerich) <img src="https://avatars.githubusercontent.com/u/310086?v=3" width="30" height="30" alt="Steve Emmerich" />
