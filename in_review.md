@@ -1,3 +1,8 @@
+### Log information of your app through Lonline by Dynamicloud by Eleazar
+- [Read the guide](http://tutorials.pluralsight.com/node-js/log-information-of-your-app-through-lonline-by-dynamicloud?status=in-review)
+- [Read more from Eleazar](http://tutorials.pluralsight.com/author/egomezr) <img src="https://avatars.githubusercontent.com/u/1632973?v=3" width="30" height="30" alt="Eleazar" />
+- Related to: Node.js
+
 ### Using ASP.NET Web API for web services for IoT by Afzaal Ahmad Zeeshan
 - [Read the guide](http://tutorials.pluralsight.com/microsoft-net/using-asp-net-web-api-for-web-services-for-iot?status=in-review)
 - [Read more from Afzaal Ahmad Zeeshan](http://tutorials.pluralsight.com/author/afzaal-ahmad-zeeshan) <img src="https://avatars.githubusercontent.com/u/3237834?v=3" width="30" height="30" alt="Afzaal Ahmad Zeeshan" />
