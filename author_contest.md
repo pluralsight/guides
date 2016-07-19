@@ -54,7 +54,7 @@ Note: If you're interested in qualifying for sponsor prizes, then you'll need to
 
 ## Contest Rules
 
-Tutorials submitted between June 8th - July 30th will qualify for a chance to win prizes.  Winners will be announced on August 15th, 2016 based on following reviewing criteria:
+We are extending the contest for extra 30 days! Enter your tutorial between June 8th - Aug 30th, 2016 to qualify for a chance to win prizes.  Winners will be announced on September 15th, 2016 based on following reviewing criteria:
 
 * 1/3 of your score is based on the number of hearts (or "likes") that your articles receive on this site from your peers
 * 1/3 of your score is based on the number of legitimate social shares (Facebook/Twitter/etc) of your articles
