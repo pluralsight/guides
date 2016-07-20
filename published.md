@@ -1,3 +1,8 @@
+### 3 reasons why WebRTC will rock your socks! by Akansh Murthy
+- [Read the guide](http://tutorials.pluralsight.com/interesting-apis/3-reasons-why-webrtc-will-rock-your-socks)
+- [Read more from Akansh Murthy](http://tutorials.pluralsight.com/author/akanshmurthy) <img src="https://avatars.githubusercontent.com/u/11954634?v=3" width="30" height="30" alt="Akansh Murthy" />
+- Related to: Interesting APIs (SendGrid, Twilio, etc)
+
 ### Log information of your app through Lonline by Dynamicloud by Eleazar
 - [Read the guide](http://tutorials.pluralsight.com/node-js/log-information-of-your-app-through-lonline-by-dynamicloud)
 - [Read more from Eleazar](http://tutorials.pluralsight.com/author/egomezr) <img src="https://avatars.githubusercontent.com/u/1632973?v=3" width="30" height="30" alt="Eleazar" />
