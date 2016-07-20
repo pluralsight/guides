@@ -1,3 +1,8 @@
+### Getting Started with RethinkDB and Google Chrome Extensions by Chris Hranj
+- [Read the guide](http://tutorials.pluralsight.com/nosql-databases/getting-started-with-rethinkdb-and-google-chrome-extensions?status=draft)
+- [Read more from Chris Hranj](http://tutorials.pluralsight.com/author/Brodan) <img src="https://avatars.githubusercontent.com/u/12822268?v=3" width="30" height="30" alt="Chris Hranj" />
+- Related to: NoSQL Databases (MongoDB, Cassandra, etc)
+
 ### Ionic Firebase Part 2 by Steve Emmerich
 - [Read the guide](http://tutorials.pluralsight.com/front-end-javascript/ionic-firebase-part-2?status=draft)
 - [Read more from Steve Emmerich](http://tutorials.pluralsight.com/author/SteveEmmerich) <img src="https://avatars.githubusercontent.com/u/310086?v=3" width="30" height="30" alt="Steve Emmerich" />
