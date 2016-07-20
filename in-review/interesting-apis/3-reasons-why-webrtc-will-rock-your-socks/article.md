@@ -1,13 +1,15 @@
+# Wait, what is WebRTC? 
+Let me ask you a question. Does it pain you to have to download a third-party application or plugin to do simple things like have a video or audio chat? (I'm looking at you, Skype and Google Hangouts) Worse, imagine building an application that utilizes video or audio chat and having to write codecs for native apps. **Web Real Time Communication**, known among friends as WebRTC, to the rescue! 
+
 ## The 3 reasons:
 1. It is free.
 2. It is well supported.
 3. It is simple.
 
-# Wait, that is WebRTC? 
-Before I justify my reasons, let me answer the aforementioned question with another question. Does it pain you to have to download a third-party application or plugin to do simple things like have a video or audio chat (*cough* Skype, Google Hangouts, etc. *cough*)? Worse, imagine building an application that utilizes video or audio chat and having to write codecs for native apps... Web Real Time Communication, known among friends as WebRTC, to the rescue! 
-
 # Free
-WebRTC is an [open source project](https://webrtc.org/) with many spin-offs in various languages. The only part of WebRTC that is not built-in is the signaling mechanism or protocol, which is required to coordinate communication between the browsers involved in the connection. Messing with STUN/TURN servers manually can get hairy quickly so the easiest option is to user an already hosted public server or use a service that takes care of that for you: PubNub, Twilio, Xirsys, etc. For the curious George: https://www.twilio.com/docs/api/stun-turn/faq
+WebRTC is an [open source project](https://webrtc.org/) with many spin-offs in various languages. The only part of WebRTC that is not built-in is its signaling mechanism or protocol, which is required to coordinate communication between the browsers involved in the connection. Messing with STUN/TURN servers manually can get hairy quickly so the easiest option is to use an already-hosted public server or to use a service that takes care of that for you, such as PubNub, Twilio, Xirsysm, and so on. 
+
+Still, if you're curious about STUN/TURN servers, check out this [link](https://www.twilio.com/docs/api/stun-turn/faq).
 
 # Supported
 WebRTC is compatible with Firefox, Opera, and Chrome: desktop and mobile. There's even a cool browser that is built on top of WebRTC; it's called [Bowser](http://www.openwebrtc.org/bowser/) and was developed by Ericsson Research.
@@ -22,9 +24,11 @@ WebRTC is compatible with Firefox, Opera, and Chrome: desktop and mobile. There'
 I've personally used it on Chrome, iOS, and Android and it works well.
 
 # Simple
-Considering that my team and I were able to build an entire healthcare application using WebRTC for our company hackathon in a day or so, it isn't hard to use, assuming you've got the signaling nailed down. It has three simple APIs. Let's explore two of them now. The code below is purely for demonstration purposes: it is bare-bones and lacks fancy styling, error handling, and tracing.
+Considering that my team and I were able to build an entire healthcare application using WebRTC for our company hackathon in a day or so, it isn't hard to use, assuming you've got the signaling nailed down. 
 
-Let's say this is your HTML file.
+It has three simple APIs. Let's explore two of them now. The code below is purely for demonstration purposes: it is bare-bones and lacks fancy styling, error handling, and tracing.
+
+Let's say this is your HTML file:
 
 /index.html
 ```
@@ -39,7 +43,7 @@ Let's say this is your HTML file.
 </body>
 ```
 
-And, let's say this is your JS file.
+And, let's say this is your JS file:
 
 /js/main.js
 ```
@@ -51,9 +55,9 @@ navigator.getUserMedia({video: true}, (stream) => { video.src = window.URL.creat
 
 ```
 
-That's it! That's all the code you need to start using WebRTC's first API: getUserMedia(). The code above gets a stream from your webcam and sets it as the video source using a bit of ES6 syntax as well. Try it out: you should be seeing a live stream of your beautiful self :)
+That's it! That's all the code you need to start using WebRTC's first API, getUserMedia(). The code above gets a stream from your webcam and sets it as the video source using a bit of ES6 syntax as well. Try it out: you should be seeing a live stream of your beautiful self.
 
-The second API that WebRTC uses is RTCPeerConnection, which is what's responsible for exchanging data between peers. Let's go ahead and add a second video element to our HTML file and add ids to differentiate between the two.
+The second API that WebRTC uses is RTCPeerConnection, which is what's responsible for exchanging data between peers. Let's go ahead and add a second video element to our HTML file and add IDs to distinguish between the two elements.
 
 /index.html
 ```
@@ -137,9 +141,11 @@ function onCreateAnswerSuccess(desc) {
 }
 ```
 
-Are you still with me??! Here we see RTCPeerConnection started for each peer. The first peer registers ICE candidates, when they become available, through a callback. Then, the first peer transmits this ICE candidate data to the second peer. Lastly, peers exchange information about the codecs/media configuration via offers and answers to set their internal descriptions. Try this out in your browser! If it's successful, you should be able to see your twin on the same screen (just kidding, it's two of you!).
+Are you still with me? Here we see RTCPeerConnection started for each peer. The first peer registers ICE candidates, when they become available, through a callback. Then, the first peer transmits each ICE candidate's data to the second peer. Lastly, peers exchange information about the codecs/media configuration via offers and answers to set their internal descriptions. 
 
-The third API of WebRTC is RTCDataChannel. We won't cover that in this tutorial but know that it's available if you want to transmit data other than just video.
+Try this out in your browser! If it's successful, you should be able to see your twin on the same screen (just kidding, it's two of you!).
+
+The third API of WebRTC is RTCDataChannel. We won't cover it in this tutorial but know that it's available if you want to transmit data other than just video.
 
 # Demo time
 
@@ -200,6 +206,8 @@ function makeCall(form){
 }
 ```
 
-What's happening here? First, we grab the video element from the DOM. Then, we establish the functions to select a username and call someone else. The phone is established by providing your PubNub keys. Then, callbacks are attached to the phone so that it can append a video feed when it receives a call and remove it once the call is ended. Making the call itself is simply done by dialing with the username to call. Pretty cool! Deploy and test it out with friends.
+Let's take a look at what is going on above. 
 
-What use-case can you think of for WebRTC? Post below!
+First, we grab the video element from the DOM. Then, we establish the functions to select a username and call someone else. The phone is established by providing your PubNub keys. Then, callbacks are attached to the phone so that it can append a video feed when it receives a call and remove it once the call is ended. Making the call itself is simply done by dialing with the username to call. Pretty cool! Deploy and test it out with friends.
+
+What use-cases can you think of for WebRTC? Post them below, along with any comments or feedback that you may have regarding this tutorial!
