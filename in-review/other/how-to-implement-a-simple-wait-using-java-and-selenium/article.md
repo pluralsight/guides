@@ -1,8 +1,8 @@
 # Using a simple wait in Selenium
 
-In your Selenium Framework you might already have created some methods to allow you to wait for elements to be present before continuing forward. What this allows you to do is not use SLEEPS in your test code.
+In your Selenium Framework, you might have already created some methods that allow you to wait for elements to be present before continuing forward. As such, you no longer need to use SLEEPS in your test code.
 
-> **The below code is not good for tests, it's static.**
+> **The code below is not good for tests because it is hardcoded and static.**
 
 ```
 Thread.sleep(1000);
@@ -34,14 +34,12 @@ Here are a few of the different methods you can use to wait.
 * visibilityOfElementLocated
 * visibilityOfAllElemenentsLocated
 
-Some other tips on using a wait is that you can create your elements with a wait. 
-
-Simple example:
+Another tip about using a wait is that **you can create your elements with a wait**. Check out this simple example:
 ```
 WebDriver wait = new WebDriverWait(webDriver, timeoutInSeconds);
 WebElement button = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id<locator>));
 ```
-A better example using the Page Object Pattern and Page Factory setup.
+There's an even better example of using the Page Object Pattern and Page Factory setup to implement a wait.
 
 Your creation of the wait instance should be on the BasePage:
 ```
@@ -59,3 +57,5 @@ public WebElement getErrorDiv() {
 }
 
 ```
+
+I hope you enjoyed this simple tutorial on creating a Java-Selenium wait. Please leave your comments and feedback in the section below.
