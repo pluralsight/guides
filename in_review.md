@@ -1,3 +1,8 @@
+### Real time Chat App with OnsenUI and Horizon! by Patrick Klitzke
+- [Read the guide](http://tutorials.pluralsight.com/html-css/real-time-chat-app-with-onsenui-and-horizon?status=in-review)
+- [Read more from Patrick Klitzke](http://tutorials.pluralsight.com/author/philolo1) <img src="https://avatars.githubusercontent.com/u/6276582?v=3" width="30" height="30" alt="Patrick Klitzke" />
+- Related to: HTML/CSS
+
 ### Getting Started with Android on Android Studio by Sudheerkumar
 - [Read the guide](http://tutorials.pluralsight.com/android/getting-started-with-android-on-android-studio?status=in-review)
 - [Read more from Sudheerkumar](http://tutorials.pluralsight.com/author/Sudheerkumar) <img src="https://avatars.githubusercontent.com/u/2035321?v=3" width="30" height="30" alt="Sudheerkumar" />
