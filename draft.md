@@ -1,3 +1,8 @@
+### Real time Chat App with OnsenUI and Horizon! by Patrick Klitzke
+- [Read the guide](http://tutorials.pluralsight.com/html-css/real-time-chat-app-with-onsenui-and-horizon?status=draft)
+- [Read more from Patrick Klitzke](http://tutorials.pluralsight.com/author/philolo1) <img src="https://avatars.githubusercontent.com/u/6276582?v=3" width="30" height="30" alt="Patrick Klitzke" />
+- Related to: HTML/CSS
+
 ### Ionic Firebase Part 2 by Steve Emmerich
 - [Read the guide](http://tutorials.pluralsight.com/front-end-javascript/ionic-firebase-part-2?status=draft)
 - [Read more from Steve Emmerich](http://tutorials.pluralsight.com/author/SteveEmmerich) <img src="https://avatars.githubusercontent.com/u/310086?v=3" width="30" height="30" alt="Steve Emmerich" />
