@@ -1,3 +1,8 @@
+### Getting Started with Android on Android Studio by Sudheerkumar
+- [Read the guide](http://tutorials.pluralsight.com/android/getting-started-with-android-on-android-studio?status=draft)
+- [Read more from Sudheerkumar](http://tutorials.pluralsight.com/author/Sudheerkumar) <img src="https://avatars.githubusercontent.com/u/2035321?v=3" width="30" height="30" alt="Sudheerkumar" />
+- Related to: Android
+
 ### Ionic Firebase Part 2 by Steve Emmerich
 - [Read the guide](http://tutorials.pluralsight.com/front-end-javascript/ionic-firebase-part-2?status=draft)
 - [Read more from Steve Emmerich](http://tutorials.pluralsight.com/author/SteveEmmerich) <img src="https://avatars.githubusercontent.com/u/310086?v=3" width="30" height="30" alt="Steve Emmerich" />
