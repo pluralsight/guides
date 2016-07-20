@@ -23,11 +23,6 @@
 - [Read more from Esteban Herrera](http://tutorials.pluralsight.com/author/eh3rrera) <img src="https://avatars.githubusercontent.com/u/11665759?v=3" width="30" height="30" alt="Esteban Herrera" />
 - Related to: Interesting APIs (SendGrid, Twilio, etc)
 
-### 3 reasons why WebRTC will rock your socks! by Akansh Murthy
-- [Read the guide](http://tutorials.pluralsight.com/interesting-apis/3-reasons-why-webrtc-will-rock-your-socks?status=in-review)
-- [Read more from Akansh Murthy](http://tutorials.pluralsight.com/author/akanshmurthy) <img src="https://avatars.githubusercontent.com/u/11954634?v=3" width="30" height="30" alt="Akansh Murthy" />
-- Related to: Interesting APIs (SendGrid, Twilio, etc)
-
 ### How to implement a simple wait using Java and Selenium by dcboycm
 - [Read the guide](http://tutorials.pluralsight.com/other/how-to-implement-a-simple-wait-using-java-and-selenium?status=in-review)
 - [Read more from dcboycm](http://tutorials.pluralsight.com/author/dcboycm) <img src="https://avatars.githubusercontent.com/u/5580819?v=3" width="30" height="30" alt="dcboycm" />
