@@ -1,5 +1,5 @@
 # Wait, what is WebRTC? 
-Let me ask you a question. Does it pain you to have to download a third-party application or plugin to do simple things like have a video or audio chat? (I'm looking at you, Skype and Google Hangouts) Worse, imagine building an application that utilizes video or audio chat and having to write codecs for native apps. **Web Real Time Communication**, known among friends as WebRTC, to the rescue! 
+Let me ask you a question. Does it pain you to have to download a third-party application or plugin to do simple things like have a video or audio chat? (I'm looking at you, Skype and Google Hangouts). Worse, imagine building an application that utilizes video or audio chat and having to write codecs for native apps. **Web Real Time Communication**, known among friends as WebRTC, to the rescue! 
 
 ## The 3 reasons:
 1. It is free.
