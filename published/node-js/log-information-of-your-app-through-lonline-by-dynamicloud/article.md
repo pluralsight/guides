@@ -44,7 +44,7 @@ Nowdays checking log results is very difficult because logs typically reside eit
 # Dependencies
 **Lonline has one dependendency:** [Dynamicloud Nodejs API](https://github.com/dynamicloud/dynamicloud_nodejs_api "Dynamicloud Nodejs API")
 
-[Dynamicloud](https://www.dynamicloud.org "Dynamicloud") provides APIs for Java and Ruby language, so you can currently only use Lonline in Java or Ruby programs.
+[Dynamicloud](https://www.dynamicloud.org "Dynamicloud") also provides APIs for Java and Ruby language, so you can use Lonline in Java or Ruby programs.
 
 # Installation
 
