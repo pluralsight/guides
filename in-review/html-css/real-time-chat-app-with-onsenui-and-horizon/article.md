@@ -1,7 +1,6 @@
-
 ![Horizon, RethinkDB and Onsen UI 2.0](https://onsen.io/blog/content/images/2016/Jul/onsen_horizon.png)
 
-A lot of modern apps like Twitter or Facebook work in real time: They update themselves when new information is available without the user pulling to refresh. With modern real time database like [RethinkDB](http://rethinkdb.com) and the JavaScript Framework [Horizon](http://horizon.io/) this task is as easy as writing any other JavaScript Application. In this tutorial we will build a simple chat app with [MobX](https://github.com/mobxjs/mobx) and the React Components for Onsen UI.
+A lot of modern apps like Twitter or Facebook work in real time: They update themselves when new information is available without the user pulling to refresh. With modern real time database like [RethinkDB](http://rethinkdb.com) and the JavaScript Framework [Horizon](http://horizon.io/) this task is as easy as writing any other JavaScript Application. In this tutorial we will build a simple chat app with [MobX](https://github.com/mobxjs/mobx) and the [React Components for Onsen UI](https://onsen.io/v2/).
 
 <!-- more -->
 
