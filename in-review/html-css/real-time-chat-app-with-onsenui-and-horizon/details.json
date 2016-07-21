@@ -3,7 +3,12 @@
     "author_name": "philolo1",
     "author_real_name": "Patrick Klitzke",
     "branch": "master",
-    "branches": [],
+    "branches": [
+        [
+            "adityavarshney",
+            "adityavarshney-html-css-real-time-chat-app-with-onsenui-and-horizon"
+        ]
+    ],
     "filename": "article.md",
     "first_commit": "3278f8af32990abb103c4e5543c481a6cb9243d5",
     "image_url": "https://avatars.githubusercontent.com/u/6276582?v=3",
