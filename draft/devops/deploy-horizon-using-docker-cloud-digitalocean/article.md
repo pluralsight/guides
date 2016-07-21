@@ -2,14 +2,6 @@ This tutorial is an end to end summary of how you can build and deploy a Horizon
 
 ----
 
-1. [Step 1: Create a Horizon Application](#create)
-2. [Step 2: Dockerize the Horizon Application](#dockerize)
-3. [Step 3: Orchestrate with Docker Compose](#orchestrate)
-4. [Step 4: Building with Travis-Ci](#build)
-5. [Step 5: Pushing to Docker Hub](#push)
-5. [Step 6: Deploying to DigitalOcean with Docker Cloud](#deploy)
-6. [Closing thoughts](#closing)
-
 ## Create a Horizon Application <a name="create"></a>
 
 For this tutorial I'm going to use a express application with an [embedded horizon server](http://horizon.io/docs/embed/). Embedding horizon in an express application will give you a little more flexibility, such as the case with [Lightbrew/beauty](http://github.com/lightbrew/beauty) where I eventually need to connect to the Particle Cloud.
