@@ -9,7 +9,10 @@ Let's take care of all of our setup first so that afterwards we can code without
 
 * Chrome - In order to build a Chrome extension we obviously need to have Google Chrome installed. You can download it from [here](https://www.google.com/chrome/browser/desktop/) if you don't already have it.
 
-* Python/pip - Next we need to make sure you have [Python](https://www.python.org/) and [pip](https://pip.pypa.io/en/stable/#). Python comes pre-installed on many UNIX/Linux distributions now, but if you don't have it you can download it from [here](https://www.python.org/downloads/). pip comes packaged with Python versions >=2.7.9 or >=3.4, otherwise you can download it from [here](https://pip.pypa.io/en/stable/installing/).
+* Python/pip - Next we need to make sure you have [Python](https://www.python.org/) and [pip](https://pip.pypa.io/en/stable/#). Python comes pre-installed on many UNIX/Linux distributions now, but if you don't have it you can download it from [here](https://www.python.org/downloads/). pip comes packaged with Python versions >=2.7.9 or >=3.4, otherwise you can download it from [here](https://pip.pypa.io/en/stable/installing/). You can test if Python and pip are both installed by running the following:
+```
+$ python -V && pip -V
+```
 
 * Flask - For our backend we are using [Flask](http://flask.pocoo.org/), a micro framework for Python. Since we've already installed pip, all we need to do to install Flask is run the following command:
 ```
