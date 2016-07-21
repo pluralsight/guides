@@ -1,3 +1,8 @@
+### Getting started with Codeigniter 3 by Aouadi Mohamed Adib
+- [Read the guide](http://tutorials.pluralsight.com/php/getting-started-with-codeigniter-3?status=draft)
+- [Read more from Aouadi Mohamed Adib](http://tutorials.pluralsight.com/author/Adib12) <img src="https://avatars.githubusercontent.com/u/11527075?v=3" width="30" height="30" alt="Aouadi Mohamed Adib" />
+- Related to: PHP
+
 ### Getting Started with RethinkDB and Google Chrome Extensions by Chris Hranj
 - [Read the guide](http://tutorials.pluralsight.com/nosql-databases/getting-started-with-rethinkdb-and-google-chrome-extensions?status=draft)
 - [Read more from Chris Hranj](http://tutorials.pluralsight.com/author/Brodan) <img src="https://avatars.githubusercontent.com/u/12822268?v=3" width="30" height="30" alt="Chris Hranj" />
