@@ -41,6 +41,19 @@ If you've never built a Chrome extension before and/or never worked with Rethink
 # Setting Up Our Flask Server
 
 
+# Running ngrok
+You probably noticed the output from starting our Flask server looked something like this: 
+``` 
+* Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+```
+This means that we need to expose port 5000 in order to access this server. ngrok makes this an astronishingly easy task. All you need to run is the following:
+```
+$ ngrok http 5000
+```
 
-# Next Steps
+
+
+# Wrapping Up/Future Steps
 If you'd like to take this tutorial a step further and host your application and database on its own server, Digital Ocean wrote an awesome tutorial on [serving Flask applications with gunicorn and nginx](https://www.digitalocean.com/community/tutorials/how-to-serve-flask-applications-with-gunicorn-and-nginx-on-ubuntu-16-04).
+
+Thanks for reading this post! Hopefully it made for a helpful introduction to RethinkDB, Chrome extensions, and/or Flask.
