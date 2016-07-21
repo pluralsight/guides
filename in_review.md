@@ -1,3 +1,8 @@
+### Deploy Horizon Using Docker Cloud & DigitalOcean by Chris Asche
+- [Read the guide](http://tutorials.pluralsight.com/devops/deploy-horizon-using-docker-cloud-digitalocean?status=in-review)
+- [Read more from Chris Asche](http://tutorials.pluralsight.com/author/casche) <img src="https://avatars.githubusercontent.com/u/5832943?v=3" width="30" height="30" alt="Chris Asche" />
+- Related to: DevOps (Docker, Nagios, Jenkins, Chef, Puppet, etc)
+
 ### Getting Started with Android on Android Studio by Sudheerkumar
 - [Read the guide](http://tutorials.pluralsight.com/android/getting-started-with-android-on-android-studio?status=in-review)
 - [Read more from Sudheerkumar](http://tutorials.pluralsight.com/author/Sudheerkumar) <img src="https://avatars.githubusercontent.com/u/2035321?v=3" width="30" height="30" alt="Sudheerkumar" />
