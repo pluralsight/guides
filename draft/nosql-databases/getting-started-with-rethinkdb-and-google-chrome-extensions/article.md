@@ -2,7 +2,7 @@
 
 This blog post is going to cover how to build a basic Chrome extension and connect it to a [RethinkDB](https://rethinkdb.com/) database. Our app will open 
 
-If you've never built a Chrome exntension before or you've never used a NoSQL database like RethinkDB then this is a great tutorial for you.
+If you've never built a Chrome exntension before or you've never used a NoSQL database like RethinkDB then this is a great tutorial for you. RethinkDB has an awesome [ten-minute guide](https://www.rethinkdb.com/docs/guide/python/) already, so this post aims to build off of it and use it in the context of an actual application.
 
 # Requirements
 Let's take care of all of our setup first so that afterwards we can code without any roadblocks. This section will step through installing each tool we need and why we need them.
