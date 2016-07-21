@@ -20,6 +20,5 @@ CodeIgniter is a powerful PHP framework with a very small footprint, built for d
 1. Download the CodeIgniter from the link [Codeigniter](https://www.codeigniter.com/download) 
 2. Unzip the folder.
 3. Copy the folder on www folder if you use Wampserver or htdocs if you use Xampp.
-4. After the copy of the folder visit the url http://localhost/name of your folder/ 
 
 
