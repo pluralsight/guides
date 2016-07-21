@@ -22,7 +22,7 @@ Note that I'm specifying the rdb_host and rdb_port as environment variables. The
 
 horizon-with-docker/server.js
 
-``` javscript
+``` javascript
 'use strict'
 
 const express = require('express');
