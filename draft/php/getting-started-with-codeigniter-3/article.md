@@ -1,4 +1,3 @@
-# Getting started with Codeigniter 3
 
 ### What is CodeIgniter ?
 
