@@ -1,3 +1,8 @@
+### Real time Chat App with OnsenUI and Horizon! by Patrick Klitzke
+- [Read the guide](http://tutorials.pluralsight.com/html-css/real-time-chat-app-with-onsenui-and-horizon)
+- [Read more from Patrick Klitzke](http://tutorials.pluralsight.com/author/philolo1) <img src="https://avatars.githubusercontent.com/u/6276582?v=3" width="30" height="30" alt="Patrick Klitzke" />
+- Related to: HTML/CSS
+
 ### 3 reasons why WebRTC will rock your socks! by Akansh Murthy
 - [Read the guide](http://tutorials.pluralsight.com/interesting-apis/3-reasons-why-webrtc-will-rock-your-socks)
 - [Read more from Akansh Murthy](http://tutorials.pluralsight.com/author/akanshmurthy) <img src="https://avatars.githubusercontent.com/u/11954634?v=3" width="30" height="30" alt="Akansh Murthy" />
