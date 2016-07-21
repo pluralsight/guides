@@ -21,4 +21,6 @@ CodeIgniter is a powerful PHP framework with a very small footprint, built for d
 2. Unzip the folder.
 3. Copy the folder on www folder if you use Wampserver or htdocs if you use Xampp.
 
+### Application Architecture
+
 
