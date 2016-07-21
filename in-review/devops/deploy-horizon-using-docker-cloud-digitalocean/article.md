@@ -298,7 +298,7 @@ Now, add an *after_success* clause that will:
  3. Tag the image
  4. Push it to Docker Hub.
 
-To enable this. add the [docker service](https://docs.travis-ci.com/user/docker/) to the *.travis.yml*.
+To enable this, add the [docker service](https://docs.travis-ci.com/user/docker/) to the *.travis.yml*.
 
 > Don't forget to change the DOCKER_IMAGE_NAME environment variable to your name/horizon-with-docker!
 
