@@ -187,7 +187,7 @@ The default settings for Horizon are to connect to a RethinkDB at localhost:2801
 
 For this to work, a configuration file called docker-compose.yml is necessary. The file will define two services, web and db. They will correspond with the horizon application and the rethinkDB database.
 
-Remember the *rdb_host* and *rdb_port* environment variables from the server.js file in [Step 1](#create)? They can be utilized now as they're needed to tell the embedded horizon server how to connect to RethinkB. With Docker Compose, the service name can be used, which arbitrarily points to the host.
+Remember the *rdb_host* and *rdb_port* environment variables from server.js? They can be utilized now as they're needed to tell the embedded horizon server how to connect to RethinkB. With Docker Compose, the service name can be used, which arbitrarily points to the host.
 
 horizon-with-docker/docker-compose.yml
 
@@ -252,7 +252,7 @@ web_1  | info: Metadata synced with database, ready for traffic.
 
 Now visit http://DOCKER_MACHINE_IP:8081 and you should see your horizon app. Awesome!
 
-## Step 4: Building with Travis-Ci <a name="build"></a>
+## Building with Travis-Ci <a name="build"></a>
 
 To build the application I'm going to use Travis-Ci. Travis-Ci integrates very nicely with GitHub and provides a nice Docker Service. Go ahead and create a repository for the source code. I'm going to use [casche/horizon-with-docker](http://github.com/casche/horizon-width-docker).
 
@@ -278,7 +278,7 @@ Now head on over to [travis-ci.org](http://travis-ci.org) and add your repositor
 
 That's it! Now when changes are pushed to GitHub, Travis-Ci will build your application and report back the status on the commit. Go ahead and try it.
 
-## Step 5: Pushing to Docker Hub <a name="push"></a>
+## Pushing to Docker Hub <a name="push"></a>
 
 The next objective is to modify the Travis-Ci build so that it creates and pushes a docker image containing the application to Docker Hub. This allows Docker Hub to pull the image and deploy it to a DigitalOcean droplet. If you don't already have a Docker Cloud account, head on over to the Docker Cloud and [signup](https://cloud.docker.com).
 
@@ -328,7 +328,7 @@ after_success:
 
 Commit and push the changes. Once Travis-Ci builds the application successfully it will do the same for the docker image. If the build was triggered by a commit to master, the image is pushed to Docker Hub. This may take a little bit of time so be patient.
 
-## Step 6: Deploying to DigitalOcean with Docker Cloud <a name="deploy"></a>
+## Deploying to DigitalOcean with Docker Cloud <a name="deploy"></a>
 
 To continue with this step you will need an account on [DigitalOcean](https://cloud.digitalocean.com/registrations/new). A droplet is going to be used to deploy the application. The smallest one can be used but a cost will still be incurred. Don't worry, the cost is [minimal](https://www.digitalocean.com/pricing/) - less than a cent.
 
