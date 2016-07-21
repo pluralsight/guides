@@ -38,7 +38,18 @@ query data from chrome extension
 
 If you've never built a Chrome extension before and/or never worked with RethinkDB, then this is a guide for you.
 
+# Running RethinkDB
+Open up another terminal window and enter ```$ rethinkdb```. This one, simple command will take care of everything we need in order to create and query our database. You'll also notice that this command printed out a few lines of information. The lines we are particularly interested are the two that say
+```
+Listening for client driver connections on port 28015
+Listening for administrative HTTP connections on port 8080
+```
+
+Leave this terminal window open and running and we can move onto connecting 
+
 # Setting Up Our Flask Server
+
+
 
 
 # Running ngrok
@@ -54,6 +65,6 @@ $ ngrok http 5000
 
 
 # Wrapping Up/Future Steps
-If you'd like to take this tutorial a step further and host your application and database on its own server, Digital Ocean wrote an awesome tutorial on [serving Flask applications with gunicorn and nginx](https://www.digitalocean.com/community/tutorials/how-to-serve-flask-applications-with-gunicorn-and-nginx-on-ubuntu-16-04).
+If you'd like to take this tutorial a step further and host your application and database on its own server, [Digital Ocean](https://www.digitalocean.com/) wrote an awesome tutorial on [serving Flask applications with gunicorn and nginx](https://www.digitalocean.com/community/tutorials/how-to-serve-flask-applications-with-gunicorn-and-nginx-on-ubuntu-16-04).
 
-Thanks for reading this post! Hopefully it made for a helpful introduction to RethinkDB, Chrome extensions, and/or Flask.
+Thanks for reading this post! Hopefully it made for a helpful introduction to RethinkDB, Chrome extensions, and/or Flask. If you have questions or feedback about this post or you'd like to keep up with my future posts, feel free to reach out to me on [Twitter](twitter.com/brodan_) or email me at [christopher.hranj@gmail.com](christopher.hranj@gmail.com)!
