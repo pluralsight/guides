@@ -1,3 +1,8 @@
+### Deploy Horizon Using Docker Cloud & DigitalOcean by Chris Asche
+- [Read the guide](http://tutorials.pluralsight.com/devops/deploy-horizon-using-docker-cloud-digitalocean?status=draft)
+- [Read more from Chris Asche](http://tutorials.pluralsight.com/author/casche) <img src="https://avatars.githubusercontent.com/u/5832943?v=3" width="30" height="30" alt="Chris Asche" />
+- Related to: DevOps (Docker, Nagios, Jenkins, Chef, Puppet, etc)
+
 ### Getting started with Codeigniter 3 by Aouadi Mohamed Adib
 - [Read the guide](http://tutorials.pluralsight.com/php/getting-started-with-codeigniter-3?status=draft)
 - [Read more from Aouadi Mohamed Adib](http://tutorials.pluralsight.com/author/Adib12) <img src="https://avatars.githubusercontent.com/u/11527075?v=3" width="30" height="30" alt="Aouadi Mohamed Adib" />
