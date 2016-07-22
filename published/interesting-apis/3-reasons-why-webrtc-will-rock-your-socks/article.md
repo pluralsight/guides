@@ -7,9 +7,9 @@ Let me ask you a question. Does it pain you to have to download a third-party ap
 3. It is simple.
 
 # Free
-WebRTC is an [open source project](https://webrtc.org/) with many spin-offs in various languages. The only part of WebRTC that is not built-in is its signaling mechanism or protocol, which is required to coordinate communication between the browsers involved in the connection. Messing with STUN/TURN servers manually can get hairy quickly so the easiest option is to use an already-hosted public server or to use a service that takes care of that for you, such as PubNub, Twilio, Xirsysm, and so on. 
+WebRTC is an [open source project](https://webrtc.org/) with many spin-offs in various languages. The only part of WebRTC that is not built-in is its signaling mechanism or protocol, which is required to coordinate communication between the browsers involved in the connection. Messing with the signaling (mainly, STUN and TURN servers) manually can get hairy quickly so the easiest option is to use already-hosted public servers or to use a service that takes care of that for you, such as PubNub, Twilio, XirSys, and so on. 
 
-Still, if you're curious about STUN/TURN servers, check out this [link](https://www.twilio.com/docs/api/stun-turn/faq).
+If you're curious about STUN/TURN servers, check out this [link](https://www.twilio.com/docs/api/stun-turn/faq).
 
 # Supported
 WebRTC is compatible with Firefox, Opera, and Chrome: desktop and mobile. There's even a cool browser that is built on top of WebRTC; it's called [Bowser](http://www.openwebrtc.org/bowser/) and was developed by Ericsson Research.
@@ -55,7 +55,17 @@ navigator.getUserMedia({video: true}, (stream) => { video.src = window.URL.creat
 
 ```
 
-That's it! That's all the code you need to start using WebRTC's first API, getUserMedia(). The code above gets a stream from your webcam and sets it as the video source using a bit of ES6 syntax as well. Try it out: you should be seeing a live stream of your beautiful self.
+That's it! That's all the code you need to start using WebRTC's first API, getUserMedia(). The code above gets a stream from your webcam and sets it as the video source using a bit of ECMAScript 6 syntax as well. 
+
+Try replicating the above by following these steps: 
+- create a folder on your desktop labeled 'webrtc,' 
+- place the index.html file inside the webrtc folder 
+- create a folder labeled 'js' within the webrtc folder 
+- place the main.js file inside the js folder 
+- open a terminal and navigate to the webrtc folder
+- run 'python -m SimpleHTTPServer' on the terminal
+- go to localhost:8000 on your Chrome browser (important as the code in main.js is specific to Chrome)
+- you should be seeing a live stream of your beautiful self!
 
 The second API that WebRTC uses is RTCPeerConnection, which is what's responsible for exchanging data between peers. Let's go ahead and add a second video element to our HTML file and add IDs to distinguish between the two elements.
 
@@ -76,7 +86,7 @@ The second API that WebRTC uses is RTCPeerConnection, which is what's responsibl
 </body>
 ```
 
-Notice the adapter.js file, which you can get from here: https://github.com/webrtc/adapter.
+Notice the adapter.js file, which you can get from here: https://github.com/webrtc/adapter. The adapter file is just a shim, that acts to make sure the API calls are compatible in different environments. 
 
 Let's add some peer connection code in the js file.
 
@@ -141,21 +151,25 @@ function onCreateAnswerSuccess(desc) {
 }
 ```
 
-Are you still with me? Here we see RTCPeerConnection started for each peer. The first peer registers ICE candidates, when they become available, through a callback. Then, the first peer transmits each ICE candidate's data to the second peer. Lastly, peers exchange information about the codecs/media configuration via offers and answers to set their internal descriptions. 
+There's a lot going on here. Are you still with me? Here we see RTCPeerConnection started for each peer. The first peer registers [ICE candidates](https://developer.mozilla.org/en-US/docs/Web/API/WebRTC_API/WebRTC_basics#ICECandidate), when they become available, through a callback. Then, the first peer transmits each ICE candidate's data to the second peer. Lastly, peers exchange information about the codecs/media configuration via offers and answers to set their internal descriptions. 
 
-Try this out in your browser! If it's successful, you should be able to see your twin on the same screen (just kidding, it's two of you!).
+Try this out in your browser following the same steps for the first API! If it's successful, you should be able to see your twin on the same screen (just kidding, it's two streams of just you!).
 
 The third API of WebRTC is RTCDataChannel. We won't cover it in this tutorial but know that it's available if you want to transmit data other than just video.
 
 # Demo time
 
-In the code above, we simulated peer connections on the same screen so there was no need for the STUN/TURN signaling servers I had mentioned in the beginning of this tutorial. But, as I also mentioned earlier, companies like PubNub offer services that do that dirty work for you. So, let's take advantage of that to build and deploy a revolutionary new app for any doctor in the world to log on and video chat with a patient in the browser with no additional downloads needed. We'll call it DocTalk because I'm a poet and I know it.
+In the code above, we simulated peer connections on the same screen so there was no need for the STUN/TURN signaling servers I had mentioned in the beginning of this tutorial. Plus, we were running this locally so there was no need to transmit data across different peers. But, we want to deploy this application on the Interwebz so that any two people can utilize the power of WebRTC.
 
-PubNub makes it astonishingly simple to utilize WebRTC with the following calls (no pun intended):
+As I had mentioned earlier in this tutorial, companies like PubNub offer services that do the signaling dirty work for you. So, let's take advantage of that to build and deploy a revolutionary new app for any doctor in the world to log on and video chat with a patient in the browser with no additional downloads needed. We'll call it DocTalk because I'm a poet and I know it.
+
+PubNub makes it astonishingly simple to utilize WebRTC with calls (no pun intended) that have abstracted and simplified the APIs you learned about above. Ugh, then why didn't we just learn this first? Because we've got to know how it works under the hood!
+
+Here are the two API calls:
 - phone.dial
 - phone.receive
 
-Check out PubNub's documentation for additional features: https://github.com/stephenlb/webrtc-sdk
+Simple, right?! Check out PubNub's documentation for additional APIs: https://github.com/stephenlb/webrtc-sdk
 
 Similar to before, let's set up our files.
 
@@ -208,6 +222,6 @@ function makeCall(form){
 
 Let's take a look at what is going on above. 
 
-First, we grab the video element from the DOM. Then, we establish the functions to select a username and call someone else. The phone is established by providing your PubNub keys. Then, callbacks are attached to the phone so that it can append a video feed when it receives a call and remove it once the call is ended. Making the call itself is simply done by dialing with the username to call. Pretty cool! Deploy and test it out with friends.
+First, we grab the video element from the DOM. Then, we establish the functions to select a username and call someone else. The phone is established by providing your PubNub keys, which you can acquire by creating a free account on PubNub and going to your settings page. Then, callbacks are attached to the phone so that it can append a video feed when it receives a call and remove it once the call is ended. Making the call itself is simply done by dialing with the username to call. Pretty cool! Deploy and test it out with friends.
 
 What use-cases can you think of for WebRTC? Post them below, along with any comments or feedback that you may have regarding this tutorial!
