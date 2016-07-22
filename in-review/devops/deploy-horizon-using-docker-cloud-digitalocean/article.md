@@ -254,7 +254,7 @@ Now visit http://DOCKER_MACHINE_IP:8081 and you should see your horizon app. Awe
 
 ## Building with Travis-Ci <a name="build"></a>
 
-To build the application I'm going to use Travis-Ci. Travis-Ci integrates very nicely with GitHub and provides a nice Docker Service. Go ahead and create a repository for the source code. I'm going to use [casche/horizon-with-docker](http://github.com/casche/horizon-width-docker).
+To build the application I'm going to use Travis-Ci. Travis-Ci integrates very nicely with GitHub and provides a nice Docker Service. Go ahead and create a repository for the source code. I'm going to use [casche/horizon-with-docker](https://github.com/casche/horizon-with-docker).
 
 In this application the build is going to be trivial. Travis-Ci is just going to run *npm install* and report back the status to GitHub. To accomplish this, create a .travis.yml file:
 
