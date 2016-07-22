@@ -404,6 +404,6 @@ Now each time an image is deployed to Docker Hub, Docker Cloud will redeploy the
 
 ## Closing Thoughts <a name="closing"></a>
 
-This tutorial has outlined a development flow for Horizon on DigitalOcean using Docker Cloud. It's by no means complete and certainly should be adjusted for production usage. For more on adapting for productive deployments, you can check out the official Horizon documentation [here](http://horizon.io/docs/docker/).
+This tutorial has outlined a development flow for Horizon on DigitalOcean using Docker Cloud. It's by no means complete and certainly should be adjusted for production usage. You may have noticed that I have not indcluded material on volumes or certificates for the Horizon application. For more on adapting for productive deployments, you can check out the official Horizon documentation [here](http://horizon.io/docs/docker/).
 
 Perhaps, there will even be a Part Deux! :) Thanks for reading. You can follow me on twitter @devcasche. 
