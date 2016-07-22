@@ -3,7 +3,12 @@
     "author_name": "casche",
     "author_real_name": "Chris Asche",
     "branch": "master",
-    "branches": [],
+    "branches": [
+        [
+            "adityavarshney",
+            "adityavarshney-devops-deploy-horizon-using-docker-cloud-digitalocean"
+        ]
+    ],
     "filename": "article.md",
     "first_commit": "54c99cb5f173e076711fc3c3e642b123d906b979",
     "image_url": "https://avatars.githubusercontent.com/u/5832943?v=3",
