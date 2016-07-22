@@ -1,8 +1,8 @@
 [Google Chrome extensions](https://developer.chrome.com/extensions) are an awesome way to improve the way people can browse the internet. Many Chrome extensions require a way to store data long-term, but selecting and configuring the right database can be difficult.
 
-This blog post is going to cover how to build a basic Chrome extension and connect it to a [RethinkDB](https://rethinkdb.com/) database. Our app will open 
+This blog post is going to cover how to build a basic Chrome extension and connect it to a [RethinkDB](https://rethinkdb.com/) database. RethinkDB is an awesome NoSQL database that is open-source, scalable, and most importantly beginner-friendly. Our app will open [browserAction](https://developer.chrome.com/extensions/browserAction) that will let us interact with our database in various ways. The extension itself will be very simple because our focus is to reinforce the basics of creating, reading, updating, and deleting data with RethinkDB.
 
-If you've never built a Chrome exntension before or you've never used a NoSQL database like RethinkDB then this is a great tutorial for you. RethinkDB has an awesome [ten-minute guide](https://www.rethinkdb.com/docs/guide/python/) already, so this post aims to build off of it and use it in the context of an actual application.
+If you've never built a Chrome exntension before or you've never used a NoSQL database like RethinkDB then this is a great tutorial for you. RethinkDB has an awesome [ten-minute guide](https://www.rethinkdb.com/docs/guide/python/) already and the goal of this post is to build off of it and use it in the context of an actual application.
 
 # Requirements
 Let's take care of all of our setup first so that afterwards we can code without any roadblocks. This section will step through installing each tool we need and why we need them.
@@ -30,8 +30,9 @@ $ mv ngrok /usr/local/bin
 Once you have all everything installed we can finally start coding!
 
 # Building our Chrome Extension
-https://developer.chrome.com/extensions/xhr
+[Cross-Origin XMLHttpRequest](https://developer.chrome.com/extensions/xhr)
 
+[loading our extension](https://developer.chrome.com/extensions/getstarted#unpacked)
 
 setting up ngrok
 
