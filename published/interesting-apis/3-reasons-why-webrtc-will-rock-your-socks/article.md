@@ -225,6 +225,8 @@ We can deploy this static site with a service called Surge with the following st
 - run 'surge' on the terminal, make sure the path is correct, change the domain name of the app to doctalk.surge.sh and hit enter  
 - run 'surge --domain https://doctalk.surge.sh' and voila! 
 
-It's deployed! Here's my link: https://doctalk.surge.sh/. If you've been following along, deploy and test it out with friends!
+It's deployed! Here's my link: https://doctalk.surge.sh/. Select a username, tell a friend your usename, and have your friend call you! 
+
+If you've been following along with the code, deploy your version and test it out!
 
 What use-cases can you think of for WebRTC? Post them below, along with any comments, feedback, questions, or trouble that you may have regarding this tutorial!
