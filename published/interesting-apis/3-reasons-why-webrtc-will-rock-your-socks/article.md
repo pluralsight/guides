@@ -219,7 +219,7 @@ Let's take a look at what is going on above.
 
 First, we grab the video element from the DOM. Then, we establish the functions to select a username and call someone else. The phone is established by providing your PubNub keys, which you can acquire by creating a free account on PubNub and going to your settings page. Then, callbacks are attached to the phone so that it can append a video feed when it receives a call and remove it once the call is ended. Making the call itself is simply done by dialing with the username to call. Pretty cool! 
 
-We can deploy this static site with a service called Surge with the following steps:
+We can deploy this static site with Surge by following the steps below (this assumes you have [npm](https://www.npmjs.com/) installed; it comes bundled with node.js so if you don't have it, please install npm or node first):
 - open a terminal and navigate to the doctalk folder
 - run 'npm install --global surge' on the terminal
 - run 'surge' on the terminal, make sure the path is correct, change the domain name of the app to doctalk.surge.sh and hit enter  
