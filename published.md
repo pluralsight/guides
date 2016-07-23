@@ -1,3 +1,8 @@
+### Deploy Horizon Using Docker Cloud & DigitalOcean by Chris Asche
+- [Read the guide](http://tutorials.pluralsight.com/devops/deploy-horizon-using-docker-cloud-digitalocean)
+- [Read more from Chris Asche](http://tutorials.pluralsight.com/author/casche) <img src="https://avatars.githubusercontent.com/u/5832943?v=3" width="30" height="30" alt="Chris Asche" />
+- Related to: DevOps (Docker, Nagios, Jenkins, Chef, Puppet, etc)
+
 ### Using ASP.NET Web API for web services for IoT by Afzaal Ahmad Zeeshan
 - [Read the guide](http://tutorials.pluralsight.com/microsoft-net/using-asp-net-web-api-for-web-services-for-iot)
 - [Read more from Afzaal Ahmad Zeeshan](http://tutorials.pluralsight.com/author/afzaal-ahmad-zeeshan) <img src="https://avatars.githubusercontent.com/u/3237834?v=3" width="30" height="30" alt="Afzaal Ahmad Zeeshan" />
