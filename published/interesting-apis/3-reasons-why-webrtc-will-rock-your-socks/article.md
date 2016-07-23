@@ -193,8 +193,8 @@ function selectUser(form) {
 	// set up the phone
 	var phone = window.phone = PHONE({
 	    number        : form.username.value || "Anonymous",
-	    publish_key   : 'pub-c-a7775e85-ea67-4ecf-84d1-09f306ed9939',
-	    subscribe_key : 'sub-c-df5175dc-2dcb-11e6-8bc8-0619f8945a4f',
+	    publish_key   : 'insert your publish_key here',
+	    subscribe_key : 'insert your subscribe_key here',
 	    ssl : (('https:' == document.location.protocol) ? true : false)
 	});
 	// denote it's ready
