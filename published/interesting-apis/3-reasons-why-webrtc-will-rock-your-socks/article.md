@@ -195,6 +195,7 @@ function selectUser(form) {
 	    number        : form.username.value || "Anonymous",
 	    publish_key   : 'pub-c-a7775e85-ea67-4ecf-84d1-09f306ed9939',
 	    subscribe_key : 'sub-c-df5175dc-2dcb-11e6-8bc8-0619f8945a4f',
+	    ssl : (('https:' == document.location.protocol) ? true : false)
 	});
 	// denote it's ready
 	phone.ready(function(){ form.username.style.background="#55ff5b"; });
@@ -221,9 +222,9 @@ First, we grab the video element from the DOM. Then, we establish the functions 
 We can deploy this static site with a service called Surge with the following steps:
 - open a terminal and navigate to the doctalk folder
 - run 'npm install --global surge' on the terminal
-- run 'surge' on the terminal and hit enter twice... voila! It's deployed!
+- run 'surge' on the terminal, make sure the path is correct, change the domain name of the app to doctalk.surge.sh and hit enter  
+- run 'surge --domain https://doctalk.surge.sh' and voila! 
 
+It's deployed! Here's my link: https://doctalk.surge.sh/. If you've been following along, deploy and test it out with friends!
 
-Deploy and test it out with friends!
-
-What use-cases can you think of for WebRTC? Post them below, along with any comments or feedback that you may have regarding this tutorial!
+What use-cases can you think of for WebRTC? Post them below, along with any comments, feedback, questions, or trouble that you may have regarding this tutorial!
