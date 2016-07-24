@@ -1,3 +1,8 @@
+### Ionic 2 database management and versioning by Carlos Esteban Lopez Jaramillo
+- [Read the guide](http://tutorials.pluralsight.com/software-engineering-best-practices/ionic-2-database-management-and-versioning?status=draft)
+- [Read more from Carlos Esteban Lopez Jaramillo](http://tutorials.pluralsight.com/author/Luchillo) <img src="https://avatars.githubusercontent.com/u/9698639?v=3" width="30" height="30" alt="Carlos Esteban Lopez Jaramillo" />
+- Related to: Software Engineering Best Practices
+
 ### Getting started with Codeigniter 3 by Aouadi Mohamed Adib
 - [Read the guide](http://tutorials.pluralsight.com/php/getting-started-with-codeigniter-3?status=draft)
 - [Read more from Aouadi Mohamed Adib](http://tutorials.pluralsight.com/author/Adib12) <img src="https://avatars.githubusercontent.com/u/11527075?v=3" width="30" height="30" alt="Aouadi Mohamed Adib" />
