@@ -1,12 +1,12 @@
-In this tutorial, we're going to build a chat using Pusher's Presence Channels with the functionality to request e-signed Non-Disclosure Agreements (NDAs) to its members using the HelloSign API.
+In this tutorial, we're going to build a chat using [Pusher's Presence Channels](https://pusher.com/docs/client_api_guide/client_presence_channels) with the functionality to request e-signed Non-Disclosure Agreements (NDAs) to its members using the [HelloSign](https://www.hellosign.com/) API.
 
 The stack will be the following:
-- Java 7 or higher
-- Maven as the build manager
-- Spring Boot as the server-side framework
-- H2 as in-memory database
-- Thymeleaf as the server-side template engine
-- jQuery and Handlebars for the client-side interaction
+- [Java](http://www.oracle.com/technetwork/java/index.html) 7 or higher
+- [Maven](https://maven.apache.org) as the build manager
+- [Spring Boot](http://projects.spring.io/spring-boot/) as the server-side framework
+- [H2](http://www.h2database.com/html/main.html) as in-memory database
+- [Thymeleaf](http://www.thymeleaf.org/) as the server-side template engine
+- [jQuery](https://jquery.com/) and [Handlebars](http://handlebarsjs.com/) for the client-side interaction
 
 We're going to use Pusher and HelloSign webhooks to receive events from these APIs, and we'll use ngrok to keep everything in a local environment.
 
