@@ -258,32 +258,32 @@ spring.datasource.platform=h2
 It tells Spring Boot to execute the files `schema-h2.sql` and `data-h2.sql`. For this app, create the file `src/main/resources/schema-h2.sql` with the following content:
 ```sql
 CREATE TABLE chat(
-	chat_id 			BIGINT IDENTITY PRIMARY KEY,
-	chat_name 			VARCHAR(50) NOT NULL,
-	chat_description 	VARCHAR(150) NOT NULL,
-	chat_active			BOOLEAN NOT NULL,
-	created_at			TIMESTAMP NOT NULL
+	chat_id             BIGINT IDENTITY PRIMARY KEY,
+	chat_name           VARCHAR(50) NOT NULL,
+	chat_description    VARCHAR(150) NOT NULL,
+	chat_active         BOOLEAN NOT NULL,
+	created_at          TIMESTAMP NOT NULL
 );
 
 CREATE TABLE user(
-	user_id 			BIGINT IDENTITY PRIMARY KEY,
-	user_email 			VARCHAR(50) NOT NULL,
-	user_name			VARCHAR(50) NOT NULL,
-	user_active			BOOLEAN NOT NULL,
-	nda_signed			BOOLEAN NOT NULL,
-	owns_chat			BOOLEAN NOT NULL,
-	chat_id				BIGINT NOT NULL,
-	sign_id 			VARCHAR(255),
-	created_at			TIMESTAMP NOT NULL,
+	user_id             BIGINT IDENTITY PRIMARY KEY,
+	user_email          VARCHAR(50) NOT NULL,
+	user_name           VARCHAR(50) NOT NULL,
+	user_active         BOOLEAN NOT NULL,
+	nda_signed          BOOLEAN NOT NULL,
+	owns_chat           BOOLEAN NOT NULL,
+	chat_id             BIGINT NOT NULL,
+	sign_id             VARCHAR(255),
+	created_at          TIMESTAMP NOT NULL,
 	CONSTRAINT FK_user_chat FOREIGN KEY (chat_id) REFERENCES chat(chat_id)
 );
 
 CREATE TABLE message(
-	message_id			BIGINT IDENTITY PRIMARY KEY,
-	chat_id				BIGINT NOT NULL,
-	user_id				BIGINT NOT NULL,
-	message_text	 	VARCHAR(1000) NOT NULL,
-	created_at			TIMESTAMP NOT NULL,
+	message_id          BIGINT IDENTITY PRIMARY KEY,
+	chat_id             BIGINT NOT NULL,
+	user_id             BIGINT NOT NULL,
+	message_text        VARCHAR(1000) NOT NULL,
+	created_at          TIMESTAMP NOT NULL,
 	CONSTRAINT FK_message_chat FOREIGN KEY (chat_id) REFERENCES chat(chat_id),
 	CONSTRAINT FK_message_user FOREIGN KEY (user_id) REFERENCES user(user_id)
 );
@@ -312,10 +312,6 @@ Create the `src/main/java/com/example/model/Chat.java` file with the following c
 ```java
 @Entity
 public class Chat  implements Serializable {
-	/**
-	 * UID for serialization
-	 */
-	private static final long serialVersionUID = 1598739731826887591L;
 
 	/** ID of the chat */
 	@Id
@@ -397,10 +393,6 @@ The `src/main/java/com/example/model/User.java` file contains the following code
 ```java
 @Entity
 public class User implements Serializable {
-	/**
-	 * UID for serialization
-	 */
-	private static final long serialVersionUID = 3868269731826822792L;
 
 	/** ID of the user */
 	@Id
@@ -484,11 +476,6 @@ In turn, `src/main/java/com/example/model/Message.java` contains:
 ```java
 @Entity
 public class Message implements Serializable {
-
-	/**
-	 * UID for serialization
-	 */
-	private static final long serialVersionUID = 7024644638730524732L;
 
 	/** ID of the message */
 	@Id
