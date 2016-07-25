@@ -1,0 +1,15 @@
+{
+    "_publish_status": "draft",
+    "author_name": "Luchillo",
+    "author_real_name": "Carlos Esteban Lopez Jaramillo",
+    "branch": "master",
+    "branches": [],
+    "filename": "article.md",
+    "first_commit": "0a10c038bc710b045d957edfd73966f22d131130",
+    "image_url": "https://avatars.githubusercontent.com/u/9698639?v=3",
+    "stacks": [
+        "Software Engineering Best Practices"
+    ],
+    "thumbnail_url": null,
+    "title": "Ionic 2 database management and versioning"
+}

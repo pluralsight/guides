@@ -280,7 +280,7 @@ In the next section, we'll expose our server to the Internet with ngrok.
 # Setting up ngrok
 In a new terminal window, navigate to the directory where you unzipped ngrok. 
 
-We'll start ngrok by telling it which port we want to expose to the Internet, in our example, the port `3000`:
+We'll start ngrok by telling it which port we want to expose to the Internet. For our app, that would be port `3000`:
 ```
 ./ngrok http 3000
 ```
@@ -294,7 +294,7 @@ Now, you should see something like this:
 
 ![Ngrok Window](https://raw.githubusercontent.com/pluralsight/guides/master/images/d58ac65f-7849-498b-9beb-e6920a65802b.png)
 
-See that URL in the *Forwarding* row(s) with the `ngrok.io` domain? That's your public URL. Your's will be different than mine, since ngrok generates a random URL every time you run it.
+See that URL in the *Forwarding* row(s) with the `ngrok.io` domain? That's your public URL. Yours will be different than mine, since ngrok generates a random URL every time you run it.
 
 If you open in a browser `http://[YOUR_GENERATED_SUBDOMAIN].ngrok.io`, you should see the same page found on `http://localhost:3000`:
 

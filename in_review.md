@@ -1,17 +1,7 @@
-### Deploy Horizon Using Docker Cloud & DigitalOcean by Chris Asche
-- [Read the guide](http://tutorials.pluralsight.com/devops/deploy-horizon-using-docker-cloud-digitalocean?status=in-review)
-- [Read more from Chris Asche](http://tutorials.pluralsight.com/author/casche) <img src="https://avatars.githubusercontent.com/u/5832943?v=3" width="30" height="30" alt="Chris Asche" />
-- Related to: DevOps (Docker, Nagios, Jenkins, Chef, Puppet, etc)
-
 ### Getting Started with Android on Android Studio by Sudheerkumar
 - [Read the guide](http://tutorials.pluralsight.com/android/getting-started-with-android-on-android-studio?status=in-review)
 - [Read more from Sudheerkumar](http://tutorials.pluralsight.com/author/Sudheerkumar) <img src="https://avatars.githubusercontent.com/u/2035321?v=3" width="30" height="30" alt="Sudheerkumar" />
 - Related to: Android
-
-### Using ASP.NET Web API for web services for IoT by Afzaal Ahmad Zeeshan
-- [Read the guide](http://tutorials.pluralsight.com/microsoft-net/using-asp-net-web-api-for-web-services-for-iot?status=in-review)
-- [Read more from Afzaal Ahmad Zeeshan](http://tutorials.pluralsight.com/author/afzaal-ahmad-zeeshan) <img src="https://avatars.githubusercontent.com/u/3237834?v=3" width="30" height="30" alt="Afzaal Ahmad Zeeshan" />
-- Related to: Microsoft.NET (C#, ASP.NET, VB.NET, etc)
 
 ### Using the REST Interface with Licas by discompsys
 - [Read the guide](http://tutorials.pluralsight.com/java-and-j2ee/using-the-rest-interface-with-licas?status=in-review)

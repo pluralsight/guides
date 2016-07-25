@@ -26,20 +26,16 @@ I've personally used it on Chrome, iOS, and Android and it works well.
 # Simple
 Considering that my team and I were able to build an entire healthcare application using WebRTC for our company hackathon in a day or so, it isn't hard to use, assuming you've got the signaling nailed down. 
 
-It has three simple APIs. Let's explore two of them now. The code below is purely for demonstration purposes: it is bare-bones and lacks fancy styling, error handling, and tracing.
+It has three simple APIs. Let's explore two of them now. The code below is purely for demonstration purposes (it is bare-bones and lacks fancy styling, error handling, and tracing) and it has been adapted from Google Codelabs to make WebRTC even simpler to understand.
 
 Let's say this is your HTML file:
 
 /index.html
 ```
 <body>
-
   My first WebRTC app!
-  
   <video autoplay></video>
-  
   <script src="js/main.js"></script>
-  
 </body>
 ```
 
@@ -48,16 +44,14 @@ And, let's say this is your JS file:
 /js/main.js
 ```
 var video = document.querySelector('video');
-
 navigator.getUserMedia = navigator.webkitGetUserMedia;
-
 navigator.getUserMedia({video: true}, (stream) => { video.src = window.URL.createObjectURL(stream) }, () => { console.log("No stream") });
 
 ```
 
 That's it! That's all the code you need to start using WebRTC's first API, getUserMedia(). The code above gets a stream from your webcam and sets it as the video source using a bit of ECMAScript 6 syntax as well. 
 
-Try replicating the above by following these steps: 
+Try replicating the above by following these steps (here's a [JSFiddle](https://jsfiddle.net/pveb37xs/) for reference): 
 - create a folder on your desktop labeled 'webrtc,' 
 - place the index.html file inside the webrtc folder 
 - create a folder labeled 'js' within the webrtc folder 
@@ -72,17 +66,12 @@ The second API that WebRTC uses is RTCPeerConnection, which is what's responsibl
 /index.html
 ```
 <body>
-
   My first WebRTC app!
-
   <video autoplay id="one"></video>
   <video autoplay id="two"></video>
-
-  <button id="connect"> Start peer connection </button>
-
+  <button id="connect"> Start peer connection</button>
   <script src="js/main.js"></script>
   <script src="js/adapter.js"></script>
-
 </body>
 ```
 
@@ -115,7 +104,7 @@ function videoOneSource(stream) {
 }
 
 function startConnection() {
-  var servers = null;
+  var servers = null; // this is where we could use STUN/TURN servers
 
   peerConnOne = new RTCPeerConnection(servers);
   peerConnOne.onicecandidate = function(e) { onIceCandidate(peerConnOne, e);};
@@ -153,7 +142,7 @@ function onCreateAnswerSuccess(desc) {
 
 There's a lot going on here. Are you still with me? Here we see RTCPeerConnection started for each peer. The first peer registers [ICE candidates](https://developer.mozilla.org/en-US/docs/Web/API/WebRTC_API/WebRTC_basics#ICECandidate), when they become available, through a callback. Then, the first peer transmits each ICE candidate's data to the second peer. Lastly, peers exchange information about the codecs/media configuration via offers and answers to set their internal descriptions. 
 
-Try this out in your browser following the same steps for the first API! If it's successful, you should be able to see your twin on the same screen (just kidding, it's two streams of just you!).
+Try this out in your browser following the same steps for the first API! Here's a [JSFiddle](https://jsfiddle.net/c22djhw4/) for reference. If you're successful, you should be able to see your twin on the same screen (just kidding, it's two streams of just you!).
 
 The third API of WebRTC is RTCDataChannel. We won't cover it in this tutorial but know that it's available if you want to transmit data other than just video.
 
@@ -171,42 +160,46 @@ Here are the two API calls:
 
 Simple, right?! Check out PubNub's documentation for additional APIs: https://github.com/stephenlb/webrtc-sdk
 
-Similar to before, let's set up our files.
+Let's create and deploy the DocTalk WebRTC app using [PubNub's WebRTC demo](https://www.pubnub.com/blog/2015-08-25-webrtc-video-chat-app-in-20-lines-of-javascript/) and [Surge](https://surge.sh/), respectively.
 
-/index.html
+Similar to before, set up the index.html and js files as shown below (note that these files are in the folder 'doctalk').
+
+doctalk/index.html
 ```
 <body>
-  <h1>DocTalk</h1>
-
+  <h1>&hearts; DocTalk &#9877;</h1>
   <div id="video"></div>
-
-  <form name="loginForm" id="login" action="#" onsubmit="return selectUser(this);">
-      <input type="text" name="username" id="username" placeholder="Pick a username!" />
-      <input type="submit" name="login_submit" value="Select">
+  <form onsubmit="return selectUser(this);">
+      <input type="text" name="username" placeholder="Pick a username!" />
+      <input type="submit" value="Select">
   </form>
-
-  <form name="callForm" id="call" action="#" onsubmit="return makeCall(this);">
+  <form onsubmit="return makeCall(this);">
   	<input type="text" name="number" placeholder="Enter user to dial!" />
   	<input type="submit" value="Call"/>
   </form>
-
   <script src="js/main.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+  <!-- below are PubNub's signaling code and abstracted APIs that make WebRTC even simpler -->
+  <script src="https://cdn.pubnub.com/pubnub-3.7.14.min.js"></script>
+  <script src="https://cdn.pubnub.com/webrtc/webrtc.js"></script>
 </body>
 ```
 
-/main/main.js
+doctalk/main/main.js
 ```
 var video = document.getElementById("video");
 
 function selectUser(form) {
+	// set up the phone
 	var phone = window.phone = PHONE({
 	    number        : form.username.value || "Anonymous",
-	    publish_key   : 'pub-c-a7775e85-ea67-4ecf-84d1-09f306ed9939',
-	    subscribe_key : 'sub-c-df5175dc-2dcb-11e6-8bc8-0619f8945a4f',
+	    publish_key   : 'insert your publish_key here',
+	    subscribe_key : 'insert your subscribe_key here',
+	    ssl : (('https:' == document.location.protocol) ? true : false)
 	});
-
+	// denote it's ready
 	phone.ready(function(){ form.username.style.background="#55ff5b"; });
-
+	// set up callbacks that execute upon start or finish of session
 	phone.receive(function(session){
 	    session.connected(function(session) { video.appendChild(session.video); });
 	    session.ended(function(session) { video.innerHTML=''; });
@@ -215,13 +208,25 @@ function selectUser(form) {
 }
 
 function makeCall(form){
+	// dial a phone number; this is initiating the peer connection over STUN/TURN servers
 	phone.dial(form.number.value);
 	return false;
 }
+
 ```
 
 Let's take a look at what is going on above. 
 
-First, we grab the video element from the DOM. Then, we establish the functions to select a username and call someone else. The phone is established by providing your PubNub keys, which you can acquire by creating a free account on PubNub and going to your settings page. Then, callbacks are attached to the phone so that it can append a video feed when it receives a call and remove it once the call is ended. Making the call itself is simply done by dialing with the username to call. Pretty cool! Deploy and test it out with friends.
+First, we grab the video element from the DOM. Then, we establish the functions to select a username and call someone else. The phone is established by providing your PubNub keys, which you can acquire by creating a free account on PubNub and going to your settings page. Then, callbacks are attached to the phone so that it can append a video feed when it receives a call and remove it once the call is ended. Making the call itself is simply done by dialing with the username to call. Pretty cool! 
 
-What use-cases can you think of for WebRTC? Post them below, along with any comments or feedback that you may have regarding this tutorial!
+We can deploy this static site with Surge by following the steps below (this assumes you have [npm](https://www.npmjs.com/) installed; it comes bundled with node.js so if you don't have it, please install npm or node first):
+- open a terminal and navigate to the doctalk folder
+- run 'npm install --global surge' on the terminal
+- run 'surge' on the terminal, make sure the path is correct, change the domain name of the app to doctalk.surge.sh and hit enter  
+- run 'surge --domain https://doctalk.surge.sh' and voila! 
+
+It's deployed! Here's my link: https://doctalk.surge.sh/. Select a username, tell a friend your usename, and have your friend call you! 
+
+If you've been following along with the code, deploy your version and test it out!
+
+What use-cases can you think of for WebRTC? Post them below, along with any comments, feedback, questions, or trouble that you may have regarding this tutorial!
