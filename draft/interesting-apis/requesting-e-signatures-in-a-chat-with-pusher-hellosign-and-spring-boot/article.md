@@ -2136,3 +2136,318 @@ Now click the *Reveal Key* button, we'll need your key for the following section
 
 
 # Integrating HelloSign
+
+We'll create a class similar to `PusherController` for the HelloSign functionality. Create the class `com.example.web.HelloSignController` and inject the following dependencies:
+```java
+@RestController
+public class HelloSignController {
+	private Logger logger = LoggerFactory.getLogger(HelloSignController.class);
+	
+	@Autowired
+	private UserService userService;
+	
+	@Autowired
+	private PusherSettings pusherSettings;
+	
+	@Value("${hellosign.apikey}")
+	private String helloSignApiKey;
+	
+	@Value("${hellosign.templateId}")
+	private String helloSignTemplateId;
+	
+	@Value("${hellosign.testMode}")
+	private Boolean testMode;
+	
+	private Pusher pusher;
+	
+	/**
+	 * Method executed after the object is created
+	 * that creates an instance of the Pusher object
+	 */
+	@PostConstruct
+	public void createPusherObject() {
+		pusher = pusherSettings.newInstance();
+	}
+}
+```
+
+Notice how the values of the HelloSign API will be injected from system variables. Next, add the method to request a signature:
+```java
+/**
+ * Endpoint that request a signature to HelloSign
+ * @param chatInfo Object with the chat information
+ * @return A status string
+ * @throws HelloSignException
+ */
+@RequestMapping(value = "/chat/request/nda", 
+		method = RequestMethod.POST, 
+		produces = "application/json")
+public String requestNda(
+	@SessionAttribute(GeneralConstants.ID_SESSION_CHAT_INFO) ChatForm chatInfo) 
+			throws HelloSignException {
+
+	List<User> users = userService.getChatMembersToSignNda(chatInfo.getIdChat());
+	
+	if(users != null && !users.isEmpty()) {
+		HelloSignClient client = new HelloSignClient(helloSignApiKey);
+		
+		for(User user : users) {
+			TemplateSignatureRequest request = new TemplateSignatureRequest();
+			request.setSubject(HelloSignConstants.EMAIL_SUBJECT + chatInfo.getChatName());
+			request.setSigner(HelloSignConstants.SIGNING_ROLE, user.getEmail(), user.getName());
+			request.setCustomFieldValue(HelloSignConstants.NAME_TEMPLATE_FIELD, user.getName());
+			request.setTemplateId(helloSignTemplateId);
+			request.setTestMode(testMode);
+			
+			SignatureRequest newRequest = client.sendTemplateSignatureRequest(request);
+			
+			user.setSignId(newRequest.getId());
+			userService.saveUser(user);
+		}
+		
+	}
+	
+	return "OK";
+}
+```
+
+In this method, we get the list of chat members that haven't signed the agreement. Then, we made a signature request for each of them. There's a lot of options to set ([here's the signature request documentation](https://www.hellosign.com/api/signature_request/send_with_template)). However, since we've done most of the work when we set the template, here we're just setting:
+- The subject of the email that will be sent to the signer
+- The email and name of the signer
+- The value of our custom field, which is the name of the signer
+- The template ID of the document to sign
+- The flag that indicates that we're using the test mode
+
+Finally, the returned sign ID is saved in the `User` table, we'll use this value to get the user information later.
+
+Then, set up the method to respond to the HelloSign webhook:
+```java
+/**
+ * Endpoint called from HelloSign when an event happens
+ * @param json JSON with the information about the event
+ * @return A status string
+ * @throws HelloSignException
+ */
+@RequestMapping(value = "/hellosign/webhook", 
+		method = RequestMethod.POST)
+public String webhook(@RequestParam String json) throws HelloSignException {
+	JSONObject jsonObject = new JSONObject(json);
+	Event event = new Event(jsonObject);
+	
+	boolean validRequest = event.isValid(helloSignApiKey);
+	
+	if(validRequest) {
+		SignatureRequest signatureRequest = event.getSignatureRequest();
+		User user = null;
+		ChatMessageResponse response = new ChatMessageResponse();
+		
+		logger.info(event.getTypeString());
+		switch(event.getTypeString()) {
+			case HelloSignConstants.REQUEST_SIGNED_EVENT:
+				user = userService.getUserBySignId(signatureRequest.getId());
+				if(user != null) {
+					response.setMessage(user.getName() + " has signed the NDA agreement. Download the file <a href=\"/download/" + signatureRequest.getId() + "\" target=\"_blank\">here</a>");
+					pusher.trigger(GeneralConstants.CHANNEL_PREFIX + user.getChat().getName(), "system_message", response);
+				}
+				break;
+			case HelloSignConstants.REQUEST_SENT_EVENT:
+				user = userService.getUserBySignId(signatureRequest.getId());
+				if(user != null) {
+					response.setMessage("The signature request has been sent to " + user.getName());
+					pusher.trigger(GeneralConstants.CHANNEL_PREFIX + user.getChat().getName(), "system_message", response);
+				}
+				break;
+		}
+	}
+	
+	return HelloSignConstants.WEBHOOK_RESPONSE;
+}
+```
+
+There are many events we can listen to, but for this application, we're only interested to know when a sign request is sent and when the document is signed so we can send to the chat the corresponding notifications.
+
+As with all webhooks requests, we need to validate that the request really came from HelloSign. Fortunately, the HelloSign Java library provides an object of type `com.hellosign.sdk.resource.Event` that takes the JSON object from the request, and validates it with a method call:
+```java
+JSONObject jsonObject = new JSONObject(json);
+Event event = new Event(jsonObject);
+	
+boolean validRequest = event.isValid(helloSignApiKey);
+```
+
+For example, here's the JSON sent when a user signs the document:
+```javascript
+{
+  "metadata": {},
+  "response_data": [
+    {
+      "api_id": "9d295b_9",
+      "signature_id": "a267902280c190df81677fc7733c5e4c",
+      "name": null,
+      "type": "signature",
+      "value": null,
+      "required": true
+    },
+    {
+      "api_id": "9d295b_11",
+      "signature_id": "a267902280c190df81677fc7733c5e4c",
+      "name": null,
+      "type": "date_signed",
+      "value": "07/22/2016",
+      "required": false
+    }
+  ],
+  "signature_request_id": "ce00f316b22e4bb9eb1978d1072681726b621037",
+  "original_title": "The NDA for the chat test",
+  "subject": "The NDA for the chat test",
+  "custom_fields": [{
+    "api_id": "0652b9_9",
+    "editor": null,
+    "name": "name",
+    "type": "text",
+    "value": "Esteban Herrera",
+    "required": null
+  }],
+  "signing_redirect_url": null,
+  "title": "The NDA for the chat test",
+  "message": "Please sign the agreement so we can start the chat",
+  "details_url": "https://www.hellosign.com/home/manage?guid=ce00f316b22e4bb9eb1978d1072681726b621037",
+  "signatures": [{
+    "signer_name": "Esteban Herrera",
+    "signature_id": "a267902280c190df81677fc7733c5e4c",
+    "status_code": "signed",
+    "last_viewed_at": 1469241388,
+    "signed_at": 1469241960,
+    "signer_email_address": "estebanhb2@yahoo.com.mx",
+    "last_reminded_at": null,
+    "error": null,
+    "has_pin": false,
+    "order": null
+  }],
+  "has_error": false,
+  "requester_email_address": "estebanhb2@yahoo.com.mx",
+  "signing_url": "https://www.hellosign.com/sign/ce00f316b22e4bb9eb1978d1072681726b621037",
+  "test_mode": true,
+  "is_complete": true,
+  "cc_email_addresses": [],
+  "files_url": "https://api.hellosign.com/v3/signature_request/files/ce00f316b22e4bb9eb1978d1072681726b621037",
+  "final_copy_uri": "/v3/signature_request/final_copy/ce00f316b22e4bb9eb1978d1072681726b621037"
+}
+```
+
+Once the document is signed, we can view/download it as a PDF file. In fact, we can request it from the application by clicking a link:
+```java
+/**
+ * Endpoint to download the signed NDA
+ * @param response Object to send a response
+ * @param id ID of the request signature
+ * @throws IOException
+ * @throws HelloSignException
+ */
+@RequestMapping(value="/download/{id}", method = RequestMethod.GET)
+public void downloadFile(HttpServletResponse response, @PathVariable("id") String id) throws IOException, HelloSignException {
+	HelloSignClient client = new HelloSignClient(helloSignApiKey);
+	File file = client.getFiles(id);
+	 
+	if(!file.exists()){
+		String errorMessage = HelloSignConstants.FILE_DOWNLOAD_ERROR_MSG;
+		System.out.println(errorMessage);
+		OutputStream outputStream = response.getOutputStream();
+		outputStream.write(errorMessage.getBytes(Charset.forName("UTF-8")));
+		outputStream.close();
+		
+		return;
+	}
+	 
+	response.setContentType(HelloSignConstants.FILE_CONTENT_TYPE);
+	response.setHeader("Content-Disposition", String.format("inline; filename=\"" + file.getName() +"\""));
+	response.setContentLength((int)file.length());
+
+	InputStream inputStream = new BufferedInputStream(new FileInputStream(file));
+	FileCopyUtils.copy(inputStream, response.getOutputStream());
+}
+```
+
+The app is now complete. Let's run it.
+
+# Running the app
+To run the application, we have to pass all the values we injected with the `@Value` annotation either as environment variables or as command-line options using inline JSON ([more info here](http://docs.spring.io/spring-boot/docs/current/reference/html/boot-features-external-config.html)).
+
+If we're using Eclipse, for example, we can configure the values in the *Arguments* section of the *Run Configuration* dialog:
+
+![Eclipse Run Configurations](https://raw.githubusercontent.com/pluralsight/guides/master/images/0b4fe2bb-7ee2-4bca-866e-80cea393b8ac.png)
+
+
+If we're using `mvn spring-boot:run`, we can do it this way:
+```
+mvn spring-boot:run -Dsprincation.json='{"pusher":{"appId":"XXX", "key":"XXX", "secret":"XXX"},"hellosign":{"apikey":"XXX", "templateId":"XXX", "testMode":true}}'
+```
+
+Or if we're using the JAR file built by Maven:
+```
+java -jar target/nda-chat-0.0.1-SNAPSHOT.jar --spring.application.json='{"pusher":{"appId":"XXX", "key":"XXX", "secret":"XXX"},"hellosign":{"apikey":"XXX", "templateId":"XXX", "testMode":true}}'
+```
+
+Either way, once the application is running, create a chat, join the chat in another browser (or in incognito mode so the sessions can be different) and request the sign of an NDA.
+
+The signer will receive an email from HelloSign:
+
+![Email request signature](https://raw.githubusercontent.com/pluralsight/guides/master/images/b0155cc9-e1ea-47f2-a7f9-834eb9289110.png)
+
+To sign the document, the user will have to create a HelloSign account:
+
+![Create HelloSign account](https://raw.githubusercontent.com/pluralsight/guides/master/images/33975039-ca71-4a21-8be1-71166af8dad8.png)
+
+
+After signing in, since we're using the test mode, a warning will be shown:
+
+![Warning Test Mode](https://raw.githubusercontent.com/pluralsight/guides/master/images/5019a646-62a0-4e61-abb2-022972621d61.png)
+
+
+Then, the document will be presented:
+
+![Document](https://raw.githubusercontent.com/pluralsight/guides/master/images/67e9579d-5469-4571-ba90-64539ba88b06.png)
+
+
+Click on the signature field and a window will be shown where you can sign in four different ways (by drawing, typing, uploading an image, or using a smartphone):
+
+![Signing Window](https://raw.githubusercontent.com/pluralsight/guides/master/images/83d770c0-d141-4448-952f-4f430e70a62b.png)
+
+Once you're done, the signature will be added to the document:
+
+![Signature added](https://raw.githubusercontent.com/pluralsight/guides/master/images/dfd2e70b-e3d6-463b-bf07-f50c8732d00f.png)
+
+When you press the *Continue* button at the right top, you'll have to agree to the terms of service:
+
+![Agree](https://raw.githubusercontent.com/pluralsight/guides/master/images/51ca7dc2-a1ca-488c-a6f9-5ed683c62829.png)
+
+And that would be it. In your HelloSign dashboard, you'll be able to see the signed document under the *Documents* option in the menu on the left:
+
+![HelloSign Documents Dashboard](https://raw.githubusercontent.com/pluralsight/guides/master/images/8ffc3d36-822c-4abd-9cf4-7fc657fcb378.png)
+
+
+If you choose the *Preview* option on the document menu, you'll see the signed document and related information:
+
+![Signed document page 1](https://raw.githubusercontent.com/pluralsight/guides/master/images/6fd2c698-d694-476d-97f2-8ee9ca336e04.png)
+
+![Signed document page 2](https://raw.githubusercontent.com/pluralsight/guides/master/images/8b401409-e37f-4bb0-a231-beb3f41f39ea.png)
+
+
+You can download this document from the chat as well.
+
+Moreover, remember that you can view the state of the database at any time with the [H2 web console](http://localhost:8080/h2-console):
+
+![H2 Console](https://raw.githubusercontent.com/pluralsight/guides/master/images/1056ea1a-c0a4-4ba8-ad91-69f29954695f.png)
+
+You just have to connect to the database with the default URL `jdbc:h2:mem:testdb`, and the user `sa` with no password:
+
+![Connecting to the H2 Console](https://raw.githubusercontent.com/pluralsight/guides/master/images/855ada9d-6051-4f18-92a8-94248ebe8ccf.png)
+
+And to view or replay the webhook requests, ngrok provides a console on `http://localhost:4040`:
+
+![Ngrok Console](https://raw.githubusercontent.com/pluralsight/guides/master/images/478ffc57-fe9c-40ca-a76c-47ac5f0f12e8.png)
+
+
+# Conclusion
+We have come a long way with this application, learning how to set up presence chats with Pusher, signing documents with the HelloSign API, using ngrok to work locally with webhooks, and building a complete application using Spring MVC and Spring Data under Spring Boot.
+
+Thanks for reading. Contact me if you need anything and remember that the code of the app is [on Github](https://github.com/eh3rrera/).
