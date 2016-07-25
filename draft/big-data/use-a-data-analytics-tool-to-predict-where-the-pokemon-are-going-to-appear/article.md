@@ -1,6 +1,5 @@
 
 
-
 Based on the success of the last post that I wrote on my blog about Red Sqirl and Pokemon, I've decided to do another more advanced one: https://igfasouza.wordpress.com/2016/07/14/red-sqirl-first-step-tutorial-with-pokemon/
 
 Here I am playing with Pokemon again
@@ -54,26 +53,26 @@ I just combine map information plus forecast data from data specific time.
 Header
 Id INT,Pokemon CATEGORY,Timestamp STRING,Longitude FLOAT,Latitude FLOAT,Temperature INT,Barometer INT,Humidity INT,Wind INT,Near_Water CATEGORY,Near_Grass CATEGORY,Near_Buildings CATEGORY
 
-1,Drowzee,14/07/2016 13:48,53.334968,-6.251446,16,1026,63,19,No,Yes,Yes
-2,Drowzee,14/07/2016 10:11,53.337254,-6.251597,14,1026,82,15,No,No,Yes
-3,Drowzee,14/07/2016 10:23,53.339945,-6.248335,14,1026,77,13,No,Yes,No
-4,Drowzee,14/07/2016 12:24,53.345677,-6.248267,17,1026,59,15,No,No,Yes
-5,Drowzee,14/07/2016 15:31,53.34038,-6.261259,18,1026,52,11,No,No,Yes
-6,Drowzee,14/07/2016 14:08,53.342125,-6.262587,17,1026,68,17,No,No,Yes
-7,Drowzee,12/07/2016 13:27,53.344171,-6.259333,16,1014,55,20,No,No,Yes
-8,Drowzee,14/07/2016 11:31,53.348675,-6.255442,16,1026,63,11,No,No,Yes
-9,Drowzee,14/07/2016 13:02,53.356889,-6.258702,17,1026,59,17,No,Yes,Yes
-10,Drowzee,12/07/2016 22:53,53.347341,-6.287458,12,1016,82,15,Yes,Yes,No
-11,Squirtle,14/07/2016 10:07,53.332052,-6.253498,14,1026,82,15,Yes,No,Yes
-12,Squirtle,14/07/2016 13:51,53.333941,-6.250503,17,1026,68,17,No,No,Yes
-13,Squirtle,18/07/2016 16:41,53.334569,-6.255064,25,1018,57,11,No,No,Yes
-14,Squirtle,14/07/2016 10:00,53.335854,-6.225442,14,1026,82,15,Yes,No,Yes
-15,Squirtle,24/07/2016 19:24,53.338531,-6.259332,17,1014,73,35,Yes,Yes,No
-16,Squirtle,14/07/2016 13:50,53.339978,-6.272175,17,1026,68,17,No,Yes,Yes
-17,Squirtle,20/07/2016 10:18,53.358605,-6.225089,20,1008,73,24,Yes,No,Yes
-18,Squirtle,19/07/2016 07:56,53.358854,-6.229893,19,1016,78,11,Yes,No,No
-19,Squirtle,12/07/2016 13:12,53.366995,-6.280585,16,1014,55,17,Yes,No,No
-20,Squirtle,14/07/2016 11:36,53.375874,-6.319334,16,1026,63,11,Yes,No,No
+1,Drowzee,14/07/2016 13:48,53.334968,-6.251446,16,1026,63,19,No,Yes,Yes</br>
+2,Drowzee,14/07/2016 10:11,53.337254,-6.251597,14,1026,82,15,No,No,Yes</br>
+3,Drowzee,14/07/2016 10:23,53.339945,-6.248335,14,1026,77,13,No,Yes,No</br>
+4,Drowzee,14/07/2016 12:24,53.345677,-6.248267,17,1026,59,15,No,No,Yes</br>
+5,Drowzee,14/07/2016 15:31,53.34038,-6.261259,18,1026,52,11,No,No,Yes</br>
+6,Drowzee,14/07/2016 14:08,53.342125,-6.262587,17,1026,68,17,No,No,Yes</br>
+7,Drowzee,12/07/2016 13:27,53.344171,-6.259333,16,1014,55,20,No,No,Yes</br>
+8,Drowzee,14/07/2016 11:31,53.348675,-6.255442,16,1026,63,11,No,No,Yes</br>
+9,Drowzee,14/07/2016 13:02,53.356889,-6.258702,17,1026,59,17,No,Yes,Yes</br>
+10,Drowzee,12/07/2016 22:53,53.347341,-6.287458,12,1016,82,15,Yes,Yes,No</br>
+11,Squirtle,14/07/2016 10:07,53.332052,-6.253498,14,1026,82,15,Yes,No,Yes</br>
+12,Squirtle,14/07/2016 13:51,53.333941,-6.250503,17,1026,68,17,No,No,Yes</br>
+13,Squirtle,18/07/2016 16:41,53.334569,-6.255064,25,1018,57,11,No,No,Yes</br>
+14,Squirtle,14/07/2016 10:00,53.335854,-6.225442,14,1026,82,15,Yes,No,Yes</br>
+15,Squirtle,24/07/2016 19:24,53.338531,-6.259332,17,1014,73,35,Yes,Yes,No</br>
+16,Squirtle,14/07/2016 13:50,53.339978,-6.272175,17,1026,68,17,No,Yes,Yes</br>
+17,Squirtle,20/07/2016 10:18,53.358605,-6.225089,20,1008,73,24,Yes,No,Yes</br>
+18,Squirtle,19/07/2016 07:56,53.358854,-6.229893,19,1016,78,11,Yes,No,No</br>
+19,Squirtle,12/07/2016 13:12,53.366995,-6.280585,16,1014,55,17,Yes,No,No</br>
+20,Squirtle,14/07/2016 11:36,53.375874,-6.319334,16,1026,63,11,Yes,No,No</br>
 
 
 #### Steps
