@@ -2044,3 +2044,95 @@ The chat functionality is completed, now the only thing missing is the signing o
 
 # Setting up HelloSign
 We're going to work with a document with some *Lorem ipsum* text that will represent our NDA agreement:
+
+![Sample NDA document](https://raw.githubusercontent.com/pluralsight/guides/master/images/96202500-5a08-4a02-a374-89a1a4e6e6a9.png)
+
+You can get the sample document [here](https://github.com).
+
+Go to your [HelloSign dashboard](https://www.hellosign.com/home/index) and choose the *Templates* option of the menu on the left. The following screen will be shown:
+
+![Templates screen](https://raw.githubusercontent.com/pluralsight/guides/master/images/4d659e6d-9fbb-4a1d-a15c-0571c8d77d1f.png)
+
+
+Choose *Create a Template* and press *Continue* if a warning pop-up appears. You'll reach the following screen:
+
+![Create template screen](https://raw.githubusercontent.com/pluralsight/guides/master/images/3208a50d-05b2-4a19-8d6f-d715ca3c838b.png)
+
+
+Next, upload the sample document:
+
+![Document uploaded](https://raw.githubusercontent.com/pluralsight/guides/master/images/b568c6a7-66d6-4e92-a6ef-3bee4cf8b7cd.png)
+
+
+We'll only require the signature of one person, the expert or consultant, so enter this role:
+
+![Role](https://raw.githubusercontent.com/pluralsight/guides/master/images/34270376-61a7-49a7-a4e8-181df90ea97c.png)
+
+
+Click the *Prepare Docs for Signing* button. The following window will be shown:
+
+![Prepare document window](https://raw.githubusercontent.com/pluralsight/guides/master/images/0e8a8c35-9662-4275-a7f4-f0b5dedd6395.png)
+
+
+Click the *Signature* button and then click on the place where you want the signature on the document:
+
+![Place Signature](https://raw.githubusercontent.com/pluralsight/guides/master/images/bb0d33c9-7d61-4309-becb-b1be10815a63.png)
+
+
+Add an *Textbox* selecting *Me (when sending).* under *Who fills this out?* and with the value *name* in *Field Label* (this will be used to reference the field when requesting the signature via the API), and a *Sign Date* field:
+
+![Create fields](https://raw.githubusercontent.com/pluralsight/guides/master/images/955d2537-c540-42cc-b4c6-e2f283a03269.png)
+
+
+Then, click *Continue* and add a title and a message for the recipient:
+
+![Title and Message](https://raw.githubusercontent.com/pluralsight/guides/master/images/f9d927d3-7dd5-4518-8865-8a61e68eff52.png)
+
+
+Finally, click the *Create Template* button. The template ID will be shown:
+
+![Template Created window](https://raw.githubusercontent.com/pluralsight/guides/master/images/9e7fc917-85a9-45f7-add8-86a843cc05f6.png)
+
+
+Store the template ID, we'll need it later.
+
+Now let's set up the API. On the menu under your email:
+
+![Settings menu](https://raw.githubusercontent.com/pluralsight/guides/master/images/da5092ee-2ea5-47b6-ae7b-39221540b205.png)
+
+Go to *Settings* and then to the *API* tab:
+
+![API screen](https://raw.githubusercontent.com/pluralsight/guides/master/images/043b4cf3-d6ba-48da-abd1-ad62542a78fb.png)
+
+
+Under *Account Callback*, enter the URL `http://4e2f1461.ngrok.io/hellosign/webhook` (or whatever your domain is, just keep the `/hellosign/webhook`):
+
+![Webhook configuration](https://raw.githubusercontent.com/pluralsight/guides/master/images/7c5f56d3-9bf5-4ccd-b117-f0f16ae3b601.png)
+
+
+If you test the webhook (assuming you have it already configured), HelloSign will send a message to the URL, for example:
+```javascript
+{
+	"event":{
+		"event_type":"callback_test",
+		"event_time":"1469227065",
+		"event_hash":"8db73f2e2749aa0b79ff4a461a12922a575a9a436cc5e195962f594a17d4060c",
+		"event_metadata":{
+			"related_signature_id":null,
+			"reported_for_account_id":"74d9aec621265624c4d3b5f14fe71735fcf8bf87",
+			"reported_for_app_id":null,
+			"event_message":null
+		}
+	}
+}
+```
+
+![Test webhook](https://raw.githubusercontent.com/pluralsight/guides/master/images/192d6fa7-244e-4525-9cd4-5e21be1bcfff.png)
+
+
+You can find more information about [HelloSign webhooks here](https://www.hellosign.com/api/eventsAndCallbacksWalkthrough).
+
+Now click the *Reveal Key* button, we'll need your key for the following section.
+
+
+# Integrating HelloSign
