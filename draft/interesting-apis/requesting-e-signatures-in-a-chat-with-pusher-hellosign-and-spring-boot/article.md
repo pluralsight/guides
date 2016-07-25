@@ -629,7 +629,7 @@ In the next section, we're going to review the service layer.
 
 # Service layer
 
-The service layer is just a thin wrapper of the database layer. Its main purpose is to provide transactional capabilities to data access methods.
+The service layer is just a thin wrapper of the database layer. Its main purpose is to provide transactional capabilities to the repository methods.
 
 We're going to set up two services. The chat service:
 ```java
@@ -765,7 +765,7 @@ public class UserService {
 	}
 
 	/**
-	 * Find all the active members of a chat that haven't sign the NDA
+	 * Finds all the active members of a chat that haven't sign the NDA
 	 * @param idChat ID of the chat
 	 * @return a List of User objects
 	 */
@@ -776,7 +776,7 @@ public class UserService {
 	}
 	
 	/**
-	 * Get a user by the HelloSign ID of her signature request
+	 * Gets a user by the HelloSign ID of her signature request
 	 * @param signId ID of the signature request
 	 * @return a User object
 	 */
@@ -1034,7 +1034,7 @@ public String createChat(ChatForm form, Model model) {
 }
 ```
 
-Notice how the helper method `addMember()` is used to set up the relationship between the chat and the user so both entities can be saved with a single method call on the `Chat` object. Also, the channel name is prefixed with `presence-` (defined as `GeneralConstants.CHANNEL_PREFIX`), which is required by Pusher presence channels (more on this later). Finally, the `ChatForm` is added to the `Model` object.
+Notice how the helper method `addMember()` is used to set up the relationship between the chat and the user so both entities can be saved with a single method call on the `Chat` object. Also, the channel name is prefixed with `presence-` (defined as `GeneralConstants.CHANNEL_PREFIX`), which is required by Pusher Presence Channels (more on this later). Finally, the `ChatForm` is added to the `Model` object.
 
 Now, to save this object to the HTTP session, we only have to annotate the controller class with `@SessionAttributes` and the same identifier used when it was added to the `Model`  object:
 ```java
@@ -1088,9 +1088,9 @@ public ModelAndView chat(
 }
 ```
 
-This method gets all the existing chat messages (if any) to present the chat history to the user.
+It gets all the existing chat messages (if any) to present the chat history to the user.
 
-Next, let's talk about Pusher presence chats, set up a Pusher webhook, and the configurations in HelloSign so a user can sign an NDA document.
+In the next sections, we're going to talk about Pusher presence chats, set up a Pusher webhook, and the configurations in HelloSign so a user can sign an NDA document.
 
 # Pusher's presence chats and Webhooks
 Presence channels provide information about who is subscribed to the channel. For this, an HTPP request is made to determine if the current user has permission to access the channel and to provide information about that user. 
@@ -1228,7 +1228,7 @@ Create the `src/main/resources/templates/chat.html` file with the following cont
 </html>
 ```
 
-This code will print the chat information from the session:
+Let's review this code. This part will print the chat information from the session:
 ```html
 <div class="chat-about">
   <div class="chat-name" th:text="${session.chatInfo.chatName}"></div>
@@ -1479,7 +1479,7 @@ var pusher = new Pusher(PUSHER_KEY, {
 });
 ```
 
-And then, the subscription to the channel is made and the presence events are bind.
+Then, the subscription to the channel is made and the presence events are bound.
 
 The API endpoints of the application for the chat functionality are defined in the `com.example.web.PusherController`. 
 
