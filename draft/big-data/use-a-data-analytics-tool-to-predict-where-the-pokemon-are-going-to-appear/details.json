@@ -1,0 +1,15 @@
+{
+    "_publish_status": "draft",
+    "author_name": "igfasouza",
+    "author_real_name": "Igor Souza",
+    "branch": "master",
+    "branches": [],
+    "filename": "article.md",
+    "first_commit": "a2633a30c03257a200d54bfd60facae07b3d32e9",
+    "image_url": "https://avatars.githubusercontent.com/u/6233869?v=3",
+    "stacks": [
+        "Big Data (Hadoop, Spark, etc)"
+    ],
+    "thumbnail_url": null,
+    "title": "Use a data analytics tool to predict where the Pokemon are going to appear"
+}
