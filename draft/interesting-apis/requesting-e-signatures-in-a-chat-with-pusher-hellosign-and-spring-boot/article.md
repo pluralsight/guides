@@ -1435,3 +1435,612 @@ This method gets all the existing chat messages (if any) to present the chat his
 Next, let's talk about Pusher presence chats, set up a Pusher webhook, and the configurations in HelloSign so a user can sign an NDA document.
 
 # Pusher's presence chats and Webhooks
+Presence channels provide information about who is subscribed to the channel. For this, an HTPP request is made to determine if the current user has permission to access the channel and to provide information about that user. 
+
+On the client-side, once a subscription is authenticated, you can access the information about the users with the `members` property of the channel and the local user with the `members.me` property.
+
+You can also subscribe to the following events on the channel:
+- When a subscription has succeeded (`pusher:subscription_succeeded`)
+- When there's a subscription error (`pusher:subscription_error`)
+- When a member is added (`pusher:member_added`)
+- When a member is removed (`pusher:member_removed`)
+
+You can know more about [presence channels here](https://pusher.com/docs/client_api_guide/client_presence_channels).
+
+On the server-side, webhooks allow us to be notified about the following events:
+- When a channel is created (`channel_vacated`)
+- When the last subscriber exits the channel (`channel_vacated `)
+- When a member is added in a presence channel (`member_added`)
+- When a member is removed in a presence channel (`member_removed`)
+- When an event is sent to a channel (`client_event`)
+
+There is a delay of a few seconds between a client disconnecting and the `channel_vacated` and `member_removed` events being sent so that momentary drops in connection or page navigations would not be taken into account.
+
+You can know more about [Pusher webhooks here](https://pusher.com/docs/webhooks).
+
+Let's configure the webhooks for channel and presence events. Go to your Pusher dashboard, select your app and then the *Webhooks* tab. Then add two webhooks with the URL `http://4e2f1461.ngrok.io/pusher/webhook` (or whatever you domain is, but keep the `pusher/webhook` part) for the *Event types* *Channel existence* and *Presence*:
+
+![Pusher webhooks](https://raw.githubusercontent.com/pluralsight/guides/master/images/1045f1ef-f4a6-4fcd-aefa-8e8070549881.png)
+
+
+# The chat page
+
+Create the `src/main/resources/templates/chat.html` file with the following content:
+```html
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>NDA Chat</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet prefetch" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="/css/style.css" />
+</head>
+<body>
+    <div class="container clearfix">    
+	    <div class="chat">
+	      <div class="chat-header clearfix">
+	        
+	        <div class="chat-about">
+	          <div class="chat-name" th:text="${session.chatInfo.chatName}"></div>
+	          <div class="chat-desc" th:text="${session.chatInfo.chatDescription}"></div>
+	        </div>
+	        <div class="loader">
+	        	<img src="/img/loader.gif" />
+	        </div>
+	      </div> <!-- end chat-header -->
+	      
+	      <div class="chat-history">
+	        <ul>
+	        	<li class="clearfix" th:each="msg : ${messages}" >
+	        		<div th:if="${session.chatInfo.idUser == msg.user.id}">
+	        			<div class="message-data">
+							<span class="message-data-name" th:inline="text"><i class="fa fa-circle online"></i> [[${msg.user.name}]]</span>
+							<span class="message-data-time" th:text="${msg.createdAtString}"></span>
+						</div>
+						<div class="message my-message" th:utext="${msg.messageFormatted}">
+						</div>
+					</div>
+					
+	        		<div class="clearfix" th:if="${session.chatInfo.idUser != msg.user.id}">
+						<div class="message-data align-right">
+							<span class="message-data-time" th:text="${msg.createdAtString}"></span> &nbsp; &nbsp;
+							<span class="message-data-name" th:text="${msg.user.name}"></span> <i class="fa fa-circle me"></i>
+						</div>
+						<div class="message other-message float-right" th:utext="${msg.messageFormatted}">
+						</div>
+	        		</div>
+				</li>
+	        </ul>
+	        
+	      </div> <!-- end chat-history -->
+	      
+	      <div class="chat-message clearfix">
+	        <textarea name="message-to-send" id="message-to-send" placeholder ="Type your message" rows="3"></textarea>
+	        
+	        <a id="send-btn" class="float-right button">Send</a>
+	        <a id="request-nda-btn" class="float-left button" th:if="${session.chatInfo.isUserChatOwner}">Request NDA</a>
+	
+	      </div> <!-- end chat-message -->
+	      
+	    </div> <!-- end chat -->
+    
+	</div> <!-- end container -->
+	
+	<script id="message-template" type="text/x-handlebars-template">
+	<li class="clearfix">
+		<div class="message-data">
+			<span class="message-data-name"><i class="fa fa-circle online"></i> {{name}}</span>
+			<span class="message-data-time">{{time}}</span>
+		</div>
+		<div class="message my-message">
+			{{{msg}}}
+		</div>
+	</li>
+	</script>
+
+	<script id="message-response-template" type="text/x-handlebars-template">
+	<li class="clearfix">
+		<div class="message-data align-right">
+			<span class="message-data-time" >{{time}}</span> &nbsp; &nbsp;
+			<span class="message-data-name" >{{name}}</span> <i class="fa fa-circle me"></i>
+		</div>
+		<div class="message other-message float-right">
+			{{{msg}}}
+		</div>
+	</li>
+	</script>
+	
+	<script id="message-system-template" type="text/x-handlebars-template">
+	<li>
+		<div class="message-data-system">
+			<span><b>{{{msg}}}</b></span>
+		</div>
+	</li>
+	</script>
+	
+	<script src="https://js.pusher.com/3.1/pusher.min.js"></script>
+	<script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.min.js"></script>
+	<script th:inline="javascript">
+	    var CHANNEL = /*[[${session.chatInfo.presenceChatName}]]*/ 'NA';
+	    var PUSHER_KEY = /*[[${key}]]*/ 'NA';
+	</script>
+	<script src="js/chat.js"></script>
+</body>
+</html>
+```
+
+This code will print the chat information from the session:
+```html
+<div class="chat-about">
+  <div class="chat-name" th:text="${session.chatInfo.chatName}"></div>
+  <div class="chat-desc" th:text="${session.chatInfo.chatDescription}"></div>
+</div>
+```
+
+Print the messages sent before the user subscribed to the chat (differentiating between the messages sent by the local user and the other chat members):
+```html
+<li class="clearfix" th:each="msg : ${messages}" >
+	<div th:if="${session.chatInfo.idUser == msg.user.id}">
+		<div class="message-data">
+			<span class="message-data-name" th:inline="text"><i class="fa fa-circle online"></i> [[${msg.user.name}]]</span>
+			<span class="message-data-time" th:text="${msg.createdAtString}"></span>
+		</div>
+		<div class="message my-message" th:utext="${msg.messageFormatted}">
+		</div>
+	</div>
+	
+	<div class="clearfix" th:if="${session.chatInfo.idUser != msg.user.id}">
+		<div class="message-data align-right">
+			<span class="message-data-time" th:text="${msg.createdAtString}"></span> &nbsp; &nbsp;
+			<span class="message-data-name" th:text="${msg.user.name}"></span> <i class="fa fa-circle me"></i>
+		</div>
+		<div class="message other-message float-right" th:utext="${msg.messageFormatted}">
+		</div>
+	</div>
+</li>
+```
+
+If the local user is the chat owner, the *Request NDA* button is rendered:
+```html
+<a id="request-nda-btn" class="float-left button" th:if="${session.chatInfo.isUserChatOwner}">Request NDA</a>
+```
+
+The Handlebars templates for messages are defined:
+```html
+<script id="message-template" type="text/x-handlebars-template">
+<li class="clearfix">
+	<div class="message-data">
+		<span class="message-data-name"><i class="fa fa-circle online"></i> {{name}}</span>
+		<span class="message-data-time">{{time}}</span>
+	</div>
+	<div class="message my-message">
+		{{{msg}}}
+	</div>
+</li>
+</script>
+
+<script id="message-response-template" type="text/x-handlebars-template">
+<li class="clearfix">
+	<div class="message-data align-right">
+		<span class="message-data-time" >{{time}}</span> &nbsp; &nbsp;
+		<span class="message-data-name" >{{name}}</span> <i class="fa fa-circle me"></i>
+	</div>
+	<div class="message other-message float-right">
+		{{{msg}}}
+	</div>
+</li>
+</script>
+
+<script id="message-system-template" type="text/x-handlebars-template">
+<li>
+	<div class="message-data-system">
+		<span><b>{{{msg}}}</b></span>
+	</div>
+</li>
+</script>
+```
+
+And variables from the server are printed using Thymeleaf's syntax for [inline Javascript](http://www.thymeleaf.org/doc/tutorials/2.1/usingthymeleaf.html#script-inlining-javascript-and-dart):
+```javascript
+<script th:inline="javascript">
+	var CHANNEL = /*[[${session.chatInfo.presenceChatName}]]*/ 'NA';
+	var PUSHER_KEY = /*[[${key}]]*/ 'NA';
+</script>
+```
+
+To get the Pusher key, let's modify our controller code. But first, let's define a [configuration object](http://docs.spring.io/spring-boot/docs/current/reference/html/boot-features-external-config.html) that will take the values of Pusher's API from environment (or command line) variables:
+```java
+package com.example.config;
+
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
+
+import com.pusher.rest.Pusher;
+
+/**
+ * Class that contains the information to use the Pusher API
+ */
+@Component
+public class PusherSettings {
+	/** Pusher App ID */
+	@Value("${pusher.appId}")
+    private String appId;
+	
+	/** Pusher Key */
+	@Value("${pusher.key}")
+    private String key;
+	
+	/** Pusher Secret */
+	@Value("${pusher.secret}")
+    private String secret;
+	
+	/**
+	 * Creates a new instance of the Pusher object to use its API
+	 * 
+	 * @return An instance of the Pusher object
+	 */
+	public Pusher newInstance() {
+		return new Pusher(appId, key, secret);
+	}
+	
+	public String getPusherKey() {
+		return key;
+	}
+}
+```
+
+Property values can be injected directly into your beans using the `@Value` annotation and are accessible after a bean has been constructed.
+
+Now, in `ChatController`, inject an instance of this object:
+```java
+@Autowired
+private PusherSettings pusherSettings;
+```
+
+And modify the `chat` method to add the key to the `modelAndView` object:
+```java
+@RequestMapping(method=RequestMethod.GET, value="/chat")
+public ModelAndView chat(
+		@SessionAttribute(GeneralConstants.ID_SESSION_CHAT_INFO) ChatForm chatInfo) {
+
+	...
+	
+	modelAndView.addObject("key", pusherSettings.getPusherKey());
+	
+	return modelAndView;
+}
+```
+
+The Javascript code that gives the chat functionality to this page is on the `js/chat.js` file:
+```javascript
+$(document).ready(function() {
+	var chatHistory = $('.chat-history');
+	var chatHistoryList =  chatHistory.find('ul');
+	var sendBtn = $('#send-btn');
+	var ndaBtn = $('#request-nda-btn');
+	var textarea = $('#message-to-send');
+	
+	function addMessage() {
+		var messageToSend = textarea.val().trim();
+		if(messageToSend !== '') {
+			$.ajax({
+				  method: 'POST',
+				  url: '/chat/message',
+				  contentType: 'application/json; charset=UTF-8',
+				  data: JSON.stringify({ "message": messageToSend })
+			})
+			.done(function(msg) {
+				  console.log(msg);
+				  textarea.val('');
+			}); 
+		}
+	}
+	
+	function scrollToBottom() {
+		chatHistory.scrollTop(chatHistory[0].scrollHeight);
+	}
+	
+	function addSystemMessage(message) {
+		var template = Handlebars.compile($('#message-system-template').html());
+        var params = { 
+        	msg: message,
+        };
+
+        chatHistoryList.append(template(params));
+        scrollToBottom();
+	}
+	
+	scrollToBottom();
+
+	var pusher = new Pusher(PUSHER_KEY, {
+    	encrypted: true,
+    	authEndpoint: '/chat/auth'
+    });
+	var presenceChannel = pusher.subscribe(CHANNEL);
+	
+	presenceChannel.bind('pusher:subscription_succeeded', function() {
+		console.log(presenceChannel.members.me);
+		addSystemMessage('You have joined the chat');
+	});
+	
+	presenceChannel.bind('pusher:subscription_error', function(status) {
+		alert('Subscription to the channel failed with status ' + status);
+	});
+	
+	presenceChannel.bind('pusher:member_added', function(member) {
+		console.log('pusher:member_added');
+		addSystemMessage(member.info.name + ' has joined the chat');
+	});
+	
+	presenceChannel.bind('pusher:member_removed', function(member) {
+		console.log('pusher:member_removed');
+		addSystemMessage(member.info.name + ' has left the chat');
+	});
+	
+	presenceChannel.bind('new_message', function(data) {
+		if(data.message !== '') {
+			var templateEl = (presenceChannel.members.me.id === data.userId) 
+								? $('#message-template') 
+										: $('#message-response-template')
+			var template = Handlebars.compile(templateEl.html());
+	        var params = { 
+	        	msg: data.message.replace(/(\r?\n)/g, '<br />'),
+	        	name: data.userName,
+	        	time: data.time
+	        };
+
+	        chatHistoryList.append(template(params));
+	        scrollToBottom();
+		}
+    });
+	
+	presenceChannel.bind('system_message', function(data) {
+		if(data.message !== '') {
+			addSystemMessage(data.message);
+		}
+    });
+	
+	sendBtn.on('click', function() {
+		addMessage();
+	});
+	
+	ndaBtn.on('click', function() {
+		$.ajax({
+			  method: 'POST',
+			  url: '/chat/request/nda'
+		})
+		.done(function(msg) {
+			  console.log(msg);
+		}); 
+	});
+	
+	$( document ).ajaxStart(function() {
+	  $('.loader').show();
+	}).ajaxStop(function() {
+	  $('.loader').hide();
+	});
+});
+```
+
+After the definition of the functions to add messages, the pusher object is created in this way: 
+```javascript
+var pusher = new Pusher(PUSHER_KEY, {
+	encrypted: true,
+	authEndpoint: '/chat/auth'
+});
+```
+
+And then, the subscription to the channel is made and the presence events are bind.
+
+The API endpoints of the application for the chat functionality are defined in the `com.example.web.PusherController`. 
+
+This class is annotated with the `@RestController` annotation:
+```java
+@RestController
+public class PusherController {
+	...
+}
+```
+
+In Spring MVC 4, if your controller is annotated with `@RestController` instead of `@Controller`, you don't need the `@ResponseBody` annotation to specify responses formatted as JSON.
+
+First, let's wire the services we'll need (notice the` @PostConstruct` annotation in the method that creates the `pusher` instance):
+```java
+@RestController
+public class PusherController {
+	private Logger logger = LoggerFactory.getLogger(PusherController.class);
+	
+	@Autowired
+	private ChatService chatService;
+	
+	@Autowired
+	private UserService userService;
+	
+	@Autowired
+	private PusherSettings pusherSettings;
+	
+	private Pusher pusher;
+	
+	/**
+	 * Method executed after the object is created
+	 * that creates an instance of the Pusher object
+	 */
+	@PostConstruct
+	public void createPusherObject() {
+		pusher = pusherSettings.newInstance();
+	}
+}
+```
+
+After that, let's define the authentication endpoint for the presence chat:
+```java
+@RestController
+public class PusherController {
+	... 
+	
+	/**
+	 * Endpoint that authenticates a subscription to a Pusher presence channel
+	 * @param socketId ID of the opened socket
+	 * @param channel Channel to subscribe
+	 * @param chatInfo Session object with information about the chat 
+	 * @return A status string
+	 */
+	@RequestMapping(method = RequestMethod.POST, value= "/chat/auth")
+	public String auth(
+			@RequestParam(value="socket_id") String socketId, 
+	        @RequestParam(value="channel_name") String channel,
+	        @SessionAttribute(GeneralConstants.ID_SESSION_CHAT_INFO) ChatForm chatInfo){
+		
+		Long userId = chatInfo.getIdUser();
+		Map<String, String> userInfo = new HashMap<>();
+		userInfo.put("name", chatInfo.getUserName());
+		userInfo.put("email", chatInfo.getUserEmail());
+
+		String res = pusher.authenticate(socketId, channel, new PresenceUser(userId, userInfo));
+
+	    return res;
+	}
+}
+```
+
+In the method, we just get the information about the chat and the user from the session to make the actual authentication and return the information.
+
+To register a message, we insert it in the database and publish an event into the presence channel afterwards:
+```java
+@RestController
+public class PusherController {
+	... 
+	
+	/**
+	 * Endpoint to register a chat message
+	 * @param request Object with information about the message
+	 * @param chatInfo Session object with information about the chat
+	 * @return An object with information about the message
+	 */
+	@RequestMapping(value = "/chat/message", 
+					method = RequestMethod.POST, 
+					consumes = "application/json", 
+					produces = "application/json")
+	public ChatMessageResponse messsage(
+			@RequestBody ChatMessageRequest request,
+			@SessionAttribute(GeneralConstants.ID_SESSION_CHAT_INFO) ChatForm chatInfo) {
+		
+		Message msg = new Message();
+		msg.setCreatedAt(new Date());
+		msg.setIdChat(chatInfo.getIdChat());
+		msg.setMessage(request.getMessage());
+		
+		chatService.saveMessage(msg, chatInfo.getIdUser());
+		
+		ChatMessageResponse response = new ChatMessageResponse();
+		response.setMessage(msg.getMessage());
+		response.setTime(msg.getCreatedAtString());
+		response.setUserId(msg.getUser().getId());
+		response.setUserName(msg.getUser().getName());
+		
+		pusher.trigger(chatInfo.getPresenceChatName(), "new_message", response);
+		
+		return response;
+	}
+}
+```
+
+Finally, we need to define the method that will handle Pusher's webhook requests:
+```java
+@RestController
+public class PusherController {
+	... 
+	
+	/**
+	 * Endpoint called from Pusher when an event happens
+	 * @param key Pusher key
+	 * @param signature Signature of the request
+	 * @param json JSON with the information about the event
+	 * @return A status string
+	 * @throws JsonParseException
+	 * @throws JsonMappingException
+	 * @throws IOException
+	 */
+	@RequestMapping(value = "/pusher/webhook", 
+			method = RequestMethod.POST, 
+			consumes = "application/json")
+	public String webhook(
+			@RequestHeader(value="X-Pusher-Key") String key,
+			@RequestHeader(value="X-Pusher-Signature") String signature,
+			@RequestBody String json) throws JsonParseException, JsonMappingException, IOException {
+		Validity valid = pusher.validateWebhookSignature(key, signature, json);
+		
+		if(Validity.VALID.equals(valid)) {
+			ObjectMapper mapper = new ObjectMapper();
+			PusherWebhookRequest request = mapper.readValue(json, PusherWebhookRequest.class);
+			
+			if(request.getEvents() != null) {
+				for(PusherWebhookRequest.Event event : request.getEvents()) {
+					switch(event.getName()) {
+						case "channel_occupied":
+							logger.info("channel_occupied: " + event.getChannel());
+							break;
+						case "channel_vacated":
+							logger.info("channel_vacated: " + event.getChannel());
+							chatService.markChatAsInactive(event.getChannel().replace(GeneralConstants.CHANNEL_PREFIX, ""));
+							break;
+						case "member_added":
+							logger.info("member_added: " + event.getUserId());
+							break;
+						case "member_removed":
+							logger.info("member_removed: " + event.getUserId());
+							userService.markUserAsInactive(event.getUserId());
+							break;
+					}
+				}
+			}
+		}
+		
+		return "OK";
+	}
+}
+```
+
+First, we need to make sure the request comes from Pusher. Valid WebHooks will contain these headers:
+- `X-Pusher-Key`: The currently active Pusher's API key.
+- `X-Pusher-Signature`: An HMAC SHA256 hex digest formed by signing the POST payload (body) with Pusher's APIS token's secret 
+
+To perform the authentication, Pusher's library requires these headers and the request body as arguments to the `validateWebhookSignature` method:
+```java
+Validity valid = pusher.validateWebhookSignature(key, signature, json);
+```
+
+If the request is valid, the JSON object is converted to an object of type `PusherWebhookRequest`. These are sample requests in JSON format:
+```javascript
+{
+	"time_ms":1469203501957,
+	"events":[
+		{
+			"channel":"presence-test",
+			"name":"channel_occupied"
+		}
+	]
+}
+
+
+{
+	"time_ms":1469203501957,
+	"events":[
+		{
+			"channel":"presence-test",
+			"user_id":"1",
+			"name":"member_added"
+		}
+	]
+}
+```
+
+Finally, the event is handled accordingly (for `channel_vacated` events the chat is marked as inactive and for `member_removed` events, the user is marked as inactive too). 
+
+
+The chat functionality is completed, now the only thing missing is the signing of the NDA document.
+
+
+# Setting up HelloSign
+We're going to work with a document with some *Lorem ipsum* text that will represent our NDA agreement:
