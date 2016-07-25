@@ -185,6 +185,52 @@ $ java -jar target/nda-chat-0.0.1-SNAPSHOT.jar
 ```
 
 When you open `http://localhost:8080/` in a browser, you should see something like the following:
-![Hello World on localhost](12-hello-world-localhost.png)
+
+![Hello World on localhost](https://raw.githubusercontent.com/pluralsight/guides/master/images/ae127e34-6b69-43f4-b34a-cd190edd8a6d.png)
+
 
 Now, let's take a moment to configure ngrok.
+
+# Setting up Ngrok
+In a new terminal window, navigate to the directory where you unzipped ngrok. 
+
+We'll start ngrok by telling it which port we want to expose to the Internet. For our app, that would be port `8080`:
+```
+./ngrok http 8080
+```
+
+Alternatively, if you're on Windows:
+```
+ngrok http 8080
+```
+
+Now, you should see something like this:
+
+![Ngrok console](https://raw.githubusercontent.com/pluralsight/guides/master/images/dd9d375c-59cb-4450-abf3-aac611fe2fe9.png)
+
+
+See that URL in the *Forwarding* row(s) with the `ngrok.io` domain? That's your public URL. Yours will be different, ngrok generates a random URL every time you run it.
+
+If you open in a browser `http://[YOUR_GENERATED_SUBDOMAIN].ngrok.io`, you should see the same page found on `http://localhost:8080`:
+
+![Hello World with Ngrok](https://raw.githubusercontent.com/pluralsight/guides/master/images/5e573f70-4df4-44a8-b3e9-a65dc3fa6097.png)
+
+
+
+Open this ngrok URL in another computer if you want. Once again, you should see the same page. Our local server is now available publicly.
+
+The only disadvantage is that this URL is not permanent. If you restart ngrok, it will give you another URL.
+
+You can specify a subdomain, for example, to get the URL  `http://chat.ngrok.io` use the command:
+```
+ngrok http -subdomain=chat 8080
+```
+
+However, this requires a paid plan. You can get more info in this [page](https://ngrok.com/product).
+
+Nevertheless, as long as you don't stop or restart ngrok, the URL won't change, so forget about that terminal window and let's leave it running for now.
+
+In the next section, we'll deep into the code of the application, starting with the database layer.
+
+
+# Database layer
