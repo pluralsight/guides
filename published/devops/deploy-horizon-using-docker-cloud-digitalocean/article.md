@@ -320,7 +320,6 @@ after_success:
       docker tag $DOCKER_IMAGE_NAME:latest $DOCKER_IMAGE_NAME:$TRAVIS_TAG;
     fi
  - if [ "$TRAVIS_BRANCH" == "master" ]; then
-      docker login -e="$DOCKER_EMAIL" -u="$DOCKER_USER" -p="$DOCKER_PASS";
       docker push $DOCKER_IMAGE_NAME;
     fi
 
