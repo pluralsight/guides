@@ -29,9 +29,7 @@ When a member of the chat signs the NDA, a notification is sent with a link to v
 
 ![Notification signed document](https://raw.githubusercontent.com/pluralsight/guides/master/images/cf249643-5131-47b5-b8fb-09720271e6ad.gif)
 
-
-
-The entire source code of the final app is on [Github](https://github.com/eh3rrera/nda-chat).
+We won't list the complete source code of all the files, only the relevan parts. However, you can find the entire code of the application on [Github](https://github.com/eh3rrera/nda-chat).
 
 
 # Requirements
@@ -312,29 +310,6 @@ Now that we have our schema, let's create the JPA entities that will represent t
 
 Create the `src/main/java/com/example/model/Chat.java` file with the following content:
 ```java
-package com.example.model;
-
-import java.io.Serializable;
-import java.util.Date;
-import java.util.LinkedHashSet;
-import java.util.Set;
-
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
-
-import org.apache.commons.lang3.builder.EqualsBuilder;
-import org.apache.commons.lang3.builder.HashCodeBuilder;
-import org.apache.commons.lang3.builder.ToStringBuilder;
-
-/**
- * Object that represents a Chat entity
- */
 @Entity
 public class Chat  implements Serializable {
 	/**
@@ -380,54 +355,8 @@ public class Chat  implements Serializable {
         user.setChat(this);
     }
 
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public String getDescription() {
-		return description;
-	}
-
-	public void setDescription(String description) {
-		this.description = description;
-	}
-
-	public Boolean getActive() {
-		return active;
-	}
-
-	public void setActive(Boolean active) {
-		this.active = active;
-	}
-
-	public Date getCreatedAt() {
-		return createdAt;
-	}
-
-	public void setCreatedAt(Date createdAt) {
-		this.createdAt = createdAt;
-	}
-
-	public Set<User> getMembers() {
-		return members;
-	}
-
-	public void setMembers(Set<User> members) {
-		this.members = members;
-	}
-
+    // Getters and Setters ...
+    
 	@Override
 	public String toString(){
 		return new ToStringBuilder(this).
@@ -466,26 +395,6 @@ Notice how the one-to-many relationship with the `User` entity is set up and the
 
 The `src/main/java/com/example/model/User.java` file contains the following code:
 ```java
-package com.example.model;
-
-import java.io.Serializable;
-import java.util.Date;
-
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-
-import org.apache.commons.lang3.builder.EqualsBuilder;
-import org.apache.commons.lang3.builder.HashCodeBuilder;
-import org.apache.commons.lang3.builder.ToStringBuilder;
-
-/**
- * Object that represents a User entity
- */
 @Entity
 public class User implements Serializable {
 	/**
@@ -533,77 +442,7 @@ public class User implements Serializable {
                 nullable = false, updatable = false)
 	private Chat chat;
 
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
-
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public Boolean getActive() {
-		return active;
-	}
-
-	public void setActive(Boolean active) {
-		this.active = active;
-	}
-
-	public Boolean getNdaSigned() {
-		return ndaSigned;
-	}
-
-	public void setNdaSigned(Boolean ndaSigned) {
-		this.ndaSigned = ndaSigned;
-	}
-
-	public Boolean getOwnsChat() {
-		return ownsChat;
-	}
-
-	public void setOwnsChat(Boolean ownsChat) {
-		this.ownsChat = ownsChat;
-	}
-
-	public String getSignId() {
-		return signId;
-	}
-
-	public void setSignId(String signId) {
-		this.signId = signId;
-	}
-
-	public Date getCreatedAt() {
-		return createdAt;
-	}
-
-	public void setCreatedAt(Date createdAt) {
-		this.createdAt = createdAt;
-	}
-
-	public Chat getChat() {
-		return chat;
-	}
-
-	public void setChat(Chat chat) {
-		this.chat = chat;
-	}
+    // Getters and Setters ...
 
 	@Override
 	public String toString(){
@@ -643,29 +482,6 @@ public class User implements Serializable {
 
 In turn, `src/main/java/com/example/model/Message.java` contains:
 ```java
-package com.example.model;
-
-import java.io.Serializable;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-
-import org.apache.commons.lang3.builder.EqualsBuilder;
-import org.apache.commons.lang3.builder.HashCodeBuilder;
-import org.apache.commons.lang3.builder.ToStringBuilder;
-
-/**
- * Object that represents a Message entity
- */
 @Entity
 public class Message implements Serializable {
 
@@ -698,45 +514,7 @@ public class Message implements Serializable {
                 nullable = false, updatable = false)
 	private User user;
 
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
-
-	public Long getIdChat() {
-		return idChat;
-	}
-
-	public void setIdChat(Long idChat) {
-		this.idChat = idChat;
-	}
-
-	public String getMessage() {
-		return message;
-	}
-
-	public void setMessage(String message) {
-		this.message = message;
-	}
-
-	public Date getCreatedAt() {
-		return createdAt;
-	}
-
-	public void setCreatedAt(Date createdAt) {
-		this.createdAt = createdAt;
-	}
-
-	public User getUser() {
-		return user;
-	}
-
-	public void setUser(User user) {
-		this.user = user;
-	}
+    // Getters and Setters ...
 	
 	public String getCreatedAtString() {
 		String time = "";
@@ -807,18 +585,6 @@ This way, we just have to define the business methods used by the application.
 
 For the Chat repository, those would be:
 ```java
-package com.example.repository;
-
-import java.util.List;
-
-import org.springframework.data.repository.CrudRepository;
-import org.springframework.stereotype.Repository;
-
-import com.example.model.Chat;
-
-/**
- * Repository that contains operations to work with a Chat entities
- */
 @Repository
 public interface ChatRepository extends CrudRepository<Chat, Long> {
 
@@ -839,20 +605,6 @@ public interface ChatRepository extends CrudRepository<Chat, Long> {
 
 The User repository:
 ```java
-package com.example.repository;
-
-import java.util.List;
-
-import org.springframework.data.jpa.repository.EntityGraph;
-import org.springframework.data.repository.CrudRepository;
-import org.springframework.stereotype.Repository;
-
-import com.example.model.Chat;
-import com.example.model.User;
-
-/**
- * Repository that contains operations to work with User entities
- */
 @Repository
 public interface UserRepository extends CrudRepository<User, Long> {
 
@@ -877,18 +629,6 @@ The `@EntityGraph` annotation indicates that the chat relationship object must b
 
 The Message repository:
 ```java
-package com.example.repository;
-
-import java.util.List;
-
-import org.springframework.data.repository.CrudRepository;
-import org.springframework.stereotype.Repository;
-
-import com.example.model.Message;
-
-/**
- * Repository that contains operations to work with a Message entities
- */
 @Repository
 public interface MessageRepository extends CrudRepository<Message, Long> {
 
@@ -909,24 +649,6 @@ The service layer is just a thin wrapper of the database layer. Its main purpose
 
 We're going to set up two services. The chat service:
 ```java
-package com.example.service;
-
-import java.util.List;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
-
-import com.example.model.Chat;
-import com.example.model.Message;
-import com.example.model.User;
-import com.example.repository.ChatRepository;
-import com.example.repository.MessageRepository;
-import com.example.repository.UserRepository;
-
-/**
- * Service with the operations to work with a chat
- */
 @Service
 @Transactional
 public class ChatService {
@@ -1035,22 +757,6 @@ public class ChatService {
 
 And the user service:
 ```java
-package com.example.service;
-
-import java.util.List;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
-
-import com.example.model.Chat;
-import com.example.model.User;
-import com.example.repository.ChatRepository;
-import com.example.repository.UserRepository;
-
-/**
- * Service with the operations to work with a user
- */
 @Service
 @Transactional
 public class UserService {
@@ -1113,11 +819,6 @@ public class UserService {
 
 Finally, in the `src/main/java/com/example/constants/GeneralConstants.java` and `src/main/java/com/example/constants/HelloSignConstants.java` files, we'll define the constants we'll use in the next sections:
 ```java
-package com.example.constants;
-
-/**
- * General application constants
- */
 public interface GeneralConstants {
 
 	/** Channel prefix required by Pusher for presence chats */
@@ -1129,11 +830,6 @@ public interface GeneralConstants {
 ```
 
 ```java
-package com.example.constants;
-
-/**
- * Constants used for the HelloSign API
- */
 public interface HelloSignConstants {
 
 	/** Subject for the email sent by HelloSign to request a sign */
@@ -1309,11 +1005,6 @@ Some remarks on this page:
 - The forms are validated with the [jQuery Validation Plugin](https://jqueryvalidation.org/). The validation rules can be found on the `validate.js` script.
 - When creating a chat, the name must be unique among the active chats. This validation is made with an AJAX call to the following method on the chat controller:
 ```java
-/**
- * Route to validate that a chat name is unique
- * @param chatName The name to validate
- * @return true if the name is valid (doesn't exist) or false otherwise
- */
 @RequestMapping(method=RequestMethod.GET, value="/chat/validate/name", produces = "application/json")
 @ResponseBody
 public String validateChatName(@RequestParam String chatName) {
@@ -1325,12 +1016,6 @@ public String validateChatName(@RequestParam String chatName) {
 
 When a chat is created, this method on the controller is invoked:
 ```java
-/**
- * Route to create a chat
- * @param form Object with the chat information
- * @param model Object to store information in the session
- * @return the view to redirect the request
- */
 @RequestMapping(method=RequestMethod.POST, value="/chat/create")
 public String createChat(ChatForm form, Model model) {
 	
@@ -1380,12 +1065,6 @@ This way, the chat information will be available to all pages of our web app.
 
 The method to join an existing chat is similar:
 ```java
-**
- * Route to join an existing chat
- * @param form Object with the chat information
- * @param model Object to store information in the session
- * @return the view to redirect the request
- */
 @RequestMapping(method=RequestMethod.POST, value="/chat/join")
 public String joinChat(ChatForm form, Model model) {
 	User user = new User();
@@ -1412,11 +1091,6 @@ public String joinChat(ChatForm form, Model model) {
 
 As you can see, both methods redirect to the `/chat` route, which is defined by this method:
 ```java
-/**
- * Route for the chat page
- * @param chatInfo Session Object that contains information about the chat
- * @return Object with the view information
- */
 @RequestMapping(method=RequestMethod.GET, value="/chat")
 public ModelAndView chat(
 		@SessionAttribute(GeneralConstants.ID_SESSION_CHAT_INFO) ChatForm chatInfo) {
@@ -1578,7 +1252,7 @@ This code will print the chat information from the session:
 </div>
 ```
 
-Print the messages sent before the user subscribed to the chat (differentiating between the messages sent by the local user and the other chat members):
+Then, it will print the messages sent before the user subscribed to the chat (differentiating between the messages sent by the local user and the other chat members):
 ```html
 <li class="clearfix" th:each="msg : ${messages}" >
 	<div th:if="${session.chatInfo.idUser == msg.user.id}">
@@ -1651,16 +1325,6 @@ And variables from the server are printed using Thymeleaf's syntax for [inline J
 
 To get the Pusher key, let's modify our controller code. But first, let's define a [configuration object](http://docs.spring.io/spring-boot/docs/current/reference/html/boot-features-external-config.html) that will take the values of Pusher's API from environment (or command line) variables:
 ```java
-package com.example.config;
-
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.stereotype.Component;
-
-import com.pusher.rest.Pusher;
-
-/**
- * Class that contains the information to use the Pusher API
- */
 @Component
 public class PusherSettings {
 	/** Pusher App ID */
@@ -1879,13 +1543,6 @@ After that, let's define the authentication endpoint for the presence chat:
 public class PusherController {
 	... 
 	
-	/**
-	 * Endpoint that authenticates a subscription to a Pusher presence channel
-	 * @param socketId ID of the opened socket
-	 * @param channel Channel to subscribe
-	 * @param chatInfo Session object with information about the chat 
-	 * @return A status string
-	 */
 	@RequestMapping(method = RequestMethod.POST, value= "/chat/auth")
 	public String auth(
 			@RequestParam(value="socket_id") String socketId, 
@@ -1912,12 +1569,6 @@ To register a message, we insert it in the database and publish an event into th
 public class PusherController {
 	... 
 	
-	/**
-	 * Endpoint to register a chat message
-	 * @param request Object with information about the message
-	 * @param chatInfo Session object with information about the chat
-	 * @return An object with information about the message
-	 */
 	@RequestMapping(value = "/chat/message", 
 					method = RequestMethod.POST, 
 					consumes = "application/json", 
@@ -1952,16 +1603,6 @@ Finally, we need to define the method that will handle Pusher's webhook requests
 public class PusherController {
 	... 
 	
-	/**
-	 * Endpoint called from Pusher when an event happens
-	 * @param key Pusher key
-	 * @param signature Signature of the request
-	 * @param json JSON with the information about the event
-	 * @return A status string
-	 * @throws JsonParseException
-	 * @throws JsonMappingException
-	 * @throws IOException
-	 */
 	@RequestMapping(value = "/pusher/webhook", 
 			method = RequestMethod.POST, 
 			consumes = "application/json")
@@ -2173,12 +1814,6 @@ public class HelloSignController {
 
 Notice how the values of the HelloSign API will be injected from system variables. Next, add the method to request a signature:
 ```java
-/**
- * Endpoint that request a signature to HelloSign
- * @param chatInfo Object with the chat information
- * @return A status string
- * @throws HelloSignException
- */
 @RequestMapping(value = "/chat/request/nda", 
 		method = RequestMethod.POST, 
 		produces = "application/json")
@@ -2222,12 +1857,6 @@ Finally, the returned sign ID is saved in the `User` table, we'll use this value
 
 Then, set up the method to respond to the HelloSign webhook:
 ```java
-/**
- * Endpoint called from HelloSign when an event happens
- * @param json JSON with the information about the event
- * @return A status string
- * @throws HelloSignException
- */
 @RequestMapping(value = "/hellosign/webhook", 
 		method = RequestMethod.POST)
 public String webhook(@RequestParam String json) throws HelloSignException {
@@ -2336,13 +1965,6 @@ For example, here's the JSON sent when a user signs the document:
 
 Once the document is signed, we can view/download it as a PDF file. In fact, we can request it from the application by clicking a link:
 ```java
-/**
- * Endpoint to download the signed NDA
- * @param response Object to send a response
- * @param id ID of the request signature
- * @throws IOException
- * @throws HelloSignException
- */
 @RequestMapping(value="/download/{id}", method = RequestMethod.GET)
 public void downloadFile(HttpServletResponse response, @PathVariable("id") String id) throws IOException, HelloSignException {
 	HelloSignClient client = new HelloSignClient(helloSignApiKey);
