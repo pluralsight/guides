@@ -1689,7 +1689,7 @@ Next, upload the sample document:
 ![Document uploaded](https://raw.githubusercontent.com/pluralsight/guides/master/images/b568c6a7-66d6-4e92-a6ef-3bee4cf8b7cd.png)
 
 
-We'll only require the signature of one person, the expert or consultant, so enter this role:
+We'll only require the signature of one person, so let's enter a role, *Consultant*:
 
 ![Role](https://raw.githubusercontent.com/pluralsight/guides/master/images/34270376-61a7-49a7-a4e8-181df90ea97c.png)
 
@@ -1757,7 +1757,7 @@ If you test the webhook (assuming you have it already configured), HelloSign wil
 
 You can find more information about [HelloSign webhooks here](https://www.hellosign.com/api/eventsAndCallbacksWalkthrough).
 
-Now click the *Reveal Key* button, we'll need your key for the following section.
+Now click the *Reveal Key* button and copy your API key, we'll need it for the following section.
 
 
 # Integrating HelloSign
@@ -1947,7 +1947,9 @@ For example, here's the JSON sent when a user signs the document:
 }
 ```
 
-Once the document is signed, we can view/download it as a PDF file. In fact, we can request it from the application by clicking a link:
+If there are no errors, we have to return a response body with the text `Hello API Event Received`. Otherwise, the webhook request will be considered a failure and it will be retried later.
+
+Once the document is signed, we can view it (or download it) as a PDF file. From the application, we can request it by clicking a link, which is handled by this method:
 ```java
 @RequestMapping(value="/download/{id}", method = RequestMethod.GET)
 public void downloadFile(HttpServletResponse response, @PathVariable("id") String id) throws IOException, HelloSignException {
@@ -1973,9 +1975,9 @@ public void downloadFile(HttpServletResponse response, @PathVariable("id") Strin
 }
 ```
 
-The app is now complete. Let's run it.
+The application is now complete.
 
-# Running the app
+# Running the application
 To run the application, we have to pass all the values we injected with the `@Value` annotation either as environment variables or as command-line options using inline JSON ([more info here](http://docs.spring.io/spring-boot/docs/current/reference/html/boot-features-external-config.html)).
 
 If we're using Eclipse, for example, we can configure the values in the *Arguments* section of the *Run Configuration* dialog:
@@ -2037,10 +2039,7 @@ If you choose the *Preview* option on the document menu, you'll see the signed d
 
 ![Signed document page 2](https://raw.githubusercontent.com/pluralsight/guides/master/images/8b401409-e37f-4bb0-a231-beb3f41f39ea.png)
 
-
-You can download this document from the chat as well.
-
-Moreover, remember that you can view the state of the database at any time with the [H2 web console](http://localhost:8080/h2-console):
+Additionally, remember that you can view the state of the database at any time with the [H2 web console](http://localhost:8080/h2-console):
 
 ![H2 Console](https://raw.githubusercontent.com/pluralsight/guides/master/images/1056ea1a-c0a4-4ba8-ad91-69f29954695f.png)
 
