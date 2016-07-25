@@ -1,11 +1,12 @@
-
 ![Horizon, RethinkDB and Onsen UI 2.0](https://onsen.io/blog/content/images/2016/Jul/onsen_horizon.png)
 
-A lot of modern apps like Twitter or Facebook work in real time: They update themselves when new information is available without the user pulling to refresh. With modern real time database like [RethinkDB](http://rethinkdb.com) and the JavaScript Framework [Horizon](http://horizon.io/) this task is as easy as writing any other JavaScript Application. In this tutorial we will build a simple chat app with [MobX](https://github.com/mobxjs/mobx) and the React Components for Onsen UI.
+A lot of modern apps, such as Twitter or Facebook work in real-time: They update themselves as soon as new information is available without having the user refresh manually. With a modern real-time database like [RethinkDB](http://rethinkdb.com) and the JavaScript Framework [Horizon](http://horizon.io/), creating a real-time application is as easy as writing any other JavaScript Application. 
+
+In this tutorial we will build a simple chat app with [MobX](https://github.com/mobxjs/mobx) and the [React Components for Onsen UI](https://onsen.io/v2/).
 
 <!-- more -->
 
-The entire source code of the app is available at [GitHub](https://github.com/philolo1/Horizon-MobX-OnsenUI). Our end result will look like this:
+The entire source code of the app is available on [GitHub](https://github.com/philolo1/Horizon-MobX-OnsenUI). Our end result will look like this:
 
 <div style="display: flex; margin: 40px 0;" >
   <div style="flex-grow: 1;"> </div>
@@ -15,23 +16,25 @@ The entire source code of the app is available at [GitHub](https://github.com/ph
   <div style="flex-grow: 1;"> </div>
 </div>
 
-We will first have a look at RethinkDB and then later build our app.
+We will first take a look at RethinkDB and Horizon.js. Then we'll build our app.
 
 ## What is RethinkDB and Horizon.js?
 
-RethinkDB is a real time database. The difference to a traditional database is the ability to listen to database changes. This makes real time updates very easy. Horizon is a JavaScript framework that makes it easier to interact with RethinkDB. You can install Horizon by doing:
+RethinkDB is a real-time database. The difference between RethinkDB and a traditional database is the ability to listen to database changes. Continuous listening makes real-time updates very easy. 
+
+Horizon.js is a JavaScript framework that makes it easier to interact with RethinkDB. You can install Horizon by calling the following npm commands:
 
 ```
 $ npm install -g horizon
 ```
 
-With the following command one can start a simple Horizon server in development mode on port 5000:
+With the following command, one can start a simple Horizon server in development mode on port 5000:
 
 ```
 $ hz serve --dev --bind all -p 5000
 ```
 
-The parameter `--bind all` makes it accessible throughout the entire network. In development mode there is no user authentication and no security rule. For this tutorial we are not going to deal with authentication, if you are interested to learn about it, please check the [documentation](http://horizon.io/docs/auth/).
+The parameter `--bind all` makes it accessible throughout the entire network. In development mode there is no user authentication and no security rule. For this tutorial we are not going to deal with authentication, but if you are interested to learn about it, please check the [documentation](http://horizon.io/docs/auth/).
 
 To start Horizon in our application we will need to just use the `connect()` function
 
@@ -49,7 +52,7 @@ console.log('connect horizon');
 horizon.connect();
 ```
 
-For the chat app we will create two tables, one for the rooms which contains just the room names with their IDs, and a message table that will contain the `roomID`, the message itself and the username.
+For the chat app, we will create two tables, one for the rooms -- this table just contains the room names with their IDs -- and another table for the the `roomID`, the message itself, and the username.
 
 To create a room and messages we can write some simple functions:
 
@@ -68,7 +71,9 @@ createMessage: (authorName, roomID, message) => {
 }
 ```
 
-The function `createRoom` creates a simple room with the provided room name and `createMessage` creates a message for the room. The interesting part is how we can listen to changes of the database. We want to get all the messages from one room ordered by their date:
+The function `createRoom` creates a simple room with the provided room name. `createMessage` creates a message for the room. 
+
+The interesting part is how we can listen to changes of the database. We want to get all the messages from one room ordered by their date:
 
 ```
 horizon('messages').findAll({roomID: roomID}).order('date').watch().subscribe((data) => {
@@ -76,9 +81,11 @@ horizon('messages').findAll({roomID: roomID}).order('date').watch().subscribe((d
 });
 ```
 
-The nice part about this is that the function in subscribe will be called every time the data is updated. In React we could just update the state and have updated data with almost no code.
+The function in `subscribe()` will be called __every time__ the data is updated. In React, we could just update the state and have updated data with almost no code. 
 
-Amazingly, this is almost all the backend code we will need for our App! Now let's start building using MobX and the React Components for Onsen UI.
+Now that we can create a chat room and create messages, what's left? Actually, this is almost all of the backend code we will need for our app! 
+
+Now let's start building using MobX and the React Components for Onsen UI.
 
 # Building the components in Onsen UI
 
@@ -109,7 +116,7 @@ horizon.connect();
 
 Before we start looking at the views, let's look at the application state first. The application state is managed via [MobX](https://github.com/mobxjs/mobx). MobX is a JavaScript library that uses observables to do certain actions automatically once an observed variable changes. In the case of React, MobX calls `setState()` if a variable changes which the state depends on. If you want to learn more about MobX, I highly recommend a look at our [recent tutorial](https://onsen.io/blog/mobx-tutorial-react-stopwatch/) that uses MobX to create a simple stopwatch.
 
-The following code defines the application state: Mainly it will contain the current username, chatroom, the database connection to Horizon and some additional page-related information. In MobX we mark variables with the decorator `@observable` to indicate that MobX should observe it. If they change, the associated views will call a rerender automatically. Functions marked with `@action` are functions that change observable variables and `@computed` functions getters that depend on observables that will be only updated once an associated variable is changed.
+The following code defines the application state. The app state will contain the current username, chatroom, the database connection to Horizon and some additional page-related information. In MobX we mark variables with the decorator `@observable` to indicate that MobX should observe it. If they change, the associated views will automatically call a rerender. Functions marked with `@action` are functions that change observable variables and `@computed` functions getters that depend on observables that will be only updated once an associated variable is changed.
 
 ```
 import {computed, observable, action} from 'mobx';
@@ -199,9 +206,9 @@ export default AppState;
 
 # The Login Screen
 
-In the following explanation we will only look at the structure and the basic interaction of the components, the curious reader can look the details up at [GitHub](https://github.com/philolo1/Horizon-MobX-OnsenUI).
+In the following explanation, we will look at the structure of our application and the basic interactions of the components. The curious reader can look up more details at [GitHub](https://github.com/philolo1/Horizon-MobX-OnsenUI).
 
-For the navigation we will use Onsen UI `Navigator`: We provide it an initial route which will contain a component we will render to. In our case this component will be `LoginPage`.
+For the navigation, we will use the Onsen UI `Navigator`. We provide it an initial route which will contain a component we will render to. In our case, this component will be `LoginPage`.
 
 ```
 import React, {Component} from 'react';
@@ -261,9 +268,9 @@ const UserInput = observer(({appState}) => {
 });
 ```
 
-Once the value changes, we just update the variable and MobX will automatically rerender the `UserInput` component and only this component, since the username is only displayed there.
+Once the value changes, we just update the variable, and MobX will automatically rerender the `UserInput` component and only this component, since the username is only displayed there.
 
-After the username and room name is entered, we will either create a room if it does not already exist or load the initial one:
+After the username and room name are entered, we will either create a room if it does not already exist or load an existing room. Check this out:
 
 ```
 joinRoom = () => {
@@ -328,7 +335,9 @@ The second page will contain the main chat messages. On the left side your messa
 
 ![Login Page](https://onsen.io/blog/content/images/2016/Jul/ChatRoomPage.png)
 
-The `ChatRoomPage` component consists of a toolbar at the top, a bottom toolbar at the bottom and the messages in the middle. We will use RethinkDB and MobX to update the view: Whenever a new message is received that is written by oneself, the view will scroll down. When a message is written by somebody else, a small popup message will be shown that one can click to go to the bottom. The code of the main component looks like this:
+The `ChatRoomPage` component consists of a toolbar at the top, an empty text box at the bottom, and the messages in the middle. We will use RethinkDB and MobX to update the view: Whenever a new message that's been written by the user is received, the view will scroll down. Whenever a message written by somebody else is received, a small popup message will be shown that the user can click to go to the bottom. 
+
+The code of the main component looks like this:
 
 ```
 export default class ChatRoomPage extends Component {
@@ -338,7 +347,8 @@ export default class ChatRoomPage extends Component {
       this.scrollBottom();
     }
   }
-
+  
+  /** scroll to the bottom method defined*/
   scrollBottom = () => {
     const page = document.getElementById('page2').querySelector('.page__content');
     page.scrollTop = page.scrollHeight;
@@ -431,4 +441,10 @@ export default class ChatRoomPage extends Component {
 
 # Conclusion
 
-Horizon combined with Onsen UI makes it really simple and fast to build a real time chat application. There are many resources and videos to learn more about RethinkDB. I highly recommend this [video](https://www.youtube.com/watch?v=3BPLsljZVIc) and their [website](http://www.rethinkdb.com/). If you have any questions or feedback feel free to ask in our [community](https://community.onsen.io/). We would also appreciate a 🌟  on our [GitHub repo](https://github.com/OnsenUI/OnsenUI)!.
+In sum, Horizon combined with Onsen UI facilitates building a real-time chat application by limiting our backend involvement and expanding our control over real-time UI features. 
+
+In case you need some additional reading, there are many resources and videos that you can use to learn more about RethinkDB. I highly recommend this [video](https://www.youtube.com/watch?v=3BPLsljZVIc) and the RethinkDB [website](http://www.rethinkdb.com/). 
+
+If you have any questions or feedback feel free to ask in our [community](https://community.onsen.io/). We would also appreciate a 🌟  on our [GitHub repo](https://github.com/OnsenUI/OnsenUI) and a favorite on this guide!
+
+Thank you for reading!

@@ -1,3 +1,18 @@
+### Requesting e-signatures in a chat with Pusher, HelloSign, and Spring Boot by Esteban Herrera
+- [Read the guide](http://tutorials.pluralsight.com/interesting-apis/requesting-e-signatures-in-a-chat-with-pusher-hellosign-and-spring-boot?status=draft)
+- [Read more from Esteban Herrera](http://tutorials.pluralsight.com/author/eh3rrera) <img src="https://avatars.githubusercontent.com/u/11665759?v=3" width="30" height="30" alt="Esteban Herrera" />
+- Related to: Interesting APIs (SendGrid, Twilio, etc)
+
+### Ionic 2 database management and versioning by Carlos Esteban Lopez Jaramillo
+- [Read the guide](http://tutorials.pluralsight.com/software-engineering-best-practices/ionic-2-database-management-and-versioning?status=draft)
+- [Read more from Carlos Esteban Lopez Jaramillo](http://tutorials.pluralsight.com/author/Luchillo) <img src="https://avatars.githubusercontent.com/u/9698639?v=3" width="30" height="30" alt="Carlos Esteban Lopez Jaramillo" />
+- Related to: Software Engineering Best Practices
+
+### Getting started with Codeigniter 3 by Aouadi Mohamed Adib
+- [Read the guide](http://tutorials.pluralsight.com/php/getting-started-with-codeigniter-3?status=draft)
+- [Read more from Aouadi Mohamed Adib](http://tutorials.pluralsight.com/author/Adib12) <img src="https://avatars.githubusercontent.com/u/11527075?v=3" width="30" height="30" alt="Aouadi Mohamed Adib" />
+- Related to: PHP
+
 ### Getting Started with RethinkDB and Google Chrome Extensions by Chris Hranj
 - [Read the guide](http://tutorials.pluralsight.com/nosql-databases/getting-started-with-rethinkdb-and-google-chrome-extensions?status=draft)
 - [Read more from Chris Hranj](http://tutorials.pluralsight.com/author/Brodan) <img src="https://avatars.githubusercontent.com/u/12822268?v=3" width="30" height="30" alt="Chris Hranj" />

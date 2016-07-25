@@ -1,17 +1,7 @@
-### Real time Chat App with OnsenUI and Horizon! by Patrick Klitzke
-- [Read the guide](http://tutorials.pluralsight.com/html-css/real-time-chat-app-with-onsenui-and-horizon?status=in-review)
-- [Read more from Patrick Klitzke](http://tutorials.pluralsight.com/author/philolo1) <img src="https://avatars.githubusercontent.com/u/6276582?v=3" width="30" height="30" alt="Patrick Klitzke" />
-- Related to: HTML/CSS
-
 ### Getting Started with Android on Android Studio by Sudheerkumar
 - [Read the guide](http://tutorials.pluralsight.com/android/getting-started-with-android-on-android-studio?status=in-review)
 - [Read more from Sudheerkumar](http://tutorials.pluralsight.com/author/Sudheerkumar) <img src="https://avatars.githubusercontent.com/u/2035321?v=3" width="30" height="30" alt="Sudheerkumar" />
 - Related to: Android
-
-### Using ASP.NET Web API for web services for IoT by Afzaal Ahmad Zeeshan
-- [Read the guide](http://tutorials.pluralsight.com/microsoft-net/using-asp-net-web-api-for-web-services-for-iot?status=in-review)
-- [Read more from Afzaal Ahmad Zeeshan](http://tutorials.pluralsight.com/author/afzaal-ahmad-zeeshan) <img src="https://avatars.githubusercontent.com/u/3237834?v=3" width="30" height="30" alt="Afzaal Ahmad Zeeshan" />
-- Related to: Microsoft.NET (C#, ASP.NET, VB.NET, etc)
 
 ### Using the REST Interface with Licas by discompsys
 - [Read the guide](http://tutorials.pluralsight.com/java-and-j2ee/using-the-rest-interface-with-licas?status=in-review)

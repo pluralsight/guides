@@ -3,7 +3,12 @@
     "author_name": "Sudheerkumar",
     "author_real_name": "Sudheerkumar",
     "branch": "master",
-    "branches": [],
+    "branches": [
+        [
+            "adityavarshney",
+            "adityavarshney-android-getting-started-with-android-on-android-studio"
+        ]
+    ],
     "filename": "article.md",
     "first_commit": "a4c89a80d7760a6283828433d0b0fd03b1057ff8",
     "image_url": "https://avatars.githubusercontent.com/u/2035321?v=3",

@@ -19,9 +19,9 @@ Availability is very important when trying to create a reliable system.  But, ho
 
 ### Logging every potential error in real time
 
-Logging your program is an important task when producing an app because it allows you to know more about the behavior and performance of your app. That way, you can make fixes and other decisions whenever you find bugs in your product.
+Logging your program is an important task when you're developing an app because it allows you to know more about the behavior and performance of your app. That way, you can build fixes and execute decisions whenever you find bugs in your product.
 
-Nowdays checking log results is rather difficult because logs typically reside either within a server, a virtualization, a virtual server, or a cloud service.
+Nowdays checking log results is very difficult because logs typically reside either within a server, a virtualization, a virtual server, or a cloud service.
 
 ### Logging using Lonline
 
@@ -44,7 +44,7 @@ Nowdays checking log results is rather difficult because logs typically reside e
 # Dependencies
 **Lonline has one dependendency:** [Dynamicloud Nodejs API](https://github.com/dynamicloud/dynamicloud_nodejs_api "Dynamicloud Nodejs API")
 
-[Dynamicloud](https://www.dynamicloud.org "Dynamicloud") provides APIs for Java and Ruby language, so you can currently only use Lonline in Java or Ruby programs.
+[Dynamicloud](https://www.dynamicloud.org "Dynamicloud") also provides APIs for Java and Ruby language, so you can use Lonline in Java or Ruby programs.
 
 # Installation
 
