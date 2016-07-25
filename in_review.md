@@ -1,3 +1,8 @@
+### Requesting e-signatures in a chat with Pusher, HelloSign, and Spring Boot by Esteban Herrera
+- [Read the guide](http://tutorials.pluralsight.com/interesting-apis/requesting-e-signatures-in-a-chat-with-pusher-hellosign-and-spring-boot?status=in-review)
+- [Read more from Esteban Herrera](http://tutorials.pluralsight.com/author/eh3rrera) <img src="https://avatars.githubusercontent.com/u/11665759?v=3" width="30" height="30" alt="Esteban Herrera" />
+- Related to: Interesting APIs (SendGrid, Twilio, etc)
+
 ### Getting Started with Android on Android Studio by Sudheerkumar
 - [Read the guide](http://tutorials.pluralsight.com/android/getting-started-with-android-on-android-studio?status=in-review)
 - [Read more from Sudheerkumar](http://tutorials.pluralsight.com/author/Sudheerkumar) <img src="https://avatars.githubusercontent.com/u/2035321?v=3" width="30" height="30" alt="Sudheerkumar" />
