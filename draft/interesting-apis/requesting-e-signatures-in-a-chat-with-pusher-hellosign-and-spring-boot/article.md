@@ -31,7 +31,7 @@ When a member of the chat signs the NDA, a notification is sent with a link to v
 
 
 
-The entire source code of the final app is on [Github](https://github.com/).
+The entire source code of the final app is on [Github](https://github.com/eh3rrera/nda-chat).
 
 
 # Requirements
@@ -1303,7 +1303,7 @@ This will fetch all the active chats to present them on the index page. Next, mo
 ```
 
 Some remarks on this page:
-- You can find the code of the CSS and JS files in the [Github repo](https://github.com).
+- You can find the code of the CSS and JS files in the [Github repo](https://github.com/eh3rrera/nda-chat/tree/master/src/main/resources/static).
 - If the list of chats is empty, the options related to joining an existing chat are not rendered.
 - It uses [animatedModal.js](http://joaopereirawd.github.io/animatedModal.js/) to present the forms to create or join a chat in a modal window.
 - The forms are validated with the [jQuery Validation Plugin](https://jqueryvalidation.org/). The validation rules can be found on the `validate.js` script.
@@ -2047,7 +2047,7 @@ We're going to work with a document with some *Lorem ipsum* text that will repre
 
 ![Sample NDA document](https://raw.githubusercontent.com/pluralsight/guides/master/images/96202500-5a08-4a02-a374-89a1a4e6e6a9.png)
 
-You can get the sample document [here](https://github.com).
+You can get the sample PDF document [here](https://github.com/eh3rrera/nda-chat/blob/master/nda.pdf).
 
 Go to your [HelloSign dashboard](https://www.hellosign.com/home/index) and choose the *Templates* option of the menu on the left. The following screen will be shown:
 
@@ -2379,7 +2379,7 @@ If we're using Eclipse, for example, we can configure the values in the *Argumen
 
 If we're using `mvn spring-boot:run`, we can do it this way:
 ```
-mvn spring-boot:run -Dsprincation.json='{"pusher":{"appId":"XXX", "key":"XXX", "secret":"XXX"},"hellosign":{"apikey":"XXX", "templateId":"XXX", "testMode":true}}'
+mvn spring-boot:run -Dspring.application.json='{"pusher":{"appId":"XXX", "key":"XXX", "secret":"XXX"},"hellosign":{"apikey":"XXX", "templateId":"XXX", "testMode":true}}'
 ```
 
 Or if we're using the JAR file built by Maven:
@@ -2450,4 +2450,4 @@ And to view or replay the webhook requests, ngrok provides a console on `http://
 # Conclusion
 We have come a long way with this application, learning how to set up presence chats with Pusher, signing documents with the HelloSign API, using ngrok to work locally with webhooks, and building a complete application using Spring MVC and Spring Data under Spring Boot.
 
-Thanks for reading. Contact me if you need anything and remember that the code of the app is [on Github](https://github.com/eh3rrera/).
+Thanks for reading. Contact me if you need anything and remember that the code of the app is [on Github](https://github.com/eh3rrera/nda-chat).
