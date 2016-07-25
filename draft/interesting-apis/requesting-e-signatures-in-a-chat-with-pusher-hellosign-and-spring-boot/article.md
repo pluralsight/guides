@@ -1,4 +1,4 @@
-In this tutorial, we're going to build a chat using [Pusher's Presence Channels](https://pusher.com/docs/client_api_guide/client_presence_channels) with the functionality to request e-signed Non-Disclosure Agreements (NDAs) to its members using the [HelloSign](https://www.hellosign.com/) API.
+In this tutorial, we're going to build a chat using [Pusher's Presence Channels](https://pusher.com/docs/client_api_guide/client_presence_channels) with the functionality to request e-signed [Non-Disclosure Agreements](https://en.wikipedia.org/wiki/Non-disclosure_agreement) (NDAs) to its members using the [HelloSign](https://www.hellosign.com/) API.
 
 The stack will be the following:
 - [Java](http://www.oracle.com/technetwork/java/index.html) 7 or higher
