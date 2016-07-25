@@ -1,4 +1,4 @@
-In this tutorial, we're going to build a chat using Pusher's presence channels with the functionality to request e-signed Non-Disclosure Agreements (NDAs) to its members using the HelloSign API.
+In this tutorial, we're going to build a chat using Pusher's Presence Channels with the functionality to request e-signed Non-Disclosure Agreements (NDAs) to its members using the HelloSign API.
 
 The stack will be the following:
 - Java 7 or higher
@@ -8,7 +8,7 @@ The stack will be the following:
 - Thymeleaf as the server-side template engine
 - jQuery and Handlebars for the client-side interaction
 
-We're going to use Pusher and HelloSign webhooks to receive events from these APIs and we'll use ngrok to keep everything in a local environment.
+We're going to use Pusher and HelloSign webhooks to receive events from these APIs, and we'll use ngrok to keep everything in a local environment.
 
 The app's design is based on this [pen](http://codepen.io/drehimself/pen/KdXwxR) and it works in the following way. First, a user creates a chat:
 
@@ -29,16 +29,14 @@ When a member of the chat signs the NDA, a notification is sent with a link to v
 
 ![Notification signed document](https://raw.githubusercontent.com/pluralsight/guides/master/images/cf249643-5131-47b5-b8fb-09720271e6ad.gif)
 
-We won't list the complete source code of all the files, only the relevan parts. However, you can find the entire code of the application on [Github](https://github.com/eh3rrera/nda-chat).
+We won't list the complete source code of all the files, only the relevant parts. However, you can find the entire code of the application on [Github](https://github.com/eh3rrera/nda-chat).
 
 
 # Requirements
 
 ### Java environment
 
-You'll need JKD 7 at least, however, [JDK 8 is preferred](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html).
-
-You'll also need [Maven 3.0](https://maven.apache.org/download.cgi) or higher [installed](https://maven.apache.org/install.html).
+You'll need JKD 7 at least (however, [JDK 8 is preferred](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)), and [Maven 3.0](https://maven.apache.org/download.cgi) or higher [installed](https://maven.apache.org/install.html).
 
 An IDE, like [Eclipse](https://eclipse.org/downloads/), [IntelliJ](https://www.jetbrains.com/idea/) or [Netbeans](https://netbeans.org/downloads/), will make things easier but it's not required.
 
@@ -47,24 +45,23 @@ An IDE, like [Eclipse](https://eclipse.org/downloads/), [IntelliJ](https://www.j
 
 Create a free account at https://dashboard.pusher.com/accounts/sign_up.
 
-When you first log in, you'll be asked for some configuration options:
+When you first log in, you'll be asked to enter some configuration options:
 
 ![Pusher Account](https://raw.githubusercontent.com/pluralsight/guides/master/images/528b9445-05ee-456d-bf36-ca8c83c95bd9.png)
 
-
-Enter a name, and choose *Javascript* as your front-end tech and *Java* as your back-end tech.
+Enter a name, choose *Javascript* as your front-end tech, and *Java* as your back-end tech.
 
 Then go to either the *Getting Started* or *App Keys* tab to copy your App ID, Key, and Secret credentials, we'll need them later.
 
 
 ### HelloSign
 
-Sign up at https://www.hellosign.com/. Your free account will have the following limitations:
+Sign up at https://www.hellosign.com/. At the time of this writing, your free account has the following limitations:
 - Send 3 documents every month for free
 - One sender
 - No templates
 
-But don't worry, these limitations don't apply in test mode, the mode where we're going to work.
+But don't worry, these limitations don't apply in test mode, the mode where we're going to work with.
 
 ### Ngrok
 When a member is added to the chat or an NDA is signed, a webhook will be triggered (think of it as a callback). This means an HTTP request will be made to our server, so we'll need to deploy our application on the cloud or keep it locally and use a service like [ngrok](https://ngrok.com/) to make it publicly available.
@@ -86,7 +83,7 @@ Go to that page and choose to generate a Maven project with the following depend
 - Thymeleaf
 - JPA
 
-Enter a Group ID and an Artifact ID and generate the project:
+Enter a *Group ID*, an *Artifact ID* and generate the project:
 
 ![Sprint Initializr](https://raw.githubusercontent.com/pluralsight/guides/master/images/17e7968c-3234-4f8f-822d-ef1e34906060.png)
 
@@ -100,7 +97,7 @@ Now let's add some configurations to the `pom.xml` file. In the `properties` sec
 <spring.version>4.3.1.RELEASE</spring.version>
 ```
 
-The latest version of the Spring Framework at the time of this writing is `4.3.1.RELEASE`. This line will ensure Spring Boot uses this version.
+The latest version of the Spring Framework at the time of this writing is `4.3.1.RELEASE`. The above line will ensure Spring Boot uses this version.
 
 Also, in the `dependencies` section, add the dependencies we'll need for our project:
 ```xml
@@ -123,7 +120,7 @@ Also, in the `dependencies` section, add the dependencies we'll need for our pro
 </dependency>
 ```
 
-Inside `src/main/java`, we'll work with the following package structure:
+Now, about the project organization. Inside `src/main/java`, we'll work with the following package structure:
 - `com.example.config` will contain configuration classes
 - `com.example.constants` will contain interfaces with constants values used in the app
 - `com.example.model` will contain the JPA entity models
@@ -138,7 +135,7 @@ Inside `src/main/resources`, we'll put some configuration files in addition to t
 - `static/js` will contain the Javascript files used in the application
 - `templates` will contain the Thymeleaf templates used in the application
 
-So let's start by creating the `com/example/web/ChatController` class. Create a new file with the following content:
+So let's start by creating the `com/example/web/ChatController` class with the following content:
 ```java
 @Controller
 public class ChatController {
@@ -155,7 +152,7 @@ public class ChatController {
 }
 ```
 
-This controller defines a `/` route that shows a `index` template. Create the file `src/main/resources/templates/index.html` with some HTML content like:
+This controller defines a `/` route that shows an `index` template. Next, create the file `src/main/resources/templates/index.html` with some HTML content like:
 ```html
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
@@ -176,7 +173,7 @@ Run the application either by executing the `com.example.NdaChatApplication` cla
 $ mvn spring-boot:run
 ```
 
-Additionally, on the command line, you can create a JAR file to execute it:
+Additionally, on the command line, you can create a JAR file and execute it:
 ```
 $ mvn package -DskipTests
 $ java -jar target/nda-chat-0.0.1-SNAPSHOT.jar
@@ -228,13 +225,13 @@ However, this requires a paid plan. You can get more info in this [page](https:/
 
 Nevertheless, as long as you don't stop or restart ngrok, the URL won't change, so forget about that terminal window and let's leave it running for now.
 
-In the next section, we'll deep into the code of the application, starting with the database layer.
+In the next section, we'll deep into the code of the application starting with the database layer.
 
 
 # Database layer
 We'll use [H2](http://www.h2database.com/html/main.html) as the database for our application. It can work as an embedded in-memory database, which is perfect for our purposes.
 
-Open the `src/main/resources/application.properties` file and specify the following options:
+Open the `src/main/resources/application.properties` file and enter the following options:
 ```
 spring.datasource.platform=h2
 
@@ -248,14 +245,14 @@ spring.jpa.properties.hibernate.format_sql=true
 spring.jpa.properties.hibernate.type=trace
 ```
 
-In Spring Boot, by default, JPA databases will be created automatically if you use an embedded database (such as H2, HSQL or Derby) by executing the files `schema.sql` (to define the structure of the database) and `data.sql` (to insert initial data) in the classpath.
+In Spring Boot, by default, JPA databases will be created automatically if you use an embedded database (such as H2, HSQL or Derby). If they are in the classpath, it will execute the files `schema.sql` (to define the structure of the database) and `data.sql` (to insert initial data).
 
 However, we can define *profiles* to run distinct scripts for different databases. That's the purpose of the line:
 ```
 spring.datasource.platform=h2
 ```
 
-It tells Spring Boot to execute the files `schema-h2.sql` and `data-h2.sql`. For this app, create the file `src/main/resources/schema-h2.sql` with the following content:
+It tells Spring Boot to execute the files `schema-h2.sql` and `data-h2.sql`. For this application, create the file `src/main/resources/schema-h2.sql` with the following content:
 ```sql
 CREATE TABLE chat(
 	chat_id             BIGINT IDENTITY PRIMARY KEY,
@@ -294,7 +291,7 @@ By default, Hibernate (the JPA implementation used by Spring Boot), will try to 
 spring.jpa.hibernate.ddl-auto="none"
 ```
 
-H2 provides a [browser-based console](http://www.h2database.com/html/quickstart.html#h2_console) that Spring Boot can auto-configure at the path `/h2-console` for you when these conditions are met:
+H2 provides a [browser-based console](http://www.h2database.com/html/quickstart.html#h2_console) that Spring Boot can auto-configure for you at the path `/h2-console` when these conditions are met:
 - You are developing a web application
 - `com.h2database:h2` is on the classpath
 - You are using [Spring Boot's developer tools](http://docs.spring.io/spring-boot/docs/current/reference/html/using-boot-devtools.html)
@@ -304,7 +301,7 @@ Since we're not using Spring Boot's developer tools, we have to explicitly confi
 spring.h2.console.enabled=true 
 ```
 
-The rest of the properties in the `application.properties` file tell Hibernate to print in the console the generated SQL statements for debugging purposes.
+The rest of the `application.properties` file tell Hibernate to print in the console the generated SQL statements for debugging purposes.
 
 Now that we have our schema, let's create the JPA entities that will represent the database tables.
 
@@ -387,7 +384,7 @@ public class Chat  implements Serializable {
 }
 ```
 
-Notice how the one-to-many relationship with the `User` entity is set up and the helper method to establish it. In addition, as the good practices dictate, we're also defining  the `toString()`, `equals()`, and `hashCode()` methods with the help classes from the [commons-lang](https://commons.apache.org/proper/commons-lang/) library.
+Notice how the one-to-many relationship with the `User` entity is set up and the helper method to establish it. In addition, as the good practices dictate, we're also defining  the `toString()`, `equals()`, and `hashCode()` methods with classes from the [commons-lang](https://commons.apache.org/proper/commons-lang/) library.
 
 The `src/main/java/com/example/model/User.java` file contains the following code:
 ```java
@@ -570,7 +567,7 @@ boolean exists(ID primaryKey);
 
 This way, we just have to define the business methods used by the application.
 
-For the Chat repository, those would be:
+For the chat repository, those would be:
 ```java
 @Repository
 public interface ChatRepository extends CrudRepository<Chat, Long> {
@@ -590,7 +587,7 @@ public interface ChatRepository extends CrudRepository<Chat, Long> {
 }
 ```
 
-The User repository:
+For the user repository:
 ```java
 @Repository
 public interface UserRepository extends CrudRepository<User, Long> {
@@ -614,7 +611,7 @@ public interface UserRepository extends CrudRepository<User, Long> {
 
 The `@EntityGraph` annotation indicates that the chat relationship object must be fetched.
 
-The Message repository:
+For the message repository:
 ```java
 @Repository
 public interface MessageRepository extends CrudRepository<Message, Long> {
@@ -628,7 +625,7 @@ public interface MessageRepository extends CrudRepository<Message, Long> {
 }
 ```
 
-Next, we're going to review the service layer.
+In the next section, we're going to review the service layer.
 
 # Service layer
 
