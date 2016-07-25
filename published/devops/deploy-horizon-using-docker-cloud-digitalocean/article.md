@@ -1,12 +1,12 @@
-This tutorial is an end to end summary of how you can build and deploy a Horizon Application using GitHub, Travis-Ci, Docker, Docker Compose, Docker Hub, Docker Cloud and DigitalOcean. That's a lot of Dockers but don't worry, it's really easy!
+This tutorial is an end-to-end summary of how you can build and deploy a Horizon Application using GitHub, Travis-CI, Docker, Docker Compose, Docker Hub, Docker Cloud, and DigitalOcean. That's a lot of Dockers but don't worry, it's not complicated!
 
 ----
 
-## Create a Horizon Application <a name="create"></a>
+## Create a Horizon Application
 
-For this tutorial I'm going to use a express application with an [embedded horizon server](http://horizon.io/docs/embed/). Embedding horizon in an express application will give you a little more flexibility, such as the case with [Lightbrew/beauty](http://github.com/lightbrew/beauty) where I eventually need to connect to the Particle Cloud.
+For this tutorial I'm going to use an Express application with an [embedded Horizon server](http://horizon.io/docs/embed/). Embedding Horizon in an Express application will give you a little more flexibility.
 
-Initialize npm with two dependencies, express and @horizon/server.
+Initialize npm with two dependencies, Express and @horizon/server.
 
 ``` bash
 mkdir horizon-with-docker
@@ -16,9 +16,9 @@ npm install --save @horizon/server
 npm install --save express
 ```
 
-Next, create a small express application that will contain the horizon server. The folks over at Horizon have included [an example](http://horizon.io/docs/embed/) on how to do this in their documentation. I'm going to copy their example with some minor changes.
+Next, create a small Express application that will contain the Horizon server. The folks over at Horizon have included [an example](http://horizon.io/docs/embed/) on how to do this in their documentation. I'm going to copy their example and make some minor changes.
 
-Note that I'm specifying the rdb_host and rdb_port as environment variables. These options specify how the embedded horizon server connects to RethinkDB. I've given them some default values which you can use for now. More on this later.
+Note that I'm specifying the `rdb_host` and `rdb_port` as environment variables. These options specify how the embedded Horizon server connects to RethinkDB. I've given them some default values which you can use for now. (More on RethinkDB environment variables later.)
 
 horizon-with-docker/server.js
 
@@ -60,7 +60,9 @@ const horizonServer = horizon(httpServer, {
 
 ```
 
-Create a front-end for the application. Note in the above code the horizon client is being served by the horizon server. Horizon does however offer the horizon client as a separate npm package. One could technical serve it at another location if need be. I'll copy the front-end from this [example](http://horizon.io/docs/getting-started/).
+### Create a front-end for the application. 
+
+Note in the above code the horizon client is being served by the Horizon server. Horizon does however offer the Horizon client as a separate npm package. One could technically serve it at another location if need be. I'll copy the front-end from this [example](http://horizon.io/docs/getting-started/).
 
 horizon-with-docker/dist/index.html
 
@@ -86,7 +88,7 @@ horizon-with-docker/dist/index.html
 
 ```
 
-Putting it all together, insert an npm start script that will run the horizon application.
+Putting it all together, insert an npm start script that will run the Horizon application.
 
 horizon-with-docker/package.json
 
@@ -108,7 +110,9 @@ horizon-with-docker/package.json
 }
 ```
 
-Finally test the application. If you have not done so already, you will have to [install](https://www.rethinkdb.com/docs/install/) and [start](https://www.rethinkdb.com/docs/start-a-server/) RethinkDB. Once RethinkDB is started, start the horizon application using the npm start script.
+### Test the application. 
+
+If you have not done so already, you will have to [install](https://www.rethinkdb.com/docs/install/) and [start](https://www.rethinkdb.com/docs/start-a-server/) RethinkDB. Once RethinkDB is started, start the Horizon application using the npm start script.
 
 ``` bash
 $ npm start
@@ -126,11 +130,11 @@ info: Metadata synced with database, ready for traffic.
 
 Then visit [http://localhost:8081](http://localhost:8081) and voila!
 
-## Dockerize the Horizon Application <a name="dockerize"></a>
+## Dockerize the Horizon Application
 
-If you have not already done so, [install docker now](https://docs.docker.com/engine/installation/). We can create a docker image that will contain our horizon application. For this application, it's fairly straight forward.
+If you have not already done so, [install docker](https://docs.docker.com/engine/installation/). We can create a docker image that will contain our Horizon application. For this specific application, it's fairly straight forward.
 
-Create a dockerfile in the base repository that installs the node dependencies, copies the application to /user/src/app and calls the previously created start script.
+Create a dockerfile in the base repository that installs the node dependencies, copies the application to `/user/src/app`,and calls the previously created start script.
 
 horizon-with-docker/Dockerfile
 
@@ -151,7 +155,7 @@ CMD [ "npm", "start" ]
 
 ```
 
-Test the dockerfile by building your applications image. I've named mine, horizon-width-docker but you're free to choose any name.
+Test the dockerfile by building your applications image. I've named mine `horizon-width-docker` but you're free to choose any name.
 
 ``` bash 
 
@@ -159,7 +163,7 @@ docker build -t horizon-with-docker .
 
 ```
 
-Once your image has finished building it's time to test it by running it inside a container. If you want to view the images on your host, you can always recall them via the *docker images* command.
+Once your image has finished building, test it by running it inside a container. If you want to view the images on your host, you can always recall them via the *docker images* command.
 
 ``` bash
 
@@ -173,21 +177,21 @@ info: Connecting to RethinkDB: localhost:28015
 
 ```
 
-Uh oh! Looks like the application started fine, but was unable to finish connecting to RethinkDB. Perfect!
+Uh oh! Looks like the application started fine, but could not finish connecting to RethinkDB. 
 
-Wait, what?!
+Perfect!
 
-If you're using Docker Machine like I am, your container is running inside a virtual machine. You can inspect the ip of this virtual host with the command *docker-machine ip* - mines 192.168.99.100.
+If you're using Docker Machine like I am, your container is running inside a virtual machine. You can inspect the IP of this virtual host with the command *docker-machine ip* -- for instance, my IP is 192.168.99.100.
 
-The default settings for Horizon are to connect to a RethinkDB at localhost:28015. The instance I started earlier is running on *localhost:28015*. So the application is not able to finish starting because it cannot connect to RethinkDB. Let's fix this problem with a tool called Docker Compose.
+The default settings for Horizon are to connect to a RethinkDB at localhost:28015. The instance I started earlier is running on *localhost:28015*. So the application is not able to finish starting because it cannot connect to RethinkDB. __Let's fix this problem with a tool called Docker Compose.__
 
-## Orchestrate with Docker Compose <a name="orchestrate"></a>
+## Orchestrate with Docker Compose
 
 [Docker Compose](https://docs.docker.com/compose/) is a tool for orchestrating multiple docker containers. Docker Compose will start our application *and* RethinkDB, each in their own docker container.
 
-For this to work, a configuration file called docker-compose.yml is necessary. The file will define two services, web and db. They will correspond with the horizon application and the rethinkDB database.
+For this to work, a configuration file called `docker-compose.yml` is necessary. The file will define two services, `web` and `db`. They will correspond with the Horizon application and the RethinkDB database.
 
-Remember the *rdb_host* and *rdb_port* environment variables from server.js? They can be utilized now as they're needed to tell the embedded horizon server how to connect to RethinkB. With Docker Compose, the service name can be used, which arbitrarily points to the host.
+Remember the `rdb_host` and `rdb_port` environment variables from `server.js`? They can be utilized now because they're needed to tell the embedded Horizon server how to connect to RethinkB. The service name, which arbitrarily points to the host, can be used with Docker Compose.
 
 horizon-with-docker/docker-compose.yml
 
@@ -212,7 +216,7 @@ services:
 
 ```
 
-To start the services, use the *docker-compose* up command.
+To start the services, use the `docker-compose up` command.
 
 ``` bash 
 
@@ -250,13 +254,15 @@ web_1  | info: Metadata synced with database, ready for traffic.
 
 ```
 
-Now visit http://DOCKER_MACHINE_IP:8081 and you should see your horizon app. Awesome!
+Now, with everything synced up on the web, visit http://DOCKER_MACHINE_IP:8081. You should see your Horizon app!
 
-## Building with Travis-Ci <a name="build"></a>
+## Building with Travis-Ci
 
-To build the application I'm going to use Travis-Ci. Travis-Ci integrates very nicely with GitHub and provides a nice Docker Service. Go ahead and create a repository for the source code. I'm going to use [casche/horizon-with-docker](https://github.com/casche/horizon-with-docker).
+To build the application, I'm going to use __Travis-CI.__ 
 
-In this application the build is going to be trivial. Travis-Ci is just going to run *npm install* and report back the status to GitHub. To accomplish this, create a .travis.yml file:
+Travis-CI integrates very nicely with GitHub and provides a nice Docker Service. Go ahead and create a repository for the source code. I'm going to use [casche/horizon-with-docker](http://github.com/casche/horizon-width-docker).
+
+In this application, the build is going to be trivial. Travis-CI is just going to run *npm install* and report back the status to GitHub. To accomplish this, create a `.travis.yml` file:
 
 horizon-with-docker/.travis.yml
 
@@ -268,19 +274,19 @@ node_js:
 
 ```
 
-Commit the changes and push them to GitHub. Note: you may have noticed a couple directories that were generated in our project, 'node_modules' and 'rethinkdb_data'. These should be added to the .gitignore as they're not needed under version control.
+Commit the changes and push them to GitHub. Note: you may have noticed a couple directories that were generated in our project, `node_modules` and `rethinkdb_data`. These should be added to the `.gitignore` because they're not needed under version control.
 
-Now head on over to [travis-ci.org](http://travis-ci.org) and add your repository. You can log into Travis-Ci with your GitHub credentials. Click the '+' button to the left to add add your repository and enable your build. If you don't see your repository, try 'syncing' your account. This will query GitHub and get a new snapshot of your repositories.
+Now head over to [travis-ci.org](http://travis-ci.org) and add your repository. You can log into Travis-CI with your GitHub credentials. Click the '+' button to the left to add add your repository and enable your build. If you don't see your repository, try 'syncing' your account. This will query GitHub and get a new snapshot of your repositories.
 
 
 ![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/9829abce-64c5-46e3-b9f0-7ef8d2cb694c.png)
 
 
-That's it! Now when changes are pushed to GitHub, Travis-Ci will build your application and report back the status on the commit. Go ahead and try it.
+That's it! Now when changes are pushed to GitHub, Travis-CI will automatically build your application and report back the status on the commit. Go ahead and try it to see changes in real-time.
 
-## Pushing to Docker Hub <a name="push"></a>
+## Pushing to Docker Hub
 
-The next objective is to modify the Travis-Ci build so that it creates and pushes a docker image containing the application to Docker Hub. This allows Docker Hub to pull the image and deploy it to a DigitalOcean droplet. If you don't already have a Docker Cloud account, head on over to the Docker Cloud and [signup](https://cloud.docker.com).
+The next objective is to modify the Travis-CI build so that it creates and pushes a docker image containing the application to Docker Hub. This allows Docker Hub to pull the image and deploy it to a DigitalOcean droplet. If you don't already have a Docker Cloud account, [sign up for one on Docker Cloud](https://cloud.docker.com).
 
 Edit the *.travis.yml* file to build and push the docker image after a successful build. To do this, Travis-Ci needs to login to your Docker Cloud account. Create [encrypted environment variables](https://docs.travis-ci.com/user/environment-variables/) to store the login credentials in the *.travis.yml*.
 
@@ -293,7 +299,7 @@ travis encrypt DOCKER_PASS=<-docker-cloud-pass> --add env.global
 
 Now, add an *after_success* clause that will:
 
- 1. Login to Docker Cloud
+ 1. Log-in to Docker Cloud
  2. Build the image
  3. Tag the image
  4. Push it to Docker Hub.
@@ -325,15 +331,15 @@ after_success:
 
 ```
 
-Commit and push the changes. Once Travis-Ci builds the application successfully it will do the same for the docker image. If the build was triggered by a commit to master, the image is pushed to Docker Hub. This may take a little bit of time so be patient.
+Commit and push the changes. Once Travis-CI builds the application successfully, it will do the same for the docker image. If the build was triggered by a commit to master, the image is pushed to Docker Hub. This may take a little bit of time so be patient.
 
 ## Deploying to DigitalOcean with Docker Cloud <a name="deploy"></a>
 
-To continue with this step you will need an account on [DigitalOcean](https://cloud.digitalocean.com/registrations/new). A droplet is going to be used to deploy the application. The smallest one can be used but a cost will still be incurred. Don't worry, the cost is [minimal](https://www.digitalocean.com/pricing/) - less than a cent.
+To continue with this step you will need an account on [DigitalOcean](https://cloud.digitalocean.com/registrations/new), a cloud-based software infrastructure specific to software development. We'll deploy the application using a __droplet__. The smallest one can be used but a cost will still be incurred. Don't worry, the cost is [minimal](https://www.digitalocean.com/pricing/) - less than a cent.
 
 > Don't forget to destroy the droplet when you're done!
 
-The first step is to log into [Docker Cloud](https://cloud.docker.com/login) and link your DigitalOcean account. To do this, click on 'Cloud Settings' at the bottom left. You should now see a list of Cloud Providers on the page. If you click on the plug icon next to DigitalOcean to link your accounts. Note, at the time of writing, there is a $20 credit added to your DigitalOcean account when linked with Docker Cloud. For the purposes of our demonstration the costs will now be free!
+After this, log into [Docker Cloud](https://cloud.docker.com/login) and link your DigitalOcean account. To do this, click on 'Cloud Settings' at the bottom left. You should now see a list of Cloud Providers on the page. Click on the plug icon next to DigitalOcean to link your accounts. Note that, at the time of writing, there is a $20 credit added to your DigitalOcean account when linked with Docker Cloud. For the purposes of our demonstration the costs will now be free!
 
 
 ![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/d0ffee77-f47c-41ac-942d-3d02f8b3d42f.png)
@@ -345,7 +351,7 @@ Once your accounts are linked, create a new DigitalOcean Node Cluster. I'm going
 ![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/82fcfbc6-5e4c-4038-8ce4-152c54bbf711.png)
 
 
-The newly created node cluster used to run a stack. A stack is a collection of services and each service is a collection of containers. Stacks are created with [*stack-yaml* file](https://docs.docker.com/docker-cloud/apps/stack-yaml-reference/).
+The newly created node cluster can be used to run a stack. A stack is a collection of services and each service is a collection of containers. Stacks are created with the [*stack-yaml* file](https://docs.docker.com/docker-cloud/apps/stack-yaml-reference/).
 
 Remember the *docker-compose.yml* used for Docker Compose to launch our application? That wasn't *really* necessary for deployment to DigitalOcean. Although, it's great for testing and local development.
 
@@ -374,35 +380,35 @@ web:
 
 > Don't forget to change the tag to the tag you used inside your *.travis.yml*. That is, the tag of your docker image on Docker Hub.
 
-The port of the horizon application has been changed to the default http port, 80. Go ahead and give it a meaningful stack name, such as 'Horizon-with-Docker':
+The port of the Horizon application has been changed to the default, http port 80. Go ahead and give it a meaningful stack name, such as 'Horizon-with-Docker':
 
 
 ![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/9109de97-3698-4f44-9d10-15b7e5e6970d.png)
 
 
-Once created, revisit the node cluster created earlier to grab the IP address of your DigitalOcean droplet - mines 159.203.61.66. Go ahead and visit your freshly deployed horizon application at the IP address. Congratulations!
+Once created, revisit the node cluster created earlier to grab the IP address of your DigitalOcean droplet - my droplet IP is 159.203.61.66. Go ahead and visit your freshly deployed Horizon application at the IP address. Congratulations!
 
 ![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/19a7f3c5-6a35-4935-8a81-82539b522a4a.png)
 
 
-But wait, there's just one more thing: *automatic deployments*. Each time the Travis-Ci build succeeds on master, Docker Cloud should redeploy the applications image.
+But wait, there's just one more thing: __automatic deployments__. Each time the Travis-CI build succeeds on master, Docker Cloud should redeploy the applications image.
 
-Click on services, then click on the service that's running your horizon application. If you've kept a similar naming scheme, it will be called *web*. Scroll down until you see 'Triggers'. Create a new redeployment trigger called 'image deploy'.  
+Click on services, then click on the service that's running your Horizon application. If you've kept a similar naming scheme, it will be called *web*. Scroll down until you see 'Triggers'. Create a new redeployment Trigger called 'image deploy'.  
 
 
 ![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/ff4cb118-9f52-40d9-8461-d87c88091f37.png)
 
 
-Return to Docker Hub and select your docker image for the horizon application. Go to the Web Hooks tab and create a new webhook called 'digitalocean-deploy'. Use web address from the Trigger created above and appended it to https://cloud.docker.com/.
+Return to Docker Hub and select your docker image for the Horizon application. Go to the Web Hooks tab and create a new webhook called 'digitalocean-deploy'. Use the web address from the Trigger created above and append it to https://cloud.docker.com/.
 
 
 ![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/68d20f18-f0bf-4fc9-ae3c-cad2b576e0d4.png)
 
 
-Now each time an image is deployed to Docker Hub, Docker Cloud will redeploy the container with the new image to DigitalOcean! Awesome!
+Now, each time an image is deployed to Docker Hub, Docker Cloud will redeploy the container with the new image to DigitalOcean! Awesome!
 
-## Closing Thoughts <a name="closing"></a>
+## Closing Thoughts
 
-This tutorial has outlined a development flow for Horizon on DigitalOcean using Docker Cloud. It's by no means complete and certainly should be adjusted for production usage. You may have noticed that I have not indcluded material on volumes or certificates for the Horizon application. For more on adapting for productive deployments, you can check out the official Horizon documentation [here](http://horizon.io/docs/docker/).
+This tutorial has outlined a development flow for Horizon on DigitalOcean using Docker Cloud. It is by no means complete and should be adjusted for production usage. For more on adapting for productive deployments, you can check out the official Horizon documentation [here](http://horizon.io/docs/docker/).
 
-Perhaps, there will even be a Part Deux! :) Thanks for reading. You can follow me on twitter @devcasche. 
+Thanks for reading. Please let me know your comments and feedback through the discussion section below. You can also follow me on twitter @devcasche. 
