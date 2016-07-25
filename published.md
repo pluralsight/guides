@@ -1,3 +1,8 @@
+### Use a data analytics tool to predict where the Pokemon are going to appear by Igor Souza
+- [Read the guide](http://tutorials.pluralsight.com/big-data/use-a-data-analytics-tool-to-predict-where-the-pokemon-are-going-to-appear)
+- [Read more from Igor Souza](http://tutorials.pluralsight.com/author/igfasouza) <img src="https://avatars.githubusercontent.com/u/6233869?v=3" width="30" height="30" alt="Igor Souza" />
+- Related to: Big Data (Hadoop, Spark, etc)
+
 ### Deploy Horizon Using Docker Cloud & DigitalOcean by Chris Asche
 - [Read the guide](http://tutorials.pluralsight.com/devops/deploy-horizon-using-docker-cloud-digitalocean)
 - [Read more from Chris Asche](http://tutorials.pluralsight.com/author/casche) <img src="https://avatars.githubusercontent.com/u/5832943?v=3" width="30" height="30" alt="Chris Asche" />
