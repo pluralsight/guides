@@ -1,3 +1,8 @@
+### Requesting e-signatures in a chat with Pusher, HelloSign, and Spring Boot by Esteban Herrera
+- [Read the guide](http://tutorials.pluralsight.com/interesting-apis/requesting-e-signatures-in-a-chat-with-pusher-hellosign-and-spring-boot?status=draft)
+- [Read more from Esteban Herrera](http://tutorials.pluralsight.com/author/eh3rrera) <img src="https://avatars.githubusercontent.com/u/11665759?v=3" width="30" height="30" alt="Esteban Herrera" />
+- Related to: Interesting APIs (SendGrid, Twilio, etc)
+
 ### Ionic 2 database management and versioning by Carlos Esteban Lopez Jaramillo
 - [Read the guide](http://tutorials.pluralsight.com/software-engineering-best-practices/ionic-2-database-management-and-versioning?status=draft)
 - [Read more from Carlos Esteban Lopez Jaramillo](http://tutorials.pluralsight.com/author/Luchillo) <img src="https://avatars.githubusercontent.com/u/9698639?v=3" width="30" height="30" alt="Carlos Esteban Lopez Jaramillo" />
