@@ -30,13 +30,15 @@ $ mv ngrok /usr/local/bin
 Once you have all everything installed we can finally start coding!
 
 # Building our Chrome Extension
-[Cross-Origin XMLHttpRequest](https://developer.chrome.com/extensions/xhr)
+To avoid having to import external libraries like [jQuery](https://jquery.com/), we can use the built-in [Cross-Origin XMLHttpRequest](https://developer.chrome.com/extensions/xhr).
 
 [loading our extension](https://developer.chrome.com/extensions/getstarted#unpacked)
+[browserAction](https://developer.chrome.com/extensions/browserAction)
 
-setting up ngrok
 
-send data to ngrok
+If you're ever getting an error and need to debug the extension, you can right click on the extension's icon and click `Inspect popup`. This will give you a console similar to a web pages. See [Chrome's debugging tutorial](https://developer.chrome.com/extensions/tut_debugging) for more information. 
+
+## Sending Data to Our Database
 
 query data from chrome extension
 
@@ -53,7 +55,7 @@ Leave this terminal window open and running and we can move onto connecting
 
 # Setting Up Our Flask Server
 
-
+https://github.com/rethinkdb/rethinkdb-example-flask-backbone-todo/blob/master/todo.py
 
 
 # Running ngrok
