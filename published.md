@@ -1,3 +1,8 @@
+### Getting Started with Android on Android Studio by Sudheerkumar
+- [Read the guide](http://tutorials.pluralsight.com/android/getting-started-with-android-on-android-studio)
+- [Read more from Sudheerkumar](http://tutorials.pluralsight.com/author/Sudheerkumar) <img src="https://avatars.githubusercontent.com/u/2035321?v=3" width="30" height="30" alt="Sudheerkumar" />
+- Related to: Android
+
 ### Use a data analytics tool to predict where the Pokemon are going to appear by Igor Souza
 - [Read the guide](http://tutorials.pluralsight.com/big-data/use-a-data-analytics-tool-to-predict-where-the-pokemon-are-going-to-appear)
 - [Read more from Igor Souza](http://tutorials.pluralsight.com/author/igfasouza) <img src="https://avatars.githubusercontent.com/u/6233869?v=3" width="30" height="30" alt="Igor Souza" />
