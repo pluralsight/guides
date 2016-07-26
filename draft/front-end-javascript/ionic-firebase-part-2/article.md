@@ -75,11 +75,7 @@ NOTE: If you want you could also make an other page to edit the name of the todo
 
 Authentication is really made up of two parts the actual authenticaton ie. log the user in, setup there, account, etc. and authorization ie. what does the user have access to. Firebase has a great way to handle both by providing an authentication platform and by giving system administrators the ability to setup rules about what data different users can see. 
 
-To start we need to go to our firebase console and click **Auth** on the left menu. 
-![Firebase Console Image](https://raw.githubusercontent.com/pluralsight/guides/master/images/5f0e08b6-8d39-4b18-b275-b4e7a9511bcd.tiff)
-From there click **Setup Up Sign-in Method**
-![Setup Button](https://raw.githubusercontent.com/pluralsight/guides/master/images/710c8353-40bf-4c6b-8f78-1c87a4171c6b.tiff)
-Lets choose two. I went with Email & Password and Google. Other require a key and secret but should be similar in implementation. 
+To start we need to go to our firebase console and click **Auth** on the left menu. From there click **Setup Up Sign-in Method**. Lets choose two. I went with Email & Password and Google. Other require a key and secret but should be similar in implementation. 
 
 ##### Note: Google does require a SHA1 for use on android. If you have trouble with that on your own please leave a comment and I will try to help.
 
@@ -268,5 +264,54 @@ Generate a new page with the ionic cli.
 
 `ionic g page login`
 
-Then add a form with
+Then add an input group for our email and password. Like with our todos this will be an `ion-list` containing `ion-items`. Then at the bottom we will have three buttons one for our email and password login, one for our google login, and one for signing up.
+```
+<!--
+  Generated template for the LoginPage page.
+
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-navbar *navbar>
+  <ion-title>login</ion-title>
+</ion-navbar>
+
+<ion-content padding class="login">
+  <ion-list>
+    <ion-item>
+      <ion-label> Email</ion-label>
+      <ion-input type="email" value="email"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Password</ion-label>
+      <ion-input type="password" value="password"></ion-input>
+    </ion-item>
+  </ion-list>
+  <button (click)="login(email, password)"> Login</button>
+  <button (click)="loginGoogle()">Google</button>
+  <button (click)="signup(email, password)">Sign Up</button>
+</ion-content>
+```
+
+In our login.ts file we now need to make our login methods and handle the transition from login page to todo list page. So import our home page, ionic loading controller, and our Auth service. 
+```
+import {Component} from '@angular/core';
+import {NavController, Loading} from 'ionic-angular';
+import {HomePage} from '../home/home';
+import {Auth} from '../../providers/auth/auth';
+```
+ Don't forget to add the auth service to the constuctor.
+ ```
+ constructor(public nav: NavController, public _auth: Auth) {}
+ ```
+
+Then we will add three methods `login`, `loginGoogle`, and `signup`. The reason we are making these methods instead of just calling auth out right is because we need to give some user feed back and handle moving pages. 
+```
+login(email, password)
+```
+
+
+
+
+
 
