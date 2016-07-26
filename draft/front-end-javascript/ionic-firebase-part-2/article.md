@@ -109,6 +109,11 @@ export class Auth {
 Very basic. Our users need to do three things 1. Login, 2. Sign up, 3. Sign out. So lets add three methods to our Auth class `login`,`signup`, and `logout`.
 
 #### Signup
+We will start with signup. After all you can't login if there are no users. In our sign method we will take in two parameters `email` and `password`, but they will be optional since we are doing google authentication as well. 
+
+```
+```
+
 #### Login
 Since we chose email & password, and google our auth function needs to take in an email and a password. However, because of the google login method we are going to make them optional. 
 #### Logout
