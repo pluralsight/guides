@@ -79,3 +79,49 @@ To start we need to go to our firebase console and click **Auth** on the left me
 ![Firebase Console Image](https://raw.githubusercontent.com/pluralsight/guides/master/images/5f0e08b6-8d39-4b18-b275-b4e7a9511bcd.tiff)
 From there click **Setup Up Sign-in Method**
 ![Setup Button](https://raw.githubusercontent.com/pluralsight/guides/master/images/710c8353-40bf-4c6b-8f78-1c87a4171c6b.tiff)
+Lets choose two. I went with Email & Password and Google. Other require a key and secret but should be similar in implementation. 
+
+##### Note: Google does require a SHA1 for use on android. If you have trouble with that on your own please leave a comment and I will try to help.
+
+Now lets create a new proivder for authentication called auth.
+
+`ionic g provider Auth`
+
+Remove all of the pre-generated `http` code and replace it with a class member for the firebase authentication reference. 
+```
+import {Injectable} from '@angular/core';
+
+/*
+  Generated class for the Auth provider.
+
+  See https://angular.io/docs/ts/latest/guide/dependency-injection.html
+  for more info on providers and Angular 2 DI.
+*/
+@Injectable()
+export class Auth {
+  auth: any = null;
+  constructor() {
+    this.auth = firebase.auth();
+  }
+}
+```
+
+Very basic. Our users need to do three things 1. Login, 2. Sign up, 3. Sign out. So lets add three methods to our Auth class `login`,`signUp`, and `logout`.
+
+```
+import {Injectable} from '@angular/core';
+
+/*
+  Generated class for the Auth provider.
+
+  See https://angular.io/docs/ts/latest/guide/dependency-injection.html
+  for more info on providers and Angular 2 DI.
+*/
+@Injectable()
+export class Auth {
+  auth: any = null;
+  constructor() {
+    this.auth = firebase.auth();
+  }
+}
+```
