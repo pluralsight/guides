@@ -1,8 +1,3 @@
-### Tips for writing better C# code by Afzaal Ahmad Zeeshan
-- [Read the guide](http://tutorials.pluralsight.com/microsoft-net/tips-for-writing-better-c-code?status=draft)
-- [Read more from Afzaal Ahmad Zeeshan](http://tutorials.pluralsight.com/author/afzaal-ahmad-zeeshan) <img src="https://avatars.githubusercontent.com/u/3237834?v=3" width="30" height="30" alt="Afzaal Ahmad Zeeshan" />
-- Related to: Microsoft.NET (C#, ASP.NET, VB.NET, etc)
-
 ### Ionic 2 database management and versioning by Carlos Esteban Lopez Jaramillo
 - [Read the guide](http://tutorials.pluralsight.com/software-engineering-best-practices/ionic-2-database-management-and-versioning?status=draft)
 - [Read more from Carlos Esteban Lopez Jaramillo](http://tutorials.pluralsight.com/author/Luchillo) <img src="https://avatars.githubusercontent.com/u/9698639?v=3" width="30" height="30" alt="Carlos Esteban Lopez Jaramillo" />
