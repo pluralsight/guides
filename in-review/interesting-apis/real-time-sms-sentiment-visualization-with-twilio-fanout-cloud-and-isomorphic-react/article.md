@@ -1,23 +1,23 @@
-In this tutorial, we're going to build an application to visualize, in real-time, SMS messages sent to a [Twilio](https://www.twilio.com) phone number along with their sentiment analysis provided by the Marchex Sentiment Analysis plugin.
+In this tutorial, we're going to build an application to visualize, in real-time, SMS messages sent to a [Twilio](https://www.twilio.com) phone number using sentiment analysis provided by the Marchex Sentiment Analysis plugin.
 
-We'll be using [Node.js](https://nodejs.org) with [Express](http://expressjs.com/) for the web server, [ngrok](https://ngrok.com/) to expose our local server publicly, [Fanout Cloud](https://fanout.io/) for the real-time functionality, and ([isomorphic](http://isomorphic.net/)) [React](https://facebook.github.io/react/) for the view.
+We'll be using [Node.js](https://nodejs.org) with [Express](http://expressjs.com/) for the web server, [ngrok](https://ngrok.com/) for exposing our local server publicly, [Fanout Cloud](https://fanout.io/) for the real-time functionality, and ([isomorphic](http://isomorphic.net/)) [React](https://facebook.github.io/react/) for the view.
 
 When a SMS is sent to the Twilio Number, information about the SMS is sent to our Node.js server.
 
-Then, we extract the relevant information and publish it to a Fanout Cloud's channel. This is received in a web page that shows the information in this way:
+Then, we extract the relevant information and publish it to a Fanout Cloud's channel. The channel information is received in a web page that shows the information in this way:
 
 ![App demo](https://raw.githubusercontent.com/pluralsight/guides/master/images/17a85122-2db2-4e84-865e-7c58df8ed809.gif)
 
 
 Notice how the background changes depending on the sentiment. Moreover, there are transitions when new messages appear. The design was inspired by this [pen](http://codepen.io/bundleio/pen/regPeX).
 
-The gauge comes from [Epoch](http://epochjs.github.io/epoch/), a real-time charting library that uses [jQuery](https://jquery.com). Some would say React and jQuery should never be used together (because of the way React creates its components). We could have chosen another [gauge component with better React integration](http://michigan-com.github.io/react-gauge), but the truth is that React can play well with libraries like jQuery and sometimes, you have no option but to use a jQuery plugin in a React application. Besides, Epoch charts look better than others.
+The gauge comes from [Epoch](http://epochjs.github.io/epoch/), a real-time charting library that uses jQuery. Some would say React and jQuery should never be used together (because of the way React creates its components). We could have chosen another [gauge component with better React integration](http://michigan-com.github.io/react-gauge), but __React can play well with libraries like jQuery__. Sometimes, you have no option but to use a jQuery plugin in a React application. Not just that, Epoch charts look better than others.
 
-Finally, with a couple of modifications, we'll make this application isomorphic (universal).
+Finally, with a couple of modifications, we'll make this application isomorphic, or universal.
 
 The source code of the final version of the application is available on [Github](https://github.com/eh3rrera/sms-sentiment).
 
-Let's start by setting up everything that is required for the application.
+Let's start by setting up the required components for our application.
 
 # Requirements
 ### Twilio
@@ -28,7 +28,7 @@ When your personal phone number has been verified, you can get a Twilio phone nu
 ![Get phone number](https://raw.githubusercontent.com/pluralsight/guides/master/images/39d2308e-c05d-4a10-a3ad-63b581110d4b.png)
 
 
-Make sure to choose a phone number with at least, SMS capabilities:
+__Make sure to choose a phone number with SMS capabilities__:
 
 ![Choose phone number](https://raw.githubusercontent.com/pluralsight/guides/master/images/b53d98e8-e422-408e-9af4-3d8db32f4b2f.png)
 
@@ -38,7 +38,7 @@ Now go to [Messaging - Programmable SMS - Add-ons](https://www.twilio.com/consol
 ![Add-ons](https://raw.githubusercontent.com/pluralsight/guides/master/images/eddfbbd2-397e-472e-ad2a-2b26765c3fc0.png)
 
 
-To choose the plug-in Marchex Sentiment Analysis for SMS:
+Choose the plug-in called __Marchex Sentiment Analysis for SMS__:
 
 ![Choose add-on](https://raw.githubusercontent.com/pluralsight/guides/master/images/dfacd190-ad1c-40ab-ae03-92b01feb91d5.png)
 
@@ -60,7 +60,7 @@ Finally, go to your [console](https://www.twilio.com/console) and copy your Auth
 ![Twilio Console](https://raw.githubusercontent.com/pluralsight/guides/master/images/fbb92d2f-65e5-4d27-8d87-2d694e5ea08a.png)
 
 ### Ngrok
-When an SMS is sent to our Twilio number, a webhook will be triggered (think of it as a callback). This means an HTTP request will be made to our server, so we'll need to deploy our application on the cloud or keep it locally and use a service like [ngrok](https://ngrok.com/).
+When an SMS is sent to our Twilio number, a webhook will be triggered (think of it as a callback). This means an HTTP request will be made to our server, so we'll either need to deploy our application on the cloud or keep it locally and use a service like [ngrok](https://ngrok.com/).
 
 Ngrok proxies external requests to your local machine by creating a secure tunnel and giving you a public URL.
 
@@ -79,7 +79,7 @@ To copy your Realm ID and Realm Key, we'll need them later.
 
 ### Node.js
 
-You'll also need version 4.4 or higher of Node.js and npm installed. You can download an installer for your platform [here](https://nodejs.org/en/download/).
+You'll also need to have Node.js version 4.4 or higher and npm installed. You can download an installer for your platform [here](https://nodejs.org/en/download/).
 
 
 Now that we have all we need, let's create the app.
@@ -92,12 +92,12 @@ Create a new directory and `cd` into it:
 mkdir sms-sentiment && cd sms-sentiment
 ```
 
-We're going to use ECMAScript 2015 so let's set up [Babel](https://babeljs.io/) to transform this syntax to one most browsers can understand by creating the configuration file `.babelrc`:
+__We're going to use ECMAScript 2015__ so let's set up [Babel](https://babeljs.io/) to transform this syntax to one most browsers can understand by creating the configuration file `.babelrc`:
 ```
 echo '{ "presets": ["react", "es2015", "stage-0"] }' > .babelrc
 ```
 
-Babel 6.x does not ship with any transformations enabled, so you need to explicitly tell it what transformations to run by using a preset.
+Babel 6.x does not ship with any transformations enabled, so you need to explicitly tell it what transformations to run by using a __preset__.
 
 The first two are self-descriptive. The stage-x presets are changes to the language that haven’t been approved to be part of a release of Javascript.
 
@@ -111,14 +111,14 @@ The [TC39](https://github.com/tc39) categorizes proposals into 4 stages:
 
 `stage-0` includes all plugins from presets of all levels. `stage-1` includes all plugins from presets 1 to 4 and so on.
 
-To execute Babel and bundle our scripts with their dependencies, we'll use [Webpack](https://webpack.github.io) and npm. Let's install Webpack (globally) with:
+To execute Babel and bundle our scripts with their dependencies, we'll use [Webpack](https://webpack.github.io) and npm. Let's install Webpack (globally):
 ```
 npm install -g webpack
 ```
 
-Don't forget to add `sudo` if you're working on Linux.
+(Don't forget to add `sudo` if you're working on Linux.)
 
-Then, add a `package.json` configuration file with:
+Now add a `package.json` configuration file with:
 ```
 npm init
 ```
@@ -141,12 +141,12 @@ npm install --save-dev webpack
 
 We're using `--save-dev` because these dependencies are only required to develop the application. For that reason, they can be listed under the `devDependencies` section of `package.json`. 
 
-For running the application, we'll need Express, React, Twilio, Fanout, and other dependencies. Let's add them with:
+For running the application, we'll need Express, React, Twilio, Fanout, and other dependencies. Let's add them now:
 ```
 npm install --save express ejs body-parser path react react-dom twilio fanoutpub faye
 ```
 
-Now, create a `webpack.config.js` file with the following content:
+Next, create a `webpack.config.js` file with the following content:
 ```javascript
 var path = require('path');
 
@@ -171,9 +171,10 @@ module.exports = {
 }
 ```
 
-This way, Webpack will create a `public/js/bundle.js` file with all the JavaScript code of the application (from the script `/src/app.js`).
+This way, Webpack will create a `public/js/bundle.js` file with all of the application's JavaScript code (from the script `/src/app.js`).
 
 Next, create a `config.js` file with the following content:
+
 ```javascript
 module.exports = {
 	twilio: {
@@ -191,7 +192,8 @@ module.exports = {
 }
 ```
 
-Finally, add to `package.json` the following `start` script that packs our application and starts the Node.js server:
+Finally, add the following `start` script to `package.json`. This script packs our application and starts the Node.js server:
+
 ```javascript
 {
   ...
@@ -202,7 +204,7 @@ Finally, add to `package.json` the following `start` script that packs our appli
 }
 ```
 
-We'll review the code of `server.js` in the next section.
+We'll review the `server.js` code in the next section.
 
 # Setting up Express
 
@@ -228,7 +230,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 ```
 
-And the configuration of the public directory (to server CSS files, for example):
+Add the configuration of the public directory (to serve CSS files, for example):
 ```javascript
 app.use(express.static(path.join(__dirname, 'public')));
 ```
@@ -276,16 +278,15 @@ If you execute the command `node server.js` and go to `http://localhost:3000` (o
 In the next section, we'll expose our server to the Internet with ngrok.
 
 
-
 # Setting up ngrok
 In a new terminal window, navigate to the directory where you unzipped ngrok. 
 
-We'll start ngrok by telling it which port we want to expose to the Internet. For our app, that would be port `3000`:
+We'll start ngrok by dictating which port we want to expose to the Internet. In this case, we'll tell it to expose port `3000`:
 ```
 ./ngrok http 3000
 ```
 
-Alternatively, if you're on Windows:
+If you're on Windows, the ngrok syntax is slightly simpler:
 ```
 ngrok http 3000
 ```
@@ -294,16 +295,15 @@ Now, you should see something like this:
 
 ![Ngrok Window](https://raw.githubusercontent.com/pluralsight/guides/master/images/d58ac65f-7849-498b-9beb-e6920a65802b.png)
 
-See that URL in the *Forwarding* row(s) with the `ngrok.io` domain? That's your public URL. Yours will be different than mine, since ngrok generates a random URL every time you run it.
+See that URL in the *Forwarding* row(s) with the `ngrok.io` domain? __That's your public URL.__ Your's will be different than mine, since ngrok generates a random URL every time you run it.
 
 If you open in a browser `http://[YOUR_GENERATED_SUBDOMAIN].ngrok.io`, you should see the same page found on `http://localhost:3000`:
 
 ![Hello World with Ngrok](https://raw.githubusercontent.com/pluralsight/guides/master/images/37017d14-e65e-4cee-8468-d4f4fa31e40b.png)
 
+Open this ngrok URL on another computer if you want to test this out. Once again, you should see the same page. __Our local server is now available publicly.__
 
-Open this ngrok URL in another computer if you want. Once again, you should see the same page. Our local server is now available publicly.
-
-The only disadvantage is that this URL is not permanent. If you restart ngrok, it will give you another one.
+The only disadvantage to this architecture is that our URL is not permanent. If you restart ngrok, it will give you another URL, likely a different one.
 
 You can specify a fixed subdomain. For example, to get the URL  `http://sms.ngrok.io` use the command:
 ```
@@ -330,7 +330,7 @@ Let's say that Twilio will call the `/sms` route in our server, so enter your ng
 ![Twilio Phone Number Webhook](https://raw.githubusercontent.com/pluralsight/guides/master/images/6a8aaddd-59b4-4061-ad99-bccfcb561afc.png)
 
 
-Also, make sure the HTTP request type is set to *POST*. Save your changes.
+Make sure the HTTP request type is set to *POST*. Save your changes.
 
 Now, we'll add the code to receive the message on the `/sms` route.
 
@@ -347,9 +347,9 @@ app.post('/sms', Twilio.webhook(config.twilio),function(req, res) {
 });
 ```
 
-This will define the `/sms` POST route and the [Twilio.webhook](http://twilio.github.io/twilio-node/#webhook) function, which acts as a [Express middleware](http://expressjs.com/en/guide/using-middleware.html) that determines if the request was sent by Twilio, in addition to make the Express response object aware of TwimlResponse objects.
+This will define the `/sms` POST route and the [Twilio.webhook](http://twilio.github.io/twilio-node/#webhook) function, which acts as a [Express middleware](http://expressjs.com/en/guide/using-middleware.html) that determines if the request was sent by Twilio. This webhook also makes the Express response object aware of TwimlResponse objects.
 
-However, the `config.twilio` object we specify defines the `validate` option as `false`, which disables this validation. If the validation is enabled (you'll need to enable it if you don't want to receive requests from anyone), this function will look to the environment variable `TWILIO_AUTH_TOKEN` for your Twilio auth token to validate the request. 
+However, the `config.twilio` object that we specify automatically defines the `validate` option as `false`, which disables this validation. If the validation is enabled (you'll need to enable it if you don't want to receive requests from anyone), this function will look to the environment variable `TWILIO_AUTH_TOKEN` for your Twilio auth token to validate the request. 
 
 When Twilio sends an HTTP request to your server, it includes a value in the header that is signed with your auth token. So, if you enable this option, make sure to export this variable before running the server. On Linux, for example, do it this way:
 ```
@@ -442,13 +442,13 @@ Sent from your Twilio trial account:
 Message received
 ```
 
-Ngrok also keeps a log of all the traffic going through it. Go to [http://localhost:4040](http://localhost:4040) and you should see something like this:
+Ngrok keeps a log of all the traffic going through it, and this bookkeeping is essential to our application. Go to [http://localhost:4040](http://localhost:4040) and you should see something like this:
 
 ![Ngrok Request](https://raw.githubusercontent.com/pluralsight/guides/master/images/8e3d1e58-564c-4171-8bb9-1031dbd99f7b.png)
 
 You can even replay a request with the *Replay* button located in the right top of the window when you select one request from the list on the left.
 
-Also, at the bottom of the same window, you can see the TwiML response:
+At the bottom of the same window, you can see the TwiML response:
 ```xml
 <?xml version="1.0" encoding="UTF-8"?><Response><Message>Message received</Message></Response>
 ```
@@ -469,14 +469,15 @@ Now let's talk about Fanout Cloud.
 It's based on [Pushpin](http://pushpin.org/), an open source reverse proxy that in turn, makes it easy to create [WebSocket, HTTP streaming, and HTTP long-polling](http://pushpin.org/about/) services using any web stack as the back-end.
 
 There are two main ways you can use Fanout:
-- **Publish/Subscribe Messaging**. To send data using protocols such as Bayeux and XMPP (WebSockets are supported automatically when possible).
+- **Publish/Subscribe Messaging**. To send data using protocols, such as Bayeux and XMPP (Extensible Messaging and Presence Protocol). 
+    - WebSockets are supported automatically when possible.
 - **Custom real-time API**. To send data using five low-level network transports: HTTP long-polling, HTTP streaming, WebSockets, Webhooks (outbound HTTP), and XMPP.
 
 You can find more information about this on its [quickstart guide](https://fanout.io/docs/devguide.html#quickstart).
 
 The application will use Fanout's publish/subscribe service to get the SMS information in real-time. This will be done with [Faye](https://faye.jcoglan.com/), a Bayeux-compatible client library.
 
-Why use Fanout Cloud when we can do the same with a simple WebSocket library like [Socket.IO](http://socket.io/)? Well, in the first place, [you might not need to use WebSockets](http://blog.fanout.io/2014/06/24/you-might-not-need-a-websocket/), and on the other hand, by using Fanout's infrastructure, you don't have to worry about neither scalability nor additional server to manage.
+Why use Fanout Cloud when we can do the same with a simple WebSocket library like [Socket.IO](http://socket.io/)? Well, [you might not need to use WebSockets](http://blog.fanout.io/2014/06/24/you-might-not-need-a-websocket/). Also, by using Fanout's infrastructure, you don't have to worry about neither scalability nor additional server to manage.
 
 Fanout is organized by realms and channels. A realm can contain any number of channels and different realms may use the same channel names without any problem. Messages are published to channels, and messages are relayed to the subscribers of each channel for that realm.
 
@@ -494,7 +495,7 @@ Before the definition of the `/sms` route, initialize the Fanout object passing 
 var fanout = new Fanout.Fanout(config.fanout.realm_id, config.fanout.realm_key);
 ```
 
-And to publish the object with the SMS information, just call the function that takes the channel in which the object represented by the second parameter will be published:
+To publish the object with the SMS information, call the `publish()` function. It takes two parameters: a channel, and the object within the channel that we want to publish:
 ```javascript
 fanout.publish(config.channel, msg);
 ```
@@ -505,6 +506,7 @@ Just like that, we're on our way to make a real-time application. In the followi
 # Creating the view with React
 
 Let's start by defining the HTML that will contain our React application. Modify `views/index.ejs` so it looks like the following:
+
 ```html
 <!DOCTYPE html>
 <html>
@@ -530,7 +532,7 @@ Let's start by defining the HTML that will contain our React application. Modify
 </html>
 ```
 
-We'll use [Simple Grid](http://thisisdallas.github.io/Simple-Grid/) to create the layout, so create the `public/css` directories and download the file [https://github.com/ThisIsDallas/Simple-Grid/blob/master/simplegrid.css](https://github.com/ThisIsDallas/Simple-Grid/blob/master/simplegrid.css).
+We'll use [Simple Grid](http://thisisdallas.github.io/Simple-Grid/) to create the layout, so create the `public/css` directories and download the file https://github.com/ThisIsDallas/Simple-Grid/blob/master/simplegrid.css
 
 Next, create the `style.css` file:
 ```css
@@ -650,11 +652,9 @@ import Index from './components/index';
 ReactDOM.render(<Index />, document.getElementById("root"));
 ```
 
-This file just renders the component defined in `components/index.js` in the element with ID `root`. Structuring the initial point of our app this way will helps us later to make it isomorphic.
+This file renders the components defined in `components/index.js` in the element with ID `root`. Structuring the initial point of our app this way will helps us later to make it isomorphic.
 
-The `index` component will be the main container for our application. At this level, the app will subscribe to the Fanout channel to listen for SMS messages. 
-
-So let's first import everything we'll need:
+The `index` component will be the main container for our application. At this level, the app will subscribe to the Fanout channel to listen for SMS messages. Let's first import everything we'll need:
 ```javascript
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
@@ -689,11 +689,11 @@ export default class App extends Component {
 ```
 
 The state of the component includes:
-- `messages`, the array that will store the objects (with the SMS information) received via Fanout.
-- `background`, the style to show the gradient background that will change depending on the sentiment of the latest message.
-- `sentiment`, the sentiment value of the latest message.
+- `messages`: the array that will store the objects (with the SMS information) received via Fanout.
+- `background`: the style to show the gradient background that will change depending on the sentiment of the latest message.
+- `sentiment`: the sentiment value of the latest message.
 
-According to the [React Component Lifecycle Specification](https://facebook.github.io/react/docs/component-specs.html), `componentDidMount()` is executed once, only on the client (not on the server, remember this point when we make our application isomorphic), and it's the method to use to integrate other JavaScript frameworks, or send AJAX requests.
+According to the [React Component Lifecycle Specification](https://facebook.github.io/react/docs/component-specs.html), `componentDidMount()` is executed once, only on the client, not on the server (remember this point when we make our application isomorphic), and it's the method to use to integrate other JavaScript frameworks, or send AJAX requests.
 
 So let's subscribe to the Fanout channel in the `componentDidMount()` method (notice the `/` character to refer to the channel):
 ```javascript
@@ -788,9 +788,9 @@ export default class Gauge extends Component {
 }
 ```
 
-Notice how the `div` element in which the component is rendered is referenced with `ref` and `this.refs`. You may have seen in other tutorials that you can get the DOM element of a component by using either the `ReactDOM.getDOMNode()` or the `ReactDOM.finDOMNode()` functions, but [since React 0.14](https://facebook.github.io/react/blog/2015/10/07/react-v0.14.html), `this.refs` is the recommended way to do this (remember that React works with a Virtual DOM while jQuery works with the *real* DOM).
+Notice how the `div` element, in which the component is rendered, is referenced with `ref` and `this.refs`. You may have seen other tutorials get the DOM element of a component by using either the `ReactDOM.getDOMNode()` or the `ReactDOM.findDOMNode()` functions. However, [after React 0.14](https://facebook.github.io/react/blog/2015/10/07/react-v0.14.html), `this.refs` is the recommended way to access the DOM. _Remember that React works with a Virtual DOM while jQuery works with the *real* DOM._
 
-We saved a reference to the Epoch gauge component (`this.gauge`) so when the sentiment property is updated, the gauge can be updated too in the `componentWillReceiveProps` function.
+We saved a reference to the Epoch gauge component (`this.gauge`), so when the sentiment property is updated, the gauge can be updated too (in the `componentWillReceiveProps` function).
 
 To render the messages, the `Messages` component acts like a container:
 ```javascript
@@ -821,25 +821,23 @@ export default class Messages extends Component {
 }
 ```
 
-There are two important things in this code. 
+This code is significant for two main reasons. 
 
-First, React requires every message component in a collection to have a unique identifier defined by the `key` property.
+First, React requires every message component in a collection to have a unique identifier defined by the `key` property. This helps React determine when elements are added or removed. 
 
-This help React to know when elements are added or removed. As new elements are prepended instead of appended, we can't give the first element the index `0` as key, since this will only work the first time an element is added (for the next added elements, there will be an element with key `0` already). Therefore, keys are assigned this way:
+For example, s new elements are prepended instead of appended, we can't give the first element the index `0` as key, since this will only work the first time an element is added. In fact, for the elements added next in line, there will be an element with key `0` already. Therefore, keys are assigned this way:
 ```javascript
 const key = this.props.messages.length - index;
 ```
 
-The second thing is that to animate the insertion of a new SMS message on the page, we use the `ReactCSSTransitionGroup` add-on component.
+The second thing is that we use the `ReactCSSTransitionGroup` add-on component to animate the insertion of a new SMS message on the page. We can do the same thing by [using plain CSS only](https://www.christianheilmann.com/2015/08/30/quicky-fading-in-a-newly-created-element-using-css/), but let's figure out how to do it the React way.
 
-Maybe we can do the same thing by [using plain CSS only](https://www.christianheilmann.com/2015/08/30/quicky-fading-in-a-newly-created-element-using-css/), but let's show how to do it the React way.
-
-So first install this module with NPM:
+First install this module with NPM:
 ```
 npm install --save react-addons-css-transition-group
 ```
 
-`ReactCSSTransitionGroup` wraps the elements you want to animate. By default, it renders a `span` to wrap them, but since we're going to work with `li` elements, we specify the wrapper tag `ul` with the `component` property. `className` becomes a property of the rendered component, as any other property that doesn't belong to `ReactCSSTransitionGroup`.
+`ReactCSSTransitionGroup` wraps the elements that you want to animate. By default, it renders a `span` to wrap them, but since we're going to work with `li` elements, we specify the wrapper tag `ul` with the `component` property. `className` becomes a property of the rendered component, as any other property that doesn't belong to `ReactCSSTransitionGroup`.
 
 `transitionName` is the prefix used to identify the CSS classes to perform the animation. Based on this, add the following CSS classes to `public/css/style.css`:
 ```css
@@ -862,7 +860,7 @@ npm install --save react-addons-css-transition-group
 }
 ```
 
-Notice that animation durations need to be specified in both the CSS and as component properties.
+Notice that animation duration needs to be specified in both the CSS and the component properties.
 
 You can find more information about [animations in React here](https://facebook.github.io/react/docs/animation.html).
 
@@ -900,21 +898,21 @@ Now if we run the application using `npm start`, Webpack will bundle all the cli
 
 ![Application](https://raw.githubusercontent.com/pluralsight/guides/master/images/9124f561-d035-487b-8bc1-c66394e4c229.png)
 
-You can play with the application either by sending SMS messages to your Twilio number or [by replaying the request with Ngrok](http://localhost:4040/) (if you have the webhook validation disabled), and if you go to your Fanout Control Panel and then click on the *Stats* button, you'll see the following information:
+You can play with the application either by sending SMS messages to your Twilio number or [by replaying the request with Ngrok](http://localhost:4040/). If you're trying the latter option, make sure that you have the webhook validation disabled. If you go to your Fanout Control Panel and then click on the *Stats* button, you'll see the following information:
 
 ![Fanout Stats](https://raw.githubusercontent.com/pluralsight/guides/master/images/5f811ac9-fad7-4f75-9479-9956f950d2ba.gif)
 
 # Isomorphic React
 We now have a fully functional application, but why stop here? Let's turn this application into an isomorphic one.
 
-Isomorphic ([or universal](https://medium.com/@mjackson/universal-javascript-4761051b7ae9#.rfgasv9bh)) is a term that means that the same javascript code can run on the client and server without modification, so the server can generate the page and serve it as plain HTML.
+Isomorphic ([or universal](https://medium.com/@mjackson/universal-javascript-4761051b7ae9#.rfgasv9bh)) is a term that means that the same JavaScript code can run on the client and server without modification, so the server can generate the page and serve it as plain HTML.
 
-In esscence, server rendering is a simple concept achieved with only one function call on Node.js:
+In essence, server-rendering is a simple concept achieved with only one function call on Node.js:
 ```javascript
 const appHTML = renderToString(<App/>)
 ```
 
-However, Node.js doesn't know about JSX (the syntax used by React, like `<App>`), so what we can do is to use Webpack to build a server bundle, just like the client bundle.
+However, Node.js doesn't know about JSX (the syntax used by React; `<App>`), so what we can do is to use Webpack to build a server bundle, just like the client bundle.
 
 Create the file `webpack.server.config.js` with the following content:
 ```javascript
@@ -957,9 +955,9 @@ module.exports = {
 
 This file tells Webpack to take `server.js` as the entry point to generate the `server.bundle.js` file with all its dependencies bundled together. 
 
-The `target: 'node'` option tells webpack not to touch any Node.js built-in modules, however, Webpack will load modules from the `node_modules` directory and bundle them too. To avoid this, we use the `externals` option. A module listed as an external won't be bundled.
+The `target: 'node'` option tells webpack not to touch any Node.js built-in modules. However, Webpack will load modules from the `node_modules` directory and bundle them too. To avoid this, we use the `externals` option. A module listed as an external won't be bundled. For more on externals, see [this page](https://webpack.github.io/docs/configuration.html#externals).
 
-Unfortunately, `externals` assumes a browser environment, so something like `require('twilio')` will be turned into the global variable `twilio`. To keep the `require` statements, we need to create an object with a key/value of each module name, and prefixing the value with `commonjs`. 
+Unfortunately, using `externals` assumes a browser environment, so something like `require('twilio')` will be turned into the global variable `twilio`. To keep our `require` statements, we need to create an object with a key/value of each module name and to prefix the value with `commonjs`. 
 
 Next, [options](https://webpack.github.io/docs/configuration.html#node) are passed to `node` so `__filename` and `__dirname` work as expected.
 
@@ -992,7 +990,7 @@ Also, modify `/views/index.ejs` so it can render the generated HTML:
 ...
 ```
 
-In EJS, the `<%-` tag outputs the unescaped value of the object into the template (in contrast to the most commonly used `<%=`).
+In EJS, the `<%-` tag outputs the unescaped value of the object into the template (in contrast to the more commonly used `<%=`).
 
 Make sure that you don't leave any space between the opening and closing `div` tag, otherwise, React will complain about the blank space.
 
@@ -1013,7 +1011,7 @@ Finally, we have to modify the `start` script from `package.json` to generate th
 Type `npm start` and try the app. It should work like before but with the [advantages of isomorphic javascript](http://www.capitalone.io/blog/why-is-everyone-talking-about-isomorphic-javascript/).
 
 # Conclusion
-We have created a single page application with React that gets SMS information with the help of [Twilio](https://www.twilio.com/) and [Ngrok](https://ngrok.com) and shows it in real-time using [Fanout Cloud](https://fanout.io). We also made it isomorphic with little modifications. Combining the right APIs, you can get simple but powerful applications.
+We have created a single page application with React that gets SMS information with the help of [Twilio](https://www.twilio.com/) and [Ngrok](https://ngrok.com) and shows it in real-time using [Fanout Cloud](https://fanout.io). We also made it isomorphic with little modifications. Combining the right APIs, you can get simple yet powerful applications.
 
-Remember that the code is [on Github](https://github.com/eh3rrera/sms-sentiment). Thanks for reading.
+Remember that the code is [on Github](https://github.com/eh3rrera/sms-sentiment). Thanks for reading. Please leave all comments and feedback in the discussion section below. Pleasa favorite this tutorial if you found it informative!
 
