@@ -274,7 +274,7 @@ myBtn.Click += (sender, e) =>
 Note that compiler will automatically map the objects to their types. This is convenient in many ways as it allows you to write the inline functions in C# that remain with the objects only, unless you want to use them anywhere else too. There is however one disadvantage to this method of handling the events, the disadvantage is that you cannot remove the event handler once it has been attached. In C# you can `-+` but since we don't have any reference to remove the events, we are only left to use the separate functions. **But**, if you don't have to remove the handlers, you should always consider using this way of event handling in your programs. 
 
 ##### 2. Using lambdas for getter-only properties
-In C#< there is a concept of using properties instead of fields. Where you control how a value is set, and how a value is captured from the field. Consider them an alternative (or similar ones) to the getter and setters of Java programming language. Only difference is that you don't have to write them separately somewhere, they are written right infront of the field itself. C# program compilers would then make their own backing fields that are used to store the values. 
+In C#, there is a concept of using properties instead of fields. Where you control how a value is set, and how a value is captured from the field. Consider them an alternative (or similar ones) to the getter and setters of Java programming language. Only difference is that you don't have to write them separately somewhere, they are written right infront of the field itself. C# program compilers would then make their own backing fields that are used to store the values. 
 
 Basically, you would have to write the getter-only properties like this:
 
