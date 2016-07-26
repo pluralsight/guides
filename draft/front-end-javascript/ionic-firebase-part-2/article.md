@@ -106,7 +106,17 @@ export class Auth {
 }
 ```
 
-Very basic. Our users need to do three things 1. Login, 2. Sign up, 3. Sign out. So lets add three methods to our Auth class `login`,`signUp`, and `logout`.
+Very basic. Our users need to do three things 1. Login, 2. Sign up, 3. Sign out. So lets add three methods to our Auth class `login`,`signup`, and `logout`.
+
+#### Signup
+#### Login
+Since we chose email & password, and google our auth function needs to take in an email and a password. However, because of the google login method we are going to make them optional. 
+#### Logout
+```
+login(email, password)
+{
+}
+```
 
 ```
 import {Injectable} from '@angular/core';
