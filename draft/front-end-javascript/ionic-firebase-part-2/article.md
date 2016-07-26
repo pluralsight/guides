@@ -109,19 +109,99 @@ export class Auth {
 Very basic. Our users need to do three things 1. Login, 2. Sign up, 3. Sign out. So lets add three methods to our Auth class `login`,`signup`, and `logout`.
 
 #### Signup
-We will start with signup. After all you can't login if there are no users. In our sign method we will take in two parameters `email` and `password`, but they will be optional since we are doing google authentication as well. 
+We will start with signup. After all you can't login if there are no users. In our sign method we will take in two parameters `email` and `password`. We will call the firebase `createUserWithEmailAndPassword` function which returns a promise. That promise will be passed straight back to the caller since the auth provider does not care about the success or failure. It acts as more of a wapper around firebase. 
 
 ```
+signup(email: string, password: string)
+{
+  return this.auth.createUserWithEmailAndPassword(email, password)
+}
 ```
 
 #### Login
-Since we chose email & password, and google our auth function needs to take in an email and a password. However, because of the google login method we are going to make them optional. 
-#### Logout
+Since we chose email & password, and google our auth function needs to take in an email and a password. However, because of the google login method we are going to make them optional. To sign in using email and password we will call `signInWithEmailAndPassword` giving it our email and password. 
 ```
 login(email, password)
 {
+  if(email && password)
+  {
+    this.auth.signInWithEmailAndPassword(email, password)
+        .catch((err) => {
+          console.error('Login Failure', err);
+        })
+  }
+  else
+  {
+    
+  }
 }
 ```
+
+Our google authentication provider has two ways we can sign the user in. We could use the popup method to display a login overlay or we could use a redirect. Firebase docs recommend using the redirect for mobile and since we are using ionic that is exactly what we will do. But first we will need to add a reference to our google provider by adding a member variable to our auth class, and initializing it in the constructor. 
+```
+export class Auth {
+  auth: any = null;
+  google: any = null;
+
+  constructor() {
+    this.auth = firebase.auth();
+    this.google = new firebase.auth.GoogleAuthProvider();
+  }
+```
+In our `login` method after we check that we do not have a username and password we will try to authenticate with google. We will do this by calling `signInWithRedirect` and pass it our google provider `this.google`.  
+
+```
+ login(email, password)
+  {
+    if(email && password)
+    {
+      this.auth.signInWithEmailAndPassword(email, password)
+        .catch((err) => {
+          console.error('Login Failure', err);
+        })
+    }
+    else
+    {
+      this.auth.signInWithRedirect(this.google)
+    }
+  }
+ ```
+Notice we did not return a promise here. Thats because the redirect does not return on and we will have to catch its output in a listener function after our page reloads.
+
+
+#### Logout
+Logout will be the simplest of the three methods. 
+
+```
+logout()
+{
+  return this.auth.signOut();
+}
+```
+#### User State
+Next we are going to want to keep track of the user state. We will do this by setting up a observer in our auth service. Firebase provides a function for just that case called `onAuthStateChanged`. We will use this to check if the user is currently logged in or not. 
+
+First lets add a new member to our Auth class called `currentUser`. `currentUser: any = null; ` then in our constructor we will add the obersver setup.
+```
+firebase.auth().onAuthStateChanged((user) => {
+  if (user) {
+    this.currentUser = user;
+  }
+  else
+  {
+    this.currentUser = null;
+  }
+});
+```
+
+and we will add property to get that user.
+```
+get user()
+{
+return this.currentUser;
+}
+```
+Our final auth provider looks like this: 
 
 ```
 import {Injectable} from '@angular/core';
@@ -135,8 +215,58 @@ import {Injectable} from '@angular/core';
 @Injectable()
 export class Auth {
   auth: any = null;
+  google: any = null;
+  currentUser: any = null;
+
   constructor() {
     this.auth = firebase.auth();
+    this.google = new firebase.auth.GoogleAuthProvider();
+    firebase.auth().onAuthStateChanged((user) => {
+      if (user) {
+        this.currentUser = user;
+      }
+      else
+      {
+        this.currentUser = null;
+      }
+    });
+  }
+  get user()
+  {
+    return this.currentUser;
+  }
+  login(email, password)
+  {
+    if(email && password)
+    {
+      this.auth.signInWithEmailAndPassword(email, password)
+        .catch((err) => {
+          console.error('Login Failure', err);
+        })
+    }
+    else
+    {
+      this.auth.signInWithRedirect(this.google)
+    }
+
+  }
+  signup(email, password)
+  {
+    return this.auth.createUserWithEmailAndPassword(email, password)
+  }
+  logout()
+  {
+    return this.auth.signOut();
   }
 }
+
 ```
+#### Login Page
+
+Now we will generate our login page. This page will handle both login and sighup.
+Generate a new page with the ionic cli.
+
+`ionic g page login`
+
+Then add a form with
+
