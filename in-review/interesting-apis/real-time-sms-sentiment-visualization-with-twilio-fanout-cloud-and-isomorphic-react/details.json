@@ -3,12 +3,7 @@
     "author_name": "eh3rrera",
     "author_real_name": "Esteban Herrera",
     "branch": "master",
-    "branches": [
-        [
-            "adityavarshney",
-            "adityavarshney-interesting-apis-real-time-sms-sentiment-visualization-with-twilio-fanout-cloud-and-isomorphic-react"
-        ]
-    ],
+    "branches": [],
     "filename": "article.md",
     "first_commit": "99f47f80d404dfd4a4a50dbb251fdc383f4ed504",
     "image_url": "https://avatars.githubusercontent.com/u/11665759?v=3",
