@@ -33,9 +33,49 @@ update(_id, _todo)
 Next we will need access to the key firebase creates for each todo, but the way we are currently storing our todos we throw that data away. Lets change the `handleData` method to address that issue.
 
 ```
+handleData(snap) 
+{ 
+  try { 
+    // Tell our observer we have new data 
+    // this._todos$.next(snap.val()); // <- Change this
+    this._todos$.next({key: snap.key, val: snap.val()}); // <- To this
+  } 
+  catch (error) 
+  { 
+    console.log('catching', error); 
+  }
+}
 
 ```
 
+Why don't we just pass the snap instead of making a new object. There is a lot of info in the snap that we really don't need right now, and creating a new object slims it down to just the values we are planning on using. 
 
+With that update we are going to need to change our list page. So in home.html change the ngFor to use `todo.val` instead of just `todo`.
+
+```
+<ion-label>{{todo.val.title}}</ion-label>
+<ion-checkbox [(ngModel)]="todo.val.completed"> {{todo.val.title}} </ion-checkbox>
+```
  
+ We need to update the todo object everytime the checkbox is clicked. To accomplish that we are going to use the `ionChange` output event for the `ion-checkbox` element. Add this `(ionChange)="edit(todo.key, todo.val)"` to the checkbox.
  
+ ```
+<ion-label>{{todo.val.title}}</ion-label>
+<ion-checkbox [(ngModel)]="todo.val.completed" (ionChange)="edit(todo.key, todo.val)"> {{todo.val.title}} </ion-checkbox>
+```
+If you remember from part 1 the perenthsis means that the data is bond one way and that is from the view to the data source. So when this event happens it will send data to our edit function.
+
+Thats it! Now our todos can be updated as much as you want. 
+
+NOTE: If you want you could also make an other page to edit the name of the todo. Leave a comment if you would like me to cover that change in this post.
+
+## Athentication
+
+##### Note: I will be covering only firebase auth and not adjusting the database rules (Authorization). That will be covered in a different post. 
+
+Authentication is really made up of two parts the actual authenticaton ie. log the user in, setup there, account, etc. and authorization ie. what does the user have access to. Firebase has a great way to handle both by providing an authentication platform and by giving system administrators the ability to setup rules about what data different users can see. 
+
+To start we need to go to our firebase console and click **Auth** on the left menu. 
+![Firebase Console Image](https://raw.githubusercontent.com/pluralsight/guides/master/images/5f0e08b6-8d39-4b18-b275-b4e7a9511bcd.tiff)
+From there click **Setup Up Sign-in Method**
+![Setup Button](https://raw.githubusercontent.com/pluralsight/guides/master/images/710c8353-40bf-4c6b-8f78-1c87a4171c6b.tiff)
