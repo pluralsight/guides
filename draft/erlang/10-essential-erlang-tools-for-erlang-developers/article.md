@@ -135,22 +135,38 @@ done (warnings were emitted)
 
 ### 7. [xref](http://erlang.org/doc/man/xref.html)
 A much simpler tool that also comes packed in the Erlang/OTP distribution is **xref**. **xref** is a cross-reference tool that analyses your code and finds calls to unexistent functions, deprecated functions and other things. It doesn't go as deep as **dialyzer**, but it will spot obvious bugs in no time. It's also integrated with [rebar3](https://www.rebar3.org/docs/commands#xref) and [erlang.mk](https://erlang.mk/guide/xref.html) (The documentation is not yet there, but it uses [xref_runner](https://github.com/inaka/xref_runner)).
+Using **xref** you'll find things like:
+```erlang
+…
+===> Running cross reference analysis...
+===> Warning: your_module:your_function/1 calls undefined function this_function:doesnt_exist/1 (Xref)
+…
+```
 
 ### 8. [elvis](http://github.com/inaka/elvis)
 Besides analysing your code in search for bugs with **xref** and **dialyzer**, you can also use a tool to ensure that the code in your project respect your standards. For that, you have **elvis**. **elvis** is a command-line tool (and an Erlang application as well) that you can use to verify the compliance of your code to certain style rules you can define in your `elvis.config` file. There is a plugin for [rebar3](https://github.com/project-fifo/rebar3_lint) and another one for [erlang.mk](https://github.com/inaka/elvis.mk). You can also use **elvis** [online](http://elvis.inakalabs.com) to check your github pull requests.
+**elvis** produces output like the following one:
+```erlang
+Loading files...
+Loading src/dia.erl
+Applying rules...
+# src/dia.erl [FAIL]
+  - no_tabs
+    - Line 33 has a tab at column 0.
+```
 
 ---
 ## Debugging your Servers
 
-### 9. redbug
+### 9. [redbug](https://hex.pm/packages/eper)
 
 
-### 10. recon
+### 10. [recon](https://hex.pm/packages/recon)
 
 ---
 ## Bonus Tracks
-### 11. Meta Testing
+### 11. [Meta Testing](https://github.com/inaka/katana-test)
 
 ### 12. The Community
 
-### 13. The Guidelines
+### 13. [The Guidelines](https://github.com/inaka/erlang_guidelines)
