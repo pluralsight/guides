@@ -107,21 +107,50 @@ Of course, `$ rebar3 help` gives you the list of all available commands. And, ju
 One of the best things about **rebar3** is that, by using rebar.lock, it provides _repeatable builds_. That way, once you're sure your project works as expected, you can be sure it will keep working as expected no matter how many times or in how many different places you build it.
 
 ---
-## Debugging your Servers
-### 6. redbug
+## Ensuring Code Quality
+I've personally stated a couple of times online (in interviews and blog posts) how important it is (especially if you work on open-source projects) to keep your code quality high. Erlang comes with several tools that will help you with that. They'll even help you detect bugs that you'll probably miss at compile time!
 
-### 7. recon
+### 6. [dialyzer](http://erlang.org/doc/man/dialyzer.html)
+**Dialyzer** is a static analysis tool that will help you identify type inconsistencies in your code, like when you are passing a `binary()` as the parameter to a function that expects a `string()`. It used to be a very very slow tool but it has been greatly optimized througout the years and now it runs smoothly, specially if you run it frequently. And it's integrated in both [rebar3](https://www.rebar3.org/docs/commands#dialyzer) and [erlang.mk](https://erlang.mk/guide/dialyzer.html).
+If you use **dialyzer**, you'll see results like the one below.
+```erlang
+  Checking whether the PLT dia.plt is up-to-date... yes
+  Proceeding with analysis...
+    compile    (+0.09s):   0.02s (   1 modules)
+    clean      (+0.00s):   0.00s
+    remote     (+0.00s):   0.18s
+    order      (+0.00s):   0.00s
+    typesig    (+0.12s):   0.01s (      3 SCCs)
+    order      (+0.00s):   0.00s
+    refine     (+0.00s):   0.01s (   1 modules)
+    warning    (+0.00s):   0.00s (   1 modules)
+              (+ 0.71s)
+
+dia.erl:5: Function bad/0 has no local return
+dia.erl:5: The call lists:flatten(<<_:168>>) will never return since it differs in the
+            1st argument from the success typing arguments: ([any()])
+ done in 0m1.16s
+done (warnings were emitted)
+```
+
+### 7. [xref](http://erlang.org/doc/man/xref.html)
+A much simpler tool that also comes packed in the Erlang/OTP distribution is **xref**. **xref** is a cross-reference tool that analyses your code and finds calls to unexistent functions, deprecated functions and other things. It doesn't go as deep as **dialyzer**, but it will spot obvious bugs in no time. It's also integrated with [rebar3](https://www.rebar3.org/docs/commands#xref) and [erlang.mk](https://erlang.mk/guide/xref.html) (The documentation is not yet there, but it uses [xref_runner](https://github.com/inaka/xref_runner)).
+
+### 8. [elvis](http://github.com/inaka/elvis)
+Besides analysing your code in search for bugs with **xref** and **dialyzer**, you can also use a tool to ensure that the code in your project respect your standards. For that, you have **elvis**. **elvis** is a command-line tool (and an Erlang application as well) that you can use to verify the compliance of your code to certain style rules you can define in your `elvis.config` file. There is a plugin for [rebar3](https://github.com/project-fifo/rebar3_lint) and another one for [erlang.mk](https://github.com/inaka/elvis.mk). You can also use **elvis** [online](http://elvis.inakalabs.com) to check your github pull requests.
 
 ---
-## Ensuring Code Quality
-### 8. dialyzer
+## Debugging your Servers
 
-### 9. xref
+### 9. redbug
 
-### 10. elvis
+
+### 10. recon
 
 ---
 ## Bonus Tracks
 ### 11. Meta Testing
 
 ### 12. The Community
+
+### 13. The Guidelines
