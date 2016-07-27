@@ -7,7 +7,7 @@ What you'll find below are the tools that I use the most in my day-to-day life a
 ## Working in the Shell
 Like many other languages, the most common way to interact with an Erlang VM is the Erlang shell. You can use it to test new things, to learn how to code and even to debug production systems. The Erlang shell is a powerful thing, but you can add much more power to it with the next 3 tools in this list:
 
-![I see a blondie](http://img3.wikia.nocookie.net/__cb6/matrix/it/images/5/50/Wiki-background)
+![I see a blondie](https://centinelanocturno.files.wordpress.com/2016/02/matrix780023.jpg?w=649)
 
 ### 1. [user_default](http://erlang.org/doc/man/erl.html#id191234)
 In general, to evaluate functions outside a module in Erlang you have to prepend their names with the corresponding module name. For example, if you want to sum up a list, you have to do the following:
@@ -109,6 +109,8 @@ One of the best things about **rebar3** is that, by using rebar.lock, it provide
 ---
 ## Ensuring Code Quality
 I've personally stated a couple of times online (in interviews and blog posts) how important it is (especially if you work on open-source projects) to keep your code quality high. Erlang comes with several tools that will help you with that. They'll even help you detect bugs that you'll probably miss at compile time!
+
+![Paddin](http://i0.wp.com/www.sopitas.com/site/wp-content/uploads/2013/09/Hay_tabla.jpg?w=640)
 
 ### 6. [dialyzer](http://erlang.org/doc/man/dialyzer.html)
 **Dialyzer** is a static analysis tool that will help you identify type inconsistencies in your code, like when you are passing a `binary()` as the parameter to a function that expects a `string()`. It used to be a very very slow tool but it has been greatly optimized througout the years and now it runs smoothly, specially if you run it frequently. And it's integrated in both [rebar3](https://www.rebar3.org/docs/commands#dialyzer) and [erlang.mk](https://erlang.mk/guide/dialyzer.html).
