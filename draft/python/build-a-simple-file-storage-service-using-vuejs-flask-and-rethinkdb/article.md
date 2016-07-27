@@ -1,4 +1,4 @@
-In this tutorial I shall be show how you can build a simple file storage service. We shall be making use of VueJS for the frontend while we shall be making use of Flask and RethinkDB for the backend.
+In this tutorial I shall be showing how you can build a simple file storage service. We shall be making use of VueJS for the frontend while we shall be making use of Flask and RethinkDB for the backend.
 
 We shall start by building out our API. We want a simple service where we can create an account, create a folder, create subfolders, upload a file, edit a file's description and delete a file.
 
