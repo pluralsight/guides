@@ -1,0 +1,15 @@
+{
+    "_publish_status": "draft",
+    "author_name": "doug2k1",
+    "author_real_name": "Douglas Matoso",
+    "branch": "master",
+    "branches": [],
+    "filename": "article.md",
+    "first_commit": "cd0cd263070349c531ce8038c9184e4936b13cbc",
+    "image_url": "https://avatars.githubusercontent.com/u/597793?v=3",
+    "stacks": [
+        "Software Engineering Best Practices"
+    ],
+    "thumbnail_url": null,
+    "title": "Using Git (and Github) on Windows"
+}
