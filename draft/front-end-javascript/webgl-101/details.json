@@ -1,0 +1,15 @@
+{
+    "_publish_status": "draft",
+    "author_name": "AVGP",
+    "author_real_name": "Martin Splitt",
+    "branch": "master",
+    "branches": [],
+    "filename": "article.md",
+    "first_commit": "4d0cfadb67b60b08e0c513794b33184759fa7b6a",
+    "image_url": "https://avatars.githubusercontent.com/u/370246?v=3",
+    "stacks": [
+        "Front-End JavaScript (Angular, React, Meteor, etc)"
+    ],
+    "thumbnail_url": null,
+    "title": "WebGL 101"
+}
