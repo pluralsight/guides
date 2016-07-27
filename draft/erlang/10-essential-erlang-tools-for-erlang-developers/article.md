@@ -159,11 +159,53 @@ Applying rules...
 
 ---
 ## Debugging your Servers
+The next group of tools assume that you already created your app, packed it up as a release and deployed it to some server. It's been running for a while but now it's behaving in a strange manner. So, you need to _debug_ it. You connect to your server with a [remote shell](http://erlang.org/doc/man/erl.html#id186912) (look for -remsh there) and then you can use Erlang's [dbg](http://erlang.org/doc/man/dbg.html), but there are simpler tools for that job. I'll show you 2 of them below.
+
+![investigating…](https://upload.wikimedia.org/wikipedia/commons/1/13/Special_Agent_Adam_Deem_of_Air_Force_Office_of_Special_Investigation_Detachment_219.jpg)
 
 ### 9. [redbug](https://hex.pm/packages/eper)
+**redbug** is a debugging application which is quite similar to **dbg**, but with a nicer interface. It comes with **eper** but, to be honest, **redbug** is the only one of the **eper** apps I've ever used. With **redbug** you can specify a trace pattern as a string and it will print out a message in your console everytime a function call matching that pattern is evaluated. It looks like this:
 
+```erlang
+1> redbug:start("your_module:your_private_function->return").
+{156,1}
+2> your_module:your_public_function().
+% 19:55:12 <0.1.0>({erlang,apply,4})
+% your_module:your_private_function(some, parameters)
+
+% 19:55:12 <0.1.0>({erlang,apply,4})
+% your_module:your_private_function/2 -> ok
+ok
+3>
+```
+
+I actually tend to always use the same options when starting redbug, so I added this code to my [user_default](#1-a-href-http-erlang-org-doc-man-erl-html-id191234-target-_blank-user_default-nbsp-span-class-glyphicon-glyphicon-new-window-aria-hidden-true-style-font-size-10px-span-a-) (Don't do this in production, kids!!):
+
+```
+redbug(What) ->
+  catch redbug:stop(),
+  timer:sleep(100),
+  redbug:start(What, [{time, 9999999}, {msgs, 9999999}, {print_msec, true}]).
+```
+
+Now I can easily do…
+
+```erlang
+4> redbug("your_module:your_private_function->return").
+{156,1}
+5> your_module:your_public_function().
+% 19:59:13 <0.1.0>({erlang,apply,4})
+% your_module:your_private_function(some, parameters)
+
+% 19:59:13 <0.1.0>({erlang,apply,4})
+% your_module:your_private_function/2 -> ok
+ok
+6>
+```
 
 ### 10. [recon](https://hex.pm/packages/recon)
+But tracing function calls is just one of the many things you can do to check the health of your Erlang servers. [Fred Hebert](https://twitter.com/mononcqc/) collected tons of experience dealing with Erlang servers in both a great book ([Stuff Goes Bad: Erlang In Anger](https://www.erlang-in-anger.com/)) and a great tool: [**recon**](http://ferd.github.io/recon/).
+With **recon** you can do many things, you can trace function calls (a'lla **redbug**), you can recover the source code of your compiled modules, you check the memory consumption, message queue lengths and other important statistics of your nodes, you can clean up binary memory, etc. I recommend you to read the book and try the different **recon** tools described in it. You'll want to have them near if your server starts behaving erratically.
 
 ---
 ## Bonus Tracks
