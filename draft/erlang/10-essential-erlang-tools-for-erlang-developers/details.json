@@ -1,0 +1,15 @@
+{
+    "_publish_status": "draft",
+    "author_name": "elbrujohalcon",
+    "author_real_name": "Brujo Benavides",
+    "branch": "master",
+    "branches": [],
+    "filename": "article.md",
+    "first_commit": "cdcbe708e790d88bce9e0c5eb4421bc0db1be1a5",
+    "image_url": "https://avatars.githubusercontent.com/u/93657?v=3",
+    "stacks": [
+        "Erlang"
+    ],
+    "thumbnail_url": null,
+    "title": "10 Essential Erlang Tools for Erlang Developers"
+}
