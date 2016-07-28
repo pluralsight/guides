@@ -18,7 +18,7 @@ I prefer choosing the second option (**Checkout as-is, commit Unix-style line en
 
 After that one more **Next**, **Finish** and Git is installed! \o/
 
-## Creating a repository and making your first commit
+## Creating a local repository
 
 Let's test it? Create a folder, right click it and choose **Git Bash Here**.
 
