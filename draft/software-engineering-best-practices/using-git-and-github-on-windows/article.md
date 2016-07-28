@@ -2,25 +2,23 @@
 
 Download the installer for Windows from the [Git official site](https://git-scm.com/).
 
-Execute the downloaded file. In the page **Select Components**. I recommend setting the options according to the image below:
+Execute the downloaded file. In the page **Select Components** you can leave the options at their defaults.
 
 The **Windows Explorer integration** > **Context menu entries** option allows opening the Git command prompt (Git Bash) from any folder by click with the right mouse button on the folder and selecting **Git Bash Here**. The last option is also interesting, that it installs a better font for all console windows.
 
 **Note:** Git for Windows comes with it's own command prompt (Git Bash), that besides git commands it has some useful Unix commands (and it looks better than Windows default prompt).
 
-On the next screen, I choose the most conservative option: "Use Git Bash only". This will make git commands available only in Git Bash, and will not alter your PATH variable.
+On the next screen (**Adjusting your path environment**), I choose the most conservative option: **Use Git Bash only**. This will make git commands available only in Git Bash, and will not alter your PATH variable. Click **Next**.
 
-Another important setting: line breaks.
+Another important setting: line endings. As you may know, Windows and Unix systems (Linux, Mac) have different formats of line breaks on text files. if you write a file with Windows line breaks, another person may have problems opening that file in Linux, and vice-versa. This settings allows you to normalize this.
 
-As you may know, Windows and Unix systems (Linux, Mac) have different formats of line breaks on text files. if you write a file with Windows line breaks, another person may have problems opening that file in Linux, and vice-versa. This settings allows you to normalize this.
-
-I prefer choosing the second option, that won't change the line breaks when the file arrives, but will convert them to Unix-style when you commit. That way you don't risk commit Windows-style line breaks and everything is kept on Unix-style. (Don't worry, even though you are in Windows, most of text editors can read Unix line breaks just fine)
+I prefer choosing the second option (**Checkout as-is, commit Unix-style line endings**), that won't change the line breaks when the file arrives, but will convert them to Unix-style when you commit. That way you don't risk commit Windows-style line breaks and everything is kept on Unix-style. (Don't worry, even though you are in Windows, most of text editors can read Unix line breaks just fine)
 
 After that one more **Next**, **Finish** and Git is installed! \o/
 
 ## Creating a repository and making your first commit
 
-Let's test it? Create a folder, right click it and choose "Git Bash Here".
+Let's test it? Create a folder, right click it and choose **Git Bash Here**.
 
 Before anything else, let's inform Git who you are, so your commits can be identified. Enter the commands, replace the quoted data with your real name and e-mail: (press Enter after each one)
 
@@ -37,7 +35,7 @@ git init
 
 See that (master) on the command line? It tells you the current branch you are in a Git repository. The **master** branch is the main branch on every Git repo.
 
-Now let's add a new file and commit it. Look at the command sequence:
+Now let's add a new file and commit it. Look at the command sequence (press Enter after each one):
 
 ```
 touch test.txt
@@ -55,7 +53,7 @@ Cool! You have a Git repo in your machine, but how about sharing your code on Gi
 
 If you don't have a GitHub account yet, go to http://github.com and create one. It's free.
 
-After you signup and login, let's add a SSH key so GitHub can identify this computer and know it's you> That way it won't have to ask for your password on every commit.
+After you signup and login, let's add a SSH key so GitHub can link your account with this computer. That way it won't have to ask for your password on every commit.
 
 On Git Bash enter the command:
 
@@ -75,9 +73,9 @@ notepad ~/.ssh/id_rsa.pub
 
 To open on Notepad the file that was created.
 
-On GitHub, go to **Account Settings** and then **SSH Public Keys**. Click **Add another public key**. Enter a title to identify this computer and in the field **Key** paste all the contents of the file id_rsa.pub.
+On GitHub, go to **Settings** and then **SSH and GPG Keys**. Click **New SSH key**. Enter a title to identify this computer and in the field **Key** paste all the contents of the file id_rsa.pub.
 
-Be careful to copy and paste all the contents of the file, beginning at "ssh-ras ..." up to your email (including it, like the image above). Click **Add Key**.
+Be careful to copy and paste all the contents of the file, beginning at "ssh-ras ..." up to your email (including it). Click **Add SSH key**.
 
 Let's check if everything is ok. On Git Bash enter:
 
