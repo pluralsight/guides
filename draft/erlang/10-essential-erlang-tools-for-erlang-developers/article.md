@@ -7,7 +7,7 @@ What you'll find below are the tools that I use the most in my day-to-day life a
 ## Working in the Shell
 Like many other languages, the most common way to interact with an Erlang VM is the Erlang shell. You can use it to test new things, to learn how to code and even to debug production systems. The Erlang shell is a powerful thing, but you can add much more power to it with the next 3 tools in this list:
 
-![I see a blondie](http://i.blogs.es/90dcee/maxresdefault-1/original.jpg)
+![I see a blondie](https://c2.staticflickr.com/8/7059/6886658738_d371a49e54_b.jpg)
 
 ### 1. [user_default](http://erlang.org/doc/man/erl.html#id191234)
 In general, to evaluate functions outside a module in Erlang you have to prepend their names with the corresponding module name. For example, if you want to sum up a list, you have to do the following:
@@ -209,8 +209,30 @@ With **recon** you can do many things, you can trace function calls (a'lla **red
 
 ---
 ## Bonus Tracks
+And now a couple of things/tools/tips that doesn't _really_ fit in the list above but deserve to be mentioned anyway.
+
+![Bonus](http://www.picserver.org/images/highway/phrases/bonus.jpg)
+
 ### 11. [Meta Testing](https://github.com/inaka/katana-test)
+If you use TDD (even if you just use [common test](http://erlang.org/doc/man/common_test.html) to test your Erlang apps) and you are interested in maintaining your [code quality](#ensuring-code-quality) using the tools I mentioned above, you have to check [katana-test](https://github.com/inaka/katana-test). With as little code as I will show you below, you'll be dialyzing, xref'ing and rocking your code every time you run your tests.
+
+```erlang
+-module(your_meta_SUITE).
+
+-include_lib("mixer/include/mixer.hrl").
+-mixin([ktn_meta_SUITE]).
+
+-export([init_per_suite/1]).
+
+init_per_suite(Config) -> [{application, your_app} | Config].
+```
+
+I call that **Meta Testing**, and I've wrote [two](http://inaka.net/blog/2015/07/17/erlang-meta-test/) [blog](http://inaka.net/blog/2015/11/13/erlang-meta-test-revisited/) posts about it already. Check them out.
 
 ### 12. The Community
+No list of great Erlang things will be complete without a mention of the great community of developers behind it. If you're going to work on Erlang or even if you're just approaching the language and you want to know what it's all about, **you have to meet the erlangers**. There are a couple of ways to acoomplish that:
+* The [erlang-questions](http://erlang.org/mailman/listinfo/erlang-questions) mailing list is the most popular and arguably the _official_ communication medium for the community. Yes, it's a mailing list. No, it will not fill up your inbox like spam.
+* 
 
 ### 13. [The Guidelines](https://github.com/inaka/erlang_guidelines)
+
