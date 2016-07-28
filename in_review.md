@@ -18,11 +18,6 @@
 - [Read more from discompsys](http://tutorials.pluralsight.com/author/discompsys) <img src="https://avatars.githubusercontent.com/u/20437503?v=3" width="30" height="30" alt="discompsys" />
 - Related to: Java and J2EE
 
-### Real-time SMS Sentiment Visualization with Twilio, Fanout Cloud, and Isomorphic React by Esteban Herrera
-- [Read the guide](http://tutorials.pluralsight.com/interesting-apis/real-time-sms-sentiment-visualization-with-twilio-fanout-cloud-and-isomorphic-react?status=in-review)
-- [Read more from Esteban Herrera](http://tutorials.pluralsight.com/author/eh3rrera) <img src="https://avatars.githubusercontent.com/u/11665759?v=3" width="30" height="30" alt="Esteban Herrera" />
-- Related to: Interesting APIs (SendGrid, Twilio, etc)
-
 ### How to implement a simple wait using Java and Selenium by dcboycm
 - [Read the guide](http://tutorials.pluralsight.com/other/how-to-implement-a-simple-wait-using-java-and-selenium?status=in-review)
 - [Read more from dcboycm](http://tutorials.pluralsight.com/author/dcboycm) <img src="https://avatars.githubusercontent.com/u/5580819?v=3" width="30" height="30" alt="dcboycm" />
