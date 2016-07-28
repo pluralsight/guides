@@ -1,3 +1,8 @@
+### 10 Essential Erlang Tools for Erlang Developers by Brujo Benavides
+- [Read the guide](http://tutorials.pluralsight.com/erlang/10-essential-erlang-tools-for-erlang-developers?status=in-review)
+- [Read more from Brujo Benavides](http://tutorials.pluralsight.com/author/elbrujohalcon) <img src="https://avatars.githubusercontent.com/u/93657?v=3" width="30" height="30" alt="Brujo Benavides" />
+- Related to: Erlang
+
 ### Tips for writing better C# code by Afzaal Ahmad Zeeshan
 - [Read the guide](http://tutorials.pluralsight.com/microsoft-net/tips-for-writing-better-c-code?status=in-review)
 - [Read more from Afzaal Ahmad Zeeshan](http://tutorials.pluralsight.com/author/afzaal-ahmad-zeeshan) <img src="https://avatars.githubusercontent.com/u/3237834?v=3" width="30" height="30" alt="Afzaal Ahmad Zeeshan" />
