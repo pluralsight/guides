@@ -8,11 +8,6 @@
 - [Read more from Martin Splitt](http://tutorials.pluralsight.com/author/AVGP) <img src="https://avatars.githubusercontent.com/u/370246?v=3" width="30" height="30" alt="Martin Splitt" />
 - Related to: Front-End JavaScript (Angular, React, Meteor, etc)
 
-### Using Git (and Github) on Windows by Douglas Matoso
-- [Read the guide](http://tutorials.pluralsight.com/software-engineering-best-practices/using-git-and-github-on-windows?status=draft)
-- [Read more from Douglas Matoso](http://tutorials.pluralsight.com/author/doug2k1) <img src="https://avatars.githubusercontent.com/u/597793?v=3" width="30" height="30" alt="Douglas Matoso" />
-- Related to: Software Engineering Best Practices
-
 ### Ionic 2 database management and versioning by Carlos Esteban Lopez Jaramillo
 - [Read the guide](http://tutorials.pluralsight.com/software-engineering-best-practices/ionic-2-database-management-and-versioning?status=draft)
 - [Read more from Carlos Esteban Lopez Jaramillo](http://tutorials.pluralsight.com/author/Luchillo) <img src="https://avatars.githubusercontent.com/u/9698639?v=3" width="30" height="30" alt="Carlos Esteban Lopez Jaramillo" />
