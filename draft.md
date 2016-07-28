@@ -3,11 +3,6 @@
 - [Read more from Chidiebere Nnadi](http://tutorials.pluralsight.com/author/andela-cnnadi) <img src="https://avatars.githubusercontent.com/u/3100850?v=3" width="30" height="30" alt="Chidiebere Nnadi" />
 - Related to: Python
 
-### 10 Essential Erlang Tools for Erlang Developers by Brujo Benavides
-- [Read the guide](http://tutorials.pluralsight.com/erlang/10-essential-erlang-tools-for-erlang-developers?status=draft)
-- [Read more from Brujo Benavides](http://tutorials.pluralsight.com/author/elbrujohalcon) <img src="https://avatars.githubusercontent.com/u/93657?v=3" width="30" height="30" alt="Brujo Benavides" />
-- Related to: Erlang
-
 ### WebGL 101 by Martin Splitt
 - [Read the guide](http://tutorials.pluralsight.com/front-end-javascript/webgl-101?status=draft)
 - [Read more from Martin Splitt](http://tutorials.pluralsight.com/author/AVGP) <img src="https://avatars.githubusercontent.com/u/370246?v=3" width="30" height="30" alt="Martin Splitt" />
