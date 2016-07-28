@@ -1,3 +1,8 @@
+### 10 Essential Erlang Tools for Erlang Developers by Brujo Benavides
+- [Read the guide](http://tutorials.pluralsight.com/erlang/10-essential-erlang-tools-for-erlang-developers)
+- [Read more from Brujo Benavides](http://tutorials.pluralsight.com/author/elbrujohalcon) <img src="https://avatars.githubusercontent.com/u/93657?v=3" width="30" height="30" alt="Brujo Benavides" />
+- Related to: Erlang
+
 ### Real-time SMS Sentiment Visualization with Twilio, Fanout Cloud, and Isomorphic React by Esteban Herrera
 - [Read the guide](http://tutorials.pluralsight.com/interesting-apis/real-time-sms-sentiment-visualization-with-twilio-fanout-cloud-and-isomorphic-react)
 - [Read more from Esteban Herrera](http://tutorials.pluralsight.com/author/eh3rrera) <img src="https://avatars.githubusercontent.com/u/11665759?v=3" width="30" height="30" alt="Esteban Herrera" />
