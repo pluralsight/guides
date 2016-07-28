@@ -1,6 +1,6 @@
-In this tutorial, we're going to build a chat using [Pusher's Presence Channels](https://pusher.com/docs/client_api_guide/client_presence_channels) with the functionality to request e-signed [Non-Disclosure Agreements](https://en.wikipedia.org/wiki/Non-disclosure_agreement) (NDAs) to its members using the [HelloSign](https://www.hellosign.com/) API.
+In this tutorial, we're going to build a chat using [Pusher's Presence Channels](https://pusher.com/docs/client_api_guide/client_presence_channels). Using Pusher, our chat will be able to request e-signed [Non-Disclosure Agreements](https://en.wikipedia.org/wiki/Non-disclosure_agreement) (NDAs) to its members using the [HelloSign](https://www.hellosign.com/) API.
 
-The stack will be the following:
+You will need the following to take on this project:
 - [Java](http://www.oracle.com/technetwork/java/index.html) 7 or higher
 - [Maven](https://maven.apache.org) as the build manager
 - [Spring Boot](http://projects.spring.io/spring-boot/) as the server-side framework
@@ -8,14 +8,16 @@ The stack will be the following:
 - [Thymeleaf](http://www.thymeleaf.org/) as the server-side template engine
 - [jQuery](https://jquery.com/) and [Handlebars](http://handlebarsjs.com/) for the client-side interaction
 
-We're going to use Pusher and HelloSign webhooks to receive events from these APIs, and we'll use ngrok to keep everything in a local environment.
+We're going to use Pusher and HelloSign __webhooks__ to receive events from these APIs, and we'll use __ngrok__ to keep everything in a local environment.
 
-The app's design is based on this [pen](http://codepen.io/drehimself/pen/KdXwxR) and it works in the following way. First, a user creates a chat:
+The app's design is based on this [pen](http://codepen.io/drehimself/pen/KdXwxR), and it works in the following way:
+
+First, a user creates a chat:
 
 ![Create chat](https://raw.githubusercontent.com/pluralsight/guides/master/images/a4a6062a-a807-42c4-9720-afdff82beb11.gif)
 
 
-Then, another user joins it:
+Then, another user joins the chat:
 
 ![Join chat](https://raw.githubusercontent.com/pluralsight/guides/master/images/5d064ba2-a70a-4199-bad6-2a1b3c8701f5.gif)
 
@@ -29,16 +31,16 @@ When a member of the chat signs the NDA, a notification is sent with a link to v
 
 ![Notification signed document](https://raw.githubusercontent.com/pluralsight/guides/master/images/cf249643-5131-47b5-b8fb-09720271e6ad.gif)
 
-We won't list the complete source code of all the files, only the relevant parts. However, you can find the entire code of the application on [Github](https://github.com/eh3rrera/nda-chat).
+We won't list the complete source code for all the files, only the relevant parts. However, you can find the entire code of the application on [Github](https://github.com/eh3rrera/nda-chat).
 
 
 # Requirements
 
 ### Java environment
 
-You'll need JKD 7 at least (however, [JDK 8 is preferred](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)), and [Maven 3.0](https://maven.apache.org/download.cgi) or higher [installed](https://maven.apache.org/install.html).
+You'll need JDK 7 or higher ([JDK 8 is preferred](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)), as well as [Maven 3.0](https://maven.apache.org/download.cgi) or higher.
 
-An IDE, like [Eclipse](https://eclipse.org/downloads/), [IntelliJ](https://www.jetbrains.com/idea/) or [Netbeans](https://netbeans.org/downloads/), will make things easier but it's not required.
+An IDE, like [Eclipse](https://eclipse.org/downloads/), [IntelliJ](https://www.jetbrains.com/idea/) or [Netbeans](https://netbeans.org/downloads/), will make things easier, but it's not required.
 
 
 ### Pusher
@@ -51,29 +53,31 @@ When you first log in, you'll be asked to enter some configuration options:
 
 Enter a name, choose *Javascript* as your front-end tech, and *Java* as your back-end tech.
 
-Then go to either the *Getting Started* or *App Keys* tab to copy your App ID, Key, and Secret credentials, we'll need them later.
+Then go to either the *Getting Started* or *App Keys* tab to copy your App ID, Key, and Secret credentials; we'll need them later.
 
 
 ### HelloSign
 
 Sign up at https://www.hellosign.com/. At the time of this writing, your free account has the following limitations:
-- Send 3 documents every month for free
-- One sender
-- No templates
+- You can send 3 documents every month for free
+- There can only be one sender
+- You cannot access any templates
 
-But don't worry, these limitations don't apply in test mode, the mode where we're going to work with.
+But don't worry, __these limitations don't apply in test mode__, which is the mode we're going to use.
 
 ### Ngrok
-When a member is added to the chat or an NDA is signed, a webhook will be triggered (think of it as a callback). This means an HTTP request will be made to our server, so we'll need to deploy our application on the cloud or keep it locally and use a service like [ngrok](https://ngrok.com/) to make it publicly available.
+When a member is added to the chat or an NDA is signed, a webhook will be triggered (think of a webhook as a callback). This means an HTTP request will be made to our server, so we'll need to deploy our application on the cloud or keep it locally and use a service like [ngrok](https://ngrok.com/) to make it publicly available.
 
 Ngrok proxies external requests to your local machine by creating a secure tunnel and giving you a public URL.
 
-ngrok is a Go program, distributed as a single executable file (no additional dependencies). So for now, just download it from [https://ngrok.com/download](https://ngrok.com/download) and unzip the compressed file.
+ngrok is a Go program, distributed as a single executable file (no additional dependencies). For now, just download it from [https://ngrok.com/download](https://ngrok.com/download) and unzip the compressed file.
 
 Now that we have all we need, let's create the app.
 
 
 # Setting up the application
+
+### Dependencies
 
 One of the easiest ways to create a Spring Boot app is to use the project generator at [https://start.spring.io/](https://start.spring.io/).
 
@@ -92,14 +96,14 @@ Unzip the content of the downloaded file. At this point, you can import the proj
 
 ![Import Maven Project into Eclipse](https://raw.githubusercontent.com/pluralsight/guides/master/images/83970ac2-1e10-4e8d-b5cf-57c53ed8c423.png)
 
-Now let's add some configurations to the `pom.xml` file. In the `properties` section, change the Java version if you're not using Java 8 and add the following line:
+Let's add some configurations to the `pom.xml` file. In the `properties` section, change the Java version if you're not using Java 8 and add the following line:
 ```xml
 <spring.version>4.3.1.RELEASE</spring.version>
 ```
 
 The latest version of the Spring Framework at the time of this writing is `4.3.1.RELEASE`. The above line will ensure Spring Boot uses this version.
 
-Also, in the `dependencies` section, add the dependencies we'll need for our project:
+Also, in `dependencies`, add the dependencies we'll need for our project:
 ```xml
 <dependency>
 	<groupId>org.apache.commons</groupId>
@@ -119,8 +123,9 @@ Also, in the `dependencies` section, add the dependencies we'll need for our pro
 	<version>3.4.0</version>
 </dependency>
 ```
+### Project architecture
 
-Now, about the project organization. Inside `src/main/java`, we'll work with the following package structure:
+Now, onto the project organization. Inside `src/main/java`, we'll work with the following package structure:
 - `com.example.config` will contain configuration classes
 - `com.example.constants` will contain interfaces with constants values used in the app
 - `com.example.model` will contain the JPA entity models
@@ -135,7 +140,7 @@ Inside `src/main/resources`, we'll put some configuration files in addition to t
 - `static/js` will contain the Javascript files used in the application
 - `templates` will contain the Thymeleaf templates used in the application
 
-So let's start by creating the `com/example/web/ChatController` class with the following content:
+We'll first create the `com/example/web/ChatController` class with the following content:
 ```java
 @Controller
 public class ChatController {
@@ -166,14 +171,14 @@ This controller defines a `/` route that shows an `index` template. Next, create
 </html>
 ```
 
-Using Thymeleaf syntax, this will print the `text` variable defined in the controller. You can learn more about [Thymeleaf here](http://www.thymeleaf.org/doc/tutorials/2.1/thymeleafspring.html).
+Using Thymeleaf syntax, this will print the `text` variable defined in the controller. You can learn more about Thymeleaf [here](http://www.thymeleaf.org/doc/tutorials/2.1/thymeleafspring.html).
 
 Run the application either by executing the `com.example.NdaChatApplication` class on your IDE or on the command line with:
 ```
 $ mvn spring-boot:run
 ```
 
-Additionally, on the command line, you can create a JAR file and execute it:
+Additionally, you can create a JAR file and execute it using command line: 
 ```
 $ mvn package -DskipTests
 $ java -jar target/nda-chat-0.0.1-SNAPSHOT.jar
@@ -204,7 +209,7 @@ Now, you should see something like this:
 ![Ngrok console](https://raw.githubusercontent.com/pluralsight/guides/master/images/dd9d375c-59cb-4450-abf3-aac611fe2fe9.png)
 
 
-See that URL in the *Forwarding* row(s) with the `ngrok.io` domain? That's your public URL. Yours will be different, ngrok generates a random URL every time you run it.
+See that URL in the *Forwarding* row(s) with the `ngrok.io` domain? __That's your public URL.__ Your public URL will likely be different than the one you see in the example. That's because ngrok generates a random URL every time you run it.
 
 If you open in a browser `http://[YOUR_GENERATED_SUBDOMAIN].ngrok.io`, you should see the same page found on `http://localhost:8080`:
 
@@ -212,9 +217,7 @@ If you open in a browser `http://[YOUR_GENERATED_SUBDOMAIN].ngrok.io`, you shoul
 
 
 
-Open this ngrok URL in another computer if you want. Once again, you should see the same page. Our local server is now available publicly.
-
-The only disadvantage is that this URL is not permanent. If you restart ngrok, it will give you another URL.
+Open this ngrok URL in another computer if you want. Once again, you should see the same page. This means that our *local* server is now available *publicly*. The only disadvantage to using ngrok for server exposure is that this URL is not permanent. __If you restart ngrok, it will give you another URL__.
 
 You can specify a subdomain, for example, to get the URL  `http://chat.ngrok.io` use the command:
 ```
@@ -223,9 +226,9 @@ ngrok http -subdomain=chat 8080
 
 However, this requires a paid plan. You can get more info in this [page](https://ngrok.com/product).
 
-Nevertheless, as long as you don't stop or restart ngrok, the URL won't change, so forget about that terminal window and let's leave it running for now.
+Nevertheless, as long as you don't stop or restart ngrok, the URL won't change, so let's leave it running for now.
 
-In the next section, we'll deep into the code of the application starting with the database layer.
+In the next section, we'll go deeper into the code of the application starting with the database layer.
 
 
 # Database layer
@@ -245,7 +248,7 @@ spring.jpa.properties.hibernate.format_sql=true
 spring.jpa.properties.hibernate.type=trace
 ```
 
-In Spring Boot, by default, JPA databases will be created automatically if you use an embedded database (such as H2, HSQL or Derby). If they are in the classpath, it will execute the files `schema.sql` (to define the structure of the database) and `data.sql` (to insert initial data).
+In Spring Boot, by default, JPA databases will be created automatically if you use an embedded database (such as H2, HSQL or Derby). If they are in the classpath, Spring Boot will execute the files `schema.sql` (to define the structure of the database) and `data.sql` (to insert initial data).
 
 However, we can define *profiles* to run distinct scripts for different databases. That's the purpose of the line:
 ```
@@ -286,12 +289,12 @@ CREATE TABLE message(
 );
 ```
 
-By default, Hibernate (the JPA implementation used by Spring Boot), will try to create the schema. Since Spring Boot will be responsible for that, we have to turn off this feature with:
+By default, Hibernate (the JPA implementation used by Spring Boot), will try to create the schema. Since Spring Boot will be responsible for that, we have to turn off this feature using:
 ```
 spring.jpa.hibernate.ddl-auto="none"
 ```
 
-H2 provides a [browser-based console](http://www.h2database.com/html/quickstart.html#h2_console) that Spring Boot can auto-configure for you at the path `/h2-console` when these conditions are met:
+H2 provides a [browser-based console](http://www.h2database.com/html/quickstart.html#h2_console) that Spring Boot can auto-configure for you at the path `/h2-console`. However for auto-configuration to work, these conditions need to be met:
 - You are developing a web application
 - `com.h2database:h2` is on the classpath
 - You are using [Spring Boot's developer tools](http://docs.spring.io/spring-boot/docs/current/reference/html/using-boot-devtools.html)
@@ -301,7 +304,7 @@ Since we're not using Spring Boot's developer tools, we have to explicitly confi
 spring.h2.console.enabled=true 
 ```
 
-The rest of the `application.properties` file tell Hibernate to print in the console the generated SQL statements for debugging purposes.
+The rest of the `application.properties` files tell Hibernate to print in the console the generated SQL statements for debugging purposes.
 
 Now that we have our schema, let's create the JPA entities that will represent the database tables.
 
@@ -384,7 +387,7 @@ public class Chat  implements Serializable {
 }
 ```
 
-Notice how the one-to-many relationship with the `User` entity is set up and the helper method to establish it. In addition, as the good practices dictate, we're also defining  the `toString()`, `equals()`, and `hashCode()` methods with classes from the [commons-lang](https://commons.apache.org/proper/commons-lang/) library.
+Notice how the one-to-many relationship with the `User` entity is set up and the helper method establishes it. In addition, as the good practices dictate, we're also defining the `toString()`, `equals()`, and `hashCode()` methods with classes from the [commons-lang](https://commons.apache.org/proper/commons-lang/) library.
 
 The `src/main/java/com/example/model/User.java` file contains the following code:
 ```java
@@ -555,7 +558,7 @@ public class Message implements Serializable {
 
 The repository objects will be handled by [Spring Data JPA](http://projects.spring.io/spring-data-jpa/), which reduces the amount of boilerplate code by generating the code to implement the data-access layer code from interfaces you define. You can read about how to work with [Spring Data in this page](http://docs.spring.io/spring-data/jpa/docs/current/reference/html/).
 
-By default, Spring Data creates the following methods for basic [CRUD](https://en.wikipedia.org/wiki/Create,_read,_update_and_delete) functionality:
+By default, Spring Data creates the following methods for basic Create, Read, Update, and Delete ([CRUD](https://en.wikipedia.org/wiki/Create,_read,_update_and_delete)) functionality:
 ```java
 <S extends T> S save(S entity); 
 T findOne(ID primaryKey);       
@@ -567,7 +570,7 @@ boolean exists(ID primaryKey);
 
 This way, we just have to define the business methods used by the application.
 
-For the chat repository, those would be:
+For the chat repository, our business methods would be:
 ```java
 @Repository
 public interface ChatRepository extends CrudRepository<Chat, Long> {
@@ -625,13 +628,15 @@ public interface MessageRepository extends CrudRepository<Message, Long> {
 }
 ```
 
-In the next section, we're going to review the service layer.
+In the next section, we're going to review the service layer of our chat application.
 
 # Service layer
 
 The service layer is just a thin wrapper of the database layer. Its main purpose is to provide transactional capabilities to the repository methods.
 
-We're going to set up two services. The chat service:
+We're going to set up two services. The chat service and the user service.
+
+### Chat service
 ```java
 @Service
 @Transactional
@@ -739,7 +744,7 @@ public class ChatService {
 }
 ```
 
-And the user service:
+### User service:
 ```java
 @Service
 @Transactional
@@ -800,6 +805,7 @@ public class UserService {
 	}
 }
 ```
+### Constants setup
 
 Finally, in the `src/main/java/com/example/constants/GeneralConstants.java` and `src/main/java/com/example/constants/HelloSignConstants.java` files, we'll define the constants we'll use in the next sections:
 ```java
@@ -842,12 +848,12 @@ public interface HelloSignConstants {
 }
 ```
 
-Now that we've taken care of most of the boilerplate code, let's go where the fun part resides, the controller and the view layers.
+Now that we've taken care of most of the boilerplate code, we can go to the fun stuff: the controller and the view layers.
 
 
 # Setting up the initial page
 
-Open the `ChatController` class and modify the `index` method so it looks like this:
+Open the `ChatController` class and modify the `index` method, so it looks like this:
 ```java
 public class ChatController {
 	
@@ -876,7 +882,8 @@ public class ChatController {
 }
 ```
 
-This will fetch all the active chats to present them on the index page. Next, modify the `index.html` template:
+This will fetch all the active chats to present them on the index page. Next, modify the `index.html` template. The code below will be the layout for our index page.
+
 ```html
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
@@ -998,7 +1005,7 @@ public String validateChatName(@RequestParam String chatName) {
 }
 ```
 
-When a chat is created, this method on the controller is invoked:
+When a chat is created, the `createChat` controller method is invoked:
 ```java
 @RequestMapping(method=RequestMethod.POST, value="/chat/create")
 public String createChat(ChatForm form, Model model) {
@@ -1034,7 +1041,7 @@ public String createChat(ChatForm form, Model model) {
 }
 ```
 
-Notice how the helper method `addMember()` is used to set up the relationship between the chat and the user so both entities can be saved with a single method call on the `Chat` object. Also, the channel name is prefixed with `presence-` (defined as `GeneralConstants.CHANNEL_PREFIX`), which is required by Pusher Presence Channels (more on this later). Finally, the `ChatForm` is added to the `Model` object.
+Notice how the helper method `addMember()` is used to set up the relationship between the chat and the user; it allows both chat and user to be saved with a single method call on the `Chat` object. Also, the channel name is prefixed with `presence-` (defined as `GeneralConstants.CHANNEL_PREFIX`). This prefix is required by Pusher Presence Channels (more on this later). Finally, the `ChatForm` is added to the `Model` object.
 
 Now, to save this object to the HTTP session, we only have to annotate the controller class with `@SessionAttributes` and the same identifier used when it was added to the `Model`  object:
 ```java
@@ -1090,10 +1097,10 @@ public ModelAndView chat(
 
 It gets all the existing chat messages (if any) to present the chat history to the user.
 
-In the next sections, we're going to talk about Pusher presence chats, set up a Pusher webhook, and the configurations in HelloSign so a user can sign an NDA document.
+In the next sections, we're going to talk about Pusher presence chats, Pusher webhook setup, and the configurations in HelloSign so a user can sign an NDA document.
 
 # Pusher's presence chats and Webhooks
-Presence channels provide information about who is subscribed to the channel. For this, an HTPP request is made to determine if the current user has permission to access the channel and to provide information about that user. 
+Presence channels provide information about who is subscribed to the channel. For this, an HTTP request is made to determine if the current user has permission to access the channel and to provide information about that user. 
 
 On the client-side, once a subscription is authenticated, you can access the information about the users with the `members` property of the channel and the local user with the `members.me` property.
 
