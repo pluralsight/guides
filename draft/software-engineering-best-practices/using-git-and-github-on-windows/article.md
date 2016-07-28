@@ -8,7 +8,7 @@ Explaining some of the options:
 
 * **Windows Explorer integration** > **Context menu entries**: allows opening the Git command prompt (Git Bash) from any folder by click with the right mouse button on the folder and selecting **Git Bash Here**.
 
-A última opção também é interessante, porque ele instala uma fonte melhorzinha para o prompt de comandos.
+
 
 **Note:** Git for Windows comes with it's own command prompt (Git Bash), that besides git commands it has some useful Unix commands (and it looks better than Windows default prompt).
 
@@ -51,15 +51,15 @@ git commit -m "First commit"
 
 First we create an empty text file (you can create the file any way you like, not necessarily with the `touch` command). The we `add` all new and modified files to the Git index (we tell Git which files we want to commit on the next commit). And finally we `commit` the changes with a message.
 
-## Sharing your code on Github
+## Sharing your code on GitHub
 
-Cool! You have a Git repo in your machine, but how about sharing your code on Github?
+Cool! You have a Git repo in your machine, but how about sharing your code on GitHub?
 
 ### Initial setup
 
-If you don't have a Github account yet, go to http://github.com and create one. It's free.
+If you don't have a GitHub account yet, go to http://github.com and create one. It's free.
 
-After you signup and login, let's add a SSH key so Github can identify this computer and know it's you> That way it won't have to ask for your password on every commit.
+After you signup and login, let's add a SSH key so GitHub can identify this computer and know it's you> That way it won't have to ask for your password on every commit.
 
 On Git Bash enter the command:
 
@@ -67,11 +67,11 @@ On Git Bash enter the command:
 ssh-keygen -t rsa -C "your_email@example.com"
 ```
 
-Use the same email you registered at Github.
+Use the same email you registered at GitHub.
 
 On the next question press Enter to choose the default value.
 
-Now it will ask for a password. Enter a password (this is NOT your Github password). When it asks for a confirmation, enter the password again. Now enter the command:
+Now it will ask for a password. Enter a password (this is NOT your GitHub password). When it asks for a confirmation, enter the password again. Now enter the command:
 
 ```
 notepad ~/.ssh/id_rsa.pub
@@ -101,7 +101,7 @@ Then everything is correct!
 
 ### Creating your first remote repository
 
-On Github let's create a new repository (button **New repository** on your dashboard). Enter a name. It should not have spaces or special characters, as it will be part of the URL of your new repo. You can leave the rest of the options at their defaults.
+On GitHub let's create a new repository (button **New repository** on your dashboard). Enter a name. It should not have spaces or special characters, as it will be part of the URL of your new repo. You can leave the rest of the options at their defaults.
 
 You will be taken to the main page of your repository, that don't have any files yet.
 
@@ -115,7 +115,7 @@ Note that `user/repo_name` must be entered the same way they appear in your repo
 
 https://github.com/user/repo_name
 
-Now, to send your files to Github, enter:
+Now, to send your files to GitHub, enter:
 
 ```
 git push origin master
@@ -123,10 +123,10 @@ git push origin master
 
 Inform the password of the SSH key if it asks.
 
-Reload the page of your repo on Github and you should see your commited files.
+Reload the page of your repo on GitHub and you should see your commited files.
 
 ## Conclusion
 
-Even though Git originated on Linux (did you that it was created by Linus Torvalds, the same guy who created Linux?), developers on all system can benefit from it. Git is an excellent SCM (source code management) system, widely adopted, and the open-source community on Github is vibrant! You can find code for pretty much anything you want, contribute with other developpers and share your own solutions.
+Even though Git originated on Linux (did you that it was created by Linus Torvalds, the same guy who created Linux?), developers on all system can benefit from it. Git is an excellent SCM (source code management) system, widely adopted, and the open-source community on GitHub is vibrant! You can find code for pretty much anything you want, contribute with other developers and share your own solutions.
 
 See you next!
