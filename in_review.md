@@ -1,3 +1,8 @@
+### Using Git (and Github) on Windows by Douglas Matoso
+- [Read the guide](http://tutorials.pluralsight.com/software-engineering-best-practices/using-git-and-github-on-windows?status=in-review)
+- [Read more from Douglas Matoso](http://tutorials.pluralsight.com/author/doug2k1) <img src="https://avatars.githubusercontent.com/u/597793?v=3" width="30" height="30" alt="Douglas Matoso" />
+- Related to: Software Engineering Best Practices
+
 ### 10 Essential Erlang Tools for Erlang Developers by Brujo Benavides
 - [Read the guide](http://tutorials.pluralsight.com/erlang/10-essential-erlang-tools-for-erlang-developers?status=in-review)
 - [Read more from Brujo Benavides](http://tutorials.pluralsight.com/author/elbrujohalcon) <img src="https://avatars.githubusercontent.com/u/93657?v=3" width="30" height="30" alt="Brujo Benavides" />
