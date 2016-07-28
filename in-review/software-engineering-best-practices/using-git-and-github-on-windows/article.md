@@ -1,3 +1,5 @@
+This guide will show how to install Git on Windows, create a local repository and then pushing it to GitHub.
+
 ## Installing Git
 
 Download the installer for Windows from the [Git official site](https://git-scm.com/).
