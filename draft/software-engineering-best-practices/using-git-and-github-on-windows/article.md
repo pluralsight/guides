@@ -1,14 +1,10 @@
 ## Installing Git
 
-Download the installer for Windows from the Git official site .
+Download the installer for Windows from the [Git official site](https://git-scm.com/).
 
 Execute the downloaded file. In the page **Select Components**. I recommend setting the options according to the image below:
 
-Explaining some of the options:
-
-* **Windows Explorer integration** > **Context menu entries**: allows opening the Git command prompt (Git Bash) from any folder by click with the right mouse button on the folder and selecting **Git Bash Here**.
-
-
+The **Windows Explorer integration** > **Context menu entries** option allows opening the Git command prompt (Git Bash) from any folder by click with the right mouse button on the folder and selecting **Git Bash Here**. The last option is also interesting, that it installs a better font for all console windows.
 
 **Note:** Git for Windows comes with it's own command prompt (Git Bash), that besides git commands it has some useful Unix commands (and it looks better than Windows default prompt).
 
