@@ -1,0 +1,15 @@
+{
+    "_publish_status": "draft",
+    "author_name": "dragon788",
+    "author_real_name": "dragon788",
+    "branch": "master",
+    "branches": [],
+    "filename": "article.md",
+    "first_commit": "f1d8b71f518befc78f3758d61d1890fe80a4cfdf",
+    "image_url": "https://avatars.githubusercontent.com/u/487774?v=3",
+    "stacks": [
+        "DevOps (Docker, Nagios, Jenkins, Chef, Puppet, etc)"
+    ],
+    "thumbnail_url": null,
+    "title": "Windows DevOps: Getting Started with PowerShell, Concepts and Examples"
+}
