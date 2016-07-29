@@ -1,11 +1,17 @@
 {
+    "_publish_status": "published",
     "author_name": "shadowcodex",
     "author_real_name": "Shannon Duncan",
     "branch": "master",
-    "branches": [],
+    "branches": [
+        [
+            "MuraliNunna",
+            "MuraliNunna-software-engineering-best-practices-text-editors-for-beginners-15-ways-to-rule-the-world"
+        ]
+    ],
     "filename": "article.md",
+    "first_commit": null,
     "image_url": "https://avatars.githubusercontent.com/u/1348053?v=3",
-    "publish_status": "published",
     "stacks": [
         "Software Engineering Best Practices"
     ],
