@@ -634,7 +634,7 @@ In the next section, we're going to review the service layer of our chat applica
 
 The service layer is just a thin wrapper of the database layer. Its main purpose is to provide transactional capabilities to the repository methods.
 
-We're going to set up two services. The chat service and the user service.
+We're going to set up two services: the chat service and the user service.
 
 ### Chat service
 ```java
@@ -805,7 +805,7 @@ public class UserService {
 	}
 }
 ```
-### Constants setup
+### Define constants
 
 Finally, in the `src/main/java/com/example/constants/GeneralConstants.java` and `src/main/java/com/example/constants/HelloSignConstants.java` files, we'll define the constants we'll use in the next sections:
 ```java
@@ -1097,7 +1097,7 @@ public ModelAndView chat(
 
 It gets all the existing chat messages (if any) to present the chat history to the user.
 
-In the next sections, we're going to talk about Pusher presence chats, Pusher webhook setup, and the configurations in HelloSign so a user can sign an NDA document.
+In the next sections, we're going to talk about Pusher presence chats, Pusher webhook setup, and the configurations in HelloSign that allow a user to sign an NDA document.
 
 # Pusher's presence chats and Webhooks
 Presence channels provide information about who is subscribed to the channel. For this, an HTTP request is made to determine if the current user has permission to access the channel and to provide information about that user. 
@@ -1110,7 +1110,7 @@ You can also subscribe to the following events on the channel:
 - When a member is added (`pusher:member_added`)
 - When a member is removed (`pusher:member_removed`)
 
-You can know more about [presence channels here](https://pusher.com/docs/client_api_guide/client_presence_channels).
+You can learn more about [presence channels here](https://pusher.com/docs/client_api_guide/client_presence_channels).
 
 On the server-side, webhooks allow us to be notified about the following events:
 - When a channel is created (`channel_vacated`)
@@ -1123,7 +1123,7 @@ There is a delay of a few seconds between a client disconnecting and the `channe
 
 You can know more about [Pusher webhooks here](https://pusher.com/docs/webhooks).
 
-Let's configure the webhooks for channel and presence events. Go to your Pusher dashboard, select your app and then the *Webhooks* tab. Then add two webhooks with the URL `http://4e2f1461.ngrok.io/pusher/webhook` (or whatever you domain is, but keep the `pusher/webhook` part) for the *Event types* *Channel existence* and *Presence*:
+Let's configure the webhooks for channel and presence events. Go to your Pusher dashboard, select your app and then the *Webhooks* tab. Add two webhooks with your public URL and `/pusher/webhook`. My URL would be `http://4e2f1461.ngrok.io/pusher/webhook`. This webhook would be used for the *Event types* *Channel existence* and *Presence*:
 
 ![Pusher webhooks](https://raw.githubusercontent.com/pluralsight/guides/master/images/1045f1ef-f4a6-4fcd-aefa-8e8070549881.png)
 
@@ -1353,7 +1353,7 @@ Now, in `ChatController`, inject an instance of this object:
 private PusherSettings pusherSettings;
 ```
 
-And modify the `chat` method to add the key to the `modelAndView` object:
+Modify the `chat` method to add the key to the `modelAndView` object:
 ```java
 @RequestMapping(method=RequestMethod.GET, value="/chat")
 public ModelAndView chat(
@@ -1478,7 +1478,7 @@ $(document).ready(function() {
 });
 ```
 
-After the definition of the functions to add messages, the pusher object is created in this way: 
+After defining the functions to add messages, we can create the pusher object. 
 ```javascript
 var pusher = new Pusher(PUSHER_KEY, {
 	encrypted: true,
@@ -1498,9 +1498,9 @@ public class PusherController {
 }
 ```
 
-In Spring MVC 4, if your controller is annotated with `@RestController` instead of `@Controller`, you don't need the `@ResponseBody` annotation to specify responses formatted as JSON.
+_In Spring MVC 4, if your controller is annotated with `@RestController` instead of `@Controller`, you don't need the `@ResponseBody` annotation to specify responses formatted as JSON._
 
-First, let's wire the services we'll need (notice the` @PostConstruct` annotation in the method that creates the `pusher` instance):
+Let's wire the services we'll need (notice the` @PostConstruct` annotation in the method that creates the `pusher` instance):
 ```java
 @RestController
 public class PusherController {
