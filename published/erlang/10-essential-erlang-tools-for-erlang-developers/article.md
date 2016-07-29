@@ -53,7 +53,7 @@ ok
 ```
 
 ### 2. [~/.erlang](http://erlang.org/doc/man/erl.html#id191234)
-But then, I have to manually load `user_default` in every single shell that I open. **~/.erlang** to the resque! **~/.erlang** is a file that works almost like **~/.bashrc** for bash: When the shell starts, it reads **~/.erlang** and evaluates each one of the expressions it finds there as if they were input to the shell. So, I added the following lines to that file:
+But then, I have to manually load `user_default` in every single shell that I open. **~/.erlang** to the rescue! **~/.erlang** is a file that works almost like **~/.bashrc** for bash: When the shell starts, it reads **~/.erlang** and evaluates each one of the expressions it finds there as if they were input to the shell. So, I added the following lines to that file:
 ```erlang
 UD = "/path/to/my/user_default".
 shell_default:c(UD).
