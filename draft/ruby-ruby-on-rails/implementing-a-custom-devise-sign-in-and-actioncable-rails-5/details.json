@@ -1,0 +1,15 @@
+{
+    "_publish_status": "draft",
+    "author_name": "stockholmkid",
+    "author_real_name": "stockholmkid",
+    "branch": "master",
+    "branches": [],
+    "filename": "article.md",
+    "first_commit": "b0dab928b39e702843003d21e3dcb48b023b6b48",
+    "image_url": "https://avatars.githubusercontent.com/u/18127401?v=3",
+    "stacks": [
+        "Ruby, Ruby on Rails"
+    ],
+    "thumbnail_url": null,
+    "title": "Implementing a custom Devise Sign In and ActionCable Rails 5"
+}
