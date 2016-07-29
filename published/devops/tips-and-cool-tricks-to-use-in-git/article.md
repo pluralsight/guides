@@ -14,10 +14,20 @@ For example, the following creates an alias **st** for the Git command **status*
 $ git config --global alias.st status 
 ```
 
-Just replace the **alias** with the name that you want, followed by the original command. With an alias **g** and **co**, the following command will achieve the same effect as `git checkout`:
+Just replace the **alias** with the name that you want, followed by the original command. With a shell alias of **g** and git alias of **co**, the following command will achieve the same effect as `git checkout`:
 
 ```shell
 $ g co
+```
+
+To create a shell alias you can add a one off alias to your current shell with `alias g='git '`
+
+To create a "permanent"/persistent alias for your user you can simply add the above command to your user's shell rc file. This will be `~/.bashrc` or `~/.zshrc` for most systems.
+
+With your favorite editor open the file for your current shell, you can find this shell by running `echo $SHELL`. Add the following snippet near the bottom of the file, the trailing space is so you can pass additional arguments to the alias and have them passed correctly to the program you can calling, in this case `git`.
+
+```shell
+alias g='git '
 ```
 
 > It is a little different, but over time you earn enough in productivity.
