@@ -3,7 +3,12 @@
     "author_name": "andreybleme",
     "author_real_name": "Lucas Andrey",
     "branch": "master",
-    "branches": [],
+    "branches": [
+        [
+            "dragon788",
+            "dragon788-devops-tips-and-cool-tricks-to-use-in-git"
+        ]
+    ],
     "filename": "article.md",
     "first_commit": null,
     "image_url": "https://avatars.githubusercontent.com/u/5385383?v=3",
