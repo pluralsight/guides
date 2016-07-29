@@ -1,0 +1,15 @@
+{
+    "_publish_status": "draft",
+    "author_name": "kschiller",
+    "author_real_name": "Kim Schiller",
+    "branch": "master",
+    "branches": [],
+    "filename": "article.md",
+    "first_commit": "3377f700623d32af7a851c66ef67fc35091e9057",
+    "image_url": "https://avatars.githubusercontent.com/u/2341536?v=3",
+    "stacks": [
+        "Software Engineering Best Practices"
+    ],
+    "thumbnail_url": null,
+    "title": "Getting started with Page Object Pattern for your Selenium tests"
+}
