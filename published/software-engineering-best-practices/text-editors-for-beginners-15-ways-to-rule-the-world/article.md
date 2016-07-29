@@ -23,7 +23,7 @@ There is also an ecosystem of coding out there that is called open source. Open 
 When you get into development you might hear the word stacks thrown around. This refers to the combination of software you use to build your application. Most often for web development the base stack is `HTML, CSS, and JavaScript`. However you will see that with `PHP , NodeJS, Ruby, etc` added to it to create custom stacks.
 
 
-##Section 1: The Desktop Applications
+## Section 1: The Desktop Applications
 
  
 I’m going to start with my favorite desktop editor of all time. Now I am going to try to cover editors that are cross platform compatible (Meaning you can use it on any operating system such as Windows or Mac).
