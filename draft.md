@@ -1,8 +1,3 @@
-### Getting started with Page Object Pattern for your Selenium tests by Kim Schiller
-- [Read the guide](http://tutorials.pluralsight.com/software-engineering-best-practices/getting-started-with-page-object-pattern-for-your-selenium-tests?status=draft)
-- [Read more from Kim Schiller](http://tutorials.pluralsight.com/author/kschiller) <img src="https://avatars.githubusercontent.com/u/2341536?v=3" width="30" height="30" alt="Kim Schiller" />
-- Related to: Software Engineering Best Practices
-
 ### Build a Simpsons Quote-Bot with Twilio MMS, Frinkiac, and Python by Chris Hranj
 - [Read the guide](http://tutorials.pluralsight.com/interesting-apis/build-a-simpsons-quote-bot-with-twilio-mms-frinkiac-and-python?status=draft)
 - [Read more from Chris Hranj](http://tutorials.pluralsight.com/author/Brodan) <img src="https://avatars.githubusercontent.com/u/12822268?v=3" width="30" height="30" alt="Chris Hranj" />
