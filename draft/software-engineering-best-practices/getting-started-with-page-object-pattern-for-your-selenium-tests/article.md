@@ -48,9 +48,7 @@ And this is the only place you need to modify when the UI changes.
 
 This figure illustrates the pattern:
 
-
-![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/ecc4e80e-1725-41e6-bab4-65a0f24d77bd.png)
-
+![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/2a2a896f-44af-4954-820a-ba3efc485970.png)
 
 ## Implementation
 Getting started with this implementation is actually very straight forward:
