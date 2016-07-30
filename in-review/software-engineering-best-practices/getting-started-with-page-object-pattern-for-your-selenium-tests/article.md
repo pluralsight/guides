@@ -237,10 +237,10 @@ Nice and easy.
  
 So whether you are just getting started with Selenium or you are managing a large suite of Selenium regression tests, you will most likely benefit from introducing the Page Object Pattern into you code. As creator of WebDriver, Simon Stewart - [@shs96c](https://twitter.com/shs96c) so bluntly puts it: "If you have WebDriver APIs in your test methods, You're Doing It Wrong". And personally I have been doing it wrong, and also experienced the frustrations of doing this.
 
-As we have now seen, the Page Object Pattern gives you a way to decouple you test scripts from the web interface you are testing, by introducing a series page objects. And page objects are responsible for communicating with the web pages you are testing.
-Any DOM queries fired through the WebDriver API, go through the page objects, because only the page objects know how to find elements on the page using the numereous locator methods availble with Selenium.
+As we have now seen, the Page Object Pattern gives you a way to decouple you test scripts from the web interface you are testing, by introducing a series of page objects. And page objects are responsible for communicating with the web pages you are testing.
+Any DOM queries fired through the WebDriver API, go through the page objects, because only the page objects should know how to find elements on the page using the numereous locator methods availble with Selenium.
 
-By using page objects you get tests that are more concise and readable. Your element locators are centralized making maintenance easier. Changes in user interface only affects page objects and not test scripts. And finally, this is good and solid object oriented design.
+By using page objects your tests become more concise and readable. Your element locators are centralized making maintenance easier. Changes in user interface only affects page objects and not test scripts. And finally, this is good and solid object oriented design.
 
 
 
