@@ -123,26 +123,27 @@ If you enjoyed this post be sure to check out the [Twilio Blog](https://www.twil
 
 # Optional Steps
 
-* An alternative approach to configuring your `TwilioRestClient` object is to use environment variables. If you wish to do that instead, run the following commands in your terminal, again replacing the values with your actual account sid and auth token:
+* An alternative approach to configuring your `TwilioRestClient` object is to use environment variables. With environment variables you won't have to worry about making your API keys visible to the puble. To do this, run the following commands in your terminal, replacing the values with your actual account sid and auth token:
 ```
-$ export TWILIO_AUTH_TOKEN='YYYYYY'.
+$ export TWILIO_AUTH_TOKEN='YYYYYY'
 $ export TWILIO_ACCOUNT_SID='XXXXX'
 ```
-Then add the `import` statement below to the top of your python file, and replace the two lines for with the appropriate lines below.
+Then open `frinkiac.py` and add `import os` to the top of the file and replace `account_sid = 'XXXXXXX'` and `auth_token  = 'YYYYYYYY'` with the lines below:
 ```
-import os
 account_sid = os.environ.get('TWILIO_ACCOUNT_SID')
 auth_token = os.environ.get('TWILIO_AUTH_TOKEN')
 ```
 
-* Some other alternative schedules you could use are:
+* As mentioned earlier, using `schedule` is very intuitive. Some alternative schedules you could use in your app are:
 ```
 schedule.every().hour.do(send_MMS)
 schedule.every().monday.do(send_MMS)
 schedule.every().wednesday.at("16:00").do(send_MMS)
 ```
 
-* If you'd like to run your application as a background process so that you don't need to leave a terminal up and running
+* If you'd like to run your application as a background process, simply add an `&` to the end of your `python` command like so:
 ```
-python test.py &
+$ python frinkiac.py &
+[1] 1872
 ```
+This command will return a process ID number (`1872` in this case), which you can append to the `kill` command to stop your program (e.g. `$ kill 1872`).
