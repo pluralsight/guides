@@ -74,7 +74,7 @@ docker build -t tomcat .
 A couple quick definitions:
 
 **docker build** - _This command builds a new image from the source code at PATH_. In our case, the PATH is '.' (current folder). 
-**t** _ this term refers to a Name of (or tag of) the image (format name:tag). In this case, just the name "tomcat".
+The option **-t** refers to a Name of (or tag of) the image (format name:tag). In this case, just the name "tomcat".
 
 After all steps have been executed, you can test your code's functionality by typing docker images and you will see your image there: tomcat.
 
