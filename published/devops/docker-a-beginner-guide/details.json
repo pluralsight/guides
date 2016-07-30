@@ -4,7 +4,14 @@
     "author_real_name": "Marius Baisan",
     "branch": "master",
     "branches": [
-        "durden"
+        [
+            "durden",
+            "durden"
+        ],
+        [
+            "MuraliNunna",
+            "MuraliNunna-devops-docker-a-beginner-guide"
+        ]
     ],
     "filename": "article.md",
     "first_commit": null,
