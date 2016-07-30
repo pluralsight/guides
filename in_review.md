@@ -1,3 +1,8 @@
+### Introduction to MongoDB by Sanjeev Murthy
+- [Read the guide](http://tutorials.pluralsight.com/nosql-databases/introduction-to-mongodb?status=in-review)
+- [Read more from Sanjeev Murthy](http://tutorials.pluralsight.com/author/SanjeevMurthy) <img src="https://avatars.githubusercontent.com/u/10756352?v=3" width="30" height="30" alt="Sanjeev Murthy" />
+- Related to: NoSQL Databases (MongoDB, Cassandra, etc)
+
 ### Implementing a custom Devise Sign In and ActionCable Rails 5 by stockholmkid
 - [Read the guide](http://tutorials.pluralsight.com/ruby-ruby-on-rails/implementing-a-custom-devise-sign-in-and-actioncable-rails-5?status=in-review)
 - [Read more from stockholmkid](http://tutorials.pluralsight.com/author/stockholmkid) <img src="https://avatars.githubusercontent.com/u/18127401?v=3" width="30" height="30" alt="stockholmkid" />
