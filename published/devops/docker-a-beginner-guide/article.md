@@ -94,7 +94,7 @@ Let's break down this simple, yet complex command.
 
 But we solve this port issue by using p parameter.
 
-**p parameter** - Establishes a connection between container's port(s) to the host_. By using **port1:port2** you make  **port1** match with **port2**. After that, you can use **port2** in order to access the service that is opened on **port1** inside the container. Thus, the container is now connected with outside environments.
+**-p parameter** - Establishes a connection between container's port(s) to the host. By using **port1:port2** you make  **port1** match with **port2**. After that, you can use **port2** in order to access the service that is opened on **port1** inside the container. Thus, the container is now connected with outside environments.
 
 ## 4. Checking for containers
 
@@ -116,7 +116,7 @@ The above command displays all containers (running or not).
 
 After you started a container you can stop it by using **docker stop [name]**. You can restart the container by typing **docker start [name]**.
 
-Another important command is **docker exec**, which lets you run a command inside your Docker **running** container. Note that this only works in runnign containers, not stopped ones.
+Another important command is **docker exec**, which lets you run a command inside your Docker **running** container. Note that this only works in running containers, not stopped ones.
 
 For a complete list of commands you can go to [Docker references](https://docs.docker.com/engine/reference/commandline/cli/). I will recommend that you read up on many of those commands if you find Docker containers interesting.
 
