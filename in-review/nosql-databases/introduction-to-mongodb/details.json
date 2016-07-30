@@ -1,0 +1,15 @@
+{
+    "_publish_status": "in-review",
+    "author_name": "SanjeevMurthy",
+    "author_real_name": "Sanjeev Murthy",
+    "branch": "master",
+    "branches": [],
+    "filename": "article.md",
+    "first_commit": "dcd97d6a232ceef88faa66705b3a256b693dc086",
+    "image_url": "https://avatars.githubusercontent.com/u/10756352?v=3",
+    "stacks": [
+        "NoSQL Databases (MongoDB, Cassandra, etc)"
+    ],
+    "thumbnail_url": null,
+    "title": "Introduction to MongoDB"
+}
