@@ -61,7 +61,7 @@ Connect to MongoDB instance from cmd prompt : **```$ mongo```**
 ![Using mongo shell](https://raw.githubusercontent.com/pluralsight/guides/master/images/3b4e3b8d-8f73-4aa1-beab-2ae723dbd060.JPG)
 
 
-#### 1. Creating & Deleting Database
+#### ** 1. Creating & Deleting Database **
 
 ** ```$ use Database_Name```** commad is used to create database. This command will create a new database if it doesn't exist else it will return the existing database.
 
@@ -77,7 +77,7 @@ Connect to MongoDB instance from cmd prompt : **```$ mongo```**
 { "dropped" : "local", "ok" : 1 }
 ```
 
-#### 2. Creating & Deleting Collections
+#### ** 2. Creating & Deleting Collections **
 
 MongoDB collections are created using the below syntax :
 ```
@@ -90,9 +90,9 @@ Collections are deleted using the below syntax :
 db.COLLECTION_NAME.drop()
 ```
 
-#### 3. CRUD operations on documents in a collection
+#### ** 3. CRUD operations on documents in a collection **
 
-###### 1. Inserting Documents
+###### ** 1. Inserting Documents **
     
 `insert()` or `save()` methods are used to insert documents into collections. While inserting a document if collection doesn't exist, new collection will be created else document is inserted into existing document.    
 
@@ -106,7 +106,7 @@ WriteResult({ "nInserted" : 1 })
 ```
 Here _employees_ is the collection which holds employee documents.
 
-##### 2. Finding an existing document
+##### ** 2. Finding an existing document **
 
 `find()` method is used to query a document from collection, `pretty()` method can be used along with find() to beautify/formatt the queried document.
 
@@ -124,8 +124,8 @@ Here _employees_ is the collection which holds employee documents.
 }
 ```
 Here you can notice `_id` field in a document, which is a 12-bytes Hexadecimal number assures the uniqueness of every document.
-
-##### 3. Updating an existing document
+ 
+##### ** 3. Updating an existing document **
 
 Mongodb uses `update()` and `save()` methods to update an documnet in a collection. The `update()` method updates an existing documnet while `save()` method replaces the existing documet.
 
@@ -142,7 +142,7 @@ WriteResult({ "nInserted" : 1 })
 { "_id" : ObjectId("579c6efbb87b4b49be12664d"), "employee_id" : 1, "name" : "Sanjeev" }
 ```
 
-##### 4. Deleting a Document
+##### ** 4. Deleting a Document **
 
 `remove()` method is used to remove document from the collection. It accepts two parameters, One is _deletion_ criteria and second is _justOne_ flag.
 
@@ -188,13 +188,13 @@ server.js   : Entry point of our Application
 
 ```
 
-##### API's 
+##### ** API's  **
 +  { URI: `\employee` , Method:`GET`}  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Get all employee documents.
 +  { URI: `\employee\:id` , Method:`GET`} &nbsp;Get employee document by id.
 +  { URI: `\employee` , Method:`POST`} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Create new employee document.
 +  { URI: `\employee\:id` , Method:`POST`} Update existing employee document.
 
-##### Config Object
+##### ** Config Object **
 
 Config object is a javascript Object which holds _database_ name, _port_ on which MongoDB instance is running. If MongoDB has configured with any Authentication it can hold _username_ and _password_ for the same.
 
@@ -210,7 +210,7 @@ Below Object is exported from "config.js" based on Environment
 	}
 ```
 
-##### Starting application 
+##### ** Starting application  **
 
 Application is configured and invoked inside `server.js` file.
 
@@ -247,7 +247,7 @@ db.connect(config.db, function(err) {
 });
 
 ```
-##### Database Connection Object
+##### ** Database Connection Object **
 Which holds the utility to work with  MongoDB
 ```
 db.js
@@ -289,7 +289,7 @@ exports.close = function(done) {
 
 ```
 
-##### Express Routes
+##### ** Express Routes **
 Here we will be looking into one express route. For complete source code please visit github repo [MongoDB-DemoApp](https://github.com/SanjeevMurthy/mongolab_mongoclient).
 
 
@@ -316,7 +316,7 @@ app.get('/employee',function(req,res){
 	
 ```
 
-##### Data access layer
+##### ** Data access layer **
 
 DAO object performs all CRUD related operations on the connected database instance. 
 
@@ -347,7 +347,7 @@ module.exports={
 }
 ```
 
-##### Demo 
+##### ** Demo **
 
 Testing Node API on HTTP REST client. Below screenshot describes single API call to get all employee documents form _employee_ collection.
 
