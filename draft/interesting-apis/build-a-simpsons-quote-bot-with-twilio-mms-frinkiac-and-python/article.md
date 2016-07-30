@@ -110,7 +110,8 @@ If your app crashes due to a `hostname doesn't match` error, it's because of an 
 
 Otherwise, check your phone and you should expect to see an MMS with a random Simpsons screencap and caption!
 
-
+![S10E23](https://frinkiac.com/img/S11E02/921960.jpg)
+*Okay, so you say your son is towheaded, button nose, mischievous smile, and may be armed with a slingshot?*
 
 # Wrapping Up
 
@@ -140,8 +141,7 @@ schedule.every().monday.do(send_MMS)
 schedule.every().wednesday.at("16:00").do(send_MMS)
 ```
 
-
-* afdasdfasdf
+* If you'd like to run your application as a background process so that you don't need to leave a terminal up and running
 ```
 python test.py &
 ```
