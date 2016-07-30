@@ -1634,7 +1634,7 @@ public class PusherController {
 }
 ```
 
-First, we need to make sure the request comes from Pusher. Valid WebHooks will contain these headers:
+In the code above, we verify that the request comes from Pusher. Valid WebHooks will contain these headers:
 - `X-Pusher-Key`: The currently active Pusher's API key.
 - `X-Pusher-Signature`: An HMAC SHA256 hex digest formed by signing the POST payload (body) with Pusher's APIS token's secret 
 
@@ -1681,7 +1681,7 @@ We're going to work with a document with some *Lorem ipsum* text that will repre
 
 You can get the sample PDF document [here](https://github.com/eh3rrera/nda-chat/blob/master/nda.pdf).
 
-Go to your [HelloSign dashboard](https://www.hellosign.com/home/index) and choose the *Templates* option of the menu on the left. The following screen will be shown:
+Go to your [HelloSign dashboard](https://www.hellosign.com/home/index) and choose the *Templates* option in the menu on the left. The following screen will be shown:
 
 ![Templates screen](https://raw.githubusercontent.com/pluralsight/guides/master/images/4d659e6d-9fbb-4a1d-a15c-0571c8d77d1f.png)
 
@@ -1696,7 +1696,7 @@ Next, upload the sample document:
 ![Document uploaded](https://raw.githubusercontent.com/pluralsight/guides/master/images/b568c6a7-66d6-4e92-a6ef-3bee4cf8b7cd.png)
 
 
-We'll only require the signature of one person, so let's enter a role, *Consultant*:
+We'll only require the signature of one person, so let's enter a role -- *Consultant*:
 
 ![Role](https://raw.githubusercontent.com/pluralsight/guides/master/images/34270376-61a7-49a7-a4e8-181df90ea97c.png)
 
@@ -1711,7 +1711,7 @@ Click the *Signature* button and then click on the place where you want the sign
 ![Place Signature](https://raw.githubusercontent.com/pluralsight/guides/master/images/bb0d33c9-7d61-4309-becb-b1be10815a63.png)
 
 
-Add an *Textbox* selecting *Me (when sending).* under *Who fills this out?* and with the value *name* in *Field Label* (this will be used to reference the field when requesting the signature via the API), and a *Sign Date* field:
+Add a *Textbox* selecting *Me (when sending).* under *Who fills this out?* and with the value *name* in *Field Label* (this will be used to reference the field when requesting the signature via the API), and a *Sign Date* field:
 
 ![Create fields](https://raw.githubusercontent.com/pluralsight/guides/master/images/955d2537-c540-42cc-b4c6-e2f283a03269.png)
 
@@ -1803,7 +1803,7 @@ public class HelloSignController {
 }
 ```
 
-Notice how the values of the HelloSign API will be injected from system variables. Next, add the method to request a signature:
+Notice how the values of the HelloSign API will be injected from system variables. Next, we'll add the method to request a signature from a chat member:
 ```java
 @RequestMapping(value = "/chat/request/nda", 
 		method = RequestMethod.POST, 
@@ -1837,16 +1837,16 @@ public String requestNda(
 }
 ```
 
-In this method, we get the list of chat members that haven't signed the agreement. Then, we made a signature request for each of them. There's a lot of options to set ([here's the signature request documentation](https://www.hellosign.com/api/signature_request/send_with_template)). However, since we've done most of the work when we set the template, here we're just setting:
+In this method, we get the list of chat members who haven't signed the agreement yet. Then, we make a signature request for each of them. There's a lot of options to set ([here's the signature request documentation](https://www.hellosign.com/api/signature_request/send_with_template)). However, since we've done most of the work when we set the template, this method only sets:
 - The subject of the email that will be sent to the signer
 - The email and name of the signer
 - The value of our custom field, which is the name of the signer
 - The template ID of the document to sign
 - The flag that indicates that we're using the test mode
 
-Finally, the returned sign ID is saved in the `User` table, we'll use this value to get the user information later.
+Finally, the returned sign ID is saved in the `User` table. We'll use this value to get the user information later.
 
-Then, set up the method to respond to the HelloSign webhook:
+Next, set up a method to respond to the HelloSign webhook:
 ```java
 @RequestMapping(value = "/hellosign/webhook", 
 		method = RequestMethod.POST)
@@ -1884,9 +1884,9 @@ public String webhook(@RequestParam String json) throws HelloSignException {
 }
 ```
 
-There are many events we can listen to, but for this application, we're only interested to know when a sign request is sent and when the document is signed so we can send to the chat the corresponding notifications.
+There are many events we can listen for, but for this application, we're only interested in the event that a sign request is sent and the event that an NDA document is signed. Once we determine that these events have taken place, we can send the appropriate notifications to the chat.
 
-As with all webhooks requests, we need to validate that the request really came from HelloSign. Fortunately, the HelloSign Java library provides an object of type `com.hellosign.sdk.resource.Event` that takes the JSON object from the request, and validates it with a method call:
+As with all webhooks requests, we need to validate that the request really came from HelloSign. Fortunately, the HelloSign Java library provides an object of type `com.hellosign.sdk.resource.Event`, which takes the JSON object from the request and validates it with a method call:
 ```java
 JSONObject jsonObject = new JSONObject(json);
 Event event = new Event(jsonObject);
@@ -1954,7 +1954,7 @@ For example, here's the JSON sent when a user signs the document:
 }
 ```
 
-If there are no errors, we have to return a response body with the text `Hello API Event Received`. Otherwise, the webhook request will be considered a failure and it will be retried later.
+If there are no errors, we have to return a response body with the text `Hello API Event Received`. If an error occurs, the webhook request will be considered a failure, and it will be retried later. Notice the simmilarity between webhooks and callbacks here.
 
 Once the document is signed, we can view it (or download it) as a PDF file. From the application, we can request it by clicking a link, which is handled by this method:
 ```java
@@ -1982,7 +1982,7 @@ public void downloadFile(HttpServletResponse response, @PathVariable("id") Strin
 }
 ```
 
-The application is now complete.
+**The application is now complete.**
 
 # Running the application
 To run the application, we have to pass all the values we injected with the `@Value` annotation either as environment variables or as command-line options using inline JSON ([more info here](http://docs.spring.io/spring-boot/docs/current/reference/html/boot-features-external-config.html)).
@@ -2002,7 +2002,7 @@ Or if we're using the JAR file built by Maven:
 java -jar target/nda-chat-0.0.1-SNAPSHOT.jar --spring.application.json='{"pusher":{"appId":"XXX", "key":"XXX", "secret":"XXX"},"hellosign":{"apikey":"XXX", "templateId":"XXX", "testMode":true}}'
 ```
 
-Either way, once the application is running, create a chat, join the chat in another browser (or in incognito mode so the sessions can be different) and request the sign of an NDA.
+Either way, once the application is running, create a chat, join the chat in another browser (or in incognito mode so the sessions can be different) and request users to sign the NDA.
 
 The signer will receive an email from HelloSign:
 
@@ -2013,7 +2013,7 @@ To sign the document, the user will have to create a HelloSign account:
 ![Create HelloSign account](https://raw.githubusercontent.com/pluralsight/guides/master/images/33975039-ca71-4a21-8be1-71166af8dad8.png)
 
 
-After signing in, since we're using the test mode, a warning will be shown:
+After signing in, since we're using test mode, we'll see a warning:
 
 ![Warning Test Mode](https://raw.githubusercontent.com/pluralsight/guides/master/images/5019a646-62a0-4e61-abb2-022972621d61.png)
 
@@ -2023,7 +2023,7 @@ Then, the document will be presented:
 ![Document](https://raw.githubusercontent.com/pluralsight/guides/master/images/67e9579d-5469-4571-ba90-64539ba88b06.png)
 
 
-Click on the signature field and a window will be shown where you can sign in four different ways (by drawing, typing, uploading an image, or using a smartphone):
+Click on the signature field and you will see a signature window. You can enter your signature in various ways (by drawing, typing, uploading an image, or using a smartphone):
 
 ![Signing Window](https://raw.githubusercontent.com/pluralsight/guides/master/images/83d770c0-d141-4448-952f-4f430e70a62b.png)
 
@@ -2035,7 +2035,7 @@ When you press the *Continue* button at the right top, you'll have to agree to t
 
 ![Agree](https://raw.githubusercontent.com/pluralsight/guides/master/images/51ca7dc2-a1ca-488c-a6f9-5ed683c62829.png)
 
-And that would be it. In your HelloSign dashboard, you'll be able to see the signed document under the *Documents* option in the menu on the left:
+Once you've read, agreed to the terms, and signed, you've successfully signed the Non-Disclosure Agreement. In your HelloSign dashboard, you'll be able to see the signed NDA document under the *Documents* option in the menu on the left:
 
 ![HelloSign Documents Dashboard](https://raw.githubusercontent.com/pluralsight/guides/master/images/8ffc3d36-822c-4abd-9cf4-7fc657fcb378.png)
 
@@ -2046,7 +2046,7 @@ If you choose the *Preview* option on the document menu, you'll see the signed d
 
 ![Signed document page 2](https://raw.githubusercontent.com/pluralsight/guides/master/images/8b401409-e37f-4bb0-a231-beb3f41f39ea.png)
 
-Additionally, remember that you can view the state of the database at any time with the [H2 web console](http://localhost:8080/h2-console):
+Remember that you can view the state of the database at any time with the [H2 web console](http://localhost:8080/h2-console):
 
 ![H2 Console](https://raw.githubusercontent.com/pluralsight/guides/master/images/1056ea1a-c0a4-4ba8-ad91-69f29954695f.png)
 
@@ -2060,6 +2060,8 @@ And to view or replay the webhook requests, ngrok provides a console on `http://
 
 
 # Conclusion
-We have come a long way with this application, learning how to set up presence chats with Pusher, signing documents with the HelloSign API, using ngrok to work locally with webhooks, and building a complete application using Spring MVC and Spring Data under Spring Boot.
+We have come a long way with this application, learning how to set up presence chats with Pusher, signing documents with the HelloSign API, using ngrok to work locally with webhooks and expose our database publicly, and building a complete application using Spring MVC and Spring Data under Spring Boot.
 
-Thanks for reading. Contact me if you need anything and remember that the code of the app is [on Github](https://github.com/eh3rrera/nda-chat).
+I hope this tutorial guided you in the areas above and perhaps helped you find new ways to use Java and HTML. 
+
+Thank you for reading. Contact me via email or through the comments section below if you need anything. Remember that the code of the app is [on Github](https://github.com/eh3rrera/nda-chat).
