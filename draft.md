@@ -1,3 +1,8 @@
+### Brainfuck for Beginners by Ennis Massey
+- [Read the guide](http://tutorials.pluralsight.com/other/brainfuck-for-beginners?status=draft)
+- [Read more from Ennis Massey](http://tutorials.pluralsight.com/author/MicroTransactionsMatterToo) <img src="https://avatars.githubusercontent.com/u/12421108?v=3" width="30" height="30" alt="Ennis Massey" />
+- Related to: other
+
 ### Windows DevOps: Getting Started with PowerShell, Concepts and Examples by dragon788
 - [Read the guide](http://tutorials.pluralsight.com/devops/windows-devops-getting-started-with-powershell-concepts-and-examples?status=draft)
 - [Read more from dragon788](http://tutorials.pluralsight.com/author/dragon788) <img src="https://avatars.githubusercontent.com/u/487774?v=3" width="30" height="30" alt="dragon788" />
