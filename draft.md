@@ -1,3 +1,8 @@
+### A quick way to build an Alexa Trivia Skill by vincent wong
+- [Read the guide](http://tutorials.pluralsight.com/other/a-quick-way-to-build-an-alexa-trivia-skill?status=draft)
+- [Read more from vincent wong](http://tutorials.pluralsight.com/author/wesee) <img src="https://avatars.githubusercontent.com/u/4255955?v=3" width="30" height="30" alt="vincent wong" />
+- Related to: other
+
 ### Brainfuck for Beginners by Ennis Massey
 - [Read the guide](http://tutorials.pluralsight.com/other/brainfuck-for-beginners?status=draft)
 - [Read more from Ennis Massey](http://tutorials.pluralsight.com/author/MicroTransactionsMatterToo) <img src="https://avatars.githubusercontent.com/u/12421108?v=3" width="30" height="30" alt="Ennis Massey" />
