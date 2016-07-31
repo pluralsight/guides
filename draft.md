@@ -28,11 +28,6 @@
 - [Read more from Chris Hranj](http://tutorials.pluralsight.com/author/Brodan) <img src="https://avatars.githubusercontent.com/u/12822268?v=3" width="30" height="30" alt="Chris Hranj" />
 - Related to: Interesting APIs (SendGrid, Twilio, etc)
 
-### Build a simple File storage service using VueJS, Flask and RethinkDB by Chidiebere Nnadi
-- [Read the guide](http://tutorials.pluralsight.com/python/build-a-simple-file-storage-service-using-vuejs-flask-and-rethinkdb?status=draft)
-- [Read more from Chidiebere Nnadi](http://tutorials.pluralsight.com/author/andela-cnnadi) <img src="https://avatars.githubusercontent.com/u/3100850?v=3" width="30" height="30" alt="Chidiebere Nnadi" />
-- Related to: Python
-
 ### WebGL 101 by Martin Splitt
 - [Read the guide](http://tutorials.pluralsight.com/front-end-javascript/webgl-101?status=draft)
 - [Read more from Martin Splitt](http://tutorials.pluralsight.com/author/AVGP) <img src="https://avatars.githubusercontent.com/u/370246?v=3" width="30" height="30" alt="Martin Splitt" />
