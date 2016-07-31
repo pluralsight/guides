@@ -1,8 +1,3 @@
-### Build a simple File storage service using VueJS, Flask and RethinkDB by Chidiebere Nnadi
-- [Read the guide](http://tutorials.pluralsight.com/python/build-a-simple-file-storage-service-using-vuejs-flask-and-rethinkdb?status=in-review)
-- [Read more from Chidiebere Nnadi](http://tutorials.pluralsight.com/author/andela-cnnadi) <img src="https://avatars.githubusercontent.com/u/3100850?v=3" width="30" height="30" alt="Chidiebere Nnadi" />
-- Related to: Python
-
 ### Introduction to MongoDB by Sanjeev Murthy
 - [Read the guide](http://tutorials.pluralsight.com/nosql-databases/introduction-to-mongodb?status=in-review)
 - [Read more from Sanjeev Murthy](http://tutorials.pluralsight.com/author/SanjeevMurthy) <img src="https://avatars.githubusercontent.com/u/10756352?v=3" width="30" height="30" alt="Sanjeev Murthy" />
