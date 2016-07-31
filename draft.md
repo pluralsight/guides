@@ -1,3 +1,8 @@
+### A new guide by vincent wong
+- [Read the guide](http://tutorials.pluralsight.com/node-js/a-new-guide?status=draft)
+- [Read more from vincent wong](http://tutorials.pluralsight.com/author/wesee) <img src="https://avatars.githubusercontent.com/u/4255955?v=3" width="30" height="30" alt="vincent wong" />
+- Related to: Node.js
+
 ### A quick way to build  by vincent wong
 - [Read the guide](http://tutorials.pluralsight.com/other/a-quick-way-to-build?status=draft)
 - [Read more from vincent wong](http://tutorials.pluralsight.com/author/wesee) <img src="https://avatars.githubusercontent.com/u/4255955?v=3" width="30" height="30" alt="vincent wong" />
