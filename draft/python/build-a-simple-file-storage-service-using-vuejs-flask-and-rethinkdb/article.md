@@ -327,29 +327,19 @@ def create_app(env):
     return app
 ```
 
+Now lets head back to the controller file to add in some logic. The logic required here is similar to what you will probably do with most authentication systems using most programming languages.
 
 ```
-from flask import Flask
-from flask_restful import Api
+from flask_restful import reqparse, abort, Resource
 
-app = Flask(__name__)
-api = Api(app)
-
-if __name__ == '__main__':
-    app.run()
-```
-
-We shall proceed by creating the controllers required for authentication. We will be creating in the file `/app/resources/auth.py`
-
-```
-from flask_restful import reqparse, Resource
-from app.connectors import User
+from api.models import User
+from api.utils.errors import ValidationError
 
 class AuthLogin(Resource):
     def post(self):
         parser = reqparse.RequestParser()
-        parser.add_argument('email', type=str, help='E-mail field')
-        parser.add_argument('password', type=str, help='Password field')
+        parser.add_argument('email', type=str, help='You need to enter your e-mail address', required=True)
+        parser.add_argument('password', type=str, help='You need to enter your password', required=True)
         
         args = parser.parse_args()
         
@@ -360,15 +350,15 @@ class AuthLogin(Resource):
             token = User.validate(email, password)
             return {'token': token}
         except ValidationError as e:
-            abort('There was an error while trying to log you in -> {}'.format(e.message()))
+            abort(400, message='There was an error while trying to log you in -> {}'.format(e.message))
 
 class AuthRegister(Resource):
     def post(self):
         parser = reqparse.RequestParser()
-        parser.add_argument('fullname', type=str, help='Full name field')
-        parser.add_argument('email', type=str, help='E-mail field')
-        parser.add_argument('password', type=str, help='Password field')
-        parser.add_argument('password_conf', type=str, help='Confirm password field')
+        parser.add_argument('fullname', type=str, help='You need to enter your full name', required=True)
+        parser.add_argument('email', type=str, help='You need to enter your e-mail address', required=True)
+        parser.add_argument('password', type=str, help='You need to enter your chosen password', required=True)
+        parser.add_argument('password_conf', type=str, help='You need to enter the confirm password field', required=True)
         
         args = parser.parse_args()
         
@@ -378,31 +368,22 @@ class AuthRegister(Resource):
         fullname = args.get('fullname')
         
         try:
-            User.create(email,password,password_conf,fullname)
+            User.create(
+                email=email,
+                password=password,
+                password_conf=password_conf,
+                fullname=fullname
+            )
             return {'message': 'Successfully created your account.'}
         except ValidationError as e:
-            abort('There was an error while trying to create your account -> {}'.format(e.message()))
+            abort(400, message='There was an error while trying to create your account -> {}'.format(e.message))
         
 ```
 
-As you can see from what has been done above, first thing we did here is ensure we followed the principle of thin controller, fat model. We are pushing all the code for validation and data access to the models. To summarize what was done, for the login controller `AuthLogin` we have created a post function which accepts the e-mail address and password, validates the fields using `reqparse` and then call the `User.validate()` function to handle all the required operations for login. Similarly, for the `AuthRegister`, we collect information from the user and call a model function. In this case, we are collection the email address, password, password confirm and full name fields. We pass all these values to the `User.create()` function and expect it to work as usual.
+As mentioned earlier, majority of the logic and database interaction has been pushed to the model. To summarize what was done, for the login controller `AuthLogin`, we have created a post function which accepts the e-mail address and password, validates the fields using `reqparse` and then calls the `User.validate()` which validates the information sent and returns a toke. If an error occurs, we are going to catch it and respond with an error message.
 
-As you can notice from both controllers, we are ensuring to put the model function block within a `try...except` block. This is because within the model, we shall be using exceptions to communicate the different states we are at in the function execution.
+Similarly, for the `AuthRegister`, we collect information from the user and call a model `create()` function. In this case, we are collection the email address, password, password confirm and full name fields. We pass all these values to the `User.create()` function and as before, this function will throw an error if anything goes wrong.
 
-You can import and add these two resources to the base `run.py` file.
+All things being equal, everything should work just fine. Run the server using `python run.py runserver` to test it out. You should be able to access the two endpoints that we've created here and it should work very well.
 
-```
-from flask import Flask, Blueprint
-from flask_restful import Api
-from app.resources import auth
-
-app = Flask(__name__)
-bp = Blueprint('api', __name__)
-api = Api(app)
-
-api.add_resource(auth.AuthLogin, '/v1/auth/login')
-api.add_resource(auth.AuthRegister, '/v1/auth/register')
-
-if __name__ == '__main__':
-    app.run()
-```
+Feel free to send in your feedback and thoughts about this article. In the next part of this tutorial, we shall be going over how to write scripts to handle updating the database structure and the remaining logic for handling file uploads and management.
