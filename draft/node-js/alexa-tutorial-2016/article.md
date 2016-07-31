@@ -1,4 +1,4 @@
-### Important information about how Alexa works.
+### Important information about how Alexa works. - WORK IN PROGRESS!
 
 Alexa is based on a question->response similar to Siri and Google Now services.
 
