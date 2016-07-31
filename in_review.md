@@ -1,3 +1,8 @@
+### Alexa Tutorial 2016 by Tyler Steck
+- [Read the guide](http://tutorials.pluralsight.com/node-js/alexa-tutorial-2016?status=in-review)
+- [Read more from Tyler Steck](http://tutorials.pluralsight.com/author/steckdev) <img src="https://avatars.githubusercontent.com/u/1010935?v=3" width="30" height="30" alt="Tyler Steck" />
+- Related to: Node.js
+
 ### Introduction to MongoDB by Sanjeev Murthy
 - [Read the guide](http://tutorials.pluralsight.com/nosql-databases/introduction-to-mongodb?status=in-review)
 - [Read more from Sanjeev Murthy](http://tutorials.pluralsight.com/author/SanjeevMurthy) <img src="https://avatars.githubusercontent.com/u/10756352?v=3" width="30" height="30" alt="Sanjeev Murthy" />
