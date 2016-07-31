@@ -1,0 +1,15 @@
+{
+    "_publish_status": "draft",
+    "author_name": "wesee",
+    "author_real_name": "vincent wong",
+    "branch": "master",
+    "branches": [],
+    "filename": "article.md",
+    "first_commit": "cb63035b32d1379f8232af0b4524d45e87cd8622",
+    "image_url": "https://avatars.githubusercontent.com/u/4255955?v=3",
+    "stacks": [
+        "Node.js"
+    ],
+    "thumbnail_url": null,
+    "title": "Quick way to build an Alexa Trivia Skill"
+}
