@@ -59,8 +59,7 @@ Getting started with this implementation is actually very straight forward:
 4. Write tests
 
 ### 1. Basic Selenium setup
-When you start a Selenium test suite, I recommend creating a class to hold all the driver lifecycle management code or boilerplate as you might call it.
-So start out with a class like this:
+When you start a Selenium test suite, I recommend creating a class to hold all the driver lifecycle management code. So start out with a class like this:
 
     public class FunctionalTest {
         protected static WebDriver driver;
