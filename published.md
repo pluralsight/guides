@@ -1,3 +1,8 @@
+### Requesting e-signatures in a chat with Pusher, HelloSign, and Spring Boot by Esteban Herrera
+- [Read the guide](http://tutorials.pluralsight.com/interesting-apis/requesting-e-signatures-in-a-chat-with-pusher-hellosign-and-spring-boot)
+- [Read more from Esteban Herrera](http://tutorials.pluralsight.com/author/eh3rrera) <img src="https://avatars.githubusercontent.com/u/11665759?v=3" width="30" height="30" alt="Esteban Herrera" />
+- Related to: Interesting APIs (SendGrid, Twilio, etc)
+
 ### Tips for writing better C# code by Afzaal Ahmad Zeeshan
 - [Read the guide](http://tutorials.pluralsight.com/microsoft-net/tips-for-writing-better-c-code)
 - [Read more from Afzaal Ahmad Zeeshan](http://tutorials.pluralsight.com/author/afzaal-ahmad-zeeshan) <img src="https://avatars.githubusercontent.com/u/3237834?v=3" width="30" height="30" alt="Afzaal Ahmad Zeeshan" />
