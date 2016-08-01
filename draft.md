@@ -1,8 +1,3 @@
-### Implementing a custom Devise Sign In and ActionCable Rails 5 by stockholmkid
-- [Read the guide](http://tutorials.pluralsight.com/ruby-ruby-on-rails/implementing-a-custom-devise-sign-in-and-actioncable-rails-5?status=draft)
-- [Read more from stockholmkid](http://tutorials.pluralsight.com/author/stockholmkid) <img src="https://avatars.githubusercontent.com/u/18127401?v=3" width="30" height="30" alt="stockholmkid" />
-- Related to: Ruby, Ruby on Rails
-
 ### Build a simple File storage service using VueJS, Flask and RethinkDB by Chidiebere Nnadi
 - [Read the guide](http://tutorials.pluralsight.com/python/build-a-simple-file-storage-service-using-vuejs-flask-and-rethinkdb?status=draft)
 - [Read more from Chidiebere Nnadi](http://tutorials.pluralsight.com/author/andela-cnnadi) <img src="https://avatars.githubusercontent.com/u/3100850?v=3" width="30" height="30" alt="Chidiebere Nnadi" />
