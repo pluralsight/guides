@@ -8,7 +8,7 @@ If you don't want to follow along and just want to see the finished code, you ca
 
 # Getting Started
 
-![Press "Any" Key](http://i.giphy.com/3orif0rjs49gsPWg1y.gif)
+![Press "Any" Key](http://gph.is/1XJzMOx)
 
 Before we can jump into code, we need to get our environment set up. 
 
