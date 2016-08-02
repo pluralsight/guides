@@ -45,7 +45,7 @@ git add .
 git commit -m "First commit"
 ```
 
-First we create an empty text file (you can create the file any way you like, not necessarily with the `touch` command). The we `add` all new and modified files to the Git index (we tell Git which files we want to commit on the next commit). And finally we `commit` the changes with a message.
+First we create an empty text file (you can create the file any way you like, not necessarily with the `touch` command). Then we `add` all new and modified files to the Git index (we tell Git which files we want to commit on the next commit). And finally we `commit` the changes with a message.
 
 ## Sharing your code on GitHub
 
@@ -99,7 +99,7 @@ Then everything is correct!
 
 On GitHub let's create a new repository (button **New repository** on your dashboard). Enter a name. It should not have spaces or special characters, as it will be part of the URL of your new repo. You can leave the rest of the options at their defaults.
 
-You will be taken to the main page of your repository, that don't have any files yet.
+You will be taken to the main page of your repository, that doesn't have any files yet.
 
 On Git Bash (on the folder of your local repository) enter:
 
