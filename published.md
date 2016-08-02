@@ -1,3 +1,8 @@
+### Getting started with Page Object Pattern for your Selenium tests by Kim Schiller
+- [Read the guide](http://tutorials.pluralsight.com/software-engineering-best-practices/getting-started-with-page-object-pattern-for-your-selenium-tests)
+- [Read more from Kim Schiller](http://tutorials.pluralsight.com/author/kschiller) <img src="https://avatars.githubusercontent.com/u/2341536?v=3" width="30" height="30" alt="Kim Schiller" />
+- Related to: Software Engineering Best Practices
+
 ### Using Git (and GitHub) on Windows by Douglas Matoso
 - [Read the guide](http://tutorials.pluralsight.com/software-engineering-best-practices/using-git-and-github-on-windows)
 - [Read more from Douglas Matoso](http://tutorials.pluralsight.com/author/doug2k1) <img src="https://avatars.githubusercontent.com/u/597793?v=3" width="30" height="30" alt="Douglas Matoso" />
