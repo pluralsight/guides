@@ -8,11 +8,6 @@
 - [Read more from Tyler Steck](http://tutorials.pluralsight.com/author/steckdev) <img src="https://avatars.githubusercontent.com/u/1010935?v=3" width="30" height="30" alt="Tyler Steck" />
 - Related to: Node.js
 
-### Introduction to MongoDB by Sanjeev Murthy
-- [Read the guide](http://tutorials.pluralsight.com/nosql-databases/introduction-to-mongodb?status=in-review)
-- [Read more from Sanjeev Murthy](http://tutorials.pluralsight.com/author/SanjeevMurthy) <img src="https://avatars.githubusercontent.com/u/10756352?v=3" width="30" height="30" alt="Sanjeev Murthy" />
-- Related to: NoSQL Databases (MongoDB, Cassandra, etc)
-
 ### Using the REST Interface with Licas by discompsys
 - [Read the guide](http://tutorials.pluralsight.com/java-and-j2ee/using-the-rest-interface-with-licas?status=in-review)
 - [Read more from discompsys](http://tutorials.pluralsight.com/author/discompsys) <img src="https://avatars.githubusercontent.com/u/20437503?v=3" width="30" height="30" alt="discompsys" />
