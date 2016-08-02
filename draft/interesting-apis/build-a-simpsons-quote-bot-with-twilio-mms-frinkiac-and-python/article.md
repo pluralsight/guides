@@ -46,15 +46,15 @@ auth_token  = 'YYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY'
 client = TwilioRestClient(account_sid, auth_token)
 ```
 
-The first four lines in the code above are simply importing all of the libraries we installed earlier. The three lines after that are configuring and creating a `TwilioRestClient` object which we will use to make calls to the [Twilio REST API](https://www.twilio.com/docs/api/rest). Make sure you replace the values for `account_sid` and `auth_token` with your actual account sid and auth toekn. You can find these values in your [Twilio account dashboard](https://www.twilio.com/console).
+The first four lines in the code above are simply importing all of the libraries we just installed. The three lines after that are configuring and creating a `TwilioRestClient` object which we will use to make calls to the [Twilio REST API](https://www.twilio.com/docs/api/rest). Make sure you replace the values for `account_sid` and `auth_token` with your actual account sid and auth toekn. You can find these values in your [Twilio account dashboard](https://www.twilio.com/console).
 
 **Important note**: Never push code with your API credentials to a public repository. See the "Optional Steps" section at the bottom of this post for an alternative approach to using your Twilio API keys.
 
 Next add the following function to your app:
+
 ```
 def get_quote():
-    r = requests.get("https://frinkiac.com/api/random")
-    # Check if our request had a valid response.
+    r = requests.get("https://frinkiac.com/api/random"
     if r.status_code == 200:
         json = r.json()
         # Extract the episode number and timestamp from the API response
@@ -66,9 +66,10 @@ def get_quote():
         caption = "\n".join([subtitle["Content"] for subtitle in json["Subtitles"]])
         return image_url, caption
 ```
-The function we just added uses `requests` to send a GET request to Frinkiac and retreive data about a random Simpsons moment. Although Frinkiac isn't *actually* an API, the entire site is react-based and fetches everything via HTTP. Thus, we can use the site similar to how we would use an API.
 
-The data we retrieve is then converted to [JSON](http://www.json.org/) and we extract the `timestamp` and `episode` code from it and convert them to strings. Then the `timestamp` and `episode` are used to create the URL that point to the screencap of the random Simpsons moment. Lastly, we grab the content from each line of subtitles in our JSON and join them together to form the `caption`.
+The function we just added uses `requests` to send a GET request to Frinkiac and retreive data about a random Simpsons moment. Although Frinkiac isn't *actually* an API, the entire site is react-based and fetches resources via HTTP. Thus, we can use the site similar to how we would use an API.
+
+The data we retrieve is then converted to [JSON](http://www.json.org/) and we extract the `timestamp` and `episode` code from it and convert them to strings. Then the `timestamp` and `episode` are used to create the URL that points to a screencap of the random Simpsons moment. Last, we grab the content from each line of subtitles in our JSON and join them together to form the `caption`.
 
 Next add the only other function we need:
 ```
@@ -85,7 +86,7 @@ def send_MMS():
     except TwilioRestException as e:
         print(e)
 ```
-This function starts by calling the `get_quote` function we added in the previous step and storing its return values. The `try`/`except` lines from above were adapted from [Twilio's Python quickstart documentation](https://www.twilio.com/docs/quickstart/python/sms/sending-via-rest). These lines are simply taking in a number of parameters and turning them into a call to the Twilio REST API. Replace the `to` and `from` parameters with your phone real phone number and your Twilio phone number, respectively.
+This function starts by calling the `get_quote` function we added in the previous step and storing its return values. The `try`/`except` block from above was adapted from [Twilio's Python quickstart documentation](https://www.twilio.com/docs/quickstart/python/sms/sending-via-rest). These lines are simply taking in a number of parameters and turning them into a call to the Twilio REST API. Replace the `to` and `from` parameters with your phone real phone number and your Twilio phone number, respectively.
 If an error occurs during the API call it will be printed to the terminal.
 
 
@@ -101,12 +102,12 @@ while True:
 # Testing Our App
 For the purpose of testing the application, it's a good idea to change the schedule we added above to run more frequently. For example, ```schedule.every(30).seconds.do(send_MMS)``` would call the `send_MMS` function every 30 seconds. This way you won't need to wait until noon to know if your application is working. 
 
-After you've changed that make sure you save your `frinkiac.py` file. Then go back to your terminal and run the following:
+After you've changed that make sure you save `frinkiac.py`. Go back to your terminal and run the following:
 
 ```
 $ python frinkiac.py
 ```
-Your terminal will look like its frozen, but that's because your app is running. After 30 seconds, you should see a line printed to your terminal that says `Message sent!`. See the "Optional Steps" section about running your program as a background process.
+Your terminal will look like its frozen, but that's because your app is running. After 30 seconds, you should see a line printed to your terminal that says `Message sent!`. See the "Optional Steps" section for instructiosn on running your program as a background process.
 
 If your app crashes due to a `hostname doesn't match` error, it's because of an issue between the `requests` library and your Python version. Upgrade to Python >=2.7.9 or follow [this StackOverflow answer](https://stackoverflow.com/questions/18578439/using-requests-with-tls-doesnt-give-sni-support/18579484#18579484) to resolve this issue. If you run into any errors with Twilio you will see a number of helpful tips printed to the terminal about how to resolve your issue.
 
@@ -125,7 +126,7 @@ If you enjoyed this post be sure to check out the [Twilio Blog](https://www.twil
 
 # Optional Steps
 
-* An alternative approach to configuring your `TwilioRestClient` object is to use environment variables. With environment variables you won't have to worry about making your API keys visible to the puble. To do this, run the following commands in your terminal, replacing the values with your actual account sid and auth token:
+* An alternative approach to configuring your `TwilioRestClient` object is to use environment variables. With environment variables you won't have to worry about making your API keys visible to the public. To do this, run the following commands in your terminal, replacing the values with your actual account sid and auth token:
 ```
 $ export TWILIO_AUTH_TOKEN='YYYYYY'
 $ export TWILIO_ACCOUNT_SID='XXXXX'
