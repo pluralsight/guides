@@ -28,11 +28,6 @@
 - [Read more from dragon788](http://tutorials.pluralsight.com/author/dragon788) <img src="https://avatars.githubusercontent.com/u/487774?v=3" width="30" height="30" alt="dragon788" />
 - Related to: DevOps (Docker, Nagios, Jenkins, Chef, Puppet, etc)
 
-### Build a Simpsons Quote-Bot with Twilio MMS, Frinkiac, and Python by Chris Hranj
-- [Read the guide](http://tutorials.pluralsight.com/interesting-apis/build-a-simpsons-quote-bot-with-twilio-mms-frinkiac-and-python?status=draft)
-- [Read more from Chris Hranj](http://tutorials.pluralsight.com/author/Brodan) <img src="https://avatars.githubusercontent.com/u/12822268?v=3" width="30" height="30" alt="Chris Hranj" />
-- Related to: Interesting APIs (SendGrid, Twilio, etc)
-
 ### WebGL 101 by Martin Splitt
 - [Read the guide](http://tutorials.pluralsight.com/front-end-javascript/webgl-101?status=draft)
 - [Read more from Martin Splitt](http://tutorials.pluralsight.com/author/AVGP) <img src="https://avatars.githubusercontent.com/u/370246?v=3" width="30" height="30" alt="Martin Splitt" />
