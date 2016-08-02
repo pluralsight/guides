@@ -13,11 +13,6 @@
 - [Read more from Sanjeev Murthy](http://tutorials.pluralsight.com/author/SanjeevMurthy) <img src="https://avatars.githubusercontent.com/u/10756352?v=3" width="30" height="30" alt="Sanjeev Murthy" />
 - Related to: NoSQL Databases (MongoDB, Cassandra, etc)
 
-### Using Git (and Github) on Windows by Douglas Matoso
-- [Read the guide](http://tutorials.pluralsight.com/software-engineering-best-practices/using-git-and-github-on-windows?status=in-review)
-- [Read more from Douglas Matoso](http://tutorials.pluralsight.com/author/doug2k1) <img src="https://avatars.githubusercontent.com/u/597793?v=3" width="30" height="30" alt="Douglas Matoso" />
-- Related to: Software Engineering Best Practices
-
 ### Using the REST Interface with Licas by discompsys
 - [Read the guide](http://tutorials.pluralsight.com/java-and-j2ee/using-the-rest-interface-with-licas?status=in-review)
 - [Read more from discompsys](http://tutorials.pluralsight.com/author/discompsys) <img src="https://avatars.githubusercontent.com/u/20437503?v=3" width="30" height="30" alt="discompsys" />
