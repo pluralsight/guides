@@ -1,10 +1,10 @@
-In this guide we are going to learn about [MongoDB](https://www.mongodb.com/), Open-sourced document-oriented NoSql database, Installation, Basic operations on database and will develop a simple [NodeJs](https://nodejs.org/en/) application using `mongodb` driver.
+In this guide, we are going to learn about [MongoDB](https://www.mongodb.com/), an open-source document-oriented NoSql database. This tutorial will cover its installation and basic MongoDB operations. We will also develop a simple [NodeJs](https://nodejs.org/en/) application using the `mongodb` driver.
 
 ## MongoDB
 
-MongoDB is a cross-platform, powerful, document-oriented database which is flexible, high performant and easily scalable data store. It also has built-in support for MapReduce-style Aggregation and Geospatial indexes.
+MongoDB is a cross-platform, powerful, document-oriented database which is flexible and easily scalable in terms of data storage. It also has built-in support for MapReduce-style [Aggregation](https://docs.mongodb.com/manual/aggregation/) and [Geospatial](https://docs.mongodb.com/manual/applications/geospatial-indexes/) indexes.
 
-MongoDB is made up of databases which contain multiple _collections_. Each collection is made up of _documents_. Each document is made up of _fields_ which are '_named:value_' pairs(_JSON Object_). Collections can be indexed, which improves lookup and sorting performance.
+MongoDB is made up of databases which contain multiple _collections_. Each collection is made up of _documents_. Each document is made up of _fields_ which are '_named:value_' pairs (JSON objects). Collections can be indexed, which improves lookup and sorting performance.
 
 #### Quick comparision between SQL and MongoDB
 
@@ -16,12 +16,12 @@ _Joins_ and complex multirow _Transactions_. These are architectural decisions t
 for scalability, because both of these features are difficult to provide efficiently in a
 distributed system.
 
-But recent announcement form CTO of MongoDB is that, joins would be coming with version __3.2__ release in the form of brand new pipeline operator called __$lookup__. [Joins and other Aggregation](https://www.mongodb.com/blog/post/joins-and-other-aggregation-enhancements-coming-in-mongodb-3-2-part-1-of-3-introduction)
+But according to a recent announcement, [joins are coming](https://www.mongodb.com/blog/post/joins-and-other-aggregation-enhancements-coming-in-mongodb-3-2-part-1-of-3-introduction) to MongoDB with version __3.2__ release in the form of brand new pipeline operator called `$lookup`.
 
 
 ## Installation
 
-Here we will install MongoDB on Ubuntu, But MongoDB can be installed on multiple platforms. [Supported platforms](https://docs.mongodb.com/manual/installation/)
+In this guide, I will install MongoDB on Ubuntu. However, the database can be installed on [multiple platforms](https://docs.mongodb.com/manual/installation/)
 
 #### Steps :
 
@@ -47,14 +47,14 @@ Here we will install MongoDB on Ubuntu, But MongoDB can be installed on multiple
     ```
 
 
-MongoDB stores its data files under __/var/lib/mongodb__ and its log files under  __/var/log/mongodb__ by default, and runs using the mongodb user account. However you can specify alternate location for data and log files in mongodb configuration file __/etc/mongod.conf__.
+MongoDB stores its data files under `/var/lib/mongodb` and its log files under `/var/log/mongodb` by default, and it runs using the mongodb user account. However you can specify alternate locations for data and log files in the MongoDB configuration file, `/etc/mongod.conf`.
 
 
 ## Basic Operations using Mongo Shell
 
-The mongo shell is an interactive JavaScript interface to MongoDB. You can use the mongo shell to query and update data as well as perform administrative operations.
+The Mongo shell is an interactive JavaScript interface to MongoDB. You can use the Mongo shell to query and update data and also perform administrative operations.
 
-Once you have installed and have started MongoDB, connect the mongo shell to your running MongoDB server. By default Mongo server will start on port 27017.
+Once you have installed and have started MongoDB, connect the Mongo shell to your running MongoDB server. By default, the Mongo server will start on **port 27017**.
 
 Connect to MongoDB instance from cmd prompt : **```$ mongo```**
 
@@ -63,29 +63,29 @@ Connect to MongoDB instance from cmd prompt : **```$ mongo```**
 
 #### ** 1. Creating & Deleting Database **
 
-** ```$ use Database_Name```** commad is used to create database. This command will create a new database if it doesn't exist else it will return the existing database.
+The ** ```$ use Database_Name```** command is used to create database. This command will create a new database if one doesn't exist. Otherwise, it will return the existing database.
 
 
 
 ![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/7260bb4f-68f1-4d00-ad4a-a483487f7736.JPG)
 
 
-** ``` $ db ```** commad is used to check current database and ** ```$ show dbs```** commad will list all the existing databases.
+The ** ``` $ db ```** command is used to check current database. The ** ```$ show dbs```** command will list all the existing databases.
 
-** ``db.dropDatabase()``** command is used to delete the database.
+The ** ``db.dropDatabase()``** command is used to delete the database.
 ```
 { "dropped" : "local", "ok" : 1 }
 ```
 
 #### ** 2. Creating & Deleting Collections **
 
-MongoDB collections are created using the below syntax :
+MongoDB collections are created using the syntax below:
 ```
 db.createCollection(name, options)
 ```
-where _name_ is name if the collection to be created and _options_(optional) to specify options about indexing and memory limit.
+where `name` is the name of the collection to be created and `options` (an optional parameter) specifies options about indexing and memory limit.
 
-Collections are deleted using the below syntax :
+Collections are deleted using the syntax below:
 ```
 db.COLLECTION_NAME.drop()
 ```
@@ -94,7 +94,7 @@ db.COLLECTION_NAME.drop()
 
 ###### ** 1. Inserting Documents **
     
-`insert()` or `save()` methods are used to insert documents into collections. While inserting a document if collection doesn't exist, new collection will be created else document is inserted into existing document.    
+`insert()` or `save()` methods are used to insert documents into collections. While inserting a document, if the collection doesn't exist, a new collection will be created. Otherwise, the document is inserted into the existing document.    
 
 ```
 db.employees.insert({
@@ -104,11 +104,11 @@ db.employees.insert({
 
 WriteResult({ "nInserted" : 1 })
 ```
-Here _employees_ is the collection which holds employee documents.
+Here `employees` is the collection which holds `employee` documents.
 
 ##### ** 2. Finding an existing document **
 
-`find()` method is used to query a document from collection, `pretty()` method can be used along with find() to beautify/formatt the queried document.
+Use the `find()` method to query a document from your collection. The `pretty()` method can be used along with `find()` to beautify and format the document returned by the query.
 
 ```
 > db.employees.find().pretty()
@@ -123,8 +123,8 @@ Here _employees_ is the collection which holds employee documents.
 	"employee_id" : 2
 }
 ```
-Here you can notice `_id` field in a document, which is a 12-bytes Hexadecimal number assures the uniqueness of every document.
- 
+Notice the `_id` field in the document. This field is a 12-bytes Hexadecimal number that assures the uniqueness of every document.
+
 ##### ** 3. Updating an existing document **
 
 Mongodb uses `update()` and `save()` methods to update an documnet in a collection. The `update()` method updates an existing documnet while `save()` method replaces the existing documet.
@@ -144,7 +144,7 @@ WriteResult({ "nInserted" : 1 })
 
 ##### ** 4. Deleting a Document **
 
-`remove()` method is used to remove document from the collection. It accepts two parameters, One is _deletion_ criteria and second is _justOne_ flag.
+The `remove()` method is used to remove document from the collection. It accepts two parameters: the `deletion criteria` and the `justOne` flag.
 
 
 
@@ -153,14 +153,14 @@ db.employees.remove({"_id":ObjectId("579c6ecab87b4b49be12664c")})
 WriteResult({ "nRemoved" : 1 })
 ```
 
-These are some basic CRUD operations we covered, to explore more about complex operations with aggregation and indexing plese refer official documentation. [CRUD Operations](https://docs.mongodb.com/master/crud/).
+These are some basic [CRUD operations](https://docs.mongodb.com/master/crud/) we covered, to explore more about complex operations with aggregation and indexing plese refer official documentation.
 
 
-## Simple NodeJs API to perform basic operations
+## Using the NodeJS API to perform basic operations
 
-We have seen how to interact with MongoDB instance via mongo shell, now we will build simple NodeJs API to interact with the same Instace via `mongodb` driver. Which helps us in establishing a connection between Node App and MongoDB instance.
+We have seen how to interact with MongoDB using the Mongo shell. Now we will build a NodeJS API to interact with the same Instace via the `mongodb` driver. This helps us in establishing a connection between Node App and MongoDB instance.
 
-This API will perform basic CRUD operations on the _employees_ collection under _corporate_ database.
+Our API will perform basic CRUD operations on the _employees_ collection under _corporate_ database.
 
 ** Technology Stack :** NodeJS + ExpressJS + mongodb 
 
@@ -196,7 +196,7 @@ server.js   : Entry point of our Application
 
 ##### ** Config Object **
 
-Config object is a javascript Object which holds _database_ name, _port_ on which MongoDB instance is running. If MongoDB has configured with any Authentication it can hold _username_ and _password_ for the same.
+A Config object is a javascript Object which holds _database_ name, _port_ on which MongoDB instance is running. If MongoDB has configured with any Authentication, it can hold _username_ and _password_ for the same.
 
 ```
 Below Object is exported from "config.js" based on Environment
@@ -210,9 +210,9 @@ Below Object is exported from "config.js" based on Environment
 	}
 ```
 
-##### ** Starting application  **
+##### ** Starting the application  **
 
-Application is configured and invoked inside `server.js` file.
+Let's configure and invoke the application inside the `server.js` file.
 
 ```
 Server.js
@@ -248,7 +248,8 @@ db.connect(config.db, function(err) {
 
 ```
 ##### ** Database Connection Object **
-Which holds the utility to work with  MongoDB
+
+This object holds the utility to work with MongoDB
 ```
 db.js
 
@@ -290,18 +291,18 @@ exports.close = function(done) {
 ```
 
 ##### ** Express Routes **
-Here we will be looking into one express route. For complete source code please visit github repo [MongoDB-DemoApp](https://github.com/SanjeevMurthy/mongolab_mongoclient).
 
+Here we will be looking into using [Express Routes for handling MongoDB](https://jefftschwartz.wordpress.com/2012/08/23/use-express-route-specific-middleware-to-access-mongodb/). For complete source code, please visit the [github repository](https://github.com/SanjeevMurthy/mongolab_mongoclient).
 
-Express route to get all employee documents from employee collection.
+Let's create an express route to get all employee documents from employee collection.
 ```
 
 routes.js
 
-//DAO objects which holds business logic to perform CRUD operations
+//DAO objects which hold business logic to perform CRUD operations
 var employeeDAO=require('../business/employeeDAO.js');
 
-//express route which call DAO object to get all employee documents
+//Express route which calls the DAO object to get all employee documents
 app.get('/employee',function(req,res){
 	employeeDAO.getAllEmployees(function(err,response){
 	    if(err){
@@ -318,7 +319,7 @@ app.get('/employee',function(req,res){
 
 ##### ** Data access layer **
 
-DAO object performs all CRUD related operations on the connected database instance. 
+The DAO (Data Access Object) object performs all CRUD related operations on the connected database instance. 
 
 ```
 employeeDAO.js
@@ -347,15 +348,15 @@ module.exports={
 }
 ```
 
-##### ** Demo **
+##### Testing Node API on HTTP REST client
 
-Testing Node API on HTTP REST client. Below screenshot describes single API call to get all employee documents form _employee_ collection.
+The screenshot below describes a single API call that gets all employee documents from the `employee` collection.
 
 
 ![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/76ee1692-6282-46fb-adb3-d03e4bc9520c.JPG)
 
-This completes out journey in getting started with MongoDB. To summarise again we got to know what MongoDB is ? Its terminologies ,Comparision with SQL, basic CRUD operations and we built simple Node api using mongodb driver. [Github repo](https://github.com/SanjeevMurthy/mongolab_mongoclient)
+This completes out journey in getting started with MongoDB. To summarize, we learned what MongoDB is, and got hands-on experience with its terminologies. We compared it with SQL, performed basic CRUD operationsm, and built a simple Node api using the MongoDB driver. Remember that the complete code is on the [Github repository](https://github.com/SanjeevMurthy/mongolab_mongoclient).
 
 __  __
 
-Please feel free to share your feedback. If you found this informative please favourite this Guide !!
+Please feel free to share your feedback using the comments section below. If you found this informative, please favorite this Guide!
