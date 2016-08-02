@@ -1,3 +1,8 @@
+### Introduction to MongoDB by Sanjeev Murthy
+- [Read the guide](http://tutorials.pluralsight.com/nosql-databases/introduction-to-mongodb)
+- [Read more from Sanjeev Murthy](http://tutorials.pluralsight.com/author/SanjeevMurthy) <img src="https://avatars.githubusercontent.com/u/10756352?v=3" width="30" height="30" alt="Sanjeev Murthy" />
+- Related to: NoSQL Databases (MongoDB, Cassandra, etc)
+
 ### Getting started with Page Object Pattern for your Selenium tests by Kim Schiller
 - [Read the guide](http://tutorials.pluralsight.com/software-engineering-best-practices/getting-started-with-page-object-pattern-for-your-selenium-tests)
 - [Read more from Kim Schiller](http://tutorials.pluralsight.com/author/kschiller) <img src="https://avatars.githubusercontent.com/u/2341536?v=3" width="30" height="30" alt="Kim Schiller" />
