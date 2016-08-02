@@ -107,7 +107,7 @@ After you've changed that make sure you save `frinkiac.py`. Go back to your term
 ```
 $ python frinkiac.py
 ```
-Your terminal will look like its frozen, but that's because your app is running. After 30 seconds, you should see a line printed to your terminal that says `Message sent!`. See the "Optional Steps" section for instructiosn on running your program as a background process.
+Your terminal will look like its frozen, but that's because your app is running. After 30 seconds, you should see a line printed to your terminal that says `Message sent!`. See the "Optional Steps" section for instructions on running your program as a background process.
 
 If your app crashes due to a `hostname doesn't match` error, it's because of an issue between the `requests` library and your Python version. Upgrade to Python >=2.7.9 or follow [this StackOverflow answer](https://stackoverflow.com/questions/18578439/using-requests-with-tls-doesnt-give-sni-support/18579484#18579484) to resolve this issue. If you run into any errors with Twilio you will see a number of helpful tips printed to the terminal about how to resolve your issue.
 
