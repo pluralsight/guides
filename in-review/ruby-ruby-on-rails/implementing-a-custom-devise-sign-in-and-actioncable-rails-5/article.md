@@ -1,12 +1,12 @@
-Welcome to creating a Rails 5 App that uses a custom Devise log in page with ActionCable! What makes this so unique is that we want to define a subscribed user in our connection channel to be the current_user that signs in. I will walk you through the steps of completing this challenge.
+In this tutorial, we'll be creating a Rails 5 App that uses a custom Devise log in page with ActionCable! What makes this app so unique is that we want to define a subscribed user in our connection channel to be the `current_user` that signs in. I will walk you through the steps of completing this challenge.
 
-Using Devise and ActionCable will allow for the ability to track a user's actions, specifically in a game setting. This can later be used to do things such as creating a game lobby, seeing past scores of particular users, and seeing who is #1 on the leaderboards! 
+Together, Devise and ActionCable will allow us to track a user's actions, specifically in a game setting. This can later let us create a game lobby, see users' past scores, and determine who is #1 on the leaderboards.
 
 Let's get started. 
 
-First make sure that you have Rails up to date. Use: `rails -v` and make sure it matches this: `Rails 5.0.0.rc1`
+First make sure that you have Rails up to date. Use: `rails -v` and make sure the output matches this: `Rails 5.0.0.rc1`
 
-Once you have the most up-to-date version of rails, create a new rails 5 app:
+Once you have the most up-to-date version of Rails, create a new Rails 5 app:
 
 `rails new <Your App Name>`
 
@@ -22,15 +22,17 @@ Next install the Devise basics, along with the Devise Views:
 
 `rails generate devise:install && rails generate devise:views`
 
-Now it is time to create a User model with DEVISE
+Now it is time to create a User model with Devise
 
-`rails generate devise <Your Model Name, Usually just: user>`
+`rails generate devise <Your Model Name, Usually Just: user>`
 
-Finally we need to migrate and rollback our devise table:
+Finally we need to migrate and rollback our Devise table:
 
 `rake db:migrate && rake db:rollback && rake db:migrate`
 
-Congrats! You have successfully created Devise but now we want to add in a custom sign in such as studentID instead of email. For this example we will use:
+Congrats! You have successfully created a Devise model.
+
+But now we want to add in a custom sign in such as studentID instead of email. For this example we will use:
 `studentid`
 
 We are first going to add authentication to the User Model so we can allow `studentid` to be the verification for signing a user in by adding `:authentication_keys`: 
@@ -71,7 +73,7 @@ class ApplicationController < ActionController::Base
 
 end
 ```
-`def after_sign_in_path_for(users)` will allow you to redirect users after signin in to your home page. In this case my home page is: `grid_index_path`
+`def after_sign_in_path_for(users)` will allow you to redirect users after sign-in in to your home page. In this case my home page is: `grid_index_path`
 
 We will now need to include this in our `routes.rb` file. 
 ```
@@ -87,9 +89,9 @@ end
 ```
 Here we will specify that upon visiting our site a user will be sent to creating a new account via `'devise/registrations#new'`. You can send them other places as well by changing the route. For now ignore the Action Cable Mount but we will need that for later! 
 
-Next we will want to go into our Views for Devise to add our custom sign in. 
+Next we'll go into our Views for Devise to add our custom sign in. 
 
-First we will change the `new.html.erb` file in views/devise/registrations by adding in a field for our new custom sign in:
+First, change the `new.html.erb` file in `views/devise/registrations` by adding in a field for our new custom sign in:
 ```
 <div class="field">
     <%= f.label :studentid, 'Colorado College ID' %><br />
@@ -135,7 +137,7 @@ The full file will now look like this:
 <%= render "devise/shared/links" %>
 
 ```
-We will now also need to change the file `new.html.erb` file in views/devise/sessions
+We will now also need to change the file `new.html.erb` file in `views/devise/sessions`
 ```
 <h2>Log in</h2>
 
@@ -201,16 +203,14 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.0]
   end
 end
 ```
-** You can add in validations here as you like. I would recommend adding in a unique validation so multiple users can not have the same id or in other cases, username. 
+*You can add in validations here as you like. I would recommend adding in a unique validation so multiple users can not have the same id or in other cases, username.*
 
 Now Migrate again: 
 `rake db:migrate`
 
-Great now comes the fun stuff! Setting up a subscribed connection if a user has signed in via Devise. 
+Great! We've customized sign-in options and enabled sign-in. Now, we'll set up a subscribed connection if a user has signed in via Devise. 
 
-First make sure that you have ActionCable by seeing that you have the folder `app/channels`
-
-Now we will define a subscription by updating the file `app/channels/connection.rb`
+First make sure that you have ActionCable by seeing that you have the folder `app/channels`. After that, define a subscription by updating the file `app/channels/connection.rb`.
 
 ```
 module ApplicationCable
@@ -234,6 +234,6 @@ module ApplicationCable
   end
 end
 ```
-This will allow you to check the current_user on the page and to verify that they are signed in. If so they are now a valid subscriber!
+This will allow you to check the current user on the page and verify that the user is signed in. If so, the user becomes a valid subscriber. Clearly Devise and ActionCable work well together when it comes to authentication and user tracking.
 
-That is it! Simple!
+Thanks for reading this tutorial. Hopefully you found my methods easy to follow. Please favorite this tutorial and leave your feedback and questions in the discussions section below. 
