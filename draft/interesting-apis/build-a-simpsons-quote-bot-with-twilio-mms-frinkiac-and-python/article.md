@@ -110,7 +110,7 @@ Your terminal will look like its frozen, but that's because your app is running.
 
 If your app crashes due to a `hostname doesn't match` error, it's because of an issue between the `requests` library and your Python version. Upgrade to Python >=2.7.9 or follow [this StackOverflow answer](https://stackoverflow.com/questions/18578439/using-requests-with-tls-doesnt-give-sni-support/18579484#18579484) to resolve this issue. If you run into any errors with Twilio you will see a number of helpful tips printed to the terminal about how to resolve your issue.
 
-Otherwise, check your phone and you should expect to see an MMS with a random Simpsons screencap and caption!
+Otherwise, check your phone and you should expect to see an MMS with a random Simpsons screencap and caption! Here's an example:
 
 ![S10E23](https://frinkiac.com/img/S11E02/921960.jpg)
 
