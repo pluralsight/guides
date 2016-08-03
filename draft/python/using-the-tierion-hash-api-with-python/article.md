@@ -18,7 +18,9 @@ import hashlib
 
 ## Authentication
 
-#### To obtain your access token, submit your Tierion credentials to the token endpoint.
+Tierion's Hash API uses a JSON Web Token as an access token for authentication. Every request must include a valid access token.
+
+##### To obtain your access token, submit your Tierion credentials to the token endpoint.
 
 https://hashapi.tierion.com/v1/auth/token
 
@@ -37,20 +39,36 @@ token = reqToken.json()['access_token']
 auth1 = {'Authorization': 'Bearer ' + token}
 ```
 
+The variable auth1 now contains your access token which is active for one hour. 
+
 ### Submit a string to Hash
 
-https://hashapi.tierion.com/v1/hashitems
+Now we would like to send a string to get encrypted using SHA-256
+
+
+
 
 ```
 hashText = hashlib.sha256("Matthew Sedaghatfar Using the BlockChain").hexdigest()
 hashItem = '/hashitems'
 myHash = {'hash': hashText}
+```
 
+Then we send this hash to Tierion and get back a receiptId and timestamp.
+```
 respHash = requests.post(apiStem + hashItem, json= myHash, headers = auth1)
 receipt = respHash.json()['receiptId']
 
 respHash.json()
 ```
+
+### Conclusion
+
+Some use cases of a Hash API is to store predictions or keeping records of Lease aggrements.
+
+
+
+
 
 
 #Get
