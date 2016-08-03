@@ -1,4 +1,4 @@
-## Guide to using the Tierion Hash API with Python.
+## How to connect to the Tierion Hash API with Python.
 
 
 
