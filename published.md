@@ -1,3 +1,8 @@
+### Download large files from remote servers using Nginx docker by Red Moses
+- [Read the guide](http://tutorials.pluralsight.com/devops/download-large-files-from-remote-servers-using-nginx-docker)
+- [Read more from Red Moses](http://tutorials.pluralsight.com/author/redmoses) <img src="https://avatars.githubusercontent.com/u/4059490?v=3" width="30" height="30" alt="Red Moses" />
+- Related to: DevOps (Docker, Nagios, Jenkins, Chef, Puppet, etc)
+
 ### Introduction to MongoDB by Sanjeev Murthy
 - [Read the guide](http://tutorials.pluralsight.com/nosql-databases/introduction-to-mongodb)
 - [Read more from Sanjeev Murthy](http://tutorials.pluralsight.com/author/SanjeevMurthy) <img src="https://avatars.githubusercontent.com/u/10756352?v=3" width="30" height="30" alt="Sanjeev Murthy" />
