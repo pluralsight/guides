@@ -1,3 +1,8 @@
+### Using the Tierion Hash API with Python by Matthew Sedaghatfar
+- [Read the guide](http://tutorials.pluralsight.com/python/using-the-tierion-hash-api-with-python?status=draft)
+- [Read more from Matthew Sedaghatfar](http://tutorials.pluralsight.com/author/sedaghatfar) <img src="https://avatars.githubusercontent.com/u/3936021?v=3" width="30" height="30" alt="Matthew Sedaghatfar" />
+- Related to: Python
+
 ### Build a simple File storage service using VueJS, Flask and RethinkDB by Chidiebere Nnadi
 - [Read the guide](http://tutorials.pluralsight.com/python/build-a-simple-file-storage-service-using-vuejs-flask-and-rethinkdb?status=draft)
 - [Read more from Chidiebere Nnadi](http://tutorials.pluralsight.com/author/andela-cnnadi) <img src="https://avatars.githubusercontent.com/u/3100850?v=3" width="30" height="30" alt="Chidiebere Nnadi" />
