@@ -1,3 +1,8 @@
+### Build a Simpsons Quote-Bot with Twilio MMS, Frinkiac, and Python by Chris Hranj
+- [Read the guide](http://tutorials.pluralsight.com/interesting-apis/build-a-simpsons-quote-bot-with-twilio-mms-frinkiac-and-python)
+- [Read more from Chris Hranj](http://tutorials.pluralsight.com/author/Brodan) <img src="https://avatars.githubusercontent.com/u/12822268?v=3" width="30" height="30" alt="Chris Hranj" />
+- Related to: Interesting APIs (SendGrid, Twilio, etc)
+
 ### Download large files from remote servers using Nginx docker by Red Moses
 - [Read the guide](http://tutorials.pluralsight.com/devops/download-large-files-from-remote-servers-using-nginx-docker)
 - [Read more from Red Moses](http://tutorials.pluralsight.com/author/redmoses) <img src="https://avatars.githubusercontent.com/u/4059490?v=3" width="30" height="30" alt="Red Moses" />

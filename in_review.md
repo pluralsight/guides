@@ -1,8 +1,3 @@
-### Build a Simpsons Quote-Bot with Twilio MMS, Frinkiac, and Python by Chris Hranj
-- [Read the guide](http://tutorials.pluralsight.com/interesting-apis/build-a-simpsons-quote-bot-with-twilio-mms-frinkiac-and-python?status=in-review)
-- [Read more from Chris Hranj](http://tutorials.pluralsight.com/author/Brodan) <img src="https://avatars.githubusercontent.com/u/12822268?v=3" width="30" height="30" alt="Chris Hranj" />
-- Related to: Interesting APIs (SendGrid, Twilio, etc)
-
 ### Implementing a custom Devise Sign In and ActionCable Rails 5 by stockholmkid
 - [Read the guide](http://tutorials.pluralsight.com/ruby-ruby-on-rails/implementing-a-custom-devise-sign-in-and-actioncable-rails-5?status=in-review)
 - [Read more from stockholmkid](http://tutorials.pluralsight.com/author/stockholmkid) <img src="https://avatars.githubusercontent.com/u/18127401?v=3" width="30" height="30" alt="stockholmkid" />
