@@ -83,9 +83,89 @@ Following our pipeline, we will have to create a list of vertices we want to dra
 The coordinate system, by default, is slightly different than what you may expect:
 
 
+![The coordinate system for WebGL ranges from -1.0 to 1.0 on each axis, making (0,0) the center of the screen](https://raw.githubusercontent.com/pluralsight/guides/master/images/7d46f90e-c5a1-4b35-aa92-414a15e54d09.png)
 
 
-# Writing our first shaders
+Especially when you worked with [the Canvas 2D](https://developer.mozilla.org/en/docs/Web/API/CanvasRenderingContext2D) API before, this coordinate system will be unfamiliar for you.
+
+So the center of the screen is at position `x=0.0, y=0.0`, while the bottom left-hand corner is at `x=-1.0, y=-1.0` and the top right-hand corner is at `x=1.0, y=1.0`.
+
+So we will be dealing with float values for coordinates.
+Let's figure out three points for our triangle:
+
+![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/7f55b8f6-45c1-44a4-af29-6bb38808e8a4.png)
+
+So we have three points:
+
+* x = -0.5, y = -0.5
+* x =  0.0, y =  0.5
+* x =  0.5, y = -0.5
+
+We can now put these three points into an array. JavaScript arrays aren't optimal for WebGL, because WebGL makes a few assumptions on the way the data is put into memory, so we will convert this array into a [Typed Array](https://developer.mozilla.org/en/docs/Web/JavaScript/Typed_arrays) for 32 Bit Float numbers, a [Float32Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Float32Array):
+
+```javascript
+var points = [
+  -0.5, -0.5,
+   0.0,  0.5,
+   0.5, -0.5
+]
+
+var vertices = new Float32Array(points)
+```
+
+With this typed array, we can create a buffer for our vertices and put the content of the typed array into the buffer:
+
+```javascript
+var vertexPosBuffer = gl.createBuffer()
+
+// WebGL uses the concept of the "bound buffer" with a few predefined buffer "targets". Each target can only be assigned a single buffer at the same time. We make our vertexPosBuffer the assigned buffer for the ARRAY_BUFFER target
+gl.bindBuffer(gl.ARRAY_BUFFER, vertexPosBuffer)
+// now we can set the data for the ARRAY_BUFFER target to our typed array. We also specify how the data is going to be used. STATIC_DRAW means: The data is written once and used many times (each time we draw)
+gl.bufferData(gl.ARRAY_BUFFER, vertices, gl.STATIC_DRAW)
+```
+
+There were a few new things in the last code snippet, let's have a look at them in more detail.
+
+First of all, WebGL has a few predefined buffers, called "targets":
+
+* `ARRAY_BUFFER` for vertex attributes. That means: Data that is related to each vertex should be put here when used in the pipeline
+* `ELEMENT_ARRAY_BUFFER` for indices. That means: If you refer to a certain index in the `ARRAY_BUFFER`, you can specify it here
+
+**Note**: There are more such targets for [WebGL 2](https://developer.mozilla.org/en-US/docs/Web/API/WebGL2RenderingContext) listed [here](https://developer.mozilla.org/en/docs/Web/API/WebGLRenderingContext/bufferData).
+
+Once we have our buffer bound to a target, we can use that target to put data into our buffer by using `bufferData` with the target and the typed array with data. There is also a third parameter giving WebGL a hint on how we will use the information:
+
+* `STATIC_DRAW` is meant for data that is not changed but going to be used often
+* `DYNAMIC_DRAW` is meant for data that is going to be changed and used often
+* `STREAM_DRAW` is meant for data that is going to be used only a few times 
+
+**Note**: There are more such usage hints for [WebGL 2](https://developer.mozilla.org/en-US/docs/Web/API/WebGL2RenderingContext) listed [here](https://developer.mozilla.org/en/docs/Web/API/WebGLRenderingContext/bufferData).
+
+As we are putting our vertices in once and then use them for the rest of the time the application is running to draw the triangle, we will stick with `STATIC_DRAW`.
+
+Now we have the data ready for the next steps of the pipeline: Shaders.
+
+We will have to create two shaders, the *Vertex Shader* and the *Fragment Shader* and link them together into a *Program* that can be used to calculate the final vertex positions and colours to draw on screen.
+
+We will start by using some very simple shaders and put their source code into the two `<script>` tags we prepared at the beginning of the tutorial:
+
+```html
+    <script id="vertexShader" type="text/plain">
+      vec4 aVertexPos; // the input goes here: A single vertex (x,y, 0, 0) from the buffer
+      
+      void main(void) {
+        gl_Position = aVertexPos; // we just output the original vertex position
+      }
+    </script>
+    <script id="fragmentShader" type="text/plain">
+      void main(void) {
+        // we will fill the triangle with red (RGBA = 1.0, 0.0, 0.0, 1.0)
+        gl_FragColor = vec4(1.0, 0.0, 0.0, 1.0);
+      }
+    </script>
+```
+
+# Writing our first real shaders
 
 # Creating our first cube
 
