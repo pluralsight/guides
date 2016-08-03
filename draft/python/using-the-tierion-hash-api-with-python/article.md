@@ -73,15 +73,3 @@ getRe.json()
 ### Conclusion
 
 Some use cases of a Hash API is to store predictions or keeping records of Lease aggrements.
-
-
-
-
-
-
-#Get
-getReceipts = '/receipts/'
-
-getRec = requests.get(apiStem + getReceipts + receipt,headers = auth1)
-getRe.json()
-
