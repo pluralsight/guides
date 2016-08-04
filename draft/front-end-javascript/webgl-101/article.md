@@ -165,7 +165,87 @@ We will start by using some very simple shaders and put their source code into t
     </script>
 ```
 
+We will dig deeper into shaders in the next section, but for now here's the most important bits we need to understand:
+
+* Shaders are written in a programming language called [GLSL](https://en.wikipedia.org/wiki/OpenGL_Shading_Language)
+* We will put our vertices one by one into `aVertexPos`
+* The GPU will run the vertex shader once for each of the vertices, producing the vertices it will use for the rest of the pipeline
+* The fragment shader will make every pixel in our triangle appear red
+
+This is just enough for us to be able to continue in our quest to get a triangle on screen.
+
+As said, we need to compile the shaders and link them together into a program, so we will add some more JavaScript code:
+
+```javascript
+// get the source code from the two script tags
+var vertexShaderSrc = document.getElementById("vertexShader").value
+var fragmentShaderSrc = document.getElementById("fragmentShader").value
+
+// create the program and shaders
+var shaderProgram = gl.createProgram()
+var vs = gl.createShader(gl.VERTEX_SHADER)
+var fs = gl.createShader(gl.FRAGMENT_SHADER)
+
+// compile the vertex shader
+gl.shaderSource(vs, vertexShaderSrc)
+gl.compileShader(vs)
+if(!gl.getShaderParameter(vs, gl.COMPILE_STATUS)) {
+  alert('Vertex shader failed compilation:\n' + gl.getShaderInfoLog(vs))
+  console.log(gl.getShaderInfoLog(shaderProgram))
+}
+
+// compile the fragment shader
+gl.shaderSource(fs, fragmentShaderSrc)
+gl.compileShader(fs)
+if(!gl.getShaderParameter(fs, gl.COMPILE_STATUS)) {
+  alert('Fragment shader failed compilation:\n' + gl.getShaderInfoLog(fs))
+  console.log(gl.getShaderInfoLog(shaderProgram))
+}
+
+// put the shader binaries into the program & link the program
+gl.attachShader(shaderProgram, vs)
+gl.attachShader(shaderProgram, fs)
+gl.linkProgram(shaderProgram)
+if(!gl.getProgramParameter(shaderProgram, gl.LINK_STATUS)) {
+  alert("Could not initialise shaders")
+}
+
+// make the program active to be used from now on
+gl.useProgram(shaderProgram)
+```
+
+With this code we take the shader sourcecode from the script tags, compile them into binaries for the GPU and put them together as a "program" that we then use for the rest of the work.
+
+We are finally homing in on target! There is only two things left: We need to point the variable (in a vertex shader this is called an `attribute`, hence the prefix `a` in the name `aVertexPos`) to our buffer data. To do this, we get the attribute number represented by `aVertexPos` in the code of the program, enable the array for this attribute and then point the attribute to our current `ARRAY_BUFFER` which contains the vertex positions:
+
+```javascript
+// gets the index for aVertexPos which is needed for enabling the attribute & pointing it to data
+var attribIndex = gl.getAttribLocation(shaderProgram, 'aVertexPos') 
+gl.enableVertexAttribArray(attribIndex)
+/* 
+  Now we tell the attribute how the data is going to be used:
+  - numbers per vertex (x & y coordinates)
+  - each number is a FLOAT
+  - because it is already FLOAT, we do not need to convert
+  - there is no values between the values for the vertices
+  - we begin at the first value in the buffer
+*/
+gl.vertexAttribPointer(attribIndex, 2, gl.FLOAT, false, 0, 0)
+```
+
+Now we can finally draw it out:
+
+```javascript
+gl.drawArrays(gl.TRIANGLES, 0, 3)
+```
+This draws a triangle from the first vertex (number 0) and uses 3 vertices.
+Here is our result:
+
+![The red triangle we created](https://raw.githubusercontent.com/pluralsight/guides/master/images/f2898b24-454e-418d-9f3f-042b8be6b2fd.com_2016-08-04_12-32-09)
+
 # Writing our first real shaders
+
+
 
 # Creating our first cube
 
