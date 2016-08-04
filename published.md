@@ -1,3 +1,8 @@
+### Alexa Tutorial 2016 by Tyler Steck
+- [Read the guide](http://tutorials.pluralsight.com/node-js/alexa-tutorial-2016)
+- [Read more from Tyler Steck](http://tutorials.pluralsight.com/author/steckdev) <img src="https://avatars.githubusercontent.com/u/1010935?v=3" width="30" height="30" alt="Tyler Steck" />
+- Related to: Node.js
+
 ### Build a Simpsons Quote-Bot with Twilio MMS, Frinkiac, and Python by Chris Hranj
 - [Read the guide](http://tutorials.pluralsight.com/interesting-apis/build-a-simpsons-quote-bot-with-twilio-mms-frinkiac-and-python)
 - [Read more from Chris Hranj](http://tutorials.pluralsight.com/author/Brodan) <img src="https://avatars.githubusercontent.com/u/12822268?v=3" width="30" height="30" alt="Chris Hranj" />
