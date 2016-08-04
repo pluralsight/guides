@@ -1,8 +1,3 @@
-### Just a test xyz by Luke Lee
-- [Read the guide](http://tutorials.pluralsight.com/other/just-a-test-xyz?status=draft)
-- [Read more from Luke Lee](http://tutorials.pluralsight.com/author/durden) <img src="https://avatars.githubusercontent.com/u/58063?v=3" width="30" height="30" alt="Luke Lee" />
-- Related to: other
-
 ### Dynomite DB by Sanjeev Murthy
 - [Read the guide](http://tutorials.pluralsight.com/other/dynomite-db?status=draft)
 - [Read more from Sanjeev Murthy](http://tutorials.pluralsight.com/author/SanjeevMurthy) <img src="https://avatars.githubusercontent.com/u/10756352?v=3" width="30" height="30" alt="Sanjeev Murthy" />
