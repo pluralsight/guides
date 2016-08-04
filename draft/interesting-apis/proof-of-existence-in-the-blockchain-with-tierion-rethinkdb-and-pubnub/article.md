@@ -404,7 +404,7 @@ subscription.setup(function(hashClient) {
 
 But before starting the server, let's configure the routes of the application. This will the topic of the next section.
 
-# The Routes
+# The routes
 Our application will have five routes:
 - `/` will render the main page
 - `/verify/:hash` will render the verification page for the hash passed as a parameter
@@ -624,9 +624,9 @@ It gets the receipt object by its ID from the database and uses [jsreport-core](
 
 In the next section, we'll review the receipt model.
 
-# The Receipt Model
+# The core of the application
 
-The `models/receipt.js` file contains the functions that interact with RethinkDB and PubNub to implement the functionality related to the blockchain receipts.
+The core of the application is the `models/receipt.js` file. It contains the functions that interact with RethinkDB and PubNub to implement the functionality related to the blockchain receipts provided by Tierion.
 
 The first part requires the modules used by the functions and creates the PubNub and RethinkDB objects:
 ```javascript
