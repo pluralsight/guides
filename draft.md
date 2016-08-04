@@ -1,8 +1,3 @@
-### Proof of existence in the Blockchain with Tierion, Rethinkdb, and Pubnub by Esteban Herrera
-- [Read the guide](http://tutorials.pluralsight.com/interesting-apis/proof-of-existence-in-the-blockchain-with-tierion-rethinkdb-and-pubnub?status=draft)
-- [Read more from Esteban Herrera](http://tutorials.pluralsight.com/author/eh3rrera) <img src="https://avatars.githubusercontent.com/u/11665759?v=3" width="30" height="30" alt="Esteban Herrera" />
-- Related to: Interesting APIs (SendGrid, Twilio, etc)
-
 ### Dynomite DB by Sanjeev Murthy
 - [Read the guide](http://tutorials.pluralsight.com/other/dynomite-db?status=draft)
 - [Read more from Sanjeev Murthy](http://tutorials.pluralsight.com/author/SanjeevMurthy) <img src="https://avatars.githubusercontent.com/u/10756352?v=3" width="30" height="30" alt="Sanjeev Murthy" />
