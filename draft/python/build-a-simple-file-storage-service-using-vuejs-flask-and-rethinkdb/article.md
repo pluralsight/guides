@@ -1,6 +1,6 @@
 In this tutorial, I shall be showing you how you can build a simple file storage service. We shall be making use of VueJS for the frontend, Flask for the backend and RethinkDB for database storage. I will be introducing a number of tools as we go on so stay tuned.
 
-In the first part of this tutorial series, I will be focusing on the setup and user authentication bit of things. As we go on, you will discover how you can implement some of the principles taught here to your current workflow either as a Python developer, Flask developer or even as a programmer in general.
+In the first part of this tutorial series, I will be focusing on the building the backend. As we go on, you will discover how you can implement some of the principles taught here in your current workflow either as a Python developer, Flask developer or even as a programmer in general.
 
 We shall start by building out our API. Using this file storage service, as a user, we should be able to:
 1. Create an account
@@ -121,7 +121,7 @@ import rethinkdb as r
 
 from flask import current_app
 
-conn = r.connect(db=current_app.config['DATABASE_NAME'])
+conn = r.connect(db="papers")
 
 class RethinkDBModel(object):
     pass
@@ -159,7 +159,16 @@ class User(RethinkDBModel):
 ```
 Here, we are making use of the `classmethod` decorator. This decorator enables us have access to the class instance from within the method body. We will be using the class instance to access the `_table` property from within the method. The `_table` stores the table name for that model.
 
-We have also in here added code for making sure that the `password` and `password_conf` fields are the same. If this happens, a `ValidationError` will be thrown (I will show the definition of `ValidationError` in a few). If there are no issues, we hash the password and create the document as a dictionary. Notice how we used `r.now()` here? This function gets us the current timestamp. There were issues faced when I used `datetime.datetime.now()`. This issue was because since RethinkDB noticed that I was sending a date, it was automatically trying to infer the datatype for that field in the document. Unfortunately, it requires Time zone information in addition to the date and time information. The Python function does not supply this for us by default unless we specify this as a parameter to the `now()` function (See [here](https://www.rethinkdb.com/docs/dates-and-times/python/) for more). The `r.now()` method mitigates this challenge and allows us to get the correct server time with the simple method call.
+We have also in here added code for making sure that the `password` and `password_conf` fields are the same. If this happens, a `ValidationError` will be thrown. The exceptions will be stored in the `/api/utils/errors.py` module. Find the definition of `ValidationError` below:
+
+```
+class ValidationError(Exception):
+    pass
+```
+
+We're using named exceptions here because it's easier to track.
+
+If there are no issues, we hash the password and create the document as a dictionary. Notice how we used `r.now()` here? This function gets us the current timestamp. There were issues faced when I used `datetime.datetime.now()`. This issue was because since RethinkDB noticed that I was sending a date, it was automatically trying to infer the datatype for that field in the document. Unfortunately, it requires Time zone information in addition to the date and time information. The Python function does not supply this for us by default unless we specify this as a parameter to the `now()` function (See [here](https://www.rethinkdb.com/docs/dates-and-times/python/) for more). The `r.now()` method mitigates this challenge and allows us to get the correct server time with the simple method call.
 
 If all goes well and no exceptions are encountered, we call the `insert()` method on the table object that `r.table(table_name)` returns. This method takes a dictionary containing the data. This data will be stored as a new document in the table selected.
 
@@ -250,21 +259,21 @@ class User(RethinkDBModel):
 
     @classmethod
     def validate(cls, email, password):
-        docs = r.table(cls._table).filter({'email': email}).run(conn)
-        idx = 0
-        for doc in docs:
-            idx += 1
-            _hash = doc['password']
-            if cls.verify_password(password, _hash):
-                try:
-                    token = jwt.encode({'id': doc['id']}, current_app.config['SECRET_KEY'], algorithm='HS256')
-                    return token
-                except JWTError:
-                    raise ValidationError("There was a problem while trying to create a JWT token.")
-            break
-        if idx == 0:
+        docs = list(r.table(cls._table).filter({'email': email}).run(conn))
+
+        if not len(docs):
             raise ValidationError("Could not find the e-mail address you specified")
-        raise ValidationError("The password you inputed was incorrect.")
+
+        _hash = docs[0]['password']
+
+        if cls.verify_password(password, _hash):
+            try:
+                token = jwt.encode({'id': docs[0]['id']}, current_app.config['SECRET_KEY'], algorithm='HS256')
+                return token
+            except JWTError:
+                raise ValidationError("There was a problem while trying to create a JWT token.")
+        else:
+            raise ValidationError("The password you inputed was incorrect.")
     
     @staticmethod
     def hash_password(password):
@@ -275,9 +284,9 @@ class User(RethinkDBModel):
         return pbkdf2_sha256.verify(password, _hash)
 ```
 
-A couple of things to take note of in the `validate()` method. Firstly, the `filter()` function was used here on the table object. This command takes in a dictionary that is used to search through the table. This function in some cases can also take a predicate. This predicate can be a lamda function and will be used similarly to what is done with the python `filter` function. The function returns a cursor that can be used to access all the documents that are returned by the query. The cursor is iterable and as such we can iterate the cursor object using the `for...in` loop.
+A couple of things to take note of in the `validate()` method. Firstly, the `filter()` function was used here on the table object. This command takes in a dictionary that is used to search through the table. This function in some cases can also take a predicate. This predicate can be a lamda function and will be used similarly to what is done with the python `filter` function or any other function that takes a function as an argument. The function returns a cursor that can be used to access all the documents that are returned by the query. The cursor is iterable and as such we can iterate the cursor object using the `for...in` loop. In this case, we have chosen to convert the iterable object to a list using the Python list function.
 
-There's a bit of logic that went on here. We use `idx` to track when there are no objects in the cursor. If this is the case, `idx` remains at 0. If this happens, we know that the e-mail address does not exist in our database. As you can see, we throw the respective error.
+As you would expect, we basically do two things here. We want to know if the email address exists at all and then if the password is correct. For the first part, we basically count the collection. If this is empty, we raise an error. For the second part, we call the `verify_password()` function to compare the password supplied with the hash in the database. We raise an exception if these don't match.
 
 Another important thing to notice here is how we have used the `jwt.encode()` method to create a JWT token and return it to the controller. This method is fairly straightforward and you can see the documentation [here](https://github.com/mpdavis/python-jose).
 
@@ -385,5 +394,48 @@ As mentioned earlier, majority of the logic and database interaction has been pu
 Similarly, for the `AuthRegister`, we collect information from the user and call a model `create()` function. In this case, we are collection the email address, password, password confirm and full name fields. We pass all these values to the `User.create()` function and as before, this function will throw an error if anything goes wrong.
 
 All things being equal, everything should work just fine. Run the server using `python run.py runserver` to test it out. You should be able to access the two endpoints that we've created here and it should work very well.
+
+Next up, we'll be creating the models for our files.
+
+## File models
+
+We'll be creating very simple models for working with the files. Things to consider here include the fact that we need to have as much information about files stored in the database. The database records will be accessing the files stored in the file system.
+
+```
+import os
+
+from flask import request, g
+from flask_restful import reqparse, abort, Resource
+from werkzeug import secure_filename
+
+from api.models import File
+
+BASE_DIR = os.path.abspath(
+    os.path.dirname(os.path.dirname(os.path.dirname(__file__)))
+)
+
+
+class CreateList(Resource):
+    def get(self, user_id):
+        pass
+
+    def post(self, user_id):
+        pass
+
+class ViewEditDelete(Resource):
+    def get(self, user_id, file_id):
+        pass
+
+    def put(self, user_id, file_id):
+        pass
+
+    def delete(self, user_id, file_id):
+        pass
+
+```
+
+Here we have created a general boilerplate with all the methods we need for working with Files. The `CreateList` class, as the name implies, will be used for creating and listing files for a logged in user. The ViewEditDelete class, also as the name implies, will be used for viewing, editing and deleting files. The methods we're using in the classes correspond with the appropriate HTTP actions.
+
+For the purpose of this tutorial, I will be doing a simplistic version without
 
 Feel free to send in your feedback and thoughts about this article. In the next part of this tutorial, we shall be going over how to write scripts to handle updating the database structure and the remaining logic for handling file uploads and management.
