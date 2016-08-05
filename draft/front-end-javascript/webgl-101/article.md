@@ -245,6 +245,215 @@ Here is our result:
 
 # Writing our first real shaders
 
+Previously we have skipped over shaders and just wrote the most trivial shaders needed to get some colour on screen.
+
+Now, what *exactly* are shaders, anyway?
+
+Shaders are programs, written in the [GLSL](https://en.wikipedia.org/wiki/OpenGL_Shading_Language) programming language that run on the graphics processor (GPU).
+
+These programs allow us to define what we will draw on screen without having to resort to JavaScript and change the entire data in memory. If you look at the amount of data we may have to work with, this is great news!
+
+For instance, for a 3D game we may have to deal not just with three vertices for a triangle, but with a million vertices for a game world, player and enemies.
+
+Shaders have a few advantages here:
+
+* as they run on the GPU, they run on specialised hardware that is optimised for handling graphics data
+* they can run in parallel, processing many vertices or pixels at the same time
+* they are written in a programming language that has many useful helpers to work with coordinates, colours etc.
+
+So for example, if we want to make our triangle larger or smaller, rather than changing the vertices in our buffer, we can use the **vertex shader** to move the vertices closer together or farther apart:
+
+```glsl
+vec4 aVertexPos; // the input goes here: A single vertex (x,y, 0, 0) from the buffer
+  
+void main(void) {
+  vec4 newPosition = aVertexPos;
+  newPosition.x *= 2.0;
+  newPosition.y *= 2.0;
+
+  gl_Position = newPosition;
+}
+```
+
+Here we create a new local variable in the vertex shader called `newPosition` and assign the values from `aVertexPos`.
+We then multiply the `x`- and `y`-coordinate with two. When this shader is run on each vertex, it will make the vertices twice as far apart from each other, as demonstrated here:
+
+![The scaled vs. the original triangle](https://raw.githubusercontent.com/pluralsight/guides/master/images/773993a4-1280-4794-a82f-6c3c3019944f.png)
+
+In red are our vertices as they are in the buffer, in green are the vertices as they are returned by the vertex shader.
+
+There are other ways to write the vertex shader from the last example with less code, leveraging the features GLSL gives us for free:
+
+```glsl
+vec4 aVertexPos; // the input goes here: A single vertex (x,y, 0, 0) from the buffer
+  
+void main(void) {
+  // vec4(...) creates a new array with four items, called a "four component vector"
+  // we can use ".x", ".y" and so on to access a single item from such an array
+  // we can also use ".xy" to get an array with the first two items from the array
+  // vec4 can be used to create a new array with smaller arrays and additional values
+  // GLSL allows us to multiply an array with a number, e.g. [1,2] * 2 = [2, 4]
+  gl_Position = vec4(newPosition.xy * 2.0, 1.0, 1.0);
+}
+```
+Remember: The code is identical to the longer code we've used before, but makes use of many helpful features from GLSL. Here's a slightly longer break down:
+
+**Vectors:**
+In Geometry, we like to call an array that tells us the direction from somewhere to somewhere else a *vector*. For instance `[1,2]` can be used to say "1 pixel to the right, 2 pixels to the top", which means the first item in the array means how much we travel to the right on the x-axis and the second means how much we travel up on the y-axis.
+
+In GLSL we would write this as `vec2(1.0, 2.0)`:
+
+```glsl
+vec2 moveIt = vec2(1.0, 2.0); // moveIt.x == 1.0, moveIt.y == 2.0
+```
+
+We can create vectors with different amounts of components (that's how items in vectors are called):
+
+```glsl
+vec2 a = vec2(1.0, 2.0);
+vec3 b = vec3(1.0, 2.0, 3.0);
+vec4 c = vec4(1.0, 2.0, 3.0, 4.0);
+```
+
+We will learn later, that vectors can be used to express different things and it's good to have 2-, 3- and 4-component vectors.
+
+GLSL also gives us a bunch of convenience functions to create vectors from larger or smaller vectors:
+
+```glsl
+vec2 a = vec2(1.0, 2.0);
+vec3 b = vec3(1.0, 2.0, 3.0);
+vec4 c = vec4(1.0, 2.0, 3.0, 4.0);
+
+vec3 b2 = vec3(a, 3.0); // the same result as "b"
+vec4 c2 = vec4(a, a);   // results in vec4(1.0, 2.0, 1.0, 2.0)
+vec2 a2 = c2.xy;        // the same result as "a"
+```
+
+So the vector functions let us use other vectors or parts of other vectors to build a new vector.
+
+**Vector helpers:**
+
+Speaking of "part of other vectors": Depending on what kind of data we use a vector for, we have different kinds of helpers to access this data.
+
+For a position, each component of the vector means one coordinate for each axis, e.g. `vec3(3.0, 5.0, 9.0)` means `x=3.0, y=5.0, z = 9.0`. We can access them with the following helpers:
+
+```glsl
+vec3 position = vec3(3.0, 5.0, 9.0);
+
+float x = position.x; // x gets the value 3.0
+float y = position.y; // x gets the value 5.0
+float z = position.z; // z gets the value 9.0
+
+vec2 position2D = position.xy; // position2D gets the value vec2(3.0, 5.0)
+vec2 flipped2D  = position.yx; // flipped2D gets the value vec2(5.0, 3.0), so x & y have been swapped
+
+vec2 what = position.xz; // what gets the value vec2(3.0, 9.0)
+```
+
+So all combinations from `x`, `y` and `z` are possible if we want to mix them up.
+
+We could change our vertex shader to make use of that:
+
+```glsl
+vec4 aVertexPos; // the input goes here: A single vertex (x,y, 0, 0) from the buffer
+  
+void main(void) {
+  gl_Position = vec4(aVertexPos.yx, 1.0, 1.0);
+}
+```
+
+As the result, we have swapped x- and y-coordinates:
+
+![The triangle with swapped x- and y-coordinates](https://raw.githubusercontent.com/pluralsight/guides/master/images/dcb265e4-bdf6-40d7-afc4-a41e1ecfe57c.com_2016-08-05_10-27-48)
+
+So now we know that we can use the vertex shader and the GLSL vector helpers to change the vertices we will be using for drawing - all without having to change data in our buffer.
+
+Vertex shaders are usually used for things such as:
+
+* scaling
+* rotation
+* perspective transformation (i.e. making things that are far away from the camera appear smaller and things that are closer to the camera appear larger)
+* calculating texture coordinates (more on this later)
+
+So we have been playing with the first of the two shaders, the vertex shader. But what about the fragment shader?
+
+**The fragment shader:**
+
+The fragment shader's job is to figure out what colour to put into the pixels inside our shape. It also uses a GLSL program to figure that out.
+
+Right now our program is pretty boring: It always returns a simple colour for any pixel that is inside our fragment and will be drawn on screen:
+
+```glsl
+void main(void) {
+  gl_FragColor = vec4(1.0, 0.0, 0.0, 1.0);
+}
+```
+
+Here we see something, we already know: A four-component vector-
+This time the values do not mean positions, but colour! So it turns out, that vectors are a pretty generic way to express data that has more than a single value, positions have coordinates on multiple axes, colours have values in different colour channels (red, green, blue and transparency).
+
+We can totally use the helpers we've used for vectors that represent points like this:
+
+```glsl
+vec3 red   = vec3(1.0, 0.0, 0.0);
+vec3 green = vec3(0.0, 1.0, 0.0);
+vec3 blue  = vec3(0.0, 0.0, 1.0);
+
+vec3 white = vec3(red.x, green.y, blue.z); // this looks weird!
+```
+
+That seems a little odd, because we are talking about colour, but use `x`, `y` and `z`...
+There's good news, though: GLSL provides similar helpers for colours:
+
+```glsl
+vec3 white = vec3(red.r, green.g, blue.b); // this looks better!
+```
+
+There is also the possibility to swap components like we did with coordinates:
+```glsl
+vec3 red   = vec3(1.0, 0.0, 0.0);
+vec3 green = red.grb; // returns vec3(0.0, 1.0, 0.0)
+vec3 blue  = red.gbr; // returns vec3(0.0, 0.0, 1.0)
+```
+
+However, GLSL does not really *care* what data is in there, so you can always use any of these helpers - but it makes sense to use the way that fits the data, so use `r`, `g`, `b` and `a` (transparency is usually called "alpha") for colours and `x`, `y`, `z` for coordinates.
+
+Now let's spice up the triangle a little by making it more colourful.
+There is a global variable in fragment shaders called `gl_FragCoord` which [contains the four-component vector of the window coordinates](https://www.opengl.org/sdk/docs/man/html/gl_PointCoord.xhtml) of the current pixel that fragment shader is asked to compute, where (0, 0) is the bottom left of the canvas.
+
+There is a bit of conversion needed there though: The `gl_FragCoord` has values between (0,0) and (499, 499) for our 500x500 pixel canvas, but our colours need to be values between 0.0 and 1.0, so we will divide the coordinates by the dimensions of the canvas to achieve useful values.
+
+Now we can change our **fragment shader** to use x-coordinate of `gl_FragCoord` to determine how much red there should be:
+
+```glsl
+void main(void) {
+  gl_FragColor = vec4(gl_FragCoord.x / 500.0, 0.0, 0.0, 1.0);
+}
+```
+
+Here is the result:
+
+![Using the fragment shader to produce a gradient](https://raw.githubusercontent.com/pluralsight/guides/master/images/dd2a5701-a8f1-4447-98ba-702ada582e50.com_2016-08-05_11-04-33)
+
+We can also use the y-coordinate of `gl_PointCoord` to do the same with green in vertical direction:
+
+```glsl
+void main(void) {
+  gl_FragColor = vec4(0.0, gl_FragCoord.y / 500.0, 0.0, 1.0);
+}
+```
+
+![Using the y-coordinate for the green value](https://raw.githubusercontent.com/pluralsight/guides/master/images/a5920d43-36ab-4ea4-942e-f145c9f3130c.com_2016-08-05_11-08-29)
+
+And then mix the two:
+
+```glsl
+void main(void) {
+  gl_FragColor = vec4(gl_FragCoord.y / 500.0, gl_FragCoord.y / 500.0, 0.0, 1.0);
+}
+```
+
+![Using fragment coordinates for red and green](https://raw.githubusercontent.com/pluralsight/guides/master/images/2b24e54d-d311-49e9-9b96-7d45d0416cd2.com_2016-08-05_11-10-34)
 
 
 # Creating our first cube
