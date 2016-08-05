@@ -3,12 +3,7 @@
     "author_name": "SanjeevMurthy",
     "author_real_name": "Sanjeev Murthy",
     "branch": "master",
-    "branches": [
-        [
-            "adityavarshney",
-            "adityavarshney-nosql-databases-introduction-to-mongodb"
-        ]
-    ],
+    "branches": [],
     "filename": "article.md",
     "first_commit": "dcd97d6a232ceef88faa66705b3a256b693dc086",
     "image_url": "https://avatars.githubusercontent.com/u/10756352?v=3",
