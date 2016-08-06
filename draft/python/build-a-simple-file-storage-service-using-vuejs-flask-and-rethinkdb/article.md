@@ -1,6 +1,6 @@
 In this tutorial, I shall be showing you how you can build a simple file storage service. We shall be making use of VueJS for the frontend, Flask for the backend and RethinkDB for database storage. I will be introducing a number of tools as we go on so stay tuned.
 
-In the first part of this tutorial series, I will be focusing on the building the backend. As we go on, you will discover how you can implement some of the principles taught here in your current workflow either as a Python developer, Flask developer or even as a programmer in general.
+In the first part of this tutorial series, I will be focusing on the building out the backend for the application. As we go on, you will discover how you can implement some of the principles taught here in your current workflow either as a Python developer, Flask developer or even as a programmer in general.
 
 We shall start by building out our API. Using this file storage service, as a user, we should be able to:
 1. Create an account
@@ -399,7 +399,199 @@ Next up, we'll be creating the models for our files.
 
 ## File models
 
-We'll be creating very simple models for working with the files. Things to consider here include the fact that we need to have as much information about files stored in the database. The database records will be accessing the files stored in the file system.
+We'll be creating very simple models for working with the files and folders similar to what we did with the User model. The `Folder` model is a child of the `File` model.
+
+What you will notice as we proceed with modelling these objects is the fact that the files are actually stored in a flat manner in the filesystem but the structure of the data is stored in the database. This way, we have minimal writes on the file system.
+
+```
+class File(RethinkDBModel):
+    _table = 'files'
+    
+class Folder(File):
+    pass
+```
+We start by creating the `create()` method for the File model. This method will be called when we make a POST request to the endpoint used to create files.
+
+```
+@classmethod
+def create(cls, **kwargs):
+    name = kwargs.get('name')
+    size = kwargs.get('size')
+    uri = kwargs.get('uri')
+    parent = kwargs.get('parent')
+    creator = kwargs.get('creator')
+
+    # Direct parent ID
+    parent_id = '0' if parent is None else parent['id']
+
+    doc = {
+        'name': name,
+        'size': size,
+        'uri': uri,
+        'parent_id': parent_id,
+        'creator': creator,
+        'is_folder': False,
+        'status': True,
+        'date_created': datetime.now(r.make_timezone('+01:00')),
+        'date_modified': datetime.now(r.make_timezone('+01:00'))
+    }
+
+    res = r.table(cls._table).insert(doc).run(conn)
+    doc['id'] = res['generated_keys'][0]
+
+    if parent is not None:
+        Folder.add_object(parent, doc['id'])
+
+    return doc
+```
+Here we start by collecting all the information from the keyword argument dictionary. There are a couple of things considered here including the fact that we are considering the fact that a file might be stored within a folder. The folder id is stored in the `parent_id` field of each file document in the database. We collect all this information about the file into a dictionary call the insert function to store them in the database. The returned dictionary from calling the insert function contains the ids of the newly generated documents. We populate this information in the dictionary.
+
+Finally, since this file manager implementation has folders, if we are creating a file in a folder, we would have to add each newly creatd object into the record for the folder we're storing it in. We do this by calling a method which we will create in the Folder model called `add_object`. Calling this method will add the id for the document created into the `objects` list of the folder.
+
+Next up we will go back to our base class to create a number of useful methods which we may or may not override in the child classes.
+```
+class RethinkDBModel(object):
+    @classmethod
+    def find(cls, id):
+        return r.table(cls._table).get(id).run(conn)
+
+    @classmethod
+    def filter(cls, predicate):
+        return list(r.table(cls._table).filter(predicate).run(conn))
+
+    @classmethod
+    def update(cls, id, fields):
+        status = r.table(cls._table).get(id).update(fields).run(conn)
+        if status['errors']:
+            raise DatabaseProcessError("Could not complete the update action")
+        return True
+```
+Here we created wrapper methods for the RethinkDB `get()`, `filter()`, `update()` and `delete()` functions. This way, subclasses can leverage on those functions for much complex interactions.
+
+The next method we will be creating is a function that will be used to move files between folders.
+
+```
+@classmethod
+def move(cls, obj, to):
+    previous_folder_id = obj['parent_id']
+    previous_folder = Folder.find(previous_folder_id)
+    Folder.remove_object(previous_folder, obj['id'])
+    Folder.add_object(to, obj['id'])
+```
+The logic here is fairly simple. We want to move a file `obj` to folder `to`. We get the current folder id for the current parent of the file. This is stored in the `parent_id` field of `obj`. We call the `find` function for the `Folder` to get the folder object as a dictionary. We call `remove_object` method of the Folder model. Similar to what I explained about the `add_object` method earlier on, this method removes an object from a folder.
+
+Next we move on to the logic for the `Folder` model.
+
+```
+@classmethod
+def create(cls, **kwargs):
+    name = kwargs.get('name')
+    parent = kwargs.get('parent')
+    creator = kwargs.get('creator')
+
+    # Direct parent ID
+    parent_id = '0' if parent is None else parent['id']
+
+    doc = {
+        'name': name,
+        'parent_id': parent_id,
+        'creator': creator,
+        'is_folder': True,
+        'last_index': 0,
+        'status': True,
+        'objects': None,
+        'date_created': datetime.now(r.make_timezone('+01:00')),
+        'date_modified': datetime.now(r.make_timezone('+01:00'))
+    }
+
+    res = r.table(cls._table).insert(doc).run(conn)
+    doc['id'] = res['generated_keys'][0]
+
+    if parent is not None:
+        cls.add_object(parent, doc['id'])
+    
+    cls.tag_folder(parent, doc['id'])
+    
+    return doc
+
+@classmethod
+def tag_folder(cls, parent, id):
+    tag = id if parent is None else '{}#{}'.format(parent['tag'], parent['last_index'])
+    cls.update(id, {'tag': tag})
+```
+
+The `create()` method here is similar to what we do with files except for the fact that only need name and the creator of the folder. In addition to this, we included some logic which will be needed later on for dealing with moving folders. Basically folders are tagged according to their position on the File tree. The indexes are based on their level on the tree. Any folder stored at the root level has a tag of `<id>` where id is the folder id. Any folder stored below that folder will have an id of `<id>-n`. Subsequent nested folder will follow the same pattern and have ids of `<id>-n-m`. `n` will change as we add more folders. We store the data required for this in the `last_index` field of each folder which defaults to `0`. As we add folders to this folder, we will be incrementing the value for `last_index`. We have created a `tag_folder()` method that takes care of this. We include the `is_folder` field which defaults to `True` for folders and if you had noticed earlier, `False` for files.
+
+We insert the document we created to house all this data into the database. Here we will also call the `add_object` method if we specified that we are adding this folder within another folder.
+
+We will be overriding the find method of the folder class to include functionality to include listing information about the folder. We shall be using this in our Front end later on.
+
+```
+ @classmethod
+def find(cls, id, listing=False):
+    folder_ref = r.table(cls._table).get(id).run(conn)
+    if folder_ref is not None:
+        if listing and folder_ref['objects'] is not None:
+            folder_ref['objects'] = list(r.table(cls._table).get_all(r.args(folder_ref['objects'])).run(conn))
+    return folder_ref
+```
+
+Here, in the case that we have the folder object in the `folder_ref` variable, we will be get all the contents within the folder by calling the `get_all` method on the file table. This method access multiple keys and returns all the objectives with the respective keys. We use the `r.args` method to convert the list of objects to multiple arguments for the `get_all` method. We add the list returned to the `folder_ref['objects']` list before returning it.
+
+Next, we move on to create the `move` method for the folder. This is very similar to the `move` method for files with the inclusion of logic to update the tags as well as check to ensure we can actually move that folder.
+```
+@classmethod
+def move(cls, obj, to):
+    if to is not None:
+        parent_tag = to['tag']
+        child_tag = obj['tag']
+
+        parent_sections = parent_tag.split("#")
+        child_sections = child_tag.split("#")
+
+        if len(parent_sections) > len(child_sections):
+            matches = re.match(child_tag, parent_tag)
+            if matches is not None:
+                raise Exception("You can't move this object to the specified folder")
+
+    previous_folder_id = obj['parent_id']
+    previous_folder = cls.find(previous_folder_id)
+    cls.remove_object(previous_folder, obj['id'])
+
+    if to is not None:
+        cls.add_object(to, obj['id'], True)
+```
+Here we get the tag of the folder we're trying to move to. We also get the tag of the folder we're trying to move it to. We compare the number of sections in their tags. If the `parent_sections` is less the `child_sections`, we know that the folder we're trying to move this to is above the folder we're moving in the file tree. We can move this without hassles by calling the `remove_object` and `add_objects` methods on the previous folder and the folder we're moving to respectively.
+
+For the case that the folder we're moving to is below the folder we're moving in the file tree, we need to ensure that the folder we're moving to is not nested within the folder we're trying to move. We do this by ensuring the `child_tag`, of the folder we're moving, does not begin the `parent_tag` string. We use regex to implement this and raise an exception if this happens.
+
+We have also in here done an exclusion for cases when we are trying to move the folder to the root. This case exists when the `to` variable is `None`.
+
+We're almost done now. Finally we will create the `add_object()` and `remove_object()` methods, I had referred to earlier.
+
+```
+ @classmethod
+def remove_object(cls, folder, object_id):
+    update_fields = folder['objects'] or []
+    while object_id in update_fields:
+        update_fields.remove(object_id)
+    cls.update(folder['id'], {'objects': update_fields})
+
+@classmethod
+def add_object(cls, folder, object_id, is_folder=False):
+    update_fields = folder['objects'] or []
+    update_fields.append(object_id)
+    if is_folder:
+        last_index = folder['last_index'] + 1
+    cls.update(folder['id'], {'objects': update_fields, 'last_index': last_index})
+```
+As mentioned earlier, we will be a doing the add and remove operations by modifying the `objects` array in the folder object. When adding folders, we put in a constraint to also update the `last_index` variable of the folder.
+
+We're now done with the models. Over to the controllers.
+
+## File Controller
+
+We start by creating a boilerplate for our controller file in `/api/controllers/files.py` module.
 
 ```
 import os
@@ -434,7 +626,203 @@ class ViewEditDelete(Resource):
 
 ```
 
-Here we have created a general boilerplate with all the methods we need for working with Files. The `CreateList` class, as the name implies, will be used for creating and listing files for a logged in user. The ViewEditDelete class, also as the name implies, will be used for viewing, editing and deleting files. The methods we're using in the classes correspond with the appropriate HTTP actions.
+Here we have created a general boilerplate with all the methods we need for working with Files. The `CreateList` class, as the name implies, will be used for creating and listing files for a logged in user. The `ViewEditDelete` class, also as the name implies, will be used for viewing, editing and deleting files. The methods we're using in the classes correspond with the appropriate HTTP actions.
+
+We will start the implementation by creating a bunch of decorators which we will be using on the methods in our Resource classes.
+
+```
+from jose import jwt
+from jose.exceptions import JWTError
+from functools import wraps
+
+from flask import current_app, request, g
+from flask_restful import abort
+
+from api.models import User, File
+
+def login_required(f):
+    '''
+    This decorator checks the header to ensure a valid token is set
+    '''
+    @wraps(f)
+    def func(*args, **kwargs):
+        try:
+            if 'authorization' not in request.headers:
+                abort(404, message="You need to be logged in to access this resource")
+            token = request.headers.get('authorization')
+            payload = jwt.decode(token, current_app.config['SECRET_KEY'], algorithms=['HS256'])
+            user_id = payload['id']
+            g.user = User.find(user_id)
+            if g.user is None:
+               abort(404, message="The user id is invalid")
+            return f(*args, **kwargs)
+        except JWTError as e:
+            abort(400, message="There was a problem while trying to parse your token -> {}".format(e.message))
+    return func
+
+def validate_user(f):
+    '''
+    This decorate ensures that the user logged in is the actually the same user we're operating on
+    '''
+    @wraps(f)
+    def func(*args, **kwargs):
+        user_id = kwargs.get('user_id')
+        if user_id != g.user['id']:
+            abort(404, message="You do not have permission to the resource you are trying to access")
+        return f(*args, **kwargs)
+    return func
+
+def belongs_to_user(f):
+    '''
+    This decorator ensures that the file we're trying to access actually belongs to us
+    '''
+    @wraps(f)
+    def func(*args, **kwargs):
+        file_id = kwargs.get('file_id')
+        user_id = kwargs.get('user_id')
+        file = File.find(file_id, True)
+        if not file or file['creator'] != user_id:
+            abort(404, message="The file you are trying to access was not found")
+        g.file = file
+        return f(*args, **kwargs)
+    return func
+```
+
+The `login_required` decorator is used to validate that users are actually logged in before accessing the method functionality. We use this decorator to protect certain enpoints. We do this by decoding the token to ensure it's validity. We get the `id` field stored in the token and try to retrieve the corresponding user object. We also store this object in `g.user` for access by in the method definition.
+
+Similarly, we create the `validate_user` decorator which ensures that no other logged in user can access files belonging to another user. This validation is based on the information in the URL.
+
+Finally, we create the `belongs_to_user` decorator for files to also ensure that the only the user who created a file can view it.
+
+Here are the views for creation of new files and listing of files.
+
+```
+class CreateList(Resource):
+    @login_required
+    @validate_user
+    @marshal_with(file_array_serializer)
+    def get(self, user_id):
+        try:
+            return File.filter({'creator': user_id, 'parent_id': '0'})
+        except Exception as e:
+            abort(500, message="There was an error while trying to get your files --> {}".format(e.message))
+
+    @login_required
+    @validate_user
+    @marshal_with(file_serializer)
+    def post(self, user_id):
+        try:
+            parser = reqparse.RequestParser()
+            parser.add_argument('name', type=str, help="This should be the folder name if creating a folder")
+            parser.add_argument('parent_id', type=str, help='This should be the parent folder id')
+            parser.add_argument('is_folder', type=bool, help="This indicates whether you are trying to create a folder or not")
+            
+            args = parser.parse_args()
+
+            name = args.get('name', None)
+            parent_id = args.get('parent_id', None)
+            is_folder =  args.get('is_folder', False)
+
+            parent = None
+
+            # Are we adding this to a parent folder?
+            if parent_id is not None:
+                parent = File.find(parent)
+                if parent is None:
+                    raise Exception("This folder does not exist")
+                if not parent['is_folder']:
+                    raise Exception("Select a valid folder to upload to")
+
+            # Are we creating a folder?
+            if is_folder:
+                if name is None:
+                    raise Exception("You need to specify a name for this folder")
+
+                return Folder.create(
+                    name=name,
+                    parent=parent,
+                    is_folder=is_folder,
+                    creator=user_id
+                )
+            else:
+                files = request.files['file']
+
+                if files and is_allowed(files.filename):
+                    _dir = os.path.join(BASE_DIR, 'upload/{}/'.format(user_id))
+
+                    if not os.path.isdir(_dir):
+                        os.mkdir(_dir)
+
+                    filename = secure_filename(files.filename)
+                    to_path = os.path.join(_dir, filename)
+                    files.save(to_path)
+                    fileuri = os.path.join('upload/{}/'.format(user_id), filename)
+                    filesize = os.path.getsize(to_path)
+
+                    return File.create(
+                        name=filename,
+                        uri=fileuri,
+                        size=filesize,
+                        parent=parent,
+                        creator=user_id
+                    )
+                raise Exception("You did not supply a valid file in your request")
+        except Exception as e:
+            abort(500, message="There was an error while processing your request --> {}".format(e.message))
+```
+
+The listing method is pretty straight forward, all we do is filter the table for all files created by a certain user and stored in the root directory. We return this data for this endpoint and throw an exception if there are any errors.
+
+For the create action, we do a bunch of things. For this tutorial, we're assuming that files and folders will be created with the same endpoint. For files, we will need to supply the file as well as a `parent_id` if we are uploading it in a folder. For folders, we will need a name, and a `parent_id` value again if we are creating this within another folder. For folders, we also need to send an `is_folder` field with our request to specify that we are creating a folder.
+
+If we are going to store this within a folder, we have to ensure that the folder exists and is a valid folder. We also ensure that we are supplying a name field if we are creating a folder.
+
+For file creation, we upload the file into a folder specific named for the different users. We're going to be using the file information to populate the document we're going to be storing in the table.
+
+We conclude by calling the respective methods for file and folder creation - `File.create()` and `Folder.create()` respectively.
+
+Notice that we have used the `marshal_with` decorator available with Flask-RESTful to format the response object. See the definition of the `file_array_serializer` and `file_serializer` below:
+
+```
+file_array_serializer = {
+    'id': fields.String,
+    'name': fields.String,
+    'size': fields.Integer,
+    'uri': fields.String,
+    'is_folder': fields.Boolean,
+    'parent': fields.String,
+    'creator': fields.String,
+    'date_created': fields.DateTime(dt_format=  'rfc822'),
+    'date_modified': fields.DateTime(dt_format='rfc822'),
+}
+
+file_serializer = {
+    'id': fields.String,
+    'name': fields.String,
+    'size': fields.Integer,
+    'uri': fields.String,
+    'is_folder': fields.Boolean,
+    'objects': fields.Nested(file_array_serializer, default=[]),
+    'parent': fields.String,
+    'creator': fields.String,
+    'date_created': fields.DateTime(dt_format='rfc822'),
+    'date_modified': fields.DateTime(dt_format='rfc822'),
+}
+```
+
+The difference between both is that the file serializer includes the objects array in the response.
+
+We have also here made use of a method called `is_allowed` to help ensure that all the files that we are uploading are allowed by us.
+
+```
+ALLOWED_EXTENSIONS = set(['txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'])
+
+def is_allowed(filename):
+    return '.' in filename and \
+           filename.rsplit('.', 1)[1] in ALLOWED_EXTENSIONS
+```
+
+
 
 For the purpose of this tutorial, I will be doing a simplistic version without
 
