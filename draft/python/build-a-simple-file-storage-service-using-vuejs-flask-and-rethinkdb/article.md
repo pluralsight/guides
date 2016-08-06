@@ -43,7 +43,7 @@ You should start by creating a project directory, obviously. This is the recomme
 ```
 The modules and packages for the API will be put into the `/api` directory with the models stored in the `models.py` module, and the controllers (mostly for routing purposes) stored as modules in the `/controllers` package.
 
-We will put in our routes and app creation function in `/api/__init__.py`. This way, we are able to use the function to create multiple app instances with different configurations. This is especially helpful when you are writing tests for your application.
+We will put in our routes and app creation function in `/api/__init__.py`. This way, we are able to use the `create_app()` function to create multiple app instances with different configurations. This is especially helpful when you are writing tests for your application.
 
 ```
 from flask import Flask, Blueprint
@@ -152,8 +152,8 @@ class User(RethinkDBModel):
             'fullname': fullname,
             'email': email,
             'password': password,
-            'date_created': r.now(),
-            'date_modified': r.now()
+            'date_created': datetime.now(r.make_timezone('+01:00')),
+            'date_modified': datetime.now(r.make_timezone('+01:00'))
         }
         r.table(cls._table).insert(doc).run(conn)
 ```
@@ -168,7 +168,7 @@ class ValidationError(Exception):
 
 We're using named exceptions here because it's easier to track.
 
-If there are no issues, we hash the password and create the document as a dictionary. Notice how we used `r.now()` here? This function gets us the current timestamp. There were issues faced when I used `datetime.datetime.now()`. This issue was because since RethinkDB noticed that I was sending a date, it was automatically trying to infer the datatype for that field in the document. Unfortunately, it requires Time zone information in addition to the date and time information. The Python function does not supply this for us by default unless we specify this as a parameter to the `now()` function (See [here](https://www.rethinkdb.com/docs/dates-and-times/python/) for more). The `r.now()` method mitigates this challenge and allows us to get the correct server time with the simple method call.
+If there are no issues, we hash the password and create the document as a dictionary. Notice how we used `datetime.now(r.make_timezone('+01:00'))` here? There were issues faced when I used `datetime.datetime.now()` without the timezone. This issue was because since RethinkDB noticed that I was sending a date, it was automatically trying to infer the datatype for that field in the document. Unfortunately, it requires Time zone information in addition to the date and time information. The Python function does not supply this for us by default unless we specify this as a parameter to the `now()` function (See [here](https://www.rethinkdb.com/docs/dates-and-times/python/) for more). Using the `r.make_timezone('+01:00')` we are able to create a timezone object that we can use for the `datetime.now()` function.
 
 If all goes well and no exceptions are encountered, we call the `insert()` method on the table object that `r.table(table_name)` returns. This method takes a dictionary containing the data. This data will be stored as a new document in the table selected.
 
@@ -193,8 +193,8 @@ class User(RethinkDBModel):
             'fullname': fullname,
             'email': email,
             'password': password,
-            'date_created': r.now(),
-            'date_modified': r.now()
+            'date_created': datetime.now(r.make_timezone('+01:00')),
+            'date_modified': datetime.now(r.make_timezone('+01:00'))
         }
         r.table(cls._table).insert(doc).run(conn)
     
@@ -252,8 +252,8 @@ class User(RethinkDBModel):
             'fullname': fullname,
             'email': email,
             'password': password,
-            'date_created': r.now(),
-            'date_modified': r.now()
+            'date_created': datetime.now(r.make_timezone('+01:00')),
+            'date_modified': datetime.now(r.make_timezone('+01:00'))
         }
         r.table(cls._table).insert(doc).run(conn)
 
@@ -410,7 +410,7 @@ class File(RethinkDBModel):
 class Folder(File):
     pass
 ```
-We start by creating the `create()` method for the File model. This method will be called when we make a POST request to the endpoint used to create files.
+We start by creating the `create()` method for the File model. This method will be called when we make a POST request to the `/users/<user_id>/files/<file_id>` endpoint used to create files.
 
 ```
 @classmethod
@@ -444,9 +444,11 @@ def create(cls, **kwargs):
 
     return doc
 ```
-Here we start by collecting all the information from the keyword argument dictionary. There are a couple of things considered here including the fact that we are considering the fact that a file might be stored within a folder. The folder id is stored in the `parent_id` field of each file document in the database. We collect all this information about the file into a dictionary call the insert function to store them in the database. The returned dictionary from calling the insert function contains the ids of the newly generated documents. We populate this information in the dictionary.
+Here we start by collecting all the information from the keyword arguments dictionary. There are a couple of things considered here including the fact that a file might be stored within a folder. The folder ID is stored in the `parent_id` field of each file document in the database.
 
-Finally, since this file manager implementation has folders, if we are creating a file in a folder, we would have to add each newly creatd object into the record for the folder we're storing it in. We do this by calling a method which we will create in the Folder model called `add_object`. Calling this method will add the id for the document created into the `objects` list of the folder.
+We collect all this information about the file into a dictionary and call the insert function to store them in the database. The returned dictionary from calling the insert function contains the IDs of the newly generated documents. We populate this information in the dictionary and return it.
+
+Finally, since this file manager implementation has folders, if we are creating a file in a folder, we would have to add each newly creatd object into a list in the corresponding record for the folder we're trying to store it in. We do this by calling a method which we will create in the Folder model called `add_object`. Calling this method will add the id for the document created into the `objects` list of the folder.
 
 Next up we will go back to our base class to create a number of useful methods which we may or may not override in the child classes.
 ```
@@ -478,6 +480,7 @@ def move(cls, obj, to):
     Folder.remove_object(previous_folder, obj['id'])
     Folder.add_object(to, obj['id'])
 ```
+
 The logic here is fairly simple. We want to move a file `obj` to folder `to`. We get the current folder id for the current parent of the file. This is stored in the `parent_id` field of `obj`. We call the `find` function for the `Folder` to get the folder object as a dictionary. We call `remove_object` method of the Folder model. Similar to what I explained about the `add_object` method earlier on, this method removes an object from a folder.
 
 Next we move on to the logic for the `Folder` model.
@@ -508,7 +511,7 @@ def create(cls, **kwargs):
     doc['id'] = res['generated_keys'][0]
 
     if parent is not None:
-        cls.add_object(parent, doc['id'])
+        cls.add_object(parent, doc['id'], True)
     
     cls.tag_folder(parent, doc['id'])
     
@@ -579,11 +582,13 @@ def remove_object(cls, folder, object_id):
 
 @classmethod
 def add_object(cls, folder, object_id, is_folder=False):
+    p = {}
     update_fields = folder['objects'] or []
     update_fields.append(object_id)
     if is_folder:
-        last_index = folder['last_index'] + 1
-    cls.update(folder['id'], {'objects': update_fields, 'last_index': last_index})
+        p['last_index'] = folder['last_index'] + 1
+    p['objects'] = update_fields
+    cls.update(folder['id'], p)
 ```
 As mentioned earlier, we will be a doing the add and remove operations by modifying the `objects` array in the folder object. When adding folders, we put in a constraint to also update the `last_index` variable of the folder.
 
@@ -727,7 +732,7 @@ class CreateList(Resource):
 
             # Are we adding this to a parent folder?
             if parent_id is not None:
-                parent = File.find(parent)
+                parent = File.find(parent_id)
                 if parent is None:
                     raise Exception("This folder does not exist")
                 if not parent['is_folder']:
@@ -790,7 +795,7 @@ file_array_serializer = {
     'size': fields.Integer,
     'uri': fields.String,
     'is_folder': fields.Boolean,
-    'parent': fields.String,
+    'parent_id': fields.String,
     'creator': fields.String,
     'date_created': fields.DateTime(dt_format=  'rfc822'),
     'date_modified': fields.DateTime(dt_format='rfc822'),
@@ -803,7 +808,7 @@ file_serializer = {
     'uri': fields.String,
     'is_folder': fields.Boolean,
     'objects': fields.Nested(file_array_serializer, default=[]),
-    'parent': fields.String,
+    'parent_id': fields.String,
     'creator': fields.String,
     'date_created': fields.DateTime(dt_format='rfc822'),
     'date_modified': fields.DateTime(dt_format='rfc822'),
@@ -930,6 +935,6 @@ def delete_where(cls, predicate):
     return True
 ```
 
-And that's it, we're done with the API. Run the API and run tests to see it work. In the next tutorial we shall be consuming our API to build out the Front End using VueJS.
+And that's it! We're done with the API. Run the API and run tests to see it work. In the next tutorial we shall be consuming our API to build out the Front End using VueJS.
 
 Feel free to send in your feedback and thoughts about this article. In the next part of this tutorial, we shall be going over how to write scripts to handle updating the database structure and the remaining logic for handling file uploads and management.
