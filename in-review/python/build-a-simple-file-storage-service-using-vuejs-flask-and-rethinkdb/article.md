@@ -937,4 +937,6 @@ def delete_where(cls, predicate):
 
 And that's it! We're done with the API. Run the API and run tests to see it work. In the next tutorial we shall be consuming our API to build out the Front End using VueJS.
 
+You can check out the codebase for the project [here](https://github.com/andela-cnnadi/papers). Feel free to show some love by starring the repository.
+
 Feel free to send in your feedback and thoughts about this article. In the next part of this tutorial, we shall be going over how to write scripts to handle updating the database structure and the remaining logic for handling file uploads and management.
