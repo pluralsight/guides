@@ -13,11 +13,6 @@
 - [Read more from Matthew Sedaghatfar](http://tutorials.pluralsight.com/author/sedaghatfar) <img src="https://avatars.githubusercontent.com/u/3936021?v=3" width="30" height="30" alt="Matthew Sedaghatfar" />
 - Related to: Python
 
-### Build a simple File storage service using VueJS, Flask and RethinkDB by Chidiebere Nnadi
-- [Read the guide](http://tutorials.pluralsight.com/python/build-a-simple-file-storage-service-using-vuejs-flask-and-rethinkdb?status=draft)
-- [Read more from Chidiebere Nnadi](http://tutorials.pluralsight.com/author/andela-cnnadi) <img src="https://avatars.githubusercontent.com/u/3100850?v=3" width="30" height="30" alt="Chidiebere Nnadi" />
-- Related to: Python
-
 ### Quick way to build an Alexa Trivia Skill by vincent wong
 - [Read the guide](http://tutorials.pluralsight.com/node-js/quick-way-to-build-an-alexa-trivia-skill?status=draft)
 - [Read more from vincent wong](http://tutorials.pluralsight.com/author/wesee) <img src="https://avatars.githubusercontent.com/u/4255955?v=3" width="30" height="30" alt="vincent wong" />
