@@ -900,7 +900,7 @@ class ViewEditDelete(Resource):
             else:
                 File.update(file_id, {'status': False})
         else:
-            if hard_delete == True:
+            if hard_delete == 'true':
                 folders = Folder.filter(lambda folder: folder['tag'].startswith(g.file['tag']))
                 for folder in folders:
                     files = File.filter({'parent_id': folder['id'], 'is_folder': False })
