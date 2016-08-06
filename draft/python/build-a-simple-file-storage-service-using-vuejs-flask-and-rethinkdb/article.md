@@ -524,16 +524,16 @@ The `create()` method here is similar to what we do with files except for the fa
 
 We insert the document we created to house all this data into the database. Here we will also call the `add_object` method if we specified that we are adding this folder within another folder.
 
-We will be overriding the find method of the folder class to include functionality to include listing information about the folder. We shall be using this in our Front end later on.
+We will be overriding the find method of the file class to include functionality to show listing information for folders. We shall be using this in our Front end later on.
 
 ```
- @classmethod
+@classmethod
 def find(cls, id, listing=False):
-    folder_ref = r.table(cls._table).get(id).run(conn)
-    if folder_ref is not None:
-        if listing and folder_ref['objects'] is not None:
-            folder_ref['objects'] = list(r.table(cls._table).get_all(r.args(folder_ref['objects'])).run(conn))
-    return folder_ref
+    file_ref = r.table(cls._table).get(id).run(conn)
+    if file_ref is not None:
+        if file_ref['is_folder'] and listing and folder_ref['objects'] is not None:
+            file_ref['objects'] = list(r.table(cls._table).get_all(r.args(file_ref['objects'])).run(conn))
+    return file_ref
 ```
 
 Here, in the case that we have the folder object in the `folder_ref` variable, we will be get all the contents within the folder by calling the `get_all` method on the file table. This method access multiple keys and returns all the objectives with the respective keys. We use the `r.args` method to convert the list of objects to multiple arguments for the `get_all` method. We add the list returned to the `folder_ref['objects']` list before returning it.
@@ -822,8 +822,114 @@ def is_allowed(filename):
            filename.rsplit('.', 1)[1] in ALLOWED_EXTENSIONS
 ```
 
+Finally, we conclude by adding in the resource class for `ViewEditDelete`
 
+```
+class ViewEditDelete(Resource):
+    @login_required
+    @validate_user
+    @belongs_to_user
+    @marshal_with(file_serializer)
+    def get(self, user_id, file_id):
+        try:
+            should_download = request.args.get('download', False)
+            if should_download == 'true':
+                parts = os.path.split(g.file['uri'])
+                return send_from_directory(directory=parts[0], filename=parts[1])
+            return g.file
+        except Exception as e:
+            abort(500, message="There was an while processing your request --> {}".format(e.message))
 
-For the purpose of this tutorial, I will be doing a simplistic version without
+    @login_required
+    @validate_user
+    @belongs_to_user
+    @marshal_with(file_serializer)
+    def put(self, user_id, file_id):
+        try:
+            update_fields = {}
+            parser = reqparse.RequestParser()
+
+            parser.add_argument('name', type=str, help="New name for the file/folder")
+            parser.add_argument('parent_id', type=str, help="New parent folder for the file/folder")
+
+            args = parser.parse_args()
+
+            name = args.get('name', None)
+            parent_id = args.get('parent_id', None)
+
+            if name is not None:
+                update_fields['name'] = name
+
+            if parent_id is not None and g.file['parent_id'] != parent_id:
+                if parent_id != '0'
+                    folder_access = Folder.filter({'id': parent_id, 'creator': user_id})
+                    if not folder_access:
+                        abort(404, message="You don't have access to the folder you're trying to move this object to")
+
+                if g.file['is_folder']:
+                    update_fields['tag'] = g.file['id'] if parent_id == '0' else '{}#{}'.format(folder_access['tag'], folder['last_index'])
+                    Folder.move(g.file, folder_access)
+                else:
+                    File.move(g.file, folder_access)
+
+                update_fields['parent_id'] = parent_id
+
+            if g.file['is_folder']:
+                Folder.update(file_id, update_fields)
+            else:
+                File.update(file_id, update_fields)
+
+            return File.find(file_id)
+        except Exception as e:
+            abort(500, message="There was an while processing your request --> {}".format(e.message))
+
+    @login_required
+    @validate_user
+    @belongs_to_user
+    def delete(self, user_id, file_id):
+        hard_delete = request.args.get('hard_delete', False)
+        if not g.file['is_folder']:
+            if hard_delete == 'true':
+                os.remove(g.file['uri'])
+                File.delete(file_id)
+            else:
+                File.update(file_id, {'status': False})
+        else:
+            if hard_delete == True:
+                folders = Folder.filter(lambda folder: folder['tag'].startswith(g.file['tag']))
+                for folder in folders:
+                    files = File.filter({'parent_id': folder['id'], 'is_folder': False })
+                    File.delete_where({'parent_id': folder['id'], 'is_folder': False })
+                    for f in files:
+                        os.remove(f['uri'])
+            else:
+                File.update_where({'parent_id': folder['id']}, {'status': False})
+```
+
+We have create a `get()` method which returns a file or folder object based on the id. For folders, it includes listing information. You can see how this is done if you look at the `belongs_to_user` decorator. We have included a query parameter `should_download` if we choose to download a file.
+
+The `put()` method takes care of updating file and folder information. This also includes moving files and folders. Moving files mainly involves, updating the `parent_id` field for a file while moving a folder may involve doing some checks as explained earlier.
+
+The `delete()` method also comes a query paramter which specifies whether or not we want to perform a hard delete. For hard delete, records are removed from the database and the files are deleted from the file system. For soft delete, we only update the file `status` field to false.
+
+We have created new methods here for called `update_where()` and `delete_where()` in the `RethinkDBModel` class for deleting and updating a filtered set from the table:
+
+```
+@classmethod
+def update_where(cls, predicate, fields):
+    status = r.table(cls._table).filter(predicate).update(fields).run(conn)
+    if status['errors']:
+        raise DatabaseProcessError("Could not complete the update action")
+    return True
+
+@classmethod
+def delete_where(cls, predicate):
+    status = r.table(cls._table).filter(predicate).delete().run(conn)
+    if status['errors']:
+        raise DatabaseProcessError("Could not complete the delete action")
+    return True
+```
+
+And that's it, we're done with the API. Run the API and run tests to see it work. In the next tutorial we shall be consuming our API to build out the Front End using VueJS.
 
 Feel free to send in your feedback and thoughts about this article. In the next part of this tutorial, we shall be going over how to write scripts to handle updating the database structure and the remaining logic for handling file uploads and management.
