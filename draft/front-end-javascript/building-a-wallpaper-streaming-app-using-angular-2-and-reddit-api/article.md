@@ -201,10 +201,11 @@ With all the configuration done, we can start our project. In the root folder, c
 ```bash
 $ mkdir src
 ```
-### The first component
 
 ### Bootstrapping
+ Next, create a file named <code>main.ts</code> that will bootstrap the application and its dependencies:
 ```ts
+//main.ts
 import 'core-js';
 import 'reflect-metadata';
 import 'zone.js/dist/zone';
@@ -222,3 +223,47 @@ bootstrap(AppComponent, [HTTP_PROVIDERS])
     .catch(error => console.log(error));
 
 ```
+There are a few things to note here: We import [RxJs](https://github.com/Reactive-Extensions/RxJS), whic whill let us use observables later on in the application. We are including <code>HTTP_PROVIDERS</code> form the Angular 2 http library so in order to construct HTTP requests to Reddit's API.
+
+The last thing we import is the root component, <code>AppComponent</code>, that we haven't created yet! Let's do that.
+
+### The first component
+
+In the <code>src</code> directory, create another directory, named <code> app </code>:
+```bash
+$ mkdir app
+```
+Next, create <code>app.component.ts</code>:
+
+```
+import { Component, OnInit } from '@angular/core';
+
+@Component({
+    selector: 'app',
+    template: 'root  component',
+   
+})
+export class AppComponent implements OnInit {
+    constructor() { }
+
+    ngOnInit() { }
+
+}
+```
+We start off by implorting <code> Component </code> and <code> OnInit</code> from the Angular 2 core.
+Next, we use the <code> @Component </code> decorator to define metadata for the component. In the code snippet above, we define the component's selector and its tempalte content.
+
+viewProviders: [MyService, { provide: ... }]	
+Array of dependency injection providers scoped to this component's view.
+template: 'Hello {{name}}'
+templateUrl: 'my-component.html'	
+Inline template / external template URL of the component's view.
+styles: ['.primary {color: red}']
+styleUrls: ['my-component.css']	
+List of inline CSS styles / external stylesheet URLs for styling component’s view.
+directives: [MyDirective, MyComponent]	
+List of directives used in the the component’s template.
+pipes: [MyPipe, OtherPipe]	
+List of pipes used in the component's template.
+
+<code>ngOnInit() {} </code> is  a [lifecycle hook](https://angular.io/docs/ts/latest/guide/lifecycle-hooks.html#!#hooks-overview) that is executing when the compoenent loads. For now we'll leave it blank and use it when we're going have to load the data from Reddit.
