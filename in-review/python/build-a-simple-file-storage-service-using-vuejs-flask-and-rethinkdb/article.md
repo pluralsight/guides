@@ -840,6 +840,8 @@ file_serializer = {
 }
 ```
 
+This can be added at the top of the `/api/controllers/files.py` module or in a separate `/api/utils/serializers.py` module.
+
 The difference between both serializers is that the file serializer includes the objects array in the response. We use the `file_array_serializer` for list responses while we use the `file_serializer` for object responses.
 
 We have also here made use of a function called `is_allowed()` here to help ensure that all the files that we are uploading are supported by us. We created a list called `ALLOWED_EXTENSIONS` to contain the list of all the allowed extensions.
@@ -852,7 +854,7 @@ def is_allowed(filename):
            filename.rsplit('.', 1)[1] in ALLOWED_EXTENSIONS
 ```
 
-Finally, we conclude by adding in the resource class for `ViewEditDelete`
+Finally, we conclude by adding in the resource class for `ViewEditDelete` also in the `/api/controllers/files.py` module.
 
 ```
 class ViewEditDelete(Resource):
@@ -917,28 +919,33 @@ class ViewEditDelete(Resource):
     @validate_user
     @belongs_to_user
     def delete(self, user_id, file_id):
-        hard_delete = request.args.get('hard_delete', False)
-        if not g.file['is_folder']:
-            if hard_delete == 'true':
-                os.remove(g.file['uri'])
-                File.delete(file_id)
+        try:
+            hard_delete = request.args.get('hard_delete', False)
+            if not g.file['is_folder']:
+                if hard_delete == 'true':
+                    os.remove(g.file['uri'])
+                    File.delete(file_id)
+                else:
+                    File.update(file_id, {'status': False})
             else:
-                File.update(file_id, {'status': False})
-        else:
-            if hard_delete == 'true':
-                folders = Folder.filter(lambda folder: folder['tag'].startswith(g.file['tag']))
-                for folder in folders:
-                    files = File.filter({'parent_id': folder['id'], 'is_folder': False })
-                    File.delete_where({'parent_id': folder['id'], 'is_folder': False })
-                    for f in files:
-                        os.remove(f['uri'])
-            else:
-                File.update_where({'parent_id': folder['id']}, {'status': False})
+                if hard_delete == 'true':
+                    folders = Folder.filter(lambda folder: folder['tag'].startswith(g.file['tag']))
+                    for folder in folders:
+                        files = File.filter({'parent_id': folder['id'], 'is_folder': False })
+                        File.delete_where({'parent_id': folder['id'], 'is_folder': False })
+                        for f in files:
+                            os.remove(f['uri'])
+                else:
+                    File.update(file_id, {'status': False})
+                    File.update_where({'parent_id': file_id}, {'status': False})
+            return "File has been deleted successfully", 204
+        except:
+            abort(500, message="There was an error while processing your request --> {}".format(e.message)) 
 ```
 
-We have create a `get()` method which returns a file or folder object based on the id. For folders, it includes listing information. You can see how this is done if you look at the `belongs_to_user` decorator. We have included a query parameter `should_download` if we choose to download a file.
+We have create a `get()` method which returns a single file or folder object based on the id. For folders, it includes listing information. You can see how this is done if you look at the `belongs_to_user` decorator. For files, we have included a query parameter `should_download` to be set to `true` if we want to download a file.
 
-The `put()` method takes care of updating file and folder information. This also includes moving files and folders. Moving files mainly involves, updating the `parent_id` field for a file while moving a folder may involve doing some checks as explained earlier.
+The `put()` method takes care of updating file and folder information. This also includes moving files and folders. Moving files is triggered by updating the `parent_id` field for a file/folder. The logic for both have been covered in the `move()` methods for the file and folder models.
 
 The `delete()` method also comes a query paramter which specifies whether or not we want to perform a hard delete. For hard delete, records are removed from the database and the files are deleted from the file system. For soft delete, we only update the file `status` field to false.
 
@@ -960,8 +967,9 @@ def delete_where(cls, predicate):
     return True
 ```
 
-And that's it! We're done with the API. Run the API and run tests to see it work. In the next tutorial we shall be consuming our API to build out the Front End using VueJS.
+And that's it! We're done with the API. Run the API and test it to see it work.
 
-You can check out the codebase for the project [here](https://github.com/andela-cnnadi/papers). Feel free to show some love by starring the repository.
+Feel free to send in your feedback and thoughts about this tutorial. In the next tutorial we shall be consuming our API to build out the Front End using VueJS.
 
-Feel free to send in your feedback and thoughts about this article. In the next part of this tutorial, we shall be going over how to write scripts to handle updating the database structure and the remaining logic for handling file uploads and management.
+You can check out the codebase for the project [here](https://github.com/andela-cnnadi/papers). Show some love by starring the repository.
+
