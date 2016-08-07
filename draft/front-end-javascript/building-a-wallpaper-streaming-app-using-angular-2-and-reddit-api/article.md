@@ -225,7 +225,25 @@ bootstrap(AppComponent, [HTTP_PROVIDERS])
 ```
 There are a few things to note here: We import [RxJs](https://github.com/Reactive-Extensions/RxJS), whic whill let us use observables later on in the application. We are including <code>HTTP_PROVIDERS</code> form the Angular 2 http library so in order to construct HTTP requests to Reddit's API.
 
-The last thing we import is the root component, <code>AppComponent</code>, that we haven't created yet! Let's do that.
+The last thing we import is the root component, <code>AppComponent</code>, that we haven't created yet. 
+
+Every web application has its <code>index.html</code>. Let's add ours:
+
+```html
+<!-- src/index.html -->
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf­8">
+    <title>Wallpapers</title>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  </head>
+  <body>
+    <app>Loading...</app>
+  </body>
+</html>
+```
 
 ### The first component
 
@@ -251,19 +269,7 @@ export class AppComponent implements OnInit {
 }
 ```
 We start off by implorting <code> Component </code> and <code> OnInit</code> from the Angular 2 core.
-Next, we use the <code> @Component </code> decorator to define metadata for the component. In the code snippet above, we define the component's selector and its tempalte content.
+Next, we use the <code> @Component </code> decorator to define metadata for the component. In the code snippet above, we define the component's selector and its tempalte content. If you'd like to learn more about component decorator properties, [this](https://angular.io/docs/ts/latest/guide/cheatsheet.html) cheatsheet provides a list of all @Component decorator properties.
 
-viewProviders: [MyService, { provide: ... }]	
-Array of dependency injection providers scoped to this component's view.
-template: 'Hello {{name}}'
-templateUrl: 'my-component.html'	
-Inline template / external template URL of the component's view.
-styles: ['.primary {color: red}']
-styleUrls: ['my-component.css']	
-List of inline CSS styles / external stylesheet URLs for styling component’s view.
-directives: [MyDirective, MyComponent]	
-List of directives used in the the component’s template.
-pipes: [MyPipe, OtherPipe]	
-List of pipes used in the component's template.
+In the code for the component itself, we use <code> implements  OnInit </code> and <code>ngOnInit() {} </code> to implement a  [lifecycle hook](https://angular.io/docs/ts/latest/guide/lifecycle-hooks.html#!#hooks-overview) that is executing when the compoenent loads. For now we'll leave it blank and use it when we're going have to load the data from Reddit.
 
-<code>ngOnInit() {} </code> is  a [lifecycle hook](https://angular.io/docs/ts/latest/guide/lifecycle-hooks.html#!#hooks-overview) that is executing when the compoenent loads. For now we'll leave it blank and use it when we're going have to load the data from Reddit.
