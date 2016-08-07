@@ -113,11 +113,6 @@
 - [Read more from rahul-rt](http://tutorials.pluralsight.com/author/rahul-rt) <img src="https://avatars.githubusercontent.com/u/20288606?v=3" width="30" height="30" alt="rahul-rt" />
 - Related to: other
 
-### Building a Slackbot with a Horizon Backend by Chris Hranj
-- [Read the guide](http://tutorials.pluralsight.com/other/building-a-slackbot-with-a-horizon-backend?status=draft)
-- [Read more from Chris Hranj](http://tutorials.pluralsight.com/author/Brodan) <img src="https://avatars.githubusercontent.com/u/12822268?v=3" width="30" height="30" alt="Chris Hranj" />
-- Related to: other
-
 ### Not Done Yet by Ian Hickey
 - [Read the guide](http://tutorials.pluralsight.com/front-end-javascript/not-done-yet?status=draft)
 - [Read more from Ian Hickey](http://tutorials.pluralsight.com/author/ian-a-hickey) <img src="https://avatars.githubusercontent.com/u/10375721?v=3" width="30" height="30" alt="Ian Hickey" />
