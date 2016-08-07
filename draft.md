@@ -1,3 +1,8 @@
+### Building a wallpaper streaming app using Angular 2 and Reddit API by Hristo Georgiev
+- [Read the guide](http://tutorials.pluralsight.com/front-end-javascript/building-a-wallpaper-streaming-app-using-angular-2-and-reddit-api?status=draft)
+- [Read more from Hristo Georgiev](http://tutorials.pluralsight.com/author/Kaizeras) <img src="https://avatars.githubusercontent.com/u/6340189?v=3" width="30" height="30" alt="Hristo Georgiev" />
+- Related to: Front-End JavaScript (Angular, React, Meteor, etc)
+
 ### Dynomite DB by Sanjeev Murthy
 - [Read the guide](http://tutorials.pluralsight.com/other/dynomite-db?status=draft)
 - [Read more from Sanjeev Murthy](http://tutorials.pluralsight.com/author/SanjeevMurthy) <img src="https://avatars.githubusercontent.com/u/10756352?v=3" width="30" height="30" alt="Sanjeev Murthy" />
