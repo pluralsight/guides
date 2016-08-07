@@ -168,7 +168,7 @@ class ValidationError(Exception):
 
 We're using named exceptions here because it's easier to track.
 
-If there are no issues, we hash the password and create the document as a dictionary. Notice how we used `datetime.now(r.make_timezone('+01:00'))` here? There were issues faced when I used `datetime.datetime.now()` without the timezone. This issue was because since RethinkDB noticed that I was sending a date, it was automatically trying to infer the datatype for that field in the document. Unfortunately, it requires Time zone information in addition to the date and time information. The Python function does not supply this for us by default unless we specify this as a parameter to the `now()` function (See [here](https://www.rethinkdb.com/docs/dates-and-times/python/) for more). Using the `r.make_timezone('+01:00')` we are able to create a timezone object that we can use for the `datetime.now()` function.
+If there are no issues, we hash the password and create the document as a dictionary. Notice how we used `datetime.now(r.make_timezone('+01:00'))` here? There were issues faced when I used `datetime.now()` without the timezone. This issue was because RethinkDB requires that time zone information be set on date fields in documents. The Python function does not supply this for us by default unless we specify this as a parameter to the `now()` function (See [here](https://www.rethinkdb.com/docs/dates-and-times/python/) for more). Using the `r.make_timezone('+01:00')` we are able to create a timezone object that we can use for the `datetime.now()` function.
 
 If all goes well and no exceptions are encountered, we call the `insert()` method on the table object that `r.table(table_name)` returns. This method takes a dictionary containing the data. This data will be stored as a new document in the table selected.
 
@@ -389,7 +389,9 @@ class AuthRegister(Resource):
         
 ```
 
-As mentioned earlier, majority of the logic and database interaction has been pushed to the model. To summarize what was done, for the login controller `AuthLogin`, we have created a post function which accepts the e-mail address and password, validates the fields using `reqparse` and then calls the `User.validate()` which validates the information sent and returns a toke. If an error occurs, we are going to catch it and respond with an error message.
+As mentioned earlier, majority of the logic and database interaction has been pushed to the model.
+
+To summarize what was done, for the login controller `AuthLogin`, we have created a `post()` function which accepts the e-mail address and password, validates the fields using `reqparse` and then calls the `User.validate()` which validates the information sent and returns a token. If an error occurs, we are going to catch it and respond with an error message.
 
 Similarly, for the `AuthRegister`, we collect information from the user and call a model `create()` function. In this case, we are collection the email address, password, password confirm and full name fields. We pass all these values to the `User.create()` function and as before, this function will throw an error if anything goes wrong.
 
@@ -397,11 +399,13 @@ All things being equal, everything should work just fine. Run the server using `
 
 Next up, we'll be creating the models for our files.
 
-## File models
+## File and Folder models
 
-We'll be creating very simple models for working with the files and folders similar to what we did with the User model. The `Folder` model is a child of the `File` model.
+We'll be creating simple models for working with the files and folders similar to what we did with the User model. We shall be creating a `Folder` model as a child of the `File` model.
 
-What you will notice as we proceed with modelling these objects is the fact that the files are actually stored in a flat manner in the filesystem but the structure of the data is stored in the database. This way, we have minimal writes on the file system.
+What you will notice as we proceed is the fact files are stored in a flat manner in the filesystem. All users have a folder where all their files are stored but the structure of the data logical and stored in the database. This way, we have minimal writes on the file system. To do this we will be employing some pretty neat techniques that will probably be useful to you for future projects.
+
+Create the base models in `/api/models.py`
 
 ```
 class File(RethinkDBModel):
@@ -410,7 +414,7 @@ class File(RethinkDBModel):
 class Folder(File):
     pass
 ```
-We start by creating the `create()` method for the File model. This method will be called when we make a POST request to the `/users/<user_id>/files/<file_id>` endpoint used to create files.
+We start out by creating the `create()` method for the File model. This method will be called when we make a POST request to the `/users/<user_id>/files/<file_id>` endpoint used to create a file.
 
 ```
 @classmethod
@@ -444,13 +448,16 @@ def create(cls, **kwargs):
 
     return doc
 ```
-Here we start by collecting all the information from the keyword arguments dictionary. There are a couple of things considered here including the fact that a file might be stored within a folder. The folder ID is stored in the `parent_id` field of each file document in the database.
+Here we first collect all the information we need from the keyword arguments dictionary like name, size, file URI, creator and so on. We have collected a parameter which we are calling `parent`. This field points to the `id` of the folder in which we want to store this file. We can choose not to pass this parameter if we want to store the file in the root folder. As we go on, you will understand how we can make use of this to create complex nested folder structures.
 
-We collect all this information about the file into a dictionary and call the insert function to store them in the database. The returned dictionary from calling the insert function contains the IDs of the newly generated documents. We populate this information in the dictionary and return it.
+Notice here how having a `parent` of `None` makes the `parent_id` field `0`. This takes care of cases when a file is created with no parent. This assumes that we are storing the file in the root folder which will have an id of 0.
 
-Finally, since this file manager implementation has folders, if we are creating a file in a folder, we would have to add each newly creatd object into a list in the corresponding record for the folder we're trying to store it in. We do this by calling a method which we will create in the Folder model called `add_object`. Calling this method will add the id for the document created into the `objects` list of the folder.
+So we collect all this information about the file into a dictionary and call the `insert()` function to store it in the database. The returned dictionary from calling the insert function contains the IDs of the newly generated documents. After inserting, we populate the ID information in the dictionary so that we can return it to the users.
 
-Next up we will go back to our base class to create a number of useful methods which we may or may not override in the child classes.
+In the last 3 lines of this method, we've added in a check to see if the `parent` is `None`. Since this file manager implementation has folders, whenever we create a file in a folder, we would have to logically add each newly created object to a folder. We do this by adding the object ID into an `objects` list in the corresponding record for the folder we're trying to store it in. We do this by calling a method which we will create in the Folder model called `add_object`.
+
+Next up we will go back to our base `RethinkDBModel` class to create a number of useful methods which we may or may not override in the child classes.
+
 ```
 class RethinkDBModel(object):
     @classmethod
@@ -467,10 +474,18 @@ class RethinkDBModel(object):
         if status['errors']:
             raise DatabaseProcessError("Could not complete the update action")
         return True
+    
+    @classmethod
+    def delete(cls, id):
+        status = r.table(cls._table).get(id).delete().run(conn)
+        if status['errors']:
+            raise DatabaseProcessError("Could not complete the delete action")
+        return True
 ```
+
 Here we created wrapper methods for the RethinkDB `get()`, `filter()`, `update()` and `delete()` functions. This way, subclasses can leverage on those functions for much complex interactions.
 
-The next method we will be creating is a function that will be used to move files between folders.
+The next method we will be creating in our File model is a function that will be used to move files between folders.
 
 ```
 @classmethod
@@ -481,9 +496,11 @@ def move(cls, obj, to):
     Folder.add_object(to, obj['id'])
 ```
 
-The logic here is fairly simple. We want to move a file `obj` to folder `to`. We get the current folder id for the current parent of the file. This is stored in the `parent_id` field of `obj`. We call the `find` function for the `Folder` to get the folder object as a dictionary. We call `remove_object` method of the Folder model. Similar to what I explained about the `add_object` method earlier on, this method removes an object from a folder.
+The logic here is fairly simple. We call this method when we want to move a file `obj` into folder `to`.
 
-Next we move on to the logic for the `Folder` model.
+We start by getting the current folder id for the current parent directory of the file. This is stored in the `parent_id` field of `obj`. We call the Folder model `find` function to obtain the folder object as a dictionary called `previous_folder`. After getting this object, we do two things. We remove the file object from the previous folder `previous_folder`, and add the fie object to the new folder `to`. We achieve this by calling the `remove_object()` and `add_object()` methods of the Folder class. These methods remove the file ID from and add the file ID to the `objects` list in the Folder document respectively. I will be showing what the implementation for these look like in a bit.
+
+We're now done with modelling the files. We can now carry out basic interaction on files like creation, editing, deleting from the database and what not. Next we move on to the logic for the `Folder` model which is very similar to what we did for the files.
 
 ```
 @classmethod
@@ -523,25 +540,35 @@ def tag_folder(cls, parent, id):
     cls.update(id, {'tag': tag})
 ```
 
-The `create()` method here is similar to what we do with files except for the fact that only need name and the creator of the folder. In addition to this, we included some logic which will be needed later on for dealing with moving folders. Basically folders are tagged according to their position on the File tree. The indexes are based on their level on the tree. Any folder stored at the root level has a tag of `<id>` where id is the folder id. Any folder stored below that folder will have an id of `<id>-n`. Subsequent nested folder will follow the same pattern and have ids of `<id>-n-m`. `n` will change as we add more folders. We store the data required for this in the `last_index` field of each folder which defaults to `0`. As we add folders to this folder, we will be incrementing the value for `last_index`. We have created a `tag_folder()` method that takes care of this. We include the `is_folder` field which defaults to `True` for folders and if you had noticed earlier, `False` for files.
+The `create()` method here is very similar to what we have for files with a few modifications. The first thing to notice, obviously, is the fact that we only need the name and the creator of the folder to create a folder. We have used similar logic for determining the parent folder and at the end also called the `add_object()` method to add the folder to the parent folder.
 
-We insert the document we created to house all this data into the database. Here we will also call the `add_object` method if we specified that we are adding this folder within another folder.
+We have included the `is_folder` field here which defaults to `True` for folders and if you had noticed earlier, `False` for files.
 
-We will be overriding the find method of the file class to include functionality to show listing information for folders. We shall be using this in our Front end later on.
+You will notice here that we have called a `tag_folder()` method. We will be needing this later on for dealing with moving folders. To summarise what this is, basically, folders are tagged according to their position on the File tree. The indexes are based on their level on the tree. Any folder stored at the root level will have a tag of `<id>` where id is the folder's id. Any folder stored below that folder will have an id of `<id>-n` where n is an integer that increments continuously. Subsequent nested folder will follow the same pattern and have ids of `<id>-n-m` etc. `n` will change as we add more folders and we store the data required for this in the `last_index` field of each folder which defaults to `0`. As we add folders to this folder, we will be incrementing the value for `last_index`. The `tag_folder()` method takes care of all this.
+
+
+We insert the dictionary we created to house all this data into the database by calling the `insert()` function.
+
+Next, we will be overriding the find method of the File class to include functionality to show listing information for folders. This will be very useful for our Front end later on.
 
 ```
 @classmethod
 def find(cls, id, listing=False):
     file_ref = r.table(cls._table).get(id).run(conn)
     if file_ref is not None:
-        if file_ref['is_folder'] and listing and folder_ref['objects'] is not None:
+        if file_ref['is_folder'] and listing and file_ref['objects'] is not None:
             file_ref['objects'] = list(r.table(cls._table).get_all(r.args(file_ref['objects'])).run(conn))
     return file_ref
 ```
 
-Here, in the case that we have the folder object in the `folder_ref` variable, we will be get all the contents within the folder by calling the `get_all` method on the file table. This method access multiple keys and returns all the objectives with the respective keys. We use the `r.args` method to convert the list of objects to multiple arguments for the `get_all` method. We add the list returned to the `folder_ref['objects']` list before returning it.
+Here, we start by getting the object using it's id. We show a folder's listings on fulfilling 3 conditions:
+- `listing` is set to True. We use this variable to know if we actually want information about the files contained in a folder.
+- The `file_ref` object is actually a folder. We determine this by checking the `is_folder` field of the document.
+- We have objects within the `objects` list of the folder document.
 
-Next, we move on to create the `move` method for the folder. This is very similar to the `move` method for files with the inclusion of logic to update the tags as well as check to ensure we can actually move that folder.
+If all these conditions are fulfulled, we get all the nested objects by calling the  `get_all` method on the file table. This method accepts multiple keys and returns all the objects with the respective keys. We use the `r.args` method to convert the list of objects to multiple arguments for the `get_all` method. We replace the `objects` field of the document with the list returned. This list contains the details of each of these nested files/folders.
+
+Next, we move on to create the `move` method for the folder. This is going to be very similar to the `move` method we created for files earlier on with the inclusion of logic for working with tags and ensuring we can actually move the folder.
 ```
 @classmethod
 def move(cls, obj, to):
@@ -564,16 +591,16 @@ def move(cls, obj, to):
     if to is not None:
         cls.add_object(to, obj['id'], True)
 ```
-Here we get the tag of the folder we're trying to move to. We also get the tag of the folder we're trying to move it to. We compare the number of sections in their tags. If the `parent_sections` is less the `child_sections`, we know that the folder we're trying to move this to is above the folder we're moving in the file tree. We can move this without hassles by calling the `remove_object` and `add_objects` methods on the previous folder and the folder we're moving to respectively.
+Here we first ensure that the folder we're moving to was in fact specified and is not `None`. This is because the assumption here is that if this is not specified we are actually moving this folder to the root folder.
 
-For the case that the folder we're moving to is below the folder we're moving in the file tree, we need to ensure that the folder we're moving to is not nested within the folder we're trying to move. We do this by ensuring the `child_tag`, of the folder we're moving, does not begin the `parent_tag` string. We use regex to implement this and raise an exception if this happens.
+We get the tag of the folder we're trying to move. We also get the tag of the folder we're trying to move it to. We compare the number of sections in their tags. This is how we know the folder's level in the file tree. There is only one case where moving is not so straight forward and that is when there are more parent sections than child sections (Parent in this case refers to the folder we're trying to move this folder to). We can move a folder to any folder on it's level and above but if the `parent_sections` is more the `child_sections`, we know that it is possible that the folder we're trying to move this folder to might be nested in the folder we're trying to. We are very careful about this because as mentioned earlier, folder structure is purely logical and we need to ensure we don't have errors with this.
 
-We have also in here done an exclusion for cases when we are trying to move the folder to the root. This case exists when the `to` variable is `None`.
+For the case that the folder we're moving to is below the folder we're moving in the file tree, we must ensure that the folder former is not nested in the latter. This can simply be done by ensuring the `child_tag`, of the folder we're moving, does not begin the `parent_tag` string. We use regex to implement this and raise an exception if this happens.
 
-We're almost done now. Finally we will create the `add_object()` and `remove_object()` methods, I had referred to earlier.
+We're almost done now! Finally we will create the `add_object()` and `remove_object()` methods I had referred to earlier.
 
 ```
- @classmethod
+@classmethod
 def remove_object(cls, folder, object_id):
     update_fields = folder['objects'] or []
     while object_id in update_fields:
@@ -590,13 +617,13 @@ def add_object(cls, folder, object_id, is_folder=False):
     p['objects'] = update_fields
     cls.update(folder['id'], p)
 ```
-As mentioned earlier, we will be a doing the add and remove operations by modifying the `objects` array in the folder object. When adding folders, we put in a constraint to also update the `last_index` variable of the folder.
+As mentioned earlier, we will be doing the add and remove operations by modifying the `objects` list in the folder object. When adding subfolders, we put in a constraint to also update the `last_index` variable of the folder.
 
-We're now done with the models. Over to the controllers.
+We're now done with the models. Moving over to the controllers!
 
 ## File Controller
 
-We start by creating a boilerplate for our controller file in `/api/controllers/files.py` module.
+The File controllers will be used for working with both Files and folders, hence, there will be slightly more logic here than in our previous controller. We start by creating a boilerplate for our controller in `/api/controllers/files.py` module.
 
 ```
 import os
@@ -631,9 +658,9 @@ class ViewEditDelete(Resource):
 
 ```
 
-Here we have created a general boilerplate with all the methods we need for working with Files. The `CreateList` class, as the name implies, will be used for creating and listing files for a logged in user. The `ViewEditDelete` class, also as the name implies, will be used for viewing, editing and deleting files. The methods we're using in the classes correspond with the appropriate HTTP actions.
+The `CreateList` class, as the name implies, will be used for creating and listing files for a logged in user. The `ViewEditDelete` class, also as the name implies, will be used for viewing, editing and deleting files. The methods we're using in the classes correspond with the appropriate HTTP actions.
 
-We will start the implementation by creating a bunch of decorators which we will be using on the methods in our Resource classes.
+We will start the implementation by creating a bunch of decorators which we will be using on the methods in our Resource classes. You want to separate this out into the `/api/utils/decorators.py` module.
 
 ```
 from jose import jwt
@@ -693,11 +720,9 @@ def belongs_to_user(f):
     return func
 ```
 
-The `login_required` decorator is used to validate that users are actually logged in before accessing the method functionality. We use this decorator to protect certain enpoints. We do this by decoding the token to ensure it's validity. We get the `id` field stored in the token and try to retrieve the corresponding user object. We also store this object in `g.user` for access by in the method definition.
-
-Similarly, we create the `validate_user` decorator which ensures that no other logged in user can access files belonging to another user. This validation is based on the information in the URL.
-
-Finally, we create the `belongs_to_user` decorator for files to also ensure that the only the user who created a file can view it.
+- The `login_required` decorator is used to validate that users are actually logged in before accessing the method's functionality. We use this decorator to protect certain enpoints. We do this by decoding the token to ensure it's validity. We get the `id` field stored in the token and try to retrieve the corresponding user object. We also store this object in `g.user` for access by within the method definition.
+- Similarly, we create the `validate_user` decorator which ensures that no other logged in user can access URL patterns labelled with another user's ID. This validation is purely based on the information in the URL.
+- Finally, the `belongs_to_user` decorator ensures that the only the user who created a file can access it. This decorator actually checks the `creator` field in the file document against the `user_id` supplied.
 
 Here are the views for creation of new files and listing of files.
 
@@ -778,15 +803,15 @@ class CreateList(Resource):
 
 The listing method is pretty straight forward, all we do is filter the table for all files created by a certain user and stored in the root directory. We return this data for this endpoint and throw an exception if there are any errors.
 
-For the create action, we do a bunch of things. For this tutorial, we're assuming that files and folders will be created with the same endpoint. For files, we will need to supply the file as well as a `parent_id` if we are uploading it in a folder. For folders, we will need a name, and a `parent_id` value again if we are creating this within another folder. For folders, we also need to send an `is_folder` field with our request to specify that we are creating a folder.
+For the create action, we do a bunch of things. For this tutorial, we're assuming that files and folders will be created with the same endpoint. For files, we will need to supply the file as well as a `parent_id`, if we are uploading it in a folder. For folders, we will need a name, and a `parent_id` value, again if we are creating this within another folder. For folders, we also need to send an `is_folder` field with our request to specify that we are creating a folder.
 
 If we are going to store this within a folder, we have to ensure that the folder exists and is a valid folder. We also ensure that we are supplying a name field if we are creating a folder.
 
-For file creation, we upload the file into a folder specific named for the different users. We're going to be using the file information to populate the document we're going to be storing in the table.
+For file creation, we upload the file into a folder specifically named for the different users as mentioned before. In our case, we are using the pattern `/upload/<user_id>` for the different user file directories. We have also used the file information to populate the document we're going to be storing in the table.
 
 We conclude by calling the respective methods for file and folder creation - `File.create()` and `Folder.create()` respectively.
 
-Notice that we have used the `marshal_with` decorator available with Flask-RESTful to format the response object. See the definition of the `file_array_serializer` and `file_serializer` below:
+Notice that we have used the `marshal_with` decorator available with Flask-RESTful. This decorator is used to format the response object and to indicate the different field names and types that we'll be returning. See the definition of the `file_array_serializer` and `file_serializer` below:
 
 ```
 file_array_serializer = {
@@ -815,9 +840,9 @@ file_serializer = {
 }
 ```
 
-The difference between both is that the file serializer includes the objects array in the response.
+The difference between both serializers is that the file serializer includes the objects array in the response. We use the `file_array_serializer` for list responses while we use the `file_serializer` for object responses.
 
-We have also here made use of a method called `is_allowed` to help ensure that all the files that we are uploading are allowed by us.
+We have also here made use of a function called `is_allowed()` here to help ensure that all the files that we are uploading are supported by us. We created a list called `ALLOWED_EXTENSIONS` to contain the list of all the allowed extensions.
 
 ```
 ALLOWED_EXTENSIONS = set(['txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'])
