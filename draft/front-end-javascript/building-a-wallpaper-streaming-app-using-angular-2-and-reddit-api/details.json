@@ -1,0 +1,15 @@
+{
+    "_publish_status": "draft",
+    "author_name": "Kaizeras",
+    "author_real_name": "Hristo Georgiev",
+    "branch": "master",
+    "branches": [],
+    "filename": "article.md",
+    "first_commit": "44da89a4b966fce2c92458e44a7356d21e84c3ed",
+    "image_url": "https://avatars.githubusercontent.com/u/6340189?v=3",
+    "stacks": [
+        "Front-End JavaScript (Angular, React, Meteor, etc)"
+    ],
+    "thumbnail_url": null,
+    "title": "Building a wallpaper streaming app using Angular 2 and Reddit API"
+}
