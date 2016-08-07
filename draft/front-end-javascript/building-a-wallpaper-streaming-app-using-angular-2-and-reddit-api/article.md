@@ -140,6 +140,7 @@ $ npm install --global typings
 ```
 
 **webpack.config.js**
+
 The last configuration file to finish the setup is the Webpack configuration. 
 ```javascript
 var webpack = require('webpack');
@@ -156,8 +157,8 @@ module.exports = {
         loaders: [
             { test: /\.ts$/, loader: 'ts' },
             { test: /\.html$/, loader: 'html' },
-            { 
-                test: /\.less$/, 
+            {
+                test: /\.less$/,
                 loader: ExtractTextPlugin.extract('style', 'css!less'),
                 exclude: /node_modules/
             },
@@ -166,11 +167,6 @@ module.exports = {
                 loader: 'file?name=assets/[name].[hash].[ext]'
             },
         ]
-    },
-    resolveLoader: {
-        alias: {
-            'component-style-loader': require.resolve('./component-style-loader')
-        }
     },
     resolve: {
         extensions: ['', '.js', '.ts', '.less']
@@ -225,8 +221,7 @@ bootstrap(AppComponent, [HTTP_PROVIDERS])
 ```
 There are a few things to note here: We import [RxJs](https://github.com/Reactive-Extensions/RxJS), whic whill let us use observables later on in the application. We are including <code>HTTP_PROVIDERS</code> form the Angular 2 http library so in order to construct HTTP requests to Reddit's API.
 
-The last thing we import is the root component, <code>AppComponent</code>, that we haven't created yet. 
-
+The last thing we import is the root component, <code>AppComponent</code>, that we will create in the next step.
 Every web application has its <code>index.html</code>. Let's add ours:
 
 ```html
@@ -245,6 +240,11 @@ Every web application has its <code>index.html</code>. Let's add ours:
 </html>
 ```
 
+In the index page, we simply add [Material Icons](https://fonts.googleapis.com/icon?family=Material+Icons) and the [Open Sans](https://fonts.googleapis.com/css?family=Open+Sans) font to make the app look better.
+In the <code>body </code> section, we add the selector for the root component -  ```<app></app>``` .
+
+
+
 ### The first component
 
 In the <code>src</code> directory, create another directory, named <code> app </code>:
@@ -253,7 +253,7 @@ $ mkdir app
 ```
 Next, create <code>app.component.ts</code>:
 
-```
+```typescript
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -269,7 +269,47 @@ export class AppComponent implements OnInit {
 }
 ```
 We start off by implorting <code> Component </code> and <code> OnInit</code> from the Angular 2 core.
-Next, we use the <code> @Component </code> decorator to define metadata for the component. In the code snippet above, we define the component's selector and its tempalte content. If you'd like to learn more about component decorator properties, [this](https://angular.io/docs/ts/latest/guide/cheatsheet.html) cheatsheet provides a list of all @Component decorator properties.
+Next, we use the <code> @Component </code> decorator to define metadata for the component. In the code snippet above, we define the component's selector (```<app></app>```) and its template content(```'root component'```). If you'd like to learn more about component decorator properties, [this](https://angular.io/docs/ts/latest/guide/cheatsheet.html) cheatsheet provides a list of all <code>@Component</code> decorator properties.
 
 In the code for the component itself, we use <code> implements  OnInit </code> and <code>ngOnInit() {} </code> to implement a  [lifecycle hook](https://angular.io/docs/ts/latest/guide/lifecycle-hooks.html#!#hooks-overview) that is executing when the compoenent loads. For now we'll leave it blank and use it when we're going have to load the data from Reddit.
+
+### Running
+
+ With the application's most essential components in place, you can now run it and preview it. To do so, run the following commands in your root directory:
+ 
+```bash
+ $ npm run build
+ $ npm run serve
+```
+Go to [http://localhost:8080](http://localhost:8080) and you will see <code>'root component' </code> displayed in the upper left side of the window.
+
+## Building a service
+
+In this step, we will extract and model the JSON data from the Reddit API. Before we go ahead and start making HTTP requests, we have to do some data modelling.
+
+### Modelling
+
+To create a model, we need to think what kind of attributes it has. We need something to represent the list of all wallpapers and a wallpaper as a single entity. 
+
+**Wallpaper**
+
+Our wallpaper needs three attributes:
+- A descriptive title
+- An URL of the preview image
+- An URL of the full-resolution image
+
+**Listing of wallpapers**
+
+The wallpaper listing contains the wallpapers themselves plus additional information about the listing as a whole. To get an idea how a wallpaper listing would look like, we need to visit the [Reddit API documentation](https://www.reddit.com/dev/api/) to get a feel how the information is structured. By reading it, we can infer that we can use the <code> before </code> and <code> after </code> to paginate through the results. So 
+
+
+
+
+Therefore, the listing will contain
+
+- An array of wallpapers
+- An attribute denoting pagination/what part of the total collection is being viewed (<code> after </code>)
+
+
+
 
