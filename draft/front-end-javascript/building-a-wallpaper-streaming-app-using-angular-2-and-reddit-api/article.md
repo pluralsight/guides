@@ -254,6 +254,7 @@ $ mkdir app
 Next, create <code>app.component.ts</code>:
 
 ```typescript
+// src/app/app.component.ts
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -289,7 +290,7 @@ In this step, we will extract and model the JSON data from the Reddit API. Befor
 
 ### Modelling
 
-To create a model, we need to think what kind of attributes it has. We need something to represent the list of all wallpapers and a wallpaper as a single entity. 
+To create a model, we need to think what kind of attributes it has. We need something to represent the list of all wallpapers and a wallpaper as a single entity. Here is how we can think about the different models:
 
 **Wallpaper**
 
@@ -298,11 +299,20 @@ Our wallpaper needs three attributes:
 - An URL of the preview image
 - An URL of the full-resolution image
 
+Here is how this would look in TypeScript:
+
+```typescript
+// src/app/wallpaper.model.ts
+export class Wallpaper {
+    url: string;
+    previewUrl: string;
+    title: string;
+}
+```
+
 **Listing of wallpapers**
 
 The wallpaper listing contains the wallpapers themselves plus additional information about the listing as a whole. To get an idea how a wallpaper listing would look like, we need to visit the [Reddit API documentation](https://www.reddit.com/dev/api/) to get a feel how the information is structured. By reading it, we can infer that we can use the <code> before </code> and <code> after </code> to paginate through the results. So 
-
-
 
 
 Therefore, the listing will contain
@@ -311,5 +321,12 @@ Therefore, the listing will contain
 - An attribute denoting pagination/what part of the total collection is being viewed (<code> after </code>)
 
 
+```typescript
+// src/app/wallpaper-listing.model
+import { Wallpaper } from './wallpaper.model';//Don't forget import the Wallpaper model
 
-
+export class WallpaperListing {
+    wallpapers: Array<Wallpaper>;//array of wallpapers
+    after: string;
+}
+```
