@@ -330,3 +330,26 @@ export class WallpaperListing {
     after: string;
 }
 ```
+### GETing data
+
+The data models are figured out and we are going to put them to use now. We'll do this by creating an injectable service that will parse the data and assign it to our models.
+
+```typescript
+import { Injectable } from '@angular/core';
+import { Http, Response } from '@angular/http';
+
+import { Observable }     from 'rxjs/Observable';//using the RxJS observables
+import { Wallpaper } from './wallpaper.model'; //improting the wallpaper model
+import { WallpaperListing } from './wallpaper-listing.model';//importing the wallpaper listing model
+
+@Injectable()
+export class RedditService {
+    
+    constructor(private http: Http) {
+    }
+
+}
+
+```
+
+We make the <code>RedditService</code> class injectable by adding <code> @Injectable() </code> before its definition. In order to make the Http module available inside the class, we have to  inject it in it via the <code> constructor </code> function.
