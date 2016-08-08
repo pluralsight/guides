@@ -1,3 +1,8 @@
+### Debugging Angular 2 applications by Hristo Georgiev
+- [Read the guide](http://tutorials.pluralsight.com/front-end-javascript/debugging-angular-2-applications?status=draft)
+- [Read more from Hristo Georgiev](http://tutorials.pluralsight.com/author/Kaizeras) <img src="https://avatars.githubusercontent.com/u/6340189?v=3" width="30" height="30" alt="Hristo Georgiev" />
+- Related to: Front-End JavaScript (Angular, React, Meteor, etc)
+
 ### Building a wallpaper streaming app using Angular 2 and Reddit API by Hristo Georgiev
 - [Read the guide](http://tutorials.pluralsight.com/front-end-javascript/building-a-wallpaper-streaming-app-using-angular-2-and-reddit-api?status=draft)
 - [Read more from Hristo Georgiev](http://tutorials.pluralsight.com/author/Kaizeras) <img src="https://avatars.githubusercontent.com/u/6340189?v=3" width="30" height="30" alt="Hristo Georgiev" />
