@@ -1,26 +1,24 @@
-In this tutorial we're going to build a web application very similar to [Proof of Existence](https://proofofexistence.com) and [Origin Stamp](http://www.originstamp.org/) using [Node.js](https://nodejs.org/en/), [Tierion](https://tierion.com), [RethinkDB](http://rethinkdb.com/), [PubNub](https://www.pubnub.com), and [jsreport-core](http://jsreport.net/learn/nodejs).
+In this tutorial, we're going to create a web application very similar to [Proof of Existence](https://proofofexistence.com) and [Origin Stamp](http://www.originstamp.org/) using [Node.js](https://nodejs.org/en/), [Tierion](https://tierion.com), [RethinkDB](http://rethinkdb.com/), [PubNub](https://www.pubnub.com), and [jsreport-core](http://jsreport.net/learn/nodejs).
 
-In a few words, these sites allow you to store the hash of a file in Bitcoin's Blockchain so anyone can certify that the file existed at a specific time.
+In a few words, these sites allow you to store the hash of a file in Bitcoin's Blockchain so that anyone can certify that the file existed at a specific time.
 
 This has the following advantages:
 - It demonstrates data ownership without revealing actual data.
 - It checks for document integrity.
 - Using the blockchain, you can certify the existence of the document without the need of a central authority. 
 - In practice, this decentralized proof can't be erased or modified by anyone.
-- It's anonymous, no one knows who you are or your data.
+- It's anonymous, so others cannot identify you or your data.
 
-This page has a [better explanation about what is proof of existence](http://www.newsbtc.com/proof-of-existence/) and some sites dedicated to it.
+This page has a [more thorough explanation of proof of existence](http://www.newsbtc.com/proof-of-existence/) and covers more sites dedicated to enabling it.
 
-Our application will have the following functionality:
-
-You can upload a file by choosing it or dragging it to the marked area. Then, its SHA256 digest will be calculated so you can send it to the Blockchain using [Tierion Hash API](https://tierion.com/docs/hashapi):
+Using our application, we will be able to upload a file by dragging and dropping it to a marked area. Then, its **SHA256 digest** will be calculated and sent to the Blockchain using [Tierion Hash API](https://tierion.com/docs/hashapi)
 
 ![Create hash](https://raw.githubusercontent.com/pluralsight/guides/master/images/c785866d-69cf-4cce-8c93-675d907de3f8.gif)
 
 
-Notice how the list of last documents registered is updated real-time, we'll be using [PubNub's Storage and Playback](https://www.pubnub.com/products/storage-and-playback/) functionality to implement that.
+Notice how the list of last documents registered is updated in real-time; we'll be using [PubNub's Storage and Playback](https://www.pubnub.com/products/storage-and-playback/) to gain real-time syncing.
 
-The hash of the file and the Blockchain receipt given by Tierion is stored in RethinkDB, a NoSQL database with real-time capabilities. When Tierion alerts us that a block of hashes has been processed, using [RethinkDB's changefeed](http://rethinkdb.com/docs/changefeeds/javascript/) we update the verification page (and the list of verified documents) in real-time:
+The hash of the file and the Blockchain receipt given by Tierion is stored in RethinkDB, a NoSQL database with real-time capabilities. When Tierion alerts us that a block of hashes has been processed, we update the verification page (and the list of verified documents) in real-time, using [RethinkDB's changefeed](http://rethinkdb.com/docs/changefeeds/javascript/):
 
 ![Confirming Hash](https://raw.githubusercontent.com/pluralsight/guides/master/images/6963ff66-7806-417c-9b58-063c23946054.gif)
 
@@ -32,30 +30,31 @@ You can also verify that a file has been certified in the Blockchain by selectin
 ![Verify file](https://raw.githubusercontent.com/pluralsight/guides/master/images/b061a641-34f1-4af6-a0a2-bce474421557.gif)
 
 
-The entire source code to follow along with this tutorial is on [Github](https://github.com/eh3rrera/blockchain-proof-existence).
-
-However, before diving into the code, let's explain what is the Bitcoin's Blockchain (referred as the Blockchain).
+In case you stumble or want to skip ahead, the tutorial source code is available on [Github](https://github.com/eh3rrera/blockchain-proof-existence).
 
 # The Blockchain
-[Wayne Vaughan](https://twitter.com/WayneVaughan), founder and CEO of Tierion, launched a challenge during the [2016 Consensus Hackathon](http://www.coindesk.com/events/consensus-2016/) consisting in answering the question *What is the Blockchain?*. The winner was [Lilia Vershinina](https://twitter.com/lilechkafleur) with the answer:
+
+Before diving into the code, let's explain what is the Bitcoin's Blockchain (referred to as the Blockchain).
+
+[Wayne Vaughan](https://twitter.com/WayneVaughan), founder and CEO of Tierion, launched a challenge during the [2016 Consensus Hackathon](http://www.coindesk.com/events/consensus-2016/): *What is the Blockchain?* The winner was [Lilia Vershinina](https://twitter.com/lilechkafleur), who answered:
 
 > "The Blockchain is a trust layer for the Internet".
 
-Interesting. Let's see if we can clarify this statement. By the way, you can see the whole story and other answers [here](https://medium.com/@WayneVaughan/blockchain-fever-at-the-consensus-2016-hackathon-d02a8476611d#.aettnnwlm).
+Interesting. Let's see if we can clarify this statement. By the way, you can see the whole story behind this (as well as other answers) [here](https://medium.com/@WayneVaughan/blockchain-fever-at-the-consensus-2016-hackathon-d02a8476611d#.aettnnwlm).
 
-The key idea of Bitcoin is decentralization. Rather than trusting in one party (like a government or an institution), Bitcoin is a peer-to-peer system with no central point of failure. In simple words, the blockchain is a database of transactions distributed across a global network of nodes.
+One of the main philosophies behind Bitcoin is decentralization. Rather than trusting a single party (like a government or an institution) to manage and produce currency, Bitcoin is a peer-to-peer system with no central point of failure. As such, **the blockchain is a public database of Bitcoin transactions distributed across a global network of nodes.**
 
-The blockchain contains all bitcoin transactions (represented as a chain of blocks linked together) since 2009 (the year it was born), from the genesis block (the first block) to the latest.
+The blockchain comprises **all Bitcoin transactions**, which are represented as a chain of blocks linked together, since 2009, the year of its inception. These transactions span from the genesis block, or the first block of the blockchain, to the latest block.
 
-When bitcoin transactions are broadcasted, *miners* pick them up locally to form a Bitcoin block. This block has to be verified by the miners by solving a complicated mathematical formula.
+When Bitcoin transactions are broadcasted, *miners* pick them up locally to form a Bitcoin block. Miners verify this block using a designated mathematical formula.
 
-A [hash](https://en.wikipedia.org/wiki/Cryptographic_hash_function) is used to represent the verification of the block. This hash is computed on the block and the hash of the previous block, which forms a chain of hashes. You can see the concept of trust here, if any transaction is modified, the hash, as well as the rest of the chain, becomes invalid.
+A [hash](https://en.wikipedia.org/wiki/Cryptographic_hash_function) is used to represent the verification of the block. This hash is computed using this block and the hash of the previous block, thereby forming a chain of hashes. You can see the concept of trust here; if any transaction is modified or voided, the hash, as well as the rest of the chain, becomes invalid.
 
-For this reason, as the chain grows and more copies of it are kept by miners, the more difficult it becomes to modify the blockchain. Moreover, the increasing mining difficulty makes that blocks are generated about every ten minutes.
+For this reason, as the chain grows and more copies of it are kept by miners, the more difficult it becomes to modify the blockchain. Moreover, the increasing mining difficulty causes blocks to be generated about every ten minutes, a rather slow pace.
 
-This is a (very) high-level overview of the blockchain. There are so many articles and books that talk about it that is hard to recommend one, but if you want to know more, you can try [this search](https://www.google.com/search?q=what%20is%20the%20blockchain&rct=j).
+This is a (very) high-level overview of the blockchain. There are countles articles and books that explain and discuss it. If you want to know more, try [this search](https://www.google.com/search?q=what%20is%20the%20blockchain&rct=j).
 
-With this knowledge in mind, let's dive into the application.
+Now that we understand blocks, blockchain, Bitcoin, and mining, let's dive into our web application.
 
 # Requisites
 
@@ -68,14 +67,14 @@ When your account is ready, go to your Dashboard and in the *API* tab, copy your
 
 ![Tierion API keys](https://raw.githubusercontent.com/pluralsight/guides/master/images/cb8c1f87-b18d-4f71-84dd-caa09a5bda17.png)
 
-# RethinkDB
+### RethinkDB
 
 You'll need to [install RethinkDB server](http://rethinkdb.com/docs/install/). The easier way to install it is with one of the official packages.
 
 This tutorial won't cover the basics of RethinkDB, but you can consult [RethinkDB's ten-minute guide](http://rethinkdb.com/docs/guide/javascript/) or [my getting started guide](http://tutorials.pluralsight.com/nosql-databases/a-practical-introduction-to-rethinkdb) if you haven't work with it.
 
 ### PubNub
-Go to https://admin.pubnub.com/#/register and register a new account. When you log in, you will be presented with this screen:
+Go to https://admin.pubnub.com/#/register and sign in. Create a new account if necessary. When you log in, you will be presented with this screen:
 
 ![Pubnub dashboard](https://raw.githubusercontent.com/pluralsight/guides/master/images/52106251-88ef-4d6b-ba51-ab30d54afd28.png)
 
@@ -83,7 +82,7 @@ You can either create a new app or use the demo app. When you click on it, you'l
 
 ![Pubnub dashboard](https://raw.githubusercontent.com/pluralsight/guides/master/images/d5cf3593-e7b9-4992-951b-4c1df8edb9e3.png)
 
-Save your publish and subscribe keys since we'll need it later. Now click on the keyset panel and go to the *Application add-ons* section to enable the *Storage and Playback* (choose the time period you want the messages to be stored) and *Stream Controller* add-ons. Save the changes:
+Save your publish and subscribe keys because we'll need them later. Now click on the keyset panel, and go to the *Application add-ons* section to enable the *Storage and Playback*. Pubnub's Storage and Playback will let us determine the time period we want the messages to be stored. Enable *Stream Controller* add-ons as well. Finally, save the changes:
 
 ![Pubnub addons](https://raw.githubusercontent.com/pluralsight/guides/master/images/030b2afc-c058-4eda-b413-62525178a585.png)
 
@@ -91,21 +90,23 @@ We'll be using the brand-new PubNub SDK for Javascript version 4, which is a lit
 
 ### Ngrok
 
-Tierion will trigger a webhook (think of it as a callback) when a block of hashes had been anchored in the blockchain. This means an HTTP request will be made to our server, so we'll need to deploy our application on the cloud or keep it locally and use a service like [ngrok](https://ngrok.com/).
+Tierion will trigger a webhook (similar to a callback) when a block of hashes has been anchored in the blockchain. An HTTP request will be made to our server, so we'll need to deploy our application on the cloud or keep it locally and use a service like [ngrok](https://ngrok.com/).
 
 Ngrok proxies external requests to your local machine by creating a secure tunnel and giving you a public URL.
 
-ngrok is a Go program, distributed as a single executable file (no additional dependencies). So for now, just download it from [https://ngrok.com/download](https://ngrok.com/download) and unzip the compressed file.
+ngrok is a Go program, distributed as a single executable file (no additional dependencies needed). For now, just download it from https://ngrok.com/download and unzip the compressed file.
 
 
 ### Node.js
 
 You'll also need Node.js and npm installed. You can download an installer for your platform [here](https://nodejs.org/en/download/).
 
-Now that we have all we need, let's create the app.
+Requirements met, we can start on the app.
 
 
 # Setting up the project
+
+### Directories and Dependencies
 
 Create a new directory and `cd` into it:
 ```
@@ -133,7 +134,7 @@ We will use the next dependencies:
 - **ejs** (as the template library)
 - **body-parser** (to parse incoming request bodies)
 
-Add them with the next command:
+Add them with the following npm command:
 ```
 npm install --save hashapi-lib-node rethinkdbdash pubnub jsreport-core jsreport-jsrender jsreport-wkhtmltopdf express ejs body-parser
 ```
@@ -166,7 +167,7 @@ The project will have the following directory structure:
 | |— server.js
 ```
 
-The `config.js` file stores all the important configuration (don't forget to use your own keys):
+The `config.js` file stores all the important configuration (use your own keys in place of the Xs):
 ```javascript
 module.exports = {
 	tierion: {
@@ -191,7 +192,9 @@ module.exports = {
 };
 ```
 
-Start the RethinkDB server with this command:
+### Start up RethinkDB
+
+Start RethinkDB with this command:
 ```
 rethinkdb
 ```
@@ -205,7 +208,9 @@ r.db('existence').tableCreate('receipt');
 r.db('existence').table('receipt').indexCreate('timestamp');
 ```
 
-They will create the database and tables of the application. You can leave the server running.
+These commands will create the database and tables of the application. You can leave the server running in the background while we work on the rest of the application.
+
+### Start up ngrok
 
 Now, in a new terminal window, navigate to the directory where you unzipped ngrok. 
 
@@ -223,36 +228,35 @@ Now, you should see something like this:
 
 ![Ngrok Window](https://raw.githubusercontent.com/pluralsight/guides/master/images/f35ba341-9c64-4457-8bc7-ec78ebdcfd5e.png)
 
-See that URL in the *Forwarding* row(s) with the `ngrok.io` domain? That's your public URL. Yours will be different, ngrok generates a random URL every time you run it.
+See that URL in the *Forwarding* row(s) with the `ngrok.io` domain? That's your public URL. Yours will be different; ngrok generates a random URL every time you run it.
 
 Change the `url` property on the `config.js` file to that URL.
 
-The only disadvantage is that this URL is not permanent. If you restart ngrok, it will give you another URL.
+This URL is not permanent. **If you restart ngrok, it will give you another URL.**
 
-You can specify a subdomain, for example, to get the URL  `http://app.ngrok.io` use the command:
+You can specify a subdomain. For example, to get the URL  `http://app.ngrok.io` use the command:
 ```
 ngrok http -subdomain=app 3000
 ```
 
-However, this requires a paid plan. You can get more info in this [page](https://ngrok.com/product).
+However, this requires a paid plan. You can get more info and acquire the paid version on this [page](https://ngrok.com/product).
 
-Nevertheless, as long as you don't stop or restart ngrok, the URL won't change, so forget about that terminal window and let's leave it running for now.
+Nevertheless, as long as you don't stop or restart ngrok, your public URL won't change. Let's leave ngrok running for now.
 
 Next, let's review the server-side code starting with the Tierion Hash API.
 
 
-
 # Tierion Hash API
 
-Tierion Hash API is simple. First, you have to send your email and password to get a token that you must include in all requests. Next, you submit the token to get a receipt ID, which you'll use to get the [Blockchain Receipt](https://tierion.com/docs#blockchain-receipts) about ten minutes later.
+Tierion Hash API is simple. First, you send your email and password to get a token that you must include in all requests. Next, you submit the token to get a receipt ID, which you'll use to get the [Blockchain Receipt](https://tierion.com/docs#blockchain-receipts) about ten minutes later.
 
 With Block Subscriptions there's no need to check constantly for the receipt, a callback will alert you when a block of hashes has been processed and the corresponding receipts have been generated.
 
-This is a [REST API](http://www.restapitutorial.com/). Luckily, Tierion offers [a client library for Node.js](https://github.com/Tierion/hashapi-lib-node) that makes things easier.
+This is a [REST API](http://www.restapitutorial.com/), or a Representational State Transfer Application Program Interface. Luckily, Tierion offers [a client library for Node.js](https://github.com/Tierion/hashapi-lib-node) that makes things easier.
 
 There are only two tricky parts when using this Block Subscription:
-- To authenticate the Block Subscription callback we have to access the request raw body.
-- Block Subscriptions are not automatically deleted after a certain number of failed requests, they live indefinitely, so we have to manage their creation and update them on our side.
+- To authenticate the Block Subscription callback, we have to access the request raw body.
+- Block Subscriptions are not automatically deleted after a certain number of failed requests; they live indefinitely, so we have to manage their creation and update them on our side.
 
 Let's start by creating the `server.js` file with a standard Express configuration with EJS as the template engine:
 ```javascript
@@ -301,11 +305,11 @@ For the Block Subscriptions, we'll store the subscription in the `subscription` 
 		- If it's different, update it.
 - If there's no ID stored, create a new subscription and save the ID for future requests.
 
-Let's translate this into code taking the following approach:
+Let's translate this into code using the following approach:
 - First, we setup the Hash API client and the block subscription.
-- On success, let's configure the routes of the application passing a reference to the Hash API client.
-- Then, start the server.
-- Finally, setup RethinkDB's changefeed to listen for changes in the status of the receipts.
+- Then we configure the routes of the application by passing a reference to the Hash API client.
+- Then, we start the server.
+- Finally, we set up RethinkDB's changefeed to listen for changes in the status of the receipts.
 
 Create the `models/subscription.js` file. This will contain the code for the Block Subscription set up. The first part is:
 ```javascript
@@ -320,7 +324,9 @@ var SUBSCRIPTION_TABLE = 'subscription';
 var URL = config.url + '/tierion';
 ```
 
-It creates the variables required to do the work. For this project, instead of using the official RethinkDB driver for Node.js, we'll be using [rethinkdbdash](https://github.com/neumino/rethinkdbdash). The main advantage is that connections are managed by the driver with a connection pool, so we don't need to call `r.connect` or pass a connection to the `run` function.
+It creates the variables required to do the work. 
+
+For this project, instead of using the official RethinkDB driver for Node.js, we'll be using [rethinkdbdash](https://github.com/neumino/rethinkdbdash). Now, the connections are managed by the driver with a connection pool, so we don't need to call `r.connect` or pass a connection to the `run` function.
 
 Let's create a function to create a block subscription. It looks like this:
 ```javascript
@@ -389,7 +395,7 @@ module.exports.setup = function (callback) {
 }
 ```
 
-First, we authenticate to Tierion's API. Then, we get the ID of the subscription from the database. If there's none, we create a subscription. Otherwise, it's validated according to the plan we laid out before.
+First, we authenticate to Tierion's API. Then, we get the ID of the subscription from the database. If no ID exists, we create a subscription. Otherwise, the ID's validated according to the plan we laid out before.
 
 Now, if we update the last part of `server.js`, it should look like this:
 ```javascript
@@ -412,7 +418,7 @@ Our application will have five routes:
 - `/tierion` will receive the block subscription callback (you already saw it in the previous section)
 - `/pdf/:id` will render the receipt in PDF format
 
-The code of these routes is simple, so maybe it's better to keep them all in one file. They'll use the Hash API client, so let's pass it as a parameter. Modify the last part of `server.js` in this way:
+The code of these routes is simple, so it's better to keep them all in one file. They'll use the Hash API client, so let's pass it as a parameter. Modify the last part of `server.js` as so:
 ```javascript
 var subscription = require('./models/subscription');
 
@@ -448,7 +454,7 @@ var validateRequest = function(rawBody, providedSignature) {
 }
 ```
 
-First, we're requiring the modules we're going to use. We'll see the code of the `models/receipt.js` file in the next section.
+First, we `require()` the modules that we're going to use. We'll see the code of the `models/receipt.js` file in the next section.
 
 Then, we load the modules used by jsreport to render a PDF, ([jsreport-wkhtmltopdf](https://github.com/jsreport/jsreport-wkhtmltopdf)) and ([jsreport-jsrender](https://github.com/jsreport/jsreport-jsrender)), so we can initialize the library.
 
@@ -457,7 +463,7 @@ The following line will read (in a synchronous way) the HTML of the file that wi
 var receiptTemplate = fs.readFileSync(__dirname + '/../templates/receipt.html', 'utf8');
 ```
 
-Notice the use of `__dirname` to build the absolute path to the file. In Node.js you should be very careful with relative paths. The only place where you can safely use them is in require statements.
+Notice the use of `__dirname` to build the absolute path to the file. In Node.js, you should be very careful with relative paths. **The only place where you can use relative paths reliably is in `require()` statements.**
 
 The next function will validate that the request received by Tierion's block subscription really comes from Tierion:
 ```javascript
@@ -501,7 +507,7 @@ module.exports = function (app, hashClient) {
 }
 ```
 
-For the route to registering a new hash, we have to check if the hash the user is sending is already registered. If it's not the case, send it to Tierion and store a receipt object with the information we got at this point:
+To register a new hash, we have to check if the hash the user is sending has already been registered. If not, we send it to Tierion and store a receipt object with the information we got at this point:
 ```javascript
 module.exports = function (app, hashClient) {
 
@@ -551,9 +557,9 @@ module.exports = function (app, hashClient) {
 }
 ```
 
-To keep things simple, the application will only support time in UTC. The timestamp returned by Tierion is a UNIX timestamp, which represents the number of seconds since January 1, 1970, 00:00:00 UTC (Unix epoch). Since the argument of the `Date` object in Javascript is the number of milliseconds since the Unix epoch, we have to multiply it by 1000.
+To keep things simple, the application will only support time in UTC (Coordinated Universal Time). The timestamp returned by Tierion is a UNIX timestamp, which represents the number of seconds since January 1, 1970, 00:00:00 UTC. Since the argument of the `Date` object in Javascript is the number of milliseconds since the Unix epoch, we have to multiply it by 1000.
 
-The next route (for the Tierion callback) uses the `validateRequest` function showed before and just mark the receipts as sent to the blockchain. This will trigger RethinkDB's changefeed to get the actual receipt objects and send the updates using Pubnub (more on this in the next section):
+The next route (for the Tierion callback) uses the `validateRequest` function showed before and simply marks the receipts once they've been sent to the blockchain. Marking will trigger RethinkDB's changefeed to get the actual receipt objects and send the updates using Pubnub (more on this in the next section):
 ```javascript
 module.exports = function (app, hashClient) {
 
@@ -723,7 +729,7 @@ If you're curious, this is how a receipt object from Tierion looks like:
 }
 ```
 
-Now that we have this function, let's update the last part of `server.js` so it can be called upon server initialization:
+Now that we have this function, let's update the last part of `server.js`, so it can be called upon server initialization:
 ```javascript
 var subscription = require('./models/subscription');
 var receipt = require('./models/receipt');
@@ -810,7 +816,7 @@ module.exports.getReceipt = function(id, callback) {
 Now let's review the code of the HTML pages.
 
 
-# The index page
+# The index.html page
 Here's the complete code for the index page template:
 ```html
 <!DOCTYPE html>
@@ -944,9 +950,9 @@ function handleFile(files) {
 	};
 ```
 
-The limitation with this approach is that it won't work with large files (in the hundreds of MBs range, depending on your computer memory). A more robust implementation would read the file in blocks using workers (but that's a little complicated and out of the scope of this tutorial).
+One downside is that this approach won't work with large files. Large generally means in the 200MB+ range, but the definition depends on your computer memory. A more robust implementation would read the file in blocks using workers. However, that's a little complicated and beyond the scope of this tutorial.
 
-Then, to calculate the hash (as a SHA-256 digest), we [use the digest function](https://github.com/diafygi/webcrypto-examples/#sha-256---digest), which returns the hash as an [ArrayBuffer](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer), and then we converted to its hexadecimal representation:
+Then, to calculate the hash (as a SHA256 digest), we [use the digest function](https://github.com/diafygi/webcrypto-examples/#sha-256---digest), which returns the hash as an [ArrayBuffer](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer). Then we convert to its hexadecimal (HEX) representation:
 ```javascript
 reader.onload = function(e) {
 	var data = e.target.result;
@@ -970,7 +976,9 @@ reader.onload = function(e) {
 	};
 ```
 
-The next section will cover how to use PubNub's Storage and Playback functionality to get the list of the latest registered and confirmed documents.
+Now we have a HEX representation of the the original hash.
+
+The next section will cover using PubNub's Storage and Playback functionality to get the list of the latest registered and confirmed documents.
 
 
 # PubNub's Storage and Playback and Multiplexing features
@@ -1037,7 +1045,7 @@ $(document).ready(function() {
 }
 ```
 
-And using multiplexing, we subscribe to the channel for registered and confirmed documents:
+With multiplexing, we can subscribe to the channel for registered and confirmed documents:
 ```javascript
 pubnub.addListener({
 	message: function(data) {
@@ -1062,7 +1070,7 @@ pubnub.subscribe({
 });
 ```
 
-Multiplexing is the feature of listening to multiple data streams on a single connection. Notice than `addListener` must come before the `subscribe` function.
+Multiplexing means listening to multiple data streams on a single connection. Notice that our `addListener` function must come before our `subscribe` function.
 
 Inside `addListener`, we use the `subscribedChannel` property to know from which channel the message comes from. The actual message is in the `message` property.
 
@@ -1099,7 +1107,7 @@ pubnub.history(
 );
 ```
 
-Next, it's the turn of the verification page.
+Next, we'll move onto the verification page.
 
 
 # The verification page
@@ -1225,7 +1233,7 @@ The verification page is simple too:
 </html>
 ```
 
-After the `.container` `div`, you can find the templates to add the blockchain information. If a user comes to this page after the receipt is generated, the information is added on page load. Otherwise, PubNub is set up with the function `setupPubNub` so it can listen for updates.
+After the `.container` `div`, you can find the templates to add the blockchain information. If a user comes to this page after the receipt is generated, the information is added on page load. Otherwise, PubNub is set up with the function `setupPubNub`, which allows it to listen for updates.
 
 The code of this function can be found on `public/js/pubnub-verify.js`:
 ```javascript
@@ -1279,7 +1287,7 @@ And the receipt in PDF format looks like this:
 
 ![PDF receipt](https://raw.githubusercontent.com/pluralsight/guides/master/images/1c8c8326-37a8-4008-9e21-13b09098d9bd.png)
 
-The template for the PDF receipt is similar to this page, the only significant difference is the QR code generated with [QRCode.js](https://davidshimjs.github.io/qrcodejs/) in this way:
+The template for the PDF receipt is similar to this page, the only significant difference is the QR code generated with [QRCode.js](https://davidshimjs.github.io/qrcodejs/). To create a QR code, use the JavaScript below:
 ```javascript
 <div id="qrcode"></div>
 
@@ -1298,25 +1306,23 @@ var qrcode = new QRCode(document.getElementById("qrcode"), {
 
 And that's it, the whole application. Remember that [the entire code is on Github](https://github.com/eh3rrera/blockchain-proof-existence) in case you want to review the files not covered here or if you missed something.
 
-# But how do I verify the existence in the Blockchain?
-I guess you may be thinking, *but what is this merkle_root, transaction id, and target proof that Tierion is returning? and how can all this act as a proof of existence?*.
+# How do I verify the existence in the Blockchain?
+I guess you may be thinking, *but what is this merkle_root, transaction id, and target proof that Tierion is returning? How can all this act as a proof of existence?*.
 
-Well, first of all, the file's SHA256 digest is unique. You need to have the exact same file to generate the same hash (try checking the hash of a file and then adding a space to see how the new hash is completely different). This proves that the file existed at least as early as the time the transaction was confirmed, otherwise, the hash would have been generated. 
+Well, first of all, the file's SHA256 digest is unique. You need to have the exact same file to generate the same hash. (Just try checking the hash of a file, and then adding a space to see how the new hash is completely different). This proves that the file existed at least as early as the time the transaction was confirmed. Otherwise, the hash we used would not have been generated. 
 
 About Tierion's receipt:
 - The `target_hash` is the hash of the Record you wish to verify.
 - This and other recorded hashes are combined into a [Merkle Tree](https://en.wikipedia.org/wiki/Merkle_tree).
 - With the Merkle Tree, a `merkle_root` is calculated and inserted into the blockchain.
 
-With a Merkle tree, you can prove that something belongs to a set, without having to store the whole set. 
+**With a Merkle tree, you can prove that something belongs to a set, without having to store the whole set.**
 
 To validate a receipt, you must confirm that `target_hash` is part of a Merkle Tree, and the tree's Merkle root has been published to a Bitcoin transaction.
 
 If your `target_hash` was the only element in the Merkle Tree, it would be equal to `merkle_root`.
 
-Otherwise, the SHA-256 hash of the `left` value concatenated to the `right` value of the `target_proof` should equal to the parent value, and we should continue moving down the list of nodes until the `parent` equals the `merkle_root`.
-
-All this is better explained on this [Tierion whitepaper](https://tierion.com/chainpoint).
+Otherwise, the SHA256 hash of the `left` value concatenated to the `right` value of the `target_proof` should equal to the parent value, and we should continue moving down the list of nodes until the `parent` equals the `merkle_root`.
 
 For example, to verify the hash of this receipt (e55bde19b226181fb630a2148b3969cac1c3fd6a44ebe464ca5ae6e408694227):
 ```javascript
@@ -1353,13 +1359,16 @@ Then, you can use an [online SHA-256 calculator](http://www.xorbin.com/tools/sha
 
 Since this is the only node of `target_proof`, we can see that the above value is equal to the `merkle_root`. Otherwise, we'd have to repeat the process (the above value would be the `left` or `right` value of the next node).
 
+This is explained more clearly in this [Tierion whitepaper](https://tierion.com/chainpoint).
+
 Now that you've proven the value of the `merkle_root`, take the Bitcoin transaction ID (`tx_id`) to review the transaction on an online site like [https://blockchain.info/](https://blockchain.info/) or [https://blockexplorer.com/](https://blockexplorer.com/).
 
-The transaction must include the `merkle_root` value in the `OP_RETURN` output. If this is true, the receipt is valid:
+The transaction must include the `merkle_root` value in the `OP_RETURN` output. If the value is in the output, the receipt is valid:
 
 ![Bitcoin Transaction](https://raw.githubusercontent.com/pluralsight/guides/master/images/b1162f85-5894-4df5-a59d-ea69ba65b114.png)
 
 # Conclusion
-As we have seen, using Tierion we can access the blockchain in an easy way. In addition, using RethinkDB and PubNub we can benefit from their real-time features to improve the user experience. This proves once again that combining the right APIs, you can build simple but powerful applications.
 
-I hope you've enjoyed this tutorial, thanks for reading.
+As we have seen, we can access the blockchain in an easy way using Tierion. Furthermore, we can benefit from the real-time features of RethinkDB and Pubnub to improve user experience and sync data. This proves once again that by combining the right APIs, you can build simple but powerful applications.
+
+I hope you found this tutorial informative and entertaining. Thank you for reading. Please leave comments and feedback in the discussion section below. Please favorite this guide if you found it useful!
