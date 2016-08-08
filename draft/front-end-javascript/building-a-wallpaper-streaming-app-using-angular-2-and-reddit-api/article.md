@@ -322,7 +322,7 @@ Therefore, the listing will contain
 
 
 ```typescript
-// src/app/wallpaper-listing.model
+// src/app/wallpaper-listing.model.ts
 import { Wallpaper } from './wallpaper.model';//Don't forget import the Wallpaper model
 
 export class WallpaperListing {
@@ -335,6 +335,8 @@ export class WallpaperListing {
 The data models are figured out and we are going to put them to use now. We'll do this by creating an injectable service that will parse the data and assign it to our models.
 
 ```typescript
+// src/app/reddit.service.ts
+
 import { Injectable } from '@angular/core';
 import { Http, Response } from '@angular/http';
 
@@ -353,3 +355,72 @@ export class RedditService {
 ```
 
 We make the <code>RedditService</code> class injectable by adding <code> @Injectable() </code> before its definition. In order to make the Http module available inside the class, we have to  inject it in it via the <code> constructor </code> function.
+
+Next, we add the <code> getWallpapers() </code> function():
+
+```
+// src/app/reddit.service.ts
+
+export class RedditService {
+
+
+    //
+    getWallpapers(after: string) : Observable<WallpaperListing> {
+        let path = '//www.reddit.com/r/wallpapers.json?raw_json=1';
+
+        // continues from last item loaded
+        if(after) path += '&after=' + after;
+
+        return this.http
+            .get(path)
+            .map(this.mapWallpapers);
+    }
+
+    mapWallpapers(res: Response) {
+        let body = res.json();
+        let listing = new WallpaperListing();
+
+
+        return listing;
+    }
+    
+    //
+    
+    }
+```
+
+The <code> getWallpapers </code> function accepts one parameter (<code> after</code> as string) . The second part is its ```: Observable<WallpaperListing> ```. It denotes what type of variable is expected to be returned when the function <code>return</code>s. In it, we use Angular 2's http library to get a response from [https//www.reddit.com/r/wallpapers.json?raw_json=1](https//www.reddit.com/r/wallpapers.json?raw_json=1) and map it through the <code>mapWallpapers</code> function.
+
+
+<code> mapWallpapers </code> gets the response data. Let's have a look at it [here](//www.reddit.com/r/wallpapers.json?raw_json=1). It might seem like a lot of data, but we only need a small chunk of it. We can notice that the post items are contained in the <code>children</code> attribute, which is an array. We'll iterate through them!
+We need to visualize only posts that are images, so while iterating, we'll be chosing only posts who have their <code>post_hint</code> attribute set to <code> "image" </code>:
+
+```
+
+    // src/app/reddit.service.ts
+    mapWallpapers(res: Response) {
+        let body = res.json();
+        let listing = new WallpaperListing();
+        let wallpapers = new Array<Wallpaper>();
+
+        body.data.children.forEach(post => {
+            if (post.data.post_hint === 'image') {
+                let item = new Wallpaper();
+
+                item.url = post.data.url;
+                item.title = post.data.title;
+
+                let previewImages = post.data.preview.images;
+                let resolutions = post.data.preview.images[0].resolutions;
+
+                let previewImage = resolutions.filter(m => m.width === 960)[0];               
+
+                item.previewUrl = previewImage ? previewImage.url : item.url;
+
+                wallpapers.push(item);
+            }
+
+        });
+
+```
+
