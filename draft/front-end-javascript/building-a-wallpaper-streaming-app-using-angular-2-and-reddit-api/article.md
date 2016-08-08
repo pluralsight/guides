@@ -259,20 +259,20 @@ import { Component, OnInit } from '@angular/core';
 
 @Component({
     selector: 'app',
-    template: 'root  component',
+    template: 'root component',
    
 })
-export class AppComponent implements OnInit {
+export class AppComponent {
     constructor() { }
 
-    ngOnInit() { }
+
 
 }
 ```
 We start off by implorting <code> Component </code> and <code> OnInit</code> from the Angular 2 core.
-Next, we use the <code> @Component </code> decorator to define metadata for the component. In the code snippet above, we define the component's selector (```<app></app>```) and its template content(```'root component'```). If you'd like to learn more about component decorator properties, [this](https://angular.io/docs/ts/latest/guide/cheatsheet.html) cheatsheet provides a list of all <code>@Component</code> decorator properties.
+Next, we use the <code> @Component </code> decorator to define metadata for the component. In the code snippet above, we define the component's selector (```<app></app>```) and its template content(```'root component'``` .). If you'd like to learn more about component decorator properties, [this](https://angular.io/docs/ts/latest/guide/cheatsheet.html) cheatsheet provides a list of all <code>@Component</code> decorator properties.
 
-In the code for the component itself, we use <code> implements  OnInit </code> and <code>ngOnInit() {} </code> to implement a  [lifecycle hook](https://angular.io/docs/ts/latest/guide/lifecycle-hooks.html#!#hooks-overview) that is executing when the compoenent loads. For now we'll leave it blank and use it when we're going have to load the data from Reddit.
+
 
 ### Running
 
@@ -380,7 +380,7 @@ export class RedditService {
         let body = res.json();
         let listing = new WallpaperListing();
 
-
+        //iterate through the data
         return listing;
     }
     
@@ -392,17 +392,19 @@ export class RedditService {
 The <code> getWallpapers </code> function accepts one parameter (<code> after</code> as string) . The second part is its ```: Observable<WallpaperListing> ```. It denotes what type of variable is expected to be returned when the function <code>return</code>s. In it, we use Angular 2's http library to get a response from [https//www.reddit.com/r/wallpapers.json?raw_json=1](https//www.reddit.com/r/wallpapers.json?raw_json=1) and map it through the <code>mapWallpapers</code> function.
 
 
-<code> mapWallpapers </code> gets the response data. Let's have a look at it [here](//www.reddit.com/r/wallpapers.json?raw_json=1). It might seem like a lot of data, but we only need a small chunk of it. We can notice that the post items are contained in the <code>children</code> attribute, which is an array. We'll iterate through them!
-We need to visualize only posts that are images, so while iterating, we'll be chosing only posts who have their <code>post_hint</code> attribute set to <code> "image" </code>:
+<code> mapWallpapers </code> gets the response data. Let's have a look at it [here](//www.reddit.com/r/wallpapers.json?raw_json=1). It might seem like a lot of information, but we only need a small chunk of it. We can notice that the post items are contained in the <code>children</code> attribute, which is an array. Let's  iterate through them!
+We also need to visualize only posts that are images, so while iterating, we'll be chosing only posts who have their <code>post_hint</code> attribute set to <code> "image" </code>. Here is how the code looks like:
 
-```
-
+```ts
     // src/app/reddit.service.ts
+    
     mapWallpapers(res: Response) {
         let body = res.json();
         let listing = new WallpaperListing();
+        
+        //iterate through the data
         let wallpapers = new Array<Wallpaper>();
-
+        
         body.data.children.forEach(post => {
             if (post.data.post_hint === 'image') {
                 let item = new Wallpaper();
@@ -419,8 +421,101 @@ We need to visualize only posts that are images, so while iterating, we'll be ch
 
                 wallpapers.push(item);
             }
-
         });
+            
+        listing.wallpapers = wallpapers;
+        listing.after = body.data.after;
+
+        return listing;
+
+      ;
+    }
 
 ```
 
+ In the <code>forEach</code> loop, we also [filter](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter) the preview images to chose the ones which are 960 pixels. I wide. The ternary operator checks if such preview image is found. if not, the url is replaced with the full-resolution url:
+```ts
+  let previewImage = resolutions.filter(m => m.width === 960)[0]; 
+  item.previewUrl = previewImage ? previewImage.url : item.url;
+```
+ 
+ In the end of the function, we attach the pagination attribute from the JSON data (  <code> after </code>)  to the <code>WallPaperListing</code> model and return the results.
+ 
+ Here is the complete code for the two functions. [link to the whole service]():
+```ts
+    getWallpapers(after:string):Observable<WallpaperListing> {
+        let path = '//www.reddit.com/r/wallpapers.json?raw_json=1';
+
+        // continues from last item loaded
+        if (after) path += '&after=' + after;
+
+        return this.http
+            .get(path)
+            .map(this.mapWallpapers);
+    }
+
+    mapWallpapers(res:Response) {
+        let body = res.json();
+        let listing = new WallpaperListing();
+
+        //iterate through the data
+        let wallpapers = new Array<Wallpaper>();
+
+        body.data.children.forEach(post => {
+            if (post.data.post_hint === 'image') {
+                let item = new Wallpaper();
+
+                item.url = post.data.url;
+                item.title = post.data.title;
+
+                let previewImages = post.data.preview.images;
+                let resolutions = post.data.preview.images[0].resolutions;
+
+                let previewImage = resolutions.filter(m => m.width === 960)[0];
+
+                item.previewUrl = previewImage ? previewImage.url : item.url;
+
+                wallpapers.push(item);
+            }
+        });
+
+            listing.wallpapers = wallpapers;
+            listing.after = body.data.after;
+
+            return listing;
+    }
+}
+```
+
+## Building the components
+
+Normally, we'd continue building the rest of the logic in the <code>AppComponent</code>, but that would be a bad practice. Instead, we'll make a <code>WallpaperListing</code> component, which will represent the list of wallpapers:
+
+
+In the code for the component itself, we use <code> implements  OnInit </code> and <code>ngOnInit() {} </code> to implement a  [lifecycle hook](https://angular.io/docs/ts/latest/guide/lifecycle-hooks.html#!#hooks-overview) that is executing when the compoenent loads. For now we'll leave it blank and use it when we're going have to load the data from Reddit.
+
+
+### Updating  AppComponent
+
+In order for the <code>WallpaperListingComponent</code> to work, we must:
+
+- Import it in AppComponent
+- Add it as a directive in the AppComponent decorator
+- Put its selector in the template
+-
+
+
+```ts
+// src/app/app.component.ts
+import { Component } from '@angular/core';
+import {WallpaperListingComponent} from './wallpaper-listing.component' //importing the component 
+@Component({
+    selector: 'app',
+    template: '<wallpaper-listing></wallpaperListing',//adding its selector to the template
+    directives: [ WallpaperListingComponent ] //adding the component as a directive
+})
+export class AppComponent {
+    constructor() { }
+    
+}
+```
