@@ -33,6 +33,7 @@ This game is very easy to play.  It will ask you a set of 5 questions about capi
 >Alexa: That answer is correct. You got 4 out of 5 questions correct. Thank you for playing!
 
 
+
 ### Things used in This Project
 
 #### Software and services
@@ -43,14 +44,31 @@ Amazon Web Services AWS Lambda
 
 
 
-
-
 ### How it was made
 
+Assuming that you already have a developer account, follow theses steps to build this custom skill.
+
+
+#### Code a AWS lambda function for the skill
 
 
 
-#### gg
+
+
+#### Setup up skill in Developer Portal
+
+
+
+
+#### Testing the Capitals and Countries skill
+
+
+
+
+
+
+
+
 
 
 
