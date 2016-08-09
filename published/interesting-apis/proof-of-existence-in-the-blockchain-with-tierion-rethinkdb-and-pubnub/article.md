@@ -678,10 +678,10 @@ module.exports.setup = function (hashClient) {
                             );
 
                             // Publish the object so the list of last confirmed files on the main page is update
-                            var formattedTimestamp = new Date(obj.header.timestamp * 1000)
+                            var formattedTimestamp = new Date()
                                                         .toISOString()
                                                         .replace(/T/, ' ')
-                                                        .replace(/.000Z/, ' UTC');
+                                                        .replace(/.\d{3}Z/, ' UTC');
                             pubnub.publish({
                                     channel : config.pubnub.confirmed_channel,
                                     message : {
@@ -704,28 +704,24 @@ module.exports.setup = function (hashClient) {
 }
 ```
 
-If you're curious, this is how a receipt object from Tierion looks like:
+If you're curious, this is how a receipt object (version 2.0) from Tierion looks like:
 ```javascript
-{  
-   "receipt":{  
-      "header":{  
-         "chainpoint_version":"1.1",
-         "hash_type":"SHA-256",
-         "merkle_root":"9bace4b674c4adbfbf713cf263d105f3f3631bfe4cff43269eba8d3ac0474e97",
-         "tx_id":"2c7e607de19e37bbb14d6a31a2ac77f473db7fa66228afcb26e114b7afb282b2",
-         "timestamp":1469507399
-      },
-      "target":{  
-         "target_hash":"789b2976442d94ed2c24c57e0ac1214572574e11e5f40102913e254e4dd752a1",
-         "target_proof":[  
-            {  
-               "parent":"9bace4b674c4adbfbf713cf263d105f3f3631bfe4cff43269eba8d3ac0474e97",
-               "left":"789b2976442d94ed2c24c57e0ac1214572574e11e5f40102913e254e4dd752a1",
-               "right":"d030c83ea13049e271633efb45ae80bb084553e26e56867a2e91318276f0834c"
-            }
-         ]
-      }
-   }
+{
+	"@context": "https://w3id.org/chainpoint/v2",
+	"anchors": [
+		{
+			"sourceId":  "e8e92ff3efcb2660922e8a870a4ebcda54c41978f0db3374b4c5d31173f0d720" ,
+			"type":  "BTCOpReturn"
+		}
+	] ,
+	"merkleRoot":  "a82c3e4b04bcdec045695129c50221b15eadd2bfff6b65533a17867c201bbde0" ,
+	"proof": [
+		{
+			"right":  "8b6aafc21661aed7ff5a7e8fce857ca0d2f4cef576c1c47c454d58a58ce4c09c"
+		}
+	] ,
+	"targetHash":  "691b6e0b3db43e22466734f7ec4b15d17687d5d8a92212fb99691e454cb9d9c4" ,
+	"type":  "ChainpointSHA256v2"
 }
 ```
 
@@ -1158,13 +1154,8 @@ The verification page is simple too:
     </p>
 
 	<p>
-        <span class="subtitle">Merkle tree:</span>
+        <span class="subtitle">Merkle Root:</span>
         <small>{{:merkle_root}}</small>
-    </p>
-
-    <p>
-        <span class="subtitle">Submitted to the Blockchain at:</span>
-        <small>{{:timestamp}}</small>
     </p>
 </script>
 
@@ -1209,13 +1200,12 @@ The verification page is simple too:
         var params1 = {};
 
         var params2 = { 
-            tx_id: '<%= data.blockchain_receipt.header.tx_id %>',
-            merkle_root: '<%= data.blockchain_receipt.header.merkle_root %>',
-            timestamp: <%= data.blockchain_receipt.header.timestamp %>
+            tx_id: '<%= data.blockchain_receipt.anchors[0].sourceId %>',
+            merkle_root: '<%= data.blockchain_receipt.merkleRoot %>'
         };
 
         var params3 = { 
-            tx_id: '<%= data.blockchain_receipt.header.tx_id %>',
+            tx_id: '<%= data.blockchain_receipt.anchors[0].sourceId %>',
             recepit_id: '<%= data.id %>'
         };
 
@@ -1248,13 +1238,12 @@ var setupPubNub = function(pubnubConfig, hash, callback) {
             var params1 = {};
 
             var params2 = { 
-                tx_id: data.message.header.tx_id,
-                merkle_root: data.message.header.merkle_root,
-                timestamp: data.message.header.timestamp
+                tx_id: data.message.anchors[0].sourceId,
+                merkle_root: data.message.merkleRoot
             };
 
             var params3 = { 
-                tx_id: data.message.header.tx_id,
+                tx_id: data.message.anchors[0].sourceId,
                 recepit_id: data.message.id
             };
 
@@ -1281,11 +1270,13 @@ Here, we're just subscribing to the channel with name equals to the hash we're v
 
 This way, the page of a verified hash looks like the following:
 
-![Verification page](https://raw.githubusercontent.com/pluralsight/guides/master/images/23b03329-b17c-4e61-8d83-fa638eccf536.png)
+![Verification page](https://raw.githubusercontent.com/pluralsight/guides/master/images/25a17621-9d07-49cc-99b2-c9da791e915f.png)
+
 
 And the receipt in PDF format looks like this:
 
-![PDF receipt](https://raw.githubusercontent.com/pluralsight/guides/master/images/1c8c8326-37a8-4008-9e21-13b09098d9bd.png)
+![PDF receipt](https://raw.githubusercontent.com/pluralsight/guides/master/images/eedbdb3d-0b79-4515-bd74-013af6df477f.png)
+
 
 The template for the PDF receipt is similar to this page, the only significant difference is the QR code generated with [QRCode.js](https://davidshimjs.github.io/qrcodejs/). To create a QR code, use the JavaScript below:
 ```javascript
@@ -1294,7 +1285,7 @@ The template for the PDF receipt is similar to this page, the only significant d
 <script src="js/qrcode.min.js" type="text/javascript"></script>
 <script type="text/javascript">
 var qrcode = new QRCode(document.getElementById("qrcode"), {
-    text: "https://blockexplorer.com/tx/:{{r.blockchain_receipt.header.tx_id}}",
+    text: "https://blockexplorer.com/tx/:{{r.blockchain_receipt.anchors[0].sourceId}}",
     width: 128,
     height: 128,
     colorDark : "#000000",
@@ -1307,65 +1298,75 @@ var qrcode = new QRCode(document.getElementById("qrcode"), {
 And that's it, the whole application. Remember that [the entire code is on Github](https://github.com/eh3rrera/blockchain-proof-existence) in case you want to review the files not covered here or if you missed something.
 
 # How do I verify the existence in the Blockchain?
-I guess you may be thinking, *but what is this merkle_root, transaction id, and target proof that Tierion is returning? How can all this act as a proof of existence?*.
+I guess you may be thinking, *but what are these merkle root, transaction id, and proof values that Tierion is returning? How can all this act as a proof of existence?*.
 
 Well, first of all, the file's SHA256 digest is unique. You need to have the exact same file to generate the same hash. (Just try checking the hash of a file, and then adding a space to see how the new hash is completely different). This proves that the file existed at least as early as the time the transaction was confirmed. Otherwise, the hash we used would not have been generated. 
 
 About Tierion's receipt:
-- The `target_hash` is the hash of the Record you wish to verify.
+- The `targetHash` value is the hash of the record you wish to verify.
 - This and other recorded hashes are combined into a [Merkle Tree](https://en.wikipedia.org/wiki/Merkle_tree).
-- With the Merkle Tree, a `merkle_root` is calculated and inserted into the blockchain.
+- With the Merkle Tree, a `merkleRoot` is calculated and inserted into the blockchain.
 
 **With a Merkle tree, you can prove that something belongs to a set, without having to store the whole set.**
 
-To validate a receipt, you must confirm that `target_hash` is part of a Merkle Tree, and the tree's Merkle root has been published to a Bitcoin transaction.
+To validate a receipt, you must confirm that `targetHash` is part of a Merkle Tree, and the tree's Merkle root has been published to a Bitcoin transaction.
 
-If your `target_hash` was the only element in the Merkle Tree, it would be equal to `merkle_root`.
+Receipts generated from Tierion conform to the [Chainpoint 2.0 standard](http://www.chainpoint.org/). You can know more about this standard and how a receipt can be verified in this [whitepaper](https://github.com/chainpoint/whitepaper/blob/master/chainpoint_white_paper.pdf), but in summary here's the procedure:
 
-Otherwise, the SHA256 hash of the `left` value concatenated to the `right` value of the `target_proof` should equal to the parent value, and we should continue moving down the list of nodes until the `parent` equals the `merkle_root`.
+1. Concatenate `targetHash` and the first hash in the `proof` array. The right or left designation specifies which side of the concatenation that the proof hash value should be on.
+2. Hash the resulting value.
+3. Concatenate the resulting hash with the next hash in the `proof` array, using the same left and right rules.
+4. Hash that value and continue the process until you've gone through each item in the `proof` array.
+5. The final hash value should equal the `merkleRoot` value if the proof is valid, otherwise, the proof is invalid.
 
-For example, to verify the hash of this receipt (e55bde19b226181fb630a2148b3969cac1c3fd6a44ebe464ca5ae6e408694227):
+If your `targetHash` was the only element in the Merkle Tree, it would be equal to `merkleRoot`.
+
+Let's see an example. To verify the hash of this receipt (691b6e0b3db43e22466734f7ec4b15d17687d5d8a92212fb99691e454cb9d9c4):
 ```javascript
-{  
-   "header":{  
-      "chainpoint_version":"1.1",
-      "hash_type":"SHA-256",
-      "merkle_root":"9ddd8925d70371010b58797bbac404524039bdf0d5043308691e77656a44ed85",
-      "timestamp":1470181200,
-      "tx_id":"9cf0c93c28c1502cfb3e4bad9ea7fcce048455da2df619c95d097824de04a6d4"
-   },
-   "target":{  
-      "target_hash":"e55bde19b226181fb630a2148b3969cac1c3fd6a44ebe464ca5ae6e408694227",
-      "target_proof":[  
-         {  
-            "left":"e55bde19b226181fb630a2148b3969cac1c3fd6a44ebe464ca5ae6e408694227",
-            "parent":"9ddd8925d70371010b58797bbac404524039bdf0d5043308691e77656a44ed85",
-            "right":"55731848aa53bd31760f7c2fc15241f5099b460bfd5f645d3db24034522f4ce8"
-         }
-      ]
-   }
+{
+	"@context": https://w3id.org/chainpoint/v2,
+	"anchors": [
+		{
+			"sourceId":  "e8e92ff3efcb2660922e8a870a4ebcda54c41978f0db3374b4c5d31173f0d720" ,
+			"type":  "BTCOpReturn"
+		}
+	] ,
+	"merkleRoot":  "a82c3e4b04bcdec045695129c50221b15eadd2bfff6b65533a17867c201bbde0" ,
+	"proof": [
+		{
+			"right":  "8b6aafc21661aed7ff5a7e8fce857ca0d2f4cef576c1c47c454d58a58ce4c09c"
+		}
+	] ,
+	"targetHash":  "691b6e0b3db43e22466734f7ec4b15d17687d5d8a92212fb99691e454cb9d9c4" ,
+	"type":  "ChainpointSHA256v2"
 }
 ```
 
-We concatenate the `left` value with the `right` value of the first node of `target_proof`:
+We concatenate the `targetHash` value with the `right` value of `proof` in the following way:
 ```
-e55bde19b226181fb630a2148b3969cac1c3fd6a44ebe464ca5ae6e40869422755731848aa53bd31760f7c2fc15241f5099b460bfd5f645d3db24034522f4ce8
-```
-
-Then, you can use an [online SHA-256 calculator](http://www.xorbin.com/tools/sha256-hash-calculator) to verify that the hash of that string is equal to the `parent` value:
-```
-9ddd8925d70371010b58797bbac404524039bdf0d5043308691e77656a44ed85
+691b6e0b3db43e22466734f7ec4b15d17687d5d8a92212fb99691e454cb9d9c48b6aafc21661aed7ff5a7e8fce857ca0d2f4cef576c1c47c454d58a58ce4c09c
 ```
 
-Since this is the only node of `target_proof`, we can see that the above value is equal to the `merkle_root`. Otherwise, we'd have to repeat the process (the above value would be the `left` or `right` value of the next node).
+Then, we get the SHA-256 hash of that string to verify that is equal to the `merkleRoot` value.
 
-This is explained more clearly in this [Tierion whitepaper](https://tierion.com/chainpoint).
+Since `proof` has one element, we only have to perform this operation. Otherwise, we'd have to repeat the process for each value of `proof` concatenating it either to the left or right of the previously calculated hash.
 
-Now that you've proven the value of the `merkle_root`, take the Bitcoin transaction ID (`tx_id`) to review the transaction on an online site like [https://blockchain.info/](https://blockchain.info/) or [https://blockexplorer.com/](https://blockexplorer.com/).
+The catch is that the hash generation is done with the binary values (as raw binary data buffers) of `targetHash` and `proof`, rather than with their hexadecimal string representations (the ones shown), which  means that we can't use an [online SHA256 calculator](http://www.xorbin.com/tools/sha256-hash-calculator) to perform the operations.
 
-The transaction must include the `merkle_root` value in the `OP_RETURN` output. If the value is in the output, the receipt is valid:
+Luckily, Tierion provides the following tools to validate your receipts:
 
-![Bitcoin Transaction](https://raw.githubusercontent.com/pluralsight/guides/master/images/b1162f85-5894-4df5-a59d-ea69ba65b114.png)
+- [Tierion's receipt validation web page](https://tierion.com/validate)
+- [Data API validatereceipt endpoint](https://tierion.com/docs/dataapi#api-validate-receipt)
+- [Node.js Chainpoint validation library](https://github.com/chainpoint/chainpoint-validate-js)
+
+And here's a tip. If you really want to see the code that does the validation, take a look at the [validateProof(proof, targetHash, merkleRoot) function](https://github.com/Tierion/merkle-tools/blob/master/merkletools.js) of [Tierion's library for working with Merkle trees](https://github.com/Tierion/merkle-tools).
+
+Now that you've proven the value of the `merkleRoot`, take the Bitcoin transaction ID (`sourceId` property from the `anchors` array with type `BTCOpReturn`) to review the transaction on an online site like [https://blockchain.info/](https://blockchain.info/) or [https://blockexplorer.com/](https://blockexplorer.com/).
+
+The transaction must include the `merkleRoot` value in the `OP_RETURN` output. If the value is in the output, the receipt is valid:
+
+![Bitcoin Transaction](https://raw.githubusercontent.com/pluralsight/guides/master/images/52f05831-ed07-4ec5-8832-bb6464032f48.png)
+
 
 # Conclusion
 
