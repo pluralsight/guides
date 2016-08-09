@@ -77,6 +77,24 @@ Assuming that you already have a developer account, follow theses steps to build
 
 #### Setup up skill in Developer Portal
 
+Sign into __Developer Portal__ account and select __Alexa__ link.
+
+Click the __Get Started__ below the __Alexa Skills Kit__.
+
+
+![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/85035b34-0a74-41dc-94d8-d368c30287f0.PNG)
+
+
+Select add new skill and add name/innovation name.  Select Save and Next.
+
+
+![Create a New Alexa Skill](https://hackster.imgix.net/uploads/image/file/142012/create_new_alexa_skill.PNG?w=1280&h=960&fit=max)
+
+
+
+
+
+
 
 
 
