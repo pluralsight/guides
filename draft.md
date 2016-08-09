@@ -1,3 +1,8 @@
+### Scale ASP.NET Core apps with Docker Swarm Mode by Stefan Prodan
+- [Read the guide](http://tutorials.pluralsight.com/microsoft-net/scale-asp-net-core-apps-with-docker-swarm-mode?status=draft)
+- [Read more from Stefan Prodan](http://tutorials.pluralsight.com/author/stefanprodan) <img src="https://avatars.githubusercontent.com/u/3797675?v=3" width="30" height="30" alt="Stefan Prodan" />
+- Related to: Microsoft.NET (C#, ASP.NET, VB.NET, etc)
+
 ### How to predict if you'll be able to get a bank loan, using Red Sqirl by Justyna888
 - [Read the guide](http://tutorials.pluralsight.com/big-data/how-to-predict-if-you-ll-be-able-to-get-a-bank-loan-using-red-sqirl?status=draft)
 - [Read more from Justyna888](http://tutorials.pluralsight.com/author/Justyna888) <img src="https://avatars.githubusercontent.com/u/20835452?v=3" width="30" height="30" alt="Justyna888" />
