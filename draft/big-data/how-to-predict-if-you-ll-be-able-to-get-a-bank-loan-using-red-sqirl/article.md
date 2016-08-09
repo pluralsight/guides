@@ -138,26 +138,15 @@ You can link these actions to Spark Decision Tree as described in next step.
 3. Double-click the Pig Join and call it “model_outp”.
 4. The first configuration page for the Pig Join action will show you a list of the tables aliases, just click next.
 5. On the following page, just add 3 new lines by clicking “+”:
-
-
 ![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/ddafc7da-3123-4c4e-8de9-d007ef8603d4.jpg)
 
--Operation Field Name Type 
-spark_dt.label Label
-STRING
-spark_dt.score
-Predicted
-CATEGORY
-prediction.Cost 
-Classified
-CATEGORY
-CASE WHEN (spark_dt.score == '1' AND prediction.Cost == '1') THEN 'TP' WHEN (spark_dt.score == '2' AND prediction.Cost == '2') THEN 'FP'       WHEN (spark_dt.score == '1' AND prediction.Cost == '2') THEN 'FN'     WHEN (spark_dt.score == '2' AND prediction.Cost == '1') THEN 'TN' END
-prep_matrix
-CATEGORY
-“Classified” is the field with the class label already given in the german credit dataset and “Predicted” is our new predicted class from the decision tree model we will run. 
-Click OK and Click next.
-The next page has two interactions that specify the join type and the fields to join on. We will use the default join type which is “Join”. In the “Join Field” column, open editor by clicking the pen and choosing “prediction.CustId” for the prediction table and  “spark_dt.label” for the spark_dt table specified in Relation. This condition will join these two tables together.
-Click next , next and OK
+6. “Classified” is the field with the class label already given in the german credit dataset and “Predicted” is our new predicted class from the decision tree model we will run. 
+7. Click OK and Click next.
+8. The next page has two interactions that specify the join type and the fields to join on.
+9. We will use the default join type which is “Join”. 
+10. In the “Join Field” column, open editor by clicking the pen and choosing “prediction. CustId” for the prediction table and  “sparkdt.label” for the spark_dt table specified in Relation. 
+This condition will join these two tables together.
+11. Click next , next and OK
 
 The final step will be calculations on the model accuracy, precision and recall.
 
