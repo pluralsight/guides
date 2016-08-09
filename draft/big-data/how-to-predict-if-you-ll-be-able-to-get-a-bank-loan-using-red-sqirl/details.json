@@ -1,0 +1,15 @@
+{
+    "_publish_status": "draft",
+    "author_name": "Justyna888",
+    "author_real_name": "Justyna888",
+    "branch": "master",
+    "branches": [],
+    "filename": "article.md",
+    "first_commit": "fff4d955f4610762f5c780c3749a6dab4e7a66a7",
+    "image_url": "https://avatars.githubusercontent.com/u/20835452?v=3",
+    "stacks": [
+        "Big Data (Hadoop, Spark, etc)"
+    ],
+    "thumbnail_url": null,
+    "title": "How to predict if you'll be able to get a bank loan, using Red Sqirl"
+}
