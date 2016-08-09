@@ -97,9 +97,23 @@ leave the __Skill Type__ as __Custom Interaction Model__.  Add __Name__ and __In
 ![Create a New Alexa Skill](https://hackster.imgix.net/uploads/image/file/142012/create_new_alexa_skill.PNG?w=1280&h=960&fit=max)
 
 
+Define skill's interaction model.  Cut & Paste the Intent Schema from code section below.
+
+Add Slot Type as screenshot below.
 
 
+![Edit Slot Type](https://hackster.imgix.net/uploads/image/file/142011/slot_type.PNG?w=1280&h=960&fit=max)
 
+
+Add the Utterances.  
+
+Select Save and it should look like screenshot below.
+
+
+![](https://hackster.imgix.net/uploads/image/file/142013/interaction_model.PNG?w=1280&h=960&fit=max)
+
+
+In the Configuration tab, add ARN endpoint from the Lambda function and select "No" for the account linking.  Then select Next.
 
 
 
