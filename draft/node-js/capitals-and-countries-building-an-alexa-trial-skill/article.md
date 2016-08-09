@@ -54,23 +54,23 @@ Assuming that you already have a developer account, follow theses steps to build
 
 1. Select Lambda from Compute service after login to [Console](https://aws.amazon.com/).  If you do not have an account, you can create an AWS account.
 
-2. Skip "Select Blueprint"
+2. Skip __Select Blueprint__.
 
-3. In "Configure Function", enter "Name/Description/Runtime"
+3. In __Configure Function__, enter __Name/Description/Runtime__.
 
-4. Select the ‘Code Entry Type’ as ‘Edit Code inline’ and copy/paste the Lambda function from code section below.  Remember to change the App Id.
+4. Select the __Code Entry Type__ as __Edit Code inline__ and copy/paste the Lambda function from code section below.  Remember to change the App Id.
 
-5. Set the handler and role as follows: (a) keep handler as "index.handler" and (b) add a new role for "lambda_basic_execution"
+5. Set the handler and role as follows: (a) keep handler as __index.handler__ and (b) add a new role for __lambda_basic_execution__.
 
 6. You will be asked to setup your IAM role if you have not done so.
 
 7. Keep the advanced setting as default.
 
-8. Select "Next" and review.  Then "Create Your Function"
+8. Select __Next__ and review.  Then __Create Your Function__.
 
-9. Next create an Event Source.  Select Add event source and Select type as Alexa Skills Set
+9. Next create an Event Source.  Select __Add event source__ and Select type as __Alexa Skills Set__.
 
-10. Copy the ARN for your lambda function.  You will need it for setting up your skill.
+10. Copy the __ARN__ for your lambda function.  You will need it for setting up your skill.
 
 
 
