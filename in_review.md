@@ -3,11 +3,6 @@
 - [Read more from Chidiebere Nnadi](http://tutorials.pluralsight.com/author/andela-cnnadi) <img src="https://avatars.githubusercontent.com/u/3100850?v=3" width="30" height="30" alt="Chidiebere Nnadi" />
 - Related to: Python
 
-### Implementing a custom Devise Sign In and ActionCable Rails 5 by stockholmkid
-- [Read the guide](http://tutorials.pluralsight.com/ruby-ruby-on-rails/implementing-a-custom-devise-sign-in-and-actioncable-rails-5?status=in-review)
-- [Read more from stockholmkid](http://tutorials.pluralsight.com/author/stockholmkid) <img src="https://avatars.githubusercontent.com/u/18127401?v=3" width="30" height="30" alt="stockholmkid" />
-- Related to: Ruby, Ruby on Rails
-
 ### Using the REST Interface with Licas by discompsys
 - [Read the guide](http://tutorials.pluralsight.com/java-and-j2ee/using-the-rest-interface-with-licas?status=in-review)
 - [Read more from discompsys](http://tutorials.pluralsight.com/author/discompsys) <img src="https://avatars.githubusercontent.com/u/20437503?v=3" width="30" height="30" alt="discompsys" />
