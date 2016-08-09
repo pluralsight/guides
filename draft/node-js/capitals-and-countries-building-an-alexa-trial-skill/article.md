@@ -1,4 +1,4 @@
-# The Strong
+### The Story
 
 This is a very simple Alexa skill.  It is a quiz to test your knowledge of world's capitals and countries.  It suits children and adults alike.  It is a fun game for families and friends.
 
