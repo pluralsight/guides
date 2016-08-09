@@ -53,13 +53,12 @@ public class WebUI extends UI {
 
 }
 ```
-This is already a web application, and thanks to Spring Boot, we don’t need to worry about configuring any web server. Just compile the application using your IDE or the command line and execute the generated jar file:
+This is already a web application, and thanks to Spring Boot, we don’t need to worry about configuring any web server. Just compile the application using your IDE or the command line and run the Spring Boot application:
 ```
 mvn clean install
-cd target
-java -jar demo-0.0.1-SNAPSHOT.jar
+mvn spring-boot:run
 ```
-Most IDEs allow creating *run configurations*. You may want to create one to execute the standalone Java Application defined in the `DemoApplication` class directly in your IDE. You can see the `DemoApplication` class defines the standard [`main`](https://csis.pace.edu/~bergin/KarelJava2ed/ch2/javamain.html) method.
+Most IDEs allow creating *run configurations*. You may want to create one to run the Spring Boot Java Application directly in your IDE. Alternatively, you can start the application by running the jar file created in the `target` directory. In the end, a Spring Boot application is simply a Java standalone application. You can find the standard [`main`](https://csis.pace.edu/~bergin/KarelJava2ed/ch2/javamain.html) method defined in the `DemoApplication` class.
 
 Once you have executed the Java application, Spring Boot will configure and start a [Tomcat](http://tomcat.apache.org/) server on port 8080, so you can access the application at <http://localhost:8080> and see the “It works” notification.
 
