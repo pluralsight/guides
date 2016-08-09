@@ -1,4 +1,3 @@
-
 We'd all love the ability to predict the future, regardless of our life experiences, occupation, ethics, etc. The idea of knowing something before it happens, knowing something before everyone else knows it's going to happen, can put us at a major advantage. 
 
 Now we could use a fortune teller to give us that all important future insight, and that could work for some people, but let's, for now, focus on using something else, something a little more based in reality,  predictive data analytics. 
@@ -139,6 +138,10 @@ You can link these actions to Spark Decision Tree as described in next step.
 3. Double-click the Pig Join and call it “model_outp”.
 4. The first configuration page for the Pig Join action will show you a list of the tables aliases, just click next.
 5. On the following page, just add 3 new lines by clicking “+”:
+
+
+![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/ddafc7da-3123-4c4e-8de9-d007ef8603d4.jpg)
+
 -Operation Field Name Type 
 spark_dt.label Label
 STRING
