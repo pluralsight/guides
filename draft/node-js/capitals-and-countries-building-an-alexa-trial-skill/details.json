@@ -1,0 +1,15 @@
+{
+    "_publish_status": "draft",
+    "author_name": "wesee",
+    "author_real_name": "vincent wong",
+    "branch": "master",
+    "branches": [],
+    "filename": "article.md",
+    "first_commit": "7702afdb1c3d023ee1500cbc5edbf7d084fe21ca",
+    "image_url": "https://avatars.githubusercontent.com/u/4255955?v=3",
+    "stacks": [
+        "Node.js"
+    ],
+    "thumbnail_url": null,
+    "title": "Capitals and Countries: Building an Alexa Trial Skill"
+}
