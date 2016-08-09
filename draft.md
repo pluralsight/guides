@@ -1,3 +1,8 @@
+### Capitals and Countries: Building an Alexa Trial Skill by vincent wong
+- [Read the guide](http://tutorials.pluralsight.com/node-js/capitals-and-countries-building-an-alexa-trial-skill?status=draft)
+- [Read more from vincent wong](http://tutorials.pluralsight.com/author/wesee) <img src="https://avatars.githubusercontent.com/u/4255955?v=3" width="30" height="30" alt="vincent wong" />
+- Related to: Node.js
+
 ### Scalable Analytics in Plain Java with Keen IO and Spring Boot by Alejandro
 - [Read the guide](http://tutorials.pluralsight.com/java-and-j2ee/scalable-analytics-in-plain-java-with-keen-io-and-spring-boot?status=draft)
 - [Read more from Alejandro](http://tutorials.pluralsight.com/author/alejandro-du) <img src="https://avatars.githubusercontent.com/u/1708527?v=3" width="30" height="30" alt="Alejandro" />
