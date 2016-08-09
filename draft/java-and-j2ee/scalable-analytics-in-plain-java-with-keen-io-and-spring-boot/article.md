@@ -26,7 +26,7 @@ Go to <http://start.spring.io> and generate a project with the configuration sho
 
 Make sure you added the *Vaadin* dependency. Click the *Generate Project* button and extract the generated zip file. You should get a Maven project you can [import into your favorite IDE](https://vaadin.com/blog/-/blogs/the-maven-essentials-for-the-impatient-developer):
 
-![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/ba06865b-30b3-4a4a-8129-2ddf69fea5ac.28)
+<img src="https://raw.githubusercontent.com/pluralsight/guides/master/images/ba06865b-30b3-4a4a-8129-2ddf69fea5ac.28" width="350" />
 
 ## Create a web UI in plain Java
 
