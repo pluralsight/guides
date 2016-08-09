@@ -1,3 +1,8 @@
+### Implementing a custom Devise Sign In and ActionCable Rails 5 by stockholmkid
+- [Read the guide](http://tutorials.pluralsight.com/ruby-ruby-on-rails/implementing-a-custom-devise-sign-in-and-actioncable-rails-5)
+- [Read more from stockholmkid](http://tutorials.pluralsight.com/author/stockholmkid) <img src="https://avatars.githubusercontent.com/u/18127401?v=3" width="30" height="30" alt="stockholmkid" />
+- Related to: Ruby, Ruby on Rails
+
 ### Proof of existence in the Blockchain with Tierion, RethinkDB, and PubNub by Esteban Herrera
 - [Read the guide](http://tutorials.pluralsight.com/interesting-apis/proof-of-existence-in-the-blockchain-with-tierion-rethinkdb-and-pubnub)
 - [Read more from Esteban Herrera](http://tutorials.pluralsight.com/author/eh3rrera) <img src="https://avatars.githubusercontent.com/u/11665759?v=3" width="30" height="30" alt="Esteban Herrera" />
