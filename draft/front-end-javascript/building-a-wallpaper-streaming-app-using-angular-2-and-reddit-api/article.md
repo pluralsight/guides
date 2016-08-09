@@ -492,7 +492,59 @@ We also need to visualize only posts that are images, so while iterating, we'll 
 Normally, we'd continue building the rest of the logic in the <code>AppComponent</code>, but that would be a bad practice. Instead, we'll make a <code>WallpaperListing</code> component, which will represent the list of wallpapers:
 
 
-In the code for the component itself, we use <code> implements  OnInit </code> and <code>ngOnInit() {} </code> to implement a  [lifecycle hook](https://angular.io/docs/ts/latest/guide/lifecycle-hooks.html#!#hooks-overview) that is executing when the compoenent loads. For now we'll leave it blank and use it when we're going have to load the data from Reddit.
+**wallpaperlisting.component.ts**
+```typescript
+import { Component, OnInit } from '@angular/core';
+import { RedditService } from './reddit.service';
+import { WallpaperListing } from './wallpaper-listing.model';
+
+
+@Component({
+    selector: 'wallpaper-listing',
+    template: require('./main.component.html'),
+    providers: [RedditService],
+    directives: []
+})
+
+export class WallpaperListingComponent implements OnInit  {
+
+    private wallpaperListing: WallpaperListing;
+    private error: boolean;
+
+    constructor(private service: RedditService) { }
+
+    ngOnInit() {
+        this.loadWallpapers(null);
+    }
+
+
+    loadWallpapers(after:string) {
+        this.wallpaperListing = new WallpaperListing();
+        this.service
+            .getWallpapers(after)
+            .subscribe(result => {
+
+                    if(this.wallpaperListing.wallpapers === undefined) {
+                        this.wallpaperListing = result
+                    } else {
+                        this.wallpaperListing.wallpapers = this.wallpaperListing.wallpapers.concat(result.wallpapers);
+                    }
+
+                }, error => this.error = true
+            );
+    }
+
+}
+
+```
+
+In order to mkae server available, we put <code>RedditService</code> as a provider in the component decorator, and we inject it in the constructor of the component to make it available inside.
+   
+    constructor(private service: RedditService) { }
+
+We use <code> implements  OnInit </code> and <code>ngOnInit() {} </code> to implement a  [lifecycle hook](https://angular.io/docs/ts/latest/guide/lifecycle-hooks.html#!#hooks-overview) that is executing when the compoenent loads. For now we'll leave it blank and use it when we're going have to load the data from Reddit.
+
+ The <code>loadWallpapers</code> function is used to fill up the local <code>wallpaperListing</code> class with data. We pass <code>null</code> to the function to indicate that <code>wallpaperListing</code> is being filled with data for the first imte.
 
 
 ### Updating  AppComponent
@@ -502,7 +554,7 @@ In order for the <code>WallpaperListingComponent</code> to work, we must:
 - Import it in AppComponent
 - Add it as a directive in the AppComponent decorator
 - Put its selector in the template
--
+
 
 
 ```ts
@@ -511,7 +563,7 @@ import { Component } from '@angular/core';
 import {WallpaperListingComponent} from './wallpaper-listing.component' //importing the component 
 @Component({
     selector: 'app',
-    template: '<wallpaper-listing></wallpaperListing',//adding its selector to the template
+    template: '<wallpaper-listing></wallpaperListing>',//adding its selector to the template
     directives: [ WallpaperListingComponent ] //adding the component as a directive
 })
 export class AppComponent {
