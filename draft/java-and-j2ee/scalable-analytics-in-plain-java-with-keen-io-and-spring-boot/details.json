@@ -1,0 +1,15 @@
+{
+    "_publish_status": "draft",
+    "author_name": "alejandro-du",
+    "author_real_name": "Alejandro",
+    "branch": "master",
+    "branches": [],
+    "filename": "article.md",
+    "first_commit": "ec9aa34fb04c1230992f5c0e413dfce58d024ed2",
+    "image_url": "https://avatars.githubusercontent.com/u/1708527?v=3",
+    "stacks": [
+        "Java and J2EE"
+    ],
+    "thumbnail_url": null,
+    "title": "Scalable Analytics in Plain Java with Keen IO and Spring Boot"
+}
