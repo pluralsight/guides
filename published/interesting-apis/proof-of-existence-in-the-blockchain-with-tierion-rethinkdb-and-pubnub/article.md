@@ -293,7 +293,7 @@ app.use(bodyParser.urlencoded({
 
 This way, `rawBody` will contain the raw body of the request, for example:
 ```javascript
-id=5796c41f8f5944de49bc0d1d&startTimestamp=2016-07-26T01%3A49%3A59.233Z&endTimestamp=2016-07-26T01%3A59%3A59.216Z
+id=5796c41f8f5944de49bc0d1d&startTimestamp=1470758399&endTimestamp=1470758999
 ```
 
 For the Block Subscriptions, we'll store the subscription in the `subscription` table so we can do something like this:
