@@ -7,7 +7,7 @@ To give you an idea of what we are going to implement, take a look at the follow
 ![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/ef4f1e80-6ddc-481d-9bc4-106e1041dc85.27)
 Remember: we will be coding only in Java!
 
-# Prerequisites
+## Prerequisites
 
 * Did we mention Java? We will use Java 8 in this tutorial.
 * Maven. Please make sure [Maven is installed](https://maven.apache.org/install.html) and working.
@@ -16,7 +16,7 @@ Remember: we will be coding only in Java!
 
 We are going to use Spring and Vaadin frameworks as well, but you don’t really need to have any previous experience with these frameworks to follow this tutorial.
 
-# Create a Spring Boot project
+## Create a Spring Boot project
 
 [Spring Framework](https://projects.spring.io/spring-framework) is a popular enterprise application framework that allows you to create high performing, easily testable, reusable code. Although Spring Framework has many [modules](http://docs.spring.io/spring/docs/current/spring-framework-reference/html/overview.html#overview-modules), we will use it as an [Inversion of Control container](http://docs.spring.io/spring/docs/current/spring-framework-reference/html/beans.html). One of the easiest ways of creating a web application with Spring Framework is by using [Spring Boot](http://projects.spring.io/spring-boot) and [Spring Initializr](http://start.spring.io/).
 
@@ -28,7 +28,7 @@ Make sure you added the *Vaadin* dependency. Click the *Generate Project* button
 
 ![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/ba06865b-30b3-4a4a-8129-2ddf69fea5ac.28)
 
-# Create a web UI in plain Java
+## Create a web UI in plain Java
 
 Time to start coding! Let’s begin by creating the first screen. Create the following Java class next to the `DemoApplication` class:
 ```
@@ -135,7 +135,7 @@ Although most of the code is self-explanatory, let’s review some key parts:
 * `layout.addComponent(title)`: This is how we can add components into layouts. In this case, `layout` is a `VerticalLayout` meaning all the contained components will be aligned, well, vertically. There are other kind of layout such as `HorizontalLayout` and `GridLayout` for example.
 * `button.addClickListener(event -> giftSelected(name, value))`: We can add click listeners to buttons in order to respond to click events on them. In this case, we are using a [lambda expression](http://www.oracle.com/webfolder/technetwork/tutorials/obe/java/Lambda-QuickStart/index.html) to define the `ClickListener` implementation as a call to the `giftSelected` method.
 
-# Configure Keen IO
+## Configure Keen IO
 
 Now that we have a web UI implemented. We can start collecting events any time a button is clicked. The first step of course, is configuring Keen IO. Go ahead and add the [Keen IO Java API](https://github.com/keenlabs/KeenClient-Java) into the `dependencies` section of the `pom.xml` file:
 ```
@@ -195,7 +195,7 @@ keen.readKey=YOUR_READ_KEY
 ![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/6ff0885c-0799-451b-b1bd-a9558cc5e68a.50)
 
 
-# Send events to Keen IO
+## Send events to Keen IO
 
 We are ready to use the Keen IO API directly in the `WebUI` class. First, inject the `KeenClient` bean in the `WebUI` class as follows:
 ```
@@ -238,7 +238,7 @@ As you can see, we can send key/value pairs to Keen IO using a map. We don't hav
 
 Now you should be able to use the application and start collecting events. Try rebuilding the project, starting the application again, and clicking the buttons. Although the application looks the same as before, now we are collecting events.
 
-# Create a Dashboard in plain Java
+## Create a Dashboard in plain Java
 
 It’s time to analyse and visualize the data we are collecting! One way to quickly see something interesting on the screen is by defining a query directly in <https://keen.io>. You shouldn’t have any trouble exploring the website and creating some queries and even a dashboard by yourself! Go ahead and try it if you want, however, in this tutorial we are going to focus on creating a dashboard using the Java programming language.
 
@@ -388,7 +388,7 @@ public class Dashboard extends VerticalLayout {
 ```
 Build, run the application, and click the *View dashboard* link. You should see some nice-looking charts now!
 
-# Summary
+## Summary
 
 Congratulations! You’ve just developed a web application with scalable analytics features in plain Java. You should be able to send millions of events to Keen IO without having scalability issues when running queries thanks to Keen IO. You can develop the web application in plain Java thanks to Vaadin. And last, but not least, you can develop high performing, easily testable, reusable code thanks to Spring.
 
