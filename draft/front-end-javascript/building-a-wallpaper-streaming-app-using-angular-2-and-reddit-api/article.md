@@ -443,6 +443,7 @@ We also need to visualize only posts that are images, so while iterating, we'll 
  
  Here is the complete code for the two functions. [link to the whole service]():
 ```ts
+// src/app/reddit.service.ts
     getWallpapers(after:string):Observable<WallpaperListing> {
         let path = '//www.reddit.com/r/wallpapers.json?raw_json=1';
 
@@ -491,9 +492,11 @@ We also need to visualize only posts that are images, so while iterating, we'll 
 
 Normally, we'd continue building the rest of the logic in the <code>AppComponent</code>, but that would be a bad practice. Instead, we'll make a <code>WallpaperListing</code> component, which will represent the list of wallpapers:
 
+### Displaying results
 
-**wallpaperlisting.component.ts**
+
 ```typescript
+//  src/app/wallpaperlisting.component.ts
 import { Component, OnInit } from '@angular/core';
 import { RedditService } from './reddit.service';
 import { WallpaperListing } from './wallpaper-listing.model';
@@ -501,7 +504,6 @@ import { WallpaperListing } from './wallpaper-listing.model';
 
 @Component({
     selector: 'wallpaper-listing',
-    template: require('./main.component.html'),
     providers: [RedditService],
     directives: []
 })
@@ -546,7 +548,34 @@ We use <code> implements  OnInit </code> and <code>ngOnInit() {} </code> to impl
 
  The <code>loadWallpapers</code> function is used to fill up the local <code>wallpaperListing</code> class with data. We pass <code>null</code> to the function to indicate that <code>wallpaperListing</code> is being filled with data for the first imte.
 
+Next, we will add the template by putting its <code>template</code> in the component decorator. Here is how the template looks like:
 
+
+```html
+<div class="main-container">
+    <div class="image-container" *ngFor="let wallpaper of wallpaperListing.wallpapers">
+        <img src="{{ wallpaper.previewUrl }}" class="image-item" />
+        <div class="actions">
+            <button class="btn" (click)="open(wallpaper.url)"><i class="material-icons">open_in_new</i></button>
+        </div>
+    </div>
+    <div *ngIf="!error" class="image-container load-more" (click)="loadMore()">Load more..</div>
+    <div *ngIf="error" class="image-container load-more">There was an error connecting to reddit. Please try again later.</div>
+</div>
+```
+We use [ngFor](https://angular.io/docs/ts/latest/api/common/index/NgFor-directive.html) to loop through the <code>wallpapers</code> array of the <code>wallpaperListing</code> to display the attributes of each item.
+
+Add the tempalte's url to the decorator of the <code>WallpaperListingComponent</code>:
+
+
+```ts
+// src/app/wallpaperListing.component.ts
+@Component({
+//
+template: require('./wallpaper-listing.component.html'),
+//
+})
+```
 ### Updating  AppComponent
 
 In order for the <code>WallpaperListingComponent</code> to work, we must:
@@ -571,3 +600,5 @@ export class AppComponent {
     
 }
 ```
+
+Open your app in [http://localhost:8080](http://localhost:8080) (don't forget to run <code>npm run serve</code> before that!) and you'll see some the images being displayed right from reddit's /r/wallpapers !
