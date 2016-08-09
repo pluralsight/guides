@@ -1,0 +1,15 @@
+{
+    "_publish_status": "draft",
+    "author_name": "stefanprodan",
+    "author_real_name": "Stefan Prodan",
+    "branch": "master",
+    "branches": [],
+    "filename": "article.md",
+    "first_commit": "18c4b104fa1712e09bdf51daef73f0b9390641e6",
+    "image_url": "https://avatars.githubusercontent.com/u/3797675?v=3",
+    "stacks": [
+        "Microsoft.NET (C#, ASP.NET, VB.NET, etc)"
+    ],
+    "thumbnail_url": null,
+    "title": "Scale ASP.NET Core apps with Docker Swarm Mode"
+}
