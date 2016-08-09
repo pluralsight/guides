@@ -585,8 +585,8 @@ Notice that we're using `rawBody` to authenticate the request and a signature pr
 	id: '5796c41f8f5944de49bc0d1d',
     merkleRoot: '21e31466867ab47e079421a7eeadaf5fae300a3c9eba8436ddab8b5cb90bf04b',
     transactionId: 'f42f4b074e2d46ab0f3883a907dac52b6bb373b97c1282f5b4111632df1d225f',
-    startTimestamp: '2016-07-26T01:49:59.233Z',
-    endTimestamp: '2016-07-26T01:59:59.216Z' 
+    startTimestamp: '1470758399',
+    endTimestamp: '1470758999' 
 }
 ```
 
@@ -744,8 +744,8 @@ Back to `receipt.js`, this changefeed is triggered when `sent_to_blockchain` is 
 ```javascript
 module.exports.markReceiptsAsSent = function(startTimestamp, endTimestamp) {
     r.table(RECEIPT_TABLE).between(
-            r.ISO8601(startTimestamp),
-            r.ISO8601(endTimestamp), {index: 'timestamp'})
+            r.epochTime(parseInt(startTimestamp)),
+            r.epochTime(parseInt(endTimestamp)), {index: 'timestamp'})
         .update({'sent_to_blockchain': true}).run();
 }
 ```
