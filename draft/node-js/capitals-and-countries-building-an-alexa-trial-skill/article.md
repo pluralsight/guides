@@ -33,6 +33,28 @@ This game is very easy to play.  It will ask you a set of 5 questions about capi
 >Alexa: That answer is correct. You got 4 out of 5 questions correct. Thank you for playing!
 
 
+### Things used in This Project
+
+#### Software and services
+
+Alexa Skill Kit
+
+Amazon Web Services AWS Lambda
+
+
+
+
+
+### How it was made
+
+
+
+
+#### gg
+
+
+
+
 
 Or load the live markdown tutorial to check the syntax.
 
