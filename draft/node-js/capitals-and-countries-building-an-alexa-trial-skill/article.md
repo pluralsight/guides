@@ -123,6 +123,10 @@ In the Configuration tab, add ARN endpoint from the Lambda function and select "
 
 
 
+#### Voice Interface Diagram
+
+
+
 
 
 
