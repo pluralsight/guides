@@ -72,6 +72,7 @@ Assuming that you already have a developer account, follow theses steps to build
 
 10. Copy the __ARN__ for your lambda function.  You will need it for setting up your skill.
 
+![test](https://hackster.imgix.net/uploads/image/file/142010/create_lambda_function.PNG?w=680&h=510&fit=max)
 
 
 #### Setup up skill in Developer Portal
