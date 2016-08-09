@@ -1,3 +1,8 @@
+### Creating and Using Widgets in Android Studio by adityavarshney
+- [Read the guide](http://tutorials.pluralsight.com/other/creating-and-using-widgets-in-android-studio?status=draft)
+- [Read more from adityavarshney](http://tutorials.pluralsight.com/author/adityavarshney) <img src="https://avatars.githubusercontent.com/u/17189718?v=3" width="30" height="30" alt="adityavarshney" />
+- Related to: other
+
 ### How to predict if you'll be able to get a bank loan, using Red Sqirl by Justyna888
 - [Read the guide](http://tutorials.pluralsight.com/big-data/how-to-predict-if-you-ll-be-able-to-get-a-bank-loan-using-red-sqirl?status=draft)
 - [Read more from Justyna888](http://tutorials.pluralsight.com/author/Justyna888) <img src="https://avatars.githubusercontent.com/u/20835452?v=3" width="30" height="30" alt="Justyna888" />
