@@ -1,5 +1,3 @@
-# Scale ASP.NET Core apps with Docker Swarm Mode
-
 Starting with Docker 1.12 the Docker Engine comes with a built-in container orchestration module named Docker Swarm mode. 
 What's so exciting about the new Docker Swarm mode is that you don't have to deal with complex network configurations, 
 load balancers, service registries or certificates generation and management.
