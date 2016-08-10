@@ -155,75 +155,46 @@ Where : TP - True Positive , FP- False Positive, FN - False Negative, True Negat
 
 _**In this confusion matrix, the "correct" cells are the following:**_
 
-*TN: The number of true negatives, i.e., customers who did not get credit whom we correctly classified as not-creditable (not receiving credit).
+- TN: The number of true negatives, i.e., customers who did not get credit whom we correctly classified as not-creditable (not receiving credit).
+- TP: The number of true positives, i.e., customers who got credit and we correctly classified as creditable.
 
-*TP: The number of true positives, i.e., customers who got credit and we correctly classified as creditable.
+_**The "error" cells are:**_
+- FN: The number of false negatives, i.e., customers who did receive credit whom we incorrectly classified as non-creditable (not receiving credit).
+- FP: The number of false positives, i.e., customers who did not receive credit whom we incorrectly classified as creditable (receiving credit).
 
-_The "error" cells are:_
-*FN: The number of false negatives, i.e., customers who did receive credit whom we incorrectly classified as non-creditable (not receiving credit).
--FP: The number of false positives, i.e., customers who did not receive credit whom we incorrectly classified as creditable (receiving credit).
+**Drop a Pig Aggregate action icon onto the canvas.**
+1. Create a link from “model_outp”, name it new pig “final_outp”
+2. Leave the “Group by” page in the configuration window empty.
+3. Click Next. 
+4. Add 5 new fields by clicking the “+” sign. New fields are presented in the table below. You can use the editor window to create them or copy and paste following formula.
+![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/91d20f58-69f6-4d98-b47e-a9f270e76190.PNG)
+5. Click next.
+6. Click next.
+7. Click OK.
 
-Drop a Pig Aggregate action icon onto the canvas.
-Create a link from “model_outp”, name it new pig “final_outp”
-Leave the “Group by” page in the configuration window empty.
-Click Next. 
-Add 5 new fields by clicking the “+” sign. New fields are presented in the table below. You can use the editor window to create them or copy and paste following formula. 
-Operation
-Field Name
-Type
-SUM(1)
-TOTAL_CNT
-DOUBLE
-COUNT( CASE WHEN model_outp.prep_matrix == 'TP' THEN 1 END )
-TP
-DOUBLE
-COUNT( CASE WHEN model_outp.prep_matrix  == 'FP' THEN 1 END )
-FP
-DOUBLE
-COUNT( CASE WHEN model_outp.prep_matrix  == 'FN' THEN 1 END )
-FN
-DOUBLE
-COUNT( CASE WHEN model_outp.prep_matrix  == 'TN' THEN 1 END )
-TN
-DOUBLE
-Click next.
-Click next.
-Click ok.
-Finally drop a Pig Select action icon onto the canvas.  
-Create a link from “final_outp” to the new pig action. Name the pig action “performance_measure”
-Add 3 new fields by clicking the “+” sign. The new fields are presented in table below. You can use the editor to create them or copy and paste following formula.
-Operation
-Field Name
-Type
-(TP+ TN)/ ( TP + FP + FN + TN)
-OR (TP+ TN)/ TOTAL_CNT
-Accuracy
-DOUBLE
-    TP/ (TP+ FP)
-Precision
-DOUBLE
-     TP / ( TP + FN ) 
-Recall
-DOUBLE
-Click next again click next.
-Click OK.
+**Finally drop a Pig Select action icon onto the canvas.** 
+1. Create a link from “final_outp” to the new pig action. Name the pig action “performance_measure”
+3. Add 3 new fields by clicking the “+” sign. 
+4. The new fields are presented in table below. You can use the editor to create them or copy and paste following formula.
+![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/8fc3ad4a-8485-43cb-b10b-53755cad7711.PNG)
+5. Click next again click next.
+6. Click OK.
 
-Now we’ll run our decision tree model by going to Project -> Save and run.
+**Now we’ll run our decision tree model by going to Project -> Save and run.**
+
 We’ve counted the cases classified correctly and incorrectly in the last Aggregate Pig Action and we got performance measures from the Select Pig action to evaluate the models performance:  
 
-Accuracy = TP+TN / TP+FP+FN+TN =  0.72 ***  =  72% of instances classified correctly
-Precision = TP/TP+FP = 0.76***
-Recall = TP/TP+FN = 0.80***
-***You may have different values here. It depends on your prediction and training datasets sizes.
+- **Accuracy = TP+TN / TP+FP+FN+TN =  0.72 =  72% of instances classified correctly**
+- **Precision = TP/TP+FP = 0.76**
+- **Recall = TP/TP+FN = 0.80**
 
-As we are using RANDOM() the number of cases in training and prediction obtained by the condition >= 0.3 and < 0.3 may vary.
+_You may have different values here. It depends on your prediction and training datasets sizes. As we are using RANDOM() the number of cases in training and prediction obtained by the condition >= 0.3 and < 0.3 may vary._
 
-To analyse the performance of the model, answer these questions:
-Accuracy - How many of the instances are classified correctly in our model? 
-Precision - What fraction is correct out of all cases classified with the label  “positive”?
+**To analyse the performance of the model, answer these questions:**
+- Accuracy - How many of the instances are classified correctly in our model? 
+- Precision - What fraction is correct out of all cases classified with the label  “positive”?
 This tells  us what proportion of the customers we predicted are creditable (will receive credit). 
-Recall - Out of all the “positive” cases, what fraction of them was picked up by the classifier? 
- This is showing us what proportion of customers actually did not receive credit (not-creditable) that we classified as not receiving credit. 
+- Recall - This is showing us what proportion of customers actually did not receive credit (not-creditable) that we classified as not receiving credit. 
 
 Now, when the model is done and you took a look at its output and performance, you can try to predict if you would get a loan from the bank based on the decision tree model as a way of evaluating you as a “good” or “bad” customer. 
 
@@ -233,7 +204,7 @@ When you fill in your data, leave the Cost field empty as this is the field valu
 
 You can also build a decision tree model with numerical version of these data, or a logistic regression model or SVM in Red Sqirl to predict if you will get a loan, and compare the performance between the different models and input types. 
 
-Enjoy!
+**Enjoy!**
 
 
 
