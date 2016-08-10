@@ -141,8 +141,21 @@ And Alexa will ask you the next quiz question.  The quiz will end when you have 
 
 #### Publishing the Skill
 
+1
+
+![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/1650234d-c12e-49fa-ba5a-4ca3f323192f.PNG)
 
 
+
+2
+
+![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/11d14e53-6bc2-4925-bb53-877929c2362b.PNG)
+
+
+3
+
+
+![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/8940c225-4d84-43b7-af24-ddad19c7fe69.PNG)
 
 
 
