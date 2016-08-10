@@ -120,6 +120,22 @@ In the Configuration tab, add ARN endpoint from the Lambda function and select "
 
 #### Testing the Capitals and Countries skill
 
+In the Test tab, enter Utterance "Alexa, play Capitals and Countries" and press "Ask Capitals and Countries" button, as shown in screenshot below.
+
+![](https://hackster.imgix.net/uploads/image/file/142015/test_start_play.PNG?w=1280&h=960&fit=max)
+
+
+
+Press Listen to listen to quiz question #1.
+
+![](https://hackster.imgix.net/uploads/image/file/142016/test_press_listen.PNG?w=1280&h=960&fit=max)
+
+
+Enter "three" and press "Ask Capitals and Countries" button.  Then press Listen to listen to Alexa's response to find if you answered correctly.  
+
+![](https://hackster.imgix.net/uploads/image/file/142017/test_answer_1.PNG?w=1280&h=960&fit=max)
+
+And Alexa will ask you the next quiz question.  The quiz will end when you have answered 5 questions.
 
 
 
