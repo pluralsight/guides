@@ -73,9 +73,9 @@ You'll now see the configuration pages for this action.
 4. On the first page just click on copy to get all the data.
 5. Add a new line by clicking the plus sign in the top corner of the window and write function RANDOM() and give it a name “Mixing” and type Double. 
 6. You can also use the little pen symbol to open the editor and choose utilis -> RANDOM().
-7. Click next
-8. Click next
-9. Click OK
+7. Click next.
+8. Click next.
+9. Click OK.
 
 
 _**Now we will save our model. Go to File -> Save as -> type name “ourmodel” and OK.**_
@@ -138,7 +138,8 @@ You can link these actions to Spark Decision Tree as described in next step.
 3. Double-click the Pig Join and call it “model_outp”.
 4. The first configuration page for the Pig Join action will show you a list of the tables aliases, just click next.
 5. On the following page, just add 3 new lines by clicking “+”:
-![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/ddafc7da-3123-4c4e-8de9-d007ef8603d4.jpg)
+
+![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/2419390d-3ccc-4a46-a59b-351d663e90fc.PNG)
 
 6. “Classified” is the field with the class label already given in the german credit dataset and “Predicted” is our new predicted class from the decision tree model we will run. 
 7. Click OK and Click next.
@@ -146,34 +147,23 @@ You can link these actions to Spark Decision Tree as described in next step.
 9. We will use the default join type which is “Join”. 
 10. In the “Join Field” column, open editor by clicking the pen and choosing “prediction. CustId” for the prediction table and  “sparkdt.label” for the spark_dt table specified in Relation. 
 This condition will join these two tables together.
-11. Click next , next and OK
+11. Click next , next and OK.
 
-The final step will be calculations on the model accuracy, precision and recall.
+**The final step will be calculations on the model accuracy, precision and recall.**
 
 We’ll create a calculation for a matrix with a count of cases correctly and incorrectly classified in our model, and then calculate accuracy, precision and recall to measure the model's performance. 
-
-Classified →
-Test data ↓
-Creditable
-Non - Creditable
-Creditable 
-TP 
-correct
-FP
-incorrect
-Non - Creditable
-FN
-incorrect
-TN
-correct
+![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/995f18ad-1cb2-4ad5-be6a-5beeab356fec.PNG)
 Where : TP - True Positive , FP- False Positive, FN - False Negative, True Negative
 
-In this confusion matrix, the "correct" cells are the following:
-TN: The number of true negatives, i.e., customers who did not get credit whom we correctly classified as not-creditable (not receiving credit).
-TP: The number of true positives, i.e., customers who got credit and we correctly classified as creditable.
-The "error" cells are:
-FN: The number of false negatives, i.e., customers who did receive credit whom we incorrectly classified as non-creditable (not receiving credit).
-FP: The number of false positives, i.e., customers who did not receive credit whom we incorrectly classified as creditable (receiving credit).
+_**In this confusion matrix, the "correct" cells are the following:**_
+
+*TN: The number of true negatives, i.e., customers who did not get credit whom we correctly classified as not-creditable (not receiving credit).
+
+*TP: The number of true positives, i.e., customers who got credit and we correctly classified as creditable.
+
+_The "error" cells are:_
+*FN: The number of false negatives, i.e., customers who did receive credit whom we incorrectly classified as non-creditable (not receiving credit).
+-FP: The number of false positives, i.e., customers who did not receive credit whom we incorrectly classified as creditable (receiving credit).
 
 Drop a Pig Aggregate action icon onto the canvas.
 Create a link from “model_outp”, name it new pig “final_outp”
