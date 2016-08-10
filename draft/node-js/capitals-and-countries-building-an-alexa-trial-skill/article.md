@@ -160,8 +160,13 @@ And Alexa will ask you the next quiz question.  The quiz will end when you have 
 
 
 
-#### Voice Interface Diagram
 
+#### Troubleshooting the Skill
+
+
+
+
+#### Voice Interface Diagram
 
 
 
