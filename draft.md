@@ -238,11 +238,6 @@
 - [Read more from Prassanna-S](http://tutorials.pluralsight.com/author/Prassanna-S) <img src="https://avatars.githubusercontent.com/u/17286182?v=3" width="30" height="30" alt="Prassanna-S" />
 - Related to: Software Engineering Best Practices
 
-### Ionic 2 and Firebase 3 Complete Auth System by Jorge Vergara
-- [Read the guide](http://tutorials.pluralsight.com/front-end-javascript/ionic-2-and-firebase-3-complete-auth-system?status=draft)
-- [Read more from Jorge Vergara](http://tutorials.pluralsight.com/author/javebratt) <img src="https://avatars.githubusercontent.com/u/7296623?v=3" width="30" height="30" alt="Jorge Vergara" />
-- Related to: Front-End JavaScript (Angular, React, Meteor, etc)
-
 ### How to build a tinder for x with Ionic 2 and Firebase by Carlos Rojas
 - [Read the guide](http://tutorials.pluralsight.com/html-css/how-to-build-a-tinder-for-x-with-ionic-2-and-firebase?status=draft)
 - [Read more from Carlos Rojas](http://tutorials.pluralsight.com/author/carlosrojaso) <img src="https://avatars.githubusercontent.com/u/6164354?v=3" width="30" height="30" alt="Carlos Rojas" />
