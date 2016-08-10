@@ -1,8 +1,3 @@
-### How to predict if you'll be able to get a bank loan, using Red Sqirl by Justyna888
-- [Read the guide](http://tutorials.pluralsight.com/big-data/how-to-predict-if-you-ll-be-able-to-get-a-bank-loan-using-red-sqirl?status=draft)
-- [Read more from Justyna888](http://tutorials.pluralsight.com/author/Justyna888) <img src="https://avatars.githubusercontent.com/u/20835452?v=3" width="30" height="30" alt="Justyna888" />
-- Related to: Big Data (Hadoop, Spark, etc)
-
 ### Capitals and Countries: Building an Alexa Trial Skill by vincent wong
 - [Read the guide](http://tutorials.pluralsight.com/node-js/capitals-and-countries-building-an-alexa-trial-skill?status=draft)
 - [Read more from vincent wong](http://tutorials.pluralsight.com/author/wesee) <img src="https://avatars.githubusercontent.com/u/4255955?v=3" width="30" height="30" alt="vincent wong" />
