@@ -138,9 +138,7 @@ You can link these actions to Spark Decision Tree as described in next step.
 3. Double-click the Pig Join and call it “model_outp”.
 4. The first configuration page for the Pig Join action will show you a list of the tables aliases, just click next.
 5. On the following page, just add 3 new lines by clicking “+”:
-
-![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/2419390d-3ccc-4a46-a59b-351d663e90fc.PNG)
-
+![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/54b3a66c-237b-4ffb-90ff-7930bde3106e.PNG)
 6. “Classified” is the field with the class label already given in the german credit dataset and “Predicted” is our new predicted class from the decision tree model we will run. 
 7. Click OK and Click next.
 8. The next page has two interactions that specify the join type and the fields to join on.
