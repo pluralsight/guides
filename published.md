@@ -1,3 +1,8 @@
+### Creating and Using Widgets in Android Studio by adityavarshney
+- [Read the guide](http://tutorials.pluralsight.com/other/creating-and-using-widgets-in-android-studio)
+- [Read more from adityavarshney](http://tutorials.pluralsight.com/author/adityavarshney) <img src="https://avatars.githubusercontent.com/u/17189718?v=3" width="30" height="30" alt="adityavarshney" />
+- Related to: other
+
 ### Implementing a custom Devise Sign In and ActionCable Rails 5 by stockholmkid
 - [Read the guide](http://tutorials.pluralsight.com/ruby-ruby-on-rails/implementing-a-custom-devise-sign-in-and-actioncable-rails-5)
 - [Read more from stockholmkid](http://tutorials.pluralsight.com/author/stockholmkid) <img src="https://avatars.githubusercontent.com/u/18127401?v=3" width="30" height="30" alt="stockholmkid" />
