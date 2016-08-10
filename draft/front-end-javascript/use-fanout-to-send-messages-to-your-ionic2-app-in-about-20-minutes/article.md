@@ -1,0 +1,1 @@
+Fanout is a great service that allows you to quickly and easily send messages to clients applications. In this tutorial we will use Fanout to send messages to an Ionic2 application.
