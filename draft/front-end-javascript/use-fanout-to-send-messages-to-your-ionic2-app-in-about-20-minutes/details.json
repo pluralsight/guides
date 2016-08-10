@@ -1,0 +1,15 @@
+{
+    "_publish_status": "draft",
+    "author_name": "sethbunke",
+    "author_real_name": "Seth Bunke",
+    "branch": "master",
+    "branches": [],
+    "filename": "article.md",
+    "first_commit": "8afaede613adf462a8f569ebac0b8de54c42051d",
+    "image_url": "https://avatars.githubusercontent.com/u/20564909?v=3",
+    "stacks": [
+        "Front-End JavaScript (Angular, React, Meteor, etc)"
+    ],
+    "thumbnail_url": null,
+    "title": "Use Fanout to Send Messages to Your Ionic2 App in About 20 Minutes "
+}
