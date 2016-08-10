@@ -116,6 +116,7 @@ Select Save and it should look like screenshot below.
 In the Configuration tab, add ARN endpoint from the Lambda function and select "No" for the account linking.  Then select Next.
 
 
+![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/ac70f505-0f40-42ba-9905-e4c4ba3fee7d.PNG)
 
 
 #### Testing the Capitals and Countries skill
@@ -136,6 +137,13 @@ Enter "three" and press "Ask Capitals and Countries" button.  Then press Listen 
 ![](https://hackster.imgix.net/uploads/image/file/142017/test_answer_1.PNG?w=1280&h=960&fit=max)
 
 And Alexa will ask you the next quiz question.  The quiz will end when you have answered 5 questions.
+
+
+#### Publishing the Skill
+
+
+
+
 
 
 
