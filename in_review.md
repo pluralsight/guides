@@ -1,3 +1,8 @@
+### How to predict if you'll be able to get a bank loan, using Red Sqirl by Justyna888
+- [Read the guide](http://tutorials.pluralsight.com/big-data/how-to-predict-if-you-ll-be-able-to-get-a-bank-loan-using-red-sqirl?status=in-review)
+- [Read more from Justyna888](http://tutorials.pluralsight.com/author/Justyna888) <img src="https://avatars.githubusercontent.com/u/20835452?v=3" width="30" height="30" alt="Justyna888" />
+- Related to: Big Data (Hadoop, Spark, etc)
+
 ### Using AngularFire2 to build Ionic 2 & Firebase apps! by Jorge Vergara
 - [Read the guide](http://tutorials.pluralsight.com/front-end-javascript/using-angularfire2-to-build-ionic-2-firebase-apps?status=in-review)
 - [Read more from Jorge Vergara](http://tutorials.pluralsight.com/author/javebratt) <img src="https://avatars.githubusercontent.com/u/7296623?v=3" width="30" height="30" alt="Jorge Vergara" />
