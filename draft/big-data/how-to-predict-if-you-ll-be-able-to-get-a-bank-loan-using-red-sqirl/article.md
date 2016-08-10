@@ -151,7 +151,6 @@ This condition will join these two tables together.
 
 We’ll create a calculation for a matrix with a count of cases correctly and incorrectly classified in our model, and then calculate accuracy, precision and recall to measure the model's performance. 
 ![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/995f18ad-1cb2-4ad5-be6a-5beeab356fec.PNG)
-Where : TP - True Positive , FP- False Positive, FN - False Negative, True Negative
 
 _**In this confusion matrix, the "correct" cells are the following:**_
 
