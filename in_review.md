@@ -1,3 +1,8 @@
+### Using AngularFire2 to build Ionic 2 & Firebase apps! by Jorge Vergara
+- [Read the guide](http://tutorials.pluralsight.com/front-end-javascript/using-angularfire2-to-build-ionic-2-firebase-apps?status=in-review)
+- [Read more from Jorge Vergara](http://tutorials.pluralsight.com/author/javebratt) <img src="https://avatars.githubusercontent.com/u/7296623?v=3" width="30" height="30" alt="Jorge Vergara" />
+- Related to: Front-End JavaScript (Angular, React, Meteor, etc)
+
 ### Creating and Using Widgets in Android Studio by adityavarshney
 - [Read the guide](http://tutorials.pluralsight.com/other/creating-and-using-widgets-in-android-studio?status=in-review)
 - [Read more from adityavarshney](http://tutorials.pluralsight.com/author/adityavarshney) <img src="https://avatars.githubusercontent.com/u/17189718?v=3" width="30" height="30" alt="adityavarshney" />
