@@ -103,6 +103,9 @@ If you don't know where to get those, you'll need to go to the [Firebase Console
 
 You'll see a welcome message like the one in the image below, just pick **Add Firebase to your web app** and it'll open a pop up with all the info for you to use.
 
+![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/f89ed33a-14db-444f-ab7a-e6c644a68489.png)
+
+
 Now we are ready to start building, we are already connected to firebase so most configuration is done (_by now_)
 
 The first thing we'll want to do is to add a button so our users can create new bills inside their app, so go to `app/pages/home/home.html` it should look like this:
