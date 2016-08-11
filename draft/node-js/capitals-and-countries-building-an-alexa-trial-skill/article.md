@@ -97,7 +97,7 @@ leave the __Skill Type__ as __Custom Interaction Model__.  Add __Name__ and __In
 ![Create a New Alexa Skill](https://hackster.imgix.net/uploads/image/file/142012/create_new_alexa_skill.PNG?w=1280&h=960&fit=max)
 
 
-Define skill's interaction model.  Cut & paste the Intent Schema from text below.
+Define skill's interaction model.  Cut & paste the __Intent Schema__ from text below.
 
 
 ```
@@ -155,16 +155,54 @@ Define skill's interaction model.  Cut & paste the Intent Schema from text below
 ![](https://hackster.imgix.net/uploads/image/file/142013/interaction_model.PNG?w=1280&h=960&fit=max)
 
 
-Add Slot Type as screenshot below.
+Add __Slot Type__ as screenshot below.
 
 
 ![Edit Slot Type](https://hackster.imgix.net/uploads/image/file/142011/slot_type.PNG?w=1280&h=960&fit=max)
 
 
-Add the Utterances.  
+Add the __Utterances__.  
+
+```
+AnswerIntent the answer is {Answer}
+
+AnswerIntent my answer is {Answer}
+
+AnswerIntent is it {Answer}
+
+AnswerIntent {Answer} is my answer
+
+AnswerOnlyIntent {Answer}
+
+ 
+
+AMAZON.StartOverIntent start game
+
+AMAZON.StartOverIntent new game
+
+AMAZON.StartOverIntent start
+
+AMAZON.StartOverIntent start new game
+
+ 
+
+DontKnowIntent i don't know
+DontKnowIntent don't know
+DontKnowIntent skip
+DontKnowIntent i don't know that
+DontKnowIntent who knows
+DontKnowIntent i don't know this question
+DontKnowIntent i don't know that one
+DontKnowIntent dunno
+
+
+```
+
 
 Select __Save__ and it should look like screenshot below.
 
+
+![Utterances](https://raw.githubusercontent.com/pluralsight/guides/master/images/7f9a6ebb-2985-4abf-880f-801286b35224.PNG)
 
 
 
