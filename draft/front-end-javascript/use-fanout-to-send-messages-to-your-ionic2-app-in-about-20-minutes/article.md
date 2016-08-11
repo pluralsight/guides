@@ -31,6 +31,15 @@ Ok, if you are in impatient type all of the source code is available in Github [
 
 To create the base Ionic2 application, go to the command line and execute:
 ```
-ionic start FanoutIonicNodeTutorial --v2 --ts
+ionic start FanoutIonicNodeTutorial blank --v2 --ts
 ```
-With that command we are creating an Ionic version 2 application named **FanoutIonicNodeTutorial** that uses TypeScript. Don't worry if you aren't familiar with TypeScript - we only have to get our hands a little dirty with it for this tutorial. 
+With that command we are creating a "blank" Ionic version 2 application named **FanoutIonicNodeTutorial** that uses TypeScript. Don't worry if you aren't familiar with TypeScript - we only have to get our hands a little dirty with it for this tutorial. 
+
+Once the installation is complete, change your directory to the folder that was created for your app and start running your app:
+```
+cd FanoutIonicNodeTutorial
+ionic serve
+
+```
+
+
