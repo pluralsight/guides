@@ -11,4 +11,4 @@ npm install -g ionic@beta
 ```
 This command will install the Ionic2 node package globally. 
 
-Then, go to the [Fanout](https://fanout.io/) site and create your FREE account. 
+Then, go to the [Fanout](https://fanout.io/) site and create your FREE account - to ensure that is it free make sure you click on the "Hacker" type of account. Next, while you are log into the the site nagivate to the [account page](https://fanout.io/account/panel/) and make a note of both your Reaml ID and your Realm Key - we will need both of these for wiring up the Ionic2 and Nodejs pub-sub mechanism. 
