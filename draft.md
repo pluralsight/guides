@@ -1,3 +1,8 @@
+### Amazon Skills Kit by Sri Sanketh Uppalapati
+- [Read the guide](http://tutorials.pluralsight.com/interesting-apis/amazon-skills-kit?status=draft)
+- [Read more from Sri Sanketh Uppalapati](http://tutorials.pluralsight.com/author/srisankethu) <img src="https://avatars.githubusercontent.com/u/12644108?v=3" width="30" height="30" alt="Sri Sanketh Uppalapati" />
+- Related to: Interesting APIs (SendGrid, Twilio, etc)
+
 ### Use Fanout to Send Messages to Your Ionic2 App in About 20 Minutes  by Seth Bunke
 - [Read the guide](http://tutorials.pluralsight.com/front-end-javascript/use-fanout-to-send-messages-to-your-ionic2-app-in-about-20-minutes?status=draft)
 - [Read more from Seth Bunke](http://tutorials.pluralsight.com/author/sethbunke) <img src="https://avatars.githubusercontent.com/u/20564909?v=3" width="30" height="30" alt="Seth Bunke" />
