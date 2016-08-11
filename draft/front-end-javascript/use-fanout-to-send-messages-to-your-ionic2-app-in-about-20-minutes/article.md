@@ -1,6 +1,6 @@
 [Fanout](https://fanout.io/) is a great service that allows you to quickly and easily send messages to clients applications. In this tutorial we will use Fanout to send messages to an Ionic2 application.
 
-### Getting Set Up
+### **Getting Set Up**
 
 Ok, first things first - go to the [Fanout](https://fanout.io/) site and create your **FREE** account - to ensure that is it free make sure you click on the **"Hacker"** type of account. Next, while you are log into the the site nagivate to the [account page](https://fanout.io/account/panel/) and make a note of both your Reaml ID and your Realm Key - we will need both of these for wiring up the Ionic2 and Nodejs pub-sub mechanism. 
 
@@ -22,8 +22,15 @@ you should see something like this which means the package installed successfull
 ```
 2.0.0-beta.32
 ```
-If you get an error, go back through the steps above or follow the more details installation steps on the [Ionic2 installation page](http://ionicframework.com/docs/v2/getting-started/installation/).
+If you get an error, please go back through the steps above or follow the more detailed installation steps on the [Ionic2 installation page](http://ionicframework.com/docs/v2/getting-started/installation/).
 
 
+### **Let's Start Coding**
 
+Ok, if you are in impatient type all of the source code is available in Github [here](https://github.com/sethbunke/Ionic2NodejsFanoutTutorial). 
 
+To create the base Ionic2 application, go to the command line and execute:
+```
+ionic start FanoutIonicNodeTutorial --v2 --ts
+```
+With that command we are creating an Ionic version 2 application named **FanoutIonicNodeTutorial** that uses TypeScript. Don't worry if you aren't familiar with TypeScript - we only have to get our hands a little dirty with it for this tutorial. 
