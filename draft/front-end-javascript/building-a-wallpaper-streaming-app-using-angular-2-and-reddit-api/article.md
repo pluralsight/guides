@@ -567,7 +567,6 @@ Next, we will add a template to <code>WallpaperListingComponent</code>:
             <button class="btn" (click)="open(wallpaper.url)"><i class="material-icons">open_in_new</i></button>
         </div>
     </div>
-    <div *ngIf="!error" class="image-container load-more" (click)="loadMore()">Load more..</div>
     <div *ngIf="error" class="image-container load-more">There was an error connecting to reddit. Please try again later.</div>
 </div>
 ```
@@ -658,5 +657,122 @@ import { InfiniteScroll } from 'angular2-infinite-scroll';
 
 ```loadMore``` is simple - If the window's vertical scroll position (```codeY```) and the browser window's ```innerHeight``` is greater or equal than the document's offset height, then the bottom of the document has been reached and ```loadWallpapers``` is called with the pagination as an argument.
 
-### Styling
+## Styling
+
+ We'll use the <code>styles</code> attribute in the component's decorators to add references to each of the components. If you've looked close at the project's devDependencies or the Webpack configuration, you probably figured out  that we'll be using [LESS](http://lesscss.org/).
+ 
+ First, add the file:
+ 
+ **app.component.less**
+```less
+// src/app/app.component.less
+
+wallpaper-listing {
+  background: #000;
+  font-family: 'Open Sans', sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background: #363636;
+}
+```
+
+Then reference it in <code>AppComponent</code>
+```ts
+// src/app/app.component.ts
+@Component({
+    //..
+    styles: [require('./app.component.less').toString()],
+    //.. 
+})
+```
+
+Do the same with <code>WallpaperListingComponent</code>:
+
+**wallpaperlisting.component.less**
+```less
+// src/app/wallpaperlisting.component.less
+.main-container {
+  margin: 0 auto;
+  max-width: 960px;
+  -webkit-box-shadow: 0px 0px 10px 1px rgba(0,0,0,0.75);
+  -moz-box-shadow: 0px 0px 10px 1px rgba(0,0,0,0.75);
+  box-shadow: 0px 0px 10px 1px rgba(0,0,0,0.75);
+
+  .image-container {
+    position: relative;
+    line-height: 0;
+    -webkit-box-shadow: inset 0px 0px 31px -6px rgba(0,0,0,0.75);
+    -moz-box-shadow: inset 0px 0px 31px -6px rgba(0,0,0,0.75);
+    box-shadow: inset 0px 0px 31px -6px rgba(0,0,0,0.75);
+
+    &:hover, &:active {
+      transition: 0.5s ease-out all;
+
+      .image-item {
+        max-height: 600px;
+      }
+
+      .actions {
+        visibility: visible;
+        opacity: 1;
+      }
+    }
+
+    .image-item {
+      width: 100%;
+      max-height: 50vh;
+      object-fit: cover;
+      transition: 0.5s ease-in all;
+    }
+
+    .actions {
+      position: absolute;
+      z-index: 10;
+      right: 5px;
+      bottom: 9px;
+      visibility: hidden;
+      transition: 0.5s ease-out all;
+      opacity: 0;
+
+      .btn {
+        padding: 15px 25px;
+        background: rgba(0,0,0,0.5);
+        color: #fff;
+        border: none;
+        cursor: pointer;
+        font-size: 18px;
+        border-radius: 5px;
+
+        &:hover {
+          background: rgba(0,0,0,0.9);
+        }
+
+        &:active, &:focus {
+          outline: none;
+        }
+      }
+    }
+
+    &:hover {
+      background: #37474F;
+    }
+  }
+}
+
+
+```
+
+```ts
+// src/app/wallpaperlisting.component.ts
+@Component({
+    //..
+    styles: [require('./wallpaperlisting.component.less').toString()],
+    //.. 
+})
+```
 
