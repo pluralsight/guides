@@ -100,8 +100,8 @@ leave the __Skill Type__ as __Custom Interaction Model__.  Add __Name__ and __In
 Define skill's interaction model.  Cut & paste the Intent Schema from text below.
 
 
-
-`{
+`
+{
   "intents": [
     {
       "intent": "AnswerIntent",
@@ -146,7 +146,8 @@ Define skill's interaction model.  Cut & paste the Intent Schema from text below
       "intent": "AMAZON.CancelIntent"
     }
   ]
-}`
+}
+`
 
 
 
