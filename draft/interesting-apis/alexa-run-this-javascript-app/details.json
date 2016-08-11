@@ -1,0 +1,15 @@
+{
+    "_publish_status": "draft",
+    "author_name": "craigbilner",
+    "author_real_name": "Craig Bilner",
+    "branch": "master",
+    "branches": [],
+    "filename": "article.md",
+    "first_commit": "ddbd8a76294171864f4ceba5049369c6d0ace405",
+    "image_url": "https://avatars.githubusercontent.com/u/12942968?v=3",
+    "stacks": [
+        "Interesting APIs (SendGrid, Twilio, etc)"
+    ],
+    "thumbnail_url": null,
+    "title": "Alexa, run this JavaScript app"
+}
