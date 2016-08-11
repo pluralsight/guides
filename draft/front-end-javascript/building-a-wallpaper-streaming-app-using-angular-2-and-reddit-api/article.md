@@ -5,9 +5,10 @@ We are going to build a Angular 2 app that loads data from Reddit's [/r/wallpape
 - Setting up Angular 2 with Webpack
 - Loading data from extrnal services
 - Using components to transfer and render data
+- Using external components
 
 
-# Setting upAngular 2 with Webpack
+# Setting up 
 
 
 To install Angular 2 and Webpack, you need [Node Package Manager (NPM)](https://www.npmjs.com/) and [Node.js](https://nodejs.org/en/). Any version of Node 4 and up and NPM 3 and up would suffice. Here is how you can check your versions in the terminal:
@@ -85,9 +86,7 @@ Open up your <code>package.json</code> file and replace its contents with the fo
   }
 }
 ```
-***
-talk about deps?
-***
+
 
 
 **tsconfig.json**
@@ -322,7 +321,7 @@ Therefore, the listing will contain
 
 
 ```typescript
-// src/app/wallpaper-listing.model.ts
+// src/app/wallpaperlisting.model.ts
 import { Wallpaper } from './wallpaper.model';//Don't forget import the Wallpaper model
 
 export class WallpaperListing {
@@ -342,7 +341,7 @@ import { Http, Response } from '@angular/http';
 
 import { Observable }     from 'rxjs/Observable';//using the RxJS observables
 import { Wallpaper } from './wallpaper.model'; //improting the wallpaper model
-import { WallpaperListing } from './wallpaper-listing.model';//importing the wallpaper listing model
+import { WallpaperListing } from './wallpaperlisting.model';//importing the wallpaper listing model
 
 @Injectable()
 export class RedditService {
@@ -356,7 +355,7 @@ export class RedditService {
 
 We make the <code>RedditService</code> class injectable by adding <code> @Injectable() </code> before its definition. In order to make the Http module available inside the class, we have to  inject it in it via the <code> constructor </code> function.
 
-Next, we add the <code> getWallpapers() </code> function():
+Next, we add the <code> getWallpapers() </code> function:
 
 ```
 // src/app/reddit.service.ts
@@ -497,13 +496,15 @@ Normally, we'd continue building the rest of the logic in the <code>AppComponent
 
 ```typescript
 //  src/app/wallpaperlisting.component.ts
+
 import { Component, OnInit } from '@angular/core';
 import { RedditService } from './reddit.service';
-import { WallpaperListing } from './wallpaper-listing.model';
+import { WallpaperListing } from './wallpaperlisting.model';
 
 
 @Component({
     selector: 'wallpaper-listing',
+    template: require('./wallpaperlisting.component.html'),
     providers: [RedditService],
     directives: []
 })
@@ -516,27 +517,30 @@ export class WallpaperListingComponent implements OnInit  {
     constructor(private service: RedditService) { }
 
     ngOnInit() {
+        this.wallpaperListing = new WallpaperListing();
         this.loadWallpapers(null);
     }
 
+    open(url:string) {
+        window.open(url,'_blank');
+    }
 
     loadWallpapers(after:string) {
-        this.wallpaperListing = new WallpaperListing();
         this.service
             .getWallpapers(after)
             .subscribe(result => {
-
-                    if(this.wallpaperListing.wallpapers === undefined) {
-                        this.wallpaperListing = result
+                    if(after === null) {
+                        this.wallpaperListing = result;
                     } else {
                         this.wallpaperListing.wallpapers = this.wallpaperListing.wallpapers.concat(result.wallpapers);
+                        this.wallpaperListing.after = result.after;
                     }
 
                 }, error => this.error = true
             );
     }
-
 }
+
 
 ```
 
@@ -546,12 +550,16 @@ In order to mkae server available, we put <code>RedditService</code> as a provid
 
 We use <code> implements  OnInit </code> and <code>ngOnInit() {} </code> to implement a  [lifecycle hook](https://angular.io/docs/ts/latest/guide/lifecycle-hooks.html#!#hooks-overview) that is executing when the compoenent loads. For now we'll leave it blank and use it when we're going have to load the data from Reddit.
 
- The <code>loadWallpapers</code> function is used to fill up the local <code>wallpaperListing</code> class with data. We pass <code>null</code> to the function to indicate that <code>wallpaperListing</code> is being filled with data for the first imte.
+The <code>loadWallpapers</code> function is used to fill up the local <code>wallpaperListing</code> class with data. We pass <code>null</code> to the function to indicate that <code>wallpaperListing</code> is being filled with data for the first imte.
 
-Next, we will add the template by putting its <code>template</code> in the component decorator. Here is how the template looks like:
+The <code>open</code> function will open a new tab with an URL for a selected wallpaper. We will do so by binding the function to a <code>click</code> event in the template.
+ 
+ 
 
+Next, we will add a template to <code>WallpaperListingComponent</code>:
 
 ```html
+<!-- src/app/wallpaperlisting.component.html -->
 <div class="main-container">
     <div class="image-container" *ngFor="let wallpaper of wallpaperListing.wallpapers">
         <img src="{{ wallpaper.previewUrl }}" class="image-item" />
@@ -565,6 +573,8 @@ Next, we will add the template by putting its <code>template</code> in the compo
 ```
 We use [ngFor](https://angular.io/docs/ts/latest/api/common/index/NgFor-directive.html) to loop through the <code>wallpapers</code> array of the <code>wallpaperListing</code> to display the attributes of each item.
 
+We also the [click](http://learnangular2.com/events/) event handler  to invoke the <code>open</code> function with the current wallpaper's URL as an argument.
+
 Add the tempalte's url to the decorator of the <code>WallpaperListingComponent</code>:
 
 
@@ -572,7 +582,7 @@ Add the tempalte's url to the decorator of the <code>WallpaperListingComponent</
 // src/app/wallpaperListing.component.ts
 @Component({
 //
-template: require('./wallpaper-listing.component.html'),
+template: require('./wallpaperlisting.component.html'),
 //
 })
 ```
@@ -589,7 +599,7 @@ In order for the <code>WallpaperListingComponent</code> to work, we must:
 ```ts
 // src/app/app.component.ts
 import { Component } from '@angular/core';
-import {WallpaperListingComponent} from './wallpaper-listing.component' //importing the component 
+import {WallpaperListingComponent} from './wallpaperlisting.component' //importing the component 
 @Component({
     selector: 'app',
     template: '<wallpaper-listing></wallpaperListing>',//adding its selector to the template
@@ -602,3 +612,51 @@ export class AppComponent {
 ```
 
 Open your app in [http://localhost:8080](http://localhost:8080) (don't forget to run <code>npm run serve</code> before that!) and you'll see some the images being displayed right from reddit's /r/wallpapers !
+
+#### Adding infinite scroll
+Right now, we can see only a few wallpapers. What about older ones? Let's add [angular2-infinite-scroll](https://www.npmjs.com/package/angular2-infinite-scroll) to our application. Here's how you can do it:
+
+1. Open your terminal and add it as a dependency to your project.
+```bash
+$ npm install angular2-infinite-scroll --save
+```
+2. Import it in <code>WallpaperListingComponent</code>:
+```ts
+// src/app/wallpaperlisting.component.ts
+import { InfiniteScroll } from 'angular2-infinite-scroll';
+```
+3. Add it as a directive in <code>WallpaperListingComponent</code>'s decorator:
+
+    ```ts
+    // src/app/wallpaperlisting.component.ts
+    
+    @Component({
+        selector: 'wallpaper-listing',
+        template: require('./wallpaperlisting.component.html'),
+        providers: [RedditService],
+        directives: [InfiniteScroll] //add  InfiniteScroll as a directive
+    })
+    import { InfiniteScroll } from 'angular2-infinite-scroll';
+    ```
+
+4.  Add the directive's selector and the <code>onScroll</code> event listener to the template of <code>WallpaperListingComponent</code>:
+    ```html
+     <!-- src/app/wallpaperlisting.component.html -->
+     <div class="main-container" infinite-scroll (scrolled)="loadMore()">
+    ```
+5. Add the <code>loadMore</code> function:
+
+    ```ts
+    // src/app/wallpaperlisting.component.ts 
+    
+    loadMore() {
+        if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
+            this.loadWallpapers(this.wallpaperListing.after);
+        }
+    }
+    ```
+
+```loadMore``` is simple - If the window's vertical scroll position (```codeY```) and the browser window's ```innerHeight``` is greater or equal than the document's offset height, then the bottom of the document has been reached and ```loadWallpapers``` is called with the pagination as an argument.
+
+### Styling
+
