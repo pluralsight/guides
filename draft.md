@@ -1,3 +1,8 @@
+### Plurasight by Sri Sanketh Uppalapati
+- [Read the guide](http://tutorials.pluralsight.com/software-engineering-best-practices/plurasight?status=draft)
+- [Read more from Sri Sanketh Uppalapati](http://tutorials.pluralsight.com/author/srisankethu) <img src="https://avatars.githubusercontent.com/u/12644108?v=3" width="30" height="30" alt="Sri Sanketh Uppalapati" />
+- Related to: Software Engineering Best Practices
+
 ### Uber Developers by Sri Sanketh Uppalapati
 - [Read the guide](http://tutorials.pluralsight.com/interesting-apis/uber-developers?status=draft)
 - [Read more from Sri Sanketh Uppalapati](http://tutorials.pluralsight.com/author/srisankethu) <img src="https://avatars.githubusercontent.com/u/12644108?v=3" width="30" height="30" alt="Sri Sanketh Uppalapati" />
