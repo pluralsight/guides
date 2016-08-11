@@ -1,6 +1,6 @@
 With Angular 2 [being almost ready for release](https://splintercode.github.io/is-angular-2-ready/), it is definitely time to start experimenting with it. If you are out of ideas what to build after completing the main Angular 2 tutorial, this guide is an excellent supplemental material that will deepen your knowledge in the new framework without going into too advanced techniques.
 
-We are going to build a Angular 2 app that loads data from Reddit's [/r/wallpapers](https://www.reddit.com/r/wallpapers/) thread. In the end, you'll have a wall of beutiful images that scroll infinitely. Sounds cool, doesnt it? On top of this, here is what you are going to learn:
+In this guide, you are going to build a Angular 2 app that loads data from Reddit's [/r/wallpapers](https://www.reddit.com/r/wallpapers/) thread. In the end, you'll have a wall of beutiful images that scrolls infinitely. Sounds cool, doesnt it? On top of this, here is what you are going to learn:
 
 - Setting up Angular 2 with Webpack
 - Loading data from extrnal services
@@ -34,7 +34,7 @@ $ npm init
 
 **package.json**
 
-Open up your <code>package.json</code> file and replace its contents with the following snippet:
+Open your <code>package.json</code> file and replace its contents with the following snippet:
 
 
 ```json
@@ -88,6 +88,7 @@ Open up your <code>package.json</code> file and replace its contents with the fo
 ```
 
 
+Do the same for the rest of the configuration files:
 
 **tsconfig.json**
 
@@ -135,7 +136,7 @@ And all the dependency will be installed. In case you run in any problems, try t
 ```bash
 $ npm install --global webpack
 $ npm install --global typings
-# npm install --global typescript
+$ npm install --global typescript
 ```
 
 **webpack.config.js**
@@ -188,10 +189,10 @@ module.exports = {
     ...
     }
 ```
- The next step is to make a directory for the project and to make a <code>main.ts</code> file for bootstrapping the Angular 2 application
+ Thaht's right - we need to make a directory for the project and to make a <code>main.ts</code> file in it for bootstrapping the Angular 2 application
 ## Initializng your Angular 2 application
 
-With all the configuration done, we can start our project. In the root folder, create a new directory, <code> src </code>.  This is where the Angular 2 application will reside:
+In the root folder, create a new directory, <code> src </code>.  This is where the Angular 2 application will reside:
 
 ```bash
 $ mkdir src
@@ -218,9 +219,11 @@ bootstrap(AppComponent, [HTTP_PROVIDERS])
     .catch(error => console.log(error));
 
 ```
-There are a few things to note here: We import [RxJs](https://github.com/Reactive-Extensions/RxJS), whic whill let us use observables later on in the application. We are including <code>HTTP_PROVIDERS</code> form the Angular 2 http library so in order to construct HTTP requests to Reddit's API.
+There are a few things to note here: We import [RxJs](https://github.com/Reactive-Extensions/RxJS), which will let us use observables later on in the application. We are including <code>HTTP_PROVIDERS</code> from the Angular 2 http library in order to construct HTTP requests to Reddit's API.
 
-The last thing we import is the root component, <code>AppComponent</code>, that we will create in the next step.
+The last thing we import is the root component, <code>AppComponent</code>, that we are going create in the next step.
+
+
 Every web application has its <code>index.html</code>. Let's add ours:
 
 ```html
@@ -239,7 +242,7 @@ Every web application has its <code>index.html</code>. Let's add ours:
 </html>
 ```
 
-In the index page, we simply add [Material Icons](https://fonts.googleapis.com/icon?family=Material+Icons) and the [Open Sans](https://fonts.googleapis.com/css?family=Open+Sans) font to make the app look better.
+In the index page, we simply add [Material Icons](https://fonts.googleapis.com/icon?family=Material+Icons) and the [Open Sans](https://fonts.googleapis.com/css?family=Open+Sans) font to make to add an extra style to our app.
 In the <code>body </code> section, we add the selector for the root component -  ```<app></app>``` .
 
 
@@ -250,7 +253,7 @@ In the <code>src</code> directory, create another directory, named <code> app </
 ```bash
 $ mkdir app
 ```
-Next, create <code>app.component.ts</code>:
+Next, create the file for <code>AppComponent</code> :
 
 ```typescript
 // src/app/app.component.ts
