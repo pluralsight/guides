@@ -99,6 +99,9 @@ leave the __Skill Type__ as __Custom Interaction Model__.  Add __Name__ and __In
 
 Define skill's interaction model.  Cut & Paste the Intent Schema from code section below.
 
+![](https://hackster.imgix.net/uploads/image/file/142013/interaction_model.PNG?w=1280&h=960&fit=max)
+
+
 Add Slot Type as screenshot below.
 
 
@@ -110,7 +113,6 @@ Add the Utterances.
 Select __Save__ and it should look like screenshot below.
 
 
-![](https://hackster.imgix.net/uploads/image/file/142013/interaction_model.PNG?w=1280&h=960&fit=max)
 
 
 In the Configuration tab, add __ARN endpoint__ from the Lambda function and select __No__ for the account linking.  Then select __Next__.
