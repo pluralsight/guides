@@ -1,3 +1,8 @@
+### Scalable Analytics in Plain Java with Keen IO and Spring Boot by Alejandro
+- [Read the guide](http://tutorials.pluralsight.com/java-and-j2ee/scalable-analytics-in-plain-java-with-keen-io-and-spring-boot?status=in-review)
+- [Read more from Alejandro](http://tutorials.pluralsight.com/author/alejandro-du) <img src="https://avatars.githubusercontent.com/u/1708527?v=3" width="30" height="30" alt="Alejandro" />
+- Related to: Java and J2EE
+
 ### How to predict if you'll be able to get a bank loan, using Red Sqirl by Justyna888
 - [Read the guide](http://tutorials.pluralsight.com/big-data/how-to-predict-if-you-ll-be-able-to-get-a-bank-loan-using-red-sqirl?status=in-review)
 - [Read more from Justyna888](http://tutorials.pluralsight.com/author/Justyna888) <img src="https://avatars.githubusercontent.com/u/20835452?v=3" width="30" height="30" alt="Justyna888" />
