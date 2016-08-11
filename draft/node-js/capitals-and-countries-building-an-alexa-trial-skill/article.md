@@ -165,27 +165,14 @@ Add the __Utterances__.
 
 ```
 AnswerIntent the answer is {Answer}
-
 AnswerIntent my answer is {Answer}
-
 AnswerIntent is it {Answer}
-
 AnswerIntent {Answer} is my answer
-
 AnswerOnlyIntent {Answer}
-
- 
-
 AMAZON.StartOverIntent start game
-
 AMAZON.StartOverIntent new game
-
 AMAZON.StartOverIntent start
-
 AMAZON.StartOverIntent start new game
-
- 
-
 DontKnowIntent i don't know
 DontKnowIntent don't know
 DontKnowIntent skip
@@ -194,8 +181,6 @@ DontKnowIntent who knows
 DontKnowIntent i don't know this question
 DontKnowIntent i don't know that one
 DontKnowIntent dunno
-
-
 ```
 
 
