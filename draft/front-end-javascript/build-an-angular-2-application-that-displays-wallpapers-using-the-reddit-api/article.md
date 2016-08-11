@@ -444,7 +444,7 @@ We also need to visualize only posts that are images, so while iterating, we'll 
  
  In the end of the function, we attach the pagination attribute from the JSON data (  <code> after </code>)  to the <code>WallPaperListing</code> model and return the results.
  
- Here is the complete code for the two functions. [link to the whole service]():
+ Here is the complete code for the two functions. [link to the whole service](https://github.com/Kaizeras/angular2-wallpaper-wall/blob/master/src/app/reddit.service.ts):
 ```ts
 // src/app/reddit.service.ts
     getWallpapers(after:string):Observable<WallpaperListing> {
@@ -781,3 +781,4 @@ Do the same with <code>WallpaperListingComponent</code>:
 ```
 
 And that's it! Now you have a beautiful wall of wallpapers that you built with Angular 2!
+In case you missed something, I uploaded all the code for the project in a [Github repository](https://github.com/Kaizeras/angular2-wallpaper-wall).
