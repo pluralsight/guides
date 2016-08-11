@@ -3,7 +3,12 @@
     "author_name": "stefanprodan",
     "author_real_name": "Stefan Prodan",
     "branch": "master",
-    "branches": [],
+    "branches": [
+        [
+            "adityavarshney",
+            "adityavarshney-microsoft-net-scale-asp-net-core-apps-with-docker-swarm-mode"
+        ]
+    ],
     "filename": "article.md",
     "first_commit": "18c4b104fa1712e09bdf51daef73f0b9390641e6",
     "image_url": "https://avatars.githubusercontent.com/u/3797675?v=3",
