@@ -24,8 +24,7 @@ you should see something like this which means the package installed successfull
 ```
 If you get an error, please go back through the steps above or follow the more detailed installation steps on the [Ionic2 installation page](http://ionicframework.com/docs/v2/getting-started/installation/).
 
-
-### **Let's Start Coding**
+### **Creating the Base Application**
 
 Ok, if you are in impatient type all of the source code is available in Github [here](https://github.com/sethbunke/Ionic2NodejsFanoutTutorial). 
 
@@ -42,4 +41,7 @@ ionic serve
 
 ```
 
+### **Adding Our Code**
+To get our app receiving messages [Fanout](https://fanout.io/) and displayed on the screen we will need to add three "providers" to our application. Don't be put off by the name "provider" in Ionic2 and Angular2 as they are really just another name for what are refereed to as "services" in other frameworks - they encasulate a specific set of functionality in order to have better separation of concerns and avoid duplication of code in an application.
 
+For our app, we will create 3 providers - alerts, configuration, and Fanout.
