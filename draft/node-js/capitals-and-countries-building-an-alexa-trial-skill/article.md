@@ -97,7 +97,105 @@ leave the __Skill Type__ as __Custom Interaction Model__.  Add __Name__ and __In
 ![Create a New Alexa Skill](https://hackster.imgix.net/uploads/image/file/142012/create_new_alexa_skill.PNG?w=1280&h=960&fit=max)
 
 
-Define skill's interaction model.  Cut & Paste the Intent Schema from code section below.
+Define skill's interaction model.  Cut & paste the Intent Schema from text below.
+
+
+`
+{
+
+  "intents": [
+
+    {
+
+      "intent": "AnswerIntent",
+
+      "slots": [
+
+        {
+
+          "name": "Answer",
+
+          "type": "LIST_OF_ANSWERS"
+
+        }
+
+      ]
+
+    },
+
+    {
+
+      "intent": "AnswerOnlyIntent",
+
+      "slots": [
+
+        {
+
+          "name": "Answer",
+
+          "type": "LIST_OF_ANSWERS"
+
+        }
+
+      ]
+
+    },
+
+    {
+
+      "intent": "DontKnowIntent"
+
+    },
+
+    {
+
+      "intent": "AMAZON.StartOverIntent"
+
+    },
+
+    {
+
+      "intent": "AMAZON.RepeatIntent"
+
+    },
+
+    {
+
+      "intent": "AMAZON.HelpIntent"
+
+    },
+
+    {
+
+      "intent": "AMAZON.YesIntent"
+
+    },
+
+    {
+
+      "intent": "AMAZON.NoIntent"
+
+    },
+
+    {
+
+      "intent": "AMAZON.StopIntent"
+
+    },
+
+    {
+
+      "intent": "AMAZON.CancelIntent"
+
+    }
+
+  ]
+
+}
+`
+
+
+
 
 ![](https://hackster.imgix.net/uploads/image/file/142013/interaction_model.PNG?w=1280&h=960&fit=max)
 
