@@ -8,11 +8,6 @@
 - [Read more from vincent wong](http://tutorials.pluralsight.com/author/wesee) <img src="https://avatars.githubusercontent.com/u/4255955?v=3" width="30" height="30" alt="vincent wong" />
 - Related to: Node.js
 
-### Scalable Analytics in Plain Java with Keen IO and Spring Boot by Alejandro
-- [Read the guide](http://tutorials.pluralsight.com/java-and-j2ee/scalable-analytics-in-plain-java-with-keen-io-and-spring-boot?status=draft)
-- [Read more from Alejandro](http://tutorials.pluralsight.com/author/alejandro-du) <img src="https://avatars.githubusercontent.com/u/1708527?v=3" width="30" height="30" alt="Alejandro" />
-- Related to: Java and J2EE
-
 ### Debugging Angular 2 applications by Hristo Georgiev
 - [Read the guide](http://tutorials.pluralsight.com/front-end-javascript/debugging-angular-2-applications?status=draft)
 - [Read more from Hristo Georgiev](http://tutorials.pluralsight.com/author/Kaizeras) <img src="https://avatars.githubusercontent.com/u/6340189?v=3" width="30" height="30" alt="Hristo Georgiev" />
