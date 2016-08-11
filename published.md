@@ -1,3 +1,8 @@
+### Scale ASP.NET Core apps with Docker Swarm Mode by Stefan Prodan
+- [Read the guide](http://tutorials.pluralsight.com/microsoft-net/scale-asp-net-core-apps-with-docker-swarm-mode)
+- [Read more from Stefan Prodan](http://tutorials.pluralsight.com/author/stefanprodan) <img src="https://avatars.githubusercontent.com/u/3797675?v=3" width="30" height="30" alt="Stefan Prodan" />
+- Related to: Microsoft.NET (C#, ASP.NET, VB.NET, etc)
+
 ### Creating and Using Widgets in Android Studio by adityavarshney
 - [Read the guide](http://tutorials.pluralsight.com/other/creating-and-using-widgets-in-android-studio)
 - [Read more from adityavarshney](http://tutorials.pluralsight.com/author/adityavarshney) <img src="https://avatars.githubusercontent.com/u/17189718?v=3" width="30" height="30" alt="adityavarshney" />
