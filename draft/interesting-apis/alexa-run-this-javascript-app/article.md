@@ -26,6 +26,25 @@ tutorials
 
 # Development flow
 
+* event-samples
+* TDD - this will make growth easier
+* npm run deploy
+* [lambda](https://console.aws.amazon.com/lambda/home?region=us-east-1#/functions/Arithlistic?tab=code)
+* [alexa console](https://developer.amazon.com/edw/home.html#/skills/list)
+* [echoism](https://echosim.io/)
+
 # IMHO
 
+* Split up handlers
+* Responses in one place
+* States as enum
+* Mixin core handlers
+* Split attributes and responses
+* Refactor logic into modules - keep handlers thin
+* nvm
+* Lint
+
 # Going live
+
+* Implement every handler
+* Write a test for every fail
