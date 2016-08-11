@@ -334,7 +334,7 @@ export class WallpaperListing {
 ```
 ### GETing data
 
-The data models are figured out and we are going to put them to use now. We'll do this by creating an injectable service that will parse the data and assign it to our models.
+The data models are figured out and we are going to put them to use. We'll do this by creating an injectable service that will parse the data and assign it to our models.
 
 ```typescript
 // src/app/reddit.service.ts
@@ -394,7 +394,8 @@ export class RedditService {
 The <code> getWallpapers </code> function accepts one parameter (<code> after</code> as string) . The second part is its ```: Observable<WallpaperListing> ```. It denotes what type of variable is expected to be returned when the function <code>return</code>s. In it, we use Angular 2's http library to get a response from [https//www.reddit.com/r/wallpapers.json?raw_json=1](https//www.reddit.com/r/wallpapers.json?raw_json=1) and map it through the <code>mapWallpapers</code> function.
 
 
-<code> mapWallpapers </code> gets the response data. Let's have a look at it [here](//www.reddit.com/r/wallpapers.json?raw_json=1). It might seem like a lot of information, but we only need a small chunk of it. We can notice that the post items are contained in the <code>children</code> attribute, which is an array. Let's  iterate through them!
+<code> mapWallpapers </code> gets the response data. You can look at the data  [here](//www.reddit.com/r/wallpapers.json?raw_json=1). It might seem like a lot of information, but we only need a small chunk of it. We can notice that the post items are contained in the <code>children</code> attribute, which is an array. Let's  iterate through them!
+
 We also need to visualize only posts that are images, so while iterating, we'll be chosing only posts who have their <code>post_hint</code> attribute set to <code> "image" </code>. Here is how the code looks like:
 
 ```ts
@@ -435,7 +436,7 @@ We also need to visualize only posts that are images, so while iterating, we'll 
 
 ```
 
- In the <code>forEach</code> loop, we also [filter](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter) the preview images to chose the ones which are 960 pixels. I wide. The ternary operator checks if such preview image is found. if not, the url is replaced with the full-resolution url:
+ In the <code>forEach</code> loop, we also [filter](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter) the preview images to choose the ones which are 960 pixels wide. The ternary operator checks if such preview image is found. if not, the url is replaced with the full-resolution url:
 ```ts
   let previewImage = resolutions.filter(m => m.width === 960)[0]; 
   item.previewUrl = previewImage ? previewImage.url : item.url;
@@ -532,11 +533,11 @@ export class WallpaperListingComponent implements OnInit  {
         this.service
             .getWallpapers(after)
             .subscribe(result => {
-                    if(after === null) {
+                    if(after === null) {//loading for the first time - no pagination available!
                         this.wallpaperListing = result;
                     } else {
                         this.wallpaperListing.wallpapers = this.wallpaperListing.wallpapers.concat(result.wallpapers);
-                        this.wallpaperListing.after = result.after;
+                        this.wallpaperListing.after = result.after;//update the pagination
                     }
 
                 }, error => this.error = true
@@ -547,7 +548,7 @@ export class WallpaperListingComponent implements OnInit  {
 
 ```
 
-In order to mkae server available, we put <code>RedditService</code> as a provider in the component decorator, and we inject it in the constructor of the component to make it available inside.
+We put <code>RedditService</code> as a provider in the component decorator and we inject it in the constructorto make it available inside.
    
     constructor(private service: RedditService) { }
 
@@ -616,7 +617,7 @@ export class AppComponent {
 Open your app in [http://localhost:8080](http://localhost:8080) (don't forget to run <code>npm run serve</code> before that!) and you'll see some the images being displayed right from reddit's /r/wallpapers !
 
 #### Adding infinite scroll
-Right now, we can see only a few wallpapers. What about older ones? Let's add [angular2-infinite-scroll](https://www.npmjs.com/package/angular2-infinite-scroll) to our application. Here's how you can do it:
+Right now, we can see only a few wallpapers. Let's add [angular2-infinite-scroll](https://www.npmjs.com/package/angular2-infinite-scroll) to our application to make use of the pagination. Here's how you can do it:
 
 1. Open your terminal and add it as a dependency to your project.
 ```bash
@@ -779,4 +780,4 @@ Do the same with <code>WallpaperListingComponent</code>:
 })
 ```
 
-
+And that's it! Now you have a beautiful wall of wallpapers that you built with Angular 2!
