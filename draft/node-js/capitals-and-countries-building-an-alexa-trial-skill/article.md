@@ -107,16 +107,13 @@ Add Slot Type as screenshot below.
 
 Add the Utterances.  
 
-Select Save and it should look like screenshot below.
+Select __Save__ and it should look like screenshot below.
 
 
 ![](https://hackster.imgix.net/uploads/image/file/142013/interaction_model.PNG?w=1280&h=960&fit=max)
 
 
-In the Configuration tab, add ARN endpoint from the Lambda function and select "No" for the account linking.  Then select Next.
-
-
-
+In the Configuration tab, add __ARN endpoint__ from the Lambda function and select __No__ for the account linking.  Then select __Next__.
 
 
 ![Configuration](https://raw.githubusercontent.com/pluralsight/guides/master/images/bf7aaf93-520f-46f0-996c-75053375bae8.PNG)
