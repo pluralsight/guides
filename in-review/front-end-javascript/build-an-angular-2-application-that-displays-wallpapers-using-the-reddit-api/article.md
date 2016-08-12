@@ -1,6 +1,6 @@
 With Angular 2 [being almost ready for release](https://splintercode.github.io/is-angular-2-ready/), it is definitely time to start experimenting with it. If you are out of ideas what to build after completing the main Angular 2 tutorial, this guide is an excellent supplemental material that will deepen your knowledge in the new framework without going into too advanced techniques.
 
-In this guide, you are going to build a Angular 2 app that loads data from Reddit's [/r/wallpapers](https://www.reddit.com/r/wallpapers/) thread. In the end, you'll have a wall of beutiful images that scrolls infinitely. Sounds cool, doesnt it? On top of this, here is what you are going to learn:
+In this guide, you are going to build an Angular 2 app that loads data from Reddit's [/r/wallpapers](https://www.reddit.com/r/wallpapers/) thread. In the end, you'll have a wall of beautiful images that scrolls infinitely. Sounds cool, doesnt it? On top of this, here is what you are going to learn:
 
 - Setting up Angular 2 with Webpack
 - Loading data from extrnal services
