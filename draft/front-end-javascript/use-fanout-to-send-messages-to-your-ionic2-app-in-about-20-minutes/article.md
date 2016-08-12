@@ -41,6 +41,9 @@ cd FanoutIonicNodeTutorial
 ionic serve
 
 ```
+If everthing went well you should be seeing this in your browser: 
+
+![Image of blank Ionic2 app](https://github.com/sethbunke/Ionic2NodejsFanoutTutorial/blob/master/_tutorialImages/ionic_blank_app_screen_sm.PNG?raw=true)
 
 ## **Adding Our Code**
 To get our app receiving messages from [Fanout](https://fanout.io/) and displayed on the screen we will need to create three "providers" in our application. Don't be put off by the name "provider" in Ionic2 and Angular2 as they are really just another name for what are referred to as "services" in other frameworks - objects that encasulate a specific set of functionality in order to have better separation of concerns and avoid duplication of code in an application.
