@@ -51,3 +51,41 @@ ionic generate provider ConfigurationProvider
 ionic generate provider FanoutProvider
 
 ```
+With our providers created we will need to modify them to meet our needs. I use [VS Code](https://code.visualstudio.com) for developing Ionic2 applications due to its good support for TypeScript, but you can use whatever editor you feel most comfortable with. 
+
+In your favorite editor, open up the alert-provider.ts file in the /app/providers/alert-provider folder. Replace the contents of that file with this:
+```
+import { Injectable } from '@angular/core';
+import {NavController,Alert} from 'ionic-angular';
+
+@Injectable()
+export class AlertProvider {  
+  constructor() {}  
+  
+  presentDismissAlert(title: string, subtitle: string, navCtrl: NavController) {    
+    let alert = Alert.create({
+      title: title,
+      subTitle: subtitle,
+      buttons: ['Dismiss']
+    });
+    navCtrl.present(alert);  
+  }  
+}
+```
+Our alert provider will allow us to easily display alert messages on the screen to the user when messages are received from [Fanout](https://fanout.io/).
+
+Next, open the configuration-provider.ts file in the /app/providers/configuration-provider folder and replace that file's contents with:
+```
+import { Injectable } from '@angular/core';
+
+@Injectable()
+export class ConfigurationProvider {   
+  public fanoutUrl: string;
+  
+  constructor() {
+    this.fanoutUrl = 'http://your-realm-id-here.fanoutcdn.com/bayeux';
+  }  
+}
+```
+>Remember the "Realm ID" from the Fanout account screen? Replace **"your-realm-id-here"** with your actual Fanout Realm ID. ***This is crucial - if your don't replace this with your correct realm ID your app will never be able to connect to the proper Fanout endpoint.***
+
