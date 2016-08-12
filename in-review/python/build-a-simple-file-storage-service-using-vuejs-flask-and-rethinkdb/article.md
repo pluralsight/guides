@@ -1,8 +1,12 @@
-In this tutorial, I shall be showing you how you can build a simple file storage service. We shall be making use of VueJS for the frontend, Flask for the backend and RethinkDB for database storage. I will be introducing a number of tools as we go on so stay tuned.
+## Introduction 
 
-In the first part of this tutorial series, I will be focusing on the building out the backend for the application. As we go on, you will discover how you can implement some of the principles taught here in your current workflow either as a Python developer, Flask developer or even as a programmer in general.
+In this tutorial, I will be showing you how to build a simple file storage service. We shall be making use of VueJS to handle the front-end interactions, Flask for the back-end, and RethinkDB for database storage. I will be introducing a number of tools as we go, so stay tuned.
 
-We shall start by building out our API. Using this file storage service, as a user, we should be able to:
+In the first part of this series, I will be focusing on the building out the back-end for the application. Later, I'll cover implementing some of the principles taught here in your current workflow either as a Python developer, Flask developer, or even as a programmer in general.
+
+### Buliding the API
+
+Let's start by building out our API. Using this file storage service, as a user, we should be able to:
 1. Create an account
 2. Login
 3. Create and manage folders and subfolders
@@ -19,11 +23,11 @@ For the API, we should have the following endpoints:
 - `PUT /api/v1/user/<user_id>/files/<file_id>` - This endpoint will be used to edit a single file with id `file_id`
 - `DELETE /api/v1/user/<user_id>/files/<file_id>` - This endpoint will be used to delete a single file with id `file_id`
 
-OK, we're now done with figuring out the API endpoints we need to create this app. Now, we need to start the actual process of creating the endpoints. So let's get to it.
+OK, we've figured out the API endpoints that we need to create this app. Now, we need to start the actual process of creating the endpoints. So let's get to it.
 
 ## Setup
 
-You should start by creating a project directory, obviously. This is the recommended structure for our application:
+You should start by creating a project directory. This is the recommended structure for our application:
 
 ```
 -- /api
@@ -43,7 +47,7 @@ You should start by creating a project directory, obviously. This is the recomme
 ```
 The modules and packages for the API will be put into the `/api` directory with the models stored in the `models.py` module, and the controllers (mostly for routing purposes) stored as modules in the `/controllers` package.
 
-We will put in our routes and app creation function in `/api/__init__.py`. This way, we are able to use the `create_app()` function to create multiple app instances with different configurations. This is especially helpful when you are writing tests for your application.
+We will add our routes and app creation function to `/api/__init__.py`. This way, we are able to use the `create_app()` function to create multiple app instances with different configurations. This is especially helpful when you are writing tests for your application.
 
 ```
 from flask import Flask, Blueprint
@@ -106,7 +110,7 @@ if __name__ == '__main__':
     manager.run()
 ```
 
-Here, we have used the `flask_script.Manager` class to abstract out running of the server and enable us add new commands for the CLI. The migrate command there will be used to automatically create all the tables required by our models. This is a simplified solution for now. If all is well, you should not have any errors.
+Here, we have used the `flask_script.Manager` class to abstract out the running of the server and enable us to add new commands for the CLI. `migrate()` will be used to automatically create all the tables required by our models. This is a simplified solution for now. If all is well, you should not have any errors.
 
 
 Now, we can go to the command line and run `python run.py runserver` to run the server on the default port 5000.
@@ -129,9 +133,9 @@ class RethinkDBModel(object):
 
 We referenced the database name from the application config. In flask, we have the `current_app` variable which holds a reference to the currently running application instance.
 
-I'm sure a lot of people are wondering why I created a blank `RethinkDBModel` class. Well, there might be a coouple of things we might want to share across model classes and so this class is here in case this is needed.
+Why did I create a blank `RethinkDBModel` class? Well, there might be a couple of things we might want to share across model classes; this class is here in case cross-model sharing is necessary.
 
-Our `User` class will inherit from this base class and in it, we will have a few functions which we shall be using to interact with the database from the controllers.
+Our `User` class will inherit from this empty base class. In `User`, we will have a few functions which we'll use to interact with the database from the controllers.
 
 We start with the `create()` function. This function will be called when we need to create a user document in the table.
 
@@ -166,9 +170,9 @@ class ValidationError(Exception):
     pass
 ```
 
-We're using named exceptions here because it's easier to track.
+We're using named exceptions because they are easier to track.
 
-If there are no issues, we hash the password and create the document as a dictionary. Notice how we used `datetime.now(r.make_timezone('+01:00'))` here? There were issues faced when I used `datetime.now()` without the timezone. This issue was because RethinkDB requires that time zone information be set on date fields in documents. The Python function does not supply this for us by default unless we specify this as a parameter to the `now()` function (See [here](https://www.rethinkdb.com/docs/dates-and-times/python/) for more). Using the `r.make_timezone('+01:00')` we are able to create a timezone object that we can use for the `datetime.now()` function.
+Notice how we used `datetime.now(r.make_timezone('+01:00'))` here? There were issues faced when I used `datetime.now()` without the timezone. **RethinkDB requires that time zone information be set on date fields in documents.** The Python function does not supply this for us by default unless we specify this as a parameter to the `now()` function (See [here](https://www.rethinkdb.com/docs/dates-and-times/python/) for more). Using the `r.make_timezone('+01:00')` we are able to create a timezone object that we can use for the `datetime.now()` function.
 
 If all goes well and no exceptions are encountered, we call the `insert()` method on the table object that `r.table(table_name)` returns. This method takes a dictionary containing the data. This data will be stored as a new document in the table selected.
 
@@ -207,7 +211,7 @@ class User(RethinkDBModel):
         return pbkdf2_sha256.verify(password, _hash)
 
 ```
-The `pbkdf2_sha256.encrypt()` method is called with the password and values for `rounds` and `salt_size`. See [here](http://pythonhosted.org/passlib/lib/passlib.hash.pbkdf2_digest.html) for details on how you can customize your encryption and how the library works. Just to give some context as to why the decision to use `PBKDF2`: 
+The `pbkdf2_sha256.encrypt()` method is called with the password and values for `rounds` and `salt_size`. See [here](http://pythonhosted.org/passlib/lib/passlib.hash.pbkdf2_digest.html) for details on how you can customize your encryption and how the library works. Just to give some context on the decision to use `PBKDF2`: 
 
 > Security-wise, PBKDF2 is currently one of the leading key derivation functions, and has no known security issues.
 
@@ -217,7 +221,7 @@ The `verify_password` method will be called using the password string and a hash
 
 We will now move on the the `validate()` function. This function will be called in the login method with the email address and password. The function will check that the document exists using the `email` field as index and then compare the password hash against the password supplied.
 
-In addition to that, since we're going to be making using of JWT for token-based authentication, we will be generating a token if the user supplies valid information. This is how the entire models.py will look like when we're done adding in logic for that.
+In addition to that, since we're going to be making using of JWT (JSON Web Token) for token-based authentication, we will be generating a token if the user supplies valid information. This is how the entire `models.py` will look like when we're done adding in logic for that.
 
 ```
 import os
@@ -288,13 +292,13 @@ A couple of things to take note of in the `validate()` method. Firstly, the `fil
 
 As you would expect, we basically do two things here. We want to know if the email address exists at all and then if the password is correct. For the first part, we basically count the collection. If this is empty, we raise an error. For the second part, we call the `verify_password()` function to compare the password supplied with the hash in the database. We raise an exception if these don't match.
 
-Another important thing to notice here is how we have used the `jwt.encode()` method to create a JWT token and return it to the controller. This method is fairly straightforward and you can see the documentation [here](https://github.com/mpdavis/python-jose).
+Also noteworthy is how we have used `jwt.encode()` to create a JWT token and return it to the controller. This method is fairly straightforward and you can see the documentation [here](https://github.com/mpdavis/python-jose).
 
-So this about does it for the model. Let's move on to the controllers. We have, in this model, tried to obey the principle of having Fat models and Slim controllers. Most of the logic is in the models. This way, in our controllers, we will try to focus on routing and error reporting to the API end user.
+That does it for the model. Let's move on to the controllers. We have, in this model, tried to obey the principle of having **Fat models and Slim controllers**. Most of the logic is in the models. This way, our controllers only focus on routing and error reporting to the API end user.
 
 ## Authentication Controller
 
-For the authentication controller, we need to add in Flask RESTful resource sub classes. If you've ever done any Django web development, it's similar to class-based views. It's simply created as a subclass of the `flask_restful.Resource` class. Your subclasses will have methods that map to respective HTTP verbs. For instance, if we wanted to implement a GET action, we will be creating a `get()` method in our Resource subclass. The process is completed by mapping URLs to the respective classes using the `api.add_resource()` method.
+For the authentication controller, we need to add in Flask RESTful resource sub classes. Django web development is similar to class-based views. It's simply created as a subclass of the `flask_restful.Resource` class. Your subclasses will have methods that map to respective HTTP verbs. For instance, if we wanted to implement a GET action, we will be creating a `get()` method in our Resource subclass. The process is completed by mapping URLs to the respective classes using the `api.add_resource()` method.
 
 Let us now add in two classes; one to take care of POST action to the login route and one to take care of POST action to the register route.
 
@@ -336,7 +340,7 @@ def create_app(env):
     return app
 ```
 
-Now lets head back to the controller file to add in some logic. The logic required here is similar to what you will probably do with most authentication systems using most programming languages.
+Now lets head back to the controller file to add in some logic. The logic required here is similar to what you will typically do with authentication systems in general.
 
 ```
 from flask_restful import reqparse, abort, Resource
@@ -389,13 +393,13 @@ class AuthRegister(Resource):
         
 ```
 
-As mentioned earlier, majority of the logic and database interaction has been pushed to the model.
+As mentioned earlier, the majority of the logic and database interaction has been pushed to the model. The controller logic is relatively simple.
 
-To summarize what was done, for the login controller `AuthLogin`, we have created a `post()` function which accepts the e-mail address and password, validates the fields using `reqparse` and then calls the `User.validate()` which validates the information sent and returns a token. If an error occurs, we are going to catch it and respond with an error message.
+To summarize what was done, for the login controller `AuthLogin`, we created a `post()` function which accepts the e-mail address and password, validates the fields using `reqparse`, and calls `User.validate()` which validates the information sent and returns a token. If an error occurs, we catch it and respond with an error message.
 
-Similarly, for the `AuthRegister`, we collect information from the user and call a model `create()` function. In this case, we are collection the email address, password, password confirm and full name fields. We pass all these values to the `User.create()` function and as before, this function will throw an error if anything goes wrong.
+Similarly, for the `AuthRegister`, we collect information from the user and call a model `create()` function. In this case, we create a collection for the email address, password, password confirm, and full name fields. We pass all these values to the `User.create()` function and as before, this function will throw an error if anything goes wrong.
 
-All things being equal, everything should work just fine. Run the server using `python run.py runserver` to test it out. You should be able to access the two endpoints that we've created here and it should work very well.
+All things being equal, everything should work just fine. Run the server using `python run.py runserver` to test it out. You should be able to access the two endpoints that we've created here, and it should work very well.
 
 Next up, we'll be creating the models for our files.
 
@@ -403,7 +407,9 @@ Next up, we'll be creating the models for our files.
 
 We'll be creating simple models for working with the files and folders similar to what we did with the User model. We shall be creating a `Folder` model as a child of the `File` model.
 
-What you will notice as we proceed is the fact files are stored in a flat manner in the filesystem. All users have a folder where all their files are stored but the structure of the data logical and stored in the database. This way, we have minimal writes on the file system. To do this we will be employing some pretty neat techniques that will probably be useful to you for future projects.
+### File model
+
+What you will notice as we proceed is that the fact files are stored in a flat manner in the filesystem. All users have a folder where all their files are stored but the structure of the data logical and stored in the database. This way, we have minimal writes on the file system. To do this we will be employing some pretty neat techniques that will probably be useful to you for future projects.
 
 Create the base models in `/api/models.py`
 
@@ -452,7 +458,7 @@ Here we first collect all the information we need from the keyword arguments dic
 
 Notice here how having a `parent` of `None` makes the `parent_id` field `0`. This takes care of cases when a file is created with no parent. This assumes that we are storing the file in the root folder which will have an id of 0.
 
-So we collect all this information about the file into a dictionary and call the `insert()` function to store it in the database. The returned dictionary from calling the insert function contains the IDs of the newly generated documents. After inserting, we populate the ID information in the dictionary so that we can return it to the users.
+So we collect all this information about the file into a dictionary and call the `insert()` function to store it in the database. The returned dictionary from calling the insert function contains the IDs of the newly generated documents. After inserting the dictionary, we populate the ID information in the dictionary so that we can return it to the users.
 
 In the last 3 lines of this method, we've added in a check to see if the `parent` is `None`. Since this file manager implementation has folders, whenever we create a file in a folder, we would have to logically add each newly created object to a folder. We do this by adding the object ID into an `objects` list in the corresponding record for the folder we're trying to store it in. We do this by calling a method which we will create in the Folder model called `add_object`.
 
@@ -498,9 +504,13 @@ def move(cls, obj, to):
 
 The logic here is fairly simple. We call this method when we want to move a file `obj` into folder `to`.
 
-We start by getting the current folder id for the current parent directory of the file. This is stored in the `parent_id` field of `obj`. We call the Folder model `find` function to obtain the folder object as a dictionary called `previous_folder`. After getting this object, we do two things. We remove the file object from the previous folder `previous_folder`, and add the fie object to the new folder `to`. We achieve this by calling the `remove_object()` and `add_object()` methods of the Folder class. These methods remove the file ID from and add the file ID to the `objects` list in the Folder document respectively. I will be showing what the implementation for these look like in a bit.
+We start by getting the current folder id for the current parent directory of the file. This is stored in the `parent_id` field of `obj`. We call the Folder model `find` function to obtain the folder object as a dictionary called `previous_folder`. After getting this object, we do two things. We remove the file object from the previous folder `previous_folder`, and add the file object to the new folder `to`. We achieve this by calling the `remove_object()` and `add_object()` methods of the Folder class. These methods remove the file ID from and add the file ID to the `objects` list in the Folder document, respectively. I will be showing what the implementation for these look like in a bit.
 
-We're now done with modelling the files. We can now carry out basic interaction on files like creation, editing, deleting from the database and what not. Next we move on to the logic for the `Folder` model which is very similar to what we did for the files.
+We're now done with modeling the files. We can carry out basic interaction on files like creation, editing, deleting from the database, and more. 
+
+Next we move on to the logic for the `Folder` model which is very similar to what we did for the files.
+
+### Folder model
 
 ```
 @classmethod
@@ -544,7 +554,7 @@ The `create()` method here is very similar to what we have for files with a few 
 
 We have included the `is_folder` field here which defaults to `True` for folders and if you had noticed earlier, `False` for files.
 
-You will notice here that we have called a `tag_folder()` method. We will be needing this later on for dealing with moving folders. To summarise what this is, basically, folders are tagged according to their position on the File tree. The indexes are based on their level on the tree. Any folder stored at the root level will have a tag of `<id>` where id is the folder's id. Any folder stored below that folder will have an id of `<id>-n` where n is an integer that increments continuously. Subsequent nested folder will follow the same pattern and have ids of `<id>-n-m` etc. `n` will change as we add more folders and we store the data required for this in the `last_index` field of each folder which defaults to `0`. As we add folders to this folder, we will be incrementing the value for `last_index`. The `tag_folder()` method takes care of all this.
+You will notice here that we have called a `tag_folder()` method. We will be needing this later on for dealing with moving folders. To summarise, folders are tagged according to their position on the File tree. The indexes are based on their level on the tree. Any folder stored at the root level will have a tag of `<id>` where id is the folder's id. Any folder stored below that folder will have an id of `<id>-n` where n is an integer that increments continuously. Subsequently nested folders will follow the same pattern and have ids of `<id>-n-m` etc. `n` will change as we add more folders and we store the data required for this in the `last_index` field of each folder which defaults to `0`. As we add folders to this folder, we will be incrementing the value for `last_index`. **The `tag_folder()` method takes care of all this.**
 
 
 We insert the dictionary we created to house all this data into the database by calling the `insert()` function.
@@ -566,7 +576,7 @@ Here, we start by getting the object using it's id. We show a folder's listings 
 - The `file_ref` object is actually a folder. We determine this by checking the `is_folder` field of the document.
 - We have objects within the `objects` list of the folder document.
 
-If all these conditions are fulfulled, we get all the nested objects by calling the  `get_all` method on the file table. This method accepts multiple keys and returns all the objects with the respective keys. We use the `r.args` method to convert the list of objects to multiple arguments for the `get_all` method. We replace the `objects` field of the document with the list returned. This list contains the details of each of these nested files/folders.
+If all these conditions are fulfilled, we get all the nested objects by calling the  `get_all` method on the file table. This method accepts multiple keys and returns all the objects with the respective keys. We use the `r.args` method to convert the list of objects to multiple arguments for the `get_all` method. We replace the `objects` field of the document with the list returned. This list contains the details of each of these nested files/folders.
 
 Next, we move on to create the `move` method for the folder. This is going to be very similar to the `move` method we created for files earlier on with the inclusion of logic for working with tags and ensuring we can actually move the folder.
 ```
@@ -593,9 +603,9 @@ def move(cls, obj, to):
 ```
 Here we first ensure that the folder we're moving to was in fact specified and is not `None`. This is because the assumption here is that if this is not specified we are actually moving this folder to the root folder.
 
-We get the tag of the folder we're trying to move. We also get the tag of the folder we're trying to move it to. We compare the number of sections in their tags. This is how we know the folder's level in the file tree. There is only one case where moving is not so straight forward and that is when there are more parent sections than child sections (Parent in this case refers to the folder we're trying to move this folder to). We can move a folder to any folder on it's level and above but if the `parent_sections` is more the `child_sections`, we know that it is possible that the folder we're trying to move this folder to might be nested in the folder we're trying to. We are very careful about this because as mentioned earlier, folder structure is purely logical and we need to ensure we don't have errors with this.
+We get the tag of the folder we're trying to move. We also get the tag of the folder we're trying to move it to. We compare the number of sections in their tags. This is how we know the folder's level in the file tree. There is only one case where moving is not so straightforward: when there are more parent sections than child sections. (Parent in this case refers to the folder we're trying to move this folder to). We can move a folder to any folder on it's level and above but if the `parent_sections` is more the `child_sections`, we know that it is possible that the folder to which we're trying to move this folder might be nested in its own folder. We are very careful about this because as mentioned earlier, folder structure is purely logical and we need to ensure we don't have errors with this.
 
-For the case that the folder we're moving to is below the folder we're moving in the file tree, we must ensure that the folder former is not nested in the latter. This can simply be done by ensuring the `child_tag`, of the folder we're moving, does not begin the `parent_tag` string. We use regex to implement this and raise an exception if this happens.
+For the case that the folder we're moving to is below the folder we're moving in the file tree, we must ensure that the former folder is not nested in the latter. This can simply be done by ensuring the `child_tag`, of the folder we're moving, does not begin the `parent_tag` string. We use regex to implement this and raise an exception if this happens.
 
 We're almost done now! Finally we will create the `add_object()` and `remove_object()` methods I had referred to earlier.
 
@@ -720,7 +730,7 @@ def belongs_to_user(f):
     return func
 ```
 
-- The `login_required` decorator is used to validate that users are actually logged in before accessing the method's functionality. We use this decorator to protect certain enpoints. We do this by decoding the token to ensure it's validity. We get the `id` field stored in the token and try to retrieve the corresponding user object. We also store this object in `g.user` for access by within the method definition.
+- The `login_required` decorator is used to validate that users are actually logged in before accessing the method's functionality. We use this decorator to protect certain enpoints by decoding the token to ensure it's validity. We get the `id` field stored in the token and try to retrieve the corresponding user object. We also store this object in `g.user` for access by within the method definition.
 - Similarly, we create the `validate_user` decorator which ensures that no other logged in user can access URL patterns labelled with another user's ID. This validation is purely based on the information in the URL.
 - Finally, the `belongs_to_user` decorator ensures that the only the user who created a file can access it. This decorator actually checks the `creator` field in the file document against the `user_id` supplied.
 
@@ -801,9 +811,9 @@ class CreateList(Resource):
             abort(500, message="There was an error while processing your request --> {}".format(e.message))
 ```
 
-The listing method is pretty straight forward, all we do is filter the table for all files created by a certain user and stored in the root directory. We return this data for this endpoint and throw an exception if there are any errors.
+The listing method is pretty straightforward, all we do is filter the table for all files created by a certain user and stored in the root directory. We return this data for this endpoint and throw an exception if there are any errors.
 
-For the create action, we do a bunch of things. For this tutorial, we're assuming that files and folders will be created with the same endpoint. For files, we will need to supply the file as well as a `parent_id`, if we are uploading it in a folder. For folders, we will need a name, and a `parent_id` value, again if we are creating this within another folder. For folders, we also need to send an `is_folder` field with our request to specify that we are creating a folder.
+For the create action, we do a bunch of things. For this tutorial, we're assuming that files and folders will be created with the same endpoint. For files, we will need to supply the file as well as a `parent_id` if we are uploading it in a folder. For folders, we will need a name, and a `parent_id` value, again if we are creating this within another folder. For folders, we also need to send an `is_folder` field with our request to specify that we are creating a folder.
 
 If we are going to store this within a folder, we have to ensure that the folder exists and is a valid folder. We also ensure that we are supplying a name field if we are creating a folder.
 
@@ -844,7 +854,7 @@ This can be added at the top of the `/api/controllers/files.py` module or in a s
 
 The difference between both serializers is that the file serializer includes the objects array in the response. We use the `file_array_serializer` for list responses while we use the `file_serializer` for object responses.
 
-We have also here made use of a function called `is_allowed()` here to help ensure that all the files that we are uploading are supported by us. We created a list called `ALLOWED_EXTENSIONS` to contain the list of all the allowed extensions.
+We have also made use of a function called `is_allowed()` to help ensure that we support all the files that we are uploading. We created a list called `ALLOWED_EXTENSIONS` to contain the list of all the allowed extensions.
 
 ```
 ALLOWED_EXTENSIONS = set(['txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'])
@@ -943,11 +953,11 @@ class ViewEditDelete(Resource):
             abort(500, message="There was an error while processing your request --> {}".format(e.message)) 
 ```
 
-We have create a `get()` method which returns a single file or folder object based on the id. For folders, it includes listing information. You can see how this is done if you look at the `belongs_to_user` decorator. For files, we have included a query parameter `should_download` to be set to `true` if we want to download a file.
+We created a `get()` method which returns a single file or folder object based on the id. For folders, it includes listing information. You can see how this is done if you look at the `belongs_to_user` decorator. For files, we have included a query parameter `should_download` to be set to `true` if we want to download a file.
 
 The `put()` method takes care of updating file and folder information. This also includes moving files and folders. Moving files is triggered by updating the `parent_id` field for a file/folder. The logic for both have been covered in the `move()` methods for the file and folder models.
 
-The `delete()` method also comes a query paramter which specifies whether or not we want to perform a hard delete. For hard delete, records are removed from the database and the files are deleted from the file system. For soft delete, we only update the file `status` field to false.
+The `delete()` method also comes a query parameter which specifies whether or not we want to perform a hard delete. For hard delete, records are removed from the database and the files are deleted from the file system. For soft delete, we only update the file `status` field to false.
 
 We have created new methods here for called `update_where()` and `delete_where()` in the `RethinkDBModel` class for deleting and updating a filtered set from the table:
 
@@ -967,9 +977,11 @@ def delete_where(cls, predicate):
     return True
 ```
 
-And that's it! We're done with the API. Run the API and test it to see it work.
+And that's it! We're done with our file storage API. Run the API to see it in action.
 
-Feel free to send in your feedback and thoughts about this tutorial. In the next tutorial we shall be consuming our API to build out the Front End using VueJS.
+My next tutorial will cover front-end development on our file storage API using VueJS.
 
 You can check out the codebase for the project [here](https://github.com/andela-cnnadi/papers). Show some love by starring the repository.
+
+Feel free to send me your feedback and thoughts about this tutorial via email or comments. If you found it instructive and handy for learning Flask, Python, or RethinkDB, please favorite this tutorial as well!
 
