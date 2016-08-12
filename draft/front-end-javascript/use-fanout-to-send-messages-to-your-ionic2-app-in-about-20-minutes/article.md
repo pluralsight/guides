@@ -1,6 +1,6 @@
 [Fanout](https://fanout.io/) is a great service that allows you to quickly and easily send messages to clients applications. In this tutorial we will use Fanout to send messages to an Ionic2 application.
 
-### **Getting Set Up**
+## **Getting Set Up**
 
 Ok, first things first - go to the [Fanout](https://fanout.io/) site and create your **FREE** account - to ensure that is it free make sure you click on the **"Hacker"** type of account. Next, while you are log into the the site nagivate to the [account page](https://fanout.io/account/panel/) and make a note of both your Reaml ID and your Realm Key - we will need both of these for wiring up the Ionic2 and Nodejs pub-sub mechanism. 
 
@@ -24,7 +24,7 @@ you should see something like this which means the package installed successfull
 ```
 If you get an error, please go back through the steps above or follow the more detailed installation steps on the [Ionic2 installation page](http://ionicframework.com/docs/v2/getting-started/installation/).
 
-### **Creating the Base Application**
+## **Creating the Base Application**
 
 Ok, if you are in impatient type all of the source code is available in Github [here](https://github.com/sethbunke/Ionic2NodejsFanoutTutorial). 
 
@@ -41,7 +41,7 @@ ionic serve
 
 ```
 
-### **Adding Our Code**
+## **Adding Our Code**
 To get our app receiving messages from [Fanout](https://fanout.io/) and displayed on the screen we will need to create three "providers" in our application. Don't be put off by the name "provider" in Ionic2 and Angular2 as they are really just another name for what are referred to as "services" in other frameworks - objects that encasulate a specific set of functionality in order to have better separation of concerns and avoid duplication of code in an application.
 
 For our app, those 3 providers are for alerts, configuration, and Fanout. We can add them easily using the ionic "generator" command, like this:
@@ -149,7 +149,7 @@ Specifically, what we are doing here is showing the framework where the provider
 
 ***Why isn't the FanoutProvider also getting registered here?*** That's because we only want to register providers globally that are likely to be used in many different parts of the application - the alert and configuration providers are good examples widely used providers. The FanoutProvider on the other hand may only be used in a few places so we will only register it where it is needed - such as in our Home component which is what we will work on next. 
 
-### **The Home Component/Page**
+## **The Home Component/Page**
 
 
-### **One Last Thing to Take Care Of**
+## **One Last Thing to Take Care Of**
