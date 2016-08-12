@@ -233,3 +233,6 @@ Then, navigate to the **typings** folder and set the contents of that **index.d.
 /// <reference path="globals/faye/index.d.ts" />
 ```
 Yeah, that's it - we just need to let TypeScript know that there is a Faye type of object that can be anything. With this in place there errors will go away.
+
+## **Creating the Publisher**
+For the publisher we will also be using [Nodejs](https://nodejs.org/). Don't worry if you are not familiar with Nodejs - this is a very, very simple app that will be extremetly easy to understand. 
