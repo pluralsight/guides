@@ -182,5 +182,41 @@ export class HomePage implements OnInit {
 ```
 Note how we are referencing both the FanoutProvider and AlertProvider by their names and their relative paths to their files. Also note how we are registering the FanoutProvider here, but not the AlertProvider as we have already registered that provider globally. 
 
-The **ngOnInit** method is executed when the Home component gets initialized and it is where we use the FanoutProvider to subscribe to messages from the [Fanout](https://fanout.io/) service. Here we are subscribing to the "test" message channel. When a message is received from the "test" channel by the FanoutProvider, the Home component logs messages to the console and sends the messge to the AlertProvider which pops up an alert dialog on the screen. 
-## **One Last Thing to Take Care Of**
+The **ngOnInit** method is executed when the Home component gets initialized and this is where we use the FanoutProvider to subscribe to messages from the [Fanout](https://fanout.io/) service. Here we are subscribing to the "test" message channel - when a message is received from the "test" channel by the FanoutProvider, the Home component logs messages to the console and sends the messge to the AlertProvider which pops up an alert dialog on the screen. 
+## **Final Things for the Client**
+Just 2 more things we need to do before we finish the client. First, we need to update the **index.html** file in the **/www** folder. Replace the contents of index.html with this:
+```
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <title>Ionic</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="format-detection" content="telephone=no">
+  <meta name="msapplication-tap-highlight" content="no">
+
+  <link ios-href="build/css/app.ios.css" rel="stylesheet">
+  <link md-href="build/css/app.md.css" rel="stylesheet">
+  <link wp-href="build/css/app.wp.css" rel="stylesheet">
+</head>
+
+<body>
+  <ion-app></ion-app>
+
+  <!-- cordova.js required for cordova apps -->
+  <script src="cordova.js"></script>
+  <!-- Polyfill needed for platforms without Promise and Collection support -->
+  <script src="build/js/es6-shim.min.js"></script>
+  <!-- Zone.js and Reflect-metadata  -->
+  <script src="build/js/Reflect.js"></script>
+  <script src="build/js/zone.js"></script>
+  <!-- the bundle which is built from the app's source code -->
+  <script src="build/js/app.bundle.js"></script>
+  <!-- reference to the Faye object for your realm -->
+  <script src="http://your-realm-id-here.fanoutcdn.com/bayeux/static/faye-browser-min.js"></script>
+</body>
+
+</html>
+
+```
+>Here we are mainly interested in making sure that we have added a script reference to the **faye-browser-min.js** file - remember to replace ***"your-realm-id-here"*** in the URL with the [Fanout](https://fanout.io/) realm ID that you got from the [account page](https://fanout.io/account/panel/)
