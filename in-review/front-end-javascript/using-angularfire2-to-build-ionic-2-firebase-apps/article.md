@@ -1,28 +1,34 @@
-# _Ionic 2_ + _AngularFire2_ = **Awesomeness**!
+## _Ionic 2_ + _AngularFire2_ = **Awesomeness**!
 
-In this year's I/O google introduced the [new version of firebase](https://firebase.google.com/) and it came packed with goodies, from analytics integration to admob to monetize your apps, it has everything.
+[In this year's I/O conference](https://events.google.com/io2016/), Google introduced the [new version of firebase](https://firebase.google.com/) and all the goodies that came with it; from analytics integration to admob to monetize your apps, it has everything.
 
 As soon as they announced the big update, [David East](https://twitter.com/_davideast) and [Jeff Cross](https://twitter.com/jeffbcross) started working really hard in making [AngularFire2](https://angularfire2.com/api/) compatible with the new services.
 
-For [ionic framework](https://ionicframework.com) developers this means we get a really great library that integrates deeply with the framework, helping us create our apps easier and faster.
+For [ionic framework](https://ionicframework.com) developers this means we get a really great library that integrates deeply with the framework, facilitating app creation.
 
-I have been using **AngularFire2** for over a month now and I find it fascinating how fast I'm building my apps now.
+I have been using **AngularFire2** for over a month now and I find it fascinating how quickly I'm building my apps now.
 
-Today I want to share with you a guide on how to create an app using **Ionic 2 + AngularFire2** so you can make the jump and start building with that combo soon!
+This guide will help you create an app using **Ionic 2 + AngularFire2** so you can make the jump and start building with that combo soon!
 
-We are going to create a small app to keep track of our unpaid bills, this is something I made for my wife and me since we keep forgetting them :P
+## The Task
 
-So with that intro I think it's time to get to business:
+**We are going to create a small app to keep track of our unpaid bills.** This might be a nifty tool if you forget to pay bills sometimes. 
 
-The first thing you want to do is to make sure you have the latest version of ionic installed in your machine, so go ahead and open your terminal and type:
+#### Prerequisites
+
+The first thing you want to do is to make sure you have the latest version of ionic installed in your machine. Open your terminal and type:
 
 ```bash
   npm install -g ionic@beta cordova typings
 ```
 
-What this does is installs the latest version of the Ionic CLI (you'll use it to create your projects) cordova (this is how you get that nice installable) and typings to work with TypeScript.
+This command installs the latest version of the Ionic CLI (you'll use it to create your projects) Cordova (this is how you get that nice installable) and typings to work with TypeScript.
 
-Once you have everything installed is time to create your app, go back to your terminal and navigate to wherever you want to create the app and create it, for me is in my development folder:
+Once you have everything installed, it's time to create your app. Go back to your terminal and navigate to wherever you want to create the app. I create my applications in my development folder. Then create the app. 
+
+If you need help at this point, refer to the [Ionic Introductory Tutorial.](http://ionicframework.com/getting-started/) *This tutorial assumes that you have some experience in ionic development.*
+
+Next, run the following command:
 
 ```bash
   cd Development
@@ -37,18 +43,18 @@ That does a few things:
 * **blank** tells the CLI we don't want to use any starter template, just a blank project.
 * **--v2** tells the CLI to create an Ionic2 app instead of Ionic1 (_pretty soon this will be default_)
 
-Now you have created a new app and are inside your app folder, it's time to install the dependencies we'll need, right now you'll install **firebase**, **angularfire2** and **typings for firebase**.
+Now that you have created a new app and are inside your app folder, it's time to install the dependencies we'll need, right now you'll install **firebase**, **angularfire2** and **typings for firebase**.
 
-So go back to your terminal and inside the `billTracker` folder type:
+Go back to your terminal and, inside the `billTracker` folder, type:
 
 ```bash
   npm install angularfire2@2.0.0-beta.2 && firebase --save
   typings install --save --global firebase
 ```
 
-The reason I'm using the `@2.0.0-beta.2` tag when installing angularfire2 is because I need it to work with Firebase's new console, if you leave the tag out it will work with the legacy console.
+I'm using the `@2.0.0-beta.2` tag when installing AngularFire2 because I need AngularFire2 to work with Firebase's new console. If the tag is left out, AngularFire2 will only work with the legacy console.
 
-Now that we have everything installed it's time to open your app in your favorite text editor or IDE, I'm using atom so I just type `atom .` inside my app folder.
+Now that we have everything installed, it's time to open your app in your favorite text editor or IDE. I'm using **atom** so I just type `atom .` inside my app folder.
 
 Go to `app/app.ts` and you should see something like this:
 
@@ -77,13 +83,13 @@ ionicBootstrap(MyApp);
 
 ```
 
-You need to do a couple of things here, first, at the top of the file you'll see were we import the components we need, go ahead and add an import for angularfire2 components:
+You need to do a couple of things here. First, at the top of the file, you'll see were we import the components that we need. Go ahead and add an import for AngularFire2 components:
 
 ```javascript
 import { FIREBASE_PROVIDERS, defaultFirebase } from 'angularfire2';
 ```
 
-After that you'll need to pass those to the `ionicBootstrap` that you'll find at the end of the file:
+Next, pass those to the `ionicBootstrap` that you'll find at the end of the file:
 
 ```javascript
 ionicBootstrap(MyApp, [
@@ -106,9 +112,9 @@ You'll see a welcome message like the one in the image below, just pick **Add Fi
 ![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/f89ed33a-14db-444f-ab7a-e6c644a68489.png)
 
 
-Now we are ready to start building, we are already connected to firebase so most configuration is done (_by now_)
+Now we are ready to start building because we are already connected to firebase and most of the configuration is done. 
 
-The first thing we'll want to do is to add a button so our users can create new bills inside their app, so go to `app/pages/home/home.html` it should look like this:
+The first thing we'll want to do is to add a button, so our users can create new bills inside their app. Go to `app/pages/home/home.html`. It should look like this:
 
 ```html
 <ion-header>
@@ -124,7 +130,7 @@ The first thing we'll want to do is to add a button so our users can create new 
 </ion-content>
 ```
 
-Nothing weird here, it's just the basic html, go ahead and change the page title and add a navbar button that sends you to a new page to create bills:
+Nothing weird here; it's just the basic html. Change the page title and add a navbar button that sends you to a new page to create bills:
 
 ```html
 <ion-header>
@@ -145,7 +151,9 @@ Nothing weird here, it's just the basic html, go ahead and change the page title
 </ion-content>
 ```
 
-That will give you a nice **+** sign to the right of your navbar, and once the user clicks the sign it calls the `newBill()` function, so it's time to go to `home.ts` and create that function, first open the file, it will have the placeholder code:
+That will give you a nice **`+`** sign to the right of your navbar. Once the user clicks the sign, the `newBill()` function is called. 
+
+Now we need to create `newBill()` in the `home.ts` file. To do this, open the file, which will have the following placeholder code:
 
 ```javascript
 import { Component } from '@angular/core';
@@ -161,17 +169,17 @@ export class HomePage {
 }
 ```
 
-We are going to send the user to a new page to create this bill, so we'll need to use the `NavController` to send our user there, but first, let's create the page.
+We are going to send the user to a new page to create this bill, so we'll need to use the `NavController` to send our user there. 
 
-I wanted to pause here and create the page to show you the coolest thing about **Ionic** its CLI, you can do a bunch of cool stuff with it, even generate placeholder code, just open your terminal and type:
+First, however, let's create the `BillCreate` page to see the coolest thing about **Ionic**: its CLI. You can do a bunch of cool stuff with it, even generate placeholder code. Just open your terminal and type:
 
 `ionic g page BillCreate`
 
-That little line of code right there creates a `bill-create` folder, with 3 files in it `bill-create.ts bill-create.html bill-create.scss` and they all have the boilerplate code already there, talk about your productivity boost!
+That little line of code right there creates a `bill-create` folder, with 3 files in it `bill-create.ts bill-create.html bill-create.scss` and they all have the boilerplate code already there. Talk about a productivity boost!
 
-We'll open those files later, for now we just needed to create them so we won't get any errors when creating the `newBill()` function.
+We'll open those files later, for now we just needed to create them to avoid errors when creating the `newBill()` function.
 
-So go back to `home.ts` and right after the `constructor()` create the new function:
+Go back to `home.ts` and right after the `constructor()` create the new function:
 
 ```javascript
 newBill(){
@@ -213,13 +221,13 @@ So go to `pages/bill-create/bill-create.html` and delete everything in there, we
 </ion-content>
 ```
 
-The first 2 items created are just regular inputs, you can see everything about them in the [ionic docs](http://ionicframework.com/docs/v2/components/#inputs). We are just adding an `[(ngModel)]` to them to hold the values.
+The first two items created are just regular inputs; you can see everything about them in the [ionic docs](http://ionicframework.com/docs/v2/components/#inputs). We are just adding an `[(ngModel)]` to them to hold the values.
 
 The third item is a date-time item, this is why Ionic is so awesome, you add that input and it will add a beautifully designed date picker to your app, you can read more about it [here](http://ionicframework.com/docs/v2/components/#datetime)
 
 And finally we add a button that calls the `createBill()` method passing the values of the inputs.
 
-Now we need to go to `bill-create.ts` and create that function, open the file and you'll see this:
+Now we need to go to `bill-create.ts` and create that function. Open the file and you'll see this:
 
 ```javascript
 import { Component } from '@angular/core';
@@ -239,14 +247,14 @@ We'll need to import AngularFire and our list observable to this file, so right 
 
 `import { AngularFire, FirebaseListObservable } from 'angularfire2';`
 
-* **AngularFire** gives us the angularfire2 magic, where we can call lists, objects, auth methods, etc.
+* **AngularFire** gives us the AngularFire2 magic, where we can call lists, objects, auth methods, etc.
 * **FirebaseListObservable** gives us the observable we'll be using, it will subscribe to the list and sync it in real time with our app.
 
-Right before the constructor create a variable that will hold our list, if you are getting confused on where to do this don't worry, I'll show you the completed file later.
+Right before the constructor, create a variable that will hold our list. If you are getting confused on where to do this don't worry, I'll show you the completed file later.
 
 `billList: FirebaseListObservable<any>;`
 
-And inject `AngularFire` into your constructor.
+Inject `AngularFire` into your constructor.
 
 ```javascript
 constructor(public navCtrl: NavController, public af: AngularFire) {}
@@ -259,7 +267,7 @@ Now create a binding to the list inside the constructor:
 This will keep `billList` synced with our Firebase real-time database on the 
 `/bills` node.
 
-To add new bills to that list we just need to use angularfire's `push()` method:
+To add new bills to that list, we just need to use angularfire's `push()` method:
 
 ```javascript
 createBill(name, amount, dueDate) {
@@ -276,8 +284,8 @@ createBill(name, amount, dueDate) {
 }
 ```
 
-* `this.billList.push()` is adding a new bill to the list passing the values the method is receiving and an extra property called `paid` set to `false`
-* `.then()` function happens after the bill is added to the list and it does 2 things:
+* `this.billList.push()` is adding a new bill to the list, passing the values that the method is receiving, and setting the `paid` property to `false`.
+* The `.then()` function happens after the bill is added to the list and it does 2 things:
   - First it goes back one page (_to the Home Page_) after creating the bill.
   - Second, if any error occurs on the process it's going to log it to the console.
 
@@ -313,7 +321,11 @@ export class BillCreatePage {
 }
 ```
 
-Ok so we can create new bills now, is that it? Nope, now we are going to list those bills in the Home page, for that go ahead and open `home.ts` and import AngularFire, inject it to the controller and bind it to a list:
+### home.ts
+
+Great! We can create bills now. Is that it for this app? 
+
+Nope, now we are going to list those bills in the Home page. To do this, open `home.ts`, import AngularFire, inject it to the controller, and bind it to a list:
 
 ```javascript
 import { Component } from '@angular/core';
@@ -337,9 +349,9 @@ export class HomePage {
 }
 ```
 
-We're going to go to `home.html` and create a couple of cards to show both **paid** and **unpaid** bills, but since I want to format the Due Date a bit I'm going to need a little help.
+We're going to go to `home.html` and create a couple of cards to show both **paid** and **unpaid** bills. However, since I want to format the Due Date, I'm going to need a little help.
 
-You see, angular2 pipes (_that's what we use to format dates_) break when we are using Ionic to build mobile apps, so we're going to use a custom pipe from [angular2-moment](https://github.com/urish/angular2-moment)
+You see, Angular2 pipes (_that's what we use to format dates_) break when we are using Ionic to build mobile apps. We're going to use a custom pipe from [angular2-moment](https://github.com/urish/angular2-moment) instead.
 
 Open your terminal and type:
 
@@ -364,7 +376,7 @@ Now inside our `@Component` declaration we need to express we'll use that pipe:
 })
 ```
 
-And that's it, we can go to `home.html` to use it, just open the file and inside the `ion-content` create a card to hold our **unpaid** bills:
+And that's it! Go to the `home.html` file to use our app. Just open the file and, inside the `ion-content`, create a card to hold our **unpaid** bills:
 
 ```html
 <ion-card>
@@ -388,7 +400,7 @@ There are a few things going on here:
 
 * `*ngFor="let bill of billList | async"` tells our item to repeat for every bill it finds on our billList.
 * `(click)="promptPayment(bill.$key)` tells our system to call that function when users tap on the item. (_we'll create that function in a minute_).
-* `[class.hide]="bill.paid == true"` if the bill is already paid, add the hide css class, which will hide the item from the list.
+* `[class.hide]="bill.paid == true"` says that if the bill is already paid, add the hide css class, which will hide the item from the list.
 
 And after that we are creating a regular item and binding the `bill` properties to it.
 
@@ -415,11 +427,13 @@ Right after that card we'll create another card, this time to hold the list of t
 
 It's almost the same as before, we are just adding the hide class to the ones that haven't been paid yet.
 
-Ok so remember when we said we'd create the `promptPayment()` function in a minute? It's that time now, go to `home.ts` and import AllertController, we'll need this to create a prompt:
+### promptPayment()
+
+Remember when we said we'd create the `promptPayment()` function in a minute? It's that time now. Go to `home.ts` and import AlertController; we'll need this to create a prompt:
 
 `import { NavController, AlertController } from 'ionic-angular';`
 
-Now it's just creating the function:
+Now we just need to create the function:
 
 ```javascript
 promptPayment(billId: string) {
@@ -441,15 +455,19 @@ promptPayment(billId: string) {
 }
 ```
 
-The code is really easy to follow, we are creating a prompt that's going to ask the user: _Mark as paid?_ and our user is going to get 2 buttons:
+The code is really easy to follow. We are creating a prompt that's going to ask the user: _Mark as paid?_ and our user is going to get 2 buttons:
 
-* Cancel does nothing.
-* Mark as Paid will call `this.billList.update(billId, { paid: true });` and this is going to take the billId we're sending from the html and update that bill with AngularFire's `update()` method, piece of cake!
+* Cancel, which does nothing.
+* Mark as Paid, which will call `this.billList.update(billId, { paid: true });`. This method will take the `billId` we're sending from the html and update that bill with AngularFire's `update()` method. 
 
-There you have it, a fully functional app running on the latest version of **Ionic Framework** and **Firebase**
+Piece of cake!
 
-If you want you can download the entire source code for this app from [github](https://github.com/javebratt/bill-reminder)
+## Conclusion
 
-And I also send out a tutorial every Thursday on Ionic + Firebase, you can join [here](http://javebratt.com/become-developer/) to make sure you start getting them :-)
+There you have it: a fully functional app running on the latest version of **Ionic Framework** and **Firebase**.
 
-If there's anything I can help you with just ask, I'm [@javebratt](https://twitter.com/javebratt)
+The entire source code for this app is available on [github](https://github.com/javebratt/bill-reminder).
+
+I also send out a tutorial every Thursday on Ionic + Firebase. Join [here](http://javebratt.com/become-developer/) to check my guides out.
+
+If there's anything I can help you with just ask, I'm [@javebratt](https://twitter.com/javebratt). Feel free to post your comments and feedback in the discussion section below. If you found this tutorial informative or well-written, make sure to favorite it as well!
