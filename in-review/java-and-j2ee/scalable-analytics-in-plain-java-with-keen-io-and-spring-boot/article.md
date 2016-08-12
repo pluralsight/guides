@@ -183,7 +183,7 @@ public class Config {
 ```
 This class will be detected by Spring Framework, which in turn will create a *bean* of type `KeenProject` and a bean of type `KeenClient`. We will *inject* the `KeenClient` bean later in the `WebUI` class and use it to send events to Keen IO.
 
-Notice the `@Value` annotations on the `projectId`, `writeKey`, and `readKey` fields. With this annotation we can specify a property name defined in the `application.properties` file and Spring Framework will set the corresponding value acordinly. This means we have to add the three properties in the `application.properties` file as follows:
+Notice the `@Value` annotations on the `projectId`, `writeKey`, and `readKey` fields. With this annotation we can specify a property name defined in the `application.properties` file and Spring Framework will set the corresponding value accordinly. This means we have to add the three properties in the `application.properties` file as follows:
 ```
 keen.projectId=YOUR_PROJECT_ID
 keen.writeKey=YOUR_WRITE_KEY
