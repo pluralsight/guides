@@ -1,3 +1,8 @@
+###  Building a multiplayer space shooter: Part I by Wolfram Hempel
+- [Read the guide](http://tutorials.pluralsight.com/front-end-javascript/building-a-multiplayer-space-shooter-part-i?status=draft)
+- [Read more from Wolfram Hempel](http://tutorials.pluralsight.com/author/WolframHempel) <img src="https://avatars.githubusercontent.com/u/1503717?v=3" width="30" height="30" alt="Wolfram Hempel" />
+- Related to: Front-End JavaScript (Angular, React, Meteor, etc)
+
 ### Alexa, run this JavaScript app by Craig Bilner
 - [Read the guide](http://tutorials.pluralsight.com/interesting-apis/alexa-run-this-javascript-app?status=draft)
 - [Read more from Craig Bilner](http://tutorials.pluralsight.com/author/craigbilner) <img src="https://avatars.githubusercontent.com/u/12942968?v=3" width="30" height="30" alt="Craig Bilner" />
