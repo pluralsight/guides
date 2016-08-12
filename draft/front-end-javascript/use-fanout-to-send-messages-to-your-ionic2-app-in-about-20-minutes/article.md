@@ -147,4 +147,4 @@ ionicBootstrap(MyApp);
 ```
 Specifically, what we are doing here is showing the framework where the providers are located, the names of the providers that we want loaded, and then registering them as providers so that they are accessible throughout the framework? 
 
-Why isn't the FanoutProvider also getting registered here? That's because you only want to register providers globally that are likely to be used in many different parts of the application - the alert and configuration providers are good examples widely used providers. The FanoutProvider may only be used in a few places so we will only register it is needed such as in our Home component which which is what we will do next. 
+***Why isn't the FanoutProvider also getting registered here?*** That's because we only want to register providers globally that are likely to be used in many different parts of the application - the alert and configuration providers are good examples widely used providers. The FanoutProvider on the other hand may only be used in a few places so we will only register it where it is needed - such as in our Home component which is what we will work on next. 
