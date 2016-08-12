@@ -42,6 +42,12 @@ ionic serve
 ```
 
 ### **Adding Our Code**
-To get our app receiving messages [Fanout](https://fanout.io/) and displayed on the screen we will need to add three "providers" to our application. Don't be put off by the name "provider" in Ionic2 and Angular2 as they are really just another name for what are refereed to as "services" in other frameworks - they encasulate a specific set of functionality in order to have better separation of concerns and avoid duplication of code in an application.
+To get our app receiving messages from [Fanout](https://fanout.io/) and displayed on the screen we will need to create three "providers" in our application. Don't be put off by the name "provider" in Ionic2 and Angular2 as they are really just another name for what are referred to as "services" in other frameworks - objects that encasulate a specific set of functionality in order to have better separation of concerns and avoid duplication of code in an application.
 
-For our app, we will create 3 providers - alerts, configuration, and Fanout.
+For our app, those 3 providers are for alerts, configuration, and Fanout. We can add them easily using the ionic "generator" command, like this:
+```
+ionic generate provider AlertProvider
+ionic generate provider ConfigurationProvider
+ionic generate provider FanoutProvider
+
+```
