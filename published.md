@@ -1,3 +1,8 @@
+### Using AngularFire2 to build Ionic 2 & Firebase apps! by Jorge Vergara
+- [Read the guide](http://tutorials.pluralsight.com/front-end-javascript/using-angularfire2-to-build-ionic-2-firebase-apps)
+- [Read more from Jorge Vergara](http://tutorials.pluralsight.com/author/javebratt) <img src="https://avatars.githubusercontent.com/u/7296623?v=3" width="30" height="30" alt="Jorge Vergara" />
+- Related to: Front-End JavaScript (Angular, React, Meteor, etc)
+
 ### Scale ASP.NET Core apps with Docker Swarm Mode by Stefan Prodan
 - [Read the guide](http://tutorials.pluralsight.com/microsoft-net/scale-asp-net-core-apps-with-docker-swarm-mode)
 - [Read more from Stefan Prodan](http://tutorials.pluralsight.com/author/stefanprodan) <img src="https://avatars.githubusercontent.com/u/3797675?v=3" width="30" height="30" alt="Stefan Prodan" />
