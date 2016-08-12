@@ -1,3 +1,8 @@
+###  Building a multiplayer space shooter: Part I by Wolfram Hempel
+- [Read the guide](http://tutorials.pluralsight.com/front-end-javascript/building-a-multiplayer-space-shooter-part-i?status=in-review)
+- [Read more from Wolfram Hempel](http://tutorials.pluralsight.com/author/WolframHempel) <img src="https://avatars.githubusercontent.com/u/1503717?v=3" width="30" height="30" alt="Wolfram Hempel" />
+- Related to: Front-End JavaScript (Angular, React, Meteor, etc)
+
 ### Build an Angular 2 application that displays wallpapers using the Reddit API by Hristo Georgiev
 - [Read the guide](http://tutorials.pluralsight.com/front-end-javascript/build-an-angular-2-application-that-displays-wallpapers-using-the-reddit-api?status=in-review)
 - [Read more from Hristo Georgiev](http://tutorials.pluralsight.com/author/Kaizeras) <img src="https://avatars.githubusercontent.com/u/6340189?v=3" width="30" height="30" alt="Hristo Georgiev" />
