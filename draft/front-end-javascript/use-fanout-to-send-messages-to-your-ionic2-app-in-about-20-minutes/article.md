@@ -220,3 +220,16 @@ Just 2 more things we need to do before we finish the client. First, we need to 
 
 ```
 >Here we are mainly interested in making sure that we have added a script reference to the **faye-browser-min.js** file - remember to replace ***"your-realm-id-here"*** in the URL with the [Fanout](https://fanout.io/) realm ID that you got from the [account page](https://fanout.io/account/panel/)
+
+Second, we need to create a TypeScript file for our reference to the Faye object in the FanoutProvider - if you have been runnin the app you may have noticed in the build process that you were receiving a TypeScript error indicating that the Faye object is not defined. Unfortunately, since no one has created a real Faye TypeScript definition file, we will need to create on to get rid of that error. 
+
+Navigate to the **/typings/global** folder and create a sub-folder named **faye**. In that new folder create a file named **index.d.ts** and set its contents to:
+```
+declare var Faye: any; 
+```
+Then, navigate to the **typings** folder and set the contents of that **index.d.ts** file to this:
+```
+/// <reference path="globals/es6-shim/index.d.ts" />
+/// <reference path="globals/faye/index.d.ts" />
+```
+Yeah, that's it - we just need to let TypeScript know that there is a Faye type of object that can be anything. With this in place there errors will go away.
