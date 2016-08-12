@@ -53,7 +53,7 @@ ionic generate provider FanoutProvider
 ```
 With our providers created we will need to modify them to meet our needs. I use [VS Code](https://code.visualstudio.com) for developing Ionic2 applications due to its good support for TypeScript, but you can use whatever editor you feel most comfortable with. 
 
-In your favorite editor, open up the alert-provider.ts file in the /app/providers/alert-provider folder. Replace the contents of that file with this:
+In your favorite editor, open up the **alert-provider.ts** file in the **/app/providers/alert-provider** folder. Replace the contents of that file with this:
 ```
 import { Injectable } from '@angular/core';
 import {NavController,Alert} from 'ionic-angular';
@@ -74,7 +74,7 @@ export class AlertProvider {
 ```
 Our alert provider will allow us to easily display alert messages on the screen to the user when messages are received from [Fanout](https://fanout.io/).
 
-Next, open the configuration-provider.ts file in the /app/providers/configuration-provider folder and replace that file's contents with:
+Next, open the **configuration-provider.ts** file in the **/app/providers/configuration-provider** folder and replace that file's contents with:
 ```
 import { Injectable } from '@angular/core';
 
@@ -89,3 +89,62 @@ export class ConfigurationProvider {
 ```
 >Remember the "Realm ID" from the Fanout account screen? Replace **"your-realm-id-here"** with your actual Fanout Realm ID. ***This is crucial - if your don't replace this with your correct realm ID your app will never be able to connect to the proper Fanout endpoint.***
 
+Now open the **fanout-provider.ts** file in the **/app/providers/fanout-provider** folder and replace the contents with:
+```
+import { Injectable } from '@angular/core';
+import { Http } from '@angular/http';
+import 'rxjs/add/operator/map';
+import { ConfigurationProvider } from '../configuration-provider/configuration-provider';
+
+@Injectable()
+export class FanoutProvider {
+  data: any;
+  client: any;
+  clientUrl: string;
+
+  constructor(private http: Http, private configurationProvider: ConfigurationProvider) {
+    this.data = null;
+    this.clientUrl = configurationProvider.fanoutUrl;
+    this.client = new Faye.Client(this.clientUrl);
+  }
+
+  subscribe(callback:any, channelName:string) {      
+      this.client.subscribe('/' + channelName, function (data) {          
+          callback(data);
+          console.log('received data: ' + data);
+      });
+  }  
+}
+```
+This file is a bit more complicated as this is where our application actually connects to the [Fanout](https://fanout.io/) service. This provider uses the ConfigurationProvider to get the URL that is used to connect to Fanout. However, in order to for different parts of our application to able to access the providers we created, we need to regisgter those providers the the framework. 
+
+To do so, navigate to the file **app.ts** in the **/app** folder. Update the contents of that file to this:
+```
+import {Component} from '@angular/core';
+import {Platform, ionicBootstrap} from 'ionic-angular';
+import {StatusBar} from 'ionic-native';
+import {HomePage} from './pages/home/home';
+import {ConfigurationProvider} from './providers/configuration-provider/configuration-provider';
+import {AlertProvider} from './providers/alert-provider/alert-provider';
+
+@Component({
+  template: '<ion-nav [root]="rootPage"></ion-nav>',
+  providers: [ConfigurationProvider,AlertProvider]
+})
+export class MyApp {
+  rootPage: any = HomePage;  
+
+  constructor(platform: Platform) {
+    platform.ready().then(() => {
+      // Okay, so the platform is ready and our plugins are available.
+      // Here you can do any higher level native things you might need.
+      StatusBar.styleDefault();
+    });
+  }
+}
+
+ionicBootstrap(MyApp);
+```
+Specifically, what we are doing here is showing the framework where the providers are located, the names of the providers that we want loaded, and then registering them as providers so that they are accessible throughout the framework? 
+
+Why isn't the FanoutProvider also getting registered here? That's because you only want to register providers globally that are likely to be used in many different parts of the application - the alert and configuration providers are good examples widely used providers. The FanoutProvider may only be used in a few places so we will only register it is needed such as in our Home component which which is what we will do next. 
