@@ -1,0 +1,15 @@
+{
+    "_publish_status": "draft",
+    "author_name": "WolframHempel",
+    "author_real_name": "Wolfram Hempel",
+    "branch": "master",
+    "branches": [],
+    "filename": "article.md",
+    "first_commit": "54113f8c2c79391f0482b085ac41f8848a21092f",
+    "image_url": "https://avatars.githubusercontent.com/u/1503717?v=3",
+    "stacks": [
+        "Front-End JavaScript (Angular, React, Meteor, etc)"
+    ],
+    "thumbnail_url": null,
+    "title": " Building a multiplayer space shooter: Part I"
+}
