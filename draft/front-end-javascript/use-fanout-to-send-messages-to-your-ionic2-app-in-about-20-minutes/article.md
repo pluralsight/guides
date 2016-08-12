@@ -154,6 +154,33 @@ Specifically, what we are doing here is showing the framework where the provider
 ***Why isn't the FanoutProvider also getting registered here?*** That's because we only want to register providers globally that are likely to be used in many different parts of the application - the alert and configuration providers are good examples widely used providers. The FanoutProvider on the other hand may only be used in a few places so we will only register it where it is needed - such as in our Home component which is what we will work on next. 
 
 ## **The Home Component/Page**
+Now we need to wire up the home page to the Fanout and the alert providers. Open the **home.ts** file in the **/app/pages/home** folder and replace its contents with:
+```
+import {Component, OnInit} from '@angular/core';
+import {NavController} from 'ionic-angular';
+import {FanoutProvider} from '../../providers/fanout-provider/fanout-provider';
+import {AlertProvider} from '../../providers/alert-provider/alert-provider';
 
+@Component({
+  templateUrl: 'build/pages/home/home.html',   
+  providers: [FanoutProvider]
+})
+export class HomePage implements OnInit {
+  constructor(public navCtrl: NavController, 
+  private fanoutProvider: FanoutProvider,
+  private alertPovider: AlertProvider) {}
 
+  ngOnInit() {
+    this.fanoutProvider.subscribe((data) => {
+      console.log('received data in home page');
+      console.log(data);
+      this.alertPovider.presentDismissAlert('Fanout', data, this.navCtrl);       
+    }, 'test');
+  }    
+}
+
+```
+Note how we are referencing both the FanoutProvider and AlertProvider by their names and their relative paths to their files. Also note how we are registering the FanoutProvider here, but not the AlertProvider as we have already registered that provider globally. 
+
+The **ngOnInit** method is executed when the Home component gets initialized and it is where we use the FanoutProvider to subscribe to messages from the [Fanout](https://fanout.io/) service. Here we are subscribing to the "test" message channel. When a message is received from the "test" channel by the FanoutProvider, the Home component logs messages to the console and sends the messge to the AlertProvider which pops up an alert dialog on the screen. 
 ## **One Last Thing to Take Care Of**
