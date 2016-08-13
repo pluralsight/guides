@@ -1,30 +1,33 @@
-In this tutorial we are going to see how to create a web application that collects events and shows statistical information in a dashboard. All this in plain Java without coding any single line of JavaScript or HTML, and without installing or configuring any web servers or SQL/NoSQL databases.
+In this tutorial we are going to create a web application that collects events and shows statistical information on a dashboard. All this will be done in plain Java without the use of JavaScript or HTML and without installation or configuration of any web servers or SQL/NoSQL databases.
 
 To give you an idea of what we are going to implement, take a look at the following screenshot of the finished application:
 
-![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/a5a0f752-93b8-4f35-a51f-52978ee1e886.25)The application simulates the last step of an online shopping process: The confirmation that the order has been received. As a gesture of gratitude, this hypothetical last step allows the user to select a “gift”. We won’t implement any extra business logic to actually process any orders and we will limit the UI to merely show a confirmation message. However, we are going to use [Keen IO](https://keen.io) to store data about the selected option and implement the dashboard shown in the following screenshot:
+![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/a5a0f752-93b8-4f35-a51f-52978ee1e886.25)
+
+The application simulates the last step of an online shopping process: the confirmation that the order has been received. As a gesture of gratitude, this hypothetical last step allows the user to select a “gift”. We won’t implement any extra business logic to actually process any orders; we will limit the UI to merely show a confirmation message. However, we are going to use [Keen IO](https://keen.io) to store the selected option and display the population data on the dashboard shown in the following screenshot.
 
 ![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/ef4f1e80-6ddc-481d-9bc4-106e1041dc85.27)
-Remember: we will be coding only in Java!
+
+**Remember that we will be coding in Java only!**
 
 ## Prerequisites
 
-* Did we mention Java? We will use Java 8 in this tutorial.
-* Maven. Please make sure [Maven is installed](https://maven.apache.org/install.html) and working.
-* Your favorite IDE.
-* A Keen IO account. Go ahead and sign up at <https://keen.io>. It’s free.
+* Have Java 8 installed. Follow installation guidelines [here](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)
+* Install [Maven](https://maven.apache.org/install.html) and make sure it works.
+* Use your favorite IDE
+* Obtain a Keen IO account. If you haven't officially used Keen.IO, [sign up for free](https://keen.io/signup).
 
-We are going to use Spring and Vaadin frameworks as well, but you don’t really need to have any previous experience with these frameworks to follow this tutorial.
+*We are going to use Spring and Vaadin frameworks as well, but you don’t really need to have any previous experience with these frameworks to follow this tutorial.*
 
 ## Create a Spring Boot project
 
-[Spring Framework](https://projects.spring.io/spring-framework) is a popular enterprise application framework that allows you to create high performing, easily testable, reusable code. Although Spring Framework has many [modules](http://docs.spring.io/spring/docs/current/spring-framework-reference/html/overview.html#overview-modules), we will use it as an [Inversion of Control container](http://docs.spring.io/spring/docs/current/spring-framework-reference/html/beans.html). One of the easiest ways of creating a web application with Spring Framework is by using [Spring Boot](http://projects.spring.io/spring-boot) and [Spring Initializr](http://start.spring.io/).
+[Spring Framework](https://projects.spring.io/spring-framework) is a popular enterprise application framework that allows you to create high-performing, easily testable, and reusable code. Although Spring Framework has many [modules](http://docs.spring.io/spring/docs/current/spring-framework-reference/html/overview.html#overview-modules), we will use it as an [Inversion of Control container](http://docs.spring.io/spring/docs/current/spring-framework-reference/html/beans.html). One of the easiest ways of creating a web application with Spring Framework is by using [Spring Boot](http://projects.spring.io/spring-boot) and [Spring Initializr](http://start.spring.io/).
 
-Go to <http://start.spring.io> and generate a project with the configuration shown in the following screenshot:
+Go to [Spring Initializr](http://start.spring.io/) to generate a project with the configuration shown in the following screenshot:
 
 ![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/9c28d9e8-b678-44a2-97c6-484e7b3dd559.07)
 
-Make sure you added the *Vaadin* dependency. Click the *Generate Project* button and extract the generated zip file. You should get a Maven project you can [import into your favorite IDE](https://vaadin.com/blog/-/blogs/the-maven-essentials-for-the-impatient-developer):
+Make sure you added the *Vaadin* dependency. Click the *Generate Project* button and extract the generated zip file. You should retrieve a Maven project that you can [import into your favorite IDE](https://vaadin.com/blog/-/blogs/the-maven-essentials-for-the-impatient-developer):
 
 <img src="https://raw.githubusercontent.com/pluralsight/guides/master/images/ba06865b-30b3-4a4a-8129-2ddf69fea5ac.28" width="350" />
 
@@ -53,7 +56,7 @@ public class WebUI extends UI {
 
 }
 ```
-This is already a web application, and thanks to Spring Boot, we don’t need to worry about configuring any web server. Just compile the application using your IDE or the command line and run the Spring Boot application:
+This is already a web application, and, thanks to Spring Boot, we don’t need to worry about configuring any web server. Just compile the application using your IDE or the command line and run the Spring Boot application:
 ```
 mvn clean install
 mvn spring-boot:run
@@ -62,7 +65,9 @@ Most IDEs allow creating *run configurations*. You may want to create one to run
 
 Once you have executed the Java application, Spring Boot will configure and start a [Tomcat](http://tomcat.apache.org/) server on port 8080, so you can access the application at <http://localhost:8080> and see the “It works” notification.
 
-How does it work? The previous class is just a minimal implementation of a web UI using Vaadin. It should extend `org.vaadin.ui.UI` and thus implement the `init` method. The `init` method is the starting point of the web application, kind of similar to how the `main` method in the `DemoApplication` class is the starting point of the Java application. The `WebUI` class also includes two annotations. `@SpringUI` allows Spring Framework to create instances of this class for us. We don’t need to instanciate it manually. Instead, it will be automatically discovered and new instances will be created when a new browser or browser tab points to the application’s URL. The `@Theme` annotation changes the overall look-and-feel of the application to the Valo theme. There are other themes available, such as `reindeer`, `chameleon`, and `runo` although those are not as modern and attractive as `valo`.
+How does it work? The previous class is just a minimal implementation of a web UI using Vaadin. It should extend `org.vaadin.ui.UI` and thus implement the `init` method. The `init` method is the starting point of the web application, similar to the `main` method in `DemoApplication` class.
+
+The `WebUI` class also includes two annotations. `@SpringUI` allows Spring Framework to create instances of this class for us. We don’t need to instanciate it manually. Instead, it will be automatically discovered and new instances will be created when a new browser or browser tab points to the application’s URL. The `@Theme` annotation changes the overall look-and-feel of the application to the Valo theme. There are other themes available, such as `reindeer`, `chameleon`, and `runo`, but those are not as modern and attractive as `valo`.
 
 There are [tons UI components](http://demo.vaadin.com/sampler) you can use to create a web UI in a similar way to how you would implement a desktop application using Swing or JavaFX. For example, you can use the `TextField`, `ComboBox`, `CheckBox`, and `Grid` classes and arrange them into a `VerticalLayout` or `HorizontalLayout`.
 
@@ -125,13 +130,13 @@ public class WebUI extends UI {
 
 }
 ```
-You may have to rebuild the application and run it again if you want to see the changes in action.
+**You may have to rebuild the application and run it again if you want to see the changes in action.**
 
 Although most of the code is self-explanatory, let’s review some key parts:
 
 * `setContent(layout)`: This is a method in the `UI` class we are extending. This is how you set the component that is going to be rendered in this UI.
 * `title.addStyleName(ValoTheme.LABEL_H1)`: This simply adds a CSS class to the component. The [Valo theme](http://demo.vaadin.com/valo-theme/#!common) comes with many ready-to-use styles we can use to change the appearance of the components.
-* `layout.addComponent(title)`: This is how we can add components into layouts. In this case, `layout` is a `VerticalLayout` meaning all the contained components will be aligned, well, vertically. There are other kind of layout such as `HorizontalLayout` and `GridLayout` for example.
+* `layout.addComponent(title)`: This is how we can add components into layouts. In this case, `layout` is a `VerticalLayout` meaning all the contained components will be aligned, well, vertically. There are other kinds of layouts, such as `HorizontalLayout` and `GridLayout`.
 * `button.addClickListener(event -> giftSelected(name, value))`: We can add click listeners to buttons in order to respond to click events on them. In this case, we are using a [lambda expression](http://www.oracle.com/webfolder/technetwork/tutorials/obe/java/Lambda-QuickStart/index.html) to define the `ClickListener` implementation as a call to the `giftSelected` method.
 
 ## Configure Keen IO
@@ -181,7 +186,7 @@ public class Config {
 
 }
 ```
-This class will be detected by Spring Framework, which in turn will create a *bean* of type `KeenProject` and a bean of type `KeenClient`. We will *inject* the `KeenClient` bean later in the `WebUI` class and use it to send events to Keen IO.
+This class will be detected by Spring Framework, which in turn will create a **bean** of type `KeenProject` and a **bean** of type `KeenClient`. Beans are created and managed in Spring IoC (Inversion of Control) Containers. We will *inject* the `KeenClient` bean later in the `WebUI` class and use it to send events to Keen IO.
 
 Notice the `@Value` annotations on the `projectId`, `writeKey`, and `readKey` fields. With this annotation we can specify a property name defined in the `application.properties` file and Spring Framework will set the corresponding value accordinly. This means we have to add the three properties in the `application.properties` file as follows:
 ```
@@ -189,7 +194,7 @@ keen.projectId=YOUR_PROJECT_ID
 keen.writeKey=YOUR_WRITE_KEY
 keen.readKey=YOUR_READ_KEY
 ```
-[Log](https://keen.io/login) in into your Keen IO account, create a new project (if you haven’t), and get your project ID and keys from the *Settings* tab and the *API Keys* option:
+[Log into](https://keen.io/login) your Keen IO account, create a new project, and get your project ID and keys from the *Settings* --> *API Keys*:
 
 ![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/6ff0885c-0799-451b-b1bd-a9558cc5e68a.50)
 
@@ -233,13 +238,17 @@ public class WebUI extends UI {
 }
 ...
 ```
-As you can see, we can send key/value pairs to Keen IO using a map. We don't have to define any schema prior to start sending events. Also notice we are using the `addEventAsync` method which sends the event *asynchronously* so that the user doesn't have to wait until this event is sent. You can also use the `addEvent` method if you need to wait until the event is sent. In this example application, it makes sense to use the asynchronous version as we are just gathering data for statistical calculations only. Notice how we used the `"gifts”` string as the name of the *collection*. Think of this collection as a way of grouping the same kind of events (a user clicked a gift option). The collection name will be used later when we create queries.
+As you can see, we can send key/value pairs to Keen IO using a map. We don't have to define any schema prior to start sending events. Also notice we are using the `addEventAsync` method which sends the event *asynchronously*, so that the user doesn't have to wait until this event is sent. You can also use the `addEvent` method if you need to wait until the event is sent. 
 
-Now you should be able to use the application and start collecting events. Try rebuilding the project, starting the application again, and clicking the buttons. Although the application looks the same as before, now we are collecting events.
+In this example application, it makes sense to use the asynchronous version because we are just gathering data for statistical calculations only. Notice how we used the `"gifts”` string as the name of the *collection*. Think of this collection as a way of grouping the same kind of events (a user clicked a gift option). The collection name will be used later when we create queries.
+
+Now you should be able to use the application and start collecting events. Try rebuilding the project, starting the application again, and clicking the buttons. Although the application looks the same as before, we are now collecting events.
 
 ## Create a Dashboard in plain Java
 
-It’s time to analyse and visualize the data we are collecting! One way to quickly see something interesting on the screen is by defining a query directly in <https://keen.io>. You shouldn’t have any trouble exploring the website and creating some queries and even a dashboard by yourself! Go ahead and try it if you want, however, in this tutorial we are going to focus on creating a dashboard using the Java programming language.
+It’s time to analyze and visualize the data we are collecting! One way to quickly see something interesting on the screen is by defining a query directly in <https://keen.io>. You shouldn’t have any trouble exploring the website and creating some queries and even making a dashboard by yourself! Go ahead and try it if you want. 
+
+**However, this tutorial will focus on creating a dashboard using the Java programming language.**
 
 First off, we need to add the following two dependencies into the `pom.xml` file:
 ```
@@ -316,7 +325,9 @@ public class Dashboard extends VerticalLayout {
 
 }
 ```
-This is an empty dashboard right now. We are just extending a UI component, `VerticalLayout` and marking the class with the `@SpringComponent` annotation to allow Spring to manage this class. The `@Scope("prototype")` tells Spring to create a new instance of this class any time we inject a bean of this type. Also note how we defined the `init` method by marking it with the `@PostConstruct` annotation. Spring will call this method after creating the instance. But let’s not worry too much about all this (you can find tons of good tutorials and documentation about Spring on the web) and let’s add some Keen charts to the dashboard!
+This is an empty dashboard right now. We are just extending a UI component, `VerticalLayout` and marking the class with the `@SpringComponent` annotation to allow Spring to manage this class. The `@Scope("prototype")` tells Spring to create a new instance of this class any time we inject a bean of this type. 
+
+Also note how we defined the `init` method by marking it with the `@PostConstruct` annotation. Spring will call this method after creating the instance. But let’s not worry too much about definitions and instantiation; you can find dozens of good tutorials and documentation about Spring on the web. Instead, let’s add some Keen charts to the dashboard!
 
 You need to define a query per each chart. How do you do this? Super-easy:
 ```
@@ -326,13 +337,13 @@ Query query = new Query.Builder(QueryType.SUM)
         .withTimeframe(new AbsoluteTimeframe("2016-08-01T00:00", "2016-08-31T23:59"))
         .build();
 ```
-As you can see, there’s a `Builder` class that allows you to easily create a new query. Let’s explain this query (although it’s almost self explanatory!) We are summing (`new Query.Builder(QueryType.SUM)`) all the values in the `"values"` property (`withTargetProperty("value")`) of the `"gifts"` collection (`withEventCollection("gifts")`) that were created between the specified times (`withTimeframe(new AbsoluteTimeframe("2016-08-01T00:00", "2016-08-31T23:59"))`).
+As you can see, there’s a `Builder` class that allows you to easily create a new query. In this query, we are summing (`new Query.Builder(QueryType.SUM)`) all the values in the `"values"` property (`withTargetProperty("value")`) of the `"gifts"` collection (`withEventCollection("gifts")`) that were created between the specified times (`withTimeframe(new AbsoluteTimeframe("2016-08-01T00:00", "2016-08-31T23:59"))`).
 
-We can pass this query to a `KeenChart` object as follows:
+Using your own ID and Read Key, pass this query to a `KeenChart` object as follows:
 ```
 KeenChart chart = new KeenChart("YOUR_PROJECT_ID", "YOUR_READ_KEY", query);
 ```
-This `chart` instance is a UI component you can add into any layout, so let’s go ahead and put some charts into the dashboard. Modify the `Dashboard` class as follows:
+This `chart` instance is a UI component you can add into any layout. Let’s go ahead and put some charts into the dashboard. Modify the `Dashboard` class as follows:
 ```
 package com.example;
 ...
@@ -389,7 +400,7 @@ Build, run the application, and click the *View dashboard* link. You should see 
 
 ## Summary
 
-Congratulations! You’ve just developed a web application with scalable analytics features in plain Java. You should be able to send millions of events to Keen IO without having scalability issues when running queries thanks to Keen IO. You can develop the web application in plain Java thanks to Vaadin. And last, but not least, you can develop high performing, easily testable, reusable code thanks to Spring.
+Congratulations! You’ve just developed a web application with scalable analytics features using only Java. Thanks to Keen.IO, you should now be able to send millions of events without having scalability issues. And thanks to Vaadin, you can develop the web application in plain Java. And last, but not least, thanks to Spring, you can develop high-performing, easily testable, reusable code.
 
 You can find the full source code of the application on [GitHub](https://github.com/alejandro-du/keen-spring-vaadin-demo).
 
@@ -398,3 +409,5 @@ If you are planning to develop a dashboard application the technologies describe
 * Keen IO APIs: <https://keen.io/docs>
 * Vaadin documentation: <https://vaadin.com/docs>
 * Spring documentation: <https://spring.io/docs>
+
+Please favorite this tutorial if you found it informative or simply well-written. Please post your thoughts and feedback as well! Thank you for reading!
