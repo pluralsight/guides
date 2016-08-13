@@ -153,6 +153,7 @@ A small note, you'll need Node 5.x.x to get the benefits of ES2015 but AWS lambd
 * [lambda](https://console.aws.amazon.com/lambda/home?region=us-east-1#/functions/Arithlistic?tab=code)
 * [alexa console](https://developer.amazon.com/edw/home.html#/skills/list)
 * [echoism](https://echosim.io/)
+* [alexa app](http://alexa.amazon.com/spa/index.html#settings/dialogs)
 
 # Going live
 
