@@ -1,4 +1,3 @@
-
 ## Console
 The Chrome Devtools enable you to get the refernce of an element you have selected by using <code> $0 </code>
 
@@ -11,6 +10,13 @@ Having the reference of an DOM element, you have the ability to inspect the scop
 ```
 
 This enables you to access the scope of the component itself and inspect and manipulate its various attributes directly from the console.
+
+```
+> ng.probe($0).componentInstance
+```
+
+
+![ng-probe-element](https://raw.githubusercontent.com/pluralsight/guides/master/images/ea997228-7237-49b3-81f9-e5890bdf82ef.gif)
 
 
 
