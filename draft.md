@@ -1,8 +1,3 @@
-### Getting started with Webpack by Ilango Rajagopal
-- [Read the guide](http://tutorials.pluralsight.com/node-js/getting-started-with-webpack?status=draft)
-- [Read more from Ilango Rajagopal](http://tutorials.pluralsight.com/author/ilangorajagopal) <img src="https://avatars.githubusercontent.com/u/4386534?v=3" width="30" height="30" alt="Ilango Rajagopal" />
-- Related to: Node.js
-
 ###  Building a multiplayer space shooter: Part I by Wolfram Hempel
 - [Read the guide](http://tutorials.pluralsight.com/front-end-javascript/building-a-multiplayer-space-shooter-part-i?status=draft)
 - [Read more from Wolfram Hempel](http://tutorials.pluralsight.com/author/WolframHempel) <img src="https://avatars.githubusercontent.com/u/1503717?v=3" width="30" height="30" alt="Wolfram Hempel" />
