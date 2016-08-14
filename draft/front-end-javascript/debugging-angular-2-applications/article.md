@@ -1,6 +1,23 @@
 
+## Console
+The Chrome Devtools enable you to get the refernce of an element you have selected by using <code> $0 </code>
 
-## Browser console
+![chrome-dev-tools-selecting-element](https://raw.githubusercontent.com/pluralsight/guides/master/images/3d8e63dc-d62e-433d-88ae-347d436b452a.gif)
+
+### Inspecting a component
+Having the reference of an DOM element, you have the ability to inspect the scope of the component it is located in. You can do this by using <code>ng.probe()</code>
+```
+> ng.probe($0)
+```
+
+This enables you to access the scope of the component itself and inspect and manipulate its various attributes directly from the console.
+
+
+
+
+Because you are not editing the component directly through the document, Angular does not detect the change in the modelEach component has its own scope, so you must apply the changes manually.
+
+
 
 ## Source maps and debugger
 Enabling source maps will let you see the TypeScript code of your application instead of the transpiled JavaScript code, making it easier for you to debug your code line by line.
