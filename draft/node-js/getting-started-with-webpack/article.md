@@ -1,1 +1,0 @@
-Webpack is simply a module bundler. 
