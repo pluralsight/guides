@@ -221,7 +221,7 @@ Just 2 more things we need to do before we finish the client. First, we need to 
 </html>
 
 ```
->Here we are mainly interested in making sure that we have added a script reference to the **faye-browser-min.js** file - remember to replace ***"your-realm-id-here"*** in the URL with the [Fanout](https://fanout.io/) realm ID that you got from the [account page](https://fanout.io/account/panel/)
+>Here we are mainly interested in making sure that we have added a script reference to the **faye-browser-min.js** file - remember to replace ***your-realm-id-here*** in the URL with the [Fanout](https://fanout.io/) realm ID that you got from the [account page](https://fanout.io/account/panel/)
 
 Second, we need to create a TypeScript file for our reference to the Faye object in the FanoutProvider - if you have been running the app you may have noticed in the build process that you were receiving a TypeScript error indicating that the Faye object is not defined. Unfortunately, since no one has created a real Faye TypeScript definition file, we will need to create on to get rid of that error. 
 
@@ -276,4 +276,4 @@ publisher.publish('test', 'Test publish!', callback);
 
 console.log('Publisher started');
 ```
->Here again you will need to replace ***"your-realm-id-here"*** in the URL with the [Fanout](https://fanout.io/) realm ID that you got from the [account page](https://fanout.io/account/panel/)
+>As before, you will need to replace ***your-realm-id-here*** and ***your-realm-key-here*** with those on your [account page](https://fanout.io/account/panel/).
