@@ -298,3 +298,8 @@ You should see a screen like this in your Ionic2 application:
 
 >If you aren't seeing this or you saw an error message in the Nodejs application, ***please make sure that all of the realm IDs and realm keys that you cut and pasted into the code are correct***. If these are not exactly what is on your [account page](https://fanout.io/account/panel/), you may get errors or the messages will not be received by the Ionic2 application. 
 
+## **Conclusion**
+While this is definitely a very simple application, it demonstrates just how quick and easy it is to implement a pub-sub mechanism using [Fanout](https://fanout.io/). This example could easily be extended to publish weather information, sports scores, stock prices, or anything else you can imagine with very little code and very little maintenance as [Fanout](https://fanout.io/) does most of **"heavy lifting"** for you.
+
+## **One final note**
+**Want to quickly test this on an actual device?** Without any additional code changes you can quickly and easily get this application on your device using [Ionic View](http://ionicframework.com/docs/cli/uploading_viewing.html)
