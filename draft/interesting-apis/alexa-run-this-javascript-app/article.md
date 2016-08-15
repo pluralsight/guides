@@ -63,17 +63,17 @@ this allows us to deploy our code with a gulp task
 
 #### handlers
 
-These are the boys who receive the `intents` (what Alexa thinks the user said based upon your `speech-assets`), perform some kind of business logic, perhaps store some stuff in session state (or dynamo db) and return a response. The state stuff is necessary because the skill is very dumb, it takes some JSON in, it sends some JSON out. It's because of this functional nature, TDD (and testing in general) is so easy. When we get to the `event-samples` later you'll see what that JSON looks like. It's a good idea to keep your handlers as skinny as possible and move the business logic into the `modules` folder.
+These are the boys who receive the `intents` (what Alexa thinks the user said based upon your `speech-assets`), perform some kind of business logic, perhaps store some stuff in session state (or dynamo db) and return a response (something for Alexa to say back). The state stuff is necessary because the skill is very dumb, it takes some JSON in, it sends some JSON out. It's because of this pure nature, TDD (and testing in general) is so easy. When we get to the `event-samples` later you'll see what that JSON looks like. It's a good idea to keep your handlers as skinny as possible and move the business logic into the `modules` folder.
 
-I've gone for a rather rigid approach of commenting each handler's intent to ensure it follows the same pattern when edited. The pattern being, setup, state changes, response. As a member of the church of functional programming, it would have been preferable to get an immutable model in the intent, perform your logic, update that thing, then return it with your response. However, the SDK has gone for a more OO approach with heavy use of `this` to fire events and manage state...which is less than ideal.
+I've gone for a rather rigid approach of commenting each handler's intent to ensure it follows the same pattern when edited. The pattern being, setup, state changes, response. As a member of the church of functional programming, it would have been preferable to get an immutable model in the intent, perform your logic, update that thing, then return it with your response. However, the SDK has gone for a more OO approach with heavy use of `this` to fire events and manage state...which is less than ideal and led to some wonky workarounds.
 
-I advise having as many small handler as you can manage, this will make handling ambiguous intents such as "yes" and "no" much easier and helps to organise the code and test.
+I advise having as many small handlers as you can manage, this will make handling ambiguous intents such as "yes" and "no" much easier and helps to organise the code and test.
 
 In the starter-kit we only have three handlers:
 
-* core.handlers - we'll get to "certification" at the end but for now you just need to know these are required, so we'll mixin them in to all our other handlers. `AMAZON.StopIntent` is basically pause and `AMAZON.CancelIntent` is "get me out of here". The `SessionEndedRequest` is just a nice to have for logging purposes
-* new-session.handlers - this is the skill entry point (as oppposed to `index.js` which is the code entry point, lalala), we'll set some state here (which decides which handler to go to) and tell our skill which intent to run. There's also the random "catch-all" which will log out something really useless...
-* stopped.handlers - because `StopIntent` and `CancelIntent` are generally required, ideally we want one place to manage being "paused". Here we set the state back to the previous state if the user wishes to contine and exist if they...don't want to continue
+* `core.handlers.js` - we'll get to "certification" at the end but for now you just need to know these are required, so we'll mix them in to all our other handlers. `AMAZON.StopIntent` is basically pause and `AMAZON.CancelIntent` is "get me out of here". The `SessionEndedRequest` is just a nice to have for logging purposes
+* `new-session.handlers.js` - this is the skill entry point (as oppposed to `index.js` which is the code entry point), we'll set some state here (which decides which handler to go to) and tell our skill which intent to run. There's also the random "catch-all" which will log out something really useless...
+* `stopped.handlers.js` - because `StopIntent` and `CancelIntent` are generally required, ideally we want one place to manage being "paused". Here we set the state back to the previous state if the user wishes to continue and exit if they...don't want to continue
 
 #### modules
 
