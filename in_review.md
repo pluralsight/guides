@@ -1,3 +1,8 @@
+### Use Fanout to Send Messages to Your Ionic2 App in About 20 Minutes  by Seth Bunke
+- [Read the guide](http://tutorials.pluralsight.com/front-end-javascript/use-fanout-to-send-messages-to-your-ionic2-app-in-about-20-minutes?status=in-review)
+- [Read more from Seth Bunke](http://tutorials.pluralsight.com/author/sethbunke) <img src="https://avatars.githubusercontent.com/u/20564909?v=3" width="30" height="30" alt="Seth Bunke" />
+- Related to: Front-End JavaScript (Angular, React, Meteor, etc)
+
 ###  Building a multiplayer space shooter: Part I by Wolfram Hempel
 - [Read the guide](http://tutorials.pluralsight.com/front-end-javascript/building-a-multiplayer-space-shooter-part-i?status=in-review)
 - [Read more from Wolfram Hempel](http://tutorials.pluralsight.com/author/WolframHempel) <img src="https://avatars.githubusercontent.com/u/1503717?v=3" width="30" height="30" alt="Wolfram Hempel" />
