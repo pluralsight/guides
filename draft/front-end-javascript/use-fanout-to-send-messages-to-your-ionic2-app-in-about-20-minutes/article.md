@@ -301,5 +301,5 @@ You should see a screen like this in your Ionic2 application:
 ## **Conclusion**
 While this is definitely a very simple application, it demonstrates just how quick and easy it is to implement a pub-sub mechanism using [Fanout](https://fanout.io/). This example could easily be extended to publish weather information, sports scores, stock prices, or anything else you can imagine with very little code and very little maintenance as [Fanout](https://fanout.io/) does most of **"heavy lifting"** for you.
 
-## **One final note**
+## **Want to Get the App on Your Device?**
 **Want to quickly test this on an actual device?** Without any additional code changes you can quickly and easily get this application on your device using [Ionic View](http://ionicframework.com/docs/cli/uploading_viewing.html)
