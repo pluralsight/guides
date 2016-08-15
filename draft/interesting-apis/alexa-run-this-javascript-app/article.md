@@ -168,13 +168,13 @@ Add our starting game state:
 
 `enums.js`
 
-```
+```javascript
 GAME_START: 'GAME_START',
 ```
 
 And write a test:
 
-```
+```javascript
 describe('Alexa, start game', () => {
   it('Respond with game prelude and set state to GAME_START', () =>
     runIntent(sessionStartIntent)
@@ -187,7 +187,7 @@ describe('Alexa, start game', () => {
 
 Which will fail :-(
 
-```
+```javascript
 1) Alexa, start game Respond with game prelude and set state to GAME_START:
      Error: timeout of 2000ms exceeded. Ensure the done() callback is being called in this test.
 ```
@@ -196,7 +196,7 @@ Let's wire up our initial intents, by setting the beginning game state in `this.
 
 `new-sessions.handlers.js`
 
-```
+```javascript
 const setStateAndInvokeEntryIntent = function() {
   // updates
   this.handler.state = GAME_STATES.GAME_START;
@@ -210,7 +210,7 @@ Add `game-start.handlers` to our index file and pass them into the registration 
 
 `index.js`
 
-```
+```javascript
 const gameStartHandlers = require('./handlers/game-start.handlers');
 ```
 
@@ -218,7 +218,7 @@ The test should now pass. See the [commit for details](https://github.com/craigb
 
 ### Start game failures
 
-```
+```javascript
 'AMAZON.NoIntent': function() {
     res.tell.call(this, res.goodbye());
   },
@@ -226,7 +226,7 @@ The test should now pass. See the [commit for details](https://github.com/craigb
 
 For linting write out the function call rather than do it as a computed. Slightly ugly call to make this explicit. As mentioned would have been nicer to update some immutable mode and return that with a response. Perhaps the API would have been nicer if I had spread and gather so I could pass arbitary args and not have to invoke responses in the intent itself.
 
-```
+```javascript
 assert(endOfSession);
 ```
 
