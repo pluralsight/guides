@@ -303,3 +303,6 @@ While this is definitely a very simple application, it demonstrates just how qui
 
 ## **Want to Get the App on Your Device?**
 **Want to quickly test this on an actual device?** Without any additional code changes you can quickly and easily get this application on your device using [Ionic View](http://ionicframework.com/docs/cli/uploading_viewing.html)
+
+## **Source Code**
+All of the source code for this tutorial is available in Github [here](https://github.com/sethbunke/Ionic2NodejsFanoutTutorial).
