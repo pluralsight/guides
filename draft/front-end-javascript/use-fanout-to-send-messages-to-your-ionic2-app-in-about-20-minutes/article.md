@@ -1,5 +1,5 @@
 ## **Fanout**
-[Fanout](https://fanout.io/) is a great service that allows you to quickly and easily send messages to clients applications. In this tutorial we will use Fanout to send messages to an Ionic2 application.
+[Fanout](https://fanout.io/) is a great service that allows you to quickly and easily send messages to client applications. In this tutorial we will use Fanout to send messages to an Ionic2 application.
 
 ## **Getting Set Up**
 
