@@ -276,3 +276,4 @@ publisher.publish('test', 'Test publish!', callback);
 
 console.log('Publisher started');
 ```
+>Here again you will need to replace ***"your-realm-id-here"*** in the URL with the [Fanout](https://fanout.io/) realm ID that you got from the [account page](https://fanout.io/account/panel/)
