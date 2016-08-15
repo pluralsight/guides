@@ -148,12 +148,102 @@ A small note, you'll need Node 5.x.x to get the benefits of ES2015 but AWS lambd
 
 ## Writing the thing
 
-
-
 * [lambda](https://console.aws.amazon.com/lambda/home?region=us-east-1#/functions/Arithlistic?tab=code)
 * [alexa console](https://developer.amazon.com/edw/home.html#/skills/list)
 * [echoism](https://echosim.io/)
 * [alexa app](http://alexa.amazon.com/spa/index.html#settings/dialogs)
+
+Code stuff
+
+First test
+
+`responses.js`
+
+```
+module.exports.gamePrelude = () =>
+  'This is a dangerous game of cat and mouse in the even more dangerous forest, do you want to play?'
+```
+
+The flow diagram may differ from the actual response as you test and play around with how Alexa says things. She talks rather rapidly so you'll need a large supply of commas and other punctuation to keep her in check.
+
+`enums.js`
+
+```
+GAME_START: 'GAME_START',
+```
+
+test
+
+```
+describe('Alexa, start game', () => {
+  it('Respond with game prelude and set state to GAME_START', () =>
+    runIntent(sessionStartIntent)
+      .then(({ outputSpeech, gameState }) => {
+        assert.deepEqual(outputSpeech, sanitise(gamePrelude()));
+        assert.deepEqual(gameState, GAME_STATES.GAME_START);
+      }));
+});
+```
+
+test result
+
+```
+1) Alexa, start game Respond with game prelude and set state to GAME_START:
+     Error: timeout of 2000ms exceeded. Ensure the done() callback is being called in this test.
+```
+
+`new-sessions.handlers.js`
+
+```
+const setStateAndInvokeEntryIntent = function() {
+  // updates
+  this.handler.state = GAME_STATES.GAME_START;
+
+  // response
+  this.emitWithState('GameIntro');
+};
+```
+
+add game-start.handlers
+
+`index.js`
+
+```
+const gameStartHandlers = require('./handlers/game-start.handlers');
+```
+
+Start game failures tests
+
+```
+'AMAZON.NoIntent': function() {
+    res.tell.call(this, res.goodbye());
+  },
+```
+
+For linting write out the function call rather than do it as a computed. Slightly ugly call to make this explicit. As mentioned would have been nicer to update some immutable mode and return that with a response. Perhaps the API would have been nicer if I had spread and gather so I could pass arbitary args and not have to invoke responses in the intent itself.
+
+```
+assert(endOfSession);
+```
+
+Copy and paste tests - DRY in tests is a balancing act
+
+Core handlers takes care of cancel and stop for us
+
+
+Next bit - fill in the responses
+
+Nest responses. When doing it for real, make sure all paths do something, usually via the prompt text or the unhandled "catch-all".
+
+Add a stopped event-samples directory and put in the yes/no. Add test for no to help but because we didn't change state we are just re-using the game start's yes and no intents. If you wanted to switch state to help and do a whole help thing then you'd obviously create a directory and test for the state switches back and forth.
+
+Add yes intent making clear split between state/session changes and reponse - will pay dividends when intents get a bit fatter.
+
+Adding handlers, adding fixtures, adding tests, switching states, adding assets and configuring in Alexa console.
+
+Fill in magic key values, npm run deploy, test it out
+
+Receiving slot values, performing business logic and responding
 
 # Going live
 
