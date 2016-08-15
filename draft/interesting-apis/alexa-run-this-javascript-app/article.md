@@ -1,24 +1,19 @@
-So there are two types of Alexa skill tutorials, the ones with lots of screenshots showing you how to create an AWS lambda function, configure your skill and deploy some arbitary skill...and then there are the ones that show you how to develop a skill, deploy it, test it and get it certified. There were too many in the former category (I recommend this one and this one) so I'm going for the latter. In fact it's going to be less tutorial and more opinionated rambling with code snippets. Generally I'll make the assumption you have a passing notion of an Alexa skill, and if not, read those two links first and come back...please. There may be some overlap but just to reinforce some concepts I'll explain bits and pieces about intents etc.
+So there are two types of Alexa skill tutorials, the ones with lots of screenshots showing you how to create an AWS lambda function, configure your skill and deploy some arbitary code...and then there are the ones that show you how to develop a skill, deploy it, test it and get it certified. There were too many in the former category (I recommend [this one](https://developer.amazon.com/public/community/post/Tx3DVGG0K0TPUGQ/New-Alexa-Skills-Kit-Template:-Step-by-Step-Guide-to-Build-a-Fact-Skill) and [this one](http://tutorials.pluralsight.com/node-js/amazon-alexa-skill-tutorial)), so I'm going for the latter. In fact it's going to be less tutorial and more opinionated rambling with code snippets. Generally I'll make the assumption you have a passing notion of an Alexa skill, and if not, read those two links first and come back...please. There may be some overlap but just to reinforce some concepts such as bits and pieces about intents etc.
 
 # The current landscape
 
-tutorials
+You may be forgiven for being confused about where to start with Alexa. While there is a plethora of documentation...there's almost nothing on how to actually build a skill. If you're anything like me you keep going round in circles and ending up [here](https://developer.amazon.com/ask) when trying to understand what the skills kit is...when actually it's just a big umbrella term. Then you might end up at their [node kit](https://github.com/amzn/alexa-skills-kit-js), or at least what you think is their Node SDK but isn't...although it's still actively maintained. As you look at the samples you'll notice some code that you thought died with ES2015 and if you use a framework perhaps haven't written for a good few years:
 
-[Alexa Skills Kit Template](https://developer.amazon.com/public/community/post/Tx3DVGG0K0TPUGQ/New-Alexa-Skills-Kit-Template:-Step-by-Step-Guide-to-Build-a-Fact-Skill)
+```javascript
+Fact.prototype = Object.create(AlexaSkill.prototype);
+Fact.prototype.constructor = Fact;
+```
 
-[Setting up a skill](https://developer.amazon.com/public/community/post/TxDJWS16KUPVKO/New-Alexa-Skills-Kit-Template-Build-a-Trivia-Skill-in-under-an-Hour)
-
-[Alexa App](https://github.com/matt-kruse/alexa-app)
-
-[New SDK announced](https://developer.amazon.com/public/community/post/Tx213D2XQIYH864/Announcing-the-Alexa-Skills-Kit-for-Node-js)
-
-[This is the one](https://github.com/alexa/alexa-skills-kit-sdk-for-nodejs)
-
-[Not a deployment workflow](https://developer.amazon.com/public/solutions/alexa/alexa-skills-kit/docs/deploying-a-sample-skill-to-aws-lambda#preparing-a-nodejs-sample-to-deploy-in-lambda)
+...but help is at hand because you stumble across [this guy](https://github.com/matt-kruse/alexa-app) and you think, ah cool, this API is a bit nicer then start attempting to write your skill with it...although you're still not entirely sure how to go about it. However there was this [new SDK announced](https://developer.amazon.com/public/community/post/Tx213D2XQIYH864/Announcing-the-Alexa-Skills-Kit-for-Node-js) that you'll be hard pressed to find anywhere on the site, and the repo is [here](https://github.com/alexa/alexa-skills-kit-sdk-for-nodejs). This is the guy we'll be working with in the following tutorial.
 
 # Starter for 10
 
-I've created a start-kit thing based on my experience creating my skill, [Arithlistic](https://github.com/craigbilner/arithlistic), [here](https://github.com/craigbilner/alexa-starter-kit). A lot of the code samples you'll see will be very focussed on getting setup quickly with some intents. This article will be an intentsive look at how to put together a robust app that can you scale in complexity with confidence. It will be modular, use TDD, be linted, have a CI pipeline and an easy deployment step using [Gulp](http://gulpjs.com/).
+I've created a start-kit thing based on my experience creating my skill, [Arithlistic](https://github.com/craigbilner/arithlistic), [here](https://github.com/craigbilner/alexa-starter-kit). A lot of the code samples you'll see will be very focussed on getting setup quickly with some intents. This article will be an *intentsive* look at how to put together a robust app that can you scale in complexity with confidence. It will be modular, use TDD, be linted, have a CI pipeline and an easy deployment step using [Gulp](http://gulpjs.com/).
 
 ## Structure
 
@@ -244,6 +239,8 @@ Adding handlers, adding fixtures, adding tests, switching states, adding assets 
 Fill in magic key values, npm run deploy, test it out
 
 Receiving slot values, performing business logic and responding
+
+[Not a deployment workflow](https://developer.amazon.com/public/solutions/alexa/alexa-skills-kit/docs/deploying-a-sample-skill-to-aws-lambda#preparing-a-nodejs-sample-to-deploy-in-lambda)
 
 # Going live
 
