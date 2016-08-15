@@ -18,11 +18,6 @@
 - [Read more from Justyna888](http://tutorials.pluralsight.com/author/Justyna888) <img src="https://avatars.githubusercontent.com/u/20835452?v=3" width="30" height="30" alt="Justyna888" />
 - Related to: Big Data (Hadoop, Spark, etc)
 
-### Build a simple File storage service using VueJS, Flask and RethinkDB by Chidiebere Nnadi
-- [Read the guide](http://tutorials.pluralsight.com/python/build-a-simple-file-storage-service-using-vuejs-flask-and-rethinkdb?status=in-review)
-- [Read more from Chidiebere Nnadi](http://tutorials.pluralsight.com/author/andela-cnnadi) <img src="https://avatars.githubusercontent.com/u/3100850?v=3" width="30" height="30" alt="Chidiebere Nnadi" />
-- Related to: Python
-
 ### Using the REST Interface with Licas by discompsys
 - [Read the guide](http://tutorials.pluralsight.com/java-and-j2ee/using-the-rest-interface-with-licas?status=in-review)
 - [Read more from discompsys](http://tutorials.pluralsight.com/author/discompsys) <img src="https://avatars.githubusercontent.com/u/20437503?v=3" width="30" height="30" alt="discompsys" />
