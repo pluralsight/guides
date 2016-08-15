@@ -24,6 +24,45 @@ This command will install Webpack globally and is available from the command lin
 
 #### CLI
 
+Now that we have access to the ```webpack``` command, create two files: app.js and index.html.
+
+In app.js:
+
+```
+console.log("Loading...");
+
+document.write("Well, hello there Webpack!!!!");
+```
+
+In index.html:
+
+```
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Getting started with Webpack: Part 1</title>
+</head>
+<body>
+    <script src="bundle.js"></script>
+</body>
+</html>
+
+```
+
+Now in the command line, type the command:
+
+```
+webpack ./app.js bundle.js
+```
+
+The first argument in the command is the input file, the file you are giving to Webpack to operate on. The second argument is the output file. When this command is executed you should see a new file called ```bundle.js``` in the directory.
+
+Now, it would be cumbersome if you have to do this everytime you change something in your code. To fix that, Webpack can watch for changes in your file and automatically create the output file. To do this, type the following command:
+
+```
+webpack ./app.js bundle.js --watch
+```
+
 #### webpack.config.js
 ##### entry
 ##### output
