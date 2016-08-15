@@ -81,18 +81,18 @@ This is where your business logic should live. As mentioned above, all the heavy
 
 #### tests
 
-None of the samples have tests. I don't believe you can actually develop and ship an Alexa skill without tests. There are so many paths and branches and intents that as soon as you add a modicum of complexity to your skill, you'll get bugs.
+None of the samples have tests. I don't believe you can actually develop and ship an Alexa skill without tests. There are so many paths, branches and intents, that as soon as you add a modicum of complexity to your skill, you'll get bugs.
 
-In the tests folder we have our fixtures known as `event-samples` and a giant test file. Now, you could probably split this up but it feels like a "pre-optimisation", I quite liked having all my skill test paths together. So we have some helpers at the top:
+In the tests folder we have our fixtures known as `event-samples` and a giant test file. Now, you could probably split this up but it feels like a "pre-optimisation". I quite liked having all my skill test paths together. So we have some helpers at the top:
 
 * `sanitise` just to make life easier if you've used a multi-line template string and want to assert on the speech output
-* `getOutputSpeech` which just destructures the response, strips everything back and allows us to assert on what we care about, what Alexa said
+* `getOutputSpeech` which just destructures the response, strips everything back (the ssml tags) and allows us to assert on what we care about, what Alexa said
 * `getAttribute` which again is a nice to have little abstraction to pick out our session attributes to test on
 * `runIntent` finally, but by no means least, this is the thing that will make all your testing a dream. It uses `aws-lambda-mock-context` to stub out all the context stuff we don't really care about and gives us a fluent API to invoke our intent with ease
 
-I've gone for a heavily nested approach to give it the feel of a conversation when you read the output. So each `describe` is what the user would say, then the test name is what you think your skill should have done. As you can see we can now nicely destructure and assert in quite a clean manner. Also using fat arrows means less curly braces for each `it` for the win.
+I've gone for a heavily nested approach to give it the feel of a conversation when you read the output. So each `describe` is what the user would say, then the test name is what you think your skill should have done. As you can see we can now nicely destructure and `assert` in quite a clean manner. Also using fat arrows means less curly braces for each `it` for the win.
 
-I would split the `event-samples` by handler state. This just makes them more manageable. This is an example `event-sample` which would be in the `game` directory:
+I would split the `event-samples` by handler state. This just makes them more manageable. This is an example `event-sample` which would be in the `playing` directory:
 
 ```json
 {
@@ -140,9 +140,9 @@ I would split the `event-samples` by handler state. This just makes them more ma
 }
 ```
 
-You can see our game state comes in as `attributes`, along with the request which has a name and slot values. This is why it's a beauty for TDD purposes, we take this JSON in, we test the next state and the response, done.
+You can see our game state comes in as `attributes`, along with the request which has a name and the intent's slot values (which for some reason doubles up the name ¯\\\_(ツ)_/¯). This is why it's a beauty for TDD purposes, we take this JSON in, we test the next state and the response, done.
 
-A small note, you'll need Node 5.x.x to get the benefits of ES2015 but AWS lambdas only support Node 4.3.2 which has limited ES2015 support. In order to have a nice dev experience but still be able to test the skill locally, I use [nvm](https://github.com/creationix/nvm) to easily switch from one to t'other.
+A small note, you'll need Node 5.x.x + to get the benefits of ES2015 but AWS lambdas only support Node 4.3.2 which has limited ES2015 support. In order to have a nice dev experience but still be able to test the skill locally, I use [nvm](https://github.com/creationix/nvm) to easily switch from one to t'other.
 
 
 ## Writing the thing
