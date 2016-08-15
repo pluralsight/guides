@@ -237,4 +237,42 @@ Then, navigate to the **typings** folder and set the contents of that **index.d.
 Yeah, that's it - we just need to let TypeScript know that there is a Faye type of object that can be anything. With this in place there errors will go away.
 
 ## **Creating the Publisher**
-For the publisher we will also be using [Nodejs](https://nodejs.org/). Don't worry if you are not familiar with Nodejs - this is a very, very simple app that will be extremetly easy to understand. 
+For the publisher we will also be using [Nodejs](https://nodejs.org/). Don't worry if you are not familiar with Nodejs - this is a very, very simple app that will be extremely easy to understand. 
+
+From a command prompt, create a new folder and change to that folder; then use NPM (node package manager) to initialize our new Nodejs app:
+```
+mkdir publisher
+cd publisher
+npm init -y
+```
+Next, we will use NPM to add the [Fanout](https://fanout.io/) nodejs package to our publisher application (make sure that "fanout" is in all lowercase letters so that it can be found) and create the **index.js** file that will contain our application's code:
+```
+npm install --save fanout
+echo 'use strict' > index.js
+```
+Open up the **index.js** file in your text editor and replace its contents with this:
+```
+'use strict'
+
+let fanout = require('fanoutpub');
+
+const realmId = 'your-realm-id-here';
+const realmKey = 'your-realm-key-here';
+
+let callback = (success, message, context) => {
+    if (success) {
+        console.log('Publish successful!');
+    }
+    else {
+        console.log('Publish failed!');
+        console.log('Message: ' + message);
+        console.log('Context: ');
+        console.dir(context); 
+    }
+};
+
+let publisher = new fanout.Fanout(realmId, realmKey);
+publisher.publish('test', 'Test publish!', callback);
+
+console.log('Publisher started');
+```
