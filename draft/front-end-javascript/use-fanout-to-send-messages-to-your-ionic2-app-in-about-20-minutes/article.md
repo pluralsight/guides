@@ -245,9 +245,9 @@ mkdir publisher
 cd publisher
 npm init -y
 ```
-Next, we will use NPM to add the [Fanout](https://fanout.io/) nodejs package to our publisher application (make sure that "fanout" is in all lowercase letters so that it can be found) and create the **index.js** file that will contain our application's code:
+Next, we will use NPM to add the [Fanout](https://fanout.io/) nodejs package to our publisher application (make sure that **fanoutpub** is in all lowercase letters so that it can be found) and create the **index.js** file that will contain our application's code:
 ```
-npm install --save fanout
+npm install --save fanoutpub
 echo 'use strict' > index.js
 ```
 Open up the **index.js** file in your text editor and replace its contents with this:
@@ -277,3 +277,24 @@ publisher.publish('test', 'Test publish!', callback);
 console.log('Publisher started');
 ```
 >As before, you will need to replace ***your-realm-id-here*** and ***your-realm-key-here*** with those on your [account page](https://fanout.io/account/panel/).
+
+## **Running the Application**
+To run the applcation open a console in the **Ionic2Fanout** folder and execute:
+```
+ionic serve
+```
+Once the browswer window or tab has opened and you can see that the application has fully started, open a console in the **publisher** folder and execute:
+```
+node index.js
+```
+If you see a message like:
+```
+Publisher started
+Publish successful!
+```
+You should see a screen like this in your Ionic2 application:
+
+![Image of Ionic2 app with alert](https://github.com/sethbunke/Ionic2NodejsFanoutTutorial/blob/master/_tutorialImages/fanout_alert_sm.png?raw=true)
+
+>If you aren't seeing this or you saw an error message in the Nodejs application, ***please make sure that all of the realm IDs and realm keys that you cut and pasted into the code are correct***. If these are not exactly what is on your [account page](https://fanout.io/account/panel/), you may get errors or the messages will not be received by the Ionic2 application. 
+
