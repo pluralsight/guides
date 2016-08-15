@@ -63,7 +63,18 @@ Now, it would be cumbersome if you have to do this everytime you change somethin
 webpack ./app.js bundle.js --watch
 ```
 
+Adding the ```--watch``` will start watching the app.js file for changes. Whenever webpack detects a change, it will bundle the code into the output file. Webpack will also do a production build of your code. 
+
+```
+webpack ./app.js bundle.js -p
+```
+
+Now open ```bundle.js``` and voila! Your code is minified and production ready.
+
 #### webpack.config.js
+
+
+
 ##### entry
 ##### output
 ##### module loaders
