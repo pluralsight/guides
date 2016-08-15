@@ -95,7 +95,7 @@ I've gone for a heavily nested approach to give it the feel of a conversation wh
 
 I would split the `event-samples` by handler state. This just makes them more manageable. This is an example `event-sample` which would be in the `game` directory:
 
-```
+```json
 {
   "session": {
     "sessionId": "sessionId",
@@ -159,7 +159,7 @@ First test
 
 `responses.js`
 
-```
+```javascript
 module.exports.gamePrelude = () =>
   'This is a dangerous game of cat and mouse in the even more dangerous forest, do you want to play?'
 ```
