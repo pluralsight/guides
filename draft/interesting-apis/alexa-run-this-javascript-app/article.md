@@ -1,29 +1,31 @@
-So there are two types of Alexa skill tutorials, the ones with lots of screenshots showing you how to create an AWS lambda function, configure your skill and deploy some arbitary code...and then there are the ones that show you how to develop a skill, deploy it, test it and get it certified. There were too many in the former category (I recommend [this one](https://developer.amazon.com/public/community/post/Tx3DVGG0K0TPUGQ/New-Alexa-Skills-Kit-Template:-Step-by-Step-Guide-to-Build-a-Fact-Skill) and [this one](http://tutorials.pluralsight.com/node-js/amazon-alexa-skill-tutorial)), so I'm going for the latter. In fact it's going to be less tutorial and more opinionated rambling with code snippets. Generally I'll make the assumption you have a passing notion of an Alexa skill, and if not, read those two links first and come back...please. There may be some overlap but just to reinforce some concepts such as bits and pieces about intents etc.
+So there are two types of Alexa skill tutorials, the ones with lots of screenshots showing you how to create an AWS lambda function, configure your skill and deploy some arbitary code...and then there are the ones that show you how to develop a skill, deploy it, test it and get it certified. There were too many in the former category (I recommend [this one](https://developer.amazon.com/public/community/post/Tx3DVGG0K0TPUGQ/New-Alexa-Skills-Kit-Template:-Step-by-Step-Guide-to-Build-a-Fact-Skill) and [this one](http://tutorials.pluralsight.com/node-js/amazon-alexa-skill-tutorial)), so I'm going for the latter. In fact it's going to be less tutorial and more opinionated rambling with code snippets. Generally I'll make the assumption you have a passing notion of an Alexa skill, and if not, read those two links first and come back...please. Oh yeah, it's all about the JavaScript too (in case you had a penchant for Python).
 
 # The current landscape
 
-You may be forgiven for being confused about where to start with Alexa. While there is a plethora of documentation...there's almost nothing on how to actually build a skill. If you're anything like me you keep going round in circles and ending up [here](https://developer.amazon.com/ask) when trying to understand what the skills kit is...when actually it's just a big umbrella term. Then you might end up at their [node kit](https://github.com/amzn/alexa-skills-kit-js), or at least what you think is their Node SDK but isn't...although it's still actively maintained. As you look at the samples you'll notice some code that you thought died with ES2015 and if you use a framework perhaps haven't written for a good few years:
+You can be forgiven for finding it hard when starting to develop with Alexa. While there is a plethora of documentation...there's almost nothing on how to actually build a skill. If you're anything like me, you keep going round in circles and ending up [here](https://developer.amazon.com/ask) when trying to understand what the skills kit is...when actually it's just a big umbrella term. Then you might end up at their [node kit](https://github.com/amzn/alexa-skills-kit-js), or at least what you think is their Node SDK but sort of isn't...although it's still actively maintained. As you look at the samples you'll notice some code that you thought died with ES2015, and if you use a framework, perhaps haven't written for a good few years:
 
 ```javascript
 Fact.prototype = Object.create(AlexaSkill.prototype);
 Fact.prototype.constructor = Fact;
 ```
 
-...but help is at hand because you stumble across [this guy](https://github.com/matt-kruse/alexa-app) and you think, ah cool, this API is a bit nicer then start attempting to write your skill with it...although you're still not entirely sure how to go about it. However there was this [new SDK announced](https://developer.amazon.com/public/community/post/Tx213D2XQIYH864/Announcing-the-Alexa-Skills-Kit-for-Node-js) that you'll be hard pressed to find anywhere on the site, and the repo is [here](https://github.com/alexa/alexa-skills-kit-sdk-for-nodejs). This is the guy we'll be working with in the following tutorial.
+...but help is at hand because you stumble across [this guy](https://github.com/matt-kruse/alexa-app) and you think, ah cool, this API is a bit nicer, then start attempting to write your skill with it...although you're still not entirely sure how to go about it. However, there was this [new SDK announced](https://developer.amazon.com/public/community/post/Tx213D2XQIYH864/Announcing-the-Alexa-Skills-Kit-for-Node-js) that you'll be hard pressed to find anywhere on the site, so the repo is [here](https://github.com/alexa/alexa-skills-kit-sdk-for-nodejs). This is the guy we'll be working with in the following tutorial.
 
 # Starter for 10
 
-I've created a start-kit thing based on my experience creating my skill, [Arithlistic](https://github.com/craigbilner/arithlistic), [here](https://github.com/craigbilner/alexa-starter-kit). A lot of the code samples you'll see will be very focussed on getting setup quickly with some intents. This article will be an *intentsive* look at how to put together a robust app that can you scale in complexity with confidence. It will be modular, use TDD, be linted, have a CI pipeline and an easy deployment step using [Gulp](http://gulpjs.com/).
+I've created a start-kit thing based on my experience creating my skill, [Arithlistic](https://github.com/craigbilner/arithlistic), [here](https://github.com/craigbilner/alexa-starter-kit). A lot of the code samples you'll see will be very focussed on getting setup quickly with some intents, which is understandable. This article will be an *intentsive* look at how to put together a robust app that can you scale in complexity with confidence. It will be modular, use TDD, be linted, have a CI pipeline and an easy deployment step using [Gulp](http://gulpjs.com/).
 
 ## Structure
 
-All the skills split the code between `src` and `speech-assets` - let's not buck the trend. Other than that I've stuck the logos in here (which are needed when you go live in the store) and my [circleci](https://circleci.com/) config. You can use any CI but as you can see from mine, you'll need to specify that all your code is in the nested `src` directory and we're masochists who have written our tests in ES2015 so need Node 6.x.x.
+Probably best if you read this section with a split screen of the tutorial and the starter-kit.
+
+All the skills split the code between `src` and `speech-assets` - let's not buck the trend. Other than that I've stuck the logos in here (which are needed when you go live in the store) and my [circleci](https://circleci.com/) config. You can use any CI but as you can see from mine, you'll need to specify that all your code is in the nested `src` directory and because we're masochists who have written our tests in ES2015, we need Node 6.x.x.
 
 ### speech-assets
 
 #### intent-schema.json
 
-Where we store our intent schema which basically explains to Alexa the intents she should expect and the types of the slots so she can more easily work out how to interpret what the user is saying.
+A config which basically explains to Alexa the "things people say" (intents) that she should expect, and the types of the slots (a variable in the intent). This will help her more easily work out how to interpret what the user is saying.
 
 #### uterrances
 
@@ -35,12 +37,12 @@ In the special `src` you cook your skill.
 
 #### At the top level
 
-We effectively have our dev assets and fixtures. Potentiallly you could split these into their own directory but felt like overkill. So we have:
+We effectively have our dev assets and fixtures. Potentiallly you could split these into their own directory but it felt like overkill. So we have:
 
 * eslint configs that have to be rather liberal due to the SDK we'll be working with
-* our secret `deploy.env.json` (which you'll create yourself obviously) will look a little something like this:
+* your secret `deploy.env.json` (which you'll create yourself obviously) which will look a little something like this:
 
-```
+```json
 {
   "ROLE": "arn:aws:iam::[123456789012]:role/[the AWS lambda role you defined]",
   "ACCESS_KEY_ID": "ABCDEFGHIJKLMNOPQRST",
@@ -50,12 +52,14 @@ We effectively have our dev assets and fixtures. Potentiallly you could split th
 
 this allows us to deploy our code with a gulp task
 
-* our `enums` which will help us manage the state of our skill, just to give us some semblance of type safety in JavaScript land
-* a `gulpfile` that details our deployment tasks. It removes our old `dist` stuff, grabs all the stuff we care about and puts it in `dist`, zips it up because this is how AWS lambda takes multiple files and uses `node-aws-lambda` to upload our file using the `lambda-config` that has had it values replaced with our secret ones from above.
-* `index.js` - the entry to our skill - it sets the environment path to help our AWS lambda traverse our files registers our `appId` and `handlers` (which we'll come to) and kicks the whole thing off
-* the `lambda-config` which will look very familiar to the screen in your AWS lambda console. Set these values as desired.
-* `package.json` which - I'm going to assume you know. The only real points to note are the scripts. Find a good way to deploy an Alexa skill is a bit of a PITA but I found these two examples which I borrowed heavily from for my own `gulpfile`. However, they both like a `PROD` install whereas I've gone for a slightly different approach to avoid doing an install every time I deploy. When you `npm i` for you skill, it'll stick the `PROD` dependencies straight into `dist`. I've also stuck `iron-node` in there, which I've had mixed experiences with but is actually invaluable when you wnat to debug something easily in Chrome's dev tools. Please feel free to debug your node code your preferred way though such as through your IDE.
-* `responses` should be where you put anything Alexa says. I would do them as functions to have a consistent API where you can pass in values to be dynamically built. In fact I refactored these out to call the emit methods in order to store the last known reponses and states to help us continue after a "pause". Having all the responses in one place makes testing easier (as you can change the phrases without breaking your tests) and when i18n comes in, you can swap this file out rather than have hard coded text littered over your code base.
+* our `enums.js` which will help us manage the state of our skill, just to give us some semblance of type safety in JavaScript land
+* a `gulpfile.js` that details our deployment tasks. It removes our old `dist` stuff, grabs all the stuff we care about and puts it in `dist`, zips it up because this is how AWS lambda takes multiple files and uses `node-aws-lambda` to upload our file using the `lambda-config` that has had it's values replaced with our secret ones from above
+* `index.js` - the entry to our skill - it sets the environment path to help our AWS lambda traverse our files, registers our `appId` and `handlers` (which we'll come to) and kicks the whole thing off
+* the `lambda-config.js` which will look very familiar to the screen in your [AWS lambda console](https://console.aws.amazon.com/lambda/home?region=us-east-1). Set these values as desired
+* `package.json` which - I'm going to assume you know. The only real points to note are the scripts.
+ * Finding a good way to deploy an Alexa skill is a bit of a PITA, this is [not a deployment workflow](https://developer.amazon.com/public/solutions/alexa/alexa-skills-kit/docs/deploying-a-sample-skill-to-aws-lambda#preparing-a-nodejs-sample-to-deploy-in-lambda). I found these two examples ([Rick's](https://github.com/rickwargo/alexa-skill-template) and [Thoughtworks'](https://github.com/ThoughtWorksStudios/node-aws-lambda)) which I borrowed heavily from for my own `gulpfile`. However, they both like a `PROD` install whereas I've gone for a slightly different approach to avoid doing an install every time I deploy. When you `npm i` for your skill, it'll stick the `PROD` dependencies straight into `dist`.
+ * I've also stuck `iron-node` in there, which I've had mixed experiences with, but is actually invaluable when you want to debug something easily in Chrome's dev tools. Please feel free to debug your node code your preferred way though, such as through your IDE.
+* `responses.js` should be where you put anything Alexa says. I would do them as functions to have a consistent API where you can pass in values to be dynamically built. In fact I refactored these out to call the emit methods in order to store the last known reponses and states to help us continue after a "pause". Having all the responses in one place makes testing easier (as you can change the phrases without breaking your tests) and when i18n comes in, you can swap this file out rather than have hard coded text littered over your code base.
 
 #### handlers
 
@@ -239,8 +243,6 @@ Adding handlers, adding fixtures, adding tests, switching states, adding assets 
 Fill in magic key values, npm run deploy, test it out
 
 Receiving slot values, performing business logic and responding
-
-[Not a deployment workflow](https://developer.amazon.com/public/solutions/alexa/alexa-skills-kit/docs/deploying-a-sample-skill-to-aws-lambda#preparing-a-nodejs-sample-to-deploy-in-lambda)
 
 # Going live
 
