@@ -9,21 +9,31 @@ Having the reference of an DOM element, you have the ability to inspect the scop
 > ng.probe($0)
 ```
 
-This enables you to access the scope of the component itself and inspect and manipulate its various attributes directly from the console.
+**<code>ng.probe($0)</code> enables you to access the scope of the component itself and inspect and manipulate its various attributes directly from the console.**. You can go ahead and explore the component's model and change things around in its instance:
 
 ```
 > ng.probe($0).componentInstance
 ```
 
 
-![ng-probe-element](https://raw.githubusercontent.com/pluralsight/guides/master/images/ea997228-7237-49b3-81f9-e5890bdf82ef.gif)
+
+![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/b0b6563f-3a82-4cd5-aeb5-55f9cb993376.gif)
 
 
 
 
-Because you are not editing the component directly through the document, Angular does not detect the change in the modelEach component has its own scope, so you must apply the changes manually.
+Because you are editing the component programatically isntead of doing it directly through the DOM, Angular does not detect the change in the model.If you are coming from Angular 1, you know you can apply the changes by creating [$digest](https://docs.angularjs.org/api/ng/type/$rootScope.Scope#$digest) event that will check for changes in all the watchers in the applications.
+
+**However, in Angular 2, each component has its own scope, so you must apply the changes to the component's scope itself.**
+
+```
+ng.probe($0)._debugInfo._view.changeDetectorRef.detectChanges()
+
+```
 
 
+
+![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/384ceda7-7415-4229-b83a-574af117e820.gif)
 
 ## Source maps and debugger
 Enabling source maps will let you see the TypeScript code of your application instead of the transpiled JavaScript code, making it easier for you to debug your code line by line.
