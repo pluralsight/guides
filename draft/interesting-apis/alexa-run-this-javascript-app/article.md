@@ -147,14 +147,13 @@ A small note, you'll need Node 5.x.x + to get the benefits of ES2015 but AWS lam
 
 ## Writing the thing
 
-* [lambda](https://console.aws.amazon.com/lambda/home?region=us-east-1#/functions/Arithlistic?tab=code)
-* [alexa console](https://developer.amazon.com/edw/home.html#/skills/list)
-* [echoism](https://echosim.io/)
-* [alexa app](http://alexa.amazon.com/spa/index.html#settings/dialogs)
+Please now switch to my [demo skill](https://github.com/craigbilner/alexa-demo-skill) which I'll use to talk through my dev process. I've used my starter-kit to scaffold it out, and will reference the commits so you can see the changes through the diffs.
 
-Code stuff
+### In the beginning
 
-First test
+There is a suggestion that you create a flow diagram before creating your skill. This does seem like hard work, but I think it probably pays dividends for something with many paths. So that's where I started, [here](https://github.com/craigbilner/alexa-demo-skill/commit/43674dca5a4601243021852e3dc41fc6673c48ca). We'll be starting an incredibly adventurous adventure game called, the "Dangerous Forest".
+
+First we want Alexa to say something to introduce the game when it's started, so let's write that out:
 
 `responses.js`
 
@@ -163,7 +162,9 @@ module.exports.gamePrelude = () =>
   'This is a dangerous game of cat and mouse in the even more dangerous forest, do you want to play?'
 ```
 
-The flow diagram may differ from the actual response as you test and play around with how Alexa says things. She talks rather rapidly so you'll need a large supply of commas and other punctuation to keep her in check.
+The flow diagram may differ from the actual response as you test and play around with how Alexa says things. She talks rather rapidly so you'll need a large supply of commas and other punctuation to keep her in check. For Arithilistic I was also a bit of a pedant and changed the responses if they came after a pause or if multiple people were playing, basically try and keep it contextual and conversational, as it will make it feel much more polished.
+
+Add our starting game state:
 
 `enums.js`
 
@@ -171,7 +172,7 @@ The flow diagram may differ from the actual response as you test and play around
 GAME_START: 'GAME_START',
 ```
 
-test
+And write a test:
 
 ```
 describe('Alexa, start game', () => {
@@ -184,12 +185,14 @@ describe('Alexa, start game', () => {
 });
 ```
 
-test result
+Which will fail :-(
 
 ```
 1) Alexa, start game Respond with game prelude and set state to GAME_START:
      Error: timeout of 2000ms exceeded. Ensure the done() callback is being called in this test.
 ```
+
+Let's wire up our initial intents, by setting the beginning game state in `this.handler.state` and invoke our `GameIntro` intent which will live in the `GAME_START` handlers. Essentially `emithWithState` says, call the intent that it's in the handler of the current state.
 
 `new-sessions.handlers.js`
 
@@ -203,7 +206,7 @@ const setStateAndInvokeEntryIntent = function() {
 };
 ```
 
-add game-start.handlers
+Add `game-start.handlers` to our index file and pass them into the registration function.
 
 `index.js`
 
@@ -211,7 +214,9 @@ add game-start.handlers
 const gameStartHandlers = require('./handlers/game-start.handlers');
 ```
 
-Start game failures tests
+The test should now pass. See the [commit for details](https://github.com/craigbilner/alexa-demo-skill/commit/b3c83c207781f14a4e5f6e134d31b1401a50d5f2).
+
+### Start game failures
 
 ```
 'AMAZON.NoIntent': function() {
@@ -243,6 +248,12 @@ Adding handlers, adding fixtures, adding tests, switching states, adding assets 
 Fill in magic key values, npm run deploy, test it out
 
 Receiving slot values, performing business logic and responding
+
+* [lambda](https://console.aws.amazon.com/lambda/home?region=us-east-1#/functions/Arithlistic?tab=code)
+* [alexa console](https://developer.amazon.com/edw/home.html#/skills/list)
+* [echoism](https://echosim.io/)
+* [alexa app](http://alexa.amazon.com/spa/index.html#settings/dialogs)
+
 
 # Going live
 
