@@ -55,7 +55,7 @@ We effectively have our dev assets and fixtures. Potentiallly you could split th
 this allows us to deploy our code with a gulp task
 
 * our `enums.js` which will help us manage the state of our skill, just to give us some semblance of type safety in JavaScript land
-* a `gulpfile.js` that details our deployment tasks. It removes our old `dist` stuff, grabs all the stuff we care about and puts it in `dist`, zips it up because this is how AWS lambda takes multiple files and uses `node-aws-lambda` to upload our file using the `lambda-config` that has had it's values replaced with our secret ones from above
+* a `gulpfile.js` that details our deployment tasks. It removes our old `dist` stuff, grabs all the stuff we care about and puts it in `dist`, zips it up because this is how AWS lambda takes multiple files and uses [node-aws-lambda](https://www.npmjs.com/package/node-aws-lambda) to upload our file using the `lambda-config` that has had it's values replaced with our secret ones from above
 * `index.js` - the entry to our skill - it sets the environment path to help our AWS lambda traverse our files, registers our `appId` and `handlers` (which we'll come to) and kicks the whole thing off
 * the `lambda-config.js` which will look very familiar to the screen in your [AWS lambda console](https://console.aws.amazon.com/lambda/home?region=us-east-1). Set these values as desired
 * `package.json` which - I'm going to assume you know. The only real points to note are the scripts:
@@ -94,7 +94,7 @@ So we have some helpers at the top:
 * `sanitise` just to make life easier if you've used a multi-line template string and want to assert on the speech output
 * `getOutputSpeech` which just destructures the response, strips everything back (the ssml tags) and allows us to assert on what we care about, what Alexa said
 * `getAttribute` which again is a nice to have abstraction to pick out our session attributes to test on
-* `runIntent` finally, but by no means least, this is the thing that will make all your testing a dream. It uses `aws-lambda-mock-context` to stub out all the context stuff we don't really care about and gives us a fluent API to invoke our intent with ease
+* `runIntent` finally, but by no means least, this is the thing that will make all your testing a dream. It uses [aws-lambda-mock-context](https://www.npmjs.com/package/aws-lambda-mock-context) to stub out all the context stuff we don't really care about and gives us a fluent API to invoke our intent with ease
 
 I've gone for a heavily nested approach to give it the feel of a conversation when you read the output. So each `describe` is what the user would say, then the test name is what you think your skill should have done. As you can see we can now nicely destructure and `assert` in quite a clean manner. Also using fat arrows means less curly braces for each `it` for the win.
 
@@ -224,17 +224,19 @@ The test now passes. See the [commit for details](https://github.com/craigbilner
 
 ### Start game failures
 
-So now we have the start rhombus, let's fill in the various failure conditions. For example, a player may say "No". For something like this we can use one of the built in Amazon intents like so:
+So now we have the "start rhombus", let's fill in the various failure conditions. For example, a player may say "No". For something like this we can use one of the built in Amazon intents like so:
 
 ```javascript
 'AMAZON.NoIntent': function() {
     res.tell.call(this, res.goodbye());
-  },
+},
 ```
 
-For linting, write out the function call rather than do it as a computed. I do this rather ugly `res.tell.call` thing because I want to capture previous responses (or overload with a "continuation") and state but explicity preserve `this`. It's also useful for strong typing again rather than ':ask' and ':tell' magic strings, a fix I've seen in common with other Alexa approaches on GitHub.
+For linting, we write out the function call rather than do it as a computed. I do this rather ugly `res.tell.call` thing because I want to capture previous responses (or overload with a *continuation) and state, but explicity preserve `this`. It's also useful for strong typing again rather than `':ask'` and `':tell'` magic strings, a fix I've seen in common with other Alexa approaches on GitHub.
 
-When using a "tell" the session will end because Alexa no longer requires the user to respond, she can be dismissive like that. When I expect the session to end I can test for it like this:
+\* I created the concept of a continuation, so that you can respond with similar text after a pause but as someone would speak when continuing, rather than repeating parrot fashion. This optional string is set as the `previousResponse` in `responses.js`.
+
+When using a "tell", the session will end because Alexa no longer requires the user to respond, she can be dismissive like that. When I expect the session to end I can test for it like this:
 
 ```javascript
 assert(endOfSession);
@@ -242,7 +244,7 @@ assert(endOfSession);
 
 You'll notice that while I have helpers at the top of my tests to make things easier, a lot of the tests end up looking the same or similar. I think DRY in tests is a balancing act where in general you can be quite wet.
 
-Add a stopped `event-samples` directory, because we didn't change state we can just copy and paste the game start's intent fixtures.
+We add a stopped `event-samples` directory, because we didn't change state, we can just copy and paste the game start's intent fixtures.
 
 And that's it. You'll notice the `core.handlers` have taken care of "cancel" and "stop" for us which we can just write tests for.
 
@@ -287,7 +289,7 @@ module.exports.evilGoatPig = () =>
     'There\'s an evil goat pig who offers you 30 pieces of silver, do you take it?';
 ```
 
-Great, so we have our tests, we have our states we want to get to and we have what Alexa is going to say. So to get out of `GAME_START` and into `PLAYING` we add the `AMAZON.YesIntent` to our `GAME_START` handler.
+Great, so we have our tests, we have our states that we want to get to, and we have what Alexa is going to say. So to get out of `GAME_START` and into `PLAYING` we add the `AMAZON.YesIntent` to our `GAME_START` handler.
 
 ```javascript
 'AMAZON.YesIntent': function() {
@@ -299,11 +301,11 @@ Great, so we have our tests, we have our states we want to get to and we have wh
 },
 ```
 
-This will flip our state, speak aboute entering the forest to the user and then when they respond the intents in our `PLAYING` handler will be invoked. So let's add that, it's quite large so I wont't put it here. You can see it follows the same pattern though, pull in the `alexa-sdk`, mixin our `core.handlers`, `CreateStateHandler` with our `PLAYING` state then implement `GoLeftIntent`, `GoRightIntent`, `AMAZON.HelpIntent` and `Unhandled`. In the left and right intents, we set the desired state to "jump" to our next handler and tell the user something.
+This will flip our state, speak aboute entering the forest to the user and then when they respond, the intents in our `PLAYING` handler will be invoked. So let's add that, it's quite large so I won't put it here. You can see it follows the same pattern though, pull in the `alexa-sdk`, mixin our `core.handlers`, `CreateStateHandler` with our `PLAYING` state then implement `GoLeftIntent`, `GoRightIntent`, `AMAZON.HelpIntent` and `Unhandled`. In the left and right intents, we set the desired state to "jump" to our next handler and tell the user something.
 
 I'll leave it as an exercise for the reader to create a truly surprising random game, but this is where you wouldn't hard code the state but pick a random one. Hint: use a seeded random number generator to make it testable.
 
-We then do the same for the pig and witch handlers, wire them in to our `index.js` file and hopefully if Bob is your uncle, your tests will now pass.
+We then do the same for the pig and witch handlers, wire them in to our `index.js` file and because Bob is our uncle, the tests pass.
 
 Code is [here](https://github.com/craigbilner/alexa-demo-skill/commit/747f8d25e6c16f3c0dbf8fffee5797fdb5f3c1e5).
 
@@ -315,7 +317,7 @@ Then in `utterances.txt` we need to be able to start the game #obvs, and tell he
 
 ### Slotting one in
 
-We only stubbed out the mysterious witch's handler so we'll now finish off with how you can take parts of what the user says and perform some logic.
+We only stubbed out the mysterious witch's handler, so we'll now finish off with how you can take parts of what the user says and perform some logic.
 
 We create `odd.intent.json` and `even.intent.json` fixtures where we pass odd and even numbers in as our slot e.g.
 
@@ -346,13 +348,15 @@ Then in our `NumberOfCardsIntent` in `mysterious-witch.handlers.js` we implement
 this.event.request.intent.slots.NoOfCards.value
 ```
 
-where you literally reach in and pluck out the value, perhaps it would have been nicer to come in as an argument of the intent. We can then put our rather trivial logic into our modules folder which parses the number and decides whether it's odd or even. This is just to emphasise the point that you'll want to keep your intents as skinny as possible. If someone does say "blablabla" thetn it will call the `Unhandled` intent in the same handler.
+where you literally reach in and pluck out the value, perhaps it would have been nicer to come in as an argument of the intent.
+
+We can then put our rather trivial logic into our modules folder which parses the number and decides whether it's odd or even. This is just to emphasise the point that you'll want to keep your intents as skinny as possible. If someone does say "blablabla" then it will call the `Unhandled` intent in the same handler.
 
 You can find the commit [here](https://github.com/craigbilner/alexa-demo-skill/commit/85f682cf3c46e994df64bf1f2ef1b6c791b314f6).
 
 ### Trying it out
 
-You've now got some basic logic for your game and you know it works because you have a ton of tests, however you don't really have a feel for the game. You'll now want to start iterating which means quickly deploying your code to your [lambda function](https://console.aws.amazon.com/lambda/home?region=us-east-1#/functions/Arithlistic?tab=code) and checking it in the [Alexa console](https://developer.amazon.com/edw/home.html#/skills/list).
+You've now got some basic logic for your game and you know it works because you have a ton of tests, however you don't really have a feel for the game. You'll now want to start iterating, which means quickly deploying your code to your [lambda function](https://console.aws.amazon.com/lambda/home?region=us-east-1#/functions/Arithlistic?tab=code) and checking it in the [Alexa console](https://developer.amazon.com/edw/home.html#/skills/list).
 
 If you've filled out your `deploy.env.json` and `lambda-config.js` files correctly, you should be able to `npm run deploy` which will zip up the pertinent stuff and throw it on your lambda. Then go to the Alexa console, then the test tab on the left and type as if you would talk.
 
@@ -366,9 +370,9 @@ document.head.getElementsByTagName('style')[0].sheet.insertRule('.CodeMirror { w
 
 Be sure to type random things and the opposite of what you would expect to really kick the tyres. If it fails, grab the JSON, stick it in your `event-samples`, write a test etc. create a PR, push the code, merge if all good with your CI tools.
 
-Click the play button to get a feel for how Alexa is saying your responses.
+Click the play button to get a feel for how Alexa is saying your responses and punctuate as necessary.
 
-When you think you're all done, head over to [echoism](https://echosim.io/) to try it out. You can then login to the [alexa app](http://alexa.amazon.com/spa/index.html#settings/dialogs) and see what you said and what actually happened. In fact you can play back the recording of what Alexa captured. For example, Alexa cannot understand me when I say "two players", so for now, you're going to need a US accent or use a different utterance.
+When you think you're all done, head over to [echoism](https://echosim.io/) to try it out. You can then login to the [alexa app](http://alexa.amazon.com/spa/index.html#settings/dialogs) and see what you said and what actually happened. In fact you can play back the recording of what Alexa captured and her interpretation. For example, Alexa cannot understand me when I say "two players", so for now, you're going to need a US accent or use a different utterance.
 
 # Going live
 
@@ -376,9 +380,9 @@ Finally, you've slaved over your project, it's all working, just hit the "certif
 
 Please learn from my mistakes:
 
-* Check your invocation name against the rules. Then check it again. Then again. It might still fail, and they don't furnish you with the reason, so you may have to just have another go
+* Check your invocation name against the [rules](https://developer.amazon.com/appsandservices/solutions/alexa/alexa-skills-kit/docs/choosing-the-invocation-name-for-an-alexa-skill). Then check it again. Then again. It might still fail, and they don't furnish you with the reason, so you may just need to have another go
 * Handler all the things. Even if it doesn't make sense, make sure you've got a "stop", "cancel", "help", "repeat" etc. for every state. Especially "repeat".
 * Add lots of different utterances to reduce the friction of your app, otherwise they'll have to keep saying very exact phrases just to get your skill to play ball
 
 
-So that's that. Tweet me @craigbilner with any skill you make or any questions you have or abuse for mistakes, thanks.
+So that's that. Tweet me @CraigBilner with any skill you make or any questions you have...or abuse for my mistakes, thanks.
