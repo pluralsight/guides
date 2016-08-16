@@ -218,32 +218,84 @@ The test should now pass. See the [commit for details](https://github.com/craigb
 
 ### Start game failures
 
+So now we have the start rhombus, let's fill in the various failure conditions. For example, a player may say "No". For something like this we can use one of the built in Amazon intents like so:
+
 ```javascript
 'AMAZON.NoIntent': function() {
     res.tell.call(this, res.goodbye());
   },
 ```
 
-For linting write out the function call rather than do it as a computed. Slightly ugly call to make this explicit. As mentioned would have been nicer to update some immutable mode and return that with a response. Perhaps the API would have been nicer if I had spread and gather so I could pass arbitary args and not have to invoke responses in the intent itself.
+For linting, write out the function call rather than do it as a computed. I do this rather ugly `res.tell.call` thing because I want to capture previous responses (or overload with a "continuation") and state but explicity preserve `this`. It's also useful for strong typing again rather than ':ask' and ':tell' magic strings, a fix I've seen in common with other Alexa approaches on GitHub.
+
+When using a "tell" the session will end because Alexa no longer requires the user to respond, she can be dismissive like that. When I expect the session to end I can test for it like this:
 
 ```javascript
 assert(endOfSession);
 ```
 
-Copy and paste tests - DRY in tests is a balancing act
+You'll notice that while I have helpers at the top of my tests to make things easier, a lot of the tests end up looking the same or similar. I think DRY in tests is a balancing act where in general you can be quite wet.
 
-Core handlers takes care of cancel and stop for us
+Add a stopped `event-samples` directory, because we didn't change state we can just copy and paste the game start's intent fixtures.
 
+And that's it. You'll notice the `core.handlers` have taken care of "cancel" and "stop" for us which we can just write tests for.
 
-Next bit - fill in the responses
+When doing it for real, make sure all paths do something, usually via the prompt text or the unhandled "catch-all". Also make sure you implement an `AMAZON.HelpIntent` for each handler. If you wanted to switch state to `HELP` and do a whole help, thing then you'd obviously create a directory and test for the state switches back and forth.
 
-Nest responses. When doing it for real, make sure all paths do something, usually via the prompt text or the unhandled "catch-all".
+Code can be found [here](https://github.com/craigbilner/alexa-demo-skill/commit/0594aaa8de5305206eba5993fa7d30147c326a08);
 
-Add a stopped event-samples directory and put in the yes/no. Add test for no to help but because we didn't change state we are just re-using the game start's yes and no intents. If you wanted to switch state to help and do a whole help thing then you'd obviously create a directory and test for the state switches back and forth.
+### Fill in the responses
 
-Add yes intent making clear split between state/session changes and reponse - will pay dividends when intents get a bit fatter.
+So we've sort of done the top part of our flow-diagram. We'll now go down and make the game do something. It's important to remember to cover all the "tedious" paths above each time to ensure the user can't get stuck (and that we get certified).
 
-Adding handlers, adding fixtures, adding tests, switching states, adding assets and configuring in Alexa console.
+We're going to go to three different "places" in the forest, so let's create three new states in our `enums.js`.
+
+```javascript
+PLAYING: 'PLAYING',
+EVIL_PIG: 'EVIL_PIG',
+MYSTERIOUS_WITCH: 'MYSTERIOUS_WITCH',
+```
+
+`PLAYING` will be when we've opted into the game and the other two are left and right on our flow-diagram.
+
+Then we add a `yes.intent.json` fixture to our `event-samples/game-start` directory and `left.intent.json` and `right.intent.json` fixtures to our `event-samples/playing` directory. Pull them into our tests and asserts things we expect such as:
+
+```javasacript
+describe('I would like to go left', () => {
+    it('Responds with evil pig intro and sets state to EVIL_PIG', () =>
+        runIntent(playingLeftIntent)
+            .then(({ outputSpeech, gameState }) => {
+                assert.deepEqual(outputSpeech, sanitise(evilGoatPig()));
+                assert.deepEqual(gameState, GAME_STATES.EVIL_PIG);
+            })
+    );
+});
+```
+
+These will now fail because we don't have any of the logic. Let's wire in the responses such as:
+
+`responses.js`
+
+```javascript
+module.exports.evilGoatPig = () =>
+    'There\'s an evil goat pig who offers you 30 pieces of silver, do you take it?';
+```
+
+Great, so we have our tests, we have our states we want to get to and we have what Alexa is going to say. So to get out of `GAME_START` and into `PLAYING` we add the `AMAZON.YesIntent` to our `GAME_START` handler.
+
+```javascript
+'AMAZON.YesIntent': function() {
+    // updates
+    this.handler.state = GAME_STATES.PLAYING;
+ 
+    // response
+    res.ask.call(this, res.enterForest());
+},
+```
+
+This will flip our state, speak aboute entering the forest to the user and then when they respond the intents in our `PLAYING` handler will be invoked. So let's add that, it's quite large so I wont't put it here. You can see it follows the same pattern though, pull in the `alexa-sdk`, mixin our `core.handlers`, `CreateStateHandler` with our `PLAYING` state then implement `GoLeftIntent`, `GoRightIntent`, `AMAZON.HelpIntent` and `Unhandled`. In the left and right intents, we set the desired state to "jump" to our next handler and tell the user something.
+
+I'll leave it as an exercise for the reader to create a truly surprising random game, but this is where you wouldn't hard code the state but pick a random one. Hint: use a seeded random number generator to make it testable.
 
 Fill in magic key values, npm run deploy, test it out
 
