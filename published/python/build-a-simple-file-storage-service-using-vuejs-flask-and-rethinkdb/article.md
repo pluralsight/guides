@@ -4,7 +4,7 @@ In this tutorial, I will be showing you how to build a simple file storage servi
 
 In the first part of this series, I will be focusing on the building out the back-end for the application. Later, I'll cover implementing some of the principles taught here in your current workflow either as a Python developer, Flask developer, or even as a programmer in general.
 
-### Buliding the API
+### Building the API
 
 Let's start by building out our API. Using this file storage service, as a user, we should be able to:
 1. Create an account
