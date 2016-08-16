@@ -404,7 +404,7 @@ Congratulations! You’ve just developed a web application with scalable analyti
 
 You can find the full source code of the application on [GitHub](https://github.com/alejandro-du/keen-spring-vaadin-demo).
 
-If you are planning to develop a dashboard application the technologies described here, you may want to take a look at the following websites:
+If you are planning to develop a dashboard application with the technologies described here, you may want to take a look at the following websites:
 
 * Keen IO APIs: <https://keen.io/docs>
 * Vaadin documentation: <https://vaadin.com/docs>
