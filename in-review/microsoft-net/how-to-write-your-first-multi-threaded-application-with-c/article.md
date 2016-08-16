@@ -258,3 +258,41 @@ BackgroundWorker
 
 In this approach, instead of creating the plain old thread and using delegate to update the UI, we have BackgroundWorker component which does the work for us. It supports multiple events to run long running process (DoWork), update the UI (ProgressChanged) and you will know when the background thread has actually ended (RunWorkerCompleted). In the plain old thread, knowing the end of the thread is tricky and you have to rely either of Thread.Join or use some other wait handles.
 
+**Problems introduced by threading**
+
+While writing the multi-threaded application, there are bunch of known issues that we should be able to handle. Deadlock, race conditions are few to name. It is necessary to maintain synhronize access to different resources to make sure we are not corrupting the output. For example, if a file in the filesystem is being modified by multiple threads, application must allow only one thread to modify the file at the time, otherwise the file might get corrupt. One way of doing it is using Lock Keyword. If we are accessing the shared resource around the Lock statement, it will allow only one thread to execute the code within the lock block.
+
+    public class LockExample
+    {
+
+        public int SharedResource { get; set; }
+
+        public object _locker = 0;
+
+        public void StartThreadAccessingSharedResource()
+        {
+            Thread t1 = new Thread(() =>
+            {
+                lock (_locker)
+                {
+                    SharedResource++;
+                }
+
+            });
+
+            Thread t2 = new Thread(() =>
+            {
+                lock (_locker)
+                {
+                    SharedResource--;
+                }
+
+            });
+
+            t1.Start();
+            t2.Start();
+        }
+    }
+
+In this example we have 2 threads accessing the same resource. Using the lock keyword will guarantee that the shared variable will be accessed by one one thread at a time. While thread t1 is executing the code within the lock block, thread t2 will be waiting.
+
