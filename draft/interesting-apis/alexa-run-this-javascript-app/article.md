@@ -1,4 +1,4 @@
-So there are two types of Alexa skill tutorials, the ones with lots of screenshots showing you how to create an AWS lambda function, configure your skill and deploy some arbitary code...and then there are the ones that show you how to develop a skill, deploy it, test it and get it certified. There were too many in the former category (I recommend [this one](https://developer.amazon.com/public/community/post/Tx3DVGG0K0TPUGQ/New-Alexa-Skills-Kit-Template:-Step-by-Step-Guide-to-Build-a-Fact-Skill) and [this one](http://tutorials.pluralsight.com/node-js/amazon-alexa-skill-tutorial)), so I'm going for the latter. In fact it's going to be less tutorial and more opinionated rambling with code snippets. Generally I'll make the assumption you have a passing notion of an Alexa skill, and if not, read those two links first and come back...please. Oh yeah, it's all about the JavaScript too (in case you had a penchant for Python).
+So there are two types of Alexa skill tutorials, the ones with lots of screenshots showing you how to create an AWS lambda function, configure your skill and deploy some arbitary code...and then there are the ones that show you how to develop a skill, test it, deploy it, and get it certified. There were too many in the former category (I recommend [this one](https://developer.amazon.com/public/community/post/Tx3DVGG0K0TPUGQ/New-Alexa-Skills-Kit-Template:-Step-by-Step-Guide-to-Build-a-Fact-Skill) and [this one](http://tutorials.pluralsight.com/node-js/amazon-alexa-skill-tutorial)), so I'm going for the latter. In fact it's going to be less tutorial and more opinionated rambling with code snippets. Generally I'll make the assumption you have a passing notion of an Alexa skill, and if not, read those two links first and come back...please. Oh yeah, it's all about the JavaScript too (in case you had a penchant for Python).
 
 # The current landscape
 
@@ -9,11 +9,13 @@ Fact.prototype = Object.create(AlexaSkill.prototype);
 Fact.prototype.constructor = Fact;
 ```
 
-...but help is at hand because you stumble across [this guy](https://github.com/matt-kruse/alexa-app) and you think, ah cool, this API is a bit nicer, then start attempting to write your skill with it...although you're still not entirely sure how to go about it. However, there was this [new SDK announced](https://developer.amazon.com/public/community/post/Tx213D2XQIYH864/Announcing-the-Alexa-Skills-Kit-for-Node-js) that you'll be hard pressed to find anywhere on the site, so the repo is [here](https://github.com/alexa/alexa-skills-kit-sdk-for-nodejs). This is the guy we'll be working with in the following tutorial.
+...but help is at hand because you stumble across [this guy](https://github.com/matt-kruse/alexa-app) and you think, ah cool, this API is a bit nicer, then start attempting to write your skill with it...although you're still not entirely sure how to go about it and it's not all Amazon official like.
+
+However, there was this [new SDK announced](https://developer.amazon.com/public/community/post/Tx213D2XQIYH864/Announcing-the-Alexa-Skills-Kit-for-Node-js) (that you'll be hard pressed to find anywhere on the site, so the repo is [here](https://github.com/alexa/alexa-skills-kit-sdk-for-nodejs)). This is the guy we'll be working with in the following tutorial.
 
 # Starter for 10
 
-I've created a start-kit thing based on my experience creating my skill, [Arithlistic](https://github.com/craigbilner/arithlistic), [here](https://github.com/craigbilner/alexa-starter-kit). A lot of the code samples you'll see will be very focussed on getting setup quickly with some intents, which is understandable. This article will be an *intentsive* look at how to put together a robust app that can you scale in complexity with confidence. It will be modular, use TDD, be linted, have a CI pipeline and an easy deployment step using [Gulp](http://gulpjs.com/).
+I've created a start-kit thing based on my experience creating my [Arithlistic](https://github.com/craigbilner/arithlistic) skill, [here](https://github.com/craigbilner/alexa-starter-kit). A lot of the code samples you'll see will be very focussed on getting setup quickly with some intents, which is understandable. This article will be an *intentsive* look at how to put together a robust app that can you scale in complexity with confidence. It will be modular, use TDD, be linted, have a CI pipeline and an easy deployment step using [Gulp](http://gulpjs.com/).
 
 ## Structure
 
@@ -40,7 +42,7 @@ In the special `src` you cook your skill.
 We effectively have our dev assets and fixtures. Potentiallly you could split these into their own directory but it felt like overkill. So we have:
 
 * eslint configs that have to be rather liberal due to the SDK we'll be working with
-* your secret `deploy.env.json` (which you'll create yourself obviously) which will look a little something like this:
+* your secret `deploy.env.json` (that you'll create yourself obviously) which will look a little something like this:
 
 ```json
 {
@@ -56,14 +58,16 @@ this allows us to deploy our code with a gulp task
 * a `gulpfile.js` that details our deployment tasks. It removes our old `dist` stuff, grabs all the stuff we care about and puts it in `dist`, zips it up because this is how AWS lambda takes multiple files and uses `node-aws-lambda` to upload our file using the `lambda-config` that has had it's values replaced with our secret ones from above
 * `index.js` - the entry to our skill - it sets the environment path to help our AWS lambda traverse our files, registers our `appId` and `handlers` (which we'll come to) and kicks the whole thing off
 * the `lambda-config.js` which will look very familiar to the screen in your [AWS lambda console](https://console.aws.amazon.com/lambda/home?region=us-east-1). Set these values as desired
-* `package.json` which - I'm going to assume you know. The only real points to note are the scripts.
+* `package.json` which - I'm going to assume you know. The only real points to note are the scripts:
  * Finding a good way to deploy an Alexa skill is a bit of a PITA, this is [not a deployment workflow](https://developer.amazon.com/public/solutions/alexa/alexa-skills-kit/docs/deploying-a-sample-skill-to-aws-lambda#preparing-a-nodejs-sample-to-deploy-in-lambda). I found these two examples ([Rick's](https://github.com/rickwargo/alexa-skill-template) and [Thoughtworks'](https://github.com/ThoughtWorksStudios/node-aws-lambda)) which I borrowed heavily from for my own `gulpfile`. However, they both like a `PROD` install whereas I've gone for a slightly different approach to avoid doing an install every time I deploy. When you `npm i` for your skill, it'll stick the `PROD` dependencies straight into `dist`.
  * I've also stuck `iron-node` in there, which I've had mixed experiences with, but is actually invaluable when you want to debug something easily in Chrome's dev tools. Please feel free to debug your node code your preferred way though, such as through your IDE.
-* `responses.js` should be where you put anything Alexa says. I would do them as functions to have a consistent API where you can pass in values to be dynamically built. In fact I refactored these out to call the emit methods in order to store the last known reponses and states to help us continue after a "pause". Having all the responses in one place makes testing easier (as you can change the phrases without breaking your tests) and when i18n comes in, you can swap this file out rather than have hard coded text littered over your code base.
+* `responses.js` should be where you put anything Alexa says. I would do them as functions to have a consistent API where you can pass in values to be dynamically built. In fact I refactored these out to call the emit methods in order to store the last known reponses and states to help us continue after a "pause". Having all the responses in one place makes testing easier (as you can change the phrases without breaking your tests) and when i18n comes in, you can swap this file out, rather than have hard coded text littered over your code base.
 
 #### handlers
 
-These are the boys who receive the `intents` (what Alexa thinks the user said based upon your `speech-assets`), perform some kind of business logic, perhaps store some stuff in session state (or dynamo db) and return a response (something for Alexa to say back). The state stuff is necessary because the skill is very dumb, it takes some JSON in, it sends some JSON out. It's because of this pure nature, TDD (and testing in general) is so easy. When we get to the `event-samples` later you'll see what that JSON looks like. It's a good idea to keep your handlers as skinny as possible and move the business logic into the `modules` folder.
+These are the boys who receive the `intents` (what Alexa thinks the user said based upon your `speech-assets`), perform some kind of business logic, perhaps store some stuff in session state (or dynamo db) and return a response (something for Alexa to say back).
+
+The state stuff is necessary because the skill is very dumb, it takes some JSON in, it sends some JSON out. It's because of this pure nature, TDD (and testing in general) is so easy. When we get to the `event-samples` later you'll see what that JSON looks like. It's a good idea to keep your handlers as skinny as possible and move the business logic into the `modules` folder.
 
 I've gone for a rather rigid approach of commenting each handler's intent to ensure it follows the same pattern when edited. The pattern being, setup, state changes, response. As a member of the church of functional programming, it would have been preferable to get an immutable model in the intent, perform your logic, update that thing, then return it with your response. However, the SDK has gone for a more OO approach with heavy use of `this` to fire events and manage state...which is less than ideal and led to some wonky workarounds.
 
@@ -83,11 +87,13 @@ This is where your business logic should live. As mentioned above, all the heavy
 
 None of the samples have tests. I don't believe you can actually develop and ship an Alexa skill without tests. There are so many paths, branches and intents, that as soon as you add a modicum of complexity to your skill, you'll get bugs.
 
-In the tests folder we have our fixtures known as `event-samples` and a giant test file. Now, you could probably split this up but it feels like a "pre-optimisation". I quite liked having all my skill test paths together. So we have some helpers at the top:
+In the tests folder we have our fixtures known as `event-samples` and a giant test file. Now, you could probably split this up but it feels like a "pre-optimisation". I quite liked having all my skill test paths together.
+
+So we have some helpers at the top:
 
 * `sanitise` just to make life easier if you've used a multi-line template string and want to assert on the speech output
 * `getOutputSpeech` which just destructures the response, strips everything back (the ssml tags) and allows us to assert on what we care about, what Alexa said
-* `getAttribute` which again is a nice to have little abstraction to pick out our session attributes to test on
+* `getAttribute` which again is a nice to have abstraction to pick out our session attributes to test on
 * `runIntent` finally, but by no means least, this is the thing that will make all your testing a dream. It uses `aws-lambda-mock-context` to stub out all the context stuff we don't really care about and gives us a fluent API to invoke our intent with ease
 
 I've gone for a heavily nested approach to give it the feel of a conversation when you read the output. So each `describe` is what the user would say, then the test name is what you think your skill should have done. As you can see we can now nicely destructure and `assert` in quite a clean manner. Also using fat arrows means less curly braces for each `it` for the win.
@@ -153,7 +159,7 @@ Please now switch to my [demo skill](https://github.com/craigbilner/alexa-demo-s
 
 There is a suggestion that you create a flow diagram before creating your skill. This does seem like hard work, but I think it probably pays dividends for something with many paths. So that's where I started, [here](https://github.com/craigbilner/alexa-demo-skill/commit/43674dca5a4601243021852e3dc41fc6673c48ca). We'll be starting an incredibly adventurous adventure game called, the "Dangerous Forest".
 
-First we want Alexa to say something to introduce the game when it's started, so let's write that out:
+First we want Alexa to say something to introduce the game when it's started, so we write that out:
 
 `responses.js`
 
@@ -164,7 +170,7 @@ module.exports.gamePrelude = () =>
 
 The flow diagram may differ from the actual response as you test and play around with how Alexa says things. She talks rather rapidly so you'll need a large supply of commas and other punctuation to keep her in check. For Arithilistic I was also a bit of a pedant and changed the responses if they came after a pause or if multiple people were playing, basically try and keep it contextual and conversational, as it will make it feel much more polished.
 
-Add our starting game state:
+We add our starting game state:
 
 `enums.js`
 
@@ -185,14 +191,14 @@ describe('Alexa, start game', () => {
 });
 ```
 
-Which will fail :-(
+Which will fail :-)
 
 ```javascript
 1) Alexa, start game Respond with game prelude and set state to GAME_START:
      Error: timeout of 2000ms exceeded. Ensure the done() callback is being called in this test.
 ```
 
-Let's wire up our initial intents, by setting the beginning game state in `this.handler.state` and invoke our `GameIntro` intent which will live in the `GAME_START` handlers. Essentially `emithWithState` says, call the intent that it's in the handler of the current state.
+Then wire up our initial intents, by setting the beginning game state in `this.handler.state` and invoking our `GameIntro` intent, which will live in the `GAME_START` handlers. Essentially `emithWithState` says, call the intent that it's in the handler of the current state.
 
 `new-sessions.handlers.js`
 
@@ -206,7 +212,7 @@ const setStateAndInvokeEntryIntent = function() {
 };
 ```
 
-Add `game-start.handlers` to our index file and pass them into the registration function.
+And add `game-start.handlers` to our index file and pass them into the registration function.
 
 `index.js`
 
@@ -214,7 +220,7 @@ Add `game-start.handlers` to our index file and pass them into the registration 
 const gameStartHandlers = require('./handlers/game-start.handlers');
 ```
 
-The test should now pass. See the [commit for details](https://github.com/craigbilner/alexa-demo-skill/commit/b3c83c207781f14a4e5f6e134d31b1401a50d5f2).
+The test now passes. See the [commit for details](https://github.com/craigbilner/alexa-demo-skill/commit/b3c83c207781f14a4e5f6e134d31b1401a50d5f2).
 
 ### Start game failures
 
@@ -358,9 +364,11 @@ document.head.getElementsByTagName('style')[0].sheet.insertRule('.Simulator-tab 
 document.head.getElementsByTagName('style')[0].sheet.insertRule('.CodeMirror { width: 1500px !important; }', 2);
 ```
 
-Be sure to type random things and the opposite of what you would expect to really kick the tyres. If it fails, grab the JSON, stick it in your `event-samples`, write a test etc. Click the play button to get a feel for how Alexa is saying your responses.
+Be sure to type random things and the opposite of what you would expect to really kick the tyres. If it fails, grab the JSON, stick it in your `event-samples`, write a test etc. create a PR, push the code, merge if all good with your CI tools.
 
-When you think you're all done, head over to [echoism](https://echosim.io/) to try it out. You can then login to the [alexa app](http://alexa.amazon.com/spa/index.html#settings/dialogs) and see what you said and what actually happened. In fact you can play back the recording of what Alexa captured.
+Click the play button to get a feel for how Alexa is saying your responses.
+
+When you think you're all done, head over to [echoism](https://echosim.io/) to try it out. You can then login to the [alexa app](http://alexa.amazon.com/spa/index.html#settings/dialogs) and see what you said and what actually happened. In fact you can play back the recording of what Alexa captured. For example, Alexa cannot understand me when I say "two players", so for now, you're going to need a US accent or use a different utterance.
 
 # Going live
 
