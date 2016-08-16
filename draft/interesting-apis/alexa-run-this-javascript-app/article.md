@@ -334,27 +334,43 @@ module.exports.cardConfirmation = goEven =>
     `You shall go down the ${goEven ? 'cobbled' : 'broken bridge'} path`;
 ```
 
-Then in our `NumberOfCardsIntent` in `mysterious-witch.handlers.js` we implement the logic. You'll notice this rather funky thing:
+Then in our `NumberOfCardsIntent` in `mysterious-witch.handlers.js` we implement the logic. You'll notice this rather lengthy thing:
 
 ```javascript
 this.event.request.intent.slots.NoOfCards.value
 ```
 
-where you literally reach in and pluck out the value, once again would have been nicer to come in as an argument of the intent. We can then put our rather trivial logic into our modules folder which parses the number and decides whether it's odd or even. This is just to emphasise the point that you'll want to keep your intents as skinny as possible.
+where you literally reach in and pluck out the value, perhaps it would have been nicer to come in as an argument of the intent. We can then put our rather trivial logic into our modules folder which parses the number and decides whether it's odd or even. This is just to emphasise the point that you'll want to keep your intents as skinny as possible. If someone does say "blablabla" thetn it will call the `Unhandled` intent in the same handler.
 
 You can find the commit [here](https://github.com/craigbilner/alexa-demo-skill/commit/85f682cf3c46e994df64bf1f2ef1b6c791b314f6).
 
-Fill in magic key values, npm run deploy, test it out
+### Trying it out
 
-Receiving slot values, performing business logic and responding
+You've now got some basic logic for your game and you know it works because you have a ton of tests, however you don't really have a feel for the game. You'll now want to start iterating which means quickly deploying your code to your [lambda function](https://console.aws.amazon.com/lambda/home?region=us-east-1#/functions/Arithlistic?tab=code) and checking it in the [Alexa console](https://developer.amazon.com/edw/home.html#/skills/list).
 
-* [lambda](https://console.aws.amazon.com/lambda/home?region=us-east-1#/functions/Arithlistic?tab=code)
-* [alexa console](https://developer.amazon.com/edw/home.html#/skills/list)
-* [echoism](https://echosim.io/)
-* [alexa app](http://alexa.amazon.com/spa/index.html#settings/dialogs)
+If you've filled out your `deploy.env.json` and `lambda-config.js` files correctly, you should be able to `npm run deploy` which will zip up the pertinent stuff and throw it on your lambda. Then go to the Alexa console, then the test tab on the left and type as if you would talk.
 
+I recommend using this hack so you can read the requests and responses more easily rather than fiddling with the rather small boxes:
+
+```javascript
+document.head.getElementsByTagName('style')[0].sheet.insertRule('.AppManagementViewContainer { overflow: visible !important; }', 0);
+document.head.getElementsByTagName('style')[0].sheet.insertRule('.Simulator-tab { display: flex; flex-flow: column; }', 1);
+document.head.getElementsByTagName('style')[0].sheet.insertRule('.CodeMirror { width: 1500px !important; }', 2);
+```
+
+Be sure to type random things and the opposite of what you would expect to really kick the tyres. If it fails, grab the JSON, stick it in your `event-samples`, write a test etc. Click the play button to get a feel for how Alexa is saying your responses.
+
+When you think you're all done, head over to [echoism](https://echosim.io/) to try it out. You can then login to the [alexa app](http://alexa.amazon.com/spa/index.html#settings/dialogs) and see what you said and what actually happened. In fact you can play back the recording of what Alexa captured.
 
 # Going live
 
-* Implement every handler
-* Write a test for every fail
+Finally, you've slaved over your project, it's all working, just hit the "certification" button and it'll be in the app store in a couple of days...unless you're like me and a bit of a rogue with the rules.
+
+Please learn from my mistakes:
+
+* Check your invocation name against the rules. Then check it again. Then again. It might still fail, and they don't furnish you with the reason, so you may have to just have another go
+* Handler all the things. Even if it doesn't make sense, make sure you've got a "stop", "cancel", "help", "repeat" etc. for every state. Especially "repeat".
+* Add lots of different utterances to reduce the friction of your app, otherwise they'll have to keep saying very exact phrases just to get your skill to play ball
+
+
+So that's that. Tweet me @craigbilner with any skill you make or any questions you have or abuse for mistakes, thanks.
