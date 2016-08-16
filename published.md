@@ -1,3 +1,8 @@
+### Scalable Analytics in Plain Java with Keen IO and Spring Boot by Alejandro
+- [Read the guide](http://tutorials.pluralsight.com/java-and-j2ee/scalable-analytics-in-plain-java-with-keen-io-and-spring-boot)
+- [Read more from Alejandro](http://tutorials.pluralsight.com/author/alejandro-du) <img src="https://avatars.githubusercontent.com/u/1708527?v=3" width="30" height="30" alt="Alejandro" />
+- Related to: Java and J2EE
+
 ### Build a simple File storage service using VueJS, Flask and RethinkDB by Chidiebere Nnadi
 - [Read the guide](http://tutorials.pluralsight.com/python/build-a-simple-file-storage-service-using-vuejs-flask-and-rethinkdb)
 - [Read more from Chidiebere Nnadi](http://tutorials.pluralsight.com/author/andela-cnnadi) <img src="https://avatars.githubusercontent.com/u/3100850?v=3" width="30" height="30" alt="Chidiebere Nnadi" />
