@@ -297,6 +297,53 @@ This will flip our state, speak aboute entering the forest to the user and then 
 
 I'll leave it as an exercise for the reader to create a truly surprising random game, but this is where you wouldn't hard code the state but pick a random one. Hint: use a seeded random number generator to make it testable.
 
+We then do the same for the pig and witch handlers, wire them in to our `index.js` file and hopefully if Bob is your uncle, your tests will now pass.
+
+Code is [here](https://github.com/craigbilner/alexa-demo-skill/commit/747f8d25e6c16f3c0dbf8fffee5797fdb5f3c1e5).
+
+### The assets
+
+Even though we've created our game logic and all our tests are passing, Alexa won't actually be able to use it yet. Take a look at the commit [here](https://github.com/craigbilner/alexa-demo-skill/commit/7fca9e2e95aaf95456c5440257a481cf79bb4ee3). In our `intent-schema.json` we have to tell her what type of intents she should expect and for our final intent, the type of the slot.
+
+Then in `utterances.txt` we need to be able to start the game #obvs, and tell her what a person needs to say in order to invoke our intents, using curly braces for the cards slot. These go into our source control for posterity but as you've seen from the other tutorials, you'll need to take these and put them in your skills config.
+
+### Slotting one in
+
+We only stubbed out the mysterious witch's handler so we'll now finish off with how you can take parts of what the user says and perform some logic.
+
+We create `odd.intent.json` and `even.intent.json` fixtures where we pass odd and even numbers in as our slot e.g.
+
+```json
+"intent": {
+    "name": "NumberOfCardsIntent",
+    "slots": {
+        "NoOfCards": {
+            "name": "NoOfCards",
+            "value": 4
+        }
+    }
+}
+```
+
+we're also super defensive so we create a `blablabla.intent.json` fixture with no value at all. Then we...write our tests.
+
+This time our response will actually use a parameter like so:
+
+```javascript
+module.exports.cardConfirmation = goEven =>
+    `You shall go down the ${goEven ? 'cobbled' : 'broken bridge'} path`;
+```
+
+Then in our `NumberOfCardsIntent` in `mysterious-witch.handlers.js` we implement the logic. You'll notice this rather funky thing:
+
+```javascript
+this.event.request.intent.slots.NoOfCards.value
+```
+
+where you literally reach in and pluck out the value, once again would have been nicer to come in as an argument of the intent. We can then put our rather trivial logic into our modules folder which parses the number and decides whether it's odd or even. This is just to emphasise the point that you'll want to keep your intents as skinny as possible.
+
+You can find the commit [here](https://github.com/craigbilner/alexa-demo-skill/commit/85f682cf3c46e994df64bf1f2ef1b6c791b314f6).
+
 Fill in magic key values, npm run deploy, test it out
 
 Receiving slot values, performing business logic and responding
