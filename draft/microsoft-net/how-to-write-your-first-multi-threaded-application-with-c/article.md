@@ -172,7 +172,7 @@ This is because you cannot update UI from any other thread other than the UI thr
 
 There is another easiest way to update UI.
 
-**BackgroudWorkder**
+**BackgroudWorker**
 
 There is another easiest way of creating a thread specifically to update the UI. 
 BackgroundWorker
@@ -256,7 +256,5 @@ BackgroundWorker
         }
     }
 
-In this approach, instead of creating the plain old thread and using delegate to update the UI, we have BackgroundWorker component which does the work for us. It supports multiple events to run long running process (DoWork), update the UI (ProgressChanged) and you will know when the background thread has actually ended (RunWorkerCompleted). In the plain old thread, knowing the end of the thread is tricky and you have to rely either of Thread.Join or use some other wait handles that we will discuss next.
-
-we will discuss EventHandlers, Lock, Concurrent DataStructure and Task ahead.
+In this approach, instead of creating the plain old thread and using delegate to update the UI, we have BackgroundWorker component which does the work for us. It supports multiple events to run long running process (DoWork), update the UI (ProgressChanged) and you will know when the background thread has actually ended (RunWorkerCompleted). In the plain old thread, knowing the end of the thread is tricky and you have to rely either of Thread.Join or use some other wait handles.
 
