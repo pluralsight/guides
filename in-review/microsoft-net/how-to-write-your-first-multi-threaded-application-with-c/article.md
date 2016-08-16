@@ -296,3 +296,5 @@ While writing the multi-threaded application, there are bunch of known issues th
 
 In this example we have 2 threads accessing the same resource. Using the lock keyword will guarantee that the shared variable will be accessed by one one thread at a time. While thread t1 is executing the code within the lock block, thread t2 will be waiting.
 
+These basics of c# multi-threading programming will prepare you for advance topics like Concurrent data structure, Wait handles, Tasks and asynchronous programming with C#.
+
