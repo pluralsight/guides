@@ -3,7 +3,6 @@
 In this tutorial, I will be showing you how to build a simple file storage service. We shall be making use of VueJS to handle the front-end interactions, Flask for the back-end, and RethinkDB for database storage. I will be introducing a number of tools as we go, so stay tuned.
 
 In the first part of this series, I will be focusing on building out the back-end for the application. Later, I'll cover implementing some of the principles taught here in your current workflow either as a Python developer, Flask developer, or even as a programmer in general.
-In the first part of this series, I will be focusing on building out the back-end for the application. Later, I'll cover implementing some of the principles taught here in your current workflow either as a Python developer, Flask developer, or even as a programmer in general.
 
 ### Building the API
 
