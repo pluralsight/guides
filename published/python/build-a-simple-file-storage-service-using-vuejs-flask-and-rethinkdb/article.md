@@ -2,9 +2,9 @@
 
 In this tutorial, I will be showing you how to build a simple file storage service. We shall be making use of VueJS to handle the front-end interactions, Flask for the back-end, and RethinkDB for database storage. I will be introducing a number of tools as we go, so stay tuned.
 
-In the first part of this series, I will be focusing on the building out the back-end for the application. Later, I'll cover implementing some of the principles taught here in your current workflow either as a Python developer, Flask developer, or even as a programmer in general.
+In the first part of this series, I will be focusing on building out the back-end for the application. Later, I'll cover implementing some of the principles taught here in your current workflow either as a Python developer, Flask developer, or even as a programmer in general.
 
-### Buliding the API
+### Building the API
 
 Let's start by building out our API. Using this file storage service, as a user, we should be able to:
 1. Create an account
@@ -288,7 +288,7 @@ class User(RethinkDBModel):
         return pbkdf2_sha256.verify(password, _hash)
 ```
 
-A couple of things to take note of in the `validate()` method. Firstly, the `filter()` function was used here on the table object. This command takes in a dictionary that is used to search through the table. This function in some cases can also take a predicate. This predicate can be a lamda function and will be used similarly to what is done with the python `filter` function or any other function that takes a function as an argument. The function returns a cursor that can be used to access all the documents that are returned by the query. The cursor is iterable and as such we can iterate the cursor object using the `for...in` loop. In this case, we have chosen to convert the iterable object to a list using the Python list function.
+A couple of things to take note of in the `validate()` method. Firstly, the `filter()` function was used here on the table object. This command takes in a dictionary that is used to search through the table. This function in some cases can also take a predicate. This predicate can be a lambda function and will be used similarly to what is done with the python `filter` function or any other function that takes a function as an argument. The function returns a cursor that can be used to access all the documents that are returned by the query. The cursor is iterable and as such we can iterate the cursor object using the `for...in` loop. In this case, we have chosen to convert the iterable object to a list using the Python list function.
 
 As you would expect, we basically do two things here. We want to know if the email address exists at all and then if the password is correct. For the first part, we basically count the collection. If this is empty, we raise an error. For the second part, we call the `verify_password()` function to compare the password supplied with the hash in the database. We raise an exception if these don't match.
 
