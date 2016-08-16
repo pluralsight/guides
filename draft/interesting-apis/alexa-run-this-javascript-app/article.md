@@ -248,7 +248,7 @@ We add a stopped `event-samples` directory, because we didn't change state, we c
 
 And that's it. You'll notice the `core.handlers` have taken care of "cancel" and "stop" for us which we can just write tests for.
 
-When doing it for real, make sure all paths do something, usually via the prompt text or the unhandled "catch-all". Also make sure you implement an `AMAZON.HelpIntent` for each handler. If you wanted to switch state to `HELP` and do a whole help, thing then you'd obviously create a directory and test for the state switches back and forth.
+When doing it for real, make sure all paths do something, usually via the prompt text or the unhandled "catch-all". Also make sure you implement an `AMAZON.HelpIntent` for each handler. If you wanted to switch state to `HELP` and do a whole help thing, then you'd obviously create a directory and test for the state switches back and forth.
 
 Code can be found [here](https://github.com/craigbilner/alexa-demo-skill/commit/0594aaa8de5305206eba5993fa7d30147c326a08);
 
