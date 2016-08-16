@@ -1,4 +1,3 @@
-# Enabling and disabling debugging
 
 
 
@@ -98,5 +97,31 @@ Now you are  be able to see all the model's properties being changed in real tim
 
 
 
-With Augury
+With Augury you can visually traverse through the component tree and view each of the component's providers, directives and more. You can also see how the diferent providers have been injected into the components.
+
+
+![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/b9775ff9-8efc-4b92-a7dc-c91bc146fb71.gif)
+
 ## Logging
+
+
+# Enabling and disabling debugging
+
+Angular 2 applications have development mode enabled by default. Development mode enables errors to be displayed in the console and the usage of breakpoints. When you open your console in debugging mode, you would normally see this message pop up:
+```
+Angular 2 is running in the development mode. Call enableProdMode() to enable the production mode
+```
+
+Before you deploy your application and put it on a live server, make sure you disable development mode. To do so, you need to import the function in the file where you're bootstrapping the application:
+
+```
+//main.ts
+
+import { enableProdMode } from '@angular/core';
+
+ enableProdMode();
+bootstrap(AppComponent, [
+//providers, etc
+]);
+
+```
