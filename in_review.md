@@ -1,3 +1,8 @@
+### Alexa, run this JavaScript app by Craig Bilner
+- [Read the guide](http://tutorials.pluralsight.com/interesting-apis/alexa-run-this-javascript-app?status=in-review)
+- [Read more from Craig Bilner](http://tutorials.pluralsight.com/author/craigbilner) <img src="https://avatars.githubusercontent.com/u/12942968?v=3" width="30" height="30" alt="Craig Bilner" />
+- Related to: Interesting APIs (SendGrid, Twilio, etc)
+
 ### How to write your first multi-threaded application with c# by bibekdw
 - [Read the guide](http://tutorials.pluralsight.com/microsoft-net/how-to-write-your-first-multi-threaded-application-with-c?status=in-review)
 - [Read more from bibekdw](http://tutorials.pluralsight.com/author/bibekdw) <img src="https://avatars.githubusercontent.com/u/13805423?v=3" width="30" height="30" alt="bibekdw" />
