@@ -1,3 +1,8 @@
+### How to write your first multi-threaded application with c# by bibekdw
+- [Read the guide](http://tutorials.pluralsight.com/microsoft-net/how-to-write-your-first-multi-threaded-application-with-c?status=in-review)
+- [Read more from bibekdw](http://tutorials.pluralsight.com/author/bibekdw) <img src="https://avatars.githubusercontent.com/u/13805423?v=3" width="30" height="30" alt="bibekdw" />
+- Related to: Microsoft.NET (C#, ASP.NET, VB.NET, etc)
+
 ###  Building a multiplayer space shooter: Part I by Wolfram Hempel
 - [Read the guide](http://tutorials.pluralsight.com/front-end-javascript/building-a-multiplayer-space-shooter-part-i?status=in-review)
 - [Read more from Wolfram Hempel](http://tutorials.pluralsight.com/author/WolframHempel) <img src="https://avatars.githubusercontent.com/u/1503717?v=3" width="30" height="30" alt="Wolfram Hempel" />
