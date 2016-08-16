@@ -384,5 +384,10 @@ Please learn from my mistakes:
 * Handler all the things. Even if it doesn't make sense, make sure you've got a "stop", "cancel", "help", "repeat" etc. for every state. Especially "repeat".
 * Add lots of different utterances to reduce the friction of your app, otherwise they'll have to keep saying very exact phrases just to get your skill to play ball
 
+# Stuff I didn't cover because I've written lots of other words
+
+* There are many more [built-in intents](https://developer.amazon.com/public/solutions/alexa/alexa-skills-kit/docs/implementing-the-built-in-intents) than I've mentioned - use the one that makes sense
+* There are different [types of output](https://developer.amazon.com/public/solutions/alexa/alexa-skills-kit/docs/alexa-skills-kit-interface-reference) including cards, which allows you to accompany your oral skill with visual content
+* There is a lot more you can do with [slots](https://developer.amazon.com/public/solutions/alexa/alexa-skills-kit/docs/alexa-skills-kit-interaction-model-reference) including custom slots. N.B `AMAZON.Literal` is deprecated and shouldn't be used
 
 So that's that. Tweet me @CraigBilner with any skill you make or any questions you have...or abuse for my mistakes, thanks.
