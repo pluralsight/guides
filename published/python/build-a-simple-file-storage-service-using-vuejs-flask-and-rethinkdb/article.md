@@ -277,7 +277,7 @@ class User(RethinkDBModel):
             except JWTError:
                 raise ValidationError("There was a problem while trying to create a JWT token.")
         else:
-            raise ValidationError("The password you inputed was incorrect.")
+            raise ValidationError("The password you inputted was incorrect.")
     
     @staticmethod
     def hash_password(password):
@@ -409,7 +409,7 @@ We'll be creating simple models for working with the files and folders similar t
 
 ### File model
 
-What you will notice as we proceed is that the fact files are stored in a flat manner in the filesystem. All users have a folder where all their files are stored but the structure of the data logical and stored in the database. This way, we have minimal writes on the file system. To do this we will be employing some pretty neat techniques that will probably be useful to you for future projects.
+What you will notice as we proceed is that the fact files are stored in a flat manner in the filesystem. All users have a folder where all their files are stored but the structure of the data is logical and stored in the database. This way, we have minimal writes on the file system. To do this we will be employing some pretty neat techniques that will probably be useful to you for future projects.
 
 Create the base models in `/api/models.py`
 
@@ -504,9 +504,9 @@ def move(cls, obj, to):
 
 The logic here is fairly simple. We call this method when we want to move a file `obj` into folder `to`.
 
-We start by getting the current folder id for the current parent directory of the file. This is stored in the `parent_id` field of `obj`. We call the Folder model `find` function to obtain the folder object as a dictionary called `previous_folder`. After getting this object, we do two things. We remove the file object from the previous folder `previous_folder`, and add the file object to the new folder `to`. We achieve this by calling the `remove_object()` and `add_object()` methods of the Folder class. These methods remove the file ID from and add the file ID to the `objects` list in the Folder document, respectively. I will be showing what the implementation for these look like in a bit.
+We start by getting the current folder id for the current parent directory of the file. This is stored in the `parent_id` field of `obj`. We call the Folder model `find` function to obtain the folder object as a dictionary called `previous_folder`. After getting this object, we do two things. We remove the file object from the previous folder `previous_folder`, and add the file object to the new folder `to`. We achieve this by calling the `remove_object()` and `add_object()` methods of the Folder class. These methods remove the file ID from and add the file ID to the `objects` list in the Folder document, respectively. I will be showing what the implementations for these look like in a bit.
 
-We're now done with modeling the files. We can carry out basic interaction on files like creation, editing, deleting from the database, and more. 
+We're now done with modeling the files. We can carry out basic interactions on files like creating, editing, deleting from the database, and more. 
 
 Next we move on to the logic for the `Folder` model which is very similar to what we did for the files.
 
@@ -605,7 +605,7 @@ Here we first ensure that the folder we're moving to was in fact specified and i
 
 We get the tag of the folder we're trying to move. We also get the tag of the folder we're trying to move it to. We compare the number of sections in their tags. This is how we know the folder's level in the file tree. There is only one case where moving is not so straightforward: when there are more parent sections than child sections. (Parent in this case refers to the folder we're trying to move this folder to). We can move a folder to any folder on it's level and above but if the `parent_sections` is more the `child_sections`, we know that it is possible that the folder to which we're trying to move this folder might be nested in its own folder. We are very careful about this because as mentioned earlier, folder structure is purely logical and we need to ensure we don't have errors with this.
 
-For the case that the folder we're moving to is below the folder we're moving in the file tree, we must ensure that the former folder is not nested in the latter. This can simply be done by ensuring the `child_tag`, of the folder we're moving, does not begin the `parent_tag` string. We use regex to implement this and raise an exception if this happens.
+For the case that the folder we're moving to is below the folder we're moving in the file tree, we must ensure that the former folder is not nested in the latter. This can simply be done by ensuring the `child_tag` of the folder we're moving, does not begin the `parent_tag` string. We use regex to implement this and raise an exception if this happens.
 
 We're almost done now! Finally we will create the `add_object()` and `remove_object()` methods I had referred to earlier.
 
@@ -730,7 +730,7 @@ def belongs_to_user(f):
     return func
 ```
 
-- The `login_required` decorator is used to validate that users are actually logged in before accessing the method's functionality. We use this decorator to protect certain enpoints by decoding the token to ensure it's validity. We get the `id` field stored in the token and try to retrieve the corresponding user object. We also store this object in `g.user` for access by within the method definition.
+- The `login_required` decorator is used to validate that users are actually logged in before accessing the method's functionality. We use this decorator to protect certain endpoints by decoding the token to ensure it's validity. We get the `id` field stored in the token and try to retrieve the corresponding user object. We also store this object in `g.user` for access by within the method definition.
 - Similarly, we create the `validate_user` decorator which ensures that no other logged in user can access URL patterns labelled with another user's ID. This validation is purely based on the information in the URL.
 - Finally, the `belongs_to_user` decorator ensures that the only the user who created a file can access it. This decorator actually checks the `creator` field in the file document against the `user_id` supplied.
 
@@ -959,7 +959,7 @@ The `put()` method takes care of updating file and folder information. This also
 
 The `delete()` method also comes a query parameter which specifies whether or not we want to perform a hard delete. For hard delete, records are removed from the database and the files are deleted from the file system. For soft delete, we only update the file `status` field to false.
 
-We have created new methods here for called `update_where()` and `delete_where()` in the `RethinkDBModel` class for deleting and updating a filtered set from the table:
+We have created new methods here called `update_where()` and `delete_where()` in the `RethinkDBModel` class for deleting and updating a filtered set from the table:
 
 ```
 @classmethod
