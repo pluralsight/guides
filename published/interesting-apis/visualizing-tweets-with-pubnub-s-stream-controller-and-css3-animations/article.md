@@ -101,11 +101,11 @@ Or to accept default values:
 npm init -y
 ```
 
-We will use the next dependencies:
-- **twit** (to use the Twitter Stream API)
-- **pubnub** (to use the PubNub API)
-- **express** (as the web framework)
-- **express-handlebars** (as the template library)
+We will use the next dependencies (and their latest versions at the time of this writing):
+- **twit, version 2.2.4** (to use the Twitter Stream API)
+- **pubnub, version 4.0.6** (to use the PubNub API)
+- **express, version 4.14.0** (as the web framework)
+- **express-handlebars, version 3.0.0** (as the template library)
 
 Add them with the following command:
 ```
@@ -166,7 +166,7 @@ var exphbs  = require('express-handlebars');
 var config = require('./config');
 var Handlebars = require('handlebars');
 var Twit = require('twit');
-var Pubnub = require("pubnub");
+var PubNub = require("pubnub");
 ```
 
 Then, create the objects to work with the Twitter and PubNub APIs:
@@ -178,10 +178,10 @@ var T = new Twit({
     access_token_secret :  config.twitter.access_token_secret
 });
 
-var pubnub = Pubnub({
-    ssl           : config.pubnub.ssl,  
-    publish_key   : config.pubnub.publish_key,
-    subscribe_key : config.pubnub.subscribe_key
+var pubnub = new PubNub({
+    ssl          : config.pubnub.ssl,  
+    publishKey   : config.pubnub.publish_key,
+    subscribeKey : config.pubnub.subscribe_key
 });
 ```
 
@@ -263,6 +263,20 @@ app.listen(config.port, function() {
             console.log(err);
         },
     });
+    
+    pubnub.channelGroups.addChannels(
+        {
+            channels: tagsToTrack,
+            channelGroup: config.channelGroup
+        }, 
+        function (status) {
+            if (status.error) {
+                console.log(JSON.stringify(status));
+            } else {
+                // Success
+            }
+        }
+    );
 });
 ```
 
@@ -270,13 +284,12 @@ app.listen(config.port, function() {
 - **Multiplexing.** It enables you to subscribe to 50 channels over one TCP socket.
 - **Channel Groups.** It allows you to create groups of channels that can all be subscribed to with a single call. The channel limit per group is 2,000, and each client connection can subscribe to 10 channel groups.
 
-In the code above, you're adding to a channel group the hashtags to track in addition to defining success and error callbacks. When the channel group is successfully created, the following object will be printed to the console:
+In the code above, you're adding to a channel group the hashtags to track, in addition to defining success and error callbacks. When the channel group is successfully created, you'll receive an object like the following:
 ```javascript
 {
-    "status": 200,
-    "message": "OK",
-    "service": "channel-registry",
-    "error": false
+    "error":false,
+    "operation":"PNAddChannelsToGroupOperation",
+    "statusCode":200
 }
 ```
 
@@ -293,7 +306,8 @@ Using the `statuses/filter` endpoint of the API, we'll start to [track](https://
 
 Tweets are delivered as JSON objects. Here's a sample tweet object:
 ```javascript
-{ created_at: 'Mon Jul 04 05:06:34 +0000 2016',
+{ 
+  created_at: 'Mon Jul 04 05:06:34 +0000 2016',
   id: 749831746275930100,
   id_str: '749831746275930963',
   text: '#God loves you. &amp; I #love you too:).',
@@ -364,7 +378,8 @@ Tweets are delivered as JSON objects. Here's a sample tweet object:
   possibly_sensitive: false,
   filter_level: 'low',
   lang: 'en',
-  timestamp_ms: '1467608794169' }
+  timestamp_ms: '1467608794169'
+}
 ```
 
 Now, what we need to do is determine which of the tracked hashtags the tweet belongs to.
@@ -397,21 +412,24 @@ if(channel !== '') {
 	};
 
 	pubnub.publish({
-		channel : channel,
-		message : obj,
-		callback : function(m){
-			console.log(m)
-		},
-		error : function(m){
-			console.log(m)
-		}
-	});
+        channel : channel,
+        message : obj,
+    }, 
+    function (status, response) {
+        if (status.error) {
+            console.log(status);
+        } else {
+            console.log(response);
+        }
+    });
 }
 ```
 
 Once the message is published successfully, the callback prints to the console an object like this:
 ```javascript
-[ 1, 'Sent', '14679535214898372' ]
+{
+    timetoken: '14715559578183158' 
+}
 ```
 
 Back to the routes, `routes/index.js` will contain the following code:
@@ -422,25 +440,29 @@ var config = require('../config');
 var router = express.Router();
 
 router.get('/', function (req, res, next) {
-    req.app.get('pubnub').channel_group_list_channels({
-        channel_group: config.channelGroup,
-        callback : function(m){
+    req.app.get('pubnub').channelGroups.listChannels(
+        {
+            channelGroup: config.channelGroup
+        }, 
+        function (status, response) {
+            if (status.error) {
+                console.log(JSON.stringify(status));
+                return;
+            }
+
             res.render('index', {
                 hashtagsToTrack: req.app.get('tagsToTrack'),
-                hashtagsInGroup: m.channels,
+                hashtagsInGroup: response.channels,
                 config: config
             });
-        },
-        error : function (error) {
-            console.log(JSON.stringify(error));
         }
-    });
+    );
 });
 
 module.exports = router;
 ```
 
-When the `/` route is requested, we'll get the active channels in the group at that moment. The `channel_group_list_channels` method returns an object like the following on success:
+When the `/` route is requested, we'll get the active channels in the group at that moment. The `listChannels` method returns an object like the following on success:
 ```javascript
 {
     "channels": [
@@ -450,12 +472,11 @@ When the `/` route is requested, we'll get the active channels in the group at t
         "programming",
         "quote",
         "today"
-    ],
-    "group": "hashtags"
+    ]
 }
 ```
 
-Then, we pass these channels and others objects as parameters to render the view:
+Notice that we pass these channels and others objects as parameters to render the view:
 ```javascript
 callback : function(m){
     res.render('index', {
@@ -466,7 +487,7 @@ callback : function(m){
 },
 ```
 
-On the other hand, the `routes/admin.js` will contain the code to execute when the `/admin` route is requested (just like the previous route):
+On the other hand, `routes/admin.js` will contain the code to execute when the `/admin` route is requested (just like the previous route):
 ```javascript
 var express = require('express');
 var config = require('../config');
@@ -474,60 +495,70 @@ var config = require('../config');
 var router = express.Router();
 
 router.get('/', function (req, res, next) {
-	req.app.get('pubnub').channel_group_list_channels({
-        channel_group: config.channelGroup,
-        callback : function(m){
+	req.app.get('pubnub').channelGroups.listChannels(
+        {
+            channelGroup: config.channelGroup
+        }, 
+        function (status, response) {
+            if (status.error) {
+                console.log(JSON.stringify(status));
+                return;
+            }
+
             res.render('admin', {
                 hashtagsToTrack: req.app.get('tagsToTrack'),
-                hashtagsInGroup: m.channels,
+                hashtagsInGroup: response.channels,
                 config: config
             });
-        },
-        error : function (error) {
-            console.log(JSON.stringify(error));
         }
-    });
+    );
 });
 ```
 
 And the routes to add and remove channels:
 ```javascript
 router.put('/add/:channel', function (req, res, next) {
-    req.app.get('pubnub').channel_group_add_channel({
-        callback : function(m,e,c,d,f){
-            //console.log(JSON.stringify(m));
-            res.json({
-                status: 'OK'
-            });
-        },
-        error : function (error) {
-            console.log(JSON.stringify(error));
-            res.json({
-                status: 'Error'
-            });
-        },
-        channel: req.params.channel,
-        channel_group: config.channelGroup
-    });
+    req.app.get('pubnub').channelGroups.addChannels(
+        {
+            channels: [req.params.channel],
+            channelGroup: config.channelGroup
+        }, 
+        function (status) {
+            if (status.error) {
+                console.log(JSON.stringify(status));
+                res.json({
+                    status: 'Error'
+                });
+            } else {
+                //console.log(JSON.stringify(m));
+                res.json({
+                    status: 'OK'
+                });
+            }
+        }
+    );
 });
 
 router.put('/remove/:channel', function (req, res, next) {
-	req.app.get('pubnub').channel_group_remove_channel({
-        callback : function(m,e,c,d,f){
-            //console.log(JSON.stringify(m));
-            res.json({
-                status: 'OK'
-            });
-        },
-        error : function (error) {
-            console.log(JSON.stringify(error));
-            res.json({
-                status: 'Error'
-            });
-        },
-        channel: req.params.channel,
-        channel_group: config.channelGroup
-    });
+	req.app.get('pubnub').channelGroups.removeChannels(
+        {
+            channels: [req.params.channel],
+            channelGroup: config.channelGroup
+        }, 
+        function (status) {
+            if (status.error) {
+                console.log(JSON.stringify(status));
+                res.json({
+                    status: 'Error'
+                });
+            } else {
+                //console.log(JSON.stringify(m));
+                res.json({
+                    status: 'OK'
+                });
+            }
+        }
+    );
 });
 
 module.exports = router;
@@ -571,13 +602,13 @@ The index page (`views/index.hbs`) is simple:
 
     <script>
         var pubnubConfig = {
-            subscribe_key: '{{config.pubnub.subscribe_key}}'
+            subscribeKey: '{{config.pubnub.subscribe_key}}'
         };
         var channelGroup = '{{config.channelGroup}}';
         var channelUpdates = '{{config.channelUpdates}}';
     </script>
     <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
-    <script src="https://cdn.pubnub.com/pubnub-3.15.2.min.js"></script>
+    <script src="https://cdn.pubnub.com/sdk/javascript/pubnub.4.0.6.min.js"></script>
     <script src="js/index.js"></script>
 
 </body>
@@ -605,7 +636,7 @@ At the end of the page, you can see how the variables from the `config.js` file 
 ```javascript
 <script>
 	var pubnubConfig = {
-		subscribe_key: '{{config.pubnub.subscribe_key}}'
+		subscribeKey: '{{config.pubnub.subscribe_key}}'
 	};
 	var channelGroup = '{{config.channelGroup}}';
 	var channelUpdates = '{{config.channelUpdates}}';
@@ -614,39 +645,54 @@ At the end of the page, you can see how the variables from the `config.js` file 
 
 This way, we only have to deal with configuration data in one place (in `config.js`).
 
-The file `js/index.js` contains the code that listens for messages on the channel group:
+The file `js/index.js` contains the code that listens for updates and messages on the channel group:
 ```javascript
 $(document).ready(function() {
 
-    var pubnub = PUBNUB(pubnubConfig);
+    var pubnub = new PubNub(pubnubConfig);
+
+    pubnub.addListener({
+        message: function(data) {
+            var m = data.message;
+
+            if(data.subscribedChannel === channelUpdates) { // updates to the channel group
+                console.log(m);
+
+                if(m.add) {
+                    $('#' + m.hashtag).css("visibility", "visible"); // show the added hashtag
+                } else {
+                    $('#' + m.hashtag).css("visibility", "hidden"); // hide the removed hashtag
+                    $('a.' + m.hashtag).each(function () { // hide all the tweets shown that belong to that hashtag
+                        var $this = $(this);
+                        $this.hide();
+                    });
+                }
+            } else { // tweets to add to the window
+                var x = Math.random() * 100;
+                var y = Math.random() * 100;
+                var style = 'top:' + y + '%; left:' + x + '%;';
+                (function (el) {
+                    setTimeout(function () {
+                        el.remove();
+                    }, 10000);
+                } (
+                    $('<a href="' + m.url + '" class="' + m.hashtag + '" title="' + m.text +'" style="' + style +'" target="_blank"></a>')
+                        .appendTo('.area')
+                )
+                );
+            }
+        }
+    });
+
+    // Listen for updates to the channel group
+    pubnub.subscribe({
+        channels: [channelUpdates]
+    });
 
     // Listen for tweets to add to the window
     pubnub.subscribe({
-        message : function(m) {
-            //console.log(m);
-
-            var x = Math.random() * 100;
-            var y = Math.random() * 100;
-            var style = 'top:' + y + '%; left:' + x + '%;';
-            (function (el) {
-                setTimeout(function () {
-                    el.remove();
-                }, 10000);
-            }(
-                $('<a href="' + m.url + '" class="' + m.hashtag + '" title="' + m.text +'" style="' + style +'" target="_blank"></a>')
-                    .appendTo('.area'))
-            );
-        },
-        connect : function () {
-            console.log('Connected to receive tweets');
-        },
-        error : function (error) {
-            console.log(JSON.stringify(error));
-        },
-        channel_group: channelGroup
+        channelGroups: [channelGroup]
     });
-
-    ...
 });
 ```
 
@@ -727,33 +773,36 @@ The other part of `js/index.js` listens for updates to the channel group (adding
 ```javascript
 $(document).ready(function() {
 
-    var pubnub = PUBNUB(pubnubConfig);
+    var pubnub = new PubNub(pubnubConfig);
 
-    ...
+    pubnub.addListener({
+        message: function(data) {
+            var m = data.message;
+
+            if(data.subscribedChannel === channelUpdates) { // updates to the channel group
+                console.log(m);
+
+                if(m.add) {
+                    $('#' + m.hashtag).css("visibility", "visible"); // show the added hashtag
+                } else {
+                    $('#' + m.hashtag).css("visibility", "hidden"); // hide the removed hashtag
+                    $('a.' + m.hashtag).each(function () { // hide all the tweets shown that belong to that hashtag
+                        var $this = $(this);
+                        $this.hide();
+                    });
+                }
+            } else { // tweets to add to the window
+                ...
+            }
+        }
+    });
 
     // Listen for updates to the channel group
     pubnub.subscribe({
-        message : function(m) {
-            console.log(m);
-
-            if(m.add) {
-                $('#' + m.hashtag).css("visibility", "visible"); // show the added hashtag
-            } else {
-                $('#' + m.hashtag).css("visibility", "hidden"); // hide the removed hashtag
-                $('a.' + m.hashtag).each(function () { // hide all the tweets shown that belong to that hashtag
-                    var $this = $(this);
-                    $this.hide();
-                });
-            }
-        },
-        connect : function () {
-            console.log('Connected to receive hashtags updates');
-        },
-        error : function (error) {
-            console.log(JSON.stringify(error));
-        },
-        channel: channelUpdates
+        channels: [channelUpdates]
     });
+
+    ...
 });
 ```
 
@@ -794,14 +843,14 @@ The admin page (`views/admin.hbs`) is simple too:
 
     <script>
         var pubnubConfig = {
-            subscribe_key: '{{config.pubnub.subscribe_key}}',
-            publish_key: '{{config.pubnub.publish_key}}'
+            subscribeKey: '{{config.pubnub.subscribe_key}}',
+            publishKey: '{{config.pubnub.publish_key}}'
         };
         var channelGroup = '{{config.channelGroup}}';
         var channelUpdates = '{{config.channelUpdates}}';
     </script>
     <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
-    <script src="https://cdn.pubnub.com/pubnub-3.15.2.min.js"></script>
+    <script src="https://cdn.pubnub.com/sdk/javascript/pubnub.4.0.6.min.js"></script>
     <script src="js/admin.js"></script>
 
 </body>
@@ -822,8 +871,8 @@ Again, the `pubnubConfig` object and the channel names are configured at the end
 ```javascript
 <script>
 	var pubnubConfig = {
-		subscribe_key: '{{config.pubnub.subscribe_key}}',
-		publish_key: '{{config.pubnub.publish_key}}'
+		subscribeKey: '{{config.pubnub.subscribe_key}}',
+		publishKey: '{{config.pubnub.publish_key}}'
 	};
 	var channelGroup = '{{config.channelGroup}}';
 	var channelUpdates = '{{config.channelUpdates}}';
@@ -834,7 +883,7 @@ This way, the script in `js/admin.js` can add or remove a channel and publish a 
 ```javascript
 $(document).ready(function() {
 
-    var pubnub = PUBNUB(pubnubConfig);
+    var pubnub = new PubNub(pubnubConfig);
 
     // Add/Remove a channel from the group and publish an event to notifiy users
     $('input[type="checkbox"]').change(function() {
@@ -851,9 +900,8 @@ $(document).ready(function() {
                         "hashtag": hashtag,
                         "add":  isChecked
                     },
-                    callback : function(m){
-                        console.log(m)
-                    }
+                }, function(m){
+                    console.log(m)
                 });
             }
         });
