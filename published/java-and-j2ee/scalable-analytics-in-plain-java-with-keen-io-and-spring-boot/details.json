@@ -3,12 +3,7 @@
     "author_name": "alejandro-du",
     "author_real_name": "Alejandro",
     "branch": "master",
-    "branches": [
-        [
-            "adityavarshney",
-            "adityavarshney-java-and-j2ee-scalable-analytics-in-plain-java-with-keen-io-and-spring-boot"
-        ]
-    ],
+    "branches": [],
     "filename": "article.md",
     "first_commit": "ec9aa34fb04c1230992f5c0e413dfce58d024ed2",
     "image_url": "https://avatars.githubusercontent.com/u/1708527?v=3",
