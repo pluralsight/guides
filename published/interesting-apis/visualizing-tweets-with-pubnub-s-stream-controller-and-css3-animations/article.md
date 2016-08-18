@@ -253,17 +253,6 @@ app.listen(config.port, function() {
     console.log('Server up and listening on port %d', config.port);
 
     // Add channels to the group
-    pubnub.channel_group_add_channel({
-        channel_group: config.channelGroup,
-        channel: tagsToTrack,
-        callback: function(m){
-            console.log(m);
-        },
-        error: function(err){
-            console.log(err);
-        },
-    });
-    
     pubnub.channelGroups.addChannels(
         {
             channels: tagsToTrack,
