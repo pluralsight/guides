@@ -1,0 +1,15 @@
+{
+    "_publish_status": "draft",
+    "author_name": "stefanprodan",
+    "author_real_name": "Stefan Prodan",
+    "branch": "master",
+    "branches": [],
+    "filename": "article.md",
+    "first_commit": "59a2b9601f094794c6b85bfc469660d5198c3b89",
+    "image_url": "https://avatars.githubusercontent.com/u/3797675?v=3",
+    "stacks": [
+        "Microsoft.NET (C#, ASP.NET, VB.NET, etc)"
+    ],
+    "thumbnail_url": null,
+    "title": "Build a scalable, fault tolerant system with ASP.NET Core and RethinkDB on Docker Swarm mode"
+}
