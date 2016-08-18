@@ -11,10 +11,6 @@
         [
             "andela-calim",
             "andela-calim-python-build-a-simple-file-storage-service-using-vuejs-flask-and-rethinkdb"
-        ],
-        [
-            "RainbowSeven",
-            "RainbowSeven-python-build-a-simple-file-storage-service-using-vuejs-flask-and-rethinkdb"
         ]
     ],
     "filename": "article.md",
