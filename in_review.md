@@ -18,11 +18,6 @@
 - [Read more from Wolfram Hempel](http://tutorials.pluralsight.com/author/WolframHempel) <img src="https://avatars.githubusercontent.com/u/1503717?v=3" width="30" height="30" alt="Wolfram Hempel" />
 - Related to: Front-End JavaScript (Angular, React, Meteor, etc)
 
-### How to predict if you'll be able to get a bank loan, using Red Sqirl by Justyna888
-- [Read the guide](http://tutorials.pluralsight.com/big-data/how-to-predict-if-you-ll-be-able-to-get-a-bank-loan-using-red-sqirl?status=in-review)
-- [Read more from Justyna888](http://tutorials.pluralsight.com/author/Justyna888) <img src="https://avatars.githubusercontent.com/u/20835452?v=3" width="30" height="30" alt="Justyna888" />
-- Related to: Big Data (Hadoop, Spark, etc)
-
 ### Using the REST Interface with Licas by discompsys
 - [Read the guide](http://tutorials.pluralsight.com/java-and-j2ee/using-the-rest-interface-with-licas?status=in-review)
 - [Read more from discompsys](http://tutorials.pluralsight.com/author/discompsys) <img src="https://avatars.githubusercontent.com/u/20437503?v=3" width="30" height="30" alt="discompsys" />
