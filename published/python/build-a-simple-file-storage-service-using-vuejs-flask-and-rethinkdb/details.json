@@ -3,12 +3,7 @@
     "author_name": "andela-cnnadi",
     "author_real_name": "Chidiebere Nnadi",
     "branch": "master",
-    "branches": [
-        [
-            "adityavarshney",
-            "adityavarshney-python-build-a-simple-file-storage-service-using-vuejs-flask-and-rethinkdb"
-        ]
-    ],
+    "branches": [],
     "filename": "article.md",
     "first_commit": "cb550a40ad510eb471e465b6600767160cb99ac0",
     "image_url": "https://avatars.githubusercontent.com/u/3100850?v=3",
