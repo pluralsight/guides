@@ -1,3 +1,8 @@
+### Build a scalable, fault tolerant system with ASP.NET Core and RethinkDB on Docker Swarm mode by Stefan Prodan
+- [Read the guide](http://tutorials.pluralsight.com/microsoft-net/build-a-scalable-fault-tolerant-system-with-asp-net-core-and-rethinkdb-on-docker-swarm-mode?status=in-review)
+- [Read more from Stefan Prodan](http://tutorials.pluralsight.com/author/stefanprodan) <img src="https://avatars.githubusercontent.com/u/3797675?v=3" width="30" height="30" alt="Stefan Prodan" />
+- Related to: Microsoft.NET (C#, ASP.NET, VB.NET, etc)
+
 ### Use Fanout to Send Messages to Your Ionic2 App in About 20 Minutes  by Seth Bunke
 - [Read the guide](http://tutorials.pluralsight.com/front-end-javascript/use-fanout-to-send-messages-to-your-ionic2-app-in-about-20-minutes?status=in-review)
 - [Read more from Seth Bunke](http://tutorials.pluralsight.com/author/sethbunke) <img src="https://avatars.githubusercontent.com/u/20564909?v=3" width="30" height="30" alt="Seth Bunke" />
