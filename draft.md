@@ -1,8 +1,3 @@
-### Build a scalable, fault tolerant system with ASP.NET Core and RethinkDB on Docker Swarm mode by Stefan Prodan
-- [Read the guide](http://tutorials.pluralsight.com/microsoft-net/build-a-scalable-fault-tolerant-system-with-asp-net-core-and-rethinkdb-on-docker-swarm-mode?status=draft)
-- [Read more from Stefan Prodan](http://tutorials.pluralsight.com/author/stefanprodan) <img src="https://avatars.githubusercontent.com/u/3797675?v=3" width="30" height="30" alt="Stefan Prodan" />
-- Related to: Microsoft.NET (C#, ASP.NET, VB.NET, etc)
-
 ### Getting started with Webpack: Part 1 by Ilango Rajagopal
 - [Read the guide](http://tutorials.pluralsight.com/front-end-javascript/getting-started-with-webpack-part-1?status=draft)
 - [Read more from Ilango Rajagopal](http://tutorials.pluralsight.com/author/ilangorajagopal) <img src="https://avatars.githubusercontent.com/u/4386534?v=3" width="30" height="30" alt="Ilango Rajagopal" />
