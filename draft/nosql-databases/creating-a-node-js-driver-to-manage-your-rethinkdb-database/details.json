@@ -1,0 +1,15 @@
+{
+    "_publish_status": "draft",
+    "author_name": "MiguhRuiz",
+    "author_real_name": "Miguh Ruiz",
+    "branch": "master",
+    "branches": [],
+    "filename": "article.md",
+    "first_commit": "8c2b63c0144ab44b6487fa6bcef61e07c143bb44",
+    "image_url": "https://avatars.githubusercontent.com/u/5301814?v=3",
+    "stacks": [
+        "NoSQL Databases (MongoDB, Cassandra, etc)"
+    ],
+    "thumbnail_url": null,
+    "title": "Creating a Node.JS driver to manage your RethinkDB database"
+}
