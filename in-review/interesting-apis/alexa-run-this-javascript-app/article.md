@@ -61,9 +61,9 @@ this allows us to deploy our code with a gulp task
 * `index.js` - the entry to our skill - it sets the environment path to help our AWS lambda traverse our files, registers our `appId` and `handlers` (which we'll come to) and kicks the whole thing off
 * the `lambda-config.js` which will look very familiar to the screen in your [AWS lambda console](https://console.aws.amazon.com/lambda/home?region=us-east-1). Set these values as desired
 * `package.json` which - I'm going to assume you know. The only real points to note are the scripts:
- * Finding a good way to deploy an Alexa skill is a bit of a PITA, this is [not a deployment workflow](https://developer.amazon.com/public/solutions/alexa/alexa-skills-kit/docs/deploying-a-sample-skill-to-aws-lambda#preparing-a-nodejs-sample-to-deploy-in-lambda). I found these two examples ([Rick's](https://github.com/rickwargo/alexa-skill-template) and [Thoughtworks'](https://github.com/ThoughtWorksStudios/node-aws-lambda)) which I borrowed heavily from for my own `gulpfile`. However, they both like a `PROD` install whereas I've gone for a slightly different approach to avoid doing an install every time I deploy. When you `npm i` for your skill, it'll stick the `PROD` dependencies straight into `dist`.
- * I've also stuck `iron-node` in there, which I've had mixed experiences with, but is actually invaluable when you want to debug something easily in Chrome's dev tools. Please feel free to debug your node code your preferred way though, such as through your IDE.
-* `responses.js` should be where you put anything Alexa says. I would do them as functions to have a consistent API where you can pass in values to be dynamically built. In fact I refactored these out to call the emit methods in order to store the last known reponses and states to help us continue after a "pause". Having all the responses in one place makes testing easier (as you can change the phrases without breaking your tests) and when i18n comes in, you can swap this file out, rather than have hard coded text littered over your code base.
+ * Finding a good way to deploy an Alexa skill is a bit of a PITA, this is [not a deployment workflow](https://developer.amazon.com/public/solutions/alexa/alexa-skills-kit/docs/deploying-a-sample-skill-to-aws-lambda#preparing-a-nodejs-sample-to-deploy-in-lambda). I found these two examples ([Rick's](https://github.com/rickwargo/alexa-skill-template) and [Thoughtworks'](https://github.com/ThoughtWorksStudios/node-aws-lambda)) which I borrowed heavily from for my own `gulpfile`. However, they both like a `PROD` install whereas I've gone for a slightly different approach to avoid doing an install every time I deploy. When you `npm i` for your skill, it'll stick the `PROD` dependencies straight into `dist`
+ * I've also stuck `iron-node` in there, which I've had mixed experiences with, but is actually invaluable when you want to debug something easily in Chrome's dev tools. Please feel free to debug your node code your preferred way though, such as through your IDE
+* `responses.js` should be where you put anything Alexa says. I would do them as functions to have a consistent API where you can pass in values to be dynamically built. In fact I refactored these out to call the emit methods in order to store the last known reponses and states to help us continue after a "pause". Having all the responses in one place makes testing easier (as you can change the phrases without breaking your tests) and when i18n comes in, you can swap this file out, rather than have hard coded text littered over your code base
 
 #### handlers
 
@@ -374,7 +374,7 @@ Be sure to type random things and the opposite of what you would expect to reall
 
 Click the play button to get a feel for how Alexa is saying your responses and punctuate as necessary.
 
-When you think you're all done, head over to [echoism](https://echosim.io/) to try it out. You can then login to the [alexa app](http://alexa.amazon.com/spa/index.html#settings/dialogs) and see what you said and what actually happened. In fact you can play back the recording of what Alexa captured and her interpretation. For example, Alexa cannot understand me when I say "two players", so for now, you're going to need a US accent or use a different utterance.
+When you think you're all done, head over to [echosim](https://echosim.io/) to try it out. You can then login to the [alexa app](http://alexa.amazon.com/spa/index.html#settings/dialogs) and see what you said and what actually happened. In fact you can play back the recording of what Alexa captured and her interpretation. For example, Alexa cannot understand me when I say "two players", so for now, you're going to need a US accent or use a different utterance.
 
 # Going live
 
@@ -383,7 +383,7 @@ Finally, you've slaved over your project, it's all working, just hit the "certif
 Please learn from my mistakes:
 
 * Check your invocation name against the [rules](https://developer.amazon.com/appsandservices/solutions/alexa/alexa-skills-kit/docs/choosing-the-invocation-name-for-an-alexa-skill). Then check it again. Then again. It might still fail, and they don't furnish you with the reason, so you may just need to have another go
-* Handler all the things. Even if it doesn't make sense, make sure you've got a "stop", "cancel", "help", "repeat" etc. for every state. Especially "repeat".
+* Handler all the things. Even if it doesn't make sense, make sure you've got a "stop", "cancel", "help", "repeat" etc. for every state. Especially "repeat"
 * Add lots of different utterances to reduce the friction of your app, otherwise they'll have to keep saying very exact phrases just to get your skill to play ball
 
 # Stuff I didn't cover because I've written lots of other words
