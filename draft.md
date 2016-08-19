@@ -1,8 +1,3 @@
-### Asp Net Core with Angular by Vinay Joshi
-- [Read the guide](http://tutorials.pluralsight.com/microsoft-net/asp-net-core-with-angular?status=draft)
-- [Read more from Vinay Joshi](http://tutorials.pluralsight.com/author/vinay-joshi) <img src="https://avatars.githubusercontent.com/u/1694994?v=3" width="30" height="30" alt="Vinay Joshi" />
-- Related to: Microsoft.NET (C#, ASP.NET, VB.NET, etc)
-
 ### Getting started with Webpack: Part 1 by Ilango Rajagopal
 - [Read the guide](http://tutorials.pluralsight.com/front-end-javascript/getting-started-with-webpack-part-1?status=draft)
 - [Read more from Ilango Rajagopal](http://tutorials.pluralsight.com/author/ilangorajagopal) <img src="https://avatars.githubusercontent.com/u/4386534?v=3" width="30" height="30" alt="Ilango Rajagopal" />
