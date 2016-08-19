@@ -861,7 +861,7 @@ handleDelete(id) {
 ```
 
 
-Everything works, but we’re encountering the same problem we had with adding a new item; the page has to be restarted in order to see the results. Our last step is to change that; we will remove the item from the database once it finishes deleting server-side. 
+Everything works, but we’re encountering the same problem we had with adding a new item; the page has to be restarted in order to see the results. Our last step is to change that; we will update the state by removing the item from the array of items upon successful deletion from the database. 
 
 ```javascript
 // app/assets/javascripts/components/_body.js.jsx
