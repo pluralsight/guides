@@ -1,3 +1,8 @@
+### RebornDB : Distributed solution for Redis by Sanjeev Murthy
+- [Read the guide](http://tutorials.pluralsight.com/nosql-databases/reborndb-distributed-solution-for-redis?status=draft)
+- [Read more from Sanjeev Murthy](http://tutorials.pluralsight.com/author/SanjeevMurthy) <img src="https://avatars.githubusercontent.com/u/10756352?v=3" width="30" height="30" alt="Sanjeev Murthy" />
+- Related to: NoSQL Databases (MongoDB, Cassandra, etc)
+
 ### Creating a Node.JS driver to manage your RethinkDB database by Miguh Ruiz
 - [Read the guide](http://tutorials.pluralsight.com/nosql-databases/creating-a-node-js-driver-to-manage-your-rethinkdb-database?status=draft)
 - [Read more from Miguh Ruiz](http://tutorials.pluralsight.com/author/MiguhRuiz) <img src="https://avatars.githubusercontent.com/u/5301814?v=3" width="30" height="30" alt="Miguh Ruiz" />
