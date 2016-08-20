@@ -16,6 +16,9 @@ Websites are prone to security risks and Web servers as well due to insecure sof
 
 The goal of the OWASP  is to raise awareness about application security by describing the most important areas of concern that software developers must be aware of.
 
+![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/2bb93931-db94-4cf4-ac6d-82eb3dd560f4.jpg)
+
+
 ### What are the [Top-10](https://www.owasp.org/index.php/Top_10_2013-Top_10) Vulnerablities ?
 
 1. SQL-Injection
@@ -28,3 +31,8 @@ The goal of the OWASP  is to raise awareness about application security by descr
 8. Cross-Site Request Forgery (CSRF)
 9. Using Components with Known Vulnerabilities
 10. Unvalidated Redirects and Forwards
+
+
+Threat Agents | Attack Vectors | Security Weakness | Technical Impacts
+------------------- | -------------------- | ------------
+Content from cell 1 | Pre   | Content from cell 3 |
