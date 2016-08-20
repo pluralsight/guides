@@ -136,7 +136,7 @@ With Augury you can visually traverse through the component tree and view each o
  
  As of the time of the writing of this gudie, Angular 2 does not have an equivalent of Angular 1's [$log](https://docs.angularjs.org/api/ng/service/$log) service. However, there are two packages that provide similar functionality - [angular2-log](https://www.npmjs.com/package/angular2-log) and [angular2-logger](https://www.npmjs.com/package/angular2-logger). For this guide, we'll go through using [angular2-logger](https://www.npmjs.com/package/angular2-logger) because it is more thoroughly developed and stable.
  
- ### Installing
+ ### Installing a logger
  
  First, we need to install the package. Open the terminal in the root directory of your project:
  
@@ -165,7 +165,7 @@ $ npm install --save angular2-logger
 <script src="node_modules/angular2-logger/bundles/angular2-logger.js"></script>
 ```
 
-### Using 
+### Using the logger
 
 Using the logger is fairly easy. Whenever in your application you choose to use the logger, you need to do two things:
 
