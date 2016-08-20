@@ -1,12 +1,33 @@
+# Enabling and disabling debugging
 
 
 
+Angular 2 applications have development mode enabled by default. Development mode enables errors to be displayed in the console and the usage of breakpoints. When you open your console in debugging mode, you would normally see this message pop up:
+```
+Angular 2 is running in the development mode. Call enableProdMode() to enable the production mode
+```
+
+Before you deploy your application and put it on a live server, make sure you disable development mode. To do so, you need to import the function in the file where you're bootstrapping the application:
+
+```
+//main.ts
+
+import { enableProdMode } from '@angular/core';
+
+ enableProdMode();
+bootstrap(AppComponent, [
+//providers, etc
+]);
+
+```
+
+Before you dive in this guide, make sure your application has production mode disabled so that you can have access to the all the methods described below.
 
 
 
 ## Console
 If you like being old school, there is a neat way to debug your Angular 2 application from the console.
-To start off, you can use the Chrome Devtools to get the refernce of an element you have selected by using <code> $0 </code>.
+To start off, you can use the [Chrome Developer Tools (Devtools for brevity)](https://developer.chrome.com/devtools) to get the refernce of an element you have selected by using <code> $0 </code>.
 
 ![chrome-dev-tools-selecting-element](https://raw.githubusercontent.com/pluralsight/guides/master/images/3d8e63dc-d62e-433d-88ae-347d436b452a.gif)
 
@@ -50,10 +71,11 @@ To enable sourcemaps, edit <code> tsconfig.json </code>
 ```json
 
 {
+  //...
   "compilerOptions": {
     "sourceMap": true,
-
   }
+  //...
 }
 ```
 
@@ -70,6 +92,7 @@ search(term: string) {
 
 ![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/ec5840ee-3d67-4fdd-a532-f0649aba9899.06)
 
+ When you use it, <code>debugger</code> is going to pause the code in your application and let you review its state. 
 ##  JSON pipe
 
  [Pipes](https://angular.io/docs/ts/latest/guide/pipes.html) are used to represent data in a particular manner in Angular 2. They bear close resemblance to Angular 1's [filters](https://docs.angularjs.org/api/ng/filter/filter). 
@@ -104,24 +127,25 @@ With Augury you can visually traverse through the component tree and view each o
 
 ## Logging
 
-
-# Enabling and disabling debugging
-
-Angular 2 applications have development mode enabled by default. Development mode enables errors to be displayed in the console and the usage of breakpoints. When you open your console in debugging mode, you would normally see this message pop up:
+ Loggers are a great way to structure the errors in your application and provide more detailed bug reports.
+ 
+ As of the time of the writing of this gudie, Angular 2 does not have an equivalent of Angular 1's [$log](https://docs.angularjs.org/api/ng/service/$log) service. However, there are two packages that provide similar functionality - [angular2-log](https://www.npmjs.com/package/angular2-log) and [angular2-logger](https://www.npmjs.com/package/angular2-logger). For this guide, we'll go through using [angular2-logger](https://www.npmjs.com/package/angular2-logger) because it is more thoroughly developed and stable.
+ 
+ ### Installing
+ 
+ First, we need to install the package. Open the terminal in the root directory of your project:
+ 
+```bash
+$ npm install --save angular2-logger
 ```
-Angular 2 is running in the development mode. Call enableProdMode() to enable the production mode
-```
-
-Before you deploy your application and put it on a live server, make sure you disable development mode. To do so, you need to import the function in the file where you're bootstrapping the application:
-
-```
-//main.ts
-
-import { enableProdMode } from '@angular/core';
-
- enableProdMode();
-bootstrap(AppComponent, [
-//providers, etc
-]);
-
-```
+ 
+ Then, import the <code>Logger</code> in the file where your Angular 2's  <code> bootstrap() </code> function resides and put it as an argument in the function. This will inject the <code>Logger</code> on the top level and  make the service available in your whole application.
+ 
+ **main.ts**
+ ```typescript
+ import {Logger} from "angular2-logger/core";
+ ```
+ 
+```typescript
+ bootstrap(AppComponent, [Logger]);
+ ```
