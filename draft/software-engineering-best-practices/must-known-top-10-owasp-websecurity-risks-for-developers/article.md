@@ -1,5 +1,5 @@
 # Critical Security Areas
-In this guide will talk about why Web security is so important and will understand primary risks that exposes website to attackers. [Daily DDos attacks](http://www.digitalattackmap.com/#anim=1&color=0&country=ALL&list=0&time=17033&view=map)
+In this guide will talk about why Web security is so important and will understand primary risks that exposes website to attackers by covering  OWASP top 10 Vulnerablities. [Daily DDos attacks](http://www.digitalattackmap.com/#anim=1&color=0&country=ALL&list=0&time=17033&view=map) 
 
 ### About OWASP
 
@@ -16,4 +16,15 @@ Websites are prone to security risks and Web servers as well due to insecure sof
 
 The goal of the OWASP  is to raise awareness about application security by describing the most important areas of concern that software developers must be aware of.
 
+### What are the [Top-10](https://www.owasp.org/index.php/Top_10_2013-Top_10) Vulnerablities ?
 
+1. SQL-Injection
+2. Broken Authentication and Session Management
+3. Cross-Site Scripting (XSS)
+4. Insecure Direct Object References
+5. Security Misconfiguration
+6. Sensitive Data Exposure
+7. Missing Function Level Access Control
+8. Cross-Site Request Forgery (CSRF)
+9. Using Components with Known Vulnerabilities
+10. Unvalidated Redirects and Forwards
