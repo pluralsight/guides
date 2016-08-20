@@ -90,7 +90,8 @@ search(term: string) {
 ```
 
 
-![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/ec5840ee-3d67-4fdd-a532-f0649aba9899.06)
+![debugger](https://raw.githubusercontent.com/pluralsight/guides/master/images/f2f737b7-c602-4f62-99db-eea4d4686353.002)
+
 
  When you use it, <code>debugger</code> is going to pause the code in your application and let you review its state. 
 ##  JSON pipe
@@ -106,7 +107,8 @@ search(term: string) {
 ```
 
 
-![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/fc69c2d4-829d-4f52-80d7-254a66969fe1.04)
+![json pipes](https://raw.githubusercontent.com/pluralsight/guides/master/images/a7be5045-6470-4f93-9c29-a296e0f98ac3.001)
+
 
 Now you are  be able to see all the model's properties being changed in real time as you interact with it.
 
@@ -149,3 +151,41 @@ $ npm install --save angular2-logger
 ```typescript
  bootstrap(AppComponent, [Logger]);
  ```
+ 
+ Finally, include the script in  <code>index.html</code>. Make sure you incldue it under <code>SystemJS</code>'s configuration, as the package relies on it.
+ 
+ **index.html**
+```html
+<!-- 2. Configure SystemJS -->
+<script src="systemjs.config.js"></script>
+<!-- 3. Import logger -->
+<script src="node_modules/angular2-logger/bundles/angular2-logger.js"></script>
+```
+
+### Using 
+
+Using the logger is fairly easy. Whenever in your application you choose to use the logger, you need to do two things:
+
+**1. Import it**
+```ts
+import {Logger} from "angular2-logger/core";
+```
+**2. Add it in the constructor of the component/service/directive**
+```
+constructor(private _logger:Logger) {
+//
+}
+```
+
+You can now use the logger by referring to it as <code>this._logger </code>:
+```
+this._logger.error('This is a priority level 1 error message...');
+this._logger.warn('This is a priority level 2 warning message...');
+```
+
+
+![logging](https://raw.githubusercontent.com/pluralsight/guides/master/images/2ddc9445-9d60-4e82-8601-069b222bf5d2.001)
+
+
+
+That was all! I hope this guide saved some of your time on researching for options. If you'd like to contribute to this guide, please don't hesitate to edit it.
