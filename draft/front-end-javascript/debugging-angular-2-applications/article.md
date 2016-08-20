@@ -1,6 +1,9 @@
+Even though Angular 2 is still young, there are plenty of debugging techniques and methods you can use.
+
+This guide gives a comprehensive overview of the various ways you can debug an Angular 2 applications. To make the most out of Angular 2 debugging, it is recommended that you use [Google Chrome](https://www.google.com/chrome/browser/desktop/) as most of the examples presented here rely on the [Chrome Developer Tools](https://developer.chrome.com/devtools)
+
+
 # Enabling and disabling debugging
-
-
 
 Angular 2 applications have development mode enabled by default. Development mode enables errors to be displayed in the console and the usage of breakpoints. When you open your console in debugging mode, you would normally see this message pop up:
 ```
