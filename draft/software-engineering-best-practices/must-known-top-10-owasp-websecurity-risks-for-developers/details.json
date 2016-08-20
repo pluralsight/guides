@@ -1,0 +1,15 @@
+{
+    "_publish_status": "draft",
+    "author_name": "SanjeevMurthy",
+    "author_real_name": "Sanjeev Murthy",
+    "branch": "master",
+    "branches": [],
+    "filename": "article.md",
+    "first_commit": "d8ddedafcac9f28092fa1b0726f5269c1534b2fe",
+    "image_url": "https://avatars.githubusercontent.com/u/10756352?v=3",
+    "stacks": [
+        "Software Engineering Best Practices"
+    ],
+    "thumbnail_url": null,
+    "title": "Must known Top-10 OWASP WebSecurity risks for Developers"
+}
