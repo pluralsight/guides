@@ -1,3 +1,8 @@
+### voice controlled fish tank by piratemrs
+- [Read the guide](http://tutorials.pluralsight.com/node-js/voice-controlled-fish-tank?status=in-review)
+- [Read more from piratemrs](http://tutorials.pluralsight.com/author/piratemrs) <img src="https://avatars.githubusercontent.com/u/21154223?v=3" width="30" height="30" alt="piratemrs" />
+- Related to: Node.js
+
 ### Debugging Angular 2 applications by Hristo Georgiev
 - [Read the guide](http://tutorials.pluralsight.com/front-end-javascript/debugging-angular-2-applications?status=in-review)
 - [Read more from Hristo Georgiev](http://tutorials.pluralsight.com/author/Kaizeras) <img src="https://avatars.githubusercontent.com/u/6340189?v=3" width="30" height="30" alt="Hristo Georgiev" />
