@@ -1,4 +1,4 @@
-### control your fish tank from anywhere in the world with voice control
+### control your fish tank from anywhere in the world with Alexa voice control 
 
 #### Overview
 ![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/d2cf9635-3fed-4415-b396-b20d2ec9223d.jpg)
@@ -175,21 +175,64 @@ now submit your skill to certification
 
 ![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/c694a81e-23b3-4d26-859a-710d9984db8b.10)
 
+
+## Step 4 : AWS Iot
+return to AWS console again and choose AWS Iot
+
+
+![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/ed230c74-bca3-431a-9d77-1c609842c306.39)
+
+click on create a resource
+
 ![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/8b1481c6-2f7e-423d-a7be-321ae53f55dd.12)
+
+we need 3 resource : a thing ,a policy, and a certificate
+
 
 ![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/18909bdd-6752-422e-9156-60308dcc73fc.13)
 
-![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/72eadf27-910f-496b-9d5f-af2788f2d7ed.17)
+first create a thing name it fish_tank and click create
 
 ![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/744d4212-29d4-4c6a-9fb5-25b18bf226f6.15)
 
-![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/7bc1ed88-339c-4b6a-99e8-186f3844f7c5.19)
+create a certificate , tick activate and click 1 click certificate create
+
+and download the certificates we will need to add them to the raspberry pi in folder called "certs" on Desktop to be able to connect to iot
+
+![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/72eadf27-910f-496b-9d5f-af2788f2d7ed.17)
+
+create a policy as follows
+
+
+
 
 ![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/d595bbdc-791c-4d17-92f8-0d2822c1f3cd.23)
 
-![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/077c23f3-6587-450f-beb3-5fdc6e75f89a.jpg)
+click add statement then click create
 
+now we have 3 resources we should attach the thing and policy both to the certificate we created so after clicking on the certificate click actions and choose attach policy and enter it's name then add thing and enter it's name
+
+![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/7bc1ed88-339c-4b6a-99e8-186f3844f7c5.19)
+
+now put the code file fishtank.py attached below on your /home/pi/Desktop/ destination and create folder ins same destination called certs if you haven't created it with certificates downloaded inside it and change their names to be used as in the code
+
+for rootCA.key you can download it from this link
+```
+https://www.symantec.com/content/en/us/enterprise/verisign/roots/VeriSign-Class%203-Public-Primary-Certification-Authority-G5.pem 
+
+```
+their names should be as follows :
+
+```
+root_cert = cert_path + "rootCA.key"
+cert_file = cert_path + "cert.pem.crt"
+key_file = cert_path + "private.pem.key"
+```
+
+finally all is done hope you enjoy it :D
 ![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/7cf2d951-f0b9-4a3a-a4b1-d7983b3f3ee9.png)
+
+## Schematics
 
 ![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/b2a56d18-f7ae-4a62-92e7-2fb249be7729.jpg)
 
@@ -197,8 +240,6 @@ now submit your skill to certification
 
 
 
-### /////////////////////
-![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/37e1cb4e-56f0-42f4-bf19-990f1e46b24f.png)
 
 
 
