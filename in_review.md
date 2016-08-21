@@ -38,11 +38,6 @@
 - [Read more from discompsys](http://tutorials.pluralsight.com/author/discompsys) <img src="https://avatars.githubusercontent.com/u/20437503?v=3" width="30" height="30" alt="discompsys" />
 - Related to: Java and J2EE
 
-### How to implement a simple wait using Java and Selenium by dcboycm
-- [Read the guide](http://tutorials.pluralsight.com/other/how-to-implement-a-simple-wait-using-java-and-selenium?status=in-review)
-- [Read more from dcboycm](http://tutorials.pluralsight.com/author/dcboycm) <img src="https://avatars.githubusercontent.com/u/5580819?v=3" width="30" height="30" alt="dcboycm" />
-- Related to: other
-
 ### How to install CKAN 2.5 from source on Debian 8 "Jessie" by Miguel Gouveia
 - [Read the guide](http://tutorials.pluralsight.com/other/how-to-install-ckan-2-5-from-source-on-debian-8-jessie?status=in-review)
 - [Read more from Miguel Gouveia](http://tutorials.pluralsight.com/author/miguelbgouveia) <img src="https://avatars.githubusercontent.com/u/1122917?v=3" width="30" height="30" alt="Miguel Gouveia" />
