@@ -97,13 +97,16 @@ connect the relay output to the lights wire it should be very easy , wire it all
 login to AWS or create an account and choose lambda service
 
 ![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/f3daf535-ec2f-463f-b323-a8f8c00bf3a7.png)
+
 create a function
 
 ![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/086a0564-f53e-4d54-b912-4528a32d88c5.png)
+
 skip blueprints and click next
 
 
 ![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/30b11605-c2ef-478b-b951-0a769df4db7c.42)
+
 add alexa skill kit
 
 
@@ -134,15 +137,18 @@ login to amazon developer console or create an account then choose Alexa
 
 
 ![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/e4175e93-c4d0-46b1-94e4-f46841e0a634.00)
+
 click Alexa Skill kit
 
 ![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/b87989ee-95db-4226-ae04-7c1969d4ecdd.02)
+
 add a new skill
 
 
 ![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/271438c3-a4ff-4a8b-8ec5-5bfb13774ccd.02)
 
 i Have already submitted the skill to certification so no testing and data will be filled in the pictures
+
 ![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/b89afaf0-e728-4744-aad2-fc5290303a15.03)
 
 here we are defining interaction model and 2 intents are defined "feedintent" and "lightsIntent" with their sample utterance
