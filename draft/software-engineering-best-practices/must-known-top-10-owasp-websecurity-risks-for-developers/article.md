@@ -33,6 +33,9 @@ The goal of the OWASP  is to raise awareness about application security by descr
 10. Unvalidated Redirects and Forwards
 
 
+![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/476195fe-d64b-406a-b391-2d585acced64.png)
+
+
 Threat Agents | Attack Vectors | Security Weakness | Technical Impacts
 ------------------- | -------------------- | ------------
 Content from cell 1 | Pre   | Content from cell 3 |
