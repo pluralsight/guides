@@ -1,3 +1,8 @@
+### Test Learning by HaideiGV
+- [Read the guide](http://tutorials.pluralsight.com/python/test-learning?status=draft)
+- [Read more from HaideiGV](http://tutorials.pluralsight.com/author/HaideiGV) <img src="https://avatars.githubusercontent.com/u/6246892?v=3" width="30" height="30" alt="HaideiGV" />
+- Related to: Python
+
 ### How To Install Ruby on Rails on CentOS 7 by Consigliere
 - [Read the guide](http://tutorials.pluralsight.com/ruby-ruby-on-rails/how-to-install-ruby-on-rails-on-centos-7?status=draft)
 - [Read more from Consigliere](http://tutorials.pluralsight.com/author/clthck) <img src="https://avatars.githubusercontent.com/u/14348482?v=3" width="30" height="30" alt="Consigliere" />
