@@ -93,11 +93,6 @@
 - [Read more from Tom Greco](http://tutorials.pluralsight.com/user/thomasjosephgreco) <img src="https://avatars.githubusercontent.com/u/6646552?v=3" width="30" height="30" alt="Tom Greco" />
 - Related to: Front-End JavaScript (Angular, React, Meteor, etc)
 
-### How To Install Ruby on Rails on CentOS 7 by Consigliere
-- [Read the guide](http://tutorials.pluralsight.com/ruby-ruby-on-rails/how-to-install-ruby-on-rails-on-centos-7?status=in-review)
-- [Read more from Consigliere](http://tutorials.pluralsight.com/author/clthck) <img src="https://avatars.githubusercontent.com/u/14348482?v=3" width="30" height="30" alt="Consigliere" />
-- Related to: Ruby, Ruby on Rails
-
 ### 5 Simple Important Tips for Ruby on Rails.  by Meriton
 - [Read the guide](http://tutorials.pluralsight.com/ruby-ruby-on-rails/5-simple-important-tips-for-ruby-on-rails?status=in-review)
 - [Read more from Meriton](http://tutorials.pluralsight.com/user/meriton) <img src="https://avatars.githubusercontent.com/u/2198377?v=3" width="30" height="30" alt="Meriton" />
