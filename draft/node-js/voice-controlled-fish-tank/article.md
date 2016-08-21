@@ -234,13 +234,404 @@ finally all is done hope you enjoy it :D
 
 ## Schematics
 
+![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/4caf20fc-62d1-4ef8-967a-86e5ecf8da69.PNG)
+
 ![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/b2a56d18-f7ae-4a62-92e7-2fb249be7729.jpg)
 
+source code files used :
+
+1.fishtank.py 
+```
+#!/usr/bin/python
+
+import time;
+import paho.mqtt.client as mqtt
+import json, time, sys, ssl
+import RPi.GPIO as GPIO  
+
+lights = 13
+feeder = 11
 
 
+GPIO.setmode(GPIO.BOARD)
+
+GPIO.setup(feeder, GPIO.OUT)
+GPIO.setup(lights, GPIO.OUT)
+
+#GPIO.output(feeder, GPIO.HIGH)
+#GPIO.output(lights, GPIO.HIGH)
 
 
+cert_path = "/home/pi/Desktop/certs/"
+host = "ENDPOINT.amazonaws.com"
+topic = "$aws/things/fishtank/shadow/update"
+root_cert = cert_path + "rootCA.key"
+cert_file = cert_path + "cert.pem.crt"
+key_file = cert_path + "private.pem.key"
+
+globalmessage = ""  # to send status back to MQTT
+isConnected = False
+
+def feedcommand(data):  #   {"name":"FeedIntent","slots":{"Task":{"name":"Task","value":"feed the fish"}}}
+    task = str(data["slots"]["Task"]["value"])
+    global globalmessage
+
+    if task == "feed the fish":
+        globalmessage = "now the fish is no longer hungry"
+        print globalmessage
+        toggle(feeder)
+
+def lightscommand(data):  #   {"name":"LightsIntent","slots":{"Task":{"name":"Task","value":"on"}}}
+    try:
+        state = str(data["slots"]["state"]["value"])
+        global globalmessage
+
+        globalmessage = "Turning lights " + state
+        print globalmessage
+
+        if state == "on":
+         GPIO.output(lights, GPIO.HIGH)
+        elif state == "off":
+         GPIO.output(lights, GPIO.LOW)      
+    except (ValueError):
+        print "lights Error"
+    
+def toggle(gpio):
+	
+	p =GPIO.PWM(11,50)
+	p.start(12.5)
+	count=0
+	try:
+		while count<=3:
+			p.ChangeDutyCycle(12.5)
+			time.sleep(1)
+			p.ChangeDutyCycle(2.5)
+			time.sleep(1)
+			count+=1	
+	except KeyboardInterrupt:
+					
+			p.stop()
+			GPIO.cleanup()	
+  #  GPIO.output(gpio, cmd)   call servo motor
+        
+# The callback for when the client receives a CONNACK response from the server.
+def on_connect(client, userdata, flags, rc):
+    isConnected = True
+    # Subscribing in on_connect() means that if we lose the connection and      
+    # reconnect then subscriptions will be renewed.    
+    client.subscribe(topic)
+
+# The callback for when a PUBLISH message is received from the server.
+def on_message(client, userdata, msg):
+    data = json.loads(str(msg.payload))
+    # INTENT
+    if "name" in data:
+        if data["name"] == "FeedIntent":
+            feedcommand(data)
+        elif data["name"] == "LightsIntent":
+            lightscommand(data)
+        
 
 
+client = mqtt.Client(client_id="fishtank.py")
+client.on_connect = on_connect
+client.on_message = on_message
+client.on_log = on_log
+client.tls_set(root_cert,
+               certfile = cert_file,
+               keyfile = key_file,
+               cert_reqs=ssl.CERT_REQUIRED,
+               tls_version=ssl.PROTOCOL_TLSv1_2,
+               ciphers=None)
 
+client.connect(host, 8883, 60)
+
+run = True
+
+try:
+    while run:
+        client.loop()
+        time.sleep(1)
+
+        try:
+            mypayload = '''{
+                "StatusMessage": "%s"
+            }''' % (globalmessage)
+
+            if globalmessage != "":
+                client.publish(topic, mypayload)
+                globalmessage = ""
+
+        except (TypeError):
+            pass
+    
+except KeyboardInterrupt:
+    print "Bye Bye!"
+    GPIO.cleanup()    
+```
+2.alexa skill intent scheme
+```
+{
+   "intents":[
+      {
+         "intent":"FeedIntent",
+         "slots":[
+            {
+               "name":"Task",
+               "type":"LITERAL"
+            }
+         ]
+      },
+      {
+         "intent":"LightsIntent",
+         "slots":[
+            {
+               "name":"state",
+               "type":"LITERAL"
+            }
+         ]
+      }
+   ]
+}
+```
+
+3.Alexa skill Sample utterance
+
+```
+FeedIntent {feed the fish | Task} 
+LightsIntent turn lights {on|state} 
+LightsIntent turn lights {off| state}
+LightsIntent lights {on| state}
+LightsIntent lights {off| state}
+```
+
+4.index.js (lambda function)
+
+```
+/**
+ * Control your fish tank with your voice, using Amazon Alexa, Lambda, IOT, MQTT.
+ */
+
+var awsIot = require('aws-iot-device-sdk');
+
+var host = "EndPOINT.amazonaws.com";
+var topic = "$aws/things/fishtank/shadow/update";
+var app_id = "YOUR APP ID"
+var deviceName = "FishTank";
+
+var mqtt_config = {
+    "keyPath": "./certs/private.pem.key",
+    "certPath": "./certs/cert.pem.crt",
+    "caPath": "./certs/rootCA.key",
+    "host": host,
+    "port": 8883,
+    "clientId": deviceName, 
+    "region":"us-east-1",
+    "debug":true
+};
+
+var ctx = null;
+var client = null;
+
+// Route the incoming request based on type (LaunchRequest, IntentRequest, etc.) The JSON body of the request is provided in the event parameter.
+exports.handler = function (event, context) {
+    try {
+        console.log("event.session.application.applicationId=" + event.session.application.applicationId);
+        ctx = context;
+
+        if (event.session.application.applicationId !== app_id) {
+             ctx.fail("Invalid Application ID");
+         }
+
+        client = awsIot.device(mqtt_config);
+
+        client.on("connect",function(){
+            console.log("Connected to AWS IoT");
+        });
+
+
+        if (event.session.new) {
+            onSessionStarted({requestId: event.request.requestId}, event.session);
+        }
+
+        if (event.request.type === "LaunchRequest") {
+            onLaunch(event.request, event.session);
+        }  else if (event.request.type === "IntentRequest") {
+            onIntent(event.request, event.session);
+        } else if (event.request.type === "SessionEndedRequest") {
+            onSessionEnded(event.request, event.session);
+            ctx.succeed();
+        }
+    } catch (e) {
+        console.log("EXCEPTION in handler:  " + e);
+        ctx.fail("Exception: " + e);
+    }
+};
+
+/**
+ * Called when the session starts.
+ */
+function onSessionStarted(sessionStartedRequest, session) {
+    console.log("onSessionStarted requestId=" + sessionStartedRequest.requestId + ", sessionId=" + session.sessionId);
+}
+
+
+/**
+ * Called when the user launches the skill without specifying what they want.
+ */
+function onLaunch(launchRequest, session, callback) {
+    console.log("onLaunch requestId=" + launchRequest.requestId + ", sessionId=" + session.sessionId);
+
+    // Dispatch to your skill's launch.
+    getWelcomeResponse(callback);
+}
+
+/**
+ * Called when the user specifies an intent for this skill.
+ */
+function onIntent(intentRequest, session ) {
+    console.log("onIntent requestId=" + intentRequest.requestId + ", sessionId=" + session.sessionId);
+
+    var intent = intentRequest.intent,
+    intentName = intentRequest.intent.name;
+
+    console.log("REQUEST to string =" + JSON.stringify(intentRequest));
+
+    var callback = null;
+    // Dispatch to your skill's intent handlers
+    if ("FeedIntent" === intentName) {
+        feedIntent(intent, session);
+    }
+    else if ("LightsIntent" === intentName) {
+        ligthsIntent(intent, session);
+    } else {
+        throw "Invalid intent";
+    }
+
+}
+
+/**
+ * Called when the user ends the session.
+ * Is not called when the skill returns shouldEndSession=true.
+ */
+function onSessionEnded(sessionEndedRequest, session) {
+    console.log("onSessionEnded requestId=" + sessionEndedRequest.requestId + ", sessionId=" + session.sessionId);
+    // Add cleanup logic here
+}
+
+// --------------- Functions that control the skill's behavior -----------------------
+
+function getWelcomeResponse() {
+    // If we wanted to initialize the session to have some attributes we could add those here.
+    var sessionAttributes = {};
+    var cardTitle = "Welcome";
+    var speechOutput = "Welcome to the Fish Tank.";
+
+    var repromptText = "Fish Tank  is ready for command.";
+    var shouldEndSession = false;
+
+    ctx.succeed(buildResponse(sessionAttributes, buildSpeechletResponse(cardTitle, speechOutput, repromptText, shouldEndSession)));
+}
+
+
+function feedIntent(intent, session, callback) {
+    var repromptText = null;
+    var sessionAttributes = {};
+    var shouldEndSession = true;
+    var speechOutput = "";
+
+    repromptText = "Tell me what to do with the fish tank.";
+
+    var task = intent.slots.Task.value;
+    var validTasks = [ "feed the fish"];
+
+    if (validTasks.indexOf(task) == -1)
+    {
+        speechOutput = "I couldn't understand the command.  ";
+        ctx.succeed(buildResponse(sessionAttributes, buildSpeechletResponse(cardTitle, speechOutput, repromptText, shouldEndSession)));
+    }
+    else
+    {
+        var cardTitle = "Feeding the Fish"  ;
+        speechOutput = "Feeding the Fish" ;
+        mqttPublish(intent, sessionAttributes, cardTitle, speechOutput, repromptText, shouldEndSession);
+    }
+}
+
+function ligthsIntent(intent, session, callback) {
+
+    var repromptText = null;
+    var sessionAttributes = {};
+    var shouldEndSession = false;
+    var speechOutput = "";
+
+    repromptText = "Tell me how you want the fish tank lights.  ";
+
+    var state = intent.slots.state.value;
+    var validstates = [ "on", "off" ];
+
+    if (validstates.indexOf(state) == -1)
+    {
+        speechOutput = "I couldn't understand the state of the lights. ";
+        ctx.succeed(buildResponse(sessionAttributes, buildSpeechletResponse(cardTitle, speechOutput, repromptText, shouldEndSession)));
+    }
+    else
+    {
+        var cardTitle = "fish tank lights turning " + state;
+        speechOutput = "Turning lights " + state;
+        mqttPublish(intent, sessionAttributes, cardTitle, speechOutput, repromptText, shouldEndSession);
+    }
+}
+
+function mqttPublish(intent, sessionAttributes, cardTitle, speechOutput, repromptText, shouldEndSession)
+{
+    var strIntent = JSON.stringify(intent);
+    console.log("mqttPublish:  INTENT text = " + strIntent);
+    
+    client.publish(topic, strIntent, function() {
+        client.end();
+    });
+    
+    client.on("close", (function () {
+        console.log("MQTT CLIENT CLOSE - thinks it's done, successfully. ");
+        ctx.succeed(buildResponse(sessionAttributes, buildSpeechletResponse(cardTitle, speechOutput, repromptText, shouldEndSession)));
+    }));
+
+    client.on("error", (function (err, granted) {
+        console.log("MQTT CLIENT ERROR!!  " + err);
+    }));
+}
+
+
+// --------------- Helpers that build all of the responses -----------------------
+
+function buildSpeechletResponse(title, output, repromptText, shouldEndSession) {
+    return {
+        outputSpeech: {
+            type: "PlainText",
+            text: output
+        },
+        card: {
+            type: "Simple",
+            title: title,
+            content: output
+        },
+        reprompt: {
+            outputSpeech: {
+                type: "PlainText",
+                text: repromptText
+            }
+        },
+        shouldEndSession: shouldEndSession
+    }
+}
+
+function buildResponse(sessionAttributes, speechletResponse) {
+    return {
+        version: "1.0",
+        sessionAttributes: sessionAttributes,
+        response: speechletResponse
+    }
+}
+```
 
