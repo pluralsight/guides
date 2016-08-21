@@ -1,3 +1,8 @@
+### How to implement a simple wait using Java and Selenium by dcboycm
+- [Read the guide](http://tutorials.pluralsight.com/other/how-to-implement-a-simple-wait-using-java-and-selenium)
+- [Read more from dcboycm](http://tutorials.pluralsight.com/author/dcboycm) <img src="https://avatars.githubusercontent.com/u/5580819?v=3" width="30" height="30" alt="dcboycm" />
+- Related to: other
+
 ### How to predict if you'll be able to get a bank loan, using Red Sqirl by Justyna888
 - [Read the guide](http://tutorials.pluralsight.com/big-data/how-to-predict-if-you-ll-be-able-to-get-a-bank-loan-using-red-sqirl)
 - [Read more from Justyna888](http://tutorials.pluralsight.com/author/Justyna888) <img src="https://avatars.githubusercontent.com/u/20835452?v=3" width="30" height="30" alt="Justyna888" />
