@@ -1,3 +1,8 @@
+### My web design  by sheerasai
+- [Read the guide](http://tutorials.pluralsight.com/html-css/my-web-design?status=draft)
+- [Read more from sheerasai](http://tutorials.pluralsight.com/author/sheerasai) <img src="https://avatars.githubusercontent.com/u/18191440?v=3" width="30" height="30" alt="sheerasai" />
+- Related to: HTML/CSS
+
 ### Tutorial how to structure and design the web by sheerasai
 - [Read the guide](http://tutorials.pluralsight.com/html-css/tutorial-how-to-structure-and-design-the-web?status=draft)
 - [Read more from sheerasai](http://tutorials.pluralsight.com/author/sheerasai) <img src="https://avatars.githubusercontent.com/u/18191440?v=3" width="30" height="30" alt="sheerasai" />
