@@ -1,4 +1,6 @@
-> Space - the final frontier. And a surprisingly good place to blow stuff up. In this tutorial we'll walk through the steps of building a multiplayer space shooter - but one with a twist: Rather than everyone playing away on their own computer, we'll bring the spirit of good old living-room co-op to the modern age.
+> Space - the final frontier. Also a surprisingly good place to blow stuff up. 
+
+In this tutorial we'll build a multiplayer space shooter, but one with a twist: rather than everyone playing away on their own computer, we'll bring the spirit of good old living-room co-op to the modern age.
 
 ![Space shooter](https://raw.githubusercontent.com/deepstreamIO/ds-demo-spaceshooter/master/tutorial-images/in-game-long.gif)
 
@@ -11,25 +13,25 @@ Let's keep things simple: We'll use [Pixi.js](http://www.pixijs.com/) for render
 
 ![PIXI JS](https://raw.githubusercontent.com/deepstreamIO/ds-demo-spaceshooter/master/tutorial-images/pixijs.png)
 
-**Pixi.JS** is a 2D rendering library for browsers. It uses WebGL and leaves the heavy lifting to the GPU if possible, but falls back to canvas if not. Pixi is just that: a rendering library, giving you all the Stage, Sprite and Container objects you'd expect, but no game logic constructs - those are our job.
+**Pixi.JS** is a 2D rendering library for browsers. It uses WebGL (Web Graphics Library) and leaves the heavy lifting to the GPU (Graphics Processing Unit) if possible. Otherwise, Pixi.JS resorts to canvas if not. Pixi is just that: a rendering library, giving you all the Stage, Sprite and Container objects you'd expect, but no game logic constructs - those are our job.
 
 ![Deepstream.io](https://raw.githubusercontent.com/deepstreamIO/ds-demo-spaceshooter/master/tutorial-images/deepstreamio.png)
 
-**deepstream.io** is a new type of server for realtime connectivity. It handles all sorts of persistent connections, e.g. TCP or Websocket for browsers and provides high level concepts like data-sync, pub-sub and request-response. But most importantly for this tutorial: It's superfast.
+**deepstream.io** is a new type of server for realtime connectivity. It handles all sorts of persistent connections, such as TCP or Websocket for browsers, and provides high level concepts like data-sync, pub-sub and request-response. Most importantly, deepstream.io is superfast.
 
 ### 60 FPS
-We want this velvety smooth 60 FPS framerate - and we want our controls to play along. This means that every touch on the gamepad needs to be translated into an action on the screen in less than 16.6 milliseconds (one frame) - something pixi and deepstream are perfectly capable of.
+We want a velvety smooth 60 FPS framerate, and we want our controls to play along. This means that every touch on the gamepad needs to translate to an action on the screen in less than 16.6 milliseconds (or one frame). Luckily, pixi and deepstream are perfectly capable of this feat.
 
-But there's also network latency! Information needs time to travel - for optic fibre about 67ms for 10.000km, not counting switches, routers and other network hops that further slow it down. That means that if you're running your server in the US and play in Europe, your game won't feel particularly responsive.
+But there's also network latency! Information needs time to travel. In fact, optic fiber takes about 67 ms for every 10.000km, not counting switches, routers and other network hops that further slow it down. That means that if you're running your server in the US and play in Europe, your game won't feel particularly responsive.
 
 ## About this tutorial
-This tutorial will take you through the high level concepts and all the tricky bits of the implementation - for brevities sake it skips a lot of project setup, css / styling and most of the more common aspects. To get an impression of how everything fits together, quickly head over to the [Github Repository](https://github.com/deepstreamIO/ds-demo-spaceshooter) - don't worry, I'll wait.
+This tutorial will take you through the high level concepts and all the tricky bits of the implementation - for brevities sake it skips a lot of project setup, css / styling and most of the more common aspects. To get an impression of how everything fits together, just head over to the [Github Repository](https://github.com/deepstreamIO/ds-demo-spaceshooter).
 
-### Latest browsers only
-This tutorial makes liberal use of new browser features like WebGL and ES6 syntax. It works well in all latest browsers (tested in Chrome 51, FF 47 & Edge 25), but won't be much fun in your good old IE 8.
+### Latest browsers needed
+This tutorial makes liberal use of new browser features like WebGL and ES6 syntax. Our game works best on all the latest browsers (tested in Chrome 51, FF 47 & Edge 25), and it won't be much fun on your good old IE 8.
 
 ## The structure
-Let's start by creating three files:
+Let's start by creating the three files below:
 
 - **[game.js](https://github.com/deepstreamIO/ds-demo-spaceshooter/blob/master/js/game.js)** will contain the main game object that creates the PIXI stage,
 adds and removes spaceships to it and manages the game loop (more about that later)
@@ -47,9 +49,9 @@ class Game{
     }
 }
 ```
-To turn your object-hierarchy into an image, you'll need a "renderer". PIXI will try to use WebGL for rendering, but can fall back canvas if necessary.
+To turn your object-hierarchy into an image, you'll need a "renderer". PIXI will try to use WebGL for rendering, but can fall back to canvas if necessary.
 
-For our spaceshooter, we'll leave it to PIXI to decide which renderer to use. The only requirements are: It needs to extend to the full size of the screen and shouldn't have a background color (so that we can place a spacy image behind it)
+For our space-shooter, we'll leave it to PIXI to decide which renderer to use. The only requirements are that the renderer needs to extend to the full size of the screen and shouldn't have a background color so that we can place a space-based image behind it.
 
 To create a renderer, add the following lines to your game class' constructor:
 
@@ -85,12 +87,12 @@ class SpaceShip{
 ```
 
 ## Rendering the stage
-So - where's our spaceship? We've created a stage and a renderer so far, but we haven't told the renderer to render the stage yet. We'll do this by adding a method called `_tick()`.
+So where's our spaceship? We've created a stage and a renderer so far, but we haven't told the renderer to render the stage yet. We'll do this by adding a method called `_tick()`.
 
-### `_tick()` ?!?
-Why don't we just call it `render()` or something sensible like that? Because this method will become the pacemaker for our game. Every time a frame is about to be rendered, this method will calculate the amount of time that has passed since the last frame, notify all the objects in the game about the impeding update, render the stage and finally schedule the next frame.
+### `_tick()`
+Why call our rendering method `tick()` and not `render()`? This method will actually become the pacemaker for our game. Every time a frame is about to be rendered, this method will calculate the amount of time that has passed since the last frame, notify all the objects in the game about the impeding update, render the stage, and finally schedule the next frame.
 
-For this, we'll use a browser method called `requestAnimationFrame( callback )`. This schedules a function to be executed the next time a frame can be drawn. We'll add this method twice in `game.js` - once at the end of our constructor to draw the initial frame and once from within our `_tick()` method itself.
+For this, we'll use a browser method called `requestAnimationFrame( callback )`. This schedules a function to be executed the next time a frame can be drawn. We'll add this method twice in `game.js` - once at the end of our constructor to draw the initial frame and once within our `_tick()` method itself.
 
 ```javascript
 // in game.js
@@ -116,7 +118,7 @@ So far, so good, but our spaceship still looks a bit pale. And no wonder, the sp
 this._body.tint = 0x00FF00; // green in hex
 ```
 
-resulting in
+This tint property results in the following image:
 
 ![tinted spaceship without turret](https://raw.githubusercontent.com/deepstreamIO/ds-demo-spaceshooter/master/tutorial-images/2-spaceship-tint.png)
 
@@ -155,7 +157,7 @@ this._container.addChild( this._turret );
 this._game.stage.addChild( this._container );
 ```
 
-our spaceship should now look reasonably complete
+Our spaceship now looks reasonably complete:
 
 ![completed spaceship](https://raw.githubusercontent.com/deepstreamIO/ds-demo-spaceshooter/master/tutorial-images/3-spaceship-turret.png)
 
@@ -163,7 +165,7 @@ our spaceship should now look reasonably complete
 
 ![controls](https://raw.githubusercontent.com/deepstreamIO/ds-demo-spaceshooter/master/tutorial-images/4-controls.png)
 
-Each spaceship will be individually controlled by a player via a smartphone-turned-gamepad. The control scheme is simple: Touching the left pad moves the ship, touching the right pad shoots, both are independent and work at 360 degrees - if you've ever played games like [Super Smash TV](https://www.youtube.com/watch?v=GdA_-2hnhJY) on the Super Nintendo you know the drill.
+Each spaceship will be individually controlled by a player via a smartphone-turned-gamepad. The control scheme is simple: the left pad moves the ship, the right pad shoots, and both sides are independent and work at 360 degrees. If you've ever played games like [Super Smash TV](https://www.youtube.com/watch?v=GdA_-2hnhJY) on the Super Nintendo you know the drill.
 
 Technically, the gamepad is just another [HTML page](https://github.com/deepstreamIO/ds-demo-spaceshooter/blob/master/controls/index.html) with its own [CSS](https://github.com/deepstreamIO/ds-demo-spaceshooter/blob/master/controls/controls.css) and [JavaScript](https://github.com/deepstreamIO/ds-demo-spaceshooter/blob/master/controls/controls.js). Both the controls and the game are connected to a deepstream server. User-input from each player's gamepad is stored in a [record](https://deepstream.io/tutorials/core/datasync-records/) which deepstream syncs with the game itself.
 
@@ -200,9 +202,9 @@ You might notice that we've fallen back to `function` and ES5 syntax. ES6 suppor
 
 ### Creating a record
 Time to dive into the mechanics behind our game: [records](https://deepstream.io/tutorials/core/datasync-records/).
-Records are small bits of data that can be manipulated and observed. They have `get()`, `set()` and `subscribe()` methods that let you interact with the whole data structure or with a path within it, e.g. `ship.subscribe( 'turretRotation', angle => {/.../})`.
+Records are small bits of data that can be manipulated and observed. They have `get()`, `set()` and `subscribe()` methods that let you interact with the whole data structure or with a path within it. For example, `ship.subscribe( 'turretRotation', angle => {/.../})`.
 
-Each change to a record is synced across all connected clients. For our tutorial, all game logic will life in the main browser window. User-input from the gamepads is written to records and synced with the game via deepstream.
+Each change to a record is synced across all connected clients. **For our tutorial, all game logic will live in the main browser window. Meanwhile, user-input from the gamepads is written to records and synced with the game via deepstream.**
 
 Each record is identified by a unique name. For our game, we'll use the player's username, e.g. `player/johndoe`.
 
@@ -212,7 +214,7 @@ ds.record.getRecord( `player/johndoe` ).whenReady(function( record ) {
 });
 ```
 
-Once the record is ready it's time to set its initial value:
+Now that the record is ready, we can set its initial value:
 
 ```javascript
 record.set({
@@ -232,7 +234,7 @@ record.set({
 ### Wiring up the control pads
 From here on, these values will be updated whenever the user interacts with one of the control pads. We'll use a simplified version of the code for this tutorial, to get the full picture have a look [here](https://github.com/deepstreamIO/ds-demo-spaceshooter/blob/master/controls/pad.js)
 
-First off, let's start with some basic interactions. Every time the user touches a pad, we want to set `moving` or `shooting` to `true` and back to `false` again once the touch ends:
+First off, let's start with some basic interactions. Every time the user touches a pad, we want to set `moving` or `shooting` to `true` and back to `false` again as soon as the touch ends. Use an `area` variable.
 
 ```javascript
 var area = $( '.area' );
@@ -250,7 +252,7 @@ Next up, we want to sync the angle of the user's touch with the ship / turret in
 
 ![control angles](https://raw.githubusercontent.com/deepstreamIO/ds-demo-spaceshooter/master/tutorial-images/6-angles.png)
 
-For this we'll use the arctangent function with two arguments... don't worry, that sounds harder than it is:
+For this, we'll use the arctangent function with two arguments. Don't worry, it's easier than it sounds:
 
 ```javascript
 var radius = area.width() / 2;
@@ -266,16 +268,16 @@ area.on( 'touchmove', function( event ){
 ```
 
 ## Making our spaceship turn
-That's enough controls for now, let's head back to our main game. The first thing we'll have to do is to connect our game to the deepstream server as well and request the same `player/johndoe` record from within our spaceship class. To do this, just follow the same steps as for the controls.
+Let's head back to our main game. The first thing we'll have to do is to connect our game to the deepstream server as well and request the same `player/johndoe` record from within our spaceship class. To do this, just follow the same steps as for the controls.
 
 ### Creating a game-loop
 A [game loop](http://obviam.net/index.php/the-android-game-loop/) is a central concept of almost every game. Game loops typically consist of two phases: "update" and "draw".
 
-In the update phase, each entity within the game updates its position, orientation, health, status and so on.
+In the update phase, each entity within the game updates its position, orientation, health, status, and so on.
 
-This is usually followed by a global update phase that determines whether each player is still alive, being hit etc.
+This is usually followed by a global update phase that determines whether each player is still alive, being hit, etc.
 
-Finally, the next frame of the game is drawn by the renderer. This loop happens continuously for every frame, ideally 60 times a second. This means that the logic that's executed on every tick needs to be as performant as possible.
+Finally, the next frame of the game is drawn by the renderer. This loop happens continuously for every frame, ideally 60 times a second. This means that logic that's executed on every tick needs to be as high-performance as possible.
 
 For our spaceshooter, we'll create a simple gameloop by having the game class emit an `update` event every time before the renderer kicks in. Our spaceship can now subscribe to this event. As usual, we'll keep things simple for this tutorial. You can find the full update cycle for the spaceship [here](https://github.com/deepstreamIO/ds-demo-spaceshooter/blob/master/js/spaceship.js#L199)
 
@@ -300,13 +302,13 @@ module.exports = class SpaceShip{
 }
 ```
 
-Now whenever we touch either control pad, our ship's body or turret should rotate accordingly on the screen:
+Now we have visible movement on the ship body and on the turret whenever we touch the corresponding control pads:
 
 ![controls rotate ship](https://raw.githubusercontent.com/deepstreamIO/ds-demo-spaceshooter/master/tutorial-images/controls-rotation.gif)
 
-## So much for part one
-Phew, thanks for holding out with me for so long. We've now got all the essential bits in place, but at the moment our spaceship doesn't move or shoot and generally just sits around there like a fish on dry land. The good news is: we'll cover all the good stuff in part 2 of this tutorial.
+## Part 1 Complete
+Phew, thanks for holding out with me for so long. We've now got all the essential bits in place, but at the moment our spaceship doesn't move or shoot. It just sits and spins. The good news is that we'll cover all the good stuff in part 2 of this tutorial.
 
-There you'll learn how to add / remove players dynamically whenever a client connects, add proper asset loading, handle shooting and hit detection, handcraft some awesome explosions and deal with player destruction / recreating.
+There you'll learn how to add and remove players dynamically whenever a client connects, add proper asset loading, handle shooting and hit detection, handcraft some awesome explosions and deal with player destruction and recreation.
 
-Stay tuned...
+Stay tuned for more, and definitely don't forget to favorite this guide if you found it enjoyable or informative.
