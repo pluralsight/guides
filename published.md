@@ -1,3 +1,8 @@
+###  Building a multiplayer space shooter: Part I by Wolfram Hempel
+- [Read the guide](http://tutorials.pluralsight.com/front-end-javascript/building-a-multiplayer-space-shooter-part-i)
+- [Read more from Wolfram Hempel](http://tutorials.pluralsight.com/author/WolframHempel) <img src="https://avatars.githubusercontent.com/u/1503717?v=3" width="30" height="30" alt="Wolfram Hempel" />
+- Related to: Front-End JavaScript (Angular, React, Meteor, etc)
+
 ### How to implement a simple wait using Java and Selenium by dcboycm
 - [Read the guide](http://tutorials.pluralsight.com/other/how-to-implement-a-simple-wait-using-java-and-selenium)
 - [Read more from dcboycm](http://tutorials.pluralsight.com/author/dcboycm) <img src="https://avatars.githubusercontent.com/u/5580819?v=3" width="30" height="30" alt="dcboycm" />
