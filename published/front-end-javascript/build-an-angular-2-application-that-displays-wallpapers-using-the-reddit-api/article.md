@@ -1,9 +1,9 @@
-With Angular 2 [being almost ready for release](https://splintercode.github.io/is-angular-2-ready/), it is definitely time to start experimenting with it. If you are out of ideas what to build after completing the main Angular 2 tutorial, this guide is an excellent supplemental material that will deepen your knowledge in the new framework without going into too advanced techniques.
+With Angular 2 [being almost ready for release](https://splintercode.github.io/is-angular-2-ready/), it is definitely time to start experimenting with it. If you are out of ideas for what to build after completing the main Angular 2 tutorial, this guide is an excellent supplemental material that will deepen your knowledge in the new framework without going into too advanced techniques.
 
-In this guide, you are going to build an Angular 2 app that loads data from Reddit's [/r/wallpapers](https://www.reddit.com/r/wallpapers/) thread. In the end, you'll have a wall of beautiful images that scrolls infinitely. Sounds cool, doesn't it? On top of this, here is what you are going to learn:
+In this guide, you are going to build an Angular 2 app that loads data from Reddit's [/r/wallpapers](https://www.reddit.com/r/wallpapers/) community. In the end, you'll have a wall of beautiful images that scrolls infinitely. Sounds cool, doesn't it? On top of this, here is what you are going to learn:
 
 - Setting up Angular 2 with Webpack
-- Loading data from extrnal services
+- Loading data from external services
 - Using components to transfer and render data
 - Using external components
 
@@ -20,7 +20,7 @@ $ npm --version
 3.8.9
 ```
 
-Start off by reating a directory for your application:
+Start off by creating a directory for your application:
 
 ```bash
 $ mkdir reddit-wallpaper-wall
@@ -106,7 +106,7 @@ Do the same for the rest of the configuration files:
 
 **typings.json**
 
- [typings.json](https://angular.io/docs/ts/latest/guide/typescript-configuration.html#!#typings)  another typescript configuration file. It is used to declare which extral libraries are going to read TypeScript files.
+ [typings.json](https://angular.io/docs/ts/latest/guide/typescript-configuration.html#!#typings) another typescript configuration file. It is used to declare which external libraries are going to read TypeScript files.
  In it paste the following contents:
  
  
@@ -131,7 +131,7 @@ Then, in the same directory, run:
 ```bash
 $ npm install
 ```
-And all the dependency will be installed. In case you run in any problems, try to install typescript, typings and webpack as global dependencies:
+And all of the dependencies will be installed. In case you run into any problems, try to install TypeScript, typings and Webpack as global dependencies:
 
 ```bash
 $ npm install --global webpack
@@ -179,7 +179,7 @@ module.exports = {
     ]
 };
 ```
-[Webpack](https://webpack.github.io/) uses [loaders](https://webpack.github.io/docs/loaders.html) and [plugins](https://webpack.github.io/docs/using-plugins.html) as its main building blocks. They are used to load project depenendices and treat them as modules with a particular functionality. We utilize the Webpack loaders we listed in <code>package.json</code> to organize the different assets in the application.
+[Webpack](https://webpack.github.io/) uses [loaders](https://webpack.github.io/docs/loaders.html) and [plugins](https://webpack.github.io/docs/using-plugins.html) as its main building blocks. They are used to load project dependencies and treats them as modules with a particular functionality. We utilize the Webpack loaders we listed in <code>package.json</code> to organize the different assets in the application.
 
 Webpack's configuration for entry and exit will give you a hint about the next step:
 ```
@@ -189,7 +189,7 @@ module.exports = {
     ...
     }
 ```
- Thaht's right - we need to make a directory for the project and to make a <code>main.ts</code> file in it for bootstrapping the Angular 2 application
+ That's right - we need to make a directory for the project and to make a <code>main.ts</code> file in it for bootstrapping the Angular 2 application
 ## Initializng your Angular 2 application
 
 In the root folder, create a new directory, <code> src </code>.  This is where the Angular 2 application will reside:
@@ -219,7 +219,7 @@ bootstrap(AppComponent, [HTTP_PROVIDERS])
     .catch(error => console.log(error));
 
 ```
-There are a few things to note here: We import [RxJs](https://github.com/Reactive-Extensions/RxJS), which will let us use observables later on in the application. We are including <code>HTTP_PROVIDERS</code> from the Angular 2 http library in order to construct HTTP requests to Reddit's API.
+There are a few things to note here: We import [RxJs](https://github.com/Reactive-Extensions/RxJS), which will let us use observables later on in the application. We are including <code>HTTP_PROVIDERS</code> from the Angular 2 HTTP library in order to construct HTTP requests to Reddit's API.
 
 The last thing we import is the root component, <code>AppComponent</code>, that we are going create in the next step.
 
@@ -242,14 +242,14 @@ Every web application has its <code>index.html</code>. Let's add ours:
 </html>
 ```
 
-In the index page, we simply add [Material Icons](https://fonts.googleapis.com/icon?family=Material+Icons) and the [Open Sans](https://fonts.googleapis.com/css?family=Open+Sans) font to make to add an extra style to our app.
-In the <code>body </code> section, we add the selector for the root component -  ```<app></app>``` .
+In the index page, we simply add [Material Icons](https://fonts.googleapis.com/icon?family=Material+Icons) and the [Open Sans](https://fonts.googleapis.com/css?family=Open+Sans) font to add extra style to our app.
+In the <code>body</code> section, we add the selector for the root component -  ```<app></app>``` .
 
 
 
 ### The first component
 
-In the <code>src</code> directory, create another directory, named <code> app </code>:
+In the <code>src</code> directory, create another directory, named <code>app</code>:
 ```bash
 $ mkdir app
 ```
@@ -271,8 +271,8 @@ export class AppComponent {
 
 }
 ```
-We start off by implorting <code> Component </code> and <code> OnInit</code> from the Angular 2 core.
-Next, we use the <code> @Component </code> decorator to define metadata for the component. In the code snippet above, we define the component's selector (```<app></app>```) and its template content(```'root component'``` .). If you'd like to learn more about component decorator properties, [this](https://angular.io/docs/ts/latest/guide/cheatsheet.html) cheatsheet provides a list of all <code>@Component</code> decorator properties.
+We start off by importing <code>Component</code> and <code>OnInit</code> from the Angular 2 core.
+Next, we use the <code>@Component</code> decorator to define metadata for the component. In the code snippet above, we define the component's selector (```<app></app>```) and its template content(```'root component'``` .). If you'd like to learn more about component decorator properties, [this](https://angular.io/docs/ts/latest/guide/cheatsheet.html) cheatsheet provides a list of all <code>@Component</code> decorator properties.
 
 
 
@@ -284,7 +284,7 @@ Next, we use the <code> @Component </code> decorator to define metadata for the 
  $ npm run build
  $ npm run serve
 ```
-Go to [http://localhost:8080](http://localhost:8080) and you will see <code>'root component' </code> displayed in the upper left side of the window.
+Go to [http://localhost:8080](http://localhost:8080) and you will see <code>'root component'</code> displayed in the upper left side of the window.
 
 ## Building a service
 
@@ -314,13 +314,13 @@ export class Wallpaper {
 
 **Listing of wallpapers**
 
-The wallpaper listing contains the wallpapers themselves plus additional information about the listing as a whole. To get an idea how a wallpaper listing would look like, we need to visit the [Reddit API documentation](https://www.reddit.com/dev/api/) to get a feel how the information is structured. By reading it, we can infer that we can use the <code> before </code> and <code> after </code> to paginate through the results. So 
+The wallpaper listing contains the wallpapers themselves plus additional information about the listing as a whole. To get an idea how a wallpaper listing would look like, we need to visit the [Reddit API documentation](https://www.reddit.com/dev/api/) to get a feel for how the information is structured. By reading it, we can infer that we can use the <code>before</code> and <code>after</code> to paginate through the results.
 
 
 Therefore, the listing will contain
 
 - An array of wallpapers
-- An attribute denoting pagination/what part of the total collection is being viewed (<code> after </code>)
+- An attribute denoting pagination/what part of the total collection is being viewed (<code>after</code>)
 
 
 ```typescript
@@ -356,7 +356,7 @@ export class RedditService {
 
 ```
 
-We make the <code>RedditService</code> class injectable by adding <code> @Injectable() </code> before its definition. In order to make the Http module available inside the class, we have to  inject it in it via the <code> constructor </code> function.
+We make the <code>RedditService</code> class injectable by adding <code>@Injectable()</code> before its definition. In order to make the HTTP module available inside the class, we have to inject it in via the <code>constructor</code> function.
 
 Next, we add the <code> getWallpapers() </code> function:
 
@@ -391,12 +391,12 @@ export class RedditService {
     }
 ```
 
-The <code> getWallpapers </code> function accepts one parameter (<code> after</code> as string) . The second part is its ```: Observable<WallpaperListing> ```. It denotes what type of variable is expected to be returned when the function <code>return</code>s. In it, we use Angular 2's http library to get a response from [https//www.reddit.com/r/wallpapers.json?raw_json=1](https//www.reddit.com/r/wallpapers.json?raw_json=1) and map it through the <code>mapWallpapers</code> function.
+The <code> getWallpapers </code> function accepts one parameter (<code>after</code> as string). The second part is its ```: Observable<WallpaperListing> ```. It denotes what type of variable is expected to be returned when the function <code>return</code>s. In it, we use Angular 2's HTTP library to get a response from [https//www.reddit.com/r/wallpapers.json?raw_json=1](https//www.reddit.com/r/wallpapers.json?raw_json=1) and map it through the <code>mapWallpapers</code> function.
 
 
-<code> mapWallpapers </code> gets the response data. You can look at the data  [here](//www.reddit.com/r/wallpapers.json?raw_json=1). It might seem like a lot of information, but we only need a small chunk of it. We can notice that the post items are contained in the <code>children</code> attribute, which is an array. Let's  iterate through them!
+<code> mapWallpapers </code> gets the response data. You can look at the data  [here](//www.reddit.com/r/wallpapers.json?raw_json=1). It might seem like a lot of information, but we only need a small chunk of it. Notice that the post items are contained in the <code>children</code> attribute, which is an array. Let's  iterate through them!
 
-We also need to visualize only posts that are images, so while iterating, we'll be chosing only posts who have their <code>post_hint</code> attribute set to <code> "image" </code>. Here is how the code looks like:
+We only need to visualize posts that are images, so while iterating, we'll be choosing only posts that have their <code>post_hint</code> attribute set to <code> "image" </code>. Here is how the code looks:
 
 ```ts
     // src/app/reddit.service.ts
@@ -442,9 +442,9 @@ We also need to visualize only posts that are images, so while iterating, we'll 
   item.previewUrl = previewImage ? previewImage.url : item.url;
 ```
  
- In the end of the function, we attach the pagination attribute from the JSON data (  <code> after </code>)  to the <code>WallPaperListing</code> model and return the results.
+ At the end of the function, we attach the pagination attribute from the JSON data (  <code> after </code>)  to the <code>WallPaperListing</code> model and return the results.
  
- Here is the complete code for the two functions. [link to the whole service](https://github.com/Kaizeras/angular2-wallpaper-wall/blob/master/src/app/reddit.service.ts):
+ Here is the complete code for the two functions ([link to the whole service file](https://github.com/Kaizeras/angular2-wallpaper-wall/blob/master/src/app/reddit.service.ts)):
 ```ts
 // src/app/reddit.service.ts
     getWallpapers(after:string):Observable<WallpaperListing> {
@@ -548,15 +548,15 @@ export class WallpaperListingComponent implements OnInit  {
 
 ```
 
-We put <code>RedditService</code> as a provider in the component decorator and we inject it in the constructorto make it available inside.
+We put <code>RedditService</code> as a provider in the component decorator and we inject it in the constructor to make it available inside.
    
     constructor(private service: RedditService) { }
 
-We use <code> implements  OnInit </code> and <code>ngOnInit() {} </code> to implement a  [lifecycle hook](https://angular.io/docs/ts/latest/guide/lifecycle-hooks.html#!#hooks-overview) that is executing when the compoenent loads. For now we'll leave it blank and use it when we're going have to load the data from Reddit.
+We use <code> implements  OnInit </code> and <code>ngOnInit() {} </code> to implement a [lifecycle hook](https://angular.io/docs/ts/latest/guide/lifecycle-hooks.html#!#hooks-overview) that is executing when the component loads. For now we'll leave it blank and use it when we're going have to load the data from Reddit.
 
-The <code>loadWallpapers</code> function is used to fill up the local <code>wallpaperListing</code> class with data. We pass <code>null</code> to the function to indicate that <code>wallpaperListing</code> is being filled with data for the first imte.
+The <code>loadWallpapers</code> function is used to fill up the local <code>wallpaperListing</code> class with data. We pass <code>null</code> to the function to indicate that <code>wallpaperListing</code> is being filled with data for the first time.
 
-The <code>open</code> function will open a new tab with an URL for a selected wallpaper. We will do so by binding the function to a <code>click</code> event in the template.
+The <code>open</code> function will open a new tab with a URL for a selected wallpaper. We will do so by binding the function to a <code>click</code> event in the template.
  
  
 
@@ -576,9 +576,9 @@ Next, we will add a template to <code>WallpaperListingComponent</code>:
 ```
 We use [ngFor](https://angular.io/docs/ts/latest/api/common/index/NgFor-directive.html) to loop through the <code>wallpapers</code> array of the <code>wallpaperListing</code> to display the attributes of each item.
 
-We also the [click](http://learnangular2.com/events/) event handler  to invoke the <code>open</code> function with the current wallpaper's URL as an argument.
+We also utilize the [click](http://learnangular2.com/events/) event handler to invoke the <code>open</code> function with the current wallpaper's URL as an argument.
 
-Add the tempalte's url to the decorator of the <code>WallpaperListingComponent</code>:
+Add the template's URL to the decorator of the <code>WallpaperListingComponent</code>:
 
 
 ```ts
@@ -614,10 +614,10 @@ export class AppComponent {
 }
 ```
 
-Open your app in [http://localhost:8080](http://localhost:8080) (don't forget to run <code>npm run serve</code> before that!) and you'll see some the images being displayed right from reddit's /r/wallpapers !
+Open your app in [http://localhost:8080](http://localhost:8080) (don't forget to run <code>npm run serve</code> before that!) and you'll see some the images being displayed right from reddit's /r/wallpapers!
 
 #### Adding infinite scroll
-Right now, we can see only a few wallpapers. Let's add [angular2-infinite-scroll](https://www.npmjs.com/package/angular2-infinite-scroll) to our application to make use of the pagination. Here's how you can do it:
+Right now, we can only see a few wallpapers. Let's add [angular2-infinite-scroll](https://www.npmjs.com/package/angular2-infinite-scroll) to our application to make use of the pagination. Here's how you can do it:
 
 1. Open your terminal and add it as a dependency to your project.
 ```bash
@@ -659,11 +659,11 @@ import { InfiniteScroll } from 'angular2-infinite-scroll';
     }
     ```
 
-```loadMore``` is simple - If the window's vertical scroll position (```codeY```) and the browser window's ```innerHeight``` is greater or equal than the document's offset height, then the bottom of the document has been reached and ```loadWallpapers``` is called with the pagination as an argument.
+```loadMore``` is simple - if the window's vertical scroll position (```codeY```) and the browser window's ```innerHeight``` is greater or equal than the document's offset height, then the bottom of the document has been reached and ```loadWallpapers``` is called with the pagination as an argument.
 
 ## Styling
 
- We'll use the <code>styles</code> attribute in the component's decorators to add references to each of the components. If you've looked close at the project's devDependencies or the Webpack configuration, you probably figured out  that we'll be using [LESS](http://lesscss.org/).
+ We'll use the <code>styles</code> attribute in the component's decorators to add references to each of the components. If you've looked closely at the project's devDependencies or the Webpack configuration, you've probably figured out that we'll be using [LESS](http://lesscss.org/).
  
  First, add the file:
  
