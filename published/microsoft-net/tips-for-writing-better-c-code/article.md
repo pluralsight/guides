@@ -118,7 +118,7 @@ What this code would do is that it would only check for next value if the previo
 ``` csharp
 var company = DbHelper.PeopleTable?.Find(x => x.id == id)?.FirstOrDefault()?.EmploymentHistory?.CompanyName; 
 
-if(comapny != null) {
+if(company != null) {
    // Final process
 }
 ```
