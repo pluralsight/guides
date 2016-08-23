@@ -605,7 +605,7 @@ import { Component } from '@angular/core';
 import {WallpaperListingComponent} from './wallpaperlisting.component' //importing the component 
 @Component({
     selector: 'app',
-    template: '<wallpaper-listing></wallpaperListing>',//adding its selector to the template
+    template: '<wallpaper-listing></wallpaper-listing>',//adding its selector to the template
     directives: [ WallpaperListingComponent ] //adding the component as a directive
 })
 export class AppComponent {
