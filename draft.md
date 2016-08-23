@@ -1,8 +1,3 @@
-### Use Fanout to Send Messages to Your Ionic2 App in About 20 Minutes  by Seth Bunke
-- [Read the guide](http://tutorials.pluralsight.com/front-end-javascript/use-fanout-to-send-messages-to-your-ionic2-app-in-about-20-minutes?status=draft)
-- [Read more from Seth Bunke](http://tutorials.pluralsight.com/author/sethbunke) <img src="https://avatars.githubusercontent.com/u/20564909?v=3" width="30" height="30" alt="Seth Bunke" />
-- Related to: Front-End JavaScript (Angular, React, Meteor, etc)
-
 ### My web design  by sheerasai
 - [Read the guide](http://tutorials.pluralsight.com/html-css/my-web-design?status=draft)
 - [Read more from sheerasai](http://tutorials.pluralsight.com/author/sheerasai) <img src="https://avatars.githubusercontent.com/u/18191440?v=3" width="30" height="30" alt="sheerasai" />
