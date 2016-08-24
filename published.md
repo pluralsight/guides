@@ -1,3 +1,8 @@
+### Build a scalable, fault tolerant system with ASP.NET Core and RethinkDB on Docker Swarm mode by Stefan Prodan
+- [Read the guide](http://tutorials.pluralsight.com/microsoft-net/build-a-scalable-fault-tolerant-system-with-asp-net-core-and-rethinkdb-on-docker-swarm-mode)
+- [Read more from Stefan Prodan](http://tutorials.pluralsight.com/author/stefanprodan) <img src="https://avatars.githubusercontent.com/u/3797675?v=3" width="30" height="30" alt="Stefan Prodan" />
+- Related to: Microsoft.NET (C#, ASP.NET, VB.NET, etc)
+
 ###  Building a multiplayer space shooter: Part I by Wolfram Hempel
 - [Read the guide](http://tutorials.pluralsight.com/front-end-javascript/building-a-multiplayer-space-shooter-part-i)
 - [Read more from Wolfram Hempel](http://tutorials.pluralsight.com/author/WolframHempel) <img src="https://avatars.githubusercontent.com/u/1503717?v=3" width="30" height="30" alt="Wolfram Hempel" />
