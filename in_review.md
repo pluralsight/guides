@@ -13,11 +13,6 @@
 - [Read more from Hristo Georgiev](http://tutorials.pluralsight.com/author/Kaizeras) <img src="https://avatars.githubusercontent.com/u/6340189?v=3" width="30" height="30" alt="Hristo Georgiev" />
 - Related to: Front-End JavaScript (Angular, React, Meteor, etc)
 
-### Build a scalable, fault tolerant system with ASP.NET Core and RethinkDB on Docker Swarm mode by Stefan Prodan
-- [Read the guide](http://tutorials.pluralsight.com/microsoft-net/build-a-scalable-fault-tolerant-system-with-asp-net-core-and-rethinkdb-on-docker-swarm-mode?status=in-review)
-- [Read more from Stefan Prodan](http://tutorials.pluralsight.com/author/stefanprodan) <img src="https://avatars.githubusercontent.com/u/3797675?v=3" width="30" height="30" alt="Stefan Prodan" />
-- Related to: Microsoft.NET (C#, ASP.NET, VB.NET, etc)
-
 ### Alexa, run this JavaScript app by Craig Bilner
 - [Read the guide](http://tutorials.pluralsight.com/interesting-apis/alexa-run-this-javascript-app?status=in-review)
 - [Read more from Craig Bilner](http://tutorials.pluralsight.com/author/craigbilner) <img src="https://avatars.githubusercontent.com/u/12942968?v=3" width="30" height="30" alt="Craig Bilner" />
