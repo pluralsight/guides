@@ -1,0 +1,15 @@
+{
+    "_publish_status": "draft",
+    "author_name": "eduardc",
+    "author_real_name": "EduardC",
+    "branch": "master",
+    "branches": [],
+    "filename": "article.md",
+    "first_commit": "9b1563304648ec0bc864efa77bffddf6e6cc3e43",
+    "image_url": "https://avatars.githubusercontent.com/u/11346418?v=3",
+    "stacks": [
+        "other"
+    ],
+    "thumbnail_url": null,
+    "title": "Full Web Stack with ASP.NET and Docker Swarm"
+}
