@@ -1,3 +1,8 @@
+### Full Web Stack with ASP.NET and Docker Swarm by EduardC
+- [Read the guide](http://tutorials.pluralsight.com/other/full-web-stack-with-asp-net-and-docker-swarm?status=draft)
+- [Read more from EduardC](http://tutorials.pluralsight.com/author/eduardc) <img src="https://avatars.githubusercontent.com/u/11346418?v=3" width="30" height="30" alt="EduardC" />
+- Related to: other
+
 ### Hello World by Dan Fernandez
 - [Read the guide](http://tutorials.pluralsight.com/python/hello-world?status=draft)
 - [Read more from Dan Fernandez](http://tutorials.pluralsight.com/author/thedanfernandez) <img src="https://avatars.githubusercontent.com/u/8809372?v=3" width="30" height="30" alt="Dan Fernandez" />
