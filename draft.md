@@ -93,11 +93,6 @@
 - [Read more from Sanjeev Murthy](http://tutorials.pluralsight.com/author/SanjeevMurthy) <img src="https://avatars.githubusercontent.com/u/10756352?v=3" width="30" height="30" alt="Sanjeev Murthy" />
 - Related to: other
 
-### Using the Tierion Hash API with Python by Matthew Sedaghatfar
-- [Read the guide](http://tutorials.pluralsight.com/python/using-the-tierion-hash-api-with-python?status=draft)
-- [Read more from Matthew Sedaghatfar](http://tutorials.pluralsight.com/author/sedaghatfar) <img src="https://avatars.githubusercontent.com/u/3936021?v=3" width="30" height="30" alt="Matthew Sedaghatfar" />
-- Related to: Python
-
 ### Quick way to build an Alexa Trivia Skill by vincent wong
 - [Read the guide](http://tutorials.pluralsight.com/node-js/quick-way-to-build-an-alexa-trivia-skill?status=draft)
 - [Read more from vincent wong](http://tutorials.pluralsight.com/author/wesee) <img src="https://avatars.githubusercontent.com/u/4255955?v=3" width="30" height="30" alt="vincent wong" />
