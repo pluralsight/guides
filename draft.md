@@ -1,8 +1,3 @@
-### Hello World by Dan Fernandez
-- [Read the guide](http://tutorials.pluralsight.com/python/hello-world?status=draft)
-- [Read more from Dan Fernandez](http://tutorials.pluralsight.com/author/thedanfernandez) <img src="https://avatars.githubusercontent.com/u/8809372?v=3" width="30" height="30" alt="Dan Fernandez" />
-- Related to: Python
-
 ### My web design  by sheerasai
 - [Read the guide](http://tutorials.pluralsight.com/html-css/my-web-design?status=draft)
 - [Read more from sheerasai](http://tutorials.pluralsight.com/author/sheerasai) <img src="https://avatars.githubusercontent.com/u/18191440?v=3" width="30" height="30" alt="sheerasai" />
