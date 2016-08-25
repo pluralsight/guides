@@ -1,3 +1,8 @@
+### Debugging Angular 2 applications by Hristo Georgiev
+- [Read the guide](http://tutorials.pluralsight.com/front-end-javascript/debugging-angular-2-applications)
+- [Read more from Hristo Georgiev](http://tutorials.pluralsight.com/author/Kaizeras) <img src="https://avatars.githubusercontent.com/u/6340189?v=3" width="30" height="30" alt="Hristo Georgiev" />
+- Related to: Front-End JavaScript (Angular, React, Meteor, etc)
+
 ### Build a scalable, fault tolerant system with ASP.NET Core and RethinkDB on Docker Swarm mode by Stefan Prodan
 - [Read the guide](http://tutorials.pluralsight.com/microsoft-net/build-a-scalable-fault-tolerant-system-with-asp-net-core-and-rethinkdb-on-docker-swarm-mode)
 - [Read more from Stefan Prodan](http://tutorials.pluralsight.com/author/stefanprodan) <img src="https://avatars.githubusercontent.com/u/3797675?v=3" width="30" height="30" alt="Stefan Prodan" />
