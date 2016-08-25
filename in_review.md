@@ -13,11 +13,6 @@
 - [Read more from piratemrs](http://tutorials.pluralsight.com/author/piratemrs) <img src="https://avatars.githubusercontent.com/u/21154223?v=3" width="30" height="30" alt="piratemrs" />
 - Related to: Node.js
 
-### Debugging Angular 2 applications by Hristo Georgiev
-- [Read the guide](http://tutorials.pluralsight.com/front-end-javascript/debugging-angular-2-applications?status=in-review)
-- [Read more from Hristo Georgiev](http://tutorials.pluralsight.com/author/Kaizeras) <img src="https://avatars.githubusercontent.com/u/6340189?v=3" width="30" height="30" alt="Hristo Georgiev" />
-- Related to: Front-End JavaScript (Angular, React, Meteor, etc)
-
 ### Alexa, run this JavaScript app by Craig Bilner
 - [Read the guide](http://tutorials.pluralsight.com/interesting-apis/alexa-run-this-javascript-app?status=in-review)
 - [Read more from Craig Bilner](http://tutorials.pluralsight.com/author/craigbilner) <img src="https://avatars.githubusercontent.com/u/12942968?v=3" width="30" height="30" alt="Craig Bilner" />
