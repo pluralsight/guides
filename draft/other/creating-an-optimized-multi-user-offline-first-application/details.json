@@ -1,0 +1,15 @@
+{
+    "_publish_status": "draft",
+    "author_name": "fknop",
+    "author_real_name": "Florian Knop",
+    "branch": "master",
+    "branches": [],
+    "filename": "article.md",
+    "first_commit": "e979e294385cd69a022faed6869f21571ab9e24a",
+    "image_url": "https://avatars.githubusercontent.com/u/6775689?v=3",
+    "stacks": [
+        "other"
+    ],
+    "thumbnail_url": null,
+    "title": "Creating an optimized multi-user offline first application"
+}
