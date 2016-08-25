@@ -146,7 +146,7 @@ Now that we have a web UI implemented. We can start collecting events any time a
 <dependency>
     <groupId>io.keen</groupId>
     <artifactId>keen-client-api-java</artifactId>
-    <version>3.0.0</version>
+    <version>4.0.0</version>
 </dependency>
 ```
 We need to configure Keen IO by using Spring Framework. Create the following `Config` class:
@@ -255,7 +255,7 @@ First off, we need to add the following two dependencies into the `pom.xml` file
 <dependency>
     <groupId>io.keen</groupId>
     <artifactId>keen-client-api-query</artifactId>
-    <version>3.0.0</version>
+    <version>4.0.0</version>
 </dependency>
 
 <dependency>
