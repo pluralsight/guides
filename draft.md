@@ -1,3 +1,8 @@
+### Creating an optimized multi-user offline first application by Florian Knop
+- [Read the guide](http://tutorials.pluralsight.com/other/creating-an-optimized-multi-user-offline-first-application?status=draft)
+- [Read more from Florian Knop](http://tutorials.pluralsight.com/author/fknop) <img src="https://avatars.githubusercontent.com/u/6775689?v=3" width="30" height="30" alt="Florian Knop" />
+- Related to: other
+
 ### Securing ASP.NET MVC Applications with log in, email confirmation, password reset, and two factor authentication, using MembershipReboot by Peter Mbanugo
 - [Read the guide](http://tutorials.pluralsight.com/microsoft-net/securing-asp-net-mvc-applications-with-log-in-email-confirmation-password-reset-and-two-factor-authentication-using-membershipreboot?status=draft)
 - [Read more from Peter Mbanugo](http://tutorials.pluralsight.com/author/pmbanugo) <img src="https://avatars.githubusercontent.com/u/4036118?v=3" width="30" height="30" alt="Peter Mbanugo" />
