@@ -1,0 +1,15 @@
+{
+    "_publish_status": "draft",
+    "author_name": "pmbanugo",
+    "author_real_name": "Peter Mbanugo",
+    "branch": "master",
+    "branches": [],
+    "filename": "article.md",
+    "first_commit": "96860ee6d70fb3d6eec6a1c6ddd73350c39987ab",
+    "image_url": "https://avatars.githubusercontent.com/u/4036118?v=3",
+    "stacks": [
+        "Microsoft.NET (C#, ASP.NET, VB.NET, etc)"
+    ],
+    "thumbnail_url": null,
+    "title": "Securing ASP.NET MVC Applications with log in, email confirmation, password reset, and two factor authentication, using MembershipReboot"
+}
