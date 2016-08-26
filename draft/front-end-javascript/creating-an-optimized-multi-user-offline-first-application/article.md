@@ -1,7 +1,7 @@
 Today we are going to take a look at Ionic, PouchDB and CouchDB to create an offline first application.
 First of all, I've been using Ionic / PouchDB for 3 weeks now during my spare time (2h max. a day). I want to share what I've learned and the best practices I've found.
 
-We are going to build a simple application: a shopping list with a page of shopping lists and a page of items in a shopping list.
+We are going to build a simple shopping list application with a page of shopping lists and a page for the items of those lists
 
 # Designing the models / data access
 
@@ -30,20 +30,21 @@ export interface ShoppingItem {
 }
 ```
 
-Our documents will extends the model interface and the `PouchDocument`, for example: 
+Our documents will implement the model and the `PouchDocument`, for example: 
 
 `export interface ShoppingListDocument implements PouchDocument, ShoppingList`
 
 
 ## Taking advantage of PouchDB `_id` field
 
-When I first started using PouchDB, I was not thinking in a NoSQL way. I was doing complex queries with map/reduce to do simple things like get all shopping lists. I rapidly noticed that it was really slow, so I've searched for alternatives in the PouchDB blogs/documentation, and here is what I think is the best one:
+When I first started using PouchDB, I was not thinking in a NoSQL way. I was doing complex queries with map/reduce to do simple things like getting all the shopping lists. I quickly noticed that it was really slow, so I searched for alternatives in the PouchDB blogs/documentation, and here is what I think is the best one:
 
-Never create document with a generated random `_id`. It's a waste, the `_id` field is very powerful. When you're doing `allDocs` with PouchDB, it returns the result sorted by `_id`. That means you can use the `_id` to store the document type (like`shopping_list` for example) and use the `startkey`and `endkey` parameters of the `allDocs` function.
+You should never create a document with a generated `_id`: it's a waste because the `_id` field is too powerful. Here is why: when you do `allDocs` with PouchDB, it returns the result sorted by `_id`,
+that means you can use the `_id` to store the document type (like`shopping_list` for example) and retrieve it by using the `startkey`and `endkey` parameters of the `allDocs` function.
 
 #### Example
 
-The `_id` of a document for a shopping list is going to be `shopping_list:$name` where `$name` is the name of that shopping list. 
+The `_id` of a document for a shopping list is going to be `shopping_list:$name` where `$name` is the name of that list. 
 What you can do with this is: 
 
 ```typescript
@@ -53,9 +54,11 @@ db.allDocs({
 });
 ```
 
-It will returns all the document starting with `shopping_list`. No more need of an index on the `doc_type` field (or whatever you want to call it).
+It will returns all the document starting with `shopping_list`. You don't require an index on the doc_type field anymore.
 
-It even gets better because you can do `"joins"`. When you will store an item of a `shopping_list` you should not store the items inside the `shopping_list` document. It would be a pain to manage that array for inserts, delete, etc. What you can do is storing the `_id` of the shopping list in the `_id` of the shopping item: `shopping_item:$shopping_list_id:$item_name`. With this design you can query all the items of one list:
+It even gets better because you can do `"joins"`. When you store an item of a `shopping_list` you should not store the items inside the `shopping_list` document. 
+It would be a pain to manage the insertions, updates, deletions in that array. What you can do is storing a reference of the shopping list `_id` in the `_id` of the shopping item: `shopping_item:$shopping_list_id:$item_name`. 
+With this design you can query all the items of one list:
 
 ```typescript
 getItems (list: ShoppingList) {
@@ -66,9 +69,11 @@ getItems (list: ShoppingList) {
 }
 ```
 
-So what happens if for example we want to change the name of a list / item ? The sorting will be broken because we cannot change the index. One solution I think would work is to delete the old document and create a new one with `bulkDocs`. `bulkDocs` allows you to create/update/delete documents in a batch.
+What happens if for example we want to change the name of a list / item ? The sorting will be broken because we cannot change the `_id`.
+One solution would be to delete the old document and create a new one with `bulkDocs`. 
+`bulkDocs` allows you to create/update/delete documents in a batch.
 
-To handle the creation of id easily, you can use a little function that I called `toId`:
+To easily handle the id's creation, you can use a little function that I called `toId`:
 
 ```typescript
 function normalizeId (id: string) {
@@ -82,30 +87,21 @@ export function toId (parts: any[]) {
         throw new Error('parts must at least contain one id');
     }
 
-    return `${normalizeId(parts.map((part: number|string) => {
-      if (typeof part === 'number') {
-        return `${part}`;
-      }
-      else if (typeof part === 'string') {
-        return part;
-      }
-      else {
-        throw new TypeError('toId: a part can only be a string or a number');
-      }
-    }).join(':'))}`;
+    return `${normalizeId(parts.join(':'))}`;
 }
 ```
 
 You will only need to do `toId(['shopping_item', list._id])` for example.
 
-## Taking advantage of RxJS 
+## Taking advantage of RxJS (https://github.com/ReactiveX/rxjs)
+
 
 The `pouchdb` package on `npm` uses promises or callback. We're working with `Ionic 2` here, so we have access to `RxJS`. We can convert these promises into `RxJS` observables.
 
 For example:
 
 ```typescript
-export class PouchAdapter { 
+export class PouchDbAdapter { 
     
     private db: any;
     
@@ -124,7 +120,12 @@ export class PouchAdapter {
     }
     
     changes (options: any = {}): Observable<any> {
-
+        
+        
+        // Here you create custom observable.
+        // What you return in Observable.create is the teardown logic.
+        // The teardown logic is the code executed when you unsubscribe an observable.
+        // In our case, we need to cancel the changes feed.
         return Observable.create((observer: Observer<any>) => {
 
             const feed: any = this.db.changes(options)
@@ -140,7 +141,7 @@ export class PouchAdapter {
 }
 ```
 
-This way, this feels more consistent with `Angular 2`.
+This way, it feels more consistent with `Angular 2`.
 
 ## Create the DB and shopping service
 
@@ -172,7 +173,7 @@ export class ShoppingService {
 
     return this.db.changes({
       include_docs: true,
-      live: true,
+      live: true, 
       filter: function (doc: any) {
         return doc.doc_type === ShoppingService.DOC_TYPE;
       },
@@ -226,7 +227,7 @@ export class ShoppingService {
 
 # Creating the list
 
-So, let's start using `Ionic 2` and `Angular 2`. First we need to create the shopping list page.
+So, let's start using `Ionic 2` and `Angular 2`. First we need to generate the shopping list page.
 
 ```
 $ ionic g page shopping-list
@@ -254,7 +255,7 @@ getAll () {
 
 Now whenever we enter the view, the lists will be fetched from the local database.
 
-Now let's create a simple template to display our lists:
+Let's create a simple template to display our lists:
 
 ```html
 <ion-list>
@@ -295,13 +296,14 @@ onDelete (list: ShoppingListDocument) {
 }
 ```
 
-So, if we're not handling the subscribe function, how do we update the view? Well, that's the topic for the next chapter.
+So, if we're not handling the subscribe function, how do we update the view?
 
 ## Using the changes feed to update the view
 
-Whenever you're doing a change to an item in a list, you may want to update the view in the callback of that update. But what happens if the update comes from the `sync` that is going on in background? You would need to write the same function that handles the changes. What you can do instead is updating the document and handling any errors that the database could return and let the changes feed update your view. 
+Whenever you're doing a change to an item in a list, you may want to update the view in the update's callback. But what happens if the update comes from the `sync` that is running in background?
+You would need to write the same function to handle the changes. What you can do instead is update the document and handle any errors that the database could return and let the changes feed update your view. 
 
-It's also a better design because you don't have to worry anymore with  "Where is this change coming from?". It all come from the changes feed.
+It's also a better design because you don't have to worry about "Where is this change coming from?" anymore. It all comes from the changes feed.
 
 #### Example
 
@@ -320,11 +322,13 @@ So here we're calling handleChange which is a function that will update the list
 Let's see how we can handle the changes.
 
 * If a document has been deleted, we need to remove it from the list
-* If a document has been added, we need to insert it from the list
+* If a document has been added, we need to insert it in the list
 * If a document has been updated, we need to update it in the list
-* There is no differences between an added and updated document in the change feed. We need to check if the document already exists first.
+* There is no differences between new and updated document in the change feed. We need to check if the document already exists first.
 
-How can we find a document ? The first idea that comes to mind is a simple loop that checks if the `_id` is equal to the searched document. Well, don't do that, we can do a lot better. Remember that the list is ordered by its `_id` field. That means we can use one of the first algorithm that we learn in computer sciences: `The binary search`. It's way more effective, especially if you have a lot of items in your list.
+How can we find a document ? The first idea that comes to mind is a simple loop that checks if the `_id` is equal to the searched document. Avoid that, we can do a lot better. 
+Remember that the list is ordered by its `_id` field. That means we can use one of the first algorithm that we learn in computer sciences: `The binary search`.
+It's way more effective, especially if you have a lot of items in your list.
 
 So let's see how the `handleChange` function looks like.
 
@@ -400,7 +404,7 @@ export function insert (target: any[], value: any, index?: number) {
     return [...target.slice(0, index), value, ...target.slice(index)];
 }
 
-export function insertIntoOrder (input: any[], value: any, field: string, binary: boolean = true): any[] {
+export function insertIntoOrder (input: any[], value: any, field: string): any[] {
 
     const orderedIndex = binarySearch(input, value, field);
     if (!orderedIndex.exists) {
@@ -415,14 +419,18 @@ export function insertIntoOrder (input: any[], value: any, field: string, binary
 }
 ```
 
-Now, you have everything you need to handle change locally and from a remote database. 
+Now, you have everything you need to handle local and remote changes.
 
 I didn't write a lot about immutability, but as you can see, all these functions above are returning new object / references. 
-I think it's one of the best practices that we can use in our application.
+I think it's one of the best practices that we can use in our applications.
 
-For example, without immutable data, a `pipe` in `Angular 2` must be impure and it will trigger its `transform` method every time a change detection triggers. But if we use immutable data, we can let it pure and the pipe will trigger its `transform`method every time the reference changes.
+TODO: references of immutability lib/articles
 
-Same thing for the `NgFor`, but the `NgFor` doesn't work with the reference of the array but with the references of its elements. That means, if an object changes in that array, we need to change that reference to update the view. The `NgFor` is smart enough to update only the changed row.
+For example, without immutable data, a `pipe` in `Angular 2` has to be impure to be able to detect changes in the array. The inconvenient is that impure pipes are not good for performances. (link to angular doc)
+But if we use immutable data, we can let it pure and the pipe will trigger its `transform` method every time the reference changes.
+
+`NgFor` almost has the same behavior except that it doesn't work with the reference of the array but with the references of its elements. 
+It means that if an object changes in the array, we need to change the reference to update the view. The `NgFor` is smart enough to update only the changed row.
 
 # Conslusion (todo)
 
