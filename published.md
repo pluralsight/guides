@@ -1,3 +1,8 @@
+### Alexa, run this JavaScript app by Craig Bilner
+- [Read the guide](http://tutorials.pluralsight.com/interesting-apis/alexa-run-this-javascript-app)
+- [Read more from Craig Bilner](http://tutorials.pluralsight.com/author/craigbilner) <img src="https://avatars.githubusercontent.com/u/12942968?v=3" width="30" height="30" alt="Craig Bilner" />
+- Related to: Interesting APIs (SendGrid, Twilio, etc)
+
 ### Debugging Angular 2 applications by Hristo Georgiev
 - [Read the guide](http://tutorials.pluralsight.com/front-end-javascript/debugging-angular-2-applications)
 - [Read more from Hristo Georgiev](http://tutorials.pluralsight.com/author/Kaizeras) <img src="https://avatars.githubusercontent.com/u/6340189?v=3" width="30" height="30" alt="Hristo Georgiev" />
