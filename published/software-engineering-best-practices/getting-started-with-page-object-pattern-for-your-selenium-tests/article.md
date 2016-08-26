@@ -96,7 +96,7 @@ In this example the analysis is very straight forward, and I will make a page ob
 ### 3. Create page objects
 Now I will create two page objects, one for the signup form and one for the receipt.
 
-   public class SignUpPage extends PageObject {
+    public class SignUpPage extends PageObject {
 
         @FindBy(id="firstname")
         private WebElement firstName;
