@@ -1,3 +1,8 @@
+### Creating an optimized offline first application with Ionic 2, PouchDB and CouchDB by Florian Knop
+- [Read the guide](http://tutorials.pluralsight.com/front-end-javascript/creating-an-optimized-offline-first-application-with-ionic-2-pouchdb-and-couchdb?status=draft)
+- [Read more from Florian Knop](http://tutorials.pluralsight.com/author/fknop) <img src="https://avatars.githubusercontent.com/u/6775689?v=3" width="30" height="30" alt="Florian Knop" />
+- Related to: Front-End JavaScript (Angular, React, Meteor, etc)
+
 ### Creating an optimized multi-user offline first application by Florian Knop
 - [Read the guide](http://tutorials.pluralsight.com/front-end-javascript/creating-an-optimized-multi-user-offline-first-application?status=draft)
 - [Read more from Florian Knop](http://tutorials.pluralsight.com/author/fknop) <img src="https://avatars.githubusercontent.com/u/6775689?v=3" width="30" height="30" alt="Florian Knop" />
