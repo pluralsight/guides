@@ -1,0 +1,15 @@
+{
+    "_publish_status": "draft",
+    "author_name": "fknop",
+    "author_real_name": "Florian Knop",
+    "branch": "master",
+    "branches": [],
+    "filename": "article.md",
+    "first_commit": "500ffe92e65439243c1e17b9e7aa6bafe73cfd58",
+    "image_url": "https://avatars.githubusercontent.com/u/6775689?v=3",
+    "stacks": [
+        "Front-End JavaScript (Angular, React, Meteor, etc)"
+    ],
+    "thumbnail_url": null,
+    "title": "Creating an optimized offline first application with Ionic 2, PouchDB and CouchDB"
+}
