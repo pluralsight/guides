@@ -1,3 +1,8 @@
+### Must Known Web-Security risks Developers : OWASP by Sanjeev Murthy
+- [Read the guide](http://tutorials.pluralsight.com/software-engineering-best-practices/must-known-web-security-risks-developers-owasp?status=draft)
+- [Read more from Sanjeev Murthy](http://tutorials.pluralsight.com/author/SanjeevMurthy) <img src="https://avatars.githubusercontent.com/u/10756352?v=3" width="30" height="30" alt="Sanjeev Murthy" />
+- Related to: Software Engineering Best Practices
+
 ### Creating an optimized offline first application with Ionic 2, PouchDB and CouchDB by Florian Knop
 - [Read the guide](http://tutorials.pluralsight.com/front-end-javascript/creating-an-optimized-offline-first-application-with-ionic-2-pouchdb-and-couchdb?status=draft)
 - [Read more from Florian Knop](http://tutorials.pluralsight.com/author/fknop) <img src="https://avatars.githubusercontent.com/u/6775689?v=3" width="30" height="30" alt="Florian Knop" />
