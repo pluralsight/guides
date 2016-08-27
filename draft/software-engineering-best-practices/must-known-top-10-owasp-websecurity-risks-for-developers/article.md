@@ -14,7 +14,7 @@ anyone interested in improving application security.
 
 ![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/2bb93931-db94-4cf4-ac6d-82eb3dd560f4.jpg)
 
-Websites and Web-Servers are prone to security risks and [threats](https://en.wikipedia.org/wiki/Web_threat) due to insecure software and lack of security principles. In recent years a range of different companies have suffered online attacks, including finance, defense, healthcare and other critical organisations worldwide. [Live Online-attacks](http://map.norsecorp.com/#/)
+Websites and Web-Servers are prone to security risks and [attacks](https://www.owasp.org/index.php/Category:Attack) due to insecure software and lack of security principles. In recent years a range of different companies have suffered online attacks, including finance, defense, healthcare and other critical organisations worldwide. [Live Online-attacks](http://map.norsecorp.com/#/)
 
 The goal of the OWASP  is to raise awareness about web application security by describing the most important areas of concern that software developers must be aware of.
 
@@ -315,8 +315,16 @@ http://www.example.com/redirect.jsp?url=evil.com
 3. If destination parameters can’t be avoided, ensure that the supplied value is valid, and authorized for the user.
 
 
+#### So What's next for Developers ?
+
+Whether you are new to web application security or are already very familiar with these risks, the task of producing a secure web application or fixing an existing one can be difficult.
+
+To help organizations and developers reduce their application security risks in a cost effective manner, OWASP has produced numerous free and open resources that you can use to address application security in your organization. Follow this[ URL](https://www.owasp.org/index.php/Top_10_2013-What%27s_Next_for_Developers) for better insight.
 
 
+> If you have found this guide informative please favourite it and feel free to leave any comments. 
+
+__**__ _Without prior approval i have used some of the images found online which suited for the relevant topics. If its a copywrite protected content please raise your concern._
 
 
 
