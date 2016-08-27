@@ -1,3 +1,8 @@
+### Must Known Web-Security risks for Developers by Sanjeev Murthy
+- [Read the guide](http://tutorials.pluralsight.com/software-engineering-best-practices/must-known-web-security-risks-for-developers?status=in-review)
+- [Read more from Sanjeev Murthy](http://tutorials.pluralsight.com/author/SanjeevMurthy) <img src="https://avatars.githubusercontent.com/u/10756352?v=3" width="30" height="30" alt="Sanjeev Murthy" />
+- Related to: Software Engineering Best Practices
+
 ### Using the Tierion Hash API with Python by Matthew Sedaghatfar
 - [Read the guide](http://tutorials.pluralsight.com/python/using-the-tierion-hash-api-with-python?status=in-review)
 - [Read more from Matthew Sedaghatfar](http://tutorials.pluralsight.com/author/sedaghatfar) <img src="https://avatars.githubusercontent.com/u/3936021?v=3" width="30" height="30" alt="Matthew Sedaghatfar" />
