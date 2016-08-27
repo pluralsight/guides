@@ -48,11 +48,6 @@
 - [Read more from Consigliere](http://tutorials.pluralsight.com/author/clthck) <img src="https://avatars.githubusercontent.com/u/14348482?v=3" width="30" height="30" alt="Consigliere" />
 - Related to: Ruby, Ruby on Rails
 
-### Must known Top-10 OWASP WebSecurity risks for Developers by Sanjeev Murthy
-- [Read the guide](http://tutorials.pluralsight.com/software-engineering-best-practices/must-known-top-10-owasp-websecurity-risks-for-developers?status=draft)
-- [Read more from Sanjeev Murthy](http://tutorials.pluralsight.com/author/SanjeevMurthy) <img src="https://avatars.githubusercontent.com/u/10756352?v=3" width="30" height="30" alt="Sanjeev Murthy" />
-- Related to: Software Engineering Best Practices
-
 ### RebornDB : Distributed solution for Redis by Sanjeev Murthy
 - [Read the guide](http://tutorials.pluralsight.com/nosql-databases/reborndb-distributed-solution-for-redis?status=draft)
 - [Read more from Sanjeev Murthy](http://tutorials.pluralsight.com/author/SanjeevMurthy) <img src="https://avatars.githubusercontent.com/u/10756352?v=3" width="30" height="30" alt="Sanjeev Murthy" />
