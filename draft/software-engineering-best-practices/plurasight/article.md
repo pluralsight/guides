@@ -1,4 +1,4 @@
-# A guide to be a better developer
+# A beginner's guide to be a better developer
 
 Before we jump into the topic let me introduce who a software developer really is?
 
@@ -33,55 +33,62 @@ The stages of SDLC include:
 
 ### How a software developer can apply these basic principles to build a better software?
 
-##### Intro here
+We won't get into much detail but you will get a fair understanding. We will dicuss the aim of each of the stages and the activities/work that needs to be done or focussed upon.
 
 #### Feasible study
 
-The main of "Feasiblity Study" is to determine whelther the product is financially worthwhile and "Technically feasible".
+The **aim** of this stage is to _determine whelther the product is financially worthwhile_ and _technically feasible_.
 
-The focus of this stage should be on:
+The **activities** that need to be done:
 * Understand the problem
 * Plan out different solutions
 * Perform a financial analysis(cost & benefit)
 
 #### Requirement analysis and specification
 
-The aim of this stage should be on understanding the exact requirements of the customer and document them properly.
+The **aim** of this stage is to _understand the exact requirements of the customer_ and _document them properly_.
 
-The focus of this stage should be on:
+The **activities** that need to be done:
+
 * Collect all the related data from the customer through interviews and discussions to clearly understand what the customer really wants. Ensure correctness, consistency and unambiguity in the requirements.
 * Organise the requirements in a "Software Requirements Specification" document.
 
 #### Design
 
-The design phase transforms requirements specification in a form suitable for implementation in some programming language.
+The **aim** of design phase is to _transform requirements specification in a form suitable for implementation in some programming language_.
 
-High-level design:
+The **activities** that need to be done:
+
 * Decompose the system into modules
-* represent invocation relationships between modules
-
-Detailed design:
+* Represent invocation relationships between modules
 * Different modules are designed in greater detail. For example, data structures and algorithms for each module are designed.
 
-#### Coding
+#### Implementation
 
-During the implementation phase each module of design is coded and each module is unit tested.
-The purpose of unit testing is to test if individual modules work correctly. The end product of implementation phase is a set of program modules that have been tested individually.
+The **aim** of this stage is to _code and test the modules designed in the previous stage_. The end product of implementation phase is a set of program modules that have been tested individually.
 
+The **activities** that need to be done:
+
+* Each module of design is coded and each module is unit tested. The purpose of unit testing is to test if individual modules work correctly.
 
 #### Testing
 
-In this stage different modules are integrated in a planned manner. During each integration step the partially integrated system is tested. After all the modules have been successfully integrated and tested, system testing is carried out. The goal of system testing is to ensure that the developed system functions according to its requirements specified in the SRS document.
+The **aim** of this stage is to _integrate different modules in a planned manner_. 
+
+The **activities** that need to done:
+
+* Each integration step the partially integrated system is tested.
+* After all the modules have been successfully integrated and tested, system testing is carried out. The goal of system testing is to ensure that the developed system functions according to its requirements specified in the SRS document.
 
 #### Maintenance
 
-The maintenance of any software product requires more efffort than to develop the product itself. Development effort to Maintenance effort ratio is typically 2:3.
+The **aim** of this stage is to _enhance or maintain the provided service through the product_.
+The maintenance of any software product requires more effort than to develop the product itself. Typically, development effort to maintenance effort ratio is 2:3.
 
-The main focus of this stage is to:
+The **activities** that need to be done:
 * Making appropriate changes to prevent the occurence of errors
 * Correct errors which were not discovered during the product development phase.
 * Improve implementation of the system
 * Enchance functionalities of the system
 * Port software to new environment
 
-##### Ending here
