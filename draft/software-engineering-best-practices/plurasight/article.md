@@ -92,3 +92,4 @@ The **activities** that need to be done:
 * Enchance functionalities of the system
 * Port software to new environment
 
+Each of these stages in the _Software Development Life Cycle_ are too huge to dicuss in a begineer's guide. I have focussed mainly on _Software Development Life Cycle_ because it is how you need to work to develop a software product. ** Following a SDLC would be the first step into becoming a better software developer **. It makes a great a great difference in terms of time, cost and effort.
