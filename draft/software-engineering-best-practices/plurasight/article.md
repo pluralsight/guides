@@ -1,10 +1,10 @@
 # A beginner's guide to be a better developer
 
-Before we jump into the topic let me introduce who a software developer really is?
+Before we jump into the topic let me introduce _who a software developer really is?_
 
 ###### A software engineer is a person who applies the principles of software engineering to the design, development, maintenance, testing, and evaluation of the software and systems that make computers or anything containing software work.
 
-Now that you know who a software engineer is, let us see what are the principles of software engineering that is mentioned in the above definition.
+Now that you know who a software engineer is, let us see _what are the principles of software engineering_ that is mentioned in the above definition.
 
 * Focus on producing high quality
 * Determine the problem
@@ -16,7 +16,7 @@ Now that you know who a software engineer is, let us see what are the principles
 * Follow with care
 * Give products to customer early
 
-Before we jump in to see "How a software developer can apply these basic principles to build a better software"? Lets understand what a Software Development Life Cycle is?
+Before we jump in to see _How a software developer can apply these basic principles to build a better software?_ Lets understand _what a Software Development Life Cycle is_?
 
 ### Software Development Life Cycle (SDLC)
 
@@ -92,4 +92,4 @@ The **activities** that need to be done:
 * Enchance functionalities of the system
 * Port software to new environment
 
-Each of these stages in the _Software Development Life Cycle_ are too huge to dicuss in a begineer's guide. I have focussed mainly on _Software Development Life Cycle_ because it is how you need to work to develop a software product. ** Following a SDLC would be the first step into becoming a better software developer **. It makes a great a great difference in terms of time, cost and effort.
+Each of the stages in the _Software Development Life Cycle_ are too vast to be dicussed in a begineer's guide. I have focussed mainly on _Software Development Life Cycle_ because it gives you a workflow to develop a software product. ** Following a SDLC would be the first step into becoming a better software developer **. It makes a great a great difference in terms of *time*, *cost* and *effort* and _that's what separates the beginner and the experienced_.
