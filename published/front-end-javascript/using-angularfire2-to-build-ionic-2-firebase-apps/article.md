@@ -466,7 +466,7 @@ Piece of cake!
 
 There you have it: a fully functional app running on the latest version of **Ionic Framework** and **Firebase**.
 
-The entire source code for this app is available on [github](https://github.com/javebratt/bill-reminder).
+The entire source code for this app is available on [github](https://github.com/JAVEBRATTCODE/bill-reminder).
 
 I also send out a tutorial every Thursday on Ionic + Firebase. Join [here](http://javebratt.com/become-developer/) to check my guides out.
 
