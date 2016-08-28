@@ -1,0 +1,15 @@
+{
+    "_publish_status": "draft",
+    "author_name": "nescampos",
+    "author_real_name": "nescampos",
+    "branch": "master",
+    "branches": [],
+    "filename": "article.md",
+    "first_commit": "7f4ba5ced3e98bddb3ce8328a1fe79631eefe9f5",
+    "image_url": "https://avatars.githubusercontent.com/u/7274106?v=3",
+    "stacks": [
+        "Microsoft.NET (C#, ASP.NET, VB.NET, etc)"
+    ],
+    "thumbnail_url": null,
+    "title": "Sign contracts with ASP.NET MVC and HelloSign API"
+}
