@@ -23,11 +23,6 @@
 - [Read more from piratemrs](http://tutorials.pluralsight.com/author/piratemrs) <img src="https://avatars.githubusercontent.com/u/21154223?v=3" width="30" height="30" alt="piratemrs" />
 - Related to: Node.js
 
-### How to write your first multi-threaded application with c# by bibekdw
-- [Read the guide](http://tutorials.pluralsight.com/microsoft-net/how-to-write-your-first-multi-threaded-application-with-c?status=in-review)
-- [Read more from bibekdw](http://tutorials.pluralsight.com/author/bibekdw) <img src="https://avatars.githubusercontent.com/u/13805423?v=3" width="30" height="30" alt="bibekdw" />
-- Related to: Microsoft.NET (C#, ASP.NET, VB.NET, etc)
-
 ### Using the REST Interface with Licas by discompsys
 - [Read the guide](http://tutorials.pluralsight.com/java-and-j2ee/using-the-rest-interface-with-licas?status=in-review)
 - [Read more from discompsys](http://tutorials.pluralsight.com/author/discompsys) <img src="https://avatars.githubusercontent.com/u/20437503?v=3" width="30" height="30" alt="discompsys" />
