@@ -1,10 +1,10 @@
-CPU with multiple cores has become more and more common these days. To use full potential of the machine, writing multi threaded applications is now really important. Multi-threaded applications are difficult to code and test, expensive to maintain as they are prone to deadlock, race conditions and so many other multi-threaded hazards. 
+CPU with multiple cores have become more and more common these days. To use full potential of the machine, writing multi threaded applications is now really important. Multi-threaded applications are difficult to code and test, expensive to maintain as they are prone to deadlock, race conditions and so many other multi-threaded hazards. 
 
 Writing threaded application is not that tough these days as it used to be in the past. Dot net has already done so many heavy liftings for us so that we can focus more on application specifics. 
 
 There are various ways of writing multi-threaded application in C#. 
 
-**Starting Thread**
+## Starting Thread
 
     public class SimpleThreadExample
     {
@@ -71,9 +71,9 @@ There are various ways of writing multi-threaded application in C#.
             Console.WriteLine("All Threads Exited in {0} secods", (DateTime.Now - startTime).TotalSeconds);
         }
         
-**Terminating Thread**
+## Terminating Thread
 
-Thread.Abort() method can be used to destroy the running thread. But in practice it is better to let the CLR do the dirty work for you. You can have a flag which would break your long running process.
+`Thread.Abort()` method can be used to destroy the running thread. But in practice it is better to let the CLR do the dirty work for you. You can have a flag which would break your long running process.
 
     public class DestroyThreadExample
     {
@@ -115,7 +115,7 @@ Thread.Abort() method can be used to destroy the running thread. But in practice
         }
     }
 
-**Responsive UI**
+## Responsive UI
 
 One of the most popular use case of threading is to make the UI resposive. Lets see how we can achieve that with the simple thread and windows form.
 
@@ -168,11 +168,11 @@ Noticed the delegate being used to update the UI?
 
     lblStopWatch.Invoke(new UpdateLabel(UpdateUI), timeElapsedInstring);
 
-This is because you cannot update UI from any other thread other than the UI thread. I think this is very common scenrio every one would have dealt with while working on windows forms.
+This is because you can't update UI from any other thread other than the UI thread. I think this is very common scenario every one would have dealt with while working on windows forms.
 
-There is another easiest way to update UI.
+There is another easiest way to update the UI.
 
-**BackgroudWorker**
+## BackgroundWorker
 
 There is another easiest way of creating a thread specifically to update the UI. 
 BackgroundWorker
@@ -258,7 +258,7 @@ BackgroundWorker
 
 In this approach, instead of creating the plain old thread and using delegate to update the UI, we have BackgroundWorker component which does the work for us. It supports multiple events to run long running process (DoWork), update the UI (ProgressChanged) and you will know when the background thread has actually ended (RunWorkerCompleted). In the plain old thread, knowing the end of the thread is tricky and you have to rely either of Thread.Join or use some other wait handles.
 
-**Problems introduced by threading**
+### Problems introduced by threading
 
 While writing the multi-threaded application, there are bunch of known issues that we should be able to handle. Deadlock, race conditions are few to name. It is necessary to maintain synhronize access to different resources to make sure we are not corrupting the output. For example, if a file in the filesystem is being modified by multiple threads, application must allow only one thread to modify the file at the time, otherwise the file might get corrupt. One way of doing it is using Lock Keyword. If we are accessing the shared resource around the Lock statement, it will allow only one thread to execute the code within the lock block.
 
