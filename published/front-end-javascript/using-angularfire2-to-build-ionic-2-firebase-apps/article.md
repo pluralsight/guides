@@ -48,11 +48,27 @@ Now that you have created a new app and are inside your app folder, it's time to
 Go back to your terminal and, inside the `billTracker` folder, type:
 
 ```bash
-  npm install angularfire2@2.0.0-beta.2 && firebase --save
+  npm install firebase angularfire2@2.0.0-beta.2 --save
   typings install --save --global firebase
 ```
 
-I'm using the `@2.0.0-beta.2` tag when installing AngularFire2 because I need AngularFire2 to work with Firebase's new console. If the tag is left out, AngularFire2 will only work with the legacy console.
+**NOTE ON IONIC BETA11**:
+
+Since AngularFire2 pushed a few updates last week everything is breaking, that's because AngularFire2 is now using Angular RC5 and Ionic beta11 is using beta12.
+
+I've managed to get my beta11 & angularfire2 apps working following this steps:
+
+First, install firebase only: `npm install --save firebase`
+
+Then install AngularFire2: `  npm install  --save angularfire2@2.0.0-beta.2`
+
+After that install typings (_You won't need this on the next version, since they'll come by default_)
+
+`typings install file:node_modules/angularfire2/firebase3.d.ts --save --global && typings`
+
+I'm using the `@2.0.0-beta.2` tag when installing AngularFire2 because I need AngularFire2 to work with Ionic 2 beta11. If the tag is left out, AngularFire2 will install the new version that works with NG RC5 instead.
+
+If you are running intro trouble getting this to work you can message me and I'll help you troubleshoot. If this is an important production project I'd advise you use the JS SDK instead.
 
 Now that we have everything installed, it's time to open your app in your favorite text editor or IDE. I'm using **atom** so I just type `atom .` inside my app folder.
 
