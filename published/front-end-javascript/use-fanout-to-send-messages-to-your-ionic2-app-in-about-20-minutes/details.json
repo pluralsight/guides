@@ -3,7 +3,12 @@
     "author_name": "sethbunke",
     "author_real_name": "Seth Bunke",
     "branch": "master",
-    "branches": [],
+    "branches": [
+        [
+            "prtkgpt",
+            "prtkgpt-front-end-javascript-use-fanout-to-send-messages-to-your-ionic2-app-in-about-20-minutes"
+        ]
+    ],
     "filename": "article.md",
     "first_commit": "8afaede613adf462a8f569ebac0b8de54c42051d",
     "image_url": "https://avatars.githubusercontent.com/u/20564909?v=3",
