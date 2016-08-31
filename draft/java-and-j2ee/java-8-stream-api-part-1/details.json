@@ -1,0 +1,15 @@
+{
+    "_publish_status": "draft",
+    "author_name": "eh3rrera",
+    "author_real_name": "Esteban Herrera",
+    "branch": "master",
+    "branches": [],
+    "filename": "article.md",
+    "first_commit": "a1c55c2204a32a7e10f9b7ba8fcf3d12af03c6c9",
+    "image_url": "https://avatars.githubusercontent.com/u/11665759?v=3",
+    "stacks": [
+        "Java and J2EE"
+    ],
+    "thumbnail_url": null,
+    "title": "Java 8 Stream API: Part 1"
+}
