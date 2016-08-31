@@ -1,3 +1,8 @@
+### Java 8 Stream API: Part 1 by Esteban Herrera
+- [Read the guide](http://tutorials.pluralsight.com/java-and-j2ee/java-8-stream-api-part-1?status=draft)
+- [Read more from Esteban Herrera](http://tutorials.pluralsight.com/author/eh3rrera) <img src="https://avatars.githubusercontent.com/u/11665759?v=3" width="30" height="30" alt="Esteban Herrera" />
+- Related to: Java and J2EE
+
 ### Android chat app for devices (and humans) with PubNub API's by Momy93
 - [Read the guide](http://tutorials.pluralsight.com/interesting-apis/android-chat-app-for-devices-and-humans-with-pubnub-api-s?status=draft)
 - [Read more from Momy93](http://tutorials.pluralsight.com/author/Momy93) <img src="https://avatars.githubusercontent.com/u/13665706?v=3" width="30" height="30" alt="Momy93" />
