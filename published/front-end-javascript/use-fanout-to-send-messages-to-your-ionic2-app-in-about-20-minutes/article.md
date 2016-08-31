@@ -3,7 +3,7 @@
 
 ## **Getting Set Up**
 
-Ok, first things first - go to the [Fanout](https://fanout.io/) site and create your **FREE** account - to ensure that is it free make sure you click on the **"Hacker"** type of account. Next, while you are log into the the site nagivate to the [account page](https://fanout.io/account/panel/) and make a note of both your **Reaml ID** and your **Realm Key** (see screenshot below) - we will need both of these for wiring up the Ionic2 and Nodejs pub-sub mechanism. 
+Ok, first things first - go to the [Fanout](https://fanout.io/) site and create your **FREE** account - to ensure that is it free make sure you click on the **"Hacker"** type of account. Next, while you are log into the the site nagivate to the [account page](https://fanout.io/account/panel/) and make a note of both your **Realm ID** and your **Realm Key** (see screenshot below) - we will need both of these for wiring up the Ionic2 and Nodejs pub-sub mechanism. 
 
 ![Fanout account page realm id and key](https://github.com/sethbunke/Ionic2NodejsFanoutTutorial/blob/master/_tutorialImages/fanout_realm_info.PNG?raw=true)
 
