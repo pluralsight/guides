@@ -1,3 +1,8 @@
+### Ionic 2 database management and versioning by Carlos Esteban Lopez Jaramillo
+- [Read the guide](http://tutorials.pluralsight.com/software-engineering-best-practices/ionic-2-database-management-and-versioning?status=in-review)
+- [Read more from Carlos Esteban Lopez Jaramillo](http://tutorials.pluralsight.com/author/Luchillo) <img src="https://avatars.githubusercontent.com/u/9698639?v=3" width="30" height="30" alt="Carlos Esteban Lopez Jaramillo" />
+- Related to: Software Engineering Best Practices
+
 ### Getting Started with NodeJS by Gaurav Bhavsar
 - [Read the guide](http://tutorials.pluralsight.com/node-js/getting-started-with-nodejs?status=in-review)
 - [Read more from Gaurav Bhavsar](http://tutorials.pluralsight.com/author/gauravbhavsar) <img src="https://avatars.githubusercontent.com/u/5441386?v=3" width="30" height="30" alt="Gaurav Bhavsar" />
