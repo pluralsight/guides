@@ -20,10 +20,10 @@ Installation of NodeJS and NPM is straightforward using installer package availa
 
 #### Installation steps
 
-1. Download the installer from [NodeJS WebSite](https://nodejs.org/en/).
-2. Run the installer.
-3. Follow the installer steps, agree the license agreement and click the next button.
-4. Restart your system/machine.
+* Download the installer from [NodeJS WebSite](https://nodejs.org/en/).
+* Run the installer.
+* Follow the installer steps, agree the license agreement and click the next button.
+* Restart your system/machine.
 
 Now, test NodeJS by printing its version using command
 
