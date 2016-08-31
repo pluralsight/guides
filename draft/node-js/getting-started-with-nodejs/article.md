@@ -156,7 +156,7 @@ Tilde(~) is used to tell "Approximately equivalent to version".
 
 ## Basic Example
 
-Create server.js file with following code
+Create server.js javascript file with following code
 
 ```
 /*server.js*/
@@ -176,3 +176,60 @@ server.listen(port, hostname, function() {
   console.log('Server running at http://'+ hostname + ':' + port + '/');
 });
 ```
+
+As we need `http` to create http server we use `require('http')` and pass into variable named as `http`
+
+```
+var http = reqiure('http');
+```
+
+We also need to defined hostname and port number, here we use `localHost` i.e `127.0.0.1` and `port` number `3000` and assign this into variable hostname and port respectively.
+
+```
+var hostname = '127.0.0.1';
+var port = 3000;
+```
+
+Now, we are creating http server usging createServer method.
+
+```
+var server = http.createServer(function(req, res){
+    res.statusCode = 200;
+    res.setHeader('Content-Type', 'text/plain');
+    res.end('Hello World\n');
+});
+```
+
+Create the server as well as response with having `statusCode: 200`, `Content-Tytpe` header of plain text and end with string `Hello World`. This is the response which is server can send to browser.
+
+> function has two parameters `req` and `res` which is `request` and `response` to server and from server respectively.
+
+In our example we are creating response.
+
+We created server, now we have to assign hostname and port number to our http server.
+
+```
+server.listen(port, hostname, function() {
+  console.log('Server running at http://'+ hostname + ':' + port + '/');
+});
+```
+
+Here, server is listen localhost on posrt number 3000 and print the massage "Server running at http://127.0.0.1:3000/" in command prompt.
+
+Now Run server.js file un node using command
+
+```
+> node server
+```
+
+Open browser and enter url http://127.0.0.1:3000/ . Browser will display **Hello World** message on screen.
+
+
+![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/b4eb365b-23f9-4fc1-b4a8-34b1b9b3e8e9.png)
+
+
+![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/cfaa1589-9a62-48eb-b3f5-3707d3d14a6d.png)
+
+
+
+I hope you found this article informative! See you soon with my next article on NodeJS
