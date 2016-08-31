@@ -1,0 +1,15 @@
+{
+    "_publish_status": "draft",
+    "author_name": "Momy93",
+    "author_real_name": "Momy93",
+    "branch": "master",
+    "branches": [],
+    "filename": "article.md",
+    "first_commit": "4f9e5066bb61a7b70d5f2f74a7b4ce4e2f0e8fb5",
+    "image_url": "https://avatars.githubusercontent.com/u/13665706?v=3",
+    "stacks": [
+        "Interesting APIs (SendGrid, Twilio, etc)"
+    ],
+    "thumbnail_url": null,
+    "title": "Android chat app for devices (and humans) with PubNub API's"
+}
