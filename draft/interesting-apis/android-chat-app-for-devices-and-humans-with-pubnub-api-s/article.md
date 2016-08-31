@@ -1,6 +1,5 @@
 
 
-
 ## Introduction
 First of all sorry for my bad english, because I'm from Italy.<br>
 In this tutorial I'll show you how I built Nubchat, an Adroid app that let you communicate with other android smartphones, or dev boards like Arduino, RaspberryPi and all the devices that support PubNub API's.<br>
@@ -184,7 +183,7 @@ This time I have to call the history function for all the public channels becaus
 Maybe there is a better way to do this anyway but I don't get by now.
 For private channels instead, I just need to call history on my own channel (Bob).
  
- ##PubNub SDK 4
+ ## PubNub SDK 4
  
 For this app I used PubNub Android (Java) SDK 4.0.8 . To install it in your android studio project, just add this to your dependencies:
  
