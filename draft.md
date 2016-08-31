@@ -1,3 +1,8 @@
+### Getting Started with NodeJS by Gaurav Bhavsar
+- [Read the guide](http://tutorials.pluralsight.com/node-js/getting-started-with-nodejs?status=draft)
+- [Read more from Gaurav Bhavsar](http://tutorials.pluralsight.com/author/gauravbhavsar) <img src="https://avatars.githubusercontent.com/u/5441386?v=3" width="30" height="30" alt="Gaurav Bhavsar" />
+- Related to: Node.js
+
 ### Android chat app for devices (and humans) with PubNub API's by Momy93
 - [Read the guide](http://tutorials.pluralsight.com/interesting-apis/android-chat-app-for-devices-and-humans-with-pubnub-api-s?status=draft)
 - [Read more from Momy93](http://tutorials.pluralsight.com/author/Momy93) <img src="https://avatars.githubusercontent.com/u/13665706?v=3" width="30" height="30" alt="Momy93" />
