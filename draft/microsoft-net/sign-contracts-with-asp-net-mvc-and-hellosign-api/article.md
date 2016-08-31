@@ -2,6 +2,8 @@ This guide is designed to show you how to work with HelloSign API to send and si
 
 HelloSign is a service that allows you to sign documents, and can be used to legalize agreements, preparing contracts, among others.
 
+The main advantage for the user is the ability to perform the signature, either from his/her computer, tablet or smartphone.
+
 > **This tutorial aims to show a simple example of using the API without major complexities, but the use that can be given is much broader.**
 
 For this tutorial, we will use:
@@ -220,5 +222,16 @@ Now, our view "Sign".
 ```
 
 _In this view we only add javascript code.
-The first line calls the latest version of HelloSign, and the second initializes HelloSign and opens our document as embedded file._
+The first line calls the latest version of HelloSign, and the second one initializes HelloSign and opens our document as an embedded file._
 
+By uploading our document on the form, if everything is valid should display the following view with the document ready to be signed.
+
+
+![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/ea5cc756-6435-4279-8f1e-5550756bea1c.JPG)
+
+Finally we click on "Click to sign" and we sign and complete the process.
+
+
+![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/ae4a8c2c-437e-4dee-8ea1-591e72eacaab.JPG)
+
+This example shows the basic usage of HelloSign SDK for C#, and it could be used to send emails with links to our app for signing documents, etc.
