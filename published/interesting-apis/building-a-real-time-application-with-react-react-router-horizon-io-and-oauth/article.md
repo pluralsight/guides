@@ -265,7 +265,7 @@ Let's start by defining the HTML file that will contain our React application, `
     <link rel=stylesheet href=/css/style.css />
   </head>
   <body>
-    <h1>React.js + Horizon.io</h2>
+    <h1>React.js + Horizon.io</h1>
    <div id="root"></div>
    <script src="/js/bundle.js"></script>
   </body>
