@@ -56,7 +56,7 @@ You are done with installation.
 
 [NPM](https://www.npmjs.com/) is package module which help javascript developers to load there dependencies in easy and effective manner.
 
-To load dependencies we just have to run a command in dommand prompt
+To load dependencies we just have to run a command in command prompt
 
 ```
 > npm install
