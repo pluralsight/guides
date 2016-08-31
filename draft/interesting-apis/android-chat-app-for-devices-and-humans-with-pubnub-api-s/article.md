@@ -1,4 +1,4 @@
-# Android chat app for devices (and humans) with PubNub API's
+
 
 
 ## Introduction
