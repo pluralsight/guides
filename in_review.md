@@ -1,3 +1,8 @@
+### Sign contracts with ASP.NET MVC and HelloSign API by nescampos
+- [Read the guide](http://tutorials.pluralsight.com/microsoft-net/sign-contracts-with-asp-net-mvc-and-hellosign-api?status=in-review)
+- [Read more from nescampos](http://tutorials.pluralsight.com/author/nescampos) <img src="https://avatars.githubusercontent.com/u/7274106?v=3" width="30" height="30" alt="nescampos" />
+- Related to: Microsoft.NET (C#, ASP.NET, VB.NET, etc)
+
 ### A beginner's guide to be a better software developer by Sri Sanketh Uppalapati
 - [Read the guide](http://tutorials.pluralsight.com/software-engineering-best-practices/a-beginner-s-guide-to-be-a-better-software-developer?status=in-review)
 - [Read more from Sri Sanketh Uppalapati](http://tutorials.pluralsight.com/author/srisankethu) <img src="https://avatars.githubusercontent.com/u/12644108?v=3" width="30" height="30" alt="Sri Sanketh Uppalapati" />
