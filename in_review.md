@@ -1,3 +1,8 @@
+### Java 8 Stream API: Part 1 by Esteban Herrera
+- [Read the guide](http://tutorials.pluralsight.com/java-and-j2ee/java-8-stream-api-part-1?status=in-review)
+- [Read more from Esteban Herrera](http://tutorials.pluralsight.com/author/eh3rrera) <img src="https://avatars.githubusercontent.com/u/11665759?v=3" width="30" height="30" alt="Esteban Herrera" />
+- Related to: Java and J2EE
+
 ### Sign contracts with ASP.NET MVC and HelloSign API by nescampos
 - [Read the guide](http://tutorials.pluralsight.com/microsoft-net/sign-contracts-with-asp-net-mvc-and-hellosign-api?status=in-review)
 - [Read more from nescampos](http://tutorials.pluralsight.com/author/nescampos) <img src="https://avatars.githubusercontent.com/u/7274106?v=3" width="30" height="30" alt="nescampos" />
