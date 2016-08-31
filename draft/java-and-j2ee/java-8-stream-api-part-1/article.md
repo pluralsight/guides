@@ -8,7 +8,7 @@ One of this changes is the [Stream interface](https://docs.oracle.com/javase/8/d
 
 This article presents an introduction to lambda expressions and the Stream interface, as well as some of the most common Stream operations on collections.
 
-In the [second part](http://tutorials.pluralsight.com/java-and-j2ee/) you'll learn about more advanced methods (like reducing and collecting) and parallel stream.
+In the [second part](http://tutorials.pluralsight.com/java-and-j2ee/java-8-stream-api-part-2) you'll learn about more advanced methods (like reducing and collecting) and parallel streams.
 
 Let's begin by answering the question, what are lambda expressions? In the context of Java.
 
@@ -618,4 +618,4 @@ System.out.println(
 
 That's it for now. As you saw, the Stream interface is powerful and it's not very complicated to use.
 
-In the [second part](http://tutorials.pluralsight.com/java-and-j2ee/), we'll cover more advanced methods like `map()`, `merge()` and `flatMap()`, and take a look at parallel streams.
+In the [second part](http://tutorials.pluralsight.com/java-and-j2ee/java-8-stream-api-part-2), we'll cover more advanced methods like `map()`, `merge()` and `flatMap()`, and take a look at parallel streams.
