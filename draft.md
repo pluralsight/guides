@@ -1,3 +1,8 @@
+### Android chat app for devices (and humans) with PubNub API's by Momy93
+- [Read the guide](http://tutorials.pluralsight.com/interesting-apis/android-chat-app-for-devices-and-humans-with-pubnub-api-s?status=draft)
+- [Read more from Momy93](http://tutorials.pluralsight.com/author/Momy93) <img src="https://avatars.githubusercontent.com/u/13665706?v=3" width="30" height="30" alt="Momy93" />
+- Related to: Interesting APIs (SendGrid, Twilio, etc)
+
 ### A begineer's guide to be a better software developer by Sri Sanketh Uppalapati
 - [Read the guide](http://tutorials.pluralsight.com/software-engineering-best-practices/a-begineer-s-guide-to-be-a-better-software-developer?status=draft)
 - [Read more from Sri Sanketh Uppalapati](http://tutorials.pluralsight.com/author/srisankethu) <img src="https://avatars.githubusercontent.com/u/12644108?v=3" width="30" height="30" alt="Sri Sanketh Uppalapati" />
