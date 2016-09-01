@@ -64,7 +64,7 @@ Then install AngularFire2: `  npm install  --save angularfire2@2.0.0-beta.2`
 
 After that install typings (_You won't need this on the next version, since they'll come by default_)
 
-`typings install file:node_modules/angularfire2/firebase3.d.ts --save --global && typings`
+`typings install file:node_modules/angularfire2/firebase3.d.ts --save --global && typings install`
 
 I'm using the `@2.0.0-beta.2` tag when installing AngularFire2 because I need AngularFire2 to work with Ionic 2 beta11. If the tag is left out, AngularFire2 will install the new version that works with NG RC5 instead.
 
