@@ -1,8 +1,8 @@
 ![Ionic 2 + Angular 2](http://ionicframework.com/img/blog/ionic-angular-v2.jpg)
 
-Hybrid mobile apps have been growing a lot lately since the release of `Ionic 2` which is built with `Angular 2`, however there's not a lot of standards on how a hybrid app should be structured in Ionic 2.
+The Hybrid mobile app market has been expanding a lot since the release of `Ionic 2`, built with `Angular 2`. However, there still aren't a lot of standards on how a hybrid app should be structured in Ionic 2.
 
-In this guide we will learn how to deal with an essential part of the app, `databases`, it may not be a need in your app, but if you choose the path of `offline first` for mobile app (and is hard not to since a mobile hardly get a good signal when used out in the streets or public transports) you'll have to rely on a local database to store data.
+In this guide, we will learn how to deal with an essential part of the app, `databases`. This may not be a need in your app, but if you choose the path of `offline first` for mobile app (usually an easy choice since a mobile device often gets disrupted signal when used outside), you'll have to rely on a local database to store data.
 
 ## Guide structure
 
@@ -16,8 +16,6 @@ This guide will teach you the following treats of database management in Ionic 2
 5. Database `online` backup.
 6. Database reset.
 
-With that we should start with the first point.
-
 ***
 
 ## Setting up the guide environment.
@@ -26,7 +24,7 @@ The first thing to do is creating a new ionic 2 app, if you are adding this feat
 
 ### Prerequisites
 
-First we need to have `Node` and `NPM` installed, since that's OS specific and there's a lot of tutorials out there for that matter I'll leave it as the first homework of the guide.
+First we need to have `Node` and `NPM` (Node Package Manager) installed. Since that's OS-specific and there's a lot of tutorials out there, I won't cover installation. Think of this as homework for the guide.
 
 Next let's install Ionic 2 with npm, open a console and type the following commands which will install both `cordova` and `ionic@beta` which is the current version of ionic 2 since it's still in beta as of 24/06/2016.
 
@@ -36,7 +34,7 @@ npm i -g cordova ionic@beta
 
 ### Creating new app
 
-After ionic cli is installed we need to create a new app, for this purpose we will use the side menu starter repo, paste this in your terminal:
+After the Ionic CLI (Command Line Interface) is installed, we need to create a new app; we will use the side menu starter repo, paste this in your terminal:
 
 ```sh
 ionic start ionicDBManagerGuide sidemenu --v2 --ts && cd ionicDBManagerGuide && ionic serve
@@ -56,7 +54,7 @@ You'll probably see a lot of output in the console from ionic about downloads, i
 
 ## Creating and opening the database
 
-Now here's where the fun starts, first let's talk a bit of theory, the way angular 2 scopes works makes each component be isolated, that's a great thing since errors in one component will not affect the other, thus allowing to find and fix bugs easier, however this also mean that if we want something to be available through the app, we need to use a provider (or a service, this days both are almost the same).
+Now here's where the fun starts, first let's talk a bit of theory. The way angular 2 scopes works makes each component be isolated, that's a great thing since errors in one component will not affect the other, thus allowing to find and fix bugs easier, however this also means that if we want something to be available through the app, we need to use a provider (or a service, this days both are almost the same).
 
 Next in the line is the database library selection, there's a few options here:
 
@@ -66,7 +64,7 @@ Next in the line is the database library selection, there's a few options here:
 
 We will be using `SqLite` for this purpose with `WebSql` fallback when in developing.
 
-**Note:** The hidden reason to use the `WebSql` fallback is to be able to deploy the app both as a mobile app and as a web app, some times the app isn't supported by the device so with this fallback, as good as the device have `Chrome` installed, they would be able to open the web version and use the app like that, also note i say `Chrome` because `Firefox` doesn't support `WebSql`, and other browsers lack `internationalization api` support, thus you'll need to use polyfills to bridge the gap between browsers.
+**Note:** The hidden reason to use the `WebSql` fallback is to be able to deploy the app both as a mobile app and as a web app. Sometimes the app isn't supported by the device so with this fallback, as good as the device have `Chrome` installed, they would be able to open the web version and use the app like that, also note i say `Chrome` because `Firefox` doesn't support `WebSql`, and other browsers lack `internationalization api` support, thus you'll need to use polyfills to bridge the gap between browsers.
 
 ### Creating the database provider
 
@@ -108,7 +106,7 @@ export class DBProvider {
 
 ### Choosing and using database adapter
 
-Now here's one of the first design decisions we'll make, we're going to use `SqLite` as the database technology and `WebSql` as fallback in order to support databases during development, as well as allow the app to be published as a web app as explained previously to support devices cordova won't, taking in account the device need to support at least Chrome.
+Now here's one of the first design decisions we'll make. We're going to use `SqLite` as the database technology and `WebSql` as fallback in order to support databases during development. We will allow the app to be published as a web app as explained previously to support devices that Cordova won't. The device need to support at least Chrome.
 
 But that's not the decision we need to take, here's the deal, there's currently 2 ways to deal with `SqLite` databases in Ionic 2, one is through [Ionic native's SqLite adapter](http://ionicframework.com/docs/v2/native/sqlite/) and the other is through [Ionic's SqlStorage Api](http://ionicframework.com/docs/v2/api/platform/storage/SqlStorage), the difference between both is that the first has nice transaction methods bridged directly of Cordova's SqLite plugin, while the other automatically configure `SqlStorage` in mobile and `WebSql` in web browsers.
 
@@ -204,7 +202,7 @@ It's time to test and see if our new provider works.
 
 ### Providing the `DBProvider` to the app
 
-Time to test if it works, if it doesn't check previous steps and this section to see whether you missed something or you skipped a step, first add the provider to our `app/app.ts` component as a global provider in the `ionicBootstrap` method:
+If our test doesn't work, check previous steps to see whether you missed something or skipped a step. First add the provider to our `app/app.ts` component as a global provider in the `ionicBootstrap` method:
 
 ```ts
 import { Component, ViewChild } from '@angular/core';
@@ -269,7 +267,9 @@ If so it means your DBProvider works as expected.
 
 ### Creating and using basic query functions
 
-The next few parts are feature heavy, most of this is too advanced for a beginner but it should work if you just copy-paste the code of the functions I'm going to show you, I'm still going to tell you what I'm doing in a comment on top of each function, first let's install `typings` package as global and add the lodash module as a dependency, then just use typing to install the lodash type definition:
+The next few parts are feature heavy, so most of this is too advanced for a beginner. However, it should work if you just copy-paste the code of the functions I'm going to show you. I'm still going to tell you what I'm doing in a comment on top of each function.
+
+First let's install `typings` package as global and add the lodash module as a dependency, then just use typing to install the lodash type definition:
 
 ```sh
 npm i -g typings
@@ -389,13 +389,13 @@ Here we're asking the database to get the value asociated with the `dbVar` strin
 
 ## Backup feature
 
-The backup feature is meant to be used as a support mechanism, it will get all data from the tables you choose from the database, and serialize that data in a way we can send and receive from/to server, so we are able to back up and restore the database wherever we want.
+The backup feature is meant to be used as a support mechanism. It will get all data from the tables you choose from the database, and serialize that data in a way we can send and receive from/to server, so we are able to back up and restore the database wherever we want.
 
 Please note that this is mostly a serialization feature, which means you'll have to take care how to send and storage the string in server, that includes how to send a very big stringified `json`, databases get big fast, when it get's too big the serialized string get's big, at some point using a single http post request will not be possible and thus you will have to figure out how to send that string in chunks, through streaming or using sockets.
 
 ### Getting the schema from the table itself
 
-Let's set the method that will allow us to know the structure of the database to backup, denominated `Schema`, this is an advanced feature with heavy use of regex matching, again no explanation for this one:
+Let's set the method that will allow us to know the structure of the database to backup, denominated `Schema`. This is an advanced feature with heavy use of regex (Regular Expression) matching, again no explanation for this one:
 
 ```ts
 export class DBProvider {
