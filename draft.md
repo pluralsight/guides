@@ -1,3 +1,8 @@
+### Securing ASP.NET MVC Applications with log in, email confirmation, password reset, and two factor authentication, using MembershipReboot by Peter Mbanugo
+- [Read the guide](http://tutorials.pluralsight.com/microsoft-net/securing-asp-net-mvc-applications-with-log-in-email-confirmation-password-reset-and-two-factor-authentication-using-membershipreboot?status=draft)
+- [Read more from Peter Mbanugo](http://tutorials.pluralsight.com/author/pmbanugo) <img src="https://avatars.githubusercontent.com/u/4036118?v=3" width="30" height="30" alt="Peter Mbanugo" />
+- Related to: Microsoft.NET (C#, ASP.NET, VB.NET, etc)
+
 ### Android chat app for devices (and humans) with PubNub API's by Momy93
 - [Read the guide](http://tutorials.pluralsight.com/interesting-apis/android-chat-app-for-devices-and-humans-with-pubnub-api-s?status=draft)
 - [Read more from Momy93](http://tutorials.pluralsight.com/author/Momy93) <img src="https://avatars.githubusercontent.com/u/13665706?v=3" width="30" height="30" alt="Momy93" />
