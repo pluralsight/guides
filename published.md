@@ -1,3 +1,8 @@
+### Getting Started with NodeJS by Gaurav Bhavsar
+- [Read the guide](http://tutorials.pluralsight.com/node-js/getting-started-with-nodejs)
+- [Read more from Gaurav Bhavsar](http://tutorials.pluralsight.com/author/gauravbhavsar) <img src="https://avatars.githubusercontent.com/u/5441386?v=3" width="30" height="30" alt="Gaurav Bhavsar" />
+- Related to: Node.js
+
 ### Use Fanout to Send Messages to Your Ionic2 App in About 20 Minutes  by Seth Bunke
 - [Read the guide](http://tutorials.pluralsight.com/front-end-javascript/use-fanout-to-send-messages-to-your-ionic2-app-in-about-20-minutes)
 - [Read more from Seth Bunke](http://tutorials.pluralsight.com/author/sethbunke) <img src="https://avatars.githubusercontent.com/u/20564909?v=3" width="30" height="30" alt="Seth Bunke" />
