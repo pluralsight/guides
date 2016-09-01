@@ -9,7 +9,7 @@ Security is often a discussed topic and having an easy way to manage users accou
 * Claims-aware user identities
 * Flexible account storage design (you can choose to store your data in a relational or non-relational data store)
 
-In this tutorial, I am going to show you how to secure your ASP.NET MVC apps using this library. I will show how to set it up, create a user account, enable account/email verification, two factor authentication, and allow password reset. I will be doing this with a new project, but for existing apps, you can start from the section that install the needed nuget packages.
+In this tutorial, I am going to show you how to secure your ASP.NET MVC apps using this library. I will show how to set it up, create a user account, enable account/email verification, and allow password reset. I will be doing this with a new project, but for existing apps, you can start from the section that install the needed nuget packages.
 
 # Let's Begin
 
