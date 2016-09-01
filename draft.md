@@ -1,3 +1,8 @@
+### test by ali 95
+- [Read the guide](http://tutorials.pluralsight.com/other/test?status=draft)
+- [Read more from ali 95](http://tutorials.pluralsight.com/author/aliibnubadri) <img src="https://avatars.githubusercontent.com/u/10340297?v=3" width="30" height="30" alt="ali 95" />
+- Related to: other
+
 ### Securing ASP.NET MVC Applications with log in, email confirmation, password reset, and two factor authentication, using MembershipReboot by Peter Mbanugo
 - [Read the guide](http://tutorials.pluralsight.com/microsoft-net/securing-asp-net-mvc-applications-with-log-in-email-confirmation-password-reset-and-two-factor-authentication-using-membershipreboot?status=draft)
 - [Read more from Peter Mbanugo](http://tutorials.pluralsight.com/author/pmbanugo) <img src="https://avatars.githubusercontent.com/u/4036118?v=3" width="30" height="30" alt="Peter Mbanugo" />
