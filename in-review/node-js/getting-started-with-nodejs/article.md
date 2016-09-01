@@ -10,7 +10,7 @@ This article covers the following areas of NodeJS.
 
 ## Introduction of NodeJS 
 
-[NodeJS](https://nodejs.org/en/) is an open-source, cross-platform runtime environment for developing server-side web application. NodeJS has an event-driven architechture capable of asynchronous I/O.
+[NodeJS](https://nodejs.org/en/) is an open-source, cross-platform runtime environment for developing server-side web applications. NodeJS also has an event-driven architechture capable of [asynchronous I/O](https://en.wikipedia.org/wiki/Asynchronous_I/O).
 
 NodeJS uses an event-driven, non-blocking I/O model that makes it lightweightand efficient.
 
@@ -25,7 +25,7 @@ Installation of NodeJS and NPM is straightforward using installer package availa
 * Follow the installer steps, agree the license agreement and click the next button.
 * Restart your system/machine.
 
-Now, test NodeJS by printing its version using command
+Now, test NodeJS by printing its version using the following command in Command Prompt:
 
 ```
 > node -v
@@ -54,9 +54,7 @@ You are done with installation.
 
 ## Node Package Module
 
-[NPM](https://www.npmjs.com/) is package module which help javascript developers to load there dependencies in easy and effective manner.
-
-To load dependencies we just have to run a command in command prompt
+[NPM](https://www.npmjs.com/) is the package module which helps javascript developers load dependencies effectively. To load dependencies we just have to run a command in command prompt:
 
 ```
 > npm install
@@ -95,7 +93,7 @@ This command is finding a json file named as `package.json` in root directory to
 
 ```
 
-The most important things in your package.json are the name and version fields. Those are actually required, and your package won't install without them. The name and version together form an identifier that is assumed to be completely unique. Changes to the package should come along with changes to the version.
+The most important things in your package.json are name and version. Those are actually required, and your package won't install without them. The name and version together form an identifier that is assumed to be completely unique. Changes to the package should come along with changes to the version.
 
 #### Repository 
 
@@ -108,7 +106,7 @@ The most important things in your package.json are the name and version fields. 
 }
 ```
 
-Specify the place where your code lives and through this repository developers are reaching to your application who want to contribute. If the git repository is no GitHub, then the `npm docs` command will be able to find you.
+Specify the place where your code lives. Through this repository, developers can reach out and contribute to your application. If the git repository is no GitHub, then the `npm docs` command will be able to find you.
 
 #### Script
 
@@ -120,9 +118,9 @@ Specify the place where your code lives and through this repository developers a
 }
 ```
 
-NPM provide many usefull [Script](https://docs.npmjs.com/misc/scripts) like `npm install`, `npm start`, `npm stop` etc.
+NPM provide many useful [Scripts](https://docs.npmjs.com/misc/scripts) like `npm install`, `npm start`, `npm stop` etc.
 
-Some default script values based on package contents.
+Some default script values are based on package contents.
 
 ```
 "start": "node server.js"
@@ -150,7 +148,7 @@ If there is a server.js file in the root of your package, then npm will default 
 [Dependencies](https://docs.npmjs.com/files/package.json#dependencies) are specified in a simple object that maps a package name to a version range.
 Version Name must be Version exactly.
 
-If you want to install latest version of file you just have to put `latest` on the place of version name.
+If you want to install latest version of a file, you just have to put `latest` on the place of version name.
 
 Tilde(~) is used to tell "Approximately equivalent to version".
 
@@ -200,13 +198,13 @@ var server = http.createServer(function(req, res){
 });
 ```
 
-Create the server as well as response with having `statusCode: 200`, `Content-Tytpe` header of plain text and end with string `Hello World`. This is the response which is server can send to browser.
+Create the server as well as response with having `statusCode: 200`, `Content-Type` header of plain text and end with string `Hello World`. This is the response that the server can send to browser.
 
 > function has two parameters `req` and `res` which is `request` and `response` to server and from server respectively.
 
-In our example we are creating response.
+In our example we are creating responses.
 
-We created server, now we have to assign hostname and port number to our http server.
+We created the server, now we have to assign it a hostname and port number.
 
 ```
 server.listen(port, hostname, function() {
@@ -214,7 +212,7 @@ server.listen(port, hostname, function() {
 });
 ```
 
-Here, server is listen localhost on posrt number 3000 and print the massage "Server running at http://127.0.0.1:3000/" in command prompt.
+Here, the server listens to localhost on port 3000 and prints "Server running at http://127.0.0.1:3000/" in command prompt.
 
 Now Run server.js file un node using command
 
@@ -231,5 +229,4 @@ Open browser and enter url http://127.0.0.1:3000/ . Browser will display **Hello
 ![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/cfaa1589-9a62-48eb-b3f5-3707d3d14a6d.png)
 
 
-
-I hope you found this article informative! See you soon with my next article on NodeJS
+I hope you found this article informative! Feel free to leave comments and feedback in the discussion section below. Please favorite this tutorial as well! See you soon with my next article on NodeJS. 
