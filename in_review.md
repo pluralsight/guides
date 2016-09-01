@@ -1,3 +1,8 @@
+### Securing ASP.NET MVC Applications with log in, email confirmation, and password reset, using MembershipReboot by Peter Mbanugo
+- [Read the guide](http://tutorials.pluralsight.com/microsoft-net/securing-asp-net-mvc-applications-with-log-in-email-confirmation-and-password-reset-using-membershipreboot?status=in-review)
+- [Read more from Peter Mbanugo](http://tutorials.pluralsight.com/author/pmbanugo) <img src="https://avatars.githubusercontent.com/u/4036118?v=3" width="30" height="30" alt="Peter Mbanugo" />
+- Related to: Microsoft.NET (C#, ASP.NET, VB.NET, etc)
+
 ### Ionic 2 database management and versioning by Carlos Esteban Lopez Jaramillo
 - [Read the guide](http://tutorials.pluralsight.com/software-engineering-best-practices/ionic-2-database-management-and-versioning?status=in-review)
 - [Read more from Carlos Esteban Lopez Jaramillo](http://tutorials.pluralsight.com/author/Luchillo) <img src="https://avatars.githubusercontent.com/u/9698639?v=3" width="30" height="30" alt="Carlos Esteban Lopez Jaramillo" />
