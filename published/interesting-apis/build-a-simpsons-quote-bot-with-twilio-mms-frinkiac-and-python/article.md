@@ -62,7 +62,7 @@ Next add the following function to your app:
 
 ```
 def get_quote():
-    r = requests.get("https://frinkiac.com/api/random"
+    r = requests.get("https://frinkiac.com/api/random")
     if r.status_code == 200:
         json = r.json()
         # Extract the episode number and timestamp from the API response
