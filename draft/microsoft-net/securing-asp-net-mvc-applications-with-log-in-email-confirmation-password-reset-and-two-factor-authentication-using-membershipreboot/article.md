@@ -22,9 +22,9 @@ In this tutorial, I am going to show you how to secure your ASP.NET MVC apps usi
 
 ## Install the nuget packages
 Next on is to install the following nuget packages:
-* > __Install-Package BrockAllen.MembershipReboot.Owin__
+* > __Install-Package BrockAllen.MembershipReboot.WebHost__
 
-This is the OWIN implementation package that performs the job of issuing cookies to track the logged in user, performing two-factor authentication, and the ApplicationInformation details. It has dependencies on `BrockAllen.MembershipReboot`(which is the core of the framework), and `Microsoft.Owin.Security.Cookies`, therefore, these packages where installed when we ran the above command.
+This is the Web Host package that performs the job of issuing cookies to track the logged in user, performing two-factor authentication, and the ApplicationInformation details. It has dependencies on `BrockAllen.MembershipReboot`(which is the core of the framework), therefore, these packages where installed when we ran the above command.
 
  * > __Install-Package BrockAllen.MembershipReboot.Ef __
 
@@ -87,7 +87,7 @@ These values can be set via a custom configuration element in the configuration 
 ```csharp
     public class MembershipRebootConfig
     {
-        private static MembershipRebootConfiguration Create(IAppBuilder app)
+        public static MembershipRebootConfiguration Create()
         {
             var config = new MembershipRebootConfiguration();
             config.RequireAccountVerification = true;
@@ -103,21 +103,20 @@ Above, I set the `RequireAccountVerification` property to true, because I want a
 #### Add settings for sending emails
 Email notifications are handled as part of MR's eventing system. As operations occur on the `UserAccount` class, an event is raised to indicate the operation. There is an event handler class for handling email events from the package we installed. It is called `EmailAccountEventsHandler`. The registration of this class is performed on the MembershipRebootConfiguration class via the `AddEventHandler` API. To instantiate the `EmailAccountEventsHandler` class, an instace of `EmailMessageFormatter` is needed. `EmailMessageFormatter` class reads templated text files that are embedded within the MembershipReboot assembly itself, and the `EmailAccountEventsHandler` class reads text  that will be contained in the email from this class. This text is customizable by either deriving from EmailMessageFormatter or defining a new class that implements IMessageFormatter. 
 
-When sending emails, the `EmailMessageFormatter` needs to embed URLs back into the application. These endpoints are expected to be implemented by the application itself. To inform the `EmailMessageFormatter` of the URLs, the `AspNetApplicationInformation` class or in our case, for owin applications, the `OwinApplicationInformation` can be used. It allows indicating relative paths for the various URLs. If more customization is required, the base `ApplicationInformation` class can be used instead.
+When sending emails, the `EmailMessageFormatter` needs to embed URLs back into the application. These endpoints are expected to be implemented by the application itself. To inform the `EmailMessageFormatter` of the URLs, the `AspNetApplicationInformation` class or  the `OwinApplicationInformation` (used for owin based applications) can be used. It allows indicating relative paths for the various URLs. If more customization is required, the base `ApplicationInformation` class can be used instead.
 
-For our solution, we're going to use the `OwinApplicationInformation` class, so we need to update the code that creates a new instance of the `MembershipRebootConfiguration` class. Below is the update made to this class:
+For our solution, we're going to use the `AspNetApplicationInformation` class, so we need to update the code that creates a new instance of the `MembershipRebootConfiguration` class. Below is the update made to this class:
 
 ```csharp
     public class MembershipRebootConfig
     {
-        private static MembershipRebootConfiguration Create(IAppBuilder app)
+        public static MembershipRebootConfiguration Create()
         {
             var config = new MembershipRebootConfiguration();
             config.RequireAccountVerification = true;
             config.EmailIsUsername = false;
 
-            var appInfo = new OwinApplicationInformation(
-                app,
+            var appInfo = new AspNetApplicationInformation(
                 "Test",
                 "Test Hack.guide tutorials",
                 "/UserAccount/Login",
@@ -133,7 +132,7 @@ For our solution, we're going to use the `OwinApplicationInformation` class, so 
     }
 ```
 
-On instantiating the `OwinApplicationInformation` class, we added urls to actions which we will implement shortly. These Urls include links to Login, confirm account, and reset password confirmation. 
+On instantiating the `AspNetApplicationInformation` class, we added urls to actions which we will implement shortly. These Urls include links to Login, confirm account, and reset password confirmation. 
 
 For the emails to work, we need to add SMTP settings in the web.config file. Adding this to your web.config will look similar to this:
 
@@ -149,4 +148,57 @@ For the emails to work, we need to add SMTP settings in the web.config file. Add
 ```
 
 ## Configure SimpleInjector
-Next up is to 
+Next up is to configure SimpleInjector to resolve instances of the needed classes of MR in the application, as I'll be using the Dependency Injection (DI) pattern. Any other DI library canbe used but I've chosen to use SimpleInjector for this tutorial. How this services are resolved will  be different in other DI containers based on their own way of configuring services to be injected.
+
+To do this, I will add a class called `SimpleInjectorConfig` in the App_Start folder. I have this class here as I prefer to have my start-up configurations in this file, so it's a matter of preference, and how you do this is up to you. In there I will add a static method with settings for how the needed MR classes will be resolved, and will be called in the Application_Start of the Global.asax.cs. below, is how i've configured this class:
+
+```csharp
+    public class SimpleInjectorConfig
+    {
+        public static void Register()
+        {
+            // Create the container as usual.
+            var container = new Container();
+            container.Options.DefaultScopedLifestyle = new WebRequestLifestyle();
+
+            // Register types:
+            container.RegisterSingleton<MembershipRebootConfiguration>(MembershipRebootConfig.Create);
+            container.RegisterPerWebRequest<DefaultMembershipRebootDatabase>(() => new DefaultMembershipRebootDatabase());
+            container.Register<UserAccountService>(() => new UserAccountService(container.GetInstance<MembershipRebootConfiguration>(), container.GetInstance<IUserAccountRepository>()));//Or make it InstancePerHttpRequest
+            container.Register<AuthenticationService, SamAuthenticationService>();
+
+            var defaultAccountRepositoryRegistration =
+                Lifestyle.Scoped.CreateRegistration<DefaultUserAccountRepository>(container);
+
+            container.AddRegistration(typeof(IUserAccountQuery), defaultAccountRepositoryRegistration);
+            container.AddRegistration(typeof(IUserAccountRepository), defaultAccountRepositoryRegistration);
+
+
+            // This is an extension method from the integration package.
+            container.RegisterMvcControllers(Assembly.GetExecutingAssembly());
+            // This is an extension method from the integration package as well.
+            container.RegisterMvcIntegratedFilterProvider();
+
+            container.Verify();
+            //Set dependency resolver for MVC
+            DependencyResolver.SetResolver(new SimpleInjectorDependencyResolver(container));
+        }
+    }
+
+```
+
+Now update your Global.asax.cs class to call the `SimpleInjectorConfig.Register()` method and also add code to tell EntityFramework to add/create the needed tables for MR when the application starts. 
+
+```csharp
+protected void Application_Start()
+{
+    Database.SetInitializer(new MigrateDatabaseToLatestVersion<DefaultMembershipRebootDatabase, BrockAllen.MembershipReboot.Ef.Migrations.Configuration>());
+
+    SimpleInjectorConfig.Register();
+
+    AreaRegistration.RegisterAllAreas();
+    FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
+    RouteConfig.RegisterRoutes(RouteTable.Routes);
+    BundleConfig.RegisterBundles(BundleTable.Bundles);
+}
+```
