@@ -119,10 +119,10 @@ For our solution, we're going to use the `AspNetApplicationInformation` class, s
             var appInfo = new AspNetApplicationInformation(
                 "Test",
                 "Test Hack.guide tutorials",
-                "/UserAccount/Login",
-                "/UserAccount/ChangeEmail/Confirm/",
-                "/UserAccount/Register/Cancel/",
-                "/UserAccount/PasswordReset/Confirm/");
+                "Account/Login/",
+                "Account/ConfirmEmail/",
+                "UserAccount/CancelRegistration/",
+                "Account/ConfirmPasswordReset/");
 
             var emailFormatter = new EmailMessageFormatter(appInfo);
             config.AddEventHandler(new EmailAccountEventsHandler(emailFormatter));
@@ -202,3 +202,335 @@ protected void Application_Start()
     BundleConfig.RegisterBundles(BundleTable.Bundles);
 }
 ```
+
+Now we have all this set-up. It's time to move on to the real deal.
+
+## Allow users create an account
+We need to provide a means for the users to register/create an account. To do this:
+* We need add a class that to accept user input. So let's create a class called `RegisterInputModel`
+
+```csharp
+public class RegisterInputModel
+    {
+        [Required]
+        public string Username { get; set; }
+
+        [Required]
+        [EmailAddress]
+        public string Email { get; set; }
+
+        [Required]
+        [DataType(DataType.Password)]
+        public string Password { get; set; }
+
+        [Required]
+        [System.ComponentModel.DataAnnotations.Compare("Password", ErrorMessage = "Password confirmation must match password.")]
+        [DataType(DataType.Password)]
+        public string ConfirmPassword { get; set; }
+    }
+    
+```
+
+* Then Add a conroller and add actions to handle the request for creating an account, confirming their email, and cancel the account creation request. Create a controller called `Account` and add the following code:
+
+```csharp
+public class AccountController : Controller
+    {
+        private readonly AuthenticationService _authenticationService;
+        private readonly UserAccountService _userAccountService;
+
+        public AccountController(AuthenticationService authenticationService)
+        {
+            _authenticationService = authenticationService;
+            _userAccountService = authenticationService.UserAccountService;
+        }
+
+        public ActionResult Register()
+        {
+            return View(new RegisterInputModel());
+        }
+
+        [ValidateAntiForgeryToken]
+        [HttpPost]
+        public ActionResult Register(RegisterInputModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    _userAccountService.CreateAccount(model.Username, model.Password, model.Email);
+
+                    return View("Success", model);
+                }
+                catch (ValidationException ex)
+                {
+                    ModelState.AddModelError("", ex.Message);
+                }
+            }
+            return View(model);
+        }
+
+        public ActionResult Cancel(string id)
+        {
+            try
+            {
+                _userAccountService.CancelVerification(id);
+                return View("Cancel");
+            }
+            catch (ValidationException ex)
+            {
+                ModelState.AddModelError("", ex.Message);
+            }
+            return View("Error");
+        }
+    }
+    
+```
+
+In this class, I have method that handle creating and account and also an action method to cancel/delete an account when the user who get's the email feels they didn't create an account on the application. So this delete's the account from the database. Also, you noticed that we used the `UserAccountService` class. This class has methods to create an account, delete an account, and other extra methods which will will see in this tutorial.
+
+I have omitted show the code I used for the views. You should add this to your code and design the UI how you want it.
+
+Now when the user registers, an email is sent to them. Now, we need to add logic to verify their account. 
+
+### Verify Account
+Now we need to add logic for account verification.
+
+* Create a class called `ChangeEmailFromKeyInputModel` 
+
+```csharp
+public class ChangeEmailFromKeyInputModel
+    {
+        [Required]
+        [DataType(DataType.Password)]
+        public string Password { get; set; }
+
+        [HiddenInput]
+        public string Key { get; set; }
+    }
+    
+```
+
+* Add the following code to the `Account` controller
+
+```csharp
+[AllowAnonymous]
+        public ActionResult ConfirmEmail(string id)
+        {
+                var vm = new ChangeEmailFromKeyInputModel();
+                vm.Key = id;
+                return View("ConfirmEmail", vm);
+        }
+
+        [AllowAnonymous]
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult ConfirmEmail(ChangeEmailFromKeyInputModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    UserAccount account;
+                    _userAccountService.VerifyEmailFromKey(model.Key, model.Password, out account);
+
+                    _authenticationService.SignIn(account);
+                    return RedirectToAction("ConfirmSuccess");
+                }
+                catch (ValidationException ex)
+                {
+                    ModelState.AddModelError("", ex.Message);
+                }
+            }
+
+            return View("ConfirmEmail", model);
+        }
+        
+```
+
+Also, I would expect you create the views for this classes on your own, as they are simply input forms and success pages.
+
+## Reset Password
+Next up, a common feature required in all apps, is the reset password feature, for resetting password to an account, just in case it's forgotten. For this:
+
+* Add a class for accepting the email of the account to reset
+
+```
+public class PasswordResetInputModel
+    {
+        [Required]
+        [EmailAddress]
+        public string Email { get; set; }
+    }
+    
+```
+
+* And another class for accepting the new password to update the account
+
+```
+public class ChangePasswordFromResetKeyInputModel
+    {
+        [Required]
+        [DataType(DataType.Password)]
+        public string Password { get; set; }
+
+        [Required]
+        [System.ComponentModel.DataAnnotations.Compare("Password", ErrorMessage = "Password confirmation must match password.")]
+        [DataType(DataType.Password)]
+        public string ConfirmPassword { get; set; }
+
+        [HiddenInput]
+        public string Key { get; set; }
+    }
+    
+```
+
+* Then, add the following actions to the Account controller
+
+```
+public ActionResult RequestPasswordReset()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult RequestPasswordReset(PasswordResetInputModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    var account = _userAccountService.GetByEmail(model.Email);
+                    if (account != null)
+                    {
+                        _userAccountService.ResetPassword(model.Email);
+                        return View("ResetSuccess");
+                    }
+                    else
+                    {
+                        ModelState.AddModelError("", "Invalid email");
+                    }
+                }
+                catch (ValidationException ex)
+                {
+                    ModelState.AddModelError("", ex.Message);
+                }
+            }
+            return View(model);
+        }
+
+        public ActionResult ConfirmPasswordReset(string id)
+        {
+            var vm = new ChangePasswordFromResetKeyInputModel()
+            {
+                Key = id
+            };
+            return View(vm);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult ConfirmPasswordReset(ChangePasswordFromResetKeyInputModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    UserAccount account;
+                    if (_userAccountService.ChangePasswordFromResetKey(model.Key, model.Password, out account))
+                    {
+                        if (account.IsLoginAllowed && !account.IsAccountClosed)
+                        {
+                            _authenticationService.SignIn(account);
+                            return RedirectToAction("Index", "Home");
+                        }
+
+                        return View("PasswordUpdated");
+                    }
+                    else
+                    {
+                        ModelState.AddModelError("", "Error changing password. The key might be invalid.");
+                    }
+                }
+                catch (ValidationException ex)
+                {
+                    ModelState.AddModelError("", ex.Message);
+                }
+            }
+            return View();
+        }
+        
+```
+
+With this, we have the reset password feature rolled out, and now we want to allow the users to Login to the application.
+
+## Allow users Login and Logout
+And for the last part we add logic to allow users log in and out of the system. To start with, add a class for accepting users name and password
+
+```
+public class LoginInputModel
+    {
+        [Required]
+        public string Username { get; set; }
+        [Required]
+        [DataType(DataType.Password)]
+        public string Password { get; set; }
+
+        public bool RememberMe { get; set; }
+
+        [ScaffoldColumn(false)]
+        public string ReturnUrl { get; set; }
+    }
+    
+```
+
+Then add the follwoing action methods:
+
+```
+[AllowAnonymous]
+        public ActionResult Login()
+        {
+            return View(new LoginInputModel());
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Login(LoginInputModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                UserAccount account;
+                if (_userAccountService.Authenticate(model.Username, model.Password, out account))
+                {
+                    _authenticationService.SignIn(account, model.RememberMe);
+
+                    if (Url.IsLocalUrl(model.ReturnUrl))
+                    {
+                        return Redirect(model.ReturnUrl);
+                    }
+
+                    return RedirectToAction("Index", "Home");
+                }
+
+                ModelState.AddModelError("", "Invalid Email or Password");
+            }
+
+            return View(model);
+        }
+
+        public ActionResult Logout()
+        {
+            if (User.Identity.IsAuthenticated)
+            {
+                _authenticationService.SignOut();
+                return RedirectToAction("Login");
+            }
+
+            return RedirectToAction("Index", "Home");
+        }
+        
+```
+
+For the Login, we have to validate the username and password and we do this with the `UserAccountService.Authenticate()` method. This method has various overloads but the one I've chosen checks against the username and passowrd. If this check is valid, we log the user in by calling `AuthenticationService.SignIn()` method, and to log out, we call the `SignOut()` method on that same class. The AuthenticationService class is a helper that bridges the gap between MembershipReboot and the running web application. It will perform the work of issuing cookies to track the logged in user. It also provides the assistance for performing two-factor authentication and supporting external login providers.
+
+With all these, I hope to have covered the basic needs of securing web application with MembershipReboot and have explained a little about the framework. In a future post, I will show more use cases like two factor SMS authentication. If you have any questions or problems running this, leave a comment, or open an issue on the `GitHub` Repository.
