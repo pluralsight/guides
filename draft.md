@@ -28,11 +28,6 @@
 - [Read more from Florian Knop](http://tutorials.pluralsight.com/author/fknop) <img src="https://avatars.githubusercontent.com/u/6775689?v=3" width="30" height="30" alt="Florian Knop" />
 - Related to: Front-End JavaScript (Angular, React, Meteor, etc)
 
-### Securing ASP.NET MVC Applications with log in, email confirmation, password reset, and two factor authentication, using MembershipReboot by Peter Mbanugo
-- [Read the guide](http://tutorials.pluralsight.com/microsoft-net/securing-asp-net-mvc-applications-with-log-in-email-confirmation-password-reset-and-two-factor-authentication-using-membershipreboot?status=draft)
-- [Read more from Peter Mbanugo](http://tutorials.pluralsight.com/author/pmbanugo) <img src="https://avatars.githubusercontent.com/u/4036118?v=3" width="30" height="30" alt="Peter Mbanugo" />
-- Related to: Microsoft.NET (C#, ASP.NET, VB.NET, etc)
-
 ### Full Web Stack with ASP.NET and Docker Swarm by EduardC
 - [Read the guide](http://tutorials.pluralsight.com/other/full-web-stack-with-asp-net-and-docker-swarm?status=draft)
 - [Read more from EduardC](http://tutorials.pluralsight.com/author/eduardc) <img src="https://avatars.githubusercontent.com/u/11346418?v=3" width="30" height="30" alt="EduardC" />
