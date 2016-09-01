@@ -4,9 +4,9 @@ This is a simple Rails application showcasing Reactrb, Opal, NPM, Webpack, React
 
 This Showcase application will mix native React and Reactrb components, be styled by Bootstrap CSS (using ReactBootstrap), display a video (using a native React component) and use Reactrb Reactive Record and Synchromesh to handle data for a Post and Comments feed.
 
-The Showcase application will look like this:
+The source code can be found here:
 
-![Screen](public/screen.png)
+[https://github.com/barriehadfield/reactrb-showcase](https://github.com/barriehadfield/reactrb-showcase)
 
 ### Technologies highlighted in this Showcase application
 
