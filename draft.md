@@ -1,3 +1,8 @@
+### Useful tips to improve your code javascript by Javier Ruiz Vázquez
+- [Read the guide](http://tutorials.pluralsight.com/front-end-javascript/useful-tips-to-improve-your-code-javascript?status=draft)
+- [Read more from Javier Ruiz Vázquez](http://tutorials.pluralsight.com/author/javarv87) <img src="https://avatars.githubusercontent.com/u/5413202?v=3" width="30" height="30" alt="Javier Ruiz Vázquez" />
+- Related to: Front-End JavaScript (Angular, React, Meteor, etc)
+
 ### test by ali 95
 - [Read the guide](http://tutorials.pluralsight.com/other/test?status=draft)
 - [Read more from ali 95](http://tutorials.pluralsight.com/author/aliibnubadri) <img src="https://avatars.githubusercontent.com/u/10340297?v=3" width="30" height="30" alt="ali 95" />
