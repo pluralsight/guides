@@ -1,3 +1,8 @@
+### A beginner's guide to be a better software developer by Sri Sanketh Uppalapati
+- [Read the guide](http://tutorials.pluralsight.com/software-engineering-best-practices/a-beginner-s-guide-to-be-a-better-software-developer)
+- [Read more from Sri Sanketh Uppalapati](http://tutorials.pluralsight.com/author/srisankethu) <img src="https://avatars.githubusercontent.com/u/12644108?v=3" width="30" height="30" alt="Sri Sanketh Uppalapati" />
+- Related to: Software Engineering Best Practices
+
 ### Getting Started with NodeJS by Gaurav Bhavsar
 - [Read the guide](http://tutorials.pluralsight.com/node-js/getting-started-with-nodejs)
 - [Read more from Gaurav Bhavsar](http://tutorials.pluralsight.com/author/gauravbhavsar) <img src="https://avatars.githubusercontent.com/u/5441386?v=3" width="30" height="30" alt="Gaurav Bhavsar" />
