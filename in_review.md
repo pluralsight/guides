@@ -23,11 +23,6 @@
 - [Read more from nescampos](http://tutorials.pluralsight.com/author/nescampos) <img src="https://avatars.githubusercontent.com/u/7274106?v=3" width="30" height="30" alt="nescampos" />
 - Related to: Microsoft.NET (C#, ASP.NET, VB.NET, etc)
 
-### A beginner's guide to be a better software developer by Sri Sanketh Uppalapati
-- [Read the guide](http://tutorials.pluralsight.com/software-engineering-best-practices/a-beginner-s-guide-to-be-a-better-software-developer?status=in-review)
-- [Read more from Sri Sanketh Uppalapati](http://tutorials.pluralsight.com/author/srisankethu) <img src="https://avatars.githubusercontent.com/u/12644108?v=3" width="30" height="30" alt="Sri Sanketh Uppalapati" />
-- Related to: Software Engineering Best Practices
-
 ### Must Known Web-Security risks for Developers by Sanjeev Murthy
 - [Read the guide](http://tutorials.pluralsight.com/software-engineering-best-practices/must-known-web-security-risks-for-developers?status=in-review)
 - [Read more from Sanjeev Murthy](http://tutorials.pluralsight.com/author/SanjeevMurthy) <img src="https://avatars.githubusercontent.com/u/10756352?v=3" width="30" height="30" alt="Sanjeev Murthy" />
