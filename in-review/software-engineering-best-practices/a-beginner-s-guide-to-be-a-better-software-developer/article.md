@@ -24,7 +24,7 @@ Before we jump in to see _How a software developer can apply these basic princip
 * Feasible study
 * Requirements analysis and specification
 * Design
-* Coding
+* Implementation
 * Testing
 * Maintenance
 
