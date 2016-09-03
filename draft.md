@@ -1,3 +1,8 @@
+### React vs. Angular 2 by Hristo Georgiev
+- [Read the guide](http://tutorials.pluralsight.com/front-end-javascript/react-vs-angular-2?status=draft)
+- [Read more from Hristo Georgiev](http://tutorials.pluralsight.com/author/Kaizeras) <img src="https://avatars.githubusercontent.com/u/6340189?v=3" width="30" height="30" alt="Hristo Georgiev" />
+- Related to: Front-End JavaScript (Angular, React, Meteor, etc)
+
 ### Useful tips to improve your code javascript by Javier Ruiz Vázquez
 - [Read the guide](http://tutorials.pluralsight.com/front-end-javascript/useful-tips-to-improve-your-code-javascript?status=draft)
 - [Read more from Javier Ruiz Vázquez](http://tutorials.pluralsight.com/author/javarv87) <img src="https://avatars.githubusercontent.com/u/5413202?v=3" width="30" height="30" alt="Javier Ruiz Vázquez" />
