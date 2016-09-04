@@ -23,4 +23,3 @@ React- more freedom
 # Performance
 
 # Cross-platform integration
-
