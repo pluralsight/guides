@@ -1,7 +1,7 @@
 This guide is aimed to provide a critical overview of two popular front-end web development tools - [React](https://facebook.github.io/react/)  and [Angular 2](https://angular.io/). The tools will be evaluated based on their approaches to building applications, involvement and adoption by the community, performance and ability to integrate with different platforms.
 
-# Key differences
-### Structuring code
+
+# Structuring code
 Angular 2 is written in TypeScript, a superset language of JavaScript developed by Microsoft. The language introduced types, new data structures and more object-oriented features, making the code easier to read and maintain compared to other alternative.It uses [TSLint](http://palantir.github.io/tslint/) to check the code for issues.
 
 Using TypeScript makes setting up an Angular 2 application somehow tediuos, as it introduces extra overhead for configuration. 
@@ -370,7 +370,7 @@ ReactDOM.render(
         deleteTodo receives a type of number.
         toggleDone receives a type of ITodo.
       -->
-      <todo *ngFor="#todo of state.todos" [todo]="todo"
+      <todo *ngFor="let todo of state.todos" [todo]="todo"
         (on-delete-todo)="onDeleteTodo($event)"
         (on-toggle-done)="onToggleDone($event)"></todo>
     </ul>
@@ -419,11 +419,20 @@ render() {
 
 ```
 
-In the example above, Angular 2 is more verbose. TypeScript largely contributes to the it. <code> :void </code> , <code> :ITodo </code> and other types are often seen in the code.  Style-wise, varaibles, function parameters and function themselves must have a type. React does not have any of that.
+In the example above, Angular 2 is more verbose. TypeScript largely contributes to the it. <code> :void </code> , <code> :ITodo </code> and other types are often seen in the code.  Style-wise, varaibles, function parameters and function themselves must have a type. React does not have any of that, making the code more convenient for developers who prefer traditional JavaScript.
 
 Angular 2 uses <code>@Component</code> decorators to specify the different constructs (services, directives, pipes) that its contains and to define its own properties. It also lets the developer specify a <code>selector</code> for the component and put the code for the template using the <code> template </code> property or the <code> templateUrl</code> if a separate file is used. The same applies for styles - there is an option to input styles directly using the <code> styles </code> property or to include an array of files using <code> styleUrls </code>. React does not have an analog for a component decorator and requires the template of the component to be included in the component file itself, thus limiting the options for customization and making the information about a component harder to interpret.
 
-## Tooling and development flow
+Angular 2 templates come with a specific convention for different elements:
+- ```*``` denotes a directive that manipulates the DOM. For example, ```*ngFor``` iterates over an array of values and creates a new element for each. ```*ngIf``` is used to denote whether an element can be seen or not.
+- ```[]``` denotes a property binding, indicating that the element receives a value from the component. It is used mostly to pass data to a child component to the parent.
+- ```()``` indicates an event binding (such as ```(click)```, which triggers a function in the components.
+- ```[()]``` indicates two-way binding, meaning that any changes to the data that are passed will be propagated.
+
+React templates also come with their peculiarities. JSX blurs the line by html and JavaScript, providing its own markup. Even though it seems that the template is written in HTML, the markup is actually XML that is later parsed into HTML.
+Because of JSX, standard html property words are camel-cased or have diffeerent names - <code>onclick</code> in JSX is <code>onClick</code>. <code>for</code> (used in labels) becomes <code>htmlFor</code> as <code>for</code> is a reserved word in JavaScript for a loop.
+
+## Development flow
 
 Angular CLI , etc
 
