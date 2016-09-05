@@ -13,7 +13,7 @@ To get a clearer comparison between React and Angular 2, we are going to compare
  Both applications use [Webpack](https://webpack.github.io/) for development and deployment.
 
 
-**Angular 2** 
+##### Angular 2
 
 *package.json*
 
@@ -43,7 +43,7 @@ To get a clearer comparison between React and Angular 2, we are going to compare
   }
 }| 
 ```
-** React **
+##### React
 
 *package.json*
 ```
@@ -74,7 +74,7 @@ To get a clearer comparison between React and Angular 2, we are going to compare
 ```
 Both applicaitons need a similar amount of packages for development. React has more devDependencies for using React-specific linting and parsing.
 
-**Angular 2**
+##### Angular 2
 
 *index.html*
 
@@ -93,7 +93,7 @@ Both applicaitons need a similar amount of packages for development. React has m
 
 ```
 
-**React**
+##### React
 
 *index.html*
 
@@ -111,11 +111,93 @@ Both applicaitons need a similar amount of packages for development. React has m
 ```
 
 
-Both main html files are slim, since both applicaitons use Webpack for figuring out asset structure and injecting code.
+Because both setups use Webpack to handle all the assets, the index.html file is identical.
 
-Both the React and Angular 2 applications have two files - <code>**TodoList**</code> that represents the list of tasks and <code>Todo</code> that represents a single task.
+Applicaiton structure-wise, both React and Angular 2 need two files - <code>TodoList</code> that represents the list of tasks and <code>Todo</code> that represents a single task.
+
+I'll analyize the <code>TodoList</code> component code in the two applications piece-by-piece, from top to bottom:
+
+#### **Importing** 
+
+##### Angular 2
+
+*todolist.component.ts*
+
+```
+import 'angular2/bundles/angular2-polyfills';
+import {Component} from 'angular2/core';
+import {bootstrap} from 'angular2/platform/browser';
+import {TodoCmp, ITodo} from "./todoCmp";
+```
+##### React
+
+*todo-list.js*
+
+```
+import React from 'react';
+import ReactDOM from 'react-dom';
+import Todo from './todo';
+```
+
+##### **Initializing**
+
+##### Angular 2
+
+```
+// Used for type of state property in TodoListCmp class.
+// Both properties are optional, but preferred as they make 
+// the code more maintainable.
+interface IState {
+  todos?: ITodo[];
+  todoText?: string;
+}
+ 
+// This syntax is called a Decorator and is similar
+// to Annotations in other languages.  Decorators are
+// under consideration to be included in ES2016.
+@Component({
+  // other components used here
+  directives: [TodoCmp],
+  // TodoListCmp's HTML element selector
+  selector: 'todo-list',
+  template: // see value to left of
+            // React render method below
+})
+
+export class TodoListCmp {
+  private static lastId: number = 0;
+  private state: IState;
+
+  constructor() {
+    this.state = {
+      todos: [
+        TodoListCmp.createTodo('learn Angular', true),
+        TodoListCmp.createTodo('build an Angular app')
+      ]
+    };
+  }
+```
+
+##### React
+
+
+```
+let lastId = 0; // no static class properties in ES6
+
+class TodoList extends React.Component {
+  constructor() {
+    super(); // must call before accessing "this"
+    this.state = {
+      todos: [
+        TodoList.createTodo('learn React', true),
+        TodoList.createTodo('build a React app')
+      ]
+    };
+  }
+````
 
 ## Tooling and development flow
+
 Angular CLI , etc
 
 React- more freedom
