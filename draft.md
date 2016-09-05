@@ -1,8 +1,3 @@
-### Must Known Web-Security risks for Developers by Sanjeev Murthy
-- [Read the guide](http://tutorials.pluralsight.com/software-engineering-best-practices/must-known-web-security-risks-for-developers?status=draft)
-- [Read more from Sanjeev Murthy](http://tutorials.pluralsight.com/author/SanjeevMurthy) <img src="https://avatars.githubusercontent.com/u/10756352?v=3" width="30" height="30" alt="Sanjeev Murthy" />
-- Related to: Software Engineering Best Practices
-
 ### React vs. Angular 2 by Hristo Georgiev
 - [Read the guide](http://tutorials.pluralsight.com/front-end-javascript/react-vs-angular-2?status=draft)
 - [Read more from Hristo Georgiev](http://tutorials.pluralsight.com/author/Kaizeras) <img src="https://avatars.githubusercontent.com/u/6340189?v=3" width="30" height="30" alt="Hristo Georgiev" />
