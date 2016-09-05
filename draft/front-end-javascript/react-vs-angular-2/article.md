@@ -17,7 +17,7 @@ To get a clearer comparison between React and Angular 2, we are going to compare
 
 *package.json*
 
-````json                                  
+```json                                  
 {                                     
   "name": "ng2-todo",
   "version": "1.0.0",
@@ -46,7 +46,7 @@ To get a clearer comparison between React and Angular 2, we are going to compare
 ##### React
 
 *package.json*
-```
+```json
 {
   "name": "react-todo",
   "version": "1.0.0",
@@ -115,15 +115,14 @@ Because both setups use Webpack to handle all the assets, the index.html file is
 
 Applicaiton structure-wise, both React and Angular 2 need two files - <code>TodoList</code> that represents the list of tasks and <code>Todo</code> that represents a single task.
 
-I'll analyize the <code>TodoList</code> component code in the two applications piece-by-piece, from top to bottom:
+I'll analyize the <code>TodoList</code>  component (*todolist.component.ts* for Angular 2 and *todo-list.js* for React, respectively) piece-by-piece, from top to bottom:
 
 #### **Importing** 
 
 ##### Angular 2
 
-*todolist.component.ts*
 
-```
+```ts
 import 'angular2/bundles/angular2-polyfills';
 import {Component} from 'angular2/core';
 import {bootstrap} from 'angular2/platform/browser';
@@ -131,19 +130,18 @@ import {TodoCmp, ITodo} from "./todoCmp";
 ```
 ##### React
 
-*todo-list.js*
 
-```
+```js
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Todo from './todo';
 ```
 
-##### **Initializing**
+#### **Initializing**
 
 ##### Angular 2
 
-```
+```ts
 // Used for type of state property in TodoListCmp class.
 // Both properties are optional, but preferred as they make 
 // the code more maintainable.
@@ -181,7 +179,7 @@ export class TodoListCmp {
 ##### React
 
 
-```
+```js
 let lastId = 0; // no static class properties in ES6
 
 class TodoList extends React.Component {
@@ -194,7 +192,236 @@ class TodoList extends React.Component {
       ]
     };
   }
-````
+```
+
+#### **Creating an item**
+
+##### Angular 2
+
+```ts
+static createTodo(
+    text: string, done: boolean = false): ITodo {
+    return {id: ++TodoListCmp.lastId, text, done};
+}
+
+onAddTodo(): void {
+    const newTodo: ITodo =
+      TodoListCmp.createTodo(this.state.todoText);
+    this.state.todoText = '';
+    this.state.todos = this.state.todos.concat(newTodo);
+}
+```
+
+##### React
+```js
+static createTodo(text, done = false) {
+    return {id: ++TodoList.lastId, text, done};
+}
+
+onAddTodo() {
+    const newTodo =
+      TodoList.createTodo(this.state.todoText);
+    this.setState({
+      todoText: '',
+      todos: this.state.todos.concat(newTodo)
+    });
+}
+```
+#### **Detecting item states**
+
+##### Angular 2
+
+```ts
+get uncompletedCount(): number {
+    return this.state.todos.reduce(
+      (count: number, todo: ITodo) =>
+        todo.done ? count : count + 1, 0);
+}
+```
+##### React 
+```js
+get uncompletedCount() {
+    return this.state.todos.reduce(
+      (count, todo) =>
+        todo.done ? count : count + 1,
+      0);
+}
+
+```
+
+####  **Reacting to changes**
+
+##### Angular 2
+```ts
+onArchiveCompleted(): void {
+    this.state.todos =
+      this.state.todos.filter((t: ITodo) => !t.done);
+}
+
+onChange(newText: string): void {
+    this.state.todoText = newText;
+}
+
+onDeleteTodo(todoId: number): void {
+    this.state.todos = this.state.todos.filter(
+      (t: ITodo) => t.id !== todoId);
+}
+
+onToggleDone(todo: ITodo): void {
+    const id: number = todo.id;
+    this.state.todos = this.state.todos.map(
+      (t: ITodo) => t.id === id ?
+        {id, text: todo.text, done: !todo.done} : t);
+}
+```
+
+##### React
+```js
+onArchiveCompleted() {
+    this.setState({
+      todos: this.state.todos.filter(t => !t.done)
+    });
+}
+
+onChange(name, event) {
+    this.setState({[name]: event.target.value});
+}
+
+onDeleteTodo(todoId) {
+    this.setState({
+      todos: this.state.todos.filter(
+        t => t.id !== todoId)
+    });
+}
+
+onToggleDone(todo) {
+    const id = todo.id;
+    const todos = this.state.todos.map(t =>
+      t.id === id ?
+        {id, text: todo.text, done: !todo.done} :
+        t);
+    this.setState({todos});
+}
+```
+#### **Bootstrapping**
+
+##### Angular 2
+```
+} // end of TodoListCmp class
+
+// Each Angular app needs a bootstrap call
+// to explictly specify the root component.
+// In larger apps, bootstrapping is usually in
+// a separate file with more configuration.
+bootstrap(TodoListCmp);
+```
+#####  React
+```
+} // end of TodoList class
+
+// This renders a TodoList component
+// inside a specified DOM element.
+// If TodoList was used in more than one place,
+// this would be moved to a different JavaScript file.
+ReactDOM.render(
+  <TodoList/>,
+  document.getElementById('container'));
+```
+#### **Template syntax**
+
+##### Angular 2
+```
+
+  // This is the value of the @Component template
+  // property above.  It was moved here for
+  // easy comparison with the React render method.
+  `<div>
+    <h2>To Do List</h2>
+    <div>
+      {{uncompletedCount}} of
+      {{state.todos.length}} remaining
+      <!-- Clicking this button invokes the
+           component method onArchiveCompleted. -->
+      <button (click)="onArchiveCompleted()">
+        Archive Completed
+      </button>
+    </div>
+    <br/>
+    <form>
+      <!-- [ngModel] tells where to get the value. -->
+      <!-- (input) tells what to do on value change. -->
+      <input type="text" size="30" autoFocus
+        placeholder="enter new todo here"
+        [ng-model]="state.todoText"
+        (input)="onChange($event.target.value)"/>
+      <button [disabled]="!state.todoText"
+        (click)="onAddTodo()">
+        Add
+      </button>
+    </form>
+    <ul>
+      <!--
+        This uses a for loop to generate TodoCmps.
+        #todo defines a variable to use within the loop.
+        [todo] sets a property on each TodoCmp.
+        (onDeleteTodo) and (onToggleDone) are outputs
+        from the TodoCmp, and they call functions
+        on TodoListCmp with emitted values.
+        deleteTodo receives a type of number.
+        toggleDone receives a type of ITodo.
+      -->
+      <todo *ngFor="#todo of state.todos" [todo]="todo"
+        (on-delete-todo)="onDeleteTodo($event)"
+        (on-toggle-done)="onToggleDone($event)"></todo>
+    </ul>
+  </div>
+```
+
+##### React
+```  
+render() {
+    // Can assign part of the generated UI
+    // to a variable and refer to it later.
+    const todos = this.state.todos.map(todo =>
+      <Todo key={todo.id} todo={todo}
+        onDeleteTodo=
+          {this.onDeleteTodo.bind(this, todo.id)}
+        onToggleDone=
+          {this.onToggleDone.bind(this, todo)}/>);
+
+    return (
+      <div>
+        <h2>To Do List</h2>
+        <div>
+          {this.uncompletedCount} of
+          {this.state.todos.length} remaining
+          <button
+            onClick={() => this.onArchiveCompleted()}>
+            Archive Completed
+          </button>
+        </div>
+        <br/>
+        <form>
+          <input type="text" size="30" autoFocus
+            placeholder="enter new todo here"
+            value={this.state.todoText}
+            onChange=
+              {e => this.onChange('todoText', e)}/>
+          <button disabled={!this.state.todoText}
+            onClick={() => this.onAddTodo()}>
+            Add
+          </button>
+        </form>
+        <ul className="unstyled">{todos}</ul>
+      </div>
+    );
+ }
+
+```
+
+In the example above, Angular 2 is more verbose. TypeScript largely contributes to the it. <code> :void </code> , <code> :ITodo </code> and other types are often seen in the code.  Style-wise, varaibles, function parameters and function themselves must have a type. React does not have any of that.
+
+Angular 2 uses <code>@Component</code> decorators to specify the different constructs (services, directives, pipes) that its contains and to define its own properties. It also lets the developer specify a <code>selector</code> for the component and put the code for the template using the <code> template </code> property or the <code> templateUrl</code> if a separate file is used. The same applies for styles - there is an option to input styles directly using the <code> styles </code> property or to include an array of files using <code> styleUrls </code>. React does not have an analog for a component decorator and requires the template of the component to be included in the component file itself, thus limiting the options for customization and making the information about a component harder to interpret.
 
 ## Tooling and development flow
 
@@ -209,3 +436,5 @@ React- more freedom
 # Performance
 
 # Cross-platform integration
+
+NativeScript vs React Native 
