@@ -1,3 +1,8 @@
+### Must Known Web-Security risks for Developers by Sanjeev Murthy
+- [Read the guide](http://tutorials.pluralsight.com/software-engineering-best-practices/must-known-web-security-risks-for-developers?status=in-review)
+- [Read more from Sanjeev Murthy](http://tutorials.pluralsight.com/author/SanjeevMurthy) <img src="https://avatars.githubusercontent.com/u/10756352?v=3" width="30" height="30" alt="Sanjeev Murthy" />
+- Related to: Software Engineering Best Practices
+
 ### Securing ASP.NET MVC Applications with log in, email confirmation, and password reset, using MembershipReboot by Peter Mbanugo
 - [Read the guide](http://tutorials.pluralsight.com/microsoft-net/securing-asp-net-mvc-applications-with-log-in-email-confirmation-and-password-reset-using-membershipreboot?status=in-review)
 - [Read more from Peter Mbanugo](http://tutorials.pluralsight.com/author/pmbanugo) <img src="https://avatars.githubusercontent.com/u/4036118?v=3" width="30" height="30" alt="Peter Mbanugo" />
