@@ -1,10 +1,10 @@
-This guide is aimed to provide a critical overview of two popular front-end web development tools - [React](https://facebook.github.io/react/)  and [Angular 2](https://angular.io/). The tools will be evaluated based on their approaches to building applications, involvement and adoption by the community, performance and ability to integrate with different platforms.
+This guide is aimed to provide a critical overview of two popular front-end web development tools - [React](https://facebook.github.io/react/)  and [Angular 2](https://angular.io/). The tools will be evaluated based on their approaches to building applications, involvement and adoption by the community, performance and ability to integrate with different platforms. 
+
+The goal of this guide is to delineate all the differences and similarities between the two tools in order facilitate decision-making when it comes to choosing which one appropriate for a given project specification.
 
 
 # Structuring code
-Angular 2 is written in TypeScript, a superset language of JavaScript developed by Microsoft. The language introduced types, new data structures and more object-oriented features, making the code easier to read and maintain compared to other alternative.It uses [TSLint](http://palantir.github.io/tslint/) to check the code for issues.
-
-Using TypeScript makes setting up an Angular 2 application somehow tediuos, as it introduces extra overhead for configuration. 
+Angular 2 is written in TypeScript, a superset language of JavaScript developed by Microsoft. The language introduced types, new data structures and more object-oriented features, making the code easier to read and maintain compared to other alternative.It uses [TSLint](http://palantir.github.io/tslint/) to check the code for issues. Using TypeScript makes setting up an Angular 2 application somehow tediuos, as it introduces extra overhead for configuration. 
 
 React is relying on JSX, a XML-esque syntax extension for rendering JavaScript and HTML. Syntax and strucutre-wise, JSX looks more familiar to JavaScript and apperas to blend into HTML more easily. It uses [ESLint](http://eslint.org/) to track for isses in the code.
 
@@ -419,9 +419,9 @@ render() {
 
 ```
 
-In the example above, Angular 2 is more verbose. TypeScript largely contributes to the it. <code> :void </code> , <code> :ITodo </code> and other types are often seen in the code.  Style-wise, varaibles, function parameters and function themselves must have a type. React does not have any of that, making the code more convenient for developers who prefer traditional JavaScript.
+The component code for Angular 2 is more verbose than React's . TypeScript largely contributes to the this. <code> :void </code> , <code> :ITodo </code> and other types are often seen in the  Style-wise, varaibles, function parameters and function themselves must have a type in TypeScript. React does not have any of that, making the code more convenient for developers who prefer traditional JavaScript. 
 
-Angular 2 uses <code>@Component</code> decorators to specify the different constructs (services, directives, pipes) that its contains and to define its own properties. It also lets the developer specify a <code>selector</code> for the component and put the code for the template using the <code> template </code> property or the <code> templateUrl</code> if a separate file is used. The same applies for styles - there is an option to input styles directly using the <code> styles </code> property or to include an array of files using <code> styleUrls </code>. React does not have an analog for a component decorator and requires the template of the component to be included in the component file itself, thus limiting the options for customization and making the information about a component harder to interpret.
+Angular 2 uses <code>@Component</code> decorators to specify the different constructs (services, directives, pipes) that it contains and to define its own properties. It also lets the developer specify a <code>selector</code> for the component and put the code for the template using the <code> template </code> property or the <code> templateUrl</code> if a separate file is used. The same applies for styles - there is an option to input styles directly using the <code> styles </code> property or to include an array of files using <code> styleUrls </code>. React does not have an analog for a component decorator and requires the template of the component to be included in the component file itself, thus limiting the options for customization and making the information about a component harder to interpret.
 
 Angular 2 templates come with a specific convention for different elements:
 - ```*``` denotes a directive that manipulates the DOM. For example, ```*ngFor``` iterates over an array of values and creates a new element for each. ```*ngIf``` is used to denote whether an element can be seen or not.
@@ -432,7 +432,29 @@ Angular 2 templates come with a specific convention for different elements:
 React templates also come with their peculiarities. JSX blurs the line by html and JavaScript, providing its own markup. Even though it seems that the template is written in HTML, the markup is actually XML that is later parsed into HTML.
 Because of JSX, standard html property words are camel-cased or have diffeerent names - <code>onclick</code> in JSX is <code>onClick</code>. <code>for</code> (used in labels) becomes <code>htmlFor</code> as <code>for</code> is a reserved word in JavaScript for a loop.
 
-## Development flow
+
+//todo finish this up
+# Data flow and Application architecture
+
+## Angular 2 
+
+![angular 2 data flow](https://raw.githubusercontent.com/pluralsight/guides/master/images/f5c9fff0-9d0c-4e5c-8cc2-aa646d5c2c8b.png)
+
+Angular 2 is using the standard bi-directional data flow model. Once an action is made, the data goes up to the service layer, then it goes back to the view. This way of manipulating data has been widely criticised because the state of the data can be changed both ways, resulting in inconsistencies.
+
+Recently, Angular 2 has started adopting the [Redux](http://redux.js.org/docs/introduction/ThreePrinciples.html) pattern for data flow by utilizing [rxjs](https://splintercode.github.io/is-angular-2-ready/)'s observables to maintain the state of the data and using pure functions to manipulate it. [Attemps have been made](http://blog.rangle.io/getting-started-with-redux-and-angular-2/) to build unidirectional data flow in Angular 2 applications, but the adoption of this technique is still low.
+
+## React
+
+![react data flow](https://raw.githubusercontent.com/pluralsight/guides/master/images/032be950-9bac-4a65-9bba-0a33089aad37.png)
+
+React uses [flux](https://facebook.github.io/flux/docs/overview.html) as a way of constructing its applications. Each action is sent to a dispatcher, which sends the new information to stores. Stores then update (mutate) the information  and send it down to the views (controller-views), which listen for changes.
+
+React also uses Redux, and since Redux  was first introduced for React and was on simplifying Flux it is more widely adopted in the React community. Another reason for Redux's wide  adoption in the React community is that it shares many with characteristics Flux (unidirectional data flow, dependable mutations, etc).
+
+
+
+# Development flow
 
 Angular CLI , etc
 
@@ -440,6 +462,9 @@ React- more freedom
    
 
 # Adoption
+[Angular 2](https://github.com/angular/angular) just shy of 16K stars on Github, currently in RC5, check [here](https://splintercode.github.io/is-angular-2-ready/) for release.
+
+[React]
 
 
 # Performance
