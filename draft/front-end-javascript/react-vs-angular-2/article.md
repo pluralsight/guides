@@ -38,7 +38,9 @@ React uses [flux](https://facebook.github.io/flux/docs/overview.html) as a way o
 ![Redux](https://raw.githubusercontent.com/pluralsight/guides/master/images/f685aa1c-99d2-44aa-b705-99267c16bd4b.com-optimize)
 *Redux data flow*
 
-Redux  was first introduced for React and was on simplifying Flux it is more widely adopted in the React community. Another reason for Redux's wide  adoption in the React community is that it shares many with characteristics Flux (unidirectional data flow, dependable mutations, etc).
+Redux was first introduced for React as an alternative to simplify Flux. Because of that, Flux is more widely adopted in the React community.
+
+//todo more abour redux
 
 Recently, Angular 2 has started adopting the [Redux](http://redux.js.org/docs/introduction/ThreePrinciples.html) pattern for data flow by utilizing [rxjs](https://splintercode.github.io/is-angular-2-ready/)'s observables to maintain the state of the data and using pure functions to manipulate it. [Attemps have been made](http://blog.rangle.io/getting-started-with-redux-and-angular-2/) to build unidirectional data flow in Angular 2 applications, but the adoption of this technique is still low.
 
@@ -486,6 +488,18 @@ Because of JSX, standard html property words are camel-cased or have diffeerent 
 
 # Performance
 
+ Performance is another critical criteria for comparison. It shows how the applications handle under heavy load and gives predictions for future problems as the applications become bulkier and more difficult to optimize.
+ 
+ The following tests have been developed by [Stefan Krauss (krausest)](https://github.com/krausest). The test is carried out with [Selenium](http://docs.seleniumhq.org/docs/03_webdriver.jsp) to emulate user actions and record the results. Here are the results (in miliseconds):
+
+![benchmarks](https://raw.githubusercontent.com/pluralsight/guides/master/images/c5324f3d-e9e4-4b3a-b9aa-760a083fd89a.002)
+
+
+ It is clear that React (v. 15.3.0) is either on par or faster than Angular 2's release candidate 4. The only action at which React is slower than Angular 2 is in replacing the data in all rows ( 192.23ms for Angular 2 vs 214.07ms for React).  Angular 2 also appears to be better at selecting an element in (3.32ms vs. 6.78ms). But is two times slower at appending elements (611.75ms vs. 293.82ms).
+ 
+ In terms of memory management, React outperforms Angular 2 by using three times less memory after pageload (15.30ms vs. 4.75ms) and two times less memory when adding new elements to the DOM ( 21.10ms vs 10.67ms).
+ 
+ **Even though React is a clear winner, the results cannot be considered absolutely fair** because Angular 2 is still under development and the focus is not on optimizing the speed but rather fixing bugs and polishing features.
 # Cross-platform integration
 
 NativeScript vs React Native 
