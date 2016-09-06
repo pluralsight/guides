@@ -1,3 +1,8 @@
+### voice controlled fish tank by piratemrs
+- [Read the guide](http://tutorials.pluralsight.com/node-js/voice-controlled-fish-tank)
+- [Read more from piratemrs](http://tutorials.pluralsight.com/author/piratemrs) <img src="https://avatars.githubusercontent.com/u/21154223?v=3" width="30" height="30" alt="piratemrs" />
+- Related to: Node.js
+
 ### Securing ASP.NET MVC Applications with log in, email confirmation, and password reset, using MembershipReboot by Peter Mbanugo
 - [Read the guide](http://tutorials.pluralsight.com/microsoft-net/securing-asp-net-mvc-applications-with-log-in-email-confirmation-and-password-reset-using-membershipreboot)
 - [Read more from Peter Mbanugo](http://tutorials.pluralsight.com/author/pmbanugo) <img src="https://avatars.githubusercontent.com/u/4036118?v=3" width="30" height="30" alt="Peter Mbanugo" />
