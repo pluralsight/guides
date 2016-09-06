@@ -343,11 +343,6 @@
 - [Read more from Shaun Wakashige](http://tutorials.pluralsight.com/author/swak) <img src="https://avatars.githubusercontent.com/u/666058?v=3" width="30" height="30" alt="Shaun Wakashige" />
 - Related to: Front-End JavaScript (Angular, React, Meteor, etc)
 
-### 2016 hack.guides() Authoring Contest by Prateek Gupta
-- [Read the guide](http://tutorials.pluralsight.com/software-engineering-best-practices/2016-hack-guides-authoring-contest?status=draft)
-- [Read more from Prateek Gupta](http://tutorials.pluralsight.com/author/prtkgpt) <img src="https://avatars.githubusercontent.com/u/2454349?v=3" width="30" height="30" alt="Prateek Gupta" />
-- Related to: Software Engineering Best Practices
-
 ### test article by Gergo Bogdan
 - [Read the guide](http://tutorials.pluralsight.com/python/test-article?status=draft)
 - [Read more from Gergo Bogdan](http://tutorials.pluralsight.com/author/gergob) <img src="https://avatars.githubusercontent.com/u/1750322?v=3" width="30" height="30" alt="Gergo Bogdan" />
