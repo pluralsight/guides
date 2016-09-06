@@ -1,3 +1,8 @@
+### Securing ASP.NET MVC Applications with log in, email confirmation, and password reset, using MembershipReboot by Peter Mbanugo
+- [Read the guide](http://tutorials.pluralsight.com/microsoft-net/securing-asp-net-mvc-applications-with-log-in-email-confirmation-and-password-reset-using-membershipreboot)
+- [Read more from Peter Mbanugo](http://tutorials.pluralsight.com/author/pmbanugo) <img src="https://avatars.githubusercontent.com/u/4036118?v=3" width="30" height="30" alt="Peter Mbanugo" />
+- Related to: Microsoft.NET (C#, ASP.NET, VB.NET, etc)
+
 ### A beginner's guide to be a better software developer by Sri Sanketh Uppalapati
 - [Read the guide](http://tutorials.pluralsight.com/software-engineering-best-practices/a-beginner-s-guide-to-be-a-better-software-developer)
 - [Read more from Sri Sanketh Uppalapati](http://tutorials.pluralsight.com/author/srisankethu) <img src="https://avatars.githubusercontent.com/u/12644108?v=3" width="30" height="30" alt="Sri Sanketh Uppalapati" />
