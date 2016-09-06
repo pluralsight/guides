@@ -499,7 +499,7 @@ Because of JSX, standard html property words are camel-cased or have diffeerent 
  
  In terms of memory management, React outperforms Angular 2 by using three times less memory after pageload (15.30ms vs. 4.75ms) and two times less memory when adding new elements to the DOM ( 21.10ms vs 10.67ms).
  
- **Even though React is a clear winner, the results cannot be considered absolutely fair** because Angular 2 is still under development and the focus is not on optimizing the speed but rather fixing bugs and polishing features.
+ **Even though React is a clear winner, the results cannot be considered absolutely fair**. Angular 2 is still under development and the focus is not on optimizing the speed but rather fixing bugs and polishing features.
 # Cross-platform integration
 
 NativeScript vs React Native 
