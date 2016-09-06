@@ -28,11 +28,6 @@
 - [Read more from Matthew Sedaghatfar](http://tutorials.pluralsight.com/author/sedaghatfar) <img src="https://avatars.githubusercontent.com/u/3936021?v=3" width="30" height="30" alt="Matthew Sedaghatfar" />
 - Related to: Python
 
-### voice controlled fish tank by piratemrs
-- [Read the guide](http://tutorials.pluralsight.com/node-js/voice-controlled-fish-tank?status=in-review)
-- [Read more from piratemrs](http://tutorials.pluralsight.com/author/piratemrs) <img src="https://avatars.githubusercontent.com/u/21154223?v=3" width="30" height="30" alt="piratemrs" />
-- Related to: Node.js
-
 ### Using the REST Interface with Licas by discompsys
 - [Read the guide](http://tutorials.pluralsight.com/java-and-j2ee/using-the-rest-interface-with-licas?status=in-review)
 - [Read more from discompsys](http://tutorials.pluralsight.com/author/discompsys) <img src="https://avatars.githubusercontent.com/u/20437503?v=3" width="30" height="30" alt="discompsys" />
