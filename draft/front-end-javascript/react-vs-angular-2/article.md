@@ -4,7 +4,7 @@ The goal of this guide is to delineate all the differences and similarities betw
 
 # Application architecture
 
-## Angular 2 
+### Angular 2 
 
 ![angular 2 data flow](https://raw.githubusercontent.com/pluralsight/guides/master/images/f5c9fff0-9d0c-4e5c-8cc2-aa646d5c2c8b.png)
 
@@ -12,7 +12,7 @@ Angular 2 is using the standard bi-directional data flow model. Once an action i
 
 Recently, Angular 2 has started adopting the [Redux](http://redux.js.org/docs/introduction/ThreePrinciples.html) pattern for data flow by utilizing [rxjs](https://splintercode.github.io/is-angular-2-ready/)'s observables to maintain the state of the data and using pure functions to manipulate it. [Attemps have been made](http://blog.rangle.io/getting-started-with-redux-and-angular-2/) to build unidirectional data flow in Angular 2 applications, but the adoption of this technique is still low.
 
-## React
+### React
 
 ![react data flow](https://raw.githubusercontent.com/pluralsight/guides/master/images/032be950-9bac-4a65-9bba-0a33089aad37.png)
 
