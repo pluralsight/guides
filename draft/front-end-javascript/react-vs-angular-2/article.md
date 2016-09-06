@@ -1,29 +1,48 @@
-This guide is aimed to provide a critical overview of two popular front-end web development tools - [React](https://facebook.github.io/react/)  and [Angular 2](https://angular.io/). The tools will be evaluated based on their approaches to building applications, involvement and adoption by the community, performance and ability to integrate with different platforms. 
+This guide is aimed to provide a critical overview of two popular front-end web development tools - [React](https://facebook.github.io/react/)  and [Angular 2](https://angular.io/). The tools will be evaluated based on their approaches to building application structure, involvement and adoption by the community, performance and ability to integrate with different platforms. 
 
-The goal of this guide is to delineate all the differences and similarities between the two tools in order facilitate decision-making when it comes to choosing which one appropriate for a given project specification.
+The goal of this guide is to delineate core differences and similarities between the two tools in order facilitate decision-making when it comes to choosing which is appropriate for a given project specification.
+
+
+# Development flow
+
+### Angular 2
+Angular CLI , etc
+
+React- more freedom
+   
 
 # Application architecture
 
 ### Angular 2 
 
 ![angular 2 data flow](https://raw.githubusercontent.com/pluralsight/guides/master/images/f5c9fff0-9d0c-4e5c-8cc2-aa646d5c2c8b.png)
+*Bi-directional data flow typical for MVC patterns*
 
 Angular 2 is using the standard bi-directional data flow model. Once an action is made, the data goes up to the service layer, then it goes back to the view. This way of manipulating data has been widely criticised because the state of the data can be changed both ways, resulting in inconsistencies.
 
-Recently, Angular 2 has started adopting the [Redux](http://redux.js.org/docs/introduction/ThreePrinciples.html) pattern for data flow by utilizing [rxjs](https://splintercode.github.io/is-angular-2-ready/)'s observables to maintain the state of the data and using pure functions to manipulate it. [Attemps have been made](http://blog.rangle.io/getting-started-with-redux-and-angular-2/) to build unidirectional data flow in Angular 2 applications, but the adoption of this technique is still low.
+
 
 ### React
 
 ![react data flow](https://raw.githubusercontent.com/pluralsight/guides/master/images/032be950-9bac-4a65-9bba-0a33089aad37.png)
+*Flux data flow*
 
 React uses [flux](https://facebook.github.io/flux/docs/overview.html) as a way of constructing its applications. Each action is sent to a dispatcher, which sends the new information to stores. Stores then update (mutate) the information  and send it down to the views (controller-views), which listen for changes.
 
-React also uses Redux, and since Redux  was first introduced for React and was on simplifying Flux it is more widely adopted in the React community. Another reason for Redux's wide  adoption in the React community is that it shares many with characteristics Flux (unidirectional data flow, dependable mutations, etc).
 
 
+
+
+### Redux
 
 ![Redux](https://raw.githubusercontent.com/pluralsight/guides/master/images/f685aa1c-99d2-44aa-b705-99267c16bd4b.com-optimize)
 *Redux data flow*
+
+Redux  was first introduced for React and was on simplifying Flux it is more widely adopted in the React community. Another reason for Redux's wide  adoption in the React community is that it shares many with characteristics Flux (unidirectional data flow, dependable mutations, etc).
+
+Recently, Angular 2 has started adopting the [Redux](http://redux.js.org/docs/introduction/ThreePrinciples.html) pattern for data flow by utilizing [rxjs](https://splintercode.github.io/is-angular-2-ready/)'s observables to maintain the state of the data and using pure functions to manipulate it. [Attemps have been made](http://blog.rangle.io/getting-started-with-redux-and-angular-2/) to build unidirectional data flow in Angular 2 applications, but the adoption of this technique is still low.
+
+
 
 # Structuring code
 Angular 2 is written in TypeScript, a superset language of JavaScript developed by Microsoft. The language introduced types, new data structures and more object-oriented features, making the code easier to read and maintain compared to other alternative.It uses [TSLint](http://palantir.github.io/tslint/) to check the code for issues. Using TypeScript makes setting up an Angular 2 application somehow tediuos, as it introduces extra overhead for configuration. 
@@ -458,12 +477,6 @@ Because of JSX, standard html property words are camel-cased or have diffeerent 
 //todo finish this up
 
 
-# Development flow
-
-Angular CLI , etc
-
-React- more freedom
-   
 
 # Adoption
 [Angular 2](https://github.com/angular/angular) just shy of 16K stars on Github, currently in RC5, check [here](https://splintercode.github.io/is-angular-2-ready/) for release.
