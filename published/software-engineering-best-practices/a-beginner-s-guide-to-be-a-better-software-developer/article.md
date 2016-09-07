@@ -14,7 +14,7 @@ _But what are the principles of software engineering?_
 * Follow with care
 * Give products to customer
 
-Before we jump in to see _How a software developer can apply these basic principles to build a better software?_ lets understand _what a Software Development Life Cycle is_?
+Before we jump in to see _How a software developer can apply these basic principles to build a better software?_, let's understand _what a Software Development Life Cycle is_?
 
 ### Software Development Life Cycle (SDLC)
 
