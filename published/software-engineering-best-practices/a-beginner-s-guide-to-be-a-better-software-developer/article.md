@@ -85,4 +85,4 @@ The maintenance of any software product requires more effort than to develop the
 * Enchance functionalities of the system
 * Port software to new environment
 
-Each of the stages in the _Software Development Life Cycle_ are too vast to be dicussed in a begineer's guide. I have focused mainly on _Software Development Life Cycle_ because it gives you a workflow to develop a software product. ** Following a SDLC would be the first step into becoming a better software developer **. It makes a great a great difference in terms of *time*, *cost* and *effort* and _that's what separates the beginner and the experienced_.
+Each of the stages in the _Software Development Life Cycle_ are too vast to be dicussed in a begineer's guide. I have focused mainly on _Software Development Life Cycle_ because it gives you a workflow to develop a software product. ** Following a SDLC would be the first step into becoming a better software developer **. It makes a great difference in terms of *time*, *cost* and *effort* and _that's what separates the beginner and the experienced_.
