@@ -1,6 +1,8 @@
-Security is often a discussed topic and having an easy way to manage users accounts and authentication is something we've always wanted. Thanks to the asp.net team, ways of doing this keep getting better everyday, and we can see, over the years, the libraries been released for this purpose. We have moved from ASP.NET Membership, to SimpleMembership, and now ASP.NET Identity. I can look back early on in my career and see myself struggling trying to extend or add extra configuration to the then ASP.NET Membership. With this evolution, we have also moved from Role based authorization to Claims based authorization. 
+# Security and simplicity
 
-[MembershipReboot (MR)](https://github.com/brockallen/BrockAllen.MembershipReboot) is a Claims-based user account and identity management framework, that makes it easy for you to manage users accounts. It encapsulates important security logic while making it easy for developers to configure and extend. It's features include but not limited to: 
+We've always wanted to have an easy, secure way to manage users' accounts and authentication. Thanks to the ASP.NET team, ways of doing this keep getting better everyday, and we can see, over the years, the libraries been released for this purpose. We have moved from ASP.NET Membership, to SimpleMembership, and now ASP.NET Identity. I can look back early on in my career and see myself struggling trying to extend or add extra configuration to the then ASP.NET Membership. With this evolution, we have also moved from Role-based authorization to Claims-based authorization. 
+
+[MembershipReboot (MR)](https://github.com/brockallen/BrockAllen.MembershipReboot) is a Claims-based user account and identity management framework that makes it easy for you to manage users accounts. It encapsulates important security logic while being highly configurable and extensible. Some of its features are listed below: 
 
 * Extensible templating for email notifications
 * Single- or multi-tenant account management
@@ -9,32 +11,31 @@ Security is often a discussed topic and having an easy way to manage users accou
 * Claims-aware user identities
 * Flexible account storage design (you can choose to store your data in a relational or non-relational data store)
 
-In this tutorial, I am going to show you how to secure your ASP.NET MVC apps using this library. I will show how to set it up, create a user account, enable account/email verification, and allow password reset. I will be doing this with a new project, but for existing apps, you can start from the section that install the needed nuget packages.
+In this tutorial, I am going to show you how to secure your ASP.NET MVC apps using MR. I will cover setup, user account creation, enabling email verification, and password setting. I will be doing this with a new project, but for existing apps, you can skip to the section about installing the needed nuget packages.
 
-# Let's Begin
-
-## Create a new MVC Web Application
+## Creating a new MVC Web Application
 
 1. Select File > New Project > ASP.NET Web Application. Enter a name and click `OK`. 
 2. Select the MVC template.
-3. Click on the `Change Authentication`button and choose **No Authentication** and then click __OK__
-4. Now we have the project set-up and we're ready to roll :+1 
+3. Click on the `Change Authentication` button, choose **No Authentication**, and then click __OK__
+4. Now we have the project set-up and we're ready to roll
 
-## Install the nuget packages
-Next on is to install the following nuget packages:
+## Installing the nuget packages
+
+NuGet (nuget) is a free package manager for the Microsoft development platform. We need to install the following nuget packages:
 * > __Install-Package BrockAllen.MembershipReboot.WebHost__
 
-This is the Web Host package that performs the job of issuing cookies to track the logged in user, performing two-factor authentication, and the ApplicationInformation details. It has dependencies on `BrockAllen.MembershipReboot`(which is the core of the framework), therefore, these packages where installed when we ran the above command.
+This is the Web Host package that performs the job of issuing cookies to track the user who is logged in, performing two-factor authentication, and handling the ApplicationInformation details. It has dependencies on `BrockAllen.MembershipReboot`(the core of the framework). As a result, these nuget packages were installed when we ran the above command.
 
  * > __Install-Package BrockAllen.MembershipReboot.Ef __
 
-This is the Entity Framework persistence implementation, responsible for persisting data to a SQL datastore. This is because it has a flexible storage design, where you can choose to store your data in either SQL or NoSQL database, and for this tutorial, I've chosen to work with a SQL datastore using this package.
+This is the Entity Framework persistence implementation, responsible for persisting data to a SQL datastore. This is because it has a flexible storage design, where you can choose to store your data in either SQL or NoSQL database. For this tutorial, I've chosen to work with a SQL datastore using this package.
 
 * > **Install-Package SimpleInjector.Integration.Web.Mvc**
 * > **Install-Package SimpleInjector.Extensions.ExecutionContextScoping**
 
 
-Simple Injector ASP.NET MVC Integration. We will be using SimpleInjector as our Dependency Injector (DI) container. 
+As you can see, we've downloaded SimpleInjector packages. We will be using SimpleInjector as our Dependency Injector (DI) container. 
 
 ## Replace Forms Authentication with Session Authentication Module (SAM)
 Because MR is claims-based, we need to add settings for claims-based identity and Session Authentication Module (SAM) to the web.config. To do this, we need to:
@@ -57,20 +58,22 @@ Because MR is claims-based, we need to add settings for claims-based identity an
 
 ```
 
-* Under `<system.webServer>.<modules>` add the SAM (session authentication module) to the http modules list:
+* Under `<system.webServer>.<modules>`, add the SAM (session authentication module) to the http modules list:
 
 ```xml
 <add name="SessionAuthenticationModule" type="System.IdentityModel.Services.SessionAuthenticationModule, System.IdentityModel.Services, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" preCondition="managedHandler" />
 ```
 
 ## Add settings for connecting to the database
-MembershipReboot allows for flexible storage of the user account data, like I mentioned earlier. There is an EntityFramework package that implements the appropriate persistence interface, which we have installed already. For this, we need to set the connection string value, which by default, it looks for a connectionString named `MembershipReboot`. I'm going to use this default for this tutorial. Adding this in your web.config would look similar to:
+MembershipReboot allows for flexible storage of the user account data, like I mentioned earlier. There is an EntityFramework package that implements the appropriate persistence interface, which we have installed already. For this, we need to set the connection string value, which by default, it looks for a connectionString named `MembershipReboot`. I'm going to use this default for this tutorial. 
+
+Adding this in your web.config file would look similar to:
 ```xml
 <add name="MembershipReboot" connectionString="Data Source=(LocalDb)\v11.0;Initial Catalog=MembershipReboot;Integrated Security=True" providerName="System.Data.SqlClient" />
 ```
 
 ## Configure email and security settings for MR
-There are three important classes used for configuring MembershipReboot. They are:
+There are three important classes used for configuring MembershipReboot:
 
 * SecuritySettings
 > The SecuritySettings class contains settings to configure MembershipReboot for certain security settings (such as account lockout duration and if email verification is required).
@@ -81,8 +84,10 @@ There are three important classes used for configuring MembershipReboot. They ar
 * MembershipRebootConfiguration
 > MembershipRebootConfiguration is the main configuration class used by the UserAccountService. It contains the SecuritySettings and provides extensibility points for adding any custom logic related to validation or event notifications when account related data changes.
 
-#### Configure the security settings for the application.
-These values can be set via a custom configuration element in the configuration file, using the `SecuritySettings` class which then will passed to the MembershipRebootConfiguration class or alternatively, when creating the `MembershipRebootConfiguration` class. I'm going to use the last option here. To do that, we  add a class that returns an instance of `MembershipRebootConfiguration` class, with the desired settings. 
+### Configure the security settings for the application.
+These values can be set via a custom configuration element in the configuration file, using the `SecuritySettings` class which then will passed to the MembershipRebootConfiguration class or, alternatively, passed during the creation of the `MembershipRebootConfiguration` class. I'm going to use the last option here.
+
+To do that, we  add a class that returns an instance of `MembershipRebootConfiguration` class, with the desired settings. 
 
 ```csharp
     public class MembershipRebootConfig
@@ -101,7 +106,7 @@ These values can be set via a custom configuration element in the configuration 
 Above, I set the `RequireAccountVerification` property to true, because I want accounts to be verified. I left the other settings to their default. [This page](https://github.com/brockallen/BrockAllen.MembershipReboot/wiki/Security-Settings-Configuration) shows other setting options you can set/configure and also their default value.
 
 #### Add settings for sending emails
-Email notifications are handled as part of MR's eventing system. As operations occur on the `UserAccount` class, an event is raised to indicate the operation. There is an event handler class for handling email events from the package we installed. It is called `EmailAccountEventsHandler`. The registration of this class is performed on the MembershipRebootConfiguration class via the `AddEventHandler` API. To instantiate the `EmailAccountEventsHandler` class, an instace of `EmailMessageFormatter` is needed. `EmailMessageFormatter` class reads templated text files that are embedded within the MembershipReboot assembly itself, and the `EmailAccountEventsHandler` class reads text  that will be contained in the email from this class. This text is customizable by either deriving from EmailMessageFormatter or defining a new class that implements IMessageFormatter. 
+Email notifications are handled as part of MR's eventing system. As operations occur on the `UserAccount` class, an event is raised to indicate the operation. There is an event handler class for handling email events from the package we installed. It is called `EmailAccountEventsHandler`. The registration of this class is performed on the MembershipRebootConfiguration class via the `AddEventHandler` API. To instantiate the `EmailAccountEventsHandler` class, an instance of `EmailMessageFormatter` is needed. `EmailMessageFormatter` class reads templated text files that are embedded within the MembershipReboot assembly itself, and the `EmailAccountEventsHandler` class reads text that will be contained in the email from this class. This text is customizable by either deriving from EmailMessageFormatter or defining a new class that implements IMessageFormatter. 
 
 When sending emails, the `EmailMessageFormatter` needs to embed URLs back into the application. These endpoints are expected to be implemented by the application itself. To inform the `EmailMessageFormatter` of the URLs, the `AspNetApplicationInformation` class or  the `OwinApplicationInformation` (used for owin based applications) can be used. It allows indicating relative paths for the various URLs. If more customization is required, the base `ApplicationInformation` class can be used instead.
 
@@ -132,9 +137,9 @@ For our solution, we're going to use the `AspNetApplicationInformation` class, s
     }
 ```
 
-On instantiating the `AspNetApplicationInformation` class, we added urls to actions which we will implement shortly. These Urls include links to Login, confirm account, and reset password confirmation. 
+On instantiating the `AspNetApplicationInformation` class, we added URLs to actions which we will implement shortly. These URLs include links to log in, confirm account, and reset password. 
 
-For the emails to work, we need to add SMTP settings in the web.config file. Adding this to your web.config will look similar to this:
+For the emails to work, we need to add SMTP settings in the web.config file. Add this to your web.config:
 
 ```xml
 <system.net>
@@ -148,7 +153,7 @@ For the emails to work, we need to add SMTP settings in the web.config file. Add
 ```
 
 ## Configure SimpleInjector
-Next up is to configure SimpleInjector to resolve instances of the needed classes of MR in the application, as I'll be using the Dependency Injection (DI) pattern. Any other DI library canbe used but I've chosen to use SimpleInjector for this tutorial. How this services are resolved will  be different in other DI containers based on their own way of configuring services to be injected.
+Next up, configure SimpleInjector to resolve instances of the needed classes of MR in the application. I'll be using the Dependency Injection (DI) pattern; any other DI library can be used, but I've chosen to use SimpleInjector for this tutorial. How these services are resolved will differ for other DI containers if they have other ways of configuring services to be injected.
 
 To do this, I will add a class called `SimpleInjectorConfig` in the App_Start folder. I have this class here as I prefer to have my start-up configurations in this file, so it's a matter of preference, and how you do this is up to you. In there I will add a static method with settings for how the needed MR classes will be resolved, and will be called in the Application_Start of the Global.asax.cs. below, is how i've configured this class:
 
@@ -187,7 +192,7 @@ To do this, I will add a class called `SimpleInjectorConfig` in the App_Start fo
 
 ```
 
-Now update your Global.asax.cs class to call the `SimpleInjectorConfig.Register()` method and also add code to tell EntityFramework to add/create the needed tables for MR when the application starts. 
+Now update your Global.asax.cs class to call the `SimpleInjectorConfig.Register()` method and add code to tell EntityFramework to add/create the needed tables for MR when the application starts. 
 
 ```csharp
 protected void Application_Start()
@@ -203,7 +208,7 @@ protected void Application_Start()
 }
 ```
 
-Now we have all this set-up. It's time to move on to the real deal.
+Now we have this all set up. It's time to move on to the real deal.
 
 ## Allow users create an account
 We need to provide a means for the users to register/create an account. To do this:
@@ -287,9 +292,9 @@ public class AccountController : Controller
     
 ```
 
-In this class, I have method that handle creating and account and also an action method to cancel/delete an account when the user who get's the email feels they didn't create an account on the application. So this delete's the account from the database. Also, you noticed that we used the `UserAccountService` class. This class has methods to create an account, delete an account, and other extra methods which will will see in this tutorial.
+In this class, I have method that handle creating and account and also an action method to cancel/delete an account when the user who get's the email feels they didn't create an account on the application. So this deletes the account from the database. Also, you noticed that we used the `UserAccountService` class. This class has methods to create an account, delete an account, and more. We'll see these methods in this tutorial.
 
-I have omitted show the code I used for the views. You should add this to your code and design the UI how you want it.
+I have omitted the exact code I used for the views. You should add this to your code and design the UI how you want it.
 
 Now when the user registers, an email is sent to them. Now, we need to add logic to verify their account. 
 
@@ -463,7 +468,7 @@ public ActionResult RequestPasswordReset()
         
 ```
 
-With this, we have the reset password feature rolled out, and now we want to allow the users to Login to the application.
+With this, we have the reset password feature rolled out. Now we want to allow the users to log in to the application.
 
 ## Allow users Login and Logout
 And for the last part we add logic to allow users log in and out of the system. To start with, add a class for accepting users name and password
@@ -531,6 +536,12 @@ Then add the follwoing action methods:
         
 ```
 
-For the Login, we have to validate the username and password and we do this with the `UserAccountService.Authenticate()` method. This method has various overloads but the one I've chosen checks against the username and passowrd. If this check is valid, we log the user in by calling `AuthenticationService.SignIn()` method, and to log out, we call the `SignOut()` method on that same class. The AuthenticationService class is a helper that bridges the gap between MembershipReboot and the running web application. It will perform the work of issuing cookies to track the logged in user. It also provides the assistance for performing two-factor authentication and supporting external login providers.
+For `LoginInputModel`, we have to validate the username and password and we do this with the `UserAccountService.Authenticate()` method. This method has various overloads but the one I've chosen checks against the username and passowrd. If this check is valid, we log the user in by calling `AuthenticationService.SignIn()` method, and log the user out by calling the `SignOut()` method on that same class. 
 
-With all these, I hope to have covered the basic needs of securing web application with MembershipReboot and have explained a little about the framework. In a future post, I will show more use cases like two factor SMS authentication. If you have any questions or problems running this, leave a comment, or open an issue on the `GitHub` Repository.
+The AuthenticationService class is a helper that bridges the gap between MembershipReboot and the running web application. It will perform the work of issuing cookies to track the logged in user. It also provides the assistance for performing two-factor authentication and supporting external login providers.
+
+## Conclusion
+
+Hopefully I have sufficiently covered the basics of securing web application using MR, or MembershipReboot and explained a little about the framework. Future posts will show more use cases, such as two factor SMS authentication. 
+
+If you have any questions or problems running this, leave a comment, or open an issue on the `GitHub` Repository. I hope you enjoyed my tutorial. Definitely favorite this article if you found it interesting!

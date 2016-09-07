@@ -1,17 +1,12 @@
-### Securing ASP.NET MVC Applications with log in, email confirmation, and password reset, using MembershipReboot by Peter Mbanugo
-- [Read the guide](http://tutorials.pluralsight.com/microsoft-net/securing-asp-net-mvc-applications-with-log-in-email-confirmation-and-password-reset-using-membershipreboot?status=in-review)
-- [Read more from Peter Mbanugo](http://tutorials.pluralsight.com/author/pmbanugo) <img src="https://avatars.githubusercontent.com/u/4036118?v=3" width="30" height="30" alt="Peter Mbanugo" />
-- Related to: Microsoft.NET (C#, ASP.NET, VB.NET, etc)
+### Must Known Web-Security risks for Developers by Sanjeev Murthy
+- [Read the guide](http://tutorials.pluralsight.com/software-engineering-best-practices/must-known-web-security-risks-for-developers?status=in-review)
+- [Read more from Sanjeev Murthy](http://tutorials.pluralsight.com/author/SanjeevMurthy) <img src="https://avatars.githubusercontent.com/u/10756352?v=3" width="30" height="30" alt="Sanjeev Murthy" />
+- Related to: Software Engineering Best Practices
 
 ### Ionic 2 database management and versioning by Carlos Esteban Lopez Jaramillo
 - [Read the guide](http://tutorials.pluralsight.com/software-engineering-best-practices/ionic-2-database-management-and-versioning?status=in-review)
 - [Read more from Carlos Esteban Lopez Jaramillo](http://tutorials.pluralsight.com/author/Luchillo) <img src="https://avatars.githubusercontent.com/u/9698639?v=3" width="30" height="30" alt="Carlos Esteban Lopez Jaramillo" />
 - Related to: Software Engineering Best Practices
-
-### Getting Started with NodeJS by Gaurav Bhavsar
-- [Read the guide](http://tutorials.pluralsight.com/node-js/getting-started-with-nodejs?status=in-review)
-- [Read more from Gaurav Bhavsar](http://tutorials.pluralsight.com/author/gauravbhavsar) <img src="https://avatars.githubusercontent.com/u/5441386?v=3" width="30" height="30" alt="Gaurav Bhavsar" />
-- Related to: Node.js
 
 ### Java 8 Stream API: Part 2 by Esteban Herrera
 - [Read the guide](http://tutorials.pluralsight.com/java-and-j2ee/java-8-stream-api-part-2?status=in-review)
@@ -28,25 +23,10 @@
 - [Read more from nescampos](http://tutorials.pluralsight.com/author/nescampos) <img src="https://avatars.githubusercontent.com/u/7274106?v=3" width="30" height="30" alt="nescampos" />
 - Related to: Microsoft.NET (C#, ASP.NET, VB.NET, etc)
 
-### A beginner's guide to be a better software developer by Sri Sanketh Uppalapati
-- [Read the guide](http://tutorials.pluralsight.com/software-engineering-best-practices/a-beginner-s-guide-to-be-a-better-software-developer?status=in-review)
-- [Read more from Sri Sanketh Uppalapati](http://tutorials.pluralsight.com/author/srisankethu) <img src="https://avatars.githubusercontent.com/u/12644108?v=3" width="30" height="30" alt="Sri Sanketh Uppalapati" />
-- Related to: Software Engineering Best Practices
-
-### Must Known Web-Security risks for Developers by Sanjeev Murthy
-- [Read the guide](http://tutorials.pluralsight.com/software-engineering-best-practices/must-known-web-security-risks-for-developers?status=in-review)
-- [Read more from Sanjeev Murthy](http://tutorials.pluralsight.com/author/SanjeevMurthy) <img src="https://avatars.githubusercontent.com/u/10756352?v=3" width="30" height="30" alt="Sanjeev Murthy" />
-- Related to: Software Engineering Best Practices
-
 ### Using the Tierion Hash API with Python by Matthew Sedaghatfar
 - [Read the guide](http://tutorials.pluralsight.com/python/using-the-tierion-hash-api-with-python?status=in-review)
 - [Read more from Matthew Sedaghatfar](http://tutorials.pluralsight.com/author/sedaghatfar) <img src="https://avatars.githubusercontent.com/u/3936021?v=3" width="30" height="30" alt="Matthew Sedaghatfar" />
 - Related to: Python
-
-### voice controlled fish tank by piratemrs
-- [Read the guide](http://tutorials.pluralsight.com/node-js/voice-controlled-fish-tank?status=in-review)
-- [Read more from piratemrs](http://tutorials.pluralsight.com/author/piratemrs) <img src="https://avatars.githubusercontent.com/u/21154223?v=3" width="30" height="30" alt="piratemrs" />
-- Related to: Node.js
 
 ### Using the REST Interface with Licas by discompsys
 - [Read the guide](http://tutorials.pluralsight.com/java-and-j2ee/using-the-rest-interface-with-licas?status=in-review)

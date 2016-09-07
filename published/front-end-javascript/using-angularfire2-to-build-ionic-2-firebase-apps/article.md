@@ -487,3 +487,7 @@ The entire source code for this app is available on [github](https://github.com/
 I also send out a tutorial every Thursday on Ionic + Firebase. Join [here](http://javebratt.com/become-developer/) to check my guides out.
 
 If there's anything I can help you with just ask, I'm [@javebratt](https://twitter.com/javebratt). Feel free to post your comments and feedback in the discussion section below. If you found this tutorial informative or well-written, make sure to favorite it as well!
+
+
+
+![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/ea683246-f429-490a-8684-2fde72700169.png)

@@ -1,14 +1,9 @@
 {
-    "_publish_status": "in-review",
+    "_publish_status": "published",
     "author_name": "pmbanugo",
     "author_real_name": "Peter Mbanugo",
     "branch": "master",
-    "branches": [
-        [
-            "adityavarshney",
-            "adityavarshney-microsoft-net-securing-asp-net-mvc-applications-with-log-in-email-confirmation-and-password-reset-using-membershipreboot"
-        ]
-    ],
+    "branches": [],
     "filename": "article.md",
     "first_commit": "04f89e112ebfe0bb32dfc6f2a24dcd4f5a0ef2ef",
     "image_url": "https://avatars.githubusercontent.com/u/4036118?v=3",

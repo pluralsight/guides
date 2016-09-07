@@ -1,3 +1,18 @@
+### React vs. Angular 2 by Hristo Georgiev
+- [Read the guide](http://tutorials.pluralsight.com/front-end-javascript/react-vs-angular-2?status=draft)
+- [Read more from Hristo Georgiev](http://tutorials.pluralsight.com/author/Kaizeras) <img src="https://avatars.githubusercontent.com/u/6340189?v=3" width="30" height="30" alt="Hristo Georgiev" />
+- Related to: Front-End JavaScript (Angular, React, Meteor, etc)
+
+### Useful tips to improve your code javascript by Javier Ruiz Vázquez
+- [Read the guide](http://tutorials.pluralsight.com/front-end-javascript/useful-tips-to-improve-your-code-javascript?status=draft)
+- [Read more from Javier Ruiz Vázquez](http://tutorials.pluralsight.com/author/javarv87) <img src="https://avatars.githubusercontent.com/u/5413202?v=3" width="30" height="30" alt="Javier Ruiz Vázquez" />
+- Related to: Front-End JavaScript (Angular, React, Meteor, etc)
+
+### test by ali 95
+- [Read the guide](http://tutorials.pluralsight.com/other/test?status=draft)
+- [Read more from ali 95](http://tutorials.pluralsight.com/author/aliibnubadri) <img src="https://avatars.githubusercontent.com/u/10340297?v=3" width="30" height="30" alt="ali 95" />
+- Related to: other
+
 ### Securing ASP.NET MVC Applications with log in, email confirmation, password reset, and two factor authentication, using MembershipReboot by Peter Mbanugo
 - [Read the guide](http://tutorials.pluralsight.com/microsoft-net/securing-asp-net-mvc-applications-with-log-in-email-confirmation-password-reset-and-two-factor-authentication-using-membershipreboot?status=draft)
 - [Read more from Peter Mbanugo](http://tutorials.pluralsight.com/author/pmbanugo) <img src="https://avatars.githubusercontent.com/u/4036118?v=3" width="30" height="30" alt="Peter Mbanugo" />
@@ -107,11 +122,6 @@
 - [Read the guide](http://tutorials.pluralsight.com/node-js/capitals-and-countries-building-an-alexa-trial-skill?status=draft)
 - [Read more from vincent wong](http://tutorials.pluralsight.com/author/wesee) <img src="https://avatars.githubusercontent.com/u/4255955?v=3" width="30" height="30" alt="vincent wong" />
 - Related to: Node.js
-
-### Building a wallpaper streaming app using Angular 2 and Reddit API by Hristo Georgiev
-- [Read the guide](http://tutorials.pluralsight.com/front-end-javascript/building-a-wallpaper-streaming-app-using-angular-2-and-reddit-api?status=draft)
-- [Read more from Hristo Georgiev](http://tutorials.pluralsight.com/author/Kaizeras) <img src="https://avatars.githubusercontent.com/u/6340189?v=3" width="30" height="30" alt="Hristo Georgiev" />
-- Related to: Front-End JavaScript (Angular, React, Meteor, etc)
 
 ### Dynomite DB by Sanjeev Murthy
 - [Read the guide](http://tutorials.pluralsight.com/other/dynomite-db?status=draft)
@@ -332,11 +342,6 @@
 - [Read the guide](http://tutorials.pluralsight.com/front-end-javascript/angularjs-pragmatics?status=draft)
 - [Read more from Shaun Wakashige](http://tutorials.pluralsight.com/author/swak) <img src="https://avatars.githubusercontent.com/u/666058?v=3" width="30" height="30" alt="Shaun Wakashige" />
 - Related to: Front-End JavaScript (Angular, React, Meteor, etc)
-
-### 2016 hack.guides() Authoring Contest by Prateek Gupta
-- [Read the guide](http://tutorials.pluralsight.com/software-engineering-best-practices/2016-hack-guides-authoring-contest?status=draft)
-- [Read more from Prateek Gupta](http://tutorials.pluralsight.com/author/prtkgpt) <img src="https://avatars.githubusercontent.com/u/2454349?v=3" width="30" height="30" alt="Prateek Gupta" />
-- Related to: Software Engineering Best Practices
 
 ### test article by Gergo Bogdan
 - [Read the guide](http://tutorials.pluralsight.com/python/test-article?status=draft)
