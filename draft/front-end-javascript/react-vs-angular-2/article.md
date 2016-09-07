@@ -6,10 +6,16 @@ The goal of this guide is to delineate core differences and similarities between
 # Development flow
 
 ### Angular 2
-Angular CLI , etc
+Angular 2 feels more like a fully-fledged framework - it comes with many building blocks out of the box that cover most of the common scenarios in developing a web application. There is also a clear separation of the roles of the different elements:
 
-React- more freedom
-   
+- *Services* - Injectable elements that are mostly used to consume data from an API or inject a state in a component
+- *Components* - Building blocks of the user interface that consumer services. Can be nested inside each other through structural directive selectors.
+- *Directives* - Divided into structural and attribute directives. Structural directives (ex. <code>*ngFor</code>)  manipulate the DOM. Attribute directives are part of elements and control their style and state.
+- *Pipes* - Used to format how data is displayed.
+
+### React
+
+React is far less rigid than Angular 2. It is more of a library that provides the most basic tools for building a web applications - a HTTP service and Components. The rest is up to one's preference. There is no built-in router or anything that sets a particular convention. It is mostly up to the developer's choice what kind of packages he/she is going to use to shape the applicaiton.
 
 # Application architecture
 
@@ -480,10 +486,6 @@ Because of JSX, standard html property words are camel-cased or have diffeerent 
 
 
 
-# Adoption
-[Angular 2](https://github.com/angular/angular) just shy of 16K stars on Github, currently in RC5, check [here](https://splintercode.github.io/is-angular-2-ready/) for release.
-
-[React]
 
 
 # Performance
@@ -503,3 +505,8 @@ Because of JSX, standard html property words are camel-cased or have diffeerent 
 # Cross-platform integration
 
 NativeScript vs React Native 
+
+# Adoption
+[Angular 2](https://github.com/angular/angular) is just shy of 16K stars on Github, currently in RC6. There is a [tracker](https://splintercode.github.io/is-angular-2-ready/)  that counts how many issues are left until Angular 2 is ready for release. Even though Angular 2 is relatively young, its community is maturing fast, mostly because many Angular 1 developers are startng to switch to Angular 2. There are already [around 6500](https://github.com/search?l=TypeScript&p=3&q=angular+2&type=Repositories&utf8=%E2%9C%93) repositories on Github that contain "Angular 2" and are written in TypeScript.
+
+[React](https://github.com/facebook/react),on the other hand, is almost at 50K stars on Github. There are [76,122](https://github.com/search?l=JavaScript&p=1&q=react&ref=searchresults&type=Repositories&utf8=%E2%9C%93) repositories  containing the word "react" in them - over ten times more than what Angular 2 has. Still, one of the big reasons for the large number of repositories is that React come with just a few built-in functionalities and relies on its community to provide it with the needed tooling.
