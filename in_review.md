@@ -28,11 +28,6 @@
 - [Read more from nescampos](http://tutorials.pluralsight.com/author/nescampos) <img src="https://avatars.githubusercontent.com/u/7274106?v=3" width="30" height="30" alt="nescampos" />
 - Related to: Microsoft.NET (C#, ASP.NET, VB.NET, etc)
 
-### Using the Tierion Hash API with Python by Matthew Sedaghatfar
-- [Read the guide](http://tutorials.pluralsight.com/python/using-the-tierion-hash-api-with-python?status=in-review)
-- [Read more from Matthew Sedaghatfar](http://tutorials.pluralsight.com/author/sedaghatfar) <img src="https://avatars.githubusercontent.com/u/3936021?v=3" width="30" height="30" alt="Matthew Sedaghatfar" />
-- Related to: Python
-
 ### Using the REST Interface with Licas by discompsys
 - [Read the guide](http://tutorials.pluralsight.com/java-and-j2ee/using-the-rest-interface-with-licas?status=in-review)
 - [Read more from discompsys](http://tutorials.pluralsight.com/author/discompsys) <img src="https://avatars.githubusercontent.com/u/20437503?v=3" width="30" height="30" alt="discompsys" />
