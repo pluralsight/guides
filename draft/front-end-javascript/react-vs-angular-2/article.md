@@ -65,66 +65,6 @@ To get a clearer comparison between React and Angular 2, we are going to compare
 
 ##### Angular 2
 
-*package.json*
-
-```json                                  
-{                                     
-  "name": "ng2-todo",
-  "version": "1.0.0",
-  "description": "Todo app in Angular",
-  "scripts": {
-    "start": "webpack-dev-server
-      --content-base src --inline --port 8081"
-  },
-  "devDependencies": {
-    "ts-loader": "^0.7.2",
-    "tslint": "^3.0.0-dev.1",
-    "typescript": "^1.7.3",
-    "webpack": "^1.12.9",
-    "webpack-dev-server": "^1.14.0"
-  },
-  "dependencies": {
-    "angular2": "2.0.0-beta.0",
-    "es6-promise": "3.0.2",
-    "es6-shim": "0.33.3",
-    "reflect-metadata": "0.1.2",
-    "rxjs": "5.0.0-beta.0",
-    "zone.js": "0.5.10"
-  }
-}| 
-```
-##### React
-
-*package.json*
-```json
-{
-  "name": "react-todo",
-  "version": "1.0.0",
-  "description": "Todo app in React",
-  "scripts": {
-    "start": "webpack-dev-server
-      --content-base . --inline"
-  },
-  "devDependencies": {
-    "babel-core": "^6.1.2",
-    "babel-loader": "^6.0.1",
-    "babel-preset-es2015": "^6.1.18",
-    "babel-preset-react": "^6.1.2",
-    "eslint": "^1.6.0",
-    "eslint-loader": "^1.0.0",
-    "eslint-plugin-react": "^3.5.1",
-    "webpack": "^1.12.9",
-    "webpack-dev-server": "^1.14.0"
-  },
-  "dependencies": {
-    "react": "^0.14.3",
-    "react-dom": "^0.14.3"
-  }
-}
-```
-Both applicaitons need a similar amount of packages for development. React has more devDependencies for using React-specific linting and parsing.
-
-##### Angular 2
 
 *index.html*
 
