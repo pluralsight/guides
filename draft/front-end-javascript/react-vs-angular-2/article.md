@@ -127,7 +127,7 @@ import ReactDOM from 'react-dom';
 import Todo from './todo';
 ```
 
-#### **Initializing**
+#### **Initializing a component**
 
 ##### Angular 2
 
