@@ -8,14 +8,14 @@ The goal of this guide is to delineate core differences and similarities between
 ### Angular 2
 Angular 2 feels more like a fully-fledged framework - it comes with many building blocks out of the box that cover most of the common scenarios in developing a web application. There is also a clear separation of the roles of the different elements:
 
-- *Services* - Injectable elements that are mostly used to consume data from an API or inject a state in a component
-- *Components* - Building blocks of the user interface that consumer services. Can be nested inside each other through structural directive selectors.
-- *Directives* - Divided into structural and attribute directives. Structural directives (ex. <code>*ngFor</code>)  manipulate the DOM. Attribute directives are part of elements and control their style and state.
-- *Pipes* - Used to format how data is displayed.
+- *Services* - Injectable elements that are used to consume data from an API or share   state between multiple components.
+- *Components* - Building blocks of the user interface that consume services. Can be nested inside each other through structural directive selectors.
+- *Directives* - Divided into structural and attribute directives. Structural directives (ex. <code>*ngFor</code>)  manipulate the DOM while attribute directives are part of elements and control their style and state.
+- *Pipes* - Used to format how data is displayed in the view layer.
 
 ### React
 
-React is far less rigid than Angular 2. It is more of a library that provides the most basic tools for building a web applications - a HTTP service and Components. The rest is up to one's preference. There is no built-in router or anything that sets a particular convention. It is mostly up to the developer's choice what kind of packages he/she is going to use to shape the applicaiton.
+React is far less rigid than Angular 2. It is more of a library that provides the most basic tools for building a web applications - a HTTP service and Components.  There is no built-in router or anything that sets a particular convention. It is mostly up to the developer's choice what kind of packages he/she is going to use to shape the applicaiton.
 
 # Application architecture
 
@@ -44,9 +44,10 @@ React uses [flux](https://facebook.github.io/flux/docs/overview.html) as a way o
 ![Redux](https://raw.githubusercontent.com/pluralsight/guides/master/images/f685aa1c-99d2-44aa-b705-99267c16bd4b.com-optimize)
 *Redux data flow*
 
+Redux is the new cool kid on the block //more about redux
+
 Redux was first introduced for React as an alternative to simplify Flux. Because of that, Flux is more widely adopted in the React community.
 
-//todo more abour redux
 
 Recently, Angular 2 has started adopting the [Redux](http://redux.js.org/docs/introduction/ThreePrinciples.html) pattern for data flow by utilizing [rxjs](https://splintercode.github.io/is-angular-2-ready/)'s observables to maintain the state of the data and using pure functions to manipulate it. [Attemps have been made](http://blog.rangle.io/getting-started-with-redux-and-angular-2/) to build unidirectional data flow in Angular 2 applications, but the adoption of this technique is still low.
 
@@ -502,11 +503,19 @@ Because of JSX, standard html property words are camel-cased or have diffeerent 
  In terms of memory management, React outperforms Angular 2 by using three times less memory after pageload (15.30ms vs. 4.75ms) and two times less memory when adding new elements to the DOM ( 21.10ms vs 10.67ms).
  
  **Even though React is a clear winner, the results cannot be considered absolutely fair**. Angular 2 is still under development and the focus is not on optimizing the speed but rather fixing bugs and polishing features.
+ 
 # Cross-platform integration
 
-NativeScript vs React Native 
+The cross-platform development world has made a huge leaps since the massive adoption of mobile devices. For both Angular 2 and React, WebView-based tools for building cross-platform mobile applications are a thing of the past. 
+
+There are two tools that allow building of cross-platform applications with native capabilities - [NativeScript](https://www.nativescript.org/) and [React Native](https://facebook.github.io/react-native/)
+
+NativeScript is built by [Telerik (now Progress)](http://www.telerik.com/) with the intention to enable native mobile applications to be built with Angular 2. Even though it has [8k](https://github.com/NativeScript/NativeScript) starts on Github, NativeScript is mature and comes with great documentation and numerous extensions. It preaches a "write once, run everywhere" methodology of developing cross-platform applications. Even though this is an efficient approach, it does not enable to use many platform-specific UI features.
+
+React Native is developed by Facebook to give React native capabilities. Compared to NativeScript, React Native is still young but quite popular and maturing quickly, boasting over [37k](https://github.com/facebook/react-native) stars on GitHub. React Native uses a "learn once, write anywhere" approach to developing cross-platform applications. Instead of 
+attempting to generalize different platforms like NativeScript does, Rect Native embraces their differences, offering different ways to construct UI for the different platforms. Recently, the Angular 2 team has started adopting React Native, [making a renderer for it](https://github.com/angular/react-native-renderer).
 
 # Adoption
-[Angular 2](https://github.com/angular/angular) is just shy of 16K stars on Github, currently in RC6. There is a [tracker](https://splintercode.github.io/is-angular-2-ready/)  that counts how many issues are left until Angular 2 is ready for release. Even though Angular 2 is relatively young, its community is maturing fast, mostly because many Angular 1 developers are startng to switch to Angular 2. There are already [around 6500](https://github.com/search?l=TypeScript&p=3&q=angular+2&type=Repositories&utf8=%E2%9C%93) repositories on Github that contain "Angular 2" and are written in TypeScript.
+[Angular 2](https://github.com/angular/angular) is just shy of 16K stars on Github. There is a [tracker](https://splintercode.github.io/is-angular-2-ready/)  that counts how many issues are left until Angular 2 is ready for release, with hopes this to happen until thethe end of 2016. Even though Angular 2 is relatively young, its community is maturing fast, mostly because many Angular 1 developers are startng to switch to Angular 2. There are already [around 6500](https://github.com/search?l=TypeScript&p=3&q=angular+2&type=Repositories&utf8=%E2%9C%93) repositories on Github that contain "Angular 2" and are written in TypeScript.
 
-[React](https://github.com/facebook/react),on the other hand, is almost at 50K stars on Github. There are [76,122](https://github.com/search?l=JavaScript&p=1&q=react&ref=searchresults&type=Repositories&utf8=%E2%9C%93) repositories  containing the word "react" in them - over ten times more than what Angular 2 has. Still, one of the big reasons for the large number of repositories is that React come with just a few built-in functionalities and relies on its community to provide it with the needed tooling.
+[React](https://github.com/facebook/react), on the other hand, is almost at 50K stars on Github. There are [76,122](https://github.com/search?l=JavaScript&p=1&q=react&ref=searchresults&type=Repositories&utf8=%E2%9C%93) repositories  containing the word "react" in them - over ten times more than what Angular 2 has. Still, one of the big reasons for the large number of repositories is that React comes with just a few built-in functionalities and relies on its community to provide it with the needed tooling to develop full-scale applications.
