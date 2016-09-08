@@ -113,9 +113,8 @@ I'll analyize the <code>TodoList</code>  component (*todolist.component.ts* for 
 
 
 ```ts
-import 'angular2/bundles/angular2-polyfills';
-import {Component} from 'angular2/core';
-import {bootstrap} from 'angular2/platform/browser';
+import {Component} from '@angular/core';
+import {bootstrap} from from '@angular/platform-browser-dynamic';;
 import {TodoCmp, ITodo} from "./todoCmp";
 ```
 ##### React
@@ -131,7 +130,7 @@ import Todo from './todo';
 
 ##### Angular 2
 
-```ts
+```js
 // Used for type of state property in TodoListCmp class.
 // Both properties are optional, but preferred as they make 
 // the code more maintainable.
@@ -221,7 +220,7 @@ onAddTodo() {
 
 ##### Angular 2
 
-```ts
+```js
 get uncompletedCount(): number {
     return this.state.todos.reduce(
       (count: number, todo: ITodo) =>
@@ -242,7 +241,7 @@ get uncompletedCount() {
 ####  **Reacting to changes**
 
 ##### Angular 2
-```ts
+```js
 onArchiveCompleted(): void {
     this.state.todos =
       this.state.todos.filter((t: ITodo) => !t.done);
