@@ -58,7 +58,7 @@ Angular 2 is written in TypeScript, a superset language of JavaScript developed 
 
 React is relying on JSX, a XML-esque syntax extension for rendering JavaScript and HTML. Syntax and strucutre-wise, JSX looks more familiar to JavaScript and apperas to blend into HTML more easily. It uses [ESLint](http://eslint.org/) to track for isses in the code.
 
-To get a clearer comparison between React and Angular 2, we are going to compare how a basic TODO application is built (example apps built by [Mark Volkmann (mvolkmann)](https://github.com/mvolkmann/react-examples).
+To get a clearer comparison between React and Angular 2's code strucures, we are going to compare how a basic TODO application is built (example apps built by [Mark Volkmann (mvolkmann)](https://github.com/mvolkmann/react-examples).
 
  Both applications use [Webpack](https://webpack.github.io/) for development and deployment.
 
@@ -103,7 +103,7 @@ To get a clearer comparison between React and Angular 2, we are going to compare
 
 Because both setups use Webpack to handle all the assets, the index.html file is identical.
 
-Applicaiton structure-wise, both React and Angular 2 need two files - <code>TodoList</code> that represents the list of tasks and <code>Todo</code> that represents a single task.
+Application structure-wise, both React and Angular 2 need two files - <code>TodoList</code> that represents the list of tasks and <code>Todo</code> that represents a single task.
 
 I'll analyize the <code>TodoList</code>  component (*todolist.component.ts* for Angular 2 and *todo-list.js* for React, respectively) piece-by-piece, from top to bottom:
 
