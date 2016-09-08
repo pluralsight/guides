@@ -441,11 +441,40 @@ export class TodoCmp {
 ##### React
 
 ```js
+import React from 'react';
+
+// There are three ways to define React components.
+// This is the stateless function component form
+// which only receives data through "props".
+// A props object is passed to this function
+// and destructured.
+const Todo = ({onDeleteTodo, onToggleDone, todo}) =>
+  <li>
+    <input type="checkbox"
+      checked={todo.done}
+      onChange={onToggleDone}/>
+    <span className={'done-' + todo.done}>
+      {todo.text}
+    </span>
+    <button onClick={onDeleteTodo}>Delete</button>
+  </li>;
+
+// Optional validation of props.
+const PropTypes = React.PropTypes;
+Todo.propTypes = {
+  todo: PropTypes.object.isRequired,
+  onDeleteTodo: PropTypes.func.isRequired,
+  onToggleDone: PropTypes.func.isRequired
+};
+
+export default Todo;
 
 ```
 
+Because it is the main building block of a React application, the component offers greater flexibility in the way it can be structured. Stateless components are built with one-directional data flow in mind, leaving the majority of the logic to stay outside of the component itself. Angular 2 also offers similar functionality, but it does it with more complexity.
 
-# Data Management
+
+# Application Architecture
 
 ### Angular 2 
 
