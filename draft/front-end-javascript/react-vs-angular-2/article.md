@@ -519,11 +519,11 @@ Recently, Angular 2 has started adopting the [Redux](http://redux.js.org/docs/in
 ![benchmarks](https://raw.githubusercontent.com/pluralsight/guides/master/images/c5324f3d-e9e4-4b3a-b9aa-760a083fd89a.002)
 
 
- It is clear that React (v. 15.3.0) is either on par or faster than Angular 2's release candidate 4. The only action at which React is slower than Angular 2 is in replacing the data in all rows ( 192.23ms for Angular 2 vs 214.07ms for React).  Angular 2 also appears to be better at selecting an element in (3.32ms vs. 6.78ms). But it is two times slower at appending elements (611.75ms vs. 293.82ms).
- 
- In terms of memory management, React outperforms Angular 2 by using three times less memory after pageload (15.30ms vs. 4.75ms) and two times less memory when adding new elements to the DOM ( 21.10ms vs 10.67ms).
- 
- **Even though React is a clear winner, the results cannot be considered absolutely fair**. Angular 2 is still under development and the focus is not on optimizing the speed but rather fixing bugs and polishing features.
+It is clear that React (v. 15.3.0) is either on par or faster than Angular 2's release candidate 4. The only action at which React is slower than Angular 2 is in replacing the data in all rows ( 192.23ms for Angular 2 vs 214.07ms for React).  Angular 2 also appears to be better at selecting an element in (3.32ms vs. 6.78ms). But it is two times slower at appending elements (611.75ms vs. 293.82ms).
+
+In terms of memory management, React outperforms Angular 2 by using three times less memory after pageload (15.30ms vs. 4.75ms) and two times less memory when adding new elements to the DOM ( 21.10ms vs 10.67ms).
+
+**Even though React is a clear winner, the results cannot be considered absolutely fair**. Angular 2 is still under development and the focus is not on optimizing the speed but rather fixing bugs and polishing features.
  
 # Cross-platform integration
 
@@ -539,3 +539,8 @@ React Nativeis developed by Facebook to give React native capabilities. Compared
 [Angular 2](https://github.com/angular/angular) is just shy of 16K stars on Github. There is a [tracker](https://splintercode.github.io/is-angular-2-ready/)  that counts how many issues are left until Angular 2 is ready for release, with hopes this to happen until thethe end of 2016. Even though Angular 2 is relatively young, its community is maturing fast, mostly because many Angular 1 developers are startng to switch to Angular 2. There are already [around 6500](https://github.com/search?l=TypeScript&p=3&q=angular+2&type=Repositories&utf8=%E2%9C%93) repositories on Github that contain "Angular 2" and are written in TypeScript.
 
 [React](https://github.com/facebook/react), on the other hand, is almost at 50K stars on Github. There are [76,122](https://github.com/search?l=JavaScript&p=1&q=react&ref=searchresults&type=Repositories&utf8=%E2%9C%93) repositories  containing the word "react" in them - over ten times more than what Angular 2 has. Still, one of the big reasons for the large number of repositories is that React comes with just a few built-in functionalities and relies on its community to provide it with the needed tooling to develop full-scale applications.
+
+
+# Conclusion 
+
+Both Angular 2 and React have large communities and have corporate backing. Even though they have different philosophies to how an application development must be approached, there is a place for both of them in the software development world.
