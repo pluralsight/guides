@@ -27,11 +27,10 @@ To get a clearer comparison between React and Angular 2's code strucures, we are
 
  Both applications use [Webpack](https://webpack.github.io/) for development and deployment.
 
+#### **index.html**
+
 
 ##### Angular 2
-
-
-*index.html*
 
 ```html
 <!DOCTYPE html>
@@ -49,8 +48,6 @@ To get a clearer comparison between React and Angular 2's code strucures, we are
 ```
 
 ##### React
-
-*index.html*
 
 ```html
 <!DOCTYPE html>
