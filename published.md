@@ -1,3 +1,8 @@
+### React vs. Angular 2 by Hristo Georgiev
+- [Read the guide](http://tutorials.pluralsight.com/front-end-javascript/react-vs-angular-2)
+- [Read more from Hristo Georgiev](http://tutorials.pluralsight.com/author/Kaizeras) <img src="https://avatars.githubusercontent.com/u/6340189?v=3" width="30" height="30" alt="Hristo Georgiev" />
+- Related to: Front-End JavaScript (Angular, React, Meteor, etc)
+
 ### Using the Tierion Hash API with Python by Matthew Sedaghatfar
 - [Read the guide](http://tutorials.pluralsight.com/python/using-the-tierion-hash-api-with-python)
 - [Read more from Matthew Sedaghatfar](http://tutorials.pluralsight.com/author/sedaghatfar) <img src="https://avatars.githubusercontent.com/u/3936021?v=3" width="30" height="30" alt="Matthew Sedaghatfar" />
