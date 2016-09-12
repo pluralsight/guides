@@ -1,28 +1,33 @@
-This guide is aimed to provide a critical overview of two popular front-end web development tools - [React](https://facebook.github.io/react/)  and [Angular 2](https://angular.io/). The tools will be evaluated based on their approaches to building application structure, involvement and adoption by the community, performance and ability to integrate with different platforms. 
+This guide will provide a critical overview of two popular front-end web development tools - [React](https://facebook.github.io/react/)  and [Angular 2](https://angular.io/). The tools will be evaluated based on their approaches to building application structure, adoption by the community, performance, and ability to integrate with different platforms. 
 
-The goal of this guide is to delineate core differences and similarities between the two tools in order facilitate decision-making when it comes to choosing which is appropriate for a given project specification.
+The goal of this guide is to highlight core differences and understand the similarities between the two tools, thus facilitating the decision-making process when it comes to choosing which tool is appropriate for a given project specification.
 
 
 # Development flow
 
 ### Angular 2
-Angular 2 is closer to a fully-fledged framework - it comes with many building blocks out of the box that cover most of the common scenarios in developing a web application. There is also a clear separation of the roles of the different elements:
+Angular 2 is very close to being a fully-fledged framework - it comes with many building blocks out of the box that cover most of the common scenarios in developing a web application. There is also a clear separation of the roles of the different elements:
 
-- *Services* - Injectable elements that are used to consume data from an API or share   state between multiple components.
+- *Services* - Injectable elements that are used to consume data from an API or share state between multiple components.
 - *Components* - Building blocks of the user interface that consume services. Can be nested inside each other through structural directive selectors.
-- *Directives* - Divided into structural and attribute directives. Structural directives (ex. <code>*ngFor</code>)  manipulate the DOM while attribute directives are part of elements and control their style and state.
+- *Directives* - Divided into structural and attribute directives. Structural directives (ex. <code>*ngFor</code>)  manipulate the DOM (Document Object Model) while attribute directives are part of elements and control their style and state.
 - *Pipes* - Used to format how data is displayed in the view layer.
 
 ### React
 
-React is far less rigid than Angular 2. It is more of a library that provides the most basic tools for building a web applications - a HTTP service and Components.  There is no built-in router or anything that sets a particular convention. It is mostly up to the developer's choice what kind of packages he/she is going to use to shape the applicaiton.
+React is far less rigid than Angular 2. It is more of a library that provides the most basic tools for building a web applications - a HTTP service and Components.  There is no built-in router or anything that sets a particular convention. It is mostly up to the developer's choice what kind of packages he/she is going to use to shape the application.
 
 
 
 # Code structure
+
+### Angular 2
+
 Angular 2 is written in TypeScript, a superset language of JavaScript developed by Microsoft. The language introduces types, new data structures and more object-oriented features, making the code easier to read and maintain compared to vanilla JavaScript. TypeScript's syntax is more reminiscent of C#, and would make the transition from standard JavaScript a bit difficult. Using TypeScript makes setting up an Angular 2 application somehow tedious, as it introduces extra overhead for configuration. 
 
-React is relying on JSX, a XML-esque syntax extension for rendering JavaScript and HTML. Syntax and strucutre-wise, JSX looks more familiar to JavaScript and apperas to blend into HTML more easily. 
+### React
+
+React is relying on JSX (Java Serialization to XML), an XML-esque syntax extension for rendering JavaScript and HTML. In terms of syntax and structure, JSX looks like JavaScript and appears to blend into HTML more easily. 
 To get a clearer comparison between React and Angular 2's code strucures, we are going to compare how a basic TODO application is built (example apps built by [Mark Volkmann (mvolkmann)](https://github.com/mvolkmann/react-examples).
 
  Both applications use [Webpack](https://webpack.github.io/) for development and deployment.
@@ -63,11 +68,11 @@ To get a clearer comparison between React and Angular 2's code strucures, we are
 ```
 
 
-Because both setups use Webpack to handle all the assets, the index.html file is identical.
+Because both setups use Webpack to handle all the assets, the `index.html` file in each is identical.
 
-Application structure-wise, both React and Angular 2 need two files - <code>TodoList</code> that represents the list of tasks and <code>Todo</code> that represents a single task.
+In terms of application structure, both React and Angular 2 need two files - <code>TodoList</code> which represents the list of tasks and <code>Todo</code> which represents a single task.
 
-Let's analyize the <code>TodoList</code>  component (*todolist.component.ts* for Angular 2 and *todo-list.js* for React, respectively) piece-by-piece, from top to bottom:
+Let's analyze the <code>TodoList</code> component (*todolist.component.ts* for Angular 2 and *todo-list.js* for React, respectively) piece-by-piece, from top to bottom:
 
 #### **Importing** 
 
@@ -89,6 +94,8 @@ import Todo from './todo';
 ```
 
 #### **Initializing a component**
+
+I've spotted the key differences between the tools using comments. 
 
 ##### Angular 2
 
@@ -178,6 +185,9 @@ onAddTodo() {
     });
 }
 ```
+
+As seen above, the creation process is quite similar for both tools, but React's is slightly shorter and appears to need less developer logic.
+
 #### **Detecting item states**
 
 ##### Angular 2
@@ -194,8 +204,7 @@ get uncompletedCount(): number {
 get uncompletedCount() {
     return this.state.todos.reduce(
       (count, todo) =>
-        todo.done ? count : count + 1,
-      0);
+        todo.done ? count : count + 1, 0);
 }
 
 ```
@@ -370,7 +379,7 @@ render() {
 
 ```
 
-The component code for Angular 2 is more verbose than React's . TypeScript largely contributes to the this. <code> :void </code> , <code> :ITodo </code> and other types are often seen in the  Style-wise, varaibles, function parameters and function themselves must have a type in TypeScript. React does not have any of that, making the code more convenient for developers who prefer traditional JavaScript. 
+The component code for Angular 2 is generally more verbose than React's. The only case we've covered where React requires more code is with bootstrapping. This disparity can be attributed to TypeScript. <code> :void </code> , <code> :ITodo </code> and other types are often seen in the TypeScript. Angular 2 style usually dictates that variables, function parameters, and function themselves must have a type in TypeScript. React does not have any of that, making the code more convenient for developers who prefer traditional, more succint JavaScript. 
 
 Angular 2 uses <code>@Component</code> decorators to specify the different constructs (services, directives, pipes) that it contains and to define its own properties. It also lets the developer specify a <code>selector</code> for the component and put the code for the template using the <code> template </code> property or the <code> templateUrl</code> if a separate file is used. The same applies for styles - there is an option to input styles directly using the <code> styles </code> property or to include an array of files using <code> styleUrls </code>. React does not have an analog for a component decorator and requires the template of the component to be included in the component file itself, thus limiting the options for customization and making the information about a component harder to interpret.
 
@@ -380,8 +389,8 @@ Angular 2 templates come with a specific convention for different elements:
 - ```()``` indicates an event binding (such as ```(click)```, which triggers a function in the components.
 - ```[()]``` indicates two-way binding, meaning that any changes to the data that are passed will be propagated.
 
-React templates also come with their peculiarities. JSX blurs the line by html and JavaScript, providing its own markup. Even though it seems that the template is written in HTML, the markup is actually XML that is later parsed into HTML.
-Because of JSX, standard html property words are camel-cased or have diffeerent names - <code>onclick</code> in JSX is <code>onClick</code>. <code>for</code> (used in labels) becomes <code>htmlFor</code> as <code>for</code> is a reserved word in JavaScript for a loop.
+React templates also come with their peculiarities. JSX blurs the line by HTML and JavaScript, providing its own markup. Even though it seems that the template is written in HTML, the markup is actually XML that is later parsed into HTML.
+Because of JSX, standard HTML property words are camel-cased or have diffeerent names - <code>onclick</code> in JSX is <code>onClick</code>. <code>for</code> (used in labels) becomes <code>htmlFor</code> because <code>for</code> is a reserved word in JavaScript (meaning for-loop).
 
 
 #### **Nesting components**
@@ -456,7 +465,7 @@ const Todo = ({onDeleteTodo, onToggleDone, todo}) =>
     <button onClick={onDeleteTodo}>Delete</button>
   </li>;
 
-// Optional validation of props.
+// Optional validation of props object.
 const PropTypes = React.PropTypes;
 Todo.propTypes = {
   todo: PropTypes.object.isRequired,
@@ -487,7 +496,7 @@ Angular 2 is using the standard bi-directional data flow model. Once an action i
 ![react data flow](https://raw.githubusercontent.com/pluralsight/guides/master/images/032be950-9bac-4a65-9bba-0a33089aad37.png)
 *Flux data flow*
 
-React uses [Flux](https://facebook.github.io/flux/docs/overview.html) as a way of constructing its applications. Each action is sent to a dispatcher, which sends the new information to stores. Stores then update (mutate) the information  and send it down to the views (controller-views), which listen for changes.
+React uses [Flux](https://facebook.github.io/flux/docs/overview.html) to construct its applications. Each action is sent to a dispatcher, which sends the new information to stores. The stores then update (mutate) the information and send it down to the views (controller-views), which listen for changes.
 
 
 ### Redux
@@ -495,9 +504,10 @@ React uses [Flux](https://facebook.github.io/flux/docs/overview.html) as a way o
 ![Redux](https://raw.githubusercontent.com/pluralsight/guides/master/images/f685aa1c-99d2-44aa-b705-99267c16bd4b.com-optimize)
 *Redux data flow*
 
-Redux is the new cool kid on the block. Like Flux, it is based on one-directional data flow, but it manages the data in a different way.
+Redux is the cool kid on the block. Like Flux, it is based on one-directional data flow, but it manages the data in a different way.
 
-An application that uses Redux has a global state that is shared among the whole application. When an action is made, it is sent to a dispatcher, which serves to make a HTTP call to the (API). Then,  the changes are sent to reducers - pure functions that specialize in managing a part of the global application state. For example, if your application has users, projects and items as models, each of the models will be part of the global state and there will be a set of reducers that take care of managing their state. Once the state is 'mutated' by the reducers, the new information is sent down to the view.
+An application that uses Redux has a global state that is shared among the whole application. When an action is made, it is sent to a dispatcher, which serves to make a HTTP call to the API. Then, the changes are sent to reducers - pure functions that specialize in managing a part of the global application state. For example, if your application has users, projects and items as models, each of the models will be part of the global state and there will be a set of reducers that take care of managing their state. Once the state is 'mutated' by the reducers, the new information is sent down to the view.
+
 In this way,  state of the application is kept in one place, providing for an easier state management.
 
 Redux was first introduced for React as an alternative to simplify Flux. Because of that, Redux is more widely adopted in the React community.
@@ -511,33 +521,33 @@ Recently, Angular 2 has started adopting the [Redux](http://redux.js.org/docs/in
 
  Performance is another critical point of comparison. It shows how Angular 2 and React handle under heavy load and gives predictions for future problems as the applications become bulkier and more difficult to optimize.
  
- The following tests have been developed by [Stefan Krauss (krausest)](https://github.com/krausest). The tests are carried out with [Selenium](http://docs.seleniumhq.org/docs/03_webdriver.jsp) to emulate user actions and record the results (in miliseconds)
+ The following tests have been developed by [Stefan Krauss (krausest)](https://github.com/krausest). The tests are carried out with **[Selenium](http://docs.seleniumhq.org/docs/03_webdriver.jsp)** to emulate user actions and record the results (in miliseconds)
 
 ![benchmarks](https://raw.githubusercontent.com/pluralsight/guides/master/images/c5324f3d-e9e4-4b3a-b9aa-760a083fd89a.002)
 
 
-It is clear that React (v. 15.3.0) is either on par or faster than Angular 2's release candidate 4. The only action at which React is slower than Angular 2 is in replacing the data in all rows ( 192.23ms for Angular 2 vs 214.07ms for React).  Angular 2 also appears to be better at selecting an element in (3.32ms vs. 6.78ms). But it is two times slower at appending elements (611.75ms vs. 293.82ms).
+It is clear that React (v. 15.3.0) is either on par or faster than Angular 2's release candidate 4. React lags behind the alternative when it comes to replacing the data in all rows (192.23ms for Angular 2 vs 214.07ms for React). Angular 2 also appears to be better at selecting an element in (3.32ms vs. 6.78ms). But Angular is more than two times slower at appending elements (611.75ms vs. 293.82ms).
 
 In terms of memory management, React outperforms Angular 2 by using three times less memory after pageload (15.30ms vs. 4.75ms) and two times less memory when adding new elements to the DOM ( 21.10ms vs 10.67ms).
 
-**Even though React is a clear winner, the results cannot be considered absolutely fair**. Angular 2 is still under development and the focus is not on optimizing the speed but rather fixing bugs and polishing features.
+**Even though React is a clear winner, the results cannot be considered absolutely fair.** Angular 2 is still under development, and thus the developers' focus is not on optimizing the speed but rather fixing bugs and polishing features. We can expect impactful improvements to speed in upcoming updates and versions.
  
 # Cross-platform integration
 
-The cross-platform development world has made a huge leaps since the massive adoption of mobile devices. For both Angular 2 and React, WebView-based tools for building cross-platform mobile applications are a thing of the past. 
+The cross-platform development world has made a huge leaps since the massive adoption of mobile devices. Now, WebView-based tools for building cross-platform mobile applications are obsolete. 
 
 There are two tools that allow building of cross-platform applications with native capabilities for Angular 2 and React, respectively - [NativeScript](https://www.nativescript.org/) and [React Native](https://facebook.github.io/react-native/)
 
-NativeScript is built by [Telerik (now Progress)](http://www.telerik.com/) with the intention to enable native mobile applications to be built with Angular 2. Even though it has only [8k](https://github.com/NativeScript/NativeScript) stars on Github, NativeScript is mature and comes with great documentation and numerous extensions. It preaches a "write once, run everywhere" methodology of developing cross-platform applications. Even though this is an efficient approach, it does not enable to use many platform-specific UI features.
+NativeScript, built by [Telerik (now Progress)](http://www.telerik.com/), is intended to enable native mobile applications to be built with Angular 2. Even though it has only [8k](https://github.com/NativeScript/NativeScript) stars on Github, NativeScript is mature and comes with great documentation and numerous extensions. It preaches a "write once, run everywhere" methodology of developing cross-platform applications. Even though this is an efficient approach, it does not enable devleopers to use many platform-specific UI features.
 
-React Nativeis developed by Facebook to give React native capabilities. Compared to NativeScript, React Native is still young but quite popular and maturing quickly, boasting over [37k](https://github.com/facebook/react-native) stars on GitHub. React Native uses a "learn once, write anywhere" approach to developing cross-platform applications. Instead of attempting to generalize different platforms like NativeScript does, Rect Native embraces their differences, offering different ways to construct UI for the different platforms. Recently, the Angular 2 team has started adopting React Native, [making a renderer for it](https://github.com/angular/react-native-renderer).
+On the other hand, React Native, developed by Facebook, gives React native capabilities. Compared to NativeScript, React Native is still young but quite popular and maturing quickly, boasting over [37k](https://github.com/facebook/react-native) stars on GitHub. React Native uses a "learn once, write anywhere" approach to developing cross-platform applications. Instead of attempting to generalize different platforms like NativeScript does, Rect Native embraces their differences, offering different ways to construct UI for the different platforms. Recently, the Angular 2 team has started adopting React Native, [making a renderer for it](https://github.com/angular/react-native-renderer).
 
 # Adoption
-[Angular 2](https://github.com/angular/angular) is just shy of 16K stars on Github. There is a [tracker](https://splintercode.github.io/is-angular-2-ready/)  that counts how many issues are left until Angular 2 is ready for release, with hopes this to happen until thethe end of 2016. Even though Angular 2 is relatively young, its community is maturing fast, mostly because many Angular 1 developers are startng to switch to Angular 2. There are already [around 6500](https://github.com/search?l=TypeScript&p=3&q=angular+2&type=Repositories&utf8=%E2%9C%93) repositories on Github that contain "Angular 2" and are written in TypeScript.
+[Angular 2](https://github.com/angular/angular) is just shy of 16K stars on Github. There is a [tracker](https://splintercode.github.io/is-angular-2-ready/) that counts how many issues are left until Angular 2 is ready for release, with hopes that the release will come before 2017. Even though Angular 2 is relatively young, its community is maturing fast, mostly because many Angular 1 developers are startng to switch to Angular 2. There are already [around 6500](https://github.com/search?l=TypeScript&p=3&q=angular+2&type=Repositories&utf8=%E2%9C%93) repositories on Github that contain "Angular 2" and are written in TypeScript.
 
-[React](https://github.com/facebook/react), on the other hand, is almost at 50K stars on Github. There are [76,122](https://github.com/search?l=JavaScript&p=1&q=react&ref=searchresults&type=Repositories&utf8=%E2%9C%93) repositories  containing the word "react" in them - over ten times more than what Angular 2 has. Still, one of the big reasons for the large number of repositories is that React comes with just a few built-in functionalities and relies on its community to provide it with the needed tooling to develop full-scale applications.
+[React](https://github.com/facebook/react), on the other hand, is almost at 50K stars on Github. There are [76,122](https://github.com/search?l=JavaScript&p=1&q=react&ref=searchresults&type=Repositories&utf8=%E2%9C%93) repositories containing the word "react" in them - over ten times more than what Angular 2 has. Still, one of the big reasons for the large number of repositories is that React comes with just a few built-in functionalities and relies on its community to provide it with the needed tooling to develop full-scale applications.
 
 
 # Conclusion 
 
-Both Angular 2 and React have large communities and have corporate backing. Even though they have different philosophies to how an application development must be approached, there is a place for both of them in the software development world.
+Both Angular 2 and React have large communities and boast corporate backing. Even though they have different philosophies to how an application development must be approached, there is a place for both of them in the software development world.
