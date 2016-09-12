@@ -3,7 +3,12 @@
     "author_name": "Kaizeras",
     "author_real_name": "Hristo Georgiev",
     "branch": "master",
-    "branches": [],
+    "branches": [
+        [
+            "adityavarshney",
+            "adityavarshney-front-end-javascript-react-vs-angular-2"
+        ]
+    ],
     "filename": "article.md",
     "first_commit": "aa7a41684c4eb241ffbcb94bf3106697d6d5b9a3",
     "image_url": "https://avatars.githubusercontent.com/u/6340189?v=3",
