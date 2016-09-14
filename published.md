@@ -1,3 +1,8 @@
+### Sign contracts with ASP.NET MVC and HelloSign API by nescampos
+- [Read the guide](http://tutorials.pluralsight.com/microsoft-net/sign-contracts-with-asp-net-mvc-and-hellosign-api)
+- [Read more from nescampos](http://tutorials.pluralsight.com/author/nescampos) <img src="https://avatars.githubusercontent.com/u/7274106?v=3" width="30" height="30" alt="nescampos" />
+- Related to: Microsoft.NET (C#, ASP.NET, VB.NET, etc)
+
 ### React vs. Angular 2 by Hristo Georgiev
 - [Read the guide](http://tutorials.pluralsight.com/front-end-javascript/react-vs-angular-2)
 - [Read more from Hristo Georgiev](http://tutorials.pluralsight.com/author/Kaizeras) <img src="https://avatars.githubusercontent.com/u/6340189?v=3" width="30" height="30" alt="Hristo Georgiev" />
