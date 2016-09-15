@@ -1,3 +1,8 @@
+### new domain by Luke Lee
+- [Read the guide](http://tutorials.pluralsight.com/other/new-domain?status=draft)
+- [Read more from Luke Lee](http://tutorials.pluralsight.com/author/durden) <img src="https://avatars.githubusercontent.com/u/58063?v=3" width="30" height="30" alt="Luke Lee" />
+- Related to: other
+
 ### Useful tips to improve your code javascript by Javier Ruiz Vázquez
 - [Read the guide](http://tutorials.pluralsight.com/front-end-javascript/useful-tips-to-improve-your-code-javascript?status=draft)
 - [Read more from Javier Ruiz Vázquez](http://tutorials.pluralsight.com/author/javarv87) <img src="https://avatars.githubusercontent.com/u/5413202?v=3" width="30" height="30" alt="Javier Ruiz Vázquez" />
