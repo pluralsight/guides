@@ -1,3 +1,8 @@
+### Announcing hack.guides() Tutorial Contest Winners by Prateek Gupta
+- [Read the guide](http://tutorials.pluralsight.com/software-engineering-best-practices/announcing-hack-guides-tutorial-contest-winners?status=draft)
+- [Read more from Prateek Gupta](http://tutorials.pluralsight.com/author/prtkgpt) <img src="https://avatars.githubusercontent.com/u/2454349?v=3" width="30" height="30" alt="Prateek Gupta" />
+- Related to: Software Engineering Best Practices
+
 ### Useful tips to improve your code javascript by Javier Ruiz Vázquez
 - [Read the guide](http://tutorials.pluralsight.com/front-end-javascript/useful-tips-to-improve-your-code-javascript?status=draft)
 - [Read more from Javier Ruiz Vázquez](http://tutorials.pluralsight.com/author/javarv87) <img src="https://avatars.githubusercontent.com/u/5413202?v=3" width="30" height="30" alt="Javier Ruiz Vázquez" />
