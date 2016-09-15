@@ -25,7 +25,7 @@ Please be respectful & enjoy collaborating with the community.
 We are extending the contest for extra 30 days! Enter your tutorial between June 8th - Aug 30th, 2016 to qualify for a chance to win prizes.  Winners will be announced on September 15th, 2016
 
 #### How do I know if my tutorial won an award?
-We will be announcing the winners on **September 15, 2016**. The contest will run from June 8th - August 30th. Please make sure to submit your tutorial for a chance to win any category prizes.
+We will be announcing the winners on **September 16, 2016**. The contest will run from June 8th - August 30th. Please make sure to submit your tutorial for a chance to win any category prizes.
 
 #### I don't live in US, can I still participate?
 Yes, developers from around the world are participating in the contest. Any developer of any age and from any country is eligible to submit their tutorials to participate for a chance to win $500.
