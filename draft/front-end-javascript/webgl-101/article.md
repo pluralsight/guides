@@ -455,6 +455,70 @@ void main(void) {
 
 ![Using fragment coordinates for red and green](https://raw.githubusercontent.com/pluralsight/guides/master/images/2b24e54d-d311-49e9-9b96-7d45d0416cd2.com_2016-08-05_11-10-34)
 
+# Going deep
+
+So far we have only dealt with a single triangle so we were not facing the question: How do we handle depth?
+
+The concept of depth allows us to figure out if an object (or part of it) is "in front" of another object (or part of it).
+
+The way this is represented in WebGL is by using the z-coordinates and a bunch of memory referred to as the `depth buffer`.
+
+Let's look at an example with two triangles:
+
+A red one at `z=0.25` and a blue one at `z=0.5`. Here are the new vertices:
+
+```javascript
+var vertices = [
+  // first triangle, red
+  -0.75, -0.5, 0.25,
+   0.25, -0.5, 0.25,
+  -0.25,  0.5, 0.25,
+  // second triangle, blue
+  -0.25, -0.5, 0.5,
+   0.75, -0.5, 0.5,
+   0.25,  0.5, 0.5
+]
+```
+
+Now we draw them using `drawArrays` again:
+
+```javascript
+gl.drawArrays(gl.TRIANGLES, 0, 6) // this time we draw 6 vertices
+```
+
+The question now is: Which of the triangles will be in front of the other?
+
+Let's see:
+
+
+![Two overlapping triangles, no depth buffer](https://raw.githubusercontent.com/pluralsight/guides/master/images/0978c373-6a9e-45d6-9956-4e367d58cd75.png)
+
+The blue triangle, which was the last to be drawn, is drawn *over* the red triangle.
+But this order is rather inflexible.
+
+If the z-coordinates for the triangles would be flipped, it would look the same, because the colours are overriding previously set colours.
+
+That's where the depth buffer comes in. The renderer saves the z-coordinate of the point along with the colour and only replaces it, if the new colour value is "closer" (more on that in a bit) to the camera.
+
+Let's see how that works with three triangles with different z-coordinates:
+
+
+![Using the depth buffer allows for more flexibility when drawing multiple objects](https://raw.githubusercontent.com/pluralsight/guides/master/images/1c6938a6-029c-4868-b086-af6f4694cea1.gif)
+
+Now the order does not matter anymore, because the value in the depth buffer is determining what colour is being used in a given point. In the example we have the red triangle with `z=1` being drawn first, then the blue triangle with `z=1` paints over the red one and finally we draw a green triangle with `z=0` which is drawn as if it were behind the other two, even though it is the last to be drawn on the screen.
+
+WebGL calls this option the `gl.DEPTH_TEST`. The depth test itself is basically a comparison between the depth buffer value that is already in the buffer. We have a bunch of options on how we want to do that comparison, called the *depth function*:
+
+* `gl.ALWAYS`
+* `gl.NEVER`
+* `gl.LESS`
+* `gl.GREATER`
+* `gl.EQUAL`
+* `gl.NOTEQUAL`
+* `gl.LGREATER`
+* `gl.LEQUAL`
+
+
 
 # Creating our first cube
 
