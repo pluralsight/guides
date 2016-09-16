@@ -1,3 +1,8 @@
+### Announcing hack.guides() Tutorial Contest Winners by Prateek Gupta
+- [Read the guide](http://tutorials.pluralsight.com/software-engineering-best-practices/announcing-hack-guides-tutorial-contest-winners)
+- [Read more from Prateek Gupta](http://tutorials.pluralsight.com/author/prtkgpt) <img src="https://avatars.githubusercontent.com/u/2454349?v=3" width="30" height="30" alt="Prateek Gupta" />
+- Related to: Software Engineering Best Practices
+
 ### Sign contracts with ASP.NET MVC and HelloSign API by nescampos
 - [Read the guide](http://tutorials.pluralsight.com/microsoft-net/sign-contracts-with-asp-net-mvc-and-hellosign-api)
 - [Read more from nescampos](http://tutorials.pluralsight.com/author/nescampos) <img src="https://avatars.githubusercontent.com/u/7274106?v=3" width="30" height="30" alt="nescampos" />
