@@ -92,7 +92,7 @@ And a special congratulations to all the winning authors. The winner of the each
     <td>Tierion</td>
     <td>$500</td>
     <td>Best Blockchain tutorial using Tierion APIs</td>
-    <td>[Use Fanout to send messages in 20 minutes](http://tutorials.pluralsight.com/interesting-apis/proof-of-existence-in-the-blockchain-with-tierion-rethinkdb-and-pubnub)</td>
+    <td>[Proof of existence in the Blockchain with Tierion](http://tutorials.pluralsight.com/interesting-apis/proof-of-existence-in-the-blockchain-with-tierion-rethinkdb-and-pubnub)</td>
     <td>[Esteban Herrera](https://github.com/eh3rrera)</td>
   </tr>
     <tr>
