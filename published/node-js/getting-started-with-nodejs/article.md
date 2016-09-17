@@ -10,13 +10,13 @@ This article covers the following areas of NodeJS.
 
 ## Introduction of NodeJS 
 
-[NodeJS](https://nodejs.org/en/) is an open-source, cross-platform runtime environment for developing server-side web applications. NodeJS also has an event-driven architechture capable of [asynchronous I/O](https://en.wikipedia.org/wiki/Asynchronous_I/O).
+[NodeJS](https://nodejs.org/en/) is an open-source, cross-platform runtime environment for developing server-side web applications. NodeJS also has an event-driven architecture capable of [asynchronous I/O](https://en.wikipedia.org/wiki/Asynchronous_I/O).
 
-NodeJS uses an event-driven, non-blocking I/O model that makes it lightweightand efficient.
+NodeJS uses an event-driven, non-blocking I/O model that makes it lightweight and efficient.
 
 ## Installation of NodeJS and NPM
 
-Installation of NodeJS and NPM is straightforward using installer package available at NodeJS official web site.
+Installation of NodeJS and NPM is straightforward using the installer package available at NodeJS official web site.
 
 #### Installation steps
 
@@ -64,7 +64,7 @@ This command is finding a json file named as `package.json` in root directory to
 
 ## Package.json
 
-[Package.json](https://docs.npmjs.com/files/package.json) is look like 
+[Package.json](https://docs.npmjs.com/files/package.json) looks like:
 
 ```json
 {
@@ -106,7 +106,7 @@ The most important things in your package.json are name and version. Those are a
 }
 ```
 
-Specify the place where your code lives. Through this repository, developers can reach out and contribute to your application. If the git repository is no GitHub, then the `npm docs` command will be able to find you.
+Specify the place where your code lives. Through this repository, developers can reach out and contribute to your application. If the git repository is not GitHub, then the `npm docs` command will be able to find you.
 
 #### Script
 
@@ -148,13 +148,13 @@ If there is a server.js file in the root of your package, then npm will default 
 [Dependencies](https://docs.npmjs.com/files/package.json#dependencies) are specified in a simple object that maps a package name to a version range.
 Version Name must be Version exactly.
 
-If you want to install latest version of a file, you just have to put `latest` on the place of version name.
+If you want to install the latest version of a file, you just have to put `latest` in place of the version name.
 
 Tilde(~) is used to tell "Approximately equivalent to version".
 
 ## Basic Example
 
-Create server.js javascript file with following code
+Create a server.js javascript file with following code
 
 ```
 /*server.js*/
@@ -175,20 +175,20 @@ server.listen(port, hostname, function() {
 });
 ```
 
-As we need `http` to create http server we use `require('http')` and pass into variable named as `http`
+As we need `http` to create an http server we use `require('http')` and pass it to a variable named `http`
 
 ```
-var http = reqiure('http');
+var http = require('http');
 ```
 
-We also need to defined hostname and port number, here we use `localHost` i.e `127.0.0.1` and `port` number `3000` and assign this into variable hostname and port respectively.
+We also need to defined hostname and port number, here we use `localHost` i.e `127.0.0.1` and `port` number `3000` and assign this to the variables `hostname` and `port`, respectively.
 
 ```
 var hostname = '127.0.0.1';
 var port = 3000;
 ```
 
-Now, we are creating http server usging createServer method.
+Next we  create the http server using the `createServer` method.
 
 ```
 var server = http.createServer(function(req, res){
@@ -198,9 +198,9 @@ var server = http.createServer(function(req, res){
 });
 ```
 
-Create the server as well as response with having `statusCode: 200`, `Content-Type` header of plain text and end with string `Hello World`. This is the response that the server can send to browser.
+This created the server as well as a response having `statusCode: 200`, `Content-Type` header of plain text and and ends with the string `Hello World`. This is the response that the server can send to browser.
 
-> function has two parameters `req` and `res` which is `request` and `response` to server and from server respectively.
+> the function has two parameters `req` and `res` which is the `request` from and `response` to the server, respectively.
 
 In our example we are creating responses.
 
@@ -220,7 +220,7 @@ Now Run server.js file un node using command
 > node server
 ```
 
-Open browser and enter url http://127.0.0.1:3000/ . Browser will display **Hello World** message on screen.
+Open a browser and enter url http://127.0.0.1:3000/. The browser will display **Hello World** message on the screen.
 
 
 ![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/b4eb365b-23f9-4fc1-b4a8-34b1b9b3e8e9.png)
