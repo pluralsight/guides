@@ -509,21 +509,19 @@ Now the order does not matter anymore, because the value in the depth buffer is 
 
 WebGL calls this option the `gl.DEPTH_TEST`. The depth test itself is basically a comparison between the depth buffer value that is already in the buffer. We have a bunch of options on how we want to do that comparison, called the *depth function*:
 
-* `gl.ALWAYS`
-* `gl.NEVER`
-* `gl.LESS`
-* `gl.GREATER`
-* `gl.EQUAL`
-* `gl.NOTEQUAL`
-* `gl.LGREATER`
-* `gl.LEQUAL`
+* `gl.ALWAYS` will always override the existing colour and depth value.
+* `gl.NEVER` will never override the existing colour and depth value.
+* `gl.LESS` will override the existing colour and depth value when the new z-coordinate is smaller than the existing depth value.
+* `gl.GREATER` will override the existing colour and depth value when the new z-coordinate is greater than the existing depth value.
+* `gl.EQUAL` will override the colour when the new z-coordinate is the same as the current depth value.
+* `gl.NOTEQUAL` will override the colour and depth value when the new z-coordinate is not the same as the current depth value.
+* `gl.LGREATER` will override the existing colour and depth value when the new z-coordinate is greater than or equal to the existing depth value.
+* `gl.LEQUAL` will override the existing colour and depth value when the new z-coordinate is smaller than or equal to the existing depth value.
 
+Basically it's up to us to pick our depth test function as we like and need. Assuming that larger values for the z-coordinate mean being closer to the camera, we will usually pick `gl.LEQUAL` or `gl.LESS`.
 
+# Putting things into perspective
 
 # Creating our first cube
 
 # Rotating our cube
-
-# Putting things into perspective
-
-
