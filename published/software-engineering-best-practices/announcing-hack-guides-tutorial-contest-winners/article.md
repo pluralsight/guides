@@ -2,7 +2,7 @@
 
 We want to send a big thank you to everyone who participated in our contest and helped make it a success!
 
-And a special congratulations to all the winning authors. The winner of the each sponsored category will recieve $500 Cash Prize in our tutorial contest! 
+Special congratulations to all the winning authors. The winner of the each sponsored category will receive a $500 cash prize! 
 
 <table>
   <tr>
@@ -111,6 +111,6 @@ And a special congratulations to all the winning authors. The winner of the each
   </tr>
  </table>
 
-Our panel of judges, which included members of development teams of sponsored APIs, chose the winning entry based on how well it exemplified the entry requirements.
+Our panel of judges, which included members of development teams of the companies that sponsored the contest, chose their winning entry based on how well it exemplified the contest requirements.
 
 A big thanks to our sponsors who helped us to organize this contest for hack.guides() community.
