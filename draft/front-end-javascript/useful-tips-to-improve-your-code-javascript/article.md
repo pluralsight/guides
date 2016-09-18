@@ -1,5 +1,3 @@
-# Useful tips to improve your code javascript
-
 1.  Detecting the properties of an object
     ```javascript
     var myObject = {
