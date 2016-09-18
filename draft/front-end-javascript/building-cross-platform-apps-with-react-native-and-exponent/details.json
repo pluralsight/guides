@@ -1,0 +1,15 @@
+{
+    "_publish_status": "draft",
+    "author_name": "ilangorajagopal",
+    "author_real_name": "Ilango Rajagopal",
+    "branch": "master",
+    "branches": [],
+    "filename": "article.md",
+    "first_commit": "d8f7080e99bed103e5e437fb89daed4b8c3b149b",
+    "image_url": "https://avatars.githubusercontent.com/u/4386534?v=3",
+    "stacks": [
+        "Front-End JavaScript (Angular, React, Meteor, etc)"
+    ],
+    "thumbnail_url": null,
+    "title": "Building Cross Platform apps with React Native and Exponent"
+}
