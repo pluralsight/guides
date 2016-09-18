@@ -73,24 +73,73 @@ Now open ```bundle.js``` and voila! Your code is minified and production ready.
 
 #### webpack.config.js
 
-Obviously, typing out the command in the terminal is not practical. Moreover, when you have multiple operations you want to perform - compile LESS/Sass files to CSS, CoffeeScript to Javascript and transpile ES6 to ES5, it's better to configure webpack to take care of the operations for us. This is where ```webpack.config.js``` file comes in. Create a file in your project root folder and name it ```webpack.config.js```. 
+Obviously, typing out the command in the terminal is not practical. Moreover, when you have multiple operations you want to perform - compile LESS/Sass files to CSS, CoffeeScript to Javascript and transpile ES6 to ES5, it's better to configure webpack to take care of the operations for us. This is where ```webpack.config.js``` file comes in. Create a file in your project root folder and name it ```webpack.config.js```. Now, let's install ```babel``` and ```css-loader```.
+
+```
+npm install style-loader css-loader babel-loader babel-core babel-preset-es2015 --save-dev
+```
+
+Now in the ```webpack.config.js``` file:
 
 ```
 module.exports = {
-    entry: './app.js',
+    entry: ['./app.js'],
     output: {
         path: __dirname,
         filename: 'bundle.js'
     },
     module: {
         loaders: [
-            {}
+            {
+                test: /\.js$/,
+                exclude: /node_modules/,
+                include: path.join(__dirname, 'src'),
+                loaders: ['babel'],
+                query: {
+                    presets: ['es2015']
+                }
+            },
+            {
+                test: /\.css$/,
+                loaders: ['style-loader!css-loader']
+            }
         ]
     }
 }
 ```
 
 ##### entry
+
+The ```entry``` property let's you define the top level file(s) that we want to include in the bundle.
+
 ##### output
+
+The ```output``` object let's you define the output configuration. The ```path``` property defines the path to the root of the project. The ```filename``` property defines the name of the output file. 
+
 ##### module loaders
-##### plugins
+
+The ```loaders``` array contains the configurations for each loader module. 
+
+```test``` - Regular expression mapping to the file extension of the files that you want to apply the module to.
+
+```exclude``` - Regular expression mapping to the files/folders that you want to exclude
+
+```include``` - Files/folder that you want to include
+
+```loaders``` - Name(s) of loaders that you want to apply
+
+```presets``` - Lets webpack know that what kind of code we're writing, in our case ES2015
+
+Now that we have our config file ready, let's install ```webpack-dev-server```.
+
+```
+npm install webpack-dev-server -g
+```
+
+Now run:
+
+```
+webpack-dev-server
+```
+
+Open your favorite browser and go to ```http://localhost:8080/webpack-dev-server/``` and see the app running. If you make a change in your source files, webpack automatically runs your code through the loaders and bundle them up and refreshes the page. In part 2 we'll take a look at plugins, setting up debugging and webpack dev tools.
