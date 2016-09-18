@@ -73,7 +73,22 @@ Now open ```bundle.js``` and voila! Your code is minified and production ready.
 
 #### webpack.config.js
 
+Obviously, typing out the command in the terminal is not practical. Moreover, when you have multiple operations you want to perform - compile LESS/Sass files to CSS, CoffeeScript to Javascript and transpile ES6 to ES5, it's better to configure webpack to take care of the operations for us. This is where ```webpack.config.js``` file comes in. Create a file in your project root folder and name it ```webpack.config.js```. 
 
+```
+module.exports = {
+    entry: './app.js',
+    output: {
+        path: __dirname,
+        filename: 'bundle.js'
+    },
+    module: {
+        loaders: [
+            {}
+        ]
+    }
+}
+```
 
 ##### entry
 ##### output
