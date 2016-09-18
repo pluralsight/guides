@@ -1,3 +1,8 @@
+### Building Cross Platform apps with React Native and Exponent by Ilango Rajagopal
+- [Read the guide](http://tutorials.pluralsight.com/front-end-javascript/building-cross-platform-apps-with-react-native-and-exponent?status=draft)
+- [Read more from Ilango Rajagopal](http://tutorials.pluralsight.com/author/ilangorajagopal) <img src="https://avatars.githubusercontent.com/u/4386534?v=3" width="30" height="30" alt="Ilango Rajagopal" />
+- Related to: Front-End JavaScript (Angular, React, Meteor, etc)
+
 ### Useful tips to improve your code javascript by Javier Ruiz Vázquez
 - [Read the guide](http://tutorials.pluralsight.com/front-end-javascript/useful-tips-to-improve-your-code-javascript?status=draft)
 - [Read more from Javier Ruiz Vázquez](http://tutorials.pluralsight.com/author/javarv87) <img src="https://avatars.githubusercontent.com/u/5413202?v=3" width="30" height="30" alt="Javier Ruiz Vázquez" />
