@@ -1,3 +1,8 @@
+### Getting started with Webpack: Part 1 by Ilango Rajagopal
+- [Read the guide](http://tutorials.pluralsight.com/front-end-javascript/getting-started-with-webpack-part-1?status=in-review)
+- [Read more from Ilango Rajagopal](http://tutorials.pluralsight.com/author/ilangorajagopal) <img src="https://avatars.githubusercontent.com/u/4386534?v=3" width="30" height="30" alt="Ilango Rajagopal" />
+- Related to: Front-End JavaScript (Angular, React, Meteor, etc)
+
 ### Must Known Web-Security risks for Developers by Sanjeev Murthy
 - [Read the guide](http://tutorials.pluralsight.com/software-engineering-best-practices/must-known-web-security-risks-for-developers?status=in-review)
 - [Read more from Sanjeev Murthy](http://tutorials.pluralsight.com/author/SanjeevMurthy) <img src="https://avatars.githubusercontent.com/u/10756352?v=3" width="30" height="30" alt="Sanjeev Murthy" />
