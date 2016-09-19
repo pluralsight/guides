@@ -729,7 +729,7 @@ stream
 
 Check if a stream is parallel with `isParallel()`:
 ```java
-stream.parallel().isParallel(); // false
+stream.parallel().isParallel(); // true
 ```
 
 And turn an ordered stream into a unordered one (or ensure that the stream is unordered) with `unordered()`;
