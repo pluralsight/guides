@@ -1,20 +1,22 @@
-Java has this fame of being a *verbose* programming language comparing to others, like Ruby or Python.
+Java is a programming language used commonly throughout the world of software development. As of 2013, over 3 billion devices used Java, with the language being used primarily in web applications and Android applications. 
 
-Other people say it's an outdated language.
+Nonetheless, people complain about the language being more verbose and syntactically demanding than its peers (such as Ruby and Python.) Some even say it is an outdated language.
 
-In a way, they are right. Luckily, Java 8 brought a lot of changes designed to make a simple and more modern language (not to mention that at the time of this writing, version 9 is coming with more changes).
+Luckily, Java 8 brought many refreshing changes designed to mold Java into something more simple and modern. Better yet, at the time of writing, version 9 is coming with more changes soon.
 
-One of this changes is the [Stream interface](https://docs.oracle.com/javase/8/docs/api/java/util/stream/Stream.html), that relies on another new addition to the language, lambda expressions.
+One of the key changes is the [Stream interface](https://docs.oracle.com/javase/8/docs/api/java/util/stream/Stream.html) which relies on a new Java component, lambda expressions.
 
-This article presents an introduction to lambda expressions and the Stream interface, as well as some of the most common Stream operations on collections.
+This guide introduces lambda expressions and the Stream interface and highlights the most common Stream operations on collections.
 
-In the [second part](http://tutorials.pluralsight.com/java-and-j2ee/java-8-stream-api-part-2) you'll learn about more advanced methods (like reducing and collecting) and parallel streams.
-
-Let's begin by answering the question, what are lambda expressions? In the context of Java.
+In [part two](http://tutorials.pluralsight.com/java-and-j2ee/java-8-stream-api-part-2), you'll learn about more advanced methods (like reducing and collecting) and parallel streams.
 
 # What is a lambda expression?
 
-Let's answer with an example. Instead of writing something like:
+Let's begin by answering the question, what are lambda expressions in the context of java?
+
+Lambda expressions make code more functional and less object-oriented, thus shortening its length. How about an example? 
+
+Instead of writing something like:
 ```java
 List<Toy> usedToys = findToys(toys,
      new Searchable() {
@@ -25,7 +27,7 @@ List<Toy> usedToys = findToys(toys,
 });
 ```
 
-Lambda expressions enables you to write:
+Lambda expressions enable you to write:
 ```java
 List<Toy> usedToys = findToys(toys,
      Toy toy ->
@@ -34,7 +36,7 @@ List<Toy> usedToys = findToys(toys,
 
 The term lambda expression comes from lambda calculus, written as λ-calculus, where λ is the Greek letter lambda. This form of calculus deals with defining and applying functions.
 
-With lambdas, you won't be able to do things that you couldn't do before them, but they allow to program in a more simple way with a style called functional programming, a different paradigm than object-oriented programming.
+As a result, lambdas simplify code in a way called functional programming, a different paradigm than object-oriented programming.
 
 A lambda expression has three parts:
 
@@ -88,7 +90,7 @@ If the body has more than one statement, curly brackets are required, and if the
 }
 ```
 
-If the lambda expression doesn't return a result, a return statement is optional. For example, the following expressions are equivalent:
+Returning is not necessary with lambda expressions. For example, the following are equivalent:
 ```java
 () -> System.out.println("Hi");
 () -> {
@@ -99,26 +101,27 @@ If the lambda expression doesn't return a result, a return statement is optional
 
 The signature of the abstract method of a functional interface provides the signature of a lambda expression (this signature is called a *functional descriptor*).
 
-This means that to use a lambda expression, you first need a functional interface, which is just a fancy name for an interface with one method. For example:
+This means that **to use a lambda expression, you first need a functional interface**, which is just a fancy name for an interface with one method. For example:
 ```java
 interface Searchable {
      boolean test(Car car);
 }
 ```
 
-In fact, lambda expressions don't contain the information about which functional interface are implementing. The type of the expression is deduced from the context in which the lambda is used. This type is called *target type*.
+In fact, lambda expressions don't contain the information about which functional interface they are implementing. The type of the expression is deduced from the context in which the lambda is used. This type is called the *target type*. 
 
-So lambda expressions are an **alternative** to anonymous classes, but they are not the same.
+So lambda expressions are an **alternative** to [anonymous classes](https://docs.oracle.com/javase/tutorial/java/javaOO/anonymousclasses.html), but they are not the same. 
 
 They have some similarities:
 - Local variables (variables or parameters defined in a method) can only be used if they are declared final or are effectively final.
 - You can access instance or static variables of the enclosing class.
 - They must not throw more exceptions than specified in the throws clause of the functional interface method. Only the same type or a supertype.
-- And some significant differences:
 
-For an anonymous class, this keyword resolves to the anonymous class itself. For a lambda expression, it resolves to the enclosing class where the lambda is written.
+Some significant differences between lambdas and anonymous classes:
+
+- For an anonymous class, the `this` keyword resolves to the anonymous class itself. For a lambda expression, `this` resolves to the enclosing class where the lambda is written.
 - Default methods of a functional interface cannot be accessed from within lambda expressions. Anonymous classes can.
-- Anonymous classes are compiled into, well, inner classes. But lambda expressions and converted into private static (in some cases) methods of their enclosing class and, using the `invokedynamic` instruction (added in Java 7), they are bound dynamically. Since there's no need to load another class, lambda expressions are more efficient. This is a very simple explanation, but that's the idea.
+- Anonymous classes are compiled into inner classes, while lambda expressions are converted into private, static (in some cases) methods within their enclosing class. Using the `invokedynamic` instruction (added in Java 7), they are bound dynamically. Simply put, since there's no need to load another class, lambda expressions are more efficient than anonymous classes.
 
 With this in mind, let's introduce the Stream interface.
 
@@ -126,24 +129,23 @@ With this in mind, let's introduce the Stream interface.
 
 First of all, streams are **not** collections.
 
-A simple definition is that streams are wrappers for collections and arrays. They wrap an existing collection (or another data source) to support operations expressed with lambdas, so you specify what you want to do, not how to do it.
+A simple definition is that streams are **wrappers for collections and arrays**. They wrap an existing collection (or another data source) to support operations expressed with lambdas, so you specify what you want to do, not how to do it.
 
-These are the characteristics of a stream:
-
+### Characteristics of streams
 - Streams work perfectly with lambdas.
 - Streams don't store its elements.
 - Streams are immutable.
 - Streams are not reusable.
 - Streams don't support indexed access to their elements.
 - Streams are easily parallelizable.
-- Stream operations are lazy when possible.
+- *Stream operations are lazy when possible.*
 
 One thing that allows this laziness is the way their operations are designed. Most of them return a new stream, allowing operations to be chained and form a pipeline that enables this kind of optimizations.
 
 To set up this pipeline you:
 1. Create the stream.
 2. Apply zero or more intermediate operations to transform the initial stream into new streams.
-4. Apply a terminal operation to generate a result or a *side-effect*.
+3. Apply a terminal operation to generate a result or a *side-effect*.
 
 ## Creating streams
 
@@ -172,26 +174,29 @@ Stream<String> stream = Stream.of(words);
 
 You can easily identify intermediate operations; they always return a new stream. This allows the operations to be connected.
 
-For example:
 ```java
 Stream<String> s = Stream.of("m", "k", "c", "t")
     .sorted()
     .limit(3)
 ```
 
-An important feature of intermediate operations is that they don't process the elements until a terminal operation is invoked, in other words, they're lazy.
+An important feature of intermediate operations is that they don't process the elements until a terminal operation is invoked; in other words, they're lazy.
 
 Intermediate operations are further divided into stateless and stateful operations.
 
-Stateless operations retain no state from previously elements when processing a new element so each can be processed independently of operations on other elements.
+**Stateless** operations retain no state from previously elements when processing a new element so each can be processed independently of operations on other elements.
 
 Some examples are:
-- `Stream<T> filter(Predicate<? super T> predicate)`. Returns a stream of elements that match the given predicate.
-- `<R> Stream<R> flatMap(Function<? super T,? extends Stream<? extends R>> mapper)`. Returns a stream with the content produced by applying the provided mapping function to each element. There are versions for `int`, `long` and `double` also.
-- `<R> Stream<R> map(Function<? super T,? extends R> mapper)`. Returns a stream consisting of the results of applying the given function to the elements of this stream. There are versions for `int`, `long` and `double` also.
-- `Stream<T> peek(Consumer<? super T> action)`. Returns a stream with the elements of this stream, performing the provided action on each element.
+- `Stream<T> filter(Predicate<? super T> predicate)` 
+    - Returns a stream of elements that match the given predicate.
+- `<R> Stream<R> flatMap(Function<? super T,? extends Stream<? extends R>> mapper)` 
+    - Returns a stream with the content produced by applying the provided mapping function to each element. There are versions for `int`, `long` and `double` also.
+- `<R> Stream<R> map(Function<? super T,? extends R> mapper)`  
+    - Returns a stream consisting of the results of applying the given function to the elements of this stream. There are versions for `int`, `long` and `double` also.
+- `Stream<T> peek(Consumer<? super T> action)`
+    - Returns a stream with the elements of this stream, performing the provided action on each element.
 
-Stateful operations, such as distinct and sorted, may incorporate state from previously seen elements when processing new elements.
+**Stateful** operations, such as distinct and sorted, may incorporate state from previously seen elements when processing new elements.
 
 Some examples are:
 
@@ -203,9 +208,9 @@ Some examples are:
 
 ## Terminal operations
 
-You can also easily identify terminal operations, they always return something other than a stream.
+You can also easily identify terminal operations because they always return something other than a stream.
 
-After the terminal operation is performed, the stream pipeline is consumed, and can't be used anymore. For example:
+After the terminal operation is performed, the stream pipeline is consumed and can't be used anymore. For example:
 ```java
 int[] digits = {0, 1, 2, 3, 4 , 5, 6, 7, 8, 9};
 IntStream s = IntStream.of(digits);
@@ -221,22 +226,38 @@ System.out.println(IntStream.of(digits).findFirst()); // OK
 ```
 
 The following methods represent terminal operations:
-- `boolean allMatch(Predicate<? super T> predicate)`. Returns whether all elements of this stream match the provided predicate.
-- `boolean anyMatch(Predicate<? super T> predicate)`. Returns whether any elements of this stream match the provided predicate.
-- `boolean noneMatch(Predicate<? super T> predicate)`. Returns whether no elements of this stream match the provided predicate.
-- `Optional<T> findAny()`. Returns an `Optional` describing some element of the stream.
-- `Optional<T> findFirst().` Returns an `Optional` describing the first element of this stream.
-- `<R,A> R collect(Collector<? super T,A,R> collector)`. Performs a mutable reduction operation on the elements of this stream using a `Collector`.
-- `long count()`. Returns the count of elements in this stream.
-- `void forEach(Consumer<? super T> action)`. Performs an action for each element of this stream.
-- `void forEachOrdered(Consumer<? super T> action)`. Performs an action for each element of this stream, in the encounter order of the stream if the stream has a defined encounter order.
-- `Optional<T> max(Comparator<? super T> comparator)`. Returns the maximum element of this stream according to the provided `Comparator`.
-- `Optional<T> min(Comparator<? super T> comparator)`. Returns the maximum element of this stream according to the provided `Comparator`.
-- `T reduce(T identity, BinaryOperator<T> accumulator)`. Performs a reduction on the elements of this stream, using the provided identity value and an associative accumulation function, and returns the reduced value.
-- `Object[] toArray()`. Returns an array containing the elements of this stream.
-- `<A> A[] toArray(IntFunction<A[]> generator)`. Returns an array containing the elements of this stream, using the provided generator function to allocate the returned array.
-- `Iterator<T> iterator()`. Returns an iterator for the elements of the stream.
-- `Spliterator<T> spliterator()`. Returns a `Spliterator` for the elements of the stream.
+- `boolean allMatch(Predicate<? super T> predicate)`
+    - Returns whether all elements of this stream match the provided predicate.
+- `boolean anyMatch(Predicate<? super T> predicate)`
+    - Returns whether any elements of this stream match the provided predicate.
+- `boolean noneMatch(Predicate<? super T> predicate)`
+    - Returns whether no elements of this stream match the provided predicate.
+- `Optional<T> findAny()`
+    - Returns an `Optional` describing some element of the stream.
+- `Optional<T> findFirst()` 
+    - Returns an `Optional` describing the first element of this stream.
+- `<R,A> R collect(Collector<? super T,A,R> collector)`
+    - Performs a mutable reduction operation on the elements of this stream using a `Collector`.
+- `long count()`
+    - Returns the count of elements in this stream.
+- `void forEach(Consumer<? super T> action)`
+    - Performs an action for each element of this stream.
+- `void forEachOrdered(Consumer<? super T> action)`
+    - Performs an action for each element of this stream, in the encounter order of the stream if the stream has a defined encounter order.
+- `Optional<T> max(Comparator<? super T> comparator)`
+    - Returns the maximum element of this stream according to the provided `Comparator`.
+- `Optional<T> min(Comparator<? super T> comparator)`
+    - Returns the maximum element of this stream according to the provided `Comparator`.
+- `T reduce(T identity, BinaryOperator<T> accumulator)`
+    - Performs a reduction on the elements of this stream, using the provided identity value and an associative accumulation function, and returns the reduced value.
+- `Object[] toArray()`
+    - Returns an array containing the elements of this stream.
+- `<A> A[] toArray(IntFunction<A[]> generator)`
+    - Returns an array containing the elements of this stream, using the provided generator function to allocate the returned array.
+- `Iterator<T> iterator()` 
+    - Returns an iterator for the elements of the stream.
+- `Spliterator<T> spliterator()`
+    - Returns a `Spliterator` for the elements of the stream.
 
 ## Operations on Collections
 Usually, when you have a list, you'd want to iterate over its elements. A common way is to use a `for` block.
@@ -270,9 +291,9 @@ The Stream interface provides a corresponding `forEach` method:
 void forEach(Consumer<? super T> action)
 ```
 
-Since this method doesn't return a stream, it represents a terminal operation.
+Since this method doesn't return a stream, it is a terminal operation.
 
-Using it is not different than the other methods:
+Using it is not different from using the other methods:
 ```java
 Stream<String> stream = words.stream();
 // As an anonymous class
@@ -285,14 +306,14 @@ stream.forEach((new Consumer<String>() {
 stream.forEach(t -> System.out.println(t));
 ```
 
-Of course, the advantage of using streams is that you can chain operations, for example:
+Of course, the advantage of using streams is that you can chain operations.
 ```java
 words.sorted()
     .limit(2)
     .forEach(System.out::println);
 ```
 
-Remember that because this is a terminal operation, you can't do things like this:
+Remember that because this is a terminal operation, you cannot do things like this:
 ```java
 words.forEach(t -> System.out.println(t.length()));
 words.forEach(System.out::println);
@@ -346,7 +367,7 @@ for (Iterator<String> it = words.iterator(); it.hasNext();) {
 }
 ```
 
-For these cases, you have the `filter` method of the Stream interface:
+For these cases, you can use the `filter` method of the Stream interface:
 ```java
 Stream<T> filter(Predicate<? super T> predicate)
 ```
@@ -368,7 +389,7 @@ hello
 ```
 
 # Data Search
-Searching is a common operation when you have a set of data.
+Searching is a common operation for when you have a set of data.
 
 The Stream API has two types of operation for searching.
 
@@ -378,18 +399,18 @@ Optional<T> findAny()
 Optional<T> findFirst()
 ```
 
-That search for an element in a stream. Since there's a possibility that an element couldn't be found (if the stream is empty, for example), the return type of this methods is an `Optional`.
+`find` methods search for an element in a stream. Since there's a possibility that an element isn't be found (if the stream is empty, for example), `find` methods return an `Optional`.
 
-And methods ending with *Match*:
+The other way to search is through methods ending with *Match*:
 ```java
 boolean allMatch(Predicate<? super T> predicate)
 boolean anyMatch(Predicate<? super T> predicate)
 boolean noneMatch(Predicate<? super T> predicate)
 ```
 
-That indicate if a certain element matches the given predicate, that's why they return a boolean.
+`match` methods indicate whether a certain element **matches** the given predicate. They return a boolean.
 
-Since all these methods return a type different than a stream, they are considered **terminal** operations.
+> Since all these methods return a type different than a stream, they are considered **terminal** operations.
 
 `findAny()` and `findFirst()` practically do the same, they return the first element they find in a stream:
 ```java
@@ -402,7 +423,7 @@ stream2.findAny()
     .ifPresent(System.out::println); // 1
 ```
 
-If the stream is empty, they return an empty `Optional`:
+Again, if the stream is empty, these return an empty `Optional`:
 ```java
 Stream<String> stream = Stream.empty();
 System.out.println(
@@ -410,7 +431,7 @@ System.out.println(
 ); // false
 ```
 
-`java.util.Optional<T>` is a new class also introduced in Java 8. If you don't know it, I wrote about it [here](http://ocpj8.javastudyguide.com/ch14.html).
+`java.util.Optional<T>` is a new class also introduced in Java 8. *(If you want to know more about it, check out my tutorial [here](http://ocpj8.javastudyguide.com/ch14.html).)*
 
 When to use `findAny()` and when to use `findFirst()`?
 
@@ -488,20 +509,18 @@ System.out.println(
 
 An important thing to consider is that all of these operations use something similar to the short-circuiting of `&&` and `||` operators.
 
-Short-circuiting means that the evaluation stops once a result is found.
+Short-circuiting means that the evaluation stops once a result is found. Thus `find*` operations stop at the first found element.
 
-In the case of the `find*` operations, it's obvious that they stop at the first found element.
-
-But in the case of the `*Match` operations, think about it, why would you evaluate all the elements of a stream when by evaluating the third element (for example) you can know if all or none (again for example) of the elements will match?
+With `*Match` operations, however, why would you evaluate all the elements of a stream when, by evaluating the third element (for example), you can know if all or none (again for example) of the elements will match?
 
 # Sorting a Stream
 
-Sorting a stream is simple. The method:
+Sorting a stream is simple.
 ```java
 Stream<T> sorted()
 ```
 
-Returns a stream with the elements sorted according to their natural order. For example:
+The method above returns a stream with the elements sorted according to their natural order. For example:
 ```java
 List<Integer> list = Arrays.asList(57, 38, 37, 54, 2);
 list.stream()
@@ -520,7 +539,7 @@ Will print:
 
 The only requirement is that the elements of the stream implement `java.lang.Comparable` (that way, they are sorted in natural order). Otherwise, a `ClassCastException` may be thrown.
 
-If we want to sort using a different order, there's a version of this method that takes a `java.util.Comparator` (this version is not available for primitive stream like `IntStream`):
+If we want to sort using a different order, there's another version of this method that takes a `java.util.Comparator` (this version is not available for primitive stream like `IntStream`):
 ```java
 Stream<T> sorted(Comparator<? super T> comparator)
 ```
@@ -534,7 +553,7 @@ strings.stream()
     .forEach(System.out::println);
 ```
 
-Will print:
+This method will print the following on execution:
 ```
 Collections
 Operations
@@ -551,7 +570,7 @@ Optional<T> max(Comparator<? super T> comparator)
 Optional<T> min(Comparator<? super T> comparator)
 ```
 
-And in the case of the primitive versions of the Stream interface, we have the following methods:
+The primitive versions of the Stream interface have the following methods:
 
 **IntStream**
 ```java
@@ -590,7 +609,7 @@ System.out.println(list.stream().count()); // 5
 
 `max()` returns the maximum value in the stream wrapped in an `Optional` or an empty one if the stream is empty.
 
-When we talk about primitives, is easy to know which the minimum or maximum value is. But when we are talking about objects (of any kind), Java needs to know how to compare them to know which one is the maximum and the minimum. That's why the Stream interface needs a `Comparator` for `max()` and `min()`:
+When we talk about primitives, it is easy to know which the minimum or maximum value is. But when we are talking about objects (of any kind), **Java needs to know how to compare them** to know which one is the maximum and the minimum. That's why the Stream interface needs a `Comparator` for `max()` and `min()`:
 ```java
 List<String> strings =
     Arrays.asList("Stream","Operations","on","Collections");
@@ -616,6 +635,9 @@ System.out.println(
 
 # Conclusion
 
-That's it for now. As you saw, the Stream interface is powerful and it's not very complicated to use.
+That's it for now. As you saw, the Stream interface is powerful and not very complicated.
 
-In the [second part](http://tutorials.pluralsight.com/java-and-j2ee/java-8-stream-api-part-2), we'll cover more advanced methods like `map()`, `merge()` and `flatMap()`, and take a look at parallel streams.
+In the [second part](http://tutorials.pluralsight.com/java-and-j2ee/java-8-stream-api-part-2), I'll cover more advanced methods like `map()`, `merge()` and `flatMap()`, and take a look at parallel streams.
+
+____
+*If you found this tutorial informative, please hit the "Favorites" button. Feel free to post comments and feedback in the discussion section below.*
