@@ -1,3 +1,8 @@
+### Ionic 2 database management and versioning by Carlos Esteban Lopez Jaramillo
+- [Read the guide](http://tutorials.pluralsight.com/software-engineering-best-practices/ionic-2-database-management-and-versioning)
+- [Read more from Carlos Esteban Lopez Jaramillo](http://tutorials.pluralsight.com/author/Luchillo) <img src="https://avatars.githubusercontent.com/u/9698639?v=3" width="30" height="30" alt="Carlos Esteban Lopez Jaramillo" />
+- Related to: Software Engineering Best Practices
+
 ### Announcing hack.guides() Tutorial Contest Winners by Prateek Gupta
 - [Read the guide](http://tutorials.pluralsight.com/software-engineering-best-practices/announcing-hack-guides-tutorial-contest-winners)
 - [Read more from Prateek Gupta](http://tutorials.pluralsight.com/author/prtkgpt) <img src="https://avatars.githubusercontent.com/u/2454349?v=3" width="30" height="30" alt="Prateek Gupta" />
