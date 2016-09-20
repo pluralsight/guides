@@ -13,11 +13,6 @@
 - [Read more from Esteban Herrera](http://tutorials.pluralsight.com/author/eh3rrera) <img src="https://avatars.githubusercontent.com/u/11665759?v=3" width="30" height="30" alt="Esteban Herrera" />
 - Related to: Java and J2EE
 
-### Java 8 Stream API: Part 1 by Esteban Herrera
-- [Read the guide](http://tutorials.pluralsight.com/java-and-j2ee/java-8-stream-api-part-1?status=in-review)
-- [Read more from Esteban Herrera](http://tutorials.pluralsight.com/author/eh3rrera) <img src="https://avatars.githubusercontent.com/u/11665759?v=3" width="30" height="30" alt="Esteban Herrera" />
-- Related to: Java and J2EE
-
 ### Using the REST Interface with Licas by discompsys
 - [Read the guide](http://tutorials.pluralsight.com/java-and-j2ee/using-the-rest-interface-with-licas?status=in-review)
 - [Read more from discompsys](http://tutorials.pluralsight.com/author/discompsys) <img src="https://avatars.githubusercontent.com/u/20437503?v=3" width="30" height="30" alt="discompsys" />
