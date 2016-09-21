@@ -1,0 +1,15 @@
+{
+    "_publish_status": "draft",
+    "author_name": "logycon",
+    "author_real_name": "Igor Nakshin",
+    "branch": "master",
+    "branches": [],
+    "filename": "article.md",
+    "first_commit": "e7344543cb5f3f34a892ece7781fb39b0f13f868",
+    "image_url": "https://avatars.githubusercontent.com/u/538881?v=3",
+    "stacks": [
+        "Node.js"
+    ],
+    "thumbnail_url": null,
+    "title": "Basic node.js with Kafka"
+}
