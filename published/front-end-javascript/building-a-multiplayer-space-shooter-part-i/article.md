@@ -198,7 +198,7 @@ ds = deepstream( 'localhost:6020' ).login({}, function( success ){
 });
 ```
 
-You might notice that we've fallen back to `function` and ES5 syntax. ES6 support isn't as established on phones as it is on desktosp. If you prefer to stick with ES6, you can always use a transpiler like [Babel](https://babeljs.io/).
+You might notice that we've fallen back to `function` and ES5 syntax. ES6 support isn't as established on phones as it is on desktops. If you prefer to stick with ES6, you can always use a transpiler like [Babel](https://babeljs.io/).
 
 ### Creating a record
 Time to dive into the mechanics behind our game: [records](https://deepstream.io/tutorials/core/datasync-records/).
