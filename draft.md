@@ -1,3 +1,8 @@
+### Basic node.js with Kafka by Igor Nakshin
+- [Read the guide](http://tutorials.pluralsight.com/node-js/basic-node-js-with-kafka?status=draft)
+- [Read more from Igor Nakshin](http://tutorials.pluralsight.com/author/logycon) <img src="https://avatars.githubusercontent.com/u/538881?v=3" width="30" height="30" alt="Igor Nakshin" />
+- Related to: Node.js
+
 ### Building Cross Platform apps with React Native and Exponent by Ilango Rajagopal
 - [Read the guide](http://tutorials.pluralsight.com/front-end-javascript/building-cross-platform-apps-with-react-native-and-exponent?status=draft)
 - [Read more from Ilango Rajagopal](http://tutorials.pluralsight.com/author/ilangorajagopal) <img src="https://avatars.githubusercontent.com/u/4386534?v=3" width="30" height="30" alt="Ilango Rajagopal" />
