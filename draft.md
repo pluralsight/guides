@@ -1,8 +1,3 @@
-### Developing Amazon Alexa Skills with APIs by Luis Estevez
-- [Read the guide](http://tutorials.pluralsight.com/node-js/developing-amazon-alexa-skills-with-apis?status=draft)
-- [Read more from Luis Estevez](http://tutorials.pluralsight.com/author/estevezluis1) <img src="https://avatars.githubusercontent.com/u/18021443?v=3" width="30" height="30" alt="Luis Estevez" />
-- Related to: Node.js
-
 ### Basic node.js with Kafka by Igor Nakshin
 - [Read the guide](http://tutorials.pluralsight.com/node-js/basic-node-js-with-kafka?status=draft)
 - [Read more from Igor Nakshin](http://tutorials.pluralsight.com/author/logycon) <img src="https://avatars.githubusercontent.com/u/538881?v=3" width="30" height="30" alt="Igor Nakshin" />
