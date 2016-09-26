@@ -1,0 +1,15 @@
+{
+    "_publish_status": "draft",
+    "author_name": "estevezluis1",
+    "author_real_name": "Luis Estevez",
+    "branch": "master",
+    "branches": [],
+    "filename": "article.md",
+    "first_commit": "68420b4c5d0d283ebfdd05d5c55fb1d46253ab78",
+    "image_url": "https://avatars.githubusercontent.com/u/18021443?v=3",
+    "stacks": [
+        "Node.js"
+    ],
+    "thumbnail_url": null,
+    "title": "Developing Amazon Alexa Skills with APIs"
+}
