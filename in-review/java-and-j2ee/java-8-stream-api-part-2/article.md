@@ -457,7 +457,8 @@ Map<Integer, List<Integer>> map =
       .collect( groupingBy (i -> i/10 * 10 ) );
 ```
 
-The moment you compare this code with the traditional way to it (with a `for` loop), it's when you realize the power of streams:
+The moment you compare this code with the iterative method (with a `for` loop), you realize the power of streams and `collect()`. Just look at how many lines of code are used in the traditional implementation.
+
 ```java
 List<Integer> stream =
     Arrays.asList(2,34,54,23,33,20,59,11,19,37);
@@ -475,12 +476,14 @@ for(Integer i : stream) {
 }
 ```
 
-Either way, those will return the following map:
+In the end, both strategies return the same map.
 ```
 {0=[2], 50=[54,59], 20=[23,20], 10=[11,19], 30=[34,33,37]}
 ```
 
-The second version takes a *downstream collector* as an additional argument:
+## Downstream Collectors
+
+As you may have noticed, the second version takes a *downstream collector* as an additional argument:
 ```java
 groupingBy(Function<? super T,? extends K> classifier,
            Collector<? super T,A,D> downstream)
@@ -499,14 +502,14 @@ Map<Integer, Long> map =
         );
 ```
 
-(Notice how the type of the values of the `Map` change to reflect the type returned by the downstream collector, `counting()`)
+Notice how the type of the values of the `Map` change to reflect the type returned by the downstream collector, `counting()`.
 
 This will return the following map:
 ```java
 {0=1, 50=2, 20=2, 10=2, 30=3}
 ```
 
-We can even use another `groupingBy()` to classify the elements in a second level. For instance, instead of counting, we can further classify the elements in even or odd:
+We can even use another `groupingBy()` to classify the elements in a second level. For instance, instead of counting, we can further classify the elements as even or odd:
 ```java
 Map<Integer, Map<String, List<Integer>>> map =
    Stream.of(2,34,54,23,33,20,59,11,19,37)
@@ -528,15 +531,15 @@ This will return the following map (with a little formatting):
 }
 ```
 
-The key of the high-level map is an `Integer` because the first `groupingBy()` returns an one.
+The key of the high-level map is an `Integer` because the first `groupingBy()` returns a one.
 
 The type of the values of the high-level map changed (again) to reflect the type returned by the downstream collector, `groupingBy()`.
 
-In this case, a `String` is returned so this will be the type of the keys of the second-level map, and since we are working with a stream of `Integer`s, the values have a type of `List<Integer>`.
+In this case, a `String` is returned; this will be the type of the keys of the second-level map, and since we are working with an `Integer` Stream, the values have a type of `List<Integer>`.
 
-Seeing the output of these examples, you may be wondering, is there a way to have the result ordered?
+Seeing the output of these examples, you may be wondering, is there a way to order the results?
 
-Well, `TreeMap` is the only implementation of `Map` that is ordered. Fortunately, the third version of `groupingBy()` add a `Supplier` argument that let us choose the type of the resulting `Map`:
+Well, `TreeMap` is the only implementation of `Map` that is ordered. Fortunately, the third version of `groupingBy()` has a `Supplier` argument that lets us choose the type of the resulting `Map`:
 ```java
 groupingBy(Function<? super T,? extends K> classifier,
            Supplier<M> mapFactory,
@@ -564,7 +567,7 @@ This will return the following map:
    50 = {EVEN=[54], ODD=[59]}
 }
 ```
-
+### partitioningBy()
 The second method for grouping is `partitioningBy()`.
 
 The difference with `groupingBy()` is that `partitioningBy()` will return a `Map` with a `Boolean` as the key type, which means there are only two groups, one for `true` and one for `false`.
@@ -608,7 +611,7 @@ This will produce the following `Map`:
 {false=[65, 89, 77], true=[9, 12, 45, 31]}
 ```
 
-However, unlike `groupingBy()`, there's no version that allows us to change the type of the `Map` returned. But it doesn't matter, you only have two keys that you can get with:
+However, unlike `groupingBy()`, there's no version that allows us to change the type of the `Map` returned. However, we only need two keys for our groups.
 ```java
 Set<Integer> lessThan50 = map.get(true);
 Set<Integer> moreThan50 = map.get(false);
@@ -618,13 +621,13 @@ Set<Integer> moreThan50 = map.get(false);
 
 Until now, all the examples have used sequential streams, where each element are processed one by one.
 
-In contrast, parallel streams split the stream into multiple parts. Each part is processed by a different thread at the same time (in parallel).
+> Parallel streams split the stream into multiple parts. Each part is processed by a different thread at the same time (in parallel).
 
 Under the hood, parallel streams use the [Fork/Join Framework](http://ocpj8.javastudyguide.com/ch28.html).
 
-This means that by default, the number of threads available to process parallel streams equals the number of available cores of the processor of your machine.
+This means that, by default, the number of threads available to process parallel streams equals the number of available cores in your machine's processor (CPU).
 
-The advantage of using parallel streams over the Fork/Join Framework is that they are easier to use.
+### Parallel stream operations
 
 To create a parallel stream just use the `parallel()` method:
 ```java
@@ -638,7 +641,31 @@ List<String> list = Arrays.asList("a","b","c");
 Stream<String> parStream = list.parallelStream();
 ```
 
-But how parallel streams work? Let's start with the simplest example:
+You can turn a parallel stream into a sequential one with the `sequential()` method:
+```
+stream
+   .parallel()
+      .filter(..)
+         .sequential()
+            .forEach(...);
+```
+
+Check if a stream is parallel with `isParallel()`:
+```java
+stream.parallel().isParallel(); // true
+```
+
+And turn an ordered stream into a unordered one (or ensure that the stream is unordered) with `unordered()`;
+```java
+stream
+   .parallel()
+      .unordered()
+         .collect(...);
+```
+
+### Under the hood
+
+But how do parallel streams work? Let's start with the simplest example:
 ```java
 Stream.of("a","b","c","d","e")
     .forEach(System.out::print);
@@ -663,13 +690,13 @@ cebad // Another execution
 cbdea // Yet another execution
 ```
 
-The reason is the decomposing of the stream on parts and their processing by different threads we talked about before.
+Going back to the definition of parallel streams, this output starts making sense. The differences in output can be attributed to thread processing; it is possible that a different core is involved with a particular command each time the code is executed. 
 
-So parallel streams are more appropriate for operations where the order of processing doesn't matter and that don't need to keep a state (they are stateless and independent).
+Thus parallel streams are more appropriate for operations where the order of processing doesn't matter and the operations don't need to keep a state (stateless and independent operatoins).
 
 An example to see this difference is the use of `findFirst()` versus `findAny()`.
 
-In the [first part](http://tutorials.pluralsight.com/java-and-j2ee/java-8-stream-api-part-1), we mentioned that `findFirst()` method returns the first element of a stream. But when using parallel streams and this is decomposed in multiple parts, this method has to "know" which element is the first one:
+In the [first part](http://tutorials.pluralsight.com/java-and-j2ee/java-8-stream-api-part-1), we mentioned that `findFirst()` method returns the first element of a stream. But since we're using parallel streams, this method has to "know" which element is the first one:
 ```java
 long start = System.nanoTime();
 String first = Stream.of("a","b","c","d","e")
@@ -699,9 +726,9 @@ The output:
 c found in 0.063169 milliseconds
 ```
 
-As a parallel stream is processed, well, in parallel, is reasonable to believe that it will be processed faster than a sequential stream. But as you can see with `findFirst()`, this is not always the case.
+Since a parallel stream is processed by multiple cores, its reasonable to believe that it will be processed faster than a sequential stream. But as you can see with `findFirst()`, this is not always the case.
 
-Stateful operations, like:
+For example:
 ```java
 Stream<T> distinct()
 Stream<T> sorted()
@@ -710,31 +737,9 @@ Stream<T> limit(long maxSize)
 Stream<T> skip(long n)
 ```
 
-Incorporate state from previously processed elements and may need to go through the entire stream to produce a result, so they are not a good fit for parallel streams.
+The stateful operations above incorporate state from previously processed elements and usually need to go through the entire stream to produce a result. Thus they work better with sequential streams since they end up looking through the stream anyway.
 
-By the way, you can turn a parallel stream into a sequential one with the `sequential()` method:
-```
-stream
-   .parallel()
-      .filter(..)
-         .sequential()
-            .forEach(...);
-```
-
-Check if a stream is parallel with `isParallel()`:
-```java
-stream.parallel().isParallel(); // true
-```
-
-And turn an ordered stream into a unordered one (or ensure that the stream is unordered) with `unordered()`;
-```java
-stream
-   .parallel()
-      .unordered()
-         .collect(...);
-```
-
-But don't believe that by first executing the stateful operations and then turning the stream into a parallel one, the performance will be better in all cases, or worse, the entire operation may run in parallel, like the following example:
+But don't believe that by first executing the stateful operations in a sequential format and then turning the stream into a parallel one, the performance will be better in all cases. It would be worse to assume that the entire operation may run in parallel, like the following example:
 ```java
 double start = System.nanoTime();
 Stream.of("b","d","a","c","e")
@@ -771,7 +776,7 @@ ee
 79.470779 milliseconds
 ```
 
-Compare this with the output of the sequential version (just comment `parallel()`):
+Compare this with the output of the sequential version (just comment out `.parallel()`):
 ```java
 Filter:a
 Map:a
@@ -789,9 +794,9 @@ ee
 1.554562 milliseconds
 ```
 
-In this case, the sequential version performed better.
+Clearly, the sequential version performed better; it took 78 milliseconds less.
 
-But if we have an independent or stateless operation, where the order doesn't matter, let's say, counting the number of odd numbers in a large range, the parallel version will perform better:
+But if we have an independent or stateless operation, and order doesn't matter, such as with counting the number of odd numbers in a large range, the parallel version will perform better:
 ```java
 double start = System.nanoTime();
 long c = IntStream.rangeClosed(0, 1_000_000_000)
@@ -811,25 +816,26 @@ The sequential version output:
 ```java
 Got 500000001 in 1275.271882 milliseconds
 ```
+In summary, parallel streams don't always perform better than sequential streams when it comes to stateful operations, but they usually perform better when ordering is not an issue and operations are independent and stateless.
 
-In summary, parallel streams don't always perform better than sequential streams.
+This, the fact that parallel streams process results independently, and the idea that the order cannot be guaranteed are the most important things you need to know.
 
-This, the fact that parallel streams process results independently and that the order cannot be guaranteed are the most important things you need to know.
+### Tips for deciding between sequential and parallel streams
 
-But in practice, how do you know when to use sequential or parallel streams for better performance?
+In practice, how do you know when to use sequential or parallel streams for better performance?
 
 Here are some rules:
 
-- For a small set of data, sequential streams are almost always the best choice due to the overhead of the parallelism.
-- When using parallel streams, avoid stateful (like `sorted()`) and order-based (like `findFirst()`) operations.
-- Operations that are computationally expensive (considering all the operation in the pipeline), generally have a better performance using a parallel stream.
-- When in doubt, check the performance with an appropriate benchmark.
+- For a small set of data, sequential streams are almost always the best choice due to the overhead of the parallelism. Using parallel streams is simply unnecessary.
+- Typically avoid using parallel streams with stateful (like `sorted()`) and order-based (like `findFirst()`) operations. Sequential streams do just fine (if not better) in these cases.
+- Use parallel streams with operations that are computationally expensive (considering all the operation in the pipeline). 
+- When in doubt, check the performance with an appropriate benchmark. To demonstrate, I used an execution time comparison, but this is just one benchmark. You may need your program to compile faster or use less memory. 
 
 # Reducing Parallel Streams
 
 In concurrent environments, assignments are bad.
 
-This is because if you mutate the state of variables (especially if they are shared by more than one thread), you may run into many troubles to avoid invalid states.
+This is because if you mutate the state of variables (especially if they are shared by more than one thread), you may run into invalid states.
 
 Consider this example, which implements the factorial of `10` in a very particular way:
 ```java
@@ -858,13 +864,13 @@ LongStream.rangeClosed(1, 10)
 
 Sometimes we get the correct result and other times we don't.
 
-The problem is caused by the multiple threads accessing the variable total concurrently. Yes, we can synchronize the access to this variable, but that kind of defeats the purpose of parallelism (I told you assignments are bad in concurrent environments).
+The problem is caused by the multiple threads accessing the variable total concurrently. Yes, we can synchronize the access to this variable, but that defeats the purpose of parallelism.
 
 Here's where `reduce()` comes in handy.
 
 Remember that `reduce()` combines the elements of a stream into a single one.
 
-With parallel streams, this method creates intermediate values and then combines them, avoiding the *ordering* problem while still allowing streams to be processed in parallel by eliminating the shared state and keep it inside the reduction process.
+With parallel streams, this method creates intermediate values and then combines them, avoiding the *ordering* problem while still allowing streams to be processed in parallel by eliminating the shared state and keeping it inside the reduction process.
 
 The only requirement is that the applied reducing operation must be associative.
 
@@ -880,7 +886,7 @@ a op b op c op d == (a op b) op (c op d)
 
 So we can evaluate (a op b) and (c op d) in parallel.
 
-Returning to our example, we can implementing it using `parallel()` and `reduce()` in this way:
+We can implement our example using `parallel()` and `reduce()` in this way:
 ```java
 long tot = LongStream.rangeClosed(1, 10)
                 .parallel()
@@ -888,14 +894,16 @@ long tot = LongStream.rangeClosed(1, 10)
 System.out.println(tot);
 ```
 
-When we execute this snippet of code, it produces the correct result every time (`3628800`).
+When we execute this snippet of code, it produces the correct result every time (`3628800`). Reduce guaranteed that the threads would not access the same stream entries simultaneously and throw off the results.
 
-And if we time the execution of the first snippet and this last one, we can see a great improvement in performance.
+Plus, if we time the execution of the first snippet and this last one, we can see a drastic improvement in performance.
 
-Finally, just like `reduce()`, we can safely use `collect()` with parallel streams if we follow the same requirements of associativity and identity, like for example, for any partially accumulated result, combining it with an empty result container must produce an equivalent result.
+We can safely use `collect()` with parallel streams if we follow the same requirements of associativity and identity. (For example, combining any partially accumulated result with an empty result container must produce an equivalent result.)
 
 Or, if we are grouping with the `Collectors` class and ordering is not important, we can use the method `groupingByConcurrent()`, the concurrent version of `groupingBy()`.
 
+If you understand when to use parallel streams and the issues associated with concurrent execution, you should be ready to use parallel streams in practice!
+
 # Conclusion
 
-And that's all. We touch the most important parts of the Stream interface, I hope you find them useful. Thanks for reading.
+We touched the most important parts of the Stream interface. I hope you find streams useful. Please post all your comments and feedback in the discussion section below. Thanks for reading.
