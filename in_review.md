@@ -39,7 +39,7 @@
 - Related to: Software Engineering Best Practices
 
 ### Kick start with Node Js (Part 1) by Ankit Parekh
-- [Read the guide](http://tutorials.pluralsight.com/other/kick-start-with-node-js-part-1?status=in-review)
+- [Read the guide](http://tutorials.pluralsight.com/node-js/kick-start-with-node-js-part-1?status=in-review)
 - [Read more from Ankit Parekh](http://tutorials.pluralsight.com/author/AkkiParekh) <img src="https://avatars.githubusercontent.com/u/12481933?v=3" width="30" height="30" alt="Ankit Parekh" />
 - Related to: other
 
