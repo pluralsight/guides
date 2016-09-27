@@ -1,6 +1,6 @@
-In the [first part](http://tutorials.pluralsight.com/java-and-j2ee/java-8-stream-api-part-1), we cover what are streams and some of their most common operations.
+In the [first part of this tutorial on the Java 8 Stream API](http://tutorials.pluralsight.com/java-and-j2ee/java-8-stream-api-part-1), we covered what streams are and some of their most common operations.
 
-Without further ado, let's continue with the methods used to program in a functional style. After that, we'll take a look at parallel streams.
+Without further ado, let's continue with the methods used to program streams in a functional style. After that, we'll take a look at **parallel streams**.
 
 # Map
 
@@ -24,7 +24,7 @@ The output:
 97 98 99 100 101
 ```
 
-There are versions for transforming to primitive types, for example:
+There are versions for transforming to primitive types. For example:
 ```java
 IntStream.of(100, 110, 120, 130 ,140)
     .mapToDouble(i -> i/3.0)
@@ -50,23 +50,22 @@ LongStream flatMapToLong(Function<? super T,
                        ? extends LongStream> mapper)
 ```
 
-From its signature (and their primitive versions' signature) we can see that in contrast to `map()` (that returns a single value), `flatMap()` must return a Stream. If `flatMap()` returns `null`, an empty stream is returned instead.
+From its signature (and the signature of the primitive versions) we can see that, in contrast to `map()` which returns a single value, `flatMap()` must return a Stream. If `flatMap()` maps to `null`, the return value will be an empty stream, not `null` itself.
 
-Let's see how this work. If we have a stream of lists of characters:
+Let's see how this works. Suppose we have a stream comprising lists of characters:
 ```java
 List<Character> aToD = Arrays.asList('a', 'b', 'c', 'd');
 List<Character> eToG = Arrays.asList('e', 'f', 'g');
 Stream<List<Character>> stream = Stream.of(aToD, eToG);
 ```
 
-And we want to convert all the characters to their int representation, we can't use `map()` anymore:
+We want to convert all the characters to their int representation. Notice through the code below that we we can't use `map()` anymore; c represents an object of type `List<Character>`, not `Character`:
+
 ```java
 stream .map(c -> (int)c)
 ```
 
-Because (as each element of the stream is passed to map) c represents an object of type `List<Character>`, not `Character`.
-
-What we need to do is to get the elements of the lists into one stream and then convert each character to an int. Fortunately, the *combining* part is exactly what `flatMap()` does:
+Instead, we need to get the elements of the lists into one stream and then convert each character to an int. Fortunately, we have `flatMap()` to combine the list elements into a single Stream object:
 ```java
 stream
     .flatMap(l -> l.stream())
@@ -74,10 +73,11 @@ stream
     .forEach(i -> System.out.format("%d ", i));
 ```
 
-So this code can output:
+This outputs the following:
 ```
 97 98 99 100 101 102 103
 ```
+> `flatMap()` returns a stream while `map()` returns an element.
 
 Using `peek()` (which just executes the provided expression and returns a new stream with the same elements of the original one) after `flatMap()` may clarify how the elements are processed:
 ```java
@@ -88,7 +88,7 @@ stream
     .forEach(i -> System.out.format("%d ", i));
 ```
 
-As you can see from the output, the stream returned from `flatMap()` is passed through the pipeline, as if we were working with a stream of single elements and not with a stream of lists of elements:
+As you can see from the output, the stream returned from `flatMap()` is passed through the pipeline, as if we were working with a stream of single elements rather than a stream of lists of elements:
 ```
 a97 b98 c99 d100 e101 f102 g103
 ```
@@ -97,11 +97,11 @@ This way, with `flatMap()` you can convert a `Stream<List<Object>>` to `Stream<O
 
 # Reduction
 
-A reduction is an operation that takes many elements and combines them (o reduce them) into a single value or object, and it is done by applying an operation multiple times.
+A reduction is an operation that takes many elements and combines them to reduce them into a single value or object. Reduction is done by applying an operation multiple times.
 
-Some examples of reductions are summing `N` elements, finding the maximum element of `N` numbers, or counting elements.
+Some examples of reductions include summing `N` elements, finding the maximum element of `N` numbers, or counting elements.
 
-Like in the following example, where using a `for` loop, we reduce an array of numbers to their sum:
+In the following example, we use a `for` loop to reduce an array of numbers to their sum:
 ```java
 int[] numbers = {1, 2, 3, 4, 5, 6};
 int sum = 0;
@@ -110,17 +110,17 @@ for(int n : numbers) {
 }
 ```
 
-Of course, making reductions with streams instead of loops has more benefits, like easier parallelization and improved readability.
+Of course, making reductions with streams instead of loops has benefits, such as easier parallelization and improved readability.
 
 The Stream interface has two methods for reduction:
 ```java
-reduce()
 collect()
+reduce()
 ```
 
-We can implement reductions with both methods, but `collect()` help us to implement a type of reduction called mutable reduction, where a container (like a `Collection`) is used to accumulate the result of the operation.
+We can implement reductions with both of these methods, but `collect()` helps us implement a type of reduction called **mutable reduction**, where a container (like a `Collection`) is used to accumulate the result of the operation.
 
-`reduce()` has three versions:
+The other reduction operation, `reduce()`, has three versions:
 ```java
 Optional<T> reduce(BinaryOperator<T> accumulator)
 
@@ -162,21 +162,15 @@ for(int n : numbers) {
 
 Here, the accumulator operation is:
 ```java
-sum += n;
+sum += n;   //or sum = sum + n
 ```
-
-Or:
-```
-sum = sum + n;
-```
-
-Which translate to:
+This translates to:
 ```java
 OptionalInt total = IntStream.of(1, 2, 3, 4, 5, 6)
                       .reduce( (sum, n) -> sum + n );
 ```
 
-Notice how the primitive version of stream uses the primitive version of `Optional`.
+Notice how the primitive version of Stream uses the primitive version of `Optional`.
 
 This is what happens step by step:
 
@@ -192,7 +186,7 @@ However, what if you need to have an initial value? For cases like that, we have
 T reduce(T identity, BinaryOperator<T> accumulator)
 ```
 
-The first argument is the initial value, and it is called identity because strictly speaking, this value must be an identity for the accumulator function, in other words, for each value v, accumulator.apply(identity, v) must be equal to v.
+The first argument is the initial value, and it is called the identity because, strictly speaking, this value must be an identity for the accumulator function. In other words, for each value v, accumulator.apply(identity, v) must be equal to v.
 
 This version of `reduce()` is equivalent to:
 ```java
@@ -219,11 +213,11 @@ int total = IntStream.of(1, 2, 3, 4, 5, 6)
                         (sum, n) -> sum + n ); // 25
 ```
 
-However, notice that in the last example, the first value cannot be considered an identity (as in the first example) since, for instance, `4 + 1` is not equal to `4`.
+However, notice that in the example above, the first value **cannot** be considered an identity because, for instance, `4 + 1` is not equal to `4`.
 
 This can bring some problems when working with parallel streams, which we'll review in a few moments.
 
-Now, notice that with these versions, you take elements of type `T` and return a reduced value of type `T` also.
+Now, notice that with these versions, you take elements of type `T` and return a reduced value of type `T` as well.
 
 However, if you want to return a reduced value of a different type, you have to use the three arguments version of `reduce()`:
 ```java
@@ -232,7 +226,7 @@ However, if you want to return a reduced value of a different type, you have to 
              BinaryOperator<U> combiner)
 ```
 
-This version is equivalent to: 
+This is equivalent to using: 
 ```java
 U result = identity;
 for (T element : stream) {
@@ -241,7 +235,7 @@ for (T element : stream) {
 return result;
 ```
 
-Consider for example that we want to get the sum of the length of all strings of a stream, so we are getting strings (type `T`), and we want an integer result (type `U`).
+Consider for example that we want to get the sum of the length of all strings of a stream, so we take strings (type `T`), and we want an integer result (type `U`).
 
 In that case, we use `reduce()` like this:
 ```java
@@ -265,7 +259,7 @@ int length =
                accumInt1 + accumInt2);//combiner
 ```
 
-As the accumulator function adds a mapping (transformation) step to the accumulator function, this version of the `reduce()` can be written as a combination of `map()` and the other versions of the `reduce()` method (you may know this as the map-reduce pattern):
+As the accumulator function adds a mapping (transformation) step to the accumulator function, this version of the `reduce()` can be written as a combination of `map()` and the other versions of the `reduce()` method (you may know this as the [map-reduce](https://en.wikipedia.org/wiki/MapReduce) pattern):
 ```java
 int length =
     Stream.of("Parallel", "streams", "are", "great")
@@ -282,7 +276,7 @@ int length = Stream.of("Parallel", "streams", "are", "great")
                 .sum();
 ```
 
-Because, in fact, the calculation operations that we learned about in the [first part](http://tutorials.pluralsight.com/java-and-j2ee/java-8-stream-api-part-1) are implemented as reduce operations under the hood:
+In fact, the calculation operations that we learned about in the [first part](http://tutorials.pluralsight.com/java-and-j2ee/java-8-stream-api-part-1) are implemented as reduce operations under the hood:
 ```
 average
 count
@@ -291,7 +285,7 @@ min
 sum
 ```
 
-Also, notice that if return a value of the same type, the combiner function is no longer necessary (it turns out that this function is the same as the accumulator function) so, in this case, it's better to use the two argument version.
+Also, notice that if we return a value of the same type, the combiner function is no longer necessary (it turns out that this function is the same as the accumulator function). So, in this case, it's better to use the two argument version.
 
 It's recommended to use the three version `reduce()` method when:
 
@@ -299,7 +293,7 @@ It's recommended to use the three version `reduce()` method when:
 - Having one function as a mapper and accumulator is more efficient than having separate mapping and reduction functions.
 
 
-On the other hand, collect() has two versions:
+On the other hand, `collect()` has two versions:
 ```java
 <R,A> R collect(Collector<? super T,A,R> collector)
 
@@ -308,13 +302,13 @@ On the other hand, collect() has two versions:
               BiConsumer<R,R> combiner)
 ```
 
-The first version uses predefined collectors from the `Collectors` class while the second one allows you to create your own collectors. Primitive streams (like `IntStream`), only have this last version of `collect()`.
+The first version uses predefined collectors from the `Collectors` class while the second one allows you to create your own collectors. Primitive streams (like `IntStream`) only have this last version of `collect()`.
 
 Remember that `collect()` performs a mutable reduction on the elements of a stream, which means that it uses a mutable object for accumulating, like a `Collection` or a `StringBuilder`. In contrast, `reduce()` combines two elements to produce a new one and represents an immutable reduction.
 
 However, let's start with the version that takes three arguments, as it's similar to the `reduce()` version that also takes three arguments.
 
-As you can see from its signature, first, it takes a `Supplier` that returns the object that will be used as a container (accumulator) and returned at the end.
+As you can see from its signature, first, it takes a `Supplier` that returns the object that will be used and returned as a container (accumulator).
 
 The second parameter is an accumulator function, which takes the container and the element to be added to it.
 
@@ -329,7 +323,7 @@ for (T element : stream) {
 return result;
 ```
 
-For example, if we want to "reduce" or "collect" all the elements of a stream into a `List`, we can do it this way:
+For example, if we want to "reduce" or "collect" all the elements of a stream into a `List`, use the following algorithm:
 ```java
 List<Integer> list =
     Stream.of(1, 2, 3, 4, 5)
@@ -351,7 +345,7 @@ List<Integer> list =
         );
 ```
 
-Or we can also use method references:
+We can also use method references:
 ```java
 List<Integer> list =
     Stream.of(1, 2, 3, 4, 5)
@@ -376,7 +370,7 @@ Some common collectors of the `Collectors` class are:
 - `groupingBy` Groups elements of type `T` in lists according to a classification function, into a map with keys of type `K`.
 - `partitioningBy` Partitions elements of type `T` in lists according to a predicate, into a map.
 
-Since calculation methods can be implementing as reductions, the `Collectors` class also provides them as collectors:
+Since calculation methods can be implemented as reductions, the `Collectors` class also provides them as collectors:
 
 - `averagingInt/averagingLong/averagingDouble` Methods return the average of the input elements.
 - `counting` Counts the elements of input elements.
@@ -402,7 +396,7 @@ List<Integer> list =
         .collect(Collectors.toList()); // [1, 2, 3, 4, 5]
 ```
 
-Since all these methods are `static`, we can use `static` imports:
+Since all these methods are `static`, we can use `static` imports.
 ```java
 import static java.util.stream.Collectors.*;
 ...
@@ -411,7 +405,7 @@ List<Integer> list =
         .collect(toList()); // [1, 2, 3, 4, 5]
 ```
 
-If we are working with streams of `String`s, we can join all the elements into one `String` with:
+If we are working with streams of strings, we can join all the elements into one `String` with:
 ```java
 String s = Stream.of("a", "simple", "string")
                .collect(joining()); // "asimplestring"
@@ -431,7 +425,7 @@ String s = Stream.of("a", "simple", "string")
              ); // "This is a simple string."
 ```
 
-About the calculation methods, they are easy to use. Except for `counting()`, they either take a `Function` to produce a value to apply the operation or (in the case of `maxBy` and `minBy`) they take a `Comparator` to produce the result:
+The calculation methods are easy to use. Except for `counting()`, they either take a `Function` to produce a value to apply the operation or (in the case of `maxBy` and `minBy`) they take a `Comparator` to produce the result:
 ```java
 double avg = Stream.of(1, 2, 3)
                 .collect(averagingInt(i -> i * 2)); // 4.0
