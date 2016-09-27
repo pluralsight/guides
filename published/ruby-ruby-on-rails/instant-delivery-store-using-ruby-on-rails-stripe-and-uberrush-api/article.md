@@ -306,19 +306,19 @@ Here is the API wrapper code. The major points are as follows:
         end
     
         # Gets all deliveries on your account
-        def all_deliveries
+        def get_deliveries
           url = "#{base_path}"
           self.class.get(url)
         end
     
         # Gets one specified delivery on your account
-        def one_delivery(id)
+        def get_delivery(id)
           url = "/#{id}#{base_path}"
           self.class.get(url)
         end
     
         # Returns a delivery quote
-        def delivery_quote(pickup_obj = Uber::PICKUP, dropoff_obj)
+        def create_quote(pickup_obj = Uber::PICKUP, dropoff_obj)
           url = "/quote#{base_path}"
     
           self.class.post(url,
@@ -548,7 +548,7 @@ Add the order completed page.
     
     <p>Your Shoes will Arrive: <strong><%= params[:time] %> minutes</strong></p>
     
-    <p>A copy of the invoice has been sent to your email, and you will recieve SMS updates from the UberRUSH courier.</p>
+    <p>A copy of the invoice has been sent to your email, and you will recieve SMS updates from the UberRUSH.</p>
 
 
 
@@ -559,7 +559,7 @@ Let's test it out with some data. The CC info will validate on Stripe for testin
 ![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/b4ee0009-315a-408d-80c6-2a0aae97d515.41)
 
 
-Stripe will send an invoice via email and Uber will provide SMS updates to the customer. Howevery, all the APIs are currently in test/sandbox mode, so neither the Stripe message nor the Uber message will actually be created just yet.
+Stripe will send an invoice via email and Uber will provide SMS updates to the customer. However, all the APIs are currently in test/sandbox mode, so neither the Stripe message nor the Uber message will actually be created just yet.
 
 ![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/676e9462-d474-42f1-9d2c-c6d6ec194326.41)
 
