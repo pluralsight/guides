@@ -146,7 +146,7 @@ These are the two cases in which these methods will be used:
  * For authenticating the user and generate a token for him/her using `encode`
  * To check if the user's token appended in each request is correct by using `decode`. 
 
-To make sure everything will work, the contents of the `lib` directo have to be included when the Rails application loads:
+To make sure everything will work, the contents of the `lib` directory have to be included when the Rails applciation loads:
 ```ruby
     #config/application.rb
 module ApiApp
