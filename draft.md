@@ -1,8 +1,3 @@
-### Angular 2 with TypeScript for Beginners Part1 by Alexander
-- [Read the guide](http://tutorials.pluralsight.com/front-end-javascript/angular-2-with-typescript-for-beginners-part1?status=draft)
-- [Read more from Alexander](http://tutorials.pluralsight.com/author/AlexanderKozhevin) <img src="https://avatars.githubusercontent.com/u/4464561?v=3" width="30" height="30" alt="Alexander" />
-- Related to: Front-End JavaScript (Angular, React, Meteor, etc)
-
 ### Basic node.js with Kafka by Igor Nakshin
 - [Read the guide](http://tutorials.pluralsight.com/node-js/basic-node-js-with-kafka?status=draft)
 - [Read more from Igor Nakshin](http://tutorials.pluralsight.com/author/logycon) <img src="https://avatars.githubusercontent.com/u/538881?v=3" width="30" height="30" alt="Igor Nakshin" />
