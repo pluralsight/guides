@@ -1,8 +1,3 @@
-### Angular 2 with TypeScript for Beginners Part1 by Alexander
-- [Read the guide](http://tutorials.pluralsight.com/front-end-javascript/angular-2-with-typescript-for-beginners-part1?status=in-review)
-- [Read more from Alexander](http://tutorials.pluralsight.com/author/AlexanderKozhevin) <img src="https://avatars.githubusercontent.com/u/4464561?v=3" width="30" height="30" alt="Alexander" />
-- Related to: Front-End JavaScript (Angular, React, Meteor, etc)
-
 ### Getting started with Webpack: Part 1 by Ilango Rajagopal
 - [Read the guide](http://tutorials.pluralsight.com/front-end-javascript/getting-started-with-webpack-part-1?status=in-review)
 - [Read more from Ilango Rajagopal](http://tutorials.pluralsight.com/author/ilangorajagopal) <img src="https://avatars.githubusercontent.com/u/4386534?v=3" width="30" height="30" alt="Ilango Rajagopal" />
