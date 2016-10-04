@@ -1,3 +1,8 @@
+### Must Known Web-Security risks for Developers by Sanjeev Murthy
+- [Read the guide](http://tutorials.pluralsight.com/software-engineering-best-practices/must-known-web-security-risks-for-developers)
+- [Read more from Sanjeev Murthy](http://tutorials.pluralsight.com/author/SanjeevMurthy) <img src="https://avatars.githubusercontent.com/u/10756352?v=3" width="30" height="30" alt="Sanjeev Murthy" />
+- Related to: Software Engineering Best Practices
+
 ### Java 8 Stream API: Part 2 by Esteban Herrera
 - [Read the guide](http://tutorials.pluralsight.com/java-and-j2ee/java-8-stream-api-part-2)
 - [Read more from Esteban Herrera](http://tutorials.pluralsight.com/author/eh3rrera) <img src="https://avatars.githubusercontent.com/u/11665759?v=3" width="30" height="30" alt="Esteban Herrera" />
