@@ -1,5 +1,11 @@
 ![Ionic 2 + Angular 2](http://ionicframework.com/img/blog/ionic-angular-v2.jpg)
 
+# Important update
+
+Since Ionic 2.0-RC.0 the SqlStorage package that this tutorial rely on has been removed, and the WebSql fallback support has been dropped, you may be able to use versioning to only SqLite in mobile but web version has been sent to the trash, i'd suggest to stop thinking in Sql like databases and start learning NoSql since it seems browsers are moving into it (specially since WebSql specs are deprecated and the only browser that still works WebSql is Chrome).
+
+## Introduction
+
 The hybrid mobile app market has been expanding a lot since the release of `Ionic 2`, built with `Angular 2`. However, hybrid app structure standards are still very limited in Ionic 2.
 
 This guide will cover building an essential part of the app: `databases`. This may not be a must-have in all applications, but if you choose the path of `offline first` for mobile app (usually an easy choice since a mobile device often gets disrupted signal when used without wi-fi), you'll have to rely on a local database to store data.
