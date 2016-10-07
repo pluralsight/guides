@@ -1,3 +1,8 @@
+### OOPs in Typescript by Mohammed Nisar Ansari
+- [Read the guide](http://tutorials.pluralsight.com/front-end-javascript/oops-in-typescript?status=draft)
+- [Read more from Mohammed Nisar Ansari](http://tutorials.pluralsight.com/author/niisar) <img src="https://avatars.githubusercontent.com/u/6368685?v=3" width="30" height="30" alt="Mohammed Nisar Ansari" />
+- Related to: Front-End JavaScript (Angular, React, Meteor, etc)
+
 ### Angular 2 with TypeScript for Beginners Part1 by Alexander
 - [Read the guide](http://tutorials.pluralsight.com/front-end-javascript/angular-2-with-typescript-for-beginners-part1?status=draft)
 - [Read more from Alexander](http://tutorials.pluralsight.com/author/AlexanderKozhevin) <img src="https://avatars.githubusercontent.com/u/4464561?v=3" width="30" height="30" alt="Alexander" />
