@@ -3,7 +3,12 @@
     "author_name": "ilangorajagopal",
     "author_real_name": "Ilango Rajagopal",
     "branch": "master",
-    "branches": [],
+    "branches": [
+        [
+            "adityavarshney",
+            "adityavarshney-front-end-javascript-getting-started-with-webpack-part-1"
+        ]
+    ],
     "filename": "article.md",
     "first_commit": "fa222357f8963db845be06b8dee0e1818beb244f",
     "image_url": "https://avatars.githubusercontent.com/u/4386534?v=3",
