@@ -1,18 +1,20 @@
-#### What is Webpack?
+# What is Webpack?
 
-Webpack is a module bundler. It takes the code you write and bundles them. But that's not all that it does. Webpack can transpile, combine and minify your code. It can also do code splitting, where blocks of code are loaded on demand instead of sending one huge file to the client. Webpack is also known to work well with React.js.
+Webpack is a module bundler. It takes the code you write and bundles it. But Webpack can also transpile, combine, and minify your code. It allows for code splitting, in which the client can load blocks of code on demand rather than having to receive one huge file to the client. Webpack is also compatible with React.js.
 
-Webpack requires that the code be divided into modules. You can use any module system (AMD, CommonJS or ES6 Modules). The examples in this article will use ES6 modules.
+Webpack requires that the code be divided into modules. You can use any module system (AMD, CommonJS or ES6 Modules). This guide will use ES6 modules, but feel free to adapt the solutions to the module system of your choice.
 
-#### Why Webpack?
+### Why Webpack?
 
-Using a module bundler like Webpack solves a lot of problems. Loading individual javascript files in an application will trigger multiple calls to the server. Processing each of those requests and sending the resources to the client takes time. The bigger the application the longer the time and that's bad UX. By combining the files you drastically reduce the number of requests to the server. Also when the application is built across multiple files, the size of those files also comes into play. Minifying the combined file through a production grade minifier reduces the size of the files you request.
+Using a module bundler like Webpack solves a lot of problems. Loading individual javascript files in an application will trigger multiple calls to the server. Processing each of those requests and sending the resources to the client takes time. The bigger the application, the longer the time, Thus, having lots of files and requests is simply bad UX. 
 
-Another problem of loading multiple files is that of dependencies and load order. Resolving them is a huge cognitive load. This is where Webpack comes in. Since Webpack needs the code to be split into modules, its easier to resolve dependencies. It also becomes easier to make sense of which files are dependent on what.
+By combining the files you drastically reduce the number of requests to the server. Furthermore, when the application is built across multiple files, the size of those files also comes into play. Minifying the combined file through a production grade minifier reduces the size of the files you request.
+
+Another problem of loading multiple files is that of dependencies and load order. Resolving them is a huge cognitive load. This is where Webpack comes in. Since Webpack needs the code to be split into modules, its easier to resolve and understand dependencies.
 
 Webpack is not the only solution out there. Task runners like Grunt or Gulp can also get the job done. Since both of these tools are built around a plugin ecosystem, you can pick and choose plugins based on your requirements.
 
-#### Installing Webpack
+### Installing Webpack
 
 Webpack is available as a Node package. To install Webpack:
 
@@ -22,9 +24,9 @@ $ npm install -g webpack
 
 This command will install Webpack globally and is available from the command line through the ```webpack``` command. It's important to note that Webpack works only with Node and not Bower. 
 
-#### CLI
+#### CLI (Command Line Interface)
 
-Now that we have access to the ```webpack``` command, create two files: app.js and index.html.
+Now that we have access to the ```webpack``` command, we can create two files: app.js and index.html.
 
 In app.js:
 
@@ -55,9 +57,9 @@ Now in the command line, type the command:
 webpack ./app.js bundle.js
 ```
 
-The first argument in the command is the input file, the file you are giving to Webpack to operate on. The second argument is the output file. When this command is executed you should see a new file called ```bundle.js``` in the directory.
+The first argument in the command is the input file, or the file on which Webpack will operate. The second argument is the output file. So when this command is executed you should see a new file called ```bundle.js``` in the directory.
 
-Now, it would be cumbersome if you have to do this everytime you change something in your code. To fix that, Webpack can watch for changes in your file and automatically create the output file. To do this, type the following command:
+Now, it would be cumbersome if you have to do this everytime you change something in your code. To fix that, Webpack can `watch` for changes in your file and automatically create the output file. To do this, type the following command:
 
 ```
 webpack ./app.js bundle.js --watch
@@ -71,9 +73,11 @@ webpack ./app.js bundle.js -p
 
 Now open ```bundle.js``` and voila! Your code is minified and production ready.
 
-#### webpack.config.js
+# webpack.config.js
 
-Obviously, typing out the command in the terminal is not practical. Moreover, when you have multiple operations you want to perform - compile LESS/Sass files to CSS, CoffeeScript to Javascript and transpile ES6 to ES5, it's better to configure webpack to take care of the operations for us. This is where ```webpack.config.js``` file comes in. Create a file in your project root folder and name it ```webpack.config.js```. Now, let's install ```babel``` and ```css-loader```.
+Obviously, typing out the command in the terminal is not practical. Moreover, when you have multiple operations you want to perform - compile LESS/Sass files to CSS, CoffeeScript to Javascript and transpile ES6 to ES5, it's better to configure webpack to take care of the operations for us. This is where the ```webpack.config.js``` file comes in. 
+
+Create a file in your project root folder and name it ```webpack.config.js```. Next, install ```babel``` and ```css-loader```.
 
 ```
 npm install style-loader css-loader babel-loader babel-core babel-preset-es2015 --save-dev
@@ -110,7 +114,7 @@ module.exports = {
 
 ##### entry
 
-The ```entry``` property let's you define the top level file(s) that we want to include in the bundle.
+The ```entry``` property lets you define the top level file(s) that we want to include in the bundle.
 
 ##### output
 
@@ -142,4 +146,10 @@ Now run:
 webpack-dev-server
 ```
 
-Open your favorite browser and go to ```http://localhost:8080/webpack-dev-server/``` and see the app running. If you make a change in your source files, webpack automatically runs your code through the loaders and bundle them up and refreshes the page. In part 2 we'll take a look at plugins, setting up debugging and webpack dev tools.
+Open your favorite browser and go to ```http://localhost:8080/webpack-dev-server/``` and see the app running. If you make a change in your source files, webpack automatically runs your code through the loaders, bundles them up, and refreshes the page, thanks to our `--watch` command. 
+
+I hope this provided you with a glimpse into the power of using Webpack. Feel free to leave your comments and feedback in the discussion section below. 
+
+____
+
+Part 2 will cover plugins, debugging and Webpack developer tools. Stay tuned!
