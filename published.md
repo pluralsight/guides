@@ -1,3 +1,8 @@
+### Getting started with Webpack: Part 1 by Ilango Rajagopal
+- [Read the guide](http://tutorials.pluralsight.com/front-end-javascript/getting-started-with-webpack-part-1)
+- [Read more from Ilango Rajagopal](http://tutorials.pluralsight.com/author/ilangorajagopal) <img src="https://avatars.githubusercontent.com/u/4386534?v=3" width="30" height="30" alt="Ilango Rajagopal" />
+- Related to: Front-End JavaScript (Angular, React, Meteor, etc)
+
 ### Simple debugging with meta programming by Luke Lee
 - [Read the guide](http://tutorials.pluralsight.com/python/simple-debugging-with-meta-programming)
 - [Read more from Luke Lee](http://tutorials.pluralsight.com/author/durden) <img src="https://avatars.githubusercontent.com/u/58063?v=3" width="30" height="30" alt="Luke Lee" />
