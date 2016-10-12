@@ -1,8 +1,3 @@
-### Implementing simple OAuth server with Katana and MembershipReboot by Peter Mbanugo
-- [Read the guide](http://tutorials.pluralsight.com/microsoft-net/implementing-simple-oauth-server-with-katana-and-membershipreboot?status=draft)
-- [Read more from Peter Mbanugo](http://tutorials.pluralsight.com/author/pmbanugo) <img src="https://avatars.githubusercontent.com/u/4036118?v=3" width="30" height="30" alt="Peter Mbanugo" />
-- Related to: Microsoft.NET (C#, ASP.NET, VB.NET, etc)
-
 ### Build a Futurama Quote-bot with Twilio MMS, Morbotron, and Ruby by Chris Hranj
 - [Read the guide](http://tutorials.pluralsight.com/other/build-a-futurama-quote-bot-with-twilio-mms-morbotron-and-ruby?status=draft)
 - [Read more from Chris Hranj](http://tutorials.pluralsight.com/author/Brodan) <img src="https://avatars.githubusercontent.com/u/12822268?v=3" width="30" height="30" alt="Chris Hranj" />
