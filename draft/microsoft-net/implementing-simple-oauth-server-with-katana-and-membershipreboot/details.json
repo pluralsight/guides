@@ -1,0 +1,15 @@
+{
+    "_publish_status": "draft",
+    "author_name": "pmbanugo",
+    "author_real_name": "Peter Mbanugo",
+    "branch": "master",
+    "branches": [],
+    "filename": "article.md",
+    "first_commit": "628e224443543e4e08c0c6bcb2d64d76f6a6c5d6",
+    "image_url": "https://avatars.githubusercontent.com/u/4036118?v=3",
+    "stacks": [
+        "Microsoft.NET (C#, ASP.NET, VB.NET, etc)"
+    ],
+    "thumbnail_url": null,
+    "title": "Implementing simple OAuth server with Katana and MembershipReboot"
+}
