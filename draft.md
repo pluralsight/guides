@@ -1,3 +1,8 @@
+### Setup Lubuntu in VirtualBox by dk
+- [Read the guide](http://tutorials.pluralsight.com/other/setup-lubuntu-in-virtualbox?status=draft)
+- [Read more from dk](http://tutorials.pluralsight.com/author/dimkostopoulos) <img src="https://avatars.githubusercontent.com/u/8162389?v=3" width="30" height="30" alt="dk" />
+- Related to: other
+
 ### Build a Futurama Quote-bot with Twilio MMS, Morbotron, and Ruby by Chris Hranj
 - [Read the guide](http://tutorials.pluralsight.com/other/build-a-futurama-quote-bot-with-twilio-mms-morbotron-and-ruby?status=draft)
 - [Read more from Chris Hranj](http://tutorials.pluralsight.com/author/Brodan) <img src="https://avatars.githubusercontent.com/u/12822268?v=3" width="30" height="30" alt="Chris Hranj" />
