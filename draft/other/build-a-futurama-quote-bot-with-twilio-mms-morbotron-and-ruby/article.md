@@ -11,25 +11,29 @@ If you don't want to follow along and just want to see the finished code, check 
 
 Before we can jump into code, we need to get our environment set up. 
 
-### Python and pip
+### Ruby and gem
 
 
-### Python libraries
+### Ruby libraries
 
 Next we need to install a few Python libraries. pip makes this really easy for us. Run the following command which will automatically download and install all the external libraries our script will need:
 
 https://rvm.io/rvm/install
 
 ```
-$ gem install twilio-ruby
-$ gem install sinatra
-
 $ rvm install 2.3
+
+$ gem install http
+$ gem install twilio-ruby
+$ gem install rufus-scheduler
+
+
 ```
 Let's break down the command we just used. 
-['whenever'](https://github.com/javan/whenever)
-
+['rufus-scheduler'](https://github.com/jmettraux/rufus-scheduler)
+['unirest'](http://unirest.io/ruby.html)
 ['twilio-ruby'](https://github.com/twilio/twilio-ruby)
+['http'](https://github.com/httprb/http)
 
 
 ### Twilio account
@@ -122,11 +126,15 @@ If you run into any errors with Twilio, you will see a number of helpful tips pr
 
 Otherwise, check your phone and you should expect to see an MMS with a random Simpsons screencap and caption! Here's an example:
 
-![S10E23](https://frinkiac.com/img/S11E02/921960.jpg)
+[S10E23](https://frinkiac.com/img/S11E02/921960.jpg)
 
 *Okay, so you say your son is towheaded, button nose, mischievous smile, and may be armed with a slingshot?*
 
 # Wrapping Up
+
+
+Special thanks to [this](https://www.twilio.com/blog/2015/10/4-ways-to-parse-a-json-api-with-ruby.html) Twilio article for help on parsing JSON with Ruby.
+
 
 Congratulations! You've just built a Twilio-powered MMS Simpsons quote-bot using nothing more than a few lines of Python. The tools in this guide -- using the `requests`, `twilio`, and `schedule` libraries, and more -- can be used in numerous ways to create applications with even more functionality. Try combining new APIs and libraries with some of Twilio's other features like [Voice](https://www.twilio.com/voice) or [IP Messaging](https://www.twilio.com/ip-messaging), and see what you can come up with!
 
