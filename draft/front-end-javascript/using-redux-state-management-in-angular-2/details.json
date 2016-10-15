@@ -1,0 +1,15 @@
+{
+    "_publish_status": "draft",
+    "author_name": "Kaizeras",
+    "author_real_name": "Hristo Georgiev",
+    "branch": "master",
+    "branches": [],
+    "filename": "article.md",
+    "first_commit": "944477de403feac38a32d1806142a1023ededda4",
+    "image_url": "https://avatars.githubusercontent.com/u/6340189?v=3",
+    "stacks": [
+        "Front-End JavaScript (Angular, React, Meteor, etc)"
+    ],
+    "thumbnail_url": null,
+    "title": "Using Redux state management in Angular 2"
+}
