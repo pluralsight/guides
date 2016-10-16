@@ -3,7 +3,12 @@
     "author_name": "durden",
     "author_real_name": "Luke Lee",
     "branch": "master",
-    "branches": [],
+    "branches": [
+        [
+            "adityavarshney",
+            "adityavarshney-python-simple-debugging-with-meta-programming"
+        ]
+    ],
     "filename": "article.md",
     "first_commit": null,
     "image_url": "https://avatars.githubusercontent.com/u/58063?v=3",
