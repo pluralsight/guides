@@ -3,7 +3,12 @@
     "author_name": "pmbanugo",
     "author_real_name": "Peter Mbanugo",
     "branch": "master",
-    "branches": [],
+    "branches": [
+        [
+            "adityavarshney",
+            "adityavarshney-microsoft-net-implementing-simple-oauth-server-with-katana-and-membershipreboot"
+        ]
+    ],
     "filename": "article.md",
     "first_commit": "628e224443543e4e08c0c6bcb2d64d76f6a6c5d6",
     "image_url": "https://avatars.githubusercontent.com/u/4036118?v=3",
