@@ -1,3 +1,8 @@
+### Getting started with Webpack: Part 2 by Ilango Rajagopal
+- [Read the guide](http://tutorials.pluralsight.com/other/getting-started-with-webpack-part-2?status=draft)
+- [Read more from Ilango Rajagopal](http://tutorials.pluralsight.com/author/ilangorajagopal) <img src="https://avatars.githubusercontent.com/u/4386534?v=3" width="30" height="30" alt="Ilango Rajagopal" />
+- Related to: other
+
 ### Using Redux state management in Angular 2 by Hristo Georgiev
 - [Read the guide](http://tutorials.pluralsight.com/front-end-javascript/using-redux-state-management-in-angular-2?status=draft)
 - [Read more from Hristo Georgiev](http://tutorials.pluralsight.com/author/Kaizeras) <img src="https://avatars.githubusercontent.com/u/6340189?v=3" width="30" height="30" alt="Hristo Georgiev" />
