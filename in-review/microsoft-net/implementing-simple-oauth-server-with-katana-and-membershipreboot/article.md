@@ -1,6 +1,10 @@
-In my [previous](http://tutorials.pluralsight.com/microsoft-net/securing-asp-net-mvc-applications-with-log-in-email-confirmation-and-password-reset-using-membershipreboot) post, I showed how to secure and manage user accounts with MembershipReboot in asp.net mvc. In this post, I'll walkthrough implementing the [Resource Owner Password Credential Grant type](https://tools.ietf.org/html/rfc6749#section-4.3) in asp.net web api. If you're reading this, I'll assume you have a fair amount of knowledge about the Owin middleware in asp.net and also, OAuth2. I won't be going into the explanations of these things, rather, I'll just show code which you can add to your asp.net web api project, to extend it to use this grant type for securing access to your service.
+In my [previous post about .NET](http://tutorials.pluralsight.com/microsoft-net/securing-asp-net-mvc-applications-with-log-in-email-confirmation-and-password-reset-using-membershipreboot), I covered securing and managing user accounts with MembershipReboot in ASP.NET MVC. In this post, I'll walk you through implementing the [Resource Owner Password Credential Grant type](https://tools.ietf.org/html/rfc6749#section-4.3) in the ASP.NET web API. 
 
-The resource owner password credentials grant type is suitable in cases where the resource owner (user's of the application who own a specific resource) has a trust relationship with the client (the application that requests access to a resource on behalf of the resource owner) of the web service we want to protect, because clients are capable of obtaining the resource owner's credentials. 
+If you're reading this, I'll assume that you have a fair amount of knowledge about the Owin (Open Web Interface) middleware in ASP.NET and that you understand OAuth2 and Katana well. Take a look [here](http://www.codeproject.com/Articles/864725/ASP-NET-Understanding-OWIN-Katana-and-the-Middlewa) if you need a refresher on any of the above.
+
+I won't cover these topics, but I'll provide code which you can add to your ASP.NET project. That way, you will be able to use this grant type for securing access to your service specifically.
+
+The Resource Owner Password Credential Grant type is suitable in cases where the resource owner (user's of the application who own a specific resource) has a trust relationship with the client of the web service we want to protect (the application that requests access to a resource on behalf of the resource owner). For more on the importance of grant types, check out [the OAuth2 page](http://bshaffer.github.io/oauth2-server-php-docs/overview/grant-types/). 
 
 To get started, let's install the following nuget packages. 
 
@@ -8,13 +12,13 @@ To get started, let's install the following nuget packages.
 
 * First install SimpleInjector, a dependency injection container
 
-> Install-Package SimpleInjector.Integration.WebApi
+`Install-Package SimpleInjector.Integration.WebApi`
 
 * Then install the packages for MembershipReboot. 
 
-> Install-Package BrockAllen.MembershipReboot.Owin
+`Install-Package BrockAllen.MembershipReboot.Owin`
 
-> Install-Package BrockAllen.MembershipReboot.Ef
+`Install-Package BrockAllen.MembershipReboot.Ef`
 
 ## Configure the MembershipReboot and DI container and register the container to be used to resolve dependencies at runtime
 
@@ -25,7 +29,7 @@ Next up is to configure the frameworks we added previously. I'll start by adding
 ```
 
 ### Configure MembershipReboot in code
-Now we will configure MembershipReboot. I usually prefer doing this in code, and having it in a file in the `App_Start` folder. 
+Let's configure MembershipReboot. I usually prefer doing this in code, and having it in a file in the `App_Start` folder. 
 
 Add a file named `MembershipRebootConfig` in the `App_Start` folder, with the following content:
 
@@ -50,10 +54,10 @@ public class MembershipRebootConfig
 
 ```
 
-Above, I enabled multiple tenant because, the user accounts will be stored on one tenant, and the api client credential will be one another. Other settings in the file can be modified as you want. This file added is optional as you can add this same settings in the web.config file.
+Above, I enabled **multiple tenant** because the user accounts will be stored on one tenant, and the API client credentials will be on another. Other settings in the file can be modified as you want. This file added is optional as you can add this same settings in the web.config file.
 
 ### Configure SimpleInjector
-After this, configure SimpleInjector to resolve MR's classes at runtime. Add a new class in the `App_Start`folder called, with the following content in it
+After this, configure SimpleInjector to resolve MembershipReboot's classes at runtime. Add a new class in the `App_Start`folder called, with the following content in it
 
 ``` csharp
 public static class SimpleInjectorWebApiInitializer
@@ -102,9 +106,9 @@ public static class SimpleInjectorWebApiInitializer
 
 ```
 
-Above, I've registered MR's dependencies, and also added code to make SimpleInjector resolve dependies during an OWIN requests. 
+Above, I've registered MembershipReboot's dependencies, and also added code to make SimpleInjector resolve dependies during an Owin request. 
 
-Open the owin startup class and call the Initialize method
+Open the Owin startup class and call `Initialize`:
 ```
 //Startup.cs
 public void Configuration(IAppBuilder app)
@@ -113,8 +117,10 @@ public void Configuration(IAppBuilder app)
 }
 ```
 
-## Setup the OAutth 2 token endpoint
-It's now time to set up the OAuth 2.0 token endpoint to support Resource Owner Password Credentials Grant by using the `OAuthAuthorizationServerMiddleware` which comes with the `Microsoft.Owin.Security.OAuth` library. This requires an authorization server which will then be wired up to the katana pipeline. Writing an authorization server using katana revolves around a class that derives from `OAuthAuthorizationServerProvider`, which has methods that allows us take control over the OAuth2 protocol. 
+## OAuth2 token endpoint setup
+Next we need to set up the OAuth 2.0 token endpoint to support the Resource Owner Password Credentials Grant type by using the `OAuthAuthorizationServerMiddleware` which comes with the `Microsoft.Owin.Security.OAuth` library. This requires an authorization server which will then be wired up to the Katana pipeline. 
+
+Writing an authorization server using Katana revolves around a class that derives from `OAuthAuthorizationServerProvider`, which contains methods that let us manipulate the OAuth2 protocol. 
 
 To do this, I'll add a class called `MyOAuthAuthorizationServerProvider` which derives from `OAuthAuthorizationServerProvider`and override methods  ValidateClientAuthentication and GrantResourceOwnerCredentials. 
 
@@ -155,7 +161,7 @@ public class MyOAuthAuthorizationServerProvider : OAuthAuthorizationServerProvid
 
 In the ValidateClientAuthentication method, I have code that validates the client credentials and calls `OAuthValidateClientAuthenticationContext.Validated()` method if the credentials matches a record in the database. If the client is validated, then it moves on to validate the user or resource owner credentials (username and password), and calls the Validated() method on the instance of `OAuthGrantResourceOwnerCredentialsContext` that will be passed in to the method GrantResourceOwnerCredentials. 
 
-Now we need to wire up the authorization server middleware to the owin pipeline. There is a shorthand extension method on IAppBuilder to use this middleware, which is UseOAuthAuthorizationServer. We will use this extension method to configure the OAuth 2.0 endpoints in the Startup class:
+Now we need to wire up the authorization server middleware to the Owin pipeline. There is a shorthand extension method on IAppBuilder to use this middleware, which is UseOAuthAuthorizationServer. We will use this extension method to configure the OAuth 2.0 endpoints in the Startup class:
 
 ```csharp
 public void Configuration(IAppBuilder app)
@@ -195,8 +201,7 @@ public void Configuration(IAppBuilder app)
 }
 ```
 
-And now we're all done. To get a token, we need to make a post request to localhost/token passing in the necessary parameter, e.g: 
-
+To get a token, we need to make a post request to localhost/token passing in the necessary parameters. For example:
 ```
 POST http://localhost:19923/token
 Content-Type: Application/x-www-form-urlencoded
@@ -204,7 +209,7 @@ Content-Type: Application/x-www-form-urlencoded
 username=jbloggs&password=pass1234&grant_type=password
 ```
 
-and we get a result similar to this
+At this point, we'll obtain a result like the following:
 ```json
 {
   "access_token": "XoHocsL0wOJBVVrjvSj6GpdGD-VrPD2ainZGyeZ8ji0aTq33epyHw72POhB8evYn41fzaSnjx7eo0iclADQBWTMgnghgZdXzNoLo6hwf4Y3SiB0aPTPgZi6PJwoGQK_aMWW62770jo6PBznPrSO0AOZUIrpxjUSZze90-HJjsM9ZgATIWdIvuiICqVjW7n5Z-o0GNSoDTIm-4k2zee0-c_lifHuLmW97IbsQ3I4gMz1SCBReSJtXJc8noPHvgwhFB_qZ2R1-TxR64nUVgxYYtBAoy9n6WKTgNAqrnUwsa0jfMk6wselrLwMGq-R-6_AX4bkh16OZBTGa5hXVWoLPIHl2JTKCkO2DsX2jqvp3J7PObRkZWMyUOyzwhnQWu_XTpn4ogwtcJvLulfiA6W01s8qiUQO--Xefm38ngu5HTM4",
@@ -213,6 +218,4 @@ and we get a result similar to this
 }
 ```
 
-And that's all we need to get rolling. [I've got a sample project on here on GitHub](https://github.com/pmbanugo/MembershipRebootPasswordCredentialGrantSample/)
-
-Happy secure app!
+And that's all we need to get rolling. As you can see, the token has a type and an expiration date. Clean and secure! [I've got a sample project on here on GitHub](https://github.com/pmbanugo/MembershipRebootPasswordCredentialGrantSample/).
