@@ -1,3 +1,8 @@
+### Implementing simple OAuth server with Katana and MembershipReboot by Peter Mbanugo
+- [Read the guide](http://tutorials.pluralsight.com/microsoft-net/implementing-simple-oauth-server-with-katana-and-membershipreboot)
+- [Read more from Peter Mbanugo](http://tutorials.pluralsight.com/author/pmbanugo) <img src="https://avatars.githubusercontent.com/u/4036118?v=3" width="30" height="30" alt="Peter Mbanugo" />
+- Related to: Microsoft.NET (C#, ASP.NET, VB.NET, etc)
+
 ### Getting started with Webpack: Part 1 by Ilango Rajagopal
 - [Read the guide](http://tutorials.pluralsight.com/front-end-javascript/getting-started-with-webpack-part-1)
 - [Read more from Ilango Rajagopal](http://tutorials.pluralsight.com/author/ilangorajagopal) <img src="https://avatars.githubusercontent.com/u/4386534?v=3" width="30" height="30" alt="Ilango Rajagopal" />
