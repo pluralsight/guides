@@ -1,10 +1,10 @@
-I'm a huge fan of The Simpsons. In fact, every other sentence that comes out of my mouth is usually a Simpson's reference. I also love social media pages like [@Simpsons_tweets](https://twitter.com/Simpsons_tweets), [The Best Simpsons Faces](https://www.facebook.com/TheBestSimpsonsFaces/), and especially [@SimpsonsQOTD](https://twitter.com/SimpsonsQOTD?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor).
+Back in August I wrote a post for the hack.guides() Tutorial Contest about [building a Simpsons quote-bot with Twilio MMS, Frinkiac, and Python](http://tutorials.pluralsight.com/interesting-apis/build-a-simpsons-quote-bot-with-twilio-mms-frinkiac-and-python).
+I enjoyed writing that post so much that I decided to rewrite it in a language less familiar to me: [Ruby](https://www.ruby-lang.org/). I've also swapped out Frinkiac for [Morbotron](https://morbotron.com/), a similar database made by the same team.
 
-But what am I to do if I don't have access to a computer or wi-fi? How will I get my fill of Simpson's humor? Enter [Twilio](https://www.twilio.com), the API for text, VoIP, and voice in the cloud. 
 
-In this tutorial, we are going to use Twilio along with [Frinkiac](https://frinkiac.com/), the Simpons quote and screencap database, to create a Python app that will automatically send us a Simpson's screencap and quote every day via [MMS](https://en.wikipedia.org/wiki/Multimedia_Messaging_Service). **We are going to accomplish this in less than 40 lines of Python.** Yup, no cron jobs, no servers, just pure Python.
+In this tutorial, we are going to use Twilio along with Morbotron, the Futurama quote and screencap database, to create a Ruby app that will automatically send us a Futurama screencap and quote every day via [MMS](https://en.wikipedia.org/wiki/Multimedia_Messaging_Service). **We are going to accomplish this in exactly 50 lines of Ruby.** Yup, no cron jobs, no servers, just Ruby.
 
-If you don't want to follow along and just want to see the finished code, check out my Github [repository.](https://github.com/Brodan/FrinkiacMMSBot).
+If you don't want to follow along and just want to see the finished code, check out the Github [repository.](https://github.com/Brodan/MorbotronMMSBot).
 
 # Getting Started
 
@@ -16,19 +16,26 @@ Before we can jump into code, we need to get our environment set up.
 
 ### Ruby libraries
 
-Next we need to install a few Python libraries. pip makes this really easy for us. Run the following command which will automatically download and install all the external libraries our script will need:
+Next we need to install a few Ruby gems. We are going to use bundler to take care of this. Run the following command which will automatically download and install all the external libraries our script will need:
 
 https://rvm.io/rvm/install
 
 ```
 $ rvm install 2.3
 
-$ gem install http
-$ gem install twilio-ruby
-$ gem install rufus-scheduler
+$ gem install bundler
+ you make be asked for your password depending on user priveleges
 
 
 ```
+if you're new to ruby and would like enable tab completeion: Basically, just create a file in your home directory called .irbrc. Add the following two lines and save it:
+
+require 'irb/completion'
+
+http://bundler.io/
+
+https://github.com/jmettraux/rufus-scheduler#first_at-first_in-first-first_time
+
 Let's break down the command we just used. 
 ['rufus-scheduler'](https://github.com/jmettraux/rufus-scheduler)
 ['unirest'](http://unirest.io/ruby.html)
@@ -120,13 +127,11 @@ $ python frinkiac.py
 ```
 **Your terminal will look like its frozen, but that's because your app is running.** After 30 seconds, you should see a line printed to your terminal that says `Message sent!`. See the "Optional Steps" section for instructions on running your program as a background process.
 
-If your app crashes due to a `hostname doesn't match` error, it's because of an issue between the `requests` library and your Python version. Upgrade to Python >=2.7.9 or follow [this StackOverflow answer](https://stackoverflow.com/questions/18578439/using-requests-with-tls-doesnt-give-sni-support/18579484#18579484) to resolve this issue. 
-
 If you run into any errors with Twilio, you will see a number of helpful tips printed to the terminal about how to resolve your issue.
 
-Otherwise, check your phone and you should expect to see an MMS with a random Simpsons screencap and caption! Here's an example:
+Otherwise, check your phone and you should expect to see an MMS with a random Futurama screencap and caption! Here's an example:
 
-[S10E23](https://frinkiac.com/img/S11E02/921960.jpg)
+![S10E23](https://frinkiac.com/img/S11E02/921960.jpg)
 
 *Okay, so you say your son is towheaded, button nose, mischievous smile, and may be armed with a slingshot?*
 
@@ -136,7 +141,7 @@ Otherwise, check your phone and you should expect to see an MMS with a random Si
 Special thanks to [this](https://www.twilio.com/blog/2015/10/4-ways-to-parse-a-json-api-with-ruby.html) Twilio article for help on parsing JSON with Ruby.
 
 
-Congratulations! You've just built a Twilio-powered MMS Simpsons quote-bot using nothing more than a few lines of Python. The tools in this guide -- using the `requests`, `twilio`, and `schedule` libraries, and more -- can be used in numerous ways to create applications with even more functionality. Try combining new APIs and libraries with some of Twilio's other features like [Voice](https://www.twilio.com/voice) or [IP Messaging](https://www.twilio.com/ip-messaging), and see what you can come up with!
+Congratulations! You've just built a Twilio-powered MMS Futurama quote-bot using nothing more than a few lines of Ruby. The tools in this guide -- using the `requests`, `twilio-ruby`, and `schedule` libraries, and more -- can be used in numerous ways to create applications with even more functionality. Try combining new APIs and libraries with some of Twilio's other features like [Voice](https://www.twilio.com/voice) or [IP Messaging](https://www.twilio.com/ip-messaging), and see what you can come up with!
 
 If you enjoyed this post be sure to check out the [Twilio Blog](https://www.twilio.com/blog/) for an endless string of interesting articles and fun projects. Also, feel free to check out my [personal blog](https://brodan.biz/blog/) for both technical and non-technical articles, and follow me on Twitter [@brodan_](https://twitter.com/Brodan_) to see when I publish new posts!
 
@@ -144,17 +149,23 @@ If you enjoyed this post be sure to check out the [Twilio Blog](https://www.twil
 # Optional Steps
 
 * An alternative approach to configuring your `TwilioRestClient` object is to use environment variables. **With environment variables you won't have to worry about making your API keys visible to the public.** To do this, run the following commands in your terminal, _replacing the values with your actual account SID and auth token_:
-```
-$ export TWILIO_AUTH_TOKEN='YYYYYY'
-$ export TWILIO_ACCOUNT_SID='XXXXX'
-```
-Then open `frinkiac.py` and add `import os` to the top of the file and replace `account_sid = 'XXXXXXX'` and `auth_token  = 'YYYYYYYY'` with the lines below:
-```
-account_sid = os.environ.get('TWILIO_ACCOUNT_SID')
-auth_token = os.environ.get('TWILIO_AUTH_TOKEN')
+
 ```
 
-* As mentioned earlier, using `schedule` is very intuitive. Some alternative schedules you could use in your app are:
+```
+Then open `morbotron.rb` and add `import os` to the top of the file and replace `account_sid = 'XXXXXXX'` and `auth_token  = 'YYYYYYYY'` with the lines below:
+```
+ Twilio.configure do |config|
+   config.account_sid = account_sid
+   config.auth_token = auth_token
+ end
+
+ and then you can create a new client without parameters
+@client = Twilio::REST::Client.new
+```
+
+* As mentioned earlier, using `schedule` is very intuitive. Some alternative schedules you could use in your app are: https://github.com/jmettraux/rufus-scheduler#scheduling
+* 
 ```
 schedule.every().hour.do(send_MMS)
 schedule.every().monday.do(send_MMS)
