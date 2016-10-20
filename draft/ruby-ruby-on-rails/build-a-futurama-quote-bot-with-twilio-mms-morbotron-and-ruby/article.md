@@ -11,37 +11,40 @@ If you don't want to follow along and just want to see the finished code, check 
 
 Before we can jump into code, we need to get our environment set up. 
 
-### Ruby and gem
+### Ruby and RVM
+For this project I'm going to be using [RVM](https://rvm.io/), the Ruby Version Manager, to install Ruby version 2.3.0. I recommend following RVM's [quick guided install](https://rvm.io/rvm/install#quick-guided-install) to set it up. Once installed, run the following commands to install the necessary Ruby version and set our 
+```
+$ source ~/.rvm/scripts/rvm
+$ rvm install 2.3.0
+$ rvm use 2.3.0
+```
 
+If you see the message `RVM is not a function, selecting rubies with 'rvm use ...' will not work.` check out [this](http://stackoverflow.com/questions/9336596/rvm-installation-not-working-rvm-is-not-a-function) StackOverflow post to correct it. 
 
 ### Ruby libraries
 
-Next we need to install a few Ruby gems. We are going to use bundler to take care of this. Run the following command which will automatically download and install all the external libraries our script will need:
-
-https://rvm.io/rvm/install
+Next we need to install a few Ruby libraries (also called gems). It's a good idea to use [bundler](http://bundler.io/) to handle this. The following command will install bundler which we can use to download and install all the external libraries we will need:
 
 ```
-$ rvm install 2.3
-
 $ gem install bundler
- you make be asked for your password depending on user priveleges
-
 
 ```
-if you're new to ruby and would like enable tab completeion: Basically, just create a file in your home directory called .irbrc. Add the following two lines and save it:
+Then we need to make a [gemfile](http://bundler.io/gemfile.html), which bundler will use to install our libraries. Create a new file in your project direcotry called `Gemfile` and add the following:
+```
+source 'https://rubygems.org'
+gem 'httparty'
+gem 'rufus-scheduler'
+gem 'twilio-ruby'
+```
+Save it, and we can now install all of the gems we need by running the following in the same directory:
+```
+$ bundle install
+```
 
-require 'irb/completion'
-
-http://bundler.io/
-
-https://github.com/jmettraux/rufus-scheduler#first_at-first_in-first-first_time
-
-Let's break down the command we just used. 
-['rufus-scheduler'](https://github.com/jmettraux/rufus-scheduler)
-['unirest'](http://unirest.io/ruby.html)
-['twilio-ruby'](https://github.com/twilio/twilio-ruby)
-['http'](https://github.com/httprb/http)
-
+Let's break down what we just installed. 
+* ['rufus-scheduler'](https://github.com/jmettraux/rufus-scheduler) - A popular job scheduler.
+* ['httparty'](https://github.com/jnunemaker/httparty) - A gem for easy HTTP requests.
+* ['twilio-ruby'](https://github.com/twilio/twilio-ruby) - The official Ruby gem for using the Twilio REST API.
 
 ### Twilio account
 
@@ -49,22 +52,25 @@ Lastly, make sure you have a Twilio account. If you don't, you can [sign up for 
 
 # Building Our App
 
-It's time to start building our app. We only need one file, so navigate to a directory of your choosing and open a new file called `frinkiac.py` in your preferred editor.
+It's time to start building our app. We only need one file, so navigate to a directory of your choosing and open a new file called `morbotron.rb` in your preferred editor.
 
 At the top of this file add the following lines:
 
 ```
-import schedule
-import requests
-from twilio.rest import TwilioRestClient
-from twilio import TwilioRestException
+require 'twilio-ruby'
+require 'rufus-scheduler'
+require 'httparty'
 
-account_sid = 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
-auth_token  = 'YYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY'
-client = TwilioRestClient(account_sid, auth_token)
+# Set up a client to talk to the Twilio REST API.
+account_sid = 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX' # Your Account SID from www.twilio.com/console
+auth_token = 'YYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY' # Your Auth Token from www.twilio.com/console
+@client = Twilio::REST::Client.new account_sid, auth_token
+
+# Set up our scheduler.
+scheduler = Rufus::Scheduler.new
 ```
 
-The first four lines in the code above are simply importing all of the libraries we just installed. The three lines after our imports configure and create a `TwilioRestClient` object that will let us make calls to the [Twilio REST API](https://www.twilio.com/docs/api/rest). Make sure you replace the values for `account_sid` and `auth_token` with your actual account SID and auth token. You can find these values in your [Twilio account dashboard](https://www.twilio.com/console).
+The first three lines in the code above are simply importing all of the libraries we just installed. The three lines after our imports configure and create a `TwilioRestClient` object that will let us make calls to the [Twilio REST API](https://www.twilio.com/docs/api/rest). Make sure you replace the values for `account_sid` and `auth_token` with your actual account SID and auth token. You can find these values in your [Twilio account dashboard](https://www.twilio.com/console).
 
 **Important note**: Never push code with your API credentials to a public repository. See the "Optional Steps" section at the bottom of this post for an alternative approach to using your Twilio API keys.
 
@@ -165,6 +171,7 @@ Then open `morbotron.rb` and add `import os` to the top of the file and replace 
 ```
 
 * As mentioned earlier, using `schedule` is very intuitive. Some alternative schedules you could use in your app are: https://github.com/jmettraux/rufus-scheduler#scheduling
+* https://github.com/jmettraux/rufus-scheduler#first_at-first_in-first-first_time
 * 
 ```
 schedule.every().hour.do(send_MMS)
