@@ -296,3 +296,6 @@ More screenshots:(sequencial to implementation)
 Thus you implement your very own forgot or reset password.
 
 <h3><b>For full project/implementation, please check/fork this <a href="https://github.com/skyrudy/django-reset-password/tree/master">repository</a>. This code has been tested for Python3 and django 1.7/1.10 .</b> </h3>
+
+Also don't forget to visit the original post at <a href="http://ruddra.com">my blog site</a>. Cheers!!
+
