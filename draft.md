@@ -18,11 +18,6 @@
 - [Read more from dk](http://tutorials.pluralsight.com/author/dimkostopoulos) <img src="https://avatars.githubusercontent.com/u/8162389?v=3" width="30" height="30" alt="dk" />
 - Related to: other
 
-### Build a Futurama Quote-bot with Twilio MMS, Morbotron, and Ruby by Chris Hranj
-- [Read the guide](http://tutorials.pluralsight.com/ruby-ruby-on-rails/build-a-futurama-quote-bot-with-twilio-mms-morbotron-and-ruby?status=draft)
-- [Read more from Chris Hranj](http://tutorials.pluralsight.com/author/Brodan) <img src="https://avatars.githubusercontent.com/u/12822268?v=3" width="30" height="30" alt="Chris Hranj" />
-- Related to: Ruby, Ruby on Rails
-
 ### OOPs in Typescript by Mohammed Nisar Ansari
 - [Read the guide](http://tutorials.pluralsight.com/front-end-javascript/oops-in-typescript?status=draft)
 - [Read more from Mohammed Nisar Ansari](http://tutorials.pluralsight.com/author/niisar) <img src="https://avatars.githubusercontent.com/u/6368685?v=3" width="30" height="30" alt="Mohammed Nisar Ansari" />
