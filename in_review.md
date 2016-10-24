@@ -1,3 +1,8 @@
+### Build a Futurama Quote-bot with Twilio MMS, Morbotron, and Ruby by Chris Hranj
+- [Read the guide](http://tutorials.pluralsight.com/ruby-ruby-on-rails/build-a-futurama-quote-bot-with-twilio-mms-morbotron-and-ruby?status=in-review)
+- [Read more from Chris Hranj](http://tutorials.pluralsight.com/author/Brodan) <img src="https://avatars.githubusercontent.com/u/12822268?v=3" width="30" height="30" alt="Chris Hranj" />
+- Related to: Ruby, Ruby on Rails
+
 ### Using the REST Interface with Licas by discompsys
 - [Read the guide](http://tutorials.pluralsight.com/java-and-j2ee/using-the-rest-interface-with-licas?status=in-review)
 - [Read more from discompsys](http://tutorials.pluralsight.com/author/discompsys) <img src="https://avatars.githubusercontent.com/u/20437503?v=3" width="30" height="30" alt="discompsys" />
