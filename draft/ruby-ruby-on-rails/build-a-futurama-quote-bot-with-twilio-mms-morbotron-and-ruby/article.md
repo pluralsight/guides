@@ -70,14 +70,14 @@ auth_token = 'YYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY' # Your Auth Token from www.twili
 scheduler = Rufus::Scheduler.new
 ```
 
-The first three lines in the code above are simply importing all of the libraries we just installed. The three lines after our imports configure and create a `TwilioRestClient` object that will let us make calls to the [Twilio REST API](https://www.twilio.com/docs/api/rest). Make sure you replace the values for `account_sid` and `auth_token` with your actual account SID and auth token. You can find these values in your [Twilio account dashboard](https://www.twilio.com/console). The final line is creating our `scheduler` which we will configure at the end of our app.
+The first three lines in the code above are simply importing all of the libraries we just installed. The three lines after our imports configure and create a `Twilio::REST::Client` object that will let us make calls to the [Twilio REST API](https://www.twilio.com/docs/api/rest). Make sure you replace the values for `account_sid` and `auth_token` with your actual account SID and auth token. You can find these values in your [Twilio account dashboard](https://www.twilio.com/console). The final line is creating our `scheduler` which we will configure at the end of our app.
 
 **Important note**: Never push code with your API credentials to a public repository. See the "Optional Steps" section at the bottom of this post for an alternative approach to using your Twilio API keys.
 
 Next add the following method:
 
 ```
-def get_quote()
+def get_quote
   r = HTTParty.get('https://morbotron.com/api/random')
   # Check if our request had a valid response.
   if r.code == 200
@@ -129,15 +129,15 @@ scheduler.every '24h' do
 end
 scheduler.join
 ```
-`rufus-scheduler` allows you to set how often a method runs in a very intuitive way. The schedule will run inside a `while` loop that will continue looping indefinitely. Our app will now behave according to the schedule, which means that `send_MMS` will be called **every day at 12:00 p.m.** indefinitely or until you exit the app.
+`rufus-scheduler` allows you to set how often a method runs in a very intuitive way. Our app will now behave according to the scheduler, which means that `send_MMS` will be called **once every 24 hours** indefinitely or until you exit the app.
 
 # Testing Our App
-For the purpose of testing the application, it's a good idea to change the schedule we added above to run more frequently. For example, ```schedule.every(30).seconds.do(send_MMS)``` would call the `send_MMS` method every 30 seconds. (This way you won't need to wait until noon to know if your application is working.)
+For the purpose of testing the application, it's a good idea to change the schedule we added above to run more frequently. For example, ```scheduler.every '30s' do``` would call the `send_MMS` method every 30 seconds. (This way you won't need to wait 24 hours to know if your application is working.)
 
-After you've changed that, make sure you save `frinkiac.py`. Go back to your terminal and run the following command:
+After you've changed that, make sure you save `morbotron.rb`. Go back to your terminal and run the following command:
 
 ```
-$ python frinkiac.py
+$ ruby morbotron.rb
 ```
 **Your terminal will look like its frozen, but that's because your app is running.** After 30 seconds, you should see a line printed to your terminal that says `Message sent!`. See the "Optional Steps" section for instructions on running your program as a background process.
 
@@ -161,38 +161,33 @@ If you enjoyed this post be sure to check out the [Twilio Blog](https://www.twil
 
 # Optional Steps
 
-* An alternative approach to configuring your `TwilioRestClient` object is to use environment variables. **With environment variables you won't have to worry about making your API keys visible to the public.** To do this, run the following commands in your terminal, _replacing the values with your actual account SID and auth token_:
+* An alternative approach to configuring your `Twilio::REST::Client` object is to use environment variables. **With environment variables you won't have to worry about making your API keys visible to the public.** To do this, run the following commands in your terminal, _replacing the values with your actual account SID and auth token_:
 
 ```
-ass
+$ export TWILIO_ACCOUNT_SID='XXXXX'
+$ export TWILIO_AUTH_TOKEN='YYYYY'
 ```
-Then open `morbotron.rb` and add `import os` to the top of the file and replace `account_sid = 'XXXXXXX'` and `auth_token  = 'YYYYYYYY'` with the lines below:
+Then open `morbotron.rb` and replace `account_sid = 'XXXXXXX'` and `auth_token  = 'YYYYYYYY'` with the lines below:
 ```
- Twilio.configure do |config|
-   config.account_sid = account_sid
-   config.auth_token = auth_token
- end
-
- and then you can create a new client without parameters
-@client = Twilio::REST::Client.new
+account_sid = ENV["TWILIO_ACCOUNT_SID"]
+auth_token = ENV["TWILIO_AUTH_TOKEN"]
 ```
 
-* As mentioned earlier, using `schedule` is very intuitive. Some alternative schedules you could use in your app are: https://github.com/jmettraux/rufus-scheduler#scheduling
-* https://github.com/jmettraux/rufus-scheduler#first_at-first_in-first-first_time
-* 
+* As mentioned earlier, using `rufus-scheduler` is very intuitive. Some alternative schedules you could use in your app are:
 ```
-schedule.every().hour.do(send_MMS)
-schedule.every().monday.do(send_MMS)
-schedule.every().wednesday.at("16:00").do(send_MMS)
+scheduler.every '15m' do
+scheduler.every '2d', :first_at => Time.now do
+scheduler.at '2016/12/24 2000' do
 ```
+See the [repository](https://github.com/jmettraux/rufus-scheduler#scheduling) for more examples.
 
-* If you'd like to run your application as a background process, simply add `&` to the end of your `python` command:
+* If you'd like to run your application as a background process, simply add `&` to the end of your `ruby` command:
 ```
-$ python frinkiac.py &
+$ ruby morbotron.rb &
 [1] 1872
 ```
-This command will return a process ID (PID) number (`1872` in this case) that you can append to the `kill` command in order to terminate your program (e.g. `$ kill 1872`).
+This command will return a process ID (PID) number (`1872` in this example) that you can append to the `kill` command in order to terminate your program (e.g. `$ kill 1872`). It might be a good idea to remove any lines that print to the terminal if you decide to do this.
 
 ___
-Thank you for reading my tutorial on creating a Simpsons-based Quote-Bot using Twilio MMS, Frinkiac, and (some) Python. I hope that you found this guide informative and entertaining. Please leave your comments and feedback in the discussion section below, and please favorite this article as well!
+Thank you for reading my tutorial on creating a Futurama-based Quote-Bot using Twilio MMS, Morbotron, and (some) Ruby. I hope that you found this guide informative and entertaining. Please leave your comments and feedback in the discussion section below, and please favorite this article as well!
 
