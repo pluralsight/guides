@@ -52,7 +52,7 @@ Lastly, make sure you have a Twilio account. If you don't, you can [sign up for 
 
 # Building Our App
 
-It's time to start building our app. We only need one file, so navigate to a directory of your choosing and open a new file called `morbotron.rb` in your preferred editor.
+It's time to start building our app. In the same directory as your `Gemfile`, open a new file called `morbotron.rb` in your preferred editor.
 
 At the top of this file add the following lines:
 
@@ -70,7 +70,7 @@ auth_token = 'YYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY' # Your Auth Token from www.twili
 scheduler = Rufus::Scheduler.new
 ```
 
-The first three lines in the code above are simply importing all of the libraries we just installed. The three lines after our imports configure and create a `Twilio::REST::Client` object that will let us make calls to the [Twilio REST API](https://www.twilio.com/docs/api/rest). Make sure you replace the values for `account_sid` and `auth_token` with your actual account SID and auth token. You can find these values in your [Twilio account dashboard](https://www.twilio.com/console). The final line is creating our `scheduler` which we will configure at the end of our app.
+The first three lines in the code above are simply importing all of the libraries we just installed. The three lines after our imports configure and create a `Twilio::REST::Client` object that will let us make calls to the [Twilio REST API](https://www.twilio.com/docs/api/rest). Make sure you replace the values for `account_sid` and `auth_token` with your actual account SID and auth token. You can find these values in your [Twilio account dashboard](https://www.twilio.com/console). The final line is creating our `scheduler` which we will configure a little later.
 
 **Important note**: Never push code with your API credentials to a public repository. See the "Optional Steps" section at the bottom of this post for an alternative approach to using your Twilio API keys.
 
@@ -96,7 +96,7 @@ def get_quote
 end
 ```
 
-The method we just added uses `httparty` to send a GET request to Morbotron and retreive data about a random Futurama moment. Although Morbotron isn't *actually* an API, the entire site is react-based and fetches resources via HTTP. As such, we can use the site in the same way that we would use an API. Next, we convert our retrieved data into [JSON](http://www.json.org/), extract the `timestamp` and `episode` code, and convert these two components into string format. `timestamp` and `episode` are used to create the URL that points to a screencap of the random Futurama moment. Finally, we grab the contents from each line of subtitles in our JSON and join them together to form our screencap's `caption`.
+The method we just added uses `httparty` to send a GET request to Morbotron and retreive data about a random Futurama moment. Although Morbotron isn't *actually* an API, the entire site is react-based and fetches resources via HTTP. As such, we can use the site in the same way that we would use an API. Next, we convert our retrieved data into [JSON](http://www.json.org/), extract the `timestamp` and `episode` code, and convert the `timestamp` into a string. `timestamp` and `episode` are used to create the URL that points to a screencap of the random Futurama moment. Finally, we grab the contents from each line of subtitles in our JSON and join them together to form our screencap's `caption`.
 
 Now add the only other method that we need:
 ```
@@ -110,13 +110,12 @@ def send_MMS
       from: '+12345678901' # Replace with your Twilio number
     )
     puts "Message sent!"
-  rescue TwilioRestException
-    # If an error occurs, print it out.
-    $stderr.print "Message failed to send: " + $!
+  rescue Twilio::REST::RequestError => e
+    puts e.message
   end
 end
 ```
-This method starts by calling the `get_quote` method we created in the previous step and by storing its return values. The `begin`/`rescue` block from above was adapted from the [Twilio Ruby Helper Library ](https://www.twilio.com/docs/libraries/ruby#exceptions) documentation. These lines are simply taking in a number of parameters and turning them into a call to the Twilio REST API. 
+This method starts by calling the `get_quote` method we created in the previous step and storing its return values. The `begin`/`rescue` block from above was adapted from the [Twilio Ruby Helper Library ](https://www.twilio.com/docs/libraries/ruby#exceptions) documentation. These lines are simply taking in a number of parameters and turning them into a call to the Twilio REST API. 
 
 _Replace the `to` and `from` parameters with your phone real phone number and your Twilio phone number, respectively._
 If an error occurs during the API call it will be printed to the terminal.
@@ -156,7 +155,7 @@ Congratulations! You've just built a Twilio-powered MMS Futurama quote-bot using
 
 Special thanks to [this](https://www.twilio.com/blog/2015/10/4-ways-to-parse-a-json-api-with-ruby.html) Twilio article written by [Greg Baugues](https://twitter.com/greggyb) for help on parsing JSON with Ruby.
 
-If you enjoyed this post be sure to check out the [Twilio Blog](https://www.twilio.com/blog/) for an endless string of interesting articles and fun projects. Also, feel free to check out my [personal blog](https://brodan.biz/blog/) for both technical and non-technical articles, and follow me on Twitter [@brodan_](https://twitter.com/Brodan_) to see when I publish new posts!
+If you enjoyed this post be sure to check out the [Twilio Blog](https://www.twilio.com/blog/) for an endless amount of interesting articles and fun projects. Also, feel free to check out my [personal blog](https://brodan.biz/blog/) for both technical and non-technical articles, and follow me on Twitter [@brodan_](https://twitter.com/Brodan_) to see when I publish new posts!
 
 
 # Optional Steps
@@ -179,7 +178,7 @@ scheduler.every '15m' do
 scheduler.every '2d', :first_at => Time.now do
 scheduler.at '2016/12/24 2000' do
 ```
-See the [repository](https://github.com/jmettraux/rufus-scheduler#scheduling) for more examples.
+See the [repository](https://github.com/jmettraux/rufus-scheduler#scheduling) for full documentation and examples.
 
 * If you'd like to run your application as a background process, simply add `&` to the end of your `ruby` command:
 ```
