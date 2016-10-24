@@ -138,8 +138,8 @@ If you enjoyed this post be sure to check out the [Twilio Blog](https://www.twil
 
 * An alternative approach to configuring your `TwilioRestClient` object is to use environment variables. **With environment variables you won't have to worry about making your API keys visible to the public.** To do this, run the following commands in your terminal, _replacing the values with your actual account SID and auth token_:
 ```
-$ export TWILIO_AUTH_TOKEN='YYYYYY'
 $ export TWILIO_ACCOUNT_SID='XXXXX'
+$ export TWILIO_AUTH_TOKEN='YYYYYY'
 ```
 Then open `frinkiac.py` and add `import os` to the top of the file and replace `account_sid = 'XXXXXXX'` and `auth_token  = 'YYYYYYYY'` with the lines below:
 ```
