@@ -28,7 +28,7 @@ In your console, run:
 ```bash
 bundle install
 ```
-This will install the gems in the Gemfile. To configure <code>rack-cors</code>, add this code snippet to the configuration file of the Rails applicaiton:
+This will install the gems in the Gemfile. To configure <code>rack-cors</code>, add this code snippet to the configuration file of the Rails application:
 
 ```ruby
  #config/application.rb
@@ -59,7 +59,7 @@ class ApplicationController < ActionController::Base
   #...
 end
 ```
- An action called  <code>index</code> is going to respond with the  <code>{some: 'data'}</code> JSON object when requested through [http://localhost:3000](http://localhost:3000). Let's put a route for the action:
+ An action called  <code>index</code> is going to respond with the  <code>{some: 'data'}</code> JSON when requested through [http://localhost:3000](http://localhost:3000). Let's put a route for the action:
 ```ruby
 #config/routes.rb
 Rails.application.routes.draw do
@@ -76,7 +76,7 @@ Because Angular 2 is a framework and not a library, it would be best if is  put 
 Angular 2 uses TypeScript, a superset of JavaScript. As of today, there isn't a way for TypeScript to be implemented into Rails' asset pipeline, which means that a transpiler has to be configured in the root directory of the Rails application. Transpilers (short for [transcompilers](http://www.computerhope.com/jargon/t/transcompiler.htm)) in JavaScript are tools that read   code (or CoffeScript or similar)  and transpile it to pure JavaScript that can be interpreted by the browser. 
 
 #### Setting up the environment for Angular 2
-Because of TypeScript's requirements, there are three files that need to be created in the root directory in order the environment to be set up for an Angular 2 application. 
+Because of TypeScript's requirements, there are three files that need to be created in the root directory in order to the environment to be set up for an Angular 2 application. 
 
  - *package.json*
  - *typings.json*
@@ -181,7 +181,7 @@ end
 ```
 
 #### Bootstrapping Angular 2
-The Rails applicaiton is now ready to load an Angular 2 application that resides in its <code>public</code> directory. To start off, let's create a root html document that is going to load all the JavaScript files:
+The Rails application is now ready to load an Angular 2 application that resides in its <code>public</code> directory. To start off, let's create a root html document that is going to load all the JavaScript files:
 ```html
 <!-- public/index.html -->
 <html>
@@ -424,7 +424,7 @@ class Item extends React.Component {
  }
 
 ```
-<code> componentDidMount() </code> is a method that will be called when the component becomes mounted into the DOM. Simply said, it is called when the component is rendered on the page. In it, the <code>$.getJSON</code> function makes a request to <code>localhost:300/api</code> and uses EcmaScript 6's arrow function to get the callback when the request succeeds. [this.setState()](https://facebook.github.io/react/docs/component-api.html#setstate) will set the <code>item</code> property with the property of the <code>response</code> object, which will contain <code>{ some: 'data' }</code>.
+<code> componentDidMount() </code> is a method that will be called when the component becomes mounted into the DOM. Simply said, it is called when the component is rendered on the page. In it, the <code>$.getJSON</code> function makes a request to <code>localhost:3000/api</code> and uses EcmaScript 6's arrow function to get the callback when the request succeeds. [this.setState()](https://facebook.github.io/react/docs/component-api.html#setstate) will set the <code>item</code> property with the property of the <code>response</code> object, which will contain <code>{ some: 'data' }</code>.
 
 Last, make a view to render the component. Go to <code>app/views</code>, create a directory named <code>site</code> and create a file named <code>index.html.erb</code>. Put the following snippet in it:
 
