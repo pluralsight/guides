@@ -1,3 +1,8 @@
+### Build a Futurama Quote-bot with Twilio MMS, Morbotron, and Ruby by Chris Hranj
+- [Read the guide](http://tutorials.pluralsight.com/ruby-ruby-on-rails/build-a-futurama-quote-bot-with-twilio-mms-morbotron-and-ruby)
+- [Read more from Chris Hranj](http://tutorials.pluralsight.com/author/Brodan) <img src="https://avatars.githubusercontent.com/u/12822268?v=3" width="30" height="30" alt="Chris Hranj" />
+- Related to: Ruby, Ruby on Rails
+
 ### Implementing simple OAuth server with Katana and MembershipReboot by Peter Mbanugo
 - [Read the guide](http://tutorials.pluralsight.com/microsoft-net/implementing-simple-oauth-server-with-katana-and-membershipreboot)
 - [Read more from Peter Mbanugo](http://tutorials.pluralsight.com/author/pmbanugo) <img src="https://avatars.githubusercontent.com/u/4036118?v=3" width="30" height="30" alt="Peter Mbanugo" />
