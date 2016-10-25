@@ -76,7 +76,7 @@ Because Angular 2 is a framework and not a library, it would be best if is  put 
 Angular 2 uses TypeScript, a superset of JavaScript. As of today, there isn't a way for TypeScript to be implemented into Rails' asset pipeline, which means that a transpiler has to be configured in the root directory of the Rails application. Transpilers (short for [transcompilers](http://www.computerhope.com/jargon/t/transcompiler.htm)) in JavaScript are tools that read   code (or CoffeScript or similar)  and transpile it to pure JavaScript that can be interpreted by the browser. 
 
 #### Setting up the environment for Angular 2
-Because of TypeScript's requirements, there are three files that need to be created in the root directory in order to the environment to be set up for an Angular 2 application. 
+Because of TypeScript's requirements, there are three files that need to be created in the root directory in order for the environment to be set up for an Angular 2 application. 
 
  - *package.json*
  - *typings.json*
