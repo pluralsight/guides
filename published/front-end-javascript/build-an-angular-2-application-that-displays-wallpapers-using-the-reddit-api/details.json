@@ -3,12 +3,7 @@
     "author_name": "Kaizeras",
     "author_real_name": "Hristo Georgiev",
     "branch": "master",
-    "branches": [
-        [
-            "adityavarshney",
-            "adityavarshney-front-end-javascript-build-an-angular-2-application-that-displays-wallpapers-using-the-reddit-api"
-        ]
-    ],
+    "branches": [],
     "filename": "article.md",
     "first_commit": "6ef14f0740dca37259c0dc033b96da11c0b7680c",
     "image_url": "https://avatars.githubusercontent.com/u/6340189?v=3",
