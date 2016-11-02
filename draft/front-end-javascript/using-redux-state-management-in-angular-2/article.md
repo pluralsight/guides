@@ -1,5 +1,4 @@
 
-
 State management has been an ongoing issue in front-end frameworks. The standard MVC (Model-View-Controller) approach has proven to be inneffective for managing the application state in front-end applications. For instance,  In Angular 1.x, the logic for  managing the application state was distributed between directives, controllers and services, each level having its own logic for mutating the state.  This resulted in a highly segmented application state, which was prone to causing inconsistencies and was difficult to test.
 
 Such issues have become more apparent and difficult to circumvent as front-end applications started to become increasigly complex and more reactive to user input. However, new practices in front-end development such as the embracing of functional programming have given birth to a new concept for state maangement - [Redux](https://github.com/reactjs/redux).
@@ -26,6 +25,27 @@ Redux is made out of four main pieces - **the main store** , **actions** , **red
   (state: T, action: Action): T;
 }
 ```
+*Example*
+```
+export const itemsReducer: ActionReducer<number> = (state = [], action: Action) => {
+  switch (action.type) {
+    case ADD_ITEM: //adding an item
+      const item:Item = action.payload;
+      //KEEPING THE STATE IMMUTABLE:
+      // We don't perform actions that alter the state such as
+      // array.push, array.shift ad so on.
+      //instead, we concatenate the item
+      return [ ...state, item ]; 
+
+    case REMOVE_OPERATION://removing the item
+    //Again, we don't remove the item, we just filter the new state so
+    //that it won't contain the item we're removing
+      return state.filter(operation => {
+        return operation.id !== action.payload.id;
+      });
+  }
+}
+```
 #### Actions
  Actions represent payloads of information that are dispatched to the store from the application and are usually trigerred by user interaaction. Each reducer has a set of action types that define how the state should be changed. An action is composed of two parts - a type and a payload:
  
@@ -35,7 +55,12 @@ Redux is made out of four main pieces - **the main store** , **actions** , **red
   payload?: any;
 }
 ```
-  
+
+*Example*:
+````
+//making an action for adding an item
+dispatch({type: ADD_ITEM, payload: {id: 1, name: 'An item' , category: 'miscellaneous'}})
+````
 ##### Review
 
  When an action is dispatched, the reducer takes it and applies the payload depending on the action type, and outputs the new state.
@@ -51,7 +76,19 @@ Redux is made out of four main pieces - **the main store** , **actions** , **red
 #### Projecting data
  
  As you already know, the Store is a tree-like structure representing the application state, that is composed of reducers, which represent different slices of the state. In the case of Angular 2's [ngrx/store]() , the store is an [observable](http://reactivex.io/rxjs/class/es6/Observable.js~Observable.html), hence making the access to the application's state reactive and providing the opportunities to mix the values of several states using RxJS's operators. 
+ 
+```
+//getting a single slice of the state
+store.select('items')
 
+//combine multipleslices
+Observable.combineLatest(
+  store.select('items'),
+  store.select('categories'),
+  (items, categories) => {
+    
+})
+```
 
 ### Should I switch to Redux?
 
