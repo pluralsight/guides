@@ -1,4 +1,3 @@
-
 State management has been an ongoing issue in front-end frameworks. The standard MVC (Model-View-Controller) approach has proven to be inneffective for managing the application state in front-end applications. For instance,  In Angular 1.x, the logic for  managing the application state was distributed between directives, controllers and services, each level having its own logic for mutating the state.  This resulted in a highly segmented application state, which was prone to causing inconsistencies and was difficult to test.
 
 Such issues have become more apparent and difficult to circumvent as front-end applications started to become increasigly complex and more reactive to user input. However, new practices in front-end development such as the embracing of functional programming have given birth to a new concept for state maangement - [Redux](https://github.com/reactjs/redux).
@@ -90,7 +89,20 @@ Observable.combineLatest(
 })
 ```
 
-### Should I switch to Redux?
+
+
+## Redux in practice
+
+ Now that you know the main concepts, you're probably wondering how they tie together in an Angular 2 application. To illustrate how Redux works, we are going to build a simple financial accounting tool that will keep track of your transactions using the Redux architecture. It will feature operations which will either add or deduct money from an imaginary account.
+ 
+ 
+![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/b3ec1192-be69-4e0a-b635-239a99bf3eef.001)
+
+ 
+ 
+ 
+ 
+ 
 
 
 ### Putting it into practice - build your finance planner
