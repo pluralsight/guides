@@ -254,7 +254,7 @@ import { Component, ViewEncapsulation } from '@angular/core';
 import {Operation} from "./common/operation.model";
 import {State, Store} from "@ngrx/store";
 @Component({
-  selector: 'app',
+  selector: 'app-root',
   template: `{{ operations | json }}`
 })
 export class AppComponent {
@@ -270,4 +270,100 @@ export class AppComponent {
 
 By injecting the store and using `store.select()`, you can access one of the states in the application (from the reducers you put in `provideStore()`. In this case, we only have `operations`. The `store` always returns an observable, so you have to `subscribe` to it, or, if you are passing it in a child component, use the `async` pipe (an example will be given at a later stage). In the template of the component, we'll use the `json` pipe to see the state of `operations`. At this point, it is an empty array (`[]`).
 
+
 ### Dispatching actions
+
+  The state of the store is updated through pre-defined actions, which are dispatched from user events and are used as input for the reducer functions. 
+  Naturally, the first action we are going ti implement in the applciation will be the `ADD_OPERATION` action which, as the name suggests, is going to attach a new financial operation to the array of operations.
+   ```javascript
+   
+ // src/app/app.component.ts
+ import {ADD_OPERATION,} from "./common/operations"; //import the operation type
+ 
+ //...
+ export class AppComponent {
+
+
+  public id:number = 0 ; //simulating IDs
+  public operations:Array<Operation>;
+  
+  //initialize a new operation class instance
+  public operation:Opeation =  new Operation();
+
+
+  constructor(private _store: Store<State>) {
+    _store.select('operations').subscribe(state => this.operations= state)
+  }
+
+
+  addOperation() {
+    //use the dispatch() function to send an action with type and payload
+    this._store.dispatch({type: ADD_OPERATION , payload: {
+      id: ++ this.id,//simulating ID increments
+      reason: this.operation.reason,
+      amount: this.operation.amount
+    }});
+  }
+
+   
+   
+   
+    ```
+  
+  The action is dispatched using the built-in `dispatch()` function in the store provided by @ngrx/store. As an argument, we send a valid action type that we previously defined in `src/app/common/operations.ts`.
+  
+  But how is the user going to input the information about the financial operation? Let's add a form that will let the user populate the `Operation` model with information
+  ```javascript
+    // src/app/app.component.ts
+
+    @Component({
+    
+     template: `<div class="row">
+    <div class="col-md-12">
+      <form class="form-inline" >
+        <div class="form-group">
+          <div class="input-group">
+            <div class="input-group-addon">$</div>
+            <input type="text" class="form-control"  [(ngModel)]="operation.amount" name="amount" placeholder="Amount">
+            <div class="input-group-addon">.00</div>
+          </div>
+        </div>
+        <div class="form-group">
+          <input type="text" [(ngModel)]="operation.reason"  name="reason" class="form-control" placeholder="Reason">
+        </div>
+        
+        <button type="submit" (click)="addOperation()" class="btn btn-primary">Add operation</button>
+      </form>
+    </div>
+  </div>
+  {{operations | json}}`
+   
+   //...
+    
+    })
+  ```
+  
+  In the template, we simply use `[(ngModel)]` to bind the `Operation`'s attributes to the input fields and call the `addOperation()` when the button is clicked.
+  
+  If try to inserting something into the state right now, you'll see it popping in on the template te as json. That definitely isn't good for user experience and it limits our ability to add more functionality. Let's make `operations` into a list:
+  
+  In the place of `{{operations | json}}`, put the following:
+  ```html
+    <div class="row">
+    <div class="col-md-12">
+      <ul class="list-group" >
+        <li *ngFor="let operation of operations"class="list-group-item" [ngClass]="{'list-group-item-success': operation.amount > 0 ,'list-group-item-danger': operation.amount < 0 }">
+          <h3 class="h3">$ {{operation.amount}}</h3>
+          <p><span class="text-muted">Reason:</span> {{operation.reason}}</p>
+        </li>
+      </ul>
+    </div>
+  </div>
+```
+
+Using `*ngFor` and some built-in boostrap styles, we now see a financial operation popping up every time we add one.
+
+What we just implemented is a full cycle of a simple action. By clicking on the *Add Operation* button, we dispatched an `ADD_OPERATION` **action** to the store, which called the operations **reducer**. The reducer applied the action and returned the new **state** in the store. The `operations` observable received a new value of the state and displayed it on the template.
+
+
+![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/d3796b1c-c556-467a-81a1-972223b363cd.jpg)
