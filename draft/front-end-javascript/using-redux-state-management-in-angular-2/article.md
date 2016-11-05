@@ -158,6 +158,8 @@ export class Operation {
   constructor() {}
 }
 ```
+
+#### Defining a reducer function
  Next, create a file that will contain the definitions of the actions and the reducer for the financial operations:
  
 ```
@@ -214,6 +216,7 @@ export const operationsReducer: ActionReducer = (state = initialState, action: A
  
  Note that the state is **immutable**. Instead of changing the array of operations, we create a copy of it and apply the changes to the new copy.
  
+#### Initializing the store
  The next step is to put the reducer into the store. 
  
 ```
@@ -244,8 +247,9 @@ At this stage of the application, there is only one slice of the state and conse
 By putting the `operationsReducers` as an argument in `provideStore`, you can access the state of `operations` in any place of the application by importing `Store` from `@ngrx/store`. Here is how you can do it:
 
 
-
+#### Projecting the state
 ```
+//src/app/app.component.ts
 import { Component, ViewEncapsulation } from '@angular/core';
 import {Operation} from "./common/operation.model";
 import {State, Store} from "@ngrx/store";
@@ -264,4 +268,6 @@ export class AppComponent {
 }
 ```
 
+By injecting the store and using `store.select()`, you can access one of the states in the application (from the reducers you put in `provideStore()`. In this case, we only have `operations`. The `store` always returns an observable, so you have to `subscribe` to it, or, if you are passing it in a child component, use the `async` pipe (an example will be given at a later stage). In the template of the component, we'll use the `json` pipe to see the state of `operations`. At this point, it is an empty array (`[]`).
 
+### Dispatching actions
