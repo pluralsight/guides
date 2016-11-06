@@ -446,6 +446,13 @@ Got to [http://localhost:4200](http://localhost:4200) and play around with your 
 
 
 
+
+
+
+![componentstruct](https://raw.githubusercontent.com/pluralsight/guides/master/images/be0b574c-b75f-4302-b1b3-48a9cfa8d9d7.001)
+
+
+
  
  
  
