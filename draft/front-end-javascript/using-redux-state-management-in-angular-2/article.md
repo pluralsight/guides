@@ -1,9 +1,8 @@
-State management has been an ongoing issue in front-end frameworks. The standard MVC (Model-View-Controller) approach has proven to be inneffective for managing the application state in front-end applications. For instance,  In Angular 1.x, the logic for  managing the application state was distributed between directives, controllers and services, each level having its own logic for mutating the state.  This resulted in a highly segmented application state, which was prone to causing inconsistencies and was difficult to test.
+State management has been an ongoing issue in front-end frameworks. The standard MVC (Model-View-Controller) approach has proven to be inneffective for managing the application state in front-end applications due to the state being mutatated at multiple levels. For instance,  In Angular 1.x, the logic for  managing the application state was distributed between directives, controllers and services, each level having its own logic for mutating the state.  This resulted in a highly segmented application state, which was prone to causing inconsistencies and was difficult to test.
 
 Such issues have become more apparent and difficult to circumvent as front-end applications started to become increasigly complex and more reactive to user input. However, new practices in front-end development such as the embracing of functional programming have given birth to a new concept for state maangement - [Redux](https://github.com/reactjs/redux). With Redux, you can access the most recent values of the anywhere into your applicaiton.
 
 Even though Redux has originally been brought by the React community, third-party libraries such as [ngrx/store](https://github.com/ngrx/store), combined with the power of [rxJS](https://github.com/Reactive-Extensions/RxJS) , have made Redux an equally suitable concept for use in Angular 2 applications.
-
 
 In this guide, you are going to get acquainted with the core concepts of Redux and how they are applied in Angular 2 applications.
 
@@ -196,12 +195,14 @@ export const operationsReducer: ActionReducer = (state = initialState, action: A
 
     case DECREMENT_OPERATION:
       const operation = --action.payload.amount;
+      update the state by creating a new object using Object.assing()
       return state.map(item => {
         return item.id === action.payload.id ? Object.assign({}, item, operation) : item;
       });
 
     case REMOVE_OPERATION:
       return state.filter(operation => {
+        //filter items to exclude the item in the payload
         return operation.id !== action.payload.id;
       });
 
@@ -268,7 +269,16 @@ export class AppComponent {
 }
 ```
 
-By injecting the store and using `store.select()`, you can access one of the states in the application (from the reducers you put in `provideStore()`. In this case, we only have `operations`. The `store` always returns an observable, so you have to `subscribe` to it, or, if you are passing it in a child component, use the `async` pipe (an example will be given at a later stage). In the template of the component, we'll use the `json` pipe to see the state of `operations`. At this point, it is an empty array (`[]`).
+By injecting the store and using `store.select()`, you can access one of the states in the application (from the reducers you put in `provideStore()`. In this case, we only have `operations`. The `store` always returns an observable, so you have to `subscribe` to it, or, if you are passing it in a child component, use the `async` pipe (an example will be given at a later stage). 
+
+Go to your terminal and build the application:
+```bash
+ ng serve
+```
+
+Open your browser and go to [http://localhost:4200](http://localhost:4200).
+
+ At this point, everything you'll see is an it is an empty array (`[]`), coming from the `json` pipe being used on `operations`.
 
 
 ### Dispatching actions
@@ -367,3 +377,75 @@ What we just implemented is a full cycle of a simple action. By clicking on the 
 
 
 ![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/d3796b1c-c556-467a-81a1-972223b363cd.jpg)
+
+
+ Let's add the rest of the actions - `REMOVE_OPERATION` , `ICREMENT_OPERATION` , `DECREMENT_OPERATION`. Here is the complete code for the `AppComponent` class:
+ 
+ 
+ ```
+ // src/app/app.component.ts
+ import {ADD_OPERATION, REMOVE_OPERATION, INCREMENT_OPERATION, DECREMENT_OPERATION} from "./common/operations";
+ 
+ 
+ export class AppComponent {
+
+  public id:number = 0 ; //simulating IDs
+  public operations:Array<Operation>;
+  public operation:Operation = new Operation();
+
+  constructor(private _store: Store<State>) {
+    _store.select('operations').subscribe(state => this.operations= state)
+
+  }
+
+  addOperation() {
+    this._store.dispatch({type: ADD_OPERATION , payload: {
+      id: ++ this.id,//simulating ID increments
+      reason: this.operation.reason,
+      amount: this.operation.amount
+    }});
+  }
+  
+  //Adding REMOVE_OPERATIOn , INCREMENT_OPERATION , DECREMENT_OPERATION
+
+  incrementOperation(operation){
+    this._store.dispatch({type: INCREMENT_OPERATION, payload: operation})
+  }
+
+  decrementOperation(operation) {
+    this._store.dispatch({type: DECREMENT_OPERATION, payload: operation})
+  }
+
+  deleteOperation(operation) {
+    this._store.dispatch({type: REMOVE_OPERATION, payload: operation})
+  }
+
+}
+```
+The rest of the actions follow the same pattern by sending an action type and the operation itself as a payload.
+In the template, we just need to add the correspinding buttons to trigger these actions. Let's add a button group in the `.list-group-item` div for the actions that can be done on a single operation.
+
+```html
+<!--src/app/app.component.ts -->
+<!-- rest of the temlate -->
+<li *ngFor="let operation of operations"class="list-group-item" [ngClass]="{'list-group-item-success': operation.amount > 0 ,'list-group-item-danger': operation.amount < 0 }">
+  <h3 class="h3">$ {{operation.amount}}</h3>
+  <p><span class="text-muted">Reason:</span> {{operation.reason}}</p>
+  
+  <div class="btn-group">
+      <button class="btn btn-success" (click)="incrementOperation(operation)">+</button>
+      <button class="btn btn-warning" (click)="decrementOperation(operation)">-</button>
+       <button class="btn btn-danger" (click)="deleteOperation(operation)"> Delete</button>
+  </div>
+</li>
+```
+Got to [http://localhost:4200](http://localhost:4200) and play around with your Redux app!
+
+
+![app demo](https://raw.githubusercontent.com/pluralsight/guides/master/images/79900243-4221-43de-99e0-1f56615c5ff8.com-video-to-gif)
+
+
+
+ 
+ 
+ 
