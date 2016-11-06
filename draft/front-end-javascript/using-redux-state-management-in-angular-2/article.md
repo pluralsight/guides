@@ -445,9 +445,18 @@ Got to [http://localhost:4200](http://localhost:4200) and play around with your 
 ![app demo](https://raw.githubusercontent.com/pluralsight/guides/master/images/79900243-4221-43de-99e0-1f56615c5ff8.com-video-to-gif)
 
 
-
-
-
+ ### Component structure
+ 
+ Right now, our view is contained into one single single component  - `AppComponent`. There is not much logic, but the code starts to pile up already and it has to get separated into smaller components.x
+ Redux uses a specific approach in structuing components. In a Redux application, components are divided into two types - **container** and **children** components.
+ 
+ #### Container components
+ Container components are routable components that *contain* child components inside them. They are responsible for having the connetion with the store, dispatching of actions, and distributing the data to the child components.
+ 
+ #### Child components 
+ The role of the child components is primarily representational. They accept input from the container component and display it to the user. they are also responsible for handling and outputting user interactions to the container component.
+ 
+ 
 
 ![componentstruct](https://raw.githubusercontent.com/pluralsight/guides/master/images/be0b574c-b75f-4302-b1b3-48a9cfa8d9d7.001)
 
