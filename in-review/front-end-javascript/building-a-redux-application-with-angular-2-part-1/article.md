@@ -79,7 +79,7 @@ dispatch({type: ADD_ITEM, payload: {id: 1, name: 'An item' , category: 'miscella
 //getting a single slice of the state
 store.select('items')
 
-//combine multipleslices
+//combine multiple slices
 Observable.combineLatest(
   store.select('items'),
   store.select('categories'),
