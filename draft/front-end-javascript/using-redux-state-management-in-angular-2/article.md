@@ -1,8 +1,8 @@
 State management has been an ongoing issue in front-end frameworks. The standard MVC (Model-View-Controller) approach has proven to be inneffective for managing the application state in front-end applications due to the state being mutatated at multiple levels. For instance,  In Angular 1.x, the logic for  managing the application state was distributed between directives, controllers and services, each level having its own logic for mutating the state.  This resulted in a highly segmented application state, which was prone to causing inconsistencies and was difficult to test.
 
-Such issues have become more apparent and difficult to circumvent as front-end applications started to become increasigly complex and more reactive to user input. However, new practices in front-end development such as the embracing of functional programming have given birth to a new concept for state maangement - [Redux](https://github.com/reactjs/redux). With Redux, you can access the most recent values of the anywhere into your applicaiton.
+Such issues have become more apparent and difficult to circumvent as front-end applications started to become increasigly complex and more reactive to user input. However, new practices in front-end development such as the embracing of functional programming have given birth to a new concept for state maangement - [Redux](https://github.com/reactjs/redux). With Redux, the state is centralized into a single entity, giving you access to the most recent values of your state anywhere in your applicaiton.
 
-Even though Redux has originally been brought by the React community, third-party libraries such as [ngrx/store](https://github.com/ngrx/store), combined with the power of [rxJS](https://github.com/Reactive-Extensions/RxJS) , have made Redux an equally suitable concept for use in Angular 2 applications.
+Even though Redux has originally been brought by the React community, third-party libraries such as [ngrx/store](https://github.com/ngrx/store), combined with the power of [rxJS](https://github.com/Reactive-Extensions/RxJS), have made Redux an equally suitable concept for use in Angular 2 applications.
 
 In this guide, you are going to get acquainted with the core concepts of Redux and how they are applied in Angular 2 applications.
 
@@ -447,21 +447,196 @@ Got to [http://localhost:4200](http://localhost:4200) and play around with your 
 
  ### Component structure
  
- Right now, our view is contained into one single single component  - `AppComponent`. There is not much logic, but the code starts to pile up already and it has to get separated into smaller components.x
- Redux uses a specific approach in structuing components. In a Redux application, components are divided into two types - **container** and **children** components.
+ Right now, our view is contained into one single single component  - `AppComponent`. The code already starts to pile and it has to get separated into smaller components. Redux uses its own specific approach for structuing components. In a Redux application, components are divided into two types - **container** and **children** components.
  
  #### Container components
- Container components are routable components that *contain* child components inside them. They are responsible for having the connetion with the store, dispatching of actions, and distributing the data to the child components.
+ Container components are routable components that *contain* child components inside them. They are responsible for containing most of the logic -  having the connection with the store, dispatching of actions, and distributing the data to the child components.
  
  #### Child components 
  The role of the child components is primarily representational. They accept input from the container component and display it to the user. they are also responsible for handling and outputting user interactions to the container component.
  
+ In our application, we can delegate some of the representational logic from `AppComponent` to two child components - `NewOpreration` and `OperationsList`:
  
 
 ![componentstruct](https://raw.githubusercontent.com/pluralsight/guides/master/images/be0b574c-b75f-4302-b1b3-48a9cfa8d9d7.001)
 
+Here is how the code for the three components looks after dividing them:
+
+**app.component.ts** - *container component*
+```javascript
+// src/app/app.component.ts
+import { Component } from '@angular/core';
+import {Operation} from "./common/operation.model";
+import {State, Store} from "@ngrx/store";
+import {ADD_OPERATION, REMOVE_OPERATION, INCREMENT_OPERATION, DECREMENT_OPERATION} from "./common/operations";
 
 
- 
- 
- 
+@Component({
+  selector: 'app-root',
+  template: `<div class="container">
+      <new-operation (addOperation)="addOperation($event)"></new-operation>
+      <!-- utilizing the async pipe to handle all subscribing to observables -->
+      <operations-list [operations]="operations | async"  
+      (deleteOperation)="deleteOperation($event)"
+      (incrementOperation)="incrementOperation($event)"
+      (decrementOperation)="decrementOperation($event)"></operations-list>
+</div>
+
+`
+})
+
+ //All of the interactions with the store such as selecting and dispatching are in the
+ //'container component'
+export class AppComponent {
+  
+  public id:number = 0 ; //simulating IDs
+  public operations:Array<Operation>;
+
+
+  constructor(private _store: Store<State>) {
+    this.operations = _store.select('operations')
+
+  }
+
+
+  addOperation(operation) {
+    this._store.dispatch({type: ADD_OPERATION , payload: {
+      id: ++ this.id,//simulating ID increments
+      reason: operation.reason,
+      amount: operation.amount
+    }});
+  }
+
+  incrementOperation(operation){
+    this._store.dispatch({type: INCREMENT_OPERATION, payload: operation})
+  }
+
+  decrementOperation(operation) {
+    this._store.dispatch({type: DECREMENT_OPERATION, payload: operation})
+  }
+
+
+  deleteOperation(operation) {
+    this._store.dispatch({type: REMOVE_OPERATION, payload: operation})
+  }
+
+
+
+}
+```
+**new-operation.component.ts** - *child component*
+
+```javascript
+//src/app/new-operation.component.ts
+import {Component, Output, EventEmitter, ChangeDetectionStrategy} from '@angular/core';
+import {Operation} from "./common/operation.model";
+
+@Component({
+  selector: 'new-operation',
+  templateUrl: './new-operation.template.html',
+  //ChangeDetectionStartegy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush
+
+})
+
+export class NewOperation {
+  public operation:Operation;
+  constructor() {
+    this.operation = new Operation();
+  }
+
+  @Output() addOperation = new EventEmitter();
+
+}
+
+```
+**new-operation.template.html**
+```html
+<!-- src/app/new-operation.template.html -->
+<div class="row">
+  <div class="list-group-item">
+    <form class="form-inline" >
+      <div class="form-group">
+        <div class="input-group">
+          <div class="input-group-addon">$</div>
+          <input type="text" class="form-control"  [(ngModel)]="operation.amount" name="amount" placeholder="Amount">
+          <div class="input-group-addon">.00</div>
+        </div>
+      </div>
+      <div class="form-group">
+        <input type="text" [(ngModel)]="operation.reason"  name="reason" class="form-control" placeholder="Reason">
+      </div>
+      <button type="submit" (click)="addOperation.emit(operation)" class="btn btn-primary">Add operation</button>
+    </form>
+  </div>
+</div>
+```
+
+**operations-list.component.ts** - *child component*
+```javascript
+//src/app/operations-list.component.ts
+import {Component, Input, Output, EventEmitter, ChangeDetectionStrategy} from '@angular/core';
+import {Operation} from "./common/operation.model";
+
+@Component({
+  selector: 'operations-list',
+  templateUrl: './operations-list.template.html',
+  changeDetection: ChangeDetectionStrategy.OnPush
+
+})
+
+export class OperationsList {
+  @Input() operations:Array<Operation>;
+
+  constructor() {}
+
+  @Output() deleteOperation = new EventEmitter();
+  @Output() incrementOperation = new EventEmitter();
+  @Output() decrementOperation = new EventEmitter();
+}
+```
+**operations-list.template.html**
+```html
+<!-- src/app/operations-list.template.html -->
+<div class="row">
+  <div class="col-md-12">
+    <ul class="list-group" >
+      <li *ngFor="let operation of operations"class="list-group-item" [ngClass]="{'list-group-item-success': operation.amount > 0 ,'list-group-item-danger': operation.amount < 0 }">
+        <h3 class="h3">$ {{operation.amount}}</h3>
+        <p><span class="text-muted">Reason:</span> {{operation.reason}}</p>
+        <div class="btn-group">
+          <button class="btn btn-success" (click)="incrementOperation.emit(operation)">+</button>
+          <button class="btn btn-warning" (click)="decrementOperation.emit(operation)">-</button>
+          <button class="btn btn-danger" (click)="deleteOperation.emit(operation)"> Delete</button>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>
+```
+
+#### The role of **ChangeDetectionStrategy.OnPush**
+
+There is `changeDetection: ChangeDetectionStrategy.OnPush` put on the decorators of the two child components. To better understand what it does, you have to know how a component works; Each component has its own change detector which checks the component's state every time an event happens and stores the new and the previous state of the component. if you've ever used [OnChanges](https://angular.io/docs/ts/latest/api/core/index/OnChanges-class.html), you have already seen the component's change detector in action. What [ChangeDetectionStrategy](https://angular.io/docs/ts/latest/api/core/index/ChangeDetectionStrategy-enum.html) does is that it determines when the change detector 'listens' for changes. By setting the strategy to `OnPush`,  the changeDetector runs only when the component `@Input()` changes.
+
+Because the state of the child compoents relies sonly on their `@Input`, using `OnPush` reduces the times the component's internal change detector runs, giving a *tremendous* performance boost to your application.
+
+
+#### Utilizing the **asyncPipe**
+
+Looking closely on the differences between the new and the old `AppComponent`, you'll notice that the old one has the following code snippet in its constructor:
+```
+   _store.select('operations').subscribe(state => this.operations= state)
+```
+Whereas the new one simply has this:
+```
+  this.operations = _store.select('operations')
+```
+
+If you've ever dealt with [observables](http://reactivex.io/documentation/observable.html), you know that you have to `subscribe` to an observable to get its most recent values and `unsubscribe` when you don't need it anymore. In the first code snippet, everything looks normal, but the second code snippet looks strange, because the application still functions normally without subscribing to the observable. This is because we are using the [AsyncPipe](https://angular.io/docs/ts/latest/api/common/index/AsyncPipe-pipe.html)
+```html
+ <operations-list [operations]="operations | async" > 
+ ```
+The AsyncPipe is a special built-in pipe that is used for handling the values of `Promises` and `Observables`. What it does is that it automatically subscribes to an observable and retrieves its values and it automatically unsubsribes off it when it is not needed anymore. The same applies for promises, where the pipe gets the *thenable* and returns it as a value. 
+
+In this case, the `operations` input of `operations-list` does not retrieve an observable object. Instead, it retrieves *the values from the subscription*.
