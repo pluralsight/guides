@@ -8,7 +8,7 @@ In this guide, you are going to get acquainted with the core concepts of Redux a
 
 ## Main concepts of Redux
 
-Redux is made out of four main pieces - **the main store** , **actions** , **reducers**  each having a different role in the mutation of the application's state.  **Middlewares** are used to handle asynchronous requests (such as API calls) and will be covered in part two of this guide.
+Redux is made out of three main pieces - **the main store** , **actions** , **reducers**  each having a different role in the mutation of the application's state.  **Middlewares** are used to handle asynchronous requests (such as API calls) and will be covered in part two of this guide.
 
 
 #### Store
