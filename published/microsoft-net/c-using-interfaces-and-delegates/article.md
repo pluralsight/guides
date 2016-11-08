@@ -64,7 +64,7 @@ public class Subtract : ICalculate
 
     public int Calculate(int x, int y)
     {
-        return x * y;
+        return x - y;
     }
 
     #endregion
