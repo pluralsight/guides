@@ -640,3 +640,13 @@ If you've ever dealt with [observables](http://reactivex.io/documentation/observ
 The AsyncPipe is a special built-in pipe that is used for handling the values of `Promises` and `Observables`. What it does is that it automatically subscribes to an observable and retrieves its values and it automatically unsubsribes off it when it is not needed anymore. The same applies for promises, where the pipe gets the *thenable* and returns it as a value. 
 
 In this case, the `operations` input of `operations-list` does not retrieve an observable object. Instead, it retrieves *the values from the subscription*.
+
+## End of part 1
+If you got stuck or need a reference for the code, [I have uploaded it to a GitHub repository](https://github.com/Kaizeras/ng2-redux-app). You are free to fork it and play around with it!
+
+That was all for part one! In part two,  we will continue to expand the application and we will learn more about:
+
+- Handling more than one state and reducer .
+- Composing states and filtering.
+- Structuring larger applications.
+- Role and application of effects ([ngrx/effects](https://github.com/ngrx/effects)) in Redux.
