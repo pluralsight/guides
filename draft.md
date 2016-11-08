@@ -1,8 +1,3 @@
-### Building a Redux application with Angular 2 - Part 1 by Hristo Georgiev
-- [Read the guide](http://tutorials.pluralsight.com/front-end-javascript/building-a-redux-application-with-angular-2-part-1?status=draft)
-- [Read more from Hristo Georgiev](http://tutorials.pluralsight.com/author/Kaizeras) <img src="https://avatars.githubusercontent.com/u/6340189?v=3" width="30" height="30" alt="Hristo Georgiev" />
-- Related to: Front-End JavaScript (Angular, React, Meteor, etc)
-
 ### Make OSX Notifications From RSS Feed Using Python by ruddra
 - [Read the guide](http://tutorials.pluralsight.com/other/make-osx-notifications-from-rss-feed-using-python?status=draft)
 - [Read more from ruddra](http://tutorials.pluralsight.com/author/ruddra) <img src="https://avatars.githubusercontent.com/u/3099861?v=3" width="30" height="30" alt="ruddra" />
