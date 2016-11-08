@@ -1,21 +1,26 @@
-State management has been an ongoing issue in front-end frameworks. The standard MVC (Model-View-Controller) approach has proven to be inneffective for managing the application state in front-end applications due to the state being mutatated at multiple levels. For instance,  In Angular 1.x, the logic for  managing the application state was distributed between directives, controllers and services, each level having its own logic for mutating the state.  This resulted in a highly segmented application state, which was prone to causing inconsistencies and was difficult to test.
+State management has been an ongoing issue in front-end frameworks. Front-end frameworks' key tenet of state mutation at multiple levels makes the standard MVC (Model-View-Controller) approach ineffective. This multi-layered state mutation was evident in Angular 1, where the logic for  managing the application state was distributed between directives, controllers, and service, and each level had its own logic for mutating the state. The segmented application state became prone to causing inconsistencies and was difficult to test.
 
-Such issues have become more apparent and difficult to circumvent as front-end applications started to become increasigly complex and more reactive to user input. However, new practices in front-end development such as the embracing of functional programming have given birth to a new concept for state maangement - [Redux](https://github.com/reactjs/redux). With Redux, the state is centralized into a single entity, giving you access to the most recent values of your state anywhere in your applicaiton.
+Such issues have become more apparent and difficult to circumvent as front-end applications started to become increasigly complex and more reactive to user input. However, increasingly popular traits of front-end development, such as an emphasis on functional programming, have given birth to a novel state management model called [Redux](https://github.com/reactjs/redux). Redux centralizes the state into a single entity, granting developers access to the most recent state anywhere in the application. 
 
-Even though Redux has originally been brought by the React community, third-party libraries such as [ngrx/store](https://github.com/ngrx/store), combined with the power of [rxJS](https://github.com/Reactive-Extensions/RxJS), have made Redux an equally suitable concept for use in Angular 2 applications.
+Even though Redux arose through the React community, third-party libraries such as [ngrx/store](https://github.com/ngrx/store) and extensions such as [rxJS](https://github.com/Reactive-Extensions/RxJS), have made Redux an equally suitable concept for use in Angular 2 applications.
 
-In this guide, you are going to get acquainted with the core concepts of Redux and how they are applied in Angular 2 applications.
+In this guide, I will cover the core concepts of Redux and how they boost Angular 2 applications.
 
-## Main concepts of Redux
+# Main concepts of Redux
 
-Redux is made out of three main pieces - **the main store** , **actions** , **reducers**  each having a different role in the mutation of the application's state.  **Middlewares** are used to handle asynchronous requests (such as API calls) and will be covered in part two of this guide.
+Redux comprises three main parts. 
+1. **the main store**
+2. **reducers**  
+3. **actions**
+
+Each of these parts plays a different role in the mutation of the application's state. * **Middlewares**, which are used to handle asynchronous requests (such as API calls), will be covered in part two.*
 
 
-#### Store
- The store combines the whole application state into a single entity, acting as the *database* for the web application. The store is broken down into different states, which represent different types of data in the application. The state is *immutable* and can be altered by explicitly defined actions. This makes debugging considerably easier, since the mutation of the state is centralized in a single point in the application.
+### The Main Store
+ The store combines the whole application state into a single entity, acting as the *database* for the web application. The store is broken down into different states, which represent different types of data in the application. The state is *immutable*, but it can be altered by explicitly defined actions. Thus, state mutation is restricted and centralized, simplifying the debugging process and making code more understandable.
  
-#### Reducers
- If the Store is the database of the application, the reducers are the *tables* - they represent slices, or structuresin the application which are composed in a particular way. A reducer is a [pure function](https://en.wikipedia.org/wiki/Pure_function) that defines how a slice of the state is going to change when an action is being dispatched. It accepts two arguments, the previous state and an action, and returns the new state.
+### Reducers
+ If the store is the database of the application, the reducers are the *tables*. Reducers represent slices, or structures in the application that are composed in a particular fashion. A reducer is a [pure function](https://en.wikipedia.org/wiki/Pure_function) that defines how a slice of the state is going to change when an action is being dispatched. **It accepts two arguments, the previous state and an action, and returns the new state.**
  
  
  ```javascript
@@ -31,21 +36,21 @@ export const itemsReducer: ActionReducer<number> = (state = [], action: Action) 
       const item:Item = action.payload;
       //KEEPING THE STATE IMMUTABLE:
       // We don't perform actions that alter the state such as
-      // array.push, array.shift ad so on.
-      //instead, we concatenate the item
+      // array.push, array.shift and so on.
+      // Instead, we concatenate the item, preserving the state.
       return [ ...state, item ]; 
 
     case REMOVE_OPERATION://removing the item
-    //Again, we don't remove the item, we just filter the new state so
-    //that it won't contain the item we're removing
+    // Again, we don't remove the item, we just filter the new state so
+    // that it won't contain the item we're removing
       return state.filter(operation => {
         return operation.id !== action.payload.id;
       });
   }
 }
 ```
-#### Actions
- Actions represent payloads of information that are dispatched to the store from the application and are usually trigerred by user interaaction. Each reducer has a set of action types that define how the state should be changed. An action is composed of two parts - a type and a payload:
+### Actions
+ Actions represent payloads of information that are dispatched to the store from the application and are usually triggered by user interaction. Each reducer has a set of action types that define how the state should be changed. **An action is composed a type and a payload:**
  
  ```
  export interface Action {
@@ -59,7 +64,7 @@ export const itemsReducer: ActionReducer<number> = (state = [], action: Action) 
 //making an action for adding an item
 dispatch({type: ADD_ITEM, payload: {id: 1, name: 'An item' , category: 'miscellaneous'}})
 ````
-##### Review
+##### Overview
 
  When an action is dispatched, the reducer takes it and applies the payload depending on the action type, and outputs the new state.
  
@@ -68,18 +73,18 @@ dispatch({type: ADD_ITEM, payload: {id: 1, name: 'An item' , category: 'miscella
 
 
  
- The store encompasses the whole state, the reducers return fragments of the state, and actions are pre-defined, user-trigerred events that communicate how a given fragment of the state should change.Middlewares are used in cases the actions require asynchronous requests. The reducer takes its previous state, applies the new action to it, and returns it back. 
+ The store encompasses the whole state, the reducers return fragments of the state, and actions are pre-defined, user-triggered events that communicate how a given fragment of the state should change. Middlewares are used in cases the actions require asynchronous requests. The reducer takes its previous state, applies the new action to it, and returns it back. 
 
 
 #### Projecting data
  
- As you already know, the Store is a tree-like structure representing the application state, that is composed of reducers, which represent different slices of the state. In the case of Angular 2's [ngrx/store]() , the store is an [observable](http://reactivex.io/rxjs/class/es6/Observable.js~Observable.html), hence making the access to the application's state reactive and providing the opportunities to mix the values of several states using RxJS's operators. 
+ As you already know, the Store is a tree-like structure representing the application state, that is composed of reducers, which represent different slices of the state. In the case of Angular 2's [ngrx/store](https://github.com/ngrx/store), the store is an [observable](http://reactivex.io/rxjs/class/es6/Observable.js~Observable.html), hence making the access to the application's state reactive. An observable store also allows us to mix the values of several states using RxJS's operators. 
  
 ```
 //getting a single slice of the state
 store.select('items')
 
-//combine multiple slices
+//combining multiple slices
 Observable.combineLatest(
   store.select('items'),
   store.select('categories'),
@@ -88,16 +93,14 @@ Observable.combineLatest(
 })
 ```
 
+# Redux in practice
 
-
-## Redux in practice
-
- Now that you know the main concepts, you're probably wondering how they tie together in an Angular 2 application. To illustrate how Redux works, we are going to build a simple financial accounting tool that will keep track of your transactions using the Redux architecture. It will feature operations which will either add or deduct money from an imaginary account. Later on we are going to add a way to see your current balance and some additional statistics.
+ Now that you know the main concepts, you're probably wondering how they tie together in an Angular 2 application. To illustrate how Redux works, we are going to build a simple financial accounting tool that will keep track of your transactions using the Redux architecture. It will feature operations which will either add or deduct money from an imaginary account. Later on, we are going to add a way to see your current balance and some additional statistics.
  
  
 ![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/b3ec1192-be69-4e0a-b635-239a99bf3eef.001)
 
- ### Setup
+### Setup
  
 We'll use [angular-cli](https://github.com/angular/angular-cli) to setup the project:
 
@@ -106,7 +109,7 @@ We'll use [angular-cli](https://github.com/angular/angular-cli) to setup the pro
  cd financials_app
 ```
 
-[ngrx/store]() is a state container that is specifically built for Angular 2 applications. It is going to provide the utilities and the building blocks for the Redux architecture.
+[ngrx/store](https://github.com/ngrx/store) is a state container that is specifically built for Angular 2 applications. It is going to provide the utilities and the building blocks for the Redux architecture.
 
 ```bash
  npm install @ngrx/core @ngrx/store --save
@@ -118,7 +121,8 @@ We'll use [angular-cli](https://github.com/angular/angular-cli) to setup the pro
  npm install bootstrap@next
 ```
 
-Add to your `angular-cli.json` the following lines:
+Add the following lines to `angular-cli.json`.
+
 In the `app.scripts` array, as an object property:
 ```
 "scripts": [
@@ -135,7 +139,7 @@ In the `app.styles` array:
 ]
 ```
 
- ### Your first reducer
+### Your first reducer
  
  The first thing to do in a Redux application is to define your store and start attaching reducers to it. For the first iteration of the application, we will add the state of financial operations.
  
@@ -177,7 +181,7 @@ export const DECREMENT_OPERATION = 'Decrement an operation';
 //the initial state of the operations
 const initialState:State = [];
 
-//the operationsReducer - a pure function that is responsible for maintaining the 
+//the operationsReducer function: a pure function that is responsible for maintaining the 
 //financial operations state of your store
 export const operationsReducer: ActionReducer = (state = initialState, action: Action) => {
   switch (action.type) {
@@ -218,7 +222,8 @@ export const operationsReducer: ActionReducer = (state = initialState, action: A
  Note that the state is **immutable**. Instead of changing the array of operations, we create a copy of it and apply the changes to the new copy.
  
 #### Initializing the store
- The next step is to put the reducer into the store. 
+
+Next, put the reducer into the store.
  
 ```
 // src/app.module.ts
@@ -243,7 +248,7 @@ export class AppModule {
   constructor() {}
 }
 ```
-At this stage of the application, there is only one slice of the state and consequently, only one reducer. However, at later stages, we'll have multiple reducers and we'll use [combineReduceers](http://redux.js.org/docs/api/combineReducers.html) in order to provide a helper for dispatching actions. The purpose of ``combineReducers`` is to simply act as a helper for combining all the returned states from the reducers in a single entity that will represent the application store.
+At this stage of the application, there is only one slice of the state and consequently, only one reducer. However, at later stages, we'll have multiple reducers and we'll use [combineReducers](http://redux.js.org/docs/api/combineReducers.html) to provide a helper for dispatching actions. `combineReducers` simply acts as a helper for combining all the returned states from the reducers in a single entity that will represent the application store.
 
 By putting the `operationsReducers` as an argument in `provideStore`, you can access the state of `operations` in any place of the application by importing `Store` from `@ngrx/store`. Here is how you can do it:
 
@@ -284,7 +289,7 @@ Open your browser and go to [http://localhost:4200](http://localhost:4200).
 ### Dispatching actions
 
   The state of the store is updated through pre-defined actions, which are dispatched from user events and are used as input for the reducer functions. 
-  Naturally, the first action we are going ti implement in the applciation will be the `ADD_OPERATION` action which, as the name suggests, is going to attach a new financial operation to the array of operations.
+  Naturally, the first action we are going to implement in the applciation will be the `ADD_OPERATION` action which, as the name suggests, is going to attach a new financial operation to the array of operations.
    ```javascript
    
  // src/app/app.component.ts
@@ -314,10 +319,6 @@ Open your browser and go to [http://localhost:4200](http://localhost:4200).
       amount: this.operation.amount
     }});
   }
-
-   
-   
-   
     ```
   
   The action is dispatched using the built-in `dispatch()` function in the store provided by @ngrx/store. As an argument, we send a valid action type that we previously defined in `src/app/common/operations.ts`.
@@ -355,7 +356,7 @@ Open your browser and go to [http://localhost:4200](http://localhost:4200).
   
   In the template, we simply use `[(ngModel)]` to bind the `Operation`'s attributes to the input fields and call the `addOperation()` when the button is clicked.
   
-  If try to inserting something into the state right now, you'll see it popping in on the template te as json. That definitely isn't good for user experience and it limits our ability to add more functionality. Let's make `operations` into a list:
+  If we try to insert something into the state right now, you'll see it popping in on the template as JSON. This is not a pleasant user experience, and it limits our ability to add more functionality. To counter, let's make `operations` into a list:
   
   In the place of `{{operations | json}}`, put the following:
   ```html
@@ -423,11 +424,11 @@ What we just implemented is a full cycle of a simple action. By clicking on the 
 }
 ```
 The rest of the actions follow the same pattern by sending an action type and the operation itself as a payload.
-In the template, we just need to add the correspinding buttons to trigger these actions. Let's add a button group in the `.list-group-item` div for the actions that can be done on a single operation.
+In the template, we just need to add the corresponding buttons to trigger our actions. Let's add a button group in the `.list-group-item` div for the actions that can be done on a single operation.
 
 ```html
 <!--src/app/app.component.ts -->
-<!-- rest of the temlate -->
+<!-- rest of the template -->
 <li *ngFor="let operation of operations"class="list-group-item" [ngClass]="{'list-group-item-success': operation.amount > 0 ,'list-group-item-danger': operation.amount < 0 }">
   <h3 class="h3">$ {{operation.amount}}</h3>
   <p><span class="text-muted">Reason:</span> {{operation.reason}}</p>
@@ -439,28 +440,28 @@ In the template, we just need to add the correspinding buttons to trigger these 
   </div>
 </li>
 ```
-Got to [http://localhost:4200](http://localhost:4200) and play around with your Redux app!
+Go to [http://localhost:4200](http://localhost:4200) and play around with your Redux app!
 
 
 ![app demo](https://raw.githubusercontent.com/pluralsight/guides/master/images/79900243-4221-43de-99e0-1f56615c5ff8.com-video-to-gif)
 
 
- ### Component structure
+ # Component structure
  
- Right now, our view is contained into one single single component  - `AppComponent`. The code already starts to pile and it has to get separated into smaller components. Redux uses its own specific approach for structuing components. In a Redux application, components are divided into two types - **container** and **children** components.
+ Right now, our view is contained into one single single component  - `AppComponent`. The code already starts to pile, and it has to get separated into smaller components. Redux uses its own specific approach for structuring components. As mentioned before, a Redux application has a tree-like structure with components are divided into two types - **container** and **children**.
  
- #### Container components
- Container components are routable components that *contain* child components inside them. They are responsible for containing most of the logic -  having the connection with the store, dispatching of actions, and distributing the data to the child components.
+ ### Container components
+ Container components are routable components that *contain* child components inside them. They are responsible for containing most of the logic -  having the connection with the store, dispatching actions, and distributing the data to the child components.
  
- #### Child components 
- The role of the child components is primarily representational. They accept input from the container component and display it to the user. they are also responsible for handling and outputting user interactions to the container component.
+ ### Child components 
+ The role of the child components is primarily representational. They accept input from the container component and display it to the user. They are also responsible for handling and outputting user interactions to the container component.
  
  In our application, we can delegate some of the representational logic from `AppComponent` to two child components - `NewOpreration` and `OperationsList`:
  
 
 ![componentstruct](https://raw.githubusercontent.com/pluralsight/guides/master/images/be0b574c-b75f-4302-b1b3-48a9cfa8d9d7.001)
 
-Here is how the code for the three components looks after dividing them:
+Here is how the code for the three components looks after we divide them:
 
 **app.component.ts** - *container component*
 ```javascript
@@ -615,9 +616,11 @@ export class OperationsList {
 </div>
 ```
 
-#### The role of **ChangeDetectionStrategy.OnPush**
+### **ChangeDetectionStrategy.OnPush**
 
-There is `changeDetection: ChangeDetectionStrategy.OnPush` put on the decorators of the two child components. To better understand what it does, you have to know how a component works; Each component has its own change detector which checks the component's state every time an event happens and stores the new and the previous state of the component. if you've ever used [OnChanges](https://angular.io/docs/ts/latest/api/core/index/OnChanges-class.html), you have already seen the component's change detector in action. What [ChangeDetectionStrategy](https://angular.io/docs/ts/latest/api/core/index/ChangeDetectionStrategy-enum.html) does is that it determines when the change detector 'listens' for changes. By setting the strategy to `OnPush`,  the changeDetector runs only when the component `@Input()` changes.
+`changeDetection: ChangeDetectionStrategy.OnPush` is put on the decorators of the two child components. To better understand what it does, you have to know how a component works; Each component has its own change detector which checks the component's state every time an event happens and stores the new and the previous state of the component. 
+
+If you've ever used [OnChanges](https://angular.io/docs/ts/latest/api/core/index/OnChanges-class.html), you have already seen the component's change detector in action. [ChangeDetectionStrategy](https://angular.io/docs/ts/latest/api/core/index/ChangeDetectionStrategy-enum.html) determines when the change detector 'listens' for changes. By setting the strategy to `OnPush`,  the changeDetector runs only when the component `@Input()` changes.
 
 Because the state of the child compoents relies sonly on their `@Input`, using `OnPush` reduces the times the component's internal change detector runs, giving a *tremendous* performance boost to your application.
 
@@ -633,15 +636,17 @@ Whereas the new one simply has this:
   this.operations = _store.select('operations')
 ```
 
-If you've ever dealt with [observables](http://reactivex.io/documentation/observable.html), you know that you have to `subscribe` to an observable to get its most recent values and `unsubscribe` when you don't need it anymore. In the first code snippet, everything looks normal, but the second code snippet looks strange, because the application still functions normally without subscribing to the observable. This is because we are using the [AsyncPipe](https://angular.io/docs/ts/latest/api/common/index/AsyncPipe-pipe.html)
+If you've ever dealt with [observables](http://reactivex.io/documentation/observable.html), you know that you have to `subscribe` to an observable to get its most recent values and `unsubscribe` when you don't need it anymore. 
+
+Let's compare the code above. In the first code snippet, everything looks normal, but the second code snippet looks strange, because the application still functions normally without subscribing to the observable. This is because we are using the [AsyncPipe](https://angular.io/docs/ts/latest/api/common/index/AsyncPipe-pipe.html)
 ```html
  <operations-list [operations]="operations | async" > 
  ```
-The AsyncPipe is a special built-in pipe that is used for handling the values of `Promises` and `Observables`. What it does is that it automatically subscribes to an observable and retrieves its values and it automatically unsubsribes off it when it is not needed anymore. The same applies for promises, where the pipe gets the *thenable* and returns it as a value. 
+The AsyncPipe is a special built-in pipe that is used for handling the values of `Promises` and `Observables`. AsynchPipe automates subscribing to, retrieving data from, and unsubscribing from the observable. The same applies for promises, where the pipe gets the *thenable* and returns it as a value. 
 
 In this case, the `operations` input of `operations-list` does not retrieve an observable object. Instead, it retrieves *the values from the subscription*.
 
-## End of part 1
+# End of part one
 If you got stuck or need a reference for the code, [I have uploaded it to a GitHub repository](https://github.com/Kaizeras/ng2-redux-app). You are free to fork it and play around with it.
 
 That was all for part one! In part two,  we will continue to expand the application and we will learn more about:
@@ -650,3 +655,6 @@ That was all for part one! In part two,  we will continue to expand the applicat
 - Composing states and filtering.
 - Structuring larger applications.
 - Role and application of effects ([ngrx/effects](https://github.com/ngrx/effects)) in Redux.
+
+_______
+Thanks for reading this tutorial. Please add comments to the discussion section below if any part of the guide was unclear. Stay tuned for part two!
