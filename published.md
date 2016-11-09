@@ -1,3 +1,8 @@
+### Building a Redux application with Angular 2 - Part 1 by Hristo Georgiev
+- [Read the guide](http://tutorials.pluralsight.com/front-end-javascript/building-a-redux-application-with-angular-2-part-1)
+- [Read more from Hristo Georgiev](http://tutorials.pluralsight.com/author/Kaizeras) <img src="https://avatars.githubusercontent.com/u/6340189?v=3" width="30" height="30" alt="Hristo Georgiev" />
+- Related to: Front-End JavaScript (Angular, React, Meteor, etc)
+
 ### Build a Futurama Quote-bot with Twilio MMS, Morbotron, and Ruby by Chris Hranj
 - [Read the guide](http://tutorials.pluralsight.com/ruby-ruby-on-rails/build-a-futurama-quote-bot-with-twilio-mms-morbotron-and-ruby)
 - [Read more from Chris Hranj](http://tutorials.pluralsight.com/author/Brodan) <img src="https://avatars.githubusercontent.com/u/12822268?v=3" width="30" height="30" alt="Chris Hranj" />
