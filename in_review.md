@@ -1,8 +1,3 @@
-### Building a Redux application with Angular 2 - Part 1 by Hristo Georgiev
-- [Read the guide](http://tutorials.pluralsight.com/front-end-javascript/building-a-redux-application-with-angular-2-part-1?status=in-review)
-- [Read more from Hristo Georgiev](http://tutorials.pluralsight.com/author/Kaizeras) <img src="https://avatars.githubusercontent.com/u/6340189?v=3" width="30" height="30" alt="Hristo Georgiev" />
-- Related to: Front-End JavaScript (Angular, React, Meteor, etc)
-
 ### Using the REST Interface with Licas by discompsys
 - [Read the guide](http://tutorials.pluralsight.com/java-and-j2ee/using-the-rest-interface-with-licas?status=in-review)
 - [Read more from discompsys](http://tutorials.pluralsight.com/author/discompsys) <img src="https://avatars.githubusercontent.com/u/20437503?v=3" width="30" height="30" alt="discompsys" />
