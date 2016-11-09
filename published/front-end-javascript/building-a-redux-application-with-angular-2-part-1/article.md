@@ -8,10 +8,10 @@ In this guide, I will cover the core concepts of Redux and how they boost Angula
 
 # Main concepts of Redux
 
-Redux comprises three main parts. 
-1. **the main store**
-2. **reducers**  
-3. **actions**
+Redux comprises three main partsH
+1. **The main store**
+2. **Reducers**  
+3. **Actions**
 
 Each of these parts plays a different role in the mutation of the application's state. * **Middlewares**, which are used to handle asynchronous requests (such as API calls), will be covered in part two.*
 
@@ -448,7 +448,7 @@ Go to [http://localhost:4200](http://localhost:4200) and play around with your R
 
  # Component structure
  
- Right now, our view is contained into one single single component  - `AppComponent`. The code already starts to pile, and it has to get separated into smaller components. Redux uses its own specific approach for structuring components. As mentioned before, a Redux application has a tree-like structure with components are divided into two types - **container** and **children**.
+ Right now, our view is contained into one single single component  - `AppComponent`. The code already starts to pile, and it has to get separated into smaller components. Redux uses its own specific approach for structuring components. In a Redux application, they are  divided in two types - **container** and **children**.
  
  ### Container components
  Container components are routable components that *contain* child components inside them. They are responsible for containing most of the logic -  having the connection with the store, dispatching actions, and distributing the data to the child components.
