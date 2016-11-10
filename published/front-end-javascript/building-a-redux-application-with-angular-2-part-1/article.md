@@ -199,7 +199,7 @@ export const operationsReducer: ActionReducer = (state = initialState, action: A
 
     case DECREMENT_OPERATION:
       const operation = --action.payload.amount;
-      update the state by creating a new object using Object.assing()
+      //update the state by creating a new object using Object.assign()
       return state.map(item => {
         return item.id === action.payload.id ? Object.assign({}, item, operation) : item;
       });
