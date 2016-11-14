@@ -38,7 +38,8 @@ export const itemsReducer: ActionReducer<number> = (state = [], action: Action) 
       // We don't perform actions that alter the state such as
       // array.push, array.shift and so on.
       // Instead, we concatenate the item, preserving the state.
-      return [ ...state, item ]; 
+      return [ ...state, item ];
+    }
 
     case REMOVE_ITEM://removing the item
     // Again, we don't remove the item, we just filter the new state so
@@ -46,7 +47,7 @@ export const itemsReducer: ActionReducer<number> = (state = [], action: Action) 
       return state.filter(item => {
         return item.id !== action.payload.id;
       });
-  }
+    }
 }
 ```
 ### Actions
