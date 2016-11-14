@@ -40,11 +40,11 @@ export const itemsReducer: ActionReducer<number> = (state = [], action: Action) 
       // Instead, we concatenate the item, preserving the state.
       return [ ...state, item ]; 
 
-    case REMOVE_OPERATION://removing the item
+    case REMOVE_ITEM://removing the item
     // Again, we don't remove the item, we just filter the new state so
     // that it won't contain the item we're removing
-      return state.filter(operation => {
-        return operation.id !== action.payload.id;
+      return state.filter(item => {
+        return item.id !== action.payload.id;
       });
   }
 }
