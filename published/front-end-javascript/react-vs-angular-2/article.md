@@ -58,7 +58,7 @@ To get a clearer comparison between React and Angular 2's code strucures, we are
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Angular Todo App</title>
+    <title>React Todo App</title>
   </head>
   <body>
     <todo-list>Loading...</todo-list>
