@@ -1,8 +1,3 @@
-### presentation by Prateek Gupta
-- [Read the guide](http://tutorials.pluralsight.com/php/presentation?status=in-review)
-- [Read more from Prateek Gupta](http://tutorials.pluralsight.com/author/prtkgpt) <img src="https://avatars.githubusercontent.com/u/2454349?v=3" width="30" height="30" alt="Prateek Gupta" />
-- Related to: PHP
-
 ### Using the REST Interface with Licas by discompsys
 - [Read the guide](http://tutorials.pluralsight.com/java-and-j2ee/using-the-rest-interface-with-licas?status=in-review)
 - [Read more from discompsys](http://tutorials.pluralsight.com/author/discompsys) <img src="https://avatars.githubusercontent.com/u/20437503?v=3" width="30" height="30" alt="discompsys" />
