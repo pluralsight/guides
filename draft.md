@@ -1,3 +1,8 @@
+### Hello World5 by Dan Fernandez
+- [Read the guide](http://tutorials.pluralsight.com/other/hello-world5?status=draft)
+- [Read more from Dan Fernandez](http://tutorials.pluralsight.com/author/thedanfernandez) <img src="https://avatars.githubusercontent.com/u/8809372?v=3" width="30" height="30" alt="Dan Fernandez" />
+- Related to: other
+
 ### Make OSX Notifications From RSS Feed Using Python by ruddra
 - [Read the guide](http://tutorials.pluralsight.com/other/make-osx-notifications-from-rss-feed-using-python?status=draft)
 - [Read more from ruddra](http://tutorials.pluralsight.com/author/ruddra) <img src="https://avatars.githubusercontent.com/u/3099861?v=3" width="30" height="30" alt="ruddra" />
