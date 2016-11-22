@@ -1,3 +1,8 @@
+### A Boostrap for Designers guide by Hector
+- [Read the guide](http://tutorials.pluralsight.com/html-css/a-boostrap-for-designers-guide?status=draft)
+- [Read more from Hector](http://tutorials.pluralsight.com/author/moramedia) <img src="https://avatars.githubusercontent.com/u/3494432?v=3" width="30" height="30" alt="Hector" />
+- Related to: HTML/CSS
+
 ### Make OSX Notifications From RSS Feed Using Python by ruddra
 - [Read the guide](http://tutorials.pluralsight.com/other/make-osx-notifications-from-rss-feed-using-python?status=draft)
 - [Read more from ruddra](http://tutorials.pluralsight.com/author/ruddra) <img src="https://avatars.githubusercontent.com/u/3099861?v=3" width="30" height="30" alt="ruddra" />
