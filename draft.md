@@ -1,8 +1,3 @@
-### presentation by Prateek Gupta
-- [Read the guide](http://tutorials.pluralsight.com/php/presentation?status=draft)
-- [Read more from Prateek Gupta](http://tutorials.pluralsight.com/author/prtkgpt) <img src="https://avatars.githubusercontent.com/u/2454349?v=3" width="30" height="30" alt="Prateek Gupta" />
-- Related to: PHP
-
 ### Hello World5 by Dan Fernandez
 - [Read the guide](http://tutorials.pluralsight.com/other/hello-world5?status=draft)
 - [Read more from Dan Fernandez](http://tutorials.pluralsight.com/author/thedanfernandez) <img src="https://avatars.githubusercontent.com/u/8809372?v=3" width="30" height="30" alt="Dan Fernandez" />
