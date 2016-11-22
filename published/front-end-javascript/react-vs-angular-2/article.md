@@ -8,14 +8,16 @@ The goal of this guide is to highlight core differences and understand the simil
 ### Angular 2
 Angular 2 is very close to being a fully-fledged framework - it comes with many building blocks out of the box that cover most of the common scenarios in developing a web application. There is also a clear separation of the roles of the different elements:
 
+
 - *Services* - Injectable elements that are used to consume data from an API or share state between multiple components.
 - *Components* - Building blocks of the user interface that consume services. Can be nested inside each other through structural directive selectors.
 - *Directives* - Divided into structural and attribute directives. Structural directives (ex. <code>*ngFor</code>)  manipulate the DOM (Document Object Model) while attribute directives are part of elements and control their style and state.
 - *Pipes* - Used to format how data is displayed in the view layer.
-
+- *Modules* - Exportable blocks of the application that isolate components, directives, pipes, services and routes together.
+- 
 ### React
 
-React is far less rigid than Angular 2. It is more of a library that provides the most basic tools for building a web applications - a HTTP service and Components.  There is no built-in router or anything that sets a particular convention. It is mostly up to the developer's choice what kind of packages he/she is going to use to shape the application.
+**React is far less rigid than Angular 2**. It is a library that provides the most basic tools for building a web applications - a HTTP service and Components.  There is no built-in router or anything that sets a particular convention. It is mostly up to the developer's choice what kind of packages he/she is going to use to shape the application.
 
 
 
@@ -23,52 +25,22 @@ React is far less rigid than Angular 2. It is more of a library that provides th
 
 ### Angular 2
 
-Angular 2 is written in TypeScript, a superset language of JavaScript developed by Microsoft. The language introduces types, new data structures and more object-oriented features, making the code easier to read and maintain compared to vanilla JavaScript. TypeScript's syntax is more reminiscent of C#, and would make the transition from standard JavaScript a bit difficult. Using TypeScript makes setting up an Angular 2 application somehow tedious, as it introduces extra overhead for configuration. 
+Angular 2 is written in TypeScript, a superset language of JavaScript developed by Microsoft. The language introduces types, new data structures and more object-oriented features, making the code easier to read and maintain compared to vanilla JavaScript. Initially, TypeScript's syntax was intended to be reminiscent of C#. However, recent veriouns of TypeScript feature the arrow (`=>`) notation and other ES6-specific syntax, making TS resemble more ES6. 
+
+Using TypeScript makes setting up an Angular 2 application somehow tedious, as it introduces extra overhead for configuration. 
+
 
 ### React
 
-React is relying on JSX (Java Serialization to XML), an XML-esque syntax extension for rendering JavaScript and HTML. In terms of syntax and structure, JSX looks like JavaScript and appears to blend into HTML more easily. 
-To get a clearer comparison between React and Angular 2's code strucures, we are going to compare how a basic TODO application is built (example apps built by [Mark Volkmann (mvolkmann)](https://github.com/mvolkmann/react-examples).
+React is relying on JSX (Java Serialization to XML), an XML-esque syntax extension for rendering JavaScript and HTML. In terms of syntax and structure, JSX looks like JavaScript and appears to blend into HTML more easily. It allows the mixing  of variables and JavaScript data structures within the HTMl markup.
+
+
+
+**To get a clearer comparison between React and Angular 2's code strucures, we are going to compare how a basic TODO application is built** (example apps built by [Mark Volkmann (mvolkmann)](https://github.com/mvolkmann/react-examples).
 
  Both applications use [Webpack](https://webpack.github.io/) for development and deployment.
 
-#### **index.html**
 
-
-##### Angular 2
-
-```html
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>Angular Todo App</title>
-    <link rel="stylesheet" href="todo.css">
-  </head>
-  <body>
-    <todo-list>Loading...</todo-list>
-    <script src="bundle.js"></script>
-  </body>
-</html>
-
-```
-
-##### React
-
-```html
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>React Todo App</title>
-  </head>
-  <body>
-    <todo-list>Loading...</todo-list>
-    <script src="bundle.js"></script>
-  </body>
-</html>
-```
-
-
-Because both setups use Webpack to handle all the assets, the `index.html` file in each is identical.
 
 In terms of application structure, both React and Angular 2 need two files - <code>TodoList</code> which represents the list of tasks and <code>Todo</code> which represents a single task.
 
@@ -112,12 +84,9 @@ interface IState {
 // to Annotations in other languages.  Decorators are
 // under consideration to be included in ES2016.
 @Component({
-  // other components used here
-  directives: [TodoCmp],
-  // TodoListCmp's HTML element selector
   selector: 'todo-list',
-  template: // see value to left of
-            // React render method below
+  template:`  ` /*This is where the markup for the template can be put.
+   Alternatively, you can reference a html file using templateUrl */
 })
 
 export class TodoListCmp {
@@ -266,14 +235,35 @@ onToggleDone(todo) {
 #### **Bootstrapping**
 
 ##### Angular 2
-```
-} // end of TodoListCmp class
 
-// Each Angular app needs a bootstrap call
-// to explictly specify the root component.
-// In larger apps, bootstrapping is usually in
-// a separate file with more configuration.
-bootstrap(TodoListCmp);
+```js
+//In Angular 2, chunks of the
+//application logic that are responsible for a certail feature
+//are encapsualted in a module
+import { NgModule }      from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { TodoListCmp }   from './todoList.component';
+@NgModule({
+  imports:      [ BrowserModule ],
+  declarations: [ TodoListCmp ],
+  bootstrap:    [ TodoListCmp ]
+})
+export class AppModule { }
+//An Angular module can import functionalities from other modules and export some of its building blocks to other modules.
+
+```
+
+```js
+// src/main.ts
+
+import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
+import { AppModule } from './app.module';
+
+//The module is bootstrapped, making the bootstrapped component the root //of the application if no routes are defined.
+
+const platform = platformBrowserDynamic();
+platform.bootstrapModule(AppModule);
+
 ```
 #####  React
 ```
