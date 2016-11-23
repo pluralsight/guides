@@ -513,15 +513,16 @@ Recently, Angular 2 has started adopting the [Redux](http://redux.js.org/docs/in
  
  The following tests have been developed by [Stefan Krauss (krausest)](https://github.com/krausest). The tests are carried out with **[Selenium](http://docs.seleniumhq.org/docs/03_webdriver.jsp)** to emulate user actions and record the results (in miliseconds)
 
-![benchmarks](https://raw.githubusercontent.com/pluralsight/guides/master/images/c5324f3d-e9e4-4b3a-b9aa-760a083fd89a.002)
+
+![benchmarks](https://raw.githubusercontent.com/pluralsight/guides/master/images/08a35dbd-3654-42b5-a423-bd8ba9c2406e.001)
 
 
-It is clear that React (v. 15.3.0) is either on par or faster than Angular 2's release candidate 4. React lags behind the alternative when it comes to replacing the data in all rows (192.23ms for Angular 2 vs 214.07ms for React). Angular 2 also appears to be better at selecting an element in (3.32ms vs. 6.78ms). But Angular is more than two times slower at appending elements (611.75ms vs. 293.82ms).
 
-In terms of memory management, React outperforms Angular 2 by using three times less memory after pageload (15.30ms vs. 4.75ms) and two times less memory when adding new elements to the DOM ( 21.10ms vs 10.67ms).
+Both Angular 2 and React are seem on par, with Angular 2 having a slight advantage on all DOM manipulations except for creating new elements.
 
-**Even though React is a clear winner, the results cannot be considered absolutely fair.** Angular 2 is still under development, and thus the developers' focus is not on optimizing the speed but rather fixing bugs and polishing features. We can expect impactful improvements to speed in upcoming updates and versions.
- 
+In terms of memory management, React outperforms Angular 2 by using less memory, especially after page load. This is mainly due to the fact that React itself is smaller-sized than Angular 2.
+
+
 # Cross-platform integration
 
 The cross-platform development world has made a huge leaps since the massive adoption of mobile devices. Now, WebView-based tools for building cross-platform mobile applications are obsolete. 
@@ -533,9 +534,11 @@ NativeScript, built by [Telerik (now Progress)](http://www.telerik.com/), is int
 On the other hand, React Native, developed by Facebook, gives React native capabilities. Compared to NativeScript, React Native is still young but quite popular and maturing quickly, boasting over [37k](https://github.com/facebook/react-native) stars on GitHub. React Native uses a "learn once, write anywhere" approach to developing cross-platform applications. Instead of attempting to generalize different platforms like NativeScript does, Rect Native embraces their differences, offering different ways to construct UI for the different platforms. Recently, the Angular 2 team has started adopting React Native, [making a renderer for it](https://github.com/angular/react-native-renderer).
 
 # Adoption
-[Angular 2](https://github.com/angular/angular) is just shy of 16K stars on Github. There is a [tracker](https://splintercode.github.io/is-angular-2-ready/) that counts how many issues are left until Angular 2 is ready for release, with hopes that the release will come before 2017. Even though Angular 2 is relatively young, its community is maturing fast, mostly because many Angular 1 developers are startng to switch to Angular 2. There are already [around 6500](https://github.com/search?l=TypeScript&p=3&q=angular+2&type=Repositories&utf8=%E2%9C%93) repositories on Github that contain "Angular 2" and are written in TypeScript.
+[Angular 2](https://github.com/angular/angular) is just over 18k stars on Github. There are [~15 000](https://github.com/search?l=TypeScript&p=3&q=angular+2&type=Repositories&utf8=%E2%9C%93) repositories on Github that contain "Angular 2" or "ng2" and are written in TypeScript
 
-[React](https://github.com/facebook/react), on the other hand, is almost at 50K stars on Github. There are [76,122](https://github.com/search?l=JavaScript&p=1&q=react&ref=searchresults&type=Repositories&utf8=%E2%9C%93) repositories containing the word "react" in them - over ten times more than what Angular 2 has. Still, one of the big reasons for the large number of repositories is that React comes with just a few built-in functionalities and relies on its community to provide it with the needed tooling to develop full-scale applications.
+[React](https://github.com/facebook/react), on the other hand, is over 53K stars on Github. There are [95, 500](https://github.com/search?l=JavaScript&p=1&q=react&ref=searchresults&type=Repositories&utf8=%E2%9C%93) repositories containing the word "react" in them, roughly over nine times more than what Angular 2 has.
+
+Still, one of the big reasons for the large number of repositories is that React comes with just a few built-in functionalities and relies on its community to provide it with the needed tooling to develop full-scale applications.
 
 
 # Conclusion 
