@@ -101,6 +101,12 @@ That way you can save a set of changes you have made but do not yet want to comm
 $ git stash
 ```
 
+Or, if you would need to stash untracked changes as well, use `-u` argument:
+
+```shell
+$ git stash -u
+```
+
 In particular, I use more [stash][stash] when I need to `git pull` and want to avoid conflicts between local changes and changes upstream. 
 
 To restore your local changes back to staging, you need to _apply_ your stash. The following command recreates the latest changes that were **stashed away**:
