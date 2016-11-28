@@ -3,7 +3,12 @@
     "author_name": "Kaizeras",
     "author_real_name": "Hristo Georgiev",
     "branch": "master",
-    "branches": [],
+    "branches": [
+        [
+            "moelgendy",
+            "moelgendy-ruby-ruby-on-rails-react-vs-angular-2-integration-with-rails"
+        ]
+    ],
     "filename": "article.md",
     "first_commit": "58362b43903d52507de68b022d730a5f326031c4",
     "image_url": "https://avatars.githubusercontent.com/u/6340189?v=3",
