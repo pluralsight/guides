@@ -1,8 +1,3 @@
-### testttttt by Luke Lee
-- [Read the guide](http://tutorials.pluralsight.com/other/testttttt?status=draft)
-- [Read more from Luke Lee](http://tutorials.pluralsight.com/author/durden) <img src="https://avatars.githubusercontent.com/u/58063?v=3" width="30" height="30" alt="Luke Lee" />
-- Related to: other
-
 ### Hello World5 by Dan Fernandez
 - [Read the guide](http://tutorials.pluralsight.com/other/hello-world5?status=draft)
 - [Read more from Dan Fernandez](http://tutorials.pluralsight.com/author/thedanfernandez) <img src="https://avatars.githubusercontent.com/u/8809372?v=3" width="30" height="30" alt="Dan Fernandez" />
