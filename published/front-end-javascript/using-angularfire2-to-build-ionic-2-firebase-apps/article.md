@@ -478,16 +478,8 @@ The code is really easy to follow. We are creating a prompt that's going to ask 
 
 Piece of cake!
 
-## Conclusion
-
-There you have it: a fully functional app running on the latest version of **Ionic Framework** and **Firebase**.
+## Next Steps
 
 The entire source code for this app is available on [github](https://github.com/JAVEBRATTCODE/bill-reminder).
 
-I also send out a tutorial every Thursday on Ionic + Firebase. Join [here](http://javebratt.com/become-developer/) to check my guides out.
-
-If there's anything I can help you with just ask, I'm [@javebratt](https://twitter.com/javebratt). Feel free to post your comments and feedback in the discussion section below. If you found this tutorial informative or well-written, make sure to favorite it as well!
-
-
-
-![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/ea683246-f429-490a-8684-2fde72700169.png)
+If you want to take your Ionic + Firebase skills to the next step, I created a **free 7-lesson** course that will help you build your first Firebase powered mobile app. All you have to do is [go here](http://javebratt.com/become-developer?ref=HackGuideTutorial).
