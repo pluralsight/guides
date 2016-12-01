@@ -25,7 +25,7 @@ We want a velvety smooth 60 FPS framerate, and we want our controls to play alon
 But there's also network latency! Information needs time to travel. In fact, optic fiber takes about 67 ms for every 10.000km, not counting switches, routers and other network hops that further slow it down. That means that if you're running your server in the US and play in Europe, your game won't feel particularly responsive.
 
 ## About this tutorial
-This tutorial will take you through the high level concepts and all the tricky bits of the implementation - for brevities sake it skips a lot of project setup, css / styling and most of the more common aspects. To get an impression of how everything fits together, just head over to the [Github Repository](https://github.com/deepstreamIO/ds-demo-spaceshooter).
+This tutorial will take you through the high level concepts and all the tricky bits of the implementation - for brevity's sake it skips a lot of project setup, css / styling and most of the more common aspects. To get an impression of how everything fits together, just head over to the [Github Repository](https://github.com/deepstreamIO/ds-demo-spaceshooter).
 
 ### Latest browsers needed
 This tutorial makes liberal use of new browser features like WebGL and ES6 syntax. Our game works best on all the latest browsers (tested in Chrome 51, FF 47 & Edge 25), and it won't be much fun on your good old IE 8.
