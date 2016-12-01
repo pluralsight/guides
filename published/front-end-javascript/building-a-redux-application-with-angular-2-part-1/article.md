@@ -284,15 +284,16 @@ Go to your terminal and build the application:
 
 Open your browser and go to [http://localhost:4200](http://localhost:4200).
 
- At this point, everything you'll see is an it is an empty array (`[]`), coming from the `json` pipe being used on `operations`.
+ At this point, everything you'll see is an empty array (`[]`), coming from the `json` pipe being used on `operations`.
 
 
 ### Dispatching actions
 
-  The state of the store is updated through pre-defined actions, which are dispatched from user events and are used as input for the reducer functions. 
-  Naturally, the first action we are going to implement in the applciation will be the `ADD_OPERATION` action which, as the name suggests, is going to attach a new financial operation to the array of operations.
-   ```javascript
-   
+The state of the store is updated through pre-defined actions, which are dispatched from user events and are used as input for the reducer functions. 
+Naturally, the first action we are going to implement in the application will be the `ADD_OPERATION` action which, as the name suggests, is going to attach a new financial operation to the array of operations.
+
+```javascript
+
  // src/app/app.component.ts
  import {ADD_OPERATION,} from "./common/operations"; //import the operation type
  
@@ -320,12 +321,13 @@ Open your browser and go to [http://localhost:4200](http://localhost:4200).
       amount: this.operation.amount
     }});
   }
-    ```
+```
   
   The action is dispatched using the built-in `dispatch()` function in the store provided by @ngrx/store. As an argument, we send a valid action type that we previously defined in `src/app/common/operations.ts`.
   
   But how is the user going to input the information about the financial operation? Let's add a form that will let the user populate the `Operation` model with information
-  ```javascript
+  
+```javascript
     // src/app/app.component.ts
 
     @Component({
@@ -353,7 +355,7 @@ Open your browser and go to [http://localhost:4200](http://localhost:4200).
    //...
     
     })
-  ```
+```
   
   In the template, we simply use `[(ngModel)]` to bind the `Operation`'s attributes to the input fields and call the `addOperation()` when the button is clicked.
   
