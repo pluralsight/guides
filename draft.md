@@ -1,3 +1,8 @@
+### Building a Redux application with Angular 2 - Part 2 by Hristo Georgiev
+- [Read the guide](http://tutorials.pluralsight.com/front-end-javascript/building-a-redux-application-with-angular-2-part-2?status=draft)
+- [Read more from Hristo Georgiev](http://tutorials.pluralsight.com/author/Kaizeras) <img src="https://avatars.githubusercontent.com/u/6340189?v=3" width="30" height="30" alt="Hristo Georgiev" />
+- Related to: Front-End JavaScript (Angular, React, Meteor, etc)
+
 ### Hello World5 by Dan Fernandez
 - [Read the guide](http://tutorials.pluralsight.com/other/hello-world5?status=draft)
 - [Read more from Dan Fernandez](http://tutorials.pluralsight.com/author/thedanfernandez) <img src="https://avatars.githubusercontent.com/u/8809372?v=3" width="30" height="30" alt="Dan Fernandez" />
