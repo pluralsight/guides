@@ -1,0 +1,15 @@
+{
+    "_publish_status": "draft",
+    "author_name": "TShelton41",
+    "author_real_name": "Todd Shelton",
+    "branch": "master",
+    "branches": [],
+    "filename": "article.md",
+    "first_commit": "dcd1a030170664af3e82640d48bb7f31a56add68",
+    "image_url": "https://avatars.githubusercontent.com/u/795737?v=3",
+    "stacks": [
+        "Front-End JavaScript (Angular, React, Meteor, etc)"
+    ],
+    "thumbnail_url": null,
+    "title": "Cloning an Ionic 2 application from Github"
+}
