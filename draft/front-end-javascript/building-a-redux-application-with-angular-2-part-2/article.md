@@ -28,8 +28,15 @@
  ** Reducers **
  
 # Multiple states
+- states
+- reducers map
 
-#Combining states
+### Total change of the operations reducer
+### Separating actions
+### combineReducers and the metareducer
+
+### Combining states
+### Changing the app.module
 
 # Getting state slices
 
