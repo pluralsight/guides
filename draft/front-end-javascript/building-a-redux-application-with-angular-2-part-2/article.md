@@ -1,11 +1,11 @@
 # What we did last time
 
 # Restructuring
-  In this part, the application is going to be accomodated in a way that it can support having multiple states in its Store. To do so, the architecture of the application needs to be changed.
+  In this part, the application is going to be accomodated in a way that it can support having multiple states in its Store. To do so, the architecture of the application needs to be altered.
   
-  In its current state, the main issue that the application has, is that it doesn't have a Meta-Reducer. Meta-Reducers are a map of all the reducer functions in the application. When an action gets dispatched, the Meta-Reducer goes through the map of all reducers, looking for the one that matches the action.
+  In its current state, the application does not have a Meta-Reducer. Meta-Reducers are a map of all the reducer functions in the state tree. It contains a reference for each of the state slices and their reducers. When an action gets dispatched, the Meta-Reducer goes through the map of all reducers, looking for the one that matches the action type and calls the function.
   
-  
+ 
   Another issue that causes concern is  the actions and the reducer for `operations` are staying together, but as the applicaiton grows and the actions and the reducer are becoming more complex, there's going to be a lot of code in a single file. Thus, the actions and the reducers have to be divided in different files.
   
  
@@ -126,7 +126,7 @@ export type Actions
 ### Adapting the reducer function
  There are three problems with the current reducer: 
  
- 1. The type of the state (array) is too simplistic. Instead, it will be replaced with an object which contains the array and add it as an interface.
+**1.**The type of the state (array) is too simplistic. Instead, it will be replaced with an object which contains the array and add it as an interface. This allows for the state to be more extendable in the future, when new features are implemented and there  is more data that has to be tracked.
  
 ```
 export interface State {
@@ -135,21 +135,23 @@ export interface State {
 
 ```
  
- 2. The `operationsReducer` is not a function, but a constant of type `ActionReducer` to which has a reducer function as a value. This was done because the constant was then directly passed to `provideStore`, without being referenced in a Meta reducer.
-  Now that a Meta Reducer is used,  `operationsReducer` will be renamed simply to `reducer` and converted to a function with a return type of `State`.
+**2.**The `operationsReducer` is not a function, but a constant of type `ActionReducer` to which has a reducer function as a value. This was done because the constant was then directly passed to `provideStore`, without being referenced in a Meta reducer.
+Now that a Meta Reducer going to be implemented,  `operationsReducer` will be renamed simply to `reducer` and converted to a function with a return type of `State`.
  
-
 **Before**
+
 ```
 export const operationsReducer: ActionReducer = (state = initialState, action: operations.Actions) => { ... }
 ```
 **After**
+
 ```
 export function reducer(state = initialState, action: operations.Actions): State  {...} 
 ```
 
- 3. The new action types are not implemented. To implement them, we'll import `actions/operations` and use `ActionTypes` from it in the case statements.
- **Before**
+**3.**The new action types are not implemented. To implement them, we'll import `actions/operations` and use `ActionTypes` from it in the case statements.
+ 
+**Before**
 ```
   switch (action.type) {
     case ADD_OPERATION:
@@ -158,7 +160,7 @@ export function reducer(state = initialState, action: operations.Actions): State
   }
 ```
 **After**
- ```
+```
   switch (action.type) {
     case operations.ActionTypes.ADD_OPERATION: {
       const operation: Operation = action.payload;
@@ -168,8 +170,10 @@ export function reducer(state = initialState, action: operations.Actions): State
 
     }
     //... rest of the cases
- ```   
+```   
  
+ 
+ Here is how the new `operations` reducer looks like after all the changes have been applied:
  
  ```
 import '@ngrx/core/add/operator/select';
@@ -191,11 +195,18 @@ export interface State {
 
 const initialState: State = {  entities: []};
 
-
+/* 
+ Instead of using a constant of type ActionReducer, the
+ function is directly exported 
+ */
 export function reducer(state = initialState, action: operations.Actions): State {
   switch (action.type) {
     case operations.ActionTypes.ADD_OPERATION: {
       const operation: Operation = action.payload;
+      /*
+      Because the state is now an object instead of an array,
+      the return statements of the reducer have to be adapted.
+      */
       return {
         entities: [...state.entities, operation]
       };
@@ -236,24 +247,35 @@ export function reducer(state = initialState, action: operations.Actions): State
  ```
 
 
-### Implementing the Meta Reduceer
+### Implementing the Meta Reducer
+
+With the actions and the reducer adapted to the new standards, it is time to implement the Meta reducer. This is done by using `combineReducers`.
+
+
  
- ** Reducers **
- ### combineReducers and the metareducer
+#### combineReducers 
+```
+const combineReducers = reducers => (state = {}, action) => {
+  return Object.keys(reducers).reduce((nextState, key) => {
+    nextState[key] = reducers[key](state[key], action);
+    return nextState;
+  }, {});
+};
+```
+`CombineReducers` takes an object with all the reducer functions as property values and extracts its keys. Then it uses [Array.reduce()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/Reduce) to accumulate the return value of each of the reducer functions into a state tree and heassign it to the key the reducer corresponds to. In the end, the state tree (Store) is returned - an object which contains the key-value pairs of the reducers and the states they returned.
  
-# Multiple states
+#### Multiple states
 - states
 - reducers map
 
-### Total change of the operations reducer
-### Separating actions
 
 
-### Combining states
-### Changing the app.module
 
+
+#### Changing the app.module
+
+# Adding a new state
 # Getting state slices
 
 # Effects
 
-# UI State
