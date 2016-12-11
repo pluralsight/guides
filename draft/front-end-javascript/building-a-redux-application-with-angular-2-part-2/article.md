@@ -240,17 +240,19 @@ export function reducer(state = initialState, action: operations.Actions): State
 
 };
 
- 
- 
- 
- 
  ```
+ 
+From the code we have we can conclude that a module of the state has to export:
+ 1. A reducer function 
+ 2. An interface that describes how the state looks like.
+ 
 
 
-### Implementing the Meta Reducer
+### Creating a Meta Reducer
 
-With the actions and the reducer adapted to the new standards, it is time to implement the Meta reducer. This is done by using `combineReducers`.
+With the actions and the reducer adapted to the new standards, it is time to implement the Meta reducer. If each of the reducer modules represent table in a database, the meta reducer `State` interface represents the database schema and the meta `reducer` function itself represents the database itself
 
+. To have a clearer idea what happens behind the scenes in a Meta Reducer, we need to first look into the implementation of `combineReducers`.
 
  
 #### combineReducers 
@@ -262,20 +264,144 @@ const combineReducers = reducers => (state = {}, action) => {
   }, {});
 };
 ```
-`CombineReducers` takes an object with all the reducer functions as property values and extracts its keys. Then it uses [Array.reduce()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/Reduce) to accumulate the return value of each of the reducer functions into a state tree and heassign it to the key the reducer corresponds to. In the end, the state tree (Store) is returned - an object which contains the key-value pairs of the reducers and the states they returned.
+`combineReducers` is a function that takes an object with all the reducer functions as property values and extracts its keys. Then it uses [Array.reduce()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/Reduce) to accumulate the return value of each of the reducer functions into a state tree and heassign it to the key the reducer corresponds to. In the end, the state tree (Store) is returned - an object which contains the key-value pairs of the reducers and the states they returned.
  
-#### Multiple states
-- states
-- reducers map
+#### Implementation
+
+ In your `app/reducers` folder, create a new file named `index.ts`. In it, paste the following snippet:
+ 
+```
+import {combineReducers, ActionReducer} from '@ngrx/store';
+import {Observable} from "rxjs";
+import {compose} from "@ngrx/core";
+
+
+/*
+ Import each module of your state. This way, you can access
+ its reducer function and state interface as a property.
+*/
+import * as fromOperations from '../reducers/operations';
 
 
 
+/*
+ The top-level interface of the state is simply a map of all the inner states.
+ */
+export interface State {
+  operations: fromOperations.State;
+}
+
+/* The reducers variable represents the map of all the reducer function that is used in the Meta Reducer */
+const reducers = {
+  operations: fromOperations.reducer,
+};
 
 
-#### Changing the app.module
+/* Using combineReducers to create the Meta Reducer and export it from the module. The exported Meta Reducer will be used as an argument in provideStore() in the application's root module. 
+*/
+
+const combinedReducer: ActionReducer<State> = combineReducers(reducers);
+
+export function reducer(state: any, action: any) {
+    return combinedReducer(state, action);
+}
+```
+The final step of the implementation is to put the  Meta `reducer` as an argument in `provideStore()`
+```
+import {reducer} from "./common/reducers/index";
+
+
+@NgModule({
+  bootstrap: [ AppComponent ],
+  declarations: [
+   //...
+  ],
+  imports: [ 
+    /*
+     Put the reducer as an argument in provideStore 
+    */
+    StoreModule.provideStore(reducer),
+
+  ],
+})
+export class AppModule {
+  constructor() {}
+}
+```
+
+# Getting state slices
+ The new architecture of the application requires a different way for accessing the state slices. 
+ 
+ Previously, we could simply access `operations` using the following snippet:
+ 
+ ```
+ //app.component.ts 
+ 
+  this.operations = _store.select('operations')
+ ```
+ 
+**However, this isn't a good idea now that there's a state tree and the `operations` state is an object that could have multiple properties.** Additionally, this doesn't allow combining states in a particlar manner. There needs to be a set of designated functions whose role is to return certain parts of the state tree.
+
+#### Accessing parts of the state tree.
+Accessing the state slices is not going to be done directly from the application's components. Instead, the `select`-ing of the state will be done in the `app/reducers` modules. 
+
+To To illustrate how it works,let's first select `operations` from the state tree:
+
+
+```
+ //app/reducers/index.ts
+ 
+ export function getOperations(state$: Observable<State>) {
+   return state$.select(state => state.operations);
+}
+
+```
+  
+  
+#### Accessing the state properties
+
+Using the last function, only the `operations` state of the application is accessed, and it contains this:
+```js
+ {
+    entities: [ //...an array of operations
+ }
+```
+
+ That's a problem, because we need a particlar property of the `operations` state - the `entities` array. Here is how it's done:
+ 
+ 
+ **First**, in `oprations.ts`, export a function which accesses the `entities` property of the `operations` state:
+ 
+```
+  
+// app/reducers/operations.ts
+
+/*
+
+ Get the entities of the operations state object. This function will be
+ imported into the file for the Meta Reducer, where it will
+ be composed together with a function that gets the state of 
+ the  operations state object out of the application state.
+*/
+
+export function getEntities(state$: Observable<State>) {
+return state$.select(s => s.entities);
+}
+
+```
+
+**Second**, compose `getOperations` and `getEntities`. *Function composition* is one of the building blocks of functional programming. It executes a set of functions, putting the returned value of the first function an an argument for the second function. *Remember that compose applies the result from right to left*.
+
+```
+// app/reducers/index.ts
+
+export const getEntities = compose(fromOperations.getEntities, getOperations);
+```
+
+In this case, `getOperations` first accesses the `operations` state from the state tree and then `getEntities` gets the `entities` property of  the operations state.
+
+
 
 # Adding a new state
-# Getting state slices
-
 # Effects
 
