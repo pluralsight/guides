@@ -122,7 +122,35 @@ export type Actions
   IncrementOperationAction |
   DecrementOperationAction
 ```
+#### The new way of dispatching actions
+ With the new implementations of actions, comes a new way of dispatching them. 
  
+ **Before**
+ ```
+ //app.component.ts
+ 
+     this._store.dispatch({type: ADD_OPERATION , payload: {
+      id: ++ this.id,//simulating ID increments
+      reason: operation.reason,
+      amount: operation.amount
+    }});
+```
+ 
+ Instead of directly sending an action with its type and payload, now this will be handled by the operation's class. Now that the action is a class, the dispatching is done by creating a new class member and putting the payload in the class constructor:
+ 
+**After**
+```
+//Import the action classes for operations
+import * as operations from "./common/actions/operations"
+
+
+this._store.dispatch(new operations.AddOperationAction({
+    id: ++ this.id,//simulating ID increments
+  reason: operation.reason,
+  amount: operation.amount
+})
+```
+
 ### Adapting the reducer function
  There are three problems with the current reducer: 
  
@@ -336,8 +364,16 @@ export class AppModule {
  
  ```
  //app.component.ts 
- 
-  this.operations = _store.select('operations')
+  import {State, Store} from "@ngrx/store";
+  
+  export class AppComponent {
+
+  //....
+
+  constructor(private _store: Store<State>) {
+    this.operations = _store.select('operations')
+  }
+
  ```
  
 **However, this isn't a good idea now that there's a state tree and the `operations` state is an object that could have multiple properties.** Additionally, this doesn't allow combining states in a particlar manner. There needs to be a set of designated functions whose role is to return certain parts of the state tree.
@@ -399,6 +435,30 @@ export const getEntities = compose(fromOperations.getEntities, getOperations);
 ```
 
 In this case, `getOperations` first accesses the `operations` state from the state tree and then `getEntities` gets the `entities` property of  the operations state.
+
+Let's apply this functionality in `app.component.ts`:
+
+```js
+//app.component.ts
+
+/*
+ In order to access the application state, reference the reducers folder again,
+ accessing all the exported members from it though index.ts
+ */
+import * as fromRoot from './common/reducers';
+
+export class AppComponent {
+
+  //...
+  
+  constructor(private _store: Store<fromRoot.State>) {
+    this.operations = _store.let(fromRoot.getEntities)
+  }
+
+```
+
+`_store.let` executes `getEntities` and returns its value.
+
 
 
 
