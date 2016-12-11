@@ -486,7 +486,7 @@ import * as fromRoot from './common/reducers';
 export class AppComponent {
 
   public id:number = 0 ; //simulating IDs
-  public operations:Array<Operation>;
+  public operations:Observable<Operation[]>;
 
 
   constructor(private _store: Store<fromRoot.State>) {
