@@ -522,3 +522,8 @@ export class AppComponent {
 # Adding a new state
 # Effects
 
+### Install ngrx/effects
+### make an effects directory
+### make a service
+### install money.js
+
