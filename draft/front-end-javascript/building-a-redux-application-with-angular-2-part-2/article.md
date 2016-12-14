@@ -520,6 +520,243 @@ export class AppComponent {
 
 ```
 # Adding a new state
+ It's time to take the example application to the next level by adding multi-currency support. Being able to see the operations in different currencies comes with certain requirements:
+ 
+  1. **Reducer** which stores the available currencies and the currently selected currency.
+  2. **JSON API** which provides up-to-date currency rates.
+  3. **Technique** for reactively changing amounts in the operations.
+
+Let's tackle task #1 and add the `currency` actions and reducer. With the architecture already laid, adding new functionality is much simpler.
+
+
+### Actions
+Let's start with the actions first. Create a new file in `actions` named `currencies.ts`.
+The first action will be when the user attempts to change the currency. Here's how the code for the action looks:
+
+```
+// app/actions/currencies.ts
+
+import { Action } from '@ngrx/store';
+
+
+export const ActionTypes = {
+  CHANGE_CURRENCY: 'Change currency',
+};
+
+export class ChangeCurrencyAction implements Action {
+  type = ActionTypes.CHANGE_CURRENCY;
+  constructor(public payload:string) { }
+}
+
+
+export type Actions =
+  ChangeCurrencyAction 
+``` 
+### Reducer
+
+Next, create a file `currencies.ts` in `app/reducers`. The `currencies` .
+
+```
+// app/reducers/currencies.ts
+
+import '@ngrx/core/add/operator/select';
+import { Observable } from 'rxjs/Observable';
+import * as currencies from '../actions/currencies';
+
+/*
+The sate object needs to have three properties:
+1. A property for keeping a list of the available currencies
+2. A property for keeping the selected currency
+3. A property for keeping the list of exchange rates
+*/
+export interface State {
+  entities:Array<string>
+  selectedCurrency: string | null;
+  rates: Array<Object>,
+};
+
+const initialState: State = {
+    entities: ['GBP', 'EUR'],
+    selectedCurrency: null,
+    rates: [] ,
+};
+
+
+export function reducer(state = initialState, action: currencies.Actions): State {
+  switch (action.type) {
+
+    case currencies.ActionTypes.CHANGE_CURRENCY: {
+        return {
+          entities: state.entities,
+          selectedCurrency: action.payload,
+          rates: state.rates
+        };
+    }
+
+    default:
+      return state;
+  }
+
+}
+
+/*
+ These selector functions provide access to certain slices of the currency state object.
+*/
+
+export function getCurrenciesEntities(state$: Observable<State>) {
+  return state$.select(s => s.entities);
+}
+
+
+export function getSelectedCurrency(state$: Observable<State>) {
+  return state$.select(s => s.selectedCurrency);
+}
+
+export function getRates(state$: Observable<State>) {
+  return state$.select(s => s.rates);
+}
+```
+
+The final step is to include the `currencies` state in the store:
+
+```
+// app/reducers/index.ts
+
+// Import app/reducers/currencies.ts
+
+import * as fromCurrencies from '../reducers/currencies';
+//...
+
+
+export interface State {
+  operations: fromOperations.State;
+  //Add the currencies state interface
+  currencies: fromCurrencies.State;
+}
+
+
+const reducers = {
+  operations: fromOperations.reducer,
+
+  // Add the currency reducer
+  currencies: fromCurrencies.reducer
+
+};
+
+//...
+
+
+//Access the 'currencies' state in the application store
+export function getCurrencies(state$: Observable<State>) {
+  return state$.select(state => state.currencies);
+}
+
+// Access 'entities' from the 'currencies' state in the application state.
+export const getCurrencyEntities = compose(fromCurrencies.getCurrenciesEntities , getCurrencies);
+
+// Access 'selectedCurrency' from the 'currencies' state in the application state.
+export const getSelectedCurrency = compose(fromCurrencies.getSelectedCurrency , getCurrencies);
+
+// Access 'rates' from the 'currencies' state in the application state.
+export const getCurrencyRates = compose(fromCurrencies.getRates , getCurrencies);
+
+
+
+
+
+
+```
+
+### Accessing the new state
+Before creating a 'dumb' component to display the currency options and the selected currency, the `currencies` have to be retrieved in the  smart component (in this case `AppComponent`).
+
+```
+// app/app.component.ts
+
+
+export class AppComponent {
+  //...
+  public currencies:Observable<string[]>;
+  public selectedCurrency: Observable<string>;
+
+
+  constructor(private _store: Store<fromRoot.State>) {
+    //...
+    this.currencies = this._store.let(fromRoot.getCurrencyEntities);
+    this.selectedCurrency =this._store.let(fromRoot.getSelectedCurrency);
+  }
+  //...
+    onCurrencySelected(currency:string) {
+    this._store.dispatch(new currencies.ChangeCurrencyAction(currency))
+  }
+  
+ }
+```
+ Apart from making component class variables for accessing the `currencies` in the store, there is also a function for dispatching the `ChangeCurencyAction()` when the user selects another currency.
+ 
+Next, install [ng-bootstrap](https://ng-bootstrap.github.io/#/getting-started) in order to add good-looking, interactive radio buttons. 
+```bash
+ $ npm install --save @ng-bootstrap/ng-bootstrap
+```
+
+And import the `NgbModule` in the `AppModule`:
+```
+// app.module.ts
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+
+//...
+@NgModule({
+  declarations: [AppComponent, ...],
+  imports: [NgbModule.forRoot(), ...],
+  bootstrap: [AppComponent]
+})
+export class AppModule {
+}
+```
+
+Next, create a `Currencie`component. 
+
+```
+// currencies.component.ts
+
+import {Component, Input, ChangeDetectionStrategy, Output, EventEmitter} from '@angular/core';
+
+@Component({
+    selector: 'currencies',
+    template: `
+    '<div [ngModel]="selectedCurrency" (ngModelChange)="currencySelected.emit($event)" ngbRadioGroup name="radioBasic">
+    <label *ngFor="let currency of currencies" class="btn btn-primary">
+    <input type="radio" [value]="currency"> {{currency}}
+    </label>
+    </div>`,
+     changeDetection: ChangeDetectionStrategy.OnPush
+})
+export class Currencies  {
+    @Input() currencies:Array<string>;
+    @Input() selectedCurrency:string;
+    @Output() currencySelected = new EventEmitter();
+
+    constructor() { }
+
+}
+```
+The `Currencies` component is a 'dumb' component (has no logic) that uses `ngbRadioGroup` to display the available currencies. `(ngModelChange)` is used to emit an event to `AppComponent` every time the user clicks on the radio buttons.
+
+Lastly, add `Currencies` to `AppModule`:
+
+```
+// app.module.ts
+import {Currencies} from './currencies.component';
+
+//...
+@NgModule({
+  declarations: [Currencies, ...],
+  //...
+})
+export class AppModule {
+}
+```
+
 # Effects
 
 ### Install ngrx/effects
