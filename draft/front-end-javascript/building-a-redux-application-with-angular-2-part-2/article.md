@@ -759,8 +759,32 @@ export class AppModule {
 
 # Effects
 
-### Install ngrx/effects
+If you go to [http://localhost:4200/](http://localhost:4200/) now and play around with the currency buttons, you'll see that nothing special happens yet. Looking at the current state of the application, there needs to be a way to load the currency rates from a dedicated currency data API, such as [fixer.io](http://fixer.io/). 
+
+**[Redux has its own convention for handling server-side requests](http://redux.js.org/docs/advanced/AsyncActions.html)**. It does it through using a middleware - a piece of logic that stays between the server and the reducer functions. Actions that trigger server-side requests are considered as *impure* actions, since they cannot be completely handled by the reducer.
+
+In redux, andling server-side requests requires the implementation of three actions:
+
+   1. **Action that indicates the start of the server-side request**:
+   This action is dispatched just before the request is made. In the example application, the name of this action will be named `LOAD_CURRENCIES`. A reducer handling such action would change a dedicated state property for indicating a server-side location such as `loadingCurrencies`, which can be used to implement a loading spinner, for example.
+   2. **Action that indicates a successfull request**:
+   This action is dispatched when te request is done. Its payload contains the request response. The reducer simply adds the response to its corresponding state property. In the example, this action name will be called `LOAD_CURRENCIES_SUCCESS` and its payload will fill the `rates` state property with the most recent information about currency rates.
+   3. **Action that indicates a failed request**
+   This action is dispatched if the request fails. The action payload may contain the error reason or simply return nothing. In the example application, this action would be normally called `LOAD_CURRENCIES_FAIL`
+   
+
+#### What happens between the *Load* action and the *Load Success/Failure* action? 
+
+This is where the middleware comes into play and more particularly, the middleware for handling side effects. In Redux, server-side requests are regarded as side effects from actions that cannot be handled through a reducer (that's why they're called *impure*. The server-side calls themselves will be handled by an Angular 2 service which will be called within the effect.
+
+In Angular 2, there is a special package for handling side effects - [ngrx/effects](https://github.com/ngrx/effects)
+
+Open your terminal and type:
+```
+npm install @ngrx/effects --save
+```
 ### make an effects directory
 ### make a service
 ### install money.js
+### add a currency pipe
 
