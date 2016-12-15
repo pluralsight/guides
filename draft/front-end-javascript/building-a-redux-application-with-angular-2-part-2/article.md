@@ -1082,3 +1082,9 @@ Finally, in `OperationsList` apply the `CustomCurrencyPipe` with the `selectedCu
     </ul>
  <!-- ...closing wrapper tags -->
 ```
+### The final result
+
+Go to [http://localhost:4200](http://localhost:4200) and have a look at the fully-fledged, multi-state Redux application we just created:
+
+
+![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/4a8e933f-2ee6-462e-826d-de6f33b45ce4.com-video-to-gif)
