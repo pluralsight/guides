@@ -1,3 +1,8 @@
+### testing-prod by Charles (Luke) Lee
+- [Read the guide](http://tutorials.pluralsight.com/other/testing-prod?status=draft)
+- [Read more from Charles (Luke) Lee](http://tutorials.pluralsight.com/author/perkolasoft) <img src="https://avatars.githubusercontent.com/u/15053257?v=3" width="30" height="30" alt="Charles (Luke) Lee" />
+- Related to: other
+
 ### Building a Redux application with Angular 2 - Part 2 by Hristo Georgiev
 - [Read the guide](http://tutorials.pluralsight.com/front-end-javascript/building-a-redux-application-with-angular-2-part-2?status=draft)
 - [Read more from Hristo Georgiev](http://tutorials.pluralsight.com/author/Kaizeras) <img src="https://avatars.githubusercontent.com/u/6340189?v=3" width="30" height="30" alt="Hristo Georgiev" />
