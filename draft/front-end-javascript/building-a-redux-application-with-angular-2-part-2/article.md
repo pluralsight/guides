@@ -31,6 +31,12 @@
  Next, the actions need to be overhauled so that it is known to which reducer function they belong to.
  
  In `operations.ts`, delete the action constants and create a new file in `actions/operations.ts'`
+ 
+ ```
+ $ mkdir actions
+ $ cd actions
+ $ touch operations.ts
+ ```
   
  Instead of making a new constant for each action, the actions will be grouped into enums.
  ```
@@ -199,11 +205,18 @@ export function reducer(state = initialState, action: operations.Actions): State
     }
     //... rest of the cases
 ```   
+ Create an `app/reducers` directory and create a file for `operations`:
  
+ ```
+ $ mkdir reducers
+ $ cd reducers
+ $ touch operations.ts
+ ```
  
  Here is how the new `operations` reducer looks like after all the changes have been applied:
  
  ```
+ // app/reducers/operations.ts
 import '@ngrx/core/add/operator/select';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/let';
@@ -296,7 +309,15 @@ const combineReducers = reducers => (state = {}, action) => {
  
 #### Implementation
 
- In your `app/reducers` folder, create a new file named `index.ts`. In it, paste the following snippet:
+ In your `app/reducers` folder, create a new file named `index.ts`.
+ 
+ ```
+ $ cd reducers
+ $ touch index.ts
+ ```
+ 
+ 
+ In `index.ts`, paste the following snippet:
  
 ```
 import {combineReducers, ActionReducer} from '@ngrx/store';
@@ -336,6 +357,7 @@ export function reducer(state: any, action: any) {
 ```
 The final step of the implementation is to put the  Meta `reducer` as an argument in `provideStore()`
 ```
+// app/app.module.ts
 import {reducer} from "./common/reducers/index";
 
 
@@ -531,6 +553,10 @@ Let's tackle task #1 and add the `currency` actions and reducer. With the archit
 
 ### Actions
 Let's start with the actions first. Create a new file in `actions` named `currencies.ts`.
+```
+ $ cd actions
+ $ touch currencies.ts
+```
 The first action will be when the user attempts to change the currency. Here's how the code for the action looks:
 
 ```
@@ -555,6 +581,11 @@ export type Actions =
 ### Reducer
 
 Next, create a file `currencies.ts` in `app/reducers`. The `currencies` .
+```
+ $ cd reducers
+ $ mkdir currencies.ts
+```
+Here is how the `currencies` reducer looks like:
 
 ```
 // app/reducers/currencies.ts
@@ -714,7 +745,11 @@ export class AppModule {
 }
 ```
 
-Next, create a `Currencie`component. 
+Next, create a `Currencies`component.
+
+```
+touch currencies.component.ts
+```
 
 ```
 // currencies.component.ts
@@ -761,9 +796,10 @@ export class AppModule {
 
 If you go to [http://localhost:4200/](http://localhost:4200/) now and play around with the currency buttons, you'll see that nothing special happens yet. Looking at the current state of the application, there needs to be a way to load the currency rates from a dedicated currency data API, such as [fixer.io](http://fixer.io/). 
 
-**[Redux has its own convention for handling server-side requests](http://redux.js.org/docs/advanced/AsyncActions.html)**. It does it through using a middleware - a piece of logic that stays between the server and the reducer functions. Actions that trigger server-side requests are considered as *impure* actions, since they cannot be completely handled by the reducer.
+**[Redux has its own convention for handling server-side requests](http://redux.js.org/docs/advanced/AsyncActions.html)**. It does it through using a middleware - a piece of logic that stays between the server and the reducer functions. In Redux, server-side requests are regarded as side effects from actions that cannot be entirely handled a reducer. Such actions call **impure** functions making the reducers unable to handle the recreation of the action, or being able to time-travel, because the function does not depend entirely on its input.If you still don't get the concept of impure functions, [read here](https://en.wikipedia.org/wiki/Pure_function)
 
-In redux, andling server-side requests requires the implementation of three actions:
+### Actions for handling side effects
+The standart for handling server-side requests requires the implementation of three actions:
 
    1. **Action that indicates the start of the server-side request**:
    This action is dispatched just before the request is made. In the example application, the name of this action will be named `LOAD_CURRENCIES`. A reducer handling such action would change a dedicated state property for indicating a server-side location such as `loadingCurrencies`, which can be used to implement a loading spinner, for example.
@@ -772,10 +808,79 @@ In redux, andling server-side requests requires the implementation of three acti
    3. **Action that indicates a failed request**
    This action is dispatched if the request fails. The action payload may contain the error reason or simply return nothing. In the example application, this action would be normally called `LOAD_CURRENCIES_FAIL`
    
+*For the sake of simplity, making a separate action for failure will be omitted*. Here is how the implementation of the new action looks like:
 
+```
+import { Action } from '@ngrx/store';
+
+
+export const ActionTypes = {
+  CHANGE_CURRENCY: 'Change currency',
+  LOAD_CURRENCY_RATES: 'Loading currency rates'
+};
+
+export class LoadCurrencyRatesAction implements Action {
+  type = ActionTypes.LOAD_CURRENCY_RATES;
+  constructor(public payload:string) { }
+
+}
+
+export class LoadRatesCompleteAction implements Action {
+  type = ActionTypes.LOAD_RATES_COMPLETE;
+  constructor(public payload:string) { }
+}
+
+
+
+export type Actions =
+  // Add the functions as tpyes
+  LoadCurrencyRatesAction |
+  LoadRatesCompleteAction
+```
 #### What happens between the *Load* action and the *Load Success/Failure* action? 
 
-This is where the middleware comes into play and more particularly, the middleware for handling side effects. In Redux, server-side requests are regarded as side effects from actions that cannot be handled through a reducer (that's why they're called *impure*. The server-side calls themselves will be handled by an Angular 2 service which will be called within the effect.
+This is where the middleware comes into play.To be more exact, *the middleware for handling side effects*. 
+
+As for the server-side calls themselves, they will be handled by an Angular 2 **service*,  which will be called within the effect.
+
+#### Fetching data with a service
+
+Before adding the effects, let's add the service that is going to fetch the data from the [fixer.io](http://fixer.io) API.
+
+Create an `app/services` directory that is going to contain the services which handle server-side requests and create a service for `currencies`:
+```
+$ mkdir services
+$ cd services
+$ touch currencies.ts
+```
+
+Here is how the service likes like:
+```
+import {Http} from '@angular/http';
+import {Injectable} from '@angular/core';
+
+
+@Injectable()
+export class CurrencyService {
+  
+  constructor(private http: Http ) {}
+
+  loadCurrencies() {
+    //Inferring that the base is USD
+    return  this.http.get('http://api.fixer.io/latest?base=USD' )
+      .map((response) => {
+         let body = response.json();
+          return body.rates
+
+      })
+
+  }
+}
+```
+`CurrencyService` contains one function, `loadCurrencies()`, which makes a simple HTTP requeust to the [fixer.io](fixer.io) API and returns the `rates` property of the response as an observable.
+#### Implementing an effect
+
+Next, we are going to implement the side-effect for handling the returned rates from `CurrencyService`.
 
 In Angular 2, there is a special package for handling side effects - [ngrx/effects](https://github.com/ngrx/effects)
 
@@ -783,8 +888,75 @@ Open your terminal and type:
 ```
 npm install @ngrx/effects --save
 ```
-### make an effects directory
-### make a service
+
+Create an an `app/effects` directory and a file for the effects concerning  `currencies`:
+```bash
+ $ mkdir effects
+ $ cd effects
+ $ touch currncies.ts
+```
+
+```
+// app/effects/operations.ts
+
+
+import { Injectable } from '@angular/core';
+import { Effect, Actions } from '@ngrx/effects';
+import { Observable } from 'rxjs/Observable';
+import * as currencyActions from '../actions/currencies';
+
+import {CurrencyService} from "../services/currency.service";
+import {LoadRatesCompleteAction} from "../actions/currencies";
+
+
+
+@Injectable()
+export class CurrencyEffects {
+  constructor(
+    private _actions: Actions,
+    private _currencyService:CurrencyService
+  ) { }
+
+/*
+ The effects for different states are singletons that 'intercept' dispatched actions that are being sent to the reducer.
+
+*/
+
+  @Effect() loadCategories$ = this._actions.ofType(currencyActions.ActionTypes.LOAD_CURRENCY_RATES)
+    .switchMap(() => this._currencyService.loadCurrencies()
+      .map((rates) => new LoadRatesCompleteAction(rates) )
+      .catch(() => Observable.of( new LoadRatesCompleteAction({})))
+    );
+
+}
+```
+`_actions.ofType()` returns an observable which watcher for newly dispatched events that match the type of the action. `switchMap()` is an [rxJS operator](http://reactivex.io/rxjs/class/es6/Observable.js~Observable.html#instance-method-switchMap). It is part of several operators that are used for reactive programming. What makes `switchMap()` different is that it returns only **the most recent observable's value** in a stream of observables. 
+
+Once the service returns the results observable, there are two options - If the results are successfully fetched, a new `LoadRatesCompleteAction` will be created, having the rates as its payload. If an error has occured, the same action will be created, but with empty payload. **Alternatively**, a `LoadRatesFailAction` can be added to `currencies/action` for handling cases in which the server fails to return a result.
+
+The final step is to register the effects to the `app.module` and the currency as a provider:
+```
+// app.module.ts
+import {CurrencyEffects} from "./common/effects/currencies";
+import {EffectsModule} from "@ngrx/effects";
+import { CurrencyService} from "./common/services/currency.service";
+//...
+
+@NgModule({
+  //...bootstrap and declarations
+  
+  imports: [ 
+    // Add each the effects for each of your states in the module.
+    EffectsModule.run(CurrencyEffects),
+
+  ],
+  //Add the CurrencyService as a provider
+  providers: [CurrencyService]
+})
+export class AppModule {
+  constructor() {}
+}
+```
 ### install money.js
 ### add a currency pipe
 
