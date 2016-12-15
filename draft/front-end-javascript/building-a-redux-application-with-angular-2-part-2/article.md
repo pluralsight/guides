@@ -1,9 +1,9 @@
 # What we did last time
 
 # Restructuring
-  In this part, the application is going to be accomodated in a way that it can support having multiple states in its Store. To do so, the architecture of the application needs to be altered.
+  In this part, the application is going to be accomodated in a way that it can support having multiple states in its Store. To do so, many of the elements of the architecture of the application need to be altered.
   
-  In its current state, the application does not have a Meta-Reducer. Meta-Reducers are a map of all the reducer functions in the state tree. It contains a reference for each of the state slices and their reducers. When an action gets dispatched, the Meta-Reducer goes through the map of all reducers, looking for the one that matches the action type and calls the function.
+  In its current state, the application does not have a Meta-Reducer, which is essential for having more than one state. Meta-Reducers are a map of all the reducer functions in the state tree. It contains a reference for each of the state slices and their reducers. When an action gets dispatched, the Meta-Reducer goes through the map of all reducers, looking for the one that matches the action type and calls the function.
   
  
   Another issue that causes concern is  the actions and the reducer for `operations` are staying together, but as the applicaiton grows and the actions and the reducer are becoming more complex, there's going to be a lot of code in a single file. Thus, the actions and the reducers have to be divided in different files.
@@ -957,6 +957,128 @@ export class AppModule {
   constructor() {}
 }
 ```
-### install money.js
-### add a currency pipe
 
+### Taking advantage of the reactive state
+One of the best features of Redux is that it gives the opportunity for the most recent part of the application state to be accessed anywhere in the application.
+
+To illustrate this, let's finish the current implementation of the currencies in the applications. So far, the currency rates are registered the part of the state and thanks to effects, they can be asynchronously added to the `currencies` state.
+
+In order to makeuse of the rates, a custom pipe will be implemented to handle the currency conversion depending on the selected currency. There's no need to perform any special mathematical operations -  [money.js](http://openexchangerates.github.io/money.js/) is going to be used to handle the conversion of the currencies.
+
+First, install 'money.js':
+```
+npm install money --save 
+```
+With the package installed, we can start implementing the pipe.
+Create a file `app/currency.pipe.ts` 
+
+```
+$ touch currency.pipe.ts
+```
+The pipe needs to get the latest state of the `rates` property in the `currencies` state add convert it for each of the values the pipe is applied to.
+```
+import { Pipe, PipeTransform } from '@angular/core';
+import * as fromRoot from './common/reducers';
+import {State, Store} from "@ngrx/store";
+
+/* 
+ Requiring money.js and setting the
+ base currenc to USD. In this case, we infer that
+ the base currency is USD. However, if you add a
+ baseCurrency attribute to the currencies state, you
+ can make the base currency dynamic as well.
+*/
+const fx = require('money');
+fx.base = "USD";
+
+@Pipe({
+  name: 'currencyPipe',
+})
+export class CustomCurrencyPipe implements PipeTransform {
+  /*
+   One of the main advantages of Redux is that the state of
+   the application can be observed from any file by simply
+   implementing a selector and calling it where needed.
+
+  */
+  constructor(private _store: Store<fromRoot.State>) {
+    this._store.let(fromRoot.getCurrencyRates).subscribe((rates) => {
+      fx.rates = rates;
+    });
+  }
+  /*
+   The currency parameter obtains its value from the selectedCurrency
+   property. An alternative implementation would be to call
+   getSelectedCurrency within the pipe and get the selectedCurrency
+   within the pipe.
+  */
+
+  transform(value: number , currency): string {
+      if(currency != null) {
+        value = fx.convert(value,  {from: "USD" , to: currency});
+        return currency + ' ' + value;
+      } else {
+        return 'USD' + ' ' + value ;
+      }
+  }
+}
+```
+Declare the pipe in `app.module.ts`:
+```
+import {CustomCurrencyPipe} from "./currencyPipe";
+//...
+
+@NgModule({
+  declarations: [s
+    CustomCurrencyPipe
+  ],
+  //...
+})
+export class AppModule {
+  constructor() {}
+}
+```
+
+##### Putting `CustomCurrencyPipe` to use
+
+First, add `selectedCurrency` in two places in the `AppComponent` template - as an input for the `Currencies`, which will need it to display  the active currencty,  and the `OperationsList` components, which will use it in `CustomCurrencyPipe`.
+
+```
+// app.component.ts
+@Component({
+  selector: 'app-root',
+  template: `
+      <div class="container">
+            <new-operation (addOperation)="addOperation($event)"></new-operation>
+            <!-- Add selectedCurrency as an input for the currencies component --> 
+            <currencies (currencySelected)="onCurrencySelected($event)" [currencies]="currencies | async" [selectedCurrency]="selectedCurrency | async"></currencies>
+            <!-- Add selectedCurrency as an input for the operations-list component -->
+            <operations-list [operations]="operations| async"
+            [selectedCurrency]="selectedCurrency | async"
+            (deleteOperation)="deleteOperation($event)"
+            (incrementOperation)="incrementOperation($event)"
+            (decrementOperation)="decrementOperation($event)"></operations-list>
+      </div>
+`
+})
+export class AppComponent {
+//..
+}
+
+```
+
+Finally, in `OperationsList` apply the `CustomCurrencyPipe` with the `selectedCurrency` as a parameter:
+
+
+```
+<!-- operations-list.template.html -->
+ <!-- ...wrapper tags -->
+    <ul class="list-group" >
+      <li *ngFor="let operation of operations"class="list-group-item" [ngClass]="{'list-group-item-success': operation.amount > 0 ,'list-group-item-danger': operation.amount < 0 }">
+      <!-- Apply the currencyPipe to each of the operation amounts in the operations list -->
+        <h3 class="h3">{{operation.amount | currencyPipe: selectedCurrency}}</h3>
+       <!-- ...buttons -->
+      </li>
+    </ul>
+ <!-- ...closing wrapper tags -->
+```
