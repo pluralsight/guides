@@ -1,3 +1,8 @@
+### Building a Redux application with Angular 2 - Part 2 by Hristo Georgiev
+- [Read the guide](http://tutorials.pluralsight.com/front-end-javascript/building-a-redux-application-with-angular-2-part-2?status=in-review)
+- [Read more from Hristo Georgiev](http://tutorials.pluralsight.com/author/Kaizeras) <img src="https://avatars.githubusercontent.com/u/6340189?v=3" width="30" height="30" alt="Hristo Georgiev" />
+- Related to: Front-End JavaScript (Angular, React, Meteor, etc)
+
 ### Cloning an Ionic 2 application from Github by Todd Shelton
 - [Read the guide](http://tutorials.pluralsight.com/front-end-javascript/cloning-an-ionic-2-application-from-github?status=in-review)
 - [Read more from Todd Shelton](http://tutorials.pluralsight.com/author/TShelton41) <img src="https://avatars.githubusercontent.com/u/795737?v=3" width="30" height="30" alt="Todd Shelton" />
