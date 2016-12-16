@@ -1,7 +1,12 @@
 # What we did last time
-
+  [In part 1 of this guide](http://tutorials.pluralsight.com/front-end-javascript/building-a-redux-application-with-angular-2-part-1), the main principles and terminology about Redux were explained and illustrated by being implemented into a small [application for recording financial operations](https://github.com/Kaizeras/ng2-redux-app).
+  
+  It is strongly recommended that you read Part 1 of this quide before moving on to this part.
+  
 # Restructuring
-  In this part, the application is going to be accomodated in a way that it can support having multiple states in its Store. To do so, many of the elements of the architecture of the application need to be altered.
+  In this part, the example application will be extended with additional functionality.
+
+  To make this possible, however, requires the application to be accomodated in a way that it can support having multiple states in its Store. To do so, many of the elements of the architecture of the application need to be altered.
   
   In its current state, the application does not have a Meta-Reducer, which is essential for having more than one state. Meta-Reducers are a map of all the reducer functions in the state tree. It contains a reference for each of the state slices and their reducers. When an action gets dispatched, the Meta-Reducer goes through the map of all reducers, looking for the one that matches the action type and calls the function.
   
@@ -1088,3 +1093,15 @@ Go to [http://localhost:4200](http://localhost:4200) and have a look at the full
 
 
 ![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/4a8e933f-2ee6-462e-826d-de6f33b45ce4.com-video-to-gif)
+
+
+# Conculsion
+
+Redux is a new approach for managing applicaiton state, [but it is not the panacea some might think it is](https://medium.com/@dan_abramov/you-might-not-need-redux-be46360cf367#.kcg6xbskh). The concepts from functional programming applied in Redux may be suitable for certain use cases, and it's up to you your to decide whether Redux is the right way to go for your next project.
+
+#### Got lost in the code?
+In case you didn't understand what goes where, [I have uploaded the final version of the example applicaiton for you to use as a reference.](https://github.com/Kaizeras/ng2-redux-app/tree/step-2)
+
+In case you have any questions regarding Redux and Angular 2, write a comment or send an e-mail to hgeorgiev@centroida.co.
+
+
