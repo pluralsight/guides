@@ -108,11 +108,6 @@
 - [Read more from Michael Scharf (Github)](http://tutorials.pluralsight.com/user/scharf) <img src="https://avatars.githubusercontent.com/u/3731059?v=3" width="30" height="30" alt="Michael Scharf (Github)" />
 - Related to: Java and J2EE
 
-### Decorators as classes or functions? by Luke Lee
-- [Read the guide](http://tutorials.pluralsight.com/python/decorators-as-classes-or-functions?status=in-review)
-- [Read more from Luke Lee](http://tutorials.pluralsight.com/author/durden) <img src="https://avatars.githubusercontent.com/u/58063?v=3" width="30" height="30" alt="Luke Lee" />
-- Related to: Python
-
 ### How I wrote an ~100B grid system by IonicaBizau
 - [Read the guide](http://tutorials.pluralsight.com/other/how-i-wrote-an-%7E100b-grid-system?status=in-review)
 - [Read more from IonicaBizau](http://tutorials.pluralsight.com/user/IonicaBizau) <img src="https://avatars.githubusercontent.com/u/2864371?v=3" width="30" height="30" alt="IonicaBizau" />
