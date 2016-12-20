@@ -1,3 +1,8 @@
+### Decorators as classes or functions? by Luke Lee
+- [Read the guide](http://tutorials.pluralsight.com/guides/python/decorators-as-classes-or-functions?status=draft)
+- [Read more from Luke Lee](http://tutorials.pluralsight.com/guides/author/durden) <img src="https://avatars.githubusercontent.com/u/58063?v=3" width="30" height="30" alt="Luke Lee" />
+- Related to: Python
+
 ### testing new domain by Charles (Luke) Lee
 - [Read the guide](http://tutorials.pluralsight.com/guides/other/testing-new-domain?status=draft)
 - [Read more from Charles (Luke) Lee](http://tutorials.pluralsight.com/guides/author/perkolasoft) <img src="https://avatars.githubusercontent.com/u/15053257?v=3" width="30" height="30" alt="Charles (Luke) Lee" />
