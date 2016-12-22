@@ -1,3 +1,8 @@
+### Ruby on Rails + Angular 2 by Leonardo Pineda
+- [Read the guide](http://tutorials.pluralsight.com/guides/ruby-ruby-on-rails/ruby-on-rails-+-angular-2?status=draft)
+- [Read more from Leonardo Pineda](http://tutorials.pluralsight.com/guides/author/Leo1305Pineda) <img src="https://avatars.githubusercontent.com/u/12752959?v=3" width="30" height="30" alt="Leonardo Pineda" />
+- Related to: Ruby, Ruby on Rails
+
 ### Decorators as classes or functions? by Luke Lee
 - [Read the guide](http://tutorials.pluralsight.com/guides/python/decorators-as-classes-or-functions?status=draft)
 - [Read more from Luke Lee](http://tutorials.pluralsight.com/guides/author/durden) <img src="https://avatars.githubusercontent.com/u/58063?v=3" width="30" height="30" alt="Luke Lee" />
