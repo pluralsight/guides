@@ -1,5 +1,4 @@
 
-
 ![ruby-on-rails-angular2](https://raw.githubusercontent.com/pluralsight/guides/master/images/034d7c62-833d-45a7-8222-04c90edb4759.png)
 
 ##### ** El proposito de este material es aportar una guia para la integracion de ruby on rails con angular 2. Antes de comensar abrimos la terminal de linux "ctrl+alt+t" para chequear si se tiene instalado:
