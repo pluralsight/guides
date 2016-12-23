@@ -1,11 +1,20 @@
 ASP.NET Identity Table First
 	In most of the cases when it comes to Identity configuration in ASP.NET it can be quite confusing. Some developers say that the configuration is easy but other claim that sometimes it can be difficult to set it up, especially if you want to customize some of its properties. When you use code-first approach in Entity Framework, you have full control on your user identity options, but when developers deal with bigger projects, usually they prefer to use table-first approach (first they create the database and then they consume the information in the api and shape it in an appropriate way, so it makes sense when the frontend receives it). Imagine that the client of our fictional software company is a huge car manufacturer. They have a lot of shops all around the world, where they sell their products. The first and most important feature of their system should be user-management. It should have different types of users:  Admin, Regional Manager, Shop Manager, Seller and Client. In addition, all of them, except the client, have some secret company code that they can use for access to certain documents related to company’s deals. 
 After we have defined the main properties a user in our application should have, it is time to start developing the architecture of our system. Since it can scale fast and the database design is important, we will use table-first approach. The first step is to create our database. For this article, I will use SQL Server 2016 in combination with SQL Management Studio. 
+
+
+![Creating a blank database](https://raw.githubusercontent.com/pluralsight/guides/master/images/b33c22e7-b4bf-4779-a137-a65098a5b2b1.PNG)
+
  
 Now, after we have the blank database, we can set up the asp.net web api project, which is going to consume the information. Execute the following steps to do it:
 1.	Create a new project in Visual Studio and choose Blank Solution. Name it CarBusinessSystem.
 2.	Add a new web api project to this solution. Name it WebApi. In this way, we can use the template to scaffold our user accounts system. 
 After you complete these steps, you should be able to see the following set-up in your Solution Explorer:
+
+
+
+![Project foundation](https://raw.githubusercontent.com/pluralsight/guides/master/images/d7da08a8-00dc-465c-a4ba-dac38dbee5ea.PNG)
+
  
 We will have several important files for the purpose of this article.
 •	AppStart\IdentityConfig.cs
