@@ -15,9 +15,12 @@ We will have several important files for the purpose of this article.
 •	Controllers\AccountController.cs
 
 Now, after we have our database and our asp project created, we should find a way to link them. In order to achieve this, we will create a DbContext by basing it on a connection string, pointing to our database.  Open the Web.config file and see what happens between the <connectionStrings> for now we have the only the default connection, which points to an instance of LocalDb. We can also notice that the default ApplicationDbContext class in Models\IdentityModels.cs is based on this connection. Our idea here is to create a new context and then base our ApplicationUserManager on it. 
+```
 <add name="SystemUsers" connectionString=".;Initial Catalog=CarBusinessDb;" providerName="System.Data.SqlClient" />
+```
 Delete the default connection string and paste this one on its place. 
-The next step is to create our own database context, which we can use for storing our users and their properties. In the Models\IdentityModels.cs we are going to delete the ApplicationDbContext paste the following code on its place. 
+The next step is to create our own database context, which we can use for storing our users and their properties. In the `Models\IdentityModels.cs` we are going to delete the ApplicationDbContext paste the following code on its place. 
+```C#
 public class AppUsersDbContext : IdentityDbContext<ApplicationUser>
     {
         public AppUsersDbContext()
@@ -30,6 +33,7 @@ public class AppUsersDbContext : IdentityDbContext<ApplicationUser>
             return new AppUsersDbContext();
         }
     }
+```
 As you can see, we use the new connection we have created in the Web.config file for the new context passing its name as a string. 
 Once we have the connection between the database and the asp project, we should configure the built in ApplicationUserManager, so it is going to use this context instead of the default one, which we have already deleted. A quick look on both UserStore and  ApplicationUserManager classes: 
  
