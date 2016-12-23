@@ -23,7 +23,7 @@ We will have several important files for the purpose of this article.
 •	Models\IdentityModels.cs
 •	Controllers\AccountController.cs
 
-Now, after we have our database and our asp project created, we should find a way to link them. In order to achieve this, we will create a DbContext by basing it on a connection string, pointing to our database.  Open the Web.config file and see what happens between the <connectionStrings> for now we have the only the default connection, which points to an instance of LocalDb. We can also notice that the default ApplicationDbContext class in Models\IdentityModels.cs is based on this connection. Our idea here is to create a new context and then base our ApplicationUserManager on it. 
+Now, after we have our database and our asp project created, we should find a way to link them. In order to achieve this, we will create a DbContext by basing it on a connection string, pointing to our database.  Open the Web.config file and see what happens between the <connectionStrings> for now we have the only the default connection, which points to an instance of LocalDb. We can also notice that the default ApplicationDbContext class in Models\IdentityModels.cs is based on this connection. Our idea here is to create a new context and then base our ```ApplicationUserManager``` on it. 
 ```
 <add name="SystemUsers" connectionString=".;Initial Catalog=CarBusinessDb;" providerName="System.Data.SqlClient" />
 ```
@@ -44,16 +44,82 @@ public class AppUsersDbContext : IdentityDbContext<ApplicationUser>
     }
 ```
 As you can see, we use the new connection we have created in the Web.config file for the new context passing its name as a string. 
-Once we have the connection between the database and the asp project, we should configure the built in ApplicationUserManager, so it is going to use this context instead of the default one, which we have already deleted. A quick look on both UserStore and  ApplicationUserManager classes: 
- 
- 
+Once we have the connection between the database and the asp project, we should configure the built in ApplicationUserManager, so it is going to use this context instead of the default one, which we have already deleted. A quick look on both ```UserStore``` and ```ApplicationUserManager``` classes: 
+ ```csharp
+ namespace Microsoft.AspNet.Identity.EntityFramework
+{
+    //
+    // Summary:
+    //     EntityFramework based user store implementation that supports IUserStore, IUserLoginStore,
+    //     IUserClaimStore and IUserRoleStore
+    //
+    // Type parameters:
+    //   TUser:
+    public class UserStore<TUser> : UserStore<TUser, IdentityRole, string, IdentityUserLogin, IdentityUserRole, IdentityUserClaim>, IUserStore<TUser>, IUserStore<TUser, string>, IDisposable where TUser : IdentityUser
+    {
+        //
+        // Summary:
+        //     Default constuctor which uses a new instance of a default EntityyDbContext
+        public UserStore();
+        //
+        // Summary:
+        //     Constructor
+        //
+        // Parameters:
+        //   context:
+        public UserStore(DbContext context);
+    }
+}
+ ```
+ ```csharp
+ namespace WebApi
+{
+    // Configure the application user manager used in this application. UserManager is defined in ASP.NET Identity and is used by the application.
+
+    public class ApplicationUserManager : UserManager<ApplicationUser>
+    {
+        public ApplicationUserManager(IUserStore<ApplicationUser> store)
+            : base(store)
+        {
+        }
+
+        public static ApplicationUserManager Create(IdentityFactoryOptions<ApplicationUserManager> options, IOwinContext context)
+        {
+            ///Calling the non-default constructor of the UserStore class
+            var manager = new ApplicationUserManager(new UserStore<ApplicationUser>(context.Get<ApplicationDbContext>()));
+            
+            /// Rest of the class ...
+        }
+    }
+}
+```
 Shows us that the ApplicationUserManager calls the constructor of the UserStore, which accepts a DbContext and then it uses exactly this connection to store the users data. So, here it is enough just to pass our custom context as a parameter, when the ApplicationUserManager calls the  UserStore constructor.  Substitute the manager variable with the following code:
+```csharp
 var manager = new ApplicationUserManager(new UserStore<ApplicationUser>(context.Get<AppUsersDbContext>()));
-The next step is to initialize our context each time our application starts, in this way, we will be sure that the user manager and the context use the same instance. Go to the AppStart\Startup.Auth.cs file, where we can see that currently, only the deleted ApplicationDbContext is initialized. 
+```
+The next step is to initialize our context each time our application starts, in this way, we will be sure that the user manager and the context use the same instance. Go to the ```AppStart\Startup.Auth.cs``` file, where we can see that currently, only the deleted ```ApplicationDbContext``` is initialized. 
+
+```
+public void ConfigureAuth(IAppBuilder app)
+        {
+            // Configure the db context and user manager to use a single instance per request
+            app.CreatePerOwinContext(ApplicationDbContext.Create);
+            app.CreatePerOwinContext<ApplicationUserManager>(ApplicationUserManager.Create);
+
+            // Enable the application to use a cookie to store information for the signed in user
+            // and to use a cookie to temporarily store information about a user logging in with a third party login provider
+            app.UseCookieAuthentication(new CookieAuthenticationOptions());
+            app.UseExternalSignInCookie(DefaultAuthenticationTypes.ExternalCookie);
+
+            /// Rest of the class ...
+        }
+```
  
-Change the last line with the following code:
+Change the ```app.CreatePerOwinContext(ApplicationDbContext.Create);``` line with the following code:
+```
 app.CreatePerOwinContext(AppUsersDbContext.Create);
-Now, we have set-up our api, in a way to use the newly created database, when it comes to storing users. Next thing we should do is to create the actual tables, where this data will be stored, so close Visual Studio for a while and open the database in your MSMS. 
+```
+Now, we have set-up our API, in a way to use the newly created database, when it comes to storing users. Next thing we should do is to create the actual tables, where this data will be stored, so close Visual Studio for a while and open the database in your MSMS. 
 
 
 
