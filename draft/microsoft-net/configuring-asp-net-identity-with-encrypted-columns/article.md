@@ -128,10 +128,11 @@ app.CreatePerOwinContext(AppUsersDbContext.Create);
 ```
 Now, we have set-up our API, in a way to use the newly created database, when it comes to storing users. Next thing we should do is to create the actual tables, where this data will be stored, so close Visual Studio for a while and open the database in your MSMS. 
 
+### Setting up the Database
 
-
-
-The company secret code will be a sequence of six digits and the name of the region will be string. 
+Here we are going to use the fact that Entity-Framework can execute a migration in order to create our default user properties. Adding the ```RegionName``` property won't be difficult as well, but the problem will come, when we want to add an encrypted column to our deault ```dbo.AspNetUsers``` table. In this case I prefer to use the following set-up:
+1. Create the column in the database by using ```TSQL``` commands. Then write the appropriate stored procedures, for inserting the user. 
+2. Override the default ```ASP.NET``` Identity methods, so they use the above mentioned stored procedures, but not the default code-first approach. 
 
 
 
