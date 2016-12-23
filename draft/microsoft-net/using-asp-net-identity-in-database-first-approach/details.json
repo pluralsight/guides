@@ -1,0 +1,15 @@
+{
+    "_publish_status": "draft",
+    "author_name": "StefanL19",
+    "author_real_name": "Stefan Lazov",
+    "branch": "master",
+    "branches": [],
+    "filename": "article.md",
+    "first_commit": "291dd6968670a3bbc97510105dbfc867cab2eced",
+    "image_url": "https://avatars.githubusercontent.com/u/14915644?v=3",
+    "stacks": [
+        "Microsoft.NET (C#, ASP.NET, VB.NET, etc)"
+    ],
+    "thumbnail_url": null,
+    "title": "Using ASP.NET identity in Database First Approach"
+}
