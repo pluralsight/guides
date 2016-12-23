@@ -32,7 +32,7 @@ We will have several important files for the purpose of this article.
 #### Linking
 Now, after we have our database and our asp project created, we should find a way to link them. In order to achieve this, we will create a DbContext by basing it on a connection string, pointing to our database.  Open the Web.config file and see what happens between the <connectionStrings> for now we have the only the default connection, which points to an instance of LocalDb. We can also notice that the default ApplicationDbContext class in Models\IdentityModels.cs is based on this connection. Our idea here is to create a new context and then base our ```ApplicationUserManager``` on it. 
 ```
-<add name="SystemUsers" connectionString=".;Initial Catalog=CarBusinessDb;" providerName="System.Data.SqlClient" />
+<add name="SystemUsers" connectionString="Data Source=.;Initial Catalog=CarBusinessDb;" providerName="System.Data.SqlClient" />
 ```
 Delete the default connection string and paste this one on its place. 
 The next step is to create our own database context, which we can use for storing our users and their properties. In the `Models\IdentityModels.cs` we are going to delete the ApplicationDbContext paste the following code on its place. 
