@@ -128,8 +128,25 @@ app.CreatePerOwinContext(AppUsersDbContext.Create);
 ```
 
 ### Configuring Roles
-The last part of setting up our API layer will be to include different roles in our application. Again, we will use the ```Identity``` package with the custom DB Context, we have created. As you can see, our users are managed by the ```ApplicationUserManager``` and for the roles, we should have a similar entity called ```ApplicationRoleManager```. This time the class and its references are not scaffolded by the template and we should include them by writing a little bit of code. 
+The last part of setting up our API layer will be to include different roles in our application. Again, we will use the ```Identity``` package with the custom DB Context, we have created. As you can see, our users are managed by the ```ApplicationUserManager``` and for the roles, we should have a similar entity called ```ApplicationRoleManager```. This time the class and its references are not scaffolded by the template and we should include them by writing a little bit of code. But before going to this step, let us register a the first user in our system. 
+#### Registering User
+Run the project. As you can see, in the documentation of our API, we already have all endpoints of the scaffolded ```Account Controller```
 
+![Register User Docs](https://raw.githubusercontent.com/pluralsight/guides/master/images/f9895a1f-8ab4-4406-b5e5-952e0cf6b0f4.png)
+
+Open ```Postman``` or whatever tool you use for making requests. 
+
+Following the documentation we should pass the sample ```JSON``` format when we make a request for registering a user.
+![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/8ab19403-aba7-4cd2-88ea-4a9bdf49cf00.png)
+Of course, be careful and put exactly the port on which your localhost is running, when making the request. This request should return ```200OK``` response and create the appropriate tables in our database by inserting the new data into them.
+
+We are ready to open the database and see what is going on there.
+
+
+![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/9c6cb209-58bf-4b75-bbb8-0eda8cf5e4f5.png)
+
+
+We notice that a few tables were created by 
 Now, we have set-up our API, in a way to use the newly created database, when it comes to storing users. Next thing we should do is to create the actual tables, where this data will be stored, so close Visual Studio for a while and open the database in your MSMS. 
 
 ### Setting up the Database
