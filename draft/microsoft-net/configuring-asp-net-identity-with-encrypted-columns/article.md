@@ -237,6 +237,62 @@ After we do this, we can open some endpoints which are going to take care of ass
             return Ok(new { userId = id, rolesAssigned = rolesToAssign });
         }
 ```
-The route for our new endpoint will be ```users/{id:guid}/roles```. And we will expect id and an array of roles passed as parameters in the request. 
+The route for our new endpoint will be ```users/{id:guid}/roles```. And we will expect id and an array of roles passed as parameters in the request. Last thing we should do in this controller is to make an instance of our ```ApplicationRoleManager```. To do this, add this code snippet in the ```AccountController```
+```
+public class AccountController : ApiController
+    {
+     ///...
+     private ApplicationRoleManager _roleManager;
+     ///...
+     public AccountController(ApplicationUserManager userManager,
+            ISecureDataFormat<AuthenticationTicket> accessTokenFormat, ApplicationRoleManager roleManager)
+        {
+        ///Make an instance of the user manager in the controller to avoid null reference exception
+            UserManager = userManager;
+            AccessTokenFormat = accessTokenFormat;
+            ///Make an instance of the role manager in the constructor to avoid null reference exception
+            RoleManager = roleManager;
+        }
+    ///...
+     public ApplicationRoleManager RoleManager
+        {
+            get
+            {
+                return _roleManager ?? Request.GetOwinContext().GetUserManager<ApplicationRoleManager>();
+            }
+            private set
+            {
+                _roleManager = value;
+            }
+        }
+    /// Rest of the class...
+    }
+```
+Now, we are ready to test our new endpoint by using the id property of the user we have added. First, add an entry in your ```dbo.AspNetRoles```, which contains the name of the new role in our case, we will add three of them ```Admin, ShopManager, Seller```. So, open your MSMS and execute the following query:
+```tsql
+INSERT INTO dbo.AspNetRoles
+(Id, Name)
+VALUES
+(1, 'Admin')
+
+INSERT INTO dbo.AspNetRoles
+(Id, Name)
+VALUES
+(2, 'ShopManager')
+
+INSERT INTO dbo.AspNetRoles
+(Id, Name)
+VALUES
+(3, 'Seller')
+```
+and this should be enough for us to make the request.
+
+![AddUserToRole](https://raw.githubusercontent.com/pluralsight/guides/master/images/08390a80-b725-4cb5-9a09-55cc8872d54d.png)
+
+And then we have the connection in our database. 
+
+![User to role](https://raw.githubusercontent.com/pluralsight/guides/master/images/32cb2ff4-8e39-44e1-9db3-5f74ac6d5659.png)
+
+Until this moment we have a developed a fully-functional User Accounts system, which is able to maintain user registration and different roles. 
 
 
