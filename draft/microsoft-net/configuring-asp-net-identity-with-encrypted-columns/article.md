@@ -294,5 +294,28 @@ And then we have the connection in our database.
 ![User to role](https://raw.githubusercontent.com/pluralsight/guides/master/images/32cb2ff4-8e39-44e1-9db3-5f74ac6d5659.png)
 
 Until this moment we have a developed a fully-functional User Accounts system, which is able to maintain user registration and different roles. 
+#### Adding non-default properties to users
 
+Now, it is time to add some additional fields to our accounts system. To keep things simple, I will create just two additional columns in the ```AspNetUsers``` table. The first one will be ```IsDeleted```, a ```BIT``` column that will serve as a marker used for soft deletion (we will mark some entity as deleted but won't remove it from our database, up to the moment when we decide taht we do not need it anymore). The second column will be ```CompanySecretCode```, an encrypted column that keeps a code taht each user can use to access different documents (there is no particular reason for putting such a column in our table, it is just an example of how to encrypt columns when it comes to accounts system).
+
+### Soft deletion
+Since the package that we are using implements code-first migrations, it is enough just to add the ```IsDeleted``` column to our ```ApplicationUser``` class and then clearly define its default value and further usage. 
+First, open AppStart\IdentityConfig.cs file and add the property:
+```csharp
+public class ApplicationUser : IdentityUser
+    {
+        // Property used for soft deleting users
+        public bool IsDeleted { get; set; }
+        public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager, string authenticationType)
+        {
+            // Note the authenticationType must match the one defined in CookieAuthenticationOptions.AuthenticationType
+            var userIdentity = await manager.CreateIdentityAsync(this, authenticationType);
+            // Add custom user claims here
+            return userIdentity;
+        }
+    }
+```
+
+Once we have done it, we can start use our new column immediately. The first and most obvious thing we should do is to create a ```DeleteUser``` endpoint. Since usually I use Database First approach for everything else except the default properties of user accounts, I prefer to keep the things clear and further proceed only with stored procededures. So, execute a migration
+Place the following snippet in the ```AccountController``` . 
 
