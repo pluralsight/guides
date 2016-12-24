@@ -148,15 +148,42 @@ We are ready to open the database and see what is going on there.
 
 We notice that a few tables were created because when we made the request first a migration was executed and then our user data was stored in the ```dbo.AspNetUsers``` table. As I already mentioned, this table has only the default columns of the ```IdentityUser``` class. The other two tables that we are interested in are ```dbo.AspNetRoles``` and ```dbo.AspNetUserRoles```. As you already deduce, the first table will serve as a place to store all role types in our application and the second one will be the junction table which defines the many-to-many relationship between users and roles. If you do not understand the terms related to ```SQL``` do not bother, the ```Microsoft.AspNet.Identity``` package we use, deals with the proper usage of our database. For us it is important to configure the ```ASP.NET``` app, so it sends the right data to our DB. So now, we will open again our API project and write some code in order to make use of the already created tables.
 
+Open ```AppStart\IdentityConfig.cs``` and place the following snippet after the end of the ```ApplicationUserManager``` class. 
+```
+    /// <summary>
+    /// The role manager used by the application to store roles and their connections to users
+    /// </summary>
+    public class ApplicationRoleManager : RoleManager<IdentityRole>
+    {
+        public ApplicationRoleManager(IRoleStore<IdentityRole, string> roleStore)
+            : base(roleStore)
+        {
+        }
 
+        public static ApplicationRoleManager Create(IdentityFactoryOptions<ApplicationRoleManager> options, IOwinContext context)
+        {
+            ///It is based on the same context as the ApplicationUserManager
+            var appRoleManager = new ApplicationRoleManager(new RoleStore<IdentityRole>(context.Get<AppUsersDbContext>()));
 
-Now, we have set-up our API, in a way to use the newly created database, when it comes to storing users. Next thing we should do is to create the actual tables, where this data will be stored, so close Visual Studio for a while and open the database in your MSMS. 
+            return appRoleManager;
+        }
+    }
+```
+This code will create the ```ApplicationRoleManager``` class that we are going to use in our ```Account Controller``` when we write the endpoints, that will asssign roles to different users. But before diving into our controller, let us initialize the ```ApplicationRoleManager``` in the same way we did for our ```ApplicationUserManager```. So, open ```AppStart\Startup.Auth.cs``` file and put the following code into the ```ConfigureAuth``` method:
+```
+public void ConfigureAuth(IAppBuilder app)
+        {
+            // Configure the db context and user manager to use a single instance per request
+            app.CreatePerOwinContext(AppUsersDbContext.Create);
+            ///Initializing User Manager
+            app.CreatePerOwinContext<ApplicationUserManager>(ApplicationUserManager.Create);
+            ///Initializing Role Manager
+            app.CreatePerOwinContext<ApplicationRoleManager>(ApplicationRoleManager.Create);
+            ///Rest of the method... Make sure you do not delete anything, since it is related to the token based authorization that we are going to use.
+        }
+```
 
-### Setting up the Database
-
-Here we are going to use the fact that Entity-Framework can execute a migration in order to create our default user properties. Adding the ```RegionName``` property won't be difficult as well, but the problem will come, when we want to add an encrypted column to our deault ```dbo.AspNetUsers``` table. In this case I prefer to use the following set-up:
-1. Create the column in the database by using ```TSQL``` commands. Then write the appropriate stored procedures, for inserting the user. 
-2. Override the default ```ASP.NET``` Identity methods, so they use the above mentioned stored procedures, but not the default code-first approach. 
+After we do this, we can open some endpoints which are going to take care of assigning roles to users. 
 
 
 
