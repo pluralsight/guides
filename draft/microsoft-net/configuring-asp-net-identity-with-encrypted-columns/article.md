@@ -126,6 +126,10 @@ Change the ```app.CreatePerOwinContext(ApplicationDbContext.Create);``` line wit
 ```
 app.CreatePerOwinContext(AppUsersDbContext.Create);
 ```
+
+### Configuring Roles
+The last part of setting up our API layer will be to include different roles in our application. Again, we will use the ```Identity``` package with the custom DB Context, we have created. As you can see, our users are managed by the ```ApplicationUserManager``` and for the roles, we should have a similar entity called ```ApplicationRoleManager```. This time the class and its references are not scaffolded by the template and we should include them by writing a little bit of code. 
+
 Now, we have set-up our API, in a way to use the newly created database, when it comes to storing users. Next thing we should do is to create the actual tables, where this data will be stored, so close Visual Studio for a while and open the database in your MSMS. 
 
 ### Setting up the Database
