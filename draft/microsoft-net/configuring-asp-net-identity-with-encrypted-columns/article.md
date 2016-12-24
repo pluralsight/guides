@@ -146,7 +146,10 @@ We are ready to open the database and see what is going on there.
 ![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/9c6cb209-58bf-4b75-bbb8-0eda8cf5e4f5.png)
 
 
-We notice that a few tables were created by 
+We notice that a few tables were created because when we made the request first a migration was executed and then our user data was stored in the ```dbo.AspNetUsers``` table. As I already mentioned, this table has only the default columns of the ```IdentityUser``` class. The other two tables that we are interested in are ```dbo.AspNetRoles``` and ```dbo.AspNetUserRoles```. As you already deduce, the first table will serve as a place to store all role types in our application and the second one will be the junction table which defines the many-to-many relationship between users and roles. If you do not understand the terms related to ```SQL``` do not bother, the ```Microsoft.AspNet.Identity``` package we use, deals with the proper usage of our database. For us it is important to configure the ```ASP.NET``` app, so it sends the right data to our DB. So now, we will open again our API project and write some code in order to make use of the already created tables.
+
+
+
 Now, we have set-up our API, in a way to use the newly created database, when it comes to storing users. Next thing we should do is to create the actual tables, where this data will be stored, so close Visual Studio for a while and open the database in your MSMS. 
 
 ### Setting up the Database
