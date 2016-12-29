@@ -130,7 +130,7 @@ The routing for the controller has to consider the fact that it’s within two n
 
 
 ```ruby
-#app/config/routes.rb
+#item_cart/config/routes.rb
 
 Rails.application.routes.draw do
     namespace :api do
