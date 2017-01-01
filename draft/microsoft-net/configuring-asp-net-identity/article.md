@@ -52,7 +52,7 @@ Now, after we have our database and our asp project created, we should find a wa
 <add name="SystemUsers" connectionString="Data Source=.;Initial Catalog=CarBusinessDb;" providerName="System.Data.SqlClient" />
 ```
 Delete the default connection string and paste this one on its place. 
-The next step is to create our own database context, which we can use for storing our users and their properties. In the `Models\IdentityModels.cs` we are going to delete the ApplicationDbContext paste the following code on its place. 
+The next step is to create our own database context, which we can use for storing our users and their properties. In the `Models\IdentityModels.cs` we are going to delete the ApplicationDbContext and paste the following code on its place. 
 ```C#
 public class AppUsersDbContext : IdentityDbContext<ApplicationUser>
     {
