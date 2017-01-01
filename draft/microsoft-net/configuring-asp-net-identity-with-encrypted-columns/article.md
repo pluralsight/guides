@@ -362,6 +362,7 @@ END
 GO
 ```
 
+### Configuring Authorization
 The last thing that we have to implement is to write an endpoint that is going to deal with deleting users. 
 This is the endpoint we are going to use in the ```AccountController```:
 ```csharp
@@ -401,5 +402,36 @@ This is the endpoint we are going to use in the ```AccountController```:
 We will call directly the created procedure by using its name and passing its input parameters. In the ideal case for a bigger project, you can use DAL(Data Access Layer) architecture and create a ```DeleteUser``` method in on your services, but this does not concern the ```Identity``` logic, we are discussing.  Now, with one simple request to the new endpoint, we are able to change the state of each user by its ```Id```.
 
 ![Request delete user](https://raw.githubusercontent.com/pluralsight/guides/master/images/ae26535b-e7a1-412f-bc62-c070bf2da5a0.png)
-Since developers usually use ```User Accounts``` and ```Roles``` when they want to secure the access to different parts of their applications, ```ASP.NET``` is not an exception and you can allow different types of ```ApplicationUsers``` (this means different ```Roles``` in our case) to be allowed to access some endpoints and be blocked when it comes to others. A simple example can be the following setup. We will configure our ```AccountController``` in a way that by default only the ```Admin``` role has access to all endpoints, then we will include some exceptional cases, when other roles can perform operations. 
+Since developers usually use ```User Accounts``` and ```Roles``` when they want to secure the access to different parts of their applications, ```ASP.NET``` is not an exception and you can allow different types of ```ApplicationUsers``` (this means different ```Roles``` in our case) to be allowed to access some endpoints and be blocked when it comes to others. A simple example can be the following setup. We will configure our ```AccountController``` in a way that by default only the ```Admin``` role has access to all endpoints, then we will include some exceptional cases, when other roles can perform operations. We do this by adding the ```Authorize``` attribute on the top of our ```AccountController``` and then pass the ```Roles``` that will be authorized by default.
+```
+    [Authorize(Roles = "Admin")]
+    [RoutePrefix("api/Account")]
+    public class AccountController : ApiController
+    {
+    ///Rest of the class ...
+    }
+```
+So, we authorized only the ```Admin``` role to access our ```Account``` endpoints. But it makes sense for the ```Seller``` to delete users, as well. For this purpose, we override the default authorization for the ```DeleteUser``` endpoint:
+```
+        [OverrideAuthorization]
+        [Authorize(Roles = "Admin,Seller")]
+        [HttpDelete]
+        [Route("user/{id:guid}")]
+        public IHttpActionResult DeleteUser(string id)
+        {
+            ///Rest of the class...
+        }
+```
+Now, both ```Admin``` and ```Seller``` roles are authorized to make requests to this endpoint. We can add a user to role ```Seller``` and then get a token:
+
+![Get Token](https://raw.githubusercontent.com/pluralsight/guides/master/images/91f9a7c3-ef88-49cd-bdef-550dac4f0fd0.png)
+
+And make a request to the endpoint by passing the token, we have received:
+
+![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/27510d35-b3a8-402f-a14a-8c1aa91e692a.png)
+
+
+
+
+
  
