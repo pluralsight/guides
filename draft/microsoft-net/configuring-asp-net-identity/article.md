@@ -35,11 +35,16 @@ After you complete these steps, you should be able to see the following set-up i
 
  
 We will have several important files for the purpose of this article.
-•	AppStart\IdentityConfig.cs
-•	AppStart\Startup.Auth.cs
-•	Providers\ApplicationOAuthProvider.cs
-•	Models\IdentityModels.cs
-•	Controllers\AccountController.cs
+
+•	```AppStart\IdentityConfig.cs```
+
+•	```AppStart\Startup.Auth.cs```
+
+•	```Providers\ApplicationOAuthProvider.cs```
+
+•	```Models\IdentityModels.cs```
+
+•	```Controllers\AccountController.cs```
 
 #### Linking
 Now, after we have our database and our asp project created, we should find a way to link them. In order to achieve this, we will create a DbContext by basing it on a connection string, pointing to our database.  Open the Web.config file and see what happens between the <connectionStrings> for now we have the only the default connection, which points to an instance of LocalDb. We can also notice that the default ApplicationDbContext class in Models\IdentityModels.cs is based on this connection. Our idea here is to create a new context and then base our ```ApplicationUserManager``` on it. 
