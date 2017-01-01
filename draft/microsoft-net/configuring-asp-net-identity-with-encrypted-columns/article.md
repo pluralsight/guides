@@ -300,7 +300,7 @@ Now, it is time to add some additional fields to our accounts system. To keep th
 
 ### Soft deletion
 Since the package that we are using implements code-first migrations, it is enough just to add the ```IsDeleted``` column to our ```ApplicationUser``` class and then clearly define its default value and further usage. 
-First, open AppStart\IdentityConfig.cs file and add the property:
+First, open ```AppStart\IdentityConfig.cs``` file and add the property:
 ```csharp
 public class ApplicationUser : IdentityUser
     {
@@ -316,6 +316,86 @@ public class ApplicationUser : IdentityUser
     }
 ```
 
-Once we have done it, we can start use our new column immediately. The first and most obvious thing we should do is to create a ```DeleteUser``` endpoint. Since usually I use Database First approach for everything else except the default properties of user accounts, I prefer to keep the things clear and further proceed only with stored procededures. So, execute a migration
-Place the following snippet in the ```AccountController``` . 
+Once we have done it, we can start use our new column immediately. The first and most obvious thing to do is to assign a value to this property when we create the user. For this purpose, replace the ```Register``` method in the ```AccountController``` with the following code:
+```
+ // POST api/Account/Register
+        [AllowAnonymous]
+        [Route("Register")]
+        public async Task<IHttpActionResult> Register(RegisterBindingModel model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
 
+            var user = new ApplicationUser() { UserName = model.Email, Email = model.Email };
+
+            //set the IsDeleted property to false
+            user.IsDeleted = false;
+
+            IdentityResult result = await UserManager.CreateAsync(user, model.Password);
+
+            if (!result.Succeeded)
+            {
+                return GetErrorResult(result);
+            }
+
+            return Ok();
+        }
+```
+Now, when we create a new user, the ```IsDeleted``` column will be added to our ```dbo.AspNetUsers``` table as a result of a migration. 
+![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/40621eb2-6707-41f0-9b5e-b59e902856b5.png)
+As you can see now we have our ```IsDeleted``` column as a part of our ```Application User``` entity. Once we have done this, we can proceed to writing code that is going to deal with deleting user. I prefer to work with ```Stored Procedures``` for everything which is not related to default ```Identity``` properties. For this purpose, I will include a procedure that is going to deal with deletion. Open ```SQL Management Studio``` and navigate to ```Programmability/Stored Procedures``` folder. Then right click on it and create a new ```Stored Procedure```. Alternatively, you can just execute the following query on our ```CarBusinessDB```. 
+```
+CREATE PROCEDURE DeleteUser
+@UserId nvarchar(128)
+AS
+BEGIN
+	-- SET NOCOUNT ON added to prevent extra result sets from
+	-- interfering with SELECT statements.
+	SET NOCOUNT ON;
+
+	UPDATE dbo.AspNetUsers
+	SET IsDeleted = 1
+	WHERE Id = @UserId
+END
+GO
+```
+
+The last thing that we have to implement is to write an endpoint that is going to deal with deleting users. 
+This is the endpoint we are going to use in the ```AccountController```:
+```
+        [AllowAnonymous]
+        [HttpDelete]
+        [Route("user/{id:guid}")]
+        public IHttpActionResult DeleteUser(string id)
+        {
+            //check if such a user exists in the database
+            var userToDelete = this.UserManager.FindById(id);
+            if (userToDelete == null)
+            {
+                return this.NotFound();
+            }
+            else if (userToDelete.IsDeleted)
+            {
+                return this.BadRequest("User already deleted");
+            }
+            else
+            {
+                var con = ConfigurationManager.ConnectionStrings["SystemUsers"].ConnectionString;
+                using (SqlConnection connection = new SqlConnection(con))
+                {
+                    using (SqlCommand command = new SqlCommand("dbo.DeleteUser", connection))
+                    {
+                        command.CommandType = CommandType.StoredProcedure;
+                        command.Parameters.Add("@UserId", SqlDbType.NVarChar).Value = id;
+                        connection.Open();
+                        command.ExecuteNonQuery();
+                        connection.Close();
+                    }
+                }
+            }
+            return this.Ok();
+        }
+```
+We will call directly the created procedure by using its name and passing its input parameters. In the ideal case for a bigger project, you can use DAL(Data Access Layer) architecture and create a ```DeleteUser``` method in on your services, but this does not concern the ```identity``` logic, we are discussing.  Now, with one simple request to the new endpoint, we are able to change the state of each user by its ```Id```.
