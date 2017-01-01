@@ -2,7 +2,7 @@
 In most of the cases when it comes to Identity configuration in ASP.NET it can be quite confusing. Some developers say that the configuration is easy but other claim that sometimes it can be difficult to set it up, especially if you want to customize some of its properties. When you use code-first approach in Entity Framework, you have full control on your user identity options, but when developers deal with bigger projects, usually they prefer to use table-first approach (first they create the database and then they consume the information in the api and shape it in an appropriate way, so it makes sense when the frontend receives it). 
 
 
-Imagine that the client of our fictional software company is a huge car manufacturer. They have a lot of shops all around the world, where they sell their products. The first and most important feature of their system should be user-management. It should have different types of users:  Admin, Regional Manager, Shop Manager, Seller and Client. In addition, all of them, except the client, have some secret company code that they can use for access to certain documents related to company’s deals. 
+Imagine that the client of our fictional software company is a huge car manufacturer. They have a lot of shops all around the world, where they sell their products. The first and most important feature of their system should be user-management. It should have different types of users:  Admin, Shop Manager, and Seller 
 
 ### Setting up the database
 After we have defined the main properties a user in our application should have, it is time to start developing the architecture of our system. Since it can scale fast and the database design is important, we will use table-first approach. The first step is to create our database. For this article, I will use SQL Server 2016 in combination with SQL Management Studio. 
@@ -430,14 +430,6 @@ And make a request to the endpoint by passing the token, we have received:
 
 ![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/27510d35-b3a8-402f-a14a-8c1aa91e692a.png)
 
-## Encrypted Columns
-As we mentioned at the beginning of the article, each user will have an encrypted column called CompanySecretCode. This just an example of a more sophisticated modification to the defaul ```Identity``` class properties (example of a slight modification was the IsDeleted column). In order to implement the encrypted property, we should divide our task into three steps:
-1. Create the encrypted column in ```dbo.AspNetUsers``` table.
-2. Write stored procedures that we are going to use to create a new user.
-3. Override the default ```Identity``` classes, so they use our procedures, when creating a new user.
-
-### 1. Create the encrypted column
-In order to create the encrypted column, we can use a very simple approach. To make it more clear I will post the whole script, which you can execute step by step. Read the comments before each step for more information:
 
 
 
