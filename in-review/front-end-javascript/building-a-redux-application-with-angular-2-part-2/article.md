@@ -1095,7 +1095,7 @@ Go to [http://localhost:4200](http://localhost:4200) and have a look at the full
 ![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/4a8e933f-2ee6-462e-826d-de6f33b45ce4.com-video-to-gif)
 
 
-# Conculsion
+# Conclusion
 
 Redux is a new approach for managing applicaiton state, [but it is not the panacea some might think it is](https://medium.com/@dan_abramov/you-might-not-need-redux-be46360cf367#.kcg6xbskh). The concepts from functional programming applied in Redux may be suitable for certain use cases, and it's up to you your to decide whether Redux is the right way to go for your next project.
 
