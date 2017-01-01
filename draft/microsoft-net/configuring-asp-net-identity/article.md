@@ -360,9 +360,35 @@ Once we have done it, we can start use our new column immediately. The first and
             return Ok();
         }
 ```
-Now, when we create a new user, the ```IsDeleted``` column will be added to our ```dbo.AspNetUsers``` table as a result of a migration. 
+
+Since we have changed our default ```ApplicationUser``` class and our database does not know about it, when we try to create a new user, we should see an exception stating that we should '...Consider using Code First Migrations to update the database...'.
+In this case we should execute a migration that is going to create the ```IsDeleted``` column in our database. Before doing this, delete the user we have created, because it does not have the ```IsDeleted``` column and this is going to be an obstacle when we try to make it ```non-nullable```. After doing this, open ```Package Manager Console``` and:
+1. Set the ```Default Project``` property to ```WebApi```.
+2. Enable migrations by targeting our custom context: ```Enable-Migrations -contexttypename AppUsersDbContext```
+3. Add a migration: ```Add-Migration Initial```
+4. ```Update-Database```
+
+Steps 2 to 4 are commands that you should execute by using ```Package Manager Console```.
+These comands should execute a migration which is going to create the needed column in the database. Moreover, you should have a new folder called ```Migartions``` in you ```WebApi``` project. There you can see all migrations that you have executed and you can write new ones, in case you need them. This is the code of the migration we have executed above:
+
+```csharp
+public partial class Initial : DbMigration
+    {
+        public override void Up()
+        {
+            AddColumn("dbo.AspNetUsers", "IsDeleted", c => c.Boolean(nullable: false));
+        }
+        
+        public override void Down()
+        {
+        }
+    }
+```
+
+Now, we are ready to create our new user (follow the same steps that we have used to create the previous one).
+
 ![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/40621eb2-6707-41f0-9b5e-b59e902856b5.png)
-As you can see now we have our ```IsDeleted``` column as a part of our ```Application User``` entity. Once we have done this, we can proceed to writing code that is going to deal with deleting user. I prefer to work with ```Stored Procedures``` for everything which is not related to default ```Identity``` properties. For this purpose, I will include a procedure that is going to deal with deletion. Open ```SQL Management Studio``` and navigate to ```Programmability/Stored Procedures``` folder. Then right click on it and create a new ```Stored Procedure```. Alternatively, you can just execute the following query on our ```CarBusinessDB```. 
+As you can see now we have our ```IsDeleted``` column as a part of our ```Application User``` entity. Once we have done this, we can proceed to writing code that is going to deal with deleting user. I prefer to work with ```Stored Procedures``` for everything which is not related to default ```Identity``` properties. For this purpose, I will include a procedure that is going to deal with deletion. Open ```SQL Management Studio``` and  execute the following query on our ```CarBusinessDB```. 
 ```tsql
 CREATE PROCEDURE DeleteUser
 @UserId nvarchar(128)
@@ -380,8 +406,7 @@ GO
 ```
 
 ### Configuring Authorization
-The last thing that we have to implement is to write an endpoint that is going to deal with deleting users. 
-This is the endpoint we are going to use in the ```AccountController```:
+The last thing that we have to implement is an endpoint in  ```AccountController``` that we will use for deleting users:
 ```csharp
         [AllowAnonymous]
         [HttpDelete]
@@ -416,7 +441,7 @@ This is the endpoint we are going to use in the ```AccountController```:
             return this.Ok();
         }
 ```
-We will call directly the created procedure by using its name and passing its input parameters. In the ideal case for a bigger project, you can use DAL(Data Access Layer) architecture and create a ```DeleteUser``` method in on your services, but this does not concern the ```Identity``` logic, we are discussing.  Now, with one simple request to the new endpoint, we are able to change the state of each user by its ```Id```.
+We will call directly the created procedure by using its name and passing its input parameters. In the ideal case for a bigger project, you can use DAL(Data Access Layer) architecture and create a ```DeleteUser``` method in on your services, but this does not concern the ```Identity``` logic that we are discussing.  Now, with one simple request to the new endpoint, we are able to change the state of each user by its ```Id```.
 
 ![Request delete user](https://raw.githubusercontent.com/pluralsight/guides/master/images/ae26535b-e7a1-412f-bc62-c070bf2da5a0.png)
 Since developers usually use ```User Accounts``` and ```Roles``` when they want to secure the access to different parts of their applications, ```ASP.NET``` is not an exception and you can allow different types of ```ApplicationUsers``` (this means different ```Roles``` in our case) to be allowed to access some endpoints and be blocked when it comes to others. A simple example can be the following setup. We will configure our ```AccountController``` in a way that by default only the ```Admin``` role has access to all endpoints, then we will include some exceptional cases, when other roles can perform operations. We do this by adding the ```Authorize``` attribute on the top of our ```AccountController``` and then pass the ```Roles``` that will be authorized by default.
