@@ -430,7 +430,7 @@ And make a request to the endpoint by passing the token, we have received:
 
 ![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/27510d35-b3a8-402f-a14a-8c1aa91e692a.png)
 
-
+In this way, we are able to use all features of our application the small identity system that we have developed. 
 
 
  
