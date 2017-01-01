@@ -432,5 +432,7 @@ And make a request to the endpoint by passing the token, we have received:
 
 In this way, we are able to use all features of our application the small identity system that we have developed. 
 
-
- 
+## Conclusion
+```ASP.NET Identity``` gives you the opportunity to implement various type of membership systems. Depending on the needs of your application, you can use its default properties or add custom ones. The fact that it is easy to configure and allows different types of modifications makes it a suitable choices for smaller and bigger ```ASP.NET``` projects. 
+### Code
+In case you cannot construct a working system by following the code posted in the article, I have posted a working project on my GitHub profile.
