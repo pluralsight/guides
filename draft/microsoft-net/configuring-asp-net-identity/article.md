@@ -13,8 +13,20 @@ After we have defined the main properties a user in our application should have,
 
 ### Creating a new project
 Now, after we have the blank database, we can set up the asp.net web api project, which is going to consume the information. Execute the following steps to do it:
+
 1.	Create a new project in Visual Studio and choose Blank Solution. Name it CarBusinessSystem.
-2.	Add a new web api project to this solution. Name it WebApi. In this way, we can use the template to scaffold our user accounts system. 
+	
+![Create Solution](https://raw.githubusercontent.com/pluralsight/guides/master/images/84ff687a-5abc-4095-aac5-c758e04a8dc0.png)
+
+2	Add a new web api project to this solution. Name it WebApi. In this way, we can use the template to scaffold our user 
+accounts system. 
+
+![Add Project 1](https://raw.githubusercontent.com/pluralsight/guides/master/images/7fbb6094-2178-457f-96d5-ee11fd66f7aa.png)
+
+![Add Project 2](https://raw.githubusercontent.com/pluralsight/guides/master/images/6a19b945-12c3-416b-8dac-ca99ae0f821b.png)
+
+Be careful and choose ```Individual User Accounts``` as ```Authentication``` option. In this way, we will have a lot of the functionalities of our app, scaffolded by the project template.
+
 After you complete these steps, you should be able to see the following set-up in your Solution Explorer:
 
 
