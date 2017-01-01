@@ -430,7 +430,14 @@ And make a request to the endpoint by passing the token, we have received:
 
 ![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/27510d35-b3a8-402f-a14a-8c1aa91e692a.png)
 
+## Encrypted Columns
+As we mentioned at the beginning of the article, each user will have an encrypted column called CompanySecretCode. This just an example of a more sophisticated modification to the defaul ```Identity``` class properties (example of a slight modification was the IsDeleted column). In order to implement the encrypted property, we should divide our task into three steps:
+1. Create the encrypted column in ```dbo.AspNetUsers``` table.
+2. Write stored procedures that we are going to use to create a new user.
+3. Override the default ```Identity``` classes, so they use our procedures, when creating a new user.
 
+### 1. Create the encrypted column
+In order to create the encrypted column, we can use a very simple approach. To make it more clear I will post the whole script, which you can execute step by step. Read the comments before each step for more information:
 
 
 
