@@ -49,7 +49,7 @@ We will have several important files for the purpose of this article.
 #### Linking
 Now, after we have our database and our asp project created, we should find a way to link them. In order to achieve this, we will create a DbContext by basing it on a connection string, pointing to our database.  Open the Web.config file and see what happens between the ```<connectionStrings>``` tags. For now we have the only the default connection, which points to an instance of LocalDb. We can also notice that the default ApplicationDbContext class in Models\IdentityModels.cs is based on this connection. Our idea here is to create a new context and then base our ```ApplicationUserManager``` on it. 
 ```
-<add name="SystemUsers" connectionString="Data Source=.;Initial Catalog=CarBusinessDb;" providerName="System.Data.SqlClient" />
+    <add name="SystemUsers" connectionString="Data Source=.;Initial Catalog=CarBusinessDB;Integrated Security = True" providerName="System.Data.SqlClient" />
 ```
 Delete the default connection string and paste this one on its place. 
 The next step is to create our own database context, which we can use for storing our users and their properties. In the `Models\IdentityModels.cs` we are going to delete the ApplicationDbContext and paste the following code on its place. 
@@ -67,8 +67,8 @@ public class AppUsersDbContext : IdentityDbContext<ApplicationUser>
         }
     }
 ```
-As you can see, we use the new connection we have created in the Web.config file for the new context passing its name as a string. 
-Once we have the connection between the database and the asp project, we should configure the built in ApplicationUserManager, so it is going to use this context instead of the default one, which we have already deleted. A quick look on both ```UserStore``` and ```ApplicationUserManager``` classes: 
+As you can see, we use the new connection we have created in the Web.config file for the new context. We do this by passing its name as a string. 
+Once we have the connection between the database and the ```ASP.NET``` project, we should configure the built in ApplicationUserManager, so it uses this context instead of the default one, which we have already deleted. A quick look on both ```UserStore``` and ```ApplicationUserManager``` classes: 
  ```csharp
  namespace Microsoft.AspNet.Identity.EntityFramework
 {
@@ -117,7 +117,7 @@ Once we have the connection between the database and the asp project, we should 
     }
 }
 ```
-Shows us that the ApplicationUserManager calls the constructor of the UserStore, which accepts a DbContext and then it uses exactly this connection to store the users data. So, here it is enough just to pass our custom context as a parameter, when the ApplicationUserManager calls the  UserStore constructor.  Substitute the manager variable with the following code:
+Shows us that the ApplicationUserManager calls the constructor of the UserStore, which accepts a DbContext and then it uses exactly this connection to store the users data. So, here it is enough just to pass our custom context as a parameter, when the ```ApplicationUserManager``` calls the  ```UserStore``` constructor.  Substitute the manager variable with the following code:
 ```csharp
 var manager = new ApplicationUserManager(new UserStore<ApplicationUser>(context.Get<AppUsersDbContext>()));
 ```
@@ -145,9 +145,9 @@ app.CreatePerOwinContext(AppUsersDbContext.Create);
 ```
 
 ### Configuring Roles
-The last part of setting up our API layer will be to include different roles in our application. Again, we will use the ```Identity``` package with the custom DB Context, we have created. As you can see, our users are managed by the ```ApplicationUserManager``` and for the roles, we should have a similar entity called ```ApplicationRoleManager```. This time the class and its references are not scaffolded by the template and we should include them by writing a little bit of code. But before going to this step, let us register a the first user in our system. 
+The next part of setting up our API layer will be to include different roles in our application. Again, we will use the ```Identity``` package with the custom DB Context that we have created. As you can see, our users are managed by the ```ApplicationUserManager``` and for the roles, we should have a similar entity called ```ApplicationRoleManager```. This time the class and its references are not scaffolded by the template and we should include them by writing a little bit of code. But before going to this step, let us register a the first user in our system. 
 #### Registering User
-Run the project. As you can see, in the documentation of our API, we already have all endpoints of the scaffolded ```Account Controller```
+Run the project. In the documentation of our API, we already have all endpoints of the scaffolded ```Account Controller```
 
 ![Register User Docs](https://raw.githubusercontent.com/pluralsight/guides/master/images/f9895a1f-8ab4-4406-b5e5-952e0cf6b0f4.png)
 
