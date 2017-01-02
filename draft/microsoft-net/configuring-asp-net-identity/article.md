@@ -475,6 +475,6 @@ In this way, we are able to use all features of our application the small identi
 ## Conclusion
 ```ASP.NET Identity``` gives you the opportunity to implement various types of membership systems. Depending on the needs of your application, you can use its default properties or add custom ones. 
 ### Code
-In case you cannot construct a working system by following the code posted in the article, I have uploaded a working version of the project for you to use as a reference.
+In case you cannot construct a working system by following the code posted in the article, I have uploaded a [working version of the project](https://github.com/StefanL19/Configuring-ASP.NET-Indentity) for you to use as a reference.
 
-If have any questions, feel free to contact me on slazov@centroida.co.
+If you have any questions, feel free to contact me on slazov@centroida.co.
