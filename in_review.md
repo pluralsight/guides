@@ -1,3 +1,8 @@
+### Configuring ASP.NET Identity  by Stefan Lazov
+- [Read the guide](http://tutorials.pluralsight.com/guides/microsoft-net/configuring-asp-net-identity?status=in-review)
+- [Read more from Stefan Lazov](http://tutorials.pluralsight.com/guides/author/StefanL19) <img src="https://avatars.githubusercontent.com/u/14915644?v=3" width="30" height="30" alt="Stefan Lazov" />
+- Related to: Microsoft.NET (C#, ASP.NET, VB.NET, etc)
+
 ### Building a Redux application with Angular 2 - Part 2 by Hristo Georgiev
 - [Read the guide](http://tutorials.pluralsight.com/guides/front-end-javascript/building-a-redux-application-with-angular-2-part-2?status=in-review)
 - [Read more from Hristo Georgiev](http://tutorials.pluralsight.com/guides/author/Kaizeras) <img src="https://avatars.githubusercontent.com/u/6340189?v=3" width="30" height="30" alt="Hristo Georgiev" />
