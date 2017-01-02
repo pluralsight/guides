@@ -368,8 +368,8 @@ In this case we should execute a migration that is going to create the ```IsDele
 3. Add a migration: ```Add-Migration Initial```
 4. ```Update-Database```
 
-Steps 2 to 4 are commands that you should execute by using ```Package Manager Console```.
-These comands should execute a migration which is going to create the needed column in the database. Moreover, you should have a new folder called ```Migartions``` in you ```WebApi``` project. There you can see all migrations that you have executed and you can write new ones, in case you need them. This is the code of the migration we have executed above:
+Steps 2 to 4 are commands that you should perform by using ```Package Manager Console```.
+These comands should execute a migration which is going to create the needed column in the database. Moreover, you should have a new folder called ```Migartions``` in you ```WebApi``` project. There you can see all migrations that you have executed and you can write new ones, in case you need them. This is the code of the migration we have used above:
 
 ```csharp
 public partial class Initial : DbMigration
