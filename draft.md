@@ -1,8 +1,3 @@
-### Configuring ASP.NET Identity  by Stefan Lazov
-- [Read the guide](http://tutorials.pluralsight.com/guides/microsoft-net/configuring-asp-net-identity?status=draft)
-- [Read more from Stefan Lazov](http://tutorials.pluralsight.com/guides/author/StefanL19) <img src="https://avatars.githubusercontent.com/u/14915644?v=3" width="30" height="30" alt="Stefan Lazov" />
-- Related to: Microsoft.NET (C#, ASP.NET, VB.NET, etc)
-
 ### Configuring ASP.NET Identity with encrypted columns by Stefan Lazov
 - [Read the guide](http://tutorials.pluralsight.com/guides/microsoft-net/configuring-asp-net-identity-with-encrypted-columns?status=draft)
 - [Read more from Stefan Lazov](http://tutorials.pluralsight.com/guides/author/StefanL19) <img src="https://avatars.githubusercontent.com/u/14915644?v=3" width="30" height="30" alt="Stefan Lazov" />
