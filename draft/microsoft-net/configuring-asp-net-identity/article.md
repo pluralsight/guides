@@ -40,8 +40,6 @@ We will have several important files for the purpose of this article.
 
 •	```AppStart\Startup.Auth.cs```
 
-•	```Providers\ApplicationOAuthProvider.cs```
-
 •	```Models\IdentityModels.cs```
 
 •	```Controllers\AccountController.cs```
@@ -51,7 +49,7 @@ Now, after we have our database and our asp project created, we should find a wa
 ```
     <add name="SystemUsers" connectionString="Data Source=.;Initial Catalog=CarBusinessDB;Integrated Security = True" providerName="System.Data.SqlClient" />
 ```
-Delete the default connection string and paste this one on its place. 
+Delete the default connection string and paste this one on its place. Be careful when you determine your ```Data Source```, if you use a local instance of ```SQL Server``` , you can use the default one , which is ```.```. If you use an ```Azure``` database or whatever type of service you prefer, have a look at some sample connection strings before proceeding further.  
 The next step is to create our own database context, which we can use for storing our users and their properties. In the `Models\IdentityModels.cs` we are going to delete the ApplicationDbContext and paste the following code on its place. 
 ```C#
 public class AppUsersDbContext : IdentityDbContext<ApplicationUser>
@@ -475,7 +473,7 @@ And make a request to the endpoint by passing the token, we have received:
 In this way, we are able to use all features of our application the small identity system that we have developed. 
 
 ## Conclusion
-```ASP.NET Identity``` gives you the opportunity to implement various type of membership systems. Depending on the needs of your application, you can use its default properties or add custom ones. The fact that it is easy to configure and allows different types of modifications makes it a suitable choices for smaller and bigger ```ASP.NET``` projects. 
+```ASP.NET Identity``` gives you the opportunity to implement various types of membership systems. Depending on the needs of your application, you can use its default properties or add custom ones. 
 ### Code
 In case you cannot construct a working system by following the code posted in the article, I have uploaded a working version of the project for you to use as a reference.
 
