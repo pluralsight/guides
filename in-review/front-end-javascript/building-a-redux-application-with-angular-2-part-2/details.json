@@ -3,7 +3,12 @@
     "author_name": "Kaizeras",
     "author_real_name": "Hristo Georgiev",
     "branch": "master",
-    "branches": [],
+    "branches": [
+        [
+            "adityavarshney",
+            "adityavarshney-front-end-javascript-building-a-redux-application-with-angular-2-part-2"
+        ]
+    ],
     "filename": "article.md",
     "first_commit": "5fa5a2ec8182ee1137b8b1fbba18fda13730b2a5",
     "image_url": "https://avatars.githubusercontent.com/u/6340189?v=3",
