@@ -226,7 +226,7 @@ After we do this, we can open some endpoints which are going to take care of ass
 
             if (rolesNotExist.Count() > 0)
             {
-                ModelState.AddModelError("", string.Format("Roles '{0}' does not exixts in the system", string.Join(",", rolesNotExist)));
+                ModelState.AddModelError("", string.Format("Roles '{0}' does not exist in the system", string.Join(",", rolesNotExist)));
                 return this.BadRequest(ModelState);
             }
             
