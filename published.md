@@ -1,3 +1,8 @@
+### Building a Redux application with Angular 2 - Part 2 by Hristo Georgiev
+- [Read the guide](http://tutorials.pluralsight.com/guides/front-end-javascript/building-a-redux-application-with-angular-2-part-2)
+- [Read more from Hristo Georgiev](http://tutorials.pluralsight.com/guides/author/Kaizeras) <img src="https://avatars.githubusercontent.com/u/6340189?v=3" width="30" height="30" alt="Hristo Georgiev" />
+- Related to: Front-End JavaScript (Angular, React, Meteor, etc)
+
 ### Building a Redux application with Angular 2 - Part 1 by Hristo Georgiev
 - [Read the guide](http://tutorials.pluralsight.com/front-end-javascript/building-a-redux-application-with-angular-2-part-1)
 - [Read more from Hristo Georgiev](http://tutorials.pluralsight.com/author/Kaizeras) <img src="https://avatars.githubusercontent.com/u/6340189?v=3" width="30" height="30" alt="Hristo Georgiev" />
