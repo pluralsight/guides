@@ -1,12 +1,12 @@
 # What we did last time
-  [In part 1 of this guide](http://tutorials.pluralsight.com/front-end-javascript/building-a-redux-application-with-angular-2-part-1), the main principles and terminology about Redux were explained and illustrated by being implemented into a small [application for recording financial operations](https://github.com/Kaizeras/ng2-redux-app).
+  [In part 1 of this guide](http://tutorials.pluralsight.com/front-end-javascript/building-a-redux-application-with-angular-2-part-1), I covered Redox's main principles and terminology by creating a small [application for recording financial operations](https://github.com/Kaizeras/ng2-redux-app).
   
-  It is strongly recommended that you read Part 1 of this quide before moving on to this part.
+  This tutorial builds on the concepts learned in the previous one. If you need a refresher, I highly recommend looking over the first Redox application tutorial again.
   
 # Restructuring
-  In this part, the example application will be extended with additional functionality.
+  In this part, the example application will be extended to include additional functionality.
 
-  To make this possible, however, requires the application to be accomodated in a way that it can support having multiple states in its Store. To do so, many of the elements of the architecture of the application need to be altered.
+  To make this possible, the application must be able to have multiple states in its store. Implementing this feature requires serious alteration to many facets of the app.
   
   In its current state, the application does not have a Meta-Reducer, which is essential for having more than one state. Meta-Reducers are a map of all the reducer functions in the state tree. It contains a reference for each of the state slices and their reducers. When an action gets dispatched, the Meta-Reducer goes through the map of all reducers, looking for the one that matches the action type and calls the function.
   
@@ -28,14 +28,16 @@
     +-- models
 ```
 
-  Let's get started. First, move `operation.model.ts` to the `models` folder. This is where the models for all entities of the application will be stored from now on.
+### Models
+
+  Let's get started. 
   
-### "Classifying" acitons
+  First, move `operation.model.ts` to the `models` folder. This is where the models for all entities of the application will be stored from now on.
+  
+### "Classifying" actions
 
 
- Next, the actions need to be overhauled so that it is known to which reducer function they belong to.
- 
- In `operations.ts`, delete the action constants and create a new file in `actions/operations.ts'`
+ Next, the actions need to be overhauled, so we know to which reducer each action belongs. In `operations.ts`, delete the action constants and create a new file in `actions/operations.ts'`
  
  ```
  $ mkdir actions
@@ -53,8 +55,9 @@
 };
 ```
 
+#### Action Class
 
-Because actions will not be dispatched to a reducer directly, but instead this will be done through a Meta Reducer, @ngrx/store has provdied  the `Action` class, which lets us define custom actions and create actions as new class instances when dispatching. Expressing actions as classes also enables type checking in reducer functions.
+Because the Meta Reducer dispatches actions to their respective reducers, we define custom actions and create actions as new class instances when dispatching using the @ngrx/store's `Action` class. Expressing actions as classes also enables type checking in reducer functions.
 
 Here's how an ``ADD_OPERATION`` action would look like:
 
@@ -70,7 +73,7 @@ export class AddOperationAction implements Action {
 The action `type` is given by the `ActionTypes` enum that was previously defined and the payload of the action in the constructor fo the class.
 
 
-Lastly, a type alias for all actions in order to be later used in teh reducers.
+Lastly, a type alias for all actions in order to be later used in the reducers.
 
 ```
 export type Actions
@@ -82,7 +85,7 @@ export type Actions
 ```
 
  
-Here is how the full code for `operations` actions:
+Here is the full code for `operations` actions:
 
 
  ```
@@ -133,8 +136,9 @@ export type Actions
   IncrementOperationAction |
   DecrementOperationAction
 ```
-#### The new way of dispatching actions
- With the new implementations of actions, comes a new way of dispatching them. 
+#### New form of dispatching
+
+ With new implementations of actions comes a new way of dispatching them. 
  
  **Before**
  ```
@@ -147,7 +151,7 @@ export type Actions
     }});
 ```
  
- Instead of directly sending an action with its type and payload, now this will be handled by the operation's class. Now that the action is a class, the dispatching is done by creating a new class member and putting the payload in the class constructor:
+ The task of directly sending an action with its type and payload will now be handled by the operation's class. Since the action is a class instance, dispatching is done by creating a new class member and putting the payload in the class constructor:
  
 **After**
 ```
@@ -163,9 +167,10 @@ this._store.dispatch(new operations.AddOperationAction({
 ```
 
 ### Adapting the reducer function
+
  There are three problems with the current reducer: 
  
-**1.**The type of the state (array) is too simplistic. Instead, it will be replaced with an object which contains the array and add it as an interface. This allows for the state to be more extendable in the future, when new features are implemented and there  is more data that has to be tracked.
+First, the array state is too simple for our purposes. It needs to be replaced with an object which contains the array and adds it as an interface. This allows for the state to be more extendable in the future, when new features are implemented and when there is more data that has to be tracked.
  
 ```
 export interface State {
@@ -174,8 +179,9 @@ export interface State {
 
 ```
  
-**2.**The `operationsReducer` is not a function, but a constant of type `ActionReducer` to which has a reducer function as a value. This was done because the constant was then directly passed to `provideStore`, without being referenced in a Meta reducer.
-Now that a Meta Reducer going to be implemented,  `operationsReducer` will be renamed simply to `reducer` and converted to a function with a return type of `State`.
+Second, the `operationsReducer` is not a function, but a constant of type `ActionReducer` to which has a reducer function as a value. This was done because the constant was then directly passed to `provideStore`, without being referenced in a Meta Reducer.
+
+Now that we've settled on implementing a Meta Reducer, we can rename `operationsReducer` to `reducer` and converted it to a function with a return type of `State`.
  
 **Before**
 
@@ -188,7 +194,7 @@ export const operationsReducer: ActionReducer = (state = initialState, action: o
 export function reducer(state = initialState, action: operations.Actions): State  {...} 
 ```
 
-**3.**The new action types are not implemented. To implement them, we'll import `actions/operations` and use `ActionTypes` from it in the case statements.
+Third, the new action types are not implemented. To implement them, we'll import `actions/operations` and use `ActionTypes` from the imported library in the case statements.
  
 **Before**
 ```
@@ -218,7 +224,7 @@ export function reducer(state = initialState, action: operations.Actions): State
  $ touch operations.ts
  ```
  
- Here is how the new `operations` reducer looks like after all the changes have been applied:
+The `operations` reducer after our above revisions:
  
  ```
  // app/reducers/operations.ts
@@ -296,9 +302,9 @@ From the code we have we can conclude that a module of the state has to export:
 
 ### Creating a Meta Reducer
 
-With the actions and the reducer adapted to the new standards, it is time to implement the Meta reducer. If each of the reducer modules represent table in a database, the meta reducer `State` interface represents the database schema and the meta `reducer` function itself represents the database itself
+With the actions and the reducer adapted to the new standards, it is time to implement the **Meta Reducer**. If each of the reducer modules represent a table in a database, the Meta Reducer `State` interface represents the database schema, and the meta `reducer` function represents the database itself.
 
-. To have a clearer idea what happens behind the scenes in a Meta Reducer, we need to first look into the implementation of `combineReducers`.
+To have a clearer idea what happens behind the scenes in a Meta Reducer, we need to first look into the implementation of `combineReducers`.
 
  
 #### combineReducers 
@@ -310,8 +316,8 @@ const combineReducers = reducers => (state = {}, action) => {
   }, {});
 };
 ```
-`combineReducers` is a function that takes an object with all the reducer functions as property values and extracts its keys. Then it uses [Array.reduce()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/Reduce) to accumulate the return value of each of the reducer functions into a state tree and heassign it to the key the reducer corresponds to. In the end, the state tree (Store) is returned - an object which contains the key-value pairs of the reducers and the states they returned.
- 
+`combineReducers` is a function that takes an object with all the reducer functions as property values and extracts its keys. Then it uses [Array.reduce()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/Reduce) to accumulate the return value of each of the reducer functions into a state tree and reassign it to the key to which the reducer corresponds. The return value is an object which contains the key-value pairs of the reducers and the states they returned.
+
 #### Implementation
 
  In your `app/reducers` folder, create a new file named `index.ts`.
@@ -360,7 +366,7 @@ export function reducer(state: any, action: any) {
     return combinedReducer(state, action);
 }
 ```
-The final step of the implementation is to put the  Meta `reducer` as an argument in `provideStore()`
+The final step of the implementation is to put the  `reducer` as an argument in `provideStore()`
 ```
 // app/app.module.ts
 import {reducer} from "./common/reducers/index";
@@ -385,9 +391,9 @@ export class AppModule {
 ```
 
 # Getting state slices
- The new architecture of the application requires a different way for accessing the state slices. 
+ The new architecture of the application requires a different way of accessing the state slices. 
  
- Previously, we could simply access `operations` using the following snippet:
+ Previously, we could access `operations` using the following snippet:
  
  ```
  //app.component.ts 
@@ -403,12 +409,12 @@ export class AppModule {
 
  ```
  
-**However, this isn't a good idea now that there's a state tree and the `operations` state is an object that could have multiple properties.** Additionally, this doesn't allow combining states in a particlar manner. There needs to be a set of designated functions whose role is to return certain parts of the state tree.
+**However, now there's a state tree, and the `operations` state is an object that could have multiple properties.** Additionally, our current way doesn't allow combining states in a specified manner. There needs to be a set of designated functions that return certain parts of the state tree.
 
 #### Accessing parts of the state tree.
-Accessing the state slices is not going to be done directly from the application's components. Instead, the `select`-ing of the state will be done in the `app/reducers` modules. 
+Accessing the state slices is not going to be done directly from the application's components. Instead, `select`-ing of the state will be done in the `app/reducers` modules. 
 
-To To illustrate how it works,let's first select `operations` from the state tree:
+To illustrate how this works, let's first select `operations` from the state tree:
 
 
 ```
@@ -430,10 +436,10 @@ Using the last function, only the `operations` state of the application is acces
  }
 ```
 
- That's a problem, because we need a particlar property of the `operations` state - the `entities` array. Here is how it's done:
+ That's a problem, because we need a particular property of the `operations` state - the `entities` array. Here is how we can grab that:
  
  
- **First**, in `oprations.ts`, export a function which accesses the `entities` property of the `operations` state:
+ First, in `operations.ts`, export a function which accesses the `entities` property of the `operations` state:
  
 ```
   
@@ -453,7 +459,9 @@ return state$.select(s => s.entities);
 
 ```
 
-**Second**, compose `getOperations` and `getEntities`. *Function composition* is one of the building blocks of functional programming. It executes a set of functions, putting the returned value of the first function an an argument for the second function. *Remember that compose applies the result from right to left*.
+Second, compose `getOperations` and `getEntities`. *Function composition* is one of the building blocks of functional programming. It executes a set of functions, putting the returned value of the first function as the argument for the second function. In math, composition of two functions f(x) and g(x) would result in f(g(x)). 
+
+*compose() applies functions from right to left*.
 
 ```
 // app/reducers/index.ts
@@ -461,7 +469,7 @@ return state$.select(s => s.entities);
 export const getEntities = compose(fromOperations.getEntities, getOperations);
 ```
 
-In this case, `getOperations` first accesses the `operations` state from the state tree and then `getEntities` gets the `entities` property of  the operations state.
+In this case, `getOperations` first accesses the `operations` state from the state tree and then `getEntities` gets the `entities` property of getOperations's returned operation state.
 
 Let's apply this functionality in `app.component.ts`:
 
@@ -549,15 +557,15 @@ export class AppComponent {
 # Adding a new state
  It's time to take the example application to the next level by adding multi-currency support. Being able to see the operations in different currencies comes with certain requirements:
  
-  1. **Reducer** which stores the available currencies and the currently selected currency.
-  2. **JSON API** which provides up-to-date currency rates.
-  3. **Technique** for reactively changing amounts in the operations.
+  1. **Reducer** - stores the available currencies and the currently selected currency.
+  2. **JSON API** - provides up-to-date currency rates.
+  3. **Technique** - reactively changes amounts in the operations.
 
-Let's tackle task #1 and add the `currency` actions and reducer. With the architecture already laid, adding new functionality is much simpler.
+Let's tackle task #1 and add the `currency` actions and reducer. With the architecture already laid, adding new functionality is simple.
 
 
 ### Actions
-Let's start with the actions first. Create a new file in `actions` named `currencies.ts`.
+Let's start with actions first. Create a new file in `actions` named `currencies.ts`.
 ```
  $ cd actions
  $ touch currencies.ts
@@ -590,7 +598,7 @@ Next, create a file `currencies.ts` in `app/reducers`. The `currencies` .
  $ cd reducers
  $ mkdir currencies.ts
 ```
-Here is how the `currencies` reducer looks like:
+Here is what the `currencies` reducer looks like:
 
 ```
 // app/reducers/currencies.ts
@@ -696,15 +704,10 @@ export const getSelectedCurrency = compose(fromCurrencies.getSelectedCurrency , 
 // Access 'rates' from the 'currencies' state in the application state.
 export const getCurrencyRates = compose(fromCurrencies.getRates , getCurrencies);
 
-
-
-
-
-
 ```
 
 ### Accessing the new state
-Before creating a 'dumb' component to display the currency options and the selected currency, the `currencies` have to be retrieved in the  smart component (in this case `AppComponent`).
+Before creating a 'dumb' component to display the currency options and the selected currency, the `currencies` have to be retrieved in the smart component (in this case `AppComponent`).
 
 ```
 // app/app.component.ts
@@ -730,6 +733,7 @@ export class AppComponent {
 ```
  Apart from making component class variables for accessing the `currencies` in the store, there is also a function for dispatching the `ChangeCurencyAction()` when the user selects another currency.
  
+
 Next, install [ng-bootstrap](https://ng-bootstrap.github.io/#/getting-started) in order to add good-looking, interactive radio buttons. 
 ```bash
  $ npm install --save @ng-bootstrap/ng-bootstrap
@@ -749,6 +753,7 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 export class AppModule {
 }
 ```
+### Currencies component
 
 Next, create a `Currencies`component.
 
@@ -780,7 +785,7 @@ export class Currencies  {
 
 }
 ```
-The `Currencies` component is a 'dumb' component (has no logic) that uses `ngbRadioGroup` to display the available currencies. `(ngModelChange)` is used to emit an event to `AppComponent` every time the user clicks on the radio buttons.
+The `Currencies` component is a 'dumb' component (no logic) that uses `ngbRadioGroup` to display the available currencies. `(ngModelChange)` is used to emit an event to `AppComponent` every time the user clicks on the radio buttons.
 
 Lastly, add `Currencies` to `AppModule`:
 
@@ -799,21 +804,21 @@ export class AppModule {
 
 # Effects
 
-If you go to [http://localhost:4200/](http://localhost:4200/) now and play around with the currency buttons, you'll see that nothing special happens yet. Looking at the current state of the application, there needs to be a way to load the currency rates from a dedicated currency data API, such as [fixer.io](http://fixer.io/). 
+If you go to [http://localhost:4200/](http://localhost:4200/) now and play around with the currency buttons, you'll see that nothing special happens. Looking at the current state of the application, there needs to be a way to load the currency rates from a dedicated currency data API, such as [fixer.io](http://fixer.io/). 
 
-**[Redux has its own convention for handling server-side requests](http://redux.js.org/docs/advanced/AsyncActions.html)**. It does it through using a middleware - a piece of logic that stays between the server and the reducer functions. In Redux, server-side requests are regarded as side effects from actions that cannot be entirely handled a reducer. Such actions call **impure** functions making the reducers unable to handle the recreation of the action, or being able to time-travel, because the function does not depend entirely on its input.If you still don't get the concept of impure functions, [read here](https://en.wikipedia.org/wiki/Pure_function)
+**Redux has its [own convention](http://redux.js.org/docs/advanced/AsyncActions.html) for handling server-side requests**. It does it through a middleware - a piece of logic that stays between the server and the reducer functions. In Redux, server-side requests are regarded as side effects from actions that cannot be entirely handled through a reducer. Such actions call **impure** functions, making the reducers unable to handle the recreation of the action because the function does not depend entirely on its input. Read more about this important concept [here](https://en.wikipedia.org/wiki/Pure_function)
 
 ### Actions for handling side effects
-The standart for handling server-side requests requires the implementation of three actions:
+The standard for handling server-side requests requires the implementation of three actions:
 
    1. **Action that indicates the start of the server-side request**:
-   This action is dispatched just before the request is made. In the example application, the name of this action will be named `LOAD_CURRENCIES`. A reducer handling such action would change a dedicated state property for indicating a server-side location such as `loadingCurrencies`, which can be used to implement a loading spinner, for example.
-   2. **Action that indicates a successfull request**:
+   This action is dispatched just before the request is made. In the example application, the name of this action will be named `LOAD_CURRENCIES`. A reducer handling such an action would change a dedicated state property for indicating a server-side location such as `loadingCurrencies`, which can be used to implement a loading spinner, for example.
+   2. **Action that indicates a successful request**:
    This action is dispatched when te request is done. Its payload contains the request response. The reducer simply adds the response to its corresponding state property. In the example, this action name will be called `LOAD_CURRENCIES_SUCCESS` and its payload will fill the `rates` state property with the most recent information about currency rates.
    3. **Action that indicates a failed request**
    This action is dispatched if the request fails. The action payload may contain the error reason or simply return nothing. In the example application, this action would be normally called `LOAD_CURRENCIES_FAIL`
    
-*For the sake of simplity, making a separate action for failure will be omitted*. Here is how the implementation of the new action looks like:
+*For the sake of simplity, we'll omit the process of making a separate action that handles failure*. Here is what the implementation of the new action looks like:
 
 ```
 import { Action } from '@ngrx/store';
@@ -844,22 +849,22 @@ export type Actions =
 ```
 #### What happens between the *Load* action and the *Load Success/Failure* action? 
 
-This is where the middleware comes into play.To be more exact, *the middleware for handling side effects*. 
+This is where the middleware comes into play. To be more exact, *the middleware for handling side effects*. 
 
-As for the server-side calls themselves, they will be handled by an Angular 2 **service*,  which will be called within the effect.
+As for the server-side calls themselves, they will be handled by an Angular 2 *service*,  which will be called within the effect.
 
 #### Fetching data with a service
 
 Before adding the effects, let's add the service that is going to fetch the data from the [fixer.io](http://fixer.io) API.
 
-Create an `app/services` directory that is going to contain the services which handle server-side requests and create a service for `currencies`:
+Create an `app/services` directory that will contain the services which handle server-side requests and create a service for `currencies`:
 ```
 $ mkdir services
 $ cd services
 $ touch currencies.ts
 ```
 
-Here is how the service likes like:
+The service looks like this:
 ```
 import {Http} from '@angular/http';
 import {Injectable} from '@angular/core';
@@ -883,6 +888,7 @@ export class CurrencyService {
 }
 ```
 `CurrencyService` contains one function, `loadCurrencies()`, which makes a simple HTTP requeust to the [fixer.io](fixer.io) API and returns the `rates` property of the response as an observable.
+
 #### Implementing an effect
 
 Next, we are going to implement the side-effect for handling the returned rates from `CurrencyService`.
@@ -898,7 +904,7 @@ Create an an `app/effects` directory and a file for the effects concerning  `cur
 ```bash
  $ mkdir effects
  $ cd effects
- $ touch currncies.ts
+ $ touch currencies.ts
 ```
 
 ```
@@ -935,11 +941,14 @@ export class CurrencyEffects {
 
 }
 ```
-`_actions.ofType()` returns an observable which watcher for newly dispatched events that match the type of the action. `switchMap()` is an [rxJS operator](http://reactivex.io/rxjs/class/es6/Observable.js~Observable.html#instance-method-switchMap). It is part of several operators that are used for reactive programming. What makes `switchMap()` different is that it returns only **the most recent observable's value** in a stream of observables. 
+`_actions.ofType()` returns an observable which watches for newly dispatched events that match the type of the action. `switchMap()` is an [rxJS operator](http://reactivex.io/rxjs/class/es6/Observable.js~Observable.html#instance-method-switchMap). It is part of several operators that are used for reactive programming. What makes `switchMap()` different is that it returns only **the most recent observable's value** in a stream of observables. 
 
-Once the service returns the results observable, there are two options - If the results are successfully fetched, a new `LoadRatesCompleteAction` will be created, having the rates as its payload. If an error has occured, the same action will be created, but with empty payload. **Alternatively**, a `LoadRatesFailAction` can be added to `currencies/action` for handling cases in which the server fails to return a result.
+Once the service returns, there are a few options. 
+- If the results are successfully fetched, a new `LoadRatesCompleteAction` will be created, having the rates as its payload. 
+- If an error has occured, the same action will be created, but with empty payload. 
+- **Alternatively**, a `LoadRatesFailAction` can be added to `currencies/action` for handling cases in which the server fails to return a result.
 
-The final step is to register the effects to the `app.module` and the currency as a provider:
+The final step for handling effects to register the effects to the `app.module` and the currency as a provider:
 ```
 // app.module.ts
 import {CurrencyEffects} from "./common/effects/currencies";
@@ -962,6 +971,8 @@ export class AppModule {
   constructor() {}
 }
 ```
+
+Remember that we did not handle the case in which effects failed.
 
 ### Taking advantage of the reactive state
 One of the best features of Redux is that it gives the opportunity for the most recent part of the application state to be accessed anywhere in the application.
@@ -1046,7 +1057,7 @@ export class AppModule {
 
 ##### Putting `CustomCurrencyPipe` to use
 
-First, add `selectedCurrency` in two places in the `AppComponent` template - as an input for the `Currencies`, which will need it to display  the active currencty,  and the `OperationsList` components, which will use it in `CustomCurrencyPipe`.
+First, add `selectedCurrency` in two places in the `AppComponent` template - as an input for the `Currencies`, which will need it to display  the active currency,  and the `OperationsList` components, which will use it in `CustomCurrencyPipe`.
 
 ```
 // app.component.ts
@@ -1089,7 +1100,7 @@ Finally, in `OperationsList` apply the `CustomCurrencyPipe` with the `selectedCu
 ```
 ### The final result
 
-Go to [http://localhost:4200](http://localhost:4200) and have a look at the fully-fledged, multi-state Redux application we just created:
+Go to [http://localhost:4200](http://localhost:4200) and have a look at the complete, multi-state Redux application we just created:
 
 
 ![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/4a8e933f-2ee6-462e-826d-de6f33b45ce4.com-video-to-gif)
@@ -1097,11 +1108,11 @@ Go to [http://localhost:4200](http://localhost:4200) and have a look at the full
 
 # Conclusion
 
-Redux is a new approach for managing applicaiton state, [but it is not the panacea some might think it is](https://medium.com/@dan_abramov/you-might-not-need-redux-be46360cf367#.kcg6xbskh). The concepts from functional programming applied in Redux may be suitable for certain use cases, and it's up to you your to decide whether Redux is the right way to go for your next project.
+Redux is a new approach for managing application state. The concepts from functional programming applied in Redux may be suitable for certain use cases, and it's up to you your to decide whether Redux is the right way to go for your next project.
 
 #### Got lost in the code?
-In case you didn't understand what goes where, [I have uploaded the final version of the example applicaiton for you to use as a reference.](https://github.com/Kaizeras/ng2-redux-app/tree/step-2)
+In case you didn't understand what goes where, [I have uploaded the final version of the example application for you to use as a reference.](https://github.com/Kaizeras/ng2-redux-app/tree/step-2)
 
-In case you have any questions regarding Redux and Angular 2, write a comment or send an e-mail to hgeorgiev@centroida.co.
+In case you have any questions regarding Redux and Angular 2, post a comment or send me an e-mail. Thanks for reading!
 
 
