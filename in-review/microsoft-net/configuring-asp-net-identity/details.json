@@ -3,7 +3,12 @@
     "author_name": "StefanL19",
     "author_real_name": "Stefan Lazov",
     "branch": "master",
-    "branches": [],
+    "branches": [
+        [
+            "adityavarshney",
+            "adityavarshney-microsoft-net-configuring-asp-net-identity"
+        ]
+    ],
     "filename": "article.md",
     "first_commit": "e698ff7bd1d9dade360be9df92f1c7821cab1652",
     "image_url": "https://avatars.githubusercontent.com/u/14915644?v=3",
