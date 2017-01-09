@@ -1,3 +1,8 @@
+### Build a simple File storage service using VueJS, Flask and RethinkDB (Frontend) by Chidiebere Nnadi
+- [Read the guide](http://tutorials.pluralsight.com/guides/front-end-javascript/build-a-simple-file-storage-service-using-vuejs-flask-and-rethinkdb-frontend?status=draft)
+- [Read more from Chidiebere Nnadi](http://tutorials.pluralsight.com/guides/author/afropolymath) <img src="https://avatars.githubusercontent.com/u/3100850?v=3" width="30" height="30" alt="Chidiebere Nnadi" />
+- Related to: Front-End JavaScript (Angular, React, Meteor, etc)
+
 ### Configuring ASP.NET Identity with encrypted columns by Stefan Lazov
 - [Read the guide](http://tutorials.pluralsight.com/guides/microsoft-net/configuring-asp-net-identity-with-encrypted-columns?status=draft)
 - [Read more from Stefan Lazov](http://tutorials.pluralsight.com/guides/author/StefanL19) <img src="https://avatars.githubusercontent.com/u/14915644?v=3" width="30" height="30" alt="Stefan Lazov" />
