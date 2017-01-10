@@ -1,1 +1,3 @@
 Learning python 3 from python 2...
+
+A list of things to look out for:
