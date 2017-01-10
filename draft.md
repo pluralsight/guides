@@ -1,6 +1,6 @@
 ### Python 3 by Luke Lee
-- [Read the guide](http://www.pluralsight.com/guides/guides/python/python-3?status=draft)
-- [Read more from Luke Lee](http://www.pluralsight.com/guides/guides/author/durden) <img src="https://avatars.githubusercontent.com/u/58063?v=3" width="30" height="30" alt="Luke Lee" />
+- [Read the guide](http://www.pluralsight.com//guides/python/python-3?status=draft)
+- [Read more from Luke Lee](http://www.pluralsight.com//guides/author/durden) <img src="https://avatars.githubusercontent.com/u/58063?v=3" width="30" height="30" alt="Luke Lee" />
 - Related to: Python
 
 ### Just a test by Luke Lee
