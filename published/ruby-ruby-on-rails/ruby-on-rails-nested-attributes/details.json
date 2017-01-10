@@ -1,11 +1,17 @@
 {
+    "_publish_status": "published",
     "author_name": "itay-grudev",
     "author_real_name": "Itay Grudev",
     "branch": "master",
-    "branches": [],
+    "branches": [
+        [
+            "stratigos",
+            "stratigos-ruby-ruby-on-rails-ruby-on-rails-nested-attributes"
+        ]
+    ],
     "filename": "article.md",
+    "first_commit": null,
     "image_url": "https://avatars.githubusercontent.com/u/2123767?v=3",
-    "publish_status": "published",
     "stacks": [
         "Ruby, Ruby on Rails"
     ],
