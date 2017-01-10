@@ -1,3 +1,8 @@
+### Just a test by Luke Lee
+- [Read the guide](http://www.pluralsight.com/c-c++/just-a-test?status=draft)
+- [Read more from Luke Lee](http://www.pluralsight.com/author/durden) <img src="https://avatars.githubusercontent.com/u/58063?v=3" width="30" height="30" alt="Luke Lee" />
+- Related to: C/C++
+
 ### Build a simple File storage service using VueJS, Flask and RethinkDB (Frontend) by Chidiebere Nnadi
 - [Read the guide](http://tutorials.pluralsight.com/guides/front-end-javascript/build-a-simple-file-storage-service-using-vuejs-flask-and-rethinkdb-frontend?status=draft)
 - [Read more from Chidiebere Nnadi](http://tutorials.pluralsight.com/guides/author/afropolymath) <img src="https://avatars.githubusercontent.com/u/3100850?v=3" width="30" height="30" alt="Chidiebere Nnadi" />
