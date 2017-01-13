@@ -1,8 +1,3 @@
-### Yarn: A package manager for Node.js by Esteban Herrera
-- [Read the guide](https://www.pluralsight.com/guides/node-js/yarn-a-package-manager-for-node-js?status=draft)
-- [Read more from Esteban Herrera](https://www.pluralsight.com/guides/author/eh3rrera) <img src="https://avatars.githubusercontent.com/u/11665759?v=3" width="30" height="30" alt="Esteban Herrera" />
-- Related to: Node.js
-
 ### Python 3 by Luke Lee
 - [Read the guide](https://www.pluralsight.com/guides/python/python-3?status=draft)
 - [Read more from Luke Lee](https://www.pluralsight.com/guides/author/durden) <img src="https://avatars.githubusercontent.com/u/58063?v=3" width="30" height="30" alt="Luke Lee" />
