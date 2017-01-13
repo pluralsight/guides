@@ -207,7 +207,7 @@ For a quick comparison, here's a summary of the features of each service:
 
 | Feature | localtunnel.me | ngrok | now |
 |------------------------|--------------|--------------|--------------------|
-| **Free option** | Yes | Yes --([with some limitations](https://ngrok.com/product))-- | Yes --([with some limitations](https://zeit.co/now#pricing))-- |
+| **Free option** | Yes | Yes ([with some limitations](https://ngrok.com/product)) | Yes ([with some limitations](https://zeit.co/now#pricing)) |
 | **Custom Subdomains** | Yes (free) | Yes (paid) | Yes (paid) |
 | **Custom Domains** | No | Yes (paid) | Yes (paid) |
 | **Wildcard domains** | No | Yes (paid) | Yes |
