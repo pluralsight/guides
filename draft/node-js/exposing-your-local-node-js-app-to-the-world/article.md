@@ -159,7 +159,7 @@ Once installed, go to your app directory and type `now`.
 
 The first time you run this command, it will prompt for an email address to create an account and confirm it. Next, it will start deploying your app, creating a URL, and putting it on your clipboard.
 
-It may take a while to deploy your app, but meanwhile, you can go to a browser and paste the URL on your clipboard to see the progress. When it finishes, it will show your app:
+It may take a while to deploy your app, but meanwhile, you can go to a browser and paste the URL on your clipboard to see the progress. When it finishes, it will execute the `npm start` script and show your app:
 
 ![now app start](https://raw.githubusercontent.com/pluralsight/guides/master/images/a39c9d54-ff4c-4bdd-ba78-e084382f681e.gif)
 
@@ -235,5 +235,5 @@ Do you know any other service you can recommend?
 
 Do you see something wrong with this guide?
 
-Don't just add a comment, please. Go to the top, click on *Edit this article* and improve this guide. Thanks.
+Don't just add a comment, please. Go to the left (or top if you're on a mobile device) menu, click on *Edit this article* and improve this guide. Thanks.
 
