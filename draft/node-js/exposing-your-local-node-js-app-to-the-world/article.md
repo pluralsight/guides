@@ -214,7 +214,7 @@ For a quick comparison, here's a summary of the features of each service:
 | **Multiple hosting regions** | No | Yes (paid) | Yes (paid) |
 | **Supports HTTPS** | Yes | Yes | Yes |
 | **API** | Yes | Yes | Yes |
-| **Control panel** | No | Yes | No |
+| **Inspect requests** | No | Yes | No |
 | **Replay requests** | No | Yes | No |
 | **Support non-Node.js apps** | Yes ([Golang](https://github.com/NoahShen/gotunnelme)) | Yes (anything) | Yes (with Docker) |
 | **View Source in the Cloud ** | No | No | Yes |
