@@ -298,7 +298,7 @@ Now compare it to the file `npm-shrinkwrap.json` (which serves a similar purpose
 }
 ```
 
-The advantage of using Yarn is that `yarn.lock` is generated automatically, with npm you have to execute manually `npm shrinkwrap`.
+The advantage of using Yarn is that `yarn.lock` is generated automatically, with npm you have to execute `npm shrinkwrap` manually.
 
 One important thing, `yarn.lock` [should always be added to source control](https://yarnpkg.com/blog/2016/11/24/lockfiles-for-all). Remember that this file ensures the deterministic installation of the dependencies.
 
