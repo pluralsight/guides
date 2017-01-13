@@ -228,8 +228,7 @@ Well, all of them are great services, but here are some suggestions to help you 
 
 - If you are just doing a demo or some quick tests, go with localtunnel. You can install it  with NPM and ask for the same subdomain every time (helpful if you are setting the URL of your app in an external service. Without paying, you don't have to change it every time).
 - If you're testing a webhook, the inspect and replay features of [ngrok](https://ngrok.com/) will be a big help. Also, some frameworks (like the [Microsoft Bot Framework](https://docs.botframework.com/en-us/tools/bot-framework-emulator/)) integrate nicely with ngrok.
-- 
-- If you're more interested in the hosting aspect, more than any development facilities, use [now](https://zeit.co/now).
+- If you're more interested in the hosting aspect, more than any development-related features, use [now](https://zeit.co/now).
 
 Do you know any other service you can recommend?
 
