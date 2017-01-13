@@ -222,7 +222,7 @@ For a quick comparison, here's a summary of the features of each service:
 
 # Conclusion
 
-Great, but which one do you recommend to use?
+Great, but you may be wondering, which one do I recommend to use?
 
 Well, all of them are great services, but here are some suggestions to help you make a choice:
 
