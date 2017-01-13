@@ -161,11 +161,14 @@ The first time you run this command, it will prompt for an email address to crea
 
 It may take a while to deploy your app, but meanwhile, you can go to a browser and paste the URL on your clipboard to see the progress. When it finishes, it will show your app:
 
-![now app start]()
+![now app start](https://raw.githubusercontent.com/pluralsight/guides/master/images/a39c9d54-ff4c-4bdd-ba78-e084382f681e.gif)
+
 
 
 If we add `/_src` to the URL, we'll see the source code of the deployed application:
-![now _src]()
+
+![now _src](https://raw.githubusercontent.com/pluralsight/guides/master/images/260c68aa-9916-42f3-8802-5dae92b6628c.gif)
+
 
 If we make a change to the application, for example:
 ```javascript
@@ -177,7 +180,9 @@ app.get('/', (req, res) => res.send('Hello World! v2') );
 ```
 
 And then deploy it with the command `now`, we'll get a new URL where we can see the change. The cool thing is that the previous version will still be available:
-![now new and previous version]()
+
+![now new and previous version](https://raw.githubusercontent.com/pluralsight/guides/master/images/56c5fe77-4650-41e1-b813-0c7e2c7d4b8e.gif)
+
 
 The Now CLI provides some other helpful commands. You can see everything that is available with:
 ```
@@ -185,10 +190,14 @@ now -help
 ```
 
 For instance, there's a `ls` command, to list all the deployed versions of your app:
-![now ls]()
+
+![now ls](https://raw.githubusercontent.com/pluralsight/guides/master/images/de924654-92dc-4691-822b-22805315d133.png)
+
 
 You can delete a version with `rm`:
-![now rm]()
+
+![now rm](https://raw.githubusercontent.com/pluralsight/guides/master/images/ea50e32e-4fac-43e8-9ca5-626901798b46.gif)
+
 
 Now also supports custom domains and subdomains and it has a [REST API](https://zeit.co/api) to manage all the deployments under the account, domains, certs, aliases, and secrets for the authenticating user.
 
