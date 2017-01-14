@@ -1,7 +1,7 @@
 # What we did last time
-  [In part 1 of this guide](http://tutorials.pluralsight.com/front-end-javascript/building-a-redux-application-with-angular-2-part-1), I covered Redox's main principles and terminology by creating a small [application for recording financial operations](https://github.com/Kaizeras/ng2-redux-app).
+  [In part 1 of this guide](http://tutorials.pluralsight.com/front-end-javascript/building-a-redux-application-with-angular-2-part-1), I covered Redux's main principles and terminology by creating a small [application for recording financial operations](https://github.com/Kaizeras/ng2-redux-app).
   
-  This tutorial builds on the concepts learned in the previous one. If you need a refresher, I highly recommend looking over the first Redox application tutorial again.
+  This tutorial builds on the concepts learned in the previous one. If you need a refresher, I highly recommend looking over the first Redux application tutorial again.
   
 # Restructuring
   In this part, the example application will be extended to include additional functionality.
