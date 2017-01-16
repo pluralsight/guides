@@ -1,11 +1,17 @@
 {
+    "_publish_status": "published",
     "author_name": "shadowcodex",
     "author_real_name": "Shannon Duncan",
     "branch": "master",
-    "branches": [],
+    "branches": [
+        [
+            "redhelix",
+            "redhelix-front-end-javascript-angular-vs-react-a-side-by-side-comparison"
+        ]
+    ],
     "filename": "article.md",
+    "first_commit": null,
     "image_url": "https://avatars.githubusercontent.com/u/1348053?v=3",
-    "publish_status": "published",
     "stacks": [
         "Front-End JavaScript (Angular, React, Meteor, etc)"
     ],
