@@ -28,7 +28,7 @@ This table is pretty straight forward, Angular is by Google and React is by Face
 | *Code Design* | JS into HTML | JS into HTML | JavaScript Centric |
 | *JavaScript “Fatigue”* | Less | Less | More |
 
-These tend to be high conservation areas that get started on Reddit and Hacker News.
+These tend to be high conversation areas that get started on Reddit and Hacker News.
 
 #The Other Information
 
