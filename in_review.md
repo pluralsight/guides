@@ -8,11 +8,6 @@
 - [Read more from Esteban Herrera](https://www.pluralsight.com/guides/author/eh3rrera) <img src="https://avatars.githubusercontent.com/u/11665759?v=3" width="30" height="30" alt="Esteban Herrera" />
 - Related to: Node.js
 
-### Configuring ASP.NET Identity  by Stefan Lazov
-- [Read the guide](https://www.pluralsight.com/guides/microsoft-net/configuring-asp-net-identity?status=in-review)
-- [Read more from Stefan Lazov](https://www.pluralsight.com/guides/author/StefanL19) <img src="https://avatars.githubusercontent.com/u/14915644?v=3" width="30" height="30" alt="Stefan Lazov" />
-- Related to: Microsoft.NET (C#, ASP.NET, VB.NET, etc)
-
 ### Cloning an Ionic 2 application from Github by Todd Shelton
 - [Read the guide](https://www.pluralsight.com/guides/front-end-javascript/cloning-an-ionic-2-application-from-github?status=in-review)
 - [Read more from Todd Shelton](https://www.pluralsight.com/guides/author/TShelton41) <img src="https://avatars.githubusercontent.com/u/795737?v=3" width="30" height="30" alt="Todd Shelton" />
