@@ -1,11 +1,11 @@
-## The Problem
+### The Problem
 There are times when you have an object which has a lot of public properties, but you only need a part of these properties for a task such as creating a CSV file with that object. To demonstrate this issue let's look at the following classes below:
 
 ```csharp
 public class User
 {
     public string Username{get;set;}
-    public string Password{get;set;}
+    public string Address{get;set;}
     public string Name{get;set;}
     public string Lastname{get;set;}
 }
@@ -27,7 +27,7 @@ If we have a user object like this:
 var user = new User()
 {
     Username = "murat",
-    Password = "123",
+    Address = "Some address string here",
     Name = "murat",
     Lastname = "aykanat"
 };
@@ -43,5 +43,15 @@ var person = new Person()
 };
 ```
 
+However if we have 30+ properties on the "parent" object and 15+ properties on the "child" object, we have to write at least 15 lines of code which is not very elegant or convenient.
 
+### The Solution
 
+There are two ways we can achieve what we want:
+- We can copy similarly named properties from the "parent" object to the "child" object using reflection.
+- We can use attributes in the "child" object to "mark" them for the parent object to copy its values to it using reflection.
+
+#### Property Copying
+#### Property Matching
+#### Property Copying/Matching in extension methods
+#### Conclusion
