@@ -1,3 +1,8 @@
+### Property Copying Between Two Objects using Reflection by Murat Aykanat
+- [Read the guide](https://www.pluralsight.com/guides/microsoft-net/property-copying-between-two-objects-using-reflection?status=draft)
+- [Read more from Murat Aykanat](https://www.pluralsight.com/guides/author/aykanatm) <img src="https://avatars.githubusercontent.com/u/9140297?v=3" width="30" height="30" alt="Murat Aykanat" />
+- Related to: Microsoft.NET (C#, ASP.NET, VB.NET, etc)
+
 ### Python 3 by Luke Lee
 - [Read the guide](https://www.pluralsight.com/guides/python/python-3?status=draft)
 - [Read more from Luke Lee](https://www.pluralsight.com/guides/author/durden) <img src="https://avatars.githubusercontent.com/u/58063?v=3" width="30" height="30" alt="Luke Lee" />
