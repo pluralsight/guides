@@ -56,3 +56,134 @@ npm start
 ```
 
 Open your browser at http://localhost:8081/vr. It can take some time to build and initialize the app, but at the end, you should see the following:
+
+![sample app](http://i.imgur.com/Ei3Qa7i.gif)
+
+# React VR
+
+The directory of this sample app has the following structure:
+```
++-node_modules
++-static_assets
++-vr
+\-.gitignore
+\-.watchmanconfig
+\-index.vr.js
+\-package.json
+\-postinstall.js
+\-rn-cli-config.js
+```
+
+From all these files and directories, the ones we're going to work with are:
+
+- `index.vr.js` that contains your application code.
+- `static_assets` that contains the external resource files, like images and 3D models.
+
+You can know more about the project structure [here](https://facebookincubator.github.io/react-vr/docs/project-configuration.html).
+
+The following is the content of the `index.vr.js` file:
+```javascript
+import React from 'react';
+import {
+  AppRegistry,
+  asset,
+  StyleSheet,
+  Pano,
+  Text,
+  View,
+} from 'react-vr';
+
+class EarthMoonVR extends React.Component {
+  render() {
+    return (
+      <View>
+        <Pano source={asset('chess-world.jpg')}/>
+        <Text
+          style={{
+            backgroundColor:'blue',
+            padding: 0.02,
+            textAlign:'center',
+            textAlignVertical:'center',
+            fontSize: 0.8,
+            layoutOrigin: [0.5, 0.5],
+            transform: [{translate: [0, 0, -3]}],
+          }}>
+          hello
+        </Text>
+      </View>
+    );
+  }
+};
+
+AppRegistry.registerComponent('EarthMoonVR', () => EarthMoonVR);
+```
+
+We can see that React VR uses [ES2015](https://babeljs.io/learn-es2015/) and [JSX](https://facebook.github.io/react/docs/introducing-jsx.html).
+
+The code is pre-processed by the [React Native packager](https://github.com/facebook/react-native/tree/master/packager), which provides compilation (ES2015, JSX), bundling, and asset loading among other things.
+
+In the `return` statement of the `render` function, there's a:
+
+- `View` component, which is typically used as a container for other components.
+- `Pano` component, which renders a 360 photo (`chess-world.jpg`) that forms our world environment.
+- `Text` component, which renders strings in a 3D space.
+
+Notice how the `Text` component is styled with a style object. Every component in React VR has a `style` attribute that can be used to control its look and layout.
+
+Aside from the addition of some special components like `Pano` or `VrButton`, React VR works with the same concepts of React and React Native, such as components, props, state, lifecycle methods, events, and flexbox layouts.
+
+Finally, the root component should register itself with `AppRegistry.registerComponent` so the app can be bundled and run.
+
+With a better understanding of what this code does, let's dive into panorama images.
+
+# Pano images
+
+Generally, the world inside our VR app is composed by a panorama (pano) image, which creates a sphere of 1000 meters (in React VR distance and dimensional units are in meters) and placing the user at its center.
+
+A pano image allows you to see the image from every angle including above, below, behind and next to you, that's the reason they are also called 360 images or spherical panoramas.
+
+There are two main formats of 360 panoramas, equirectangular and cubic. React VR supports both.
+
+An equirectangular pano consists of a single image with an aspect ratio of 2:1, meaning that the width must be twice the height.
+
+These images are created with a special 360 camera. An excellent source of equirectangular images is [Flickr](https://www.flickr.com), you just need to search for the *equirectangular* tag. For example, by trying [this search](https://www.flickr.com/search/?text=equirectangular&license=2%2C3%2C4%2C5%2C6%2C9), I found [this  photo](https://www.flickr.com/photos/54144402@N03/9581334556/):
+
+![equirectangular example](https://farm4.staticflickr.com/3804/9581334556_fb0cfafa19_z_d.jpg)
+
+Looks weird, doesn't it?
+
+Anyway, download the photo (at the highest resolution available) to the `static_assets` directory of our project and change the `render` function to show it:
+```javascript
+render() {
+    return (
+      <View>
+        <Pano source={asset('sample_pano.jpg')}/>
+      </View>
+    );
+  }
+```
+
+The `source` attribute of the `Pano` component takes an object with an `uri` property with the location of the image. Here we are using the `asset` function that will look for the `sample_pano.jpg` file in the `static_assets` directory and return and object with the correct path in the `uri` property. In other words, the above code is equivalent to:
+```javascript
+render() {
+  return (
+    <View>
+      <Pano source={ {uri:'../static_assets/sample_pano.jpg'} }/>
+    </View>
+  );
+}
+```
+
+When we refresh the page in the browser (and assuming the local server is still running), we should see something like this:
+
+![sample pano](http://i.imgur.com/Zx4qKcD.gif)
+
+By the way, if we want to avoid refreshing the page at every change, we can enable hot reloading by appending `?hotreload` to the URL (http://localhost:8081/vr/?hotreload).
+
+Cubemaps are the other format of 360 panoramas. This format uses six images for the six faces of a cube that will fill the *sphere* around us. It's also known as a skybox.
+
+The basic idea is to render a cube and place the viewers at the center, following them as they move.
+
+For example, consider this image thata represent the sides of a cube:
+
+![cube image](https://raw.githubusercontent.com/pluralsight/guides/master/images/65d27e9a-007c-4618-aa92-79165e074167.png)
