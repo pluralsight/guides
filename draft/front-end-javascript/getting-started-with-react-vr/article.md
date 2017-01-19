@@ -74,10 +74,7 @@ The directory of this sample app has the following structure:
 \-rn-cli-config.js
 ```
 
-From all these files and directories, the ones we're going to work with are:
-
-- `index.vr.js` that contains your application code.
-- `static_assets` that contains the external resource files, like images and 3D models.
+I want to highlight the `index.vr.js` file, which contains your application code, and the `static_assets` directory, which contains external resource files, like images and 3D models.
 
 You can know more about the project structure [here](https://facebookincubator.github.io/react-vr/docs/project-configuration.html).
 
@@ -828,7 +825,7 @@ In a flexbox layout, children can be arranged vertically with `flexDirection:'co
 
 Check [this page on the React Native documentation](https://facebook.github.io/react-native/docs/flexbox.html) and [this one on the React VR documentation](https://facebookincubator.github.io/react-vr/docs/layout-and-style.html) to know more about flexbox layouts. 
 
-Finally, we can take the skybox images out of the render method so it doesn't look so crowded:
+Finally, we can take the skybox images out of the `render` method so it doesn't look so crowded:
 ```javascript
 import React from 'react';
 import {
