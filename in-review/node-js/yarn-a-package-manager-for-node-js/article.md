@@ -433,4 +433,4 @@ A question some people have asked, is Facebook forking the community? No, [This 
 
 By the way, here's [Yarn's Github page](https://github.com/yarnpkg/yarn). At the time of this writing, it has 21,500 stars and more than 500 open issues. Some would say this makes it a popular project.
 
-If you think someting is wrong with this guide or want to improve it in some way, don't just leave a comment, please edit it on Github or send a pull request. Thank you.
+If you think something is wrong with this guide or want to improve it in some way, don't just leave a comment, please edit it on Github or send a pull request. Thank you.
