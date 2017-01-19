@@ -43,7 +43,7 @@ Using the React VR CLI, we can create a new application, let's say `EarthMoonVR`
 react-vr init EarthMoonVR
 ```
 
-This will create an `EarthMoonVR` directory with a sample application inside and install the required dependencies, so it can take a while (if you have [Yarn](https://yarnpkg.com/) installed, it will be used to speed things up).
+This will create an `EarthMoonVR` directory with a sample application inside, also installing the required dependencies so it can take a while (if you have [Yarn](https://yarnpkg.com/) installed, it will be used to speed things up).
 
 Once it has finished, `cd` into that directory:
 ```
@@ -55,4 +55,4 @@ To test the sample app, you can execute a local development server with:
 npm start
 ```
 
-Now open your browser at http://localhost:8081/vr. It can take some time to build and initialize the app, but at the end, you should see the following:
+Open your browser at http://localhost:8081/vr. It can take some time to build and initialize the app, but at the end, you should see the following:
