@@ -646,7 +646,7 @@ class EarthMoonVR extends React.Component {
 }
 ```
 
-This is the result (the moon is rotating too, but very slowly):
+This is the result (you may not notice it, but the moon is rotating very slowly):
 
 ![earth moon rotating](https://raw.githubusercontent.com/pluralsight/guides/master/images/51ade6c9-9947-468f-ad31-1fb322703596.gif)
 
