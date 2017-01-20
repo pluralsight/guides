@@ -987,7 +987,7 @@ var Item = React.createClass({
         return {editable: false}
     },
     handleEdit() {
-        this.setState({!this.state.editable})
+        this.setState({editable: !this.state.editable})
     },
 
     render() {
