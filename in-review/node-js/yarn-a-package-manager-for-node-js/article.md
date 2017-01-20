@@ -1,3 +1,5 @@
+## Package Managers
+
 Ruby has [Bundler](http://bundler.io/).
 
 PHP has [Composer](https://getcomposer.org/). 
@@ -10,11 +12,15 @@ These package managers automate the process of installing and managing libraries
 
 In Node.js, we have [npm](https://www.npmjs.com/) as the default package manager, which is automatically included when Node.js is installed.
 
-Npm is not perfect, and there are a number of open source alternatives created to solve some of its issues like [ied](http://gugel.io/ied/), [pnpm](http://ricostacruz.com/pnpm/), and more recently, [yarn](https://yarnpkg.com), which was released by Facebook in collaboration with Exponent, Google, and Tilde, in October 2016.
+Npm is not perfect, and there are a number of open source alternatives created to solve some of its issues like [ied](http://gugel.io/ied/), [pnpm](http://ricostacruz.com/pnpm/), and more recently, [yarn](https://yarnpkg.com)
+
+### Introducing Yarn
+
+**Yarn** was released by Facebook in collaboration with Exponent, Google, and Tilde in October 2016.
 
 There's a post on [Facebook Code](https://code.facebook.com/posts/1840075619545360) that describe the reasons for building this new package manager.
 
-To give you an idea, here are some highlights:
+Here are some highlights:
 
 > ... as we scaled internally, we faced problems with consistency when installing dependencies across different machines and users, the amount of time it took to pull dependencies in, and had some security concerns with the way the npm client executes code from some of those dependencies automatically.
 
@@ -22,20 +28,20 @@ To give you an idea, here are some highlights:
 
 > ... updating a single dependency with npm also updates many unrelated ones based on semantic versioning rules.
 
-Yarn is compatible with the npm registry and has the same feature set than npm, but it operates faster and in a more reliable way. Let's take a look.
+Many advantages of using Yarn aren't common knowledge yet. This guide will explore the advantages of Yarn over npm and will cover some basic commands that will help new users settle into using Yarn regularly.
+
+Here's [Yarn's Github page](https://github.com/yarnpkg/yarn). It's a pretty popular project; at the time of this writing, it has 21,500 stars and more than 500 open issues. Yarn is compatible with the npm registry and has the same set of features as npm, but it operates faster and in a more reliable way. Let's take a look.
 
 # Installation
 
-Yarn can be installed with npm:
+You can install yarn with with npm but this is *not recommended*:
 ```
 npm install -g yarn
 ```
 
-However, that is not the recommended way.
+Instead, if you're on Windows, download the [installer](https://yarnpkg.com/latest.msi) (you need to have Node.js installed).
 
-If you're on Windows, the easiest way is to download the [installer](https://yarnpkg.com/latest.msi) (you need to have Node.js installed).
-
-If you're on Mac or in a Unix environment, the easiest way is via a shell script:
+If you're using iOS or a Unix environment, the easiest way is via a shell script:
 ```
 curl -o- -L https://yarnpkg.com/install.sh | bash
 ```
@@ -44,13 +50,13 @@ In [this page](https://yarnpkg.com/en/docs/install) you can find more informatio
 
 # How it works
 
-As we know, in Node.js dependencies are placed in the `node_modules` directory of your project.
+As we know, Node.js dependencies are placed in the `node_modules` directory of your project. 
 
-A big problem is that these dependencies are installed in a non-deterministically way, which means that the directory structure and dependency tree depend on the order dependencies are installed, and this can be different from one machine to another.
+These dependencies are installed in a non-deterministically way, which means that the directory structure and dependency tree depend on the order dependencies are installed. Such a dependency is problematic because it can differ from machine to machine.
 
 To solve this issue, Yarn uses a lockfile (`yarn.lock`) to ensure that everyone has the same version of every single file, resulting in the exact same file structure of the `node_modules` directory across all machines.
 
-When dependencies are resolved, Yarn first looks in a local (global) cache to see if the package has been downloaded already. This, and the fact that it efficiently queues up requests and is able to parallelize them, makes Yarn really fast in comparison with npm.
+When dependencies are resolved, Yarn first looks in a local (global) cache to see if the package has been downloaded already. This, with Yarn's ability to efficiently queue up and parallelize requests, makes Yarn faster than npm.
 
 So let's test it.
 
@@ -62,8 +68,7 @@ To initialize a project with npm we use `npm init`:
 
 ![npm init](https://raw.githubusercontent.com/pluralsight/guides/master/images/dd47560b-2ed1-4623-9d94-c8c556b6dd00.png)
 
-
-Yarn has the same `init` command, but with a slightly different set of question and answers:
+Yarn has the same `init` command, but with a slightly different set of questions and answers:
 
 ![yarn init](https://raw.githubusercontent.com/pluralsight/guides/master/images/065a7752-b258-4eb5-ad37-8390b71a4217.png)
 
@@ -92,18 +97,18 @@ Yarn:
 ![time yarn add](https://raw.githubusercontent.com/pluralsight/guides/master/images/b7f0d552-7d8e-46cc-a0e7-beafec92c1e3.gif)
 
 
-As you can see from the images, npm took 3.120 seconds, while Yarn, 2.588 seconds.
+As you can see from the images, npm took 3.120 seconds, while Yarn took 2.588 seconds.
 
-You can also see that the output of Yarn is more descriptive and prettier (however, the emojis are only available on Mac).
+You can also see that the output of Yarn is more descriptive and prettier. The emojis are only available on Mac though.
 
-Now, to show you the using of the cache by Yarn, let's delete the `node_modules` directory and repeat the test:
+Now, let's delete the `node_modules` directory and repeat the test to see Yarn's caching in action:
 
 ![yarn cache usage](https://raw.githubusercontent.com/pluralsight/guides/master/images/8e82a107-a6f8-4178-bf2c-303ab44b5d36.gif)
 
 
 This time, Yarn took 1.455 seconds, an improvement of 44% over the previous execution. And 53% over npm.
 
-Of course, you may get different results, but surely, Yarn will beat npm every time.
+Of course, you may get different results, but **Yarn will beat npm every time.**
 
 We can also see that a `yarn.lock` file is generated (some parts are omitted for shortness):
 ```
@@ -206,9 +211,9 @@ vary@~1.1.0:
   resolved "https://registry.yarnpkg.com/vary/-/vary-1.1.0.tgz#e1e5affbbd16ae768dd2674394b9ad3022653140"
 ```
 
-Notice that Yarn uses https://registry.yarnpkg.com instead of https://registry.npmjs.org. 
+Notice that Yarn uses `https://registry.yarnpkg.com` instead of `https://registry.npmjs.org`. 
 
-In a [podcast episode of  NodeUp](http://nodeup.com/onehundrednine) (around the minute 40:30) [James Kyle](https://github.com/thejameskyle) (one of the main developers of Yarn) said that for now, `registry.yarnpkg.com` is just a CNAME record that goes to the [Cloudflare](https://www.cloudflare.com/) network and redirects to the NPM registry for experimental purposes, and to add some performance features.
+In a [podcast episode of NodeUp](http://nodeup.com/onehundrednine) (around the 40:30 mark) [James Kyle](https://github.com/thejameskyle) (one of the main developers of Yarn) said that, for now, `registry.yarnpkg.com` is just a CNAME record that goes to the [Cloudflare](https://www.cloudflare.com/) network and redirects to the NPM registry for experimental purposes, and to add some performance features.
 
 Now compare it to the file `npm-shrinkwrap.json` (which serves a similar purpose than `yarn.lock`), generated when `npm shrinkwrap` is executed (some parts are omitted for shortness):
 ```
@@ -298,13 +303,13 @@ Now compare it to the file `npm-shrinkwrap.json` (which serves a similar purpose
 }
 ```
 
-The advantage of using Yarn is that `yarn.lock` is generated automatically, with npm you have to execute `npm shrinkwrap` manually.
+The advantage of using Yarn is that `yarn.lock` is generated automatically; with npm you have to execute `npm shrinkwrap` manually.
 
 One important thing, `yarn.lock` [should always be added to source control](https://yarnpkg.com/blog/2016/11/24/lockfiles-for-all). Remember that this file ensures the deterministic installation of the dependencies.
 
 Now, if you specify a package version, you'll notice an important difference in the generated `package.json` file.
 
-If you execute for example:
+For example, if you execute:
 ```
 npm install --save express@4.13.4 
 ```
@@ -336,7 +341,7 @@ Will generate:
 
 Did you notice the missing caret(`^`) in Yarn's `package.json` file?
 
-Many people recommended **not** to use carets in our `package.json` files.
+Many people recommended **not** using carets in our `package.json` files.
 
 The caret will update the dependency to the most recent minor version when it's installed. For example, if there's a `2.4.1` version available, this will be installed even if `^2.3.1` is the one specified. This can cause trouble in some cases because sometimes breaking changes are introduced even in minor releases.
 
@@ -345,7 +350,7 @@ If you want to specify an exact version rather than using npm's semantic version
 npm install --save-exact express@4.13.4 
 ```
 
-However, that's something you have to remember (and know). On the other hand, Yarn does it automatically for you. If this is something you want, it depends of your preferences and the libraries you're using.
+However, that's something you have to know and keep in the back of your head. On the other hand, Yarn does this "caret-handling" for you. If this is something you want, it depends of your preferences and the libraries you're using.
 
 Moving forward, if you already have a `package.json` file, you can install the dependencies with:
 ```
@@ -371,10 +376,28 @@ That will update your `package.json` and `yarn.lock` files by default.
 
 The command `yarn upgrade [package]` will upgrade all the packages (or a single named package) to their latest version ([some rules apply](https://yarnpkg.com/en/docs/cli/upgrade)), and using `yarn upgrade package@version` will upgrade (or downgrade) an installed package to the specified version. In all cases, the `yarn.lock` file will be recreated as well.
 
-The next section will present other Yarn commands you should know. You can see the complete list of Yarn commands and their options [here](https://yarnpkg.com/en/docs/cli/).
+Next I'll cover a key difference between npm and Yarn.
 
+## npm dedupe
 
-# Other Yarn helpful commands
+One feature missing on Yarn is an equivalent of [npm dedupe](https://docs.npmjs.com/cli/dedupe), a command to reduce duplicated dependencies. Since a project can have many versions of the same dependency, this `dedupe` command can come in handy.
+
+For background, `npm dedupe` searches the dependency tree and attempts to simplify the overall directory structure by moving dependencies further up the tree (even if duplicates are not found), where they can be more effectively shared by multiple dependent packages. If a suitable version already exists at the target location, it will be left untouched, but the other duplicates will be deleted. This will result in both a flat and deduplicated tree.
+
+On the other hand, the Yarn `install` command has a `--flat` flag:
+```
+yarn install --flat
+```
+
+On the first run, it will prompt you to choose a *single version* for each package that has more than one version on the dependency tree. These will be added to your `package.json` under a `resolutions` field. **But this is not the same as `npm dedupe`, which removes duplicates by deletion.**
+
+This difference means that the `node_modules` directory generated by Yarn could take more space on disk than the one generated by npm.
+
+However, this tradeoff might not impact you, your workflow, or your business significantly. 
+
+## Other Yarn helpful commands
+
+This section covers other Yarn commands you should know. You can see the complete list of Yarn commands and their options [here](https://yarnpkg.com/en/docs/cli/). Let's see some of the commands that'll save users lots of time:
 
 Yarn comes with a [license checker](https://yarnpkg.com/en/docs/cli/licenses). It will give you the license (and URL to the source code) associated with each package:
 ```
@@ -392,45 +415,25 @@ yarn info cookie
 ![yarn info](https://raw.githubusercontent.com/pluralsight/guides/master/images/a205ec05-b989-4128-8843-a663b632687d.gif)
 
 
-You can also ask for the version information (currently installed version, desired version based on semver, and latest available version) of one or more packages of your `packages.json` file:
+You can also ask for the version information, such as the currently installed version, the desired version based on semver, and the latest available version, of one or more packages of your `packages.json` file:
 ```
 yarn outdated
 ```
 ![yarn outdated](https://raw.githubusercontent.com/pluralsight/guides/master/images/ac21f2d3-69fb-4b98-a47d-c62dd87e5276.png)
 
 
-Finally, Yarn can show information about why a package, package folder, or file within a package foler is installed:
+Finally, Yarn can show information about why a package, package folder, or file within a package folder is installed:
 ```
 yarn why xxx
 ```
 ![yarn why](https://raw.githubusercontent.com/pluralsight/guides/master/images/b8b6e859-208a-492b-b628-8a627339fcea.png)
 
-
-# npm dedupe
-
-One feature missing on Yarn is an equivalent of [npm dedupe](https://docs.npmjs.com/cli/dedupe), a command to reduce duplicated dependencies (a project can have many versions of the same dependency).
-
-`npm dedupe` searches the dependency tree and attempts to simplify the overall directory structure by moving dependencies further up the tree (even if duplicates are not found), where they can be more effectively shared by multiple dependent packages.
-
-If a suitable version already exists at the target location, it will be left untouched, but the other duplicates will be deleted. This will result in both a flat and deduplicated tree.
-
-On the other hand, the Yarn `install` command has a `--flat` flag:
-```
-yarn install --flat
-```
-
-On the first run, it will prompt you to choose a single version for each package that has more than one version on the dependency tree. These will be added to your `package.json` under a `resolutions` field. But this is not the same than `npm dedupe`.
-
-If Yarn cannot eliminate duplicate dependencies like npm does, the direct consequence is that the `node_modules` directory generated by Yarn could take more space on disk than the one generated by npm. Once again, you decide if that matters to you.
-
 # Conclusion
 
-Yarn it's already used in production at Facebook. It's a great alternative to npm, especially, for its performance. 
+Yarn is already used in production at Facebook. Furthermore, as demonstrated in this guide, it's a great high-performance alternative to npm. 
 
-For simple personal projects, maybe it doesn't matter which one you use, but for bigger projects (and depeding on your needs), Yarn might provide a clear advantange over the alternatives.
+For simple personal projects, perhaps the one you use doesn't make much of a difference. However, for bigger projects (and depending on your needs), Yarn might provide a clear advantage over the alternatives.
 
-A question some people have asked, is Facebook forking the community? No, [This is how open source works](http://blog.npmjs.org/post/151660845210/hello-yarn).
+___
 
-By the way, here's [Yarn's Github page](https://github.com/yarnpkg/yarn). At the time of this writing, it has 21,500 stars and more than 500 open issues. Some would say this makes it a popular project.
-
-If you think something is wrong with this guide or want to improve it in some way, don't just leave a comment, please edit it on Github or send a pull request. Thank you.
+Let me know in the comments if you have any information to add. If any part of this guide is incorrect, please open a pull request on Github! Thanks for reading.
