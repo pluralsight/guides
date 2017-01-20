@@ -3,7 +3,12 @@
     "author_name": "eh3rrera",
     "author_real_name": "Esteban Herrera",
     "branch": "master",
-    "branches": [],
+    "branches": [
+        [
+            "adityavarshney",
+            "adityavarshney-node-js-yarn-a-package-manager-for-node-js"
+        ]
+    ],
     "filename": "article.md",
     "first_commit": "44dd90ba687aae67b9d7add8bdaaa0e5a1ec1b38",
     "image_url": "https://avatars.githubusercontent.com/u/11665759?v=3",
