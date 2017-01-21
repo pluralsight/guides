@@ -49,9 +49,188 @@ However if we have 30+ properties on the "parent" object and 15+ properties on t
 
 There are two ways we can achieve what we want:
 - We can copy similarly named properties from the "parent" object to the "child" object using reflection.
-- We can use attributes in the "child" object to "mark" them for the parent object to copy its values to it using reflection.
+- We can use attributes in the "child" object to "mark" them for the parent object to copy its values to "child" object using reflection.
 
 #### Property Copying
+Let's start with the simple one. Here, we will create a class `PropertyCopier` and have a static method on it `Copy` to copy similarly named public properties from the parent to child object. In this method we will have two `foreach` loops iterating over child and parent object's public properties and see if their name and type match. If they do, then it will copy the value to the child object's property.
+
+You can see the code below:
+
+```csharp
+public class PropertyCopier<TParent, TChild> where TParent : class
+                                            where TChild : class 
+{
+    public static void Copy(TParent parent, TChild child)
+    {
+        var parentProperties = parent.GetType().GetProperties();
+        var childProperties = child.GetType().GetProperties();
+
+        foreach (var parentProperty in parentProperties)
+        {
+            foreach (var childProperty in childProperties)
+            {
+                if (parentProperty.Name == childProperty.Name && parentProperty.PropertyType == childProperty.PropertyType)
+                {
+                    childProperty.SetValue(child, parentProperty.GetValue(parent));
+                    break;
+                }
+            }
+        }
+    }
+}
+```
+
+We can see the usage below:
+```csharp
+var user = new User()
+{
+    Username = "murat",
+    Address = "Some address string here",
+    Name = "murat",
+    Lastname = "aykanat"
+};
+
+var person = new Person();
+
+PropertyCopier<User, Person>.Copy(user, person);
+
+Console.WriteLine("Person:");
+Console.WriteLine(person.Name);
+Console.WriteLine(person.Lastname);
+```
+Output will be:
+```
+Person:
+murat
+aykanat
+```
+
 #### Property Matching
+
+It is all good when we have similar names and types, but what if we want something more dynamic? We have often classes which we want to copy properties from another class, but the names are different.
+
+Such as this class:
+```csharp
+public class PersonMatch
+{
+    public string NameMatch { get; set; }
+    public string LastnameMatch { get; set; }
+}
+```
+
+The types match but the names do no match for our `PropertyCopier` to work.
+
+```csharp
+[AttributeUsage(AttributeTargets.Property)]
+public class MatchParentAttribute : Attribute
+{
+    public readonly string ParentPropertyName;
+    public MatchParentAttribute(string parentPropertyName)
+    {
+        ParentPropertyName = parentPropertyName;
+    }
+}
+```
+
+```csharp
+public class PropertyMatcher<TParent, TChild> where TParent : class 
+                                                  where TChild : class
+{
+    public static void GenerateMatchedObject(TParent parent, TChild child)
+    {
+        var childProperties = child.GetType().GetProperties();
+        foreach (var childProperty in childProperties)
+        {
+            var attributesForProperty = childProperty.GetCustomAttributes(typeof(MatchParentAttribute), true);
+            var isOfTypeMatchParentAttribute = false;
+
+            MatchParentAttribute currentAttribute = null;
+
+            foreach (var attribute in attributesForProperty)
+            {
+                if (attribute.GetType() == typeof(MatchParentAttribute))
+                {
+                    isOfTypeMatchParentAttribute = true;
+                    currentAttribute = (MatchParentAttribute) attribute;
+                    break;
+                }
+            }
+
+            if (isOfTypeMatchParentAttribute)
+            {
+                var parentProperties = parent.GetType().GetProperties();
+                object parentPropertyValue = null;
+                foreach (var parentProperty in parentProperties)
+                {
+                    if (parentProperty.Name == currentAttribute.ParentPropertyName)
+                    {
+                        parentPropertyValue = parentProperty.GetValue(parent);
+                    }
+                }
+                childProperty.SetValue(child, parentPropertyValue);
+            }
+        }
+    }
+}
+```
 #### Property Copying/Matching in extension methods
+
+```csharp
+public static class ObjectExtensionMethods
+{
+    public static void CopyPropertiesFrom(this object self, object parent) 
+    {
+        var fromProperties = parent.GetType().GetProperties();
+        var toProperties = self.GetType().GetProperties();
+
+        foreach (var fromProperty in fromProperties)
+        {
+            foreach (var toProperty in toProperties)
+            {
+                if (fromProperty.Name == toProperty.Name && fromProperty.PropertyType == toProperty.PropertyType)
+                {
+                    toProperty.SetValue(self, fromProperty.GetValue(parent));
+                    break;
+                }
+            }
+        }
+    }
+
+    public static void MatchPropertiesFrom(this object self, object parent)
+    {
+        var childProperties = self.GetType().GetProperties();
+        foreach (var childProperty in childProperties)
+        {
+            var attributesForProperty = childProperty.GetCustomAttributes(typeof(MatchParentAttribute), true);
+            var isOfTypeMatchParentAttribute = false;
+
+            MatchParentAttribute currentAttribute = null;
+
+            foreach (var attribute in attributesForProperty)
+            {
+                if (attribute.GetType() == typeof(MatchParentAttribute))
+                {
+                    isOfTypeMatchParentAttribute = true;
+                    currentAttribute = (MatchParentAttribute)attribute;
+                    break;
+                }
+            }
+
+            if (isOfTypeMatchParentAttribute)
+            {
+                var parentProperties = parent.GetType().GetProperties();
+                object parentPropertyValue = null;
+                foreach (var parentProperty in parentProperties)
+                {
+                    if (parentProperty.Name == currentAttribute.ParentPropertyName)
+                    {
+                        parentPropertyValue = parentProperty.GetValue(parent);
+                    }
+                }
+                childProperty.SetValue(self, parentPropertyValue);
+            }
+        }
+    }
+}
+```
 #### Conclusion
