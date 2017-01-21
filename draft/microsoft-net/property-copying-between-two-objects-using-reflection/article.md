@@ -280,7 +280,7 @@ public static class ObjectExtensionMethods
 }
 ```
 
-We can use these extension methods below:
+To demonstrate the extension methods, we can use the code below:
 ```csharp
 var user = new User()
 {
