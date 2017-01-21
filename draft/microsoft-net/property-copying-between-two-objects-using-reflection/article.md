@@ -118,7 +118,13 @@ public class PersonMatch
 }
 ```
 
-The types match but the names do no match for our `PropertyCopier` to work.
+The types match but the names do no match for our `PropertyCopier` to work. Also with property copier, we have little control over which properties will be copied over to the child object. There may be a case, where we do not want to copy a certain property even if the name and the type matches.
+
+To solve these issues, we need a way to "mark" the properties that we want to be copied from the parent object. Best way to do it would be using attributes to mark these properties.
+
+Attributes can simply be defined as metadata. They can be assigned to classes, properties, methods etc and they provide metadata on the object they are set on. For example, we can define the maximum length of a string property. When we set a string to the property, it will first check against the metadata we provided beforehand and it will either set it to the new value or not depending on the length of the new string value.
+
+In our case, we will use attributes to define the parent property name. We will tell the code that this property will retrive its value from the property name we defined in the attribute that is in the parent object.
 
 ```csharp
 [AttributeUsage(AttributeTargets.Property)]
