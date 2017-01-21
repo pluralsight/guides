@@ -117,8 +117,7 @@ public class PersonMatch
     public string LastnameMatch { get; set; }
 }
 ```
-
-The types match but the names do no match for our `PropertyCopier` to work. Also with property copier, we have little control over which properties will be copied over to the child object. There may be a case, where we do not want to copy a certain property even if the name and the type matches.
+The types do match but the names do not match for our `PropertyCopier` to work. Also with property copier, we have little control over which properties will be copied over to the child object. There may be a case, where we do not want to copy a certain property even if the name and the type matches.
 
 To solve these issues, we need a way to "mark" the properties that we want to be copied from the parent object. Best way to do it would be using attributes to mark these properties.
 
@@ -126,6 +125,7 @@ Attributes can simply be defined as metadata. They can be assigned to classes, p
 
 In our case, we will use attributes to define the parent property name. We will tell the code that this property will retrive its value from the property name we defined in the attribute that is in the parent object.
 
+First of all we need to create a class to define our attribute. It will be a simple class that derives from `Attribute` class. It will have a single public field that defines the matching property name in the parent object. Here is the code for our attribute:
 ```csharp
 [AttributeUsage(AttributeTargets.Property)]
 public class MatchParentAttribute : Attribute
@@ -137,7 +137,17 @@ public class MatchParentAttribute : Attribute
     }
 }
 ```
-
+Since our attribute is defined, now we can add the necessary attributes to our class that we had before:
+```csharp
+public class PersonMatch
+{
+    [MatchParent("Name")]
+    public string NameMatch { get; set; }
+    [MatchParent("Lastname")]
+    public string LastnameMatch { get; set; }
+}
+```
+All we have to do now check the attribute value of each property in the child object and find the matching name in the parent object:
 ```csharp
 public class PropertyMatcher<TParent, TChild> where TParent : class 
                                                   where TChild : class
@@ -170,7 +180,10 @@ public class PropertyMatcher<TParent, TChild> where TParent : class
                 {
                     if (parentProperty.Name == currentAttribute.ParentPropertyName)
                     {
-                        parentPropertyValue = parentProperty.GetValue(parent);
+                        if (parentProperty.PropertyType== childProperty.PropertyType)
+                        {
+                            parentPropertyValue = parentProperty.GetValue(parent);
+                        }
                     }
                 }
                 childProperty.SetValue(child, parentPropertyValue);
@@ -179,8 +192,32 @@ public class PropertyMatcher<TParent, TChild> where TParent : class
     }
 }
 ```
-#### Property Copying/Matching in extension methods
+Let's try our code and see what we get:
+```csharp
+var user = new User()
+{
+    Username = "murat",
+    Address = "Some address string here",
+    Name = "murat",
+    Lastname = "aykanat"
+};
 
+var personMatch = new PersonMatch();
+
+PropertyMatcher<User, PersonMatch>.GenerateMatchedObject(user, personMatch);
+
+Console.WriteLine("Person:");
+Console.WriteLine(personMatch.NameMatch);
+Console.WriteLine(personMatch.LastnameMatch);
+```
+Output will be:
+```
+Person:
+murat
+aykanat
+```
+#### Property Copying/Matching in extension methods
+If we don't want to use `PropertyCopier` or `PropertyMatcher` classes we can define extension methods for type `object`. We will use the same code as above to fill the methods:
 ```csharp
 public static class ObjectExtensionMethods
 {
@@ -230,7 +267,10 @@ public static class ObjectExtensionMethods
                 {
                     if (parentProperty.Name == currentAttribute.ParentPropertyName)
                     {
-                        parentPropertyValue = parentProperty.GetValue(parent);
+                        if (parentProperty.PropertyType== childProperty.PropertyType)
+                        {
+                            parentPropertyValue = parentProperty.GetValue(parent);
+                        }
                     }
                 }
                 childProperty.SetValue(self, parentPropertyValue);
@@ -239,4 +279,51 @@ public static class ObjectExtensionMethods
     }
 }
 ```
+
+We can use these extension methods below:
+```csharp
+var user = new User()
+{
+    Username = "murat",
+    Address = "Some address string here",
+    Name = "murat",
+    Lastname = "aykanat"
+};
+
+var person = new Person();
+
+person.CopyPropertiesFrom(user);
+
+Console.WriteLine("Person:");
+Console.WriteLine(person.Name);
+Console.WriteLine(person.Lastname);
+```
+```csharp
+var user = new User()
+{
+    Username = "murat",
+    Address = "Some address string here",
+    Name = "murat",
+    Lastname = "aykanat"
+};
+
+var personMatch = new PersonMatch();
+
+personMatch.MatchPropertiesFrom(user);
+
+Console.WriteLine("Person:");
+Console.WriteLine(personMatch.NameMatch);
+Console.WriteLine(personMatch.LastnameMatch);
+```
+Outputs of both code snippets will be the same:
+```
+Person:
+murat
+aykanat
+```
 #### Conclusion
+In this guide I explained two ways to copy properties from one object to another. If you face a similar situation in your projects, instead of writing tens of lines of code, you can just use these simple classes or extension methods to copy needed properties from one object to the other object.
+
+I hope this guide will be useful for your projects. Please feel free to post your ideas and feedback. 
+
+Happy coding!
