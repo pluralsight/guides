@@ -23,7 +23,7 @@ The sites [WebVR](https://webvr.info/) and [Is WebVR Ready?](https://iswebvrread
 But don't worry, you don't need any special device ([Oculus Rift](https://www3.oculus.com/en-us/rift/), [HTC Vive](https://www.vive.com), [Samsung Gear VR](http://www.samsung.com/global/galaxy/gear-vr/)) to try a WebVR app right now.
 
 Here's what you need:
-- A Windows machine
+- A Windows machine (a [virtual](https://developer.microsoft.com/en-us/microsoft-edge/tools/vms/) one is fine)
 - [Firefox Nightly](https://nightly.mozilla.org/) ([here are some instructions](https://github.com/Web-VR/iswebvrready/wiki/Instructions:-Firefox-Nightly))
 - The latest version of [Node.js](https://nodejs.org/)
 
@@ -524,6 +524,8 @@ render() {
 The result:
 
 ![13-earth-moon](https://raw.githubusercontent.com/pluralsight/guides/master/images/e4ccd694-c6d0-44da-b815-c9579ece84ec.png)
+
+If you want to know a little more about 360 panoramas in the context of WebVR, check out [the developer documentation at Oculus](https://developer3.oculus.com/documentation/vrweb/latest/concepts/carmel-360-photos/).
 
 Now let's animate our models.
 
