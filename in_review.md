@@ -8,11 +8,6 @@
 - [Read more from Esteban Herrera](https://www.pluralsight.com/guides/author/eh3rrera) <img src="https://avatars.githubusercontent.com/u/11665759?v=3" width="30" height="30" alt="Esteban Herrera" />
 - Related to: Front-End JavaScript (Angular, React, Meteor, etc)
 
-### Yarn: A package manager for Node.js by Esteban Herrera
-- [Read the guide](https://www.pluralsight.com/guides/node-js/yarn-a-package-manager-for-node-js?status=in-review)
-- [Read more from Esteban Herrera](https://www.pluralsight.com/guides/author/eh3rrera) <img src="https://avatars.githubusercontent.com/u/11665759?v=3" width="30" height="30" alt="Esteban Herrera" />
-- Related to: Node.js
-
 ### Exposing your local Node.js app to the world by Esteban Herrera
 - [Read the guide](https://www.pluralsight.com/guides/node-js/exposing-your-local-node-js-app-to-the-world?status=in-review)
 - [Read more from Esteban Herrera](https://www.pluralsight.com/guides/author/eh3rrera) <img src="https://avatars.githubusercontent.com/u/11665759?v=3" width="30" height="30" alt="Esteban Herrera" />
