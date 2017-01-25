@@ -1,3 +1,8 @@
+### Yarn: A package manager for Node.js by Esteban Herrera
+- [Read the guide](https://www.pluralsight.com/guides/node-js/yarn-a-package-manager-for-node-js)
+- [Read more from Esteban Herrera](https://www.pluralsight.com/guides/author/eh3rrera) <img src="https://avatars.githubusercontent.com/u/11665759?v=3" width="30" height="30" alt="Esteban Herrera" />
+- Related to: Node.js
+
 ### Configuring ASP.NET Identity  by Stefan Lazov
 - [Read the guide](https://www.pluralsight.com/guides/microsoft-net/configuring-asp-net-identity)
 - [Read more from Stefan Lazov](https://www.pluralsight.com/guides/author/StefanL19) <img src="https://avatars.githubusercontent.com/u/14915644?v=3" width="30" height="30" alt="Stefan Lazov" />
