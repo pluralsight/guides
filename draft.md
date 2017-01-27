@@ -1,3 +1,8 @@
+### Hyperloop with Rails, NPM and Webpack by Barrie Hadfield
+- [Read the guide](https://www.pluralsight.com/guides/ruby-ruby-on-rails/hyperloop-with-rails-npm-and-webpack?status=draft)
+- [Read more from Barrie Hadfield](https://www.pluralsight.com/guides/author/barriehadfield) <img src="https://avatars.githubusercontent.com/u/3940251?v=3" width="30" height="30" alt="Barrie Hadfield" />
+- Related to: Ruby, Ruby on Rails
+
 ### Hyperloop and Rails by Barrie Hadfield
 - [Read the guide](https://www.pluralsight.com/guides/ruby-ruby-on-rails/hyperloop-and-rails?status=draft)
 - [Read more from Barrie Hadfield](https://www.pluralsight.com/guides/author/barriehadfield) <img src="https://avatars.githubusercontent.com/u/3940251?v=3" width="30" height="30" alt="Barrie Hadfield" />
