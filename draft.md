@@ -1,3 +1,8 @@
+### Hyperloop and Rails by Barrie Hadfield
+- [Read the guide](https://www.pluralsight.com/guides/ruby-ruby-on-rails/hyperloop-and-rails?status=draft)
+- [Read more from Barrie Hadfield](https://www.pluralsight.com/guides/author/barriehadfield) <img src="https://avatars.githubusercontent.com/u/3940251?v=3" width="30" height="30" alt="Barrie Hadfield" />
+- Related to: Ruby, Ruby on Rails
+
 ### Python 3 by Luke Lee
 - [Read the guide](https://www.pluralsight.com/guides/python/python-3?status=draft)
 - [Read more from Luke Lee](https://www.pluralsight.com/guides/author/durden) <img src="https://avatars.githubusercontent.com/u/58063?v=3" width="30" height="30" alt="Luke Lee" />
