@@ -1,12 +1,14 @@
-# Reactrb Showcase
+# Hyperloop Showcase
 
 This is a simple Rails application showcasing Reactrb, Opal, NPM, Webpack, React Bootstrap, Reactive Record, Synchromesh, Rearcrb Router and other associated technologies.  This showcase is intended to be a companion project to the excellent Reactrb tutorials already written which you can find in [Further Reading](#further-reading) below.
 
 This Showcase application will mix native React and Reactrb components, be styled by Bootstrap CSS (using ReactBootstrap), display a video (using a native React component) and use Reactrb Reactive Record and Synchromesh to handle data for a Post and Comments feed.
 
-The source code can be found here:
+### Important note on Hyperloop
 
-[https://github.com/barriehadfield/reactrb-showcase](https://github.com/barriehadfield/reactrb-showcase)
+Since the writing of this tutorial, there has been considerable change to Reactrb and Hyperloop in that Hyperloop has become a web application framework with Reactrb (now called HyperReact) being an important part. The tutorial below is is mostly still valid though many of the gems have been renamed and some of the DSL changed. 
+
+[Please see the Hyperloop site for later tutorials](http://ruby-hyperloop.io/tutorials/)
 
 ### Technologies highlighted in this Showcase application
 
@@ -18,6 +20,10 @@ The source code can be found here:
 + [Reactive Record](https://github.com/reactrb/reactive-record) to move data between Rails models and the front end
 + [Synchromesh](https://github.com/reactrb/synchromesh) to magically push changed data between all connected clients
 + [Reactrb Hot-Reloader and Opal IRB](https://github.com/fkchang/opal-hot-reloader) for programmer joy and hot-loading with developing
+
+The source code can be found here:
+
+[https://github.com/barriehadfield/reactrb-showcase](https://github.com/barriehadfield/reactrb-showcase)
 
 
 ## Introduction
@@ -778,8 +784,11 @@ gem 'foreman'
 Modify your `components.rb`, adding the following lines inside the if statement so they only run on the client and not as part of the server pre-rendering process:
 
 ```ruby
-require 'opal_hot_reloader'
-OpalHotReloader.listen(25222, true)
+if React::IsomorphicHelpers.on_opal_client?
+  ...
+  require 'opal_hot_reloader'
+  OpalHotReloader.listen(25222, true)
+end
 ```
 
 Then modify your `procfile` so that the Hot Loader service will start whenever you start your server:
