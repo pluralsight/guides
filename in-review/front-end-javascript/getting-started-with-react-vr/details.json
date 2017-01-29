@@ -3,7 +3,12 @@
     "author_name": "eh3rrera",
     "author_real_name": "Esteban Herrera",
     "branch": "master",
-    "branches": [],
+    "branches": [
+        [
+            "adityavarshney",
+            "adityavarshney-front-end-javascript-getting-started-with-react-vr"
+        ]
+    ],
     "filename": "article.md",
     "first_commit": "78e40bc620ff2b1fecff62874ae3b5f38c18716c",
     "image_url": "https://avatars.githubusercontent.com/u/11665759?v=3",
