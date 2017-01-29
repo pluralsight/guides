@@ -103,7 +103,7 @@ tunnel.close();
 # ngrok
 [Ngrok](https://ngrok.com) is the most popular service of all these. Like localtunnel, ngrok creates a secure tunnel to a local server on your machine.
 
-Ngrok is built in Go so it has [binary packages for each major platform](https://ngrok.com/download). You just have to download a ZIP file, unzip it and then run it from the command line.
+Ngrok is built in Go so it has [binary packages for each major platform](https://ngrok.com/download). You just have to download a ZIP file, unzip it, and then run it from the command line.
 
 That's the recommended way to install it, however, there's also a [Node.js wrapper for ngrok](https://github.com/bubenshchykov/ngrok) that downloads the ngrok binaries for your platform.
 
@@ -132,12 +132,12 @@ This UI also allows you to replay any request, which is very helpful for testing
 ![ngrok replay](https://raw.githubusercontent.com/pluralsight/guides/master/images/7b6daf14-27f4-4692-a70a-776371325364.gif)
 
 
-Just like localtunnel, you get a random subdomain every time you execute ngrok. You can specify a custom subdomain with the `-subdomain` option. For example:
+Just like localtunnel, you get a random subdomain every time you execute ngrok. You can specify a custom subdomain with the `-subdomain` option. For example this command will give you the URL(s) `http(s)://hello.ngrok.io`:
 ```
 ./ngrok http -subdomain=hello 3000
 ```
 
-Will give you the URL(s) `http(s)://hello.ngrok.io`. However, this is only available as a [paying customer](https://ngrok.com/product). It also supports [custom domains](https://ngrok.com/docs#custom-domains).
+However, this is only available as a [paying customer](https://ngrok.com/product). It also supports [custom domains](https://ngrok.com/docs#custom-domains).
 
 Among other things, you can configure all the ngrok options of the command line with a YAML file, and it also has a REST API to manage tunnels, collect metrics, and replay requests. You can know more about this features at the [documentation page](https://ngrok.com/docs), which is very complete.
 
@@ -222,17 +222,14 @@ For a quick comparison, here's a summary of the features of each service:
 
 # Conclusion
 
-Great, but you may be wondering, which one do I recommend to use?
+Great, but which one should you use?
 
 Well, all of them are great services, but here are some suggestions to help you make a choice:
 
 - If you are just doing a demo or some quick tests, go with localtunnel. You can install it  with NPM and ask for the same subdomain every time (helpful if you are setting the URL of your app in an external service. Without paying, you don't have to change it every time).
 - If you're testing a webhook, the inspect and replay features of [ngrok](https://ngrok.com/) will be a big help. Also, some frameworks (like the [Microsoft Bot Framework](https://docs.botframework.com/en-us/tools/bot-framework-emulator/)) integrate nicely with ngrok.
-- If you're more interested in the hosting aspect, more than any development-related features, use [now](https://zeit.co/now).
+- If you're more interested in the hosting aspect, more than any development-related features, use [Now](https://zeit.co/now).
 
-Do you know any other service you can recommend?
+I hope you found this guide interesting. Please feel free to add any other services that you find useful in exposing Node.JS apps by editing this article and opening a pull request. 
 
-Do you see something wrong with this guide?
-
-Don't just add a comment, please. Go to the left (or top if you're on a mobile device) menu, click on *Edit this article* and improve this guide. Thanks.
-
+Thanks for reading. 
