@@ -10,7 +10,7 @@ This can be useful in the following cases:
 - For debugging purposes, it's better to keep everything local.
 - When you're testing mobile apps and you want to expose your local server as the back-end.
 - When you want to make a quick demo of your app to a client/user in another part of the world.
-- When you want to publicly expose something like an email server or a file repository from your private network.
+- When you want to publicly expose something, like an email server or a file repository from your private network.
 
 Having said that, we'll take a quick look at each option using a Hello World Express app.
 
@@ -226,9 +226,9 @@ Great, but which one should you use?
 
 Well, all of them are great services, but here are some suggestions to help you make a choice:
 
-- If you are just doing a demo or some quick tests, go with localtunnel. You can install it  with NPM and ask for the same subdomain every time (helpful if you are setting the URL of your app in an external service. Without paying, you don't have to change it every time).
-- If you're testing a webhook, the inspect and replay features of [ngrok](https://ngrok.com/) will be a big help. Also, some frameworks (like the [Microsoft Bot Framework](https://docs.botframework.com/en-us/tools/bot-framework-emulator/)) integrate nicely with ngrok.
-- If you're more interested in the hosting aspect, more than any development-related features, use [Now](https://zeit.co/now).
+- If you are just doing a demo or some quick tests, go with localtunnel. You can install it  with NPM and ask for the same subdomain every time. This helpful if you are setting the URL of your app in an external service. Without paying, you don't have to change it every time.
+- If you are testing a webhook, the inspect and replay features of [ngrok](https://ngrok.com/) will be a big help. Also, some frameworks, such as the [Microsoft Bot Framework](https://docs.botframework.com/en-us/tools/bot-framework-emulator/), integrate very nicely with ngrok.
+- If you are more interested in the hosting aspect, more than any development-related features, use [Now](https://zeit.co/now).
 
 I hope you found this guide interesting. Please feel free to add any other services that you find useful in exposing Node.JS apps by editing this article and opening a pull request. 
 
