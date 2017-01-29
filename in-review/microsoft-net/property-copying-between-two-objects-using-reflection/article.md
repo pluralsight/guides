@@ -1,5 +1,5 @@
-### The Problem
-There are times when you have an object which has a lot of public properties, but you only need a part of these properties for a task such as creating a CSV file with that object. To demonstrate this issue let's look at the following classes below:
+## The problem
+Sometimes you have an object which has a lot of public properties, but you only need a handful of these properties for a particular task, such as creating a CSV file with that object. For example, check out the classes below:
 
 ```csharp
 public class User
@@ -16,9 +16,6 @@ public class Person
     public string Lastname{get;set;}
 }
 ```
-
-For the purpose of simplicity I kept classes with a low number of properties, but I am sure you can imagine we can add a lot more properties to each class.
-
 Now, for example, we already have a `User` object and we want to create a `Person` object for another task and copy `Name` and `Lastname` properties from the User object.
 
 If we have a user object like this:
@@ -43,18 +40,18 @@ var person = new Person()
 };
 ```
 
-However if we have 30+ properties on the "parent" object and 15+ properties on the "child" object, we have to write at least 15 lines of code which is not very elegant or convenient.
+However if we have, say, 30 properties on the "parent" object and 15 properties on the "child" object, we have to write 15 lines of repetitious, boring, and clunky code. There must be another way!
 
-### The Solution
+## The Solution
 
-There are two ways we can achieve what we want:
+There are two ways we can circumvent this dilemma:
 - We can copy similarly named properties from the "parent" object to the "child" object using reflection.
 - We can use attributes in the "child" object to "mark" them for the parent object to copy its values to "child" object using reflection.
 
 #### Property Copying
-Let's start with the simple one. Here, we will create a class `PropertyCopier` and have a static method on it `Copy` to copy similarly named public properties from the parent to child object. In this method we will have two `foreach` loops iterating over child and parent object's public properties and see if their name and type match. If they do, then it will copy the value to the child object's property.
+Let's start with the simple one. We will create a class named `PropertyCopier` with static method `Copy` to copy public properties from the parent object to the child object. To make our task easier, we'll only copy similarly-named properties. 
 
-You can see the code below:
+In this method we will have two `foreach` loops iterating over child and parent object's public properties, constantly checking to see if their names and types match. Whenever we find a match, we will copy the value to the child object's corresponding property.
 
 ```csharp
 public class PropertyCopier<TParent, TChild> where TParent : class
@@ -107,9 +104,9 @@ aykanat
 
 #### Property Matching
 
-It is all good when we have similar names and types, but what if we want something more dynamic? We have often classes which we want to copy properties from another class, but the names are different.
+It is all good when we have similar names and types, but what if we want something more dynamic? We have often classes where copying is useful but names differ from class to class. Furthermore, our current copier gives us little control over which properties actually get copied over to the child class. We may want to avoid sending over certain properties, even if they match in name and type.
 
-Such as this class:
+Here's an example of some of our current version's limitations:
 ```csharp
 public class PersonMatch
 {
@@ -117,13 +114,15 @@ public class PersonMatch
     public string LastnameMatch { get; set; }
 }
 ```
-The types do match but the names do not match for our `PropertyCopier` to work. Also with property copier, we have little control over which properties will be copied over to the child object. There may be a case, where we do not want to copy a certain property even if the name and the type matches.
+The types match, but the names don't. Our original `PropertyCopier` would *not* work in this scenario.
 
-To solve these issues, we need a way to "mark" the properties that we want to be copied from the parent object. Best way to do it would be using attributes to mark these properties.
+#### The better way
 
-Attributes can simply be defined as metadata. They can be assigned to classes, properties, methods etc and they provide metadata on the object they are set on. For example, we can define the maximum length of a string property. When we set a string to the property, it will first check against the metadata we provided beforehand and it will either set it to the new value or not depending on the length of the new string value.
+We need a way to "mark" the properties that we want to be copied from the parent object. The best way to do it would be using attributes to mark these properties.
 
-In our case, we will use attributes to define the parent property name. We will tell the code that this property will retrive its value from the property name we defined in the attribute that is in the parent object.
+Attributes can be defined as metadata. They can be assigned to classes, properties, methods, and so on. They provide metadata on the object they are set on. For example, we can define the maximum length of a string property. When we set a string to the property, it will first check against the metadata we provided beforehand and it will either set it to the new value or not depending on the length of the new string value.
+
+In our case, we will use attributes to define the parent property name. We will tell the code that this subclass property will get its value from the property in the parent instance.
 
 First of all we need to create a class to define our attribute. It will be a simple class that derives from `Attribute` class. It will have a single public field that defines the matching property name in the parent object. Here is the code for our attribute:
 ```csharp
@@ -137,7 +136,7 @@ public class MatchParentAttribute : Attribute
     }
 }
 ```
-Since our attribute is defined, now we can add the necessary attributes to our class that we had before:
+With our attribute defined, we can add the necessary attributes to our class that we had before:
 ```csharp
 public class PersonMatch
 {
@@ -322,8 +321,8 @@ murat
 aykanat
 ```
 #### Conclusion
-In this guide I explained two ways to copy properties from one object to another. If you face a similar situation in your projects, instead of writing tens of lines of code, you can just use these simple classes or extension methods to copy needed properties from one object to the other object.
+In this guide I explained two ways to copy properties from one object to another. If you face a similar situation in your projects, instead of writing multiple lines of code, you can just use these classes or extension methods to copy the needed properties from one object to the other object.
 
-I hope this guide will be useful for your projects. Please feel free to post your ideas and feedback. 
+I hope this guide will be useful for your projects. Please feel free to post your ideas and feedback.
 
 Happy coding!
