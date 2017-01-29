@@ -3,7 +3,12 @@
     "author_name": "aykanatm",
     "author_real_name": "Murat Aykanat",
     "branch": "master",
-    "branches": [],
+    "branches": [
+        [
+            "adityavarshney",
+            "adityavarshney-microsoft-net-property-copying-between-two-objects-using-reflection"
+        ]
+    ],
     "filename": "article.md",
     "first_commit": "95119d92081322a945b07817d04c1c07be38ee5f",
     "image_url": "https://avatars.githubusercontent.com/u/9140297?v=3",
