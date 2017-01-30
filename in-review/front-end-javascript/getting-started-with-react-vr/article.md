@@ -1,39 +1,39 @@
 [React VR](https://facebookincubator.github.io/react-vr/docs/react-vroverview.html) aims to allow web developers to author virtual reality (VR) applications using the declarative approach of [React](https://facebook.github.io/react/) and, in particular, [React Native](http://facebook.github.io/react-native).
 
-React VR is built on top of [Three.js](https://github.com/mrdoob/three.js/) to offer support for the lower-level [WebVR](https://webvr.info/) and [WebGL](https://en.wikipedia.org/wiki/WebGL) APIs. WebVr is an API for accessing VR devices on the Web. WebGL (Web Graphics Library) is an API for rendering 3D graphics within any compatible web browser without the use of plug-ins.
+React VR uses [Three.js](https://github.com/mrdoob/three.js/) to support the lower-level [WebVR](https://webvr.info/) and [WebGL](https://en.wikipedia.org/wiki/WebGL) APIs. WebVR is an API used to access VR devices on the Web. WebGL (Web Graphics Library) is an API for rendering 3D graphics within any compatible web browser without the use of plug-ins.
 
-React VR is similar to React Native because it uses `View`, `Image`, and `Text` as core components and supports Flexbox layouts. In addition, it adds VR components like `Pano`, `Mesh`, and `PointLight`.
+React VR is similar to React Native in that it uses `View`, `Image`, and `Text` as core components and supports Flexbox layouts. In addition, React VR adds VR components like `Pano`, `Mesh`, and `PointLight` into the mix.
 
-In this guide, we'll create a simple VR app to learn how to create a scene with a panorama image, 3d objects, buttons, and flexbox. It is based on two of the [official samples](https://github.com/facebookincubator/react-vr) of React VR, the Mesh and Layout samples.
+In this guide, we'll create a simple VR app to learn how to create a scene with a panorama image, 3d objects, buttons, and a flexbox layout. Our mock app is based on two of the [official samples](https://github.com/facebookincubator/react-vr) of React VR and the Mesh and Layout samples.
 
-The app will render 3d models of the Earth and Moon in a [cubemap](https://en.wikipedia.org/wiki/Cube_mapping) of the space along with some buttons to *zoom in* and *zoom out*. This is how the finished app looks like:
+The app will render 3D models of the Earth and the Moon in a [cubemap](https://en.wikipedia.org/wiki/Cube_mapping) of space along with some buttons to *zoom in* and *zoom out*. This is how the finished app looks like:
 
 ![finished app](https://raw.githubusercontent.com/pluralsight/guides/master/images/79aea4e7-a53b-4cfa-ba54-a03dc527c004.gif)
 
-The models, their scale, and their rotation don't represent an accurate representation of the Earth or the Moon. This is just a simple example to demonstrate how React VR works. Along the way, we'll explain some concepts related to 3D modelling.
+The models, their scale, and their rotation are not true replicas of the Earth-Moon system. This relationship is just to demonstrate how React VR works. Along the way, we'll explain some key 3D modeling concepts. Once you've achieved mastery with ReactVR, feel free to create more pieces; make it to scale, add in the Sun, and create more planets!
 
 You can find the source code of the final app on [GitHub](https://github.com/eh3rrera/earth-moon-vr).
 
-# Requirements
+## Requirements
 
-At this time of this writing, Virtual Reality is a new technology and we don't have that many choices to develop or test our VR apps.
+At the time of writing, Virtual Reality is a rather new technology, and there are few ways to develop or test our VR apps.
 
-The sites [WebVR](https://webvr.info/) and [Is WebVR Ready?](https://iswebvrready.org/) can help you know what browser and devices support the latest VR specs.
+[WebVR](https://webvr.info/) and [Is WebVR Ready?](https://iswebvrready.org/) can help you know what browser and devices support the latest VR specs.
 
-But don't worry, you don't need any special device ([Oculus Rift](https://www3.oculus.com/en-us/rift/), [HTC Vive](https://www.vive.com), [Samsung Gear VR](http://www.samsung.com/global/galaxy/gear-vr/)) to try a WebVR app right now.
+But don't worry, **you don't need any special device**, such as [Oculus Rift](https://www3.oculus.com/en-us/rift/), [HTC Vive](https://www.vive.com), or [Samsung Gear VR](http://www.samsung.com/global/galaxy/gear-vr/) to try a WebVR app right now.
 
-Here's what you need:
+Here's what you *do* need:
 - A Windows machine (a [virtual](https://developer.microsoft.com/en-us/microsoft-edge/tools/vms/) one is fine)
 - [Firefox Nightly](https://nightly.mozilla.org/) ([here are some instructions](https://github.com/Web-VR/iswebvrready/wiki/Instructions:-Firefox-Nightly))
 - The latest version of [Node.js](https://nodejs.org/)
 
 There are some [builds of Chrome](https://webvr.info/get-chrome/) that support the WebVR API, and even [an extension that emulates it](https://chrome.google.com/webstore/detail/webvr-api-emulation/gbdnpaebafagioggnhkacnaaahpiefil), but you'll get the best support with Firefox Nightly and Windows. 
 
-Also, if you have an Android device and a Gear VR headset, you can install the [Carmel Developer Preview browser](https://www.oculus.com/experiences/gear-vr/1290985657630933/) to explore your React VR app with your headset.
+If you happen to also have an Android device and a Gear VR headset, you can install the [Carmel Developer Preview browser](https://www.oculus.com/experiences/gear-vr/1290985657630933/) to explore your React VR app through your headset.
 
 # Creating the project
 
-First, we need to install the React VR CLI tool:
+First, we need to install the React VR CLI tool. Use the NPM:
 ```
 npm install -g react-vr-cli
 ```
@@ -43,9 +43,11 @@ Using the React VR CLI, we can create a new application, let's say `EarthMoonVR`
 react-vr init EarthMoonVR
 ```
 
-This will create an `EarthMoonVR` directory with a sample application inside, also installing the required dependencies so it can take a while (if you have [Yarn](https://yarnpkg.com/) installed, it will be used to speed things up).
+This will create an `EarthMoonVR` directory with a sample application inside, also installing the required dependencies so it can take a while. Installing [Yarn](https://yarnpkg.com/) will speed things up. 
 
-Once it has finished, `cd` into that directory:
+(See [this guide](https://www.pluralsight.com/guides/node-js/yarn-a-package-manager-for-node-js) for more on Yarn.)
+
+Once the install is ready, `cd` into that directory:
 ```
 cd EarthMoonVR
 ```
@@ -55,7 +57,7 @@ To test the sample app, you can execute a local development server with:
 npm start
 ```
 
-Open your browser at http://localhost:8081/vr. It can take some time to build and initialize the app, but at the end, you should see the following:
+Open your browser at `http://localhost:8081/vr`. It can take some time to build and initialize the app, but at the end, you should see the following:
 
 ![sample app](http://i.imgur.com/Ei3Qa7i.gif)
 
@@ -129,21 +131,23 @@ Notice how the `Text` component is styled with a style object. Every component i
 
 Aside from the addition of some special components like `Pano` or `VrButton`, React VR works with the same concepts of React and React Native, such as components, props, state, lifecycle methods, events, and flexbox layouts.
 
-Finally, the root component should register itself with `AppRegistry.registerComponent` so the app can be bundled and run.
+Finally, the root component should register itself with `AppRegistry.registerComponent`, so the app can be bundled and run.
 
-With a better understanding of what this code does, let's dive into panorama images.
+Now that we know what our code does, we can dive into **panorama images**.
 
 # Pano images
 
-Generally, the world inside our VR app is composed by a panorama (pano) image, which creates a sphere of 1000 meters (in React VR distance and dimensional units are in meters) and placing the user at its center.
+Generally, the world inside our VR app is composed by a panorama (pano) image, which creates a sphere of 1000 meters (in React VR distance and dimensional units are in meters) and places the user at its center.
 
 A pano image allows you to see the image from every angle including above, below, behind and next to you, that's the reason they are also called 360 images or spherical panoramas.
 
-There are two main formats of 360 panoramas, equirectangular and cubic. React VR supports both.
+There are two main formats of 360 panoramas: **equirectangular** and **cubic**. React VR supports both.
+
+### Equirectangular panos
 
 An equirectangular pano consists of a single image with an aspect ratio of 2:1, meaning that the width must be twice the height.
 
-These images are created with a special 360 camera. An excellent source of equirectangular images is [Flickr](https://www.flickr.com), you just need to search for the *equirectangular* tag. For example, by trying [this search](https://www.flickr.com/search/?text=equirectangular&license=2%2C3%2C4%2C5%2C6%2C9), I found [this  photo](https://www.flickr.com/photos/54144402@N03/9581334556/):
+These images are created with a special 360 camera. An excellent source of equirectangular images is [Flickr](https://www.flickr.com), you just need to search for the `equirectangular` tag. For example, by trying [this search](https://www.flickr.com/search/?text=equirectangular&license=2%2C3%2C4%2C5%2C6%2C9), I found [this  photo](https://www.flickr.com/photos/54144402@N03/9581334556/):
 
 ![equirectangular example](https://farm4.staticflickr.com/3804/9581334556_fb0cfafa19_z_d.jpg)
 
@@ -175,13 +179,15 @@ When we refresh the page in the browser (and assuming the local server is still 
 
 ![sample pano](http://i.imgur.com/Zx4qKcD.gif)
 
-By the way, if we want to avoid refreshing the page at every change, we can enable hot reloading by appending `?hotreload` to the URL (http://localhost:8081/vr/?hotreload).
+By the way, if we want to avoid refreshing the page at every change, we can enable **hot reloading** by appending `?hotreload` to the URL (http://localhost:8081/vr/?hotreload).
+
+### Cubic panos
 
 Cubemaps are the other format of 360 panoramas. This format uses six images for the six faces of a cube that will fill the *sphere* around us. It's also known as a skybox.
 
 The basic idea is to render a cube and place the viewers at the center, following them as they move.
 
-For example, consider this image thata represent the sides of a cube:
+For example, consider this image that represents the sides of a cube:
 
 ![cube image](https://raw.githubusercontent.com/pluralsight/guides/master/images/65d27e9a-007c-4618-aa92-79165e074167.png)
 
@@ -209,18 +215,18 @@ render() {
 
 In 2D layouts, the X-axis points to the right and the Y-axis points down, which means that the top left is (0, 0) and the bottom right will be the width and the height of the element at (width, height). 
 
-However, in a 3D space, React VR uses the same right-handed coordinate system OpenGL uses, with positive X pointing to the right, positive Y pointing up, and positive Z pointing forwards towards the user. Because the default view of the user starts out at the origin, this means they'll start out looking at the –Z direction:
+However, in a 3D space, React VR uses the same right-handed coordinate system that OpenGL uses, with positive X pointing to the right, positive Y pointing up, and positive Z pointing forwards towards the user. Because the default view of the user starts out at the origin, this means they'll start out looking in the negative Z direction:
 
 ![3D coordinate system](https://raw.githubusercontent.com/pluralsight/guides/master/images/6f07859e-1d03-4767-8b53-ba7265cf3472.png)
 
-You can know more about the [React VR coordinate system here](https://facebookincubator.github.io/react-vr/docs/3dcoordinates-and-transforms.html).
+You can read more about the [React VR coordinate system here](https://facebookincubator.github.io/react-vr/docs/3dcoordinates-and-transforms.html).
 
 
 This way, our cubicmap (or skybox) will look like this:
 
 ![cubemap sample](https://raw.githubusercontent.com/pluralsight/guides/master/images/e2dba568-6cef-4433-a76a-1b64197c1ffd.gif)
 
-Skyboxes are used a lot with [Unity](https://unity3d.com/), so there are a lot of places where you can get them. For example, I downloaded one of the [Sahara desert](http://www.custommapmakers.org/skyboxes/zips/hw_sahara.zip) from [this page](http://www.custommapmakers.org/skyboxes.php). When I extract the images and change the code to:
+Skyboxes are used a lot with [Unity](https://unity3d.com/), so there are a lot of places where you can find them for download. For example, I downloaded one of the [Sahara desert](http://www.custommapmakers.org/skyboxes/zips/hw_sahara.zip) from [this page](http://www.custommapmakers.org/skyboxes.php). When I extract the images and change the code to:
 ```javascript
 render() {
   return (
@@ -246,7 +252,7 @@ This is the result:
 
 ![sahara cubemap 1](https://raw.githubusercontent.com/pluralsight/guides/master/images/0713234f-47d3-4cfa-a07a-4b8107036ac0.gif)
 
-Can you notice that the top and the bottom images don't fit quite right? We can get them right by rotating the top image 90 degrees clockwise and the bottom one 90 degrees counterclockwise:
+Can you notice that the top and the bottom images don't fit quite right? We can correct them by rotating the top image 90 degrees clockwise and the bottom one 90 degrees counterclockwise:
 
 ![sahara cubemap 2](https://raw.githubusercontent.com/pluralsight/guides/master/images/5b064973-d97d-4983-bd3b-b603888be5eb.gif)
 
@@ -295,17 +301,17 @@ A [mesh](https://en.wikibooks.org/wiki/Blender_3D:_Noob_to_Pro/What_is_a_Mesh%3F
 
 A .obj file is a plain text file that contains coordinates of geometric vertices, texture coordinates, vertex normals and polygonal face elements, among other things.
 
-Typically, a .obj file references an external [.mtl file](https://people.cs.clemson.edu/~dhouse/courses/405/docs/brief-mtl-file-format.html) where the materials (textures) that describe the visual aspect of the polygons are stored.
+Typically, a .obj file references an external [.mtl file](https://people.cs.clemson.edu/~dhouse/courses/405/docs/brief-mtl-file-format.html) where the materials (or textures) that describe the visual aspect of the polygons are stored.
 
 You can use programs like [Blender](https://www.blender.org/), [3DS Max](http://www.autodesk.mx/products/3ds-max/overview), or [Maya](http://www.autodesk.mx/products/maya/overview) to create a 3D model and export it to these formats.
 
-There's also a lot of sites where you can download for free (or purchase) 3D models. The following are three of the best ones:
+There's also a lot of sites where you can download 3D models either for free or at a cost. The following are three of the best ones:
 
 - [TF3DM](http://tf3dm.com/)
 - [TurboSquid](http://www.turbosquid.com/Search/3D-Models/free)
 - [CGTrader](https://www.cgtrader.com/)
 
-For our app, we're going to use this [3D Earth model](http://tf3dm.com/3d-model/planet-earth-99065.html) and this [3D Moon model](http://tf3dm.com/3d-model/moon-17150.html).
+For our app, we're going to use this [3D Earth model](http://tf3dm.com/3d-model/planet-earth-99065.html) and this [3D Moon model](http://tf3dm.com/3d-model/moon-17150.html) from TF3DM.
 
 When we extract the files of the Earth model to the `static_assets` directory of our app, we can see there's a bunch of images (the textures) along with the .obj and .mtl files. If we open the latter in a text editor, we'll see the material definitions:
 ```
@@ -383,7 +389,7 @@ newmtl 02___Default
     map_d 4096_clouds.jpg
 ```
 
-Now we can add the `Mesh` component with:
+Now we can add the `Mesh` component with the following code:
 ```javascript
 <Mesh source={{mesh:asset('earth.obj'), mtl:asset('earth.mtl'), lit: true}} />
 ```
@@ -437,7 +443,7 @@ class EarthMoonVR extends React.Component {
 AppRegistry.registerComponent('EarthMoonVR', () => EarthMoonVR);
 ```
 
-Next, we need to give our model some [style properties for placement, size, and rotation](https://facebookincubator.github.io/react-vr/docs/transforms.html#props). By trying with different values I came up with the following configuration:
+Next, we need to give our model some [style properties for placement, size, and rotation](https://facebookincubator.github.io/react-vr/docs/transforms.html#props). By trying with different values, I came up with the following configuration:
 ```javascript
 class EarthMoonVR extends React.Component {
   render() {
@@ -465,7 +471,9 @@ class EarthMoonVR extends React.Component {
 AppRegistry.registerComponent('EarthMoonVR', () => EarthMoonVR);
 ```
 
-[Transforms](https://facebookincubator.github.io/react-vr/docs/3dcoordinates-and-transforms.html) are represented as an array of objects within a style object and they are applied last to first (remember that the units are meters). `translate` positions your model in the x, y, z space, `scale` gives your model a size, and with the `rotate` properties, you can rotate your model around the axes (in this case, the units are degrees).
+[Transforms](https://facebookincubator.github.io/react-vr/docs/3dcoordinates-and-transforms.html) are represented as an array of objects within a style object, and they are applied last to first (remember that the units are meters). 
+
+`translate` positions your model in the x, y, z space, `scale` gives your model a size, and `rotate` turns your model around the axes based on the degree measurement provided. 
 
 This is the result:
 
@@ -656,9 +664,7 @@ Now let's add some buttons to make this a little more interactive.
 
 # Styling and Buttons
 
-Let's create a new component for our buttons.
-
-In practice, we can use either a `View` or a `VrButton`, both can be styled as buttons and have useful [events](https://facebookincubator.github.io/react-vr/docs/input.html) (like `onEnter`) for this purpose.
+Create a new component for our buttons. In practice, we can use either a `View` or a `VrButton`, as both can be styled as buttons and have useful [events](https://facebookincubator.github.io/react-vr/docs/input.html) (like `onEnter`) for this purpose.
 
 However, we'll use a [VrButton](https://facebookincubator.github.io/react-vr/docs/vrbutton.html) because it has a different state machine and adds the events `onClick` and `onLongClick`.
 
@@ -946,8 +952,8 @@ If we test the application, we'll see the buttons in action:
 
 As you saw, React VR is a library that allows you to create VR experiences in a fast and easy way.
 
-There are alternatives with a more complete feature set and bigger community, like [A-Frame](https://aframe.io/), but if you just want to make VR apps around 360 panos, 3D models, and simple animations, and you already know React/React Native, then React VR is an excellent choice.
+There are alternatives with a more complete feature set and bigger community, like [A-Frame](https://aframe.io/). However, if you just want to make VR apps around 360 panos, 3D models, and simple animations, and you already know React/React Native, then React VR is an excellent choice. If you found ReactVR to be a good springboard, feel free to experiment with more advanced VR platforms as well. 
 
 Remember that you can find the source code of the app on [GitHub](https://github.com/eh3rrera/earth-moon-vr).
 
-If you think something is wrong with this guide, outdated, or want to improve it in some way, don't just leave a comment, please edit it on Github or send a pull request. Thank you.
+Thanks for reading! 
