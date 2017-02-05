@@ -482,4 +482,4 @@ Piece of cake!
 
 The entire source code for this app is available on [github](https://github.com/JAVEBRATTCODE/bill-reminder).
 
-If you want to take your Ionic + Firebase skills to the next step, I created a **free 7-lesson** course that will help you build your first Firebase powered mobile app. All you have to do is [go here](http://javebratt.com/become-developer?ref=HackGuideTutorial).
+If you want to take your Ionic + Firebase skills to the next step, I created a **free 5-lesson** course that will help you build your first Firebase powered mobile app. All you have to do is [go here](https://javebratt.com/signup/?ref=HackGuidesTutorial).
