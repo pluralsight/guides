@@ -1,3 +1,8 @@
+### Create Tic Tac Toe with pure ES6 Javascript by moshmage
+- [Read the guide](https://www.pluralsight.com/guides/other/create-tic-tac-toe-with-pure-es6-javascript?status=in-review)
+- [Read more from moshmage](https://www.pluralsight.com/guides/author/moshmage) <img src="https://avatars.githubusercontent.com/u/1077079?v=3" width="30" height="30" alt="moshmage" />
+- Related to: other
+
 ### Property Copying Between Two Objects using Reflection by Murat Aykanat
 - [Read the guide](https://www.pluralsight.com/guides/microsoft-net/property-copying-between-two-objects-using-reflection?status=in-review)
 - [Read more from Murat Aykanat](https://www.pluralsight.com/guides/author/aykanatm) <img src="https://avatars.githubusercontent.com/u/9140297?v=3" width="30" height="30" alt="Murat Aykanat" />
