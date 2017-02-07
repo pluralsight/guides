@@ -1,3 +1,8 @@
+### Create Tic Tac Toe with pure ES6 Javascript by moshmage
+- [Read the guide](https://www.pluralsight.com/guides/other/create-tic-tac-toe-with-pure-es6-javascript?status=draft)
+- [Read more from moshmage](https://www.pluralsight.com/guides/author/moshmage) <img src="https://avatars.githubusercontent.com/u/1077079?v=3" width="30" height="30" alt="moshmage" />
+- Related to: other
+
 ### Hyperloop with Rails, NPM and Webpack by Barrie Hadfield
 - [Read the guide](https://www.pluralsight.com/guides/ruby-ruby-on-rails/hyperloop-with-rails-npm-and-webpack?status=draft)
 - [Read more from Barrie Hadfield](https://www.pluralsight.com/guides/author/barriehadfield) <img src="https://avatars.githubusercontent.com/u/3940251?v=3" width="30" height="30" alt="Barrie Hadfield" />
