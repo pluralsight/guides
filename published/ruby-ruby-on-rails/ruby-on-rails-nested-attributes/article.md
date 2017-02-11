@@ -189,9 +189,13 @@ id (`new_record`).
 ```javascript
 $('[data-form-prepend]').click( function(e) {
     var obj = $( $(this).attr('data-form-prepend') );
+    // Store `current_time` outside of the `each` loop, as a large number
+    //  of inputs can result in greater-than one second to update, which
+    //  will result in some of the inputs having a different form ID.
+    var current_time = (new Date()).getTime();
     obj.find('input, select, textarea').each( function() {
       $(this).attr( 'name', function() {
-        return $(this).attr('name').replace( 'new_record', (new Date()).getTime() );
+        return $(this).attr('name').replace( 'new_record', current_time );
       });
     });
     obj.insertBefore( this );
