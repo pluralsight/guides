@@ -822,7 +822,6 @@ export class GameEngine {
 We wrap all the code we made in  the `game-start.js` file, located at the root folder (`src/`), by importing the
 GameHud class and initializing it when we receive the DOM Ready event from the DOM.
 
-
 ```javascript
 import {GameHud} from './modules/game-hud';
 document.addEventListener("DOMContentLoaded", () => new GameHud());
