@@ -1,3 +1,8 @@
+### Property Copying Between Two Objects using Reflection by Murat Aykanat
+- [Read the guide](https://www.pluralsight.com/guides/microsoft-net/property-copying-between-two-objects-using-reflection)
+- [Read more from Murat Aykanat](https://www.pluralsight.com/guides/author/aykanatm) <img src="https://avatars.githubusercontent.com/u/9140297?v=3" width="30" height="30" alt="Murat Aykanat" />
+- Related to: Microsoft.NET (C#, ASP.NET, VB.NET, etc)
+
 ### Exposing your local Node.js app to the world by Esteban Herrera
 - [Read the guide](https://www.pluralsight.com/guides/node-js/exposing-your-local-node-js-app-to-the-world)
 - [Read more from Esteban Herrera](https://www.pluralsight.com/guides/author/eh3rrera) <img src="https://avatars.githubusercontent.com/u/11665759?v=3" width="30" height="30" alt="Esteban Herrera" />
