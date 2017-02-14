@@ -4,7 +4,7 @@ This is a simple Rails application showcasing **HyperReact** (a wrapper for the 
 
 This Showcase application will mix native React and **HyperReact** components, be styled by Bootstrap CSS (using React-Bootstrap), display a video (using a native React component) and use **HyperMesh** to handle data for an Events feed app.
 
-[Screen](https://cdn.rawgit.com/fzingg/hyperloop-showcase/85957e95/public/screen.png)
+![Screen](https://cdn.rawgit.com/fzingg/hyperloop-showcase/85957e95/public/screen.png)
 
 The source code of this Showcase is [here](https://github.com/fzingg/hyperloop-showcase)
 
