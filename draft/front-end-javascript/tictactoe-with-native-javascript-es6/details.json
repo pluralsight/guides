@@ -1,0 +1,15 @@
+{
+    "_publish_status": "draft",
+    "author_name": "moshmage",
+    "author_real_name": "moshmage",
+    "branch": "master",
+    "branches": [],
+    "filename": "article.md",
+    "first_commit": "a71434a167eb61dc9640681266483d3b4f8739eb",
+    "image_url": "https://avatars.githubusercontent.com/u/1077079?v=3",
+    "stacks": [
+        "Front-End JavaScript (Angular, React, Meteor, etc)"
+    ],
+    "thumbnail_url": null,
+    "title": "TicTacToe with native Javascript ES6"
+}
