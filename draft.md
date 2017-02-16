@@ -1,3 +1,8 @@
+### TicTacToe with native Javascript ES6 by moshmage
+- [Read the guide](https://www.pluralsight.com/guides/front-end-javascript/tictactoe-with-native-javascript-es6?status=draft)
+- [Read more from moshmage](https://www.pluralsight.com/guides/author/moshmage) <img src="https://avatars.githubusercontent.com/u/1077079?v=3" width="30" height="30" alt="moshmage" />
+- Related to: Front-End JavaScript (Angular, React, Meteor, etc)
+
 ### Hyperloop with Rails, NPM and Webpack by Barrie Hadfield
 - [Read the guide](https://www.pluralsight.com/guides/ruby-ruby-on-rails/hyperloop-with-rails-npm-and-webpack?status=draft)
 - [Read more from Barrie Hadfield](https://www.pluralsight.com/guides/author/barriehadfield) <img src="https://avatars.githubusercontent.com/u/3940251?v=3" width="30" height="30" alt="Barrie Hadfield" />
