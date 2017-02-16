@@ -4,20 +4,20 @@ This is a simple Rails application showcasing **HyperReact** (a wrapper for the 
 
 This Showcase application will mix native React and **HyperReact** components, be styled by Bootstrap CSS (using React-Bootstrap), display a video (using a native React component) and use **HyperMesh** to handle data for an Events feed app.
 
-![Screen](https://cdn.rawgit.com/fzingg/hyperloop-showcase/85957e95/public/screen.png)
+The Showcase application will look like this:
 
-The source code of this Showcase is [here](https://github.com/fzingg/hyperloop-showcase)
+![Screen](https://cdn.rawgit.com/fzingg/hyperloop-showcase/85957e95/public/screen.png)
 
 ### Technologies highlighted in this Showcase application
 
-+ For the back end we are using [Rails 5.0.1](http://rubyonrails.org/) with [Ruby 2.3.1](https://www.ruby-lang.org/en/news/2016/04/26/ruby-2-3-1-released/)
++ [Rails 5.0.1](http://rubyonrails.org/) with [Ruby 2.3.1](https://www.ruby-lang.org/en/news/2016/04/26/ruby-2-3-1-released/) for the back end
 + [NPM](https://www.npmjs.com/) and [Webpack](https://webpack.github.io/) to manage front end assets
 + [HyperRails](https://github.com/ruby-hyperloop/hyper-rails) to install [HyperReact](https://github.com/ruby-hyperloop/hyper-react) and Opal in Rails 4.x or 5.x
 + [HyperReact](https://github.com/ruby-hyperloop/hyper-react) to use [React](https://facebook.github.io/react/) with Rails and to write reactive UI components with Ruby's elegance
 + [React-Bootstrap](https://react-bootstrap.github.io/) to show how to use native React components in [HyperReact](https://github.com/ruby-hyperloop/hyper-react)
 + [HyperMesh](https://github.com/ruby-hyperloop/hyper-mesh) between Rails models and the front end and to magically push
   changed data between all connected clients
-+ [HyperReact Hot-Reloader and Opal IRB](https://github.com/fkchang/opal-hot-reloader) for programmer joy and hot-loading with developing
++ [HyperReact Hot-Reloader and Opal IRB](https://github.com/fkchang/opal-hot-reloader) for programmer joy and hot-loading with developing
 
  
 ## Index
@@ -101,22 +101,65 @@ You should see the Rails Welcome aboard page. Great, Rails is now installed. Let
 
 ## Step 2: Adding HyperReact and HyperMesh
 
-There are 2 ways do achieve that:
+There are 2 ways to achieve that:
 
 + Using **HyperLoop** installation generator
-OR
 + Manually.
 
-In this tutorial we advise you to follow the manual way, so you can see what's happening and can be sure to have all gems versions identical to those used in this tutorial.
+### > Automatic installation of HyperReact and HyperMesh
 
-If you want to see the automatic way for the future you can go to the official **HyperLoop web page**: [HyperLoop installation with Rails](http://ruby-hyperloop.io/installation/#with-rails)
+Add the **HyperRails** gem, which is a set of generators which will easily configure the other **Hyperloop** gems :
 
-#### Manual installation of HyperReact and HyperMesh
+```ruby
+  #Gemfile
+  
+  gem 'hyper-rails'
+
+```
+Then run
+```
+bundle install
+```
+Now let’s get the **HyperRails** generator to install **Hyperloop** :
+```
+rails g hyperloop:install --all
+bundle update
+```
+**HyperRails** will add all the necessary Gem’s and configuration to our new Rails app.
+
+We still need to modify the `app/views/components.rb` and add the 2 lines `require 'reactrb/auto-import'` and `require 'react/react-source'` :
+```ruby
+#app/views/components.rb
+
+require 'opal'
+
+require 'reactrb/auto-import'
+require 'react/react-source'
+require 'hyper-react'
+if React::IsomorphicHelpers.on_opal_client?
+  require 'opal-jquery'
+  require 'browser'
+  require 'browser/interval'
+  require 'browser/delay'
+  # add any additional requires that can ONLY run on client here
+end
+
+require 'hyper-mesh'
+require 'models'
+
+require_tree './components'
+```
+
+If you are interested in the steps the generator has completed, please see the following section.
+
+### > Manual installation of HyperReact and HyperMesh
 
 ##### Step 2.1: Add the gems
 
 in your `Gemfile`
 ```ruby
+  #Gemfile
+
 	gem 'react-rails', '1.4.2'
 	gem 'hyper-rails', '0.4.1'
 	gem 'opal-rails', '0.9.1'
@@ -133,7 +176,7 @@ bundle update
 
 ##### Step 2.2: Add the components directory and manifest
 
-Your React components will go into the `app/views/components/` directory of your rails app.
+Your React components will go into the `app/views/components/` directory of your rails app.
 
 Within your `app/views` directory you need to create a `components.rb` manifest.
 
@@ -184,7 +227,7 @@ Opal.load('components');
 
 ##### Step 2.4: Update application.rb
 
-Finally you will need to update your `application.rb` to ensure everything works in production:
+Finally you will need to update your `application.rb` to ensure everything works in production:
 ```ruby
 #config/application.rb
 ...
@@ -193,9 +236,7 @@ Finally you will need to update your `application.rb` to ensure everything works
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
     config.eager_load_paths += %W(#{config.root}/app/models/public)
-    config.eager_load_paths += %W(#{config.root}/app/views/components)
     config.autoload_paths += %W(#{config.root}/app/models/public)
-    config.autoload_paths += %W(#{config.root}/app/views/components)
     config.assets.paths << ::Rails.root.join('app', 'models').to_s
   end
 ...
@@ -291,13 +332,13 @@ module Components
 end
 ```
 
-Add a route to your `routes.rb`
+Add a route to your `routes.rb`
 ```ruby
 #routes.rb
 
 root 'home#show'
 ```
-Create the file `app/controllers/home_controller.rb` and add a show method. This will render the component using the render_component helper.
+Create the file `app/controllers/home_controller.rb` and add a show method. This will render the component using the render_component helper.
 ```ruby
 #app/controllers/home_controller.rb
 
@@ -308,11 +349,11 @@ class HomeController < ApplicationController
 end
 ```
 
-Fire up the server with 
+Fire up the server with 
 ```ruby
 bundle exec rails s
 ```
-Refresh your browser and if all has gone well, you should be rewarded with `Home::Show` in your browser.
+Refresh your browser and if all has gone well, you should be rewarded with `Home::Show` in your browser.
 If you open your JavaScript console you can also check which version of React has been loaded.
 ```javascript
 React.version
@@ -348,7 +389,7 @@ npm install webpack -g
 ```
 This enables us to run Webpack from the command line.
 
-Our project does not need all the dependencies in the `node_modules` folder, so let’s tell git to ignore them by adding a `.gitignore` file:
+Our project does not need all the dependencies in the `node_modules` folder, so let’s tell git to ignore them by adding a `.gitignore` file:
 
 ```
 #/.gitignore
@@ -359,7 +400,7 @@ Our project does not need all the dependencies in the `node_modules` folder, so 
 ##### Step 4.2: Setting up Webpack
 
 Now that we have Webpack, we need to add 3 boilerplate files to configure it. As you add more JavaScript packages you will be updating these files. Again this is similar to updating your Gemfile when you add new gems to a project.
-Run `npm view webpack version` if you are unsure which version you have. Add `webpack.config.js` to the root of your project:
+Run `npm view webpack version` if you are unsure which version you have. Add `webpack.config.js` to the root of your project:
 
 For Webpack 1.x versions:
 
@@ -458,18 +499,18 @@ client_and_server.js  1.61 kB       0  [emitted]  client_and_server
    [0] ./webpack/client_only.js 206 bytes {1} [built]
  ```
 
-Our `client_and_server.js` and `client_only.js` bundles are built and ready to be included in our application. If you look in your `app/assets/javascripts/webpack` folder you should see the two files there. Note that these bundles are empty at the moment as we have not added any JavaScript components yet. We will do that in another step.
+Our `client_and_server.js` and `client_only.js` bundles are built and ready to be included in our application. If you look in your `app/assets/javascripts/webpack` folder you should see the two files there. Note that these bundles are empty at the moment as we have not added any JavaScript components yet. We will do that in another step.
 
 ##### Step 4.4: Adding Webpack bundles to the Rails asset Pipeline
 
 Finally we need to require these two bundles in our rails asset pipeline.
-Edit `app/assets/javascripts/application.js` and add:
+Edit `app/assets/javascripts/application.js` and add:
 ```javascript
 // app/assets/javascripts/application.js
 
 //= require 'webpack/client_only'
 ```
-Then edit `app/views/components.rb` and directly after `require 'hyper-react'` add the following two lines:
+Then edit `app/views/components.rb` and directly after `require 'hyper-react'` add the following two lines:
 ```ruby
 #app/views/components.rb
 
@@ -485,9 +526,9 @@ require 'react/react-source'
 ##### Step 4.5: Installing React and ReactDOM
 
 This step is really simple as we have NPM installed. Just run these two commands:
-to install React :
+to install React :
 ```
-npm install react --save 
+npm install react --save 
 ```
 to install ReactDOM:
 ```
@@ -495,16 +536,16 @@ npm install react-dom --save
 ```
 
 
-Note how this modifies your `package.json` and installs React and ReactDOM in your `node_modules` folder.
+Note how this modifies your `package.json` and installs React and ReactDOM in your `node_modules` folder.
 
-Next we need to require them into `client_and_server.js`:
+Next we need to require them into `client_and_server.js`:
 ```javascript
 // webpack/client_and_server.js
 
 ReactDOM = require('react-dom')
 React = require('react')
 ```
-And finally we need to run `webpack` to add them to the bundle:
+And finally we need to run `webpack` to add them to the bundle:
 ```
 webpack
 ```
@@ -520,9 +561,9 @@ client_and_server.js   740 kB       0  [emitted]  client_and_server
    [0] ./webpack/client_only.js 206 bytes {1} [built]
     + 177 hidden modules
 ```
-Note that `client_and_server.js` has gone from 1.61kB to 740kB as it now includes the source of React and ReactDOM.
+Note that `client_and_server.js` has gone from 1.61kB to 740kB as it now includes the source of React and ReactDOM.
 
-Now run `bundle exec rails s` and refresh the browser. Look at the console and you should see something like this:
+Now run `bundle exec rails s` and refresh the browser. Look at the console and you should see something like this:
 
 ```
 client_and_server.js loaded
@@ -852,7 +893,7 @@ Restart your Rails app and refresh your browser.
 
 Read more details about **HyperMesh** here: [HyperMesh ActiveRecord](http://ruby-hyperloop.io/docs/hypermesh_active_record/)
 
-##### Step 6.1: Creating the models
+##### Step 6.1: Creating the models
 
 ```
 rails g model Planevent
@@ -881,28 +922,13 @@ rails db:migrate
 ##### Step 6.2: Making your models accessible to HyperMesh
 
 **HyperMesh** needs to 'see' your models because a representation of them gets compiled into JavaScript along with your **HyperReact** components so they are accessible in your client-side code.
-The convention (though this is choice and you can change it if you prefer) is to create a `public` folder under models and then provide a linkage file which will `require_tree` your models when compiling `components.rb`.
 
-Move `planevent.rb` to `models/public`
+Move `planevent.rb` to `models/public`
 
 For Rails 5.x *only*, move `app/models/application_record.rb` to `app/models/public/`
 
 
-Next create `_react_public_models.rb` in your `models` folder:
-```ruby
-# models/_react_public_models.rb
-
-require_tree './public'
-```
-
-Finally add a line to `views/components.rb`:
-```ruby
-# views/components.rb
-
-require '_react_public_models'
-```
-
-##### Step 6.3: Accessing your models in HyperReact components
+##### Step 6.3: Accessing your models in HyperReact components
 
 To get started, let's create a new component which will display a list of Events under the video:
 
@@ -916,9 +942,9 @@ div.container do
 end
 ```
 
-Note that to place a **HyperReact** component you either need to include ( ) or { }, so `planeventsList()` or `PlaneventsList { }` would be valid but just `PlaneventsList` would not.
+Note that to place a **HyperReact** component you either need to include ( ) or { }, so `planeventsList()` or `PlaneventsList { }` would be valid but just `PlaneventsList` would not.
 
-Next let's create the `PlaneventsList` component:
+Next let's create the `PlaneventsList` component:
 ```ruby
 #app/views/components/home/planeventslist.rb
 
@@ -1028,9 +1054,9 @@ end
 
 Things to note in the code above:
 
-Note that we fetch the ReactiveRecord `Planevent` collection in `before_mount`. Setting this here instead of in `after_mount` means that we do not need to worry about `@planevents` being `nil` as the collection will always contain at least one entry with the actual records being lazy loaded when needed.
+Note that we fetch the ReactiveRecord `Planevent` collection in `before_mount`. Setting this here instead of in `after_mount` means that we do not need to worry about `@planevents` being `nil` as the collection will always contain at least one entry with the actual records being lazy loaded when needed.
 
-Note how we are binding the state variable `new_planevent` to the `FormControl` and then setting its value based on the value being passed to the `.on(:change)` block. This is a standard React pattern.
+Note how we are binding the state variable `new_planevent` to the `FormControl` and then setting its value based on the value being passed to the `.on(:change)` block. This is a standard React pattern.
 
 Also see that we are saving the new `planevent` such that ReactiveRecord's save returns a promise. This means that the block after save is only evaluated when it returns, yet React would have moved on to the rest of the code.
 
@@ -1045,13 +1071,13 @@ Refresh your browser and you should have your Showcase app working.
 
 The **HyperMesh** ReactiveRecord part is the data layer between one client and its server. **HyperMesh** also uses push notifications to push changed records to all connected ReactiveRecord clients.
 
-You need to add an initializer `config/initializers/hyper_mesh.rb`
+You need to add an initializer `config/initializers/hyper_mesh.rb`
 
 ```ruby
 #config/initializers/hyper_mesh.rb
 
 HyperMesh.configuration do |config|
-  config.transport = :action_cable
+  config.transport = :simple_poller
 end
 ```
 
@@ -1107,7 +1133,7 @@ To start both servers:
 
 `bundle exec foreman start`
 
-Refresh your browser and edit your `planeventslist.rb`:
+Refresh your browser and edit your `planeventslist.rb`:
 ```ruby
 ReactBootstrap::Button(bsStyle: :primary) do
   "New Event"
