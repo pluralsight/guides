@@ -3,7 +3,12 @@
     "author_name": "NIkolasDanaj",
     "author_real_name": "Nikolas Danaj",
     "branch": "master",
-    "branches": [],
+    "branches": [
+        [
+            "mgajic78",
+            "mgajic78-html-css-html-basics"
+        ]
+    ],
     "filename": "article.md",
     "first_commit": "4c722fb3f89f05e61119a7faee7a45b50964f5f2",
     "image_url": "https://avatars.githubusercontent.com/u/19437693?v=3",
