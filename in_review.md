@@ -3,11 +3,6 @@
 - [Read more from moshmage](https://www.pluralsight.com/guides/author/moshmage) <img src="https://avatars.githubusercontent.com/u/1077079?v=3" width="30" height="30" alt="moshmage" />
 - Related to: Front-End JavaScript (Angular, React, Meteor, etc)
 
-### Create Tic Tac Toe with pure ES6 Javascript by moshmage
-- [Read the guide](https://www.pluralsight.com/guides/other/create-tic-tac-toe-with-pure-es6-javascript?status=in-review)
-- [Read more from moshmage](https://www.pluralsight.com/guides/author/moshmage) <img src="https://avatars.githubusercontent.com/u/1077079?v=3" width="30" height="30" alt="moshmage" />
-- Related to: other
-
 ### Cloning an Ionic 2 application from Github by Todd Shelton
 - [Read the guide](https://www.pluralsight.com/guides/front-end-javascript/cloning-an-ionic-2-application-from-github?status=in-review)
 - [Read more from Todd Shelton](https://www.pluralsight.com/guides/author/TShelton41) <img src="https://avatars.githubusercontent.com/u/795737?v=3" width="30" height="30" alt="Todd Shelton" />
