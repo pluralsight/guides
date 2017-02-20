@@ -1,3 +1,8 @@
+### Semantic HTML by mgajic78
+- [Read the guide](https://www.pluralsight.com/guides/html-css/semantic-html?status=draft)
+- [Read more from mgajic78](https://www.pluralsight.com/guides/author/mgajic78) <img src="https://avatars.githubusercontent.com/u/25859460?v=3" width="30" height="30" alt="mgajic78" />
+- Related to: HTML/CSS
+
 ### Hyperloop with Rails, NPM and Webpack by Barrie Hadfield
 - [Read the guide](https://www.pluralsight.com/guides/ruby-ruby-on-rails/hyperloop-with-rails-npm-and-webpack?status=draft)
 - [Read more from Barrie Hadfield](https://www.pluralsight.com/guides/author/barriehadfield) <img src="https://avatars.githubusercontent.com/u/3940251?v=3" width="30" height="30" alt="Barrie Hadfield" />
