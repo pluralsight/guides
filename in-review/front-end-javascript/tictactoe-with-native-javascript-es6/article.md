@@ -59,7 +59,7 @@ Whereas if you wanted to count how many elements there are of `selector` that sh
 
 #### Code style
 
-This time, I refrained from my habit of using a JavaScript Linter [http://www.javascriptlint.com]. However, some practices that I adhered to:
+This time, I refrained from my habit of using a [JavaScript Linter](http://www.javascriptlint.com). However, some practices that I adhered to:
 - use strict
 - return early
 - mind the semi-colon
