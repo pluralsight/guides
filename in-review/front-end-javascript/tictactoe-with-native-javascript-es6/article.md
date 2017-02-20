@@ -1,24 +1,23 @@
 # Introduction
-We will learn how to create a ES6 pure javascript Tic Tac Toe Game by creating Components, Libraries and a Module.
-This article started as a Stack Overflow answer but it quickly grew into its own thing.
+We will learn how to create a ES6 pure JavaScript game of Tic Tac Toe. To do this, we will create Components, Libraries and a Module.
 
-- Medium Knowledge of DOM Level 1~2 is required
-- Medium Knowledge of Javascript ECMAScript 5 is required
-- Some Knowledge of ECMAScript 6 is required
+Before we get started:
+
+- Make sure you moderately understand DOM Level 1~2 
+- Be certain to have some experience with Javascript ECMAScript 5 (ES5) under your belt
+- I will assume that you know a little bit about ECMAScript 6 
 
 # Setting up the environment
-Since the propose of this article is to build a pure javascript implementation of Tic Tac Toe, complete with minimum HTML
+Since the purpose of this article is to build a pure JS implementation of Tic Tac Toe, complete with minimum HTML
 necessary, we will need [Browserify](http://browserify.org/), [Babelify](https://babeljs.io/docs/setup/#installation),
-[NodeJs](https://nodejs.org), an IDE of your choosing and access to a Terminal.
+[NodeJs](https://nodejs.org), and an IDE of your choosing with access to a Terminal/shell.
 
-You can install NodeJS by downloading it from the [official website](https://nodejs.org/en/download/).
-After downloading NodeJS, we are ready to start our project.
+Install NodeJS by downloading it directly from the [official website](https://nodejs.org/en/download/).
 
-If you don't have a Terminal, you can download [git-scm](https://git-scm.com/downloads) which brings a git-bash terminal.
+If you don't have a Terminal, you can download [git-scm](https://git-scm.com/downloads) where you can download and set up a Git Bash terminal.
 
 # Creating the Workspace
-First, we need a folder for our project. And since we are going to have Browserify bundle our code we might as well make
-two folders inside it, `src` and `dist`:
+First, we need a folder for our project. And since we are going to have Browserify bundle our code we might as well make `src` and `dist` folders within the project folder:
 
 ```logtalk
 $> mkdir tic-tac-toe
@@ -35,9 +34,7 @@ Since we will be using git further on, lets go ahead and create a `.gitignore` f
 and have `node_modules/` as the first line (so we can ignore our dependencies when we send the project to git).
 
 #### Naming and export
-Each file should have a good description of what it does, if your naming has something that can be read as "and" (or if
-the functionality has a "and this can also be done" feeling) then you refactor that functionality into two separated files.
-This is done so we can keep growing our game in the most simple way to be understood by future maintainers.
+Each file should have a good description of what it does. If your file name can be read as performing various functions, you should probably refactor that functionality into two separate files. This way we can keep growing our game simple.
 
 The only thing that can be exported from files are Classes, Functions and Objects (if we need to use some option Model,
 for instance. Though those will not exist in this Article.)
@@ -50,42 +47,40 @@ The export naming should be the same as the name of the file;
 | word.js          | Word               |
 
 
-#### Creating new functionality
+## Creating new functionality
+
+#### Organization hierarchy
+
 Understand which functionality you want to create, and where it belongs.
 
 pex: If you want to change the value of a element `textContent`, that functionality should be on the __Component__ level;
 
-While if you wanted to count how many elements there are of `selector` that should be created as a __Module__ which would
-then be imported where that functionality is needed.
+Whereas if you wanted to count how many elements there are of `selector` that should be created as a __Module__ which would then be imported where that functionality is needed.
 
 #### Code style
-I refrained from using a Javascript Linter on this project, while still adhering to some best practices:
+
+This time, I refrained from my habit of using a JavaScript Linter [http://www.javascriptlint.com]. However, some practices that I adhered to:
 - use strict
 - return early
 - mind the semi-colon
-- spaces instead of tabs
+- spaces not tabs
 
-Accompanied with the DRY way, these are more than enough for a nice and understandable read of the code. I also like to
-code the more descriptive as possible - it helps keeping methods small and tidy and makes reading code a walk in the park.
+Accompanied with the DRY way, these are more than enough for a nice and understandable read of the code. I also like to code as descriptively as possible. This way methods remain small and tidy and reading code becomes a walk in the park.
 
 # Installing and setting dependencies
 Now that we have our workspace all tidied up, and node_modules ignored, we can set up our dependencies.
-We spoke the names of two "ify" things, Browserify and Babelify: These are the node modules that will help translate our
-ES6 code into browser-readable ES5.
+We spoke the names of two "ify" things, Browserify and Babelify: These are the node modules that will help translate our ES6 code into browser-readable ES5.
 
-Why? Because most browsers don't support the ES6 moduling yet, and that's an intricate part of our program design. The
-Alternative is to write the whole game into a single-file - which no one in his right mind would care to look more than
-once for the first 20 lines or so. To avoid this, enter Browserify.
+Why? Because some browsers don't support the ES6 moduling yet, and that's an intricate part of our program design. The alternative is to write the whole game into a single-file - which no one in his right mind would care to look more than once for the first 20 lines or so. To avoid this, we use Browserify.
 
-Browserify will understand the ES6 module, take care of bundling everything into a neat file and then gives it to
-Babelify which will translate our ES6 code with the latest preset (so we can use all the goodies, though we shan't abuse
- them in this first article).
+Browserify understands the ES6 module, takes care of bundling everything into a neat file, and then gives it to
+Babelify which translates our ES6 code with the latest preset (so we can use all the goodies, though we shan't abuse them in this first article).
 
 ```logtalk
 $> npm install --save-dev browserify babelify babel-preset-latest
 ```
 
-Then, edit your package json to contain the following reference to the browserify module
+Then, edit your `package.json` to contain the following reference to the browserify module
 
 ```json
 {
@@ -112,29 +107,23 @@ Now, in order for Babelify to know which preset to use, create a new file named 
 { "presets": ["latest"] }
 ```
 
-#### Explaining
-The `bundle` script creates the bundled file of every file that's required by any file that's required by `src/game-start.js`;
-The `prebundle` script copies the `src/index.html` file into `dist/index.html`
+#### Sanity check!
+Let's go over what our code actually does. The `bundle` script creates the bundled file of every file that's required by any file that's required by `src/game-start.js`. The `prebundle` script copies the `src/index.html` file into `dist/index.html`
 
-Some would say a tool like Gulp or Grunt would be perfect here, but I'd say they are overkillers - npm scripts are more
-than enough to automate what we need, using these tools.
+Some would say a tool like [Gulp or Grunt](https://medium.com/@preslavrachev/gulp-vs-grunt-why-one-why-the-other-f5d3b398edc4) would be perfect here, but these are likely overkill. npm scripts are more than enough to automate what we need in this circumstance. However, with larger projects, I would suggest freestyling to figure out what works best. 
 
-# Project Code Style
+## Project Design
 ### Modules, Libraries and Components
-These are nothing more than Classes, since each as a specific job that distinguishes themselves enough, based on the
-propose of the Class - it is either a Module, a Library or a Component.
+Modules, libraries, and components are nothing more than Classes, which have different functions are distinguishable from each other. 
 
 #### Modules
-Are what glues Libraries and Components together.
+Modules glue Libraries and Components together. These are foundational to JavaScript development, and are used in everything.
 
 #### Libraries
-Libs are to be seen as one-action-classes; For instance, our GameEngine is a lib as it's only responsible to hold turn
-information and occupying a zone.
+Libraries are single-action classes. For instance, our GameEngine is a library because it is only responsible for holding turn information and occupying a zone.
 
 #### Components
-While not as advanced as WebComponents, our Components are the class representation of a html element in the page. This
-is achieved by assigning a `element` property to the class on `constructor` which itself is a `document.createElement()`
-so it can then be attached by Modules.
+While not as advanced as WebComponents, our Components are the class representation of an HTML element in the page. This is achieved by assigning a `element` property to the class on `constructor` which itself is a `document.createElement()` so that it can then be attached by Modules.
 
 ### ES6 Classes
 The [MDN](https://hacks.mozilla.org/2015/07/es6-in-depth-classes/) has much to say about Classes, but you can think of them as the old revealing module pattern:
@@ -145,10 +134,9 @@ var TheThing = function() {
 };
 ```
 
-Instead, we have the `Class` statement, with all the goodies that comes from having classes: `extends`, `get`, `set`
-to name a few (but then you have `static` and the sorts).
+However, instead of the `function` tag, we have the `Class` statement. This comes with all the goodies that comes from having classes: `extends`, `get`, `set` to name a few (but then you have `static` and the sorts).
 
-So "TheThing" as a Class would be written as so
+As a Class, "TheThing" would be written as:
 ```javascript
 class TheThing {
     constructor() {
@@ -158,39 +146,37 @@ class TheThing {
 }
 ```
 
-Yes. You wouldn't be able to call `privateFn` from outside the constructor, proposals are on the way for private methods
-but are not yet implemented (while we could use the latest preset sugar coating strawman `::` it doesn't feel right -
-so we either prename the private functions with a `_` or we simply don't write private functions.)
+In this case, you wouldn't be able to call `privateFn` from outside the constructor. People have submitted proposals for private methods but these have not been implemented yet. (We could use the latest preset sugar coating strawman `::` but often times it doesn't feel right. As such, we either prename the private functions with a `_` or we simply don't write private functions.)
 
-# Lets Code Tic Tac Toe!
-### First things first - What do we know about tic-tac-toe?
+## Coding Tic Tac Toe
+### Basics of the game: What do we know about Tic-Tac-Toe?
 
-1) We know the field of the game is composed by 3x3 but implementations of 4x4 have been made
-2) The game is played by two symbols (players) - no more, no less.
-3) Win condition are made by diagonal, horizontal or vertical lines
-4) We know the game can reach a win condition and a tie condition.
+1) We know the field of the game is usually a 3x3 grid but that [4x4 grids are also possible.](http://all-r-math.blogspot.com/2012/11/4x4-tic-tac-toe-ii.html)
+2) The game is played by two players, denoted by either "X" or "O". Let's keep this aspect of the game constant.
+3) A winner is declared once he/she fills a row, column, or main diagonal with his/her symbol.
+4) The game can either result in a win/loss or a tie.
 
-Starting from the Top, we now know we need to create some sort of map. Sure, we could just create a simple Array composed
-of three arrays with three arrays inside (lol, I heard you like arrays) - but we can already imagine the ungodly mess that
-that will create.
+#### Grid design
 
-Instead, we should create a library that will take in an argument of how big of a square do we want, and then iterate that
-number of times until we have a representational square in an array. Since we will create a neat array, why not insert
+Starting from the top, we now know we need to create some sort of map. Sure, we could just create a simple Array object composed of three arrays containing three arrays (for a total of 9 squares). However, we can already imagine the ungodly mess that that will create. Not to mention the issue of resizing our grid for subsequent, interesting implementations.
+
+Instead, we should create a library that will take desired grid size as an argument and iterate until we have a representational square in an array. Since we will create a neat array, why not insert
 an object as the GameSlot - that way we can track it for occupation and symbol without much fuss.
 
-"But.. Why shouldn't we create a simple Object with indexes to Row and Column?" (you might be asking) - Well:
-Think about all the looping you'll have to do just to figure out a single horizontal line.
+Q: "Why not create a simple Object with indexes to Row and Column?"
 
-If we have a simple object, we will have to loop through ALL the entries just to find 3 matching ones - that's counter
-intuitive and while not resource costing (because it's only a 3x3) one could argue best practices take precedence here.
+A: Think about all the looping you'll have to do just to figure out a single horizontal line. If we have a simple object, we will have to loop through ALL the entries just to find 3 matching ones - that's counter-intuitive, and while not resource-intensive, (because it's only a 3x3) one could argue best practices take precedence here.
+
+As a result, let's create separate square GameSlots that will contain symbols and allow us to check filled nodes.
 
 ### Map Library
-create a new file, `map.js` (undes `lib/`) which wil have the following content ([see it on repl.it](https://repl.it/FRr0/1))
+
+Create a new file, `map.js` (under `lib/`) which will have the following content ([see it on repl.it](https://repl.it/FRr0/1))
 
 ```javascript
-/** Create a representation of a square using Arrays so we can match that to our "game map" */
+/** Create a representation of a square grid using Arrays that will match to our "game map" */
 export function createSquare(height) {
-    const rows = height || 3; /** use the provided argument or default to 3 */
+    const rows = height || 3; /** use the provided argument or default to size 3x3 */
     const columns = height || 3;
     const field = [];
     for (let x = 0; x < rows; x++) {
@@ -208,20 +194,19 @@ export function createSquare(height) {
 ```
 
 ### GameHud
-Now that we have a map we can start building up what our user will see, but before we need to create our components.
-Lets assess what kind of Components we need, so we don't end up repeating functionality.
+Now that we have a map we can start building up what our user will see. Before getting into the code, we need to design our Components. Let's assess what kind of Components we need, so we don't end up repeating functionality.
 
-##### What do we know about the visual information of Tic Tac Toe?
+### Game visuals
 
-1) We know that players write their symbols on the game field
-2) We know that lines are used to cross where players won
-3) There's no visual information, but we also know who's symbol turn to play is
+What do we already know about how Tic-Tac-Toe looks to a user?
 
-From these three points we can take that we will need some sort "write value" functionality in our Components and a sort
-of List to be able to get relevant information from the element (noticed the "and"? this means two files, you got it!)
+1) We know that players write their symbols on the game field.
+2) We know that lines are used to cross filled columns, rows, or main diagonals to show that the game has ended.
+3) We know whose turn it is.
 
-We will start from a base component, since each component has to have a DOM representation we can say that every Component
-is, in the end, the same.
+From these three points we can take that we will need some sort "write value" functionality in our Components and a sort of List to be able to get relevant information from the element. Since we have two functionalities, we will create two files to split up our tasks.
+
+Start from a base component. Since each component has to have a DOM representation, we can say that every Component is, in the end, "the same."
 
 
 #### Base Components
@@ -273,8 +258,7 @@ export class WritableComponent extends SimpleComponent {
 }
 ```
 
-Finally, we create our LisComponent (`list-component.js`), which will have the ability to `getItem` from a pre-defined
-`items` property. Since a List shouldn't have its content via textContent, this Component extends SimpleComponent again.
+Finally, we'll create our ListComponent (`list-component.js`), which will have the ability to `getItem` from a pre-defined `items` property. Since a List shouldn't have its content via textContent, this Component extends SimpleComponent again.
 
 ```javascript
 import {SimpleComponent} from "./simple-component";
@@ -296,25 +280,17 @@ export class ListComponent extends SimpleComponent {
 }
 ```
 
-#### Game Components
-Now that we have the base components set up, we can start creating our visual components - while its visual representation
-will be taken to another part of the code (the `game-hud.js` module), the actual creation, styling and functionality should
-be made at the component level - so that our module only calls the methods available, instead of creating methods that
-no other module knows about.
+## Game Components
+Now that we have the base components set up, we can start formulating our visual components. The actual visual representation will be taken to another part of the code (the `game-hud.js` module). However, the actual creation, styling and functionality should be made at the component level, so our module only calls the methods available, instead of creating methods that no other module knows about.
 
-Lets start this by creating a GameField component which will be the visual representation of the actual game, and end by
-creating a separated component that will take care of turn information.
+Let's start by creating a `GameField` component which will be the visual representation of the actual game. We'll end by creating a separated component that will take care of our turn information.
 
-We already know how the map is made, we already have a square generator function and we already have a ListComponent. We
-know that the field is nothing but a list of rows, with a list of columns, which compose "GameSlots" where we can write -
-Look! We also have the Writable Component!
+Notice that We already know how the map is made, we already have a square generator function and we already have a ListComponent. Since we know that the field is nothing but a list of rows, with a list of columns, which compose "GameSlots" where we can write, we're in good shape for the project up ahead.
 
-*aww yeah. take time to feel awesome, thinking about what you will build paid off. Have a coffee, stretch yourself.*
+*Aww yeah! Take time to feel awesome. After all, thinking about design paid off. Maybe have a coffee and stretch out a bit.*
 
-##### GameSlot
-Lets start by the end of that thought, not the taking time - we already did that, and create the functionality from last
-to first: We will create our GameSlot first - as that's the vital piece of starting things (as, it's the "clickable
-square, per se). create a new file, `game-slot.js` under `components` folder:
+### GameSlot
+We will create our GameSlot first - as that's the vital piece of starting things (as, it's the "clickable" square, per se). Create a new file, `game-slot.js` under `components` folder:
 ```javascript
 import {WritableComponent} from "../libs/writable-component";
 
@@ -350,9 +326,9 @@ export class GameSlot extends WritableComponent {
     }
 }
 ```
-##### GameRow
+### GameRow
 Now that we have our Writable Square, we need to put it inside a list of rows. For that we will create the `game-row.js`
-Class, which is a List Component holding N GameSlots:
+Class, which is a ListComponent holding N total GameSlots:
 
 ```javascript
 import {ListComponent} from "../libs/list-component";
@@ -379,8 +355,8 @@ export class GameRow extends ListComponent {
 }
 ```
 
-##### GameField
-Almost done with our field, lets create `game-field.js` which is another Lis Component:
+### GameField
+Almost done with our field, lets create `game-field.js` which is another ListComponent:
 
 ```javascript
 import {GameRow} from "./game-row";
@@ -404,12 +380,10 @@ export class GameField extends ListComponent  {
     }
 }
 ```
-##### Turn Information and User Messages (Notices)
-While our GameField is complete, we still need the visual information of "which turn is it?" and "has the game started?",
-"is it a tie?", "whats going on?"
+## Turn Information and User Interaction
+While our GameField is complete, we still need the visual cues that tell us whose turn it is, if the game has started, and if the game is over. 
 
-Lets create our Notice class, which is a Simple Component that creates a background-pane, presents the user with a message
-and deletes itself (and the pane) after a specific interval.
+Let's create our `Notice` class, which is a Simple Component that creates a background-pane, presents the user with a message, and deletes itself (and the pane) after a specific time interval.
 
 Starting with `components/background-page.js`, which is a Simple Component with styling:
 ```javascript
@@ -464,11 +438,11 @@ export class Notice extends SimpleComponent {
 }
 ```
 
-With that out of the way, lets now create two Writable Component that will be responsible for the turn information:
-Current Turn and PlaySymbol. We will later need a "wrapper component", so everything is tidy in its place - Turn
-Information.
+### Handling turn information
 
-`components/current-turn.js`:
+With that out of the way, let's now create two Writable Component files that will be responsible for handling turns. We'll need one for Current Turn and another for PlaySymbol. Later, we will want a "wrapper component", so everything is tidy in its place.
+
+Create `components/current-turn.js` and have it use `WritableComponent`:
 ```javascript
 import {WritableComponent} from "../libs/writable-component";
 
@@ -532,14 +506,13 @@ export class TurnInformation extends SimpleComponent {
 }
 ```
 
-##### Binding this all for the user to see
-And to glue this elements all into a single view, GameHud, `game-hud.js`, module; Create it under `modules/` folder.
-This is a bigger file, but since we separated each functionality is just a matter of glueing things together.
+### Binding this all for the user to see
+And to glue this elements all into a single view, we'll use the GameHud, `game-hud.js`, module; Create it in the `modules/` folder. This is a bigger file, but since we separated each functionality is just a matter of glueing things together.
 
-You will see references to the GameEngine - you can jump this file and read about it on the next Heading.
+You will see references to the `GameEngine` class. Quickly skip ahead and read about it in the next section. Then come back and follow along with the code below.
 
 ```javascript
-import {GameEngine} from "./../libs/game-engine";
+import {GameEngine} from "../libs/game-engine";
 import {GameField} from "../components/game-field";
 import {Notice} from "../components/notice";
 import {TurnInformation} from "../components/turn-information";
@@ -587,7 +560,7 @@ export class GameHud {
     }
 
     get isGameEnd() {
-        return this.gameEngine.isWinner || this.gameEngine.isTie
+        return this.gameEngine.isWinner || this.gameEngine.isTie;
     }
 
     /** The HUD Processing of game end is responsible for showing the game end notices and restart the game after Xseconds */
@@ -639,12 +612,14 @@ export class GameHud {
 }
 ```
 
-### Game Engine & Win Conditions
-The Game Engine library is akin to the people writing on the paper: It tracks whose turn is it, which symbol to play on
-what square (or if it can play on). It also has two aliases to the WinConditions Class - so we can separate the usage of
-WinCondition solely to the GameEngine, as its the GameEngine that's supposed to know if the game was won or tied.
+## GameEngine & Win Conditions
+The GameEngine library is akin to actually playing the game on paper. It tracks whose turn it is, which symbol to play on which square, if a square is playable, etc. It also has two aliases to the WinConditions Class. That way, we can separate the usage of WinCondition solely to the GameEngine, as it's the GameEngine that's supposed to know if the game is over (win or tie).
 
-hop onto `libs/` and lets create Win Conditions (`win-conditions.js`) first, as we already know how the map is made:
+### Building the Game's Engine
+
+#### WinConditions
+
+Hop onto `libs/` and create the `WinConditions` class (`win-conditions.js`) first, as we already know how the map is made:
 ```javascript
 import {createSquare} from './map';
 /** Now that we have our field and our "customized slots", we can define "win conditions" pretty easily */
@@ -661,7 +636,7 @@ export class WinCondition {
     horizontalLine(symbol) {
         let inspectingRow = [];
         return this.field.some(row => {
-                inspectingRow = row;
+            inspectingRow = row;
             return row.every(slot => slot.occupied && slot.symbol == symbol);
         }) && inspectingRow;
     }
@@ -710,7 +685,8 @@ export class WinCondition {
          * is available at the time and return false */
         if (!this.field[middle][middle].occupied && (!this.field[length][0].occupied || !this.field[0][0].occupied)) return false;
 
-        /** we now check for which column is occupied and of the symbol so we can then traverse its diagonal */
+        /** we now check which column is occupied and which symbol it contains so we can traverse its diagonal 
+            This is a number value. */
         let column = (this.field[0][0].occupied && this.field[0][0].symbol === symbol) ? 0
             : (this.field[0][length].occupied && this.field[0][length].symbol === symbol) ? length : false;
 
@@ -756,8 +732,9 @@ export class WinCondition {
 
 }
 ```
+#### GameEngine class
 
-And now lets join this functionality onto the `game-engine.js` (in `libs/`):
+Let's join this functionality onto the `game-engine.js` (in `libs/`):
 
 ```javascript
 /**
@@ -853,13 +830,12 @@ $> npm run bundle
 ```
 ---
 
-That's it. We have made a full ES6 tic-tac-toe game.
+That's it! We have made a full ES6 tic-tac-toe game.
 
-Next article:
-- refactor Simple Component to deal with Styling
-- re-style our game with a css pre-processor
-- set up a game-server and enable online-play
-- heroku deploying
+In the next article, I'll cover:
+- refactoring Simple Component to deal with Styling
+- re-styling our game with a css pre-processor
+- setting up a game-server and enable online-play
+- deploying on heroku
 
-moshmage@gmail.com - 1/23/2017
-0
+Please leave your comments in the comments section, or feel free to email me at moshmage@gmail.com. Thank you for reading!
