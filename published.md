@@ -1,3 +1,8 @@
+### TicTacToe with native Javascript ES6 by moshmage
+- [Read the guide](https://www.pluralsight.com/guides/front-end-javascript/tictactoe-with-native-javascript-es6)
+- [Read more from moshmage](https://www.pluralsight.com/guides/author/moshmage) <img src="https://avatars.githubusercontent.com/u/1077079?v=3" width="30" height="30" alt="moshmage" />
+- Related to: Front-End JavaScript (Angular, React, Meteor, etc)
+
 ### Property Copying Between Two Objects using Reflection by Murat Aykanat
 - [Read the guide](https://www.pluralsight.com/guides/microsoft-net/property-copying-between-two-objects-using-reflection)
 - [Read more from Murat Aykanat](https://www.pluralsight.com/guides/author/aykanatm) <img src="https://avatars.githubusercontent.com/u/9140297?v=3" width="30" height="30" alt="Murat Aykanat" />
