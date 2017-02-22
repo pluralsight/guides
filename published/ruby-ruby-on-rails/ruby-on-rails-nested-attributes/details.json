@@ -3,12 +3,7 @@
     "author_name": "itay-grudev",
     "author_real_name": "Itay Grudev",
     "branch": "master",
-    "branches": [
-        [
-            "stratigos",
-            "stratigos-ruby-ruby-on-rails-ruby-on-rails-nested-attributes"
-        ]
-    ],
+    "branches": [],
     "filename": "article.md",
     "first_commit": null,
     "image_url": "https://avatars.githubusercontent.com/u/2123767?v=3",
