@@ -1,7 +1,7 @@
 # Semantic HTML
 
 
-There are many websites on the Internet. Many of them are made a long time ago and they are not updated with the latest HTML features. For that reason, they are not search engine friendly and they are not acessible for blind and visually impaired persons.
+There are many websites on the Internet. Most of them are made a long time ago and they are not updated with the latest HTML features. For that reason, they are not search engine friendly and they are not acessible for blind and visually impaired persons.
 
 One of the most important features of the [HTML5](https://en.wikipedia.org/wiki/HTML5) is its **semantics**. It adds aditional information to basic html elements and makes a web page more informative and adaptable to search engines and [screen readers](https://en.wikipedia.org/wiki/Screen_reader).
 
@@ -45,10 +45,21 @@ In the semantic HTML, the code should look like this:
     </body>
 </html
 ```
-As you can notice, we have replaced *div* tags with 3 new tags: *header*, *main* and *footer*. Those tags are **semantic** and they are used to represent different sections on a HTML page. There are much more meaningful than *div* tags, since there is no doubt what parts of the HTML page are header and footer and where is the main content on the page.
+As you can notice, we have replaced *div* tags with 3 new tags: *header*, *main* and *footer*. Those tags are **semantic** and they are used to represent different sections on a HTML page. There are much more descriptive than *div* tags, since there is no doubt what parts of the HTML page are header and footer and where is the main content on the page.
 
-## HTML Page Layout
+Let's add a navigation menu in the header. In the HTML5, there is the *nav* tag, so we will use it.
 
+``` HTML
+<header>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="services.html">Services</a>
+        <a href="contact.html">Contact</a>
+        <a href="about.html">About Us</a>            
+    </nav> 
+</header>
+```
+We will add some content into the *main* section, as well.
 
 
 
