@@ -5,9 +5,9 @@ There are many websites on the Internet. Most of them are made a long time ago a
 
 One of the most important features of the [HTML5](https://en.wikipedia.org/wiki/HTML5) is its **semantics**. It adds aditional information to basic html elements and makes a web page more informative and adaptable to search engines and [screen readers](https://en.wikipedia.org/wiki/Screen_reader).
 
-## Basic HTML Page Structure
+## Basic HTML Layout
 
-Let's consider a basic HTML page structure, written in the basic (non-semantic) HTML:
+Let's consider a basic HTML layout, written in the basic (non-semantic) HTML:
 ``` HTML
 <html>
     <head>
@@ -59,8 +59,30 @@ Let's add a navigation menu in the header. In the HTML5, there is the *nav* tag,
     </nav> 
 </header>
 ```
-We will add some content into the *main* section, as well.
+We will add some content into the *main* section, as well. We will use new HTML5 tags for that purpose, *article* and *section*, so the main content will, for instance, have the following structure:
 
+``` HTML
+<main>
+    <article>
+        <h1> News </h1>
+        <section>
+            <h2>Headline 1</h2>
+            <p>Content 1</p>
+        </section>
+        <section>
+            <h2>Headline 2</h2>
+            <p>Content 2</p>
+        </section>
+        <section>
+            <h2>Headline 3</h2>
+            <p>Content 3</p>
+        </section>        
+    </article>
+</main>
+```
+If you are unsure which semantic tag to use in a particular case, you can always follow this great flowchart made by authors of the [HTML5Doctor](http://html5doctor.com) website.
+
+![HTML5 Sectioning Flowchart](http://html5doctor.com/downloads/h5d-sectioning-flowchart.png)
 
 
 ## Browser Support
