@@ -1,13 +1,15 @@
-# Semantic HTML Page Layout
+# Semantic HTML
 
 
 There are many websites on the Internet. Most of them are made a long time ago and they are not updated with the latest HTML features. For that reason, they are not search engine friendly and they are not acessible for blind and visually impaired persons.
 
 One of the most important features of the [HTML5](https://en.wikipedia.org/wiki/HTML5) is its **semantics**. It adds aditional information to basic html elements and makes a web page more informative and adaptable to search engines and [screen readers](https://en.wikipedia.org/wiki/Screen_reader).
 
-## Basic HTML Layout
+In this tutorial we will learn how to use new semantic HTML5 tags in a web page creation and how to check if we have done it successfully.
 
-Let's consider a basic HTML layout, written in the basic (non-semantic) HTML:
+## Semantic HTML Page Layout
+
+Let's first consider a basic HTML page layout, written in the basic (non-semantic) HTML:
 ``` HTML
 <html>
     <head>
@@ -49,7 +51,7 @@ As you can notice, we have replaced *div* tags with 3 new tags: *header*, *main*
 
 ## Navigation
 
-In the HTML5, there is the *nav* tag, so we can use it instead of the *div* tag to wrap links which make a navigation menu. For instance, the navigation menu code could be:
+In the HTML5, there is the *nav* tag, so we can use it instead of the *div* tag to wrap links which make a navigation menu. For instance, the navigation menu can be placed within the *header* section:
 
 ``` HTML
 <header>
@@ -62,7 +64,7 @@ In the HTML5, there is the *nav* tag, so we can use it instead of the *div* tag 
     </nav> 
 </header>
 ```
-The navigation can be put inside the *header*, like in the example above, but it also can be added below the *header*, so this code is also valid:
+but, it can be placed outside of the *header* section, so this code is also valid:
 
 ``` HTML
 <header>
@@ -76,6 +78,8 @@ The navigation can be put inside the *header*, like in the example above, but it
 </nav> 
 
 ```
+
+## Main Content
 
 We will add some content into the *main* section, as well. We will use new HTML5 tags for that purpose, *article* and *section*, so the main content will, for instance, have the following structure:
 
