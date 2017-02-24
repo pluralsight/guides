@@ -8,21 +8,21 @@ One of the most important features of the [HTML5](https://en.wikipedia.org/wiki/
 In this tutorial we will learn how to use new semantic HTML5 tags in a web page creation and how to check if we have done it successfully.
 
 ## Semantic HTML Page Layout
-
-Let's first consider a basic HTML page layout, written in the basic (non-semantic) HTML:
+### Basic HTML Page Structure
+Let's first consider a basic HTML page structure, written in the basic (non-semantic) HTML:
 ``` HTML
 <html>
     <head>
         <title>Example</title>
     </head>
     <body>
-        <div>
+        <div id="header">
             Here goes logo, navigation, etc. 
         </div>
-        <div>
+        <div id="main-content">
             A place for website's main content 
         </div>
-        <div>
+        <div id="footer">
             Footer information, links, etc.
         </div>
     </body>
@@ -49,7 +49,7 @@ In the semantic HTML, the code should look like this:
 ```
 As you can notice, we have replaced *div* tags with 3 new tags: *header*, *main* and *footer*. Those tags are **semantic** and they are used to represent different sections on a HTML page. There are much more descriptive than *div* tags, since there is no doubt what parts of the HTML page are header and footer and where is the main content on the page.
 
-## Navigation
+### Navigation
 
 In the HTML5, there is the *nav* tag, so we can use it instead of the *div* tag to wrap links which make a navigation menu. For instance, the navigation menu can be placed within the *header* section:
 
@@ -79,7 +79,7 @@ but, it can be placed outside of the *header* section, so this code is also vali
 
 ```
 
-## Main Content
+### Main Content
 
 We will add some content into the *main* section, as well. We will use new HTML5 tags for that purpose, *article* and *section*, so the main content will, for instance, have the following structure:
 
