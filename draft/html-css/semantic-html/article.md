@@ -5,7 +5,7 @@ There are many websites on the Internet. Most of them are made a long time ago a
 
 One of the most important features of the [HTML5](https://en.wikipedia.org/wiki/HTML5) is its **semantics**. It adds aditional information to basic html elements and makes a web page more informative and adaptable to search engines and [screen readers](https://en.wikipedia.org/wiki/Screen_reader).
 
-In this tutorial we will learn how to use new semantic HTML5 tags in a web page creation and how to check if we have done it successfully.
+In this tutorial we will learn how to use new semantic HTML5 tags in a web page creation and how to check if we used them successfully.
 
 ## Semantic HTML Page Layout
 ### Basic HTML Page Structure
@@ -78,10 +78,11 @@ but, it can be placed outside of the *header* section, so this code is also vali
 </nav> 
 
 ```
+Actually, the navigation menu can be anywhere on a page, we just need to wrap it with the *nav* tag. However, we shouldn't put it inside of the *main* tab, unless the navigation is specific for that page, because the *main* tag is intended to contain a content which is specific for a particular page. 
 
 ### Main Content
 
-We will add some content into the *main* section, as well. We will use new HTML5 tags for that purpose, *article* and *section*, so the main content will, for instance, have the following structure:
+In order to add some content into the *main* section, we need to use new HTML5 tags for that purpose, *article* and *section*, so the main content will, for instance, have the following structure:
 
 ``` HTML
 <main>
