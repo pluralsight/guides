@@ -13,3 +13,5 @@
 # Window size
 
 # Events
+
+# Colors
