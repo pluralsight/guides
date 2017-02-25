@@ -1,11 +1,13 @@
-There are many websites on the Internet. Most of them are made a long time ago and they are not updated with the latest HTML features. For that reason, they are not search engine friendly and they are not acessible for blind and visually impaired persons.
+# Introduction
+
+There are over 1 billion websites on the Internet. A large number of them are made a long time ago and they are not updated with the latest HTML features. For that reason, they are not search engine friendly and they are not acessible for blind and visually impaired persons.
 
 One of the most important features of the [HTML5](https://en.wikipedia.org/wiki/HTML5) is its **semantics**. It adds aditional information to basic html elements and makes a web page more informative and adaptable to search engines and [screen readers](https://en.wikipedia.org/wiki/Screen_reader).
 
 In this tutorial we will learn how to use new semantic HTML5 tags in a web page creation and how to check if we used them successfully.
 
-## Semantic HTML Page Layout
-### Basic HTML Page Structure
+# Semantic HTML Page Layout
+## Basic HTML Page Structure
 Let's first consider a basic HTML page structure, written in the basic (non-semantic) HTML:
 ``` HTML
 <html>
@@ -46,7 +48,7 @@ In the semantic HTML, the code above should look like this:
 ```
 As you can notice, we have replaced *div* tags with 3 new tags: *header*, *main* and *footer*. Those tags are **semantic** and they are used to represent different sections on a HTML page. There are much more descriptive than *div* tags, since there is no doubt what parts of the HTML page are header and footer and where is the main content on the page.
 
-### Navigation
+## Navigation
 
 In the HTML5, there is the *nav* tag, so we can use it instead of the *div* tag to wrap links which make a navigation menu. For instance, the navigation menu can be put within the *header* section:
 
@@ -77,7 +79,7 @@ but, it can be put after the *header* section, as well:
 ```
 Generally, the navigation menu can be put anywhere on a page, it just needs to be wrap it with the *nav* tag. However, it shouldn't be inside of the *main* tab, unless the navigation is specific for that page, because the *main* tag is intended to contain a content which is specific for a particular page. 
 
-### Main Content
+## Main Content
 
 In order to add some content into the *main* section, we need to use new HTML5 tags for that purpose, *article* and *section*, so the main content could, for instance, have the following structure:
 
@@ -102,7 +104,7 @@ In order to add some content into the *main* section, we need to use new HTML5 t
 ```
 The *article* tag is used for wrapping an autonomous content on a page, i.e. content which can be removed from the page and put on some another page. It can contain several *section* tags, like in our example. The *section* tag is similar to the *div* tag, but it is more meaningful, since it is used to wrap a logical group of related content (e.g. a chapter of an article). The *section* tag can be also used to wrap the article, but it's much better to use the *article* tag for that purpose, since it is more appropriate and more descriptive. An *article* is actually an autonomous *section*.
 
-### Additional Content
+## Additional Content
 
 An additional content, which is not important for understanding an article, but it is related to the article, can be put inside the *aside* tag. For instance, it could be information about how many people read that article, who is the author of the article etc. In that case, the HTML code of the article could have the following structure:
 
@@ -138,12 +140,12 @@ If you are unsure which semantic tag to use in a particular case, you can always
 
 ![HTML5 Sectioning Flowchart](http://html5doctor.com/downloads/h5d-sectioning-flowchart.png)
 
-## Microdata
+# Microdata
 
-## Outlining
+# Outlining
 
 
-## Browser Support
+# Browser Support
 
 [http://caniuse.com/#feat=html5semantic](http://caniuse.com/#feat=html5semantic)
 
