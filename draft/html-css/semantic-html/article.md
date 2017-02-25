@@ -28,7 +28,7 @@ Let's first consider a basic HTML page structure, written in the basic (non-sema
     </body>
 </html>
 ```
-In the semantic HTML, the code should look like this:
+In the semantic HTML, the code above should look like this:
 ``` HTML
 <html>
     <head>
@@ -51,7 +51,7 @@ As you can notice, we have replaced *div* tags with 3 new tags: *header*, *main*
 
 ### Navigation
 
-In the HTML5, there is the *nav* tag, so we can use it instead of the *div* tag to wrap links which make a navigation menu. For instance, the navigation menu can be placed within the *header* section:
+In the HTML5, there is the *nav* tag, so we can use it instead of the *div* tag to wrap links which make a navigation menu. For instance, the navigation menu can be put within the *header* section:
 
 ``` HTML
 <header>
@@ -64,7 +64,7 @@ In the HTML5, there is the *nav* tag, so we can use it instead of the *div* tag 
     </nav> 
 </header>
 ```
-but, it can be placed outside of the *header* section, so this code is also valid:
+but, it can be put after the *header* section, as well:
 
 ``` HTML
 <header>
@@ -78,11 +78,11 @@ but, it can be placed outside of the *header* section, so this code is also vali
 </nav> 
 
 ```
-Actually, the navigation menu can be anywhere on a page, we just need to wrap it with the *nav* tag. However, we shouldn't put it inside of the *main* tab, unless the navigation is specific for that page, because the *main* tag is intended to contain a content which is specific for a particular page. 
+Generally, the navigation menu can be put anywhere on a page, it just needs to be wrap it with the *nav* tag. However, it shouldn't be inside of the *main* tab, unless the navigation is specific for that page, because the *main* tag is intended to contain a content which is specific for a particular page. 
 
 ### Main Content
 
-In order to add some content into the *main* section, we need to use new HTML5 tags for that purpose, *article* and *section*, so the main content will, for instance, have the following structure:
+In order to add some content into the *main* section, we need to use new HTML5 tags for that purpose, *article* and *section*, so the main content could, for instance, have the following structure:
 
 ``` HTML
 <main>
@@ -103,7 +103,9 @@ In order to add some content into the *main* section, we need to use new HTML5 t
     </article>
 </main>
 ```
-The *article* tag is used for wrapping an autonomous content on a page, i.e. content which can be removed from the page and put on another place. It can contain several *section* tags, like in our example. The *section* tag is similar to the *div* tag, but it is more meaningful, since it is used to wrap a logical group of related content (e.g. a chapter of an article). The *article* tag is actually the *section* tag for an independent content. So, it's not mistake to use the *section* for such content, but it's much better to use the *article* because it is more meaningful.
+The *article* tag is used for wrapping an autonomous content on a page, i.e. content which can be removed from the page and put on some another page. It can contain several *section* tags, like in our example. The *section* tag is similar to the *div* tag, but it is more meaningful, since it is used to wrap a logical group of related content (e.g. a chapter of an article). The *section* tag can be also used to wrap the article, but it's much better to use the *article* tag for that purpose, since it is more appropriate and more descriptive. An *article* is actually an autonomous *section*.
+
+In some cases it can happen that 
 
 If you are unsure which semantic tag to use in a particular case, you can always follow this great flowchart made by authors of the [HTML5Doctor](http://html5doctor.com) website.
 
