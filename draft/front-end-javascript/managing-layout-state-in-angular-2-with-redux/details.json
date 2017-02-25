@@ -1,0 +1,15 @@
+{
+    "_publish_status": "draft",
+    "author_name": "Kaizeras",
+    "author_real_name": "Hristo Georgiev",
+    "branch": "master",
+    "branches": [],
+    "filename": "article.md",
+    "first_commit": "70b4bdbb186bdfc78331e37cde6d320241065913",
+    "image_url": "https://avatars.githubusercontent.com/u/6340189?v=3",
+    "stacks": [
+        "Front-End JavaScript (Angular, React, Meteor, etc)"
+    ],
+    "thumbnail_url": null,
+    "title": "Managing layout state in Angular 2 with Redux "
+}
