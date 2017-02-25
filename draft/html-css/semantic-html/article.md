@@ -105,13 +105,46 @@ In order to add some content into the *main* section, we need to use new HTML5 t
 ```
 The *article* tag is used for wrapping an autonomous content on a page, i.e. content which can be removed from the page and put on some another page. It can contain several *section* tags, like in our example. The *section* tag is similar to the *div* tag, but it is more meaningful, since it is used to wrap a logical group of related content (e.g. a chapter of an article). The *section* tag can be also used to wrap the article, but it's much better to use the *article* tag for that purpose, since it is more appropriate and more descriptive. An *article* is actually an autonomous *section*.
 
-In some cases it can happen that 
+### Additional Content
+
+An additional content, which is not important for understanding an article, but it is related to the article, can be put inside the *aside* tag. For instance, it could be information about how many people read that article, who is the author of the article etc. In that case, the HTML code of the article could have the following structure:
+
+``` HTML
+<main>
+    <article>
+        <h1>News</h1>
+        <section>
+            <h2>Headline 1</h2>
+            <p>Text...</p>
+        </section>
+        <section>
+            <h2>Headline 2</h2>
+            <p>Text...</p>
+        </section>
+        <section>
+            <h2>Headline 3</h2>
+            <p>Text...</p>
+        </section>
+        <aside>
+            Viwed by 1503 people
+            Author: John Smith
+        </aside>
+    </article>
+</main>
+```
+
+The *aside* tag can be also used to enclose an additional content which is related to a whole page, not just to a particular article. That content can be a sidebar, advertising, footnote etc.
+
+The *figure* tag...
 
 If you are unsure which semantic tag to use in a particular case, you can always follow this great flowchart made by authors of the [HTML5Doctor](http://html5doctor.com) website.
 
 ![HTML5 Sectioning Flowchart](http://html5doctor.com/downloads/h5d-sectioning-flowchart.png)
 
+## Microdata
+
 ## Outlining
+
 
 ## Browser Support
 
