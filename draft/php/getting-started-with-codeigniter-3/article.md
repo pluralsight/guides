@@ -44,6 +44,23 @@ CodeIgniter is based on the Model-View-Controller development pattern. MVC is a 
 * The Controller serves as an intermediary between the Model, the View, and any other resources needed to process the HTTP request and generate a web page.
 
 
+### Configuration
+
+* .htaccess file
+update the .htaccess file of the application folder and put this code
+
+```php
+RewriteEngine on
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule .* index.php/$0 [PT,L]
+ ```
+* config file 
+ CodeIgniter has one primary config file, located at application/config/config.php
+
+
+
+
 
 
 
