@@ -86,18 +86,19 @@ In order to add some content into the *main* section, we need to use new HTML5 t
 ``` HTML
 <main>
     <article>
-        <h1>News</h1>
+        <h1>JavaScript Basics</h1>
+        <p>JavaScript is a rich and expressive language...</p>
         <section>
-            <h2>Headline 1</h2>
-            <p>Text...</p>
+            <h2>Syntax Basics</h2>
+            <p>Understanding statements, variable naming, whitespace...</p>
         </section>
         <section>
-            <h2>Headline 2</h2>
-            <p>Text...</p>
+            <h2>Operators</h2>
+            <p>Operators allow you to manipulate values...</p>
         </section>
         <section>
-            <h2>Headline 3</h2>
-            <p>Text...</p>
+            <h2>Conditional Code</h2>
+            <p>Sometimes you only want to run a block of code under certain conditions...</p>
         </section>        
     </article>
 </main>
@@ -112,20 +113,22 @@ An additional content, that is not important for understanding an article, but i
 <main>
     <article>
         <h1>News</h1>
+        <h1>JavaScript Basics</h1>
+        <p>JavaScript is a rich and expressive language...</p>
         <section>
-            <h2>Headline 1</h2>
-            <p>Text...</p>
+            <h2>Syntax Basics</h2>
+            <p>Understanding statements, variable naming, whitespace...</p>
         </section>
         <section>
-            <h2>Headline 2</h2>
-            <p>Text...</p>
+            <h2>Operators</h2>
+            <p>Operators allow you to manipulate values...</p>
         </section>
         <section>
-            <h2>Headline 3</h2>
-            <p>Text...</p>
-        </section>
+            <h2>Conditional Code</h2>
+            <p>Sometimes you only want to run a block of code under certain conditions...</p>
+        </section>  
         <aside>
-            Viwed by 1503 people
+            Viewed by 1503 people
             Author: John Smith
         </aside>
     </article>
@@ -136,9 +139,39 @@ The *aside* tag can be also used to enclose an additional content that is relate
 
 The *figure* tag is used to mark up photos, code blocks, diagrams, charts, illustrations etc. Generally, it encloses a content that can be moved away into an appendix. Some images should be enclosed with the *figure* tag (e.g. a logo image), but banner ads shouldn't, since they are not related to the main content of the page. If a banner ad is in a sidebar, it shouldn't be inside of the *aside* tag, for the same reason. However, there is a way to mark up a banner ad and we will cover that in the Microdata section of this tutorial.
 
-*figcaption* ...
+The *figcaption* tag represents a caption or legend for a figure. It's optional, so it can be omitted. Only one *figcaption* tag can be nested into a *figure*, so if a *figure* contains multiple images, it can be only one *figcaption* for all of them.
 
-If you are unsure that semantic tag to use in a particular case, you can always follow this great flowchart made by authors of the [HTML5Doctor](http://html5doctor.com) website.
+For instance, photos of people who liked the article could be enclosed with the *figure* tag. Since that information is not so important, it can be nested into the *aside* section:
+
+``` HTML
+<aside>
+    Viewed by 1503 people
+    Author: John Smith
+    <figure>
+        <img src="John Doe.png" />
+        <img src="Maggie Smith.png" />
+        <img src="Tom Hardy.png" />
+        <figcaption>People who liked the article</figcaption>
+    </figure>
+</aside>
+```
+The logo in the *header* section should be enclosed with the *figure* tag, as well, so our *header* section will finally have the following code:
+
+``` HTML
+<header>
+    <figure>
+        <img src="logo.png" />
+    </figure>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="services.html">Services</a>
+        <a href="contact.html">Contact</a>
+        <a href="about.html">About Us</a>            
+    </nav> 
+</header>
+```
+
+If you are unsure which semantic tag to use in a particular case, you can always follow this great flowchart made by authors of the [HTML5Doctor](http://html5doctor.com) website.
 
 ![HTML5 Sectioning Flowchart](http://html5doctor.com/downloads/h5d-sectioning-flowchart.png)
 
@@ -162,3 +195,5 @@ If you are unsure that semantic tag to use in a particular case, you can always 
 This tutorial covered some basics of the semantic HTML. For more information about this topic, please read these very useful articles:
 
 [HTML5 structure—div, section & article](http://oli.jp/2009/html5-structure1/)
+
+[The article element](http://html5doctor.com/the-article-element/)
