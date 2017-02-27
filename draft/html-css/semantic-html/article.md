@@ -128,8 +128,8 @@ An additional content, that is not important for understanding an article, but i
             <p>Sometimes you only want to run a block of code under certain conditions...</p>
         </section>  
         <aside>
-            Viewed by 1503 people
-            Author: John Smith
+            <p>Viewed by 1503 people</p>
+            <p>Author: John Smith</p>
         </aside>
     </article>
 </main>
@@ -145,8 +145,8 @@ For instance, photos of people who liked the article could be enclosed with the 
 
 ``` HTML
 <aside>
-    Viewed by 1503 people
-    Author: John Smith
+    <p>Viewed by 1503 people</p>
+    <p>Author: John Smith</p>
     <figure>
         <img src="John Doe.png" />
         <img src="Maggie Smith.png" />
@@ -170,6 +170,7 @@ The logo in the *header* section should be enclosed with the *figure* tag, as we
     </nav> 
 </header>
 ```
+## HTML5 Element Flowchart
 
 If you are unsure which semantic tag to use in a particular case, you can always follow this great flowchart made by authors of the [HTML5Doctor](http://html5doctor.com) website.
 
@@ -177,8 +178,41 @@ If you are unsure which semantic tag to use in a particular case, you can always
 
 # Microdata
 
+Microdata provide additional information about content of a web page. They help search engines and screen readers to better understand it.
+
+Microdata can be added as attributes to any HTML tag. For instance, let's add some data about the author of the article in our example. The *aside* section of the article will have the following code:
+
+``` HTML
+<aside>
+    <p>Viewed by 1503 people</p>
+    <p>Author: John Smith, Senior Software Developer at Google, Mountain View, California</p>
+</aside>
+```
+With microdata included, the HTML code of the *aside* section would be:
+
+``` HTML
+<aside>
+    <p>Viewed by 1503 people</p>
+    <p itemscope itemtype="http://schema.org/Person">
+        Author: 
+        <span itemprop="name">John Smith</span>, 
+        <span itemprop="jobTitle">Senior Software Developer</span> 
+        at
+        <span itemprop="worksFor" itemscope itemtype="https://schema.org/Corporation">
+            <span itemtype="name">Google</span>,  
+        </span>
+        <span itemprop="address" itemscope itemtype="http://schema.org/PostalAddress">
+            <span itemprop="addressLocality">Mountain View</span>,   
+            <span itemprop="addressRegion">California</span>
+        </span>
+    </p>
+</aside>
+```
+There is obviously much more data in the code above than in the previous code, but there is also much more information for machines. As you can notice, we used the following microdata attributes: *itemscope*, *itemtype* and *itemprop*.
+
+[Microdata generator](http://webcode.tools/microdata-generator)
+
 [Banner Ad](https://schema.org/WPAdBlock)
-[Author]()
 
 # Outlining
 ... hidden h1 tag ...
