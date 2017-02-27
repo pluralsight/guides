@@ -4,7 +4,7 @@ There are over 1 billion websites on the Internet. A large number of them are ma
 
 One of the most important features of the [HTML5](https://en.wikipedia.org/wiki/HTML5) is its **semantics**. It adds aditional information to basic html elements and makes a web page more informative and adaptable to search engines and [screen readers](https://en.wikipedia.org/wiki/Screen_reader).
 
-In this tutorial we will learn how to use new semantic HTML5 tags in a web page creation and how to check if we used them successfully.
+In this tutorial we will learn how to use new semantic HTML5 tags in a web page creation and how to add more information to its content.
 
 # Semantic HTML Page Layout
 ## Basic HTML Page Structure
@@ -208,7 +208,9 @@ With microdata included, the HTML code of the *aside* section would be:
     </p>
 </aside>
 ```
-There is obviously much more data in the code above than in the previous code, but there is also much more information for machines. As you can notice, we used the following microdata attributes: *itemscope*, *itemtype* and *itemprop*.
+There is obviously much more data in the code above than in the previous code, but there is also much more information for machines. As you can notice, we used the following microdata attributes: *itemscope*, *itemtype* and *itemprop*. So, what do all these attributes mean?
+
+The *itemscope* attribute indicates a new group of microdata. A group of microdata is called item and it contains properties and its appropriate values. The type of an item is specified in the *itemtype* property and it is actually an URL to a web page that cointains information about the item. On that page we can see all properties the item could have and we can use some of those properties in our code. A property of the item should be specified in the *itemprop* attribute. 
 
 [Microdata generator](http://webcode.tools/microdata-generator)
 
@@ -231,3 +233,5 @@ This tutorial covered some basics of the semantic HTML. For more information abo
 [HTML5 structure—div, section & article](http://oli.jp/2009/html5-structure1/)
 
 [The article element](http://html5doctor.com/the-article-element/)
+
+[Getting started with schema.org using Microdata](https://schema.org/docs/gs.html)
