@@ -4,10 +4,10 @@ There are over 1 billion websites on the Internet. A large number of them are ma
 
 One of the most important features of the [HTML5](https://en.wikipedia.org/wiki/HTML5) is its **semantics**. It adds aditional information to basic html elements and makes a web page more informative and adaptable to search engines and [screen readers](https://en.wikipedia.org/wiki/Screen_reader).
 
-In this tutorial we will learn how to use new semantic HTML5 tags in a web page creation and how to add more information to its content.
+In this tutorial we will learn how to use new semantic HTML5 tags in a web page creation and how to make its content more informative for machines.
 
 # Semantic HTML Page Layout
-## Basic HTML Page Structure
+
 Let's first consider a basic HTML page structure, written in the basic (non-semantic) HTML:
 ``` HTML
 <html>
@@ -46,12 +46,11 @@ In the semantic HTML, the code above should look like this:
     </body>
 </html
 ```
-As you can notice, we have replaced *div* tags with 3 new tags: *header*, *main* and *footer*. Those tags are **semantic** and they are used to represent different sections on a HTML page. There are much more descriptive than *div* tags, since there is no doubt what parts of the HTML page are header and footer and where is the main content on the page.
+As you can notice, we have replaced *div* tags with 3 new tags: *header*, *main* and *footer*. Those tags are **semantic** and they are used to represent different sections on a HTML page. There are more descriptive than *div* tags, since there is no doubt what parts of the HTML page are header and footer and in which section of the page is the main content.
 
 ## Navigation
 
 In the HTML5, there is the *nav* tag, so we can use it instead of the *div* tag to wrap links that make a navigation menu. For instance, the navigation menu can be put within the *header* section:
-bann
 ``` HTML
 <header>
     <img src="logo.png" />
@@ -63,7 +62,7 @@ bann
     </nav> 
 </header>
 ```
-but, it can be put after the *header* section, as well:
+but, it also can be put after the *header* section:
 
 ``` HTML
 <header>
@@ -77,11 +76,11 @@ but, it can be put after the *header* section, as well:
 </nav> 
 
 ```
-Generally, the navigation menu can be put anywhere on a page, it just needs to be wrap it with the *nav* tag. However, it shouldn't be inside of the *main* tab, unless the navigation is specific for that page, because the *main* tag is intended to contain a content that is specific for a particular page. 
+Generally, the navigation menu can be put anywhere on a page, it just needs to be wrapped with the *nav* tag. However, it shouldn't be put inside of the *main* tab, unless the navigation is specific for that page, because in the *main* tag should be a content that is specific for the page. 
 
 ## Main Content
 
-In order to add some content into the *main* section, we need to use new HTML5 tags for that purpose, *article* and *section*, so the main content could, for instance, have the following structure:
+In order to add some content into the *main* section, we need to use new HTML5 tags for that purpose, *article* and *section*, so the *main* section could, for instance, have the following structure:
 
 ``` HTML
 <main>
@@ -103,11 +102,11 @@ In order to add some content into the *main* section, we need to use new HTML5 t
     </article>
 </main>
 ```
-The *article* tag is used for wrapping an autonomous content on a page, i.e. content that can be removed from the page and put on some another page. It can contain several *section* tags, like in our example. The *section* tag is similar to the *div* tag, but it is more meaningful, since it is used to wrap a logical group of related content (e.g. a chapter of an article). The *section* tag can be also used to wrap the article, but it's much better to use the *article* tag for that purpose, since it is more appropriate and more descriptive. An *article* is actually an autonomous *section*.
+The *article* tag is used for wrapping an autonomous content on a page. A content is autonomous if it can be removed from the page and put on some another page. The *article* tag can contain several *section* tags inside it, like in our example. The *section* tag is similar to the *div* tag, but it is more meaningful, since it is used to wrap a logical group of related content (e.g. a chapter of an article). The *section* tag can be also used to wrap the article, but it's much better to use the *article* tag for that purpose, since it is more informative. An *article* is actually an autonomous *section*.
 
 ## Additional Content
-
-An additional content, that is not important for understanding an article, but it is related to the article, can be put inside the *aside* tag. For instance, it could be information about how many people read that article, who is the author of the article etc. In that case, the HTML code of the article could have the following structure:
+### Aside section
+An additional content, unimportant for understanding an article, but related to the article, can be put inside the *aside* section. For instance, it could be an information about how many people read that article, who is the author of the article etc. In that case, the HTML code of the article could have the following structure:
 
 ``` HTML
 <main>
@@ -137,7 +136,11 @@ An additional content, that is not important for understanding an article, but i
 
 The *aside* tag can be also used to enclose an additional content that is related to a whole page, not just to a particular article. That content can be a sidebar, advertising, footnote etc.
 
-The *figure* tag is used to mark up photos, code blocks, diagrams, charts, illustrations etc. Generally, it encloses a content that can be moved away into an appendix. Some images should be enclosed with the *figure* tag (e.g. a logo image), but banner ads shouldn't, since they are not related to the main content of the page. If a banner ad is in a sidebar, it shouldn't be inside of the *aside* tag, for the same reason. However, there is a way to mark up a banner ad and we will cover that in the Microdata section of this tutorial.
+### Figures
+
+Figure elements on a web page can be enclosed with the *figure* and *figcaption* tags.
+
+The *figure* tag is used to mark up photos, code blocks, diagrams, charts, illustrations etc. Generally, it encloses a content that can be moved away into an appendix. Only images related to the content of a page should be enclosed with the *figure* tag (e.g. a logo image). Therefore, images like banner ads shouldn't be inside that tag. However, there is a way to add semantics to a banner ad and we will cover that in the Microdata section of this tutorial.
 
 The *figcaption* tag represents a caption or legend for a figure. It's optional, so it can be omitted. Only one *figcaption* tag can be nested into a *figure*, so if a *figure* contains multiple images, it can be only one *figcaption* for all of them.
 
