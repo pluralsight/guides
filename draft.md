@@ -5,7 +5,7 @@
 
 ### Semantic HTML by Miroslav Gajic
 - [Read the guide](https://www.pluralsight.com/guides/html-css/semantic-html?status=draft)
-- [Read more from Miroslav Gajic](https://www.pluralsight.com/guides/author/mgajic78) <img src="https://avatars.githubusercontent.com/u/25859460?v=3" width="30" height="30" alt="Miroslav Gajic" />
+- [Read more from Miroslav Gajic](https://www.pluralsight.com/guides/author/mgajic78) <img src="https://avatars0.githubusercontent.com/u/25859460?v=3" width="30" height="30" alt="Miroslav Gajic" />
 - Related to: HTML/CSS
 
 ### Hyperloop with Rails, NPM and Webpack by Barrie Hadfield
