@@ -3,11 +3,6 @@
 - [Read more from Hristo Georgiev](https://www.pluralsight.com/guides/author/Kaizeras) <img src="https://avatars.githubusercontent.com/u/6340189?v=3" width="30" height="30" alt="Hristo Georgiev" />
 - Related to: Front-End JavaScript (Angular, React, Meteor, etc)
 
-### Semantic HTML by Miroslav Gajic
-- [Read the guide](https://www.pluralsight.com/guides/html-css/semantic-html?status=draft)
-- [Read more from Miroslav Gajic](https://www.pluralsight.com/guides/author/mgajic78) <img src="https://avatars0.githubusercontent.com/u/25859460?v=3" width="30" height="30" alt="Miroslav Gajic" />
-- Related to: HTML/CSS
-
 ### Hyperloop with Rails, NPM and Webpack by Barrie Hadfield
 - [Read the guide](https://www.pluralsight.com/guides/ruby-ruby-on-rails/hyperloop-with-rails-npm-and-webpack?status=draft)
 - [Read more from Barrie Hadfield](https://www.pluralsight.com/guides/author/barriehadfield) <img src="https://avatars.githubusercontent.com/u/3940251?v=3" width="30" height="30" alt="Barrie Hadfield" />
