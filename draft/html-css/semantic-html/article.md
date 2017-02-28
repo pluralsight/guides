@@ -53,7 +53,7 @@ As you can notice, we have replaced *div* tags with 3 new tags: *header*, *main*
 In the HTML5, there is the *nav* tag, so we can use it instead of the *div* tag to wrap links that make a navigation menu. For instance, the navigation menu can be put within the *header* section:
 ``` HTML
 <header>
-    <img src="logo.png" />
+    <img src="logo.png" alt="logo"/>
     <nav>
         <a href="index.html">Home</a>
         <a href="services.html">Services</a>
@@ -66,7 +66,7 @@ but, it also can be put after the *header* section:
 
 ``` HTML
 <header>
-    <img src="logo.png" />
+    <img src="logo.png" alt="logo" />
 </header>
 <nav>
     <a href="index.html">Home</a>
@@ -142,7 +142,7 @@ Figure elements on a web page can be enclosed with the *figure* and *figcaption*
 
 The *figure* tag is used to mark up photos, code blocks, diagrams, charts, illustrations etc. Generally, it encloses a content that can be moved away into an appendix. Only images related to the content of a page should be enclosed with the *figure* tag (e.g. a logo image). Therefore, images like banner ads shouldn't be inside that tag. However, there is a way to add semantics to a banner ad and we will cover that in the Microdata section of this tutorial.
 
-The *figcaption* tag represents a caption or legend for a figure. It's optional, so it can be omitted. Only one *figcaption* tag can be nested into a *figure*, so if a *figure* contains multiple images, it can be only one *figcaption* for all of them.
+The *figcaption* tag represents a caption or legend for a figure. It's optional, so it can be omitted. Only one *figcaption* tag can be nested into the *figure* tag, so if a *figure* contains multiple images, it can be only one *figcaption* for all of them.
 
 For instance, photos of people who liked the article could be enclosed with the *figure* tag. Since that information is not so important, it can be nested into the *aside* section:
 
@@ -151,9 +151,9 @@ For instance, photos of people who liked the article could be enclosed with the 
     <p>Viewed by 1503 people</p>
     <p>Author: John Smith</p>
     <figure>
-        <img src="John Doe.png" />
-        <img src="Maggie Smith.png" />
-        <img src="Tom Hardy.png" />
+        <img src="John Doe.png" alt="John Doe"/>
+        <img src="Maggie Smith.png" alt="Maggie Smith"/>
+        <img src="Tom Hardy.png" alt="Tom Hardy"/>
         <figcaption>People who liked the article</figcaption>
     </figure>
 </aside>
@@ -163,7 +163,7 @@ The logo in the *header* section should be enclosed with the *figure* tag, as we
 ``` HTML
 <header>
     <figure>
-        <img src="logo.png" />
+        <img src="logo.png" alt="logo"/>
     </figure>
     <nav>
         <a href="index.html">Home</a>
@@ -191,7 +191,7 @@ Microdata can be added as attributes to any HTML tag. For instance, let's add so
     <p>Author: John Smith, Senior Software Developer at Google, Mountain View, California</p>
 </aside>
 ```
-With microdata included, the HTML code of the *aside* section would be:
+With microdata included, the HTML code of the *aside* section will be:
 
 ``` HTML
 <aside>
@@ -213,9 +213,9 @@ With microdata included, the HTML code of the *aside* section would be:
 ```
 There is obviously much more data in the code above than in the previous code, but there is also much more information for machines. As you could notice, we used the following microdata attributes: *itemscope*, *itemtype* and *itemprop*. So, what do all these attributes mean?
 
-The *itemscope* attribute indicates a new group of microdata. A group of microdata is called *item* and it contains pairs of properties and values. The type of an item is specified in the *itemtype* property and it is actually an URL to a web page that cointains information about the item. On that page we can see all properties the item could have. We usually use just several properties to describe an item and we define them in the *itemprop* attributes. A property can be simple or compound (like the *address* in our example).
+The *itemscope* attribute indicates a new group of microdata. A group of microdata is called *item* and it contains pairs of properties and values. The type of an item is specified in the *itemtype* property and it is actually an URL to a web page that cointains information about the item. On that page we can see all properties the item could have. We usually use only several properties to describe an item and we define them in the *itemprop* attributes. A value of a property can be a new *item* (like the *address* in our example).
 
-We mentioned before in this tutorial that a banner can be described with microdata. So, the HTML code should look like this: 
+We mentioned before in this tutorial that a banner can be described with microdata. So, the HTML code for that should look like this: 
 
 ``` HTML
 <div itemscope itemtype="https://schema.org/WPAdBlock">
@@ -231,7 +231,7 @@ According to [this](http://caniuse.com/#feat=html5semantic) table, the HTML5 sem
 
 # Additional Resources
 
-For more information about this topic, please read these very useful articles:
+For more information about this topic, you can read these very useful articles:
 
 - [HTML5 structure—div, section & article](http://oli.jp/2009/html5-structure1/)
 - [The article element](http://html5doctor.com/the-article-element/)
@@ -240,10 +240,10 @@ For more information about this topic, please read these very useful articles:
 
 # Conclusion
 
-This tutorial has covered some basics of the semantic HTML. We created a semantic HTML layout and used some microdata to add more information to the content of the web page.
+This tutorial has covered some basics of the semantic HTML. We created a semantic HTML layout and used *microdata* to add more information to the content of the web page.
 
 The semantic HTML tags helps a lot blind and visually impaired persons and search engines to better understand the content of a web page, so they improve its accessibility.
 
-There is no reason for not using the semantic HTML tags, since there is a way to use them correctly in all important browsers. The more your web site is accessible, the more visitors it will have, so using them is highly recommended.
+There is no reason for not using the semantic HTML tags, since there is a way to use them correctly in all important web browsers. The more your web site is accessible, the more visitors it will have, so their usage is highly recommended.
 
 Thank you very much for reading this tutorial.
