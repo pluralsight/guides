@@ -2,9 +2,9 @@
 
 There are over 1 billion websites on the Internet. A large number of them are made a long time ago and they are not updated with the latest HTML features. For that reason, they are not search engine friendly and they are not acessible for blind and visually impaired persons.
 
-One of the most important features of the [HTML5](https://en.wikipedia.org/wiki/HTML5) is its **semantics**. It adds aditional information to basic html elements and makes a web page more informative and adaptable to search engines and [screen readers](https://en.wikipedia.org/wiki/Screen_reader).
+One of the most important features of the [HTML5](https://en.wikipedia.org/wiki/HTML5) is its **semantics**. It adds more information to basic html elements and makes a web page more informative and adaptable to search engines and [screen readers](https://en.wikipedia.org/wiki/Screen_reader).
 
-In this tutorial we will learn how to use new semantic HTML5 tags in a web page creation and how to make its content more informative for machines.
+In this tutorial you will learn how to use new semantic HTML5 tags in a web page creation and how to make its content more informative for machines.
 
 # Semantic HTML Page Layout
 
@@ -50,7 +50,7 @@ As you can notice, we have replaced *div* tags with 3 new tags: *header*, *main*
 
 ## Navigation
 
-In the HTML5, there is the *nav* tag, so we can use it instead of the *div* tag to wrap links that make a navigation menu. For instance, the navigation menu can be put within the *header* section:
+In the HTML5, there is the *nav* tag, so we can use it instead of the *div* tag to wrap links that make a navigation menu. For instance, the navigation menu can be inserted within the *header* section:
 ``` HTML
 <header>
     <img src="logo.png" alt="logo"/>
@@ -62,7 +62,7 @@ In the HTML5, there is the *nav* tag, so we can use it instead of the *div* tag 
     </nav> 
 </header>
 ```
-but, it also can be put after the *header* section:
+but, it also can be added after the *header* section:
 
 ``` HTML
 <header>
@@ -106,7 +106,7 @@ The *article* tag is used for wrapping an autonomous content on a page. A conten
 
 ## Additional Content
 ### Aside section
-An additional content, unimportant for understanding an article, but related to the article, can be put inside the *aside* section. For instance, it could be an information about how many people read that article, who is the author of the article etc. In that case, the HTML code of the article could have the following structure:
+An additional content, unimportant for understanding an article, but related to the article, can be inserted into the *aside* section. For instance, it could be an information about how many people read that article, who is the author of the article etc. In that case, the HTML code of the article could have the following structure:
 
 ``` HTML
 <main>
@@ -140,11 +140,11 @@ The *aside* tag can be also used to enclose an additional content that is relate
 
 Figure elements on a web page can be enclosed with the *figure* and *figcaption* tags.
 
-The *figure* tag is used to mark up photos, code blocks, diagrams, charts, illustrations etc. Generally, it encloses a content that can be moved away into an appendix. Only images related to the content of a page should be enclosed with the *figure* tag (e.g. a logo image). Therefore, images like banner ads shouldn't be inside that tag. However, there is a way to add semantics to a banner ad and we will cover that in the Microdata section of this tutorial.
+The *figure* tag is used to mark up photos, code blocks, diagrams, charts, illustrations etc. Generally, it encloses a content that can be moved away into an appendix. Only images related to the content of a page should be within the *figure* tag (e.g. a logo image). Therefore, images like banner ads shouldn't be inside that tag. However, there is a way to add semantics to a banner ad and we will cover that in the Microdata section of this tutorial.
 
 The *figcaption* tag represents a caption or legend for a figure. It's optional, so it can be omitted. Only one *figcaption* tag can be nested into the *figure* tag, so if a *figure* contains multiple images, it can be only one *figcaption* for all of them.
 
-For instance, photos of people who liked the article could be enclosed with the *figure* tag. Since that information is not so important, it can be nested into the *aside* section:
+For instance, photos of people who liked the article could be enclosed with the *figure* tag. Since that information is not so important, it can be nested into the *aside* section of the article:
 
 ``` HTML
 <aside>
