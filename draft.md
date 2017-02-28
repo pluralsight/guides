@@ -238,11 +238,6 @@
 - [Read more from Martin Splitt](https://www.pluralsight.com/guides/author/AVGP) <img src="https://avatars.githubusercontent.com/u/370246?v=3" width="30" height="30" alt="Martin Splitt" />
 - Related to: Front-End JavaScript (Angular, React, Meteor, etc)
 
-### Getting started with Codeigniter 3 by Aouadi Mohamed Adib
-- [Read the guide](https://www.pluralsight.com/guides/php/getting-started-with-codeigniter-3?status=draft)
-- [Read more from Aouadi Mohamed Adib](https://www.pluralsight.com/guides/author/Adib12) <img src="https://avatars3.githubusercontent.com/u/11527075?v=3" width="30" height="30" alt="Aouadi Mohamed Adib" />
-- Related to: PHP
-
 ### Getting Started with RethinkDB and Google Chrome Extensions by Chris Hranj
 - [Read the guide](https://www.pluralsight.com/guides/nosql-databases/getting-started-with-rethinkdb-and-google-chrome-extensions?status=draft)
 - [Read more from Chris Hranj](https://www.pluralsight.com/guides/author/Brodan) <img src="https://avatars.githubusercontent.com/u/12822268?v=3" width="30" height="30" alt="Chris Hranj" />
