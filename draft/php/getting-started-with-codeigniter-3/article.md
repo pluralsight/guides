@@ -49,27 +49,178 @@ CodeIgniter is based on the Model-View-Controller development pattern. MVC is a 
 * .htaccess file
 update the .htaccess file of the application folder and put this code
 
+
 ```php
 RewriteEngine on
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule .* index.php/$0 [PT,L]
- ```
+```
 * config file 
  
  CodeIgniter has one primary config file, located at application/config/config.php
-    * Base URL Configuration 
+    
+
 ```php
+/* Base URL Configuration  */
 $config['base_url'] = 'http://localhost/test/';
- ```
-    * Remove index file from the URL 
-```php
+
+ /* Remove index file from the URL  */ 
 $config['index_page'] = '';
- ```
+```
 * autoload file 
 
 the role of the autoload file is to permits libraries, helpers, and models to be initialized automatically every time the system runs.
 
+```php
+/* Libraries load  */
+$autoload['libraries'] = array('session','database','form_validation');
+
+ /* Helpers load  */ 
+$autoload['helper'] = array('url','text','form','date');
+```
+* Database file 
+
+the role of the database file is lets you store your database connection values (username, password, database name, etc.).
+
+```php
+$db['default'] = array(
+	'dsn'	=> '',
+	'hostname' => 'localhost',
+	'username' => 'root',
+	'password' => '',
+	'database' => 'test',
+	'dbdriver' => 'mysqli',
+	'dbprefix' => '',
+	'pconnect' => FALSE,
+	'db_debug' => (ENVIRONMENT !== 'production'),
+	'cache_on' => FALSE,
+	'cachedir' => '',
+	'char_set' => 'utf8',
+	'dbcollat' => 'utf8_general_ci',
+	'swap_pre' => '',
+	'encrypt' => FALSE,
+	'compress' => FALSE,
+	'stricton' => FALSE,
+	'failover' => array(),
+	'save_queries' => TRUE
+);
+```
+
+Now let's talk about the example of our guides is showing users list from the table of the database let's start with the model 
+### Table Structure 
+
+#### User 
+
+| id   |      username      |  password |
+|----------|:-------------:|------:|
+| 1 |  Adib | 123456
+| 2|    Wadii   |   abcdef |
+| 3 | Ayoub |    azerty |
+
+### Model
+
+```php
+class User_model extends CI_Model {
+
+    public $id;
+    public $username;
+    public $password;
     
+    function getId() {
+        return $this->id;
+    }
+
+    function getUsername() {
+        return $this->username;
+    }
+
+    function getPassword() {
+        return $this->password;
+    }
+
+    function setId($id) {
+        $this->id = $id;
+    }
+
+    function setUsername($username) {
+        $this->username = $username;
+    }
+
+    function setPassword($password) {
+        $this->password = $password;
+    }
+
+    
+    function __construct() {
+        parent::__construct();
+    }
+    
+    public function user_list() {
+        return
+                        $this->db->select('*')
+                        ->from('user')
+                        ->order_by('id_user', 'DESC')
+                        ->get()
+                        ->result_array();
+    }
+}
+```
+
+### Controller
+
+    
+```php
+class user extends CI_Controller {
+
+    public function __construct() {
+        parent::__construct();
+        $this->load->model('user_model') ;
+    }
+    
+     public function user_list() {
+        $data = array();
+        $tab = $this->User_model->user_list();
+        $this->load->view('list', $data);
+    }
+}
+```
+
+### View
+```php
+<html>
+<head>
+<title>Users list</title>
+</head>
+<body>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Username</th>
+<th>Password</th>
+</tr>
+</thead>
+<tbody>
+<?php 
+    foreach($tab as $key => $value){
+        echo "<tr>" ; 
+            echo "<td>";
+            echo $value["id"] ; 
+            echo "</td>";
+            echo "<td>";
+            echo $value["username"] ; 
+            echo "</td>";
+            echo "<td>";
+            echo $value["password"] ; 
+            echo "</td>";
+        echo "</tr>" ; 
+    }
+?>
+</tbody>
+</table>
+</body>
+</html>
+```
 
 
