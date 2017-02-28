@@ -224,7 +224,7 @@ There is a very useful tool for generating microdata, it is the [Microdata gener
 
 # Browser Support
 
-According to [this](http://caniuse.com/#feat=html5semantic) table, the HTML5 semantic tags are not supported well in all browsers. However, the [HTML5Shiv](https://github.com/aFarkas/html5shiv) can be used for better support in some older versions of the Internet Explorer, Firefox and Safari. The HTML5Shiv is also distributed with the [Modernizr](https://modernizr.com).
+According to [this](http://caniuse.com/#feat=html5semantic) table, the HTML5 semantic tags are supported well in the latest browsers versions. For some older versions of the Internet Explorer, Firefox and Safari we can use  the [HTML5 Shiv](https://github.com/aFarkas/html5shiv) or [Modernizr](https://modernizr.com) (it includes the HTML5 Shiv).
 
 # Additional Resources
 
@@ -237,4 +237,10 @@ For more information about this topic, please read these very useful articles:
 
 # Conclusion
 
-This tutorial has covered some basics of the semantic HTML. 
+This tutorial has covered some basics of the semantic HTML. We created a semantic HTML layout and used some microdata to add more information to the content of the web page.
+
+The semantic HTML tags helps a lot blind and visually impaired persons and search engines to better understand the content of a web page, so they improve its accessibility.
+
+There is no reason for not using the semantic HTML tags, since there is a way to use them correctly in all important browsers. The more your web site is accessible, the more visitors it will have, so using them is highly recommended.
+
+Thank you very much for reading this tutorial.
