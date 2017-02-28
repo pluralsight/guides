@@ -223,4 +223,7 @@ class user extends CI_Controller {
 </html>
 ```
 
+## Conclusion
+
+CodeIgniter is a lightweight PHP framework that is almost 10 years old (initially released in 2006). CodeIgniter has a very straightforward installation process that requires only a minimal configuration.
 
