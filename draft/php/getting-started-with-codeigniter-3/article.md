@@ -56,15 +56,20 @@ RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule .* index.php/$0 [PT,L]
  ```
 * config file 
+ 
  CodeIgniter has one primary config file, located at application/config/config.php
+    * Base URL Configuration 
+```php
+$config['base_url'] = 'http://localhost/test/';
+ ```
+    * Remove index file from the URL 
+```php
+$config['index_page'] = '';
+ ```
+* autoload file 
 
+the role of the autoload file is to permits libraries, helpers, and models to be initialized automatically every time the system runs.
 
-
-
-
-
-
-
-
+    
 
 
