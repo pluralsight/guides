@@ -51,7 +51,7 @@ As you can notice, we have replaced *div* tags with 3 new tags: *header*, *main*
 ## Navigation
 
 In the HTML5, there is the *nav* tag, so we can use it instead of the *div* tag to wrap links that make a navigation menu. For instance, the navigation menu can be put within the *header* section:
-
+bann
 ``` HTML
 <header>
     <img src="logo.png" />
@@ -208,30 +208,33 @@ With microdata included, the HTML code of the *aside* section would be:
     </p>
 </aside>
 ```
-There is obviously much more data in the code above than in the previous code, but there is also much more information for machines. As you can notice, we used the following microdata attributes: *itemscope*, *itemtype* and *itemprop*. So, what do all these attributes mean?
+There is obviously much more data in the code above than in the previous code, but there is also much more information for machines. As you could notice, we used the following microdata attributes: *itemscope*, *itemtype* and *itemprop*. So, what do all these attributes mean?
 
-The *itemscope* attribute indicates a new group of microdata. A group of microdata is called item and it contains properties and its appropriate values. The type of an item is specified in the *itemtype* property and it is actually an URL to a web page that cointains information about the item. On that page we can see all properties the item could have and we can use some of those properties in our code. A property of the item should be specified in the *itemprop* attribute. 
+The *itemscope* attribute indicates a new group of microdata. A group of microdata is called *item* and it contains pairs of properties and values. The type of an item is specified in the *itemtype* property and it is actually an URL to a web page that cointains information about the item. On that page we can see all properties the item could have. We usually use just several properties to describe an item and we define them in the *itemprop* attributes. A property can be simple or compound (like the *address* in our example).
 
-[Microdata generator](http://webcode.tools/microdata-generator)
+We mentioned before in this tutorial that a banner can be described with microdata. So, the HTML code should look like this: 
 
-[Banner Ad](https://schema.org/WPAdBlock)
+``` HTML
+<div itemscope itemtype="https://schema.org/WPAdBlock">
+    <a href="site.com" itemprop="url"><img src="banner.gif" alt="banner" itemprop="image" /></a>
+</div> 
+```
 
-# Outlining
-... hidden h1 tag ...
+There is a very useful tool for generating microdata, it is the [Microdata generator](http://webcode.tools/microdata-generator). It can save your time, and it can also teach you how to use microdata properly for various items. 
 
 # Browser Support
 
-[http://caniuse.com/#feat=html5semantic](http://caniuse.com/#feat=html5semantic)
+According to [this](http://caniuse.com/#feat=html5semantic) table, the HTML5 semantic tags are not supported well in all browsers. However, the [HTML5Shiv](https://github.com/aFarkas/html5shiv) can be used for better support in some older versions of the Internet Explorer, Firefox and Safari. The HTML5Shiv is also distributed with the [Modernizr](https://modernizr.com).
 
-[https://github.com/aFarkas/html5shiv](https://github.com/aFarkas/html5shiv)
+# Additional Resources
 
-[https://modernizr.com](https://modernizr.com)
+For more information about this topic, please read these very useful articles:
 
-## Additional Resources
-This tutorial covered some basics of the semantic HTML. For more information about this topic, please read these very useful articles:
+- [HTML5 structure—div, section & article](http://oli.jp/2009/html5-structure1/)
+- [The article element](http://html5doctor.com/the-article-element/)
+- [Getting started with schema.org using Microdata](https://schema.org/docs/gs.html)
+- [HTML5 semantic elements and Webflow: the essential guide](https://webflow.com/blog/html5-semantic-elements-and-webflow-the-essential-guide)
 
-[HTML5 structure—div, section & article](http://oli.jp/2009/html5-structure1/)
+# Conclusion
 
-[The article element](http://html5doctor.com/the-article-element/)
-
-[Getting started with schema.org using Microdata](https://schema.org/docs/gs.html)
+This tutorial has covered some basics of the semantic HTML. 
