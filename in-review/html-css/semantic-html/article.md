@@ -111,7 +111,6 @@ An additional content, unimportant for understanding an article, but related to 
 ``` HTML
 <main>
     <article>
-        <h1>News</h1>
         <h1>JavaScript Basics</h1>
         <p>JavaScript is a rich and expressive language...</p>
         <section>
