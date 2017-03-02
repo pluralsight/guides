@@ -44,7 +44,7 @@ In the semantic HTML, the code above should look like this:
             Footer information, links, etc.
         </footer>
     </body>
-</html
+</html>
 ```
 As you can notice, we have replaced *div* tags with 3 new tags: *header*, *main* and *footer*. Those tags are **semantic** and they are used to represent different sections on a HTML page. There are more descriptive than *div* tags, since there is no doubt what parts of the HTML page are header and footer and in which section of the page is the main content.
 
