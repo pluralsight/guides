@@ -88,6 +88,69 @@ For each of the state slices, there's going to be a separate folder. In this cas
 $ mkdir src/app/common/layout
 ```
 
+In the directory create three files for the layout state:
+```
+$ touch layout.actions.ts 
+```
+** layout.actions.ts **
+
+The layout actions will be dispatched every time an user action is made (closing and opening sidebar, opening a modal) or certain window events happen (window resizing).
+
+```
+import {Action} from '@ngrx/store';
+
+/*
+ Layout actions are defined here
+ */
+
+
+export const LayoutActionTypes = {
+
+
+};
+
+/*
+ The action classes will be added here once they are defined
+*/
+
+export type LayoutActions = null;
+
+```
+**layout.reducer.ts**
+```
+$ touch layout.reducer.ts 
+```
+The reducer of the layout will handle all changes of the application layout and create a new state every time the layout changes.
+```
+import * as layoutActions from './layout.actions';
+
+export interface State {
+ /*
+   The description of the different parts of the layout go here
+  */
+}
+
+const initialState: State = {
+  /*
+    The initial values of the layout state will be initialized here
+   */
+};
+
+
+/*
+  The reducer of the layout state. Each time an action for the layout is dispatched,
+  it will create a new state for the layout.
+ */
+export function reducer(state = initialState, action: layoutActions.LayoutActions): State {
+  switch (action) {
+    default:
+      return state;
+  }
+}
+
+```
+
+
 # Modals
 
 # Sidebars
