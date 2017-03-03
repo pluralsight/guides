@@ -68,6 +68,25 @@ import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
 })
 ```
 
+### Setting up the application store and meta reducer
+
+Start off by adding the core dependencies for the Redux application store:
+```
+$ yarn add @ngrx/core
+$ yarn add @ngrx/store
+```
+
+To structure the application's files properly, all the redux-related files will stay in `src/app/common` directory.
+
+```
+$ mkdir src/app/common
+```
+
+For each of the state slices, there's going to be a separate folder. In this case, for the layout state, create a `common/layout` directory
+
+```
+$ mkdir src/app/common/layout
+```
 
 # Modals
 
