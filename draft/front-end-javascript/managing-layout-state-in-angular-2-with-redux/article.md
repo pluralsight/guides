@@ -470,7 +470,10 @@ As you can see, you can reuse the `handleOpenModal` and `handleCloseModal`. No m
 
 ```
 In this case `handleOpenModal` is dispatched through clicking a button, but it can also be dispatched as an output from another component, a directive,a service or an effect. The possibilities are endless.
-# Sidebars
+
+### ** GIF GOES HERE ** 
+
+# Sidebar(s)
 
 # Pagination
 
