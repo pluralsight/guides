@@ -232,6 +232,37 @@ import {metaReducer} from "./common/index";
 export class AppModule { }
 
 ```
+#### Smart containers and directives, dumb components
+If you are fimilar with Redux, you would know that there are two types of components - [presentional(dumb components) and container components](https://medium.com/@dan_abramov/smart-and-dumb-components-7ca2f9a7c7d0#.e8sft6x0y). When building the layout state, it's best to keep the logic inside directives in order to keep the logic [DRY](http://deviq.com/don-t-repeat-yourself/). You don't have to write the same logic for a sidebar in every container component in your application.
+
+#Note Another possibility is to keep the logic in the container and only in exceptional cases there's a need to put the logic inside a component that represents a layout element.
+
+In this guide, the container component will be the `AppComponent`. In order to make the state of the application accessible in it and be able to dispatch actions, you have to import `layout.actions` and the root state:
+
+```
+import { Component } from '@angular/core';
+import {Store} from "@ngrx/store";
+import {Observable} from "rxjs";
+/**
+ * Import the root state in order to select parts of it.
+ */
+import * as fromRoot from './common/index';
+/*
+ * Import the layout actions to make dispatching from the component possible.
+ */
+import * as layout from './common/layout/layout.actions';
+
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css']
+})
+export class AppComponent {
+  constructor(private store: Store<fromRoot.AppState>) {}
+
+}
+
+```
 # Modals
 
 # Sidebars
