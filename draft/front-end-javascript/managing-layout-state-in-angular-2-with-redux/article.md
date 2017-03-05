@@ -1,5 +1,8 @@
 # The benefits of controlling your application layout with Redux
- of the application is going to be a representation of the states of all elements in the layout - accordions, sidebars, pagination and everything that is pertinent to the use cases in the application. Reduxifying the layout
+ of the application is going to be a representation of the states of all elements in the layout - accordions, sidebars, pagination and everything that is pertinent to classify as part of the layout of the application. Reduxifying the layout leads to numerous benefits and adds great flexibility to controlling the layout of the applicaiton and make previously difficult use cases a breeze to implement.
+ 
+ * Persist the state of your layout such as keeping the sidebar opened or closed when changing routes.
+ * Control the layout in any point of the application, without worrying how components are related.
 # Setup
  The examples  below will be done with [ng-boostrap]() since it's one of the most popular libraries with Angular 2 components for Bootstrap 4. However, you can also implement these examples with other component libraries such as [Material Design](https://github.com/angular/material2) by following the same design principles and making small adjustments to the code so that it works with the API of the corresponding library.
  
@@ -63,7 +66,7 @@ import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
 @NgModule({
     //..
     imports: [
-        NgbModule
+        NgbModule.forRoot()
     ],
     //..
 })
@@ -102,6 +105,7 @@ Create `common/layout` directory which is going to contain all actions, effects,
 
 ```
 $ mkdir src/app/common/layout
+$ cd src/app/common/layout
 ```
 
 In the directory create three files for the layout state:
@@ -138,7 +142,7 @@ $ touch layout.reducer.ts
 ```
 The reducer of the layout will handle all changes of the application layout and create a new state every time the layout changes.
 ```
-import * as layoutActions from './layout.actions';
+import * as layout from './layout.actions';
 
 export interface State {
  /*
@@ -157,8 +161,8 @@ const initialState: State = {
   The reducer of the layout state. Each time an action for the layout is dispatched,
   it will create a new state for the layout.
  */
-export function reducer(state = initialState, action: layoutActions.LayoutActions): State {
-  switch (action) {
+export function reducer(state = initialState, action: layout.LayoutActions): State {
+  switch (action.type) {
     default:
       return state;
   }
@@ -263,8 +267,209 @@ export class AppComponent {
 }
 
 ```
+
+All dumb components will be kept in a separate directory named `components`:
+```
+$ mkdir src/app/components
+```
 # Modals
 
+The easiest way to mplement a modal in the state is to keep its name as an identifier. Since only one modal can be opened at a time in the layout (unless you're trying to do some kind of black magic), every modal can be referenced by a `modalName`.
+
+Let's start with the actions. An user can open and close a modal, so let's add actions for that:
+
+### Adding to the state
+**layout.actions.ts**
+```
+export const LayoutActionTypes =  {
+  OPEN_MODAL: '[Layout] Open modal',
+  CLOSE_MODAL: '[Layout] Close modal'
+};
+
+/*
+  Modal actions
+ */
+export class OpenModalAction implements Action {
+  type = LayoutActionTypes.OPEN_MODAL;
+  constructor(public payload:string) {
+  }
+}
+
+export class CloseModalAction implements Action {
+  type = LayoutActionTypes.CLOSE_MODAL;
+  constructor() {
+  }
+}
+
+
+export type LayoutActions = CloseModalAction | OpenModalAction
+```
+
+Let's go forward and implement how modal actions will be handled in the layout reducer:
+**layout.reducer.ts**
+```
+import * as layout from './layout.actions';
+
+export interface State {
+  openedModalName:string;
+}
+
+const initialState: State = {
+  openedModalName: null
+};
+
+
+export function reducer(state = initialState, action: layout.LayoutActions ): State {
+  switch (action.type) {
+    /*
+      Modal cases
+     */
+    case layout.LayoutActionTypes.OPEN_MODAL: {
+
+      const name = action.payload;
+      return Object.assign({}, state, {
+        openedModalName:name
+      });
+    }
+
+    case layout.LayoutActionTypes.CLOSE_MODAL: {
+      return Object.assign({}, state, {
+        openedModalName:null
+      });
+    }
+    default:
+      return state;
+  }
+}
+
+export const getOpenedModalName = (state:State) =>  state.openedModalName;
+```
+The currently opened modal's name will be stored in the `openedModalName` which will be set and unset according to the dispatched action.
+A selector `getOpenedModalName` is needed to easily access the `openedModalName` property within the state.
+
+In `index.ts`, add a selector to access the `openedModalName` property from the application state:
+**index.ts**
+```
+export const getLayoutState = (state: AppState) => state.layout;
+
+//...
+export const getLayoutOpenedModalName = createSelector(getLayoutState , fromLayout.getOpenedModalName);
+```
+### Usage 
+ To see how it works, let's create a sample modal:
+ 
+```
+$ touch src/app/components/template-modal.component.ts
+$ touch src/app/components/template-modal.template.ts
+```
+
+**template-modal.component.ts**
+```
+
+import {Component, ChangeDetectionStrategy, Output, ViewChild, EventEmitter, Input, ElementRef} from '@angular/core';
+import {NgbModal, NgbModalRef} from "@ng-bootstrap/ng-bootstrap";
+
+
+@Component({
+  selector: 'template-modal',
+  templateUrl: 'template-modal.template.html'
+})
+export class TemplateModalComponent {
+
+  private modalName:string =  'templateFormModal';
+  private modalRef:NgbModalRef;
+
+  @ViewChild('content') _templateModal:ElementRef;
+
+  @Input() set modalState(_modalState:any) {
+    if(_modalState == this.modalName) {
+      this.openModal()
+    } else if(this.modalRef) {
+      this.closeModal();
+    }
+  }
+
+  @Output() onCloseModal = new EventEmitter<any>();
+
+  constructor(private modalService: NgbModal) {}
+
+  openModal() {
+    this.modalRef = this.modalService.open(this._templateModal, {backdrop: 'static' , keyboard: false, size: 'sm'})
+  }
+
+  closeModal()  {
+    this.modalRef.close();
+  }
+
+
+}
+
+```
+The name of the currently selected modal is coming from the container and is obtained through the `modalState` input of the component. If the name matches with the `modalName` (templateFormModal), then the modal is opened through the `modalService`.
+Conversely, `onCloseModal` is used to emit to the container that te user has clicked to close the modal.
+
+**template-modal.template.html**
+```
+<template #content="" let-c="close" let-d="dismiss">
+  <div class="modal-header">
+    <div class="row">
+      <div class="col-sm-10">
+        Template Modal
+      </div>
+      <div class="col-sm-2">
+        <button class="close" type="button" aria-label="Close" (click)="d('Cross click'); onCloseModal.emit()"><span aria-hidden="true">×</span></button>
+      </div>
+    </div>
+  </div>
+  <div class="modal-body">
+    Modal with Redux using a template. You can put anything here
+  </div>
+  <div class="modal-footer">
+    <div class="btn-group">
+      <button class="btn btn-warning" type="button" (click)="d('Cross click'); onCloseModal.emit()">Close</button>
+    </div>
+  </div>
+</template>
+```
+Every time the user attempts to close te modal, `onCloseModal` directly emits from the template to the container. In case you have issues understanding how the modal works, you cna check the [standard implementation of a ng-bootstrap modal without Redux](https://ng-bootstrap.github.io/#/components/modal).
+
+In the container there need to be handlers for gettng the `openedModalName` from the state and dispatching an action for closing a modal:
+
+**app.component.ts**
+```
+export class AppComponent {
+  public openedModalName$: Observable<any>;
+
+  constructor(private store: Store<fromRoot.AppState>) {
+    // Use the selector to directly get the opened modal name from the state
+    this.openedModalName$ = store.select(fromRoot.getLayoutOpenedModalName);
+  }
+
+  //Dispatch an action to open a modal
+  handleOpenModal(modalName:string) {
+    this.store.dispatch(new layout.OpenModalAction(modalName));
+  }
+
+  handleCloseModal() {
+    this.store.dispatch(new layout.CloseModalAction());
+  }
+
+}
+```
+
+As you can see, you can reuse the `handleOpenModal` and `handleCloseModal`. No matter how many modals your container has, the only thing that needs to be specified is the `modalName` of the modal you would like to see opened. 
+
+**app.template.html**
+```
+<!-- Use the async pipe to get the latest broadcasted value of on observable as an input in the component  -->
+<template-modal [modalState]="this.openedModalName$ | async" (onCloseModal)="handleCloseModal()"></template-modal>
+<button class="btn btn-outline-primary" (click)="handleOpenModal('templateFormModal')">Open modal with template</button>
+
+<!-- Don't forget to add this: -->
+<template ngbModalContainer></template>
+
+```
+In this case `handleOpenModal` is dispatched through clicking a button, but it can also be dispatched as an output from another component, a directive,a service or an effect. The possibilities are endless.
 # Sidebars
 
 # Pagination
