@@ -274,7 +274,7 @@ $ mkdir src/app/components
 ```
 # Modals
 
-The easiest way to mplement a modal in the state is to keep its name as an identifier. Since only one modal can be opened at a time in the layout (unless you're trying to do some kind of black magic), every modal can be referenced by a `modalName`.
+The easiest way to implement a modal in the state is to keep its name as an identifier. Since only one modal can be opened at a time in the layout (unless you're trying to do some kind of black magic), every modal can be referenced by a `modalName`.
 
 Let's start with the actions. An user can open and close a modal, so let's add actions for that:
 
@@ -474,6 +474,113 @@ In this case `handleOpenModal` is dispatched through clicking a button, but it c
 ### ** GIF GOES HERE ** 
 
 # Sidebar(s)
+ The most generic representation of a sidebar in an application comes down to whether the sidebar is opened or not. The state will have a property that denotes whether a sidebar is `opened` or `closed` using a boolean value. In case there are two sidebars (or more, depends on what kind of sorcery your're doing), there will be a property in the state for each. 
+ 
+ For the user to start interacting with the sidebar, there need to be actions for opening and closing:
+ 
+ **layout.actions.ts**
+ ```
+ export const LayoutActionTypes =  {
+  //Left sidenav actions
+  OPEN_LEFT_SIDENAV: type('[Layout] Open LeftSidenav'),
+  CLOSE_LEFT_SIDENAV: type('[Layout] Close LeftSidenav'),
+  //Right sidenav actions
+  OPEN_RIGHT_SIDENAV: type('[Layout] Open RightSidenav'),
+  CLOSE_RIGHT_SIDENAV: type('[Layout] Close RightSidenav'),
+};
+
+
+export class OpenLeftSidenavAction implements Action {
+  type = LayoutActionTypes.OPEN_LEFT_SIDENAV;
+
+  constructor() {
+  }
+}
+export class CloseLeftSidenavAction implements Action {
+  type = LayoutActionTypes.CLOSE_LEFT_SIDENAV;
+
+  constructor() {
+  }
+}
+export class OpenRightSidenavAction implements Action {
+  type = LayoutActionTypes.OPEN_RIGHT_SIDENAV;
+
+  constructor() {
+  }
+}
+
+export class CloseRightSidenavAction implements Action {
+  type = LayoutActionTypes.CLOSE_RIGHT_SIDENAV;
+
+  constructor() {
+  }
+}
+ 
+ 
+export type LayoutActions =  CloseLeftSidenavAction | OpenLeftSidenavAction |   CloseRightSidenavAction |OpenRightSidenavAction
+ ```
+ As it was already discussed, the states of the sidebar will be represented with boolean variables. In this case, the left sidenav will be open by default, but there can be logic that checks if the window size is small enough to dispatch a `CloseLeftSidenavAction` to close it:
+ 
+ **layout.reducer.ts**
+ ```
+ import * as layout from './layout.actions';
+
+export interface State {;
+  leftSidebarOpened:boolean;
+  rightSidebarOpened:boolean;
+}
+
+const initialState: State = {
+  leftSidebarOpened:true,
+  rightSidebarOpened:false
+};
+
+
+export function reducer(state = initialState, action: layout.LayoutActions ): State {
+  switch (action.type) {
+    case layout.LayoutActionTypes.CLOSE_LEFT_SIDENAV: {
+      return Object.assign({}, state, {
+        leftSidebarOpened: false
+      });
+    }
+    case layout.LayoutActionTypes.OPEN_LEFT_SIDENAV: {
+      return Object.assign({}, state, {
+        leftSidebarOpened: true
+      });
+    }
+    case layout.LayoutActionTypes.CLOSE_RIGHT_SIDENAV: {
+      return Object.assign({}, state, {
+        rightSidebarOpened: false
+      });
+    }
+    case layout.LayoutActionTypes.OPEN_RIGHT_SIDENAV: {
+      return Object.assign({}, state, {
+        rightSidebarOpened: true
+      });
+    }
+
+    default:
+      return state;
+  }
+}
+
+export const getLeftSidenavState = (state:State) => state.leftSidebarOpened;
+export const getRightSidenavState = (state:State) => state.rightSidebarOpened;
+```
+In the root of the state, add selectors to access the states of the sidebars:
+**index.ts**
+```
+//...
+
+export const getLeftSidenavState = (state:State) => state.leftSidebarOpened;
+export const getRightSidenavState = (state:State) => state.rightSidebarOpened;
+
+```
+
+### Usage
+
+
+ Instead of putting the logic in each of the sidebar components, it can be combined within a structural directive which closes and opens the corresponding sidebar depening on the state of the application.
 
 # Pagination
 
