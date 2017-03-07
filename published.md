@@ -1,3 +1,8 @@
+### Getting started with Codeigniter 3 by Aouadi Mohamed Adib
+- [Read the guide](https://www.pluralsight.com/guides/php/getting-started-with-codeigniter-3)
+- [Read more from Aouadi Mohamed Adib](https://www.pluralsight.com/guides/author/Adib12) <img src="https://avatars3.githubusercontent.com/u/11527075?v=3" width="30" height="30" alt="Aouadi Mohamed Adib" />
+- Related to: PHP
+
 ### TicTacToe with native Javascript ES6 by moshmage
 - [Read the guide](https://www.pluralsight.com/guides/front-end-javascript/tictactoe-with-native-javascript-es6)
 - [Read more from moshmage](https://www.pluralsight.com/guides/author/moshmage) <img src="https://avatars.githubusercontent.com/u/1077079?v=3" width="30" height="30" alt="moshmage" />
