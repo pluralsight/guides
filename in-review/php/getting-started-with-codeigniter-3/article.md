@@ -1,4 +1,4 @@
-### What is CodeIgniter ?
+# What is CodeIgniter ?
 
 CodeIgniter is a powerful PHP framework with a very small footprint, built for developers who need a simple and elegant toolkit to create fully-featured web applications.
 
@@ -21,6 +21,8 @@ CodeIgniter is for you if:
 1. Download CodeIgniter from [codeigniter.com](https://www.codeigniter.com/download) 
 2. Unzip the folder.
 3. Copy the folder on `www folder` if you use Wampserver or `htdocs` if you use [Xampp](http://www.phpknowhow.com/basics/working-with-xampp/).
+
+# Basics
 
 ### Application Architecture
 
@@ -107,6 +109,9 @@ $db['default'] = array(
 	'save_queries' => TRUE
 );
 ```
+
+# Example
+
 
 Now let's try out an example. We want to show a list of users from a data table. Let's start with the model.
 
@@ -235,7 +240,7 @@ Lastly we have the view, which dictates what the user sees. We will use HTML to 
 
 And with that, we have a responsive, script-based table that shuffles between Model, View, and Controller.
 
-## Conclusion
+# Conclusion
 
 In this tutorial, we covered the basics of application architecture, Model-View-Controller, and writing short, quick scripts using CodeIgniter. Hopefully this guide demonstrated CodeIgniter's very straightforward setup and configuration process as well as its ease of use. 
 
