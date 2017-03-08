@@ -581,6 +581,138 @@ export const getRightSidenavState = (state:State) => state.rightSidebarOpened;
 
 
  Instead of putting the logic in each of the sidebar components, it can be combined within a structural directive which closes and opens the corresponding sidebar depening on the state of the application.
+ 
+ ```
+ $ mkdir src/app/diretives
+ $ touch src/app/directives/sidebar-watch.directive.ts
+ ```
+ 
+ **sidebar-watch.directive.ts**
+ 
+ ```
+ import {Directive, ElementRef, Renderer, OnInit, AfterViewInit, AfterViewChecked} from '@angular/core';
+import {Store} from "@ngrx/store";
+import * as fromRoot from "../common/index";
+let $ = require('jquery');
+
+@Directive({selector: '[sidebarWatch]'})
+
+export class SidebarWatchDirective implements OnInit{
+  constructor(private el: ElementRef, private _store: Store<fromRoot.AppState>) {}
+
+  /*
+   Doing the checks on ngOnInit makes sure the DOM is fully loaded and the
+   elements are available to be selected
+   */
+  ngOnInit() {
+    /*
+     Watch for the left sidebar state
+     */
+    this._store.select(fromRoot.getLayoutLeftSidenavState).subscribe((state) => {
+      if (this.el.nativeElement.className == 'left-sidebar') {
+        if (state) {
+          $("#main-content").css("margin-left", "300px");
+          $(this.el.nativeElement).css('width', '300px');
+        } else {
+          $("#main-content").css("margin-left", "0");
+          $(this.el.nativeElement).css('width', '0');
+        }
+      }
+    });
+
+    /*
+     Watch for the right sidebar state
+     */
+    this._store.select(fromRoot.getLayoutRightSidenavState).subscribe((state) => {
+      /*
+       You can use classes (addClass/removeClass) instead of using jQuery css(), or you
+       can go completely vanilla by using selectors such as windiw.getElementById(). .
+       */
+      if (this.el.nativeElement.className == 'right-sidebar') {
+        console.log('test')
+        if (state) {
+          $('#fade').addClass('fade-in');
+          $("#rightBar-body").css("opacity", "1");
+          $("body").css("overflow","hidden");
+          $(this.el.nativeElement).css('width', '60%');
+        } else {
+          $('#fade').removeClass('fade-in');
+          $("#rightBar-body").css("opacity", "0");
+          $("body").css("overflow","auto");
+          $(this.el.nativeElement).css('width', '0');
+        }
+      }
+    });
+  }
+
+}
+ 
+ ```
+ The directive checks to which sidebar is applied to by checking `ElementRef`'s `nativeElement`, which makes the DOM properties of the template accessible in the component.
+ Once it is decided to which sidebar it is applied to, the directive checks whether the corresponding state (`LeftSidenavbarState` or `RightSidenavbarState`, respectively) is `true` or `false`. Then the directive uses jQuery to manipulate the corresponding elements in the layout. The use of jQuery to select and directly change the DOM element's style properties is optional and you can use addition and removal of classes or by using plain JavaScript.
+ 
+ Following the same logic, there can be a directive for toggling the sidebars:
+ 
+ ```
+  $ touch src/app/directives/sidebar-toggle.directive.ts
+ ```
+ 
+ **sidebar-toggle.directive.ts**
+ 
+ ```
+ /**
+ * Created by Centroida-2 on 1/22/2017.
+ */
+import {Directive, Input, ElementRef, Renderer, HostListener} from '@angular/core';
+import {Store} from "@ngrx/store";
+import * as fromRoot from "../common/index";
+import * as layout from '../common/layout/layout.actions'
+@Directive({
+  selector: '[sidebarToggle]'
+})
+
+export class SidebarToggleDirective {
+  public leftSidebarState: boolean;
+  public rightSidebarState: boolean;
+  @Input() sidebarToggle: string;
+
+  @HostListener('click', ['$event'])
+  onClick(e) {
+    /*
+     Left sidenav toggle
+     */
+    if (this.sidebarToggle == "left" && this.leftSidebarState) {
+      this._store.dispatch(new layout.CloseLeftSidenavAction());
+    } else if(this.sidebarToggle == "left" && !this.leftSidebarState) {
+      this._store.dispatch(new layout.OpenLeftSidenavAction())
+    }
+
+    /*
+     Right sidenav toggle
+     */
+    if (this.sidebarToggle == "right" && this.rightSidebarState) {
+      this._store.dispatch(new layout.CloseRightSidenavAction());
+    } else if(this.sidebarToggle == "right" && !this.rightSidebarState) {
+      this._store.dispatch(new layout.OpenRightSidenavAction());
+    }
+  }
+
+  constructor(private el: ElementRef,private renderer: Renderer, private _store: Store<fromRoot.AppState>) {
+    this._store.select(fromRoot.getLayoutLeftSidenavState).subscribe((state) => {
+      this.leftSidebarState = state;
+    });
+
+    this._store.select(fromRoot.getLayoutRightSidenavState).subscribe((state) => {
+      this.rightSidebarState = state;
+    });
+
+
+
+  }
+
+}
+
+ ```
 
 # Pagination
 
