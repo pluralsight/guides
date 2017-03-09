@@ -401,8 +401,6 @@ export class TemplateModalComponent {
   closeModal()  {
     this.modalRef.close();
   }
-
-
 }
 
 ```
@@ -706,9 +704,6 @@ export class SidebarToggleDirective {
     this._store.select(fromRoot.getLayoutRightSidenavState).subscribe((state) => {
       this.rightSidebarState = state;
     });
-
-
-
   }
 
 }
@@ -718,6 +713,7 @@ export class SidebarToggleDirective {
  The directive has an `@Input sidebarToggle` which can be either `left` or `right` , depending on which sidebar the directive has to control.  Every time the use clicks on the element to which the directive is attached  to, the `@HostListener('click')` catches the event and checks the state of the sidebar of the store and dispatches the corresponding action.
  
  Next, add the directives to the root module:
+ 
  **app.module.ts**
  ```
 import {SidebarWatchDirective} from "./directives/sidebar-watch.directive";
@@ -838,8 +834,38 @@ import {RightSidebarComponent} from "./components/right-sidebar.component";
 })
  ```
 
-In the root component
+In the root component of the application, put the sidebars on top all the content in a div with a class 'main-content':
+**app.component.html**
 
+```
+<div id="fade" class="fade-in"></div>
+<left-sidebar></left-sidebar>
+<right-sidebar></right-sidebar>
+<div id="main-content">
+  <button class="btn btn-primary" sidebarToggle="left">Toggle Left Sidebar</button>
+  <button class="btn btn-primary" sidebarToggle="right">Toggle Right Sidebar</button>
+  
+  <!-- ... -->
+</div>
+<!-- ... -->
+```
+The div with id `fade` will be used for the fade effect when the right sidebar is opened. Add the styles to the component styles:
+
+**app.component.css**
+
+```
+.fade-in {
+  position: absolute;
+  min-height: 100%!important;
+  top: 0; right: 0; bottom: 0; left: 0;
+  background: rgba(0,0,0,0.5);
+  width: 100%;
+  transition: top 0.3s, right 0.3s, bottom 0.3s, left 0.3s;
+}
+
+```
+
+With this setup, the sidebars are truly container-agnostic. Any element can be made a sidebar through a directive and be toggled from any point of the layout. There is also flexibility if there's a requirement  to add additional components such as bottom bars or top bars.
 
 # Pagination
 
