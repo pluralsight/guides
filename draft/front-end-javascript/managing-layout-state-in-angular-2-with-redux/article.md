@@ -3,6 +3,7 @@
  
  * Persist the state of your layout such as keeping the sidebar opened or closed when changing routes.
  * Control the layout in any point of the application, without worrying how components are related.
+
 # Setup
  The examples  below will be done with [ng-boostrap]() since it's one of the most popular libraries with Angular 2 components for Bootstrap 4. However, you can also implement these examples with other component libraries such as [Material Design](https://github.com/angular/material2) by following the same design principles and making small adjustments to the code so that it works with the API of the corresponding library.
  
@@ -713,6 +714,132 @@ export class SidebarToggleDirective {
 }
 
  ```
+ 
+ The directive has an `@Input sidebarToggle` which can be either `left` or `right` , depending on which sidebar the directive has to control.  Every time the use clicks on the element to which the directive is attached  to, the `@HostListener('click')` catches the event and checks the state of the sidebar of the store and dispatches the corresponding action.
+ 
+ Next, add the directives to the root module:
+ **app.module.ts**
+ ```
+import {SidebarWatchDirective} from "./directives/sidebar-watch.directive";
+import {SidebarToggleDirective} from "./directives/sidebar-toggle.directive";
+
+
+ @NgModule({
+  declarations: [
+    //...
+    SidebarWatchDirective,
+    SidebarToggleDirective,
+    ]
+    //...
+})
+ 
+ ```
+To demonstrate how everything come together, let's make two sidebars:
+```
+$ touch src/app/components/left-sidebar.component.ts
+```
+
+**left-sidebar.component.ts**
+
+```
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'left-sidebar',
+  templateUrl: 'left-sidebar.template.html',
+  styleUrls: ['./sidebar.styles.css']
+})
+export class LeftSidebarComponent  {
+  constructor() {}
+}
+```
+```
+$ touch src/app/components/left-sidebar.template.html
+```
+**left-sidebar.template.html**
+```
+<section sidebarWatch class="left-sidebar">
+</section>
+```
+
+```
+$ touch src/app/components/right-sidebar.component.ts
+```
+**right-sidebar.component.ts**
+```
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'right-sidebar',
+  templateUrl: 'right-sidebar.template.html',
+  styleUrls: ['./sidebar.styles.css']
+})
+export class RightSidebarComponent  {
+  constructor() {}
+}
+```
+```
+$ touch src/app/components/right-sidebar.template.html
+```
+**right-sidebar.template.html**
+```
+<section sidebarWatch class="right-sidebar">
+  <button class="btn btn-primary" sidebarToggle="right">Close Right Sidebar</button>
+</section>
+```
+Usage of the `sidebarWatch` directive is quite straightforward - they just need to be put in the topmost elements of the sidebars. 
+
+The `sidebarToggle` needs to be put in a button (although you can put it anywhere you like) and it needs to have the `left` or `right` value assigned to it.
+
+To make the elements look and feel like sidebars, there needs to be some additional css:
+
+```
+$ touch src/app/components/sidebar.styles.css
+```
+
+**sidebar.styles.css**
+
+```
+.left-sidebar,.right-sidebar {
+  transition: width 0.3s;
+  height: 100%;
+  position: fixed;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
+}
+
+.left-sidebar{
+  background: #909090;
+}
+
+
+.right-sidebar{
+  overflow-y: auto !important;
+  overflow-x: hidden !important;
+  right: 0;
+  z-index: 999 !important;
+  background:#212121;
+
+}
+```
+
+Add the sidebars to the root module:
+ **app.module.ts**
+ ```
+import {LeftSidebarComponent} from "./components/left-sidebar.component";
+import {RightSidebarComponent} from "./components/right-sidebar.component";
+
+ @NgModule({
+  declarations: [
+    //...
+    RightSidebarComponent,
+    LeftSidebarComponent
+    ]
+    //...
+})
+ ```
+
+In the root component
+
 
 # Pagination
 
