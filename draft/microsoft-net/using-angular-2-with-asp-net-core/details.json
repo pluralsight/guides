@@ -1,0 +1,15 @@
+{
+    "_publish_status": "draft",
+    "author_name": "syedikramshah",
+    "author_real_name": "Syed Ikram Shah",
+    "branch": "master",
+    "branches": [],
+    "filename": "article.md",
+    "first_commit": "75474394b24854efc28da50ae46c262ff3b7b66a",
+    "image_url": "https://avatars2.githubusercontent.com/u/6046692?v=3",
+    "stacks": [
+        "Microsoft.NET (C#, ASP.NET, VB.NET, etc)"
+    ],
+    "thumbnail_url": null,
+    "title": "Using Angular 2 with ASP.NET Core"
+}
