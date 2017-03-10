@@ -1,8 +1,3 @@
-### Using Angular 2 with ASP.NET Core by Syed Ikram Shah
-- [Read the guide](https://www.pluralsight.com/guides/microsoft-net/using-angular-2-with-asp-net-core?status=draft)
-- [Read more from Syed Ikram Shah](https://www.pluralsight.com/guides/author/syedikramshah) <img src="https://avatars2.githubusercontent.com/u/6046692?v=3" width="30" height="30" alt="Syed Ikram Shah" />
-- Related to: Microsoft.NET (C#, ASP.NET, VB.NET, etc)
-
 ### Managing layout state in Angular 2 with Redux  by Hristo Georgiev
 - [Read the guide](https://www.pluralsight.com/guides/front-end-javascript/managing-layout-state-in-angular-2-with-redux?status=draft)
 - [Read more from Hristo Georgiev](https://www.pluralsight.com/guides/author/Kaizeras) <img src="https://avatars0.githubusercontent.com/u/6340189?v=3" width="30" height="30" alt="Hristo Georgiev" />
