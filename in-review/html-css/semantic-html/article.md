@@ -1,14 +1,14 @@
-# Introduction
+# Semantics
 
-There are over 1 billion websites on the Internet. A large number of them are made a long time ago and they are not updated with the latest HTML features. For that reason, they are not search engine friendly and they are not acessible for blind and visually impaired persons.
+There are over *a billion* websites on the Internet. Many of them are made a long time ago and have not been updated with HTML features. As such, search engines move past these websites, and viewers find this websites difficult to read.
 
-One of the most important features of the [HTML5](https://en.wikipedia.org/wiki/HTML5) is its **semantics**. It adds more information to basic html elements and makes a web page more informative and adaptable to search engines and [screen readers](https://en.wikipedia.org/wiki/Screen_reader).
+One of the most important features of [HTML5](https://en.wikipedia.org/wiki/HTML5) is its **semantics**. It adds more information to basic HTML elements and makes a web page more informative and adaptable to search engines and [screen readers](https://en.wikipedia.org/wiki/Screen_reader).
 
 In this tutorial you will learn how to use new semantic HTML5 tags in a web page creation and how to make its content more informative for machines.
 
 # Semantic HTML Page Layout
 
-Let's first consider a basic HTML page structure, written in the basic (non-semantic) HTML:
+Let's first consider a basic HTML page template, written in non-semantic HTML:
 ``` HTML
 <html>
     <head>
@@ -27,7 +27,7 @@ Let's first consider a basic HTML page structure, written in the basic (non-sema
     </body>
 </html>
 ```
-In the semantic HTML, the code above should look like this:
+Now consider the example of semantic HTML shown below:
 ``` HTML
 <html>
     <head>
@@ -46,11 +46,11 @@ In the semantic HTML, the code above should look like this:
     </body>
 </html>
 ```
-As you can notice, we have replaced *div* tags with 3 new tags: *header*, *main* and *footer*. Those tags are **semantic** and they are used to represent different sections on a HTML page. There are more descriptive than *div* tags, since there is no doubt what parts of the HTML page are header and footer and in which section of the page is the main content.
+The main difference: we have replaced *div* tags with 3 new tags: *header*, *main* and *footer*. `header`, `main`, and `footer` tags are **semantic** because they are used to represent different sections on a HTML page. These are more descriptive than *div* tags which make partitioning webpages into tangible sections difficult.
 
 ## Navigation
 
-In the HTML5, there is the *nav* tag, so we can use it instead of the *div* tag to wrap links that make a navigation menu. For instance, the navigation menu can be inserted within the *header* section:
+In HTML5, there is the *nav* tag, which replaces the former jack-of-all-trades, *div*, to wrap links that make a navigation menu. For instance, the navigation menu can be inserted within the *header* section:
 ``` HTML
 <header>
     <img src="logo.png" alt="logo"/>
@@ -76,11 +76,11 @@ but, it also can be added after the *header* section:
 </nav> 
 
 ```
-Generally, the navigation menu can be put anywhere on a page, it just needs to be wrapped with the *nav* tag. However, it shouldn't be put inside of the *main* tab, unless the navigation is specific for that page, because in the *main* tag should be a content that is specific for the page. 
+Generally, the navigation menu can be put anywhere on a page, it just needs to be wrapped with the `<nav></nav>`. However, it shouldn't be put inside `main`, unless the navigation is specific for that page. This restriction exists because `main` elements should only be specific for the page, while `header` and `footer` are generally shareable among similar pages. 
 
 ## Main Content
 
-In order to add some content into the *main* section, we need to use new HTML5 tags for that purpose, *article* and *section*, so the *main* section could, for instance, have the following structure:
+To add some content into the `main` section, we can use new HTML5 tags, such as `article` and `section`. These tags simplify the structure of `main`, making it look like:
 
 ``` HTML
 <main>
@@ -102,11 +102,13 @@ In order to add some content into the *main* section, we need to use new HTML5 t
     </article>
 </main>
 ```
-The *article* tag is used for wrapping an autonomous content on a page. A content is autonomous if it can be removed from the page and put on some another page. The *article* tag can contain several *section* tags inside it, like in our example. The *section* tag is similar to the *div* tag, but it is more meaningful, since it is used to wrap a logical group of related content (e.g. a chapter of an article). The *section* tag can be also used to wrap the article, but it's much better to use the *article* tag for that purpose, since it is more informative. An *article* is actually an autonomous *section*.
+The `article` tag is used for wrapping an autonomous content on a page. A content is autonomous if it can be removed from the page and put on some another page. The `article` tag can contain several `section` tags inside it, like in our example. An `article` is actually an autonomous `section`.
+
+The `section` tag is similar to the `div` tag, but it is more meaningful since it wraps logical groups of related content (e.g. a chapter of an article). The `section` tag can be also used to wrap the article itself, but we have the `article` tag for that purpose.
 
 ## Additional Content
 ### Aside section
-An additional content, unimportant for understanding an article, but related to the article, can be inserted into the *aside* section. For instance, it could be an information about how many people read that article, who is the author of the article etc. In that case, the HTML code of the article could have the following structure:
+An additional content, unimportant for understanding an article, but related to the article, can be inserted into the `aside` section. For instance, it could be information about how many people read the article, who is the author of the article, and so on. In that case, the HTML code of the article would take the following structure:
 
 ``` HTML
 <main>
@@ -133,17 +135,17 @@ An additional content, unimportant for understanding an article, but related to 
 </main>
 ```
 
-The *aside* tag can be also used to enclose an additional content that is related to a whole page, not just to a particular article. That content can be a sidebar, advertising, footnote etc.
+As seen above, the `aside` allows search engines to quickly pull information like author, views, and date. This tag can be also used to enclose an additional content that is related to a whole page, not just to a particular article. For example, `aside` can wrap a sidebar, ad, footnote, and so on.
 
 ### Figures
 
-Figure elements on a web page can be enclosed with the *figure* and *figcaption* tags.
+Figure elements on a web page can be enclosed with the `figure` and `figcaption` tags.
 
-The *figure* tag is used to mark up photos, code blocks, diagrams, charts, illustrations etc. Generally, it encloses a content that can be moved away into an appendix. Only images related to the content of a page should be within the *figure* tag (e.g. a logo image). Therefore, images like banner ads shouldn't be inside that tag. However, there is a way to add semantics to a banner ad and we will cover that in the Microdata section of this tutorial.
+The `figure` tag is used to mark up photos, code blocks, diagrams, charts, illustrations, and other graphic content. Generally, this tag encloses content that can be moved away into an appendix. Only images related to the content of a page should be within the `figure` tag (e.g. a logo image). Therefore, images like banner ads shouldn't be inside that tag. However, there is a way to add semantics to a banner ad which we will cover that in the Microdata section of this tutorial.
 
-The *figcaption* tag represents a caption or legend for a figure. It's optional, so it can be omitted. Only one *figcaption* tag can be nested into the *figure* tag, so if a *figure* contains multiple images, it can be only one *figcaption* for all of them.
+The `figcaption` tag represents a caption or legend for a figure. It's optional and can be omitted. Only one `figcaption` tag can be nested into the `figure` tag. Even if a `figure` contains multiple images, there can be only one `figcaption` for all of them.
 
-For instance, photos of people who liked the article could be enclosed with the *figure* tag. Since that information is not so important, it can be nested into the *aside* section of the article:
+For instance, photos of people who liked the article could be enclosed with the `figure` tag. Since that information is not crucial to webpage functionality, it can be nested into the `aside` section of the article.
 
 ``` HTML
 <aside>
@@ -157,7 +159,7 @@ For instance, photos of people who liked the article could be enclosed with the 
     </figure>
 </aside>
 ```
-The logo in the *header* section should be enclosed with the *figure* tag, as well, so our *header* section will finally have the following code:
+The logo in the `header` section should be enclosed with the `figure` tag, as well, so our `header` section will finally have the following code:
 
 ``` HTML
 <header>
@@ -172,17 +174,18 @@ The logo in the *header* section should be enclosed with the *figure* tag, as we
     </nav> 
 </header>
 ```
+
+Notice how the partitioning in the page makes the code more comprehensible and possibly improves browser and search engine content parsing.
+
 ## HTML5 Element Flowchart
 
-If you are unsure which semantic tag to use in a particular case, you can always follow this great flowchart made by authors of the [HTML5Doctor](http://html5doctor.com) website.
+If you are unsure which semantic tag to use in a particular case, you can always follow this great flowchart made by authors of [HTML5Doctor](http://html5doctor.com).
 
 ![HTML5 Sectioning Flowchart](http://html5doctor.com/downloads/h5d-sectioning-flowchart.png)
 
 # Microdata
 
-Microdata provide additional information about content of a web page. They help search engines and screen readers to better understand it.
-
-Microdata can be added as attributes to any HTML tag. For instance, let's add some data about the author of the article in our example. The *aside* section of the article will have the following code:
+Microdata provide additional information about content of a web page and help search engines and screen readers operate on the site. Microdata can be added as attributes to any HTML tag. For instance, let's add some data about the author of the article in our example. The `aside` section of the article will have the following code:
 
 ``` HTML
 <aside>
@@ -190,7 +193,7 @@ Microdata can be added as attributes to any HTML tag. For instance, let's add so
     <p>Author: John Smith, Senior Software Developer at Google, Mountain View, California</p>
 </aside>
 ```
-With microdata included, the HTML code of the *aside* section will be:
+With microdata included, the HTML code of the `aside` section will be:
 
 ``` HTML
 <aside>
@@ -210,9 +213,11 @@ With microdata included, the HTML code of the *aside* section will be:
     </p>
 </aside>
 ```
-There is obviously much more data in the code above than in the previous code, but there is also much more information for machines. As you could notice, we used the following microdata attributes: *itemscope*, *itemtype* and *itemprop*. So, what do all these attributes mean?
+There is obviously much more data in the code above than in the previous code, but there is also much more information for machines. As you could notice, we used the following microdata attributes: `itemscope`, `itemtype` and `itemprop`. So, what do all these attributes mean?
 
-The *itemscope* attribute indicates a new group of microdata. A group of microdata is called *item* and it contains pairs of properties and values. The type of an item is specified in the *itemtype* property and it is actually an URL to a web page that cointains information about the item. On that page we can see all properties the item could have. We usually use only several properties to describe an item and we define them in the *itemprop* attributes. A value of a property can be a new *item* (like the *address* in our example).
+`itemscope` indicates a new group of microdata. A group of microdata is called `item`. Items contain pairs of properties and values. The type of an item is specified by `itemtype`. This is actually a URL to a web page that contains information about the item. On that page we can see all properties the item could have. 
+
+We usually use only several properties to describe an item and we define these using the `itemprop` attribute. A value of a property can be a new `item` (like `address` in our example).
 
 We mentioned before in this tutorial that a banner can be described with microdata. So, the HTML code for that should look like this: 
 
@@ -222,11 +227,11 @@ We mentioned before in this tutorial that a banner can be described with microda
 </div> 
 ```
 
-There is a very useful tool for generating microdata, it is the [Microdata generator](http://webcode.tools/microdata-generator). It can save your time, and it can also teach you how to use microdata properly for various items. 
+There is a very useful tool for generating microdata called the [Microdata generator](http://webcode.tools/microdata-generator). It can save time and teach you how to use microdata properly for various items. 
 
 # Browser Support
 
-According to [this](http://caniuse.com/#feat=html5semantic) table, the HTML5 semantic tags are supported well in the latest browsers versions. For some older versions of the Internet Explorer, Firefox and Safari we can use  the [HTML5 Shiv](https://github.com/aFarkas/html5shiv) or [Modernizr](https://modernizr.com) (it includes the HTML5 Shiv).
+According to [this](http://caniuse.com/#feat=html5semantic) table, the HTML5 semantic tags are supported well in the latest browsers versions. For some older versions of the Internet Explorer, Firefox and Safari we can use  the [HTML5 Shiv](https://github.com/aFarkas/html5shiv) or [Modernizr](https://modernizr.com) (which includes the HTML5 Shiv).
 
 # Additional Resources
 
@@ -239,10 +244,8 @@ For more information about this topic, you can read these very useful articles:
 
 # Conclusion
 
-This tutorial has covered some basics of the semantic HTML. We created a semantic HTML layout and used *microdata* to add more information to the content of the web page.
+This tutorial covered several advantages of using semantic HTML. We created a semantic HTML layout and used *microdata* to add more information to the content of the web page.
 
-The semantic HTML tags helps a lot blind and visually impaired persons and search engines to better understand the content of a web page, so they improve its accessibility.
+Hopefully this tutorial gave you an understanding of how semantic HTML can improve a webpage and search engines interaction. And with more browsers taking on HTML5, semantic tags will inevitably become more common, so mastering them now could hold reward in the future.
 
-There is no reason for not using the semantic HTML tags, since there is a way to use them correctly in all important web browsers. The more your web site is accessible, the more visitors it will have, so their usage is highly recommended.
-
-Thank you very much for reading this tutorial.
+Thank you very much for reading this tutorial. Feel free to leave comments and questions below!
