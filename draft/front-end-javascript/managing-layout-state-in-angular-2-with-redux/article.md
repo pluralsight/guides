@@ -589,7 +589,7 @@ export const getRightSidenavState = (state:State) => state.rightSidebarOpened;
  **sidebar-watch.directive.ts**
 
  ```
- import {Directive, ElementRef, Renderer, OnInit, AfterViewInit, AfterViewChecked} from '@angular/core';
+import {Directive, ElementRef, Renderer, OnInit, AfterViewInit, AfterViewChecked} from '@angular/core';
 import {Store} from "@ngrx/store";
 import * as fromRoot from "../common/index";
 let $ = require('jquery');
@@ -719,7 +719,6 @@ export class SidebarToggleDirective {
 import {SidebarWatchDirective} from "./directives/sidebar-watch.directive";
 import {SidebarToggleDirective} from "./directives/sidebar-toggle.directive";
 
-
  @NgModule({
   declarations: [
     //...
@@ -806,8 +805,6 @@ $ touch src/app/components/sidebar.styles.css
 .left-sidebar{
   background: #909090;
 }
-
-
 .right-sidebar{
   overflow-y: auto !important;
   overflow-x: hidden !important;
@@ -899,7 +896,7 @@ With this setup, the sidebars are truly container-agnostic. Any element can be m
  **games.actions.ts**
 
  ```
- import {type} from "../util";
+import {type} from "../util";
 import {Action} from "@ngrx/store";
 export const GameActionTypes =  {
   /*
@@ -928,7 +925,6 @@ export class LoadGamesSuccessAction implements Action {
   constructor(public payload:any) {
   }
 }
-
 
 export type GameActions = LoadGamesAction | LoadGamesFailedAction | LoadGamesSuccessAction
 
@@ -969,8 +965,6 @@ $ touch src/app/common/games.reducer.ts
 import { createSelector } from 'reselect';
 import * as games from './games.actions';
 
-
-
 export interface State {
   loaded: boolean;
   loading: boolean;
@@ -989,8 +983,6 @@ const initialState: State = {
 
 export function reducer(state = initialState, action: games.GameActions): State {
   switch (action.type) {
-
-
     case games.GameActionTypes.LOAD: {
       const page = action.payload;
 
@@ -1025,10 +1017,7 @@ export function reducer(state = initialState, action: games.GameActions): State 
     }
     default:
       return state;
-
-
   }
-
 }
 /*
  Selectors for the state that will be later
@@ -1049,11 +1038,8 @@ using `page` from the games state. To do this, the state has to be added to the 
 
 **index.ts**
 ```
-
 import * as fromGames from "./games/games.reducer"
 //...
-
-
 export interface AppState {
   layout: fromLayout.State;
   games: fromGames.State
@@ -1064,15 +1050,10 @@ export const reducers = {
   games: fromGames.reducer
 };
 
-
-
 //...
-
-/**
- 
-Games selectors
+/*
+ Games selectors
  */
-
 export const getGamesState = (state: AppState) => state.games;
 export const getGamesEntities = createSelector(getGamesState, fromGames.getEntities);
 export const getGamesCount = createSelector(getGamesState, fromGames.getCount);
@@ -1125,7 +1106,6 @@ export class GamesService {
 
   }
 
-
   /**
    * This function converts a page to a pagination
    * query.
@@ -1151,17 +1131,12 @@ export class GamesService {
       }
   }
 
-
 }
 
 ```
 
-The currently selected page is taken from the state and passed through `paginate`. `paginate` is an utility
-function that converts the current page to `offset` and `limit` parameters as the
-[GiantBomb APi documentation requires for paginating results](http://www.giantbomb.com/api/documentation#toc-0-15)
-This implementation provides a great deal of convenience and efficiency -  the application state is used to both  represent the state in the client and
- also give instructions to the server what results to fetch.
- 
+The currently selected page is taken from the state and passed through `paginate`. `paginate` is an utility function that converts the current page to `offset` and `limit` parameters as the [GiantBomb APi documentation requires for paginating results](http://www.giantbomb.com/api/documentation#toc-0-15).
+
 
 Next, let's implement the middleware that will be used to call the service and dispatch
 `SUCCESS` or `FAILURE` actions.
@@ -1184,16 +1159,12 @@ import {GamesService} from "./games.service";
 import {LoadGamesSuccessAction} from "./games.actions";
 import {LoadGamesFailedAction} from "./games.actions";
 
-
-
 @Injectable()
 export class GameEffects {
   constructor(
     private _actions: Actions,
     private _service: GamesService
   ) { }
-
-
 
   @Effect() loadGames$ = this._actions.ofType(games.GameActionTypes.LOAD)
     .switchMap(() => this._service.query()
@@ -1209,6 +1180,7 @@ export class GameEffects {
 
 ```
 
+
 Lastly, import the `EffectsModule` from `ngrx/effects` and run the effects and
 add `GamesService` as a provider:
 
@@ -1219,15 +1191,10 @@ import {EffectsModule} from "@ngrx/effects";
 import {GameEffects} from "./common/games/games.effects";
 import {GamesService} from "./common/games/games.service";
 //...
-
-
 @NgModule({
-  declarations: [
-
-  ],
+  //...
   imports: [
    //...
-
     EffectsModule.run(GameEffects)
   ],
   providers: [GamesService],
@@ -1236,4 +1203,148 @@ import {GamesService} from "./common/games/games.service";
 export class AppModule { }
 
 ```
+This implementation of pagination provides a great deal of convenience and efficiency -  the application state is used to both  represent the state in the client and
+ also give instructions to the server what results to fetch.
+ 
+ ### Usage
+ 
+ To demostrate what are the requirements for making a reusable and paginatable list component and see the pagination in action, a `games-list` component will be implemented.
+ 
+ As mentioned earlier, there are four required slices of a state that need to be present in order to have pagination:
+ 
+ 1. Collection of entities
+ 2. Total number of entities
+ 3. Current page
+ 4. Loading/Loaded status
+ 
+Let's create the component and it's template first:
+ 
+ ```
+ $ touch src/app/components/games-list.component.ts
+ $ touch src/app/components/games-list.template.html
+ ```
+ 
+ **games-list.component.ts**
+```
+import {Component, OnInit, Input, EventEmitter, Output} from '@angular/core';
 
+
+@Component({
+  selector: 'games-list',
+  templateUrl: 'games-list.template.html',
+
+})
+export class GamesListComponent  {
+  /*
+  The minimim required inputs of a list component using redux
+  */
+  @Input() games:any;
+  @Input() count:number;
+  @Input() page:number;
+  @Input()loading:boolean;
+  /*
+   Emit and event when the user clicks on another page
+  */
+  @Output() onPageChanged = new EventEmitter<number>();
+
+  constructor() {
+  }
+}
+
+```
+**games-list.template.html**
+```
+<div class="container" *ngIf="games">
+  <table class="table table-hover">
+    <thead class="thead-inverse" >
+    <tr>
+      <th>Name</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let game of games" >
+      <td>{{game?.name}}</td>
+    </tr>
+    </tbody>
+  </table>
+  <ngb-pagination [collectionSize]="count" [(page)]="page" (pageChange)="onPageChanged.emit($event)" [maxSize]="10" [disabled]="loading"></ngb-pagination>
+</div>
+```
+Declare the component in the application module:
+
+**app.module.ts**
+```
+import {GamesListComponent} from "./components/games-list.component";
+//..
+@NgModule({
+  //...
+  declarations: [
+    //...
+    GamesListComponent,
+  ],
+  //...
+})
+```
+`GamesListComponent` uses the [ngbPagination](https://ng-bootstrap.github.io/#/components/pagination) component which comes with the ng-bootstrap library. The component gets the `@Input`s  to render a pagination and the `pageChange` event triggers the `onPageChanged` `@output` to emit to the container component.
+
+Next, let's modify the container component (`AppComponent` in this case).
+
+To have a working pagination, the container  component needs to:
+1. Provide the parts of the state needed as inputs for the `GamesListComponent`
+2. Have a method for handling the `onPageChanged` output.
+
+
+**app.component.ts**
+```
+
+import * as games from './common/games/games.actions';
+//...
+
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css']
+})
+export class AppComponent implements  OnInit{
+  //...
+  public games$: Observable<any>;
+  public gamesCount$:Observable<number>;
+  public gamesPage$:Observable<number>;
+  public gamesLoading$:Observable<boolean>;
+
+  constructor(private store: Store<fromRoot.AppState>) {
+    /*
+    Select all the parts of the state needed for the GamesListComponent
+    */
+    this.games$ = store.select(fromRoot.getGamesEntities);
+    this.gamesCount$ = store.select(fromRoot.getGamesCount);
+    this.gamesPage$ = store.select(fromRoot.getGamesPage);
+    this.gamesLoading$ = store.select(fromRoot.getGamesLoadingState);
+  }
+  
+  /*
+   When the component initializes, render the first page ofresults
+  */
+  ngOnInit() {
+    this.store.dispatch(new games.LoadGamesAction(1));
+  }
+
+  //...
+  onGamesPageChanged(page:number) {
+    this.store.dispatch(new games.LoadGamesAction(page))
+  }
+
+}
+```
+Lastly, add `GamesListComponent`'s selector to `AppComponent`'s template:
+**app.component.html**
+```
+<div id="main-content">
+  <!-- ... -->
+  <games-list [games]="games$ | async" [count]="gamesCount$ | async" [page]="gamesPage$ | async" [loading]="gamesLoading$ | async" (onPageChanged)="onGamesPageChanged($event)"></games-list>
+</div>
+```
+The `async` pipe is used to use the latest value of the observables watch for state changes and pass them as inputs.
+
+Here is how the pagination works in action:
+### ** GIF GOES HERE **
