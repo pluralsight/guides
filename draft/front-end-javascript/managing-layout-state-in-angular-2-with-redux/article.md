@@ -865,15 +865,124 @@ The div with id `fade` will be used for the fade effect when the right sidebar i
 With this setup, the sidebars are truly container-agnostic. Any element can be made a sidebar through a directive and be toggled from any point of the layout. There is also flexibility if there's a requirement  to add additional components such as bottom bars or top bars.
 
 ### ** GIF GOES HERE **
-# Accordion
+# Accordions
 
+# Tabs
+
+selectedTabId
+# Dismissable Alerts
+
+# Progress
 
 # Window size
+Having the window size available in the application store can make Redux useful for numerous use cases, especially for making responsive layout changes or device-specific actions.
 
-# Events
+To make the window size usable in the applicaiton state, it has to be updated every time the window is resized. Let's add an action for that:
 
-# Colors
-# Confirmation dialogs
+**layout.actions.ts**
+```
+import {Action} from '@ngrx/store';
+
+export const LayoutActionTypes =  {
+  // Add indow resize action
+  RESIZE_WINDOW: '[Layout] Resize window'
+};
+
+export class ResizeWndowAction implements Action {
+  type = LayoutActionTypes.RESIZE_WINDOW;
+  constructor(public payload:Object) {
+  }
+}
+
+export type LayoutActions = ResizeWndowAction
+```
+
+To implement the window size in the layout state, there need to be two attributes added to the state - `windowWidth` and `windowHeight`:
+
+**layout.reducer.ts**
+```
+import * as layout from './layout.actions';
+
+export interface State {
+  //...
+  windowHeight:number;
+  windowWidth:number;
+}
+
+const initialState: State = {
+  //...
+  windowHeight: window.screen.height,
+  windowWidth: window.screen.width
+};
+
+export function reducer(state = initialState, action: layout.LayoutActions ): State {
+  switch (action.type) {
+    /*
+     Window resize case
+     */
+    case layout.LayoutActionTypes.RESIZE_WINDOW: {
+      const height:number = action.payload['height'];
+      const width:number = action.payload['width'];
+      return Object.assign({}, state, {
+        windowHeight: height,
+        windowWidth: width
+      });
+    }
+    //...
+
+    default:
+      return state;
+  }
+}
+
+export const getWindowWidth = (state:State) => state.windowWidth;
+export const getWindowHeight = (state:State) => state.windowHeight;
+
+```
+
+The inital state is set by using `window.screen.height` and `window.screen.width`, which get the values of the window's size when the state is initialized. The `WindowResizeAction` payload contains an object with the height and the width of the resized window:
+`{width:number , height:number}`.
+
+There are numerous ways to listen for window resize changes, but perhaps one of the most convenient and conventional ones is to put a `host` attribute in the application's root component decorator (`Appcomponent`). Since the listener is attached to the root component, `ResizeWindowAction` will be dispatched regardless of which part in the application the user is.
+
+**app.component.ts**
+
+```
+import {Component, OnInit} from '@angular/core';
+import {Store} from "@ngrx/store";
+import {Observable} from "rxjs";
+import * as fromRoot from './common/index';
+import * as layout from './common/layout/layout.actions';
+
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css'],
+  /*
+   Add this to your AppComponent to listen for window resize events
+   */
+  host: {
+    '(window:resize)': 'onWindowResize($event)'
+  }
+})
+export class AppComponent implements  OnInit{
+  //...
+  constructor(private store: Store<fromRoot.AppState>) {
+   //...
+  }
+
+  ngOnInit() {
+  }
+  
+  onWindowResize(event){
+    this.store.dispatch(new layout.ResizeWndowAction({width:event.target.innerWidth,height:event.target.innerHeight }))
+  }
+
+}
+```
+The `host` listens for window resize events and calls the `onWindowResize` method with the event as a parameter. The method gets the new sizes using the `event.target` property and dispatches a `ResizeWindowAction` with the new values.
+# CSS
+
 
 # Server-side Pagination
 
@@ -907,7 +1016,6 @@ export const GameActionTypes =  {
   LOAD_SUCCESS: type('[Games] successfully loaded games'),
   LOAD_FAILURE: type('[Games] failed to load games'),
 };
-
 
 export class LoadGamesAction implements Action {
   type = GameActionTypes.LOAD;
