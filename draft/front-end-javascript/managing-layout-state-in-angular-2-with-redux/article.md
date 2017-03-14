@@ -1,25 +1,25 @@
 # The benefits of controlling your application layout with Redux
  of the application is going to be a representation of the states of all elements in the layout - accordions, sidebars, pagination and everything that is pertinent to classify as part of the layout of the application. Reduxifying the layout leads to numerous benefits and adds great flexibility to controlling the layout of the applicaiton and make previously difficult use cases a breeze to implement.
- 
+
  * Persist the state of your layout such as keeping the sidebar opened or closed when changing routes.
  * Control the layout in any point of the application, without worrying how components are related.
 
 # Setup
  The examples  below will be done with [ng-boostrap]() since it's one of the most popular libraries with Angular 2 components for Bootstrap 4. However, you can also implement these examples with other component libraries such as [Material Design](https://github.com/angular/material2) by following the same design principles and making small adjustments to the code so that it works with the API of the corresponding library.
- 
+
 ### Dependencies
  Here's what packages you need to install in order to start working:
- 
+
 **Redux**
  - [@ngrx/store + @ngrx/core](https://github.com/ngrx/store)
  - [@ngrx/effects](https://github.com/ngrx/effects)
  - [reselect](https://github.com/reactjs/reselect)
  - [ngrx-store-logger](https://github.com/btroncone/ngrx-store-logger)
- 
+
 ** Bootstrap **
  - [Boostrap 4](https://github.com/twbs/bootstrap)
  - [ng-boostrap](https://github.com/ng-bootstrap/ng-bootstrap)
- 
+
 ### Installing
 
 To ensure a smooth setup, [Angular CLI](https://github.com/angular/angular-cli) will be used to initialize the applicaiton architecture. Make sure you have it installed globally before you proceed. In your terminal, write the following commands to initialize your Angular 2 app:
@@ -102,7 +102,7 @@ $ mkdir src/app/common
 
 #### Creating the layout state
 
-Create `common/layout` directory which is going to contain all actions, effects, and the reducer of the layout sate. 
+Create `common/layout` directory which is going to contain all actions, effects, and the reducer of the layout sate.
 
 ```
 $ mkdir src/app/common/layout
@@ -111,7 +111,7 @@ $ cd src/app/common/layout
 
 In the directory create three files for the layout state:
 ```
-$ touch layout.actions.ts 
+$ touch layout.actions.ts
 ```
 ** layout.actions.ts **
 
@@ -139,7 +139,7 @@ export type LayoutActions = null;
 ```
 **layout.reducer.ts**
 ```
-$ touch layout.reducer.ts 
+$ touch layout.reducer.ts
 ```
 The reducer of the layout will handle all changes of the application layout and create a new state every time the layout changes.
 ```
@@ -356,9 +356,9 @@ export const getLayoutState = (state: AppState) => state.layout;
 //...
 export const getLayoutOpenedModalName = createSelector(getLayoutState , fromLayout.getOpenedModalName);
 ```
-### Usage 
+### Usage
  To see how it works, let's create a sample modal:
- 
+
 ```
 $ touch src/app/components/template-modal.component.ts
 $ touch src/app/components/template-modal.template.ts
@@ -456,7 +456,7 @@ export class AppComponent {
 }
 ```
 
-As you can see, you can reuse the `handleOpenModal` and `handleCloseModal`. No matter how many modals your container has, the only thing that needs to be specified is the `modalName` of the modal you would like to see opened. 
+As you can see, you can reuse the `handleOpenModal` and `handleCloseModal`. No matter how many modals your container has, the only thing that needs to be specified is the `modalName` of the modal you would like to see opened.
 
 **app.template.html**
 ```
@@ -470,13 +470,13 @@ As you can see, you can reuse the `handleOpenModal` and `handleCloseModal`. No m
 ```
 In this case `handleOpenModal` is dispatched through clicking a button, but it can also be dispatched as an output from another component, a directive,a service or an effect. The possibilities are endless.
 
-### ** GIF GOES HERE ** 
+### ** GIF GOES HERE **
 
 # Sidebar(s)
- The most generic representation of a sidebar in an application comes down to whether the sidebar is opened or not. The state will have a property that denotes whether a sidebar is `opened` or `closed` using a boolean value. In case there are two sidebars (or more, depends on what kind of sorcery your're doing), there will be a property in the state for each. 
- 
+ The most generic representation of a sidebar in an application comes down to whether the sidebar is opened or not. The state will have a property that denotes whether a sidebar is `opened` or `closed` using a boolean value. In case there are two sidebars (or more, depends on what kind of sorcery your're doing), there will be a property in the state for each.
+
  For the user to start interacting with the sidebar, there need to be actions for opening and closing:
- 
+
  **layout.actions.ts**
  ```
  export const LayoutActionTypes =  {
@@ -514,12 +514,12 @@ export class CloseRightSidenavAction implements Action {
   constructor() {
   }
 }
- 
- 
+
+
 export type LayoutActions =  CloseLeftSidenavAction | OpenLeftSidenavAction |   CloseRightSidenavAction |OpenRightSidenavAction
  ```
  As it was already discussed, the states of the sidebar will be represented with boolean variables. In this case, the left sidenav will be open by default, but there can be logic that checks if the window size is small enough to dispatch a `CloseLeftSidenavAction` to close it:
- 
+
  **layout.reducer.ts**
  ```
  import * as layout from './layout.actions';
@@ -580,14 +580,14 @@ export const getRightSidenavState = (state:State) => state.rightSidebarOpened;
 
 
  Instead of putting the logic in each of the sidebar components, it can be combined within a structural directive which closes and opens the corresponding sidebar depening on the state of the application.
- 
+
  ```
  $ mkdir src/app/diretives
  $ touch src/app/directives/sidebar-watch.directive.ts
  ```
- 
+
  **sidebar-watch.directive.ts**
- 
+
  ```
  import {Directive, ElementRef, Renderer, OnInit, AfterViewInit, AfterViewChecked} from '@angular/core';
 import {Store} from "@ngrx/store";
@@ -645,19 +645,19 @@ export class SidebarWatchDirective implements OnInit{
   }
 
 }
- 
+
  ```
  The directive checks to which sidebar is applied to by checking `ElementRef`'s `nativeElement`, which makes the DOM properties of the template accessible in the component.
  Once it is decided to which sidebar it is applied to, the directive checks whether the corresponding state (`LeftSidenavbarState` or `RightSidenavbarState`, respectively) is `true` or `false`. Then the directive uses jQuery to manipulate the corresponding elements in the layout. The use of jQuery to select and directly change the DOM element's style properties is optional and you can use addition and removal of classes or by using plain JavaScript.
- 
+
  Following the same logic, there can be a directive for toggling the sidebars:
- 
+
  ```
   $ touch src/app/directives/sidebar-toggle.directive.ts
  ```
- 
+
  **sidebar-toggle.directive.ts**
- 
+
  ```
  /**
  * Created by Centroida-2 on 1/22/2017.
@@ -709,11 +709,11 @@ export class SidebarToggleDirective {
 }
 
  ```
- 
+
  The directive has an `@Input sidebarToggle` which can be either `left` or `right` , depending on which sidebar the directive has to control.  Every time the use clicks on the element to which the directive is attached  to, the `@HostListener('click')` catches the event and checks the state of the sidebar of the store and dispatches the corresponding action.
- 
+
  Next, add the directives to the root module:
- 
+
  **app.module.ts**
  ```
 import {SidebarWatchDirective} from "./directives/sidebar-watch.directive";
@@ -728,7 +728,7 @@ import {SidebarToggleDirective} from "./directives/sidebar-toggle.directive";
     ]
     //...
 })
- 
+
  ```
 To demonstrate how everything come together, let's make two sidebars:
 ```
@@ -783,7 +783,7 @@ $ touch src/app/components/right-sidebar.template.html
   <button class="btn btn-primary" sidebarToggle="right">Close Right Sidebar</button>
 </section>
 ```
-Usage of the `sidebarWatch` directive is quite straightforward - they just need to be put in the topmost elements of the sidebars. 
+Usage of the `sidebarWatch` directive is quite straightforward - they just need to be put in the topmost elements of the sidebars.
 
 The `sidebarToggle` needs to be put in a button (although you can put it anywhere you like) and it needs to have the `left` or `right` value assigned to it.
 
@@ -844,7 +844,7 @@ In the root component of the application, put the sidebars on top all the conten
 <div id="main-content">
   <button class="btn btn-primary" sidebarToggle="left">Toggle Left Sidebar</button>
   <button class="btn btn-primary" sidebarToggle="right">Toggle Right Sidebar</button>
-  
+
   <!-- ... -->
 </div>
 <!-- ... -->
@@ -867,14 +867,373 @@ The div with id `fade` will be used for the fade effect when the right sidebar i
 
 With this setup, the sidebars are truly container-agnostic. Any element can be made a sidebar through a directive and be toggled from any point of the layout. There is also flexibility if there's a requirement  to add additional components such as bottom bars or top bars.
 
-# Pagination
+### ** GIF GOES HERE **
+# Accordion
 
-# Accordion 
-
-# Confirmation dialogs
 
 # Window size
 
 # Events
 
 # Colors
+# Confirmation dialogs
+
+# Server-side Pagination
+
+ Even though pagination is not strictly part of an application's layout, it is an integral part of the application's UI that can be implemented with Redux. The goal
+ of the server-side pagination implementation is to utilize the application store as much as possible and achieve flexibility with
+ the least code possible. To illustrate how Redux pagination works, the [GiantBomb API](http://www.giantbomb.com/api/) will be used in the example as the source of information.
+  The games stored in the GiantBomb database will be fetched and the results will be paginated, with the pagination being
+  controlled by the application state.
+
+
+ First, create a separate directory for `games`:
+ ```
+ $ mkdir src/app/common/games
+ ```
+
+ ```
+  $ touch src/app/common/games.actions.ts
+ ```
+
+ **games.actions.ts**
+
+ ```
+ import {type} from "../util";
+import {Action} from "@ngrx/store";
+export const GameActionTypes =  {
+  /*
+   Because the games collection is asynchronous, there need to be actions to handle
+   each of the stages of the request.
+   */
+  LOAD: type('[Games] load games'),
+  LOAD_SUCCESS: type('[Games] successfully loaded games'),
+  LOAD_FAILURE: type('[Games] failed to load games'),
+};
+
+
+export class LoadGamesAction implements Action {
+  type = GameActionTypes.LOAD;
+  constructor(public payload:any) {}
+}
+
+export class LoadGamesFailedAction implements Action {
+  type = GameActionTypes.LOAD_FAILURE;
+
+  constructor() {
+  }
+}
+export class LoadGamesSuccessAction implements Action {
+  type = GameActionTypes.LOAD_SUCCESS;
+  constructor(public payload:any) {
+  }
+}
+
+
+export type GameActions = LoadGamesAction | LoadGamesFailedAction | LoadGamesSuccessAction
+
+
+
+ ```
+
+Redux has a convention for loading asynchronous results. It does it by using three actions - `LOAD` , `LOAD_SUCCESS` and `LOAD_FAILURE`. The last two get dispathed when the [middleware](http://redux.js.org/docs/advanced/Middleware.html) resolves the server-side request.
+
+To figure out how to construct the state of the paginated `games` entities, the requirements for a pagination to wor successfully need to be fleshed out. What does a pagination need:
+
+1. Number of current page
+2. Total amount of items
+3. Collection of the items currently displayed
+4. (optional) Number of items per page and number of visible pages
+
+
+Having this in mind, here's how the state should look like:
+
+```
+export interface State {
+  loaded: boolean;
+  loading: boolean;
+  entities: Array<any>;
+  count: number;
+  page: number;
+};
+```
+
+Let's see how the full implementation looks like:
+
+```
+$ touch src/app/common/games.reducer.ts
+```
+
+**games.reducer.ts**
+```
+import { createSelector } from 'reselect';
+import * as games from './games.actions';
+
+
+
+export interface State {
+  loaded: boolean;
+  loading: boolean;
+  entities: Array<any>;
+  count: number;
+  page: number;
+};
+
+const initialState: State = {
+  loaded: false,
+  loading: false,
+  entities: [],
+  count: 0,
+  page: 1
+};
+
+export function reducer(state = initialState, action: games.GameActions): State {
+  switch (action.type) {
+
+
+    case games.GameActionTypes.LOAD: {
+      const page = action.payload;
+
+      return Object.assign({}, state, {
+        loading: true,
+        /*
+         If there is no page selected, use the page from the initial state
+         */
+        page: page == null ? state.page : page
+      });
+    }
+
+    case games.GameActionTypes.LOAD_SUCCESS: {
+      const games = action.payload['results'];
+      const gamesCount = action.payload['number_of_total_results'];
+
+      return Object.assign({}, state ,{
+        loaded: true,
+        loading: false,
+        entities: games,
+        count: gamesCount
+      });
+    }
+
+    case games.GameActionTypes.LOAD_FAILURE: {
+      return Object.assign({}, state ,{
+        loaded: true,
+        loading: false,
+        entities:[],
+        count: 0
+      });
+    }
+    default:
+      return state;
+
+
+  }
+
+}
+/*
+ Selectors for the state that will be later
+ used in the games-list component
+ */
+export const getEntities = (state:State) =>  state.entities;
+export const getPage = (state:State) => state.page;
+export const getCount = (state:State) => state.count;
+export const getLoadingState = (state:State) => state.loading;
+
+```
+
+Every time `LOAD` is called from the `GamesActions`, the page number is contained within the action's payload
+and it is then assigned to the state. What's left is to find a way to query the server
+using `page` from the games state. To do this, the state has to be added to the application store:
+
+
+
+**index.ts**
+```
+
+import * as fromGames from "./games/games.reducer"
+//...
+
+
+export interface AppState {
+  layout: fromLayout.State;
+  games: fromGames.State
+}
+
+export const reducers = {
+  layout: fromLayout.reducer,
+  games: fromGames.reducer
+};
+
+
+
+//...
+
+/**
+ 
+Games selectors
+ */
+
+export const getGamesState = (state: AppState) => state.games;
+export const getGamesEntities = createSelector(getGamesState, fromGames.getEntities);
+export const getGamesCount = createSelector(getGamesState, fromGames.getCount);
+export const getGamesPage = createSelector(getGamesState, fromGames.getPage);
+export const getGamesLoadingState = createSelector(getGamesState, fromGames.getLoadingState);
+
+
+```
+
+`getGamesPage` will be used to obtain the current page and send it as a parameter in the query to the service.
+ 
+ ```
+ $ touch src/app/common/games.service.ts
+ ```
+ 
+ **games.service.ts**
+```
+import {Injectable, Inject} from '@angular/core';
+import {Response, Http, Headers, RequestOptions, Jsonp} from "@angular/http";
+import {Store} from "@ngrx/store";
+import * as fromRoot from "../index"
+
+
+@Injectable()
+export class GamesService {
+
+  public page:number;
+
+  constructor(private jsonp:Jsonp, private store: Store<fromRoot.AppState>) {
+    /*
+    Get the page from the games state
+     */
+    store.select(fromRoot.getGamesPage).subscribe((page) => {
+      this.page = page;
+    });
+  }
+
+  /*
+  Get the list of games. GiantBomb requires a jsnop request with a token. You can use this token
+  as a present from me, the author, and use it in moderation!
+   */
+  query() {
+      let pagination = this.paginate(this.page);
+      let url = `http://www.giantbomb.com/api/games/?api_key=b89a6126dc90f68a87a6fe1394e64d7312b242da&?&offset=${pagination.offset}&limit=${pagination.limit}&format=jsonp&json_callback=JSONP_CALLBACK`;
+     return  this.jsonp.request(url, { method: 'Get' })
+        .map((res) => {
+          return res['_body']
+        });
+
+
+  }
+
+
+  /**
+   * This function converts a page to a pagination
+   * query.
+   *
+   * @param page
+   *
+   * @returns {{offset: number, limit: number}}
+   */
+
+   paginate(page:number,){
+      let beginItem: number;
+      let endItem:number;
+      // Items per page are hardcoded, but you can make them dynamic by adding another parameter
+      let itemsPerPage:number = 10;
+      if(page == 1 ){
+        beginItem = 0;
+      } else {
+        beginItem = (page - 1) * itemsPerPage;
+      }
+      return {
+        offset:beginItem,
+        limit:itemsPerPage
+      }
+  }
+
+
+}
+
+```
+
+The currently selected page is taken from the state and passed through `paginate`. `paginate` is an utility
+function that converts the current page to `offset` and `limit` parameters as the
+[GiantBomb APi documentation requires for paginating results](http://www.giantbomb.com/api/documentation#toc-0-15)
+This implementation provides a great deal of convenience and efficiency -  the application state is used to both  represent the state in the client and
+ also give instructions to the server what results to fetch.
+ 
+
+Next, let's implement the middleware that will be used to call the service and dispatch
+`SUCCESS` or `FAILURE` actions.
+
+```
+$ touch src/app/common/games.effects.ts
+```
+
+**games.effects.ts**
+
+```
+import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/catch';
+import 'rxjs/add/operator/switchMap';
+import { Observable } from 'rxjs/Observable';
+import {Injectable} from "@angular/core";
+import * as games from "./games.actions";
+import {Actions, Effect} from "@ngrx/effects";
+import {GamesService} from "./games.service";
+import {LoadGamesSuccessAction} from "./games.actions";
+import {LoadGamesFailedAction} from "./games.actions";
+
+
+
+@Injectable()
+export class GameEffects {
+  constructor(
+    private _actions: Actions,
+    private _service: GamesService
+  ) { }
+
+
+
+  @Effect() loadGames$ = this._actions.ofType(games.GameActionTypes.LOAD)
+    .switchMap(() => this._service.query()
+      .map((games) => {
+    return new LoadGamesSuccessAction(games)
+
+  }))
+    .catch(() => Observable.of( new LoadGamesFailedAction())
+    );
+
+
+}
+
+```
+
+Lastly, import the `EffectsModule` from `ngrx/effects` and run the effects and
+add `GamesService` as a provider:
+
+**app.module.ts**
+```
+
+import {EffectsModule} from "@ngrx/effects";
+import {GameEffects} from "./common/games/games.effects";
+import {GamesService} from "./common/games/games.service";
+//...
+
+
+@NgModule({
+  declarations: [
+
+  ],
+  imports: [
+   //...
+
+    EffectsModule.run(GameEffects)
+  ],
+  providers: [GamesService],
+  bootstrap: [AppComponent]
+})
+export class AppModule { }
+
+```
+
