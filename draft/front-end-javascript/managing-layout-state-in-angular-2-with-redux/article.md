@@ -981,6 +981,40 @@ export class AppComponent implements  OnInit{
 }
 ```
 The `host` listens for window resize events and calls the `onWindowResize` method with the event as a parameter. The method gets the new sizes using the `event.target` property and dispatches a `ResizeWindowAction` with the new values.
+
+### Usage 
+
+The most obiquitous case for using the window size is responsiveness. For example, the left sidebar has to automatically close if the window width is lower than 768px (iPad width). Doing this with Redux is quite simple - just add an if statement to the corresponding case:
+
+**layout.reducer.ts**
+```
+//...
+
+export function reducer(state = initialState, action: layout.LayoutActions ): State {
+  switch (action.type) {
+    //...
+    case layout.LayoutActionTypes.RESIZE_WINDOW: {
+        const height:number = action.payload['height'];
+        const width:number = action.payload['width'];
+
+        // If the width is lower than 768px, assign false. Otherwise don't change the state
+        const leftSidebarState = width < 768 ? false : state.leftSidebarOpened;
+
+        return Object.assign({}, state, {
+          windowHeight: height,
+          windowWidth: width,
+          leftSidebarOpened: leftSidebarState
+        });
+      }
+    }
+ //...
+}
+```
+
+Simply adding a simple ternary operator  in the reducer does the magic. This is one of the great things about Redux - unlike JQuery, all the logic is isolated in a single place and it is easy to debug and test all your implementations. 
+
+### ** GIF GOES HERE **
+
 # CSS
 
 
