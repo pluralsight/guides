@@ -865,14 +865,11 @@ The div with id `fade` will be used for the fade effect when the right sidebar i
 With this setup, the sidebars are truly container-agnostic. Any element can be made a sidebar through a directive and be toggled from any point of the layout. There is also flexibility if there's a requirement  to add additional components such as bottom bars or top bars.
 
 ### ** GIF GOES HERE **
-# Accordions
 
-# Tabs
 
 selectedTabId
 # Dismissable Alerts
 
-# Progress
 
 # Window size
 Having the window size available in the application store can make Redux useful for numerous use cases, especially for making responsive layout changes or device-specific actions.
