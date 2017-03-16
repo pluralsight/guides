@@ -3,11 +3,6 @@
 - [Read more from Syed Ikram Shah](https://www.pluralsight.com/guides/author/syedikramshah) <img src="https://avatars2.githubusercontent.com/u/6046692?v=3" width="30" height="30" alt="Syed Ikram Shah" />
 - Related to: Microsoft.NET (C#, ASP.NET, VB.NET, etc)
 
-### Semantic HTML by Miroslav Gajic
-- [Read the guide](https://www.pluralsight.com/guides/html-css/semantic-html?status=in-review)
-- [Read more from Miroslav Gajic](https://www.pluralsight.com/guides/author/mgajic78) <img src="https://avatars0.githubusercontent.com/u/25859460?v=3" width="30" height="30" alt="Miroslav Gajic" />
-- Related to: HTML/CSS
-
 ### Cloning an Ionic 2 application from Github by Todd Shelton
 - [Read the guide](https://www.pluralsight.com/guides/front-end-javascript/cloning-an-ionic-2-application-from-github?status=in-review)
 - [Read more from Todd Shelton](https://www.pluralsight.com/guides/author/TShelton41) <img src="https://avatars.githubusercontent.com/u/795737?v=3" width="30" height="30" alt="Todd Shelton" />
