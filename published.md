@@ -1,3 +1,8 @@
+### Semantic HTML by Miroslav Gajic
+- [Read the guide](https://www.pluralsight.com/guides/html-css/semantic-html)
+- [Read more from Miroslav Gajic](https://www.pluralsight.com/guides/author/mgajic78) <img src="https://avatars0.githubusercontent.com/u/25859460?v=3" width="30" height="30" alt="Miroslav Gajic" />
+- Related to: HTML/CSS
+
 ### Getting started with Codeigniter 3 by Aouadi Mohamed Adib
 - [Read the guide](https://www.pluralsight.com/guides/php/getting-started-with-codeigniter-3)
 - [Read more from Aouadi Mohamed Adib](https://www.pluralsight.com/guides/author/Adib12) <img src="https://avatars3.githubusercontent.com/u/11527075?v=3" width="30" height="30" alt="Aouadi Mohamed Adib" />
