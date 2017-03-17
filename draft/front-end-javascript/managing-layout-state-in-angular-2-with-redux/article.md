@@ -4,8 +4,8 @@
  * Persist the state of your layout such as keeping the sidebar opened or closed when changing routes.
  * Control the layout in any point of the application, without worrying how components are related.
 
-# Setup
- The examples  below will be done with [ng-boostrap]() since it's one of the most popular libraries with Angular 2 components for Bootstrap 4. However, you can also implement these examples with other component libraries such as [Material Design](https://github.com/angular/material2) by following the same design principles and making small adjustments to the code so that it works with the API of the corresponding library.
+# Setup 
+ > The examples  below will be done with [ng-boostrap]() since it's one of the most popular libraries with Angular 2 components for Bootstrap 4. However, you can also implement these examples with other component libraries such as [Material Design](https://github.com/angular/material2) by following the same design principles and making small adjustments to the code so that it works with the API of the corresponding library.
 
 ### Dependencies
  Here's what packages you need to install in order to start working:
@@ -456,7 +456,7 @@ export class AppComponent {
 }
 ```
 
-As you can see, you can reuse the `handleOpenModal` and `handleCloseModal`. No matter how many modals your container has, the only thing that needs to be specified is the `modalName` of the modal you would like to see opened.
+> As you can see, you can reuse the `handleOpenModal` and `handleCloseModal`. No matter how many modals your container has, the only thing that needs to be specified is the `modalName` of the modal you would like to see opened.
 
 **app.template.html**
 ```
@@ -862,17 +862,247 @@ The div with id `fade` will be used for the fade effect when the right sidebar i
 
 ```
 
-With this setup, the sidebars are truly container-agnostic. Any element can be made a sidebar through a directive and be toggled from any point of the layout. There is also flexibility if there's a requirement  to add additional components such as bottom bars or top bars.
+> With this setup, the sidebars are truly container-agnostic. Any element can be made a sidebar through a directive and be toggled from any point of the layout. There is also flexibility if there's a requirement  to add additional components such as bottom bars or top bars.
 
 ### ** GIF GOES HERE **
 
 
-selectedTabId
 # Dismissable Alerts
 
+ Including alerts in the application state gives control when, where and how alerts can appear. Since alerts are dependent on either server-side or user actions, their place in the application state is well-deserved.
+ 
+ Unlike other examples in this guide, "reduxifying" alerts is somehwat easy - they can be simply  represented as a local collection of items that can be added and removed from the state. 
+ 
+ By default, an alert would have two attributes: `message` and `type`. Here is how the model of a alert would look like:
+ 
+ ```
+ export class Alert {
+   message:string;
+   type:string
+ }
+
+ ```
+ 
+First, let's  add actions for removing and adding alerts:
+ 
+ **layout.actions.ts**
+ 
+ ```
+ export const LayoutActionTypes =  {
+  ADD_ALERT: type('[Layout] add alert'),
+  REMOVE_ALERT: type('[Layout] remove alert')
+  //...
+};
+
+//...
+export class AddAlertAction implements Action {
+  type = LayoutActionTypes.ADD_ALERT;
+  constructor(public payload:Object) {
+  }
+}
+
+export class RemoveAlertAction implements Action {
+  type = LayoutActionTypes.REMOVE_ALERT;
+  constructor(public payload:Object) {
+  }
+}
+//...
+ 
+export type LayoutActions =  AddAlertAction | RemoveAlertAction
+
+ 
+```
+Second, let's add the `alerts` slice in the `layout` state:
+
+**layout.reducer.ts**
+```
+import * as layout from './layout.actions';
+
+export interface State {
+  //...
+  alerts:Array<Object>;
+}
+
+const initialState: State = {
+  //...
+  alerts:[],
+};
+
+
+export function reducer(state = initialState, action: layout.LayoutActions ): State {
+
+  switch (action.type) {
+    case layout.LayoutActionTypes.ADD_ALERT: {
+      return Object.assign({}, state, {
+        alerts:[...state.alerts, action.payload]
+      });
+    }
+    case layout.LayoutActionTypes.REMOVE_ALERT: {
+      return Object.assign({}, state, {
+        /*
+         Alerts are filtered by message content, but for real-world usage, an 'id' field would be more suitable.
+        */
+        alerts: state.alerts.filter(alert =>
+          alert['message'] !== action.payload['message']
+        )
+      });
+    }
+    //...
+    default:
+      return state;
+  }
+}
+
+//...
+/*
+ If you add more attributes to the alerts such as 'position' or 'modelType',
+ there can be more selectors added that can filter the collection and allow
+ only certain to be displayed in designated places in the application.
+*/
+export const getAlerts = (state:State) => state.alerts;
+```
+Finally, let's add a selector for `alerts` in the root:
+
+**index.ts**
+```
+//...
+export const getLayoutAlertsState = createSelector(getLayoutState, fromLayout.getAlerts);
+```
+
+That's it. Now alerts are part of the application state. But how are they going to be used? Let's find out:
+
+### Usage
+
+With the tools given, making dismissible alerts requires a very small amount of code since [ng-bootstrap](https://ng-bootstrap.github.io/#/components/alert) already offers an implementation. Thus, the only thing that is required is a reusable component to be made that can be used in various places in the application:
+
+```
+$touch src/app/alerts-list.component.ts
+```
+**alerts.component.ts**
+```
+
+import {Component, Input, EventEmitter, Output} from '@angular/core';
+
+@Component({
+  selector: 'alerts-list',
+  templateUrl: 'alerts-list.template.html',
+
+})
+export class AlertsListComponent  {
+  @Input() alerts:any;
+  @Output() closeAlert = new EventEmitter();
+  
+  constructor() {
+  }
+}
+```
+
+The component accepts an array of alerts and outputs the alert which the user decides to close.
+
+```
+$touch src/app/alerts-list.template.html
+```
+**alerts.template.html**
+```
+<p *ngFor="let alert of alerts">
+  <ngb-alert [type]="alert.type" (close)="closeAlert.emit(alert)">{{ alert.message }}</ngb-alert>
+</p>
+```
+
+Don't forget to add the component to the root module:
+
+**app.module.ts**
+```
+import {AlertsListComponent} from "./components/alerts-list.component";
+///...
+
+@NgModule({
+  declarations: [
+
+    AlertsListComponent,
+  ],
+  //...
+})
+export class AppModule { }
+
+```
+
+Next, the logic in the container component has to be implemented for selecting alerts and dispatching events.
+
+**app.component.ts**
+```
+import {Component, OnInit} from '@angular/core';
+import {Store} from "@ngrx/store";
+import {Observable} from "rxjs";
+import * as fromRoot from './common/index';
+import * as layout from './common/layout/layout.actions';
+
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+
+})
+export class AppComponent implements  OnInit{
+  public alerts$:Observable<any>;
+
+  constructor(private store: Store<fromRoot.AppState>) {
+    this.alerts$ = store.select(fromRoot.getLayoutAlertsState);
+  }
+
+  addAlert(alert) {
+    this.store.dispatch(new layout.AddAlertAction(alert))
+  }
+
+  onCloseAlert(alert:Object) {
+   this.store.dispatch(new layout.RemoveAlertAction(alert))
+  }
+}
+
+```
+
+To demonstrate how alerts look, the template will have two buttons for opeaning different types of alerts:
+
+**app.template.html**
+
+```
+<div id="fade" class="fade-in"></div>
+<left-sidebar></left-sidebar>
+<right-sidebar></right-sidebar>
+
+<div id="main-content">
+    <!-- List of alerts goes here -->
+    <alerts-list [alerts]="alerts$ | async (closeAlert)="onCloseAlert($event)"></alerts-list>
+    
+    <!-- Buttons for creating alerts -->
+    <button class="btn btn-danger" (click)="addAlert({type: 'danger', message: 'This is a danger alert'})">Add a danger alert</button>
+    <button class="btn btn-success" (click)="addAlert({type: 'success', message: 'This is a success alert'})">Add a success alert</button>
+</div>
+
+
+
+```
+
+
+real world use case
+```
+  @Effect() deleteStudent = this._actions.ofType(student.ActionTypes.DELETE_STUDENT)
+    .switchMap((action) => this._service.delete(action.payload)
+    )
+    .mergeMap(
+      () => {
+        return Observable.from([
+          new DeleteStudentSuccessAction(),
+          new layout.AddAlertAction(null)
+
+        ])
+      .catch(() => Observable.of( new DeleteStudentFailureAction())
+        );
+      }
+    );
+```
 
 # Window size
-Having the window size available in the application store can make Redux useful for numerous use cases, especially for making responsive layout changes or device-specific actions.
+Having the window size available in the application store can make Redux useful for numerous use cases, especially for making responsive layout changes, device-specific actions or dynamic changes of the CSS (using [NgClass](https://angular.io/docs/ts/latest/api/common/index/NgClass-directive.html) or [NgStyle](https://angular.io/docs/ts/latest/api/common/index/NgStyle-directive.html) ).
 
 To make the window size usable in the applicaiton state, it has to be updated every time the window is resized. Let's add an action for that:
 
@@ -1012,7 +1242,7 @@ Simply adding a simple ternary operator  in the reducer does the magic. This is 
 
 ### ** GIF GOES HERE **
 
-# CSS
+
 
 
 # Server-side Pagination
@@ -1487,3 +1717,4 @@ The `async` pipe is used to use the latest value of the observables watch for st
 
 Here is how the pagination works in action:
 ### ** GIF GOES HERE **
+
