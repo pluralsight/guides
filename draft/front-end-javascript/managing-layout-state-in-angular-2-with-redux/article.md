@@ -1,4 +1,5 @@
 # Taming your application layout
+ jQuery, unrelated components
  of the application is going to be a representation of the states of all elements in the layout - accordions, sidebars, pagination and everything that is pertinent to classify as part of the layout of the application. Reduxifying the layout leads to numerous benefits and adds great flexibility to controlling the layout of the applicaiton and make previously difficult use cases a breeze to implement.
 
  * Persist the state of your layout such as keeping the sidebar opened or closed when changing routes.
