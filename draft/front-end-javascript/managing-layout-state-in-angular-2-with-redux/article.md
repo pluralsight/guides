@@ -1,4 +1,4 @@
-# Taming your application layout
+###  Taming your application layout
  jQuery, unrelated components
  of the application is going to be a representation of the states of all elements in the layout - accordions, sidebars, pagination and everything that is pertinent to classify as part of the layout of the application. Reduxifying the layout leads to numerous benefits and adds great flexibility to controlling the layout of the applicaiton and make previously difficult use cases a breeze to implement.
 
@@ -1731,3 +1731,9 @@ Here is how the pagination works in action:
 ![pagination](https://raw.githubusercontent.com/pluralsight/guides/master/images/eb8c1c24-1757-48c0-885b-4d056da8c7ca.com-video-to-gif_1)
 
 
+# Conclusion
+These examples represent the majority of use cases that you might encounter when building an Angular 2 application using Redux. They explore the possiblities how Redux can be used for layout state management in Angular 2 and provide a boilerplate for more specific use cases.
+
+Does Redux do a good job in controlling the layout? In my opinion, it absolutely does. It ceratinly requires a little bit more code to be written at times, but the benefits of it truly start to shine as the application's codebase grows and there's a need for most of the logic to be reused. 
+
+Missed something? [I have uploaded the source code with all the examples on Github.](https://github.com/Kaizeras/ng2-redux-layout-management-recipes)
