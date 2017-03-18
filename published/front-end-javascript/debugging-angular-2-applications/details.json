@@ -3,7 +3,12 @@
     "author_name": "Kaizeras",
     "author_real_name": "Hristo Georgiev",
     "branch": "master",
-    "branches": [],
+    "branches": [
+        [
+            "MateenKadwaikar",
+            "MateenKadwaikar-front-end-javascript-debugging-angular-2-applications"
+        ]
+    ],
     "filename": "article.md",
     "first_commit": "a48d51d4ce1acc2c0829bbb7e2a371675bf57051",
     "image_url": "https://avatars.githubusercontent.com/u/6340189?v=3",
