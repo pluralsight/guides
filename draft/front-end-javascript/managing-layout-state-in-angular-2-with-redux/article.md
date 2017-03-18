@@ -116,7 +116,7 @@ $ touch layout.actions.ts
 ```
 ** layout.actions.ts **
 
-The layout actions will be dispatched every time an user action is made (closing and opening sidebar, opening a modal) or certain window events happen (window resizing).
+The layout actions will be dispatched every time when an user action is made (closing and opening sidebar, opening a modal and so on) or when certain events happen (window resizing).
 
 ```
 import {Action} from '@ngrx/store';
@@ -239,9 +239,11 @@ export class AppModule { }
 
 ```
 #### Smart containers and directives, dumb components
-If you are fimilar with Redux, you would know that there are two types of components - [presentional(dumb components) and container components](https://medium.com/@dan_abramov/smart-and-dumb-components-7ca2f9a7c7d0#.e8sft6x0y). When building the layout state, it's best to keep the logic inside directives in order to keep the logic [DRY](http://deviq.com/don-t-repeat-yourself/). You don't have to write the same logic for a sidebar in every container component in your application.
+If you are fimilar with Redux, you would know that there are two types of components - [presentional(dumb components) and container components](https://medium.com/@dan_abramov/smart-and-dumb-components-7ca2f9a7c7d0#.e8sft6x0y). 
 
-#Note Another possibility is to keep the logic in the container and only in exceptional cases there's a need to put the logic inside a component that represents a layout element.
+> When building the layout state, it's best to keep the logic inside directives in order to keep the logic [DRY](http://deviq.com/don-t-repeat-yourself/). You don't have to write the same logic for a sidebar in every container component in your application.
+
+Another possibility is to keep the logic in the container and only in exceptional cases there's a need to put the logic inside a component that represents a layout element.
 
 In this guide, the container component will be the `AppComponent`. In order to make the state of the application accessible in it and be able to dispatch actions, you have to import `layout.actions` and the root state:
 
@@ -270,7 +272,7 @@ export class AppComponent {
 
 ```
 
-All dumb components will be kept in a separate directory named `components`:
+All presentational components will be kept in a separate directory named `components`:
 ```
 $ mkdir src/app/components
 ```
@@ -471,7 +473,9 @@ export class AppComponent {
 ```
 In this case `handleOpenModal` is dispatched through clicking a button, but it can also be dispatched as an output from another component, a directive,a service or an effect. The possibilities are endless.
 
-### ** GIF GOES HERE **
+
+![modal example](https://raw.githubusercontent.com/pluralsight/guides/master/images/f0723337-3b32-4649-9d97-93bab2145b09.gif)
+
 
 # Sidebar(s)
  The most generic representation of a sidebar in an application comes down to whether the sidebar is opened or not. The state will have a property that denotes whether a sidebar is `opened` or `closed` using a boolean value. In case there are two sidebars (or more, depends on what kind of sorcery your're doing), there will be a property in the state for each.
@@ -865,7 +869,9 @@ The div with id `fade` will be used for the fade effect when the right sidebar i
 
 > With this setup, the sidebars are truly container-agnostic. Any element can be made a sidebar through a directive and be toggled from any point of the layout. There is also flexibility if there's a requirement  to add additional components such as bottom bars or top bars.
 
-### ** GIF GOES HERE **
+
+![sidebars example](https://raw.githubusercontent.com/pluralsight/guides/master/images/d183dadf-0013-4a7a-a719-5558681b35c1.gif)
+
 
 
 # Dismissable Alerts
@@ -1102,6 +1108,9 @@ real world use case
     );
 ```
 
+![alert example](https://raw.githubusercontent.com/pluralsight/guides/master/images/1fde8c90-c987-4760-9198-7c33727710a7.gif)
+
+
 # Window size
 Having the window size available in the application store can make Redux useful for numerous use cases, especially for making responsive layout changes, device-specific actions or dynamic changes of the CSS (using [NgClass](https://angular.io/docs/ts/latest/api/common/index/NgClass-directive.html) or [NgStyle](https://angular.io/docs/ts/latest/api/common/index/NgStyle-directive.html) ).
 
@@ -1241,7 +1250,8 @@ export function reducer(state = initialState, action: layout.LayoutActions ): St
 
 Simply adding a simple ternary operator  in the reducer does the magic. This is one of the great things about Redux - unlike JQuery, all the logic is isolated in a single place and it is easy to debug and test all your implementations. 
 
-### ** GIF GOES HERE **
+
+![window resize example](https://raw.githubusercontent.com/pluralsight/guides/master/images/af6575a9-50ff-4d9a-aaae-b43861b2e265.com-video-to-gif)
 
 
 
@@ -1717,5 +1727,7 @@ Lastly, add `GamesListComponent`'s selector to `AppComponent`'s template:
 The `async` pipe is used to use the latest value of the observables watch for state changes and pass them as inputs.
 
 Here is how the pagination works in action:
-### ** GIF GOES HERE **
+
+![pagination](https://raw.githubusercontent.com/pluralsight/guides/master/images/eb8c1c24-1757-48c0-885b-4d056da8c7ca.com-video-to-gif_1)
+
 
