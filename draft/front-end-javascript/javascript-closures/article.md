@@ -1,8 +1,7 @@
-# What is the closure?
 
-Closures are very powerful mechanism in the JavaScript programming language. 
 
-In this [article](http://javascript.crockford.com/private.html), Douglas Crockford gave a brilliant definition of the closure, which says: 
+Closures are very powerful mechanism in the JavaScript programming language. All members of an object in the JavaScript are public. Closures give an object possibility to have private and privileged members, as well, and not only that. In this tutorial we will learn what closures actually are and what are benefits of using them in the code.
 
-The closure is an inner function which always has access to the vars and parameters of its outer function even the outer function has returned.
+So, what is the closure? Douglas Crockford, author of the book *JavaScript: The Good Parts*, wrote an excellent definition of the closure, which says: 
 
+>The closure is an inner function which always has access to the vars and parameters of its outer function even the outer function has returned.
