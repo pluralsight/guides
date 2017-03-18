@@ -1,6 +1,15 @@
+
+ Despite the numerous advances in building web interfaces in the last few years, the control of the DOM and the application layout is still highly dependent on [jQuery](https://jquery.com/). The 10-year-old library is still an integral element of almost every web application out there. Although this is not necessarily a bad thing, jQuery was initially built for different purposes and its more modern uses have started to cause issues and its role has become somehow vague. Front-end applications have become increasingly complex, with all kinds of unrelated components, ecnapsulated views and other elements trying to interact together. 
+ 
+In this guide, the use of Redux will be explored as a possibility for alleviating the current challenges in controlling the layout of an Angular 2 application. You will learn how to represent some of the logic for controlling the layout in a reducer function and how the logic can be applied in a use case.
+
 ###  Taming your application layout
- jQuery, unrelated components
- of the application is going to be a representation of the states of all elements in the layout - accordions, sidebars, pagination and everything that is pertinent to classify as part of the layout of the application. Reduxifying the layout leads to numerous benefits and adds great flexibility to controlling the layout of the applicaiton and make previously difficult use cases a breeze to implement.
+
+Since Redux came out, state management for front-end applications went through a revolution. My team and I have field-tested Redux with Angular 2 and the resulting productivity boost have been tremendous. Redux has not only allowed us to ship faster, but it increased the overall maintainability of our codebase by encapsulating most of the crucial logic in a single place and  providing an easy to test architecture. 
+
+We liked Redux so much that we wanted to control _everything_ with it. One of our most recent projects was building a very UI-intensive application and we decided to experiment by giving the reducers in the applicaiton a little bit more resposibility than just controlling the data.
+
+We found out that "reduxifying" the layout leads to numerous benefits and adds great flexibility to controlling the layout of the applicaiton. It made previously difficult use cases a breeze to implement.
 
  * Persist the state of your layout such as keeping the sidebar opened or closed when changing routes.
  * Control the layout in any point of the application, without worrying how components are related.
@@ -1732,8 +1741,8 @@ Here is how the pagination works in action:
 
 
 # Conclusion
-These examples represent the majority of use cases that you might encounter when building an Angular 2 application using Redux. They explore the possiblities how Redux can be used for layout state management in Angular 2 and provide a boilerplate for more specific use cases.
+These examples represent the majority of use cases that you might encounter when building an Angular 2 application using Redux. They explore the possiblities how Redux can be used for layout state management in Angular 2 and provide a boilerplate for more specific use cases as well as give fresh ideas how other use cases can be implemented.
 
-Does Redux do a good job in controlling the layout? In my opinion, it absolutely does. It ceratinly requires a little bit more code to be written at times, but the benefits of it truly start to shine as the application's codebase grows and there's a need for most of the logic to be reused. 
+Does Redux do a good job in controlling the layout? In my opinion, it absolutely does. It does require a little bit more code to be written at times, but the benefits truly start to shine as the application's codebase grows and there's a need for most of the logic to be reused. 
 
 Missed something? [I have uploaded the source code with all the examples on Github.](https://github.com/Kaizeras/ng2-redux-layout-management-recipes)
