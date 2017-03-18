@@ -1,18 +1,20 @@
-
- Despite the numerous advances in building web interfaces in the last few years, the control of the DOM and the application layout is still highly dependent on [jQuery](https://jquery.com/). The 10-year-old library is still an integral element of almost every web application out there. Although this is not necessarily a bad thing, jQuery was initially built for different purposes and its more modern uses have started to cause issues and its role has become somehow vague. Front-end applications have become increasingly complex, with all kinds of unrelated components, ecnapsulated views and other elements trying to interact together. 
+ Despite the numerous advances in building web interfaces in the last few years, the control of the DOM and the application layout is still highly dependent on [jQuery](https://jquery.com/); The 10-year-old library is still an integral element of almost every web application out there. Although this is not necessarily a bad thing, jQuery was initially built for different purposes and its more modern uses have started to cause issues and its role has become somehow vague. Front-end applications have become increasingly complex, with all kinds of unrelated components, ecnapsulated views and other elements trying to interact together. 
  
-In this guide, the use of Redux will be explored as a possibility for alleviating the current challenges in controlling the layout of an Angular 2 application. You will learn how to represent some of the logic for controlling the layout in a reducer function and how the logic can be applied in a use case.
+In this guide, the use of Redux will be explored as a possibility for alleviating the current challenges in controlling the layout of an Angular 2 application. You will learn how to represent some of the logic for controlling the layout in reducer functions and have it demonstrated in an actual use case.
 
 ###  Taming your application layout
 
-Since Redux came out, state management for front-end applications went through a revolution. My team and I have field-tested Redux with Angular 2 and the resulting productivity boost have been tremendous. Redux has not only allowed us to ship faster, but it increased the overall maintainability of our codebase by encapsulating most of the crucial logic in a single place and  providing an easy to test architecture. 
+Since Redux came out, state management for front-end applications went through a revolution. My team and I have field-tested Redux with Angular 2 and the resulting productivity boost has been tremendous. Redux has not only allowed us to ship faster, but it increased the overall maintainability of our codebase by encapsulating most of the crucial logic in a single place and  providing an easy to test architecture. 
 
-We liked Redux so much that we wanted to control _everything_ with it. One of our most recent projects was building a very UI-intensive application and we decided to experiment by giving the reducers in the applicaiton a little bit more resposibility than just controlling the data.
+We liked Redux so much that we wanted to control _everything_ with it. One of our most recent projects was building a very UI-intensive application and we decided to experiment by giving the reducers in the applicaiton a little bit more resposibility than just controlling data.
 
 We found out that "reduxifying" the layout leads to numerous benefits and adds great flexibility to controlling the layout of the applicaiton. It made previously difficult use cases a breeze to implement.
 
- * Persist the state of your layout such as keeping the sidebar opened or closed when changing routes.
- * Control the layout in any point of the application, without worrying how components are related.
+##### *Three key benefits of using Redux for your layout* 
+
+ * ** Persist the state of your layout such as keeping the sidebar opened or closed when changing routes.**
+ * **Control the layout in any point of the application, without worrying how components are related or injecting a specific service.**
+ * **Chain layout actions with other events such as saving of data server-side or changing a route**
 
 # Setup 
  > The examples  below will be done with [ng-boostrap]() since it's one of the most popular libraries with Angular 2 components for Bootstrap 4. However, you can also implement these examples with other component libraries such as [Material Design](https://github.com/angular/material2) by following the same design principles and making small adjustments to the code so that it works with the API of the corresponding library.
@@ -134,16 +136,11 @@ import {Action} from '@ngrx/store';
  Layout actions are defined here
  */
 
-
-export const LayoutActionTypes = {
-
-
-};
+export const LayoutActionTypes = {};
 
 /*
  The action classes will be added here once they are defined
 */
-
 export type LayoutActions = null;
 
 ```
@@ -166,7 +163,6 @@ const initialState: State = {
     The initial values of the layout state will be initialized here
    */
 };
-
 
 /*
   The reducer of the layout state. Each time an action for the layout is dispatched,
@@ -247,7 +243,7 @@ import {metaReducer} from "./common/index";
 export class AppModule { }
 
 ```
-#### Smart containers and directives, dumb components
+#### "Smart" containers and directives, "dumb"components
 If you are fimilar with Redux, you would know that there are two types of components - [presentional(dumb components) and container components](https://medium.com/@dan_abramov/smart-and-dumb-components-7ca2f9a7c7d0#.e8sft6x0y). 
 
 > When building the layout state, it's best to keep the logic inside directives in order to keep the logic [DRY](http://deviq.com/don-t-repeat-yourself/). You don't have to write the same logic for a sidebar in every container component in your application.
@@ -495,11 +491,11 @@ In this case `handleOpenModal` is dispatched through clicking a button, but it c
  ```
  export const LayoutActionTypes =  {
   //Left sidenav actions
-  OPEN_LEFT_SIDENAV: type('[Layout] Open LeftSidenav'),
-  CLOSE_LEFT_SIDENAV: type('[Layout] Close LeftSidenav'),
+  OPEN_LEFT_SIDENAV: '[Layout] Open LeftSidenav',
+  CLOSE_LEFT_SIDENAV: '[Layout] Close LeftSidenav',
   //Right sidenav actions
-  OPEN_RIGHT_SIDENAV: type('[Layout] Open RightSidenav'),
-  CLOSE_RIGHT_SIDENAV: type('[Layout] Close RightSidenav'),
+  OPEN_RIGHT_SIDENAV: '[Layout] Open RightSidenav',
+  CLOSE_RIGHT_SIDENAV: '[Layout] Close RightSidenav',
 };
 
 
@@ -905,8 +901,8 @@ First, let's  add actions for removing and adding alerts:
  
  ```
  export const LayoutActionTypes =  {
-  ADD_ALERT: type('[Layout] add alert'),
-  REMOVE_ALERT: type('[Layout] remove alert')
+  ADD_ALERT: '[Layout] add alert',
+  REMOVE_ALERT: '[Layout] remove alert'
   //...
 };
 
@@ -1099,7 +1095,10 @@ To demonstrate how alerts look, the template will have two buttons for opeaning 
 ```
 
 
-real world use case
+![alert example](https://raw.githubusercontent.com/pluralsight/guides/master/images/1fde8c90-c987-4760-9198-7c33727710a7.gif)
+
+In a real world scenario, alerts can be created when a server returns a certain results. For example, in the snippet below, a `AddAlertAction` is called once the application resolves a server-side request:
+
 ```
   @Effect() deleteStudent = this._actions.ofType(student.ActionTypes.DELETE_STUDENT)
     .switchMap((action) => this._service.delete(action.payload)
@@ -1108,17 +1107,19 @@ real world use case
       () => {
         return Observable.from([
           new DeleteStudentSuccessAction(),
-          new layout.AddAlertAction(null)
-
+          /* Chain actions - once the server successfully
+           deletes some model, create an alert from it.
+          */
+          new layout.AddAlertAction({type:'success', message: 'Student successfully deleted!')
         ])
-      .catch(() => Observable.of( new DeleteStudentFailureAction())
+      .catch(() => {
+             new layout.AddAlertAction({type:'danger', message: 'An error ocurred.'})
+             return Observable.of( new DeleteStudentFailureAction()
+            })
         );
       }
     );
 ```
-
-![alert example](https://raw.githubusercontent.com/pluralsight/guides/master/images/1fde8c90-c987-4760-9198-7c33727710a7.gif)
-
 
 # Window size
 Having the window size available in the application store can make Redux useful for numerous use cases, especially for making responsive layout changes, device-specific actions or dynamic changes of the CSS (using [NgClass](https://angular.io/docs/ts/latest/api/common/index/NgClass-directive.html) or [NgStyle](https://angular.io/docs/ts/latest/api/common/index/NgStyle-directive.html) ).
@@ -1293,9 +1294,9 @@ export const GameActionTypes =  {
    Because the games collection is asynchronous, there need to be actions to handle
    each of the stages of the request.
    */
-  LOAD: type('[Games] load games'),
-  LOAD_SUCCESS: type('[Games] successfully loaded games'),
-  LOAD_FAILURE: type('[Games] failed to load games'),
+  LOAD: '[Games] load games',
+  LOAD_SUCCESS: '[Games] successfully loaded games',
+  LOAD_FAILURE: '[Games] failed to load games',
 };
 
 export class LoadGamesAction implements Action {
@@ -1491,10 +1492,7 @@ export class GamesService {
         .map((res) => {
           return res['_body']
         });
-
-
   }
-
   /**
    * This function converts a page to a pagination
    * query.
@@ -1563,8 +1561,6 @@ export class GameEffects {
   }))
     .catch(() => Observable.of( new LoadGamesFailedAction())
     );
-
-
 }
 
 ```
@@ -1616,7 +1612,6 @@ Let's create the component and it's template first:
  **games-list.component.ts**
 ```
 import {Component, OnInit, Input, EventEmitter, Output} from '@angular/core';
-
 
 @Component({
   selector: 'games-list',
@@ -1674,6 +1669,7 @@ import {GamesListComponent} from "./components/games-list.component";
   //...
 })
 ```
+
 `GamesListComponent` uses the [ngbPagination](https://ng-bootstrap.github.io/#/components/pagination) component which comes with the ng-bootstrap library. The component gets the `@Input`s  to render a pagination and the `pageChange` event triggers the `onPageChanged` `@output` to emit to the container component.
 
 Next, let's modify the container component (`AppComponent` in this case).
@@ -1710,7 +1706,6 @@ export class AppComponent implements  OnInit{
     this.gamesPage$ = store.select(fromRoot.getGamesPage);
     this.gamesLoading$ = store.select(fromRoot.getGamesLoadingState);
   }
-  
   /*
    When the component initializes, render the first page ofresults
   */
@@ -1743,6 +1738,6 @@ Here is how the pagination works in action:
 # Conclusion
 These examples represent the majority of use cases that you might encounter when building an Angular 2 application using Redux. They explore the possiblities how Redux can be used for layout state management in Angular 2 and provide a boilerplate for more specific use cases as well as give fresh ideas how other use cases can be implemented.
 
-Does Redux do a good job in controlling the layout? In my opinion, it absolutely does. It does require a little bit more code to be written at times, but the benefits truly start to shine as the application's codebase grows and there's a need for most of the logic to be reused. 
+Does Redux do a good job in controlling the layout? In my opinion, it absolutely does. It may require a little bit more code to be written at times, but the benefits truly start to shine as the application's codebase grows and there's a need for most of the logic to be reused. 
 
-Missed something? [I have uploaded the source code with all the examples on Github.](https://github.com/Kaizeras/ng2-redux-layout-management-recipes)
+Missed something? [I have uploaded the source code with all the examples on Github.](https://github.com/Kaizeras/ng2-redux-layout-management-recipes).
