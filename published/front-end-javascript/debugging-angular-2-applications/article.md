@@ -134,7 +134,7 @@ With Augury you can visually traverse through the component tree and view each o
 
  Loggers are a great way to structure the errors in your application and provide more detailed bug reports.
  
- As of the time of the writing of this gudie, Angular 2 does not have an equivalent of Angular 1's [$log](https://docs.angularjs.org/api/ng/service/$log) service. However, there are two packages that provide similar functionality - [angular2-log](https://www.npmjs.com/package/angular2-log) and [angular2-logger](https://www.npmjs.com/package/angular2-logger). For this guide, we'll go through using [angular2-logger](https://www.npmjs.com/package/angular2-logger) because it is more thoroughly developed and stable.
+ As of the time of the writing of this guide, Angular 2 does not have an equivalent of Angular 1's [$log](https://docs.angularjs.org/api/ng/service/$log) service. However, there are two packages that provide similar functionality - [angular2-log](https://www.npmjs.com/package/angular2-log) and [angular2-logger](https://www.npmjs.com/package/angular2-logger). For this guide, we'll go through using [angular2-logger](https://www.npmjs.com/package/angular2-logger) because it is more thoroughly developed and stable.
  
  ### Installing a logger
  
