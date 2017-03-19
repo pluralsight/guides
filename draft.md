@@ -1,3 +1,8 @@
+### Managing layout state in Angular 2 with Redux  by Hristo Georgiev
+- [Read the guide](https://www.pluralsight.com/guides/front-end-javascript/managing-layout-state-in-angular-2-with-redux?status=draft)
+- [Read more from Hristo Georgiev](https://www.pluralsight.com/guides/author/Kaizeras) <img src="https://avatars0.githubusercontent.com/u/6340189?v=3" width="30" height="30" alt="Hristo Georgiev" />
+- Related to: Front-End JavaScript (Angular, React, Meteor, etc)
+
 ### JavaScript Closures by Miroslav Gajic
 - [Read the guide](https://www.pluralsight.com/guides/front-end-javascript/javascript-closures?status=draft)
 - [Read more from Miroslav Gajic](https://www.pluralsight.com/guides/author/mgajic78) <img src="https://avatars0.githubusercontent.com/u/25859460?v=3" width="30" height="30" alt="Miroslav Gajic" />
