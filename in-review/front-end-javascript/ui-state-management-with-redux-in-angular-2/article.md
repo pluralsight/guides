@@ -1482,7 +1482,7 @@ export class GamesService {
 
 ```
 
-The currently selected page is taken from the state and passed through `paginate`. `paginate` is an utility function that converts the current page to `offset` and `limit` parameters as the [GiantBomb APi documentation requires for paginating results](http://www.giantbomb.com/api/documentation#toc-0-15).
+The currently selected page is taken from the state and passed through `paginate`. `paginate` is an utility function that converts the current page to `offset` and `limit` parameters as the [GiantBomb API documentation requires for paginating results](http://www.giantbomb.com/api/documentation#toc-0-15).
 
 
 Next, let's implement the middleware that will be used to call the service and dispatch
