@@ -277,10 +277,7 @@ export class AppComponent {
 
 ```
 
-All presentational components will be kept in a separate directory named `components`:
-```
-$ mkdir src/app/components
-```
+
 # Modals
 
 The easiest way to implement a modal in the state is to keep its name as an identifier. Since only one modal can be opened at a time in the UI view (unless you're trying to do some kind of black magic), every modal can be referenced by a `modalName`.
@@ -368,10 +365,8 @@ export const getLayoutOpenedModalName = createSelector(getLayoutState , fromLayo
  To see how it works, let's create a sample modal:
 
 ```
-$ touch src/app/components/template-modal.component.ts
-$ touch src/app/components/template-modal.template.ts
+$ ng g component template-modal
 ```
-
 **template-modal.component.ts**
 ```
 
@@ -381,7 +376,7 @@ import {NgbModal, NgbModalRef} from "@ng-bootstrap/ng-bootstrap";
 
 @Component({
   selector: 'template-modal',
-  templateUrl: 'template-modal.template.html'
+  templateUrl: 'template-modal.component.html'
 })
 export class TemplateModalComponent {
 
@@ -415,7 +410,7 @@ export class TemplateModalComponent {
 The name of the currently selected modal is coming from the container and is obtained through the `modalState` input of the component. If the name matches with the `modalName` (templateFormModal), then the modal is opened through the `modalService`.
 Conversely, `onCloseModal` is used to emit to the container that te user has clicked to close the modal.
 
-**template-modal.template.html**
+**template-modal.component.html**
 ```
 <template #content="" let-c="close" let-d="dismiss">
   <div class="modal-header">
@@ -592,8 +587,7 @@ export const getRightSidenavState = (state:State) => state.rightSidebarOpened;
  Instead of putting the logic in each of the sidebar components, it can be combined within a structural directive which closes and opens the corresponding sidebar depening on the state of the application.
 
  ```
- $ mkdir src/app/diretives
- $ touch src/app/directives/sidebar-watch.directive.ts
+ $ ng g directive sidebar-watch
  ```
 
  **sidebar-watch.directive.ts**
@@ -663,7 +657,7 @@ export class SidebarWatchDirective implements OnInit{
  Following the same logic, there can be a directive for toggling the sidebars:
 
  ```
-  $ touch src/app/directives/sidebar-toggle.directive.ts
+  $ ng g directive sidebar-toggle
  ```
 
  **sidebar-toggle.directive.ts**
@@ -722,26 +716,10 @@ export class SidebarToggleDirective {
 
  The directive has an `@Input sidebarToggle` which can be either `left` or `right` , depending on which sidebar the directive has to control.  Every time the use clicks on the element to which the directive is attached  to, the `@HostListener('click')` catches the event and checks the state of the sidebar of the store and dispatches the corresponding action.
 
- Next, add the directives to the root module:
 
- **app.module.ts**
- ```
-import {SidebarWatchDirective} from "./directives/sidebar-watch.directive";
-import {SidebarToggleDirective} from "./directives/sidebar-toggle.directive";
-
- @NgModule({
-  declarations: [
-    //...
-    SidebarWatchDirective,
-    SidebarToggleDirective,
-    ]
-    //...
-})
-
- ```
 To demonstrate how everything come together, let's make two sidebars:
 ```
-$ touch src/app/components/left-sidebar.component.ts
+$ ng g component left-sidebar
 ```
 
 **left-sidebar.component.ts**
@@ -751,24 +729,22 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'left-sidebar',
-  templateUrl: 'left-sidebar.template.html',
+  templateUrl: 'left-sidebar.component.html',
   styleUrls: ['./sidebar.styles.css']
 })
 export class LeftSidebarComponent  {
   constructor() {}
 }
 ```
-```
-$ touch src/app/components/left-sidebar.template.html
-```
-**left-sidebar.template.html**
+
+**left-sidebar.component.html**
 ```
 <section sidebarWatch class="left-sidebar">
 </section>
 ```
 
 ```
-$ touch src/app/components/right-sidebar.component.ts
+$ ng g component right-sidebar
 ```
 **right-sidebar.component.ts**
 ```
@@ -776,17 +752,15 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'right-sidebar',
-  templateUrl: 'right-sidebar.template.html',
+  templateUrl: 'right-sidebar.component.html',
   styleUrls: ['./sidebar.styles.css']
 })
 export class RightSidebarComponent  {
   constructor() {}
 }
 ```
-```
-$ touch src/app/components/right-sidebar.template.html
-```
-**right-sidebar.template.html**
+
+**right-sidebar.component.html**
 ```
 <section sidebarWatch class="right-sidebar">
   <button class="btn btn-primary" sidebarToggle="right">Close Right Sidebar</button>
@@ -825,21 +799,7 @@ $ touch src/app/components/sidebar.styles.css
 }
 ```
 
-Add the sidebars to the root module:
- **app.module.ts**
- ```
-import {LeftSidebarComponent} from "./components/left-sidebar.component";
-import {RightSidebarComponent} from "./components/right-sidebar.component";
 
- @NgModule({
-  declarations: [
-    //...
-    RightSidebarComponent,
-    LeftSidebarComponent
-    ]
-    //...
-})
- ```
 
 In the root component of the application, put the sidebars on top all the content in a div with a class 'main-content':
 **app.component.html**
@@ -997,7 +957,7 @@ import {Component, Input, EventEmitter, Output} from '@angular/core';
 
 @Component({
   selector: 'alerts-list',
-  templateUrl: 'alerts-list.template.html',
+  templateUrl: 'alerts-list.component.html',
 
 })
 export class AlertsListComponent  {
@@ -1012,9 +972,9 @@ export class AlertsListComponent  {
 The component accepts an array of alerts and outputs the alert which the user decides to close.
 
 ```
-$touch src/app/alerts-list.template.html
+$touch src/app/alerts-list.component.html
 ```
-**alerts.template.html**
+**alerts.component.html**
 ```
 <p *ngFor="let alert of alerts">
   <ngb-alert [type]="alert.type" (close)="closeAlert.emit(alert)">{{ alert.message }}</ngb-alert>
@@ -1604,9 +1564,8 @@ This implementation of pagination provides a great deal of convenience and effic
  
 Let's create the component and it's template first:
  
- ```
- $ touch src/app/components/games-list.component.ts
- $ touch src/app/components/games-list.template.html
+```
+$ ng g component games-list
  ```
  
  **games-list.component.ts**
@@ -1615,7 +1574,7 @@ import {Component, OnInit, Input, EventEmitter, Output} from '@angular/core';
 
 @Component({
   selector: 'games-list',
-  templateUrl: 'games-list.template.html',
+  templateUrl: 'games-list.component.html',
 
 })
 export class GamesListComponent  {
@@ -1636,7 +1595,7 @@ export class GamesListComponent  {
 }
 
 ```
-**games-list.template.html**
+**games-list.component.html**
 ```
 <div class="container" *ngIf="games">
   <table class="table table-hover">
