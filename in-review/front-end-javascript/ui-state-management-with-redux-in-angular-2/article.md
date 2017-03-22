@@ -1284,7 +1284,7 @@ export type GameActions = LoadGamesAction | LoadGamesFailedAction | LoadGamesSuc
 
 Redux has a convention for loading asynchronous results. It does it by using three actions - `LOAD` , `LOAD_SUCCESS` and `LOAD_FAILURE`. The last two get dispathed when the [middleware](http://redux.js.org/docs/advanced/Middleware.html) resolves the server-side request.
 
-To figure out how to construct the state of the paginated `games` entities, the requirements for a pagination to wor successfully need to be fleshed out. What does a pagination need:
+To figure out how to construct the state of the paginated `games` entities, let's see what a pagination need:
 
 1. Number of current page
 2. Total amount of items
