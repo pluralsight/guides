@@ -1,3 +1,5 @@
+# Introduction 
+
 Serverless architectures are a popular trend right now.
 
 When thinking of serverless computing, names like Amazon AWS Lambda or Windows Azure Functions may come to mind, but the fact is that there are several companies focusing on this model. One of these companies is PubNub.
