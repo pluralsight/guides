@@ -42,6 +42,57 @@ Let's review the concepts and features of BLOCKS with two examples. First, let's
 
 Let's get started!
 
+# Creating your first block
+[Log into your PubNub account](https://admin.pubnub.com/#/login) or [sign up](https://admin.pubnub.com/#/register) if you don't have one.
+
+In your [dashboard](https://admin.pubnub.com), create a new app and give it a name:
+
+![Image]()
+
+Click on the app to show the key information that is created automatically (you can create another keyset if you want):
+
+![Image]()
+
+Now, the first thing you need to do is enable the BLOCKS functionality on a keyset. Click on the keyset, scroll down to *Application add-ons*, enable the *PubNub BLOCKS* option and save the change:
+
+![Image]()
+
+Next, choose BLOCKS on the left menu. The following screen will be shown:
+
+![Image]()
+
+Click on *Create Block*, enter a name (this name must be unique for all BLOCKS under a given keyset), a description (optionally), choose the keyset where you enable the BLOCKS functionality, and click *Create*:
+
+![Image]()
+
+A block acts as a container for Event Handlers (EH). An Event Handler contains the JavaScript program that will run against the message.
+
+Let's create one. You'll have two options, create the EH manually or from some pre-defined templates. Let's choose the latter option for now. Click on the block row and then on *Guide me*:
+
+![Image]()
+
+In the window that shows up, you'll have to enter a name, a type, and the channel where the messages on which the EH will be triggered will be sent:
+
+![Image]()
+
+Three types of Event Handlers are supported:
+- Before Publish or Fire. Messages are processed by the EH code before they are forwarded on to subscribers of the channel in a synchronous (blocking) way.
+- After Publish or Fire. Messages are delivered to subscribers in parallel to the EH code running against the message in an asynchronous (non-blocking) way.
+- After Presence. When a presence event is triggered, a copy of the same presence event is made available to the associated EH code for processing in an asynchronous (non-blocking) way.
+You can know more about [Event Handler Types and its rules and limits here](https://www.pubnub.com/docs/blocks/event-handler-types).
+
+For our example, let's choose `Before Publish or Fire` as the event type, the channel `strings` and then click on *Save and Continue*:
+
+![Image]()
+
+Next, and depending on the chosen event type, some code sample for different use cases will be shown:
+
+![Image]()
+
+Choose the *Hello World* sample and confirm your choices to start editing:
+
+![Image]()
+
 # Coding your first block
 
 Let's start by analyzing the code of the Hello world example.
