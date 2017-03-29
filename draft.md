@@ -1,3 +1,8 @@
+### Getting started with PubNub BLOCKS by Esteban Herrera
+- [Read the guide](https://www.pluralsight.com/guides/interesting-apis/getting-started-with-pubnub-blocks?status=draft)
+- [Read more from Esteban Herrera](https://www.pluralsight.com/guides/author/eh3rrera) <img src="https://avatars1.githubusercontent.com/u/11665759?v=3" width="30" height="30" alt="Esteban Herrera" />
+- Related to: Interesting APIs (SendGrid, Twilio, etc)
+
 ### Managing layout state in Angular 2 with Redux  by Hristo Georgiev
 - [Read the guide](https://www.pluralsight.com/guides/front-end-javascript/managing-layout-state-in-angular-2-with-redux?status=draft)
 - [Read more from Hristo Georgiev](https://www.pluralsight.com/guides/author/Kaizeras) <img src="https://avatars0.githubusercontent.com/u/6340189?v=3" width="30" height="30" alt="Hristo Georgiev" />
