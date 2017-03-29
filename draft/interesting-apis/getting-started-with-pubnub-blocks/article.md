@@ -47,33 +47,40 @@ Let's get started!
 
 In your [dashboard](https://admin.pubnub.com), create a new app and give it a name:
 
-![Image]()
+![Create PubNub app](https://raw.githubusercontent.com/pluralsight/guides/master/images/8f48cabf-ec92-4efa-8dca-d16befdfef48.com-optimize)
+
 
 Click on the app to show the key information that is created automatically (you can create another keyset if you want):
 
-![Image]()
+![keyset](https://raw.githubusercontent.com/pluralsight/guides/master/images/0967fe42-4f4d-4c83-9f0d-f2779dc3533b.png)
+
 
 Now, the first thing you need to do is enable the BLOCKS functionality on a keyset. Click on the keyset, scroll down to *Application add-ons*, enable the *PubNub BLOCKS* option and save the change:
 
-![Image]()
+![Enable PubNub Blocks](https://raw.githubusercontent.com/pluralsight/guides/master/images/8e78a254-1764-404c-a5c1-9e9bf3ba048f.gif)
+
 
 Next, choose BLOCKS on the left menu. The following screen will be shown:
 
-![Image]()
+![Blocks screen](https://raw.githubusercontent.com/pluralsight/guides/master/images/e3214ca5-3d1b-476b-9759-12a8d802404d.png)
+
 
 Click on *Create Block*, enter a name (this name must be unique for all BLOCKS under a given keyset), a description (optionally), choose the keyset where you enable the BLOCKS functionality, and click *Create*:
 
-![Image]()
+![Create block](https://raw.githubusercontent.com/pluralsight/guides/master/images/98d6d603-f51c-4cd4-b0a9-c3ad07f37753.gif)
+
 
 A block acts as a container for Event Handlers (EH). An Event Handler contains the JavaScript program that will run against the message.
 
 Let's create one. You'll have two options, create the EH manually or from some pre-defined templates. Let's choose the latter option for now. Click on the block row and then on *Guide me*:
 
-![Image]()
+![Create EH](https://raw.githubusercontent.com/pluralsight/guides/master/images/a2e6a4a4-27cb-4b0c-9fa5-1d68470edd0d.gif)
+
 
 In the window that shows up, you'll have to enter a name, a type, and the channel where the messages on which the EH will be triggered will be sent:
 
-![Image]()
+![Create EH](https://raw.githubusercontent.com/pluralsight/guides/master/images/3430147c-4563-4a6c-9fdc-9fa37f41f935.png)
+
 
 Three types of Event Handlers are supported:
 - Before Publish or Fire. Messages are processed by the EH code before they are forwarded on to subscribers of the channel in a synchronous (blocking) way.
@@ -83,15 +90,18 @@ You can know more about [Event Handler Types and its rules and limits here](http
 
 For our example, let's choose `Before Publish or Fire` as the event type, the channel `strings` and then click on *Save and Continue*:
 
-![Image]()
+![Create EH](https://raw.githubusercontent.com/pluralsight/guides/master/images/7739e1c9-6231-40bc-af1a-d8bf2b5ce770.png)
+
 
 Next, and depending on the chosen event type, some code sample for different use cases will be shown:
 
-![Image]()
+![Create EH](https://raw.githubusercontent.com/pluralsight/guides/master/images/1d2cd716-060e-4ccb-af48-2cbbf0a3c350.gif)
+
 
 Choose the *Hello World* sample and confirm your choices to start editing:
 
-![Image]()
+![EH Created](https://raw.githubusercontent.com/pluralsight/guides/master/images/1a9b92b7-df80-460f-8da4-7b8da1226328.png)
+
 
 # Coding your first block
 
