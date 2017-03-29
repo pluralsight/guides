@@ -195,15 +195,18 @@ export default (request) => {
 
 Now, save the code by clicking the save button at the top-left, click the button *Start block* at the top-right corner and test the block with a sample payload by clicking the *Publish* button at the bottom:
 
-![Image]()
+![First block](https://raw.githubusercontent.com/pluralsight/guides/master/images/bd5f68d5-952b-42e7-8b68-f55a0c2a2d76.gif)
+
 
 The output will be shown in the console:
 
-![Image]()
+![Output](https://raw.githubusercontent.com/pluralsight/guides/master/images/eed66e7d-e664-48a7-9832-d09b68b9043a.png)
+
 
 If you modify the code, you'll have to save and restart the block:
 
-![Image]()
+![Modify and restart](https://raw.githubusercontent.com/pluralsight/guides/master/images/c7d03348-8cd6-487c-ab1e-52541bcccf9d.gif)
+
 
 We can also create a simple HTML page with some Javascript code to test our block. Save this code as an HTML file (replacing your PubNub info):
 ```html
@@ -269,9 +272,10 @@ We can also create a simple HTML page with some Javascript code to test our bloc
 
 And test it in a browser:
 
-![Image]()
+![Test in browser](https://raw.githubusercontent.com/pluralsight/guides/master/images/8f244f3c-1d78-4639-a3e6-8ab349aa7d36.gif)
 
-# Creating a more complex block
+
+# Coding a more complex block
 
 Now that you know the basics, let's do something more complex.
 
@@ -288,7 +292,8 @@ You can find the final code of this event handler in this [gist](https://gist.gi
 
 All right, create another *Before Publish or Fire* EV (no need to use the guided process):
 
-![Image]()
+![Create EH](https://raw.githubusercontent.com/pluralsight/guides/master/images/eb0ddebd-41b3-4748-b7e6-d72b64e4dbd2.gif)
+
 
 Now let's modify the code to log the request, call the API with some sample data, and log its response to see how it looks:
 ```javascript
@@ -569,7 +574,8 @@ export default (request) => {
 
 And we're done. Save the changes, restart the block, enter a valid payload, and test it:
 
-![Image]()
+![Test](https://raw.githubusercontent.com/pluralsight/guides/master/images/00f0dc08-0ec0-426b-b5fa-29bad6e80be2.gif)
+
 
 The output in the console should be something like this:
 
@@ -650,7 +656,8 @@ If you want to test it with an HTML file, use the following code (replacing your
 
 And open it in a browser:
 
-![Image]()
+![Test in browser](https://raw.githubusercontent.com/pluralsight/guides/master/images/690e1a8c-b765-41fb-850e-2761f7713f6c.gif)
+
 
 # Conclusion
 
