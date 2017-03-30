@@ -8,7 +8,7 @@ PubNub allows you to build real-time applications by providing APIs for publish/
 
 Using PubNub, you can publish a message (data) into a channel (or channels) so the applications or devices subscribed to that channel receive the message in *real-time*:
 
-![Pub-Sub](https://raw.githubusercontent.com/pluralsight/guides/master/images/8d8b51d6-23a3-426d-8db6-4448cc309b38.gif)
+![Pub-Sub](https://raw.githubusercontent.com/pluralsight/guides/master/images/184417a9-098d-4005-973a-3d80b272209c.gif)
 
 That works great, and many times, that would be all you need for your real-time applications.
 
