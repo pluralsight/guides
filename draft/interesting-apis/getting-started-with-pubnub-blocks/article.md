@@ -18,11 +18,11 @@ We will have to add a server to be in charge of that processing:
 
 ![Adding a server](https://raw.githubusercontent.com/pluralsight/guides/master/images/18070890-8345-4db6-b1da-836959bda95c.gif)
 
-For some applications, which need a server anyway, this may not represent a problem. But, wouldn't be great if someone else could take care of problems like management and scaling entirely?
+For some applications, we'll need a server anyway so this may not represent a problem. But, wouldn't be great if someone else could take care of problems like management and scaling of this server(s) entirely?
 
 This is the problem PubNub tries to solve with [PubNub BLOCKS](https://www.pubnub.com/products/blocks/).
 
-With BLOCKS (in uppercase refers to the PubNub feature), instead of simply passing messages, you can set up a piece of code (a block) to process a message before or after it's published:
+With BLOCKS (in uppercase refers to the PubNub feature), instead of simply passing messages, you can set up a piece of code (an event handler) to process a message before or after it's published:
 
 ![PubNub Blocks](https://raw.githubusercontent.com/pluralsight/guides/master/images/4c172ac7-7ce9-490f-bf83-fcf33937bbb8.gif)
 
@@ -666,7 +666,7 @@ Although you don't have a full javascript (or Node.js) environment inside a bloc
 
 And don't forget the [existing BLOCKS catalog](https://www.pubnub.com/blocks-catalog/). There's a growing collection of blocks that you can use to get started, just import them to your account and modify them to your needs.
 
-## Credits
+### Credits
 
 - [Monitor by Stock Image Folio from the Noun Project](https://thenounproject.com/term/monitor/870440/)
 - [Server by Stock Image Folio from the Noun Project](https://thenounproject.com/term/server/870452/)
