@@ -272,7 +272,7 @@ We can also create a simple HTML page with some Javascript code to test our bloc
 
 And test it in a browser:
 
-![Test in browser](https://raw.githubusercontent.com/pluralsight/guides/master/images/8f244f3c-1d78-4639-a3e6-8ab349aa7d36.gif)
+![Test in browser](https://raw.githubusercontent.com/pluralsight/guides/master/images/d1f9829e-4f56-4ac5-8ea2-4b13a4278d09.gif)
 
 
 # Coding a more complex block
@@ -660,7 +660,8 @@ data:image/png;base64,[BASE64_STRING]
 ```
 Open it in a browser and look the result:
 
-![Test in browser](https://raw.githubusercontent.com/pluralsight/guides/master/images/690e1a8c-b765-41fb-850e-2761f7713f6c.gif)
+![Test in browser](https://raw.githubusercontent.com/pluralsight/guides/master/images/67bcbf50-2d28-4548-85c9-b986940a0c48.gif)
+
 
 
 # Conclusion
