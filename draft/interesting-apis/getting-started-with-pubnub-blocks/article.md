@@ -8,7 +8,7 @@ PubNub allows you to build real-time applications by providing APIs for publish/
 
 Using PubNub, you can publish a message (data) into a channel (or channels) so the applications or devices subscribed to that channel receive the message in *real-time*:
 
-![Image]()
+![Pub-Sub](https://raw.githubusercontent.com/pluralsight/guides/master/images/8d8b51d6-23a3-426d-8db6-4448cc309b38.gif)
 
 That works great, and many times, that would be all you need for your real-time applications.
 
@@ -16,7 +16,7 @@ However, what if we need to process somehow the message before (or after) we sen
 
 We will have to add a server to be in charge of that processing:
 
-![Image]()
+![Adding a server](https://raw.githubusercontent.com/pluralsight/guides/master/images/18070890-8345-4db6-b1da-836959bda95c.gif)
 
 For some applications, which need a server anyway, this may not represent a problem. But, wouldn't be great if someone else could take care of problems like management and scaling entirely?
 
@@ -24,7 +24,7 @@ This is the problem PubNub tries to solve with [PubNub BLOCKS](https://www.pubnu
 
 With BLOCKS (in uppercase refers to the PubNub feature), instead of simply passing messages, you can set up a piece of code (a block) to process a message before or after it's published:
 
-![Image]()
+![PubNub Blocks](https://raw.githubusercontent.com/pluralsight/guides/master/images/4c172ac7-7ce9-490f-bf83-fcf33937bbb8.gif)
 
 This block is deployed as a serverless function (you can call it a microservice if you want) in the PubNub network. You just have to code it in JavaScript, deploy it and PubNub will handle the rest.
 
@@ -47,8 +47,7 @@ Let's get started!
 
 In your [dashboard](https://admin.pubnub.com), create a new app and give it a name:
 
-![Create PubNub app](https://raw.githubusercontent.com/pluralsight/guides/master/images/8f48cabf-ec92-4efa-8dca-d16befdfef48.com-optimize)
-
+![Create PubNub app](https://raw.githubusercontent.com/pluralsight/guides/master/images/16110e4c-98f9-443a-8317-41bd1232e955.gif)
 
 Click on the app to show the key information that is created automatically (you can create another keyset if you want):
 
@@ -57,7 +56,7 @@ Click on the app to show the key information that is created automatically (you 
 
 Now, the first thing you need to do is enable the BLOCKS functionality on a keyset. Click on the keyset, scroll down to *Application add-ons*, enable the *PubNub BLOCKS* option and save the change:
 
-![Enable PubNub Blocks](https://raw.githubusercontent.com/pluralsight/guides/master/images/8e78a254-1764-404c-a5c1-9e9bf3ba048f.gif)
+![Enable PubNub Blocks](https://raw.githubusercontent.com/pluralsight/guides/master/images/f5864808-646b-4446-b1b2-30888cf50ba0.gif)
 
 
 Next, choose BLOCKS on the left menu. The following screen will be shown:
@@ -67,15 +66,13 @@ Next, choose BLOCKS on the left menu. The following screen will be shown:
 
 Click on *Create Block*, enter a name (this name must be unique for all BLOCKS under a given keyset), a description (optionally), choose the keyset where you enable the BLOCKS functionality, and click *Create*:
 
-![Create block](https://raw.githubusercontent.com/pluralsight/guides/master/images/98d6d603-f51c-4cd4-b0a9-c3ad07f37753.gif)
-
+![Create block](https://raw.githubusercontent.com/pluralsight/guides/master/images/a960c383-bdfa-49ef-ab8e-2ff5cc85fa5e.gif)
 
 A block acts as a container for Event Handlers (EH). An Event Handler contains the JavaScript program that will run against the message.
 
 Let's create one. You'll have two options, create the EH manually or from some pre-defined templates. Let's choose the latter option for now. Click on the block row and then on *Guide me*:
 
-![Create EH](https://raw.githubusercontent.com/pluralsight/guides/master/images/a2e6a4a4-27cb-4b0c-9fa5-1d68470edd0d.gif)
-
+![Create EH](https://raw.githubusercontent.com/pluralsight/guides/master/images/14c9bc58-7e11-4220-b094-a321a28a065d.gif)
 
 In the window that shows up, you'll have to enter a name, a type, and the channel where the messages on which the EH will be triggered will be sent:
 
@@ -92,11 +89,9 @@ For our example, let's choose `Before Publish or Fire` as the event type, the ch
 
 ![Create EH](https://raw.githubusercontent.com/pluralsight/guides/master/images/7739e1c9-6231-40bc-af1a-d8bf2b5ce770.png)
 
-
 Next, and depending on the chosen event type, some code sample for different use cases will be shown:
 
-![Create EH](https://raw.githubusercontent.com/pluralsight/guides/master/images/1d2cd716-060e-4ccb-af48-2cbbf0a3c350.gif)
-
+![Create EH](https://raw.githubusercontent.com/pluralsight/guides/master/images/2fd5cdff-a7e0-4612-9968-4bbe4404784e.gif)
 
 Choose the *Hello World* sample and confirm your choices to start editing:
 
@@ -195,8 +190,7 @@ export default (request) => {
 
 Now, save the code by clicking the save button at the top-left, click the button *Start block* at the top-right corner and test the block with a sample payload by clicking the *Publish* button at the bottom:
 
-![First block](https://raw.githubusercontent.com/pluralsight/guides/master/images/bd5f68d5-952b-42e7-8b68-f55a0c2a2d76.gif)
-
+![First block](https://raw.githubusercontent.com/pluralsight/guides/master/images/35d77a9b-4d4a-4165-8043-296bab1e80aa.gif)
 
 The output will be shown in the console:
 
@@ -205,8 +199,7 @@ The output will be shown in the console:
 
 If you modify the code, you'll have to save and restart the block:
 
-![Modify and restart](https://raw.githubusercontent.com/pluralsight/guides/master/images/c7d03348-8cd6-487c-ab1e-52541bcccf9d.gif)
-
+![Modify and restart](https://raw.githubusercontent.com/pluralsight/guides/master/images/b017e04a-e23c-4cf5-975b-2d7e2688a1d3.gif)
 
 We can also create a simple HTML page with some Javascript code to test our block. Save this code as an HTML file (replacing your PubNub info):
 ```html
@@ -292,7 +285,7 @@ You can find the final code of this event handler in this [gist](https://gist.gi
 
 All right, create another *Before Publish or Fire* EV (no need to use the guided process):
 
-![Create EH](https://raw.githubusercontent.com/pluralsight/guides/master/images/eb0ddebd-41b3-4748-b7e6-d72b64e4dbd2.gif)
+![Create EH](https://raw.githubusercontent.com/pluralsight/guides/master/images/d2b2779f-df1a-42dc-a056-3ada35ccc8f0.gif)
 
 
 Now let's modify the code to log the request, call the API with some sample data, and log its response to see how it looks:
