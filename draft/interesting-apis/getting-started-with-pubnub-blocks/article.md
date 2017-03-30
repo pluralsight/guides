@@ -2,9 +2,9 @@
 
 Serverless architectures are a popular trend right now.
 
-When thinking of serverless computing, names like Amazon AWS Lambda or Windows Azure Functions may come to mind, but the fact is that there are several companies focusing on this model. One of these companies is PubNub.
+When thinking of serverless computing, names like [Amazon AWS Lambda](https://aws.amazon.com/lambda/details/) or [Windows Azure Functions](https://azure.microsoft.com/en-us/services/functions/) may come to mind, but the fact is that there are several companies focusing on this model. One of these companies is [PubNub](https://www.pubnub.com/).
 
-PubNub allows you to build real-time applications by providing APIs for publish/subscribe messaging, online presence detection, and mobile push notifications among other features.
+PubNub allows you to build real-time applications by providing APIs for publish/subscribe messaging, online presence detection, and mobile push notifications among other [features](https://www.pubnub.com/products/global-data-stream-network/).
 
 Using PubNub, you can publish a message (data) into a channel (or channels) so the applications or devices subscribed to that channel receive the message in *real-time*:
 
@@ -20,13 +20,13 @@ We will have to add a server to be in charge of that processing:
 
 For some applications, which need a server anyway, this may not represent a problem. But, wouldn't be great if someone else could take care of problems like management and scaling entirely?
 
-This is the problem PubNub tries to solve with PubNub BLOCKS.
+This is the problem PubNub tries to solve with [PubNub BLOCKS](https://www.pubnub.com/products/blocks/).
 
 With BLOCKS (in uppercase refers to the PubNub feature), instead of simply passing messages, you can set up a piece of code (a block) to process a message before or after it's published:
 
 ![Image]()
 
-This block is deployed as a serverless function (you can call it a microservice if you want) in the PubNub network. You just have to code it in JavaScript, hit deploy and PubNub will handle the rest.
+This block is deployed as a serverless function (you can call it a microservice if you want) in the PubNub network. You just have to code it in JavaScript, deploy it and PubNub will handle the rest.
 
 Here are some things you can do with a block:
 - Alter the message by adding a new attribute, or modifying or deleting an existing one.
@@ -38,7 +38,7 @@ There's even a catalog of pre-built blocks that allows you to integrate the func
 
 Sounds good?
 
-Let's review the concepts and features of BLOCKS with two examples. First, let's create a block to reverse strings, and then, a more complex block that will take an URL and will call an API to generate a QR code to return its base64 representation, storing the result in a database to only call the API when necessary.
+Let's review the concepts and features of BLOCKS with two examples. First, let's create a block to reverse strings, and then, a more complex block that will take an URL and will call an API to generate a [QR code](https://en.wikipedia.org/wiki/QR_code) to return its [base64](https://en.wikipedia.org/wiki/Base64) representation, storing the result in a database to only call the API when necessary.
 
 Let's get started!
 
