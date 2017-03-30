@@ -1,7 +1,7 @@
 # Using Angular 2 with ASP.NET Core with TypeScript using Microsoft Visual Studio 2015
 
-### This tutorial aims for starting Angular 2 in ASP.NET Core using Visual Studio 2015. The release of Angular 2, ASP.NET Core RC is becoming interesting to build SPA.
-I have compiled the steps involved in starting to learn Angular 2. This is detailed explanation, you will feel much easier at end of article.
+This tutorial is aimed at beginners starting Angular 2 in ASP.NET Core using Visual Studio 2015.
+I have compiled the steps involved in starting to learn Angular 2. This is largely a step-by-step explanation, abd you will feel much more confident at the end of the article.
 
 
 # Step 1: Creating an empty ASP.NET Core project
@@ -9,15 +9,15 @@ Open Visual Studio 2015 Community Edition Update 3, Select New Web Project namin
 ![Creating Empty ASP.NET Core Application](https://i2.wp.com/www.mithunvp.com/wp-content/uploads/2016/01/aspnetcore.png?w=476)
 
 
-I used Visual Studio 2015 Community Edition Update 3(Must update), TypeScript 2.0 (must), latest NPM, Gulp.
+I used Visual Studio 2015 Community Edition Update 3, TypeScript 2.0, latest NPM, Gulp. For Visual Studio and TypeScript, I suggest that you use the same versions that I use in this guide.
 
 
 # Step 2: Configure ASP.NET Core to serve Static Files
-ASP.NET Core is designed as pluggable framework to include and use only necessary packages, instead of including too many initial stuff.
+ASP.NET Core is designed as pluggable framework to include and use only necessary packages, instead of including too many modules initially.
 
-Lets create HTML file named “index.html” under wwwroot folder.
+Let's create an HTML file named `index.html` under `wwwroot` folder.
 
-Right click on wwwroot folder, Add New Item and create index.html file. This HTML page will act as default page.
+Right click on `wwwroot` folder, `Add New Item` and create the `index.html` file. This HTML page will act as default page.
 ```C#
 <html>
 <head>
@@ -31,9 +31,9 @@ Right click on wwwroot folder, Add New Item and create index.html file. This HTM
 
 ```
 
-For ASP.NET Core to serve static files, we need to add StaticFiles middle ware in Configure method of Startup.cs page. Ensure that packages are restored properly.
+For ASP.NET Core to serve static files, we need to add StaticFiles middleware in the **Configure** method of the `Startup.cs` page. Ensure that packages are restored properly.
 
-project.json is redesigned to make it better, we have Static Files middleware to serve static assets like HTML, JS files etc.
+`project.json` is redesigned to make it better, we have StaticFiles middleware to serve static assets like HTML, JS files etc.
 ```C#
 public void Configure(IApplicationBuilder app)
         {
@@ -97,17 +97,17 @@ public void Configure(IApplicationBuilder app)
 }
 
 ```
-> Interestingly Program.cs is entry point of application execution just like void main().
+> Interestingly Program.cs is an entry point of application execution just like main().
 
-Run the application now, ASP.NET Core renders static HTML page.
+Run the application now. Notice that ASP.NET Core renders the static HTML page.
 
-Delete this index.html page, we will be injecting this dynamically later. Till now you saw demonstration of “wwwroot“ as root folder for ASP.NET Core web apps.
+Delete this `index.html` page, we will be injecting this dynamically later. Till now you saw demonstration of “wwwroot“ as root folder for ASP.NET Core web apps.
 
 # Step 3: Angular 2 in ASP.NET Core
 
-Angular 2 is famously claiming to be ONE Framework for MOBILE and DESKTOP apps. There’s won’t be any breaking changes after final release.
+Angular 2 has famously claimed to be the ONE Framework for MOBILE and DESKTOP apps. 
 
-This tutorial refers [5 MIN QUICK START](https://angular.io/docs/ts/latest/quickstart.html) for getting started, it’s more focused on other light weight code editors; but here we are using Visual Studio 2015 Community Edition Update 3 for its built in TypeScript tooling and other features.
+This tutorial refers to [5 MIN QUICK START](https://angular.io/docs/ts/latest/quickstart.html) for getting started. The 5-minute guide is more focused on other light weight code editors; but here we are using Visual Studio 2015 Community Edition Update 3 for its built in TypeScript tooling and other features.
 
 We will be using Webpack for module bundler, it’s an excellent alternative to the systemJS approach. To know more about inner details of read [webpack and Angular 2](https://angular.io/docs/ts/latest/guide/webpack.html#!#configure-webpack)
 
