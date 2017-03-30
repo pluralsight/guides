@@ -105,30 +105,31 @@ Delete this `index.html` page, we will be injecting this dynamically later. Till
 
 # Step 3: Angular 2 in ASP.NET Core
 
-Angular 2 has famously claimed to be the ONE Framework for MOBILE and DESKTOP apps. 
+Angular 2 has famously claimed to be the ONE Framework for mobile and desktop apps. 
 
-This tutorial refers to [5 MIN QUICK START](https://angular.io/docs/ts/latest/quickstart.html) for getting started. The 5-minute guide is more focused on other light weight code editors; but here we are using Visual Studio 2015 Community Edition Update 3 for its built in TypeScript tooling and other features.
+This tutorial refers to [5 MIN QUICK START](https://angular.io/docs/ts/latest/quickstart.html) for getting started. The 5-minute guide is more focused on other light-weight code editors. However, we are using Visual Studio 2015 Community Edition Update 3 for its built-in TypeScript tooling and other features.
 
-We will be using Webpack for module bundler, it’s an excellent alternative to the systemJS approach. To know more about inner details of read [webpack and Angular 2](https://angular.io/docs/ts/latest/guide/webpack.html#!#configure-webpack)
+We will be using Webpack as our module bundler. It’s an excellent alternative to the systemJS approach. To learn more about Webpack, read [Webpack and Angular 2](https://angular.io/docs/ts/latest/guide/webpack.html#!#configure-webpack)
 
-Majority of webpack scripting is based on AngularClass’s [angular2-webpack-starter](https://github.com/AngularClass/angular2-webpack-starter). I have modified according to ASP.NET Core web apps.
+The majority of Webpack scripting is based on AngularClass’s [angular2-webpack-starter](https://github.com/AngularClass/angular2-webpack-starter). I have modified it according to ASP.NET Core web apps.
 
-> ASP.NET Core used here is SPA type of website, no MVC used here.
+> ASP.NET Core follows Single Page Application (SPA) architecture rather than a Model-View-Controller (MVC) framework.
 
-Why I choose Webpack for Angular 2 in ASP.NET Core?
+Why Webpack for Angular 2 in ASP.NET Core? I could have probably used [many other bundlers](https://www.slant.co/options/11602/alternatives/~webpack-alternatives).
 
-Webpack is much simpler to code, plugins based working with static files.
-Webpack 2 with dev-server runs application in memory, live reloading & compilation is easy. It provides tree shaking to eliminate unused code.
-Integrating with 3rd party packages like Angular Material 2, AngularFire, bootstrap are just one line inclusion
-AngularClass webpack  starter kit provides HMR (Hot Module Replacement) – maintain execution state while code gets modified.
-Webpack is adopted by Angular CLI, AngularService by Microsoft for making bundles much smaller.
+However, Webpack does have many perks:
+* It's much simpler to code, plugins based working with static files.
+* Webpack 2 with dev-server runs application in memory, live reloading & compilation is easy. It provides tree shaking to eliminate unused code.
+* Integrating with 3rd party packages like Angular Material 2, AngularFire, bootstrap, and more is short and sweet.
+* The AngularClass webpack starter kit provides HMR (Hot Module Replacement) – maintain execution state while code gets modified.
+* Webpack is adopted by Angular CLI, AngularService by Microsoft for making bundles much smaller.
 
 # Step 4: Adding NPM Configuration file for Angular 2 packages
-Angular 2 team is pushing the code changes using NPM rather than CDN or any other source, due to this we need to add NPM configuration file (package.json) to this ASP.NET Core application.
+The Angular 2 team is pushing the code changes using NPM rather than CDN or any other source. Due to this, we need to add an NPM configuration file (`package.json`) to this ASP.NET Core application.
 
-Right Click on “ngCoreContacts“, add new file “NPM Configuration File“; by default package.json is added to ASP.NET Core project. This acts Node Package Manager (NPM) file, a must for adding packages for Angular 2
+Right Click on “ngCoreContacts“, add new file “NPM Configuration File“; by default `package.json` is added to ASP.NET Core project. This acts Node Package Manager (NPM) file, a must-have for adding packages when using Angular 2.
 
-From the Angular 2 Quick start provided above, we need to add dependencies for required for Angular 2 in ASP.NET Core application. Copy Paste below configuration in package.json file
+From the Angular 2 Quick Start provided above, we need to add required dependencies. Copy-paste the below configuration in your `package.json` file
 
 ```JSON
 {
@@ -314,16 +315,17 @@ From the Angular 2 Quick start provided above, we need to add dependencies for r
   }
 }
 ``` 
-Right after saving this, ASP.NET Core starts restoring the packages. It would download all packages mentioned in dependencies section of above package.json.
+Right after saving this, ASP.NET Core starts restoring the packages. It will download all packages mentioned in the dependencies section of the `package.json` file.
 
-Sometimes in solution explorer you might see ‘Dependencies – not installed’, don’t worry this bug in tooling. All the npm packages are installed.
+The Visual Studio Solution Explorer might read ‘Dependencies – not installed’. Don’t worry; all the npm packages have been installed. This is simply a bug in the tooling.
 
-# Step 5: Add TypeScript configuration file – must for Angular 2 in ASP.NET Core using TypeScript
-We are creating Angular 2 in ASP.NET Core starting with TypeScript, this obvious reason adds to include TypeScript Configuration file which does work of transpiling it to JavaScript, module loading, target ES5 standards.
+# Step 5: Add the TypeScript configuration file. 
 
-Refer  [Getting Started with TypeScript](http://www.mithunvp.com/typescript-in-asp-net-5-using-visual-studio-2015/) if you just want beginner intro on it.
+You must do this for Angular 2 in ASP.NET Core apps that use TypeScript. The TypeScript Configuration file handles [transpiling our application](https://scotch.io/tutorials/javascript-transpilers-what-they-are-why-we-need-them) to JavaScript, loads modules, and meets ES5 standards.
 
-Add “tsconfig.json” in the project, copy paste below configuration.
+Refer to [Getting Started with TypeScript](http://www.mithunvp.com/typescript-in-asp-net-5-using-visual-studio-2015/) if want a beginner intro on TypeScript configuration.
+
+Add `tsconfig.json` in the project, and add in the configuration below.
 
 > “baseUrl” ensures that TypeScript files are transpiled to JavaScript from the ‘./clientsrc‘. This folder is virtual directory for TypeScript
 
@@ -404,75 +406,77 @@ Add “tsconfig.json” in the project, copy paste below configuration.
   "atom": { "rewriteTsconfig": false }
 }
 ``` 
-##### It’s mandatory to install TypeScript 2.o for working with Angular 2.
+##### It’s mandatory to install TypeScript 2.0 when working with Angular 2.
 
 At present typings.json is not required because we are using [@types with TypeScript.](https://blogs.msdn.microsoft.com/typescript/2016/06/15/the-future-of-declaration-files/) However if your using any other packages which don’t have entries in @types then **typings.json** has to be added.
 
 # Step 6: Usage of Webpack as module bundler
 ### What is Webpack?
 
-Webpack is a powerful module bundler. A bundle is a JavaScript file that incorporate assets that belong together and should be served to the client in a response to a single file request. A bundle can include JavaScript, CSS styles, HTML, and almost any other kind of file.
+Webpack is a powerful module bundler. A bundle is a JavaScript file that incorporate assets that belong together and should be served to the client in a response to a single file request. A bundle can include JavaScript, CSS, HTML, and almost any other language.
 
 Webpack roams over your application source code, looking for import statements, building a dependency graph, and emitting one (or more) bundles. With plugin “loaders” Webpack can preprocess and minify different non-JavaScript files such as TypeScript, SASS, and LESS files.
 
-In package.json, we have added “webpack“ packages as “devdependencies“. They will perform all bundling work.
+In `package.json`, we have added “webpack“ packages as “devdependencies“. They will perform all bundling work.
 
-What webpack does is written in a JavaScript configuration file know as **webpack.config.js**. As always the applications are run in **Development**, **Test** and **Production** environment.
+**`webpack.config.js`** defines what Webpack does. As always, the applications are run in **Development**, **Test** and **Production** environment.
 
-There are some common functionalities and some specific to environments. We will focus on development and production environment to write accordingly.
+There are some common functionalities and some specific to environments. We will focus on the development and production environment.
 
-Development environment should have source maps for debugging TypeScript files, minifying bundles of JS, CSS etc files not necessary.
-
-Production environment should minify bundles to reduce loading time, do not include source maps. Webpack 2 also does tree shaking i.e. eliminate unused code to further reduce bundle sizes.
+The development environment should have source maps for debugging TypeScript files. However, minifying bundles of JS, CSS, etc. is not required. The production environment should minify bundles to reduce loading time. Webpack 2 also does tree-shaking, a method for eliminating unused code to shrink bundle sizes.
 
 > The entire source code is on my [github repo](https://www.github.com/syedikramshah), fork or clone to play with it.
 
-webpack.config.js – Based on environment set process.env.NODE_ENV, it runs either dev or prod configurations.
+`webpack.config.js` – Based on environment set process.env.NODE_ENV, it runs either dev or prod configurations.
 
-Webpack.common.js before bundling environment specific files, it performs tasks meant to be used for both environment.
+`Webpack.common.js` before bundling environment specific files, it performs tasks meant to be used for both environment.
 
-Webpack splits Angular 2 apps into 3 files polyfills(to maintain backward compatibility with older browsers) , vendors(all JS, CSS, HTML, SCSS, images, JSON etc into one file) and boot (application specific files)
-resolve based on various file extensions
-Webpack itself doesn’t know what to do with a non-JavaScript file. We teach it to process such files into JavaScript with loaders. For this, we have written loaders TS, HTML, JSON, Fonts, images
-Any static assets placed in “clientsrc/assets” will be copied to assets folder using CopyWebpackPlugin
-CleanWebpackPlugin cleans “wwwroot/dist” folder every time we run it, so that we get fresh set of files.
-I told you above to delete the index.html file, now the clientsrc/index.html will be moved to wwwroot using HtmlWebpackPlugin. Plus Webpack injects the bundle files i.e. polyfills, vendor, boot JS files and includes them in HTML script reference.
-Now let’s see webpack.dev.js for development purpose
+Webpack splits Angular 2 apps into 3 files `polyfills` (to maintain backward compatibility with older browsers), `vendors` (all JS, CSS, HTML, SCSS, images, JSON etc into one file) and `boot` (application specific files).
+This split is resolved based on various file extensions when Webpack itself doesn’t know what to do with a non-JavaScript file.
 
-Running “webpack-dev-server” – this runs entire application in memory, any changes to source file gets applied immediately
-Loads application in debug mode with source map. Everything run in memory i.e. html, js, static files are loaded in memory.
-Runs the application on localhost 3000 port. Port can be changed as your convenience
-Now let’s see webpack.prod.js for production purpose
+We teach it to process such files into JavaScript using loaders. For this, we have written loaders for TS, HTML, JSON, fonts, images, and more. Any static assets placed in `clientsrc/assets` will be copied to assets folder using CopyWebpackPlugin. CleanWebpackPlugin cleans `wwwroot/dist` folder every time we run it, so that we get fresh set of files. 
 
-Merges all the bundle files and copies to wwwroot.
-Minifies all files to load faster using UglifyJsPlugin plugin
-# Step 7: Writing Angular 2 application
-Until now we created ASP.NET Core app, added TSconfig file, webpack configuration. Now it’s time to write Angular 2 application
+I told you above to delete the `index.html` file, now the clientsrc/index.html will be moved to `wwwroot` using HtmlWebpackPlugin. Plus Webpack injects the bundle files i.e. polyfills, vendor, boot JS files and includes them in HTML script reference.
+Now let’s see `webpack.dev.js` for development purpose
 
-In the github repo, you can see “clientsrc” folder. This contains the angular 2 app which gets bundled into using webpack configurations we wrote
+Running `webpack-dev-server` – this runs the entire application in memory. Any changes to source file gets applied immediately. Loads application in debug mode with source map. Runs the application on localhost 3000 port. (The port can be changed as your convenience.) 
 
-“Clientsrc“ folder has index.html, polyfills.browses.ts, vendor.browsers.ts and mostly importantly boot.ts
+Now let’s take a look at what `webpack.prod.js` does:
 
-We have app folder containing HTML, Angular 2 components and root level module (app.module.ts) which gets loaded while bootstrapping application.
+* Merges all the bundle files and copies to `wwwroot`.
+* Minifies all files to load faster using UglifyJsPlugin. 
+
+Hopefully this clarifies some of Webpack's functionalities.
+
+# Step 7: Writing the Angular 2 application
+Until now we created ASP.NET Core app, added TSconfig file, webpack configuration. Now it’s time to write the Angular 2 application. 
+
+In the github repo, you can see the “clientsrc” folder. This contains the Angular 2 app which gets bundled into using webpack configurations we wrote
+
+“Clientsrc“ folder has `index.html`, `polyfills.browses.ts`, `vendor.browsers.ts` and mostly importantly `boot.ts`.
+
+We have app folder containing HTML, Angular 2 components and root level module (`app.module.ts`) which gets loaded while bootstrapping application.
 
 Some of files might be not interesting now, will focus them in separate articles later.
 
 # Step 8: Running the application
-Before running make sure you have run command “npm install”. This might not be needed but still it will ensure all packages are installed.
+Before running make sure you have run command <code>npm install</code>. This might not be needed but still it will ensure all packages are installed.
 
 ##### Now let’s run the application in development mode
 
-From command line (directory should be same as package.json), type “npm start” & hit enter. It will start running the webpack-dev-server which loads application and listens on localhost:3000.
-When on console it says “bundle is now VALID” then open a browser and navigate to http://localhost:3000 to see application getting loaded.
-Notice wwwroot folder, we don’t see any files copied because everything is running in memory.
+From command line (directory should be same as `package.json`), type `npm start` & hit enter. It will start running the webpack-dev-server which loads application and listens on localhost:3000.
+When the console reads `bundle is now VALID`, open a browser and navigate to `http://localhost:3000` to see the loaded application
+Notice `wwwroot` folder, we don’t see any files copied because everything is running in memory.
 
-Now that application runs properly on browser, let’s understand how Angular 2 app loads
+Now that the application runs properly on browser, let’s understand how Angular 2 app loads.
 
-When browser starts rendering index.html page, it encounters <my-app>Loading…</my-app> tag.
-Then Angular’s module platformBrowserDynamic bootstraps clientsrc/app/AppModule through line platformBrowserDynamic().bootstrapModule(AppModule)
-AppModule then loads the component app.component.ts which is mentioned in @NgModule as bootstrap entry
-Clientsrc/src/Appcomponent then resolves the <my-app> tag as selector in it and renders UI with TypeScript code.
-When we enter “npm start” in console to run the application, execution points scripts section of package.json to below code
+When the browser starts rendering the `index.html` page, it encounters the <my-app>Loading…</my-app> tag.
+Then Angular’s module `platformBrowserDynamic` bootstraps `clientsrc/app/AppModule` through line `platformBrowserDynamic().bootstrapModule(AppModule)`.
+
+AppModule then loads the `component app.component.ts` which is mentioned in @NgModule as bootstrap entry.
+`Clientsrc/src/Appcomponent` then resolves the `<my-app>` tag as a selector in it and renders the UI with TypeScript code.
+
+When we enter `npm start` in console to run the application, execution points scripts section of `package.json` to below code
 
 
 ```C# 
@@ -481,23 +485,25 @@ webpack-dev-server --config config/webpack.dev.js --progress --profile --watch -
 
 
 
-This invokes webpack-dev-server, runs the development config and watches for any changes in clientsrc folder. Any changes in this folder will reload application with changes.
+This invokes webpack-dev-server, runs the development config, and watches for any changes in clientsrc folder. Any changes in this folder will reload the application with changes.
 
-> Here ASP.NET Core is just HTML based web app, so running this app as npm start to use AngularClass features of reloading, using webpack, Hot module replacement feature.
+> Here ASP.NET Core feels just like an HTML-based web app, so run using npm start to use AngularClass features of reloading, using webpack, Hot module replacement feature.
 
 Running the application in Production mode
 
-Assuming the application is now ready to deployed, we need to have PROD build. For this run command
+Assuming the application is now ready to deployed, we need to have the PROD build. For this run command
 ```C# 
 //builds app and copies in wwwroot
 Npm run build:prod
 ```
   
-Now if you see wwwroot folder, we see the HTML, JS bundle files. This wwwroot folder can be deployed on any web server like IIS or nginx
+Now if you see `wwwroot folder`, we see the HTML, JS bundle files. This `wwwroot` folder can be deployed on any web server like IIS or nginx.
 
 You can either do F5 to run from Visual Studio IDE or run command **npm run server:prod**
 
  
 
 ![Angular 2 in ASP.NET Core](https://i2.wp.com/www.mithunvp.com/wp-content/uploads/2016/01/npmstart.png)
+
+Hopefully this tutorial helped you create your Angular 2 app using Visual Studio. Thank you for reading! Please leave your comments and feedback in the discussion section below! 
  
