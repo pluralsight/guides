@@ -574,7 +574,8 @@ export default (request) => {
 
 And we're done. Save the changes, restart the block, enter a valid payload, and test it:
 
-![Test](https://raw.githubusercontent.com/pluralsight/guides/master/images/00f0dc08-0ec0-426b-b5fa-29bad6e80be2.gif)
+![Test](https://raw.githubusercontent.com/pluralsight/guides/master/images/a36f2aba-c3c1-4ab4-a23b-7dcebfcf6c2b.gif)
+
 
 
 The output in the console should be something like this:
