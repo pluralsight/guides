@@ -654,7 +654,11 @@ If you want to test it with an HTML file, use the following code (replacing your
 </html>
 ```
 
-And open it in a browser:
+This will use the base64 string as the source of an `img` element with the format:
+```
+data:image/png;base64,[BASE64_STRING]
+```
+Open it in a browser and look the result:
 
 ![Test in browser](https://raw.githubusercontent.com/pluralsight/guides/master/images/690e1a8c-b765-41fb-850e-2761f7713f6c.gif)
 
@@ -667,7 +671,7 @@ Although you don't have a full javascript (or Node.js) environment inside a bloc
 
 And don't forget the [existing BLOCKS catalog](https://www.pubnub.com/blocks-catalog/). There's a growing collection of blocks that you can use to get started, just import them to your account and modify them to your needs.
 
-# Credits
+## Credits
 
 - [Monitor by Stock Image Folio from the Noun Project](https://thenounproject.com/term/monitor/870440/)
 - [Server by Stock Image Folio from the Noun Project](https://thenounproject.com/term/server/870452/)
