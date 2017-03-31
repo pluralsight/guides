@@ -579,8 +579,8 @@
 - Related to: Ruby, Ruby on Rails
 
 ### Everything You Need to Know About JSON by Carl Smith
-- [Read the guide](https://www.pluralsight.com/guides/review/everything-you-need-to-know-about-json)
-- [Read more from Carl Smith](https://www.pluralsight.com/guides/user/carlsmith) <img src="https://avatars.githubusercontent.com/u/7561668?v=3" width="30" height="30" alt="Carl Smith" />
+- [Read the guide](https://www.pluralsight.com/guides/software-engineering-best-practices/everything-you-need-to-know-about-json)
+- [Read more from Carl Smith](https://www.pluralsight.com/guides/author/carlsmith) <img src="https://avatars1.githubusercontent.com/u/7561668?v=3" width="30" height="30" alt="Carl Smith" />
 - Related to: Software Engineering Best Practices
 
 ### Using HTTPs with Ruby on Rails by Simone Carletti
