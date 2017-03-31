@@ -554,8 +554,8 @@
 - Related to: Front-End JavaScript (Angular, React, Meteor, etc)
 
 ### A Beginners Guide to jQuery by Carl Smith
-- [Read the guide](https://www.pluralsight.com/guides/review/a-beginners-guide-to-jquery)
-- [Read more from Carl Smith](https://www.pluralsight.com/guides/user/carlsmith) <img src="https://avatars.githubusercontent.com/u/7561668?v=3" width="30" height="30" alt="Carl Smith" />
+- [Read the guide](https://www.pluralsight.com/guides/front-end-javascript/a-beginners-guide-to-jquery)
+- [Read more from Carl Smith](https://www.pluralsight.com/guides/author/carlsmith) <img src="https://avatars1.githubusercontent.com/u/7561668?v=3" width="30" height="30" alt="Carl Smith" />
 - Related to: Front-End JavaScript (Angular, React, Meteor, etc)
 
 ### Angular JS : Modules and Providers by Matt Milner
