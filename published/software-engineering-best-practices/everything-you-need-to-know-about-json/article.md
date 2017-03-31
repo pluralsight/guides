@@ -116,7 +116,7 @@ There are six JSON types:
 
 ### The rules
 
-Objects and arrays can recursively contain other objects and arrays, so JSON can serialise structures nested to any depth. The values contained by objects and arrays, must also be JSON serialisable. JSON can’t serialise an array of functions for the same reason that it can’t serialise a function.
+Objects and arrays can recursively contain other objects and arrays, so JSON can serialise structures nested to any depth. The values contained by objects and arrays must also be JSON serialisable. JSON can’t serialise an array of functions for the same reason that it can’t serialise a function.
 
 The original JSON spec required that the value being serialised was either an object or an array. The values within that container could be of any JSON type, but the outer value had to be a container. Amendments to the spec mean that you can now serialise any JSON type directly. Just keep in mind that older JSON libraries may still adhere to the original spec.
 
