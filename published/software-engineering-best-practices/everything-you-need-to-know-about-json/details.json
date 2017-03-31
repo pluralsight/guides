@@ -1,13 +1,17 @@
 {
+    "_publish_status": "published",
     "author_name": "carlsmith",
     "author_real_name": "Carl Smith",
     "branch": "master",
     "branches": [
-        "vCillusion"
+        [
+            "vCillusion",
+            "vCillusion"
+        ]
     ],
     "filename": "article.md",
-    "image_url": "https://avatars.githubusercontent.com/u/7561668?v=3",
-    "publish_status": "published",
+    "first_commit": null,
+    "image_url": "https://avatars1.githubusercontent.com/u/7561668?v=3",
     "stacks": [
         "Software Engineering Best Practices"
     ],
