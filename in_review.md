@@ -3,11 +3,6 @@
 - [Read more from Esteban Herrera](https://www.pluralsight.com/guides/author/eh3rrera) <img src="https://avatars1.githubusercontent.com/u/11665759?v=3" width="30" height="30" alt="Esteban Herrera" />
 - Related to: Interesting APIs (SendGrid, Twilio, etc)
 
-### UI state management with Redux in Angular 2 by Hristo Georgiev
-- [Read the guide](https://www.pluralsight.com/guides/front-end-javascript/ui-state-management-with-redux-in-angular-2?status=in-review)
-- [Read more from Hristo Georgiev](https://www.pluralsight.com/guides/author/Kaizeras) <img src="https://avatars0.githubusercontent.com/u/6340189?v=3" width="30" height="30" alt="Hristo Georgiev" />
-- Related to: Front-End JavaScript (Angular, React, Meteor, etc)
-
 ### Using Angular 2 with ASP.NET Core by Syed Ikram Shah
 - [Read the guide](https://www.pluralsight.com/guides/microsoft-net/using-angular-2-with-asp-net-core?status=in-review)
 - [Read more from Syed Ikram Shah](https://www.pluralsight.com/guides/author/syedikramshah) <img src="https://avatars2.githubusercontent.com/u/6046692?v=3" width="30" height="30" alt="Syed Ikram Shah" />
