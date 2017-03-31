@@ -8,7 +8,7 @@ jQuery has exceptionally powerful tools for working with the DOM, and includes s
 
 ## Installation
 
-jQuery Core is the main jQuery library, it’s what people refer to when they say "jQuery." The jQuery Foundation maintains other software including [jQuery UI](https://app.pluralsight.com/library/courses/jquery-plugins-jquery-ui/table-of-contents), jQuery Mobile, jQuery Color and QUnit. In practice, most people just use jQuery Core, which is what this tutorial covers.
+jQuery Core is the main jQuery library; it’s what people refer to when they say "jQuery." The jQuery Foundation maintains other software including [jQuery UI](https://app.pluralsight.com/library/courses/jquery-plugins-jquery-ui/table-of-contents), jQuery Mobile, jQuery Color and QUnit. In practice, most people just use jQuery Core, which is what this tutorial covers.
 
 jQuery is a single file that you can just point a script tag at. You can host your own copy, but it’s generally better to use a content delivery network. Every CDN hosts jQuery, and jQuery has official releases on the MaxCDN network.
 
