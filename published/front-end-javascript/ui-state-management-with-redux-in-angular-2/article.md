@@ -1059,7 +1059,7 @@ To demonstrate how alerts look, the template will have two buttons for opeaning 
 
 ![alert example](https://raw.githubusercontent.com/pluralsight/guides/master/images/1fde8c90-c987-4760-9198-7c33727710a7.gif)
 
-In a real world scenario, alerts can be created when a server returns certain results. For example, in the snippet below, an `AddAlertAction` is called once the application resolves a server-side request:
+In a real-world scenario, alerts can be created when a server returns certain results. For example, in the snippet below, an `AddAlertAction` is called once the application resolves a server-side request:
 
 ```
   @Effect() deleteStudent = this._actions.ofType(student.ActionTypes.DELETE_STUDENT)
@@ -1229,14 +1229,14 @@ The equivalent jQuery operation would be quite frustrating. However, with Redux,
 
 
 
-# Server-side Pagination
+# Server-side Pagination 
 
- Even though pagination is not strictly part of an application's UI layout, it is an integral part of the application's UI that can be implemented with Redux. The goal
- of the server-side pagination implementation is to utilize the application store as much as possible and achieve flexibility with
- the least code possible. To illustrate how Redux pagination works, the [GiantBomb API](http://www.giantbomb.com/api/) will be used in the example as the source of information.
-  The games stored in the GiantBomb database will be fetched and the results will be paginated, with the pagination being
-  controlled by the application state.
-
+ Even though pagination is not strictly part of an application's UI layout, it is an integral part of the application's UI that can be implemented with Redux. The goal of implementing server-side pagination is to utilize the application store as much as possible and achieve flexibility with
+ the least code possible. 
+ 
+ ## GiantBomb API
+ 
+ To illustrate how Redux pagination works, we will use the [GiantBomb API](http://www.giantbomb.com/api/) as the source of information. We will fetch the games stored in the GiantBomb database, and then we will paginate the results. The pagination will be controlled by the application state.
 
  First, create a separate directory for `games`:
  ```
@@ -1285,17 +1285,17 @@ export type GameActions = LoadGamesAction | LoadGamesFailedAction | LoadGamesSuc
 
  ```
 
-Redux has a convention for loading asynchronous results. It does it by using three actions - `LOAD` , `LOAD_SUCCESS` and `LOAD_FAILURE`. The last two get dispathed when the [middleware](http://redux.js.org/docs/advanced/Middleware.html) resolves the server-side request.
+Redux has a convention for loading asynchronous results. It does it by using three actions - `LOAD` , `LOAD_SUCCESS` and `LOAD_FAILURE`. The last two get dispatched when the [middleware](http://redux.js.org/docs/advanced/Middleware.html) resolves the server-side request.
 
-To figure out how to construct the state of the paginated `games` entities, let's see what a pagination need:
+To figure out how to construct the state of the paginated `games` entities, let's see what a pagination needs:
 
-1. Number of current page
+1. Number of current pages
 2. Total amount of items
 3. Collection of the items currently displayed
 4. (optional) Number of items per page and number of visible pages
 
 
-Having this in mind, here's how the state should look like:
+Having this in mind, here's how the state interface should look:
 
 ```
 export interface State {
@@ -1485,8 +1485,7 @@ export class GamesService {
 
 ```
 
-The currently selected page is taken from the state and passed through `paginate`. `paginate` is an utility function that converts the current page to `offset` and `limit` parameters as the [GiantBomb API documentation requires for paginating results](http://www.giantbomb.com/api/documentation#toc-0-15).
-
+The currently selected page is taken from the state and passed through `paginate`. `paginate` is a utility function that converts the current page to `offset` and `limit` parameters in accordance with the [GiantBomb API requirements for paginating results](http://www.giantbomb.com/api/documentation#toc-0-15).
 
 Next, let's implement the middleware that will be used to call the service and dispatch
 `SUCCESS` or `FAILURE` actions.
@@ -1551,21 +1550,20 @@ import {GamesService} from "./common/games/games.service";
 export class AppModule { }
 
 ```
-This implementation of pagination provides a great deal of convenience and efficiency -  the application state is used to both  represent the state in the client and
- also give instructions to the server what results to fetch.
+This implementation of pagination provides a great deal of convenience and efficiency -  the application state is used to both to represent the state in the client and also give instructions to the server what results to fetch.
  
  ### Usage
  
- To demostrate what are the requirements for making a reusable and paginatable list component and see the pagination in action, a `games-list` component will be implemented.
+ To demostrate the requirements for making a reusable and paginatable list component and to see the pagination in action, we will implement a `games-list` component.
  
- As mentioned earlier, there are four required slices of a state that need to be present in order to have pagination:
+ As mentioned earlier, four "slices" of a state need to be present for pagination to be possible:
  
  1. Collection of entities
  2. Total number of entities
  3. Current page
  4. Loading/Loaded status
  
-Let's create the component and it's template first:
+Let's create the template of the `games-list` component first:
  
 ```
 $ ng g component games-list
@@ -1632,7 +1630,7 @@ import {GamesListComponent} from "./components/games-list.component";
 })
 ```
 
-`GamesListComponent` uses the [ngbPagination](https://ng-bootstrap.github.io/#/components/pagination) component which comes with the ng-bootstrap library. The component gets the `@Input`s  to render a pagination and the `pageChange` event triggers the `onPageChanged` `@output` to emit to the container component.
+`GamesListComponent` uses the [ngbPagination](https://ng-bootstrap.github.io/#/components/pagination) component which comes in the ng-bootstrap library. The component gets the `@Input`s  to render a pagination and the `pageChange` event triggers the `onPageChanged` `@output` to emit to the container component.
 
 Next, let's modify the container component (`AppComponent` in this case).
 
@@ -1690,16 +1688,19 @@ Lastly, add `GamesListComponent`'s selector to `AppComponent`'s template:
   <games-list [games]="games$ | async" [count]="gamesCount$ | async" [page]="gamesPage$ | async" [loading]="gamesLoading$ | async" (onPageChanged)="onGamesPageChanged($event)"></games-list>
 </div>
 ```
-The `async` pipe is used to use the latest value of the observables watch for state changes and pass them as inputs.
+The `async` pipe uses the latest value of the observables, watches for state changes, and passes them as inputs.
 
-Here is how the pagination works in action:
+Here is how pagination works in action:
 
 ![pagination](https://raw.githubusercontent.com/pluralsight/guides/master/images/eb8c1c24-1757-48c0-885b-4d056da8c7ca.com-video-to-gif_1)
 
 
 # Conclusion
-These examples represent the majority of use cases that you might encounter when building an Angular 2 application using Redux. They explore the possiblities how Redux can be used for UI state management in Angular 2 and provide a boilerplate for more specific use cases as well as give fresh ideas how other use cases can be implemented.
+These examples represent many of the use cases that you might encounter when building an Angular 2 application using Redux. In a larger sense, they provide a boilerplate for more specific use cases and hopefully give new ideas for implementing other use cases.
 
-Does Redux do a good job in controlling the UI layout? In my opinion, it absolutely does. It may require a little bit more code to be written at times, but the benefits truly start to shine as the application's codebase grows and there's a need for most of the logic to be reused. 
+Does Redux do a good job in controlling the UI layout? In my opinion, it absolutely does. It may require a little bit more code to be written at times, but the benefits truly start to shine as the application's codebase grows and logic gets reused. 
 
-Missed something? [I have uploaded the source code with all the examples on Github.](https://github.com/Kaizeras/ng2-redux-ui-management-recipes).
+Missed anything? [I have uploaded the source code with all the examples on Github.](https://github.com/Kaizeras/ng2-redux-ui-management-recipes).
+
+___ 
+Thank you for reading this guide. I hope you found it helpful and interesting. Feel free to leave questions or feedback in the comments section below.
