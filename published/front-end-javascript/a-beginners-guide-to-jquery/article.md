@@ -24,7 +24,7 @@ The jQuery Foundation links to copies of all its software at [code.jquery.com][1
 
 ### The dollar thing
 
-When you install jQuery, it creates two names, `jQuery` and `$.` Both names point to jQuery, and you can use them interchangeably. If using `$` for jQuery conflicts with another library, you can add the following statement to the start of your code, and jQuery will restore `$,` so it references whatever it referenced before jQuery was loaded:
+When you install jQuery, it creates two names, `jQuery` and `$`. Both names point to jQuery, and you can use them interchangeably. If using `$` for jQuery conflicts with another library, you can add the following statement to the start of your code, and jQuery will restore `$,` so it references whatever it referenced before jQuery was loaded:
 
 ~~~ javascript
 jQuery.noConflict();
