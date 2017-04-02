@@ -38,7 +38,7 @@ jQuery is a function, so it can be invoked using the grammar `$(args)`. It also 
 
 ### Initialisation
 
-You can pass a function to jQuery that will be invoked once the document is ready to be manipulated. This gives you an easy way to keep all your code in its own scope, and ensures that your code will execute as soon as the DOM is ready (once all the html has been parsed), but not before.
+You can pass a function to jQuery that will be invoked once the document is ready to be manipulated. This gives you an easy way to keep all your code in its own scope, and ensures that your code will execute as soon as the DOM is ready (once all the HTML has been parsed), but not before.
 
 ~~~ javascript
 $(function() {
@@ -55,11 +55,11 @@ jQuery(document).ready(function(){
 });
 ~~~
 
-Once you have your boilerplate set up, you’ll generally use jQuery to operate on selections of DOM elements. You select elements by passing jQuery a selector (this is a string that will be parsed by Sizzle).
+Once you have your boilerplate set up, you’ll generally use jQuery to operate on selections of DOM elements. You select the elements you want to operate on by passing jQuery a selector (this is a string that will be parsed by Sizzle).
 
 ## Sizzle
 
-Sizzle is jQuery's selector engine. It uses the same syntax as CSS, with a few extras, so you don’t need to learn a whole new language if you already know CSS.
+Sizzle is jQuery's selector engine. It uses the same syntax as CSS, with a few extra features, so you don’t need to learn a whole new language if you already know CSS.
 
 ~~~ javascript
 $("p") // selects all the paragraph elements
@@ -73,7 +73,7 @@ If you don’t know any CSS, you should at least learn how to write basic select
 
 ## jQuery Objects
 
-When jQuery is invoked with a selector, it returns the selection as an array of zero or more DOM elements. These arrays are not native, and are known as jQuery objects. jQuery objects come with a comprehensive set of methods for operating on the elements that were selected, and you can add new methods as plugins. You can also pass a HTMLElement or NodeList to jQuery, and it will return a jQuery object that wraps the argument, so you can use jQuery methods on it.
+When jQuery is invoked with a selector, it returns the selection as an array of zero or more DOM elements. These arrays are not native, and are known as *jQuery objects*. jQuery objects come with a comprehensive set of methods for operating on the elements that were selected, and you can add new methods as plugins. You can also pass a HTMLElement or NodeList to jQuery, instead of a selector string, and it will return a jQuery object that wraps the argument.
 
 Note that while you use the jQuery function to select the elements you want to work on, you do all the real work with jQuery methods, which are bound to the jQuery objects that the jQuery function constructs and returns. Using jQuery to select some elements, then applying methods to the selection, is normally achieved in a single expression. For example:
 
@@ -81,7 +81,7 @@ Note that while you use the jQuery function to select the elements you want to w
 $("p").addClass("foo")
 ~~~
 
-This expression selects all the paragraph elements, then invokes the `addClass` method on the resulting jQuery object, adding the `foo` class to each of the selected elements.
+That expression selects all the paragraph elements, then invokes the `addClass` method on the resulting jQuery object, adding the `foo` class to each of the selected elements.
 
 ## Quick review
 
