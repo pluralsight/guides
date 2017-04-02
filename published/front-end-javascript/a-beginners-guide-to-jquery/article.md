@@ -4,7 +4,7 @@
 
 [jQuery](https://app.pluralsight.com/library/courses/jquery-getting-started/table-of-contents) is the most popular JavaScript library on the Web. Think of it as a swiss army knife for front-end developers; you have a single function, with a bunch of attachments, that you can use to solve all sorts of common problems. Roughly two in three websites use [jQuery](https://app.pluralsight.com/library/courses/introduction-javascript-jquery/table-of-contents), and many devs are lost without it. It includes a powerful set of features that work consistently across a wide range of browsers, and encourages a programming style that makes working with browsers more elegant.
 
-jQuery has exceptionally powerful tools for working with the DOM, and includes support for animating changes, handling events and using AJAX. jQuery is also easy to extend, using functions known as plugins (there are thousands available online).
+jQuery has very powerful tools for working with the DOM, and includes support for animating changes, handling events and using AJAX. jQuery is also easy to extend, using functions known as plugins (there are thousands available online).
 
 ## Installation
 
@@ -34,7 +34,7 @@ jQuery.noConflict();
 
 ## Getting Started
 
-jQuery can be invoked, like `$(args)` and it also has some utilities bound to it, like `ajax` and `isArray,` which you reference as properties, like `jQuery.ajax(args).` When you invoke jQuery, you can pass it a function that will be invoked once the document is ready to be manipulated. This gives you an easy way to keep your code in its own scope, and ensures that your code will execute as soon as the DOM is ready to manipulate (once all the html has been parsed).
+jQuery can be invoked, like `$(args)`, and it also has some utilities bound to it, for example `ajax` and `isArray`, which you reference as properties, like `jQuery.ajax(args).` When you invoke jQuery, you can pass it a function that will be invoked once the document is ready to be manipulated. This gives you an easy way to keep your code in its own scope, and ensures that your code will execute as soon as the DOM is ready to manipulate (once all the html has been parsed).
 
 ~~~ javascript
 $(function() {
