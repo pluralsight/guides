@@ -55,7 +55,7 @@ jQuery(document).ready(function(){
 });
 ~~~
 
-Once you have your boilerplate set up, you’ll generally use jQuery to operate on selections of DOM elements. You select the elements you want to operate on by passing jQuery a selector (this is a string that will be parsed by Sizzle).
+Once you have your boilerplate set up, you’ll generally use jQuery to operate on selections of DOM elements. You select the elements you want to operate on by passing jQuery a *selector*, which is a string that will be parsed by Sizzle.
 
 ## Sizzle
 
@@ -89,12 +89,12 @@ So far you’ve seen:
 
 - jQuery is a function, and it has other utility functions bound to it, like `ajax` and `noConflict.`
 - You can pass a function to jQuery as a convenient way of setting up your code in its own scope, and to ensure that your code will execute as soon as the DOM is ready.
-- You normally pass jQuery a selector and it returns an array of elements, wrapped in a jQuery object.
+- You normally pass jQuery a selector string, DOM element or node list, and it returns an array of elements, wrapped as a jQuery object.
 - jQuery objects come with lots of methods for working with the selection of elements they contain.
 
 ### Using the docs
 
-Keep in mind that you don’t need to know many jQuery methods to get started with it. You really just need to know how jQuery works. It has excellent API docs, and its methods have highly intuitive names, so you can normally Google for whatever you need in a few seconds, even when you don’t know exactly what you’re looking for. Once you understand the "jQuery programming style," you can easily find the methods you need with a search engine.
+Keep in mind that you don’t need to know many jQuery methods to get started with it. You really just need to know how jQuery works. It has excellent API docs, and its methods have highly intuitive names, so you can normally Google for whatever you need in a few seconds, even when you don’t know exactly what you’re looking for. Once you understand the jQuery programming style, you can easily find the methods you need with a search engine.
 
 ## jQuery style
 
@@ -104,9 +104,9 @@ Whenever it makes sense, jQuery methods return the selection they were invoked o
 $(selector).method0(args0).method1(args1).method2(args2);
 ~~~
 
-In the expression above, `method0` is invoked on the jQuery object returned by `$(selector).` Once `method0` is done, it returns the object it was invoked on, allowing `method1` to be invoked on the same object. Likewise, `method1` returns the object, allowing `method2` to be invoked on it in turn. You’ll use these kinds of expressions a lot with jQuery, so it’s important to understand them.
+In the expression above, `method0` is invoked on the jQuery object returned by `$(selector)`. Once `method0` is done, it returns the object it was invoked on, allowing `method1` to be invoked on the same object. Likewise, `method1` returns the object, allowing `method2` to be invoked on it in turn. You’ll use these kinds of expressions a lot with jQuery, so it’s important to understand them.
 
-This style of programming where data structures, especially arrays, are passed through a pipeline made from a daisy chain of method invocations is popular with JavaScript programmers. It’s often called "jQuery syntax."
+This style of programming, where data structures, especially arrays, are passed through a pipeline made from a daisy chain of method invocations is popular with JavaScript programmers. It’s often called "jQuery syntax."
 
 Note that in some cases, methods return a different selection to the one they’re invoked on. For example, the `not` method removes elements from a selection, and the `find` method finds elements based on the selection. These methods return a different jQuery object that represents the new selection, allowing the pipeline to continue operating. Take the following expression as an example:
 
@@ -134,7 +134,7 @@ There are a handful of methods that do not return a jQuery object, and you can�
 
 ## The can do method
 
-jQuery has a method that can do anything. It’s named `each,` and you use it whenever you need a quick custom method, but only need it once--so defining a plugin would be overkill. You invoke `each` like any normal jQuery method, and pass it a function that defines the custom logic you want to apply. The function is invoked for each element. It receives the iteration index as an argument, and you can reference the element itself as `this.`
+jQuery has a method that can do anything. It’s named `each`, and you use it whenever you need a quick custom method, but only need it once--so defining a plugin would be overkill. You invoke `each` like any normal jQuery method, and pass it a function that defines the custom logic you want to apply. The function is invoked for each element. It receives the iteration index as an argument, and you can reference the element itself as `this`.
 
 ~~~ javascript
 $("#profile li").each(function(index){ console.log(this.innerHTML) })
