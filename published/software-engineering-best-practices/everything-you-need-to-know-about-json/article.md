@@ -48,7 +48,7 @@ If you serialised `f` and then deserialised the JSON text in some other process,
 
 ### Specialization
 
-Because serialisation can be complicated, many programming languages have their own approaches, which are optimised for the language. For example, Python has `pickle,` which knows a lot about the Python type system, and can serialise a relatively broad range of Python objects.
+Because serialisation can be complicated, many programming languages have their own approaches, which are optimised for the language. For example, Python has `pickle`, which knows a lot about the Python type system, and can serialise a relatively broad range of Python objects.
 
 Language specific approaches to serialisation allow for greater sophistication, but, in practice, we often need to transfer data between processes that are implemented in different languages. Maybe a JavaScript client wants to share data with a Ruby server. In those cases, we need something that is language agnostic.
 
