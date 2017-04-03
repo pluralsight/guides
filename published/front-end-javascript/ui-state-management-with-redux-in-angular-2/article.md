@@ -1,26 +1,27 @@
-Despite the numerous advances in building web interfaces in the last few years, the control of the DOM and the application UI is still highly dependent on [jQuery](https://jquery.com/); The 10-year-old library is still an integral element of almost every web application out there. Although this is not necessarily a bad thing, jQuery was initially built for different purposes and its more modern uses have started to cause issues and its role has become somehow vague. Front-end applications have become increasingly complex, with all kinds of unrelated components, encapsulated views and other elements trying to interact together. 
+Despite the numerous advances in building web interfaces in the last few years, the control of the DOM and the application User Interface (UI) is still highly dependent on [jQuery](https://jquery.com/), a 10-year-old library. Although this is not necessarily a bad thing, jQuery was initially built for different purposes than it's used for nowadays. As a result, modern uses have started to cause issues. Front-end applications have become increasingly complex, with all kinds of unrelated components, encapsulated views and other elements trying to interact together. 
  
-In this guide, the use of Redux will be explored as a possibility for alleviating the current challenges in controlling the UI of an Angular 2 application. You will learn how to represent some of the logic for controlling the UI layout in reducer functions and have it demonstrated in an actual use case.
+In this guide, we'll explore using Redux to mitigate the current challenges in controlling the UI of an Angular 2 application. You will learn how to represent some of the logic for controlling the UI layout in reducer functions and see an example use case.
 
-###  Taming your application User Interface layout
+###  Taming your application UI layout
 
-Since Redux came out, state management for front-end applications went through a revolution. My team and I have field-tested Redux with Angular 2 and the resulting productivity boost has been tremendous. Redux has not only allowed us to ship faster, but it increased the overall maintainability of our codebase by encapsulating most of the crucial logic in a single place and  providing an easy to test architecture. 
+Since Redux came out, state management for front-end applications went through a revolution. My team and I have field-tested Redux with Angular 2 and the resulting productivity boost has been tremendous. 
+> Redux has not only allowed us to ship faster, but it increased the overall maintainability of our codebase by encapsulating most of the crucial logic in a single place and providing an easy to test architecture. 
 
 We liked Redux so much that we wanted to control _everything_ with it. One of our most recent projects was building a very UI-intensive application and we decided to experiment by giving the reducers in the applicaiton a little bit more resposibility than just controlling data.
 
-We found out that "reduxifying" theUI leads to numerous benefits and adds great flexibility to controlling the UI of the applicaiton. It made previously difficult use cases a breeze to implement.
+We found out that "reduxifying" the UI leads to numerous benefits and makes controlling the flexibility . It made previously difficult use cases a breeze to implement.
 
 ##### *Three key benefits of using Redux for your UI layout* 
 
- * ** Persist the state of your UI such as keeping the sidebar opened or closed when changing routes.**
- * **Control the UI from any point of the application, without worrying how components are related or injecting a specific service.**
- * **Chain UI layout-specific actions with other events such as saving of data server-side or changing a route**
+ * ** Maintain the state of your UI such as keeping the sidebar opened or closed when changing routes.**
+ * **Control the UI from any point of the application without worrying about how components are related or how to inject a specific service.**
+ * **Chain UI layout-specific actions with other events such as saving data server-side or changing a route**
 
 # Setup 
- > The examples  below will be done with [ng-boostrap]() since it's one of the most popular libraries with Angular 2 components for Bootstrap 4. However, you can also implement these examples with other component libraries such as [Material Design](https://github.com/angular/material2) by following the same design principles and making small adjustments to the code so that it works with the API of the corresponding library.
+ > The examples  below will be done with ng-boostrap since it's one of the most popular libraries with Angular 2 components for Bootstrap 4. You can also implement these examples with other component libraries, such as [Material Design](https://github.com/angular/material2), by following the same design principles and making small adjustments to the code so that it works with the API of the corresponding library.
 
 ### Dependencies
- Here's what packages you need to install in order to start working:
+ Below are the packages you need to install in order to start working:
 
 **Redux**
  - [@ngrx/store + @ngrx/core](https://github.com/ngrx/store)
@@ -34,7 +35,9 @@ We found out that "reduxifying" theUI leads to numerous benefits and adds great 
 
 ### Installing
 
-To ensure a smooth setup, [Angular CLI](https://github.com/angular/angular-cli) will be used to initialize the applicaiton architecture. Make sure you have it installed globally before you proceed. In your terminal, write the following commands to initialize your Angular 2 app:
+To ensure a smooth setup, we will use [Angular CLI](https://github.com/angular/angular-cli) to initialize the application architecture. Make sure you have it installed globally before you proceed. 
+
+In your terminal, write the following commands to initialize your Angular 2 app:
 
 ```
 $ ng new redux-layout-tutorial-app
@@ -65,7 +68,7 @@ apps: [
   }
 ```
 
-This will let your `angular-cli` setup to locate the javascript and css files of your Boostrap installation and add them in the build of the project.
+This will let your `angular-cli` locate the JavaScript and CSS files of your Boostrap installation and add them in the build of the project.
 
 Next, add `ng-boostrap` to  your dependencies:
 ```
@@ -102,7 +105,7 @@ To make selection of the state fast an efficient, add `reselect`. We are going t
 ```
 $ yarn add reselect
 ```
-To make development more convenient and easier to debug, add the a store logger which will log to the console every action and the new state of the state.
+To make development more convenient and easier to debug, add a *store logger*, which will log to the console every action and the new state of the state.
 ```
 $ yarn add ngrx-store-logger
 ```
@@ -243,10 +246,10 @@ import {metaReducer} from "./common/index";
 export class AppModule { }
 
 ```
-#### "Smart" containers and directives, "dumb"components
-If you are fimilar with Redux, you would know that there are two types of components - [presentional(dumb components) and container components](https://medium.com/@dan_abramov/smart-and-dumb-components-7ca2f9a7c7d0#.e8sft6x0y). 
+#### "Smart" containers and "dumb" components
+If you are fimilar with Redux, you would know that there are two types of components - [presentational components and container components](https://medium.com/@dan_abramov/smart-and-dumb-components-7ca2f9a7c7d0#.e8sft6x0y). 
 
-> When building the UI state, it's best to keep the logic inside directives in order to keep the logic [DRY](http://deviq.com/don-t-repeat-yourself/). You don't have to write the same logic for a sidebar in every container component in your application.
+> When building the UI state, it's best to keep the logic inside [directives](https://docs.angularjs.org/guide/directive) in order to keep the logic [DRY](http://deviq.com/don-t-repeat-yourself/). You don't have to write the same logic for a sidebar in every container component in your application.
 
 Another possibility is to keep the logic in the container and only in exceptional cases there's a need to put the logic inside a component that represents a UI element.
 
@@ -311,7 +314,7 @@ export class CloseModalAction implements Action {
 export type LayoutActions = CloseModalAction | OpenModalAction
 ```
 
-Let's go forward and implement how modal actions will be handled in the layout reducer:
+Let's go ahead and implement how modal actions will be handled in the layout reducer:
 **layout.reducer.ts**
 ```
 import * as layout from './layout.actions';
@@ -350,8 +353,7 @@ export function reducer(state = initialState, action: layout.LayoutActions ): St
 
 export const getOpenedModalName = (state:State) =>  state.openedModalName;
 ```
-The currently opened modal's name will be stored in the `openedModalName` which will be set and unset according to the dispatched action.
-A selector `getOpenedModalName` is needed to easily access the `openedModalName` property within the state.
+The currently modal's name will be stored in the `openedModalName` which will be set and unset according to the dispatched action. A selector `getOpenedModalName` is needed to easily access the `openedModalName` property within the state.
 
 In `index.ts`, add a selector to access the `openedModalName` property from the application state:
 **index.ts**
@@ -407,7 +409,8 @@ export class TemplateModalComponent {
 }
 
 ```
-The name of the currently selected modal is coming from the container and is obtained through the `modalState` input of the component. If the name matches with the `modalName` (templateFormModal), then the modal is opened through the `modalService`.
+The name of the currently-selected modal is coming from the container and is obtained through the `modalState` input of the component. If the name matches with the `modalName` (templateFormModal), then the modal is opened through the `modalService`.
+
 Conversely, `onCloseModal` is used to emit to the container that te user has clicked to close the modal.
 
 **template-modal.component.html**
@@ -433,9 +436,9 @@ Conversely, `onCloseModal` is used to emit to the container that te user has cli
   </div>
 </template>
 ```
-Every time the user attempts to close te modal, `onCloseModal` directly emits from the template to the container. In case you have issues understanding how the modal works, you cna check the [standard implementation of a ng-bootstrap modal without Redux](https://ng-bootstrap.github.io/#/components/modal).
+Every time the user attempts to close the modal, `onCloseModal` directly emits from the template to the container. In case you have issues understanding how the modal works, you can check the [standard implementation of a ng-bootstrap modal without Redux](https://ng-bootstrap.github.io/#/components/modal).
 
-In the container there need to be handlers for gettng the `openedModalName` from the state and dispatching an action for closing a modal:
+In the container there need to be handlers for getting the `openedModalName` from the state and for dispatching an action for closing a modal:
 
 **app.component.ts**
 ```
@@ -471,7 +474,7 @@ export class AppComponent {
 <template ngbModalContainer></template>
 
 ```
-In this case `handleOpenModal` is dispatched through clicking a button, but it can also be dispatched as an output from another component, a directive,a service or an effect. The possibilities are endless.
+In this case `handleOpenModal` is dispatched by clicking a button, but it can also be dispatched as an output from another component, a directive,a service or an effect. The possibilities are endless.
 
 
 ![modal example](https://raw.githubusercontent.com/pluralsight/guides/master/images/f0723337-3b32-4649-9d97-93bab2145b09.gif)
@@ -523,7 +526,7 @@ export class CloseRightSidenavAction implements Action {
 
 export type LayoutActions =  CloseLeftSidenavAction | OpenLeftSidenavAction |   CloseRightSidenavAction |OpenRightSidenavAction
  ```
- As it was already discussed, the states of the sidebar will be represented with boolean variables. In this case, the left sidenav will be open by default, but there can be logic that checks if the window size is small enough to dispatch a `CloseLeftSidenavAction` to close it:
+ As mentioned, the states of the sidebar will be represented with booleans. In this case, the left sidenav will be open by default, but there can be logic that checks if the window size is small enough to dispatch a `CloseLeftSidenavAction` to close it:
 
  **layout.reducer.ts**
  ```
@@ -584,7 +587,7 @@ export const getRightSidenavState = (state:State) => state.rightSidebarOpened;
 ### Usage
 
 
- Instead of putting the logic in each of the sidebar components, it can be combined within a structural directive which closes and opens the corresponding sidebar depening on the state of the application.
+ Instead of putting the logic in each of the sidebar components, it can be combined within a structural directive that closes and opens the corresponding sidebar depening on the state of the application.
 
  ```
  $ ng g directive sidebar-watch
@@ -651,8 +654,7 @@ export class SidebarWatchDirective implements OnInit{
 }
 
  ```
- The directive checks to which sidebar is applied to by checking `ElementRef`'s `nativeElement`, which makes the DOM properties of the template accessible in the component.
- Once it is decided to which sidebar it is applied to, the directive checks whether the corresponding state (`LeftSidenavbarState` or `RightSidenavbarState`, respectively) is `true` or `false`. Then the directive uses jQuery to manipulate the corresponding elements in the layout. The use of jQuery to select and directly change the DOM element's style properties is optional and you can use addition and removal of classes or by using plain JavaScript.
+ The directive checks `ElementRef`'s `nativeElement`, which make the DOM properties of the template accessible in the component. Once it knows which sidebar it is being applied to, the directive checks whether the corresponding state (`LeftSidenavbarState` or `RightSidenavbarState`, respectively) is `true` or `false`. Then the directive uses jQuery to manipulate the corresponding elements in the layout. The use of jQuery to select and directly change the DOM element's style properties is optional and you can use addition and removal of classes or by using plain JavaScript.
 
  Following the same logic, there can be a directive for toggling the sidebars:
 
@@ -714,10 +716,10 @@ export class SidebarToggleDirective {
 
  ```
 
- The directive has an `@Input sidebarToggle` which can be either `left` or `right` , depending on which sidebar the directive has to control.  Every time the use clicks on the element to which the directive is attached  to, the `@HostListener('click')` catches the event and checks the state of the sidebar of the store and dispatches the corresponding action.
+ The directive has an `@Input sidebarToggle` which can be either `left` or `right` , depending on which sidebar the directive has to control.  Every time the user clicks on the element to which the directive is attached, the `@HostListener('click')` catches the event and checks the state of the sidebar of the store and dispatches the corresponding action.
 
 
-To demonstrate how everything come together, let's make two sidebars:
+To demonstrate how everything comes together, let's make two sidebars:
 ```
 $ ng g component left-sidebar
 ```
@@ -766,11 +768,11 @@ export class RightSidebarComponent  {
   <button class="btn btn-primary" sidebarToggle="right">Close Right Sidebar</button>
 </section>
 ```
-Usage of the `sidebarWatch` directive is quite straightforward - they just need to be put in the topmost elements of the sidebars.
+Using the `sidebarWatch` directive is quite straightforward. Just put in the topmost elements of the sidebars.
 
 The `sidebarToggle` needs to be put in a button (although you can put it anywhere you like) and it needs to have the `left` or `right` value assigned to it.
 
-To make the elements look and feel like sidebars, there needs to be some additional css:
+To make the elements look and feel like sidebars, there needs to be some additional CSS:
 
 ```
 $ touch src/app/components/sidebar.styles.css
@@ -801,7 +803,7 @@ $ touch src/app/components/sidebar.styles.css
 
 
 
-In the root component of the application, put the sidebars on top all the content in a div with a class 'main-content':
+In the root component of the application, put the sidebars on top all the content in a `div` with a class `main-content`:
 **app.component.html**
 
 ```
@@ -999,7 +1001,7 @@ export class AppModule { }
 
 ```
 
-Next, the logic in the container component has to be implemented for selecting alerts and dispatching events.
+Next, the logic in the container component has to be implemented to select alerts and dispatch events.
 
 **app.component.ts**
 ```
@@ -1057,7 +1059,7 @@ To demonstrate how alerts look, the template will have two buttons for opeaning 
 
 ![alert example](https://raw.githubusercontent.com/pluralsight/guides/master/images/1fde8c90-c987-4760-9198-7c33727710a7.gif)
 
-In a real world scenario, alerts can be created when a server returns a certain results. For example, in the snippet below, a `AddAlertAction` is called once the application resolves a server-side request:
+In a real-world scenario, alerts can be created when a server returns certain results. For example, in the snippet below, an `AddAlertAction` is called once the application resolves a server-side request:
 
 ```
   @Effect() deleteStudent = this._actions.ofType(student.ActionTypes.DELETE_STUDENT)
@@ -1084,7 +1086,7 @@ In a real world scenario, alerts can be created when a server returns a certain 
 # Window size
 Having the window size available in the application store can make Redux useful for numerous use cases, especially for making responsive UI changes, device-specific actions or dynamic changes of the CSS (using [NgClass](https://angular.io/docs/ts/latest/api/common/index/NgClass-directive.html) or [NgStyle](https://angular.io/docs/ts/latest/api/common/index/NgStyle-directive.html) ).
 
-To make the window size usable in the applicaiton state, it has to be updated every time the window is resized. Let's add an action for that:
+To make the window size usable in the application state, it has to be updated every time the window is resized. Let's add an action for that:
 
 **layout.actions.ts**
 ```
@@ -1191,7 +1193,7 @@ The `host` listens for window resize events and calls the `onWindowResize` metho
 
 ### Usage 
 
-The most obiquitous case for using the window size is responsiveness. For example, the left sidebar has to automatically close if the window width is lower than 768px (iPad width). Doing this with Redux is quite simple - just add an if statement to the corresponding case:
+The most obiquitous case for using the window size is responsiveness. For example, suppose the left sidebar has to automatically close if the window width is lower than 768px (iPad width). Doing this with Redux is quite simple - just add an if statement to the corresponding case:
 
 **layout.reducer.ts**
 ```
@@ -1218,7 +1220,8 @@ export function reducer(state = initialState, action: layout.LayoutActions ): St
 }
 ```
 
-Simply adding a simple ternary operator  in the reducer does the magic. This is one of the great things about Redux - unlike JQuery, all the logic is isolated in a single place and it is easy to debug and test all your implementations. 
+The equivalent jQuery operation would be quite frustrating. However, with Redux, simply adding a simple ternary operator in the reducer does the trick. 
+> With Redux, all the logic is isolated in a single place, and it is easy to debug and test all your implementations. 
 
 
 ![window resize example](https://raw.githubusercontent.com/pluralsight/guides/master/images/af6575a9-50ff-4d9a-aaae-b43861b2e265.com-video-to-gif)
@@ -1226,14 +1229,14 @@ Simply adding a simple ternary operator  in the reducer does the magic. This is 
 
 
 
-# Server-side Pagination
+# Server-side Pagination 
 
- Even though pagination is not strictly part of an application's UI layout, it is an integral part of the application's UI that can be implemented with Redux. The goal
- of the server-side pagination implementation is to utilize the application store as much as possible and achieve flexibility with
- the least code possible. To illustrate how Redux pagination works, the [GiantBomb API](http://www.giantbomb.com/api/) will be used in the example as the source of information.
-  The games stored in the GiantBomb database will be fetched and the results will be paginated, with the pagination being
-  controlled by the application state.
-
+ Even though pagination is not strictly part of an application's UI layout, it is an integral part of the application's UI that can be implemented with Redux. The goal of implementing server-side pagination is to utilize the application store as much as possible and achieve flexibility with
+ the least code possible. 
+ 
+ ## GiantBomb API
+ 
+ To illustrate how Redux pagination works, we will use the [GiantBomb API](http://www.giantbomb.com/api/) as the source of information. We will fetch the games stored in the GiantBomb database, and then we will paginate the results. The pagination will be controlled by the application state.
 
  First, create a separate directory for `games`:
  ```
@@ -1282,17 +1285,17 @@ export type GameActions = LoadGamesAction | LoadGamesFailedAction | LoadGamesSuc
 
  ```
 
-Redux has a convention for loading asynchronous results. It does it by using three actions - `LOAD` , `LOAD_SUCCESS` and `LOAD_FAILURE`. The last two get dispathed when the [middleware](http://redux.js.org/docs/advanced/Middleware.html) resolves the server-side request.
+Redux has a convention for loading asynchronous results. It does it by using three actions - `LOAD` , `LOAD_SUCCESS` and `LOAD_FAILURE`. The last two get dispatched when the [middleware](http://redux.js.org/docs/advanced/Middleware.html) resolves the server-side request.
 
-To figure out how to construct the state of the paginated `games` entities, let's see what a pagination need:
+To figure out how to construct the state of the paginated `games` entities, let's see what a pagination needs:
 
-1. Number of current page
+1. Number of current pages
 2. Total amount of items
 3. Collection of the items currently displayed
 4. (optional) Number of items per page and number of visible pages
 
 
-Having this in mind, here's how the state should look like:
+Having this in mind, here's how the state interface should look:
 
 ```
 export interface State {
@@ -1482,8 +1485,7 @@ export class GamesService {
 
 ```
 
-The currently selected page is taken from the state and passed through `paginate`. `paginate` is an utility function that converts the current page to `offset` and `limit` parameters as the [GiantBomb API documentation requires for paginating results](http://www.giantbomb.com/api/documentation#toc-0-15).
-
+The currently selected page is taken from the state and passed through `paginate`. `paginate` is a utility function that converts the current page to `offset` and `limit` parameters in accordance with the [GiantBomb API requirements for paginating results](http://www.giantbomb.com/api/documentation#toc-0-15).
 
 Next, let's implement the middleware that will be used to call the service and dispatch
 `SUCCESS` or `FAILURE` actions.
@@ -1548,21 +1550,20 @@ import {GamesService} from "./common/games/games.service";
 export class AppModule { }
 
 ```
-This implementation of pagination provides a great deal of convenience and efficiency -  the application state is used to both  represent the state in the client and
- also give instructions to the server what results to fetch.
+This implementation of pagination provides a great deal of convenience and efficiency -  the application state is used to both to represent the state in the client and also give instructions to the server what results to fetch.
  
  ### Usage
  
- To demostrate what are the requirements for making a reusable and paginatable list component and see the pagination in action, a `games-list` component will be implemented.
+ To demostrate the requirements for making a reusable and paginatable list component and to see the pagination in action, we will implement a `games-list` component.
  
- As mentioned earlier, there are four required slices of a state that need to be present in order to have pagination:
+ As mentioned earlier, four "slices" of a state need to be present for pagination to be possible:
  
  1. Collection of entities
  2. Total number of entities
  3. Current page
  4. Loading/Loaded status
  
-Let's create the component and it's template first:
+Let's create the template of the `games-list` component first:
  
 ```
 $ ng g component games-list
@@ -1629,7 +1630,7 @@ import {GamesListComponent} from "./components/games-list.component";
 })
 ```
 
-`GamesListComponent` uses the [ngbPagination](https://ng-bootstrap.github.io/#/components/pagination) component which comes with the ng-bootstrap library. The component gets the `@Input`s  to render a pagination and the `pageChange` event triggers the `onPageChanged` `@output` to emit to the container component.
+`GamesListComponent` uses the [ngbPagination](https://ng-bootstrap.github.io/#/components/pagination) component which comes in the ng-bootstrap library. The component gets the `@Input`s  to render a pagination and the `pageChange` event triggers the `onPageChanged` `@output` to emit to the container component.
 
 Next, let's modify the container component (`AppComponent` in this case).
 
@@ -1687,16 +1688,19 @@ Lastly, add `GamesListComponent`'s selector to `AppComponent`'s template:
   <games-list [games]="games$ | async" [count]="gamesCount$ | async" [page]="gamesPage$ | async" [loading]="gamesLoading$ | async" (onPageChanged)="onGamesPageChanged($event)"></games-list>
 </div>
 ```
-The `async` pipe is used to use the latest value of the observables watch for state changes and pass them as inputs.
+The `async` pipe uses the latest value of the observables, watches for state changes, and passes them as inputs.
 
-Here is how the pagination works in action:
+Here is how pagination works in action:
 
 ![pagination](https://raw.githubusercontent.com/pluralsight/guides/master/images/eb8c1c24-1757-48c0-885b-4d056da8c7ca.com-video-to-gif_1)
 
 
 # Conclusion
-These examples represent the majority of use cases that you might encounter when building an Angular 2 application using Redux. They explore the possiblities how Redux can be used for UI state management in Angular 2 and provide a boilerplate for more specific use cases as well as give fresh ideas how other use cases can be implemented.
+These examples represent many of the use cases that you might encounter when building an Angular 2 application using Redux. In a larger sense, they provide a boilerplate for more specific use cases and hopefully give new ideas for implementing other use cases.
 
-Does Redux do a good job in controlling the UI layout? In my opinion, it absolutely does. It may require a little bit more code to be written at times, but the benefits truly start to shine as the application's codebase grows and there's a need for most of the logic to be reused. 
+Does Redux do a good job in controlling the UI layout? In my opinion, it absolutely does. It may require a little bit more code to be written at times, but the benefits truly start to shine as the application's codebase grows and logic gets reused. 
 
-Missed something? [I have uploaded the source code with all the examples on Github.](https://github.com/Kaizeras/ng2-redux-ui-management-recipes).
+Missed anything? [I have uploaded the source code with all the examples on Github.](https://github.com/Kaizeras/ng2-redux-ui-management-recipes).
+
+___ 
+Thank you for reading this guide. I hope you found it helpful and interesting. Feel free to leave questions or feedback in the comments section below.
