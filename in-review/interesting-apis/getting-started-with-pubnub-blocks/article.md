@@ -12,21 +12,19 @@ Using PubNub, you can publish a message (data) into a channel (or channels) so t
 
 That works great, and many times, that would be all you need for your real-time applications.
 
-However, what if we need to process somehow the message before (or after) we send it?
-
-We will have to add a server to be in charge of that processing:
+However, what if we need to process the message before or after we send it? We will have to add a server to be in charge of that processing. The result would look something like this:
 
 ![Adding a server](https://raw.githubusercontent.com/pluralsight/guides/master/images/18070890-8345-4db6-b1da-836959bda95c.gif)
 
-For some applications, we'll need a server anyway so this may not represent a problem. But, wouldn't be great if someone else could take care of problems like management and scaling of this server(s) entirely?
+For some applications, we'll need a server anyway so this may not represent a problem. But, wouldn't be great if *someone else* could take care of problems like server management and scaling entirely?
 
 This is the problem PubNub tries to solve with [PubNub BLOCKS](https://www.pubnub.com/products/blocks/).
 
-With BLOCKS (in uppercase refers to the PubNub feature), instead of simply passing messages, you can set up a piece of code (an event handler) to process a message before or after it's published:
+With BLOCKS (in uppercase to refer to the PubNub feature), instead of simply passing messages, you can set up a piece of code (an event handler) to process a message before or after it's published:
 
 ![PubNub Blocks](https://raw.githubusercontent.com/pluralsight/guides/master/images/4c172ac7-7ce9-490f-bf83-fcf33937bbb8.gif)
 
-This block is deployed as a serverless function (you can call it a microservice if you want) in the PubNub network. You just have to code it in JavaScript, deploy it and PubNub will handle the rest.
+This block is deployed as a serverless function (you can call it a microservice if you want) in the PubNub network. You just have to code it in JavaScript, deploy it, and PubNub will handle the rest.
 
 Here are some things you can do with a block:
 - Alter the message by adding a new attribute, or modifying or deleting an existing one.
@@ -36,9 +34,7 @@ Here are some things you can do with a block:
 
 There's even a catalog of pre-built blocks that allows you to integrate the functionality of external APIs for things like notifications, geocoding, machine learning, and much more.
 
-Sounds good?
-
-Let's review the concepts and features of BLOCKS with two examples. First, let's create a block to reverse strings, and then, a more complex block that will take an URL and will call an API to generate a [QR code](https://en.wikipedia.org/wiki/QR_code) to return its [base64](https://en.wikipedia.org/wiki/Base64) representation, storing the result in a database to only call the API when necessary.
+Let's get to know the concepts and features of BLOCKS with two examples. First, let's create a block to reverse strings, and then, a more complex block that will take an URL and will call an API to generate a [QR code](https://en.wikipedia.org/wiki/QR_code) to return its [base64](https://en.wikipedia.org/wiki/Base64) representation, storing the result in a database to only call the API when necessary.
 
 Let's get started!
 
@@ -80,9 +76,9 @@ In the window that shows up, you'll have to enter a name, a type, and the channe
 
 
 Three types of Event Handlers are supported:
-- Before Publish or Fire. Messages are processed by the EH code before they are forwarded on to subscribers of the channel in a synchronous (blocking) way.
-- After Publish or Fire. Messages are delivered to subscribers in parallel to the EH code running against the message in an asynchronous (non-blocking) way.
-- After Presence. When a presence event is triggered, a copy of the same presence event is made available to the associated EH code for processing in an asynchronous (non-blocking) way.
+- **Before Publish or Fire**. Messages are processed by the EH code before they are forwarded on to subscribers of the channel in a synchronous (blocking) way.
+- **After Publish or Fire**. Messages are delivered to subscribers in parallel to the EH code running against the message in an asynchronous (non-blocking) way.
+- **After Presence**. When a presence event is triggered, a copy of the same presence event is made available to the associated EH code for processing in an asynchronous (non-blocking) way.
 You can know more about [Event Handler Types and its rules and limits here](https://www.pubnub.com/docs/blocks/event-handler-types).
 
 For our example, let's choose `Before Publish or Fire` as the event type, the channel `strings` and then click on *Save and Continue*:
@@ -201,7 +197,7 @@ If you modify the code, you'll have to save and restart the block:
 
 ![Modify and restart](https://raw.githubusercontent.com/pluralsight/guides/master/images/b017e04a-e23c-4cf5-975b-2d7e2688a1d3.gif)
 
-We can also create a simple HTML page with some Javascript code to test our block. Save this code as an HTML file (replacing your PubNub info):
+We can also create a simple HTML page with some JavaScript code to test our block. Save this code as an HTML file (replacing your PubNub info):
 ```html
 <!DOCTYPE html>
 <html>
@@ -268,11 +264,11 @@ And test it in a browser:
 ![Test in browser](https://raw.githubusercontent.com/pluralsight/guides/master/images/d1f9829e-4f56-4ac5-8ea2-4b13a4278d09.gif)
 
 
-# Coding a more complex block
+# Advanced BLOCK
 
 Now that you know the basics, let's do something more complex.
 
-We're going to assume the messages will contain a valid URL, like this:
+We're going to assume the messages contain a valid URL, like this:
 ```javascript
 {
 	"url": "https://google.com"
@@ -325,7 +321,7 @@ const base64Codec = require('codec/base64');
 console.log(base64Codec.btoa('hello')); // aGVsbG8=
 ```
 
-However, this `btoa` function it's more for string than for binary data. Luckily, the response contains a *buffer*, an array of bytes representing the image so we can use that buffer to implement a function to convert it to a base64 string.
+However, this `btoa` function is more for string than for binary data. Luckily, the response contains a **buffer**, an array of bytes representing the image so we can use that buffer to implement a function to convert it to a base64 string.
 
 We're going to use the [implementation from Jon Leighton](https://gist.github.com/jonleighton/958841) (there's no need to include it inside the exported function):
 
@@ -458,7 +454,7 @@ export default (request) => {
 
 Inside the promise of `db.get`, we're going to return another promise that will resolve to the result of the function. For that, we have to handle the cases when the object for the URL doesn't exist yet and when it already exists, and since we're dealing with asynchronous code, both cases have to work with promises.
 
-If the object for the URL doesn't exist, let's create a promise to call the API and save the object to the database:
+If the object for the URL doesn't exist, we will create a promise to call the API and save the object to the database:
 ```javascript
 const base64ArrayBuffer = ...
 
@@ -501,7 +497,7 @@ export default (request) => {
 };
 ```
 
-In the above code, we generate the base64 string using the buffer data from the response so we can create an object with this string and the content type. Then, we save this object to the database and use it to resolve the promise.
+In the above code, we generate the base-64 string using the buffer data from the response so that we can create an object with this string and the content type. Then, we save this object to the database and use it to resolve the promise.
 
 If there's an object for the URL already in the database, we just create a promise resolving to that object. 
 
@@ -652,7 +648,7 @@ This will use the base64 string as the source of an `img` element with the forma
 ```
 data:image/png;base64,[BASE64_STRING]
 ```
-Open it in a browser and look the result:
+Open it in a browser and see the result:
 
 ![Test in browser](https://raw.githubusercontent.com/pluralsight/guides/master/images/67bcbf50-2d28-4548-85c9-b986940a0c48.gif)
 
@@ -662,7 +658,7 @@ Open it in a browser and look the result:
 
 Real-time and serverless/microservices is a great combination.
 
-Although you don't have a full javascript (or Node.js) environment inside a block, you can do a lot of things with this technology. There's a lot of functionality that this guide didn't cover, but you can know more about in [the official BLOCKS documentation](https://www.pubnub.com/docs/blocks/introduction)
+Although you don't have a full JavaScript (or Node.js) environment inside a block, you can do a lot of things with this technology. There's a lot of functionality that this guide didn't cover, but you can find out more about in [the official BLOCKS documentation](https://www.pubnub.com/docs/blocks/introduction)
 
 And don't forget the [existing BLOCKS catalog](https://www.pubnub.com/blocks-catalog/). There's a growing collection of blocks that you can use to get started, just import them to your account and modify them to your needs.
 
@@ -671,3 +667,5 @@ And don't forget the [existing BLOCKS catalog](https://www.pubnub.com/blocks-cat
 - [Monitor by Stock Image Folio from the Noun Project](https://thenounproject.com/term/monitor/870440/)
 - [Server by Stock Image Folio from the Noun Project](https://thenounproject.com/term/server/870452/)
 
+___
+Thank you for reading this guide on PubNub BLOCKS. I hope you found it informative and helpful. Please leave questions and feedback in the comments section below!
