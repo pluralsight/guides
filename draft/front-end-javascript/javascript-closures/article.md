@@ -75,7 +75,7 @@ myCounter.increment(3);
 myCounter.decrement(2);
 ```
 
-For sure, when just one function is being returned, it can also be wrapped into an object, but it doesn't have to. If more than one function need to be returned, they must be returned inside an object, like in the example above. We could also have functions inside of the `counter` functions which we don't want to expose to the global (outer) scope. For instance, we could have a separate function for logging the `currentValue`:
+For sure, when just one function is being returned, it can also be wrapped into an object, but it doesn't have to. If more than one function are being returned, they must be wrapped into an object, like in the example above. We could also have functions inside of the `counter` functions which we didn't want to expose to the global (outer) scope. For instance, we could have a separate function for logging the `currentValue`:
 
 ```JavaScript
 function counter(initValue) {
@@ -83,21 +83,24 @@ function counter(initValue) {
     var currentValue = initValue;
     
     var logCurrentValue() {
+        console.log('currentValue = ' + currentValue);
     }
     
     var increment = function(step) {
         
         currentValue += step; 
-        console.log('currentValue = ' + currentValue);
+        logCurrentValue();
     };
     
     var decrement = function(step) {
     
         currentValue -= step;
-        console.log('currentValue = ' + currentValue);
+        logCurrentValue();
     }
     
     return {increment: increment,
             decrement: decrement};
 }
 ```
+
+In this case, the `logCurrentValue` function cannot be accessed from the global scope, since it wasn't returned from the `counter` function. Therefore, the `logCurrentValue` is a private function and the other two functions are public. The `counter` function actually represents the module pattern, one of the most used patterns in the JavaScript.
