@@ -1,3 +1,8 @@
+### UI state management with Redux in Angular 4 by Hristo Georgiev
+- [Read the guide](https://www.pluralsight.com/guides/front-end-javascript/ui-state-management-with-redux-in-angular-4?status=in-review)
+- [Read more from Hristo Georgiev](https://www.pluralsight.com/guides/author/Kaizeras) <img src="https://avatars0.githubusercontent.com/u/6340189?v=3" width="30" height="30" alt="Hristo Georgiev" />
+- Related to: Front-End JavaScript (Angular, React, Meteor, etc)
+
 ### Getting started with PubNub BLOCKS by Esteban Herrera
 - [Read the guide](https://www.pluralsight.com/guides/interesting-apis/getting-started-with-pubnub-blocks?status=in-review)
 - [Read more from Esteban Herrera](https://www.pluralsight.com/guides/author/eh3rrera) <img src="https://avatars1.githubusercontent.com/u/11665759?v=3" width="30" height="30" alt="Esteban Herrera" />
