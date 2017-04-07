@@ -1,6 +1,5 @@
-
 #### Conditional Logic is all about the IF word. 
-In fact, it's practically impossible to program effectively without using IF. You can write simple programmes like our calculator. But for anything more complicated, you need to get the hang of Conditional Logic.
+In fact, it's practically impossible to program effectively without using IF. You can write simple programs like our calculator. But for anything more complicated, you need to get the hang of Conditional Logic.
 
 As an example, take the calculator program you have just written. It only has a Plus button. We'll be adding another button soon, a Subtract button. Now, you can't say beforehand which of the two buttons your users will click. Do they want to add, or subtract? You need to be able to write code that does the following:
 
@@ -92,7 +91,7 @@ to this
 bool buttonClicked = false;
 ```
 
-So the only change is from true to false. Run your programme again, and click the button. What happens? Nothing!
+So the only change is from true to false. Run your program again, and click the button. What happens? Nothing!
 
 The reason that nothing happens is that our IF Statement is checking for a value of true:
 
@@ -140,7 +139,7 @@ So the whole thing reads:
 
 >"IF it's true that buttonClicked has a value of true, do one thing. If it's not true, do another thing."
 
-Run your program, and click the button. You should see the second MessageBox display. Halt the programme and change the first line back to true. So this:
+Run your program, and click the button. You should see the second MessageBox display. Halt the program and change the first line back to true. So this:
 
 ```
 bool buttonClicked = true;
