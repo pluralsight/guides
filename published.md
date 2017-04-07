@@ -573,11 +573,6 @@
 - [Read more from Itay Grudev](https://www.pluralsight.com/guides/user/itay-grudev) <img src="https://avatars.githubusercontent.com/u/2123767?v=3" width="30" height="30" alt="Itay Grudev" />
 - Related to: Ruby, Ruby on Rails
 
-### Everything You Need to Know About JSON by Carl Smith
-- [Read the guide](https://www.pluralsight.com/guides/software-engineering-best-practices/everything-you-need-to-know-about-json)
-- [Read more from Carl Smith](https://www.pluralsight.com/guides/author/carlsmith) <img src="https://avatars1.githubusercontent.com/u/7561668?v=3" width="30" height="30" alt="Carl Smith" />
-- Related to: Software Engineering Best Practices
-
 ### Using HTTPs with Ruby on Rails by Simone Carletti
 - [Read the guide](https://www.pluralsight.com/guides/review/using-https-with-ruby-on-rails)
 - [Read more from Simone Carletti](https://www.pluralsight.com/guides/user/weppos) <img src="https://avatars3.githubusercontent.com/u/5387?v=3" width="30" height="30" alt="Simone Carletti" />
