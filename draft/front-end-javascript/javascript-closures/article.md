@@ -104,3 +104,49 @@ function counter(initValue) {
 ```
 
 In this case, the `logCurrentValue` function cannot be accessed from the global scope, since it wasn't returned from the `counter` function. Therefore, the `logCurrentValue` is a private function and the other two functions are public. The `counter` function actually represents the module pattern, one of the most used patterns in the JavaScript.
+
+## Use Cases
+
+Closures are mostly used in callbacks (timers, event handlers, ...) and modules.
+
+### Callbacks
+
+Let's consider the following code sample:
+
+``` JavaScript
+for (var i = 0; i < 5; i++) {
+
+    console.log(i);    // 0 1 2 3 4 
+}
+```
+
+The output of this code are numbers from 0 to 4, sequencially.
+
+However, the output of the following code will be completely different, the number 5 will be logged 5 times:
+
+``` JavaScript
+for (var i = 1; i < 5; i++) {
+
+    setTimeout(function() { 
+    
+        console.log(i); 
+            
+    }, 5000);     // 5 5 5 5 5
+}
+```
+
+That is because the `function() {console.log(i)}` will be called 5s (5000ms) after the first loop iteration, then it will be called 5s after the second loop iteration and so on. That practically means that all 5 iterations will be executed before the first call of the function, so the value of `i` will be 5 and it will be logged 5 times.
+
+In order to get the desired output, we will need to use the closure mechanism, so the code should look like this:
+
+``` JavaScript
+for (var i = 1; i < 5; i++) {
+
+    setTimeout((function(i) { 
+    
+        console.log(i); 
+            
+    })(i), 5000);     // 5 5 5 5 5
+}
+```
+
