@@ -3,11 +3,6 @@
 - [Read more from Hristo Georgiev](https://www.pluralsight.com/guides/author/Kaizeras) <img src="https://avatars0.githubusercontent.com/u/6340189?v=3" width="30" height="30" alt="Hristo Georgiev" />
 - Related to: Front-End JavaScript (Angular, React, Meteor, etc)
 
-### UI state management with Redux in Angular 2 by Hristo Georgiev
-- [Read the guide](https://www.pluralsight.com/guides/front-end-javascript/ui-state-management-with-redux-in-angular-2)
-- [Read more from Hristo Georgiev](https://www.pluralsight.com/guides/author/Kaizeras) <img src="https://avatars0.githubusercontent.com/u/6340189?v=3" width="30" height="30" alt="Hristo Georgiev" />
-- Related to: Front-End JavaScript (Angular, React, Meteor, etc)
-
 ### Semantic HTML by Miroslav Gajic
 - [Read the guide](https://www.pluralsight.com/guides/html-css/semantic-html)
 - [Read more from Miroslav Gajic](https://www.pluralsight.com/guides/author/mgajic78) <img src="https://avatars0.githubusercontent.com/u/25859460?v=3" width="30" height="30" alt="Miroslav Gajic" />
