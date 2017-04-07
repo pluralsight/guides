@@ -1,3 +1,8 @@
+### Local development of a PHP/Redis application with Kubernetes by Richard Li
+- [Read the guide](https://www.pluralsight.com/guides/devops/local-development-of-a-php-redis-application-with-kubernetes?status=in-review)
+- [Read more from Richard Li](https://www.pluralsight.com/guides/author/richarddli) <img src="https://avatars1.githubusercontent.com/u/10065494?v=3" width="30" height="30" alt="Richard Li" />
+- Related to: DevOps (Docker, Nagios, Jenkins, Chef, Puppet, etc)
+
 ### Conditional Logic in C# .NET by pattydaniels
 - [Read the guide](https://www.pluralsight.com/guides/other/conditional-logic-in-c-net?status=in-review)
 - [Read more from pattydaniels](https://www.pluralsight.com/guides/author/pattydaniels) <img src="https://avatars3.githubusercontent.com/u/16217973?v=3" width="30" height="30" alt="pattydaniels" />
