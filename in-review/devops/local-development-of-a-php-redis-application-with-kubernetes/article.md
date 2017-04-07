@@ -1,4 +1,3 @@
-
 The conventional approach to developing applications on Kubernetes requires developers to write code, commit to GitHub, build a Docker container, and deploy that container into Kubernetes.
 
 In this tutorial, we'll show you a simpler, faster approach. We'll edit a PHP application locally, and run a virtual copy of the PHP application a cloud-hosted Kubernetes instance. The PHP application has full access to the Kubernetes resources (we'll run Redis in Kubernetes), yet you'll be able to edit it locally.
@@ -18,9 +17,7 @@ We're going to use the [Guestbook](https://cloud.google.com/container-engine/doc
 
 ### Setting up your local laptop
 
-We'll start by setting up your laptop by installing Docker. Follow the install instructions at https://www.docker.com/community-edition if you haven't already.
-
-We'll next set up the CLI interface for Google Container Engine (GKE) locally. Follow the instructions at https://cloud.google.com/sdk/downloads to download and install the Cloud SDK. Then, install `kubectl`:
+We'll start by seting up the CLI interface for Google Container Engine (GKE) locally. Follow the instructions at https://cloud.google.com/sdk/downloads to download and install the Cloud SDK. Then, install `kubectl`:
 
 ```
 % sudo gcloud components update kubectl
