@@ -1,3 +1,8 @@
+### Conditional Logic in C# .NET by pattydaniels
+- [Read the guide](https://www.pluralsight.com/guides/other/conditional-logic-in-c-net?status=in-review)
+- [Read more from pattydaniels](https://www.pluralsight.com/guides/author/pattydaniels) <img src="https://avatars3.githubusercontent.com/u/16217973?v=3" width="30" height="30" alt="pattydaniels" />
+- Related to: other
+
 ### Everything You Need to Know About JSON by Carl Smith
 - [Read the guide](https://www.pluralsight.com/guides/software-engineering-best-practices/everything-you-need-to-know-about-json?status=in-review)
 - [Read more from Carl Smith](https://www.pluralsight.com/guides/author/carlsmith) <img src="https://avatars1.githubusercontent.com/u/7561668?v=3" width="30" height="30" alt="Carl Smith" />
