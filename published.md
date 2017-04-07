@@ -1,3 +1,8 @@
+### UI state management with Redux in Angular 4 by Hristo Georgiev
+- [Read the guide](https://www.pluralsight.com/guides/front-end-javascript/ui-state-management-with-redux-in-angular-4)
+- [Read more from Hristo Georgiev](https://www.pluralsight.com/guides/author/Kaizeras) <img src="https://avatars0.githubusercontent.com/u/6340189?v=3" width="30" height="30" alt="Hristo Georgiev" />
+- Related to: Front-End JavaScript (Angular, React, Meteor, etc)
+
 ### UI state management with Redux in Angular 2 by Hristo Georgiev
 - [Read the guide](https://www.pluralsight.com/guides/front-end-javascript/ui-state-management-with-redux-in-angular-2)
 - [Read more from Hristo Georgiev](https://www.pluralsight.com/guides/author/Kaizeras) <img src="https://avatars0.githubusercontent.com/u/6340189?v=3" width="30" height="30" alt="Hristo Georgiev" />
