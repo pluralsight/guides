@@ -3,7 +3,12 @@
     "author_name": "richarddli",
     "author_real_name": "Richard Li",
     "branch": "master",
-    "branches": [],
+    "branches": [
+        [
+            "adityavarshney",
+            "adityavarshney-devops-local-development-of-a-php-redis-application-with-kubernetes"
+        ]
+    ],
     "filename": "article.md",
     "first_commit": "76d17a1c6db748c529c5842bd0a25fb63a06af66",
     "image_url": "https://avatars1.githubusercontent.com/u/10065494?v=3",
