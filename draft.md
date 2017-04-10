@@ -1,3 +1,8 @@
+### How to design great RESTful APIs by Hristo Georgiev
+- [Read the guide](https://www.pluralsight.com/guides/software-engineering-best-practices/how-to-design-great-restful-apis?status=draft)
+- [Read more from Hristo Georgiev](https://www.pluralsight.com/guides/author/Kaizeras) <img src="https://avatars0.githubusercontent.com/u/6340189?v=3" width="30" height="30" alt="Hristo Georgiev" />
+- Related to: Software Engineering Best Practices
+
 ### UI state management with Redux in Angular 2 by Hristo Georgiev
 - [Read the guide](https://www.pluralsight.com/guides/front-end-javascript/ui-state-management-with-redux-in-angular-2?status=draft)
 - [Read more from Hristo Georgiev](https://www.pluralsight.com/guides/author/Kaizeras) <img src="https://avatars0.githubusercontent.com/u/6340189?v=3" width="30" height="30" alt="Hristo Georgiev" />
