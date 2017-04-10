@@ -440,7 +440,7 @@ class Item < ApplicationRecord
   mount_uploader :picture, PictureUploader
 end
 ``` 
- When a new model instance is created, the uploader will automatically associate the <code> picture </code> with it. The picture will contain the url with the image, which can be reached through <code> Item.pciture.url</code>.
+ When a new model instance is created, the uploader will automatically associate the <code> picture </code> with it. The picture will contain the url with the image, which can be reached through <code> Item.picture.url</code>.
  
  Next, enter the <code> :picture </code> parameter as a parameter:
 ```ruby 
