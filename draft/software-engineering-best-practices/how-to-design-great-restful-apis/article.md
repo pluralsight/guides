@@ -1,28 +1,29 @@
 # What is a REST API?
-## History
+### History
 # Design approach
  
 # Constructing your resources
- ## Define a resource domain
- ## Identifying resource relationships
- ## Separating concerns
+ ### Define a resource domain
+ ### Identifying resource relationships
+ ### Separating concerns
  
  
 # Using standard methods
- ## List
- ## Get
- ## Create
- ## Update
- ## Delete
+ ### List
+ ### Get
+ ### Create
+ ### Update
+ ### Delete
 
 # Using custom methods
 
- ## When to use custom methods?
- ## Examples
+ ### When to use custom methods?
+ ### Examples
  
+# Status codes
 # Best practices
- ## Paginating resources
- ## Listing collecitons
- ## Representing ranges
- ## Sorting 
-
+ ### Paginating resources
+ ### Listing collecitons
+ ### Representing ranges
+ ### Sorting 
+ ### Providing partial and full resources
