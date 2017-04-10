@@ -1,0 +1,15 @@
+{
+    "_publish_status": "draft",
+    "author_name": "Kaizeras",
+    "author_real_name": "Hristo Georgiev",
+    "branch": "master",
+    "branches": [],
+    "filename": "article.md",
+    "first_commit": "e9e8dc0689e8c5e5000fc3e5c0926c5a2f65cc5f",
+    "image_url": "https://avatars0.githubusercontent.com/u/6340189?v=3",
+    "stacks": [
+        "Software Engineering Best Practices"
+    ],
+    "thumbnail_url": null,
+    "title": "How to design great RESTful APIs"
+}
