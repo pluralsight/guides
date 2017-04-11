@@ -1,3 +1,8 @@
+### Using Angular 2 with ASP.NET Core by Syed Ikram Shah
+- [Read the guide](https://www.pluralsight.com/guides/microsoft-net/using-angular-2-with-asp-net-core)
+- [Read more from Syed Ikram Shah](https://www.pluralsight.com/guides/author/syedikramshah) <img src="https://avatars2.githubusercontent.com/u/6046692?v=3" width="30" height="30" alt="Syed Ikram Shah" />
+- Related to: Microsoft.NET (C#, ASP.NET, VB.NET, etc)
+
 ### UI state management with Redux in Angular 4 by Hristo Georgiev
 - [Read the guide](https://www.pluralsight.com/guides/front-end-javascript/ui-state-management-with-redux-in-angular-4)
 - [Read more from Hristo Georgiev](https://www.pluralsight.com/guides/author/Kaizeras) <img src="https://avatars0.githubusercontent.com/u/6340189?v=3" width="30" height="30" alt="Hristo Georgiev" />
