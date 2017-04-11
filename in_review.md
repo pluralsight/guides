@@ -23,11 +23,6 @@
 - [Read more from Esteban Herrera](https://www.pluralsight.com/guides/author/eh3rrera) <img src="https://avatars1.githubusercontent.com/u/11665759?v=3" width="30" height="30" alt="Esteban Herrera" />
 - Related to: Interesting APIs (SendGrid, Twilio, etc)
 
-### Using Angular 2 with ASP.NET Core by Syed Ikram Shah
-- [Read the guide](https://www.pluralsight.com/guides/microsoft-net/using-angular-2-with-asp-net-core?status=in-review)
-- [Read more from Syed Ikram Shah](https://www.pluralsight.com/guides/author/syedikramshah) <img src="https://avatars2.githubusercontent.com/u/6046692?v=3" width="30" height="30" alt="Syed Ikram Shah" />
-- Related to: Microsoft.NET (C#, ASP.NET, VB.NET, etc)
-
 ### Cloning an Ionic 2 application from Github by Todd Shelton
 - [Read the guide](https://www.pluralsight.com/guides/front-end-javascript/cloning-an-ionic-2-application-from-github?status=in-review)
 - [Read more from Todd Shelton](https://www.pluralsight.com/guides/author/TShelton41) <img src="https://avatars.githubusercontent.com/u/795737?v=3" width="30" height="30" alt="Todd Shelton" />
