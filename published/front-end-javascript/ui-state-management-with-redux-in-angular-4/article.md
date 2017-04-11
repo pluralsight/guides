@@ -4,7 +4,7 @@ In this guide, we'll explore using Redux to mitigate the current challenges in c
 
 ###  Taming your application UI layout
 
-Since Redux came out, state management for front-end applications went through a revolution. My team and I have field-tested Redux with Angular 2 and the resulting productivity boost has been tremendous. 
+Since Redux came out, state management for front-end apbplications went through a revolution. My team and I have field-tested Redux with Angular 2 and the resulting productivity boost has been tremendous. 
 > Redux has not only allowed us to ship faster, but it increased the overall maintainability of our codebase by encapsulating most of the crucial logic in a single place and providing an easy to test architecture. 
 
 We liked Redux so much that we wanted to control _everything_ with it. One of our most recent projects was building a very UI-intensive application and we decided to experiment by giving the reducers in the applicaiton a little bit more resposibility than just controlling data.
@@ -18,7 +18,7 @@ We found out that "reduxifying" the UI leads to numerous benefits and makes cont
  * **Chain UI layout-specific actions with other events such as saving data server-side or changing a route**
 
 # Setup 
- > The examples  below will be done with ng-boostrap since it's one of the most popular libraries with Angular 2 components for Bootstrap 4. You can also implement these examples with other component libraries, such as [Material Design](https://github.com/angular/material2), by following the same design principles and making small adjustments to the code so that it works with the API of the corresponding library.
+ > The examples  below will be done with ng-bootstrap since it's one of the most popular libraries with Angular 2 components for Bootstrap 4. You can also implement these examples with other component libraries, such as [Material Design](https://github.com/angular/material2), by following the same design principles and making small adjustments to the code so that it works with the API of the corresponding library.
 
 ### Dependencies
  Below are the packages you need to install in order to start working:
@@ -30,8 +30,8 @@ We found out that "reduxifying" the UI leads to numerous benefits and makes cont
  - [ngrx-store-logger](https://github.com/btroncone/ngrx-store-logger)
 
 ** Bootstrap **
- - [Boostrap 4](https://github.com/twbs/bootstrap)
- - [ng-boostrap](https://github.com/ng-bootstrap/ng-bootstrap)
+ - [Bootstrap 4](https://github.com/twbs/bootstrap)
+ - [ng-bootstrap](https://github.com/ng-bootstrap/ng-bootstrap)
 
 ### Installing
 
@@ -68,11 +68,11 @@ apps: [
   }
 ```
 
-This will let your `angular-cli` locate the JavaScript and CSS files of your Boostrap installation and add them in the build of the project.
+This will let your `angular-cli` locate the JavaScript and CSS files of your Bootstrap installation and add them in the build of the project.
 
-Next, add `ng-boostrap` to  your dependencies:
+Next, add `ng-bootstrap` to  your dependencies:
 ```
-$ yarn add @ng-boostrap/ng-boostrap
+$ yarn add @ng-bootstrap/ng-bootstrap
 ```
 
 And include the `NgbModule` in your app's root module (located in `app.module.ts`):
