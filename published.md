@@ -1,3 +1,8 @@
+### Everything You Need to Know About JSON by Carl Smith
+- [Read the guide](https://www.pluralsight.com/guides/software-engineering-best-practices/everything-you-need-to-know-about-json)
+- [Read more from Carl Smith](https://www.pluralsight.com/guides/author/carlsmith) <img src="https://avatars1.githubusercontent.com/u/7561668?v=3" width="30" height="30" alt="Carl Smith" />
+- Related to: Software Engineering Best Practices
+
 ### Using Angular 2 with ASP.NET Core by Syed Ikram Shah
 - [Read the guide](https://www.pluralsight.com/guides/microsoft-net/using-angular-2-with-asp-net-core)
 - [Read more from Syed Ikram Shah](https://www.pluralsight.com/guides/author/syedikramshah) <img src="https://avatars2.githubusercontent.com/u/6046692?v=3" width="30" height="30" alt="Syed Ikram Shah" />
