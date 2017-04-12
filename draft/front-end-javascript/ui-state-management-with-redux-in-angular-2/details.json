@@ -3,12 +3,7 @@
     "author_name": "Kaizeras",
     "author_real_name": "Hristo Georgiev",
     "branch": "master",
-    "branches": [
-        [
-            "adityavarshney",
-            "adityavarshney-front-end-javascript-ui-state-management-with-redux-in-angular-2"
-        ]
-    ],
+    "branches": [],
     "filename": "article.md",
     "first_commit": "4cb77d5618297586239f54bc714b22dcb9e1bd30",
     "image_url": "https://avatars0.githubusercontent.com/u/6340189?v=3",
