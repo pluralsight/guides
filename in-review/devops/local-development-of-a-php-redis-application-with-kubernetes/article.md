@@ -1,23 +1,23 @@
-The conventional approach to developing applications on Kubernetes requires developers to write code, commit to GitHub, build a Docker container, and deploy that container into Kubernetes.
+The conventional approach to developing applications on Kubernetes, an open-source tool for deploying containerized applications, requires developers to write code, commit to GitHub, build a Docker container, and deploy that container into Kubernetes.
 
-In this tutorial, we'll show you a simpler, faster approach. We'll edit a PHP application locally, and run a virtual copy of the PHP application a cloud-hosted Kubernetes instance. The PHP application has full access to the Kubernetes resources (we'll run Redis in Kubernetes), yet you'll be able to edit it locally.
+In this tutorial, I'll introduce you to a simpler, sleeker approach. We'll edit a PHP application locally, and run a *virtual copy* of the PHP application as a cloud-hosted Kubernetes instance. We'll be running Redis in Kubernetes. The best part about this: the PHP application will have **full access** to the Kubernetes resources, but you'll be able to edit it locally.
 
-## Technologies used
+## Prerequisites
+
+### Technologies used
 
 * [Kubernetes](https://kubernetes.io)
 * [Google Container Engine](https://cloud.google.com/container-engine/)
 * [Telepresence](http://www.telepresence.io)
 * [PHP](http://www.php.net/) and [Redis](https://redis.io/)
 
-## Prerequisites and setup
+This tutorial has been tested on a modern version of Linux and Mac OS X. We'll also use the Google Container Engine as our Kubernetes cluster, although any Kubernetes installation will work.
 
-This tutorial has been tested on a modern version of Linux and Mac OS X. We'll also use Google Container Engine as our Kubernetes cluster, although any Kubernetes installation will work.
+We're going to use the [Guestbook](https://cloud.google.com/container-engine/docs/tutorials/guestbook) sample application, which runs on basic PHP and Redis, in our example.
 
-We're going to use the [Guestbook](https://cloud.google.com/container-engine/docs/tutorials/guestbook) sample application, which is a simple PHP/Redis application, for our example.
+### Setup
 
-### Setting up your local laptop
-
-We'll start by seting up the CLI interface for Google Container Engine (GKE) locally. Follow the instructions at https://cloud.google.com/sdk/downloads to download and install the Cloud SDK. Then, install `kubectl`:
+We'll start by setting up the Command Line Interface (CLI) for the Google Container Engine (GKE) locally. Follow the instructions at [the Cloud Downloads page](https://cloud.google.com/sdk/downloads) to download and install the latest Cloud SDK. Then, install `kubectl`:
 
 ```
 % sudo gcloud components update kubectl
@@ -30,20 +30,20 @@ We need to install Telepresence, which will proxy your locally running service t
 % chmod +x telepresence
 ```
 
-Move Telepresence to somewhere on your $PATH, e.g.,:
+Move Telepresence to somewhere on your $PATH:
 
 ```
 % mv telepresence /usr/local/bin
 ```
 
 
-You'll also need to install `torsocks`. On Mac OS X:
+You'll also need to install `torsocks`. On Mac OS X, use `brew`:
 
 ```
 % brew install torsocks
 ```
 
-Or, if you're on Ubuntu:
+Or, if you're on Ubuntu, use `apt`:
 
 ```
 % sudo apt install --no-install-recommends torsocks
@@ -58,7 +58,7 @@ We'll also configure a local development environment for PHP that can run the Gu
 % pear install nrk/Predis
 ```
 
-This tutorial uses several Kubernetes configuration files. You can optionally clone the [telepresence GitHub](https://github.com/datawire/telepresence/) repository:
+This tutorial uses several Kubernetes configuration files. You can optionally clone the [Telepresence GitHub repo](https://github.com/datawire/telepresence/):
 
 ```
 % git clone https://github.com/datawire/telepresence.git
@@ -68,9 +68,9 @@ All example files are in the [`examples/guestbook`](https://github.com/datawire/
 
 ### Setting up Kubernetes in Google Container Engine
 
-We're going to use Google Container Engine as our Kubernetes cluster. Start by going to https://console.cloud.google.com, choose the Google Container Engine option from the menu, and then Create a Cluster.
+We're going to use Google Container Engine as our Kubernetes cluster. Start by going to [the Cloud Console page](https://console.cloud.google.com). Then choose the Google Container Engine option from the menu and Create a Cluster.
 
-Now, use the command line tools and authenticate to the cluster:
+Now, use the command line to authenticate to the cluster:
 
 ```
 % gcloud container clusters get-credentials CLUSTER_NAME
@@ -79,7 +79,9 @@ Now, use the command line tools and authenticate to the cluster:
 
 ### The Guestbook application
 
-We're now going to start installing the Guestbook application. We'll need to set up the Redis master deployment ([config](https://github.com/datawire/telepresence/blob/master/examples/guestbook/redis-master-deployment.yaml)), the Redis master service ([config](https://github.com/datawire/telepresence/blob/master/examples/guestbook/redis-master-service.yaml)), the Redis slave deployment ([config](https://github.com/datawire/telepresence/blob/master/examples/guestbook/redis-slave-deployment.yaml)), and the Redis slave service ([config](https://github.com/datawire/telepresence/blob/master/examples/guestbook/redis-slave-service.yaml)). If you don't want to download each of these files manually, these files are in the [`examples/guestbook`](https://github.com/datawire/telepresence/tree/master/examples/guestbook) directory of the Telepresence repository.
+We're now going to start installing the Guestbook application. 
+
+First, we need to set up the Redis master deployment ([config](https://github.com/datawire/telepresence/blob/master/examples/guestbook/redis-master-deployment.yaml)), the Redis master service ([config](https://github.com/datawire/telepresence/blob/master/examples/guestbook/redis-master-service.yaml)), the Redis slave deployment ([config](https://github.com/datawire/telepresence/blob/master/examples/guestbook/redis-slave-deployment.yaml)), and the Redis slave service ([config](https://github.com/datawire/telepresence/blob/master/examples/guestbook/redis-slave-service.yaml)). If you don't want to download each of these files manually, these files are in the [`examples/guestbook`](https://github.com/datawire/telepresence/tree/master/examples/guestbook) directory of the Telepresence repository.
 
 ```
 % kubectl create -f redis-master-deployment.yaml
@@ -88,7 +90,7 @@ We're now going to start installing the Guestbook application. We'll need to set
 % kubectl create -f redis-slave-service.yaml
 ```
 
-You can verify that everything is running:
+You can verify that everything is running by using the `get pods` command:
 
 ```
 % kubectl get pods
@@ -114,13 +116,13 @@ We need to start an external load balancer. The [`frontend-service.yaml`](https:
 % kubectl create -f frontend-service.yaml
 ```
 
-We're going to start the local Telepresence client, which creates a special shell which connects to the proxy in GKE.
+We're going to start the local Telepresence client, which creates a special shell that connects to the proxy in GKE.
 
 ```
 % telepresence --deployment telepresence-deployment --expose 8080 --run-shell
 ```
 
-In this shell, change to the `examples/guestbook` directory, and start the frontend application. We can do this by first locating the directory where Predis is installed. You can figure this out by typing:
+In this shell, `cd` into the `examples/guestbook` directory and start the frontend application. To do this, you need to locate the directory where Predis is installed. You can figure this out by typing:
 
 ```
 % pear config-get php_dir
@@ -132,7 +134,7 @@ Now, in the `examples/guestbook` directory, start PHP:
 % php -d include_path="PATH_TO_PEAR_DIR" -S 0.0.0.0:8080
 ```
 
-It's time to view our app in the browser. Let's look up the IP address of our external load balancer:
+It's time to view our app in the browser. Let's look up the IP address of our external load balancer using `get services`:
 
 ```
 % kubectl get services
@@ -142,11 +144,11 @@ redis-master   10.7.247.217   <none>           6379/TCP       5d
 redis-slave    10.7.244.48    <none>           6379/TCP       5d
 ```
 
-Go to the external IP address of your load balancer (in the above example, 106.196.217.34). You'll see the Guestbook application running. Type a message, and you'll see it saved into Redis.
+Enter the external IP address of your load balancer into a browser like Google Chrome. In the above example, the `EXTERNAL-IP` is 106.196.217.34. You'll see the Guestbook application running. Type a message, and you'll see it saved into Redis.
 
 ### Edit your code
 
-Open `index.html` from your shell and try renaming the Submit button to something else. Save, hit reload. You'll immediately see your changes reflected live on the external IP address.
+Open `index.html` from your shell and try renaming the "Submit" button to something else. Save and reload. You'll immediately see your changes take effect on the external IP address.
 
 Stop the PHP process, and type `exit` to terminate the Telepresence proxy.
 
@@ -161,6 +163,8 @@ Telepresence works by building a two-way network proxy between a special pod run
 
 ## Conclusion
 
-Developers love fast dev cycles. In this tutorial, we've shown how you can edit code locally, save, and immediately run that code in Kubernetes, without waiting for a Docker build cycle. We did this with a simple n-tier webapp, but this approach is even more useful as you adopt microservices. Imagine you have dozens of services in your application -- they can all run in your remote Kubernetes cluster, while you still develop locally.
+Developers love fast dev cycles. In this tutorial, we've shown how you can edit code locally, save changes, and immediately run that code in Kubernetes, all without waiting for a Docker build cycle. We did this with a simple webapp, but such an approach is **even more useful** when you adopt microservices and build up applications. Imagine you have dozens of services in your application; all services can run in your remote Kubernetes cluster, while you still develop locally.
 
-Happy coding!
+____ 
+
+Happy coding! Don't forget to add this article to your favorites. Please leave all comments and feedback in the discussion section below.
