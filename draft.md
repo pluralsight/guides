@@ -1,3 +1,8 @@
+### Everything You Need to Know About JSON by Carl Smith
+- [Read the guide](https://www.pluralsight.com/guides/software-engineering-best-practices/everything-you-need-to-know-about-json?status=draft)
+- [Read more from Carl Smith](https://www.pluralsight.com/guides/author/carlsmith) <img src="https://avatars1.githubusercontent.com/u/7561668?v=3" width="30" height="30" alt="Carl Smith" />
+- Related to: Software Engineering Best Practices
+
 ### How to design great RESTful APIs by Hristo Georgiev
 - [Read the guide](https://www.pluralsight.com/guides/software-engineering-best-practices/how-to-design-great-restful-apis?status=draft)
 - [Read more from Hristo Georgiev](https://www.pluralsight.com/guides/author/Kaizeras) <img src="https://avatars0.githubusercontent.com/u/6340189?v=3" width="30" height="30" alt="Hristo Georgiev" />
