@@ -17,7 +17,7 @@ There are several benefits to using such approach:
   * Cookies and CORS don't mix well across different domains. A token-based approach allows you to make AJAX calls to any server, on any domain because you use an HTTP header to transmit the user information.
 
 - Stateless
- * Tokens are stateless. There is no need to keep a session store, since the token is a self-contanined entity that stores all the user information in it. 
+ * Tokens are stateless. There is no need to keep a session store, since the token is a self-contained entity that stores all the user information in it. 
 
 
 - Decoupling
