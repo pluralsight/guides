@@ -8,11 +8,6 @@
 - [Read more from pattydaniels](https://www.pluralsight.com/guides/author/pattydaniels) <img src="https://avatars3.githubusercontent.com/u/16217973?v=3" width="30" height="30" alt="pattydaniels" />
 - Related to: Microsoft.NET (C#, ASP.NET, VB.NET, etc)
 
-### A Beginners Guide to jQuery by Carl Smith
-- [Read the guide](https://www.pluralsight.com/guides/front-end-javascript/a-beginners-guide-to-jquery?status=in-review)
-- [Read more from Carl Smith](https://www.pluralsight.com/guides/author/carlsmith) <img src="https://avatars1.githubusercontent.com/u/7561668?v=3" width="30" height="30" alt="Carl Smith" />
-- Related to: Front-End JavaScript (Angular, React, Meteor, etc)
-
 ### Getting started with PubNub BLOCKS by Esteban Herrera
 - [Read the guide](https://www.pluralsight.com/guides/interesting-apis/getting-started-with-pubnub-blocks?status=in-review)
 - [Read more from Esteban Herrera](https://www.pluralsight.com/guides/author/eh3rrera) <img src="https://avatars1.githubusercontent.com/u/11665759?v=3" width="30" height="30" alt="Esteban Herrera" />
