@@ -46,7 +46,7 @@ A hybrid app is a mobile application, written with the same languages that you u
 
 Definite advantage of the hybrid apps is that you can access the additional phone features via plugins and that you can do all the development with the same set of skills you use when developing _"normal"_ web applications. One of the disadvantages is that, even though it's improving, the so-called Web View has it's limitations in terms of speed. Basically, you wouldn't use a hybrid approach if you want to build a 3D game.
 
-##1. What is Ionic and why it's so good
+## 1. What is Ionic and why it's so good
 As I gave an [answer on StackOverflow](http://stackoverflow.com/questions/31179211/use-ionic-or-cordova/31180666):
 
 > Disclaimer: This will sound like advertisement, so I have to say I'm in no way affiliated with Ionic, I just happen to like it so much that I'm sharing the love for it.
@@ -104,7 +104,7 @@ Great thing about this is that you automatically have a **live reload** feature,
 
 > If you like, you can get this project on [Github](https://github.com/Hitman666/Ionic_1stTutorial).
 
-##2. How to create a simple calculator application with Ionic framework by using Ionic Creator for UI
+## 2. How to create a simple calculator application with Ionic framework by using Ionic Creator for UI
 
 In this section you'll learn:
 
@@ -194,7 +194,7 @@ In the last row you should also add four buttons:
 + one button representing the Clear operation (**C**), with the `Assertive` style
 + one button representing 0
 + one button representing the equals operation (**=**), with the `Positive` style
-+ one button representing the addition operation (**+**), with the `Energized style
++ one button representing the addition operation (**+**), with the `Energized` style
 
 Your interface should look like this:
 
@@ -542,7 +542,7 @@ As mentioned in the beginning of this section, you can take a look at the source
 ## Conclusion
 In this section we showed you how to create a calculator application step by step. We showed how to create a mockup of our idea, then we showed how to create an interface by using Ionic Creator, and finally how to refactor our application and create the logic with controllers.
 
-#3. How to polish, and test our calculator application
+# 3. How to polish, and test our calculator application
 
 
 This third section explains:
@@ -1061,7 +1061,7 @@ Find the application in your application list and open it. You should see the ad
 ## Conclusion
 In this section, we showed you how to polish our existing calculator application by improving the design and user experience. Next, we showed how to automatically create icons and splash screen images. Then we covered how to make money with our application by using Google AdMob ads. Also, we showed how to share our application with other users without going through the app stores. Finally, we showed how to test our application on the real physical devices and emulators.
 
-#4. How to publish our calculator application to the Apple's App Store and Google's Play Store
+# 4. How to publish our calculator application to the Apple's App Store and Google's Play Store
 
 ## Google Play Store
 
@@ -1233,7 +1233,7 @@ One the next screen, shown on the image below, select the plus (+) button in ord
 
 ![](http://i.imgur.com/BbK4KHq.png)
 
-On the next screen, shown partially on the image below, you'll have to set the name of your app, and use the `Explicit App ID` option and set the `Bundle ID` to the value of the `id` in your Cordova `config.xml` <widget> tag.
+On the next screen, shown partially on the image below, you'll have to set the name of your app, and use the `Explicit App ID` option and set the `Bundle ID` to the value of the `id` in your Cordova `config.xml` `<widget>` tag.
 
 ![](http://i.imgur.com/fsENfcP.png)
 
@@ -1298,7 +1298,7 @@ Next, select `Product -> Archive`, and the Archive organizer appears and display
 
 ![](http://i.imgur.com/To14nx0.png)
 
-This problem was resolved by the solution posted in this [Stack Overflow question](http://stackoverflow.com/questions/12184767/phonegap-cdvviewcontroller-h-file-not-found-when-archiving-for-ios) where basically the solution was to double click the `<multiple values>` under Header Search Paths` and change `$(OBJROOT)/UninstalledProducts/include` to `$(OBJROOT)/UninstalledProducts/$(PLATFORM_NAME)/include` as shown on the image below:
+This problem was resolved by the solution posted in this [Stack Overflow question](http://stackoverflow.com/questions/12184767/phonegap-cdvviewcontroller-h-file-not-found-when-archiving-for-ios) where basically the solution was to double click the `<multiple values>` under `Header Search Paths` and change `$(OBJROOT)/UninstalledProducts/include` to `$(OBJROOT)/UninstalledProducts/$(PLATFORM_NAME)/include` as shown on the image below:
 
 ![](http://i.imgur.com/7LBPSTN.png)
 
