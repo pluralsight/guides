@@ -1,6 +1,6 @@
 # Semantics
 
-There are over *a billion* websites on the Internet. Many of them are made a long time ago and have not been updated with HTML features. As such, search engines move past these websites, and viewers find this websites difficult to read.
+There are over *a billion* websites on the Internet. Many of them are made a long time ago and have not been updated with HTML features. As such, search engines move past these websites, and viewers find these websites difficult to read.
 
 One of the most important features of [HTML5](https://en.wikipedia.org/wiki/HTML5) is its **semantics**. It adds more information to basic HTML elements and makes a web page more informative and adaptable to search engines and [screen readers](https://en.wikipedia.org/wiki/Screen_reader).
 
