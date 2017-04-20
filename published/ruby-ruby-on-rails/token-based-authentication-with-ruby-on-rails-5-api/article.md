@@ -93,7 +93,7 @@ The method `has_secure_password`  has to be added to the model to make sure the 
  ```
  With the gem installed, the method can be included in the model:
  ```ruby
-#app/user.rb
+#app/models/user.rb
  
 class User < ApplicationRecord
   has_secure_password
