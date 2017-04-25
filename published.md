@@ -35,7 +35,7 @@
 
 ### Getting started with React VR by Esteban Herrera
 - [Read the guide](https://www.pluralsight.com/guides/front-end-javascript/getting-started-with-react-vr)
-- [Read more from Esteban Herrera](https://www.pluralsight.com/guides/author/eh3rrera) <img src="https://avatars.githubusercontent.com/u/11665759?v=3" width="30" height="30" alt="Esteban Herrera" />
+- [Read more from Esteban Herrera](https://www.pluralsight.com/guides/author/eh3rrera) <img src="https://avatars1.githubusercontent.com/u/11665759?v=3" width="30" height="30" alt="Esteban Herrera" />
 - Related to: Front-End JavaScript (Angular, React, Meteor, etc)
 
 ### Yarn: A package manager for Node.js by Esteban Herrera
