@@ -1,10 +1,10 @@
-[React VR](https://facebookincubator.github.io/react-vr/docs/react-vroverview.html) aims to allow web developers to author virtual reality (VR) applications using the declarative approach of [React](https://facebook.github.io/react/) and, in particular, [React Native](http://facebook.github.io/react-native).
+[React VR](https://facebook.github.io/react-vr/docs/react-vroverview.html) aims to allow web developers to author virtual reality (VR) applications using the declarative approach of [React](https://facebook.github.io/react/) and, in particular, [React Native](http://facebook.github.io/react-native).
 
 React VR uses [Three.js](https://github.com/mrdoob/three.js/) to support the lower-level [WebVR](https://webvr.info/) and [WebGL](https://en.wikipedia.org/wiki/WebGL) APIs. WebVR is an API used to access VR devices on the Web. WebGL (Web Graphics Library) is an API for rendering 3D graphics within any compatible web browser without the use of plug-ins.
 
 React VR is similar to React Native in that it uses `View`, `Image`, and `Text` as core components and supports Flexbox layouts. In addition, React VR adds VR components like `Pano`, `Mesh`, and `PointLight` into the mix.
 
-In this guide, we'll create a simple VR app to learn how to create a scene with a panorama image, 3d objects, buttons, and a flexbox layout. Our mock app is based on two of the [official samples](https://github.com/facebookincubator/react-vr) of React VR and the Mesh and Layout samples.
+In this guide, we'll create a simple VR app to learn how to create a scene with a panorama image, 3d objects, buttons, and a flexbox layout. Our mock app is based on two of the [official samples](https://github.com/facebook/react-vr) of React VR and the Mesh and Layout samples.
 
 The app will render 3D models of the Earth and the Moon in a [cubemap](https://en.wikipedia.org/wiki/Cube_mapping) of space along with some buttons to *zoom in* and *zoom out*. This is how the finished app looks like:
 
@@ -65,20 +65,23 @@ Open your browser at `http://localhost:8081/vr`. It can take some time to build 
 
 The directory of this sample app has the following structure:
 ```
++-__tests__
 +-node_modules
 +-static_assets
 +-vr
+\-.babelrc
+\-.flowconfig
 \-.gitignore
 \-.watchmanconfig
 \-index.vr.js
 \-package.json
-\-postinstall.js
 \-rn-cli-config.js
+\-yarn.lock
 ```
 
 I want to highlight the `index.vr.js` file, which contains your application code, and the `static_assets` directory, which contains external resource files, like images and 3D models.
 
-You can know more about the project structure [here](https://facebookincubator.github.io/react-vr/docs/project-configuration.html).
+You can know more about the project structure [here](https://facebook.github.io/react-vr/docs/project-configuration.html).
 
 The following is the content of the `index.vr.js` file:
 ```javascript
@@ -219,7 +222,7 @@ However, in a 3D space, React VR uses the same right-handed coordinate system th
 
 ![3D coordinate system](https://raw.githubusercontent.com/pluralsight/guides/master/images/6f07859e-1d03-4767-8b53-ba7265cf3472.png)
 
-You can read more about the [React VR coordinate system here](https://facebookincubator.github.io/react-vr/docs/3dcoordinates-and-transforms.html).
+You can read more about the [React VR coordinate system here](https://facebook.github.io/react-vr/docs/3dcoordinates-and-transforms.html).
 
 
 This way, our cubicmap (or skybox) will look like this:
@@ -295,7 +298,7 @@ Now let's talk about 3D models.
 
 # 3D models
 
-React VR has a [Mesh](https://facebookincubator.github.io/react-vr/docs/mesh.html) component that supports the [Wavefront .obj file format](https://en.wikipedia.org/wiki/Wavefront_.obj_file) to represent 3D models.
+React VR has a [Model](https://facebook.github.io/react-vr/docs/model.html) component that supports the [Wavefront .obj file format](https://en.wikipedia.org/wiki/Wavefront_.obj_file) to represent 3D models.
 
 A [mesh](https://en.wikibooks.org/wiki/Blender_3D:_Noob_to_Pro/What_is_a_Mesh%3F) is a collection of vertices, edges, and faces that define the shape of a 3D object.
 
@@ -389,28 +392,28 @@ newmtl 02___Default
     map_d 4096_clouds.jpg
 ```
 
-Now we can add the `Mesh` component with the following code:
+Now we can add the `Model` component with the following code:
 ```javascript
-<Mesh source={{mesh:asset('earth.obj'), mtl:asset('earth.mtl'), lit: true}} />
+<Model source={{obj:asset('earth.obj'), mtl:asset('earth.mtl')}} lit={true} />
 ```
 
 The `lit` attribute specifies that the materials used in the mesh should work with lights using [Phong shading](https://en.wikipedia.org/wiki/Phong_shading).
 
-Also, don't forget to export the `Mesh` component from `react-vr`:
+Also, don't forget to export the `Model` component from `react-vr`:
 ```javascript
 import {
   ...
-  Mesh,
+  Model,
 } from 'react-vr';
 ```
 
 However, if we only add this component to our app, nothing will be shown. What we need, first, is to add a light source.
 
 React VR has four types of light:
-- [AmbientLight](https://facebookincubator.github.io/react-vr/docs/ambientlight.html) that represents an omni-directional, fixed-intensity and fixed-color light source that affects all objects in the scene equally.
-- [DirectionalLight](https://facebookincubator.github.io/react-vr/docs/directionallight.html) that represents a light source which illuminates all objects equally from a given direction.
-- [PointLight](https://facebookincubator.github.io/react-vr/docs/pointlight.html) that represents a light originates from a single point, and spreads outward in all directions.
-- [SpotLight](https://facebookincubator.github.io/react-vr/docs/spotlight.html) that represents a light originates from a single point, and spreads outward in a cone.
+- [AmbientLight](https://facebook.github.io/react-vr/docs/ambientlight.html) that represents an omni-directional, fixed-intensity and fixed-color light source that affects all objects in the scene equally.
+- [DirectionalLight](https://facebook.github.io/react-vr/docs/directionallight.html) that represents a light source which illuminates all objects equally from a given direction.
+- [PointLight](https://facebook.github.io/react-vr/docs/pointlight.html) that represents a light originates from a single point, and spreads outward in all directions.
+- [SpotLight](https://facebook.github.io/react-vr/docs/spotlight.html) that represents a light originates from a single point, and spreads outward in a cone.
 
 You can try all types of lights to see which one yields the best result for you. In this case, we are going to use an `AmbientLight`  with an intensity value of `2.6`:
 ```javascript
@@ -422,7 +425,7 @@ import {
   Pano,
   Text,
   View,
-  Mesh,
+  Model,
   AmbientLight,
 } from 'react-vr';
 
@@ -434,7 +437,7 @@ class EarthMoonVR extends React.Component {
 
         <AmbientLight intensity={ 2.6 }  />
         
-        <Mesh source={{mesh:asset('earth.obj'), mtl:asset('earth.mtl'), lit: true}} />
+        <Model source={{obj:asset('earth.obj'), mtl:asset('earth.mtl')}} lit={true} />
       </View>
     );
   }
@@ -443,7 +446,7 @@ class EarthMoonVR extends React.Component {
 AppRegistry.registerComponent('EarthMoonVR', () => EarthMoonVR);
 ```
 
-Next, we need to give our model some [style properties for placement, size, and rotation](https://facebookincubator.github.io/react-vr/docs/transforms.html#props). By trying with different values, I came up with the following configuration:
+Next, we need to give our model some [style properties for placement, size, and rotation](https://facebook.github.io/react-vr/docs/transforms.html#props). By trying with different values, I came up with the following configuration:
 ```javascript
 class EarthMoonVR extends React.Component {
   render() {
@@ -451,7 +454,7 @@ class EarthMoonVR extends React.Component {
       <View>
         ...
 
-        <Mesh
+        <Model
           style={{
             transform: [
               {translate: [-25, 0, -70]},
@@ -461,7 +464,8 @@ class EarthMoonVR extends React.Component {
               {rotateZ: -10}
             ],
           }}
-          source={{mesh:asset('earth.obj'), mtl:asset('earth.mtl'), lit: true}}
+          source={{obj:asset('earth.obj'), mtl:asset('earth.mtl')}}
+          lit={true}
         />
       </View>
     );
@@ -471,7 +475,7 @@ class EarthMoonVR extends React.Component {
 AppRegistry.registerComponent('EarthMoonVR', () => EarthMoonVR);
 ```
 
-[Transforms](https://facebookincubator.github.io/react-vr/docs/3dcoordinates-and-transforms.html) are represented as an array of objects within a style object, and they are applied last to first (remember that the units are meters). 
+[Transforms](https://facebook.github.io/react-vr/docs/3dcoordinates-and-transforms.html) are represented as an array of objects within a style object, and they are applied last to first (remember that the units are meters). 
 
 `translate` positions your model in the x, y, z space, `scale` gives your model a size, and `rotate` turns your model around the axes based on the degree measurement provided. 
 
@@ -500,8 +504,9 @@ This is the result:
 
 By the way, if your model doesn't come with a .mtl file, React VR allows you to specify a texture with:
 ```javascript
-<Mesh
-  source={{mesh:asset('model.obj'), texture:asset('model.jpg')}}
+<Model
+  source={{obj:asset('model.obj'), texture:asset('model.jpg')}}
+  lit={true}
 />
 ```
 
@@ -515,14 +520,15 @@ render() {
 
         ...
 
-        <Mesh
+        <Model
           style={{
             transform: [
               {translate: [10, 10, -100]},
               {scale: 0.05},
             ],
           }}
-          source={{mesh:asset('moon.obj'), mtl:asset('moon.mtl'), lit: true}}
+          source={{obj:asset('moon.obj'), mtl:asset('moon.mtl')}}
+          lit={true}
         />
       </View>
     );
@@ -539,9 +545,9 @@ Now let's animate our models.
 
 # Animating the models
 
-React VR has an [Animated library](https://facebookincubator.github.io/react-vr/docs/animations.html) to compose some types of animation in a simple way.
+React VR has an [Animated library](https://facebook.github.io/react-vr/docs/animations.html) to compose some types of animation in a simple way.
 
-At this time, only a few components can be animated natively (`View` with `Animated.View`, `Text` with `Animated.Text`, and `Image` with `Animated.Image`). The [documentation](https://facebookincubator.github.io/react-vr/docs/animated.html) mentions that you can create custom ones with `createAnimatedComponent`, but I couldn't find more about it.
+At this time, only a few components can be animated natively (`View` with `Animated.View`, `Text` with `Animated.Text`, and `Image` with `Animated.Image`). The [documentation](https://facebook.github.io/react-vr/docs/animated.html) mentions that you can create custom ones with `createAnimatedComponent`, but I couldn't find more about it.
 
 Another option is to use [requestAnimationFrame ]( https://developer.mozilla.org/en-US/docs/Web/API/window/requestAnimationFrame), an essential part of JavaScript-based animation APIs.
 
@@ -560,7 +566,7 @@ class EarthMoonVR extends React.Component {
       <View>
         ...
 
-        <Mesh
+        <Model
           style={{
             transform: [
               {translate: [-25, 0, -70]},
@@ -570,10 +576,11 @@ class EarthMoonVR extends React.Component {
               {rotateZ: -10}
             ],
           }}
-          source={{mesh:asset('earth.obj'), mtl:asset('earth.mtl'), lit: true}}
+          source={{obj:asset('earth.obj'), mtl:asset('earth.mtl')}}
+          lit={true}
         />
         
-        <Mesh
+        <Model
           style={{
             transform: [
               {translate: [10, 10, -100]},
@@ -581,7 +588,8 @@ class EarthMoonVR extends React.Component {
               {rotateY: this.state.rotation / 3},
             ],
           }}
-          source={{mesh:asset('moon.obj'), mtl:asset('moon.mtl'), lit: true}}
+          source={{obj:asset('moon.obj'), mtl:asset('moon.mtl')}}
+          lit={true}
         />
       </View>
     );
@@ -664,11 +672,11 @@ Now let's add some buttons to make this a little more interactive.
 
 # Styling and Buttons
 
-Create a new component for our buttons. In practice, we can use either a `View` or a `VrButton`, as both can be styled as buttons and have useful [events](https://facebookincubator.github.io/react-vr/docs/input.html) (like `onEnter`) for this purpose.
+Create a new component for our buttons. In practice, we can use either a `View` or a `VrButton`, as both can be styled as buttons and have useful [events](https://facebook.github.io/react-vr/docs/input.html) (like `onEnter`) for this purpose.
 
-However, we'll use a [VrButton](https://facebookincubator.github.io/react-vr/docs/vrbutton.html) because it has a different state machine and adds the events `onClick` and `onLongClick`.
+However, we'll use a [VrButton](https://facebook.github.io/react-vr/docs/vrbutton.html) because it has a different state machine and adds the events `onClick` and `onLongClick`.
 
-Also, to organize things a little bit, we're going to use a [StyleSheet ](https://facebookincubator.github.io/react-vr/docs/stylesheet.html) to create a style object so we can reference a style by ID.
+Also, to organize things a little bit, we're going to use a [StyleSheet ](https://facebook.github.io/react-vr/docs/stylesheet.html) to create a style object so we can reference a style by ID.
 
 This is what the `button.js` file contains:
 ```javascript
@@ -762,7 +770,7 @@ class EarthMoonVR extends React.Component {
             callback={() => this.setState((prevState) => ({ zoom: prevState.zoom - 10 }) ) } />
         </View>
 
-        <Mesh
+        <Model
           style={{
             transform: [
               {translate: [-25, 0, this.state.zoom]},
@@ -772,10 +780,11 @@ class EarthMoonVR extends React.Component {
               {rotateZ: -10}
             ],
           }}
-          source={{mesh:asset('earth.obj'), mtl:asset('earth.mtl'), lit: true}}
+          source={{obj:asset('earth.obj'), mtl:asset('earth.mtl')}}
+          lit={true}
         />
         
-        <Mesh
+        <Model
           style={{
             transform: [
               {translate: [10, 10, this.state.zoom - 30]},
@@ -783,7 +792,8 @@ class EarthMoonVR extends React.Component {
               {rotateY: this.state.rotation / 3},
             ],
           }}
-          source={{mesh:asset('moon.obj'), mtl:asset('moon.mtl'), lit: true}}
+          source={{obj:asset('moon.obj'), mtl:asset('moon.mtl')}}
+          lit={true}
         />
       </View>
     );
@@ -791,7 +801,7 @@ class EarthMoonVR extends React.Component {
 };
 ```
 
-Now let's style the `View` that wraps our buttons using [flexbox](https://facebookincubator.github.io/react-vr/docs/layout-and-style.html) and `StyleSheet.create`:
+Now let's style the `View` that wraps our buttons using [flexbox](https://facebook.github.io/react-vr/docs/layout-and-style.html) and `StyleSheet.create`:
 ```javascript
 class EarthMoonVR extends React.Component {
   constructor() {
@@ -831,7 +841,7 @@ class EarthMoonVR extends React.Component {
 
 In a flexbox layout, children can be arranged vertically with `flexDirection:'column'` or horizontally with `flexDirection:'row'`. The example sets a flexbox of one column, with a width of one meter and a `stretch` alignment, which means that the elements will take the width of the container.
 
-Check [this page on the React Native documentation](https://facebook.github.io/react-native/docs/flexbox.html) and [this one on the React VR documentation](https://facebookincubator.github.io/react-vr/docs/layout-and-style.html) to know more about flexbox layouts. 
+Check [this page on the React Native documentation](https://facebook.github.io/react-native/docs/flexbox.html) and [this one on the React VR documentation](https://facebook.github.io/react-vr/docs/layout-and-style.html) to know more about flexbox layouts. 
 
 Finally, we can take the skybox images out of the `render` method so it doesn't look so crowded:
 ```javascript
@@ -843,7 +853,7 @@ import {
   Pano,
   Text,
   View,
-  Mesh,
+  Model,
   AmbientLight,
 } from 'react-vr';
 import Button from './button.js';
@@ -913,7 +923,7 @@ class EarthMoonVR extends React.Component {
             callback={() => this.setState((prevState) => ({ zoom: prevState.zoom - 10 }) ) } />
         </View>
 
-        <Mesh
+        <Model
           style={{
             transform: [
               {translate: [-25, 0, this.state.zoom]},
@@ -923,10 +933,11 @@ class EarthMoonVR extends React.Component {
               {rotateZ: -10}
             ],
           }}
-          source={{mesh:asset('earth.obj'), mtl:asset('earth.mtl'), lit: true}}
+          source={{obj:asset('earth.obj'), mtl:asset('earth.mtl')}}
+          lit={true}
         />
         
-        <Mesh
+        <Model
           style={{
             transform: [
               {translate: [10, 10, this.state.zoom - 30]},
@@ -934,7 +945,8 @@ class EarthMoonVR extends React.Component {
               {rotateY: this.state.rotation / 3},
             ],
           }}
-          source={{mesh:asset('moon.obj'), mtl:asset('moon.mtl'), lit: true}}
+          source={{obj:asset('moon.obj'), mtl:asset('moon.mtl')}}
+          lit={true}
         />
       </View>
     );
