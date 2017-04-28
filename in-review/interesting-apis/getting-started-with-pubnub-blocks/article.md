@@ -22,7 +22,7 @@ This is the problem PubNub tries to solve with [PubNub BLOCKS](https://www.pubnu
 
 With BLOCKS (in uppercase to refer to the PubNub feature), instead of simply passing messages, you can set up a piece of code (an event handler) to process a message before or after it's published:
 
-![PubNub Blocks](https://raw.githubusercontent.com/pluralsight/guides/master/images/4c172ac7-7ce9-490f-bf83-fcf33937bbb8.gif)
+![PubNub Blocks](https://raw.githubusercontent.com/pluralsight/guides/master/images/83103859-c2cd-4da9-a5ee-2400e61c7e31.gif)
 
 This block is deployed as a serverless function (you can call it a microservice if you want) in the PubNub network. You just have to code it in JavaScript, deploy it, and PubNub will handle the rest.
 
