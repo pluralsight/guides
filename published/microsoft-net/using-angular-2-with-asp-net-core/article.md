@@ -223,97 +223,7 @@ From the Angular 2 Quick Start provided above, we need to add required dependenc
     "webpack-merge": "^0.14.1"
   }
 }
-{
-    "version": "1.0.0",
-    "description": "ngcorecontacts",
-    "main": "wwwroot/index.html",
-  "scripts": {
-    "build:dev": "webpack --config config/webpack.dev.js --progress --profile",    
-    "build:prod": "webpack --config config/webpack.prod.js  --progress --profile --bail",
-    "build": "npm run build:dev",    
-    "server:dev:hmr": "npm run server:dev -- --inline --hot",
-    "server:dev": "webpack-dev-server --config config/webpack.dev.js --progress --profile --watch --content-base clientsrc/",
-    "server:prod": "http-server dist --cors",
-    "server": "npm run server:dev",
-    "start:hmr": "npm run server:dev:hmr",
-    "start": "npm run server:dev",
-    "version": "npm run build",
-    "watch:dev:hmr": "npm run watch:dev -- --hot",
-    "watch:dev": "npm run build:dev -- --watch",
-    "watch:prod": "npm run build:prod -- --watch",
-    "watch:test": "npm run test -- --auto-watch --no-single-run",
-    "watch": "npm run watch:dev",    
-    "webpack-dev-server": "webpack-dev-server",
-    "webpack": "webpack"
-  },
-  "dependencies": {
-    "@angular/common": "~2.0.1",
-    "@angular/compiler": "~2.0.1",
-    "@angular/core": "~2.0.1",
-    "@angular/forms": "~2.0.1",
-    "@angular/http": "~2.0.1",
-    "@angular/platform-browser": "~2.0.1",
-    "@angular/platform-browser-dynamic": "~2.0.1",
-    "@angular/router": "~3.0.1",
-    "@angular/upgrade": "~2.0.1",
-    "angular-in-memory-web-api": "~0.1.1",
-    "@angularclass/conventions-loader": "^1.0.2",
-    "@angularclass/hmr": "~1.2.0",
-    "@angularclass/hmr-loader": "~3.0.2",
-    "@angularclass/request-idle-callback": "^1.0.7",
-    "@angularclass/webpack-toolkit": "^1.3.3",
-    "assets-webpack-plugin": "^3.4.0",
-    "core-js": "^2.4.1",
-    "http-server": "^0.9.0",
-    "ie-shim": "^0.1.0",
-    "rxjs": "5.0.0-beta.12",
-    "zone.js": "~0.6.17",
-    "@angular/material": "^2.0.0-alpha.9",
-    "hammerjs": "^2.0.8"
-  },
-  "devDependencies": {
-    "@types/hammerjs": "^2.0.33",
-    "@types/jasmine": "^2.2.34",
-    "@types/node": "^6.0.38",
-    "@types/source-map": "^0.1.27",
-    "@types/uglify-js": "^2.0.27",
-    "@types/webpack": "^1.12.34",
-    "angular2-template-loader": "^0.5.0",
-    "awesome-typescript-loader": "^2.2.1",
-    "codelyzer": "~0.0.28",
-    "copy-webpack-plugin": "^3.0.1",
-    "clean-webpack-plugin": "^0.1.10",
-    "css-loader": "^0.25.0",
-    "exports-loader": "^0.6.3",
-    "expose-loader": "^0.7.1",
-    "file-loader": "^0.9.0",
-    "gh-pages": "^0.11.0",
-    "html-webpack-plugin": "^2.21.0",
-    "imports-loader": "^0.6.5",
-    "json-loader": "^0.5.4",
-    "parse5": "^1.3.2",
-    "phantomjs": "^2.1.7",
-    "raw-loader": "0.5.1",
-    "rimraf": "^2.5.2",
-    "source-map-loader": "^0.1.5",
-    "string-replace-loader": "1.0.5",
-    "style-loader": "^0.13.1",
-    "sass-loader": "^3.1.2",    
-    "to-string-loader": "^1.1.4",
-    "ts-helpers": "1.1.1",
-    "ts-node": "^1.3.0",
-    "tslint": "3.15.1",
-    "tslint-loader": "^2.1.3",
-    "typedoc": "^0.4.5",
-    "typescript": "2.0.3",
-    "url-loader": "^0.5.7",
-    "webpack": "2.1.0-beta.22",
-    "webpack-dev-middleware": "^1.6.1",
-    "webpack-dev-server": "^2.1.0-beta.2",
-    "webpack-md5-hash": "^0.0.5",
-    "webpack-merge": "^0.14.1"
-  }
-}
+
 ``` 
 Right after saving this, ASP.NET Core starts restoring the packages. It will download all packages mentioned in the dependencies section of the `package.json` file.
 
@@ -330,43 +240,6 @@ Add `tsconfig.json` in the project, and add in the configuration below.
 > “baseUrl” ensures that TypeScript files are transpiled to JavaScript from the ‘./clientsrc‘. This folder is virtual directory for TypeScript
 
 ```JSON
-{
-  "compilerOptions": {
-    "target": "es5",
-    "module": "commonjs",
-    "moduleResolution": "node",
-    "emitDecoratorMetadata": true,
-    "experimentalDecorators": true,
-    "allowSyntheticDefaultImports": true,
-    "sourceMap": true,
-    "noEmitHelpers": true,
-    "strictNullChecks": false,
-    "baseUrl": "./clientsrc",
-    "paths": [],
-    "lib": [
-      "dom",
-      "es6"
-    ],
-    "types": [
-      "hammerjs",      
-      "node",      
-      "source-map",
-      "uglify-js",
-      "webpack"
-    ]
-  },
-  "exclude": [
-    "node_modules",
-    "dist"
-  ],
-  "awesomeTypescriptLoaderOptions": {
-    "forkChecker": true,
-    "useWebpackText": true
-  },
-  "compileOnSave": false,
-  "buildOnSave": false,
-  "atom": { "rewriteTsconfig": false }
-
 
 {
   "compilerOptions": {
