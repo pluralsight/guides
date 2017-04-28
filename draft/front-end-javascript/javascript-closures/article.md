@@ -109,7 +109,7 @@ In this case, the `logCurrentValue` function cannot be accessed from the global 
 
 Closures are mostly used in callbacks (timers, event handlers, ...) and modules.
 
-### Callbacks
+### Timers
 
 Let's consider the following code sample:
 
@@ -125,7 +125,7 @@ The output of this code are numbers from 0 to 4, sequencially.
 However, the output of the following code will be completely different, the number 5 will be logged 5 times:
 
 ``` JavaScript
-for (var i = 1; i < 5; i++) {
+for (var i = 0; i < 5; i++) {
 
     setTimeout(function() { 
     
@@ -135,18 +135,30 @@ for (var i = 1; i < 5; i++) {
 }
 ```
 
-That is because the `function() {console.log(i)}` will be called 5s (5000ms) after the first loop iteration, then it will be called 5s after the second loop iteration and so on. That practically means that all 5 iterations will be executed before the first call of the function, so the value of `i` will be 5 and it will be logged 5 times.
+That is because the `function() {console.log(i)}` will be called 5s (5000ms) after the first loop iteration, then it will be called 5s after the second loop iteration and so on. That practically means that all 5 for loop iterations will be executed before the first call of the function, so the value of `i` will be 5 (after all iterations are being executed) and it will be logged 5 times.
 
 In order to get the desired output, we will need to use the closure mechanism, so the code should look like this:
 
 ``` JavaScript
-for (var i = 1; i < 5; i++) {
+for (var i = 0; i < 5; i++) {
 
     setTimeout((function(i) { 
     
         console.log(i); 
             
-    })(i), 5000);     // 5 5 5 5 5
+    })(i), 5000);     // 0 1 2 3 4
 }
 ```
+In the first iteration the value of the variable `i` is zero. Therefore, we are setting timeout for the following function:
+
+```JavaScript
+function (i) {
+    console.log(i);
+}(0)
+```
+Therefore, after the timeout, `console.log(0)` will be executed. The same will happen for other values of the variable *i*, so, finally, values `0 1 2 3 4` will be logged in the console. 
+
+### Event Handlers
+
+
 
