@@ -2,11 +2,11 @@
 
 Serverless architectures are a popular trend right now.
 
-When thinking of serverless computing, names like [Amazon AWS Lambda](https://aws.amazon.com/lambda/details/) or [Windows Azure Functions](https://azure.microsoft.com/en-us/services/functions/) may come to mind, but the fact is that there are several companies focusing on this model. One of these companies is [PubNub](https://www.pubnub.com/).
+When thinking of serverless computing, names like [Amazon AWS Lambda](https://aws.amazon.com/lambda/details/) or [Windows Azure Functions](https://azure.microsoft.com/en-us/services/functions/) may come to mind, but there are many other companies also focusing on this model. Take [PubNub](https://www.pubnub.com/), for example.
 
 PubNub allows you to build real-time applications by providing APIs for publish/subscribe messaging, online presence detection, and mobile push notifications among other [features](https://www.pubnub.com/products/global-data-stream-network/).
 
-Using PubNub, you can publish a message (data) into a channel (or channels) so the applications or devices subscribed to that channel receive the message in *real-time*:
+Using PubNub, you can publish a message (data) into channels so the applications or devices subscribed to that channel receive the message in *real-time*:
 
 ![Pub-Sub](https://raw.githubusercontent.com/pluralsight/guides/master/images/184417a9-098d-4005-973a-3d80b272209c.gif)
 
@@ -16,15 +16,17 @@ However, what if we need to process the message before or after we send it? We w
 
 ![Adding a server](https://raw.githubusercontent.com/pluralsight/guides/master/images/18070890-8345-4db6-b1da-836959bda95c.gif)
 
-For some applications, we'll need a server anyway so this may not represent a problem. But, wouldn't be great if *someone else* could take care of problems like server management and scaling entirely?
+This might not be an issue for applications that need servers anyway. But, wouldn't be great if someone else could take care of problems like server management and scaling entirely?
 
-This is the problem PubNub tries to solve with [PubNub BLOCKS](https://www.pubnub.com/products/blocks/).
+That is where [PubNub BLOCKS](https://www.pubnub.com/products/blocks/) enters the equation.
+
+# Sending Data with BLOCKS
 
 With BLOCKS (in uppercase to refer to the PubNub feature), instead of simply passing messages, you can set up a piece of code (an event handler) to process a message before or after it's published:
 
 ![PubNub Blocks](https://raw.githubusercontent.com/pluralsight/guides/master/images/4c172ac7-7ce9-490f-bf83-fcf33937bbb8.gif)
 
-This block is deployed as a serverless function (you can call it a microservice if you want) in the PubNub network. You just have to code it in JavaScript, deploy it, and PubNub will handle the rest.
+This block is deployed as a serverless function, or a microservice, in the PubNub network. You simply have to create it in JavaScript, deploy it, and PubNub will handle the rest.
 
 Here are some things you can do with a block:
 - Alter the message by adding a new attribute, or modifying or deleting an existing one.
@@ -34,12 +36,12 @@ Here are some things you can do with a block:
 
 There's even a catalog of pre-built blocks that allows you to integrate the functionality of external APIs for things like notifications, geocoding, machine learning, and much more.
 
-Let's get to know the concepts and features of BLOCKS with two examples. First, let's create a block to reverse strings, and then, a more complex block that will take an URL and will call an API to generate a [QR code](https://en.wikipedia.org/wiki/QR_code) to return its [base64](https://en.wikipedia.org/wiki/Base64) representation, storing the result in a database to only call the API when necessary.
+Let's get to know the concepts and features of BLOCKS with two examples. As an easy example, let's create a block to reverse strings. After that, we'll build a more complex block that takes a URL and calls an API to generate a [QR code](https://en.wikipedia.org/wiki/QR_code) to return its [base64](https://en.wikipedia.org/wiki/Base64) representation, storing the result in a database to only call the API when necessary.
 
 Let's get started!
 
 # Creating your first block
-[Log into your PubNub account](https://admin.pubnub.com/#/login) or [sign up](https://admin.pubnub.com/#/register) if you don't have one.
+[Log into your PubNub account](https://admin.pubnub.com/#/login) or [sign up](https://admin.pubnub.com/#/register) if you don't have one. 
 
 In your [dashboard](https://admin.pubnub.com), create a new app and give it a name:
 
@@ -60,9 +62,13 @@ Next, choose BLOCKS on the left menu. The following screen will be shown:
 ![Blocks screen](https://raw.githubusercontent.com/pluralsight/guides/master/images/e3214ca5-3d1b-476b-9759-12a8d802404d.png)
 
 
-Click on *Create Block*, enter a name (this name must be unique for all BLOCKS under a given keyset), a description (optionally), choose the keyset where you enable the BLOCKS functionality, and click *Create*:
+Click on *Create Block*, enter a name and a description (optional), choose the keyset where you enable the BLOCKS functionality, and click *Create*. Your chosen name must be unique for all BLOCKS under the given keyset. 
+
+The result looks like this:
 
 ![Create block](https://raw.githubusercontent.com/pluralsight/guides/master/images/a960c383-bdfa-49ef-ab8e-2ff5cc85fa5e.gif)
+
+## Event Handlers
 
 A block acts as a container for Event Handlers (EH). An Event Handler contains the JavaScript program that will run against the message.
 
@@ -105,7 +111,7 @@ export default (request) => {
 }
 ```
 
-This function takes as a parameter a request object that has a message attribute and it must return either the request object or a [promise](https://scotch.io/tutorials/javascript-promises-for-dummies) that resolves to the value of the request object:
+This function takes in a request object that has a message attribute as its parameter, and it must return either the request object or a [promise](https://scotch.io/tutorials/javascript-promises-for-dummies) that resolves to the value of the request object:
 ```javascript
 export default (request) => {
     ...
@@ -117,7 +123,7 @@ export default (request) => {
 }
 ```
 
-Using CommonJS' require syntax, you can use modules to add functionality to your program:
+Using CommonJS's `require` syntax, you can use modules to add functionality to your program:
 ```javascript
 export default (request) => {
     var console = require('console');
@@ -128,14 +134,14 @@ export default (request) => {
 Currently, the following modules are supported:
 - [Advanced Math](https://www.pubnub.com/docs/blocks/advanced-math-module). Global (lat-long) coordinate and geometry functions.
 - [Codec/auth](https://www.pubnub.com/docs/blocks/codec-module#basic-auth-header). An encoder for HTTP basic auth credentials.
-- [Codec/base64](https://www.pubnub.com/docs/blocks/codec-module#encode-base64). Provides an encoder and decoder for Base64 strings.
-- [Codec/query_string](https://www.pubnub.com/docs/blocks/codec-module#parse-query-string). Provides an encoder and decoder for URI query parameters.
-- [Console](https://www.pubnub.com/docs/blocks/tutorials/debugging). It mimics the console object found in many Javascript frameworks.
-- [Crypto](https://www.pubnub.com/docs/blocks/crypto-module). It performs encryption and decryption operations on messages in an Event Handler.
-- [KV Store](https://www.pubnub.com/docs/blocks/kvstore-module). It accesses the key value store that acts as a database for your block. This database is globally distributed and eventually consistent. Data in the KV store is shared at a subscriber key level.
+- [Codec/base64](https://www.pubnub.com/docs/blocks/codec-module#encode-base64). An encoder and decoder for Base64 strings.
+- [Codec/query_string](https://www.pubnub.com/docs/blocks/codec-module#parse-query-string). An encoder and decoder for URI query parameters.
+- [Console](https://www.pubnub.com/docs/blocks/tutorials/debugging). The equivalent to the console object found in many Javascript frameworks.
+- [Crypto](https://www.pubnub.com/docs/blocks/crypto-module). Module that handles encryption and decryption operations on messages in an Event Handler.
+- [KV Store](https://www.pubnub.com/docs/blocks/kvstore-module). Module that handles interactions with the Key/Value Store. The **Key/Value Store** that acts as a database for your block. This database is globally distributed and eventually consistent. Data in the KV DB is shared at a subscriber key level.
 - [PubNub](https://www.pubnub.com/docs/blocks/pubnub-module). The PubNub module allows you leverage some of the other native client SDK features supported by the PubNub Data Stream Network. Currently, publish, time and fire are supported.
-- [Utils](https://www.pubnub.com/docs/blocks/utilities-module). It contains helper methods to generate random numbers and check if a variable is a number.
-- [XHR](https://www.pubnub.com/docs/blocks/xhr-module). Used to send HTTP(S) requests to a remote web server and load the response data back to the Event Handler.
+- [Utils](https://www.pubnub.com/docs/blocks/utilities-module). A module containing basic helper methods to generate random numbers and check if a variable is a number.
+- [XHR](https://www.pubnub.com/docs/blocks/xhr-module). Module that sends HTTP(S) requests to a remote web server and loads the response data back to the Event Handler.
 
 You can add properties to the message:
 ```javascript
@@ -197,7 +203,7 @@ If you modify the code, you'll have to save and restart the block:
 
 ![Modify and restart](https://raw.githubusercontent.com/pluralsight/guides/master/images/b017e04a-e23c-4cf5-975b-2d7e2688a1d3.gif)
 
-We can also create a simple HTML page with some JavaScript code to test our block. Save this code as an HTML file (replacing your PubNub info):
+We can also create a simple HTML page with some JavaScript code to test our block. Save this code as an HTML file. Make sure to include your PubNub info where necessary:
 ```html
 <!DOCTYPE html>
 <html>
@@ -275,11 +281,11 @@ We're going to assume the messages contain a valid URL, like this:
 }
 ```
 
-Using the [QR code API](http://goqr.me/api/), we're going to create a QR image from that URL and then convert that image to add to the message its [base64](https://en.wikipedia.org/wiki/Base64) representation and save it to the key-value store. This way, next time the message contains the same URL, we can get it from there instead of calling the API.
+Using the [QR Code API](http://goqr.me/api/), we're going to create a QR image from a URL and then convert the QR to add to the message its [base64](https://en.wikipedia.org/wiki/Base64) representation. Lastly, we will save this representation to the key-value store. This way, next time the message contains the same URL, we can get it from there instead of calling the API.
 
 You can find the final code of this event handler in this [gist](https://gist.github.com/eh3rrera/a9ee3d26b96c0527b0b097f43fd6d752) in case you need it.
 
-All right, create another *Before Publish or Fire* EV (no need to use the guided process):
+All right, create another *Before Publish or Fire* EH (no need to use the guided process):
 
 ![Create EH](https://raw.githubusercontent.com/pluralsight/guides/master/images/d2b2779f-df1a-42dc-a056-3ada35ccc8f0.gif)
 
@@ -313,7 +319,7 @@ f��b2A�P7�s�'2Y�����\u0010\u001e���EOٕ?\u0016�:�(
 
 You can see that the request object contains not just the message, but the interesting part is the API's response.
 
-You can know more about the API's options to generate a QR code [here](http://goqr.me/api/doc/create-qr-code/), but by default, it will return a PNG image in the body of the response.
+You can know about more options for creating a QR code [here](http://goqr.me/api/doc/create-qr-code/). However, by default, the API will return a PNG image in the body of the response.
 
 To get the base64 representation of the image, we could use the [Codec/base64](https://www.pubnub.com/docs/blocks/codec-module#encode-base64):
 ```javascript
@@ -321,7 +327,7 @@ const base64Codec = require('codec/base64');
 console.log(base64Codec.btoa('hello')); // aGVsbG8=
 ```
 
-However, this `btoa` function is more for string than for binary data. Luckily, the response contains a **buffer**, an array of bytes representing the image so we can use that buffer to implement a function to convert it to a base64 string.
+However, this `btoa` function is designed for string data rather than for binary data. Luckily, the response contains a **buffer**, an array of bytes representing the image. We can use that buffer to implement a function to convert it to a base64 string.
 
 We're going to use the [implementation from Jon Leighton](https://gist.github.com/jonleighton/958841) (there's no need to include it inside the exported function):
 
@@ -399,7 +405,7 @@ export default (request) => {
 };
 ```
 
-Now let's extract the URL from the message and encode it with the help of the [Codec/query_string](https://www.pubnub.com/docs/blocks/codec-module#parse-query-string) along with a size parameter of value 150x150 (we don't need the image to be large, besides, all the process is going to be done in memory and we don't want to consume a lot of it):
+Now let's extract the URL from the message and encode it with the help of the [Codec/query_string](https://www.pubnub.com/docs/blocks/codec-module#parse-query-string) along with a size parameter of value 150x150. The image should not be large since the entire process is going to be done in memory. This is one way that you could code this up:
 
 ```javascript
 const base64ArrayBuffer = ...
@@ -422,7 +428,6 @@ export default (request) => {
 	
 };
 ```
-
 Next, let's see if the database contains the URL from a previous execution:
 ```javascript
 const base64ArrayBuffer = ...
@@ -652,15 +657,13 @@ Open it in a browser and see the result:
 
 ![Test in browser](https://raw.githubusercontent.com/pluralsight/guides/master/images/67bcbf50-2d28-4548-85c9-b986940a0c48.gif)
 
-
-
 # Conclusion
 
-Real-time and serverless/microservices is a great combination.
+Real-time applications and serverless functions are a great combination, and Pubnub BLOCKS are an excellent tool for handling server operations.
 
-Although you don't have a full JavaScript (or Node.js) environment inside a block, you can do a lot of things with this technology. There's a lot of functionality that this guide didn't cover, but you can find out more about in [the official BLOCKS documentation](https://www.pubnub.com/docs/blocks/introduction)
+Although you don't have a full JavaScript (or Node.js) environment inside a block, you can do a lot of things with this technology. There's a plethora of functionality that this guide didn't cover. You can find out more about in [the official BLOCKS documentation](https://www.pubnub.com/docs/blocks/introduction)
 
-And don't forget the [existing BLOCKS catalog](https://www.pubnub.com/blocks-catalog/). There's a growing collection of blocks that you can use to get started, just import them to your account and modify them to your needs.
+And don't forget the [existing BLOCKS catalog](https://www.pubnub.com/blocks-catalog/). There's a growing collection of blocks that you can use to get started.  Just import them to your account and modify them to your needs.
 
 ### Credits
 
@@ -668,4 +671,5 @@ And don't forget the [existing BLOCKS catalog](https://www.pubnub.com/blocks-cat
 - [Server by Stock Image Folio from the Noun Project](https://thenounproject.com/term/server/870452/)
 
 ___
+
 Thank you for reading this guide on PubNub BLOCKS. I hope you found it informative and helpful. Please leave questions and feedback in the comments section below!
