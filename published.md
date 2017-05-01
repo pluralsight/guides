@@ -1,3 +1,8 @@
+### Getting started with PubNub BLOCKS by Esteban Herrera
+- [Read the guide](https://www.pluralsight.com/guides/interesting-apis/getting-started-with-pubnub-blocks)
+- [Read more from Esteban Herrera](https://www.pluralsight.com/guides/author/eh3rrera) <img src="https://avatars1.githubusercontent.com/u/11665759?v=3" width="30" height="30" alt="Esteban Herrera" />
+- Related to: Interesting APIs (SendGrid, Twilio, etc)
+
 ### Using Angular 2 with ASP.NET Core by Syed Ikram Shah
 - [Read the guide](https://www.pluralsight.com/guides/microsoft-net/using-angular-2-with-asp-net-core)
 - [Read more from Syed Ikram Shah](https://www.pluralsight.com/guides/author/syedikramshah) <img src="https://avatars2.githubusercontent.com/u/6046692?v=3" width="30" height="30" alt="Syed Ikram Shah" />
