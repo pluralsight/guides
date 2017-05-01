@@ -8,11 +8,6 @@
 - [Read more from pattydaniels](https://www.pluralsight.com/guides/author/pattydaniels) <img src="https://avatars3.githubusercontent.com/u/16217973?v=3" width="30" height="30" alt="pattydaniels" />
 - Related to: Microsoft.NET (C#, ASP.NET, VB.NET, etc)
 
-### Getting started with PubNub BLOCKS by Esteban Herrera
-- [Read the guide](https://www.pluralsight.com/guides/interesting-apis/getting-started-with-pubnub-blocks?status=in-review)
-- [Read more from Esteban Herrera](https://www.pluralsight.com/guides/author/eh3rrera) <img src="https://avatars1.githubusercontent.com/u/11665759?v=3" width="30" height="30" alt="Esteban Herrera" />
-- Related to: Interesting APIs (SendGrid, Twilio, etc)
-
 ### Cloning an Ionic 2 application from Github by Todd Shelton
 - [Read the guide](https://www.pluralsight.com/guides/front-end-javascript/cloning-an-ionic-2-application-from-github?status=in-review)
 - [Read more from Todd Shelton](https://www.pluralsight.com/guides/author/TShelton41) <img src="https://avatars.githubusercontent.com/u/795737?v=3" width="30" height="30" alt="Todd Shelton" />
