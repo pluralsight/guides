@@ -1,3 +1,8 @@
+### Build a Simple Serverless Clock Using Realtime Events in 5mins by Christian Nwamba
+- [Read the guide](https://www.pluralsight.com/guides/node-js/build-a-simple-serverless-clock-using-realtime-events-in-5mins?status=draft)
+- [Read more from Christian Nwamba](https://www.pluralsight.com/guides/author/christiannwamba) <img src="https://avatars1.githubusercontent.com/u/8108337?v=3" width="30" height="30" alt="Christian Nwamba" />
+- Related to: Node.js
+
 ### A Beginners Guide to jQuery by Carl Smith
 - [Read the guide](https://www.pluralsight.com/guides/front-end-javascript/a-beginners-guide-to-jquery?status=draft)
 - [Read more from Carl Smith](https://www.pluralsight.com/guides/author/carlsmith) <img src="https://avatars1.githubusercontent.com/u/7561668?v=3" width="30" height="30" alt="Carl Smith" />
