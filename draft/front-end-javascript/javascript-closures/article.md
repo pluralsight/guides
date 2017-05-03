@@ -160,5 +160,61 @@ Therefore, after the timeout, `console.log(0)` will be executed. The same will h
 
 ### Event Handlers
 
+Let's consider the following example: there is a button on an HTML page and we want to show users information about how many times the button was clicked. We could write the following code to implement this functionality:
+
+``` HTML
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+	<meta charset="utf-8" />
+</head>
+<body>
+    <button id="test-button">Test</button>
+    <script>
+        var counter = 0;
+        var element = document.getElementById('test-button');
+
+        //event handler
+        element.onclick = function () {
+
+            counter++;
+            alert('Number of clicks:' + counter);
+        };
+    </script>
+</body>
+</html>
+```
+
+This code works fine, but we had to define a global variable for counting user clicks on the button. That's not recommended way of writing code, since we use the `counter` variable just in the event handler, so why wouldn't we declare it inside the handler? However, if we just move declaration to the handler's scope, it will not work as expected, because every time the handler is called (i.e. every time the user clicks on the button), the `counter` will be set to zero. The solution is to use a closure, like in the following code:
+
+``` HTML
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+	<meta charset="utf-8" />
+</head>
+<body>
+    <button id="test-button">Test</button>
+    <script>
+        var element = document.getElementById('test-button');
+
+        //event handler
+        element.onclick = (function outer () {
+
+            var counter = 0;
+            
+            return function inner () {
+
+                counter++;
+                alert('Number of clicks: ' + counter);
+            };            
+        })();
+    </script>
+</body>
+</html>
+```
+In this code, we have defined the `outer` function which returns the `inner` function. The `outer` function is immediately invoked and after its execution, the `inner` function is being assigned to the `onclick` handler. That means that whenever the user clicks on the button, the `inner` function will be called. Since it is a closure, it has access to the `outer` function scope, so it can easily change the value of the `counter` variable.
 
 
