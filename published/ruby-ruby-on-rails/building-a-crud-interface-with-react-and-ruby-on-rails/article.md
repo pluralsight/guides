@@ -633,7 +633,7 @@ Now, when you click the submit button, the JavaScript console will log the objec
 
 
 ```javascript
-// app/assets/javascripts/components/_body.js.js
+// app/assets/javascripts/components/_body.js.jsx
 
 // getInitialState() and componentDidMount()
 
