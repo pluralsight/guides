@@ -351,11 +351,11 @@ To do this, add the following code to the `app.component.html` file:
 ### Actions
 Having a simple search input field and a button doesn't help much. We want to click the button, and we want to output something to the console just to verify it's working correctly.
 
-So, this is how you we define a function that will handle button click in Angular 2:
+So, this is how we define a function that will handle button click in Angular 2:
 
 `<button (click)="performSearch()">Search</button>`
 
-But, now if you click this button you will get an error. That's because we haven't defined the `performSeach` function anywhere.
+But, now if you click this button you will get an error. That's because we haven't defined the `performSearch` function anywhere.
 
 Let's do that now. In the `app.component.ts` file, add the following function definition inside the `AppComponent` class:
 
