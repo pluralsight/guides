@@ -215,6 +215,19 @@ This code works fine, but we had to define a global variable for counting user c
 </body>
 </html>
 ```
-In this code, we have defined the `outer` function which returns the `inner` function. The `outer` function is immediately invoked and after its execution, the `inner` function is being assigned to the `onclick` handler. That means that whenever the user clicks on the button, the `inner` function will be called. Since it is a closure, it has access to the `outer` function scope, so it can easily change the value of the `counter` variable.
+In this code, we have defined the `outer` function which returns the `inner` function. The `outer` function is immediately invoked and after its execution, the `inner` function is being assigned to the `onclick` handler. That means that whenever the user clicks on the button, the `inner` function will be called. Since it is a closure, it has access to the `outer` function scope, so it can easily change the value of the `counter` variable. For sure, function names could be omitted, I've wrote them just for purpose of better understanding the code above, so the `onclick` handler should look like this:
+
+``` JavaScript
+element.onclick = (function outer () {
+
+    var counter = 0;
+    
+    return function() {
+
+        counter++;
+        alert('Number of clicks: ' + counter);
+    };            
+})();
+```
 
 
