@@ -215,7 +215,7 @@ This code works fine, but we had to define a global variable for counting user c
 </body>
 </html>
 ```
-In this code, we have defined the `outer` function which returns the `inner` function. The `outer` function is immediately invoked and after its execution, the `inner` function is being assigned to the `onclick` handler. That means that whenever the user clicks on the button, the `inner` function will be called. Since it is a closure, it has access to the `outer` function scope, so it can easily change the value of the `counter` variable. For sure, function names could be omitted, I've wrote them just for purpose of better understanding the code above, so the `onclick` handler should look like this:
+In this code, we have defined the `outer` function which returns the `inner` function. The `outer` function is immediately invoked and after its execution, the `inner` function is being assigned to the `onclick` handler. That means that whenever the user clicks on the button, the `inner` function will be called. Since it is a closure, it has access to the `outer` function scope, so it can easily change the value of the `counter` variable. For sure, function names could be omitted, I've wrote them just for purpose of better understanding the code above, so the `onclick` handler could look like this:
 
 ``` JavaScript
 element.onclick = (function outer () {
@@ -230,4 +230,31 @@ element.onclick = (function outer () {
 })();
 ```
 
+### The Module Pattern
 
+One of the most popular patterns in the Javacript, the module pattern, uses closures in its implementation. For instance, the `counter` module should look like this:
+
+``` JavaScript
+var counter = (function() {
+
+    var currentValue = 0;
+
+    var increment = function (step) {
+
+        currentValue += step;
+        console.log('currentValue = ' + currentValue);
+    };
+
+    var decrement = function (step) {
+
+        currentValue -= step;
+        console.log('currentValue = ' + currentValue);
+    }
+
+    return {
+        increment: increment,
+        decrement: decrement
+    };
+})();
+```
+The module pattern is used for singleton objects, so there can be just one instance of the `counter` module.
