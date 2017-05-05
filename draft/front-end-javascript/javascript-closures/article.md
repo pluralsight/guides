@@ -258,3 +258,19 @@ var counter = (function() {
 })();
 ```
 The module pattern is used for singleton objects, so there can be just one instance of the `counter` module.
+
+### Function Factory
+
+``` JavaScript
+function makeAdder(x) {
+  return function(y) {
+    return x + y;
+  };
+}
+
+var add5 = makeAdder(5);
+var add10 = makeAdder(10);
+
+console.log(add5(2));  // 7
+console.log(add10(2)); // 12
+```
