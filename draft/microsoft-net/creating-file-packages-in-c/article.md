@@ -8,17 +8,17 @@ Before we dive into the code I will give an example of a package file so we unde
 2. Use your favorite compression utility to extract the file into a folder.
 3. Open the folder
 
-Here is an example.
-
-We perform steps 1 and 2.
+We perform steps 1 and 2:
 
 ![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/66b37529-f446-46b4-95e4-0ba076cd9830.png)
 
-Then we open the folder.
+Then we open the folder:
 
 ![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/6d362a45-c483-4008-a7f1-cc87c0b1e544.png)
 
 As you can see here, a Word file contains files and directories and it is actually acts as a wrapper of the files actually read and written by Office.
+
+Now we know what are file packages, we can start writing the code for our packaging utility.
 
 ## Packaging Utility
 
@@ -38,7 +38,7 @@ public class FilePackage
 }
 ```
 
-This class have two properties, one to hold the file path of the package and the second to hold the file paths of the contents of the file package. When we have these two fields ready we can start generating our package! Now let's create our `FilePackageWriter` class to actually write our package.
+This class have two properties; `FilePath` to hold the file path of the package and `ContentFilePathList` to hold the file paths of the contents of the file package. Now let's create our `FilePackageWriter` class to actually write our package.
 
 ```csharp
 public class FilePackageWriter
@@ -142,7 +142,7 @@ public class FilePackageWriter
 }
 ```
 
-In this class we simply take the `FilePackage` and use the information to generate our package.
+In this class we simply take the `FilePackage` and use it to generate our package.
 1. We find the parent directory path that we want to save the package into and the filename.
 2. We create a temporary directory for our content files.
 3. We copy the content files into this temporary directory.
@@ -198,7 +198,7 @@ public class FilePackageReader
 In the reader:
 1. We get the file path of the package.
 2. We open it using a `FileStream` and a `ZipArchive`.
-3. We read the content files one by one and add file name and the file contents to a`Dictionary`.
+3. We read the content files one by one and add file name and the file contents to a `Dictionary`.
 
 Our FilePackageWriter and FilePackageReader are finally ready. Now we can test our code and see if it works!
 ```csharp
