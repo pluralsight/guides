@@ -1,3 +1,8 @@
+### Creating File Packages in C# by Murat Aykanat
+- [Read the guide](https://www.pluralsight.com/guides/microsoft-net/creating-file-packages-in-c?status=draft)
+- [Read more from Murat Aykanat](https://www.pluralsight.com/guides/author/aykanatm) <img src="https://avatars2.githubusercontent.com/u/9140297?v=3" width="30" height="30" alt="Murat Aykanat" />
+- Related to: Microsoft.NET (C#, ASP.NET, VB.NET, etc)
+
 ### A Beginners Guide to jQuery by Carl Smith
 - [Read the guide](https://www.pluralsight.com/guides/front-end-javascript/a-beginners-guide-to-jquery?status=draft)
 - [Read more from Carl Smith](https://www.pluralsight.com/guides/author/carlsmith) <img src="https://avatars1.githubusercontent.com/u/7561668?v=3" width="30" height="30" alt="Carl Smith" />
