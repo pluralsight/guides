@@ -1,3 +1,8 @@
+### Creating File Packages in C# by Murat Aykanat
+- [Read the guide](https://www.pluralsight.com/guides/microsoft-net/creating-file-packages-in-c?status=in-review)
+- [Read more from Murat Aykanat](https://www.pluralsight.com/guides/author/aykanatm) <img src="https://avatars2.githubusercontent.com/u/9140297?v=3" width="30" height="30" alt="Murat Aykanat" />
+- Related to: Microsoft.NET (C#, ASP.NET, VB.NET, etc)
+
 ### Build a Simple Serverless Clock Using Realtime Events in 5mins by Christian Nwamba
 - [Read the guide](https://www.pluralsight.com/guides/node-js/build-a-simple-serverless-clock-using-realtime-events-in-5mins?status=in-review)
 - [Read more from Christian Nwamba](https://www.pluralsight.com/guides/author/christiannwamba) <img src="https://avatars1.githubusercontent.com/u/8108337?v=3" width="30" height="30" alt="Christian Nwamba" />
