@@ -202,8 +202,8 @@ In the reader:
 
 Our FilePackageWriter and FilePackageReader are finally ready. Now we can test our code and see if it works!
 ```csharp
-var test1FilePath = AppDomain.CurrentDomain.BaseDirectory + "\\PackageTest\\test_1.txt";
-var test2FilePath = AppDomain.CurrentDomain.BaseDirectory + "\\PackageTest\\test_2.txt";
+var test1FilePath = AppDomain.CurrentDomain.BaseDirectory + "PackageTest\\test_1.txt";
+var test2FilePath = AppDomain.CurrentDomain.BaseDirectory + "PackageTest\\test_2.txt";
 
 using (var sw = new StreamWriter(test1FilePath))
 {
@@ -215,7 +215,7 @@ using (var sw = new StreamWriter(test2FilePath))
     sw.WriteLine("test2");
 }
 
-var packageFilePath = AppDomain.CurrentDomain.BaseDirectory + "\\PackageTest\\test.pkg";
+var packageFilePath = AppDomain.CurrentDomain.BaseDirectory + "PackageTest\\test.pkg";
 
 var filePackage = new FilePackage
 {
