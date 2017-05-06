@@ -22,7 +22,7 @@ As you can see here, a Word file contains files and directories and it is actual
 
 ## Packaging Utility
 
-First of all, our package utility will have 3 classes.
+Our packaging utility will have 3 classes.
 
 1. A `FilePackage` class to hold information about our file packages.
 2. A `FilePackageWriter` class to write file packages.
