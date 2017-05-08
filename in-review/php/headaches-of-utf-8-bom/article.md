@@ -2,6 +2,8 @@ I love Windows, but not when developing PHP applications. Recently, I have start
 
 It is therefore, due to this fact, when designing API end-points, we must make sure that the output doesn’t contain any encoding marks or unnecessary characters. Also, we should be aware that these invisible buggers will not get generated because of user intervention, but due to the way, the file gets saved to the file system. 🤦‍♂️
 
+## Problem
+
 The real problem lies in the way the text editors save the file to the file system. Generally, in the case of Windows, the text editors save either in UTF-8 (with BOM, without BOM), UTF-16 (with BOM, without BOM, little endian, etc.), ANSI, or Windows-1252. The worst that happens is, when every file is saved, it gets a Byte-Order-Mark or BOM appended at the end of file. 😓
 
 This will pose a severe threat while developing API end-points, where a single UTF-8 BOM might make the JSON / HTTP Response totally invalid. My current system (not my permanent or personal) is a Windows machine, with Vagrant (+VirtualBox) installed in it. I am writing the files on the host (Windows) machine, which automatically saves along with the BOM.
