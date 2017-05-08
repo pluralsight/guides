@@ -1,0 +1,15 @@
+{
+    "_publish_status": "draft",
+    "author_name": "praveenscience",
+    "author_real_name": "Praveen Kumar",
+    "branch": "master",
+    "branches": [],
+    "filename": "article.md",
+    "first_commit": "4d12da7094d8e1c9a9e6f5b0927c7f11706feafc",
+    "image_url": "https://avatars1.githubusercontent.com/u/1830380?v=3",
+    "stacks": [
+        "PHP"
+    ],
+    "thumbnail_url": null,
+    "title": "Headaches of UTF-8 BOM!"
+}
