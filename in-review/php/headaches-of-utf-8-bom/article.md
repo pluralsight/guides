@@ -1,6 +1,6 @@
 I love Windows, but not when developing PHP applications. Recently, I have started working on too many main-stream PHP and NodeJS applications and REST APIs. Considering the REST APIs, the output must be perfect. Even a single character space will screw the 💩 out of the system. 😩
 
-It is therefore, due to this fact, when designing API end-points, we must make sure that the output doesn’t contain any encoding marks or unnecessary characters. Also, we should be aware that these invisible buggers will not get generated because of user intervention, but due to the way, the file gets saved to the file system. 🤦‍♂️
+It is therefore, due to this fact, when designing API end-points, we must make sure that the output doesn’t contain any encoding marks or unnecessary characters. Also, we should be aware that these invisible buggers will not get generated because of user intervention, but due to the way, the file gets saved to the file system. 🤦🏻‍♂️
 
 ## Problem
 
