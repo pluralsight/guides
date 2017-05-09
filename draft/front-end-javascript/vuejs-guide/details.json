@@ -1,0 +1,15 @@
+{
+    "_publish_status": "draft",
+    "author_name": "artyprog",
+    "author_real_name": "ArtyProg",
+    "branch": "master",
+    "branches": [],
+    "filename": "article.md",
+    "first_commit": "18591703bf43e1941527d24d32999cc0ce3c486c",
+    "image_url": "https://avatars3.githubusercontent.com/u/3104461?v=3",
+    "stacks": [
+        "Front-End JavaScript (Angular, React, Meteor, etc)"
+    ],
+    "thumbnail_url": null,
+    "title": "VueJS Guide"
+}
