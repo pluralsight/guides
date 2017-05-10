@@ -18,11 +18,21 @@ VueJs ne remplace pas JQuery. D'ailleurs ne nombreuse applications VueJS intègr
 
 # Application VueJS minimale
 
+partie html
 ```html
-<div>
+<div id=app>
  {{ message }}
 </div>
 ```
 
+partie javascript
+```javascript
+var app = new Vue({
+  el: '#app',
+  data: {
+    message: 'Hello Vue!'
+  }
+})
+```
 
 
