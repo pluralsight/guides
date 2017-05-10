@@ -6,9 +6,9 @@ L'interactivité vient du fait que la vue peut-être mise à jour dynamiquement 
 
 De même les données du modèle peuvent être modifier lorsque l'utilisateur interagit à travers l'interface.  
 
-De nombreuses libraries intègrent cette fonctionalité. L'atout principale de VueJS est son approche très aisé, et son ecosytème qui ne cesse de grandir.
+De nombreuses libraries intègrent cette fonctionalité. L'atout principale de VueJS est son approche très aisée, et son ecosytème qui ne cesse de grandir.
 
-D'autre part VueJS peut parfaitement être rendu côté serveur, dans une application .NET MVC par exemple
+D'autre part VueJS peut parfaitement être utilisé côté serveur, dans une application .NET MVC par exemple
 
 
 # VueJS et JQuery
