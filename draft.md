@@ -1,7 +1,7 @@
 ### VueJS - Introduction by ArtyProg
-- [Read the guide](https://www.pluralsight.com/guides/other/vuejs-introduction?status=draft)
+- [Read the guide](https://www.pluralsight.com/guides/front-end-javascript/vuejs-introduction?status=draft)
 - [Read more from ArtyProg](https://www.pluralsight.com/guides/author/artyprog) <img src="https://avatars3.githubusercontent.com/u/3104461?v=3" width="30" height="30" alt="ArtyProg" />
-- Related to: other
+- Related to: Front-End JavaScript (Angular, React, Meteor, etc)
 
 ### Introduction à VueJS by ArtyProg
 - [Read the guide](https://www.pluralsight.com/guides/front-end-javascript/introduction-a-vuejs?status=draft)
