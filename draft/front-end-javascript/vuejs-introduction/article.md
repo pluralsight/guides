@@ -40,7 +40,7 @@ Résultat :
 
 Comme on peut le constater dans cet exemple, VueJS se charge de sélectionner le bon élément sans recourir à une autre librarie telle que JQuery par exemple.
 
-Autre exemple : [Application minimale](http://embed.plnkr.co/3Wai4JuBQ4DmNFRSHh8c/)  
+Exemple en ligne: [Application minimale](http://embed.plnkr.co/3Wai4JuBQ4DmNFRSHh8c/)  
 
 # Liaison d'un attribut à une propriété VueJS
 
