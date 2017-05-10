@@ -40,6 +40,6 @@ résultat
 Hello vue
 ```
 
-Autre exemple : [Ex1](http://embed.plnkr.co/3Wai4JuBQ4DmNFRSHh8c/)
+Autre exemple : [Application minimale](http://embed.plnkr.co/3Wai4JuBQ4DmNFRSHh8c/)
 
 
