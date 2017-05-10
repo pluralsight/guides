@@ -72,14 +72,8 @@ L'aspect dynamique de VueJS peut-être visualisé en modifiant les propriétés 
 
 Entrez par exemple dans le fichier 'script.js':
 ```javascript
-var app = new Vue({
-  el: '#app', 
-  data: { 
-    message: 'Première application VueJS',
-    titre : "Titre de message"
-  } 
-}); 
-
 app.message ="Autre message..."
 ```
+
+Le message est modifié dynamiquement.
 
