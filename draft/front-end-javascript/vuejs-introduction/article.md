@@ -65,5 +65,7 @@ var app = new Vue({
 Résultat
 <pre title="Titre de message">Première application VueJS</pre>
 
+Vous pouvez tester cet exemple en cliquant sur : 
+[Application minimale](http://embed.plnkr.co/3Wai4JuBQ4DmNFRSHh8c/)
 
 
