@@ -44,4 +44,26 @@ Autre exemple : [Application minimale](http://embed.plnkr.co/3Wai4JuBQ4DmNFRSHh8
 
 # Liaison d'un attribut à une propriété VueJS
 
+Dans l'exemple qui suit, on crée un lien entre l'attribut d'un élément (ici 'title') et une propriéte d'une instance VueJS.
+
+```html
+<div id="app">
+  <pre v-bind:title="titre" >{{ message }} </pre>
+</div>
+```
+
+```javascript
+var app = new Vue({
+  el: '#app', 
+  data: {
+    message: 'Première application VueJS',
+    titre : "Titre de message"
+  } 
+}); 
+
+``` 
+Résultat
+<pre title="Titre de message">Première application VueJS</pre>
+
+
 
