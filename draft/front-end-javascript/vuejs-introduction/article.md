@@ -68,4 +68,10 @@ Résultat
 Vous pouvez tester cet exemple en cliquant sur : 
 [Application minimale](http://embed.plnkr.co/3Wai4JuBQ4DmNFRSHh8c/)
 
+L'aspect dynamique de VueJS peut-être visualisé en modifiant les propriétés 'message' ou 'titre'
+
+Entrez par exemple dans le fichier 'script.js':
+```javascript
+app.message = "Autre message..."
+```
 
