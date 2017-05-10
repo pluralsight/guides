@@ -36,10 +36,12 @@ var app = new Vue({
 ```
 
 Résultat :  
-```
-Hello vue
-```          
+<pre>Hello Vue!</pre>
 
-Autre exemple : [Application minimale](http://embed.plnkr.co/3Wai4JuBQ4DmNFRSHh8c/)
+Comme on peut le constater dans cet exemple, VueJS se charge de sélectionner le bon élément sans recourir à une autre librarie telle que JQuery par exemple.
+
+Autre exemple : [Application minimale](http://embed.plnkr.co/3Wai4JuBQ4DmNFRSHh8c/)  
+
+# Liaison d'un attribut à une propriété VueJS
 
 
