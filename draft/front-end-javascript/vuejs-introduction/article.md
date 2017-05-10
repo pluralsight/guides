@@ -18,14 +18,14 @@ VueJs ne remplace pas JQuery. D'ailleurs de nombreuses applications VueJS intèg
 
 # Application VueJS minimale
 
-partie html
+Partie html :
 ```html
 <div id=app>
  {{ message }}
 </div>
 ```
 
-partie javascript
+Partie javascript :
 ```javascript
 var app = new Vue({
   el: '#app',
@@ -35,10 +35,10 @@ var app = new Vue({
 })
 ```
 
-résultat 
+Résultat :  
 ```
 Hello vue
-```
+```          
 
 Autre exemple : [Application minimale](http://embed.plnkr.co/3Wai4JuBQ4DmNFRSHh8c/)
 
