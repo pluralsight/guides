@@ -75,5 +75,5 @@ Entrez par exemple dans le fichier 'script.js':
 app.message ="Autre message..."
 ```
 
-Le message est modifié dynamiquement.
+La vue contenant l'élément lié à cette propriété  est dynamiquement modifié.
 
