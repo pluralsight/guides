@@ -1,10 +1,10 @@
 ### Qu'est-ce que VueJS ?
 
-VueJS est une librairie permettant de développer des interfaces web interactives.  
+VueJS est une librairie permettant de développer des interfaces web réactives.  
 
-L'interactivité vient du fait que la vue peut-être mise à jour dynamiquement lorsque le modèle de données est modifié.  
+L'réactivité vient du fait que la vue peut-être mise à jour dynamiquement lorsque le modèle de données est modifié.  
 
-De même les données du modèle peuvent être modifier lorsque l'utilisateur interagit à travers l'interface.  
+De même, les données du modèle peuvent être modifiées lorsque l'utilisateur interagit à travers l'interface.  
 
 De nombreuses libraries intègrent cette fonctionalité. L'atout principale de VueJS est son approche très aisée, et son ecosytème qui ne cesse de grandir.
 
