@@ -124,5 +124,5 @@ L'exemple suivant illustre les directives : **v-bind**, **v-model**, **v-on**
 </html>
 ```
 
-Vous pouvez tester cet exemple ici : [Directives de base](https://embed.plnkr.co/v4DKhwGLuQoPPeMRZYfS/)
+Vous pouvez tester cet exemple ici : [Directives de base](https://plnkr.co/edit/v4DKhwGLuQoPPeMRZYfS?p=info)
 
