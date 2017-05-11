@@ -53,3 +53,63 @@ app.message ="Autre message..."
 
 La vue contenant l'élément lié à cette propriété  est dynamiquement modifiée.
 
+
+## Application plus avancée
+
+L'exemple suivant montre comment gérer les évènements utilisateurs, ainsi que les propriétes calculées
+
+```html
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://unpkg.com/vue"></script>
+  </head>
+
+  <body>
+    <div id="app">
+      
+      <h1 v-bind:title="titre" v-bind:style="style" >{{ message }}</h1>
+      
+      <input type="text"  v-model="couleur">
+      
+      <button v-on:click="hy">Say Hy</button>
+      
+      <p style="margin-top:40px;">Changer la couleur du message</p>
+      
+      <table style="margin-top:10px;">
+        <tr><td>R</td><td><input type="range" value="0" max="255" min="0" step="1" v-model="rouge"></td></tr>
+        <tr><td>V</td><td><input type="range" value="0" max="255" min="0" step="1" v-model="vert"></td></tr>
+        <tr><td>B</td><td><input type="range" value="0" max="255" min="0" step="1" v-model="bleu"></td></tr>
+      </table>
+      
+    </div>
+    <script>
+      var app = new Vue({
+        el: '#app', 
+        data: { 
+          message: 'Propriétés liées et calculées',
+          titre : "Titre de message",
+          couleur : "",
+          rouge: 0,
+          vert : 0,
+          bleu : 0,
+        },
+        methods : {
+          hy : function () {
+            alert("Hy Vue")
+            console.log(this.color);
+          }
+        },
+        computed : {
+          style : function () {
+            return {"color" : "rgb(" + this.rouge + "," + this.vert + ","+ this.bleu + ")"}
+          }
+        },
+      }); 
+    </script>
+  </body>
+
+</html>
+```
