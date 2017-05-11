@@ -54,9 +54,13 @@ app.message ="Autre message..."
 La vue contenant l'élément lié à cette propriété  est dynamiquement modifiée.
 
 
-## Application plus avancée
+## Les directives de base
 
-L'exemple suivant montre comment gérer les évènements utilisateurs, ainsi que les propriétes calculées
+L'exemple suivant illustre les directives : v-bind, v-model, v-on
+
+* v-bind  : permet de lier un attribut à une propriété
+* v-model : permat de lier la valeur prise par un champ modifiable à une propriété
+* v-on : permet de réagir aux évènements (click...)
 
 ```html
 <!DOCTYPE html>
@@ -99,7 +103,6 @@ L'exemple suivant montre comment gérer les évènements utilisateurs, ainsi que
         methods : {
           hy : function () {
             alert("Hy Vue")
-            console.log(this.color);
           }
         },
         computed : {
@@ -113,3 +116,6 @@ L'exemple suivant montre comment gérer les évènements utilisateurs, ainsi que
 
 </html>
 ```
+
+Vous pouvez tester cet exemple ici : [Directives de base](https://embed.plnkr.co/v4DKhwGLuQoPPeMRZYfS/)
+
