@@ -56,7 +56,7 @@ La vue contenant l'élément lié à cette propriété  est dynamiquement modifi
 
 ### Les directives de base
 
-L'exemple suivant illustre les directives : v-bind, v-model, v-on
+L'exemple suivant illustre les directives : **v-bind**, **v-model**, **v-on**
 
 * v-bind  : permet de lier un attribut à une propriété
 * v-model : permet de lier la valeur prise par un champ modifiable à une propriété
