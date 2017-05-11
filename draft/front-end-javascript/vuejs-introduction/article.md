@@ -77,11 +77,12 @@ L'exemple suivant illustre les directives : **v-bind**, **v-model**, **v-on**
     <div id="app">
       
       <h1 v-bind:title="titre" v-bind:style="style" >{{ message }}</h1>
-      
-      <input type="text"  v-model="couleur">
-      
-      <button v-on:click="hy">Say Hy</button>
-      
+    
+      <input type="text"  v-model="user">
+      <br />
+      <button v-on:click="hy">{{ txt }}</button>
+      <br />
+     
       <p style="margin-top:40px;">Changer la couleur du message</p>
       
       <table style="margin-top:10px;">
@@ -97,16 +98,21 @@ L'exemple suivant illustre les directives : **v-bind**, **v-model**, **v-on**
         data: { 
           message: 'Propriétés liées et calculées',
           titre : "Titre de message",
-          couleur : "",
+          textButton : "",
           rouge: 0,
           vert : 0,
           bleu : 0,
+          user : "" ,
+          txt : "Hello"
+          
         },
         methods : {
           hy : function () {
-            alert("Hy Vue")
+            var user = this.user || "anonymous";
+            alert("Hello " + user)
           }
         },
+
         computed : {
           style : function () {
             return {"color" : "rgb(" + this.rouge + "," + this.vert + ","+ this.bleu + ")"}
