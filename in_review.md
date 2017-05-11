@@ -1,3 +1,8 @@
+### VueJS - Introduction by ArtyProg
+- [Read the guide](https://www.pluralsight.com/guides/front-end-javascript/vuejs-introduction?status=in-review)
+- [Read more from ArtyProg](https://www.pluralsight.com/guides/author/artyprog) <img src="https://avatars3.githubusercontent.com/u/3104461?v=3" width="30" height="30" alt="ArtyProg" />
+- Related to: Front-End JavaScript (Angular, React, Meteor, etc)
+
 ### Headaches of UTF-8 BOM! by Praveen Kumar
 - [Read the guide](https://www.pluralsight.com/guides/php/headaches-of-utf-8-bom?status=in-review)
 - [Read more from Praveen Kumar](https://www.pluralsight.com/guides/author/praveenscience) <img src="https://avatars1.githubusercontent.com/u/1830380?v=3" width="30" height="30" alt="Praveen Kumar" />
