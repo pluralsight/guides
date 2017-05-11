@@ -1,4 +1,4 @@
-## Qu'est-ce que VueJS ?
+### Qu'est-ce que VueJS ?
 
 VueJS est une librairie permettant de développer des interfaces web interactives.  
 
@@ -11,12 +11,12 @@ De nombreuses libraries intègrent cette fonctionalité. L'atout principale de V
 D'autre part VueJS peut parfaitement être utilisé côté serveur, dans une application .NET MVC par exemple. 
 
 
-## VueJS et JQuery
+### VueJS et JQuery
 
 VueJs ne remplace pas JQuery. D'ailleurs de nombreuses applications VueJS intègre JQuery.  Il est toutefois vrai que VueJS minimise son usage.  
 
 
-## Application VueJS minimale
+### Application VueJS minimale
 
 Partie html :
 ```html
@@ -54,7 +54,7 @@ app.message ="Autre message..."
 La vue contenant l'élément lié à cette propriété  est dynamiquement modifiée.
 
 
-## Les directives de base
+### Les directives de base
 
 L'exemple suivant illustre les directives : v-bind, v-model, v-on
 
