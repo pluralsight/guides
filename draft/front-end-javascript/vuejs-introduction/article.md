@@ -8,7 +8,7 @@ De même les données du modèle peuvent être modifier lorsque l'utilisateur in
 
 De nombreuses libraries intègrent cette fonctionalité. L'atout principale de VueJS est son approche très aisée, et son ecosytème qui ne cesse de grandir.
 
-D'autre part VueJS peut parfaitement être utilisé côté serveur, dans une application .NET MVC par exemple
+D'autre part VueJS peut parfaitement être utilisé côté serveur, dans une application .NET MVC par exemple. 
 
 
 # VueJS et JQuery
@@ -42,38 +42,14 @@ Comme on peut le constater dans cet exemple, VueJS se charge de sélectionner le
 
 Exemple en ligne: [Application minimale](http://embed.plnkr.co/3Wai4JuBQ4DmNFRSHh8c/)  
 
-# Liaison d'un attribut à une propriété VueJS
 
-Dans l'exemple qui suit, on crée un lien entre l'attribut d'un élément (ici 'title') et une propriéte d'une instance VueJS.
 
-```html
-<div id="app">
-  <pre v-bind:title="titre" >{{ message }} </pre>
-</div>
-```
-
-```javascript
-var app = new Vue({
-  el: '#app', 
-  data: {
-    message: 'Première application VueJS',
-    titre : "Titre de message"
-  } 
-}); 
-
-``` 
-Résultat
-<pre title="Titre de message">Première application VueJS</pre>
-
-Vous pouvez tester cet exemple en cliquant sur : 
-[Application minimale](http://embed.plnkr.co/3Wai4JuBQ4DmNFRSHh8c/)
-
-L'aspect dynamique de VueJS peut-être visualisé en modifiant les propriétés 'message' ou 'titre'
+L'aspect dynamique de VueJS peut-être visualisé en modifiant la propriété 'message' 
 
 Entrez par exemple dans le fichier 'script.js':
 ```javascript
 app.message ="Autre message..."
 ```
 
-La vue contenant l'élément lié à cette propriété  est dynamiquement modifié.
+La vue contenant l'élément lié à cette propriété  est dynamiquement modifiée.
 
