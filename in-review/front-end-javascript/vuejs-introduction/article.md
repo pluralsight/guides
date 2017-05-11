@@ -6,7 +6,7 @@ La réactivité vient du fait que la vue peut-être mise à jour dynamiquement l
 
 De même, les données du modèle peuvent être modifiées lorsque l'utilisateur interagit à travers l'interface.  
 
-De nombreuses libraries intègrent cette fonctionalité. L'atout principale de VueJS est son approche très aisée, et progressive.
+De nombreuses libraries intègrent cette fonctionnalité. L'atout principale de VueJS est son approche très aisée, et progressive.
 
 Il s'agit principalement d'une librairie pour le développement 'frontend'. Mais les vues VueJS peuvent parfaitement être rendues côté serveur. VueJS peut, par exemple, s'intégrer dans une application .Net MVC.
 
