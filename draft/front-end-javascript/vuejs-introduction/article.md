@@ -80,7 +80,7 @@ L'exemple suivant illustre les directives : **v-bind**, **v-model**, **v-on**
     
       <input type="text"  v-model="user">
       <br />
-      <button v-on:click="hy">{{ txt }}</button>
+      <button v-on:click="hy">{{ greeter  }}</button>
       <br />
      
       <p style="margin-top:40px;">Changer la couleur du message</p>
@@ -98,14 +98,13 @@ L'exemple suivant illustre les directives : **v-bind**, **v-model**, **v-on**
         data: { 
           message: 'Propriétés liées et calculées',
           titre : "Titre de message",
-          textButton : "",
           rouge: 0,
           vert : 0,
           bleu : 0,
           user : "" ,
-          txt : "Hello"
-          
+          greeter : "Hello"
         },
+        
         methods : {
           hy : function () {
             var user = this.user || "anonymous";
