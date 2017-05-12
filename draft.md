@@ -1,8 +1,3 @@
-### Getting the consolidated sum of transactions grouped by currency just using MySQL by Praveen Kumar
-- [Read the guide](https://www.pluralsight.com/guides/sql/getting-the-consolidated-sum-of-transactions-grouped-by-currency-just-using-mysql?status=draft)
-- [Read more from Praveen Kumar](https://www.pluralsight.com/guides/author/praveenscience) <img src="https://avatars1.githubusercontent.com/u/1830380?v=3" width="30" height="30" alt="Praveen Kumar" />
-- Related to: SQL
-
 ### A Beginners Guide to jQuery by Carl Smith
 - [Read the guide](https://www.pluralsight.com/guides/front-end-javascript/a-beginners-guide-to-jquery?status=draft)
 - [Read more from Carl Smith](https://www.pluralsight.com/guides/author/carlsmith) <img src="https://avatars1.githubusercontent.com/u/7561668?v=3" width="30" height="30" alt="Carl Smith" />
