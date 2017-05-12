@@ -1,0 +1,15 @@
+{
+    "_publish_status": "draft",
+    "author_name": "bdsabian",
+    "author_real_name": "Brendon Davidson",
+    "branch": "master",
+    "branches": [],
+    "filename": "article.md",
+    "first_commit": "85125d6c762ef63b17430f7a1e7930941347b27b",
+    "image_url": "https://avatars0.githubusercontent.com/u/59277?v=3",
+    "stacks": [
+        "Front-End JavaScript (Angular, React, Meteor, etc)"
+    ],
+    "thumbnail_url": null,
+    "title": "Getting Started with Create React Native App"
+}
