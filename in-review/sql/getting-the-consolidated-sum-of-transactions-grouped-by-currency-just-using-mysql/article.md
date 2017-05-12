@@ -6,11 +6,11 @@ I was working on a similar case, where it involves different money transactions,
 * Creating a multiplier based on the relation for the value.
 * Creating a consolidated sum grouped on different currencies, and users.
 
-## Grouping
+# Grouping
 
 The first thing that comes to our mind when grouping is the aggregate functions. We will be using the aggregate functions to apply on a sample table that has all the financial details. The table's DDL is provided in this post. The structure of the table looks like:
 
-### Sample Table
+## Sample Table
 
     ╔═══════════╦═══════════════════════════════╗
     ║  Column   ║             Type              ║
@@ -26,7 +26,7 @@ The first thing that comes to our mind when grouping is the aggregate functions.
 
 For this table, I had added a new column that tells the direction. `1` being credit and `2` being debit. The values `1` and `2` don't mean anything to us, but technically, out in the real world, it's going to be a foreign key to another table that holds the values. I have intentionally used positive numbers to mimic the real-world scenario.
 
-### Sample Data
+## Sample Data
 
 A sample data of the contents of the table, which we currently use for one user is as below:
 
@@ -45,9 +45,9 @@ A sample data of the contents of the table, which we currently use for one user 
     ║      10 ║ Cash Point Withdrawal ║   20.00 ║ USD      ║         2 ║      1 ║ 2017-05-12 12:28:20 ║
     ╚═════════╩═══════════════════════╩═════════╩══════════╩═══════════╩════════╩═════════════════════╝
 
-## Trials
+# Trials
 
-### Getting the Total amount.
+## Getting the Total amount.
 
 The first thing to get the sum of all the amount is to use `SUM` and `GROUP BY` functions. In the above case, we'll use the following query to get the sum of all the transactions, irrespective of the user, direction or the currency.
 
@@ -61,7 +61,7 @@ The above will output something like:
     ║ 4185.00 ║
     ╚═════════╝
 
-### Credits and Debits
+## Credits and Debits
 
 This is not our ideal case. We have different rows getting different values. On top of all that, the amount debited should be negated from the value. In that case, we can split the income and expenditure using the `GROUP BY` function, which gives us the following query:
 
@@ -76,7 +76,7 @@ The above query will yield us something of the form:
     ║ 2130.00 ║
     ╚═════════╝
 
-### Different Currencies
+## Different Currencies
 
 With this, in the same way, we will be able to add another grouping by giving the column name separated by a comma. So if we need to add the next stage of grouping, let's add the `Currency` column this way:
 
@@ -93,7 +93,7 @@ The above yields:
     ║ 1995.00 ║
     ╚═════════╝
 
-### Some clues please?
+## Some clues please?
 
 Since for a long time, we have literally no clue what's what. Let's add more columns and indicate the rows, and what they mean. Now our query contains more columns:
 
@@ -110,7 +110,7 @@ The query now gets somewhat better, showing the following:
     ║ 1995.00 ║ USD      ║         2 ║
     ╚═════════╩══════════╩═══════════╝
 
-### Multiplier Query
+## Multiplier Query
 
 > "Direction?" No Idea.
 
@@ -145,7 +145,7 @@ The above query gives us the following result, which makes real sense.
 
 \* The above has some rows that are skipped.
 
-### Combining Both
+## Combining Both
 
 Looks like we have got what we needed. It's the multiplier! When the value of the result is multiplied with the amount, the total amount can be summed. With the multiplier as well as a parameter, the SQL query looks like:
 
@@ -167,7 +167,7 @@ The above query gives us the following output:
     ║ 1995.00 ║ USD      ║         2 ║         -1 ║
     ╚═════════╩══════════╩═══════════╩════════════╝
 
-### Let's Combine and Compress
+## Let's Combine and Compress
 
 With the currency, direction and multiplier, we have gotten to a point where we can understand what's happening, well, at least to an extent. So, let's add another field that shows the right total amount with the sign. We just need to multiply the total with the multiplier.
 
@@ -193,7 +193,7 @@ The output for the above query looks like:
     ║ -1995.00 ║ USD      ║
     ╚══════════╩══════════╝
 
-### Grand Total
+## Grand Total
 
 Now we can clearly decipher the different currencies and their values. With a small change in the query, we can combine them as a final sum. If we get rid of the `Direction` from grouping and change the parentheses, so that the `SUM` will take care of the whole thing including the multiplication this way:
 
