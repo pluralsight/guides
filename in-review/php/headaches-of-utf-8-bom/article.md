@@ -22,7 +22,7 @@ The only solution to avoid this is to get rid of the UTF-8 BOM completely, by us
 
     grep -rl $'\xEF\xBB\xBF' .
 
-The second command that helps to remove is using `awk`. The command is as follows:
+The second command that helps to remove is using `sed`. The command is as follows:
 
     sed -i '1 s/^\xef\xbb\xbf//' *.php
 
