@@ -1,3 +1,8 @@
+### Getting Started with Create React Native App by Brendon Davidson
+- [Read the guide](https://www.pluralsight.com/guides/front-end-javascript/getting-started-with-create-react-native-app?status=draft)
+- [Read more from Brendon Davidson](https://www.pluralsight.com/guides/author/bdsabian) <img src="https://avatars0.githubusercontent.com/u/59277?v=3" width="30" height="30" alt="Brendon Davidson" />
+- Related to: Front-End JavaScript (Angular, React, Meteor, etc)
+
 ### A Beginners Guide to jQuery by Carl Smith
 - [Read the guide](https://www.pluralsight.com/guides/front-end-javascript/a-beginners-guide-to-jquery?status=draft)
 - [Read more from Carl Smith](https://www.pluralsight.com/guides/author/carlsmith) <img src="https://avatars1.githubusercontent.com/u/7561668?v=3" width="30" height="30" alt="Carl Smith" />
