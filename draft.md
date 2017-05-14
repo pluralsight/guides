@@ -1,3 +1,8 @@
+### VueJS - Introduction by ArtyProg
+- [Read the guide](https://www.pluralsight.com/guides/front-end-javascript/vuejs-introduction?status=draft)
+- [Read more from ArtyProg](https://www.pluralsight.com/guides/author/artyprog) <img src="https://avatars3.githubusercontent.com/u/3104461?v=3" width="30" height="30" alt="ArtyProg" />
+- Related to: Front-End JavaScript (Angular, React, Meteor, etc)
+
 ### Getting Started with Create React Native App by Brendon Davidson
 - [Read the guide](https://www.pluralsight.com/guides/front-end-javascript/getting-started-with-create-react-native-app?status=draft)
 - [Read more from Brendon Davidson](https://www.pluralsight.com/guides/author/bdsabian) <img src="https://avatars0.githubusercontent.com/u/59277?v=3" width="30" height="30" alt="Brendon Davidson" />
