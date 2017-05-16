@@ -1,3 +1,8 @@
+### Getting started with Microsoft Bot framework Part One by Sai Manoj Kumar Yadlapati
+- [Read the guide](https://www.pluralsight.com/guides/other/getting-started-with-microsoft-bot-framework-part-one?status=draft)
+- [Read more from Sai Manoj Kumar Yadlapati](https://www.pluralsight.com/guides/author/ysaimanojkumar) <img src="https://avatars1.githubusercontent.com/u/647333?v=3" width="30" height="30" alt="Sai Manoj Kumar Yadlapati" />
+- Related to: other
+
 ### VueJS - Introduction by ArtyProg
 - [Read the guide](https://www.pluralsight.com/guides/front-end-javascript/vuejs-introduction?status=draft)
 - [Read more from ArtyProg](https://www.pluralsight.com/guides/author/artyprog) <img src="https://avatars3.githubusercontent.com/u/3104461?v=3" width="30" height="30" alt="ArtyProg" />
