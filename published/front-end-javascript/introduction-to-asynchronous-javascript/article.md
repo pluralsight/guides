@@ -2,7 +2,7 @@ In JavaScript we often need to deal with asynchronous behavior, which can be con
 
 ## What is the difference between synchronous and asynchronous code?
 
-#### Synchronous code
+#### Synchronous
 
 In *synchronous* programs, if you have two lines of code (L1 followed by L2), then L2 cannot begin running until L1 has finished executing.
 
