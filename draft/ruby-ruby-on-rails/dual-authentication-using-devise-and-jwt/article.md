@@ -222,8 +222,38 @@ Setup `routes.rb`
 devise_for :users, :controllers => {sessions: 'sessions', registrations: 'registrations'}  
 ```
 
-#### Controller Logic
+### Controller Logic
 In our controllers we need to write the logic for destinguishing between web browser requests and API requests.
+
+#### Logging in users
+ 
+ First, let's start with the user's logging-in:
+ 
+ ```ruby
+ # app/controllers/authentication_controller.rb
+
+class AuthenticationController < ApplicationController
+  skip_before_action :authenticate_request
+
+  def authenticate
+    command = AuthenticateUser.call(params[:email], params[:password])
+
+    if command.success?
+      render json: { auth_token: command.result }
+    else
+      render json: { error: command.errors }, status: :unauthorized
+    end
+  end
+end
+ ```
+ The `authenticate` action will take the JSON parameters for e-mail and password through the `params` hash and pass them to the `AuthenticateUser` command. If the command succeeds, it will send the JWT  token back to the user.
+ 
+ Let's put a endpoint for the action:
+ 
+ ```ruby
+   #config/routes.rb
+   post 'authenticate', to: 'authentication#authenticate'
+ ```
 
 Different strategies for CSRF. One for `html` requests and another for `json` or API request.
 - One option is to put logic in the `application_controller.rb`. Test if the request is `html` or `json` and protect accordingly. 
@@ -286,3 +316,15 @@ class ApiBaseController < ApplicationController
     end
 end
 ```
+
+Now you can subclass `ApiBaseController` for your API controllers e.g
+
+```ruby
+#app/controllers/some_api_controller.rb
+class SomeApiController < ApiBaseController
+    def action
+        # your action code here
+    end
+end
+```
+
