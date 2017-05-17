@@ -223,11 +223,11 @@ devise_for :users, :controllers => {sessions: 'sessions', registrations: 'regist
 ```
 
 #### Controller Logic
-In our controllers we need to write the logic for destinguishing between web browser requests and API requests. The following are the steps we need to take:
+In our controllers we need to write the logic for destinguishing between web browser requests and API requests.
 
-- Different strategies for CSRF. One for `html` requests and another for `json` or API request.
-    - One option is to put logic in the `application_controller.rb`. Test if the request is `html` or `json` and protect accordingly. 
-    
+Different strategies for CSRF. One for `html` requests and another for `json` or API request.
+- One option is to put logic in the `application_controller.rb`. Test if the request is `html` or `json` and protect accordingly. 
+
 ```ruby
 #app/controllers/application_controller.rb
 class ApplicationController < ActionController::Base
@@ -244,6 +244,41 @@ class ApplicationController < ActionController::Base
     def json_request
         request.format.json?
     end
+    
+    def authenticate_request
+        @current_user = AuthorizeApiRequest.call(request.headers).result
+        render json: { error: 'Not Authorized' }, status: 401 unless @current_user
+    end
+end
+
+```
+
+- Another option would be to make an API specific controller e.g
+
+```ruby
+#app/controllers/application_controller.rb
+class ApplicationController < ActionController::Base
+    protect_from_forgery with: :exception, unless: :json_request
+    before_action :authenticate_user!, unless: :json_request
+    
+    protected
+    
+    def json_request
+        request.format.json?
+    end
+end
+```
+
+
+```ruby
+#app/controllers/api_base_controller.rb
+class ApiBaseController < ApplicationController
+    protect_from_forgery if: :json_request # return null session when API call
+    before_action :authenticate_request, if: :json_request
+    
+    attr_reader :current_user
+    
+    private
     
     def authenticate_request
         @current_user = AuthorizeApiRequest.call(request.headers).result
