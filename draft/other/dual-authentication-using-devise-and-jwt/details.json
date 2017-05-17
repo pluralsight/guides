@@ -1,0 +1,15 @@
+{
+    "_publish_status": "draft",
+    "author_name": "froy001",
+    "author_real_name": "froy001",
+    "branch": "master",
+    "branches": [],
+    "filename": "article.md",
+    "first_commit": "d7b41fc8990ffadb2eb0be867f984c00962191b3",
+    "image_url": "https://avatars2.githubusercontent.com/u/1267000?v=3",
+    "stacks": [
+        "other"
+    ],
+    "thumbnail_url": null,
+    "title": "Dual authentication using Devise and JWT"
+}
