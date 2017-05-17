@@ -130,7 +130,7 @@ end
 
 he command takes the parameters and initializes a class instance with `email` and `password` attributes that are accessible within the class. The private method `user` uses the credentials to check if the user exists in the database using `User.find_by_email` . 
 
-If the user is found, the method uses the built-in `authenticate` method (available by putting [has_secure_password](http://api.rubyonrails.org/classes/ActiveModel/SecurePassword/ClassMethods.html) in the User model to check if the user's password is correct. If everything is true, the user will be returned. If not, the method will return `nil`.
+If the user is found, the method uses the [Devise](https://github.com/plataformatec/devise) built-in `valid_password?` method provided by [Devise](https://github.com/plataformatec/devise) in the User model to check if the user's password is correct. If everything is true, the user will be returned. If not, the method will return `nil`.
 
 ### Checking user authorization
 The token creation is done, but there is no way to check if a token that's been appended to a request is valid. The command for authorization has to take the `headers` of the request and decode the token using the `decode` method in the `JsonWebToken` singleton. 
@@ -223,3 +223,27 @@ devise_for :users, :controllers => {sessions: 'sessions', registrations: 'regist
 ```
 
 #### Controller Logic
+In our controllers we need to write the logic for destinguishing between web browser requests and API requests. The following are the steps we need to take:
+
+- Different strategies for CSRF. One for `html` requests and another for `json` or API request.
+    - One option is to put logic in the `application_controller.rb`. Test if the request is `html` or `json` and protect accordingly. 
+    
+```ruby
+#app/controllers/application_controller.rb
+class ApplicationController < ActionController::Base
+    protect_from_forgery with: :exception, if: :json_request    
+    before_action :authenticate_request
+    attr_reader :current_user
+    
+    private
+    
+    def json_request
+        request.format.json?
+    end
+    
+    def authenticate_request
+        @current_user = AuthorizeApiRequest.call(request.headers).result
+        render json: { error: 'Not Authorized' }, status: 401 unless @current_user
+    end
+end
+```
