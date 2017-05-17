@@ -196,12 +196,30 @@ There are a couple of issues with using devise session based authentication alon
 -  Logic to distinguish between browser `html` requests and api `json`
 
 #### Overide *Devise* controllers and routes setup
-
+Overide `registrations_controller.rb`
 ```ruby
 # app/controllers/registrations_controller.rb
+
 class RegistrationsController < Devise::RegistrationsController  
     respond_to :html, :json
     clear_respond_to if request.format == 'json'
 end 
 ```
 
+Overide `sessions_controller.rb`
+```ruby
+# app/controllers/sessions_controller.rb
+
+class SessionsController < Devise::SessionsController  
+    respond_to :html, :json
+    clear_respond_to if request.format == 'json'
+end 
+```
+
+Setup `routes.rb`
+
+```ruby
+devise_for :users, :controllers => {sessions: 'sessions', registrations: 'registrations'}  
+```
+
+#### Controller Logic
