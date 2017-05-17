@@ -231,8 +231,12 @@ In our controllers we need to write the logic for destinguishing between web bro
 ```ruby
 #app/controllers/application_controller.rb
 class ApplicationController < ActionController::Base
-    protect_from_forgery with: :exception, if: :json_request    
-    before_action :authenticate_request
+    protect_from_forgery if: :json_request # return null session when API call
+    protect_from_forgery with: :exception, unless: :json_request
+    
+    before_action :authenticate_request, if: :json_request
+    before_action :authenticate_user!, unless: :json_request
+    
     attr_reader :current_user
     
     private
