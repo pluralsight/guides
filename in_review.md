@@ -1,3 +1,8 @@
+### Dual authentication using Devise and JWT by froy001
+- [Read the guide](https://www.pluralsight.com/guides/ruby-ruby-on-rails/dual-authentication-using-devise-and-jwt?status=in-review)
+- [Read more from froy001](https://www.pluralsight.com/guides/author/froy001) <img src="https://avatars2.githubusercontent.com/u/1267000?v=3" width="30" height="30" alt="froy001" />
+- Related to: Ruby, Ruby on Rails
+
 ### Getting the consolidated sum of transactions grouped by currency just using MySQL by Praveen Kumar
 - [Read the guide](https://www.pluralsight.com/guides/sql/getting-the-consolidated-sum-of-transactions-grouped-by-currency-just-using-mysql?status=in-review)
 - [Read more from Praveen Kumar](https://www.pluralsight.com/guides/author/praveenscience) <img src="https://avatars1.githubusercontent.com/u/1830380?v=3" width="30" height="30" alt="Praveen Kumar" />
