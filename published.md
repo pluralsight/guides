@@ -1,3 +1,8 @@
+### Headaches of UTF-8 BOM! by Praveen Kumar
+- [Read the guide](https://www.pluralsight.com/guides/php/headaches-of-utf-8-bom)
+- [Read more from Praveen Kumar](https://www.pluralsight.com/guides/author/praveenscience) <img src="https://avatars1.githubusercontent.com/u/1830380?v=3" width="30" height="30" alt="Praveen Kumar" />
+- Related to: PHP
+
 ### Getting started with PubNub BLOCKS by Esteban Herrera
 - [Read the guide](https://www.pluralsight.com/guides/interesting-apis/getting-started-with-pubnub-blocks)
 - [Read more from Esteban Herrera](https://www.pluralsight.com/guides/author/eh3rrera) <img src="https://avatars1.githubusercontent.com/u/11665759?v=3" width="30" height="30" alt="Esteban Herrera" />
