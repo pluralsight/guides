@@ -1,3 +1,8 @@
+### Dual authentication using Devise and JWT by froy001
+- [Read the guide](https://www.pluralsight.com/guides/other/dual-authentication-using-devise-and-jwt?status=draft)
+- [Read more from froy001](https://www.pluralsight.com/guides/author/froy001) <img src="https://avatars2.githubusercontent.com/u/1267000?v=3" width="30" height="30" alt="froy001" />
+- Related to: other
+
 ### Getting started with Microsoft Bot framework Part One by Sai Manoj Kumar Yadlapati
 - [Read the guide](https://www.pluralsight.com/guides/microsoft-net/getting-started-with-microsoft-bot-framework-part-one?status=draft)
 - [Read more from Sai Manoj Kumar Yadlapati](https://www.pluralsight.com/guides/author/ysaimanojkumar) <img src="https://avatars1.githubusercontent.com/u/647333?v=3" width="30" height="30" alt="Sai Manoj Kumar Yadlapati" />
