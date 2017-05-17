@@ -8,11 +8,6 @@
 - [Read more from Praveen Kumar](https://www.pluralsight.com/guides/author/praveenscience) <img src="https://avatars1.githubusercontent.com/u/1830380?v=3" width="30" height="30" alt="Praveen Kumar" />
 - Related to: SQL
 
-### Headaches of UTF-8 BOM! by Praveen Kumar
-- [Read the guide](https://www.pluralsight.com/guides/php/headaches-of-utf-8-bom?status=in-review)
-- [Read more from Praveen Kumar](https://www.pluralsight.com/guides/author/praveenscience) <img src="https://avatars1.githubusercontent.com/u/1830380?v=3" width="30" height="30" alt="Praveen Kumar" />
-- Related to: PHP
-
 ### Creating File Packages in C# by Murat Aykanat
 - [Read the guide](https://www.pluralsight.com/guides/microsoft-net/creating-file-packages-in-c?status=in-review)
 - [Read more from Murat Aykanat](https://www.pluralsight.com/guides/author/aykanatm) <img src="https://avatars2.githubusercontent.com/u/9140297?v=3" width="30" height="30" alt="Murat Aykanat" />
