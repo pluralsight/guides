@@ -128,3 +128,19 @@ L'exemple suivant illustre les directives : **v-bind**, **v-model**, **v-on**
 
 Vous pouvez tester cet exemple ici : [Directives de base](https://plnkr.co/edit/v4DKhwGLuQoPPeMRZYfS?p=info)
 
+
+### Les éléments persnnalisés en VueJS
+
+ Voici article décrivant ce que sont les éléments paersonalisés : [Custom Elemnts](https://la-cascade.io/introduction-aux-custom-elements/)
+ 
+ Il est possible de créer ses propres éléménts personnalisés en VueJS. Autrement dit, il est possible de créer ses propres tags html et de les inclure dans une page Web de la même manière que n'importe quel autre tag natif.
+ 
+ Je vous laisse imaginer tout de qui est possible dé réaliser avec cette technologie.
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
