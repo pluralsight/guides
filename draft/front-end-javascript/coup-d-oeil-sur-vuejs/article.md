@@ -146,6 +146,7 @@ Vous pouvez tester cet exemple ici : [Directives de base](https://plnkr.co/edit/
 <head>
   <meta name="description" content="Ricola 3 Test Case (Component)">
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
   <script src="https://cdnjs.cloudflare.com/ajax/libs/document-register-element/1.4.1/document-register-element.js"></script>
   <script src="https://unpkg.com/vue/dist/vue.js"></script>
   <script src="https://unpkg.com/vue-custom-element"></script>
