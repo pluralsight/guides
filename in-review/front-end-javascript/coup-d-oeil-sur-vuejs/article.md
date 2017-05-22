@@ -131,7 +131,7 @@ Vous pouvez tester cet exemple ici : [Directives de base](https://plnkr.co/edit/
 
 ### Les éléments personnalisés en VueJS
 
- Voici article décrivant ce que sont les éléments personalisés : [Custom Elemnts](https://la-cascade.io/introduction-aux-custom-elements/)
+ Voici article décrivant ce que sont les éléments personalisés : [Custom Elements](https://la-cascade.io/introduction-aux-custom-elements/)
  
  Il est possible de créer ses propres éléménts personnalisés en VueJS. Autrement dit, il est possible de créer ses propres tags html et de les inclure dans une page Web de la même manière que n'importe quel autre tag natif.
  
