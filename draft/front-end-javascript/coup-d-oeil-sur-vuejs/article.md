@@ -135,9 +135,9 @@ Vous pouvez tester cet exemple ici : [Directives de base](https://plnkr.co/edit/
  
  Il est possible de créer ses propres éléménts personnalisés en VueJS. Autrement dit, il est possible de créer ses propres tags html et de les inclure dans une page Web de la même manière que n'importe quel autre tag natif.
  
- Je vous laisse imaginer tout de qui est possible dé réaliser avec cette technologie.
- 
  Voici un exemple :
+ 
+ Ici le tag ```<v-greet>``` est uneebalise personnalisée, remarquez comment il est possible de lui transmettre des paramètres.
  
  ```html
 <!DOCTYPE html>
@@ -146,12 +146,12 @@ Vous pouvez tester cet exemple ici : [Directives de base](https://plnkr.co/edit/
 <head>
   <meta name="description" content="Ricola 3 Test Case (Component)">
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="utf-8">
   
   <script src="https://cdnjs.cloudflare.com/ajax/libs/document-register-element/1.4.1/document-register-element.js"></script>
   <script src="https://unpkg.com/vue/dist/vue.js"></script>
   <script src="https://unpkg.com/vue-custom-element"></script>
-
-  <meta charset="utf-8">
+  
 </head>
 
 <body>
@@ -160,13 +160,16 @@ Vous pouvez tester cet exemple ici : [Directives de base](https://plnkr.co/edit/
   
   <v-greet nom="Albert"></v-greet>
   
+  
   <script>
     var g = "<h1>{{ msg }}</h1>"
 
     const Greet = {
+      
       props: ['nom'],
-      components: [],
+
       template: g,
+      
       data: function() {
 
         if (this.nom === undefined) {
@@ -180,13 +183,14 @@ Vous pouvez tester cet exemple ici : [Directives de base](https://plnkr.co/edit/
     }
 
     Vue.customElement('v-greet', Greet)
+    
   </script>
 
 </body>
 
-</html>>```
+</html>```
 
-
+Vous pouvez voir le résultat ici [Custom Element](https://embed.plnkr.co/Nf41vTRzOEqyZcl0gDi4/)
  
  
  
