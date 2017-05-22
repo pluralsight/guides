@@ -140,17 +140,17 @@ Vous pouvez tester cet exemple ici : [Directives de base](https://plnkr.co/edit/
  Voici un exemple :
  
  ```html
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 
 <head>
   <meta name="description" content="Ricola 3 Test Case (Component)">
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta charset="utf-8">
-  
   <script src="https://cdnjs.cloudflare.com/ajax/libs/document-register-element/1.4.1/document-register-element.js"></script>
   <script src="https://unpkg.com/vue/dist/vue.js"></script>
   <script src="https://unpkg.com/vue-custom-element"></script>
+
+  <meta charset="utf-8">
 </head>
 
 <body>
@@ -158,7 +158,6 @@ Vous pouvez tester cet exemple ici : [Directives de base](https://plnkr.co/edit/
   <v-greet></v-greet>
   
   <v-greet nom="Albert"></v-greet>
-  
   
   <script>
     var g = "<h1>{{ msg }}</h1>"
@@ -184,7 +183,7 @@ Vous pouvez tester cet exemple ici : [Directives de base](https://plnkr.co/edit/
 
 </body>
 
-</html>```
+</html>>```
 
 
  
