@@ -493,6 +493,8 @@ var NewItem= React.createClass({
 
 ```
 
+If react give you an error `AddComponentAsRefTo()` at this point, then it means that react is being referenced twice in your asset pipeline. I found the issue was in `app/assets/javascripts/server_rendering.js` and if your remove the line `//=require react-server`, it should get rid of the error. I am not sure if this will create problems down the road, but it works for the sake of this tutorial.
+     
 
 Everything looks familiar, except for the ref attribute. The ref attribute is used to reference the element in the component. Its function is similar to the `name` attribute in AngularJS. Instead of finding elements by id or by class, we do it by ref. In this particular case, the ref will be used to get the value of the text field and send it to the server.
 
