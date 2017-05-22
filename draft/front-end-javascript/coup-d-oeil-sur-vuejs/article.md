@@ -137,6 +137,57 @@ Vous pouvez tester cet exemple ici : [Directives de base](https://plnkr.co/edit/
  
  Je vous laisse imaginer tout de qui est possible dé réaliser avec cette technologie.
  
+ Voici un exemple :
+ 
+ ```html
+ <!DOCTYPE html>
+<html>
+
+<head>
+  <meta name="description" content="Ricola 3 Test Case (Component)">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="utf-8">
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/document-register-element/1.4.1/document-register-element.js"></script>
+  <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  <script src="https://unpkg.com/vue-custom-element"></script>
+</head>
+
+<body>
+  
+  <v-greet></v-greet>
+  
+  <v-greet nom="Albert"></v-greet>
+  
+  
+  <script>
+    var g = "<h1>{{ msg }}</h1>"
+
+    const Greet = {
+      props: ['nom'],
+      components: [],
+      template: g,
+      data: function() {
+
+        if (this.nom === undefined) {
+          this.nom = "Inconnu(e)"
+        }
+
+        return {
+          msg: "Bonjour " + this.nom
+        }
+      }
+    }
+
+    Vue.customElement('v-greet', Greet)
+  </script>
+
+</body>
+
+</html>```
+
+
+ 
  
  
  
