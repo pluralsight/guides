@@ -1,3 +1,8 @@
+### Coup d'oeil sur VueJS by ArtyProg
+- [Read the guide](https://www.pluralsight.com/guides/front-end-javascript/coup-d-oeil-sur-vuejs?status=in-review)
+- [Read more from ArtyProg](https://www.pluralsight.com/guides/author/artyprog) <img src="https://avatars3.githubusercontent.com/u/3104461?v=3" width="30" height="30" alt="ArtyProg" />
+- Related to: Front-End JavaScript (Angular, React, Meteor, etc)
+
 ### Dual authentication using Devise and JWT by froy001
 - [Read the guide](https://www.pluralsight.com/guides/ruby-ruby-on-rails/dual-authentication-using-devise-and-jwt?status=in-review)
 - [Read more from froy001](https://www.pluralsight.com/guides/author/froy001) <img src="https://avatars2.githubusercontent.com/u/1267000?v=3" width="30" height="30" alt="froy001" />
