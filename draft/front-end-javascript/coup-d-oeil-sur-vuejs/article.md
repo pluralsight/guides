@@ -137,7 +137,7 @@ Vous pouvez tester cet exemple ici : [Directives de base](https://plnkr.co/edit/
  
  Voici un exemple :
  
- Ici le tag ```<v-greet>``` est une ebalise personnalisée, remarquez comment il est possible de lui transmettre des paramètres.
+ Ici nous avons créé tag ```<v-greet>``` , remarquez comment il est possible de lui transmettre des paramètres.
  
  ```html
 <!DOCTYPE html>
