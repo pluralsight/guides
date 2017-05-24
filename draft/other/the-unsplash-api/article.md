@@ -42,13 +42,14 @@ When retrieving a list of objects, an abbreviated or summary version of that obj
 ### HTTP Verbs  
 The Unsplash API uses HTTP verbs appropriate to each action.  
 
-    Verb   Description   
-    GET    Retrieving resources.  
-    POST   Creating resources.  
-    PUT    Updating resources.  
-    DELETE Deleting resources.  
+|Verb   |Description|
+|-------|------------|
+|`GET`    |Retrieving resources.|  
+|`POST`  |Creating resources.|  
+|`PUT`    |Updating resources.|  
+|`DELETE` |Deleting resources.|  
 
-### Error messages  
+### Error messages    
 If an error occurs, whether on the server or client side, the error message(s) will be returned in an `errors` array. For example:
 
     422 Unprocessable Entity  
@@ -75,26 +76,57 @@ The Unsplash API uses OAuth2 to authenticate and authorize Unsplash users. Unspl
 ### Authorization workflow  
 This process is described below in detail. However, many libraries exist to simplify the process. If you are using one of the Unsplash [API client libraries](https://unsplash.com/documentation#libraries), see their documentation for how to handle user authentication.
 
-1. Direct the user to https://unsplash.com/oauth/authorize with the following query parameters:
-![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/3f78a8ff-4b80-44df-ae9f-2e8751a9206b.39)  
++ Direct the user to https://unsplash.com/oauth/authorize with the following query parameters:
+
+|param	|Description|
+|--------|-----------|
+|`client_id`|Your application ID.|
+|`redirect_uri`|	A URI you control that handles successful user authorization.|
+|`response_type`|	The access response type you are requesting. The authorization workflow. Unsplash supports requires the value “code” here.|
+|`scope`	|A `+`-separated list of requested scopes. e.g. `public+read_user`|  
 If necessary the user will be asked to log in. They will be presented with the list of permission scopes being requested and asked to authorize.
 
-2. If the user accepts the request, the user will be redirected to the redirect_uri, with the authorization `code` in the code query parameter.
++ If the user accepts the request, the user will be redirected to the redirect_uri, with the authorization `code` in the code query parameter.
 
-3. Make a POST request to `https://unsplash.com/oauth/token` with the following parameters: ![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/92debcdc-bfd9-446f-b57a-f67e83b19f41.39) If successful, the response body will be a JSON representation of your user’s access token:
-   
-![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/5a03a8d4-c274-4839-9559-f42bf7c2f527.52)
++ Make a POST request to `https://unsplash.com/oauth/token` with the following parameters:
+
+|param|	Description|
+|------|-----------|
+|`client_id`|	Your application ID.|
+|`client_secret`|	Your application secret.|
+|`redirect_uri`|	Your application’s redirect URI.|
+|`code`|	The authorization code supplied to the callback by Unsplash.|
+|`grant_type`|	Value “authorization_code”.|  
++ If successful, the response body will be a JSON representation of your user’s access token:
+
+        {
+        "access_token": "091343ce13c8ae780065ecb3b13dc903475dd22cb78a05503c2e0c69c5e98044",
+        "token_type": "bearer",
+        "scope": "public read_photos write_photos",
+        "created_at": 1436544465
+        }
 
 Access tokens do not expire.
 
-4. On future requests, send OAuth Bearer access token via the HTTP Authorization header:
++ On future requests, send OAuth Bearer access token via the HTTP Authorization header:
 
 `Authorization: Bearer ACCESS_TOKEN`
 
 ### Permission scopes
 To write data on behalf of a user or to access their private data, you must request additional permission scopes from them. The scopes are:
 
-![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/d3e98668-9797-4981-89ac-5c8523dac74d.46)
+
+|Scope	|Description |
+|-------|------------|
+|`public`	| Default. Read public data.|
+|`read_user`|	Access user’s private data.|
+|`write_user`	|Update the user’s profile.|
+|`read_photos`|	Read private data from the user’s photos.|
+|`write_photos`|	Update photos on the user’s behalf.|
+|`write_likes`|	Like or unlike a photo on the user’s behalf.|
+|`write_followers`|	Follow or unfollow a user on the user’s behalf.|
+|`read_collections`|	View a user’s private collections.|
+|`write_collections`|	Create and update a user’s collections.|
 
 When authorizing your application, the user will be presented with a list of permission scopes being requested.
 
@@ -181,7 +213,16 @@ Note: This action requires the `write_user` scope. Without it, it will return a 
 **Parameters**  
 All parameters are optional.
 
-![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/aba18de9-9b7c-42a0-9f07-b4615098d796.56)
+|param|	Description|
+|-------|----------|
+|`username`|	Username.|
+|`first_name`|	First name.|
+|`last_name`	|Last name.|
+|`email`	|Email.|
+|`url`|	Portfolio/personal URL.|
+|`location`|	Location.|
+|`bio`|	About/bio.|
+|`instagram_username`|	Instagram username.|
 
     200 OK
     X-Ratelimit-Limit: 1000
@@ -223,12 +264,12 @@ Users have the following link relations:
 
 |rel|	Description|
 |-----|--------------|
-|self|	API location of this user.
-|html|	HTML location of this user.
-|photos	|API location of this user’s photos.
-|portfolio|	API location of this user’s external portfolio.
-|followers|	API location of this user’s followers.
-|following|	API location of users this user is following.
+|`self`|	API location of this user.
+|`html`|	HTML location of this user.
+|`photos`	|API location of this user’s photos.
+|`portfolio`|	API location of this user’s external portfolio.
+|`followers`|	API location of this user’s followers.
+|`following`|	API location of users this user is following.
 
 Get a user’s public profile
 Retrieve public details on a given user.
