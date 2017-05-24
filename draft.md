@@ -1,3 +1,8 @@
+### Using the Unsplash API by nickfisher
+- [Read the guide](https://www.pluralsight.com/guides/other/using-the-unsplash-api?status=draft)
+- [Read more from nickfisher](https://www.pluralsight.com/guides/author/nickfisher) <img src="https://avatars1.githubusercontent.com/u/4007917?v=3" width="30" height="30" alt="nickfisher" />
+- Related to: other
+
 ### The Unsplash API 2 by nickfisher
 - [Read the guide](https://www.pluralsight.com/guides/other/the-unsplash-api-2?status=draft)
 - [Read more from nickfisher](https://www.pluralsight.com/guides/author/nickfisher) <img src="https://avatars1.githubusercontent.com/u/4007917?v=3" width="30" height="30" alt="nickfisher" />
