@@ -1,3 +1,8 @@
+### Using the Unsplash API by nickfisher
+- [Read the guide](https://www.pluralsight.com/guides/other/using-the-unsplash-api?status=in-review)
+- [Read more from nickfisher](https://www.pluralsight.com/guides/author/nickfisher) <img src="https://avatars1.githubusercontent.com/u/4007917?v=3" width="30" height="30" alt="nickfisher" />
+- Related to: other
+
 ### Coup d'oeil sur VueJS by ArtyProg
 - [Read the guide](https://www.pluralsight.com/guides/front-end-javascript/coup-d-oeil-sur-vuejs?status=in-review)
 - [Read more from ArtyProg](https://www.pluralsight.com/guides/author/artyprog) <img src="https://avatars3.githubusercontent.com/u/3104461?v=3" width="30" height="30" alt="ArtyProg" />
