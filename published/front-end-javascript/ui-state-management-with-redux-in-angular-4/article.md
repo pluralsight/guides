@@ -464,7 +464,7 @@ export class AppComponent {
 
 > As you can see, you can reuse the `handleOpenModal` and `handleCloseModal`. No matter how many modals your container has, the only thing that needs to be specified is the `modalName` of the modal you would like to see opened.
 
-**app.template.html**
+**app.component.html**
 ```
 <!-- Use the async pipe to get the latest broadcasted value of on observable as an input in the component  -->
 <template-modal [modalState]="this.openedModalName$ | async" (onCloseModal)="handleCloseModal()"></template-modal>
@@ -1036,7 +1036,7 @@ export class AppComponent implements  OnInit{
 
 To demonstrate how alerts look, the template will have two buttons for opeaning different types of alerts:
 
-**app.template.html**
+**app.component.html**
 
 ```
 <div id="fade" class="fade-in"></div>
