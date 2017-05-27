@@ -3,7 +3,12 @@
     "author_name": "nickfisher",
     "author_real_name": "nickfisher",
     "branch": "master",
-    "branches": [],
+    "branches": [
+        [
+            "adityavarshney",
+            "adityavarshney-other-using-the-unsplash-api"
+        ]
+    ],
     "filename": "article.md",
     "first_commit": "ba448e91c5a24c606d193495659ef33687ed5224",
     "image_url": "https://avatars1.githubusercontent.com/u/4007917?v=3",
