@@ -1,8 +1,8 @@
 ## Getting started
 
-This document describes the resources that make up the official Unsplash JSON API.
+This guide describes the componenents that comprise the official Unsplash JSON API, the most powerful photo engine in the world.
 
-If you have any problems or requests, please [contact our API team](mailto:api@unsplash.com).
+If you are familiar with Unsplash and have any problems or requests, please [contact our API team](mailto:api@unsplash.com).
 
 ### Creating a developer account
 
@@ -12,17 +12,13 @@ To access the Unsplash API, first [register as a developer](/developers).
 
 Once your account has been registered for the API, log in and go to the [Developers page](/developers). Go to "Your Applications", click "New Application", and fill in the required details.
 
-Initially, your application will be in development mode and will be rate-limited to 50 requests per hour. When ready for production, upload screenshots of your application (focusing on the proper attribution and use of Unsplash photos in your app), then click the "Request Approval" button. If approved, your rate limit will be increased to the full amount.
+Initially, your aplication will be in development mode and will be limited to 50 requests per hour. When you are ready to produce your app, upload screenshots of your application (focusing on the proper attribution and use of Unsplash photos in your app), then click the "Request Approval" button. If approved, your rate limit will be increased to the full amount allowed.
 
 Preference will be given to applications that follow the [API Guidelines](https://community.unsplash.com/developersblog/unsplash-api-guidelines), including [properly providing attribution for the photographer and Unsplash](https://community.unsplash.com/developersblog/how-to-give-proper-unsplash-attribution).
 
 ### Libraries
 
-To make it as easy as possible to integrate the Unsplash API, official libraries exist in:
-
-- PHP ([unsplash/unsplash-php](https://github.com/unsplash/unsplash-php))
-- Ruby ([unsplash/unsplash_rb](https://github.com/unsplash/unsplash_rb))
-- Javascript ([unsplash/unsplash-js](https://github.com/unsplash/unsplash-js))
+To make it as easy as possible to integrate the Unsplash API, see official libraries for [PHP](https://github.com/unsplash/unsplash-php), [Ruby](https://github.com/unsplash/unsplash_rb), and [Javascript](https://github.com/unsplash/unsplash-js).
 
 ### Guidelines & Crediting
 
@@ -30,7 +26,7 @@ The Unsplash API is made available as a free API. To use the API you must [abide
 
 ### Hotlinking
 
-Unlike most APIs, we **prefer for the image URLs returned by the API to be directly used or embedded in your applications** (generally referred to as *hotlinking*). By using our CDN and embedding the photo URLs in your application, we can better track photo views and pass those stats on to the photographer, providing them with context for how popular their photo is and how it's being used.
+Unlike most APIs, we **prefer for the image URLs returned by the API to be directly used or embedded in your applications.** This embedding process is generally referred to as *hotlinking*. By using our CDN and embedding the photo URLs in your application, we can better track photo views and pass those stats on to the photographer, providing them with context for how popular their photo is and how it's being used.
 
 
 ## Schema
@@ -107,12 +103,12 @@ This process is described below in detail. However, many libraries exist to simp
 
 1. Direct the user to `https://unsplash.com/oauth/authorize` with the following query parameters:
 
-    param | Description
-    ------|------------
-    `client_id` | Your application ID.
-    `redirect_uri` | A URI you control that handles successful user authorization.
-    `response_type` | The access response type you are requesting. The authorization workflow Unsplash supports requires the value "code" here.
-    `scope`         | A `+`-separated list of requested scopes. e.g. `public+read_user`
+param | Description
+------|------------
+`client_id` | Your application ID.
+`redirect_uri` | A URI you control that handles successful user authorization.
+`response_type` | The access response type you are requesting. The authorization workflow Unsplash supports requires the value "code" here.
+`scope`         | A `+`-separated list of requested scopes. e.g. `public+read_user`
 
     If necessary the user will be asked to log in. They will be presented with the list of permission scopes being requested and asked to authorize.
 
@@ -120,13 +116,13 @@ This process is described below in detail. However, many libraries exist to simp
 
 3. Make a POST request to `https://unsplash.com/oauth/token` with the following parameters:
 
-    param | Description
-    ------|-------------
-    `client_id` | Your application ID.
-    `client_secret` | Your application secret.
-    `redirect_uri` | Your application's redirect URI.
-    `code`         | The authorization code supplied to the callback by Unsplash.
-    `grant_type`   | Value "authorization_code".
+param | Description
+------|-------------
+`client_id` | Your application ID.
+`client_secret` | Your application secret.
+`redirect_uri` | Your application's redirect URI.
+`code`         | The authorization code supplied to the callback by Unsplash.
+`grant_type`   | Value "authorization_code".
 
     If successful, the response body will be a JSON representation of your user's access token:
 
@@ -201,7 +197,7 @@ X-Ratelimit-Limit: 1000
 X-Ratelimit-Remaining: 999
 ```
 
-Note that only the json requests (i.e., those to `api.unsplash.com`) are counted. Image file requests (`images.unsplash.com`) do not count against your rate limit.
+Note that only the JSON requests (i.e., those to `api.unsplash.com`) are counted. Image file requests (`images.unsplash.com`) do not count against your rate limit.
 
 If you think you'll need a higher rate limit, [contact us](mailto:api@unsplash.com).
 
@@ -217,9 +213,7 @@ GET /me
 
 *Note*: Without a Bearer token (i.e. using a Client-ID token) this request will return a `401 Unauthorized` response.
 
-#### Parameters
-
-None
+No parameters are necessary here.
 
 #### Response
 
@@ -468,7 +462,7 @@ X-Ratelimit-Remaining: 999
 
 ### Get a user's statistics
 
-Retrieve the consolidated number of downloads, views and likes of all user's photos, as well as the historical breakdown and average of these stats in a specific timeframe (default is 30 days).
+Retrieve the consolidated number of downloads, views and likes of all user's photos, as well as the historical breakdown and average of these stats in a specific timeframe. The default time is 30 days.
 
 ```
 GET /users/:username/statistics
@@ -773,7 +767,7 @@ X-Ratelimit-Remaining: 999
 
 ### Like a photo
 
-Like a photo on behalf of the logged-in user. This requires the `write_likes` scope.
+Upvote or like a photo on behalf of the logged-in user. This requires the `write_likes` scope.
 
 *Note*: This action is idempotent; sending the POST request to a single photo multiple times has no additional effect.
 
@@ -835,7 +829,7 @@ X-Ratelimit-Remaining: 999
 
 ### Unlike a photo
 
-Remove a user's like of a photo.
+Undo a "like" on a photo. 
 
 *Note*: This action is idempotent; sending the DELETE request to a single photo multiple times has no additional effect.
 
@@ -1085,7 +1079,7 @@ X-Ratelimit-Remaining: 999
 
 ### Get a collection
 
-Retrieve a single collection. To view a user's private collections, the `read_collections` scope is required.
+Retrieve a single collection. Viewing a user's private collections requires the `read_collections` scope.
 
 ```
 GET /collections/:id
@@ -1117,9 +1111,9 @@ X-Ratelimit-Remaining: 999
 <%= render "collection.json" %>
 ```
 
-### Get a collection's photos
+### Get photos in a collection
 
-Retrieve a collection's photos.
+Use the command below to retrieve a collection's photos.
 
 ```
 GET /collections/:id/photos
@@ -1347,3 +1341,7 @@ X-Ratelimit-Remaining: 999
   "photo_downloads": 40775186
 }
 ```
+
+
+___________
+Hopefully you found this guide detailing tha various Unsplash API components to be useful and easy to follow. Please leave all comments and feedback in the discussion section below. Thanks for reading!
