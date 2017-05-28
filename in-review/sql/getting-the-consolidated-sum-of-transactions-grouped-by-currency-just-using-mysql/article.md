@@ -1,6 +1,13 @@
-There are a lot of instances where only the value is stored and the context is stored somewhere else. For example, when a cash transaction happens, the direction of the cash transaction will be noted in a separate table and there will not be any negative numbers. The same way, there's another case that could be possible. There are a lot of fora and online commenting systems where you can vote up or down. The votes will be stored elsewhere and they will be all positive integers and will be linked via foreign key to a different table, where the original values of each vote will be stored, either positive or negative.
 
-I was working on a similar case, where it involves different money transactions, and the type of transaction will decide whether it is an incoming transaction or an outgoing one. We are going to look at three things today:
+This tutorial will cover using MySQL to perform operations on data tables containing transaction information. Our primary example will involve money transactions.
+
+# Transactions and table data
+
+Consider a digital transactio in which a value is stored in one place and the context is stored elsewhere. For example, when a cash transaction happens, we can represent the direction of the cash transaction in a table and the amounts in another table to dodge negative numbers. Similarly, there are a lot of forums and online commenting systems in which you can upvote or downvote. These votes will be stored separate from their individual count, thereby having entirely positive values, but they will be linked via foreign key to a table containing the original values of each vote, whether they are positive or negative.
+
+## Money transaction example
+
+I was working on a similar problem related to different money transactions. In my case, the type of transaction would decide whether it was an incoming transaction or an outgoing one. Modeling this same circumstance, we are going to look at three things today:
 
 * Connecting the transactions by their value.
 * Creating a multiplier based on the relation for the value.
@@ -8,9 +15,9 @@ I was working on a similar case, where it involves different money transactions,
 
 # Grouping
 
-The first thing that comes to our mind when grouping is the aggregate functions. We will be using the aggregate functions to apply on a sample table that has all the financial details. The table's DDL is provided in this post. The structure of the table looks like:
+The first thing that comes to our mind when grouping is the aggregate functions. We will be using the aggregate functions to apply on a sample table that has all the financial details. The table's Data Definition Language (DDL) is provided in this post. 
 
-## Sample Table
+The structure of the table looks like:
 
     ╔═══════════╦═══════════════════════════════╗
     ║  Column   ║             Type              ║
@@ -26,9 +33,7 @@ The first thing that comes to our mind when grouping is the aggregate functions.
 
 For this table, I had added a new column that tells the direction. `1` being credit and `2` being debit. The values `1` and `2` don't mean anything to us, but technically, out in the real world, it's going to be a foreign key to another table that holds the values. I have intentionally used positive numbers to mimic the real-world scenario.
 
-## Sample Data
-
-A sample data of the contents of the table, which we currently use for one user is as below:
+Consider the sample data set shown below. It represents values for one user:
 
     ╔═════════╦═══════════════════════╦═════════╦══════════╦═══════════╦════════╦═════════════════════╗
     ║  TranID ║        Subject        ║ Amount  ║ Currency ║ Direction ║ UserID ║      TimeStamp      ║
@@ -47,9 +52,9 @@ A sample data of the contents of the table, which we currently use for one user 
 
 # Trials
 
-## Getting the Total amount.
+## Getting the total amount.
 
-The first thing to get the sum of all the amount is to use `SUM` and `GROUP BY` functions. In the above case, we'll use the following query to get the sum of all the transactions, irrespective of the user, direction or the currency.
+To get the sum of all the amounts, use the `SUM` and `GROUP BY` functions. In the above case, we'll use the following query to get the sum of all the transactions, irrespective of the user, direction and/or the currency.
 
     SELECT SUM(`Amount`) AS `Total` FROM `transactions`;
 
@@ -76,6 +81,8 @@ The above query will yield us something of the form:
     ║ 2130.00 ║
     ╚═════════╝
 
+This table signifies a list of the sums of all transactions going in the same direction.
+
 ## Different Currencies
 
 With this, in the same way, we will be able to add another grouping by giving the column name separated by a comma. So if we need to add the next stage of grouping, let's add the `Currency` column this way:
@@ -93,13 +100,13 @@ The above yields:
     ║ 1995.00 ║
     ╚═════════╝
 
-## Some clues please?
+As you can see this, created a split in the data. We go from two values to four using a different grouping scheme. By adding the `Currency` category, we group first by direction and next by currency.
 
-Since for a long time, we have literally no clue what's what. Let's add more columns and indicate the rows, and what they mean. Now our query contains more columns:
+However, our output is rather confusing because we don't know what each of the numbers signifies. Let's add more columns to reveal what the rows  mean:
 
     SELECT SUM(`Amount`) AS `Total`, `Currency`, `Direction` FROM `transactions` GROUP BY `Direction`, `Currency`;
 
-The query now gets somewhat better, showing the following:
+The query now looks better:
 
     ╔═════════╦══════════╦═══════════╗
     ║  Total  ║ Currency ║ Direction ║
@@ -110,18 +117,24 @@ The query now gets somewhat better, showing the following:
     ║ 1995.00 ║ USD      ║         2 ║
     ╚═════════╩══════════╩═══════════╝
 
+Comparing to the initial data set, can you tell what effect the `GROUP BY` command had on our query? The values appear in the order dictated by the `GROUP BY` scheme. The output is sorted by `Direction` first and then by `Currency`, as seen by the fact that `GBP` comes before `USD` in the alphabet.
+
+Can you see the effect of using `AS` in the query? Clearly, before we used this keyword, the query output kept the same order and values. However, we could not see the other information, such as the columns that you see now. Therefore, `AS` adds more information to the returned table in the form of output columns.
+
 ## Multiplier Query
 
 > "Direction?" No Idea.
 
-But still, we have literally no clue what the direction means to us. Also, since that we know, `1` is positive (stays the same `1`) and `2` is negative (should be converted into `-1`), we need to change them to their corresponding values. To make this kind of change, either we use *SQL JOINs*, if they are using the foreign key table relation or `CASE … WHEN … END` statements, if they are just values. Since our sample table has only values, let's build our multiplier.
+But still, we have literally no clue what the direction means to us. Also, since we know `1` is positive (stays the same `1`) and `2` is negative (should be converted into `-1`), we need to change them to their corresponding values. To make this kind of change, we use *SQL JOINs* if they are using the foreign key table relation or we use `CASE … WHEN … END` statements if we are only dealing with values. 
+
+Since our sample table has only values, we'll build our multiplier.
 
     CASE
         WHEN `Direction`=1 THEN  1
         WHEN `Direction`=2 THEN -1
     END
 
-The above gives you the converted version of `Direction` column, or the values. So having this code with the original `Direction` like this:
+The above gives you the converted version of the `Direction` column, or the values. So having this code with the original `Direction` like this:
 
     SELECT `Direction`, (
         CASE
@@ -131,7 +144,7 @@ The above gives you the converted version of `Direction` column, or the values. 
     ) AS `Multiplier`
     FROM `transactions`
 
-The above query gives us the following result, which makes real sense.
+The resulting query mmakes real sense:
 
     ╔═══════════╦════════════╗
     ║ Direction ║ Multiplier ║
@@ -169,9 +182,9 @@ The above query gives us the following output:
 
 ## Let's Combine and Compress
 
-With the currency, direction and multiplier, we have gotten to a point where we can understand what's happening, well, at least to an extent. So, let's add another field that shows the right total amount with the sign. We just need to multiply the total with the multiplier.
+With the currency, direction and multiplier, we have gotten to a point where we can understand what's happening, at least to an extent. So, let's add another field that shows the right total amount with the sign. We just need to multiply the total with the multiplier.
 
-> **ProTip:** If you try using the column `Multiplier`, it will not work. It is just for viewing purposes as an alias only and there's really no column that exists in that name. We should redefine the contents of the column for generating the new column. Let's say the new column as `Total` and get rid of the old `Total` column. In short, we are multiplying what was already total with the query for multiplier. Also, we can get rid of the `Direction` since we are not using it.
+> **ProTip:** If you try using the column `Multiplier`, it will not work. That column is for viewing purposes as an alias only. There's really no column that exists in that name. We should redefine the contents of the column for generating the new column. Let's say the new column is `Total` and get rid of the old `Total` column. In short, we are multiplying what was already total with the query for multiplier. Also, we can get rid of the `Direction` since we are not using it.
 
 The updated query now looks like:
 
@@ -192,10 +205,13 @@ The output for the above query looks like:
     ║  -135.00 ║ GBP      ║
     ║ -1995.00 ║ USD      ║
     ╚══════════╩══════════╝
+As you can see, the `Total` and `Currency` columns result from the `AS` keyword, and the signage results from the `*`, meaning multiply, in the select statement.
 
-## Grand Total
+## Getting net values
 
-Now we can clearly decipher the different currencies and their values. With a small change in the query, we can combine them as a final sum. If we get rid of the `Direction` from grouping and change the parentheses, so that the `SUM` will take care of the whole thing including the multiplication this way:
+Now we can clearly decipher the different currencies and their values. With a small change in the query, we can combine them as a final sum, adjusted for the negative and positive interactions alike.
+
+We can get rid of the `Direction` from grouping and change the parentheses, so that the `SUM` will take care of the whole thing including multiplication:
 
     SELECT SUM((`Amount`) * (
         CASE
@@ -213,6 +229,8 @@ We get the output like:
     ║  5.00 ║ USD      ║
     ╚═══════╩══════════╝
 
+Here, 15.00 GBP comes from adding 150 to -135. Similarly, 5.00 comes from adding 2000 to -1995. 
+
 This way, we can get the consolidated sum of different entities (`Currency`) based on their values (`Direction`). If we need to separate by the users as well, we just need to add another `GROUP BY` value of that column. So, that would be like:
 
     SELECT SUM((`Amount`) * (
@@ -222,4 +240,9 @@ This way, we can get the consolidated sum of different entities (`Currency`) bas
         END
     )) AS `Total`, `Currency` FROM `transactions` GROUP BY `Currency`, `UserID`;
 
-And finally using the JOINs, you can get the complete details of each user, along with their corresponding currency balances. Hope this article was interesting and helpful. Please do let me know in comments like if there's a better way to achieve a few things.
+And finally using the JOINs, you can get the complete details of each user, along with their corresponding currency balances. 
+
+___________
+
+
+I hope this article was interesting and helpful. Please leave all comments and feedback in the discussion section below. And, as always, don't forget to print the favorite button! Thanks for reading.
