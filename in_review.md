@@ -1,3 +1,8 @@
+### How to activate animation when the content scrolls into view by Hayk Yaghubyan
+- [Read the guide](https://www.pluralsight.com/guides/html-css/how-to-activate-animation-when-the-content-scrolls-into-view?status=in-review)
+- [Read more from Hayk Yaghubyan](https://www.pluralsight.com/guides/author/haykoyaghubyan) <img src="https://avatars3.githubusercontent.com/u/26785721?v=3" width="30" height="30" alt="Hayk Yaghubyan" />
+- Related to: HTML/CSS
+
 ### Using the Unsplash API by nickfisher
 - [Read the guide](https://www.pluralsight.com/guides/other/using-the-unsplash-api?status=in-review)
 - [Read more from nickfisher](https://www.pluralsight.com/guides/author/nickfisher) <img src="https://avatars1.githubusercontent.com/u/4007917?v=3" width="30" height="30" alt="nickfisher" />
