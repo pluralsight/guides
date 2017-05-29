@@ -866,6 +866,14 @@ Everything works, but we’re encountering the same problem we had with adding a
 ```javascript
 // app/assets/javascripts/components/_body.js.jsx
 
+removeItemClient(id) {
+    var newItems = this.state.items.filter((item) => {
+        return item.id != id;
+    });
+
+    this.setState({ items: newItems });
+},
+
 handleDelete(id) {
     $.ajax({
         url: `/api/v1/items/${id}`,
@@ -875,15 +883,6 @@ handleDelete(id) {
         }
     });
 },
-
-removeItemClient(id) {
-    var newItems = this.state.items.filter((item) => {
-        return item.id != id;
-    });
-
-    this.setState({ items: newItems });
-},
-
 
 ```
 
