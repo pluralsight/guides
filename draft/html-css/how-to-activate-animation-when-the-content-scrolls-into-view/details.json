@@ -1,0 +1,15 @@
+{
+    "_publish_status": "draft",
+    "author_name": "haykoyaghubyan",
+    "author_real_name": "Hayk Yaghubyan",
+    "branch": "master",
+    "branches": [],
+    "filename": "article.md",
+    "first_commit": "bf70c538ca415a03abdbfd34fd074d0ef2c77ddb",
+    "image_url": "https://avatars3.githubusercontent.com/u/26785721?v=3",
+    "stacks": [
+        "HTML/CSS"
+    ],
+    "thumbnail_url": null,
+    "title": "How to activate animation when the content scrolls into view"
+}
