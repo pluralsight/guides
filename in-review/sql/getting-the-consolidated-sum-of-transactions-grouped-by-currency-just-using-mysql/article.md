@@ -1,9 +1,8 @@
-
 This tutorial will cover using MySQL to perform operations on data tables containing transaction information. Our primary example will involve money transactions.
 
 # Transactions and table data
 
-Consider a digital transactio in which a value is stored in one place and the context is stored elsewhere. For example, when a cash transaction happens, we can represent the direction of the cash transaction in a table and the amounts in another table to dodge negative numbers. Similarly, there are a lot of forums and online commenting systems in which you can upvote or downvote. These votes will be stored separate from their individual count, thereby having entirely positive values, but they will be linked via foreign key to a table containing the original values of each vote, whether they are positive or negative.
+Consider a digital transaction in which a value is stored in one place and the context is stored elsewhere. For example, when a cash transaction occurs, we can represent the direction of the cash transaction in a table and the amounts in another table to dodge negative numbers. Similarly, there are a lot of forums and online commenting systems in which you can upvote or downvote. These votes will be stored separate from their individual count, thereby having entirely positive values, but they will be linked via foreign key to a table containing the original values of each vote, whether they are positive or negative.
 
 ## Money transaction example
 
@@ -100,9 +99,9 @@ The above yields:
     ║ 1995.00 ║
     ╚═════════╝
 
-As you can see this, created a split in the data. We go from two values to four using a different grouping scheme. By adding the `Currency` category, we group first by direction and next by currency.
+As seen above, this command creates an additional split in the data. By adding the `Currency` category, we group first by direction and next by currency, giving us four different values.
 
-However, our output is rather confusing because we don't know what each of the numbers signifies. Let's add more columns to reveal what the rows  mean:
+However, our output is rather confusing because we don't know what each number signifies. Let's add more columns to reveal what the rows mean:
 
     SELECT SUM(`Amount`) AS `Total`, `Currency`, `Direction` FROM `transactions` GROUP BY `Direction`, `Currency`;
 
@@ -123,7 +122,7 @@ Can you see the effect of using `AS` in the query? Clearly, before we used this 
 
 ## Multiplier Query
 
-> "Direction?" No Idea.
+> "Direction?" No idea.
 
 But still, we have literally no clue what the direction means to us. Also, since we know `1` is positive (stays the same `1`) and `2` is negative (should be converted into `-1`), we need to change them to their corresponding values. To make this kind of change, we use *SQL JOINs* if they are using the foreign key table relation or we use `CASE … WHEN … END` statements if we are only dealing with values. 
 
@@ -144,7 +143,7 @@ The above gives you the converted version of the `Direction` column, or the valu
     ) AS `Multiplier`
     FROM `transactions`
 
-The resulting query mmakes real sense:
+The resulting query makes real sense:
 
     ╔═══════════╦════════════╗
     ║ Direction ║ Multiplier ║
@@ -184,7 +183,7 @@ The above query gives us the following output:
 
 With the currency, direction and multiplier, we have gotten to a point where we can understand what's happening, at least to an extent. So, let's add another field that shows the right total amount with the sign. We just need to multiply the total with the multiplier.
 
-> **ProTip:** If you try using the column `Multiplier`, it will not work. That column is for viewing purposes as an alias only. There's really no column that exists in that name. We should redefine the contents of the column for generating the new column. Let's say the new column is `Total` and get rid of the old `Total` column. In short, we are multiplying what was already total with the query for multiplier. Also, we can get rid of the `Direction` since we are not using it.
+> **Pro Tip:** If you try using the column `Multiplier`, it will not work. That column is for viewing purposes as an alias only. There's really no column that exists in that name. We should redefine the contents of the column for generating the new column. Let's say the new column is `Total` and get rid of the old `Total` column. In short, we are multiplying what was already total with the query for multiplier. Also, we can get rid of the `Direction` since we are not using it.
 
 The updated query now looks like:
 
@@ -229,7 +228,7 @@ We get the output like:
     ║  5.00 ║ USD      ║
     ╚═══════╩══════════╝
 
-Here, 15.00 GBP comes from adding 150 to -135. Similarly, 5.00 comes from adding 2000 to -1995. 
+Here, we see the effect of using `GROUP BY`. 15.00 GBP comes from adding 150 to -135. Similarly, 5.00 USD comes from adding 2000 to -1995. 
 
 This way, we can get the consolidated sum of different entities (`Currency`) based on their values (`Direction`). If we need to separate by the users as well, we just need to add another `GROUP BY` value of that column. So, that would be like:
 
@@ -245,4 +244,4 @@ And finally using the JOINs, you can get the complete details of each user, alon
 ___________
 
 
-I hope this article was interesting and helpful. Please leave all comments and feedback in the discussion section below. And, as always, don't forget to print the favorite button! Thanks for reading.
+I hope this article was interesting and helpful. Please leave all comments and feedback in the discussion section below. And, as always, don't forget to hit the favorite button! Thanks for reading.
