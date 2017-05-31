@@ -1,14 +1,15 @@
-Everyday we try to simplify the way we build web solutions in order to encourage more individuals to appreciate, and when possible, join the trend. One of these attempts is the introduction of the "serverless" concept and realtime stores. These concepts are so powerful; when used appropriately improves how we work, reduces boilerplate codes/task, and most importantly assures peace of mind.
+Every day we try to simplify the way we build web solutions so that more individuals appreciate and join the trend. "Serverless" concepts and realtime stores are examples of such simplification. These ideas are powerful because they improve how we work, reduce boilerplate code, and most importantly assure peace of mind.
 
-In this article, we are going to see how dead simple it is to leverage [stdlib](https://stdlib.com/) and [deepstreamHub](https://deepstreamhub.com) to build a clock. The clock will not depend only on the browser, rather, time information will be delivered from the server but rendered by the browser.
+In this article, we are going to see how simple it is to use [stdlib](https://stdlib.com/) and [deepstreamHub](https://deepstreamhub.com) to build a clock. The clock will retrieve time information from the server, then relay it to the browser for rendering.
 
 ## stdlib
-stdlib is an implementation of the "serverless" concept which is best described as cloud functions. The term "serverless" does not mean that we don't need servers; it just means that we don't have to know the server details to get productive. Basically, you get to write functions that are deployed and result to an API endpoint.
+
+stdlib is an implementation of the "serverless" concept which is best described through cloud functions. The term "serverless" does not mean that we don't need servers; it just means that we don't have to know the server details to get productive. In short, you get to write functions that are deployed and result to an API endpoint. You can read more about serverless technology [here](https://martinfowler.com/articles/serverless.html). 
 
 ### Setting Up stdlib
-If you guessed npm, you guessed right. Before that though, you need to [create an stdlib](https://stdlib.com/) account so as to be identified with your functions/services.
+Now its time to set everything up using our favorite tool. (If you guessed **npm*** (Node Package Manager), you are correct.) Before that though, you need to [create an stdlib](https://stdlib.com/) account that links you to functions/services that you will need down the line.
 
-Next, install the CLI tool for interacting with your just created account. Creating functions, running the functions and deploying them are all simplified by the CLI tool:
+Next, using npm, install the CLI tool for interacting with your account. The CLI tool simplifies creating, running, and deploying functions:
 
 ```bash
 npm install lib.cli -g
@@ -41,7 +42,7 @@ lib http
 The above command will serve your function locally at `localhost:8170` by default.
 
 ## deepstream for Realtime PubSub
-stdlib is capable of converting your functions to API endpoints. This is great. Sometimes though, you would love to send some realtime data. Realtime data transfer has never been easier with deepstream. We will use deepstream's pubsub feature to emit realtime events from our stdlib function.
+stdlib is capable of converting your functions to API endpoints. This is great. Sometimes though, you would love to send some realtime data. With **deepstream**, realtime data transfer has never been easier. We will use deepstream's PubSub feature to emit realtime events from our stdlib function.
 
 You will need to [create a free deepstreamHub](https://dashboard.deepstreamhub.com/signup) account which generates an API key to interact with the server.
 
@@ -84,7 +85,7 @@ module.exports = (params, callback) => {
 };
 ```
 
-We've also imported moment to help us format time. An example format would look like the following:
+We've also imported **`moment`** to help us format time. An example format would look like the following:
 
 ```
 May 1st 2017, 7:26:39 AM
@@ -92,7 +93,9 @@ May 1st 2017, 7:26:39 AM
 
 ## Subscribing via a Client
 
-Right now, at the `/clock` route, our logic emits a realtime data via web socket. We can consume this realtime data from anywhere as long as we have the connection URL from deepstream. We can do this by importing deepstream from cdn, logging in as usual, and logging the emitted events to the console:
+Right now, at the `/clock` route, our logic emits a realtime data via web socket. We can consume this realtime data from anywhere as long as we have the **connection URL** from deepstream. 
+
+We can do this by importing deepstream from CDN (Content Delivery Network), logging in, and logging the emitted events to the console:
 
 ```html
 <html>
@@ -113,7 +116,7 @@ Right now, at the `/clock` route, our logic emits a realtime data via web socket
 </html>
 ```
 
-Rather than emitting, we subscribe to the `time` event and log the payload whenever the event is emitted:
+Rather than emitting, we subscribe to the `time` event and log the payload whenever the event gets emitted:
 
 ![Image of console](http://imgur.com/SUDoTgP.jpg)
 
@@ -131,4 +134,7 @@ client.event.subscribe('time', time => {
 ```
 
 ## Conclusion
-Hopefully, you have a learned a better and faster way to build realtime apps. The clock example is basic, but you can get as complex as your situation demands. Realtime data stores and serverless ideology have unimaginable powers you can harness to make your story as a software engineer worth telling.
+Hopefully, you have a learned a better and faster way to build realtime apps. The clock example is basic, but, depending on your situation, the task can get pretty complex. Realtime data stores and serverless ideology have unimaginable powers that you can harness to make your applications more reliable and flat-out cooler.
+____
+
+Thanks for reading this guide. Feel free to leave comments and feedback in the discussion section below. As always, click the "Favorites" button if you enjoyed this guide!
