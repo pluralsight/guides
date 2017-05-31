@@ -6,7 +6,7 @@ Consider a digital transaction in which a value is stored in one place and the c
 
 ## Money transaction example
 
-I was working on a similar problem related to different money transactions. In my case, the type of transaction would decide whether it was an incoming transaction or an outgoing one. Modeling this same circumstance, we are going to look at three things today:
+I encountered a similar problem related to different money transactions. The type of transaction would decide whether it was an incoming transaction or an outgoing one. Modeling this same circumstance, we are going to look at three things today:
 
 * Connecting the transactions by their value.
 * Creating a multiplier based on the relation for the value.
@@ -14,7 +14,7 @@ I was working on a similar problem related to different money transactions. In m
 
 # Grouping
 
-The first thing that comes to our mind when grouping is the aggregate functions. We will be using the aggregate functions to apply on a sample table that has all the financial details. The table's Data Definition Language (DDL) is provided in this post. 
+When grouping, **aggregate functions** are key. We will be applying certain aggregate functions on a sample table containing financial details. The table's Data Definition Language (DDL) is provided in this post. 
 
 The structure of the table looks like:
 
@@ -30,9 +30,9 @@ The structure of the table looks like:
     ║ TimeStamp ║ timestamp [CURRENT_TIMESTAMP] ║
     ╚═══════════╩═══════════════════════════════╝
 
-For this table, I had added a new column that tells the direction. `1` being credit and `2` being debit. The values `1` and `2` don't mean anything to us, but technically, out in the real world, it's going to be a foreign key to another table that holds the values. I have intentionally used positive numbers to mimic the real-world scenario.
+For this table, I had added a new column that tells the direction. `1` being credit and `2` being debit. The values `1` and `2` don't mean anything to us, but they serve as a foreign key to another table that holds the values. I have intentionally used positive numbers to mimic the real-world scenario.
 
-Consider the sample data set shown below. It represents values for one user:
+Consider the sample data set shown below, which represents values for one user:
 
     ╔═════════╦═══════════════════════╦═════════╦══════════╦═══════════╦════════╦═════════════════════╗
     ║  TranID ║        Subject        ║ Amount  ║ Currency ║ Direction ║ UserID ║      TimeStamp      ║
@@ -65,7 +65,7 @@ The above will output something like:
     ║ 4185.00 ║
     ╚═════════╝
 
-## Credits and Debits
+## Credit and Debit
 
 This is not our ideal case. We have different rows getting different values. On top of all that, the amount debited should be negated from the value. In that case, we can split the income and expenditure using the `GROUP BY` function, which gives us the following query:
 
