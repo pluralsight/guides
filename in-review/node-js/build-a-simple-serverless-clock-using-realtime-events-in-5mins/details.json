@@ -3,12 +3,7 @@
     "author_name": "christiannwamba",
     "author_real_name": "Christian Nwamba",
     "branch": "master",
-    "branches": [
-        [
-            "adityavarshney",
-            "adityavarshney-node-js-build-a-simple-serverless-clock-using-realtime-events-in-5mins"
-        ]
-    ],
+    "branches": [],
     "filename": "article.md",
     "first_commit": "965799b3dc033e5b6e75f46c2fbfb0be7b86e3de",
     "image_url": "https://avatars1.githubusercontent.com/u/8108337?v=3",
