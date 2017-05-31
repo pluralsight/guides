@@ -30,7 +30,7 @@ The structure of the table looks like:
     ║ TimeStamp ║ timestamp [CURRENT_TIMESTAMP] ║
     ╚═══════════╩═══════════════════════════════╝
 
-For this table, I had added a new column that tells the direction. `1` being credit and `2` being debit. The values `1` and `2` don't mean anything to us, but they serve as a foreign key to another table that holds the values. I have intentionally used positive numbers to mimic the real-world scenario.
+For this table, I had added a new column that tells the direction. `1` being credit and `2` being debit. The values `1` and `2` do not mean anything to us, but they serve as a foreign key to another table that holds the values. I have intentionally used positive numbers to mimic the real-world scenario.
 
 Consider the sample data set shown below, which represents values for one user:
 
@@ -126,7 +126,7 @@ Can you see the effect of using `AS` in the query? Clearly, before we used this 
 
 But still, we have literally no clue what the direction means to us. Also, since we know `1` is positive (stays the same `1`) and `2` is negative (should be converted into `-1`), we need to change them to their corresponding values. To make this kind of change, we use *SQL JOINs* if they are using the foreign key table relation or we use `CASE … WHEN … END` statements if we are only dealing with values. 
 
-Since our sample table has only values, we'll build our multiplier.
+Since our sample table only has values, we can build our multiplier.
 
     CASE
         WHEN `Direction`=1 THEN  1
@@ -159,7 +159,7 @@ The resulting query makes real sense:
 
 ## Combining Both
 
-Looks like we have got what we needed. It's the multiplier! When the value of the result is multiplied with the amount, the total amount can be summed. With the multiplier as well as a parameter, the SQL query looks like:
+Looks like we have got what we needed: the multiplier! When the value of the result is multiplied with the amount, the total amount can be summed. With the multiplier as well as a parameter, the SQL query looks like:
 
     SELECT SUM(`Amount`) AS `Total`, `Currency`, `Direction`, (
         CASE
@@ -179,11 +179,13 @@ The above query gives us the following output:
     ║ 1995.00 ║ USD      ║         2 ║         -1 ║
     ╚═════════╩══════════╩═══════════╩════════════╝
 
-## Let's Combine and Compress
+## Combine and Compress
 
-With the currency, direction and multiplier, we have gotten to a point where we can understand what's happening, at least to an extent. So, let's add another field that shows the right total amount with the sign. We just need to multiply the total with the multiplier.
+With the currency, direction and multiplier, we have gotten to a point where we can understand what is happening, at least to an extent. So, let us add another field that shows the right total amount with the sign. We just need to multiply the total with the multiplier.
 
-> **Pro Tip:** If you try using the column `Multiplier`, it will not work. That column is for viewing purposes as an alias only. There's really no column that exists in that name. We should redefine the contents of the column for generating the new column. Let's say the new column is `Total` and get rid of the old `Total` column. In short, we are multiplying what was already total with the query for multiplier. Also, we can get rid of the `Direction` since we are not using it.
+> **Pro Tip:** If you try using the column `Multiplier`, it will not work. That column is for viewing purposes as an alias only. No column actually exists in that name. 
+
+Instead, we should redefine the contents of the column in order to generate the new column. Let's say the new column is `Total` and get rid of the old `Total` column. In short, we are multiplying what was already in `Total` with whatever we get in the multiplier query. That way we get the values we want, and we can get rid of the `Direction` since we are not using it.
 
 The updated query now looks like:
 
