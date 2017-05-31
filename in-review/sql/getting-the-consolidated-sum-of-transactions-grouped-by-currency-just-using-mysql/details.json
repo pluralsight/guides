@@ -3,7 +3,12 @@
     "author_name": "praveenscience",
     "author_real_name": "Praveen Kumar",
     "branch": "master",
-    "branches": [],
+    "branches": [
+        [
+            "adityavarshney",
+            "adityavarshney-sql-getting-the-consolidated-sum-of-transactions-grouped-by-currency-just-using-mysql"
+        ]
+    ],
     "filename": "article.md",
     "first_commit": "431e96e62ff5fa5bacb032aecd5d8c6ed2d1b052",
     "image_url": "https://avatars1.githubusercontent.com/u/1830380?v=3",
