@@ -204,7 +204,7 @@ The output for the above query looks like:
     ║  -135.00 ║ GBP      ║
     ║ -1995.00 ║ USD      ║
     ╚══════════╩══════════╝
-As you can see, the `Total` and `Currency` columns result from the `AS` keyword, and the signage results from the `*`, meaning multiply, in the select statement.
+As you can see, the `Total` and `Currency` columns result from the `AS` keyword, and the sign comes from the `*`, meaning multiply, in the select statement.
 
 ## Getting net values
 
