@@ -62,6 +62,7 @@ public class FilePackageWriter
 
             var fileInfo = new FileInfo(_filepath);
 
+            // Get the parent directory path of the package file and if the package file already exists delete it
             if (fileInfo.Exists)
             {
                 filename = fileInfo.Name;
@@ -93,6 +94,7 @@ public class FilePackageWriter
                 }
             }
 
+            // Create a temp directory for our package
             _tempDirectoryPath = parentDirectoryPath + "\\" + filename + "_temp";
             if (Directory.Exists(_tempDirectoryPath))
             {
@@ -102,6 +104,7 @@ public class FilePackageWriter
             Directory.CreateDirectory(_tempDirectoryPath);
             foreach (var filePath in _contentFilePathList)
             {
+                // Copy every content file into the temp directory we created before
                 var filePathInfo = new FileInfo(filePath);
                 if (filePathInfo.Exists)
                 {
@@ -112,7 +115,7 @@ public class FilePackageWriter
                     throw new FileNotFoundException("File path " + filePath + " doesn't exist!");
                 }
             }
-
+            // Generate the ZIP from the temp directory
             ZipFile.CreateFromDirectory(_tempDirectoryPath, _filepath);
         }
         catch (Exception e)
@@ -122,6 +125,7 @@ public class FilePackageWriter
         }
         finally
         {
+            // Clear the temp directory and the content files
             if (Directory.Exists(_tempDirectoryPath))
             {
                 Directory.Delete(_tempDirectoryPath, true);
@@ -167,10 +171,13 @@ public class FilePackageReader
         {
             _filenameFileContentDictionary = new Dictionary<string, string>();
 
+            // Open the package file
             using (var fs = new FileStream(_filepath, FileMode.Open))
             {
+                // Open the package file as a ZIP
                 using (var archive = new ZipArchive(fs))
                 {
+                    // Iterate through the content files and add them to a dictionary
                     foreach (var zipArchiveEntry in archive.Entries)
                     {
                         using (var stream = zipArchiveEntry.Open())
