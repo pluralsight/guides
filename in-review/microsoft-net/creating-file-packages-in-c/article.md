@@ -1,9 +1,10 @@
-When users are saving or loading their states in applications or games, we simply read or write files from the disk to save or restore their states. However, sometimes you cannot use a single file to store information, because you may want to organize the current state into various groups, such as base text data, formatting, metadata etc.
+When users are saving or loading their states in applications or games, we simply read or write files from the disk to save or restore their states. However, sometimes you cannot use a single file to store information, because you may want to organize the current state into various groups, such as base text data, formatting, metadata, and so on.
 
-In this tutorial I will explain how to generate and read files containing multiple files inside as a package.
+In this tutorial, I will explain how to generate and read packages that contain multiple files using C#.
 
 ## What are file packages?
-Before we dive into the code I will give an example of a package file so we understand what we are trying to create. Various software use file packages to save and load states, such as Microsoft Office. If you played around or tried to restore an office file before, you know that you can open an Office file like this:
+
+Before we dive into the code I will give an example of a package file so we understand what we are trying to create. Various kinds of software use file packages to save and load states. One such example is Microsoft Office. If you played around or tried to restore an Office file before, you might have found that you can open a file like this:
 1. Change the Office file extension to zip.
 2. Use your favorite compression utility to extract the file into a folder.
 3. Open the folder
@@ -16,9 +17,9 @@ Then we open the folder:
 
 ![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/6d362a45-c483-4008-a7f1-cc87c0b1e544.png)
 
-As you can see here, a Word file contains files and directories and it is actually acts as a wrapper of the files actually read and written by Office.
+As you can see here, a Word file contains files and directories and it is actually acts as a wrapper of the files actually read and written by Office. This all forms a **file package**.
 
-Now we know what are file packages, we can start writing the code for our packaging utility.
+Now we know what file packages are, we can start writing the code for our packaging utility.
 
 ## Packaging Utility
 
@@ -38,7 +39,7 @@ public class FilePackage
 }
 ```
 
-This class have two properties; `FilePath` to hold the file path of the package and `ContentFilePathList` to hold the file paths of the contents of the file package. Now let's create our `FilePackageWriter` class to actually write our package.
+This class has two properties; `FilePath` to hold the file path of the package and `ContentFilePathList` to hold the file paths of the contents of the file package. Now let's create our `FilePackageWriter` class to actually write our package.
 
 ```csharp
 public class FilePackageWriter
@@ -205,7 +206,7 @@ public class FilePackageReader
 In the reader:
 1. We get the file path of the package.
 2. We open it using a `FileStream` and a `ZipArchive`.
-3. We read the content files one by one and add file name and the file contents to a `Dictionary`.
+3. We read the content files one by one and add the file name and the file contents to a `Dictionary`.
 
 Our FilePackageWriter and FilePackageReader are finally ready. Now we can test our code and see if it works!
 ```csharp
@@ -262,11 +263,11 @@ We can also see it in the file system:
 
 ![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/7f91e4c2-cd7a-4550-b73c-faefff4746da.png)
 
+This means that our packaging algorithms worked! 
+
 ## Conclusion
 
-In this tutorial I explained how to generate file packages that contains other files. This is especially useful in situations where you application needs to read or write to multiple files when saving or restoring states. If you generate a file package you do not need to unnecessary folder structures for each of your save files, instead your files can stay neatly in a single file and you can use that to load or save states. This approach is helpful to the user as well since they don't need to mess around with folder structures when they need to move their saved files into backup drives or send them via e-mail.
+This guide explained how to generate file packages. Packaging is worthwhile when your application needs to read or write to multiple files when saving or restoring states. If you generate a file package you eliminate unnecessary folders for each of your save files. Instead, your files stay neatly tucked in a single file that you can use to load or save states. This approach is also helpful to users because moving saved files into backup drives or sending them via e-mail becomes a streamlined process that no longer entails searching through folders.
 
-I hope this guide will be useful for your projects. Please feel free to post your ideas and feedback.
-
-Happy coding!
+I hope this guide will be useful for your projects. Let me know your ideas and feedback in the discussion section below. Happy coding!
 
