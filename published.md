@@ -1,3 +1,8 @@
+### Getting the consolidated sum of transactions grouped by currency just using MySQL by Praveen Kumar
+- [Read the guide](https://www.pluralsight.com/guides/sql/getting-the-consolidated-sum-of-transactions-grouped-by-currency-just-using-mysql)
+- [Read more from Praveen Kumar](https://www.pluralsight.com/guides/author/praveenscience) <img src="https://avatars1.githubusercontent.com/u/1830380?v=3" width="30" height="30" alt="Praveen Kumar" />
+- Related to: SQL
+
 ### Using the Unsplash API by nickfisher
 - [Read the guide](https://www.pluralsight.com/guides/other/using-the-unsplash-api)
 - [Read more from nickfisher](https://www.pluralsight.com/guides/author/nickfisher) <img src="https://avatars1.githubusercontent.com/u/4007917?v=3" width="30" height="30" alt="nickfisher" />
