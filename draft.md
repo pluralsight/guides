@@ -1,8 +1,3 @@
-### Introduction to MongoDB by Praveen Kumar
-- [Read the guide](https://www.pluralsight.com/guides/sql/introduction-to-mongodb?status=draft)
-- [Read more from Praveen Kumar](https://www.pluralsight.com/guides/author/praveenscience) <img src="https://avatars1.githubusercontent.com/u/1830380?v=3" width="30" height="30" alt="Praveen Kumar" />
-- Related to: SQL
-
 ### The Unsplash API 2 by nickfisher
 - [Read the guide](https://www.pluralsight.com/guides/other/the-unsplash-api-2?status=draft)
 - [Read more from nickfisher](https://www.pluralsight.com/guides/author/nickfisher) <img src="https://avatars1.githubusercontent.com/u/4007917?v=3" width="30" height="30" alt="nickfisher" />
