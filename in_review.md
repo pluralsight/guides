@@ -1,3 +1,8 @@
+### Introduction to MongoDB by Praveen Kumar
+- [Read the guide](https://www.pluralsight.com/guides/sql/introduction-to-mongodb?status=in-review)
+- [Read more from Praveen Kumar](https://www.pluralsight.com/guides/author/praveenscience) <img src="https://avatars1.githubusercontent.com/u/1830380?v=3" width="30" height="30" alt="Praveen Kumar" />
+- Related to: SQL
+
 ### How to activate animation when the content scrolls into view by Hayk Yaghubyan
 - [Read the guide](https://www.pluralsight.com/guides/html-css/how-to-activate-animation-when-the-content-scrolls-into-view?status=in-review)
 - [Read more from Hayk Yaghubyan](https://www.pluralsight.com/guides/author/haykoyaghubyan) <img src="https://avatars3.githubusercontent.com/u/26785721?v=3" width="30" height="30" alt="Hayk Yaghubyan" />
