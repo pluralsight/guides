@@ -253,11 +253,6 @@
 - [Read more from Red Moses](https://www.pluralsight.com/guides/author/redmoses) <img src="https://avatars.githubusercontent.com/u/4059490?v=3" width="30" height="30" alt="Red Moses" />
 - Related to: DevOps (Docker, Nagios, Jenkins, Chef, Puppet, etc)
 
-### Introduction to MongoDB by Sanjeev Murthy
-- [Read the guide](https://www.pluralsight.com/guides/nosql-databases/introduction-to-mongodb)
-- [Read more from Sanjeev Murthy](https://www.pluralsight.com/guides/author/SanjeevMurthy) <img src="https://avatars.githubusercontent.com/u/10756352?v=3" width="30" height="30" alt="Sanjeev Murthy" />
-- Related to: NoSQL Databases (MongoDB, Cassandra, etc)
-
 ### Getting started with Page Object Pattern for your Selenium tests by Kim Schiller
 - [Read the guide](https://www.pluralsight.com/guides/software-engineering-best-practices/getting-started-with-page-object-pattern-for-your-selenium-tests)
 - [Read more from Kim Schiller](https://www.pluralsight.com/guides/author/kschiller) <img src="https://avatars.githubusercontent.com/u/2341536?v=3" width="30" height="30" alt="Kim Schiller" />
