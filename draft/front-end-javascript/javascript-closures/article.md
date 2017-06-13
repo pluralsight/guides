@@ -116,9 +116,9 @@ myCounter2.increment(2);
 myCounter1.decrement(1);
 myCounter2.decrement(1);
 ```
-In the first two lines of the code, we have actually created 2 different objects, `myCounter1` and `myCounter2`. These objects have the same properties, `increment` and `decrement`, which are references to the `increment` and `decrement` functions. Therefore, those functions can be accessed via `increment` and `decrement`     
+In the first two lines of the code, we have actually created 2 different objects, `myCounter1` and `myCounter2`. These objects have the same properties, `increment` and `decrement`, which are references to the `increment` and `decrement` functions. Therefore, those functions can be accessed via `increment` and `decrement` properties. The `myCounter1` object is created by calling `counter` function with parameter `0`, and the `myCounter2` by calling it with parameter `3`. That means that `increment` and `decrement` functions will have different values of the `currentValue` variable in the outer scope, so their calls on those two objects will produce different results, although there are called with the same parameters, like in the example above.
 
-The output of this code would be:
+therefore, the output of this code would be:
 
 ```
 currentValue = 2
@@ -126,8 +126,6 @@ currentValue = 5
 currentValue = 1
 currentValue = 4
 ```
-
-
 
 ## Use Cases
 
