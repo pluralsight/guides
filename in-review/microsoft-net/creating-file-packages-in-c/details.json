@@ -3,7 +3,12 @@
     "author_name": "aykanatm",
     "author_real_name": "Murat Aykanat",
     "branch": "master",
-    "branches": [],
+    "branches": [
+        [
+            "adityavarshney",
+            "adityavarshney-microsoft-net-creating-file-packages-in-c"
+        ]
+    ],
     "filename": "article.md",
     "first_commit": "975e8fa439135c512aa1eb7789cae507784b3fd0",
     "image_url": "https://avatars2.githubusercontent.com/u/9140297?v=3",
