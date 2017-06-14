@@ -1,6 +1,6 @@
-When users are saving or loading their states in applications or games, we simply read or write files from the disk to save or restore their states. However, sometimes you cannot use a single file to store information, because you may want to organize the current state into various groups, such as base text data, formatting, metadata, and so on.
+Anytime users save or load something in an application or game, the program typically reads or writes files using the disk as a means of saving or restoring these "states." However, occasionally you cannot use a single file to store information. For instance, you may want to organize the current state into various groups, such as base text data, formatting, metadata, and so on. For that, the appropriate tool is a **file package.**
 
-In this tutorial, I will explain how to generate and read packages that contain multiple files using C#.
+In this tutorial, I will explain how to generate and read packages that contain multiple files using C#. Hopefully, by the end of this guide, you will be able to understand the basics of file packages and be able to design customized packages, if need be.
 
 ## What are file packages?
 
@@ -267,7 +267,7 @@ This means that our packaging algorithms worked!
 
 ## Conclusion
 
-This guide explained how to generate file packages. Packaging is worthwhile when your application needs to read or write to multiple files when saving or restoring states. If you generate a file package you eliminate unnecessary folders for each of your save files. Instead, your files stay neatly tucked in a single file that you can use to load or save states. This approach is also helpful to users because moving saved files into backup drives or sending them via e-mail becomes a streamlined process that no longer entails searching through folders.
+This guide explained how to generate file packages. Packaging is worthwhile when your application needs to read or write to multiple files when saving or restoring states. File packaging can eliminate unnecessary folders for each of your save files. Instead, your files stay neatly tucked in a single file that you can use to load or save states. This approach is also helpful to users because moving saved files into backup drives or sending them via e-mail becomes a streamlined process that no longer entails searching through folders.
 
 I hope this guide will be useful for your projects. Let me know your ideas and feedback in the discussion section below. Happy coding!
 
