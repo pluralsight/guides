@@ -184,7 +184,7 @@ An important feature of intermediate operations is that they don't process the e
 
 Intermediate operations are further divided into stateless and stateful operations.
 
-**Stateless** operations retain no state from previously elements when processing a new element so each can be processed independently of operations on other elements.
+**Stateless** operations retain no state from previous elements when processing a new element so each can be processed independently of operations on other elements.
 
 Some examples are:
 - `Stream<T> filter(Predicate<? super T> predicate)` 
