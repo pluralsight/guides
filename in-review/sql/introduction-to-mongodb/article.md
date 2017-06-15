@@ -41,7 +41,7 @@ Server has startup warnings:
 >
 ```
 
-There will be a few crazy warnings, which you need not worry about. If we press `<kbd>Ctrl</kbd> + <kbd>L</kbd>` or type in `cls` and press <kbd>Enter</kbd>, all the messages will be cleared. And you will be left with the MongoDB Shell:
+There will be a few crazy warnings, which you need not worry about. If we press <kbd>Ctrl</kbd> + <kbd>L</kbd> or type `cls` in the shell and hit <kbd>Enter</kbd>, all the messages will be cleared. And you will be left with the **MongoDB Shell**:
 
 ```language-bash
 >
@@ -81,7 +81,7 @@ praveen
 
 ## Documents
 
-The syntax of a document looks like a JSON (JavaScript Object Notation) or a JavaScript Object, something like this:
+The syntax of a document looks like JSON (JavaScript Object Notation). For example:
 
 ```language-javascript
 {
@@ -94,7 +94,7 @@ The syntax of a document looks like a JSON (JavaScript Object Notation) or a Jav
 
 > **Note:** A valid JSON will not have a trailing comma. Look at the last value? `ValueN` doesn't end with a comma.
 
-Let's consider a student record. Typically a student record might contain the basic details like `name`, `email`, degree:
+Let's consider a student record. A typical student record might contain basic details like name, email, and degree:
 
 ```language-javascript
 {
@@ -104,7 +104,7 @@ Let's consider a student record. Typically a student record might contain the ba
 }
 ```
 
-The above set of data are just simple string values. We can also have arrays and objects are values. Say, something like `subjects` holding an array of objects, and each object represents a subject's details and the student's phone number could be an array of strings too.
+The above set of data are just simple string values. Arrays and objects can also be values in our database. For example, our database might have a field for `subjects`, which keeps track of all classes in array format. In this example, each class or course would be an object that represents a subject's details. We could also keep students' phone numbers in array format as well. Each of these usages is shown below:
 
 ```language-javascript
 {
@@ -133,7 +133,7 @@ The above set of data are just simple string values. We can also have arrays and
 
 ### User Management
 
-To start using our freshly brewed (eh?) MongoDB Database, we need to create some users for the same. The function for creating users is [`db.createUser()`](https://docs.mongodb.com/manual/reference/method/db.createUser/). There are different ways for this, but let's focus on the simple one:
+To start using our freshly-brewed MongoDB Database, we need to create some users. The function for creating users is [`db.createUser()`](https://docs.mongodb.com/manual/reference/method/db.createUser/). There are different ways for this, but let's focus on the simple one:
 
 ```language-javascript
 db.createUser(
@@ -147,7 +147,7 @@ db.createUser(
 
 > **Note:** The `db` variable here denotes the current active database.
 
-Doing this on the shell will give you a success output similar to the following:
+Doing this operation on the shell will give you a success output similar to the following:
 
 ```language-bash
 > db.createUser(
@@ -169,7 +169,7 @@ In traditional databases, we generally use schema (or tables), but there's no su
 
 #### Creating Collections
 
-To create a collection, the method used is [`db.createCollection()`](https://docs.mongodb.com/manual/reference/method/db.createCollection/). It takes only one parameter, the name of the collection. So, to create a collection for students, we give:
+To create a collection, use the [`db.createCollection()`](https://docs.mongodb.com/manual/reference/method/db.createCollection/) method. It takes one parameter, the name of the collection. To create a collection for students, we give:
 
 ```language-bash
 > db.createCollection("students");
@@ -191,7 +191,7 @@ students
 
 #### Inserting into Collections
 
-Inserting into collections is a simple one. It is similar to an array's push function. We use the [`db.collection.insert()`](https://docs.mongodb.com/manual/reference/method/db.collection.insert/) function for that. In our case, the collection is `students`. So we use:
+Inserting into collections is similar to an array's `push` function. We'll use the [`db.collection.insert()`](https://docs.mongodb.com/manual/reference/method/db.collection.insert/) function. In our case, the collection is `students`. So we use:
 
 ```language-javascript
 db.students.insert({
@@ -247,7 +247,7 @@ We can see in the result, it shows how many inserts have been done by showing `n
 
 #### Listing Collection Items or Documents (Records)
 
-To see if this has been really inserted, we can use the `find()` function to see if it has been inserted correctly. To use the [`db.collection.find()`](https://docs.mongodb.com/manual/reference/method/db.collection.find/) function, this is the way:
+To see if this has been really inserted, we can use the `find()` function to see if it has been inserted correctly. Use [`db.collection.find()`](https://docs.mongodb.com/manual/reference/method/db.collection.find/) as follows:
 
 ```language-bash
 > db.students.find();
@@ -255,7 +255,9 @@ To see if this has been really inserted, we can use the `find()` function to see
 >
 ```
 
-The above output makes no sense. We aren't machines, are we? Let's try to format it. We can format it using the [`pretty()`](https://docs.mongodb.com/manual/reference/method/cursor.pretty/) function, which goes like:
+Clearly our find operation has very complicated output. To the newbie reader, it makes no sense. 
+
+Let's try to format it using the [`pretty()`](https://docs.mongodb.com/manual/reference/method/cursor.pretty/) function, which goes like:
 
 ```language-javascript
 > db.students.find().pretty();
@@ -287,11 +289,11 @@ The above output makes no sense. We aren't machines, are we? Let's try to format
 >
 ```
 
-Ah, now this is what we inserted. It looks better than previous machine output. All that we need to do is, add `.pretty()` at the end of any result to make it look pretty.
+Ah, now this is what we inserted. It looks better than previous machine output. All that we need to do is add `.pretty()` at the end of any result to make it look pretty.
 
 > **Wait a minute!** Something's new!
 
-We see that there's a new field called `_id` in the list of fields. We didn't add it, didn't we? MongoDB has a way of identifying records using `_id` and setting it to an Object with some crazily random value. This is used as a unique value to uniquely identify a single record. Please note that this field is automatically created by MongoDB, and we don't need to worry about creating one separately, making it auto increment and primary key, which needs to be done in a relational database.
+We see that there's a new field called `_id` in the list of fields. We did not add it; MongoDB has a way of identifying records using `_id` and setting it to an Object with some crazily random value. This is used as a unique value to uniquely identify a single record. Please note that this field is automatically created by MongoDB, and we don't need to worry about creating one separately and making it auto increment and function as the primary key. These are all requirements in a RDB that are made obsolete in a NoSQL database.
 
 #### Bulk Insertion
 
@@ -315,7 +317,9 @@ db.students.insert(
 );
 ```
 
-You can find that the above records are both different and they also differ from the first record. Now this is the biggest advantage of Document Databases. You **don't** need a fixed schema for the records and each record can be any valid JavaScript expression. This "on-the-fly" schema change is the biggest advantage of using NoSQL.
+You can find that the above records are both different. This leads us to the biggest advantage of Document Databases. You **don't** need a fixed schema for the records and each record can be any valid JavaScript expression.
+
+> Changing schema "on the fly" is the biggest advantage of using NoSQL.
 
 Now let's try executing the above insert query on our database.
 
@@ -358,7 +362,7 @@ You get the output of the `BulkWriteResult` function, where it says nothing for 
 >
 ```
 
-Oh yes, we got the three records, but each has different schema, which is kinda great! Since there are too many fields, let's make it `pretty()`:
+Oh yes, we got the three records, but each has different schema, which is great! Since there are too many fields, let's make it `pretty()`:
 
 ```language-javascript
 > db.students.find().pretty();
@@ -468,7 +472,7 @@ The above command correctly identifies my record and displays it, even though `9
 
 #### Updating Records
 
-The method we use here is [`db.collection.update()`](https://docs.mongodb.com/manual/reference/method/db.collection.update/). It takes up two parameters and the first parameter is an object of a key value pair for a match that is present in the records. The next parameter is the content that is supposed to be replaced with.
+The method we use here is [`db.collection.update()`](https://docs.mongodb.com/manual/reference/method/db.collection.update/). It takes up two parameters and the first parameter is an object of a key value pair for a match that is present in the records. The next parameter is the content that it's supposed to be replaced with.
 
 So let's try something like this:
 
@@ -495,11 +499,11 @@ db.students.update({"name": "Praveen Kumar"}, {
 });
 ```
 
-> **Note 1:** You need to give the full object in case of update function, because it makes a replacement of the whole record with the second parameter. If we didn't set the other values, it will just have one record with just two of the items, the email and the degree.
+> **Note 1:** You need to give the full object in case of update function, because it makes a replacement of the whole record with the second parameter. If we didn't set the other values, it will just have one record with just two of the items: the email and the degree.
 
-> **Note 2:** Do not use find by name, like how I just did. There many be many records, matching the same parameter. Always use something unique like `_id`.
+> **Note 2:** Do not find by name, AS I just did. There may be many records, matching the same parameter so use something unique, like `_id`.
 
-Trying the above thing, we get:
+Trying the above, we get:
 
 ```language-javascript
 > db.students.update({"name": "Praveen Kumar"}, {
@@ -526,7 +530,7 @@ WriteResult({ "nMatched" : 1, "nUpserted" : 0, "nModified" : 1 })
 >
 ```
 
-Voila! Let's understand the results:
+Voila! Let's see the results:
 
 ```language-javascript
 {
@@ -538,9 +542,9 @@ Voila! Let's understand the results:
 
 It matched one record and it modified it. There's none upserted (we'll cover this later). This means that, there's a possibility that it might match, but not update. Let's run the same command again and see what happens.
 
-> Oh dear! It shows the same output. May be I was over enthusiastic.
+> Oh dear! It shows the same output. Maybe I was over-enthusiastic.
 
-If we see what has changed, we may try to run the `find()` function along with our pretty `pretty()` function too and see.
+To see what has changed, we could try to run the `find()` function along with our pretty `pretty()` function.
 
 ```language-javascript
 > db.students.find({"phone": "9840035007"}).pretty();
@@ -571,10 +575,9 @@ If we see what has changed, we may try to run the `find()` function along with o
 }
 >
 ```
+##### Using `$set`
 
-> I know it's a pain to add the whole record again, just to change one single value.
-
-Good news is, there's a way around that and that's using the [`$set`](https://docs.mongodb.com/manual/reference/operator/update/set/) operator. So let's take another example. Say we need to change my `email` to `praveen@example.net`. What we need to do is:
+However, it's a pain to add the whole record again, just to change one single value. The good news is, there's a way around that and that's using the [`$set`](https://docs.mongodb.com/manual/reference/operator/update/set/) operator. So let's take another example. Say we need to change my `email` to `praveen@example.net`. What we need to do is:
 
 ```language-javascript
 db.students.update({
@@ -586,7 +589,7 @@ db.students.update({
 });
 ```
 
-This is really short and sweet. Now let's see the output of the above command.
+Short and sweet! Now let's see the output of the above command.
 
 ```language-javascript
 > db.students.update({
@@ -600,7 +603,7 @@ WriteResult({ "nMatched" : 1, "nUpserted" : 0, "nModified" : 1 })
 >
 ```
 
-Ah, that was great. Now, this `$set` is somewhat similar to our SQL's `UPDATE` query. When the query is fired, it keeps the already existing value intact and updates the respective fields and also, you get to see how many rows it has affected.
+Now, this `$set` is somewhat similar to our SQL's `UPDATE` query. When the query is fired, it keeps the already existing value intact and updates the respective fields. Similar to `UPDATE`, `$set` shows how many rows the query has affected.
 
 If we see the above result, we can find that the command has matched one and modified one, but not upserted any. If we try to run the same command again, it will give the following result:
 
@@ -614,7 +617,7 @@ Sweet! Now we know where this `matched` and `modified` have different counts. Th
 
 #### Incrementing Numeric Values
 
-There's also another operator that helps us incrementing the numeric values. For this to work, we need a record that has some numeric parameter. The best example would be incrementing `points`. Being lazy, I am going to use the `$set` function:
+There's another operator that helps us increment numeric values. Consider a record that has some numeric parameter, such as a field called `points`. `points` are great because they need to increment frequently. Being lazy, I am going to use the `$set` function:
 
 ```language-javascript
 db.students.update({
@@ -673,7 +676,11 @@ And checking if it has been updated, we fire out the `find()` command, we get:
 >
 ```
 
-So that looks fine to me. We have a `points` field in my record with a value of `15`. Let's consider I complete this article, so I get 5 more points, it just needs a small thing:
+Excellent. We have a `points` field in my record with a value of `15`. 
+
+That entire process should be clear by now. If something is unclear, look back at the previous section of the guide and/or fire off a question in the discussion section below.
+
+Moving on, let's consider the case that I complete this article, thereby earning 5 more points. This condition can be produced with one small change:
 
 ```language-javascript
 db.students.update({
@@ -685,7 +692,7 @@ db.students.update({
 });
 ```
 
-The above syntax is very similar to `$set`, we are just changing `$set` to `$inc`, which is similar to using the augmented assignment operator `+=` instead of assignment operator `=`.
+As you can see, changing `$set` to `$inc`, makes the difference. This is similar to using the augmented assignment operator `+=` in standard langauges rather than the assignment operator `=`.
 
 ```language-javascript
 > db.students.update({
@@ -726,13 +733,13 @@ WriteResult({ "nMatched" : 1, "nUpserted" : 0, "nModified" : 1 })
 >
 ```
 
-Wow, that was an awesome increment for me from 15 to 20. Thanks! So this is a better way to increment numeric values.
+Wow, that was an awesome increment for me from 15 to 20. Clearly, using `$inc` is a great way to increment numeric values.
 
 #### Removing Fields
 
-This may sound crazy, but yeah, you can remove all or few fields from a single record. That's how NoSQL works. For this, we will be using a function called [`$unset`](https://docs.mongodb.com/manual/reference/operator/update/unset/), which is opposite to the `$set`, which we saw before.
+You can remove all or few fields from a single record. That's how NoSQL works. For this, we will be using a function called [`$unset`](https://docs.mongodb.com/manual/reference/operator/update/unset/), which is opposite to the `$set`, which we saw before.
 
-The syntax for this is quite tricky. You need to pass the whole object as the second parameter for this. Well, for example, let's say, I don't want that `points` now. If I change my mind and want to remove the `points` from my record, I just need to execute the following command:
+The syntax for this is quite tricky. You need to pass the whole object as the second parameter. For example, let's say I don't want that `points` field now. Instead I want to remove the `points` category from my record. With NoSQL, I just need to execute the following command:
 
 ```language-javascript
 db.students.update({
@@ -784,11 +791,11 @@ WriteResult({ "nMatched" : 1, "nUpserted" : 0, "nModified" : 1 })
 >
 ```
 
-Yippee! We have removed the `points` from my record.
+Yippee! We have removed `points` from my record.
 
-#### Upsertion - What the?
+#### Upsertion
 
-Upsert is a new term here. It is a short form of if it is found, update it, if not, insert it. So, when you try to find a match in your records that is not actually there, but you want to make at least an insert operation, no matter what, then it is called an upsertion. Let's consider the same example, where we have three records and we'll try to update a non-existent record, say the student "Baahubali".
+**Upsert** is a new term here and it's a combination of `update` and `insert`. Upserting is similar to saying, "if a record is present, update it, otherwise, insert it." An upsertion occurs when you try to find a match in the database, can't find it, and insert a vlaue instead of simply returning. Let's consider the same example, where we have three records and we'll try to update a non-existent record, say the student "Baahubali".
 
 ```language-javascript
 db.students.update({
@@ -800,7 +807,7 @@ db.students.update({
 });
 ```
 
-If we go ahead and run the above command, all we get is:
+If we go ahead and run the above command, we get:
 
 ```language-javascript
 > db.students.update({
@@ -814,7 +821,7 @@ WriteResult({ "nMatched" : 0, "nUpserted" : 0, "nModified" : 0 })
 >
 ```
 
-The result is 0 all across. Doing a simple `find()` will give the same results as how it was before. The list will be the same. If we want the database to check if the match is not found, then insert it, we need to use the option called **upsert**. Now let's use the same query and make a small change in it. Let's add a third parameter for the `update()` function, specifying an object with only `upsert` set to `true`.
+The result is 0 all across. Doing a simple `find()` will give the same results as they were before. If we want the database to check if the match is not found, then insert it, we need to use the option called **upsert**. Now let's use the same query and make a small change in it. Let's add a third parameter for the `update()` function, specifying an object with only `upsert` set to `true`.
 
 ```language-javascript
 db.students.update({
@@ -849,7 +856,7 @@ WriteResult({
 >
 ```
 
-We can see above that there's one record inserted (actually upserted) with the `_id` returned to us. This is similar to the MySQL Insert query on a table where there is `AUTO_INCREMENT` set. Now let's see what's there in the database by making a `find()`:
+By setting the `upsert` parameter to `true`, we can see there's one record inserted (actually upserted) with the `_id` returned to us. This is similar to the MySQL Insert query on a table where there is `AUTO_INCREMENT` set. Now let's see what's there in the database by making a `find()`:
 
 ```language-javascript
 > db.students.find().pretty();
@@ -902,11 +909,13 @@ We can see above that there's one record inserted (actually upserted) with the `
 >
 ```
 
-Yay! We have Baahubali in our list of students. Let's hunt for Kalakeya now! 😁
+Yay! Now [Baahubali](https://en.wikipedia.org/wiki/Baahubali:_The_Beginning) is in our list of students. (Let's hunt for Kalakeya now! 😁) 
+
+Clearly, upsert is a useful function that can save quite a bit of error handling and time down the line.
 
 #### Renaming Fields
 
-We have Baahubali as our student, but wait. In those Mahishmati times, we didn't have email, did we? Let's not use `email` for him, but `pigeon` (Rajamatha used to send mails to Baahubali using Pigeons, remember?). We have a quick stuff for renaming things in MongoDB. As you guessed, the operator is [`$rename`](https://docs.mongodb.com/manual/reference/operator/update/rename/). This function is also similar to our `$set` function in its syntax, so to rename, it would be:
+We have Baahubali as our student, but wait. In those Mahishmati times, they didn't have email, did they? Let's replace his `email` field with `pigeon`. We have a quick stuff for renaming things in MongoDB. As you guessed, the operator is [`$rename`](https://docs.mongodb.com/manual/reference/operator/update/rename/). This function is also similar to our `$set` function in its syntax, so to rename, it would be:
 
 ```language-javascript
 db.students.update({
@@ -939,15 +948,16 @@ WriteResult({ "nMatched" : 1, "nUpserted" : 0, "nModified" : 1 })
 >
 ```
 
-Ah! I love this pigeon stuff. We have got one record matched and modified. We have now successfully changed the `email` to `pigeon` for `Baahubali` and made Mahishmati happier ever after. 😁
+Ah! I love this pigeon stuff. We have got one record matched and modified. We have now successfully changed the `email` to `pigeon` for `Baahubali`.
 
 > **Note to PETA:** No pigeons were hurt while writing this article.
 
-These are some of the operators that we can use with `update()` function.
 
 #### Removing Records
 
-We are in the final part of the CRUD (Create Retrieve Update Delete) operation. Deleting records or removing documents is easier as well. We will be using the [`remove()`](https://docs.mongodb.com/manual/reference/method/db.collection.remove/) function for the removal operation. The function is similar to `update()`, but only that it doesn't take any other parameters except the `options` (optional) with `justOne` (we will talk about it sooner). Let's try adding a dumb record before trying to delete any of our students.
+We are in the final part of the CRUD (Create Retrieve Update Delete) operation. Make sure that you understand each of the other letters before moving onto deletion. 
+
+Deleting records or removing documents is easier as well. We will be using the [`remove()`](https://docs.mongodb.com/manual/reference/method/db.collection.remove/) function for the removal operation. The function is similar to `update()`, but it doesn't take any other parameters except the `options` (optional) with `justOne` (we will talk about it sooner). Let's try adding a dumb record before trying to delete any of our students.
 
 ```language-javascript
 > db.students.insert([{"name": "Bleh"}, {"name": "Bleh"}, {"name": "Blah"}]);
@@ -964,7 +974,7 @@ BulkWriteResult({
 >
 ```
 
-Yep, now we have these `Blah` and two `Bleh` students, who just have their names in them. (Ooh, are they viruses?) Let's check the list of students quickly?
+Yep, now we have these `Blah` and two `Bleh` students, who just have their names in them. Let's check the list of students quickly?
 
 ```language-javascript
 > db.students.find();
@@ -978,7 +988,7 @@ Yep, now we have these `Blah` and two `Bleh` students, who just have their names
 >
 ```
 
-Oh yes. We have three USOs (Unidentified Student Objects). Let's do the cleanup now. The remove function for removing the last three would be something like this:
+Oh yes. We have three USOs (Unidentified Student Objects). Let's perform a little cleanup now. The syntax for calling the remove function would be something like this:
 
 ```language-javascript
 db.students.remove({
@@ -1014,7 +1024,9 @@ WriteResult({ "nRemoved" : 2 })
 >
 ```
 
-Oh noes! It removed all the matches. While now it is completely safe, as we know all the `Bleh`s are nonsense, it is not a good idea if we need to check some stuff and remove only one. But MongoDB provides a way. As I told you before, there's an option called `justOne`, which does the exact thing that's needed for the moment:
+However, it removed all the matches. While right now removing all matches is completely safe, as we know that the `Bleh`s are not supposed to be in our list, removing everything can be a problem if we need to check some stuff and remove one entry.
+
+Luckily MongoDB provides a way: the `justOne` option. `justOne` does the exact thing that we want it to do right now:
 
 > `justOne` *`boolean` (optional)*
 
@@ -1056,11 +1068,13 @@ WriteResult({ "nRemoved" : 1 })
 >
 ```
 
-Yay! So the option `justOne` helps us to check if we are removing the correct way by limiting to just one of the matched documents.
+What just happened? We inserted two students, both with the same name ("Bleh") to our database. We checked that insertion occurred using `find()`. Then we used `remove()` with the `justOne` attribute to remove a single element with the desired attribute (`"name": "Bleh"`).
+
+Thus, the option `justOne` helps us to check if we are removing the correct way by limiting to just one of the matched documents.
 
 #### Querying with Multiple Conditions
 
-All these time we have been doing only single condition while querying. What if we need to use multiple conditions? Like say, we had two viruses right? Can `Bleh` and `Blah` be removed in a single command? Well, yes! You have the mighty [`$or`](https://docs.mongodb.com/manual/reference/operator/query/or/) operator. Let's see how it works by querying stuff.
+All this time we have been limited to single-condition querying. What if we need to use multiple conditions? For example, can `Bleh` and `Blah` be removed in a single command? Well, yes! You have the mighty [`$or`](https://docs.mongodb.com/manual/reference/operator/query/or/) operator. Let's see how it works by querying stuff.
 
 ```language-javascript
 db.students.insert([
@@ -1172,7 +1186,7 @@ BulkWriteResult({
 
 > **Note:** Intentionally the other records have been hidden in the previous output.
 
-Okay, now we have got so many names with ages. Let's try to get those who are above 18. The command and query are are as follows:
+Okay, now we have so many names with ages. Let's try to get those who are above 18. The command and query are as follows:
 
 ```language-javascript
 db.students.find({
@@ -1225,7 +1239,7 @@ And executing the above, we get everything sorted.
 >
 ```
 
-Let's try the other way too:
+Let's try it the other way too:
 
 ```language-javascript
 > db.students.find().sort({   "name": -1 });
@@ -1241,11 +1255,13 @@ Let's try the other way too:
 >
 ```
 
-Ah blimey! Both works flawlessly.
+Ah blimey! Both work flawlessly.
 
 ### Limiting Results
 
-With the previous example, we were able to sort the students based on their ages, either descending or ascending. Now, if we need to find the oldest of the group, we need to sort them descending based on their age and then limit it to one single student. For that, we can use a function called [`limit()`](https://docs.mongodb.com/manual/reference/method/cursor.limit/) on the `find()` results or the fondly called cursor.
+With the previous example, we were able to sort students based on age, in either descending or ascending order. Now, if we needed to find the oldest of the group, we'd simply sort them descending based on their age and then limit our result to one student. 
+
+Similar to the aggregate functions in traditional RDBs, MongoDB has a function called [`limit()`](https://docs.mongodb.com/manual/reference/method/cursor.limit/) that can be used on the `find()` results AKA the cursor.
 
 The `limit()` function takes one parameter, which is the integral value of limiting to the number of results given in it. In our case, it is going to be `1`.
 
@@ -1266,7 +1282,7 @@ Ah, here we go. We get only `Thatha` as our senior student.
 
 ### Counting Records
 
-There should be a way to count the number of students we have right? Yep, let's try the [`count()`](https://docs.mongodb.com/manual/reference/method/cursor.count/) on the cursor. To do that, we have the command:
+There should be a way to count the number of students we have, right? Yep, let's try the [`count()`](https://docs.mongodb.com/manual/reference/method/cursor.count/) on the cursor. To do that, we have the command:
 
 ```language-javascript
 db.students.find().count();
@@ -1280,11 +1296,13 @@ And wow, we get the nine students:
 >
 ```
 
+Both `limit()` and `count()` should feel very familiar if you've used MySQL (or any RDB)
+
 ### Iterating Results
 
-We all know that MongoDB is nothing but JavaScript. So, why not use the Array and Object functions on the Database? Yep, it is possible using [`forEach()`](https://docs.mongodb.com/manual/reference/method/cursor.forEach/) method, which can be applied on any `find()` results or our fondly called cursor.
+We all know that MongoDB is nothing but JavaScript. So, why not use the Array and Object functions on the Database? Yep, it is possible using [`forEach()`](https://docs.mongodb.com/manual/reference/method/cursor.forEach/) method, which can be applied on `find()` results.
 
-The `forEach()` method takes one argument, which is a function and the current document or result or record will be passed to it. Basically, the function has the following syntax:
+`forEach()` takes a function as its only argument. The current document or result or record will be passed to it. Basically, the function has the following syntax:
 
 ```language-javascript
 db.students.find().forEach(function (stud) {
@@ -1309,5 +1327,10 @@ Student Name: Paati
 Student Name: Thathaa
 >
 ```
+Clearly, having a JavaScript-like structure makes MongoDB more versatile than RDBs. Whereas MySQL would struggle to perform the task above, MongoDB crushes this problem.
 
-Hope you got the basics of MongoDB for now. As usual, let me know your suggestions and ideas over the comments.
+## Conclusion
+
+I hope this tutorial exposed the basics of MongoDB, an increasingly popular NoSQL database that ca enhance pretty much any application that relies on using lots of data. 
+
+As usual, drop your suggestions and ideas in the comments section below. Thanks for reading!
