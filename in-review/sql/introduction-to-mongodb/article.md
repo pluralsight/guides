@@ -1,12 +1,18 @@
-Recently I had to start working on [MongoDB](https://www.mongodb.com/) for my enterprise project, so I revved up to the speed and now sharing my experiences with you. In this article, I plan to introduce what MongoDB is and how to get started with it. I am not going to go anything deeper than basic CRUD (Create, Retrieve, Update, Delete) operations and please refer to the [official installation instructions](https://docs.mongodb.com/manual/installation/) for installing MongoDB.
+Recently I had to start using [MongoDB](https://www.mongodb.com/) for an enterprise project and learned a lot on the way. After revving up to speed, I hope to share my experiences with you. In this article, I will introduce what MongoDB is and how to get started with using it. By the end of this tutorial, you will understand everything up to the basic CRUD (Create, Retrieve, Update, Delete) operations.  
 
 ## Introduction
 
-MongoDB is one of the NoSQL databases. There are different types of NoSQL databases, and MongoDB is Document Database. Schema and records are stored in documents and they are stored in JSON (JavaScript Object Notation) like syntax. NoSQL Databases are totally different from traditional Relational Databases like MySQL or postgreSQL. Relational Databases have a specific schema, fields, constraints, type of fields, triggers, etc.
+MongoDB is a **NoSQL database framework.** NoSQL Databases are totally different from traditional Relational Databases (RDBs) like MySQL or postgreSQL. RDBs have specific pre-defined schema, fields, constraints, type of fields, triggers, and so on. 
 
-In the case of a typical NoSQL Database, there's nothing like the above. There's no need of defining a structure before building our database. This proves to be one of the huge advantages of MongoDB to scale up or down depending on the application, compared to traditional relational databases like MySQL or postgreSQL. They are also much faster in most types of operations, so if you are dealing with a ton load of data, NoSQL is *the* way to go.
+In the case of a typical NoSQL Database, there's nothing like the above. There's no need to define a structure before building the database. This allows a MongoDB database to scale up or down depending on the application, whereas the traditional RDBs do not scale easily. NoSQL is generally much faster in most cases, so if you need to store or retrieve large quantities of data, NoSQL is *the* way to go.
 
-Once you have installed MongoDB, we need to make sure we add the `bin` directory to the path. You need to be aware of two binary executable files.
+There are [different types](https://www.mongodb.com/scale/types-of-nosql-databases) of NoSQL databases, such as key-value stores, document databases, wide-column stores, and graph databases. MongoDB, a Document Database, stores all schema and records in documents using a syntax like JSON (JavaScript Object Notation). If you are familiar with Web Development, MongoDB will seem comfortable.
+
+## Installation
+
+Please refer to the [official MongoDB guides](https://docs.mongodb.com/manual/installation/) to install the database essentials. 
+
+Once you have installed MongoDB, add the `bin` directory to the path. You need to be aware of two binary executable files.
 
 * `mongod` - This is the daemon (a program that always runs in the background as a service) for MongoDB Server.
 * `mongo` - This is the command line client shell interface for MongoDB.
@@ -23,7 +29,7 @@ Praveen-MBP:~ Praveen$ mongo⏎             #   Macintosh
 praveen@ubuntu:~$ mongo⏎                  #      Ubuntu
 ```
 
-Once you get into this part, all that you see is a black screen with the following:
+Once you get into this part, you should see a black screen with the following:
 
 ```language-bash
 praveen@ubuntu:~$ mongo
@@ -35,7 +41,7 @@ Server has startup warnings:
 >
 ```
 
-There will be a few crazy warnings, which you don't need to worry about. If we press `Ctrl + L` or type in `cls` and press `⏎`, all the messages will be cleared. And you will be left with the MongoDB Shell:
+There will be a few crazy warnings, which you need not worry about. If we press `<kbd>Ctrl</kbd> + <kbd>L</kbd>` or type in `cls` and press <kbd>Enter</kbd>, all the messages will be cleared. And you will be left with the MongoDB Shell:
 
 ```language-bash
 >
