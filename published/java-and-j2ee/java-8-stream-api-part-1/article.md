@@ -399,7 +399,7 @@ Optional<T> findAny()
 Optional<T> findFirst()
 ```
 
-`find` methods search for an element in a stream. Since there's a possibility that an element isn't be found (if the stream is empty, for example), `find` methods return an `Optional`.
+`find` methods search for an element in a stream. Since there's a possibility that an element can't be found (if the stream is empty, for example), `find` methods return an `Optional`.
 
 The other way to search is through methods ending with *Match*:
 ```java
