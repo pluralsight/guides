@@ -133,7 +133,7 @@ A simple definition is that streams are **wrappers for collections and arrays**.
 
 ### Characteristics of streams
 - Streams work perfectly with lambdas.
-- Streams don't store its elements.
+- Streams don't store their elements.
 - Streams are immutable.
 - Streams are not reusable.
 - Streams don't support indexed access to their elements.
