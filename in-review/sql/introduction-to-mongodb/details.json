@@ -3,7 +3,12 @@
     "author_name": "praveenscience",
     "author_real_name": "Praveen Kumar",
     "branch": "master",
-    "branches": [],
+    "branches": [
+        [
+            "adityavarshney",
+            "adityavarshney-sql-introduction-to-mongodb"
+        ]
+    ],
     "filename": "article.md",
     "first_commit": "eee28e35f56d58f1267cf85e278ea1e981a20bda",
     "image_url": "https://avatars1.githubusercontent.com/u/1830380?v=3",
