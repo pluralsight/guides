@@ -1,6 +1,6 @@
 # What is Webpack?
 
-Webpack is a module bundler. It takes the code you write and bundles it. But Webpack can also transpile, combine, and minify your code. It allows for code splitting, in which the client can load blocks of code on demand rather than having to receive one huge file to the client. Webpack is also compatible with React.js.
+Webpack is a module bundler. It takes the code you write and bundles it. But Webpack can also transpile, combine, and minify your code. It allows for code splitting, in which the client can load blocks of code on demand rather than having to send one huge file to the client. Webpack is also compatible with React.js.
 
 Webpack requires that the code be divided into modules. You can use any module system (AMD, CommonJS or ES6 Modules). This guide will use ES6 modules, but feel free to adapt the solutions to the module system of your choice.
 
