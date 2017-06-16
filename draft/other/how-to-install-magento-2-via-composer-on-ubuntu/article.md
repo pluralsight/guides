@@ -1,4 +1,4 @@
-# Install Magento 2 via Composer
+# Install Magento 2 via Composer (ubuntu)
 
 #### This Guide will help you to setup magento 2 for LAMP distributed machines as it will work for most of the ubuntu versions.
 
