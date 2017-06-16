@@ -10,7 +10,7 @@
     ###### Apache version 2.2 and above.
     ###### Composer stable version.
     
-#### Lets start with our tutorial.
+#### Lets start with our INSTALLATION.
 
 #### 1.PHP configuration
 As magento is totally dependend on PHP configurations , so to setup such a heavy application(magento) we need to increase the memory limit(memory_limit).
@@ -44,5 +44,32 @@ once the php extension are downloaded and configuration set properly
 we need to restart our apache server.copy the below code and press enter.
 
 `sudo service apache2 restart`
+
+### 2.Install composer
+
+`curl -sS https://getcomposer.org/installer | sudo php -- --install-dir=/usr/local/bin --filename=composer`
+
+We need to generate a keypair to clone the Magento repo. Since this requires authentication, see the Magento developer documentation for the latest instructions.
+
+Next, place these keys in the auth file for composer using the command below.
+
+`sudo nano /root/.composer/auth.json`
+	
+Copy and paste the contents below into the file.
+
+{
+"http-basic": {
+      "repo.magento.com": {
+         "username": "your public key",
+         "password": "your private key"
+      }
+   }
+}	
+
+To check if composer is installed properly , type in your terminal
+
+`composer list`
+
+if you see the below screem
 
 
