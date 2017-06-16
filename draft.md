@@ -1,3 +1,8 @@
+### Create Your Own Ubuntu Server On Amazon EC2 by Olulana Kolawole
+- [Read the guide](https://www.pluralsight.com/guides/devops/create-your-own-ubuntu-server-on-amazon-ec2?status=draft)
+- [Read more from Olulana Kolawole](https://www.pluralsight.com/guides/author/kolawoletech) <img src="https://avatars3.githubusercontent.com/u/4382405?v=3" width="30" height="30" alt="Olulana Kolawole" />
+- Related to: DevOps (Docker, Nagios, Jenkins, Chef, Puppet, etc)
+
 ### The Unsplash API 2 by nickfisher
 - [Read the guide](https://www.pluralsight.com/guides/other/the-unsplash-api-2?status=draft)
 - [Read more from nickfisher](https://www.pluralsight.com/guides/author/nickfisher) <img src="https://avatars1.githubusercontent.com/u/4007917?v=3" width="30" height="30" alt="nickfisher" />
