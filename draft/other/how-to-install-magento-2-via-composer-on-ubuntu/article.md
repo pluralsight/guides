@@ -128,7 +128,7 @@ now copy the below code in your editor and save it
 ````
 Next, we have to tell Apache to use the new config file, and to ignore the default config file. Execute the following commands below one by one:
 
-`sudo a2ensite magento.conf`
+`sudo a2ensite magento2.conf`
 
 `sudo a2dissite 000-default.conf`
 
