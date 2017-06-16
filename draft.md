@@ -1,3 +1,8 @@
+### How TO Install Magento 2 via Composer on (Ubuntu) by ankitambekar08
+- [Read the guide](https://www.pluralsight.com/guides/other/how-to-install-magento-2-via-composer-on-ubuntu?status=draft)
+- [Read more from ankitambekar08](https://www.pluralsight.com/guides/author/ankitambekar08) <img src="https://avatars1.githubusercontent.com/u/18022336?v=3" width="30" height="30" alt="ankitambekar08" />
+- Related to: other
+
 ### Create Your Own Ubuntu Server On Amazon EC2 by Olulana Kolawole
 - [Read the guide](https://www.pluralsight.com/guides/devops/create-your-own-ubuntu-server-on-amazon-ec2?status=draft)
 - [Read more from Olulana Kolawole](https://www.pluralsight.com/guides/author/kolawoletech) <img src="https://avatars3.githubusercontent.com/u/4382405?v=3" width="30" height="30" alt="Olulana Kolawole" />
