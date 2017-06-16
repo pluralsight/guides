@@ -1,0 +1,15 @@
+{
+    "_publish_status": "draft",
+    "author_name": "kolawoletech",
+    "author_real_name": "Olulana Kolawole",
+    "branch": "master",
+    "branches": [],
+    "filename": "article.md",
+    "first_commit": "727a1dc41fa32a4c7cf586c33d837c3d9b91d0c0",
+    "image_url": "https://avatars3.githubusercontent.com/u/4382405?v=3",
+    "stacks": [
+        "DevOps (Docker, Nagios, Jenkins, Chef, Puppet, etc)"
+    ],
+    "thumbnail_url": null,
+    "title": "Create Your Own Ubuntu Server On Amazon EC2"
+}
