@@ -79,8 +79,35 @@ once completed CD into the cloned folder.
 
 i.e cd /var/www/magento2
 
-type composer install and press enter .
-This will download all the module dependencies required for your magento 2 project.
+type `composer install` and press enter .
+This will download all the module dependencies required for our magento 2 project.
+
+Next to complete our installation process
+
+copy the below code and fill proper details as per requirement. 
+
+php bin/magento setup:install --backend-frontname=admin --db-name=dbname --db-password="pwd" --base-url=url --base-url-secure=url --admin-user=admin --admin-password=admin123 --admin-email=email --admin-firstname=name --admin-lastname=name --language=en_US --currency=USD --timezone=America/Chicago --use-rewrites=1   and press enter
+
+Your magento 2 installation is started.
+
+If you see the below screen.
+
+Post installation file permissions check...
+
+For security, remove write permissions from these directories: '/var/www/html/magento2/app/etc' `[Progress: 274 / 274]
+
+[SUCCESS]: Magento installation complete.
+
+[SUCCESS]: Admin Panel URI: /admin
+
+Congratulations! Magento 2 installation has been successfully finished.
+
+Now you can enter backend using the previously used login and password.
+
+--admin-user=admin
+
+--admin-password=admin123
+
 
 
 
