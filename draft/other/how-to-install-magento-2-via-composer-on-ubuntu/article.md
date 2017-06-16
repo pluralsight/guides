@@ -45,31 +45,42 @@ we need to restart our apache server.copy the below code and press enter.
 
 `sudo service apache2 restart`
 
-### 2.Install composer
+#### 2.Install composer
 
 `curl -sS https://getcomposer.org/installer | sudo php -- --install-dir=/usr/local/bin --filename=composer`
-
-We need to generate a keypair to clone the Magento repo. Since this requires authentication, see the Magento developer documentation for the latest instructions.
-
-Next, place these keys in the auth file for composer using the command below.
-
-`sudo nano /root/.composer/auth.json`
-	
-Copy and paste the contents below into the file.
-
-{
-"http-basic": {
-      "repo.magento.com": {
-         "username": "your public key",
-         "password": "your private key"
-      }
-   }
-}	
 
 To check if composer is installed properly , type in your terminal
 
 `composer list`
 
 if you see the below screem
+
+![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/c780844a-0c15-4605-bd9d-11a6157afdd8.png)
+
+Good to go.
+
+#### 3.Mysql Setup
+We need to create a database for our magento 2 project.
+We can create either from terminal or from our browser phpmyadmin whichever is more feasible.
+
+CREATE DATABASE magento2;
+
+#### 4.Installing Magento 2
+
+CD to the web directory.
+
+$ cd /var/www
+	
+Clone the Magento Github repo.
+
+$ git clone -b 2.0 https://github.com/magento/magento2.git magento2
+
+once completed CD into the cloned folder.
+
+i.e cd /var/www/magento2
+
+type composer install and press enter .
+This will download all the module dependencies required for your magento 2 project.
+
 
 
