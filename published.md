@@ -1,3 +1,8 @@
+### Introduction to MongoDB by Praveen Kumar
+- [Read the guide](https://www.pluralsight.com/guides/sql/introduction-to-mongodb)
+- [Read more from Praveen Kumar](https://www.pluralsight.com/guides/author/praveenscience) <img src="https://avatars1.githubusercontent.com/u/1830380?v=3" width="30" height="30" alt="Praveen Kumar" />
+- Related to: SQL
+
 ### Creating File Packages in C# by Murat Aykanat
 - [Read the guide](https://www.pluralsight.com/guides/microsoft-net/creating-file-packages-in-c)
 - [Read more from Murat Aykanat](https://www.pluralsight.com/guides/author/aykanatm) <img src="https://avatars2.githubusercontent.com/u/9140297?v=3" width="30" height="30" alt="Murat Aykanat" />
