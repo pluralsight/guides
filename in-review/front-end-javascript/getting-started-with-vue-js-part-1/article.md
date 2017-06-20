@@ -1,4 +1,3 @@
-# Getting started with Vue.JS (part-1) 
 ## Vue.Js
 
 Vue (which is pronounced as view) is very liberal framework for construction of the user interface. Unlike the others monumental frameworks, a Vue is designed from a minced up to be incrementally acceptable. Its core library is now concentrated on the view layers only, and it is very informal to give a lift to and to integrate with the already exist other libraries or with an existing project. Beside this, Vue have also a capability which is perfect and operating the urbane Single-Page Applets when it is used in a permutation with a recent tools and subsidiary libraries.
