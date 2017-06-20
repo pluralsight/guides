@@ -32,11 +32,7 @@ In the above following now we&#39;re trying to setup the Vue-cli to a new projec
 The coolest way is to try out a Vue.js which is used the JSFiddle in the example of Hello World. Then feel free to further open it in the other tabs and then follow along with as we have to go through this basic example. As like
 
 [When we have to create an index.html and then we include the Vue with then:
-
-|   |
-| --- |
-
-&lt;scriptsrc=&quot;https://unpkg.com/vue&quot;&gt;&lt;/script&gt;
+https://unpkg.com/vue
 
  This Installation page has provided more choices of installing the Vue&#39;s. But we have to note that we don&#39;t have any recommend trainees to initiate with file vue-cli, and especially if we are not quite aware with a Node.js oriented build tool.
 
