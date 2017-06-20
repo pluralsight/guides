@@ -1,3 +1,8 @@
+### Getting started with Vue.JS (part-1) by A M Rahman
+- [Read the guide](https://www.pluralsight.com/guides/front-end-javascript/getting-started-with-vue-js-part-1?status=in-review)
+- [Read more from A M Rahman](https://www.pluralsight.com/guides/author/amrahman90) <img src="https://avatars2.githubusercontent.com/u/28068398?v=3" width="30" height="30" alt="A M Rahman" />
+- Related to: Front-End JavaScript (Angular, React, Meteor, etc)
+
 ### How to activate animation when the content scrolls into view by Hayk Yaghubyan
 - [Read the guide](https://www.pluralsight.com/guides/html-css/how-to-activate-animation-when-the-content-scrolls-into-view?status=in-review)
 - [Read more from Hayk Yaghubyan](https://www.pluralsight.com/guides/author/haykoyaghubyan) <img src="https://avatars3.githubusercontent.com/u/26785721?v=3" width="30" height="30" alt="Hayk Yaghubyan" />
