@@ -1,3 +1,8 @@
+### Getting started with Vue.JS (part-1) by A M Rahman
+- [Read the guide](https://www.pluralsight.com/guides/front-end-javascript/getting-started-with-vue-js-part-1?status=draft)
+- [Read more from A M Rahman](https://www.pluralsight.com/guides/author/amrahman90) <img src="https://avatars2.githubusercontent.com/u/28068398?v=3" width="30" height="30" alt="A M Rahman" />
+- Related to: Front-End JavaScript (Angular, React, Meteor, etc)
+
 ### How TO Install Magento 2 via Composer on (Ubuntu) by ankitambekar08
 - [Read the guide](https://www.pluralsight.com/guides/other/how-to-install-magento-2-via-composer-on-ubuntu?status=draft)
 - [Read more from ankitambekar08](https://www.pluralsight.com/guides/author/ankitambekar08) <img src="https://avatars1.githubusercontent.com/u/18022336?v=3" width="30" height="30" alt="ankitambekar08" />
