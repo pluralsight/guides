@@ -28,7 +28,7 @@ incrementCounter(3);
 ```
  In the JavaScript language, functions are objects, so they can be passed as arguments to other functions and they can be also returned from other functions and assigned to variables. In our example, we have created the `counter` function, which returns the `increment` function and assignes it to the `incrementCounter` variable, so that variable contains a reference to the `increment` function (the objects in the JavaScript are being copied by reference, not by value). That reference enables us to call the `increment` function outside of the `counter` function's scope, so in our case, we called it from the global scope. Beside that, the line `var incrementCounter = counter(0);` initializes the `currentValue` variable to zero.  
  
-The line `incrementCounter(1);` actually invokes the `increment` function with paramether 1. Since that function is a closure and it still has access to the variables and parameters of its outer function, although we called it outside of its outer function, the `currentValue` will be increased by 1 and its value will be changed to 1. In the next function calls, its value will be increased by 2 and 3, respectively, so the output of the code will be:    
+The line `incrementCounter(1);` actually invokes the `increment` function with parameter 1. Since that function is a closure and it still has access to the variables and parameters of its outer function, although we called it outside of its outer function, the `currentValue` will be increased by 1 and its value will become 1. In the next function calls, its value will be increased by 2 and 3, respectively, so the output of the code will be:    
 
 ```
 currentValue = 1
@@ -38,7 +38,7 @@ currentValue = 6
 
 In the JavaScript, local variables of a function will be destroyed after the function returns, unless there is at least one reference on them. In our example, the `currentValue` is referenced in the `increment` function, which is referenced in the global scope. Therefore, the `currentValue` and `increment` will not be destroyed until the whole script execution is being terminated. That's why we can invoke the `increment` function from the global scope (using the reference to it, stored in the `incrementCounter`) after the `counter` function returned.
 
-The `counter` function can also return more than one function, wrapped in an object. If we had `decrement` function and wanted to return it, as well, that could be accomplished with the following code:
+The `counter` function can also return more than one function, wrapped into an object. If we had `decrement` function and wanted to return it, as well, that could be accomplished with the following code:
 
 ```JavaScript
 function counter(initValue) {
@@ -105,7 +105,7 @@ function counter(initValue) {
 
 In this case, the `logCurrentValue` function cannot be accessed from the global scope, since it wasn't returned from the `counter` function. It can be used just within the `increment` and `decrement` functions. Also, the `currentValue` and `initValue` variables are private for the `counter` function object.  So, that's how private members can be emulated in the JavaScript.
 
-Let's see how will this mechanism work if we create more than one function object. For instance, we will create `myCounter1` and `myCounter2` objects and use them in the following way:
+Let's see how will this mechanism work if we create more than one function object. For instance, let's create `myCounter1` and `myCounter2` objects and use them in the following way:
 
 ``` JavaScript
 var myCounter1 = counter(0);
@@ -116,9 +116,9 @@ myCounter2.increment(2);
 myCounter1.decrement(1);
 myCounter2.decrement(1);
 ```
-In the first two lines of the code, we have actually created 2 different objects, `myCounter1` and `myCounter2`. These objects have the same properties, `increment` and `decrement`, which are references to the `increment` and `decrement` functions. Therefore, those functions can be accessed via `increment` and `decrement` properties. The `myCounter1` object is created by calling `counter` function with parameter `0`, and the `myCounter2` by calling it with parameter `3`. That means that `increment` and `decrement` functions will have different values of the `currentValue` variable in the outer scope, so their calls on those two objects will produce different results, although there are called with the same parameters, like in the example above.
+In the first two lines of the code, we have actually created 2 different objects, `myCounter1` and `myCounter2`. These objects have the same properties, `increment` and `decrement`, which are references to the `increment` and `decrement` functions. Therefore, those functions can be accessed via `increment` and `decrement` properties. The `myCounter1` object is created by calling `counter` function with parameter `0`, and the `myCounter2` by calling it with parameter `3`. This means that `increment` and `decrement` functions will have different values of the `currentValue` variable in the outer scope, so their calls on those two objects will produce different results, although there are called with the same parameters, like in the example above. Actually, we have 2 different `increment` and `decrement` functions, because we created 2 different objects and each pair of those functions has its own scope. 
 
-therefore, the output of this code would be:
+The output of the code above will be:
 
 ```
 currentValue = 2
@@ -153,13 +153,12 @@ for (var i = 0; i < 5; i++) {
     
         console.log(i); 
             
-    }, 5000);     // 5 5 5 5 5
+    }, 3000);     // 5 5 5 5 5
 }
 ```
+Let's analyse this code. The function, which is passed as an argument to the `setTimeout` function, will be executed 3s after the first loop iteration. This practically means that the value of the variable `i` will become `5` before its execution, because all 5 iterations will certainly be done within those 3 seconds. Then, it will be executed 5 times, 1 time for every iteration, and it will log `5` five times.
 
-That is because the `function() {console.log(i)}` will be called 5s (5000ms) after the first loop iteration, then it will be called 5s after the second loop iteration and so on. That practically means that all 5 for loop iterations will be executed before the first call of the function, so the value of `i` will be 5 (after all iterations are being executed) and it will be logged 5 times.
-
-In order to get the desired output, we will need to use the closure mechanism, so the code should look like this:
+In order to get the desired output, we will need to use the closure mechanism, so our code should look like this:
 
 ``` JavaScript
 for (var i = 0; i < 5; i++) {
@@ -171,7 +170,7 @@ for (var i = 0; i < 5; i++) {
     })(i), 5000);     // 0 1 2 3 4
 }
 ```
-In the first iteration the value of the variable `i` is zero. Therefore, we are setting timeout for the following function:
+In the first iteration the value of the variable `i` is zero. Therefore, we are setting timeout for the following function call:
 
 ```JavaScript
 function (i) {
