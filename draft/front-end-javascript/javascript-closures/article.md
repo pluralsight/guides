@@ -163,21 +163,18 @@ In order to get the desired output, we will need to use the closure mechanism, s
 ``` JavaScript
 for (var i = 0; i < 5; i++) {
 
-    setTimeout((function(i) { 
-    
-        console.log(i); 
-            
-    })(i), 5000);     // 0 1 2 3 4
+    setTimeout((function outer(i) {
+
+        return function inner() {
+            console.log(i);
+        }
+
+    })(i), 3000);     // 0 1 2 3 4
 }
 ```
-In the first iteration the value of the variable `i` is zero. Therefore, we are setting timeout for the following function call:
+In the first iteration the value of the variable `i` is `0`. We have invoked the `outer` function immediately with parameter `0` and it returned the `inner` function, so the `inner` function was actualy provided as an argument to the `setTimeout` function instead of the `outer` function. Therefore, the `inner` function will be called after 3s and it will have access to its own outer scope. The value of the variable `i` in its scope is `0`, so the `inner` function will log `0` at the momment of its execution.
 
-```JavaScript
-function (i) {
-    console.log(i);
-}(0)
-```
-Therefore, after the timeout, `console.log(0)` will be executed. The same will happen for other values of the variable *i*, so, finally, values `0 1 2 3 4` will be logged in the console. 
+The same will happen in the second iteration, the `inner` function will be executed 3s later, but this time the variable `i` will be `1`, and so on. Finally, we will get desired output in the console.
 
 ### Event Handlers
 
