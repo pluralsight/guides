@@ -133,7 +133,7 @@ A simple definition is that streams are **wrappers for collections and arrays**.
 
 ### Characteristics of streams
 - Streams work perfectly with lambdas.
-- Streams don't store its elements.
+- Streams don't store their elements.
 - Streams are immutable.
 - Streams are not reusable.
 - Streams don't support indexed access to their elements.
@@ -184,7 +184,7 @@ An important feature of intermediate operations is that they don't process the e
 
 Intermediate operations are further divided into stateless and stateful operations.
 
-**Stateless** operations retain no state from previously elements when processing a new element so each can be processed independently of operations on other elements.
+**Stateless** operations retain no state from previous elements when processing a new element so each can be processed independently of operations on other elements.
 
 Some examples are:
 - `Stream<T> filter(Predicate<? super T> predicate)` 
@@ -399,7 +399,7 @@ Optional<T> findAny()
 Optional<T> findFirst()
 ```
 
-`find` methods search for an element in a stream. Since there's a possibility that an element isn't be found (if the stream is empty, for example), `find` methods return an `Optional`.
+`find` methods search for an element in a stream. Since there's a possibility that an element can't be found (if the stream is empty, for example), `find` methods return an `Optional`.
 
 The other way to search is through methods ending with *Match*:
 ```java
