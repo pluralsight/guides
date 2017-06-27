@@ -33,11 +33,6 @@
 - [Read more from pattydaniels](https://www.pluralsight.com/guides/author/pattydaniels) <img src="https://avatars3.githubusercontent.com/u/16217973?v=3" width="30" height="30" alt="pattydaniels" />
 - Related to: Microsoft.NET (C#, ASP.NET, VB.NET, etc)
 
-### Cloning an Ionic 2 application from Github by Todd Shelton
-- [Read the guide](https://www.pluralsight.com/guides/front-end-javascript/cloning-an-ionic-2-application-from-github?status=in-review)
-- [Read more from Todd Shelton](https://www.pluralsight.com/guides/author/TShelton41) <img src="https://avatars.githubusercontent.com/u/795737?v=3" width="30" height="30" alt="Todd Shelton" />
-- Related to: Front-End JavaScript (Angular, React, Meteor, etc)
-
 ### Using the REST Interface with Licas by discompsys
 - [Read the guide](https://www.pluralsight.com/guides/java-and-j2ee/using-the-rest-interface-with-licas?status=in-review)
 - [Read more from discompsys](https://www.pluralsight.com/guides/author/discompsys) <img src="https://avatars.githubusercontent.com/u/20437503?v=3" width="30" height="30" alt="discompsys" />
