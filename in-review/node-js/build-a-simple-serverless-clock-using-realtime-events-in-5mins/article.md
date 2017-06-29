@@ -1,27 +1,28 @@
-Every day we try to simplify the way we build web solutions so that more individuals appreciate and join the trend. "Serverless" concepts and realtime stores are examples of such simplification. These ideas are powerful because they improve how we work, reduce boilerplate code, and most importantly assure peace of mind.
+Whenever we work in the arena of web development, we try to simplify our solutions as much as possible to make them more usable and easier to develop. "Serverless" concepts and realtime stores exemplify such simplification. These ideas improve how we work, reduce boilerplate code, and most importantly assure peace of mind to the developer.
 
-In this article, we are going to see how simple it is to use [stdlib](https://stdlib.com/) and [deepstreamHub](https://deepstreamhub.com) to build a clock. The clock will retrieve time information from the server, then relay it to the browser for rendering.
+This article will exhibit the simplicity of using [stdlib](https://stdlib.com/) and [deepstreamHub](https://deepstreamhub.com) to build a clock application. The clock will retrieve time information from the server, then relay it to the browser for rendering. 
 
-## stdlib
+## stdlib and "serverless"-ness
 
-stdlib is an implementation of the "serverless" concept which is best described through cloud functions. The term "serverless" does not mean that we don't need servers; it just means that we don't have to know the server details to get productive. In short, you get to write functions that are deployed and result to an API endpoint. You can read more about serverless technology [here](https://martinfowler.com/articles/serverless.html). 
+**stdlib** is an implementation of the "serverless" concept. As commonly mistaken, "serverless" does not mean "no servers;" it just means that we don't have to handle the server details and operations to be productive. Taking the "serverless" route, a developer can write functions that deploy and result in an API endpoint. You can read more about serverless technology on [its Wikipedia page](https://en.wikipedia.org/wiki/Serverless_computing)
 
 ### Setting Up stdlib
-Now its time to set everything up using our favorite tool. (If you guessed **npm*** (Node Package Manager), you are correct.) Before that though, you need to [create an stdlib](https://stdlib.com/) account that links you to functions/services that you will need down the line.
 
-Next, using npm, install the CLI tool for interacting with your account. The CLI tool simplifies creating, running, and deploying functions:
+Now its time to set everything up using our favorite tool -- if you guessed **npm*** (Node Package Manager), you are correct. Before that though, you need to [create an stdlib](https://stdlib.com/) account that links you to functions/services that you will need down the line.
+
+Once your account has been created, use npm to install the CLI (Command Line Interface) tool for interacting with your account. The CLI tool simplifies creating, running, and deploying functions:
 
 ```bash
 npm install lib.cli -g
 ```
 
-You need to create a workspace. A workspace is a directory where a group of functions registered under a given user live. Creating a workspace is as simple as making a directory:
+You need to create a workspace. A workspace is a directory in which a group of functions registered under a given user live. Creating a workspace is as simple as making a directory:
 
 ```bash
 mkdir your-workspace-name
 ```
 
-In your workspace, you can initialize stdlib by authenticating with the credentials you created while signing up:
+In your workspace, initialize stdlib by authenticating with the credentials you created while signing up:
 
 ```bash
 lib init
@@ -33,7 +34,7 @@ Right now, your machine has been mapped to your account. You can then create a n
 lib create clock
 ```
 
-This creates a directory named `clock` which contains a `main` folder. This folder is where your function lives. The `index.js` file contains a boilerplate function which you can run to see how stdlib serves your function:
+This creates a directory named `clock` which contains a `main` folder that contains your function. The `index.js` file contains a boilerplate function that you can run to see an example of how stdlib works:
 
 ```bash
 lib http
@@ -42,7 +43,7 @@ lib http
 The above command will serve your function locally at `localhost:8170` by default.
 
 ## deepstream for Realtime PubSub
-stdlib is capable of converting your functions to API endpoints. This is great. Sometimes though, you would love to send some realtime data. With **deepstream**, realtime data transfer has never been easier. We will use deepstream's PubSub feature to emit realtime events from our stdlib function.
+stdlib is capable of converting your functions to [API endpoints](https://dev.socrata.com/docs/endpoints.html). Although this feature is organizationally handy for users and developers alike, ["endpoints need to be static"](https://en.wikipedia.org/wiki/Web_API). Which means that stdlib's API endpoints are problematic if you need to send some realtime data. With **deepstream**, however, realtime data transfer has never been easier. We will use deepstream's PubSub feature to emit realtime events from our stdlib function. 
 
 You will need to [create a free deepstreamHub](https://dashboard.deepstreamhub.com/signup) account which generates an API key to interact with the server.
 
@@ -52,13 +53,13 @@ First, let's install deepstream client on to our `clock` function:
 npm install --save deepstream.io-client-js
 ```
 
-Import deepstream t `main/index.js`:
+Import deepstream to `main/index.js`:
 
 ```js
 const ds = require('deepstream.io-client-js');
 ```
 
-Create a deepstream instance with the deepstreamHub URL and login as anonymous to start communicating with the sever:
+Create a deepstream instance with the deepstreamHub URL and log in as anonymous to start communicating with the sever:
 
 ```js
 const ds = require('deepstream.io-client-js');
@@ -69,7 +70,7 @@ module.exports = (params, callback) => {
 };
 ```
 
-You can start emitting events via the object that the `client` variables stores. We are building a clock, therefore, the best way to emit events at intervals is to use the `setInterval` method:
+You can start emitting events through the object represented by the `client` variable. We are building a clock, therefore, the best way to emit events at intervals is to use the `setInterval` method:
 
 ```js
 const ds = require('deepstream.io-client-js');
@@ -120,7 +121,7 @@ Rather than emitting, we subscribe to the `time` event and log the payload whene
 
 ![Image of console](http://imgur.com/SUDoTgP.jpg)
 
-Rather than print in the console, we can display the time in the browser:
+We can display the time in the browser instead of printing it to the console:
 
 ```js
 var client = deepstream('APP-URL')
@@ -134,7 +135,8 @@ client.event.subscribe('time', time => {
 ```
 
 ## Conclusion
-Hopefully, you have a learned a better and faster way to build realtime apps. The clock example is basic, but, depending on your situation, the task can get pretty complex. Realtime data stores and serverless ideology have unimaginable powers that you can harness to make your applications more reliable and flat-out cooler.
+
+Hopefully, you have a learned a quicker way to build realtime (and static) web apps. The clock example is basic, but should help you if you're dealing with a more complex project. Realtime data stores and serverless ideology have unimaginable powers that you can harness to make your applications more reliable and flat-out cooler.
 ____
 
-Thanks for reading this guide. Feel free to leave comments and feedback in the discussion section below. As always, click the "Favorites" button if you enjoyed this guide!
+Thanks for reading! Feel free to leave comments and feedback in the discussion section below. As always, click the "Favorites" button if you enjoyed this guide.
