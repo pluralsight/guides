@@ -18,11 +18,6 @@
 - [Read more from froy001](https://www.pluralsight.com/guides/author/froy001) <img src="https://avatars2.githubusercontent.com/u/1267000?v=3" width="30" height="30" alt="froy001" />
 - Related to: Ruby, Ruby on Rails
 
-### Build a Simple Serverless Clock Using Realtime Events in 5mins by Christian Nwamba
-- [Read the guide](https://www.pluralsight.com/guides/node-js/build-a-simple-serverless-clock-using-realtime-events-in-5mins?status=in-review)
-- [Read more from Christian Nwamba](https://www.pluralsight.com/guides/author/christiannwamba) <img src="https://avatars1.githubusercontent.com/u/8108337?v=3" width="30" height="30" alt="Christian Nwamba" />
-- Related to: Node.js
-
 ### Local development of a PHP/Redis application with Kubernetes by Richard Li
 - [Read the guide](https://www.pluralsight.com/guides/devops/local-development-of-a-php-redis-application-with-kubernetes?status=in-review)
 - [Read more from Richard Li](https://www.pluralsight.com/guides/author/richarddli) <img src="https://avatars1.githubusercontent.com/u/10065494?v=3" width="30" height="30" alt="Richard Li" />
