@@ -403,8 +403,8 @@ Since we have changed our default ```ApplicationUser``` class and our database s
 
 We should execute a migration that will create the ```IsDeleted``` column in our database. Before doing this, delete the user we have created because it does not have the ```IsDeleted``` column and this is going to be an obstacle when we try to make it ```non-nullable```. Next:
 
-1. Set the ```Default Project``` property to ```WebApi```.
-2. Open the ```Package Manager Console```.
+1. Open the ```Package Manager Console```.
+2. Set the ```Default Project``` property to ```WebApi```.
 3. Enable migrations by targeting our custom context: ```Enable-Migrations -contexttypename AppUsersDbContext```
 3. Add a migration: ```Add-Migration Initial```
 4. ```Update-Database```
