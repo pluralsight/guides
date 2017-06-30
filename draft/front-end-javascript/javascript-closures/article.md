@@ -129,9 +129,9 @@ currentValue = 4
 
 ## Use Cases
 
-Closures are mostly used in callbacks (e.g. timers, event handlers) and modules.
+Closures are mostly used in callbacks (e.g. timeouts, event handlers) and modules.
 
-### Timers
+### Timeouts
 
 Let's consider the following code sample:
 
@@ -151,9 +151,9 @@ for (var i = 0; i < 5; i++) {
 
     setTimeout(function() { 
     
-        console.log(i); 
+        console.log(i); // 5 5 5 5 5
             
-    }, 3000);     // 5 5 5 5 5
+    }, 3000);
 }
 ```
 Let's analyse this code. The function, which is passed as an argument to the `setTimeout` function, will be executed 3s after the first loop iteration. This practically means that the value of the variable `i` will become `5` before its execution, because all 5 iterations will certainly be done within those 3 seconds. Then, it will be executed 5 times, 1 time for every iteration, and it will log `5` five times.
@@ -166,10 +166,10 @@ for (var i = 0; i < 5; i++) {
     setTimeout((function outer(i) {
 
         return function inner() {
-            console.log(i);
+            console.log(i); // 0 1 2 3 4
         }
 
-    })(i), 3000);     // 0 1 2 3 4
+    })(i), 3000);
 }
 ```
 In the first iteration the value of the variable `i` is `0`. We have invoked the `outer` function immediately with parameter `0` and it returned the `inner` function, so the `inner` function was actualy provided as an argument to the `setTimeout` function instead of the `outer` function. Therefore, the `inner` function will be called after 3s and it will have access to its own outer scope. The value of the variable `i` in its scope is `0`, so the `inner` function will log `0` at the momment of its execution.
@@ -284,5 +284,26 @@ console.log(add5(2));  // 7
 console.log(add10(2)); // 12
 ```
 ## Do we need closures in ES6?
-arrow operator, callbacks
-let keyword, loops
+(arrow operator, callbacks
+let keyword, loops)
+
+
+The EcmaScript 2015 (or ES6) introduced some very useful new features, like *arrow functions*,  which solved issues with keyword *this* for callbacks. There are also *let* and *const* keywords, which create block scoped variables. Let's consider what is the impact of these features on the closures mechanism and do we still need it in ES6.
+
+If we just replace the keyword `var` with `let` in our example with setting timeout, we will get completely different output:
+
+``` JavaScript
+for (let i = 0; i < 5; i++) {
+
+    setTimeout(function() { 
+    
+        console.log(i); // 0 1 2 3 4
+            
+    }, 3000);
+}
+```
+So, the keyword `let` created a block scope for the variable `i`, for every loop iteration particularly. Therefore, we didn't have to put the line `console.log(i)` into a closure in order to create a new scope for `i`, because the `let` keyword did it for us.
+
+
+
+
