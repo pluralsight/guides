@@ -1,3 +1,8 @@
+### Javascript development guidelines by Sanjeev Murthy
+- [Read the guide](https://www.pluralsight.com/guides/other/javascript-development-guidelines?status=draft)
+- [Read more from Sanjeev Murthy](https://www.pluralsight.com/guides/author/SanjeevMurthy) <img src="https://avatars3.githubusercontent.com/u/10756352?v=3" width="30" height="30" alt="Sanjeev Murthy" />
+- Related to: other
+
 ### How TO Install Magento 2 via Composer on (Ubuntu) by ankitambekar08
 - [Read the guide](https://www.pluralsight.com/guides/other/how-to-install-magento-2-via-composer-on-ubuntu?status=draft)
 - [Read more from ankitambekar08](https://www.pluralsight.com/guides/author/ankitambekar08) <img src="https://avatars1.githubusercontent.com/u/18022336?v=3" width="30" height="30" alt="ankitambekar08" />
