@@ -3,7 +3,12 @@
     "author_name": "peterolson",
     "author_real_name": "Peter Olson",
     "branch": "master",
-    "branches": [],
+    "branches": [
+        [
+            "manishaskani",
+            "manishaskani-front-end-javascript-introduction-to-asynchronous-javascript"
+        ]
+    ],
     "filename": "article.md",
     "first_commit": "dbc2b12bba43950b65a2854923005fb7b5aa94f1",
     "image_url": "https://avatars.githubusercontent.com/u/920512?v=3",
