@@ -111,7 +111,7 @@ function getData(callback) {
 }
 ```
 
-Callback functions are used very frequently in JavaScript, and if you've spent any amount of time writing code in JavaScript, it's highly likel ythat you have used them (perhaps inadvertently). Almost all web applications will make use of callbacks either through events (e.g. `window.onclick`), `setTimeout` and `setInterval`, or AJAX requests.
+Callback functions are used very frequently in JavaScript, and if you've spent any amount of time writing code in JavaScript, it's highly likely that you have used them (perhaps inadvertently). Almost all web applications will make use of callbacks either through events (e.g. `window.onclick`), `setTimeout` and `setInterval`, or AJAX requests.
 
 ## Common problems with asynchronous code
 
