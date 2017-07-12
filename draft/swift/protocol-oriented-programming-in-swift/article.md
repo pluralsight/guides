@@ -320,3 +320,8 @@ What does this mean to us, software developers? The answer is FREEDOM.
 
 It’s up to you which paradigm to choose. You can still go the OOP-route if you wish.
 However, once you wrap your head around Protocol-Oriented Programming, you’ll probably never look back.
+
+Are you interested in learning more about Swift? 
+Be sure to check out [my Swift courses on Pluralsight](https://www.pluralsight.com/authors/karoly-nyisztor).
+
+Thanks and Happy Coding!
