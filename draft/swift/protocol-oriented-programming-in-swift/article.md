@@ -25,7 +25,7 @@ However, Apple tells us:
 
 Why? Protocols serve as better abstractions than classes.
 
-If you model an abstraction using classes, you’ll need to rely on inheritance. The superclass defines the core functionality and exposes it to subclasses. A subclass can completely override that behavior, add specific behavior or get all the work done by the superclass. 
+![Subclassing](https://raw.githubusercontent.com/pluralsight/guides/master/images/8ef7c685-9191-4f42-8a39-678f69f237a3.png) If you model an abstraction using classes, you’ll need to rely on inheritance. The superclass defines the core functionality and exposes it to subclasses. A subclass can completely override that behavior, add specific behavior or get all the work done by the superclass. 
 
 Subclassing works well until you realize that you need more functionality from a different class. Swift - like many other programming languages - does not support multiple inheritance. So you keep adding new functionality to your base class, which eventually becomes bloated.
 Protocols take a different approach: they serve as blueprints. 
@@ -41,6 +41,8 @@ protocol Entity {
 
 What it tells us is that adopters of this protocol will be able to create an entity, assign it a name and retrieve its unique identifier by implementing the method uid().
 
+
+![one type can implement multiple protocols](https://raw.githubusercontent.com/pluralsight/guides/master/images/09ef0adf-93a6-4494-bf69-9173c5474c57.png)
 One type can model multiple abstractions since any type - including value types - can implement multiple protocols. This capability is a huge benefit over class inheritance.
 
 You can separate the concerns by creating as many protocols and protocol extensions as needed. Say good-bye to monolithic superclasses! 
