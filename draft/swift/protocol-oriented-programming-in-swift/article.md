@@ -1,7 +1,4 @@
-## What’s POP, Why Should You Use It, How Does it Work in Reality?
-
-by Károly Nyisztor
-
+What’s POP, Why Should You Use It, How Does it Work in Reality?
 
 ## Swift - the First POP Language
 At WWDC 2015 Apple announced that Swift is the world’s first Protocol-Oriented Programming language.
@@ -138,16 +135,21 @@ let entity2 = MyEntity(name: "42")
 assert(entity1 == entity2, "Entities shall be equal")
 ```
 Not only is this design more flexible than squeezing all the required functionality into a monolithic base class, but it also works for value types.
-A Cleaner Design with POP
-I’ll walk you through an example which shows the benefits of Protocol-Oriented Programming over the classical approach.
-Our aim is to create types which fulfill the following  requirements:
-Create an image given a name and image data
-The image should be persisted to and loaded from the filesystem
- Create a lossy compressed version of the image
-Base64 encode the image for transferring it over the internet
 
-The Superclass Way
-Let’s start with the base class approach. I squeeze all the features in the Image class. What we get is a complete type: we can create instances of the Image class directly, and we get all the requirements fulfilled.
+## A Cleaner Design with POP
+I’ll walk you through an example which shows the benefits of Protocol-Oriented Programming over the classical approach.
+
+Our aim is to create types which fulfill the following  requirements:
+- Create an image given a name and image data
+- The image should be persisted to and loaded from the filesystem
+- Create a lossy compressed version of the image
+- Base64 encode the image for transferring it over the internet
+
+### The Superclass Way
+Let’s start with the base class approach. 
+
+I squeeze all the features in the Image class. What we get is a complete type: we can create instances of the Image class directly, and we get all the requirements fulfilled.
+```
 class Image {
     fileprivate var imageName: String
     fileprivate var imageData: Data
@@ -189,15 +191,20 @@ class Image {
         return imageData.base64EncodedString()
     }
 }
+```
+Now, what if we don’t need all these features. 
 
-Now, what if we don’t need all these features. Let’s say I don’t need the Base64 encoding functionality? If I subclass the Image class, I’ll get all the features - even if I don’t need them.
+Let’s say I don’t need the Base64 encoding functionality? If I subclass the Image class, I’ll get all the features - even if I don’t need them.
+
 If we need to create subclasses to specialize some of the methods, there is no way to get rid of those public methods and properties we don’t need. We just get everything “for free.”
 Besides, we are constrained to classes only.
+
 Now, let’s revamp this design using POP.
 
-Redesign using POP
+### Redesign using POP
 
 I’ll create protocols for each major feature, that is persistence, creation of a compressed, lossy version and Base64 encoding. 
+```
 protocol ImageProtocol {
     var name: String {get}
     var data: Data {get}
@@ -250,9 +257,10 @@ extension EncodableImage {
         return image.data.base64EncodedString()
     }
 }
+```
 
 With this approach, we can create more granular designs. You can create a type which adopts all four protocols:
-
+```
 struct MyImage: ImageProtocol, PersistableImage, LossyImage, EncodableImage {
     typealias Image = MyImage
 
@@ -274,10 +282,10 @@ struct MyImage: ImageProtocol, PersistableImage, LossyImage, EncodableImage {
     
     // Default implementations provided via protocol extensions   
 }
-
+```
 Or you may decide to skip the conformance to PersistableImage:
 
-
+```
 struct InMemoryImage: ImageProtocol, LossyImage, EncodableImage {
     typealias Image = MyImage
     
@@ -297,11 +305,16 @@ struct InMemoryImage: ImageProtocol, LossyImage, EncodableImage {
         self.imageData = data
     }
 }
- 
+```
 The bottom line is that you can choose which protocol to adopt in your types. And your types can be references or value types - something that would not be possible with superclasses.
-Another benefit is that we can provide default implementations with protocol extensions. We could even add new functionality - and here’s the best part: we don’t even need the original code. We can extend any Foundation or UIKit protocol and decorate it according to our needs.
 
-Final Thoughts
-Swift supports multiple paradigms: Object-Oriented Programming, Protocol Oriented Programming, and Functional Programming. What does this mean to us, software developers? The answer is FREEDOM.
+
+Another benefit is that we can provide default implementations with protocol extensions. We could also add new functionality - and here’s the best part: we don’t even need the original code. We can extend any Foundation or UIKit protocol and decorate it according to our needs.
+
+## Final Thoughts
+Swift supports multiple paradigms: Object-Oriented Programming, Protocol Oriented Programming, and Functional Programming. 
+
+What does this mean to us, software developers? The answer is FREEDOM.
+
 It’s up to you which paradigm to choose. You can still go the OOP-route if you wish.
 However, once you wrap your head around Protocol-Oriented Programming, you’ll probably never look back.
