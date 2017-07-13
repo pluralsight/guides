@@ -1,8 +1,3 @@
-### Protocol Oriented Programming in Swift by Károly Nyisztor
-- [Read the guide](https://www.pluralsight.com/guides/swift/protocol-oriented-programming-in-swift?status=draft)
-- [Read more from Károly Nyisztor](https://www.pluralsight.com/guides/author/nyisztor) <img src="https://avatars2.githubusercontent.com/u/198511?v=3" width="30" height="30" alt="Károly Nyisztor" />
-- Related to: Swift
-
 ### Javascript development guidelines by Sanjeev Murthy
 - [Read the guide](https://www.pluralsight.com/guides/other/javascript-development-guidelines?status=draft)
 - [Read more from Sanjeev Murthy](https://www.pluralsight.com/guides/author/SanjeevMurthy) <img src="https://avatars3.githubusercontent.com/u/10756352?v=3" width="30" height="30" alt="Sanjeev Murthy" />
