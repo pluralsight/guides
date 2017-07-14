@@ -1,6 +1,6 @@
 ### Protocol Oriented Programming in Swift by Károly Nyisztor
 - [Read the guide](https://www.pluralsight.com/guides/swift/protocol-oriented-programming-in-swift)
-- [Read more from Károly Nyisztor](https://www.pluralsight.com/guides/author/nyisztor) <img src="https://avatars2.githubusercontent.com/u/198511?v=3" width="30" height="30" alt="Károly Nyisztor" />
+- [Read more from Károly Nyisztor](https://www.pluralsight.com/guides/author/nyisztor) <img src="https://avatars5.githubusercontent.com/u/198511?v=4" width="30" height="30" alt="Károly Nyisztor" />
 - Related to: Swift
 
 ### Build a Simple Serverless Clock Using Realtime Events in 5mins by Christian Nwamba
