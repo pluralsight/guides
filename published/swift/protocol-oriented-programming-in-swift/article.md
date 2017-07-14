@@ -314,6 +314,6 @@ Swift supports multiple paradigms: Object-Oriented Programming, Protocol Oriente
 It’s up to you which paradigm to choose. You can still go the OOP-route if you wish. You could mix and match. 
 However, once you wrap your head around Protocol-Oriented Programming, you’ll probably never look back.
 
-heck out [my Swift courses on Pluralsight](https://www.pluralsight.com/authors/karoly-nyisztor).
+Check out [my Swift courses on Pluralsight](https://www.pluralsight.com/authors/karoly-nyisztor).
 
 Thanks and Happy Coding!
