@@ -1,31 +1,29 @@
-I found a [great tutorial here on pluralsigt](https://www.pluralsight.com/guides/ruby-ruby-on-rails/token-based-authentication-with-ruby-on-rails-5-api) and having a spinoff problem to tackle, thought I might add some tweaks to make it work with a dual system, expected to work with both sessions and tokens. 
+I found a [great Pluralsight tutorial](https://www.pluralsight.com/guides/ruby-ruby-on-rails/token-based-authentication-with-ruby-on-rails-5-api) regarding Ruby on Rails and token-based authentication. Having a similar problem to tackle, I thought I might add some tweaks to make it work with a dual system. In other words, I wanted authentication to work with both sessions and tokens. 
 
-This guide focuses on RoR applications that use the [Devise](https://github.com/plataformatec/devise) for registration and sign in for web access and want to have token based authentication for api calls, whether from front-end platforms or mobile apps.
+This guide focuses on RoR applications that use [Devise](https://github.com/plataformatec/devise) for online registration and sign-in functionality and want to have token based authentication for API calls, whether from front-end platforms or mobile apps.
 
-While this approach targets a monolith application structure, which is frowned upon for good reasons, it might be usefull for POCs and quick mocks.
+While this approach targets a monolithic application structure, which is frowned upon for good reasons, it might be usefull for Proof of Concept demos, quick mocks, and small-scale work.
 
-# What is token-based authentication?
-[Read about it in this greate guide](https://www.pluralsight.com/guides/ruby-ruby-on-rails/token-based-authentication-with-ruby-on-rails-5-api#what-is-token-based-authentication-)
+### What is token-based authentication?
+In short, token-based authentication is a security strategy in which users log in using their credentials and are given a signed and usually time-limited token that allows them to access various resources. As a result, the user no longer needs to send login information to the server whenever sending requests, making the system more secure. This [great guide](https://www.pluralsight.com/guides/ruby-ruby-on-rails/token-based-authentication-with-ruby-on-rails-5-api#what-is-token-based-authentication-) covers everything else in more depth. 
 
 # Setting up Dual authentication with Rails 4
-Credits: parts of this tutorial where copied from [this guide](https://www.pluralsight.com/guides/ruby-ruby-on-rails/token-based-authentication-with-ruby-on-rails-5-api) by [Haristo Georgiev](https://www.pluralsight.com/guides/author/Kaizeras)
+Parts of this tutorial were directly copied from [the guide](https://www.pluralsight.com/guides/ruby-ruby-on-rails/token-based-authentication-with-ruby-on-rails-5-api) by [Hristo Georgiev](https://www.pluralsight.com/guides/author/Kaizeras).
 
-I assume you already have a Rails 4 application set up to work with [Devise](https://github.com/plataformatec/devise). I also assume a vanilla [Devise](https://github.com/plataformatec/devise) setup i.e. You did not overide any controllers yet and you use at least :database_authenticatable, :registerable stratagies.
+I assume you already have a Rails 4 application set up to work with [Devise](https://github.com/plataformatec/devise). I also assume that you are using a vanilla [Devise](https://github.com/plataformatec/devise) setup. In other words, you did not override any controllers yet and you use at least `:database_authenticatable`, `:registerable strategies`.
 
-
-he implementation of the JWT token generation can start. First, the `jwt` gem will make encoding and decoding of HMACSHA256 tokens available in the Rails application. Let's install it:
-
+Let's start by implementing the JWT controller. First, the `jwt` gem will make encoding and decoding of HMACSHA256 tokens available in the Rails application. Let's install it:
  
  ```ruby
   gem 'jwt'
 ```
-And install it:
+And in bash:
 
 ```bash
 bundle install
 
 ```
-Once the  gem is installed, it can be accessed through the `JWT` global variable. Because the methods that are going to be used require encapsulation, a singleton class is  a great way of wrapping the logic and using it in other constructs. 
+Once the  gem is installed, it can be accessed through the `JWT` global variable. Because the methods that are going to be used require encapsulation, a singleton class is a great way of wrapping the logic and using it in other constructs. 
 
 For those who are unfamiliar, **a singleton class** restricts the instantiation of a class to a single object, which comes in handy when only one object is needed to complete the tasks at hand.
 
