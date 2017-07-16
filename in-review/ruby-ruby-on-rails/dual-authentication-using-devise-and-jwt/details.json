@@ -3,7 +3,12 @@
     "author_name": "froy001",
     "author_real_name": "froy001",
     "branch": "master",
-    "branches": [],
+    "branches": [
+        [
+            "adityavarshney",
+            "adityavarshney-ruby-ruby-on-rails-dual-authentication-using-devise-and-jwt"
+        ]
+    ],
     "filename": "article.md",
     "first_commit": "d7b41fc8990ffadb2eb0be867f984c00962191b3",
     "image_url": "https://avatars2.githubusercontent.com/u/1267000?v=3",
