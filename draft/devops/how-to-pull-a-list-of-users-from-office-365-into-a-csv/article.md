@@ -28,11 +28,11 @@ This will ensure that all PowerShell scripts that you run are not blocked by the
 You are now setup as an administrator and ready to use Office 365 PowerShell commands. As a note, you will notice that there is not an installation for Exchange Online PowerShell cmdlets. Connecting to Exchange Online is completed using the New-PSSession and Import-PSSession commands instead.
 
 ## Connect to Office 365 using PowerShell
-To run the needed PowerShell commands, for ease and convenience you will use the PowerShell ISE tool found within Windows. To launch this, if you are using Windows 8 and higher then you can simply press the start menu and type “PowerShell ISE” and launch it from there. Once it is found, right click and choose “Run as administrator”.
+To run the needed PowerShell commands, for ease and convenience you will use the PowerShell ISE tool found within Windows. To launch this, if you are using Windows 8 and higher then you can simply press the start menu and type “**PowerShell ISE**” and launch it from there. Once it is found, right click and choose “**Run as administrator**”.
 
 ![alt text](https://github.com/helloitsliam/assets/blob/master/images/pl-1/9095f91-e635-4c48-894e-8251657e2860.png "")
 
-Once the PowerShell ISE loads, you can then run commands within the top half, and see the execution and results in the bottom half. If the top section is not visible, click the “Script” link and it will split the screen into two sections.
+Once the PowerShell ISE loads, you can then run commands within the top half, and see the execution and results in the bottom half. If the top section is not visible, click the “**Script**” link and it will split the screen into two sections.
 
 ![alt text](https://github.com/helloitsliam/assets/blob/master/images/pl-1/ca751d7a-1913-4f2e-a30d-0da2401c147c.png "")
 
@@ -89,11 +89,11 @@ The same command can actually be modified again to only return a single user if 
 
 This will once again output using the standard grid popup window. There are other properties that can be used to filter the list of user accounts that you want to be returned. You could retrieve users using some of the examples below.
 
-By Department: ```powershell Get-MsolUser -Department "Human Resources" | Out-GridView ```
+**By Department:** ```powershell Get-MsolUser -Department "Human Resources" | Out-GridView ```
 
-Enabled Accounts Only: ```powershell Get-MsolUser -EnabledFilter EnabledOnly | Out-GridView ```
+**Enabled Accounts Only:** ```powershell Get-MsolUser -EnabledFilter EnabledOnly | Out-GridView ```
 
-By Search String: ```powershell Get-MsolUser -SearchString "Steve" | Out-GridView ```
+**By Search String:** ```powershell Get-MsolUser -SearchString "Steve" | Out-GridView ```
 
 As you can see iterating user accounts is simple and easy using the standard PowerShell Get-MsolUser cmdlet, as well as filtering the users accounts you want to see.
 
