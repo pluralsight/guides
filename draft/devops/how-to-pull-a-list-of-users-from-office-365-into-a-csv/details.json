@@ -1,0 +1,13 @@
+{
+    "_publish_status": "draft",
+    "author_name": "helloitsliam",
+    "author_real_name": "helloitsliam",
+    "branch": "master",
+    "branches": [],
+    "filename": "article.md",
+    "stacks": [
+        "DevOps"
+    ],
+    "thumbnail_url": null,
+    "title": "How to pull a list of users from Office 365 into a csv"
+}
