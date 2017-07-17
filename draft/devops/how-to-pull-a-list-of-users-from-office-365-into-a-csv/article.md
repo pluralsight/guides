@@ -21,7 +21,9 @@ Install each component in the order listed ensuring that each one completes succ
 
 Now launch a standard PowerShell window and run the following command:
 
-```powershell Set-ExecutionPolicy RemoteSigned ```
+```powershell 
+Set-ExecutionPolicy RemoteSigned 
+```
 
 This will ensure that all PowerShell scripts that you run are not blocked by the security measures of PowerShell.
 
@@ -38,7 +40,9 @@ Once the PowerShell ISE loads, you can then run commands within the top half, an
 
 In the script pane, you can now initiate a connection to Office 365 by typing the following PowerShell commands in order. The first command will allow you to set a variable to your Office 365 credentials.
 
-```powershell $credential = get-credential ```
+```powershell
+$credential = get-credential
+```
 
 When prompted type your username and password within the popup window, once you have typed them, press OK, which will close the dialog and populate the variable.
 
@@ -50,19 +54,27 @@ To validate the variable, in the blue section at the bottom of the PowerShell IS
 
 Now that you have the credentials stored and available, you need to import the Office 365 PowerShell Modules directly into the PowerShell ISE window. To do this, type the following:
 
-```powershell  Import-Module MSOnline ```
+```powershell
+Import-Module MSOnline
+```
 
 Once this is complete, you can initiate a connection to Office 365 with the stored credential object using the following command.
 
-```powershell Connect-MsolService -Credential $credential ```
+```powershell
+Connect-MsolService -Credential $credential
+```
 
 Barring any errors, you should now have a connection to Azure Active Directory. To connect to SharePoint Online you will need to run the following command, which imports the SharePoint Online PowerShell cmdlets.
 
-```powershell Import-Module Microsoft.Online.Sharepoint.PowerShell ```
+```powershell
+Import-Module Microsoft.Online.Sharepoint.PowerShell
+```
 
 Once this has completed you will have access to all the modules and cmdlets within your current PowerShell session. Now you can create a connection to SharePoint Online by passing in the [URL of the SharePoint Online Administration Center site](https://technet.microsoft.com/en-us/library/fp161392.aspx)
 
-```powershell Connect-SPOService -url https://{tenant}-admin.sharepoint.com -Credential $credential ```
+```powershell
+Connect-SPOService -url https://{tenant}-admin.sharepoint.com -Credential $credential
+```
 
 To administer Skype for Business and Exchange Online, you will need to install the Skype connector and as mentioned before use a different connection approach for Exchange Online.
 
@@ -71,13 +83,17 @@ Now that you have a connection to Office 365, you can run some other commands to
 
 Office 365 PowerShell contains a command called Get-MsolUser which can be used to iterate all users within the Office 365 tenant. Within the PowerShell ISE window type the following, which will retrieve all users and load them into a grid for easy viewing.
 
-```powershell Get-MsolUser | Out-GridView ```
+```powershell
+Get-MsolUser | Out-GridView
+```
 
 ![alt text](https://github.com/helloitsliam/assets/blob/master/images/pl-1/716801ca-10f7-432c-a0ff-8af883dd5718.png  "")
 
 Close the Grid view windows and modify the command to now be the following:
 
-```powershell Get-MsolUser | Get-Member | Out-GridView ```
+```powershell
+Get-MsolUser | Get-Member | Out-GridView
+```
 
 When this runs instead of getting a list of users, you will now be presented with the list of properties that you can use when modifying user accounts or even just iterating accounts to check values.
 
@@ -85,15 +101,26 @@ When this runs instead of getting a list of users, you will now be presented wit
 
 The same command can actually be modified again to only return a single user if needed.
 
-```powershell Get-MsolUser -UserPrincipalName "user@domain.com" | Out-GridView ```
+```powershell
+Get-MsolUser -UserPrincipalName "user@domain.com" | Out-GridView
+```
 
 This will once again output using the standard grid popup window. There are other properties that can be used to filter the list of user accounts that you want to be returned. You could retrieve users using some of the examples below.
 
-**By Department:** ```powershell Get-MsolUser -Department "Human Resources" | Out-GridView ```
+**By Department** 
+```powershell 
+Get-MsolUser -Department "Human Resources" | Out-GridView 
+```
 
-**Enabled Accounts Only:** ```powershell Get-MsolUser -EnabledFilter EnabledOnly | Out-GridView ```
+**Enabled Accounts Only**
+```powershell
+Get-MsolUser -EnabledFilter EnabledOnly | Out-GridView
+```
 
-**By Search String:** ```powershell Get-MsolUser -SearchString "Steve" | Out-GridView ```
+**By Search String**
+```powershell
+Get-MsolUser -SearchString "Steve" | Out-GridView
+```
 
 As you can see iterating user accounts is simple and easy using the standard PowerShell Get-MsolUser cmdlet, as well as filtering the users accounts you want to see.
 
@@ -115,8 +142,9 @@ This command could be modified to include any of the filters such as Department 
 
 ```powershell
 Get-MsolUser Property: Get-MsolUser -EnabledFilter EnabledOnly | Select-Object UserPrincipalName, DisplayName, Country, Department | Export-Csv c:\Export\Property-Filter-Export-Enabled-Users.csv
+```
 
-
+```powershell
 Get-MsolUser with Where Clause: Get-MsolUser | Where-Object { $_.isLicensed -eq “TRUE” } | Select-Object UserPrincipalName, DisplayName, Country, Department | Export-Csv c:\Export\Where-Clause-Export-Enabled-Users.csv
 ```
 
