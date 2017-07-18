@@ -29,7 +29,13 @@ Every great developer knows his or her tools' uses. Understanding your tools for
 
  To ensure a speedy and efficient setup, I recommend using the [Node Package Manager (npm)](https://www.npmjs.com/) to maintain the dependencies of your Angular project. 
  
- First, create a directory where you'll store your project files. Open your terminal and run the following commands:
+ First, install the Karma CLI globally. We'll need this to be able to run the `karma` command directly form the command line. 
+ 
+ ```bash
+ npm install -g karma-cli
+ ```
+ 
+ Then, create a directory where you'll store your project files. Open your terminal and run the following commands:
  
  ```bash
  mkdir myitemsapp
@@ -107,11 +113,17 @@ With your terminal, run the following command in the directory of the project:
 karma init
 ```
 Answer the questions as following:
-- Testing framework: Select Jasmine.
-- Browser: Select 'Chrome'.
-- Specify the paths to your js and spec files: <code> 'app/\**.js', 'test/*\*.js' </code>
-- Specify the path to your Angular and ngMocks files: <code>'node_modules/angular/angular.js','node_modules/angular-mocks/angular-mocks.js'</code>
-
+- Testing framework: Select `jasmine`.
+- Do you want to use Require.js?: `no`
+- Browser: `Chrome`.
+- Specify the paths to your js and spec files: Enter each of the following, pressing Enter after each one. After the last one is entered, press enter again: 
+    - `app/**.js`
+    - `tests/**.js`
+        - **Note**: You will get a warning in your console after each of these saying that there are no files that match this pattern. That's ok, it's normal. 
+    - `node_modules/angular/angular.js`
+    - `node_modules/angular-mocks/angular-mocks.js`
+- Any excluded files? Just press Enter
+- Do you want Karma to Watch all files and run tests on change? `yes`
 
 In the end, you should end up with a <code>karma.conf.js</code> file looking like this: 
 ```javascript
