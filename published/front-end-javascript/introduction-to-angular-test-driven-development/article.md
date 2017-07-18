@@ -80,7 +80,7 @@ You can use one for [Chrome](npm install karma-chrome-launcher --save-dev) , [Fi
 
  I will go with Google Chrome:
  
-```
+```bash
 npm install karma-chrome-launcher --save-dev
 ```
 
