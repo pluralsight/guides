@@ -242,7 +242,7 @@ beforeEach(function(){
  
  #### Injecting
  
- Injecting is essential feature of unit testing Angular applications. It is characterised by the <code>inject</code> function (provided by the Angular mocks module). Injecting can be regarded as a way of accessing Angular's built-in constructs or your applicaiton's constructs by giving the correct arguments. This gives you the ability to access the code of your application and put mock data through it in order to test it.
+ Injecting is essential feature of unit testing Angular applications. It is characterised by the <code>inject</code> function (provided by the Angular mocks module). Injecting can be regarded as a way of accessing Angular's built-in constructs or your application's constructs by giving the correct arguments. This gives you the ability to access the code of your application and put mock data through it in order to test it.
  
  Injecting gives access to  Angular's building blocks -- *$service*, *$controller*, *$filter* , *$directive*, *$factory*. Additionally, it allows to mock built-in variables such as *$rootScope* and *$q*. It also provides *$httpBackend*, which simulates server-side requests in the testing envirionemnt.
  
