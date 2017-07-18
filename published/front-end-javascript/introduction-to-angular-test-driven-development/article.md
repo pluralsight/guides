@@ -29,7 +29,7 @@ Every great developer knows his or her tools' uses. Understanding your tools for
 
  To ensure a speedy and efficient setup, I recommend using the [Node Package Manager (npm)](https://www.npmjs.com/) to maintain the dependencies of your Angular project. 
  
- First, install the Karma CLI globally. We'll need this to be able to run the `karma` command directly form the command line. 
+ First, install the Karma CLI globally. We'll need this to be able to run the `karma` command directly from the command line. 
  
  ```bash
  npm install -g karma-cli
