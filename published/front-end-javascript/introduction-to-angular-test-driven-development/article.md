@@ -138,8 +138,8 @@ module.exports = function(config) {
     files: [
       'node_modules/angular/angular.js',
       'node_modules/angular-mocks/angular-mocks.js',
-      'app/app.js',  //use wildcards in real apps
-      'tests/tests.js' //use wildcards in real apps
+      'app/**.js', 
+      'tests/**.js'
     ],
     // list of files to exclude
     exclude: [
@@ -166,7 +166,11 @@ module.exports = function(config) {
     browsers: ['Chrome'],
     // Continuous Integration mode
     // if true, Karma captures browsers, runs the tests and exits
-    singleRun: false
+    singleRun: false,
+    
+    // Concurrency Level
+    // how many browser should be started simultaneous
+    concurrency: Infinity
   })
 }
 ```
