@@ -23,19 +23,13 @@ Every great developer knows his or her tools' uses. Understanding your tools for
 
 ** Jasmine ** is an unit testing framework for JavaScript. It is the most popular framework for testing JavaScript applications, mostly because it is quite simple to start with and flexible enough to cover a wide range of scenarios.
 
-** Angular Mocks ** is an Angular module that is used to mock compontents that already exist in the application. Its role is to inject various components of your Angular application (controllers, services, factories, directives, filters) and make them available for unit tests. It can be said that Angular Mocks is the middleman between the Angular components in your application and the unit testing environment.
+** Angular Mocks ** is an Angular module that is used to mock components that already exist in the application. Its role is to inject various components of your Angular application (controllers, services, factories, directives, filters) and make them available for unit tests. It can be said that Angular Mocks is the middleman between the Angular components in your application and the unit testing environment.
 
 ### Setting up the testing environment
 
  To ensure a speedy and efficient setup, I recommend using the [Node Package Manager (npm)](https://www.npmjs.com/) to maintain the dependencies of your Angular project. 
  
- First, let's install the packages we'll need to run the tests globally (done by appending <code> -g </code>) . 
-Open your terminal and run the following commands:
- ```
-  npm install -g karma
-  npm install -g jasmine-core 
-```
-Then, create a directory where you'll store your project files.
+ First, create a directory where you'll store your project files. Open your terminal and run the following commands:
  
  ```bash
  mkdir myitemsapp
