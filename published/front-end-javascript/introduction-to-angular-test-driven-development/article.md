@@ -4,7 +4,7 @@ This is where [Test-Driven Development](http://hackguides.org), or unit testing,
 
 Unit testing helps you answer all the *'Is this going to work if I insert X?'* or *Does X still return the same results now that I have implemented Y?'* scenarios. It does it by simulating actions, or __cases__, with mock data and checking if everything is outputted in the format you expect it to be.
 
-This guide is a great starting point for your journey in testing Angular applications and unit teting in general. In order to get the most out of the guide, you need to have some knowledge of JavaScipt and building Angular applications.
+This guide is a great starting point for your journey in testing Angular applications and unit testing in general. In order to get the most out of the guide, you need to have some knowledge of JavaScipt and building Angular applications.
 
 
 Angular is built with [testing in mind](https://docs.angularjs.org/guide/unit-testing). The framework allows simulation of server-side requests and abstraction of the [Document Object Model](https://en.wikipedia.org/wiki/Document_Object_Model) (DOM), thus providing an environment for testing out numerous scenarios. Additionally, Angular's dependency injection allows every component to be mocked and tested in different scopes.
@@ -19,11 +19,11 @@ Every great developer knows his or her tools' uses. Understanding your tools for
 
 ## Karma, Jasmine, and Angular Mocks
 
-** Karma**  is an environment which runs the tests of your application. Simply put, it's your testing server. Originally started as a [university thesis](https://github.com/karma-runner/karma/raw/master/thesis.pdf), Karma aims to make a framework-agnostic environment that automates the running of your unit tests. In its core, it is a [Node](https://nodejs.org/en/) server that watches for changes in your testing and application files, and when such changes occur, it runs them into a browser and checks for mistakes.
+** Karma**  is an environment which runs the tests of your application. Simply put, it's your testing server. Originally started as a [university thesis](https://github.com/karma-runner/karma/raw/master/thesis.pdf), Karma aims to make a framework-agnostic environment that automates the running of your unit tests. In its core, it is a [Node](https://nodejs.org/en/) server that watches for changes in your testing and application files, and when such changes occur, it runs them in a browser and checks for mistakes.
 
-** Jasmine ** is an unit testing framework for JavaScript. It is the most popular framework for testing JavaScript applications, mostly because it is quite simple to start with and flexible enough to cover a wide range of scnearios.
+** Jasmine ** is an unit testing framework for JavaScript. It is the most popular framework for testing JavaScript applications, mostly because it is quite simple to start with and flexible enough to cover a wide range of scenarios.
 
-** Angular Mocks ** is an Angular module that is used to mock compontents that already exist in the applicaiton. Its role is to inject various components of your Angular application (controllers, services, factories, directives, filters) and make them available for unit tests. It can be said that Angular Mocks is the middleman between the Angular components in your applicaiton and the unit testing environment.
+** Angular Mocks ** is an Angular module that is used to mock compontents that already exist in the application. Its role is to inject various components of your Angular application (controllers, services, factories, directives, filters) and make them available for unit tests. It can be said that Angular Mocks is the middleman between the Angular components in your applicaiton and the unit testing environment.
 
 ### Setting up the testing environment
 
