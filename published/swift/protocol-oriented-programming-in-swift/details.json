@@ -3,12 +3,7 @@
     "author_name": "nyisztor",
     "author_real_name": "K\u00e1roly Nyisztor",
     "branch": "master",
-    "branches": [
-        [
-            "prtkgpt",
-            "prtkgpt-swift-protocol-oriented-programming-in-swift"
-        ]
-    ],
+    "branches": [],
     "filename": "article.md",
     "first_commit": "7f3bb54c2ffe670b857ac2f3a492374716cb839c",
     "image_url": "https://avatars5.githubusercontent.com/u/198511?v=4",
