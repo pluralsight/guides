@@ -34,7 +34,7 @@ Here's [Yarn's Github page](https://github.com/yarnpkg/yarn). It's a pretty popu
 
 # Installation
 
-You can install yarn with with npm but this is *not recommended*:
+You can install yarn with npm but this is *not recommended*:
 ```
 npm install -g yarn
 ```
