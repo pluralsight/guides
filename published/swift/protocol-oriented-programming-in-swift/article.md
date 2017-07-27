@@ -28,11 +28,11 @@ Let’s take for example the following protocol:
 ```
 protocol Entity {
     var name: String {get set}
-    func uid() -> String
+    static func uid() -> String
 }
 ```
 
-What it tells us is that adopters of this protocol will be able to create an entity, assign it a name and retrieve its unique identifier by implementing the method uid().
+What it tells us is that adopters of this protocol will be able to create an entity, assign it a name and retrieve its unique identifier by implementing the type method uid().
 
 
 ![one type can implement multiple protocols](https://raw.githubusercontent.com/pluralsight/guides/master/images/09ef0adf-93a6-4494-bf69-9173c5474c57.png)
@@ -48,11 +48,11 @@ Protocols serve as blueprints: they tell us what adopters shall implement, but y
 Wrong! Having to rely on a base class for default implementation would eclipse the benefits of protocols. Besides, that would not work for value types.
 Luckily, there is another way: protocol extensions are the way to go!
 In Swift, you can extend a protocol and provide default implementation for methods, computed properties, subscripts and convenience initializers. 
-In the following example, I provided default implementation for calculated property uuid.
+In the following example, I provided default implementation for the type method uid().
 
 ```
 extension Entity {
-    func uid() -> String {
+    static func uid() -> String {
         return UUID().uuidString
     }
 }
@@ -61,6 +61,7 @@ Now types that adopt the protocol need not implement the uid method anymore.
 ```
 struct Order: Entity {
     var name: String
+    let uid: String = Order.uid()
 }
 let order = Order(name: "My Order")
 print(order.uid)
