@@ -29,7 +29,7 @@ There are several benefits to using such approach:
 
 
 - CSRF (Cross Site Request Forgery)
- - Because the application does not rely on cookies for authentication, it is invulnerable cross site request attacks.
+ - Because the application does not rely on cookies for authentication, it is invulnerable to such cross site request attacks.
 
 
 - Performance
