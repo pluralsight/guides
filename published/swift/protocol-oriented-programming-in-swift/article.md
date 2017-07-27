@@ -32,7 +32,7 @@ protocol Entity {
 }
 ```
 
-What it tells us is that adopters of this protocol will be able to create an entity, assign it a name and retrieve its unique identifier by implementing the type method uid().
+What it tells us is that adopters of this protocol will be able to create an entity, assign it a name and generate its unique identifier by implementing the type method uid().
 
 
 ![one type can implement multiple protocols](https://raw.githubusercontent.com/pluralsight/guides/master/images/09ef0adf-93a6-4494-bf69-9173c5474c57.png)
@@ -57,7 +57,7 @@ extension Entity {
     }
 }
 ```
-Now types that adopt the protocol need not implement the uid method anymore.
+Now types that adopt the protocol need not implement the uid() method anymore.
 ```
 struct Order: Entity {
     var name: String
