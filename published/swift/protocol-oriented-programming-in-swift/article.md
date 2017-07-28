@@ -292,3 +292,6 @@ However, once you wrap your head around Protocol-Oriented Programming, you’ll 
 Check out [my Swift courses on Pluralsight](https://www.pluralsight.com/authors/karoly-nyisztor).
 
 Thanks and Happy Coding!
+
+## Acknowledgments
+I would like to thank Marshall Elfstrand, Swift & Developer Tools Evangelist at Apple, for his valuable suggestions.
