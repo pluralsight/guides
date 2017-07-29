@@ -158,7 +158,7 @@ for (var i = 0; i < 5; i++) {
 ```
 Let's analyse this code. The function, which is passed as an argument to the `setTimeout` function, will be executed 3s after the first loop iteration. This practically means that the value of the variable `i`, which is in its outer scope, will become `5` before its execution, because all 5 iterations will certainly be done within those 3 seconds. Then, it will be executed 5 times, 1 time for every iteration, and it will log `5` five times.
 
-In order to get the desired output, we will need to use the closure mechanism, so our code should look like this:
+In order to get the desired output, we will need to add a closure, so our code should look like this:
 
 ``` JavaScript
 for (var i = 0; i < 5; i++) {
@@ -282,20 +282,7 @@ var counter = (function() {
 ```
 The module pattern is a special case of the singletone pattern, so there can be just one instance of the `counter` module. This is accomplished by immediate invocation of function which returns an object that contains references to the public functions. We can use the `counter` module in the same way as we used the `myCounter` object.
 
-### Function Factory
-
-``` JavaScript
-function makeAdder(x) {
-  return function(y) {
-    return x + y;
-  };
-}
-
-var add5 = makeAdder(5);
-var add10 = makeAdder(10);
-
-console.log(add5(2));  // 7
-console.log(add10(2)); // 12
-```
-
 ## Conclusion
+This tutorial covered all important things about the closures. Hopefully it gave you a better understanding of how this mechanism works and which problems can be solved by using it. If you still need more clarification about the closures, feel free to leave your question or comment below.
+
+Thank you very much for reading this tutorial.
