@@ -1,4 +1,4 @@
-Closures are very powerful mechanism in the JavaScript programming language. All members of an object in the JavaScript are public by default. However, closures mechanism provides to objects possibility to have private members, and not only that. In this tutorial we will learn what are closures and what are benefits of using them in the JavaScript code.
+Closures are a very powerful mechanism in the JavaScript programming language. All members of an object in the JavaScript are public by default. However, closures mechanism provides to objects possibility to have private members, and not only that. In this tutorial we will learn what the closures are and what are benefits of using them in the JavaScript code.
 
 So, what is the closure? Douglas Crockford, author of the book *JavaScript: The Good Parts*, wrote an excellent definition of the closure, which says: 
 
@@ -75,7 +75,7 @@ myCounter.increment(3);
 myCounter.decrement(2);
 ```
 
-For sure, when just one function is being returned, it can also be wrapped into an object, but there is no need for that. If more than one function are being returned, they must be wrapped into an object, like in the example above. We could also have functions inside of the `counter` functions which we didn't want to expose to the global (outer) scope. For instance, we could have a "private" function for logging the `currentValue`:
+For sure, when just one function is being returned, it can also be wrapped into an object, but there is no need for that. If more than one function are being returned, they must be wrapped into an object, like in the example above. We could also have functions inside of the `counter` functions which we don't want to expose to the global (outer) scope. For instance, we could have a "private" function for logging the `currentValue`:
 
 ```JavaScript
 function counter(initValue) {
@@ -105,7 +105,7 @@ function counter(initValue) {
 
 In this case, the `logCurrentValue` function cannot be accessed from the global scope, since it wasn't returned from the `counter` function. It can be used just within the `increment` and `decrement` functions. Also, the `currentValue` and `initValue` variables are private for the `counter` function object.  So, that's how private members can be emulated in the JavaScript.
 
-Let's see how will this mechanism work if we create more than one function object. For instance, let's create `myCounter1` and `myCounter2` objects and use them in the following way:
+Let's see how would this mechanism work if we created more than one function object. For instance, let's create `myCounter1` and `myCounter2` objects and use them in the following way:
 
 ``` JavaScript
 var myCounter1 = counter(0);
@@ -116,7 +116,7 @@ myCounter2.increment(2);
 myCounter1.decrement(1);
 myCounter2.decrement(1);
 ```
-In the first two lines of the code, we have actually created 2 different objects, `myCounter1` and `myCounter2`. These objects have the same properties, `increment` and `decrement`, which are references to the `increment` and `decrement` functions. Therefore, those functions can be accessed via `increment` and `decrement` properties. The `myCounter1` object is created by calling `counter` function with parameter `0`, and the `myCounter2` by calling it with parameter `3`. This means that `increment` and `decrement` functions will have different values of the `currentValue` variable in the outer scope, so their calls on those two objects will produce different results, although there are called with the same parameters, like in the example above. Actually, we have 2 different `increment` and `decrement` functions, because we created 2 different objects and each pair of those functions has its own scope. 
+In the first two lines of the code, we have actually created 2 different objects, `myCounter1` and `myCounter2`. These objects have the same properties, `increment` and `decrement`, which are references to the `increment` and `decrement` functions. The `myCounter1` object is created by calling `counter` function with parameter `0`, and the `myCounter2` by calling it with parameter `3`. This means that `increment` and `decrement` functions will have different values of the `currentValue` variable in the outer scope, so their calls on those two objects will produce different results, although there are called with the same parameters, like in the example above. Actually, we have 2 different `increment` and `decrement` functions, because we created 2 different objects and each pair of those functions has its own scope. 
 
 The output of the code above will be:
 
