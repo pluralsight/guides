@@ -156,7 +156,7 @@ for (var i = 0; i < 5; i++) {
     }, 3000);
 }
 ```
-Let's analyse this code. The function, which is passed as an argument to the `setTimeout` function, will be executed 3s after the first loop iteration. This practically means that the value of the variable `i` will become `5` before its execution, because all 5 iterations will certainly be done within those 3 seconds. Then, it will be executed 5 times, 1 time for every iteration, and it will log `5` five times.
+Let's analyse this code. The function, which is passed as an argument to the `setTimeout` function, will be executed 3s after the first loop iteration. This practically means that the value of the variable `i`, which is in its outer scope, will become `5` before its execution, because all 5 iterations will certainly be done within those 3 seconds. Then, it will be executed 5 times, 1 time for every iteration, and it will log `5` five times.
 
 In order to get the desired output, we will need to use the closure mechanism, so our code should look like this:
 
@@ -218,7 +218,7 @@ Let's consider the following example: there is a button on an HTML page and we w
 </html>
 ```
 
-This code works fine, but we had to define a global variable for counting user clicks on the button. That's generally not recommended, since we are polluting the global scope. We use the `counter` variable just in the event handler, so why wouldn't we declare it inside the handler? However, if we just move declaration to the handler's scope, it will not work as expected, because every time the handler is called (i.e. every time the user clicks on the button), the `counter` will be set to zero. The solution is to use a closure, like in the following code:
+This code works fine, but we had to define a global variable for counting user clicks on the button. That's generally not recommended, since we are polluting the global scope. We use the `counter` variable just in the event handler, so why wouldn't we declare it inside the handler? However, if we just move declaration to the handler's scope, it will not work as expected, because every time the handler is called (i.e. every time the user clicks on the button), the `counter` will be reset to zero. The solution is to use a closure, like in the following code:
 
 ``` HTML
 <!DOCTYPE html>
@@ -247,7 +247,7 @@ This code works fine, but we had to define a global variable for counting user c
 </body>
 </html>
 ```
-In this code, we have defined the `outer` function which returns the `inner` function. The `outer` function is immediately invoked and after its execution, the `inner` function is being assigned to the `onclick` handler. This means that whenever the user clicks on the button, the `inner` function will be called. Since it is a closure, it has access to the `outer` function scope, so it can easily change the value of the `counter` variable.
+In this code, we have defined the `outer` function which returns the `inner` function. The `outer` function is immediately invoked and after its execution, the `inner` function is being assigned to the `onclick` handler. This means that whenever the user clicks on the button, the `inner` function will be called instead of the `outer` function. Since it is a closure, it has access to the `outer` function's scope, so it can easily change the value of the `counter` variable. Therefore, the line `var counter = 0` will be executed just one time, before returning the `outer` function. After that, the `outer` function will be called every time the user clicks on the button and it will increment the `counter` by 1, so the `counter` will always contain the accurate number of button clicks.
 
 ### The Module Pattern
 
@@ -280,7 +280,7 @@ var counter = (function() {
     };
 })();
 ```
-The module pattern is used for singleton objects, so there can be just one instance of the `counter` module. This is accomplished by immediate invocation of function which returns an object that contains references to the exposed (public) functions. We can use the `counter` module in the same way as we used the `myCounter` object before
+The module pattern is a special case of the singletone pattern, so there can be just one instance of the `counter` module. This is accomplished by immediate invocation of function which returns an object that contains references to the public functions. We can use the `counter` module in the same way as we used the `myCounter` object.
 
 ### Function Factory
 
@@ -297,3 +297,5 @@ var add10 = makeAdder(10);
 console.log(add5(2));  // 7
 console.log(add10(2)); // 12
 ```
+
+## Conclusion
