@@ -176,6 +176,20 @@ In the first iteration the value of the variable `i` is `0`. We have invoked the
 
 The same will happen in the second iteration, the `inner` function will be executed 3s later, but this time the variable `i` will be `1`, and so on. Finally, we will get desired output in the console.
 
+However, there is a simpler soulution for this problem. The EcmaScript 2015 (or ES6) introduced some very useful new features and some of them are *let* and *const* keywords, which create block scoped variables. If we just replace the keyword `var` with `let` in this example, we will get completely different output:
+
+``` JavaScript
+for (let i = 0; i < 5; i++) {
+
+    setTimeout(function() { 
+    
+        console.log(i); // 0 1 2 3 4
+            
+    }, 3000);
+}
+```
+The keyword `let` created a block scope for the variable `i`, for every loop iteration particularly. Therefore, we didn't have to put the line `console.log(i)` into a closure in order to create a new scope for `i`, because the `let` keyword did it for us.
+
 ### Event Handlers
 
 Let's consider the following example: there is a button on an HTML page and we want to show users information about how many times the button was clicked. We could write the following code to implement this functionality:
@@ -283,27 +297,3 @@ var add10 = makeAdder(10);
 console.log(add5(2));  // 7
 console.log(add10(2)); // 12
 ```
-## Do we need closures in ES6?
-(arrow operator, callbacks
-let keyword, loops)
-
-
-The EcmaScript 2015 (or ES6) introduced some very useful new features, like *arrow functions*,  which solved issues with keyword *this* for callbacks. There are also *let* and *const* keywords, which create block scoped variables. Let's consider what is the impact of these features on the closures mechanism and do we still need it in ES6.
-
-If we just replace the keyword `var` with `let` in our example with setting timeout, we will get completely different output:
-
-``` JavaScript
-for (let i = 0; i < 5; i++) {
-
-    setTimeout(function() { 
-    
-        console.log(i); // 0 1 2 3 4
-            
-    }, 3000);
-}
-```
-So, the keyword `let` created a block scope for the variable `i`, for every loop iteration particularly. Therefore, we didn't have to put the line `console.log(i)` into a closure in order to create a new scope for `i`, because the `let` keyword did it for us.
-
-
-
-
