@@ -1,0 +1,15 @@
+{
+    "_publish_status": "draft",
+    "author_name": "sonisick",
+    "author_real_name": "sonisick",
+    "branch": "master",
+    "branches": [],
+    "filename": "article.md",
+    "first_commit": "33e75fcd3944fe7d62838bd2d8c56431b31aacf5",
+    "image_url": "https://avatars0.githubusercontent.com/u/6710145?v=4",
+    "stacks": [
+        "Front-End JavaScript (Angular, React, Meteor, etc)"
+    ],
+    "thumbnail_url": null,
+    "title": "Comparison of D3 and Dimple Code for Line Charts"
+}
