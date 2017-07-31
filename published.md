@@ -1,3 +1,8 @@
+### Comparison of D3 and Dimple Code for Line Charts by sonisick
+- [Read the guide](https://www.pluralsight.com/guides/front-end-javascript/comparison-of-d3-and-dimple-code-for-line-charts)
+- [Read more from sonisick](https://www.pluralsight.com/guides/author/sonisick) <img src="https://avatars0.githubusercontent.com/u/6710145?v=4" width="30" height="30" alt="sonisick" />
+- Related to: Front-End JavaScript (Angular, React, Meteor, etc)
+
 ### How to activate animation when the content scrolls into view by Hayk Yaghubyan
 - [Read the guide](https://www.pluralsight.com/guides/html-css/how-to-activate-animation-when-the-content-scrolls-into-view)
 - [Read more from Hayk Yaghubyan](https://www.pluralsight.com/guides/author/haykoyaghubyan) <img src="https://avatars3.githubusercontent.com/u/26785721?v=3" width="30" height="30" alt="Hayk Yaghubyan" />
