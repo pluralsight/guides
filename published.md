@@ -1,3 +1,8 @@
+### How to activate animation when the content scrolls into view by Hayk Yaghubyan
+- [Read the guide](https://www.pluralsight.com/guides/html-css/how-to-activate-animation-when-the-content-scrolls-into-view)
+- [Read more from Hayk Yaghubyan](https://www.pluralsight.com/guides/author/haykoyaghubyan) <img src="https://avatars3.githubusercontent.com/u/26785721?v=3" width="30" height="30" alt="Hayk Yaghubyan" />
+- Related to: HTML/CSS
+
 ### Protocol Oriented Programming in Swift by Károly Nyisztor
 - [Read the guide](https://www.pluralsight.com/guides/swift/protocol-oriented-programming-in-swift)
 - [Read more from Károly Nyisztor](https://www.pluralsight.com/guides/author/nyisztor) <img src="https://avatars1.githubusercontent.com/u/198511?v=4" width="30" height="30" alt="Károly Nyisztor" />
