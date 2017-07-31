@@ -3,12 +3,7 @@
     "author_name": "sonisick",
     "author_real_name": "sonisick",
     "branch": "master",
-    "branches": [
-        [
-            "prtkgpt",
-            "prtkgpt-front-end-javascript-comparison-of-d3-and-dimple-code-for-line-charts"
-        ]
-    ],
+    "branches": [],
     "filename": "article.md",
     "first_commit": "33e75fcd3944fe7d62838bd2d8c56431b31aacf5",
     "image_url": "https://avatars0.githubusercontent.com/u/6710145?v=4",
