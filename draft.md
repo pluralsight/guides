@@ -1,3 +1,8 @@
+### Comparison of D3 and Dimple Code for Line Charts by sonisick
+- [Read the guide](https://www.pluralsight.com/guides/front-end-javascript/comparison-of-d3-and-dimple-code-for-line-charts?status=draft)
+- [Read more from sonisick](https://www.pluralsight.com/guides/author/sonisick) <img src="https://avatars0.githubusercontent.com/u/6710145?v=4" width="30" height="30" alt="sonisick" />
+- Related to: Front-End JavaScript (Angular, React, Meteor, etc)
+
 ### Javascript development guidelines by Sanjeev Murthy
 - [Read the guide](https://www.pluralsight.com/guides/other/javascript-development-guidelines?status=draft)
 - [Read more from Sanjeev Murthy](https://www.pluralsight.com/guides/author/SanjeevMurthy) <img src="https://avatars3.githubusercontent.com/u/10756352?v=3" width="30" height="30" alt="Sanjeev Murthy" />
