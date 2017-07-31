@@ -1,5 +1,3 @@
-
-
 During my time as a SharePoint developer, D3 and Dimple have come in handy for various graphical and charting applications. 
 This article will (re)introduce you to D3 and Dimple and briefly discuss the benefits of using them together. This article ultimately aims to explain how Dimple simplifies some arcane D3 constructs.
 What is D3?
@@ -60,7 +58,8 @@ Dimple Code
 The data for both come from an internal variable in each of the chart samples called data. The variable data is simply a JSON object:
  
 JSON Data for both Examples
-The above variable object is enclosed with an opening and closing Script tag <script>, so that the section can be collapsed as we concentrate on the main coding routine. The CSS Style tag will also be collapsed and referenced only when needed.
+The above variable object is enclosed with an opening and closing Script tag
+`<script>`, so that the section can be collapsed as we concentrate on the main coding routine. The CSS Style tag will also be collapsed and referenced only when needed.
 With the data portion and CSS Styles collapsed, the code is quite succinct with just nine lines of actual Dimple Code:
  
 First Dimple Example
