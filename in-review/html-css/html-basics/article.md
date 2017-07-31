@@ -15,6 +15,7 @@
 <html>
 <head>
 <title>Page Title</title>
+</head>
 <body>
 
 <h1>My First Heading</h1>
@@ -36,15 +37,23 @@ Let's go through the lines of HTML code in the example above.
 - The text between ```<p> and </p>``` describes a paragraph
 
 ## HTML Tags
-HTML tags are __keywords__ (tag names) surrounded by __angle brackets__:
+The most of HTML tags are __keywords__ (tag names) surrounded by __angle brackets__:
 
      <tagname>content</tagname>
 <br>
-* HTML tags normally come in pairs like ```<p> and </p>```
+* HTML tags usually come in pairs like ```<p> and </p>```
 * The first tag in a pair is the __start tag__, the second tag is the **end tag**.
 * The end tag is written like the start tag, but with a __slash__ before the tag name
----
 
+There are also self-closing HTML tags, like the `<br />` tag, which inserts a single line break into a HTML document. For example, this HTML code
+
+     Line 1 <br/> Line 2
+
+will be shown in a browser as:
+
+    Line 1
+    Line 2
+---
 
 ## Web Browsers
 The purpose of a web browser (Chrome, IE, Firefox, Safari) is to read HTML documents and display them. You may have noticed that a browser does not display the HTML tags. Instead, it uses them to determine how to create, organize, and display the document:
