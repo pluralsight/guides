@@ -1,3 +1,8 @@
+### Everything You Need to Know about Continuous Testing by abskaiser
+- [Read the guide](https://www.pluralsight.com/guides/devops/everything-you-need-to-know-about-continuous-testing?status=in-review)
+- [Read more from abskaiser](https://www.pluralsight.com/guides/author/abskaiser) <img src="https://avatars2.githubusercontent.com/u/26959448?v=4" width="30" height="30" alt="abskaiser" />
+- Related to: DevOps (Docker, Nagios, Jenkins, Chef, Puppet, etc)
+
 ### Comparison of D3 and Dimple Code for Line Charts by sonisick
 - [Read the guide](https://www.pluralsight.com/guides/front-end-javascript/comparison-of-d3-and-dimple-code-for-line-charts?status=in-review)
 - [Read more from sonisick](https://www.pluralsight.com/guides/author/sonisick) <img src="https://avatars0.githubusercontent.com/u/6710145?v=4" width="30" height="30" alt="sonisick" />
