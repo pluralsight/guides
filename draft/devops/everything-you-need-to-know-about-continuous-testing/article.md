@@ -25,7 +25,10 @@ In this post, I will briefly touch upon Continuous Integration and dive right in
 
 Continuous Integration is a process where developers integrate their code with the source code repository on a regular basis multiple times a day (if feasible), and whenever they integrate, the entire mainline is built, and other activities such as unit testing and checking the code-quality also take place. For example, if a project has four developers, and let’s say that each developer integrates his code three times a day, then there will be twelve integrations every day. This translates to twelve builds of the mainline, twelve sets of unit tests and the code quality checks that run for twelve times.
 
-Figure 1: Continuous Integration Process
+
+![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/7ac20ae9-9a83-4a3e-9a6d-9ad14a4317ca.jpg)
+
+<center>Figure 1: Continuous Integration Process</center><br />
 
 Figure 1 illustrates the process of Continuous Integration.
 
@@ -44,7 +47,10 @@ In other words, testing phase provides you the feedback, which will help you det
 
 Continuous Testing is the process in which the code integrations that are built during the Continuous Integration process get into a pipeline of various tests (integration, system, performance, regression and user acceptance to name some), and the tests get executed automatically – with absolutely zero human intervention.
 
-Figure 2: Continuous Testing Process
+
+![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/1fc1f5d7-a117-46ee-b7d1-9c3a2eefa0ac.jpg)
+
+<center>Figure 2: Continuous Testing Process</center><br />
 
 Figure 2 illustrates the Continuous Testing process. Whenever developers integrate their code, it runs through the Continuous Integration cycle. If the process is successful, the binary that is built out of the Continuous Integration process will be tested automatically. As illustrated in figure 2, the binary is automatically run through integration test. If successful, system test follows. If successful, regression test follows. If successful automatic user acceptance test (UAT) is executed. Likewise, you can add, delete or modify any tests that you need to this pipeline. 
 
@@ -65,9 +71,14 @@ The advantage of Continuous Testing over automation testing is that once a code 
 
 The difference between automated testing and Continuous Testing can be best explained in figure 3.
 
-Figure 3: Automated Testing vs Continuous Testing
+
+
+
+![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/b258fa6a-45d1-4490-8b21-fbb829e38f76.jpg)
+<center>Figure 3: Automated Testing vs Continuous Testing</center> <br />
 
 <strong>Do Testing the Continuous Way</strong>
 
 The objective of DevOps is to deliver software efficiently to the customer. And you cannot deliver it quickly if you don’t get the feedback on time. By employing the Continuous Testing process, you can be rest assured that the feedback is rapid, and you can save tons of time in not redoing your code.
+
 Developers and testers have often asked me whether writing all the test scripts before you begin to code is feasible and practical. The answer is yes, this is the essence to achieving Continuous Delivery and Continuous Deployment. Many organizations are able to deploy multiple times a day. There are reports that suggest that Amazon deploys five times a minute, that’s three hundred deployments an hour. What are they doing? Continuous Testing.
