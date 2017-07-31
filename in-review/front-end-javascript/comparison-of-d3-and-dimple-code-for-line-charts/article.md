@@ -23,6 +23,7 @@ Even crossword Word Graphs are based on D3 layouts and code:
 
 
 ![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/13892fc0-22f3-485d-9c05-5968bc18045c.png)
+
 D3 Word Graph
 
 Also, interactive statistical maps and population studies have all found a fertile home in d3 code--just Google “Interactive D3 Maps” and choose the images:
