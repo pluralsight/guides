@@ -1,3 +1,8 @@
+### Everything You Need to Know about Continuous Testing by abskaiser
+- [Read the guide](https://www.pluralsight.com/guides/devops/everything-you-need-to-know-about-continuous-testing?status=draft)
+- [Read more from abskaiser](https://www.pluralsight.com/guides/author/abskaiser) <img src="https://avatars2.githubusercontent.com/u/26959448?v=4" width="30" height="30" alt="abskaiser" />
+- Related to: DevOps (Docker, Nagios, Jenkins, Chef, Puppet, etc)
+
 ### Javascript development guidelines by Sanjeev Murthy
 - [Read the guide](https://www.pluralsight.com/guides/other/javascript-development-guidelines?status=draft)
 - [Read more from Sanjeev Murthy](https://www.pluralsight.com/guides/author/SanjeevMurthy) <img src="https://avatars3.githubusercontent.com/u/10756352?v=3" width="30" height="30" alt="Sanjeev Murthy" />
