@@ -1,5 +1,3 @@
-# Start writing your guide here.
-
 The fast-paced market conditions have made it impossible for rigidity and holism to take root in the IT industry. Especially in the software development industry, waterfall styled projects are dusking while Agile and DevOps (inspired) methodologies have been embraced.
 
 <strong>Agile and DevOps: The New Way</strong>
