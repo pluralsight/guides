@@ -1,6 +1,6 @@
-### Everything You Need to Know about Continuous Testing by abskaiser
+### Everything You Need to Know about Continuous Testing by Abhinav Kaiser
 - [Read the guide](https://www.pluralsight.com/guides/devops/everything-you-need-to-know-about-continuous-testing?status=in-review)
-- [Read more from abskaiser](https://www.pluralsight.com/guides/author/abskaiser) <img src="https://avatars2.githubusercontent.com/u/26959448?v=4" width="30" height="30" alt="abskaiser" />
+- [Read more from Abhinav Kaiser](https://www.pluralsight.com/guides/author/abskaiser) <img src="https://avatars2.githubusercontent.com/u/26959448?v=4" width="30" height="30" alt="Abhinav Kaiser" />
 - Related to: DevOps (Docker, Nagios, Jenkins, Chef, Puppet, etc)
 
 ### Getting started with Vue.JS (part-1) by A M Rahman
