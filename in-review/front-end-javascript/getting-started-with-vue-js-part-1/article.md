@@ -1,12 +1,12 @@
-## Vue.Js
+# Vue.Js
 
-Vue (which is pronounced as view) is very liberal framework for construction of the user interface. Unlike the others monumental frameworks, a Vue is designed from a minced up to be incrementally acceptable. Its core library is now concentrated on the view layers only, and it is very informal to give a lift to and to integrate with the already exist other libraries or with an existing project. Beside this, Vue have also a capability which is perfect and operating the urbane Single-Page Applets when it is used in a permutation with a recent tools and subsidiary libraries.
+Vue (pronounced as view) is a liberal framework for user interface (UI) construction. Unlike other monumental frameworks, Vue is designed to be incrementally acceptable. Its core library is now concentrated on the view layers only, and Vue is very informal to give a lift to and to integrate with pre-existing libraries in a current project. Beside this, Vue also has the capability to operate  urbane Single-Page Applets when used in conjunction with new tools and subsidiary libraries.
 
-If you have an experience of frontend developing and you may want to know how the Vue is compared to other formal framework and libraries, and check this comparison.
+If you have experience with front-end development and you want to know how Vue compares with other formal frameworks and libraries, this guide is for you!
 
-# Features
+# Vue's Features
 
-Vue.js just offers a very large functionality for its view layer and it can be used further for the building of very powerful webapp which is single-page. In the following you can find a list of features:
+Vue.js just offers plenty of functionality for its view layer and it can be used further to build single-page web applications. Here are a list of key features of Vue.js:
 
 - Template Logic
 - Computed Properties
@@ -18,18 +18,18 @@ Vue.js just offers a very large functionality for its view layer and it can be u
 
 # How to use Vue.js
 
-There are many ways to include a Vue.js in our web based projects:
+There are many ways to include Vue.js in our web based projects:
 
-- In first method we have to use a CDN by including a &lt;script&gt; tags in our HTML type file.
-- Then the second way is to install that by using a Node Package Manager (NPM).
-- Third method is to Install using the Bower
-- Fourthly we have to use a Vue-cli to setup our project
+- The first method is to use a CDN by including &lt;script&gt; tags in our HTML type file.
+- The second way is to install that by using a Node Package Manager (NPM).
+- The third method is to install using Bower
+- Fourthly we can to use a Vue-cli to setup our project
 
-In the above following now we&#39;re trying to setup the Vue-cli to a new project and install the recommended Vue.js 2 library.
+In all of the cases, we are trying to setup the Vue-cli to a new project and install the recommended Vue.js 2 library.
 
 # Getting Started with Vue
 
-The coolest way is to try out a Vue.js which is used the JSFiddle in the example of Hello World. Then feel free to further open it in the other tabs and then follow along with as we have to go through this basic example. As like
+The coolest way to get started is to try out Vue.js using JSFiddle's Hello World example. Then feel free to further open it in the other tabs and then follow along with as we have to go through this basic example. As like
 
 [When we have to create an index.html and then we include the Vue with then:
 https://unpkg.com/vue
@@ -50,7 +50,6 @@ Output:
 
 **Hi its vue!**
 
-##
 
 :app.message:
 **Declarative Rendering**
