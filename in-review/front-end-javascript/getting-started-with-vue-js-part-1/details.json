@@ -3,7 +3,12 @@
     "author_name": "amrahman90",
     "author_real_name": "A M Rahman",
     "branch": "master",
-    "branches": [],
+    "branches": [
+        [
+            "adityavarshney",
+            "adityavarshney-front-end-javascript-getting-started-with-vue-js-part-1"
+        ]
+    ],
     "filename": "article.md",
     "first_commit": "9463e7807c9749aa05cd411feba3bd3ab46804d5",
     "image_url": "https://avatars2.githubusercontent.com/u/28068398?v=3",
