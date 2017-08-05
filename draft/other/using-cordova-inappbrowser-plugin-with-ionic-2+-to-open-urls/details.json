@@ -1,0 +1,15 @@
+{
+    "_publish_status": "draft",
+    "author_name": "techiediaries",
+    "author_real_name": "Techiediaries",
+    "branch": "master",
+    "branches": [],
+    "filename": "article.md",
+    "first_commit": "56581974d004d3c0e50dda7a99e1f87726c7bbae",
+    "image_url": "https://avatars2.githubusercontent.com/u/22133314?v=4",
+    "stacks": [
+        "other"
+    ],
+    "thumbnail_url": null,
+    "title": "Using Cordova InAppBrowser Plugin with Ionic 2+ to Open URLs "
+}
