@@ -1,7 +1,7 @@
 ### Using Cordova InAppBrowser Plugin with Ionic 2+ to Open URLs  by Techiediaries
-- [Read the guide](https://www.pluralsight.com/guides/other/using-cordova-inappbrowser-plugin-with-ionic-2+-to-open-urls?status=draft)
+- [Read the guide](https://www.pluralsight.com/guides/front-end-javascript/using-cordova-inappbrowser-plugin-with-ionic-2+-to-open-urls?status=draft)
 - [Read more from Techiediaries](https://www.pluralsight.com/guides/author/techiediaries) <img src="https://avatars2.githubusercontent.com/u/22133314?v=4" width="30" height="30" alt="Techiediaries" />
-- Related to: other
+- Related to: Front-End JavaScript (Angular, React, Meteor, etc)
 
 ### Building Desktop Applications with Electron, Angular 2+ and TypeORM  by Techiediaries
 - [Read the guide](https://www.pluralsight.com/guides/node-js/building-desktop-applications-with-electron-angular-2+-and-typeorm?status=draft)
