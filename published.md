@@ -639,8 +639,8 @@
 - Related to: Ruby, Ruby on Rails
 
 ### JavaScript Callbacks Variable Scope Problem by Itay Grudev
-- [Read the guide](https://www.pluralsight.com/guides/review/javascript-callbacks-variable-scope-problem)
-- [Read more from Itay Grudev](https://www.pluralsight.com/guides/user/itay-grudev) <img src="https://avatars.githubusercontent.com/u/2123767?v=3" width="30" height="30" alt="Itay Grudev" />
+- [Read the guide](https://www.pluralsight.com/guides/front-end-javascript/javascript-callbacks-variable-scope-problem)
+- [Read more from Itay Grudev](https://www.pluralsight.com/guides/author/itay-grudev) <img src="https://avatars2.githubusercontent.com/u/2123767?v=4" width="30" height="30" alt="Itay Grudev" />
 - Related to: Front-End JavaScript (Angular, React, Meteor, etc)
 
 ### Text Editors For Beginners - 15 Ways To Rule The World. by Shannon Duncan
