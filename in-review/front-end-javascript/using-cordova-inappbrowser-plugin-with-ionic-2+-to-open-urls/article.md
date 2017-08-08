@@ -10,7 +10,7 @@ Before you can build Ionic 2+ apps you need to have a few requirements:
 
 * Node.js and NPM.
 * Java and Android SDKs for Android apps.
-* Setup JAVA_HOME and ANDROID_HOME system variables. 
+* Setup JAVA_HOME and ANDROID_HOME system variables for Android apps. 
 * A MAC system and XCode for iOS apps.
 * Windows for UWP apps.
 * Ionic CLI and Cordova.
