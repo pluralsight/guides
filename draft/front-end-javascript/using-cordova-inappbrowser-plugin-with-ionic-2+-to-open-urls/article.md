@@ -1,14 +1,26 @@
 ## Introduction 
 
-In this tutorial we are going to see how to use the InAppBrowser Cordova plugin to open external URLs in Ionic 2+ apps or use third party services which require opening a webview. So lets get started.
+In this tutorial we are going to see how to use the InAppBrowser Cordova plugin to open external URLs in Ionic 2+ apps or use third party services which require opening a webview such as implementing social authentication and payment gateways. So lets get started.
 
 Ionic Native is a set of wrappers around Cordova plugins which allow Ionic developers to use the native plugins in an Angular way i.e using observables instead of ugly callbacks.
 
-## What is InAppBrowser?
+## Requirements 
 
-InAppBrowser is a native Cordova plugin which can be used to add an in-app browser to your hybrid mobile application created with Cordova framework or any Cordova based framework such as Ionic.
+Before you can build Ionic 2+ apps you need to have a few requirements:
 
-You can find more information about InAppBrowser from this [Github repository]().
+* Node.js and NPM.
+* Java and Android SDKs for Android apps.
+* Setup JAVA_HOME and ANDROID_HOME system variables. 
+* A MAC system and XCode for iOS apps.
+* Windows for UWP apps.
+* Ionic CLI and Cordova.
+
+For installing Node.js and NPM you can head over to their [official website]() and grab the installer for your operating system.
+
+If you need to target Android platform first install Java by going to their [official website]() and follow the instructions. Then install the Android SDK available from this [link]().
+
+If you successfully installed Node.js and NPM the next step is to install Cordova and Ionic CLI.
+
 ## Installing Cordova and Ionic CLI
 
 If you don't have Ionic CLI and Cordova installed, then you need to start by installing them first:
@@ -39,6 +51,15 @@ P.S if you are under Windows, you can also target the Universal Windows Platform
 
 Now after adding your target platform, you can install the InAppBrowser plugin.
 
+
+## What is InAppBrowser?
+
+InAppBrowser is a native Cordova plugin which can be used to add an in-app browser to your hybrid mobile application created with Cordova framework or any Cordova based framework such as Ionic.
+
+You can find more information about InAppBrowser from this [Github repository]().
+## Installing Cordova and Ionic CLI
+
+
 ## Installing InAppBrowser Cordova Plugin and Corresponding Ionic Native Wrapper
 
 InAppBrowser plugin is available from npm so to install it simply run this command inside your project root folder:
@@ -47,6 +68,8 @@ InAppBrowser plugin is available from npm so to install it simply run this comma
     ionic plugin add cordova-plugin-inappbrowser --save
 
     npm install --save @ionic-native/in-app-browser
+    
+    
 
 Start by importing the InAppBrowser native plugin :
 
