@@ -1,11 +1,12 @@
 {
+    "_publish_status": "published",
     "author_name": "itay-grudev",
     "author_real_name": "Itay Grudev",
     "branch": "master",
     "branches": [],
     "filename": "article.md",
-    "image_url": "https://avatars.githubusercontent.com/u/2123767?v=3",
-    "publish_status": "published",
+    "first_commit": null,
+    "image_url": "https://avatars2.githubusercontent.com/u/2123767?v=4",
     "stacks": [
         "Front-End JavaScript (Angular, React, Meteor, etc)"
     ],
