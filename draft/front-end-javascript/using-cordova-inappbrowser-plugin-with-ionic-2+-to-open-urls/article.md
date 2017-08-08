@@ -15,9 +15,9 @@ Before you can build Ionic 2+ apps you need to have a few requirements:
 * Windows for UWP apps.
 * Ionic CLI and Cordova.
 
-For installing Node.js and NPM you can head over to their [official website]() and grab the installer for your operating system.
+For installing Node.js and NPM you can head over to their [official website](https://nodejs.org/en/) and grab the installer for your operating system.
 
-If you need to target Android platform first install Java by going to their [official website]() and follow the instructions. Then install the Android SDK available from this [link]().
+If you need to target Android platform first install Java by going to their [official website](https://java.com/en/download/) and follow the instructions. Then install the Android SDK available from this [link](https://developer.android.com/studio/index.html).
 
 If you successfully installed Node.js and NPM the next step is to install Cordova and Ionic CLI.
 
@@ -56,7 +56,7 @@ Now after adding your target platform, you can install the InAppBrowser plugin.
 
 InAppBrowser is a native Cordova plugin which can be used to add an in-app browser to your hybrid mobile application created with Cordova framework or any Cordova based framework such as Ionic.
 
-You can find more information about InAppBrowser from this [Github repository]().
+You can find more information about InAppBrowser from this [Github repository](https://github.com/apache/cordova-plugin-inappbrowser).
 
 ## Installing Cordova and Ionic CLI
 
@@ -132,9 +132,9 @@ So open <em>src/pages/home/home.ts</em> and add:
 
 So we first import InAppBrowser from @ionic-native/in-app-browser then inject it via component constructor.
 
-Then we call the .create() method to create and open an in app browser which navigates to [https://www.techiediaries.com](https://www.techiediaries.com) website when the component OnInit hook is called i.e when the component is completely initialized.
+Then we call the .create() method to create and open an in app browser which navigates to [techiediaries.com](https://www.techiediaries.com) website when the component OnInit hook is called i.e when the component is completely initialized.
 
-You can find the complete documentation for InAppBrowser in [Ionic Native official website]().
+You can find the complete documentation for InAppBrowser in [Ionic Native official website](https://ionicframework.com/docs/native/in-app-browser/).
 
 ## Running the App 
 
