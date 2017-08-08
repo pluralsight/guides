@@ -57,25 +57,27 @@ Now after adding your target platform, you can install the InAppBrowser plugin.
 InAppBrowser is a native Cordova plugin which can be used to add an in-app browser to your hybrid mobile application created with Cordova framework or any Cordova based framework such as Ionic.
 
 You can find more information about InAppBrowser from this [Github repository]().
+
 ## Installing Cordova and Ionic CLI
 
 
-## Installing InAppBrowser Cordova Plugin and Corresponding Ionic Native Wrapper
+## Installing InAppBrowser Cordova Plugin and The Corresponding Ionic Native Wrapper
 
 InAppBrowser plugin is available from npm so to install it simply run this command inside your project root folder:
-    
-    
+
     ionic plugin add cordova-plugin-inappbrowser --save
 
     npm install --save @ionic-native/in-app-browser
     
     
 
-Start by importing the InAppBrowser native plugin :
+Start by importing the InAppBrowser native plugin:
 
     import { InAppBrowser } from '@ionic-native/in-app-browser';
-    Then add it to the list of providers :
     
+Then add it to the list of providers:
+    
+
     @NgModule({
     declarations: [
         MyApp,
@@ -99,8 +101,11 @@ Start by importing the InAppBrowser native plugin :
     })
     export class AppModule {}  
 
+You are now ready to use the InAppBrowser API via dependency injection which provides you with an instance of InAppBrowser that can be used to call diffrent methods to create and open in app browsers inside your Ionic 2+ app.
     
-Open src/pages/home/home.ts and add
+So open <em>src/pages/home/home.ts</em> and add:
+
+
 
     import { Component , OnInit } from '@angular/core';
     import { NavController  } from 'ionic-angular';
@@ -112,21 +117,52 @@ Open src/pages/home/home.ts and add
     })
     export class HomePage implements OnInit{
     
-    constructor(public navCtrl: NavController,private iab: InAppBrowser) {
+        constructor(public navCtrl: NavController,private iab: InAppBrowser) {
     
-    }
+        }
     
-    ngOnInit(){
+        ngOnInit(){
     
-        const browser = this.iab.create('https://www.techiediaries.com','_self',{location:'no'}); 
+            const browser = this.iab.create('https://www.techiediaries.com','_self',{location:'no'}); 
     
-    }
+        }
     
     }    
 
 
-ionic run android 
+So we first import InAppBrowser from @ionic-native/in-app-browser then inject it via component constructor.
 
+Then we call the .create() method to create and open an in app browser which navigates to [https://www.techiediaries.com](https://www.techiediaries.com) website when the component OnInit hook is called i.e when the component is completely initialized.
+
+You can find the complete documentation for InAppBrowser in [Ionic Native official website]().
+
+## Running the App 
+
+Now that you have created your simple example that uses InAppBrowser to open an external URL inside your mobile application it's time to run the app in an actual device:
+
+Since i'm targetting Android i will use an Android phone but feel free to use any supported platform and use the corresponding command to run your application.
+
+    ionic run android 
+
+For iOS use:
+    
+    ionic run ios 
+    
+For Windows use:
+
+    ionic run windows
+    
+Please note that you can also test your application in the browser using the serve command:
+
+    ionic serve 
+
+Then, using your browser, visit [http:localhost:8200](http:localhost:8200).
+
+
+## Conclusion 
+
+So we have seen how to use the InAppBrowser Cordova plugin with Ionic 2+ and Ionic Native to add an in app browser which can be used for different things such as opening external URLs, adding third party authentication to your app or implementing any services which need to connect to external gateways etc. 
+    
 
 
 
