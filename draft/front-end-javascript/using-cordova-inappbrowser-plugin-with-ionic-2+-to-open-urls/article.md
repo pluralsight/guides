@@ -34,7 +34,7 @@ These commands should install cordova and ionic globally on your development mac
 
 Now you should be able to generate a new Ionic project.
 
-## Gnerating an Ionic 2+ Project 
+## Generating an Ionic 2+ Project 
 
 Lets start by creating a new Ionic 2+ application. Open your terminal or command prompt then run the following commands:
 
@@ -57,8 +57,6 @@ Now after adding your target platform, you can install the InAppBrowser plugin.
 InAppBrowser is a native Cordova plugin which can be used to add an in-app browser to your hybrid mobile application created with Cordova framework or any Cordova based framework such as Ionic.
 
 You can find more information about InAppBrowser from this [Github repository](https://github.com/apache/cordova-plugin-inappbrowser).
-
-## Installing Cordova and Ionic CLI
 
 
 ## Installing InAppBrowser Cordova Plugin and The Corresponding Ionic Native Wrapper
