@@ -306,7 +306,7 @@ export class OpenModalAction implements Action {
 
 export class CloseModalAction implements Action {
   type = LayoutActionTypes.CLOSE_MODAL;
-  constructor() {
+  constructor(public payload:string) {
   }
 }
 
