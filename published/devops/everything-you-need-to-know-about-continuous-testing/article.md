@@ -85,6 +85,9 @@ The difference between automated testing and Continuous Testing can be best expl
 
 ### Testing the Continuous Way
 
-The objective of DevOps is to deliver software efficiently to the customer. And you cannot deliver it quickly if you don’t get the feedback on time. By employing the Continuous Testing process, you can rest assured that feedback comes quickly, and you can save tons of time in not redoing your code.
+Did you know that traditionally testing has been considered as a bottleneck in the software development lifecycle? Developers complete the coding activity, and hand it over to testing folks. While the testers are busy at what they do best, developers often have to await feedback. DevOps came in with a single objective of cutting down the software delivery timeline, and to deliver a better quality software.
+How can we cut down the development time and still achieve quality? The answer to this question is Continuous Testing. It cuts down the feedback cycle significantly, and this benefits in avoiding rewriting pieces of code.
 
-Developers and testers have often asked me whether writing all the test scripts before you begin to code is feasible and practical. The answer is yes, this is the essence to achieving Continuous Delivery and Continuous Deployment. Many organizations are able to deploy multiple times a day. There are reports that suggest that Amazon deploys five times a minute -- that’s three hundred deployments an hour. How do they do it? **Continuous Testing.**
+Developers and testers have often asked me whether writing all the test scripts before you begin to code is feasible and practical. The answer is yes, this is the essence to achieving Continuous Delivery and Continuous Deployment. 
+
+There are a number of organizations such as Amazon and Netflix who are able to deploy multiple times a day. They keep their deployments small, apply Continuous Testing and deliver unparalleled results. In this age, we have to move away from automated testing into Continuous Testing. This is the future, and the survival depends on how quickly organizations are able to transform.
