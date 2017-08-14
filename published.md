@@ -1,3 +1,8 @@
+### Using Cordova InAppBrowser Plugin with Ionic 2+ to Open URLs  by Techiediaries
+- [Read the guide](https://www.pluralsight.com/guides/front-end-javascript/using-cordova-inappbrowser-plugin-with-ionic-2+-to-open-urls)
+- [Read more from Techiediaries](https://www.pluralsight.com/guides/author/techiediaries) <img src="https://avatars2.githubusercontent.com/u/22133314?v=4" width="30" height="30" alt="Techiediaries" />
+- Related to: Front-End JavaScript (Angular, React, Meteor, etc)
+
 ### Everything You Need to Know about Continuous Testing by Abhinav Kaiser
 - [Read the guide](https://www.pluralsight.com/guides/devops/everything-you-need-to-know-about-continuous-testing)
 - [Read more from Abhinav Kaiser](https://www.pluralsight.com/guides/author/abskaiser) <img src="https://avatars2.githubusercontent.com/u/26959448?v=4" width="30" height="30" alt="Abhinav Kaiser" />
