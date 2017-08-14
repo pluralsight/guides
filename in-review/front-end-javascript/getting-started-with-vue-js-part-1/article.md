@@ -38,11 +38,13 @@ https://unpkg.com/vue
 
 The core of the Vue.js is a method that supports us to a declaratively extract the data to this DOM by using simple template used as syntax:
 
+```
 | &lt;div id=&quot;apps&quot;&gt;  {{ message }}&lt;/div&gt; |
 | --- |
 
 | var apps = new Vue({  el: &#39;#apps&#39;,  data: {    message: &#39;Hi its vue!&#39;  }}) |
 | --- |
+```
 
 Output:
 
@@ -58,7 +60,7 @@ syntax
 
  
 
- 
+``` 
 
 &lt;div id="app"&gt;
 
@@ -82,7 +84,7 @@ var app = new Vue({
 
 })
 
- 
+``` 
 
 Hello to Vue!
 
@@ -95,6 +97,7 @@ like this:
 
  
 
+```
 &lt;div id="app-2"&gt;
 
   &lt;span v-bind:title="message"&gt;
@@ -123,17 +126,20 @@ var app2 = new Vue({
   }
 
 })
+```
 
 Hover your mouse over me for a few seconds to see my dynamically bound
 title!
 
 Furthermore we have to use text exclamation; but you can merge an element property like this:
 
-| &lt;div id=&quot;app-a&quot;&gt;  &lt;spanv-bind:title=&quot;message&quot;&gt;   Type here something  &lt;/span&gt;&lt;/div&gt; |
+```
+| <div id="app-a">  <spanv-bind:title="message">   Type here something  </span></div> |
 | --- |
 
 | varappa = new Vue({  el: &#39;#app-a&#39;,  data: {    message: &#39;we are now loaded our page on &#39; + new Date()  }}) |
 | --- |
+```
 
 Output:
 
@@ -143,6 +149,7 @@ Output:
 
 #
 
+```
 It&#39;s a very simple for us to toggle the presence of a single element:
 
 | &lt;div id=&quot;app-b&quot;&gt;  &lt;p v-if=&quot;seen&quot;&gt;So now you can see me&lt;/p&gt;&lt;/div&gt; |
@@ -151,16 +158,20 @@ It&#39;s a very simple for us to toggle the presence of a single element:
 | varappb = new Vue({  el: &#39;#app-b&#39;,  data: {    seen: true  }}) |
 | --- |
 
+```
+
 Output:
 
 **So now you can see me**
 
 
+```
 | &lt;div id=&quot;app-c&quot;&gt;  &lt;ol&gt;    &lt;li v-for=&quot;todo in todos&quot;&gt;      {{ todo.text }}    &lt;/li&gt;  &lt;/ol&gt;&lt;/div&gt; |
 | --- |
 
 | varappc = new Vue({  el: &#39;#app-c&#39;,  data: {    todos: [      { text: &#39;Learn HTML5&#39; },      { text: &#39;Learn The Vue&#39; },      { text: &#39;Learn JQuery&#39; }   ]  }}) |
 | --- |
+```
 
 ##
 
@@ -180,11 +191,13 @@ To let the user have an interaction with the apps, we can also use a directive n
 
 ##
 
+```
 | &lt;div id=&quot;app-d&quot;&gt;  &lt;p&gt;{{ message }}&lt;/p&gt;  &lt;buttonv-on:click=&quot;reverseMessage&quot;&gt;Messageis now Reversed &lt;/button&gt;&lt;/div&gt; |
 | --- |
 
 | varappd = new Vue({  el: &#39;#app-d&#39;,  data: {    message: &#39;Hi its Vue.js!&#39;  },  methods: {    reverseMessage: function () {      this.message = this.message.split(&#39;&#39;).reverse().join(&#39;&#39;)    }  }})Output: |
 | --- |
+```
 
 **Hi its Vue.js!**
 
@@ -194,15 +207,15 @@ To let the user have an interaction with the apps, we can also use a directive n
 
 Vue can also provide the directive of v-model that enable two-way binding between the app state and the form inputs:
 
+```
 | &lt;div id=&quot;app-e&quot;&gt;  &lt;p&gt;{{ message }}&lt;/p&gt;  &lt;input v-model=&quot;message&quot;&gt;&lt;/div&gt; |
 | --- |
 
 | varappe = new Vue({  el: &#39;#app-e&#39;,  data: {    message: &#39;Hi it&#39;s me Vue!&#39;  }}) |
 | --- |
 
+```
+
 Output:
 
 **Hi it&#39;s me Vue**
-
-
-

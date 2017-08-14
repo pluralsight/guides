@@ -28,11 +28,11 @@ Let’s take for example the following protocol:
 ```
 protocol Entity {
     var name: String {get set}
-    func uid() -> String
+    static func uid() -> String
 }
 ```
 
-What it tells us is that adopters of this protocol will be able to create an entity, assign it a name and retrieve its unique identifier by implementing the method uid().
+What it tells us is that adopters of this protocol will be able to create an entity, assign it a name and generate its unique identifier by implementing the type method uid().
 
 
 ![one type can implement multiple protocols](https://raw.githubusercontent.com/pluralsight/guides/master/images/09ef0adf-93a6-4494-bf69-9173c5474c57.png)
@@ -48,19 +48,20 @@ Protocols serve as blueprints: they tell us what adopters shall implement, but y
 Wrong! Having to rely on a base class for default implementation would eclipse the benefits of protocols. Besides, that would not work for value types.
 Luckily, there is another way: protocol extensions are the way to go!
 In Swift, you can extend a protocol and provide default implementation for methods, computed properties, subscripts and convenience initializers. 
-In the following example, I provided default implementation for calculated property uuid.
+In the following example, I provided default implementation for the type method uid().
 
 ```
 extension Entity {
-    func uid() -> String {
+    static func uid() -> String {
         return UUID().uuidString
     }
 }
 ```
-Now types that adopt the protocol need not implement the uid method anymore.
+Now types that adopt the protocol need not implement the uid() method anymore.
 ```
 struct Order: Entity {
     var name: String
+    let uid: String = Order.uid()
 }
 let order = Order(name: "My Order")
 print(order.uid)
@@ -151,42 +152,54 @@ class Image {
     fileprivate var imageName: String
     fileprivate var imageData: Data
     
-    public var name: String {
+    var name: String {
         return imageName
     }
     
-    public init(named name: String, data: Data) {
+    init(name: String, data: Data) {
         imageName = name
         imageData = data
     }
     
     // persistence
-    public func save(to filePath: String) -> Bool {
-        return FileManager.default.createFile(atPath: filePath, contents: imageData, attributes: nil)
+    func save(to url: URL) throws {
+        try self.imageData.write(to: url)
     }
     
-    public convenience init?(name: String, contentsOfFile path: String) {
-        guard let data = FileManager.default.contents(atPath: path) else {
-            return nil
-        }
-        self.init(named: name, data: data)
+    convenience init(name: String, contentsOf url: URL) throws {
+        let data = try Data(contentsOf: url)
+        self.init(name: name, data: data)
     }
     
     // compression
-    public convenience init?(named name: String, data: Data, compressionQuality: CGFloat) {
-        guard let image = UIImage.init(data: data) else {
-            return nil
-        }
-        guard let jpegData = UIImageJPEGRepresentation(image, compressionQuality) else {
-            return nil
-        }
-        self.init(named: name, data: jpegData)
+    convenience init?(named name: String, data: Data, compressionQuality: Double) {
+        guard let image = UIImage.init(data: data) else { return nil }
+        guard let jpegData = UIImageJPEGRepresentation(image, CGFloat(compressionQuality)) else { return nil }
+        self.init(name: name, data: jpegData)
     }
-
+    
     // BASE64 encoding
-    public func base64Encoded() -> String? {
+    var base64Encoded: String {
         return imageData.base64EncodedString()
     }
+}
+
+// Test
+var image = Image(name: "Pic", data: Data(repeating: 0, count: 100))
+print(image.base64Encoded)
+
+do {
+    // persist image
+    let documentDirectory = try FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor:nil, create:false)
+    let imageURL = documentDirectory.appendingPathComponent("MyImage")
+    try image.save(to: imageURL)
+    print("Image saved successfully to path \(imageURL)")
+    
+    // load image from persistence
+    let storedImage = try Image.init(name: "MyRestoredImage", contentsOf: imageURL)
+    print("Image loaded successfully from path \(imageURL)")
+} catch {
+    print(error)
 }
 ```
 Now, what if we don’t need all these features? Let’s say I don’t always need the Base64 encoding functionality. If I subclass the Image class, I’ll get all the features - even if I don’t need them.
@@ -202,105 +215,67 @@ Besides, we are constrained to classes only. Now, let’s revamp this design usi
 I’ll create protocols for each major feature, that is persistence, creation of a compressed, lossy version and Base64 encoding. 
 
 ```
-protocol ImageProtocol {
-    var name: String {get}
-    var data: Data {get}
-    init(named name: String, data: Data)
+protocol NamedImageData {
+    var name: String { get }
+    var data: Data { get }
+    init(name: String, data: Data)
 }
 
-protocol PersistableImage {
-    associatedtype Image: ImageProtocol
-    func save(image: Image, to filePath: String) -> Bool
-    static func load(name: String, contentsOfFile path: String) -> Image?
+protocol ImageDataPersisting: NamedImageData {
+    init(name: String, contentsOf url: URL) throws
+    func save(to url: URL) throws
 }
 
-extension PersistableImage {
-    func save(image: Image, to filePath: String) -> Bool {
-        return FileManager.default.createFile(atPath: filePath, contents: image.data, attributes: nil)
+extension ImageDataPersisting {
+    init(name: String, contentsOf url: URL) throws {
+        let data = try Data(contentsOf: url)
+        self.init(name: name, data: data)
     }
     
-    static func load(name: String, contentsOfFile path: String) -> Image? {
-        guard let data = FileManager.default.contents(atPath: path) else {
+    func save(to url: URL) throws {
+        try self.data.write(to: url)
+    }
+}
+
+protocol ImageDataCompressing: NamedImageData {
+    func compress(withQuality compressionQuality: Double) -> Self?
+}
+
+extension ImageDataCompressing {
+    func compress(withQuality compressionQuality: Double) -> Self? {
+        guard let uiImage = UIImage.init(data: self.data) else {
             return nil
         }
-        return Image(named: name, data: data)
-    }
-}
-
-protocol LossyImage {
-    associatedtype Image: ImageProtocol
-    func compress(image: Image, compressionQuality: CGFloat) -> Image?
-}
-
-extension LossyImage {
-    func compress(image: Image, compressionQuality: CGFloat) -> Image? {
-        guard let uiImage = UIImage.init(data: image.data) else {
+        guard let jpegData = UIImageJPEGRepresentation(uiImage, CGFloat(compressionQuality)) else {
             return nil
         }
-        guard let jpegData = UIImageJPEGRepresentation(uiImage, compressionQuality) else {
-            return nil
-        }
-        return Image(named: image.name, data: jpegData)
+        return Self(name: image.name, data: jpegData)
     }
 }
 
-protocol EncodableImage {
-    associatedtype Image: ImageProtocol
-    static func base64Encode(image: Image) -> String?
+protocol ImageDataEncoding: NamedImageData {
+    var base64Encoded: String { get }
 }
 
-extension EncodableImage {
-    static func base64Encode(image: Image) -> String? {
-        return image.data.base64EncodedString()
+extension ImageDataEncoding {
+    var base64Encoded: String {
+        return self.data.base64EncodedString()
     }
 }
 ```
 
-With this approach we can create more granular designs. You can create a type which adopts all four extended protocols:
+With this approach we can create more granular designs. You can create a type which adopts all the protocols:
 ```
-struct MyImage: ImageProtocol, PersistableImage, LossyImage, EncodableImage {
-    typealias Image = MyImage
-
-    fileprivate var imageName: String
-    fileprivate var imageData: Data
-    
-    var data: Data {
-        return imageData
-    }
-
-    var name: String {
-        return imageName
-    }
-    
-    init(named name: String, data: Data) {
-        self.imageName = name
-        self.imageData = data
-    }
-    
-    // Default implementations provided via protocol extensions   
+struct MyImage: ImageDataPersisting, ImageDataCompressing, ImageDataEncoding {
+    var name: String
+    var data: Data
 }
 ```
-Or you may decide to skip the conformance to PersistableImage:
-
+Or you may decide to skip the conformance to ```ImageDataPersisting```:
 ```
-struct InMemoryImage: ImageProtocol, LossyImage, EncodableImage {
-    typealias Image = MyImage
-    
-    fileprivate var imageName: String
-    fileprivate var imageData: Data
-    
-    var data: Data {
-        return imageData
-    }
-    
-    var name: String {
-        return imageName
-    }
-    
-    init(named name: String, data: Data) {
-        self.imageName = name
-        self.imageData = data
-    }
+struct InMemoryImage: NamedImageData, ImageDataCompressing, ImageDataEncoding {
+    var name: String
+    var data: Data
 }
 ```
 The bottom line is that you can choose which protocol to adopt in your types. And your types can be references or value types. This flexibility does not exist if the implementation is done with superclasses. 
@@ -317,3 +292,6 @@ However, once you wrap your head around Protocol-Oriented Programming, you’ll 
 Check out [my Swift courses on Pluralsight](https://www.pluralsight.com/authors/karoly-nyisztor).
 
 Thanks and Happy Coding!
+
+## Acknowledgments
+I would like to thank Marshall Elfstrand, Swift & Developer Tools Evangelist at Apple, for his valuable suggestions.

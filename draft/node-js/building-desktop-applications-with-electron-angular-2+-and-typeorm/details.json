@@ -1,0 +1,15 @@
+{
+    "_publish_status": "draft",
+    "author_name": "techiediaries",
+    "author_real_name": "Techiediaries",
+    "branch": "master",
+    "branches": [],
+    "filename": "article.md",
+    "first_commit": "cd5a94e9854ccb488a630f10b6ed3c693560f4c3",
+    "image_url": "https://avatars2.githubusercontent.com/u/22133314?v=4",
+    "stacks": [
+        "Node.js"
+    ],
+    "thumbnail_url": null,
+    "title": "Building Desktop Applications with Electron, Angular 2+ and TypeORM "
+}

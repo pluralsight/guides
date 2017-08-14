@@ -1,0 +1,15 @@
+{
+    "_publish_status": "published",
+    "author_name": "abskaiser",
+    "author_real_name": "Abhinav Kaiser",
+    "branch": "master",
+    "branches": [],
+    "filename": "article.md",
+    "first_commit": "94251d371e61e5f6dacd043508dbe712e102a772",
+    "image_url": "https://avatars2.githubusercontent.com/u/26959448?v=4",
+    "stacks": [
+        "DevOps (Docker, Nagios, Jenkins, Chef, Puppet, etc)"
+    ],
+    "thumbnail_url": null,
+    "title": "Everything You Need to Know about Continuous Testing"
+}

@@ -1,6 +1,26 @@
+### Using Cordova InAppBrowser Plugin with Ionic 2+ to Open URLs  by Techiediaries
+- [Read the guide](https://www.pluralsight.com/guides/front-end-javascript/using-cordova-inappbrowser-plugin-with-ionic-2+-to-open-urls)
+- [Read more from Techiediaries](https://www.pluralsight.com/guides/author/techiediaries) <img src="https://avatars2.githubusercontent.com/u/22133314?v=4" width="30" height="30" alt="Techiediaries" />
+- Related to: Front-End JavaScript (Angular, React, Meteor, etc)
+
+### Everything You Need to Know about Continuous Testing by Abhinav Kaiser
+- [Read the guide](https://www.pluralsight.com/guides/devops/everything-you-need-to-know-about-continuous-testing)
+- [Read more from Abhinav Kaiser](https://www.pluralsight.com/guides/author/abskaiser) <img src="https://avatars2.githubusercontent.com/u/26959448?v=4" width="30" height="30" alt="Abhinav Kaiser" />
+- Related to: DevOps (Docker, Nagios, Jenkins, Chef, Puppet, etc)
+
+### Comparison of D3 and Dimple Code for Line Charts by sonisick
+- [Read the guide](https://www.pluralsight.com/guides/front-end-javascript/comparison-of-d3-and-dimple-code-for-line-charts)
+- [Read more from sonisick](https://www.pluralsight.com/guides/author/sonisick) <img src="https://avatars0.githubusercontent.com/u/6710145?v=4" width="30" height="30" alt="sonisick" />
+- Related to: Front-End JavaScript (Angular, React, Meteor, etc)
+
+### How to activate animation when the content scrolls into view by Hayk Yaghubyan
+- [Read the guide](https://www.pluralsight.com/guides/html-css/how-to-activate-animation-when-the-content-scrolls-into-view)
+- [Read more from Hayk Yaghubyan](https://www.pluralsight.com/guides/author/haykoyaghubyan) <img src="https://avatars3.githubusercontent.com/u/26785721?v=3" width="30" height="30" alt="Hayk Yaghubyan" />
+- Related to: HTML/CSS
+
 ### Protocol Oriented Programming in Swift by Károly Nyisztor
 - [Read the guide](https://www.pluralsight.com/guides/swift/protocol-oriented-programming-in-swift)
-- [Read more from Károly Nyisztor](https://www.pluralsight.com/guides/author/nyisztor) <img src="https://avatars5.githubusercontent.com/u/198511?v=4" width="30" height="30" alt="Károly Nyisztor" />
+- [Read more from Károly Nyisztor](https://www.pluralsight.com/guides/author/nyisztor) <img src="https://avatars1.githubusercontent.com/u/198511?v=4" width="30" height="30" alt="Károly Nyisztor" />
 - Related to: Swift
 
 ### Build a Simple Serverless Clock Using Realtime Events in 5mins by Christian Nwamba
@@ -624,8 +644,8 @@
 - Related to: Ruby, Ruby on Rails
 
 ### JavaScript Callbacks Variable Scope Problem by Itay Grudev
-- [Read the guide](https://www.pluralsight.com/guides/review/javascript-callbacks-variable-scope-problem)
-- [Read more from Itay Grudev](https://www.pluralsight.com/guides/user/itay-grudev) <img src="https://avatars.githubusercontent.com/u/2123767?v=3" width="30" height="30" alt="Itay Grudev" />
+- [Read the guide](https://www.pluralsight.com/guides/front-end-javascript/javascript-callbacks-variable-scope-problem)
+- [Read more from Itay Grudev](https://www.pluralsight.com/guides/author/itay-grudev) <img src="https://avatars2.githubusercontent.com/u/2123767?v=4" width="30" height="30" alt="Itay Grudev" />
 - Related to: Front-End JavaScript (Angular, React, Meteor, etc)
 
 ### Text Editors For Beginners - 15 Ways To Rule The World. by Shannon Duncan

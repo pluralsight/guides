@@ -162,6 +162,26 @@ _(As a side note, that doesn't mean there isn't a way to run multiple threads in
 JavaScript. See [Web Workers API][mdn-js-workers-api] for the Web kind of
 JavaScript)_.
 
+ES6
+---
+
+ECMAScript 6 introduces the `let` keyword which allows you to declare a variable
+scoped to the nearest enclosing block and not global like `var` does. Thus the 
+closure problem can be solved simply by replacing `var` with `let`:
+
+```js
+var array = [ ... ]; // An array with some objects
+for( let i = 0; i < array.length; ++i )
+{
+  $.doSthWithCallbacks( function() {
+    array[i].something = 42;
+  });
+}
+```
+
+Neat, isn't it? If you can use ES6 your code can be made to look so much better 
+without the need to polute it with immedately invoked anonymous inline function
+calls just to create a new scope.
 
 Practice problem
 ----------------

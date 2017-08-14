@@ -1,11 +1,14 @@
 I found a [great Pluralsight tutorial](https://www.pluralsight.com/guides/ruby-ruby-on-rails/token-based-authentication-with-ruby-on-rails-5-api) regarding Ruby on Rails and token-based authentication. Having a similar problem to tackle, I thought I might add some tweaks to make it work with a dual system. In other words, I wanted authentication to work with both sessions and tokens. 
 
+
 This guide focuses on RoR applications that use Java Web Tokens [(JWT)](https://jwt.io/) and [Devise](https://github.com/plataformatec/devise) for online registration and sign-in functionality and want to have token based authentication for API calls, whether from front-end platforms or mobile apps.
 
 While this approach targets a monolithic application structure, which is frowned upon for good reasons, it might be usefull for Proof of Concept demos, quick mocks, and small-scale work.
 
+
 ### What is token-based authentication?
 In short, token-based authentication is a security strategy in which users log in using their credentials and are given a signed and usually time-limited token that allows them to access various resources. As a result, the user no longer needs to send login information to the server whenever sending requests, making the system more secure. This [great guide](https://www.pluralsight.com/guides/ruby-ruby-on-rails/token-based-authentication-with-ruby-on-rails-5-api#what-is-token-based-authentication-) covers everything else in more depth. 
+
 
 # Setting up Dual authentication with Rails 4
 Parts of this tutorial were directly copied from [the guide](https://www.pluralsight.com/guides/ruby-ruby-on-rails/token-based-authentication-with-ruby-on-rails-5-api) by [Hristo Georgiev](https://www.pluralsight.com/guides/author/Kaizeras).
@@ -19,10 +22,11 @@ Let's start by implementing the JWT controller. First, the `jwt` gem will make e
 ```
 And in bash:
 
+
 ```bash
 bundle install
-
 ```
+
 Once the  gem is installed, it can be accessed through the `JWT` global variable. Because the methods that are going to be used require encapsulation, a singleton class is a great way of wrapping the logic and using it in other constructs. 
 
 For those who are unfamiliar, **a singleton class** restricts the instantiation of a class to a single object, which comes in handy when only one object is needed to complete the tasks at hand.
@@ -127,9 +131,11 @@ class AuthenticateUser
 end
 ```
 
+
 The command takes the parameters and initializes a class instance with `email` and `password` attributes that are accessible within the class. The private method `user` uses the credentials to check if the user exists in the database using `User.find_by_email` . 
 
 If the user is found, the method uses the [Devise](https://github.com/plataformatec/devise) built-in method `valid_password?` in the User model to check if the user's password is correct. If everything is true, the user will be returned. If not, the method will return `nil`.
+
 
 ### Checking user authorization
 The token creation is done, but there is no way to check if a token that's been appended to a request is valid. The command for authorization has to take the `headers` of the request and decode the token using the `decode` method in the `JsonWebToken` singleton. 
@@ -175,11 +181,13 @@ class AuthorizeApiRequest
   end
 end
 ```
-This code executes a chain of methods. **Let's go from bottom to top.**
+This code executes a chain of methods. **Let's go from bottom to top.** 
+
+*Operations are explained easiest in reverse order.*
 
 The last method in the chain, `http_auth_header`, extracts the token from the authorization header received upon the initialization of the class. The second method in the chain is `decoded_auth_token`, which decodes the token received from `http_auth_header`and also retrieves the user's ID.
 
-The logic in the `user` method might seem abstract, so let's go through it line by line.
+   The logic in the `user` method might seem abstract, so let's go through it line by line.
 
 In the first line, the `||=` operator is used to assign `@user` by assigning "if not `nil`". If the `User.find()` returns an empty set or `decoded_auth_token` returns false, `@user` will be `nil`, so a nil check is necessary.
 
@@ -230,7 +238,7 @@ In our controllers we need to write the logic for destinguishing between web bro
 
 #### Logging in users
  
- First, let's start with the user's logging-in:
+ First, let's start with the user(s) logging-in:
  
  ```ruby
  # app/controllers/authentication_controller.rb
@@ -260,6 +268,7 @@ Let's put a endpoint for the action:
 
 There are different strategies for handling Cross-Site Request Forgery (CSRF). One for `html` requests and another for `json` or API request.
 - One option is to put logic in the `application_controller.rb` to check if the request is `html` or `json` and protect accordingly. 
+
 
 ```ruby
 #app/controllers/application_controller.rb
@@ -301,7 +310,6 @@ class ApplicationController < ActionController::Base
     end
 end
 ```
-
 
 ```ruby
 #app/controllers/api_base_controller.rb

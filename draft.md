@@ -1,3 +1,8 @@
+### Building Desktop Applications with Electron, Angular 2+ and TypeORM  by Techiediaries
+- [Read the guide](https://www.pluralsight.com/guides/node-js/building-desktop-applications-with-electron-angular-2+-and-typeorm?status=draft)
+- [Read more from Techiediaries](https://www.pluralsight.com/guides/author/techiediaries) <img src="https://avatars2.githubusercontent.com/u/22133314?v=4" width="30" height="30" alt="Techiediaries" />
+- Related to: Node.js
+
 ### Javascript development guidelines by Sanjeev Murthy
 - [Read the guide](https://www.pluralsight.com/guides/other/javascript-development-guidelines?status=draft)
 - [Read more from Sanjeev Murthy](https://www.pluralsight.com/guides/author/SanjeevMurthy) <img src="https://avatars3.githubusercontent.com/u/10756352?v=3" width="30" height="30" alt="Sanjeev Murthy" />
@@ -60,7 +65,7 @@
 
 ### JavaScript Closures by Miroslav Gajic
 - [Read the guide](https://www.pluralsight.com/guides/front-end-javascript/javascript-closures?status=draft)
-- [Read more from Miroslav Gajic](https://www.pluralsight.com/guides/author/mgajic78) <img src="https://avatars0.githubusercontent.com/u/25859460?v=3" width="30" height="30" alt="Miroslav Gajic" />
+- [Read more from Miroslav Gajic](https://www.pluralsight.com/guides/author/mgajic78) <img src="https://avatars3.githubusercontent.com/u/25859460?v=4" width="30" height="30" alt="Miroslav Gajic" />
 - Related to: Front-End JavaScript (Angular, React, Meteor, etc)
 
 ### Hyperloop with Rails, NPM and Webpack by Barrie Hadfield

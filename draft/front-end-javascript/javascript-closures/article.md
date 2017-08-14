@@ -1,4 +1,4 @@
-Closures are very powerful mechanism in the JavaScript programming language. All members of an object in the JavaScript are public by default. However, closures mechanism provides to objects possibility to have private members, and not only that. In this tutorial we will learn what are closures and what are benefits of using them in the JavaScript code.
+Closures are a very powerful mechanism in the JavaScript programming language. All members of an object in the JavaScript are public by default. However, closures mechanism provides to objects possibility to have private members, and not only that. In this tutorial we will learn what the closures are and what are benefits of using them in the JavaScript code.
 
 So, what is the closure? Douglas Crockford, author of the book *JavaScript: The Good Parts*, wrote an excellent definition of the closure, which says: 
 
@@ -75,7 +75,7 @@ myCounter.increment(3);
 myCounter.decrement(2);
 ```
 
-For sure, when just one function is being returned, it can also be wrapped into an object, but there is no need for that. If more than one function are being returned, they must be wrapped into an object, like in the example above. We could also have functions inside of the `counter` functions which we didn't want to expose to the global (outer) scope. For instance, we could have a "private" function for logging the `currentValue`:
+For sure, when just one function is being returned, it can also be wrapped into an object, but there is no need for that. If more than one function are being returned, they must be wrapped into an object, like in the example above. We could also have functions inside of the `counter` functions which we don't want to expose to the global (outer) scope. For instance, we could have a "private" function for logging the `currentValue`:
 
 ```JavaScript
 function counter(initValue) {
@@ -105,7 +105,7 @@ function counter(initValue) {
 
 In this case, the `logCurrentValue` function cannot be accessed from the global scope, since it wasn't returned from the `counter` function. It can be used just within the `increment` and `decrement` functions. Also, the `currentValue` and `initValue` variables are private for the `counter` function object.  So, that's how private members can be emulated in the JavaScript.
 
-Let's see how will this mechanism work if we create more than one function object. For instance, let's create `myCounter1` and `myCounter2` objects and use them in the following way:
+Let's see how would this mechanism work if we created more than one function object. For instance, let's create `myCounter1` and `myCounter2` objects and use them in the following way:
 
 ``` JavaScript
 var myCounter1 = counter(0);
@@ -116,7 +116,7 @@ myCounter2.increment(2);
 myCounter1.decrement(1);
 myCounter2.decrement(1);
 ```
-In the first two lines of the code, we have actually created 2 different objects, `myCounter1` and `myCounter2`. These objects have the same properties, `increment` and `decrement`, which are references to the `increment` and `decrement` functions. Therefore, those functions can be accessed via `increment` and `decrement` properties. The `myCounter1` object is created by calling `counter` function with parameter `0`, and the `myCounter2` by calling it with parameter `3`. This means that `increment` and `decrement` functions will have different values of the `currentValue` variable in the outer scope, so their calls on those two objects will produce different results, although there are called with the same parameters, like in the example above. Actually, we have 2 different `increment` and `decrement` functions, because we created 2 different objects and each pair of those functions has its own scope. 
+In the first two lines of the code, we have actually created 2 different objects, `myCounter1` and `myCounter2`. These objects have the same properties, `increment` and `decrement`, which are references to the `increment` and `decrement` functions. The `myCounter1` object is created by calling `counter` function with parameter `0`, and the `myCounter2` by calling it with parameter `3`. This means that `increment` and `decrement` functions will have different values of the `currentValue` variable in the outer scope, so their calls on those two objects will produce different results, although there are called with the same parameters, like in the example above. Actually, we have 2 different `increment` and `decrement` functions, because we created 2 different objects and each pair of those functions has its own scope. 
 
 The output of the code above will be:
 
@@ -156,9 +156,9 @@ for (var i = 0; i < 5; i++) {
     }, 3000);
 }
 ```
-Let's analyse this code. The function, which is passed as an argument to the `setTimeout` function, will be executed 3s after the first loop iteration. This practically means that the value of the variable `i` will become `5` before its execution, because all 5 iterations will certainly be done within those 3 seconds. Then, it will be executed 5 times, 1 time for every iteration, and it will log `5` five times.
+Let's analyse this code. The function, which is passed as an argument to the `setTimeout` function, will be executed 3s after the first loop iteration. This practically means that the value of the variable `i`, which is in its outer scope, will become `5` before its execution, because all 5 iterations will certainly be done within those 3 seconds. Then, it will be executed 5 times, 1 time for every iteration, and it will log `5` five times.
 
-In order to get the desired output, we will need to use the closure mechanism, so our code should look like this:
+In order to get the desired output, we will need to add a closure, so our code should look like this:
 
 ``` JavaScript
 for (var i = 0; i < 5; i++) {
@@ -175,6 +175,20 @@ for (var i = 0; i < 5; i++) {
 In the first iteration the value of the variable `i` is `0`. We have invoked the `outer` function immediately with parameter `0` and it returned the `inner` function, so the `inner` function was actualy provided as an argument to the `setTimeout` function instead of the `outer` function. Therefore, the `inner` function will be called after 3s and it will have access to its own outer scope. The value of the variable `i` in its scope is `0`, so the `inner` function will log `0` at the momment of its execution.
 
 The same will happen in the second iteration, the `inner` function will be executed 3s later, but this time the variable `i` will be `1`, and so on. Finally, we will get desired output in the console.
+
+However, there is a simpler soulution for this problem. The EcmaScript 2015 (or ES6) introduced some very useful new features and some of them are *let* and *const* keywords, which create block scoped variables. If we just replace the keyword `var` with `let` in this example, we will get completely different output:
+
+``` JavaScript
+for (let i = 0; i < 5; i++) {
+
+    setTimeout(function() { 
+    
+        console.log(i); // 0 1 2 3 4
+            
+    }, 3000);
+}
+```
+The keyword `let` created a block scope for the variable `i`, for every loop iteration particularly. Therefore, we didn't have to put the line `console.log(i)` into a closure in order to create a new scope for `i`, because the `let` keyword did it for us.
 
 ### Event Handlers
 
@@ -204,7 +218,7 @@ Let's consider the following example: there is a button on an HTML page and we w
 </html>
 ```
 
-This code works fine, but we had to define a global variable for counting user clicks on the button. That's generally not recommended, since we are polluting the global scope. We use the `counter` variable just in the event handler, so why wouldn't we declare it inside the handler? However, if we just move declaration to the handler's scope, it will not work as expected, because every time the handler is called (i.e. every time the user clicks on the button), the `counter` will be set to zero. The solution is to use a closure, like in the following code:
+This code works fine, but we had to define a global variable for counting user clicks on the button. That's generally not recommended, since we are polluting the global scope. We use the `counter` variable just in the event handler, so why wouldn't we declare it inside the handler? However, if we just move declaration to the handler's scope, it will not work as expected, because every time the handler is called (i.e. every time the user clicks on the button), the `counter` will be reset to zero. The solution is to use a closure, like in the following code:
 
 ``` HTML
 <!DOCTYPE html>
@@ -233,7 +247,7 @@ This code works fine, but we had to define a global variable for counting user c
 </body>
 </html>
 ```
-In this code, we have defined the `outer` function which returns the `inner` function. The `outer` function is immediately invoked and after its execution, the `inner` function is being assigned to the `onclick` handler. This means that whenever the user clicks on the button, the `inner` function will be called. Since it is a closure, it has access to the `outer` function scope, so it can easily change the value of the `counter` variable.
+In this code, we have defined the `outer` function which returns the `inner` function. The `outer` function is immediately invoked and after its execution, the `inner` function is being assigned to the `onclick` handler. This means that whenever the user clicks on the button, the `inner` function will be called instead of the `outer` function. Since it is a closure, it has access to the `outer` function's scope, so it can easily change the value of the `counter` variable. Therefore, the line `var counter = 0` will be executed just one time, before returning the `outer` function. After that, the `outer` function will be called every time the user clicks on the button and it will increment the `counter` by 1, so the `counter` will always contain the accurate number of button clicks.
 
 ### The Module Pattern
 
@@ -266,44 +280,9 @@ var counter = (function() {
     };
 })();
 ```
-The module pattern is used for singleton objects, so there can be just one instance of the `counter` module. This is accomplished by immediate invocation of function which returns an object that contains references to the exposed (public) functions. We can use the `counter` module in the same way as we used the `myCounter` object before
+The module pattern is a special case of the singletone pattern, so there can be just one instance of the `counter` module. This is accomplished by immediate invocation of function which returns an object that contains references to the public functions. We can use the `counter` module in the same way as we used the `myCounter` object.
 
-### Function Factory
+## Conclusion
+This tutorial covered all important things about the closures. Hopefully it gave you a better understanding of how this mechanism works and which problems can be solved by using it. If you still need more clarification about the closures, feel free to leave your question or comment below.
 
-``` JavaScript
-function makeAdder(x) {
-  return function(y) {
-    return x + y;
-  };
-}
-
-var add5 = makeAdder(5);
-var add10 = makeAdder(10);
-
-console.log(add5(2));  // 7
-console.log(add10(2)); // 12
-```
-## Do we need closures in ES6?
-(arrow operator, callbacks
-let keyword, loops)
-
-
-The EcmaScript 2015 (or ES6) introduced some very useful new features, like *arrow functions*,  which solved issues with keyword *this* for callbacks. There are also *let* and *const* keywords, which create block scoped variables. Let's consider what is the impact of these features on the closures mechanism and do we still need it in ES6.
-
-If we just replace the keyword `var` with `let` in our example with setting timeout, we will get completely different output:
-
-``` JavaScript
-for (let i = 0; i < 5; i++) {
-
-    setTimeout(function() { 
-    
-        console.log(i); // 0 1 2 3 4
-            
-    }, 3000);
-}
-```
-So, the keyword `let` created a block scope for the variable `i`, for every loop iteration particularly. Therefore, we didn't have to put the line `console.log(i)` into a closure in order to create a new scope for `i`, because the `let` keyword did it for us.
-
-
-
-
+Thank you very much for reading this tutorial.
