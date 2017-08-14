@@ -1,8 +1,3 @@
-### Using Cordova InAppBrowser Plugin with Ionic 2+ to Open URLs  by Techiediaries
-- [Read the guide](https://www.pluralsight.com/guides/front-end-javascript/using-cordova-inappbrowser-plugin-with-ionic-2+-to-open-urls?status=in-review)
-- [Read more from Techiediaries](https://www.pluralsight.com/guides/author/techiediaries) <img src="https://avatars2.githubusercontent.com/u/22133314?v=4" width="30" height="30" alt="Techiediaries" />
-- Related to: Front-End JavaScript (Angular, React, Meteor, etc)
-
 ### Getting started with Vue.JS (part-1) by A M Rahman
 - [Read the guide](https://www.pluralsight.com/guides/front-end-javascript/getting-started-with-vue-js-part-1?status=in-review)
 - [Read more from A M Rahman](https://www.pluralsight.com/guides/author/amrahman90) <img src="https://avatars2.githubusercontent.com/u/28068398?v=3" width="30" height="30" alt="A M Rahman" />
