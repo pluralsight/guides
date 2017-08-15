@@ -1,3 +1,8 @@
+### Understanding the Four Pillars of Big Data Analytics by kobihikri
+- [Read the guide](https://www.pluralsight.com/guides/big-data/understanding-the-four-pillars-of-big-data-analytics?status=draft)
+- [Read more from kobihikri](https://www.pluralsight.com/guides/author/kobihikri) <img src="https://avatars2.githubusercontent.com/u/4434689?v=4" width="30" height="30" alt="kobihikri" />
+- Related to: Big Data (Hadoop, Spark, etc)
+
 ### Building Desktop Applications with Electron, Angular 2+ and TypeORM  by Techiediaries
 - [Read the guide](https://www.pluralsight.com/guides/node-js/building-desktop-applications-with-electron-angular-2+-and-typeorm?status=draft)
 - [Read more from Techiediaries](https://www.pluralsight.com/guides/author/techiediaries) <img src="https://avatars2.githubusercontent.com/u/22133314?v=4" width="30" height="30" alt="Techiediaries" />
