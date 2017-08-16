@@ -1,3 +1,8 @@
+### ASP.NET MVC - Using multiple submit buttons with default model binding and controller actions by ajsaulsberry
+- [Read the guide](https://www.pluralsight.com/guides/microsoft-net/asp-net-mvc-using-multiple-submit-buttons-with-default-model-binding-and-controller-actions?status=draft)
+- [Read more from ajsaulsberry](https://www.pluralsight.com/guides/author/ajsaulsberry) <img src="https://avatars1.githubusercontent.com/u/11444510?v=4" width="30" height="30" alt="ajsaulsberry" />
+- Related to: Microsoft.NET (C#, ASP.NET, VB.NET, etc)
+
 ### Understanding the Four Pillars of Big Data Analytics by kobihikri
 - [Read the guide](https://www.pluralsight.com/guides/big-data/understanding-the-four-pillars-of-big-data-analytics?status=draft)
 - [Read more from kobihikri](https://www.pluralsight.com/guides/author/kobihikri) <img src="https://avatars2.githubusercontent.com/u/4434689?v=4" width="30" height="30" alt="kobihikri" />
