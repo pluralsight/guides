@@ -23,11 +23,6 @@
 - [Read more from Richard Li](https://www.pluralsight.com/guides/author/richarddli) <img src="https://avatars1.githubusercontent.com/u/10065494?v=3" width="30" height="30" alt="Richard Li" />
 - Related to: DevOps (Docker, Nagios, Jenkins, Chef, Puppet, etc)
 
-### Conditional Logic in C# .NET by pattydaniels
-- [Read the guide](https://www.pluralsight.com/guides/microsoft-net/conditional-logic-in-c-net?status=in-review)
-- [Read more from pattydaniels](https://www.pluralsight.com/guides/author/pattydaniels) <img src="https://avatars3.githubusercontent.com/u/16217973?v=3" width="30" height="30" alt="pattydaniels" />
-- Related to: Microsoft.NET (C#, ASP.NET, VB.NET, etc)
-
 ### Using the REST Interface with Licas by discompsys
 - [Read the guide](https://www.pluralsight.com/guides/java-and-j2ee/using-the-rest-interface-with-licas?status=in-review)
 - [Read more from discompsys](https://www.pluralsight.com/guides/author/discompsys) <img src="https://avatars.githubusercontent.com/u/20437503?v=3" width="30" height="30" alt="discompsys" />
