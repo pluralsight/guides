@@ -1,11 +1,11 @@
 # Why Data Structures?
 
-The data structures are containers which hold the data used in our programs.
-The efficiency of these data structures affects the entire software system. Therefore, it is important to understand how they work and which one to choose for a particular task.
+The data structures are containers which hold the data used in our programs. The efficiency of these data structures affects the entire software system. Therefore, it is important to understand how they work and which one to choose for a particular task.
 This is the first part of a two-part series on data structures in Swift.
 In this tutorial, we’re going to talk about generics and the built-in Swift collection types. 
 In the second part, we’ll take a look at some of the most popular data structures and how they can be implemented using Swift.
-Generics
+
+# Generics
 Generics are the means for writing not only useful but also reusable code. They are also used to implement data structures that are not constrained to only one data type.
 Generics stand at the core of the Swift standard library. They are so deeply rooted in the language that you can't  - and actually shouldn’t - avoid them. In most cases, you won’t even notice that you’re using generics.
 Why do we need generics?
