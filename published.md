@@ -1,3 +1,8 @@
+### Conditional Logic in C# .NET by pattydaniels
+- [Read the guide](https://www.pluralsight.com/guides/microsoft-net/conditional-logic-in-c-net)
+- [Read more from pattydaniels](https://www.pluralsight.com/guides/author/pattydaniels) <img src="https://avatars3.githubusercontent.com/u/16217973?v=3" width="30" height="30" alt="pattydaniels" />
+- Related to: Microsoft.NET (C#, ASP.NET, VB.NET, etc)
+
 ### Using Cordova InAppBrowser Plugin with Ionic 2+ to Open URLs  by Techiediaries
 - [Read the guide](https://www.pluralsight.com/guides/front-end-javascript/using-cordova-inappbrowser-plugin-with-ionic-2+-to-open-urls)
 - [Read more from Techiediaries](https://www.pluralsight.com/guides/author/techiediaries) <img src="https://avatars2.githubusercontent.com/u/22133314?v=4" width="30" height="30" alt="Techiediaries" />
