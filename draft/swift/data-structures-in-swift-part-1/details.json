@@ -1,0 +1,15 @@
+{
+    "_publish_status": "draft",
+    "author_name": "nyisztor",
+    "author_real_name": "K\u00e1roly Nyisztor",
+    "branch": "master",
+    "branches": [],
+    "filename": "article.md",
+    "first_commit": "729ee2233aee0d4d9904a41193976f51b63d9279",
+    "image_url": "https://avatars1.githubusercontent.com/u/198511?v=4",
+    "stacks": [
+        "Swift"
+    ],
+    "thumbnail_url": null,
+    "title": "Data Structures in Swift - Part 1"
+}
