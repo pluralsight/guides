@@ -385,9 +385,123 @@ if primeNumbers.isDisjoint(with: otherPrimeNumbers) {
 ```
 We discussed some of the most important capabilities of Sets. 
 Hopefully this will make it easier for you to decide when to choose a Set over an Array.
-## Dictionaries
-Dictionaries - also known as hash maps - store key-value pairs and allow for efficient setting and reading of values based on their unique keys.
 
-//TODO: Example
-//TODO: code sample
-Next, I’d like to jump into an interesting topic: functional programming.  Swift provides some built-in functions that let us solve recurring problems with little code.
+## Dictionaries
+Dictionaries - also known as hash maps - store key-value pairs and allow for efficient setting and reading of values based on their unique identifiers. Just like the other Swift collection types, the Dictionary is also implemented as a generic type. 
+### Creating Dictionaries
+To create a dictionary, we must specify the key and the value type.
+
+- Using the initializer syntax
+```
+var numbersDictionary = Dictionary<Int, String>()
+```
+- Using the shorthand syntax
+```
+var numbersDictionary2 = [Int: String]()
+```
+- Using dictionary literals
+Swift can infer the type of the keys and the values based on the literals
+```
+var numbersDictionary3 = [0: "Zero", 1: "One", 10: "Ten"]
+```
+### Heterogeneous Dictionaries and AnyHashable
+When creating a dictionary, the type of the keys and values is supposed to be consistent - e.g., all keys are of type ```Int``` and all the values are of type ```String```.
+
+Type inference won't work if the type of the dictionary literals is not consistent.
+```
+var mixedMap = [0: "Zero", 1: 1.0, "pi": 3.14]
+```
+
+![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/ff10b038-04d7-45de-9588-5baa34f863a1.09)
+
+However, there are cases when we do need dictionaries with different key and value types. For instance, when converting JSON payloads or property lists, a typed dictionary won't work.
+
+Alright, let’s try the following:
+```
+var mixedMap2: [Any: Any] = [0: “Zero”, "pi": 3.14]
+```
+Now, the compiler complains about something else: *"Type 'Any' does not conform to protocol 'Hashable'"*
+
+The problem is that the Dictionary requires keys that are hashable - just like the values used in a ```Set```.
+Starting with Swift 3, the standard library introduced a new type called ```AnyHashable```. It can hold a value of any type conforming to the Hashable protocol. AnyHashable can be used as the supertype for keys in heterogeneous dictionaries. 
+So, we can create a heterogeneous collection like this:
+```
+var mixedMap3: [AnyHashable: Any] = [0: "Zero", 1: 1.0, "pi": 3.14]
+```
+AnyHashable is a structure which lets us create a type-erased hashable value that wraps the given instance.
+This is what happens behind the scenes:
+```
+var mixedMap4 = [AnyHashable(0): "Zero" as Any, AnyHashable(1): 1.0 as Any, AnyHashable("pi"): 3.14 as Any]
+```
+Actually, this version would compile just fine if we typed in Xcode - but the shorthand syntax is obviously more readable.
+AnyHashable’s ```base``` property represents the wrapped value. It can be cast back to the original type using the ```as```, ```as?``` or ```as!``` cast operators.
+```
+let piWrapped = AnyHashable("pi")
+let piWrapped = AnyHashable("pi")
+if let unwrappedPi = piWrapped.base as? String {
+    print(unwrappedPi)
+}
+```
+### Accessing and Modifying the Contents of a Dictionary
+We can access the value stored in a dictionary associated with a given key using the subscript syntax:
+```
+var numbersDictionary = [0: "Zero", 1: "One", 10: "Ten"]
+if let ten = numbersDictionary[10] {
+    print(ten)
+} 
+// Output: Ten
+```
+We can also iterate over the key-value pairs of a dictionary using a for-in loop. Since it’s a dictionary, items are returned as a key-value touple: 
+```
+for (key, value) in numbersDictionary {
+    print("\(key): \(value)")
+}
+```
+We can access the Dictionary's ```key``` property to retrieve its keys:
+```
+for key in numbersDictionary.keys {
+    print(key)
+}
+```
+The dictionary value property will return its values:
+```
+for value in numbersDictionary.values {
+    print(value)
+}
+```
+To add a new item to the dictionary, use a new key as the subscript index, and assign it a new value:
+```
+numbersDictionary[2] = "Two"
+print(numbersDictionary)
+// Prints: [10: "Ten", 2: "Two", 0: "Zero", 1: "One"]
+```
+
+To update an existing item, use the subscript syntax with an existing key:
+```
+numbersDictionary[2] = "Twoo"
+print(numbersDictionary)
+// Prints: [10: "Ten", 2: "Twoo", 0: "Zero", 1: "One"]
+```
+You can remove a value by assigning nil for its key:
+```
+numbersDictionary[1] = nil
+print(numbersDictionary)
+// Prints: [10: "Ten", 2: "Two", 0: "Zero"]
+```
+You can achieve the same result - yet with more typing - via the ```removeValue(forKey:)``` instance method:
+```
+numbersDictionary4.removeValue(forKey: 2)
+print(numbersDictionary4)
+// Prints: [10: "Ten", 0: "Zero"]
+```
+
+Finally, ```removeAll()``` empties our dictionary without remorse:
+```
+numbersDictionary4.removeAll()
+print(numbersDictionary4)
+// Output: [:]
+```
+---
+In this tutorial, we've covered the built-in Swift collection types.
+
+Stay tuned for the second part: we’re going to talk about some popular data structures and we’ll implement them in Swift from scratch.
