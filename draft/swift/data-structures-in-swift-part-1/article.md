@@ -383,6 +383,7 @@ if primeNumbers.isDisjoint(with: otherPrimeNumbers) {
 }
 // Prints: [11, 13, 17, 19, 23] has no values in common with [11, 13, 17]
 ```
+
 We discussed some of the most important capabilities of Sets. 
 Hopefully this will make it easier for you to decide when to choose a Set over an Array.
 
@@ -392,18 +393,20 @@ Dictionaries - also known as hash maps - store key-value pairs and allow for eff
 To create a dictionary, we must specify the key and the value type.
 
 - Using the initializer syntax
+-
 ```
 var numbersDictionary = Dictionary<Int, String>()
 ```
 - Using the shorthand syntax
 ```
-var numbersDictionary2 = [Int: String]()
+var numbersDictionary = [Int: String]()
 ```
 - Using dictionary literals
 Swift can infer the type of the keys and the values based on the literals
 ```
-var numbersDictionary3 = [0: "Zero", 1: "One", 10: "Ten"]
+var numbersDictionary = [0: "Zero", 1: "One", 10: "Ten"]
 ```
+
 ### Heterogeneous Dictionaries and AnyHashable
 When creating a dictionary, the type of the keys and values is supposed to be consistent - e.g., all keys are of type ```Int``` and all the values are of type ```String```.
 
@@ -418,7 +421,7 @@ However, there are cases when we do need dictionaries with different key and val
 
 Alright, let’s try the following:
 ```
-var mixedMap2: [Any: Any] = [0: “Zero”, "pi": 3.14]
+var mixedMap: [Any: Any] = [0: “Zero”, "pi": 3.14]
 ```
 Now, the compiler complains about something else: *"Type 'Any' does not conform to protocol 'Hashable'"*
 
@@ -426,12 +429,12 @@ The problem is that the Dictionary requires keys that are hashable - just like t
 Starting with Swift 3, the standard library introduced a new type called ```AnyHashable```. It can hold a value of any type conforming to the Hashable protocol. AnyHashable can be used as the supertype for keys in heterogeneous dictionaries. 
 So, we can create a heterogeneous collection like this:
 ```
-var mixedMap3: [AnyHashable: Any] = [0: "Zero", 1: 1.0, "pi": 3.14]
+var mixedMap: [AnyHashable: Any] = [0: "Zero", 1: 1.0, "pi": 3.14]
 ```
 AnyHashable is a structure which lets us create a type-erased hashable value that wraps the given instance.
 This is what happens behind the scenes:
 ```
-var mixedMap4 = [AnyHashable(0): "Zero" as Any, AnyHashable(1): 1.0 as Any, AnyHashable("pi"): 3.14 as Any]
+var mixedMap = [AnyHashable(0): "Zero" as Any, AnyHashable(1): 1.0 as Any, AnyHashable("pi"): 3.14 as Any]
 ```
 Actually, this version would compile just fine if we typed in Xcode - but the shorthand syntax is obviously more readable.
 AnyHashable’s ```base``` property represents the wrapped value. It can be cast back to the original type using the ```as```, ```as?``` or ```as!``` cast operators.
@@ -457,13 +460,13 @@ for (key, value) in numbersDictionary {
     print("\(key): \(value)")
 }
 ```
-We can access the Dictionary's ```key``` property to retrieve its keys:
+We can access the dictionary's ```key``` property to retrieve its keys:
 ```
 for key in numbersDictionary.keys {
     print(key)
 }
 ```
-The dictionary value property will return its values:
+The ```value``` property will return the values stored in the dictionary:
 ```
 for value in numbersDictionary.values {
     print(value)
@@ -490,18 +493,22 @@ print(numbersDictionary)
 ```
 You can achieve the same result - yet with more typing - via the ```removeValue(forKey:)``` instance method:
 ```
-numbersDictionary4.removeValue(forKey: 2)
+numbersDictionary.removeValue(forKey: 2)
 print(numbersDictionary4)
 // Prints: [10: "Ten", 0: "Zero"]
 ```
 
 Finally, ```removeAll()``` empties our dictionary without remorse:
 ```
-numbersDictionary4.removeAll()
-print(numbersDictionary4)
+numbersDictionary.removeAll()
+print(numbersDictionary)
 // Output: [:]
 ```
 ---
 In this tutorial, we've covered the built-in Swift collection types.
 
 Stay tuned for the second part: we’re going to talk about some popular data structures and we’ll implement them in Swift from scratch.
+
+In the meantime, you may want to check out [my Swift courses on Pluralsight](https://www.pluralsight.com/authors/karoly-nyisztor).
+
+Thanks and Happy Coding!
