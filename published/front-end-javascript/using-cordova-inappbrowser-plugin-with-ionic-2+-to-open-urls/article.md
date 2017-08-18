@@ -1,27 +1,29 @@
-## Introduction 
+# Introduction 
 
-In this tutorial we are going to see how to use the InAppBrowser Cordova plugin with Ionic Native 3.x+ to open external URLs in Ionic 2+ apps or use third party services which require opening a webview such as implementing social authentication and payment gateways.
+This tutorial will cover how to use [Cordova's InAppBrowser plugin](https://cordova.apache.org/docs/en/latest/reference/cordova-plugin-inappbrowser/) with [Ionic Native 3.x+](http://blog.ionic.io/ionic-native-3-x/) to open external URLs in Ionic 2+ apps or use third party services which require opening a webview such as implementing social authentication and payment gateways.
 
-Ionic Native is a set of wrappers around Cordova plugins which allow Ionic developers to use the native plugins in an Angular way i.e using observables instead of ugly callbacks.
+Ionic Native is a set of wrappers around Cordova plugins. These wrappers allow Ionic developers to handle native plugins using observables instead of ugly callbacks.
 
-## Requirements 
+# Requirements 
 
 Before you can build Ionic 2+ apps you need to have a few requirements:
 
-* Node.js and NPM.
+* Node.js and NPM (Node Package Manager).
 * Java and Android SDKs for Android apps.
 * Setup JAVA_HOME and ANDROID_HOME system variables for Android apps. 
 * A MAC system and XCode for iOS apps.
 * Windows for UWP apps.
 * Ionic CLI and Cordova.
 
-For installing Node.js and NPM you can head over to their [official website](https://nodejs.org/en/) and grab the installer for your operating system.
+## Installation guide
 
-If you need to target Android platform first install Java by going to their [official website](https://java.com/en/download/) and follow the instructions. Then install the Android SDK available from this [link](https://developer.android.com/studio/index.html).
+For instructions on installing **Node.js** and *NPM**, head over to their [official website](https://nodejs.org/en/) and grab the installer for your operating system.
+
+If you need to target the Android platform, first install **Java** by going to their [official website](https://java.com/en/download/) and follow the instructions. Then install the Android SDK available from this [link](https://developer.android.com/studio/index.html).
 
 If you successfully installed Node.js and NPM the next step is to install Cordova and Ionic CLI.
 
-## Installing Cordova and Ionic CLI
+### Installing Cordova and Ionic CLI
 
 If you don't have Ionic CLI and Cordova installed, then you need to start by installing them first:
 
@@ -34,32 +36,36 @@ These commands should install cordova and ionic globally on your development mac
 
 Now you should be able to generate a new Ionic project.
 
-## Generating an Ionic 2+ Project 
+# Getting started
 
-Lets start by creating a new Ionic 2+ application. Open your terminal or command prompt then run the following commands:
+### Generating an Ionic 2+ Project 
+
+Let's start by creating a new Ionic 2+ application. Open your terminal or command prompt then run the following commands:
 
     ionic start InAppBrowserDemo blank 
 
-After generating a new Ionic project,navigate inside your project root folder then add your target Cordova platform. In my case i can only add Android since i'm working in Ubuntu but if you are working in a MAC system you can target iOS too. So go ahead and run:
+After generating a new Ionic project, navigate inside your project root folder. Add your target Cordova platform. In my case, I can only add Android since I'm working in Ubuntu. However, if you are working on OSX, you can target iOS too. 
+
+Go ahead and run:
 
     ionic cordova platform add android 
     ionic cordova platform add ios
     
-P.S if you are under Windows, you can also target the Universal Windows Platform (UWP):
+If you are using Windows, you can also target the Universal Windows Platform (UWP):
 
     ionic cordova platform add windows
 
 Now after adding your target platform, you can install the InAppBrowser plugin.
 
 
-## What is InAppBrowser?
+#### What is InAppBrowser?
 
-InAppBrowser is a native Cordova plugin which can be used to add an in-app browser to your hybrid mobile application created with Cordova framework or any Cordova based framework such as Ionic.
+InAppBrowser is a native Cordova plugin which can be used to add an in-app browser to your hybrid mobile application created using any Cordova-based framework, such as Ionic.
 
 You can find more information about InAppBrowser from this [Github repository](https://github.com/apache/cordova-plugin-inappbrowser).
 
 
-## Installing InAppBrowser Cordova Plugin and The Corresponding Ionic Native Wrapper
+### Installing InAppBrowser Cordova Plugin and The Corresponding Ionic Native Wrapper
 
 InAppBrowser plugin is available from npm so to install it simply run this command inside your project root folder:
 
@@ -99,7 +105,7 @@ Then add it to the list of providers:
     })
     export class AppModule {}  
 
-You are now ready to use the InAppBrowser API via dependency injection which provides you with an instance of InAppBrowser that can be used to call diffrent methods to create and open in app browsers inside your Ionic 2+ app.
+You are now ready to use the InAppBrowser API via dependency injection. This API provides you with an instance of InAppBrowser that can be used to call different methods that create and open in-app browsers within your Ionic 2+ app.
     
 So open <em>src/pages/home/home.ts</em> and add:
 
@@ -128,9 +134,7 @@ So open <em>src/pages/home/home.ts</em> and add:
     }    
 
 
-So we first import InAppBrowser from @ionic-native/in-app-browser then inject it via component constructor.
-
-Then we call the .create() method to create and open an in app browser which navigates to [techiediaries.com](https://www.techiediaries.com) website when the component OnInit hook is called i.e when the component is completely initialized.
+Let's break down the code. First, we import InAppBrowser from @ionic-native/in-app-browser then inject it via component constructor. Then we call the `.create()` method to create and open an in-app browser which navigates to [techiediaries.com](https://www.techiediaries.com) when the component has been fully initialized.
 
 You can find the complete documentation for InAppBrowser in [Ionic Native official website](https://ionicframework.com/docs/native/in-app-browser/).
 
@@ -138,7 +142,9 @@ You can find the complete documentation for InAppBrowser in [Ionic Native offici
 
 Now that you have created your simple example that uses InAppBrowser to open an external URL inside your mobile application it's time to run the app in an actual device:
 
-Since i'm targetting Android i will use an Android phone but feel free to use any supported platform and use the corresponding command to run your application.
+Since I'm targeting Android, I will use an Android phone. However, Ionic runs on numerous platforms, as mentioned above. Feel free to use a device running on any of these supported platforms.
+
+For Android, I'll use the following command to run my app:
 
     ionic run android 
 
@@ -150,16 +156,20 @@ For Windows use:
 
     ionic run windows
     
-Please note that you can also test your application in the browser using the serve command:
+### Testing the app on a browser
+    
+One of the cool features of Ionic is that you can also test your application **in the browser** using the serve command:
 
     ionic serve 
 
-Then, using your browser, visit [http:localhost:8200](http:localhost:8200).
+Then, in a browser of your choice, visit [http:localhost:8200](http:localhost:8200).
 
 
 ## Conclusion 
 
-So we have seen how to use the InAppBrowser Cordova plugin with Ionic 2+ and Ionic Native to add an in app browser which can be used for different things such as opening external URLs, adding third party authentication to your app or implementing any services which need to connect to external gateways etc. 
+This guide covered using the InAppBrowser Cordova plugin with Ionic 2+ and Ionic Native to add an in-app browser that can open external URLs, add third party authentication to your app or implement services that need to connect to external gateways. As seen by the quick solution presented in this tutorial, using the plugin and the Ionic framework streamlines a process that would otherwise be time-intensive.
+
+Thanks for reading this tutorial! I hope you found it both informative and interesting. Please drop your feedback in the discussion section below. I look forward to seeing your apps (and in-app browsers) on an app store soon!
     
 
 
