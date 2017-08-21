@@ -1,0 +1,15 @@
+{
+    "_publish_status": "draft",
+    "author_name": "dmcquay",
+    "author_real_name": "Dustin McQuay",
+    "branch": "master",
+    "branches": [],
+    "filename": "article.md",
+    "first_commit": "a3add76600caf483114a4352dae26aa85a155691",
+    "image_url": "https://avatars1.githubusercontent.com/u/116849?v=4",
+    "stacks": [
+        "Front-End JavaScript (Angular, React, Meteor, etc)"
+    ],
+    "thumbnail_url": null,
+    "title": "Beginner 2D Car Game with HTML5 Canvas"
+}
