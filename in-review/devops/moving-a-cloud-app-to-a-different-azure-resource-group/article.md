@@ -19,7 +19,7 @@ I’m new to using PowerShell to manage Azure and had to go through several blog
 - Move-AzureRmResource -ResourceId "/subscriptions/{your subscription here}/resourceGroups/Default-Web-NorthCentralUS/providers/Microsoft.Web/sites/cdd-Validate" -DestinationResourceGroupName continuousDeliveryDemo
  - There wasn’t a –ResourceName option, that would have made it easier 
 
-I started my journey by finding this article (http://blog.kloud.com.au/2015/03/24/moving-resources-between-azure-resource-groups/) by searching. Then I had to figure out the steps above. I also found out that Switch-AzureMode is deprecated and removed, so the article is out of date. I suppose I could add this as a build task and never have it in the wrong resource group. I’ll continue to work from my CD and VSO attempts.
+/* TODO: Add more step by step process (with download/further info links) for the above steps.  
 
 Here are some other articles that were useful to me.
 
