@@ -3,11 +3,6 @@
 - [Read more from ajsaulsberry](https://www.pluralsight.com/guides/author/ajsaulsberry) <img src="https://avatars1.githubusercontent.com/u/11444510?v=4" width="30" height="30" alt="ajsaulsberry" />
 - Related to: Microsoft.NET (C#, ASP.NET, VB.NET, etc)
 
-### Understanding the Four Pillars of Big Data Analytics by kobihikri
-- [Read the guide](https://www.pluralsight.com/guides/big-data/understanding-the-four-pillars-of-big-data-analytics?status=in-review)
-- [Read more from kobihikri](https://www.pluralsight.com/guides/author/kobihikri) <img src="https://avatars2.githubusercontent.com/u/4434689?v=4" width="30" height="30" alt="kobihikri" />
-- Related to: Big Data (Hadoop, Spark, etc)
-
 ### Data Structures in Swift - Part 1 by Károly Nyisztor
 - [Read the guide](https://www.pluralsight.com/guides/swift/data-structures-in-swift-part-1?status=in-review)
 - [Read more from Károly Nyisztor](https://www.pluralsight.com/guides/author/nyisztor) <img src="https://avatars1.githubusercontent.com/u/198511?v=4" width="30" height="30" alt="Károly Nyisztor" />
