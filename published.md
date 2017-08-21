@@ -1,3 +1,8 @@
+### Understanding the Four Pillars of Big Data Analytics by kobihikri
+- [Read the guide](https://www.pluralsight.com/guides/big-data/understanding-the-four-pillars-of-big-data-analytics)
+- [Read more from kobihikri](https://www.pluralsight.com/guides/author/kobihikri) <img src="https://avatars2.githubusercontent.com/u/4434689?v=4" width="30" height="30" alt="kobihikri" />
+- Related to: Big Data (Hadoop, Spark, etc)
+
 ### Conditional Logic in C# .NET by pattydaniels
 - [Read the guide](https://www.pluralsight.com/guides/microsoft-net/conditional-logic-in-c-net)
 - [Read more from pattydaniels](https://www.pluralsight.com/guides/author/pattydaniels) <img src="https://avatars3.githubusercontent.com/u/16217973?v=3" width="30" height="30" alt="pattydaniels" />
