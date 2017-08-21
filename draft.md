@@ -1,8 +1,3 @@
-### Writing a 2D Game with HTML5 Canvas by dmcquayps
-- [Read the guide](https://www.pluralsight.com/guides/front-end-javascript/writing-a-2d-game-with-html5-canvas?status=draft)
-- [Read more from dmcquayps](https://www.pluralsight.com/guides/author/dmcquayps) <img src="https://avatars0.githubusercontent.com/u/29869590?v=4" width="30" height="30" alt="dmcquayps" />
-- Related to: Front-End JavaScript (Angular, React, Meteor, etc)
-
 ### Building Desktop Applications with Electron, Angular 2+ and TypeORM  by Techiediaries
 - [Read the guide](https://www.pluralsight.com/guides/node-js/building-desktop-applications-with-electron-angular-2+-and-typeorm?status=draft)
 - [Read more from Techiediaries](https://www.pluralsight.com/guides/author/techiediaries) <img src="https://avatars2.githubusercontent.com/u/22133314?v=4" width="30" height="30" alt="Techiediaries" />
