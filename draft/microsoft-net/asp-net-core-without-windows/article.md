@@ -116,7 +116,74 @@ At this point, we have a complete (albeit extremely simple) web application that
 
 The result is the obligatory 'Hello World' application.  While this is progress, it's far from useful.  Let's see what makes this application tick.  The project structure of an ASP.NET Core application is a little different from past versions.  In the Explorer is a Program.cs file and a Startup.cs file.  These files control the launch and configuration of the application.  Open the Program.cs file by either clicking on it in the Explorer or by using the keyboard shortcut Cmd-P (Ctrl-P on Windows).  This will open a search bar at the top of the window.  Start typing the name of the file (Program.cs) and Visual Studio Code will filter the files in the project highlighting the best match.  Then select Program.cs from the list to open it.
 
-![](https://storage.googleapis.com/ps-dotnetcore/vscodefileopen.png)
+![](https://storage.googleapis.com/ps-dotnetcore/vscodefileopenb.png)
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Figure 15 - Searching for Program.cs**
 
-I'm not going to labor over this file too much other than to say that 
+I'm not going to labor over this file too much other than to say that this is the entry point for the application as evidenced by the `Main()` method.  That method calls the following method:
+
+```csharp
+public static IWebHost BuildWebHost(string[] args) =>
+    WebHost.CreateDefaultBuilder(args)
+           .UseStartup<Startup>()
+           .Build();
+```
+
+Note the `UseStartup()` method which is generic on the `Startup` class.  The `Startup` class contains the configuration for the application.  Open it in the file Startup.cs.
+
+There are two important methods in this class.  First is the `Configure()` method.  This is where the heavy lifting of the configuration occurs.  The other is the `ConfigureServices()` method.  This method is a little misleading.  It is used to register services with the ASP.NET Core built-in dependency injection container.  And we'll be using it later when we get to the database.  Going back to the `Configure()` method, it's obvious where the 'Hello World' text is coming from.  The call to `App.Run()` explicitly creates the string.  For web applications, namely ASP.NET, we are accustomed to a framework like ASP.NET MVC to abstract some of these details for us.  And ASP.NET Core is no exception.  It's just that the empty web template doesn't set MVC up for us which is OK because it gives us the excuse to see the plumbing in action.
+
+# Setting up ASP.NET Core MVC
+
+Adding ASP.NET Core MVC to an ASP.NET Core app is pretty straightforward.  And a lot of it is similar to how ASP.NET NVC works in previous versions.  The main difference is going to be in setting up the framework in the Startup class.  So, in the `ConfigureServices()` method, put the following in the body (which is currently empty):
+
+```csharp
+services.AddMvc();
+```
+
+This will add the MVC framework to the DI container making it available for use in the application.  The next step is to set up routing information for the application which I'll do in the `Configure()` method.  Here I'll replace the call to `App.Run()` with the following:
+
+```csharp
+app.UseMvc(
+    routes => {
+        routes.MapRoute(
+            name: "Default",
+            template: "{controller=Catalog}/{action=Index}/{id?}"
+        );
+    }
+);
+```
+
+If you are familiar with ASP.NET MVC then this code should make sense.  A route is a logical mapping between a URL and application code.  That URL is defined by the template.  The template in this is for a URL that has three components, the first two are required.  The first one will be mapped to a controller, the second to an action, and the last to an optional id.  In case the first or second components are omitted, default values are provided.  
+
+The code mapped to this route is determined by the default ASP.NET Core MVC project structure.  A controller is a C# class that derives from a `Controller` base class which we will create soon.  The action is merely a method in the controller class.  The id, if included, will be passed to the action method as a parameter.
+
+Before creating the controller class, I want to point out that there is another way of setting up a route which is quicker, but less flexible.  Instead of the `UseMvc()` method, the `UseMvcWithDefaultRoute()` method will do the same thing, except with an implied default route.  This route is the equivalent of the template:
+
+```
+{controller=Home}/{action=Index}/{id?}
+```
+
+# Controllers, Actions and Views
+Right now, the application will still build and run but all requests will be met with an HTTP 404 'resource not found' error.  This is because ASP.NET Core MVC is looking for a controller and none exist, so the 404 is valid.  Like previous version of the MVC framework, controller live by default in a Controllers folder in the project.  In Visual Studio Code I'll create one using the Explorer.  This can be done by right clicking in the Explorer and choosing New Folder or by highlighting the location of the new folder and then in the bar on top on the file structure, clicking the New Folder icon:
+
+![](https://storage.googleapis.com/ps-dotnetcore/vscodenewfolder.png)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Figure 16 - Creating a new folder in the Visual Studio Code Explorer**
+
+Next I'll create a new file, CatalogController.cs, in the Controllers folder by either right clicking on the Controllers folder and selecting New File or by highlighing the Controllers folder and clicking the New File icon.  Inside the new CatalogController.cs file, I'll create the following `CatalogController` class.
+
+```
+namespace CoreStore.Controllers
+{
+    public class CatalogController: Controller
+    {
+        
+    }
+}
+```
+
+Notice that as you type, Visual Studio Code provides Intellisense, suggesting the namespace in this example:
+
+![](https://storage.googleapis.com/ps-dotnetcore/vscodecc.png)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Figure 17 - Visual Studio Code Intellisense**
+
+But there is an error!  Visual Studio Code has added a red line underneath `Controller`, the base class for all ASP.NET Core MVC controllers.  
