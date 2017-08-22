@@ -186,4 +186,16 @@ Notice that as you type, Visual Studio Code provides Intellisense, suggesting th
 ![](https://storage.googleapis.com/ps-dotnetcore/vscodecc.png)
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Figure 17 - Visual Studio Code Intellisense**
 
-But there is an error!  Visual Studio Code has added a red line underneath `Controller`, the base class for all ASP.NET Core MVC controllers.  
+But there is an error!  Visual Studio Code has added a red line underneath `Controller`, the base class for all ASP.NET Core MVC controllers.  This is because the `Controller` class lives in the `Microsoft.AspNetCore.Mvc` namespace which has not been included in the CatalogController.cs file.  Before you start typing, take a look at the left of the line with the error,
+
+![](https://storage.googleapis.com/ps-dotnetcore/vscodehint.png)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Figure 18 - Quick Fix**
+
+See the light bulb?  This means that Visual Studio Code can provide a 'Quick Fix' for this error.  To access the possible solutions click the light bulb and select an option from the popup menu.  However, some developers find it faster to use a keyboard shortcut.  With the cursor over the code causing the error, press Cmd-. (Ctrl-. on Windows) to access the popup.
+
+![](https://storage.googleapis.com/ps-dotnetcore/vscodequickfix.png)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Figure 19 - Quick Fix options**
+
+The solutions available depend on the context.  In this example, Visual Studio Code has recognized that there is a `Controller` class in the `Microsoft.AspNetCore.Mvc` namespace.  It offers to add a using statement for that namespace or to prefix the `Controller` class with the namespace for the fully qualified name.  It also offers to generate a new class with the name `Controller`.  It even recognizes that there is a `Controllers` namespace and a `CatalogController` class both of which are very similiar to `Controller` in case I made a spelling error.  In this case, I'll select the first option, add the missing namespace, and correct the error.
+
+
