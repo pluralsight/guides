@@ -361,7 +361,7 @@ The jQuery functions begin with `$`. For more information on the functions used 
 
 ### Controller action
 
-The JavaScript on the page (Create.cshtml) calls a controller action to get the data from the server asynchronously. The controller action's job is to call the repository to get the data, then convert it from an IEnumberable of SelectListItems to JSON format and pass it back to the page.
+The JavaScript on the page (Create.cshtml) calls a controller action to get the data from the server asynchronously. The controller action's job is to call the repository to get the data, then convert it from an IEnumerable of SelectListItems to JSON format and pass it back to the page.
 
 #### CustomerController.cs, GetRegions action
 
@@ -452,6 +452,7 @@ Countries can have zero or more regions.
 
 ### Database schema
 ![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/10a455aa-45bf-442f-a6f5-83dee7db5df9.png)
+
 *Relational database schema diagram for multiple dropdowns example project*
 
 ### Data entities
@@ -567,7 +568,7 @@ In the sample project each region has a unique RegionCode. In real life, the uni
 Turning an example project like this into production application usually means adding code to address a number of requirements:
 
 * localization (language and conventions),
-* error messsages for the user interface,
+* error messages for the user interface,
 * error handling and logging,
 * unit tests, and
 * deployment.
