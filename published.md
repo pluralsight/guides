@@ -1,6 +1,6 @@
-### Understanding the Four Pillars of Big Data Analytics by kobihikri
+### Understanding the Four Pillars of Big Data Analytics by Kobi Hikri
 - [Read the guide](https://www.pluralsight.com/guides/big-data/understanding-the-four-pillars-of-big-data-analytics)
-- [Read more from kobihikri](https://www.pluralsight.com/guides/author/kobihikri) <img src="https://avatars2.githubusercontent.com/u/4434689?v=4" width="30" height="30" alt="kobihikri" />
+- [Read more from Kobi Hikri](https://www.pluralsight.com/guides/author/kobihikri) <img src="https://avatars2.githubusercontent.com/u/4434689?v=4" width="30" height="30" alt="Kobi Hikri" />
 - Related to: Big Data (Hadoop, Spark, etc)
 
 ### Conditional Logic in C# .NET by pattydaniels
