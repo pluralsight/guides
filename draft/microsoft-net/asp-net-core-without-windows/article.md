@@ -474,3 +474,270 @@ Running the application yields this result:
 
 ![](https://storage.googleapis.com/ps-dotnetcore/modelview.png)
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Figure 25 - Data in the view**
+
+# More Views
+
+This is the point that we have been aiming for.  The application is technically 'data-driven' but it is still not complete.  Right now the application has only a single view that pulls a fixed set of data from the database.  A real world application would support the CRUD operations with CRUD an acronym for 'Create Read Update Delete'.  While I could code all of this functionality by hand, a lot of the code would be boilerplate.  In the next CRUD application, I'd have to write it all over again.  Instead, thanks to EF Core and a NuGet package that adds some extra commands to the `dotnet` tool, we can generate this boilerplate code.
+
+First, two NuGet packages have to be added to the project.  Using the `dotnet add package` command add a reference to `Microsoft.VisualStudio.Web.CodeGeneration.Deisgn`.  If prompted to restore the packages, go ahead.  The second NuGet package is the extension to the `dotnet` CLI tool.  With extensions to the `dotnet` tool, we must manually update the .csproj file and restore the packages by hand.  Fortunately, it's not that hard but always take care when modifying the .csproj file.
+
+In Visual Studio Code, open the CoreStore.csproj file.  Just before the closing `</Project>` tag, add a new `<ItemGroup>` tag and close it.  Then add a reference to `Microsoft.VisualStudio.Web.CodeGeneration.Tools`.  But this will not be a `<PackageReference>` tag.  Instead it will be a `<DotNetCliTooReference>` tag.  Here is the code to add:
+
+```
+<ItemGroup>
+  <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="2.0.0"/>
+</ItemGroup>
+```
+
+After saving this file, the packages need to be restored to download the NuGet package with the tooling.  Had we added a package reference, Visual Studio Code would have prompted for the restore.  But with a CLI tool package, it has to be done manually.  There are two ways to do this.  First is in the terminal window.  Run
+
+```
+dotnet restore
+```
+
+at the prompt.
+
+The second way is to run it within the Visual Studio Code command palette.  Press Cmd-Shift-P (Ctrl-Shift-P on Windows).  At the top of the window the command palette will appear.  Type 'restore' and then select the '.NET: Restore Packages' option.  This is do the same thing as running `dotnet restore` in the terminal window.
+
+![](https://storage.googleapis.com/ps-dotnetcore/vscoderestorecp.png)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Figure 26 - Restoring the packages**
+
+Now in the terminal window, a new command is available with the `dotnet` tool:
+
+```
+dotnet aspnet-codegenerator
+```
+
+![](https://storage.googleapis.com/ps-dotnetcore/aspnetcodegen.png)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Figure 27 - Running the ASP.NET Core code generator**
+
+As shown in the output, this command lets you generate code for controllers, views and other project assets.  I'm going to use the code generator for the controller.  In cooperation with the context class from EF Core, the code generator will generate a new Controller with actions and views to list, create, read, update and delete products in the database.  First I'll, delete the existing `CatalogController` and associated Catalog views folder.  Then I'll run the following command (it's a *long* one)
+
+```
+dotnet aspnet-codegenerator controller --project CoreStore.csproj --controllerName "CatalogController" \
+    --dataContext "StoreContext" --model "Product" --controllerNamespace "CoreStore.Controllers" \
+    --relativeFolderPath "Controllers"
+```
+
+This will generate the CatalogController.cs file in the Controllers folder.  It will also create a Catalog folder in the View folder and generate a .cshtml view file for each of the Create, Delete, Edit, Details (Read) and Index (List) actions.  Before looking at the results, let's look at the command.
+
+There are a lot of options here.  I used the long form to be clearer but generally would use the short form.  You can see those by running the command:
+
+```
+dotnet aspnet-codegenerator controller -h
+```
+
+Here is a brief explantaion:
+
+- project - the relative path to a .csproj file
+- controllerName - the class name of the new controller
+- dataContext - the name of the data context class of the model
+- model - the name of the model object class
+- controllerNamespace - the fully qualified namespace to put the new controller in
+- relativeFolderPath - the relative path of the folder to put the new controller in
+
+Anything that does not already exist will be created.  And now to look at the output.  Press F5 one more time.
+
+![](https://storage.googleapis.com/ps-dotnetcore/gencode.png)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Figure 28 - Running the generated controller**
+
+There is some good news and bad news here.  First the good news.  The application didn't crash so the generated code didn't break anything seriously.  And our data still shows up.  But what about the text for 'Create New' and 'Edit'?  It seems like those should be links.  While we can get to the Create view by navigating to `/Catalog/Create', the text boxes have no labels and submitting the form does nothing.
+
+![](https://storage.googleapis.com/ps-dotnetcore/createproduct.png)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Figure 29 - The Create view .. sort of**
+
+Let's take a look at the code and see if it gives any clues as to what is going on.  First open the Index.cshtml view.  Just after the opening `<body>` tag is a paragraph and inside of it, this code:
+
+```
+<a asp-action="Create">Create New</a>
+```
+
+This is an anchor tag, with a twist.  Instead of an href attribute, there is this asp-action attribute.  This is what is called a tag helper.  This particular tag help will generate a URL for the action in the value based on the current controller.  But it's not doing that.  In fact, if you do a view source on the HTML in the browser, you'll see that the anchor tag is returned to the browser verbatim as it appears in the view file.  The browser doesn't know what to do with the tag helper so it bails.  This is also the reason why the other links don't work, why the create form has to labels and why submitting it does nothing.
+
+It took me a while to find the solution to this when I first saw it.  But it makes more sense when you realize that tag helpers are part of ASP.NET Core MVC, not just ASP.NET Core in general.  So they are only useful if your application includes the MVC framework.  The template we used to create the application was an empty ASP.NET Core application without MVC support.  So it makes no sense to include tag helpers with that.  (The mvc template does include support for tag helpers.)  Forunately, the solution to this is simple.  In the Views folder, create a new file called _ViewImports.cshtml.  This file will essentially be executed before every view file is rendered.  So it's a good place to include the tag helper support.  This is the only line needed in _ViewImports.cshtml:
+
+```
+@addTagHelper *,Microsoft.AspNetCore.Mvc.TagHelpers
+```
+
+This line adds support for all of the built in tag helpers in `Microsoft.AspNetCore.Mvc.TagHelpers` to every view.  With this in place run the application again.  The links will all be working.  The Create view will have labels for the text boxes.  And the form will submit data to be stored in the database.  The Edit, Details and Delete views also work.  Check it out.
+
+# Migrations
+
+The application is really coming along.  However, the database structure is very rigid.  What if it needs to change?  Right now, we have no way to keep track of inventory.  How would we add such data to the database?  This currently would be messy.  But EF Core has a tool that helps make it easier.  Meet migrations.
+
+A migration is basically a log of the changes in the structure of a data model.  In EF Core these changes are stored as C# code.  When executed, this code will commit the changes to the structure of the database.  Each time you make a change in the structure of the data model, say adding a stock level property to the `Product` class, you create a migration.  That migration contains the code needed to add that new property as a column in the database.  It also has code to remove it so you can walk backward in the migration history as well as forward.
+
+### More CLI tooling
+
+The `dotnet` tool once again must be extended to take advantage of EF Core migrations.  Like the ASP.NET Core code generator, this NuGet package reference must be added by hand.  Open the CoreStore.csproj file and before the closing `</Project>` tag add the following code:
+
+```
+<ItemGroup>
+  <DotNetCliToolReference Include="Microsoft.EntityFrameworkCore.Tools.DotNet" Version="2.0.0" />
+</ItemGroup>
+```
+
+Restore the packages using either the `dotnet restore` command or by running the restore command from the command palette.  After that, you will have access to the `dotnet ef` command.  There are three commands in the `dotnet ef` command.  One of them is for migrations but before looking at it, we need to start with a clean slate.  Run the command:
+
+```
+dotnet ef database drop
+```
+
+and confirm that you want to delete the database file.  Now normally this is not something that would happen in the real world.  Usually a project would plan for migrations at the outset.  But because of the non-linear path the learning process takes, we need to remove the test database from the previous sections.  
+
+Also, remove the call to `DbSetup.Setup()` in the `Startup` class.  We'll be using migrations to seed the database later on.  Next in the terminal window, run `dotnet build` to manually build the application to make sure that everything is up to date.  Again, this is not something that would be done in a real world application that used migrations initially.
+
+Before creating a migration, a few changes have to be made to the `StoreContext` class that will be required to seed the database later on.  A discussion of why these are required is outside the scope of this guide.  But the class will require an empty parameterless construction and an override of the `OnConfiguring()` method.
+
+```
+public StoreContext() { }
+
+// existing code omitted
+
+protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+{
+    optionsBuilder.UseSqlite("Data Source=store.db");
+}
+
+```
+
+Now to create the first migration.  The command to create one is:
+
+```
+dotnet ef migrations add
+```
+
+followed by the name of the migration.  Usually, the first migration is named 'Initial'.
+
+```
+dotnet ef migrations add Initial
+```
+
+This will find the data context class and create a migration fram it that will add a table for the `Product` model class.  Look in Visual Studio Code at the Explorer.  A Migrations folder has been added with three files.  The first two are created specific to the migration.  The name is a timestamp followed by the migration name.  The last is a log of the migrations created.  The one that contains the code we care about is the first one, the file without 'Designer' in the name.  Open it in Visual Studio Code.
+
+The migration is a C# class with two methods, `Up()` and `Down()`.  When the migration is applied to the database, the `Up()` method is called.  When the migration is rolled back, the `Down()` method is called.  The migrations are applied and rolled back with the `dotnet ef` command.  We'll do that in a minute.  First look at the body of the `Up()` method.  It has a method to create a table with a name of 'Products', just like the `StoreContext` class is configured to do.  It also adds a column in the table for each property in the `Product` class.  And the `ID` is the primary key which is generated sequentially, as a result of the `DatabaseGenerated` attribute applied to the `ID` property in the `Product` class.  So all of this will be run when the migration is applied.  The `Down()` method just undoes everything is the `Up()` method.  In this simple case it drops the table.
+
+To apply the migration (which will also create the database since it doesn't exist) run:
+
+```
+dotnet ef database update Initial
+```
+
+The last parameter to the `update` command, the migration name, is optional.  If omitted the most recent migration will be applied.  If you look in the Explorer in Visual Studio Code, there is once again a 'store.db' file for the SQLite database.  I'm not going to bother looking inside the database yet as there currently no tools in Visual Studio Code for mangaging SQLite files.  We'll do this later when moving to SQL Server.  In the meantime, running the application at this point will not be very exciting as the database contains no data.  But we can also use migrations to seed the database.
+
+Seeding the database first requires an empty migration.  I could create one manually but it's easier to easier to let `dotnet` do it.  Running the `dotnet ef migrations add` command when no changes have been made to the data model since the last migration was applied will generate an empty migration with just a blank `Up()` and `Down()` method which is exactly what I need.
+
+```
+dotnet ef migrations add Seed
+```
+
+Add the following code the to `Up()` method:
+
+```
+using (var ctx = new StoreContext())
+{
+    ctx.Products.AddRange(new List<Product> {
+        new Product { Name = "Apple", Price = 1.50m },
+        new Product { Name = "Banana", Price = 2.00m }
+    });
+
+    ctx.SaveChanges();
+}
+```
+
+This code should look familiar.  In fact, I just copied the body on the `using` statement from the `DbSetup` class.  The difference is that in the migration the context is created in a different way. (Incidentally, this is why the new constructor and `OnConfiguring()` override had to be added to the context class.)
+
+Don't forget that what goes up must come down.  Or in this case, what is done must have a way to be undone so add the following code to the `Down()` method:
+
+```
+using (var ctx = new StoreContext())
+{
+    ctx.RemoveRange(ctx.Products);
+    ctx.SaveChanges();
+}
+```
+
+This code just removes all the the products from the database.  Now I can seed the database by applying the migration:
+
+```
+dotnet ef database update Seed
+```
+
+Now running the application will show the data again.  But all we've done is essentially restore the application to the state that it was before migrations were brought in.  But now let's make a change to the data model.  Change the `Product` by creating a new property for inventory level:
+
+```
+public int StockLevel { get; set; }
+```
+
+And add a new migration:
+
+```
+dotnet ef migrations add StockLevel
+```
+
+Look at the `StockLevel` migration file.  The `Up()` method adds a column for 'StockLevel' to the 'Products' table.  The `Down()` method removes it.  The rest of the database is untouched.  This is the first part of the power of migrations.  By specifying the name of the migration I can revert to any point in the history of changes in the database.  If you recall, we have existing data in the 'Products' table.  What happens when the 'StockLevel' column is added?  In the `Up()` method, the `AddColumn()` method has a default value which is set to 0 right now.  I'm going to set it to 100 instead.  That will also be the value for new products as well so I need to make that change.
+
+In the `CatalogController` class, find the `Create()` method.  There are two of them.  The first one, marked with the `HttpPost` attribute, is called when the a request is made to display the form.  The second one, marked with the `HttpPost` attribute, is called when the form is submitted.  THe second one needs to be modified.  Just before the new product is added to the context:
+
+```
+_context.Add(product);
+```
+
+Set the `StockLevel` to 100:
+
+```
+product.StockLevel = 100;
+```
+
+So the entire method is:
+
+```
+[HttpPost]
+[ValidateAntiForgeryToken]
+public async Task<IActionResult> Create([Bind("ID,Name,Price")] Product product)
+{
+    if (ModelState.IsValid)
+    {
+        product.StockLevel = 100;
+        _context.Add(product);
+        await _context.SaveChangesAsync();
+        return RedirectToAction(nameof(Index));
+    }
+    return View(product);
+}
+```
+
+Also, change the details view to show the `StockLevel`.  In Details.cshtml, add:
+
+```
+<dt>
+    @Html.DisplayNameFor(model => model.StockLevel)
+</dt>
+<dd>
+    @Html.DisplayFor(model => model.StockLevel)
+</dd>
+```
+
+before the closing `</dl>` tag.  This should be enough to see the effect of the migration.  Apply the migration:
+
+```
+dotnet ef database update StockLevel
+```
+
+Run the application again.  At first everything seems to be the same.  But click in the 'Details' link for a product:
+
+![](https://storage.googleapis.com/ps-dotnetcore/stocklevel.png)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Figure 30 - After applying the StockLevel migration**
+
+The `StockLevel` property is now recognized.  Trying adding a new product and view its details.  The `StockLevel` property is also handled correctly.
+
+At this point, if the `StockLevel` property needed to be removed that could be done by 'updating' the database to a previous migration.  For example:
+
+```
+dotnet ef database update Seed
+```
+
+would call the `Down()` method on the StockLevel migration, remove the property and revert the database to the state it was after applying the Seed migration.  In fact, while writing this guide I had to do that.  I forgot to change the default value of `StockLevel` to 100 in the migration and when I applied it, all of the existing products had no stock!  So I reverted back to the Seed migration, changed the default value of `StockLevel` and then re-applied the StockLevel migration.
+
+# Adding a Simple API
