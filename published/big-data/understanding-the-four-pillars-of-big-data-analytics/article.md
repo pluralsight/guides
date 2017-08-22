@@ -47,9 +47,13 @@ Any single modern machine, be it as fast as it gets, with the fastest storage an
 Another concern, when working with a single machine, is that the system itself is a single point of failure. Hardware **will fail** at some point. This could mean data loss and inefficiency to your enterprise.
 
 Putting these concerns to terms, we understand that our desired system should be:
+
 •	Scalable - able to overcome the data management limitations any single machine might have. 
+
 •	Fault-tolerant - able to remain operational even when something unexpected happens (such as a hard drive failure or power surge).
+
 Meeting both the requirements, will mean that our system need be:
+
 •	Distributed - easily extended and compatible with additional resources that raise the upper limits of its data management capabilities, such as collecting, processing, storing, replicating, gathering insights and more.
 
 As our system is built as a chain of technologies, we need make sure each link in the chain conforms to our requirements. Let’s get started.
