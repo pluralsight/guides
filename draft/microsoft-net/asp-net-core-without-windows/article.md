@@ -65,3 +65,58 @@ After the image is downloaded it will create a new instance that is ready to run
 
 ![](https://storage.googleapis.com/ps-dotnetcore/mssqlenvvars.png)
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Figure 8 - Creating Docker environment variables**
+
+This should start the container.  If not, just click the start button.  Next, click the Hostname/Ports tab.  In this page, Docker will show mappings between ports on the container and the container host, which is the local machine.  The port for SQL Server is 1433.  Docker will map this port from the container to a random port on the local machine, 32773 on my machine.  To make things easier, I am going to change this to map to 1433 on the local machine.  Just double-click on the published port, change it to 1433 and then click the Save button.
+
+![](https://storage.googleapis.com/ps-dotnetcore/kmports.png)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Figure 9 - Mapping the SQL Server port**
+
+That's all for the setup and installation.  Now it's time to create an ASP.NET Core application.
+
+# The `dotnet` tool
+
+You've already seen the `dotnet` tool briefly if you completed the steps to test the .NET Core SDK installation.  A lot of the tasks involved with managing a .NET Core application are performed with the `dotnet` tool.  It's a command line tool that can be extended with NuGet packages and we'll be using several of them in this guide.  For now, head back over to Visual Studio Code and open the integrated terminal window by going to View -> Integrated Terminal in the menu bar.  This will slide open a pane at the bottom on the editor with a shell prompt.
+
+![](https://storage.googleapis.com/ps-dotnetcore/vscodeterm.png)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Figure 10 - Visual Studio Code Integrated Terminal**
+
+The shell will depend on the operating system used.  On macOS, it will default to the bash shell.  On Windows, you could be using Powershell.  Next I've created a directory to store my .NET Core applications called 'dotnetcore' so I'll change to that directory.  Then I'll run the follow `dotnet` command
+
+```
+dotnet new -h
+```
+
+The output is shown in the following figure:
+
+![](https://storage.googleapis.com/ps-dotnetcore/vscodetmpls.png)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Figure 11 - `dotnet` templates**
+
+You've already seen the 'console' template.  This time we are going to use a web application template.  The `dotnet` tools provides several to choose from.  First you can create starter ASP.NET Core MVC application with some sample content.  You can also create web applications with skeletons supporting Angular or React.js.  And you can create an API as well.  For this guide, I am going to start from scratch, so I will pick the most minimal template that there is, the 'web' template.  The application will be a (very simple) e-commerce app that I call 'CoreStore' and I'll create the project with the following command in the terminal window:
+
+```
+dotnet new web -o CoreStore
+```
+
+This will create a new project called CoreStore in a new directory called CoreStore because of the -o (for output) option.  Next I want to open this project in Visual Studio Code.  The top icon in the left sidebar is the Explorer which shows the file structure of a project.  I'll click it and then click the Open Folder button and navigate to the directory my project is in.
+
+![](https://storage.googleapis.com/ps-dotnetcore/vscodeexplorer.png)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Figure 12 - Visual Studio Code Explorer**
+
+You may see some output if this is the first time opening a project in Visual Studio Code.  This is just the C# plugin installing some needed software that we will use later on.  Also, you should see the following prompt at the top of the window:
+
+![](https://storage.googleapis.com/ps-dotnetcore/vscodeassetsprompt.png)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Figure 13 - Debug Assets prompt**
+
+Visual Studio Code (via the C# extension) is asking to add some assets to enable debugging from within the editor.  This will happen the first time a new project is opened.  I'll click yes to allow this.  Notice that in the Explorer a new folder named '.vscode' has been added.
+
+At this point, we have a complete (albeit extremely simple) web application that is ready to run.  To prove this, go to Debug -> Start Debugging in the menu bar.  The application will be built, the application will start on a local web server running on port 5000 and the default browser will open to the root of the application.
+
+![](https://storage.googleapis.com/ps-dotnetcore/helloworld.png)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Figure 14 - An Empty ASP.NET Core web application**
+
+The result is the obligatory 'Hello World' application.  While this is progress, it's far from useful.  Let's see what makes this application tick.  The project structure of an ASP.NET Core application is a little different from past versions.  In the Explorer is a Program.cs file and a Startup.cs file.  These files control the launch and configuration of the application.  Open the Program.cs file by either clicking on it in the Explorer or by using the keyboard shortcut Cmd-P (Ctrl-P on Windows).  This will open a search bar at the top of the window.  Start typing the name of the file (Program.cs) and Visual Studio Code will filter the files in the project highlighting the best match.  Then select Program.cs from the list to open it.
+
+![](https://storage.googleapis.com/ps-dotnetcore/vscodefileopen.png)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Figure 15 - Searching for Program.cs**
+
+I'm not going to labor over this file too much other than to say that 
