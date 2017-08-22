@@ -241,4 +241,236 @@ Now run the application again (press F5) and see the results:
 ![](https://storage.googleapis.com/ps-dotnetcore/vscodehtml.png)
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Figure 22 - Loading a view**
 
-Ah!  Now we're getting somewhere!  This is **much** more flexible and managable.  For the sake of demonstration, add the following C# code to the view:
+Ah!  Now we're getting somewhere!  This is **much** more flexible and managable.  For the sake of demonstration, add the following code to the view:
+
+```html 
+<ul>
+@foreach (var i in new int[] {1, 2, 3, 4, 5})
+{
+    <li>@i.ToString()</li>
+}
+</ul>
+```
+
+And run the application again.
+
+![](image goes here)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Figure 23 - Using Razor**
+
+This introduces the advantage of Razor.  Notice that I am able to effortlessly switch between markup and code just by prefixing the C# statements with an @ sign.  Obviously, you would never do anything like this in production but I wanted to show an example before moving on to ...
+
+# Models
+
+Any useful web application must handle data.  To abstract the details of accessing different databases, .NET Core offers an Object Relational Mapper (ORM), Entity Framework Core.
+
+### Entity Framework Core
+
+If you are familiar with previous versions of Entity Framework, EF Core will not be much different in terms of code.  Some of the tooling is different though.  First, I'll start off by adding Entity Framework Core to the project.  It lives in a NuGet package named `Microsoft.EntityFrameworkCore`.  Depending on the database you wish to use, you'll need to install a package for that database.  Generally, we don't use the same kind of database for local development as in production.  Previously, SQL Server Local DB was the usual choice.  However, it only runs on Windows.  And in the past that was OK because everything ASP.NET ran on Windows.  With ASP.NET Core, we can no longer safely make that assumption.  So I'll turn to another local database, SQLite.
+
+SQLite is a file based database that runs locally.  It is typically used for development and not in production because of scaling issues.  But it does replicate the behavior of a relational database very well.  Thus it's a great choice for development.  And thanks to EF Core, the differences between SQLite and a production database (I'll be using SQL Server for Linux) are abstracted so the code for the two is close to identical!
+
+To get started with SQLite, the NuGet package for EF Core and SQLite needs to be added to the project.  This is done via the `dotnet` command:
+
+```
+dotnet add package Microsoft.EntityFrameworkCore.Sqlite
+```
+
+After this command is done, look inside of the CoreStore.csproj file and notice the new reference:
+
+```
+<PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="2.0.0" />
+```
+
+With EF Core added to the project, I'm ready to start writing model code.
+
+# Model and Context Objects
+
+The model object will represent the logical structure of the data for the application in a C# class.  ASP.NET Core MVC, unlike the controllers and views, doesn't have a predefined opinion of where these live in the project structure or if they live in the project at all.  It's common to have the model code in a separate assembly in larger projects.  For this demo, we can easily keep everything in the same project and so I'll create a Models folder for the model code.  And inside of that folder I'll create a file Product.cs with the following code:
+
+```
+namespace CoreStore.Models
+{
+    public class Product
+    {
+        
+    }
+}
+```
+
+This is just a POCO, a 'Plain Old C# Object'.  And it will have plain old C# properties to represent the data stored.  And here we are presented with an excellent chance to show off some more Visual Studio Code tooling.  Just like its big sister, Visual Studio Code support snippets or templates to generate boilerplate code.  C# properties generally have the same syntax and so Visual Studio Code has a snippet that creates them more quickly.  And you can add your own too.  I'll stub out a C# property in the Product class with a snippet by typing 'prop' and pressing the TAB key.
+
+![](https://storage.googleapis.com/ps-dotnetcore/vscodepropsnip.png)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Figure 24 - Using the 'prop' snippet**
+
+This snippet has generated an auto-implemented C# property.  It assumes the public access modifier and highlight the type.  At this point I can change the type or press the TAB key again to accept `int`.  And that's what I want to do because this property will the ID of the product.  Now the default name is highlighted.  I'll change the name to `ID` and hit TAB once more to go to the end of the line thus completing the property.  I'll add two more properties for now to finish out the class:
+
+```
+namespace CoreStore.Models
+{
+    public class Product
+    {
+        public int ID { get; set; }
+        public string Name { get; set; }
+        public decimal Price { get; set; }
+    }
+}
+```
+
+One more thing in the model object, I want the database to supply the value for the ID to ensure that it will be unique.  For this, I'll add the `DatabaseGenerated` attribute to the `ID` property.  This attribute is located in a namespace (`System.ComponentModel.DataAnnotations.Schema`) that is not used in the Product.cs file, but I can add it with the quick fix.  The attribute takes a parameter to tell the database how to generate the value.  I'll use `DatabaseGeneratedOption.Identity` to have it generate sequential numbers.  The `ID` property looks like this now:
+
+```
+[DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+public int ID { get; set; }
+```
+
+And for the moment, that's all for the model class.  Now we need a way to marshal the model class to the database itself.  EF Core does this via a context, which is derived from a base `DbContext` class.  I'll create one in a new file, called StoreContext.cs, in the Model folder:
+
+```
+using Microsoft.EntityFrameworkCore;
+
+namespace CoreStore.Models
+{
+    public class StoreContext: DbContext
+    {
+        
+    }
+}
+```
+
+The context class needs a constructor which takes a parameter of type `DbContextOptions`.  This is generic on the context type, `StoreContext`.  The constructor is empty, but it needs to pass the options object to the base constructor.  Here is the code: (FYI - there is a 'ctor' snippet to generate a constructor)
+
+```
+public StoreContext(DbContextOptions<StoreContext> options): base(options) { }
+```
+
+Next I'll create a `DbSet`.  This object will be how we access the actual model object instances populated with data from the database.  This is a property of the context class:
+
+```
+public DbSet<Product> Products { get; set; }
+```
+
+That's all that is required for now.  There is an optional step which I will go ahead and show here.  In a few minutes, I'll show how to generate a database for this context and model object.  By default, EF Core will create a table for the model object using the same name, Product in this case.  However, sometimes you might want to use different names.  To do this, override the OnModelCreating method in the context class:
+
+```
+protected override void OnModelCreating(ModelBuilder modelBuilder)
+{
+    modelBuilder.Entity<Product>().ToTable("Products");
+}
+```
+
+This is straightforward using the `modelBuilder` parameter to map the `Entity<>` for the `Product` class to a table called 'Products'.  Again this is optional as by default EF Core would have created a table called 'Product'.
+
+That's all, for now, for the context class.  There is one more step that I am going to take and it's out of convenience.  I'll throw this code out later when we look at migrations.  But this will help us get data into the database faster.  I'm going to write a static class to seed the database with some sample data that we can display in ASP.NET Core.  In the Models folder, create a new file, DbSetup.cs:
+
+```
+using System.Collections.Generic;
+
+namespace CoreStore.Models
+{
+    public static class DbSetup
+    {
+        public static void Setup(StoreContext ctx)
+        {
+            ctx.Database.EnsureCreated();
+
+            if (ctx.Products.Count() == 0)
+            {   
+                ctx.Products.AddRange(new List<Product> {
+                    new Product { Name = "Apple", Price = 1.50m },
+                    new Product { Name = "Banana", Price = 2.00m }
+                });
+
+                ctx.SaveChanges();
+            }
+        }
+    }
+}
+```
+
+This is an example of how to use the context class.  The first line in the `Setup()` method makes sure that a database exists and creates one if not.  We'll get to the specifics of which database soon.  Next, the `Products` has a method `AddRange()` which accepts one or more `Product` objects and adds those to the `DbSet`.  To commit the change to the datbase, the `SaveChanges()` method is called on the context.  Note that before adding the sample data, I check to make sure that `Products` has no objects.  This avoids adding duplicate sample data every time the object is run.  Later on, we'll see a better way to do this.
+
+Now we need to call this method from somewhere.  Application startup would be a good time so in the `Configure()` method in the `Startup` class I'll add a call:
+
+```
+public void Configure(IApplicationBuilder app, IHostingEnvironment env, StoreContext ctx)
+{
+    // existing code here
+
+    DbSetup.Setup(ctx);
+}
+```
+
+Notice that the signature of the `Configure()` method has been changed.  It now accepts a `StoreContext` which is passed to `DbSetup.Setup()`.  But where does this `StoreContext` come from?  This is where the built-in dependency injection for ASP.NET Core comes in useful.  Assuming that `StoreContext` is registered with the DI container, ASP.NET Core will create one when calling the `Configure()` method.  That means we need to register it.
+
+Remember that DI registration is done in the `ConfigureServices()` method.  To register a database context, there is a special method.  Here is the code:
+
+```
+public void ConfigureServices(IServiceCollection services)
+{
+    services.AddMvc();
+    services.AddDbContext<StoreContext>(options => {
+        options.UseSqlite("Data Source=store.db");
+    });
+}
+```
+
+The `AddDbContext()` method is generic on the context to add, `StoreContext` in this code.  It also uses a `DbOptionsContextBuilder` to configure the context.  The details of this configuration depnend on the database.  In this application, I want to use SQLite, so I call the `UseSqlite()` method and pass it a connection string which is just a path to the location of the SQLite database file.
+
+Next I'll return to the `CatalogController` class and add some logic to pull data from the database.  This will be done via a context object so I'll create a class level variable of type `StoreContext` in `CatalogController`.  Next I need some way to initialize the context object.  I'll do that in a constructor, using the DI container to inject an instance of the context as a parameter and then use that paramter to initialize the variable.  Finally, in the `Index()` method, I'll just get all of the product objects from the context.  Here's what that looks like so far:
+
+```
+public class CatalogController: Controller
+{
+    private StoreContext ctx;
+    
+    public CatalogController(StoreContext _ctx)
+    {
+        ctx = _ctx;
+    }
+
+    public IActionResult Index()
+    {
+        var products = ctx.Products.ToList();
+        return View();
+    }
+}
+```
+
+To get the products to the view, just pass them to the `View()` method.  So the line:
+
+```
+return View();
+```
+
+is now
+
+```
+return View(products);
+```
+
+The final step in this part is to tell the view to expect a `List<Product>`.  In the Index.cshtml file, add this directive at the top:
+
+```
+@model IEnumerable<CoreStore.Models.Product>
+```
+
+This turns the view into a strongly-typed view.  In other words, it will have a model object that is of type `IEnumerable<CoreStore.Models.Product>`.  Inside of the view, I can then iterate over the `@Model` (with a capital 'M') to display the individual products:
+
+```
+<table>
+    <tr>
+        <th>Name</th><th>Price</th>
+    </tr>
+    @foreach (var product in @Model)
+    {
+        <tr>
+            <td>@product.Name</td><td>$@product.Price.ToString("F2")</td>
+        </tr>
+    }
+</table>
+```
+
+Running the application yields this result:
+
+![](https://storage.googleapis.com/ps-dotnetcore/modelview.png)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Figure 25 - Data in the view**
