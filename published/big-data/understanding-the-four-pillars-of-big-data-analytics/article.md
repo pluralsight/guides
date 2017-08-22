@@ -67,7 +67,7 @@ In some cases, our system will actively request for data from relevant data sour
 
 In other cases, our system will register for data reception from data sources and will receive new data as it is available. In such a case we will say that the system receives data from these data sources via a **push mechanism.** An example for this scenario might be the usage of a technology such as Logstash, which we could configure to pass data from (almost any) data sources and into our systems entry point.
 
-### The Role of the Backbone
+### The Role of the Data Backbone
 
 The technology (or technologies) we decide to use for collection and perparation marks the the first Pillar of our system – The Data Backbone. The data backbone is the entry point into our system. Its sole responsibility is to relay data to the other links in our data analytics platform.
 
@@ -77,8 +77,11 @@ The capabilities of our data backbone will dictate whether or not we will lose i
 In some cases, data will be produced only once, and if we don’t “catch” it in time – we will lose it forever. As a result, in such scenarios, the data collection schemes must be airtight.
 
 To conclude our discussion about the data backbone, I would like to summarize our requirements from this specific role, in our big data analytics system.
-•	Our data backbone, as a data collection and reception mechanism, is expected to provide data to the rest of the system – regardless of how it gets this data, actively via pull or passively via push mechanisms.
+
+•   Our data backbone, as a data collection and reception mechanism, is expected to provide data to the rest of the system – regardless of how it gets this data, actively via pull or passively via push mechanisms.
+
 •	As data sources may vary in characteristics, our data backbone should be simple enough to integrate with. Working with standard API protocols will probably benefit your enterprise.
+
 •	For the data backbone to be reliable, we need it to be scalable and fault-tolerant.
 
 An example of data backbone creation and utilization using the amazing Apache Kafka can be seen in the Pluralsight course on [Building an Enterprise Grade Distributed Online Analytics Platform](https://www.pluralsight.com/courses/building-enterprise-distributed-online-analytics-platform).
