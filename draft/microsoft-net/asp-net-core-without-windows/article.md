@@ -116,7 +116,7 @@ At this point, we have a complete (albeit extremely simple) web application that
 
 The result is the obligatory 'Hello World' application.  While this is progress, it's far from useful.  Let's see what makes this application tick.  The project structure of an ASP.NET Core application is a little different from past versions.  In the Explorer is a Program.cs file and a Startup.cs file.  These files control the launch and configuration of the application.  Open the Program.cs file by either clicking on it in the Explorer or by using the keyboard shortcut Cmd-P (Ctrl-P on Windows).  This will open a search bar at the top of the window.  Start typing the name of the file (Program.cs) and Visual Studio Code will filter the files in the project highlighting the best match.  Then select Program.cs from the list to open it.
 
-
+![](https://storage.googleapis.com/ps-dotnetcore/vscodefileopen.png)
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Figure 15 - Searching for Program.cs**
 
 I'm not going to labor over this file too much other than to say that 
