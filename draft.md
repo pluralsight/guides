@@ -1,3 +1,8 @@
+### ASP.NET Core without Windows by Douglas Starnes
+- [Read the guide](https://www.pluralsight.com/guides/microsoft-net/asp-net-core-without-windows?status=draft)
+- [Read more from Douglas Starnes](https://www.pluralsight.com/guides/author/douglasstarnes) <img src="https://avatars3.githubusercontent.com/u/1081484?v=4" width="30" height="30" alt="Douglas Starnes" />
+- Related to: Microsoft.NET (C#, ASP.NET, VB.NET, etc)
+
 ### Beginner 2D Car Game with HTML5 Canvas by Dustin McQuay
 - [Read the guide](https://www.pluralsight.com/guides/front-end-javascript/beginner-2d-car-game-with-html5-canvas?status=draft)
 - [Read more from Dustin McQuay](https://www.pluralsight.com/guides/author/dmcquay) <img src="https://avatars1.githubusercontent.com/u/116849?v=4" width="30" height="30" alt="Dustin McQuay" />
