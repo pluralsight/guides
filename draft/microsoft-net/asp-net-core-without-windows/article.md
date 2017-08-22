@@ -169,7 +169,7 @@ Right now, the application will still build and run but all requests will be met
 ![](https://storage.googleapis.com/ps-dotnetcore/vscodenewfolder.png)
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Figure 16 - Creating a new folder in the Visual Studio Code Explorer**
 
-Next I'll create a new file, CatalogController.cs, in the Controllers folder by either right clicking on the Controllers folder and selecting New File or by highlighing the Controllers folder and clicking the New File icon.  Inside the new CatalogController.cs file, I'll create the following `CatalogController` class.
+Next I'll create a new file, CatalogController.cs, in the Controllers folder by either right clicking on the Controllers folder and selecting New File or by highlighing the Controllers folder and clicking the New File icon.  Inside the new CatalogController.cs file, I'll create the following `CatalogController` class.  (By convention, controller classes have the 'Controller' suffix but the name of the controller omits it.  So the 'Catalog' controller lives in the `CatalogController` class.)
 
 ```
 namespace CoreStore.Controllers
@@ -198,4 +198,47 @@ See the light bulb?  This means that Visual Studio Code can provide a 'Quick Fix
 
 The solutions available depend on the context.  In this example, Visual Studio Code has recognized that there is a `Controller` class in the `Microsoft.AspNetCore.Mvc` namespace.  It offers to add a using statement for that namespace or to prefix the `Controller` class with the namespace for the fully qualified name.  It also offers to generate a new class with the name `Controller`.  It even recognizes that there is a `Controllers` namespace and a `CatalogController` class both of which are very similiar to `Controller` in case I made a spelling error.  In this case, I'll select the first option, add the missing namespace, and correct the error.
 
+Now I can add an action method to the class.  An action method must be public.
 
+```
+public string Index()
+{
+    return "Catalog Controller, Index Action";
+}
+```
+
+At this point, we have enough to satisfy the default route of the application.  Start the application again by going to Debug -> Start Debugging in the menu bar or by pressing F5.
+
+![](https://storage.googleapis.com/ps-dotnetcore/ccia.png)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Figure 20 - The CatalogController in action**
+
+Again, this is progress.  We've got more flexibility in the structure of our application thanks to the MVC framework, but no more flexibility in how content is created.  The result of the application is still just plain text.  And while I could add some HTML tags to the return value of the `Index()` method, this practice won't scale.  Instead, we need to be able to write our HTML external from the controller and dynamically show the correct markup for the request.  This is where views come in.
+
+A view in ASP.NET Core MVC is a file which is a combination of HTML and C# in a special syntax called Razor.  Views live in a folder called Views in the root of the project.  Each controller has a subfolder and in that subfolder lives a view file for each action method.  The view files have an extension of .cshtml.  The action method in the controller, can return a call to the `View()` method which will by default, look in the Views folder, in the controller folder, for a view file named the same as the action.  So let's set that up right now. 
+
+I'll click in the explorer to ensure I'll create a new folder in the root of the project and then click the New Folder icon and call it Views.  Then with Views selected, I'll create another new folder called Catalog.  (Again omitting the 'Controller' suffix.)  In the Catalog folder, I'll create a new file called Index.cshtml and open it in Visual Studio Code.
+
+![](https://storage.googleapis.com/ps-dotnetcore/vscodevies.png)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Figure 21 - Structure of the Views folder**
+
+While eventually this will have both C# and HTML, for now I'll just add some simple HTML.
+
+```html
+<h1>Catalog Controller, Index Action</h1>
+```
+
+Open up CatalogController.cs.  In the `Index()` method, change the return type to `IActionResult` and return a call to `View()`:
+
+```
+public IActionResult Index()
+{
+    return View();
+}
+```
+
+Now run the application again (press F5) and see the results:
+
+![](https://storage.googleapis.com/ps-dotnetcore/vscodehtml.png)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Figure 22 - Loading a view**
+
+Ah!  Now we're getting somewhere!  This is **much** more flexible and managable.  For the sake of demonstration, add the following C# code to the view:
