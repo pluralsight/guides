@@ -6,7 +6,7 @@ At WWDC 2015, Apple announced that Swift is the world’s first Protocol-Oriente
 ## So What’s POP?
 Protocol-Oriented Programming is a new programming paradigm ushered in by Swift 2.0.
 In the Protocol-Oriented approach, we start designing our system by defining protocols. We rely on new concepts: protocol extensions, protocol inheritance, and protocol compositions. The paradigm also changes how we view semantics.
-In Swift, value types are preferred over classes. However, object-oriented concepts don’t work well with structs and enums: a struct cannot inherit from another struct, neither can an enum inherit from another enum. So inheritance - one of the fundamental object-oriented concepts - cannot be applied to value types. On the other hand, value types can inherit from protocols, even multiple protocols. 
+In Swift, value types are preferred over classes. However, object-oriented concepts don’t work well with structs and enums: a struct cannot inherit from another struct, neither can an enum inherit from another enum. So inheritancefa - one of the fundamental object-oriented concepts - cannot be applied to value types. On the other hand, value types can inherit from protocols, even multiple protocols. 
 Thus, with POP, value types have become first class citizens in Swift.
 
 ## Start with a Protocol
@@ -22,7 +22,7 @@ Why? Protocols serve as better abstractions than classes.
 
 If you model an abstraction using classes, you’ll need to rely on inheritance. The superclass defines the core functionality and exposes it to subclasses. A subclass can completely override that behavior, add specific behavior, or get all the work done by the superclass. 
 This works nicely until you realize that you need more functionality from a different class. Swift, just like many other programming languages, does not support multiple inheritance. Following the class-first approach, you’d have to keep adding new functionality to your superclass or otherwise create new intermediary classes, thereby complicating the issue.
-Protocols, on the other hand, serve as blueprints rather than parents. A protocol models abstraction by describing what the implementation types shall implement. If you’re familliar with Java’s Interface, the concepts behind protocols are roughly equivalent.
+Protocols, on the other hand, serve as blueprints rather than parents. A protocol models abstraction by describing what the implementation types shall implement.
 Let’s take for example the following protocol:
 
 ```
@@ -249,7 +249,7 @@ extension ImageDataCompressing {
         guard let jpegData = UIImageJPEGRepresentation(uiImage, CGFloat(compressionQuality)) else {
             return nil
         }
-        return Self(name: image.name, data: jpegData)
+        return Self(name: self.name, data: jpegData)
     }
 }
 
