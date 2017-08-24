@@ -50,7 +50,7 @@ Let's consider another file. If the user selects another file  "file2.gif", the 
    --AaB03x
    Content-Disposition: form-data; name="submit-name"
 
-   Larry
+   John
    --AaB03x
    Content-Disposition: form-data; name="file"
    Content-Type: multipart/mixed; boundary=BbC04y
