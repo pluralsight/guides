@@ -13,7 +13,7 @@ In this guide we will examine the two main approaches of handling file uploads, 
   
 ```html
    <form action="http://localhost:3000/api/v1/items"
-         enctype="multipart/form-data"at
+         enctype="multipart/form-data"
          method="post">
    <p>
    What is your name? <input type="text" name="submit-name"><br>
