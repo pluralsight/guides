@@ -3,11 +3,6 @@
 - [Read more from ajsaulsberry](https://www.pluralsight.com/guides/author/ajsaulsberry) <img src="https://avatars1.githubusercontent.com/u/11444510?v=4" width="30" height="30" alt="ajsaulsberry" />
 - Related to: Microsoft.NET (C#, ASP.NET, VB.NET, etc)
 
-### Data Structures in Swift - Part 1 by Károly Nyisztor
-- [Read the guide](https://www.pluralsight.com/guides/swift/data-structures-in-swift-part-1?status=in-review)
-- [Read more from Károly Nyisztor](https://www.pluralsight.com/guides/author/nyisztor) <img src="https://avatars1.githubusercontent.com/u/198511?v=4" width="30" height="30" alt="Károly Nyisztor" />
-- Related to: Swift
-
 ### ASP.NET MVC - Using multiple submit buttons with default model binding and controller actions by ajsaulsberry
 - [Read the guide](https://www.pluralsight.com/guides/microsoft-net/asp-net-mvc-using-multiple-submit-buttons-with-default-model-binding-and-controller-actions?status=in-review)
 - [Read more from ajsaulsberry](https://www.pluralsight.com/guides/author/ajsaulsberry) <img src="https://avatars1.githubusercontent.com/u/11444510?v=4" width="30" height="30" alt="ajsaulsberry" />
