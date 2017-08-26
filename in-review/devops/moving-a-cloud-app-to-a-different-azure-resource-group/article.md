@@ -1,7 +1,9 @@
-I used the new Visual Studio Team Services buils to deploy to an Azure CloudService web app. It created the web app automatically for me, but was put into a default resource group. I wanted to move it to the resource goup I had defined for other parts of the system. I found out that it can’t be done through the Azure Portal
+I used the new Visual Studio Team Services builds to deploy to an Azure CloudService web app. It created the web app automatically for me, but was put into a default resource group. I wanted to move it to the resource group which I had defined for other parts of the system. I found out that it can’t be done through the Azure Portal.
 
 I’m new to using PowerShell to manage Azure and had to go through several blogs and steps to move my resource.
 
+Steps in review
+===============
 - Install Web Platform installer
 - Use WPI to install Azure PowerShell
 - install
