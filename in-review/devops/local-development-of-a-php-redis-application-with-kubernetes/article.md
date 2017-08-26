@@ -131,7 +131,7 @@ In this shell, `cd` into the `examples/guestbook` directory and start the fronte
 % pear config-get php_dir
 ```
 
-Now, in the `examples/guestbook` directory, start PHP:
+Now, in the `examples/guestbook` directory, and start PHP:
 
 ```
 % php -d include_path="PATH_TO_PEAR_DIR" -S 0.0.0.0:8080
