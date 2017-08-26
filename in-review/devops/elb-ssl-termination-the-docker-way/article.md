@@ -6,13 +6,16 @@ With a traditional application, this is easy to do with an Nginx or Apache confi
 
 I've created a tiny (5.5MB) Docker container which contains only a single Go app that redirects all incoming requests to HTTPS. All you need to do is run this redirect container alongside your web server container on a different port. Then on the ELB point HTTP:80 at the redirect container, and HTTPS:443 at your own web server container.
 
+//*TODO: 
+Explain what was involved?
+How would someone else make a similar one with perl/erlang/pyhton app?
+
 ```shell
 docker run -d -p 8080:80 scottmiller171/go-ssl-redirect:1.1
 docker run -d -p 80:80 myRepo/mycontainter
 ```
 
 I'm looking to make some optimizations to the way the Go app works, and contributions are welcome, but it works wonderfully in my testing.
-
 
 [GitHub project](https://github.com/smiller171/go-redirect)  
 [Docker Hub](https://hub.docker.com/r/scottmiller171/go-ssl-redirect/)  
