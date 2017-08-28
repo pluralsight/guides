@@ -1,4 +1,4 @@
-## Introduction
+# Introduction
 
 ### Skill levels
 
@@ -10,16 +10,15 @@
 
 ### Purpose
 
-This guide will demonstrate and explain how you can use ASP.NET MVC to easily create HTML pages with multiple submit buttons, using a minimum of code,
-by leveraging MVC default model binding and controller actions. No JavaScript is required for these techniques.
+This guide will demonstrate and explain how you can use ASP.NET MVC to easily create HTML pages with multiple submit buttons, using as little code as possible, and by leveraging the MVC default model binding and controller actions. No JavaScript is required for these techniques.
 
 ### Structure
 
 1. For developers looking for a quick answer, we will begin with examples of the code required in the Razor view and Controller for two multibutton techniques.
 
-1. Then we'll take a closer implementation details, security considerations, and how to pick the best technique.
+2. Next we'll take a closer implementation details, security considerations, and ways to pick the best technique.
 
-1. We'll conclude with some suggested resources for learning more about the topics discussed.
+3. We'll conclude with some suggested resources for learning more about the topics discussed.
 
 ### Scope
 
@@ -29,12 +28,14 @@ This guide will focus on the ASP.NET MVC default model binding and controller ac
 
 You should have:
 
-* a basic understanding of ASP.NET MVC and
+* a basic understanding of ASP.NET MVC, especially [model binding](https://docs.microsoft.com/en-us/aspnet/core/mvc/models/model-binding)
 * access to the development tools required to implement ASP.NET MVC solutions.
 
 If you want to try out the examples or see a complete working demonstration of both techniques, you can fork or download the accompanying sample project from [GitHub](https://github.com/ajsaulsberry/BlipCo).
 
 ---
+
+# Implementation
 
 *Here are two good ways to implement multiple submit buttons, focusing on just the essential code. More detailed information and more elements of the sample code follow.*
 
@@ -108,9 +109,9 @@ Each button invokes a separate controller action different than the default cont
 
 Like the first technique, this approach uses multiple `<input>` tags with the same `name` attribute values and different values (text) for the `value` attribute. It also adds two attributes which were implemented in HTML5:
 
-`formaction` - which specifies what action to take when the button is pressed and
+`formaction` - specifies what action to take when the button is pressed and
 
-`formmethod` - which specifies whether this is an HttpPost or an HttpGet action.
+`formmethod` - specifies whether this is an HttpPost or an HttpGet action.
 
 The value of the `formaction` attribute  is the name of the controller action to be called on the button push, either "TermsAccept" or "TermsDecline" in the example.  See the [Form Action](#formaction) section, below, for an explanation of why it's a good idea to use the Razor `@Url.Action()` method to supply the URL.
 
@@ -156,15 +157,15 @@ public ActionResult TermsDecline([Bind(Include = "UserID,Username")] User user)
 }
 ~~~
 
-This technique provides more control, flexibility, and separation of concerns than using the default controller action for the page. Some of the capabilities which can be written specifically for the task include:
+This technique provides more control, flexibility, and separation of concerns than using the default controller action for the page does. Some of the capabilities which can be written specifically for the task include:
 
-* model binding - different fields in the returned data can be bound;
+* Model binding - different fields in the returned data can be bound;
 * Error handling - can be written specifically for the action;
 * Flow control - each button can have its own flow-of-control, keeping code more comprehensible by limiting the number of return paths from each method.
 
-Note that this technique requires HTML 5 support, so it is not compatible with older versions of browsers. See [caniuse.com](http://caniuse.com/#search=formaction) for specific information, but any browser updated since 2011 or 2012 supports this functionality.
+Note that this technique requires HTML 5 support, so it is not compatible with certain browsers. Any browser that has been updated since 2011 or 2012 supports this functionality. See [caniuse.com](http://caniuse.com/#search=formaction) for browser-specific information.
 
-Also note that in the example above, the method `TermsDecline` binds the same fields in the `User` object as `TermsAccept`, but it doesn't have to. The second method could also be:
+Also note that, in the example above, the method `TermsDecline` binds the same fields in the `User` object as `TermsAccept`, but it doesn't have to. The second method could also be:
 
 ~~~csharp
 [HttpPost]
@@ -175,11 +176,13 @@ public ActionResult TermsDecline()
 }
 ~~~
 
-With this little code, implementing a controller action for each button is not burdensome in most scenarios.
+We can see that implementing a controller action for each button is not burdensome as one might expect.
 
 ---
 
-## In Depth
+# In Depth
+
+Now that you have had the chance to peek under the hood, let's break it down even further.
 
 These are two widely applicable techniques for implementing multiple submit buttons on web pages using the native capabilities of ASP.NET. Minimal code is required and none of it has to be JavaScript.
 
@@ -223,7 +226,7 @@ In both techniques, binding the controller action only to the elements of the da
 
 [Technique 1](#Technique-1:-multiple-buttons-with-the-same-name-invoking-default-controller-actions) uses the default HttpPost controller action for the page no matter how many buttons are on the page, so your `switch` statement should always include a `default` case ([see example](#Default-controller-action)). Your other cases will process only the buttons you've identified; a default action can respond to any exegeous inputs that might come your way.
 
-[Technique 2](#Technique-2:-using-HTML5-attributes-to-call-different-controller-methods) is also compatible with [HtmlHelper.Antiforgerytoken](https://msdn.microsoft.com/en-us/library/system.web.mvc.htmlhelper.antiforgerytoken(v=vs.118).aspx). By providing separate controller actions for each button, you can bind data fields more selectively and (potentially) reduce the attack surface area associated with each action.
+[Technique 2](#Technique-2:-using-HTML5-attributes-to-call-different-controller-methods) is also compatible with [HtmlHelper.Antiforgerytoken](https://msdn.microsoft.com/en-us/library/system.web.mvc.htmlhelper.antiforgerytoken(v=vs.118).aspx). By providing separate controller actions for each button, you can bind data fields more selectively and reduce the attack surface area associated with each action.
 
 With separate methods you can also isolate the code associated with each server response more completely. Error handling and redirects can also be specific to the action.
 
@@ -231,19 +234,19 @@ With separate methods you can also isolate the code associated with each server 
 
 The unique features of each technique present relative advantages and disadvantages depending on the specific requirements for the code.
 
-**Technique 1** is likely to be the better choice when the following conditions apply:
+**Technique 1** is likely to be the better choice when:
 
-* the appropriate text for the buttons provides a good value for evaluating which button is pushed (like "Accept" and "Decline");
+* the appropriate text for the buttons provides a good value for evaluating which button is pushed (like "Accept" and "Decline")
 
-* the text for the button, and therefore the `value` attribute of the `<input>` tag are unlikely to change;
+* the text for the button, and therefore the `value` attribute of the `<input>` tag are unlikely to change
 
-* the `switch` statement, or other logic in the default POST controller can be kept relatively short and simple (since it's a good idea to keep your controller logic short and simple);
+* the `switch` statement, or other logic in the default POST controller can be kept relatively short and simple (since it's a good idea to keep your controller logic short and simple)
 
-* the controller will have one `return` statement for normal execution;
+* the controller will have one `return` statement for normal execution
 
-* data can be conveyed to the controller in the `value` attribute, form data model, or both.
+* data can be conveyed to the controller in the `value` attribute, form data model, or both
 
-**Technique 2** is a better approach when:
+On the other hand, **Technique 2** is the better approach when:
 
 * the text for the buttons is long, contains special characters, is likely to change, or provides a poor set of values to evaluate in the controller;
 
@@ -255,7 +258,7 @@ The unique features of each technique present relative advantages and disadvanta
 
 * error handling needs to be different for different buttons.
 
-### Other techniques
+# Other techniques
 
 #### Multiple buttons with different names
 
@@ -279,7 +282,7 @@ public ActionResult ProcessForm(User user, string save, string cancel)
 }
 ~~~
 
-This is ugly, likely to result in more code, and you probably shouldn't do it. Although your buttons will have different values for the `name` attribute, they will still have different `value` attributes **and** you'll have to create a controller method parameter for each button.
+This is ugly, and it is likely to result in more code. In the end, you probably should avoid this approach. Although your buttons will have different values for the `name` attribute, they will still have different `value` attributes **and** you'll have to create a controller method parameter for each button.
 
 This might make sense if you have two buttons and their names are short, but their text is long, like:
 
@@ -288,34 +291,38 @@ This might make sense if you have two buttons and their names are short, but the
 |   save   |   Forward unto the next millenium!   |
 |   cancel   |   Cancel   |
 
-But long button text violates most user interface design guidelines (maybe it's better to format the `<input>`element as somthing other than a button?), so you probably shouldn't be doing that, either.
+But long button text violates most user interface design guidelines, so you probably shouldn't be doing that, either.
 
 Bleh.
 
 #### JavaScript and Ajax
 
-You can implement multiple submit buttons in JavaScript, which is covered elsewhere.
+You can implement multiple submit buttons in JavaScript. Pluralsight has excellent guides on learning JavaScript and creating buttons.
 
-You can use Ajax as well, but you'll be responsible for implementing something to prevent cross-site request forgery (CSRF) attacks.
+You can use Ajax also. However, in that scenario, you will need to implement something to prevent cross-site request forgery (CSRF) attacks.
 
-## More information
+# More information
 
-Here are some suggested resources if you need to bone up on the whole MVC thing, dig into the specifics of Razor-enhanced HTML, or learn more about controllers.
+Here are some suggested resources if you need to touch up on MVC, dig into the specifics of Razor-enhanced HTML, or learn more about controllers.
 
 > *Disclaimer:* HackHands and the author of this Guide are not responsible for the content, accuracy, or availability of 3rd party resources.
 
 ### PluralSight training classes
 
-PluralSight has strong course offerings--and complete learning tracks--for Microsoft technologies including ASP.NET MVC and C#. Some of the most relevant are:
+PluralSight has strong course offerings and complete learning tracks for Microsoft-based technologies, including ASP.NET MVC and C#. Some of the most relevant are:
 
 [Building Applications with ASP.NET MVC 4](https://app.pluralsight.com/library/courses/mvc4-building/table-of-contents) by Scott Allen, updated 8 Nov 2012. Don't let the age of the course dissuade you: the fundamentals have changed little and this is a good launching point if you are new(ish) to MVC.
 
 [ASP.NET MVC 5 Fundamentals](https://app.pluralsight.com/library/courses/aspdotnet-mvc5-fundamentals/table-of-contents) by Scott Allen, updated 5 Nov 2013. See especially Chapter 4, Bootstrap, for info on styling your form and its buttons.
 
-### Other resources
+### Extra resources
 
 Microsoft has made a start at a new generation of developer documentation at [docs.microsoft.com](https://docs.microsoft.com) and it includes a quick tutorial:  [Getting Started with ASP.NET MVC 5](https://docs.microsoft.com/en-us/aspnet/mvc/overview/getting-started/introduction/getting-started).
 
 You can get a complete, ASP.NET MVC 5 project that corresponds to the examples in this guide from [GitHub](https://github.com/ajsaulsberry/BlipCo).
+
+______________
+
+I hope you enjoyed this guide. Please leave your comments and feedback in the discussion section below, and don't forget to favorite this guide if you found it informative or interesting!
 
 *Written by A. J. Saulsberry, 14 August 2017.*
