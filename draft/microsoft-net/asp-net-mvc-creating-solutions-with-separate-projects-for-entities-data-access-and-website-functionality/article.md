@@ -1,6 +1,3 @@
-
-# ASP.NET MVC - Creating solutions with separate projects for entities, data access, and website functionality
-
 ## Introduction
 
 Microsoft Visual Studio facilitates development of complex software by enabling developers to create solutions consisting of multiple projects of different types. Projects can compile into executables, DLL's, or other forms, and interact with each other by referencing the interfaces, methods, and properties of the other projects in the solution.
