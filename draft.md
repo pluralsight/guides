@@ -1,3 +1,8 @@
+### ASP.NET MVC - Creating solutions with separate projects for entities, data access, and website functionality by ajsaulsberry
+- [Read the guide](https://www.pluralsight.com/guides/microsoft-net/asp-net-mvc-creating-solutions-with-separate-projects-for-entities-data-access-and-website-functionality?status=draft)
+- [Read more from ajsaulsberry](https://www.pluralsight.com/guides/author/ajsaulsberry) <img src="https://avatars1.githubusercontent.com/u/11444510?v=4" width="30" height="30" alt="ajsaulsberry" />
+- Related to: Microsoft.NET (C#, ASP.NET, VB.NET, etc)
+
 ### ASP.NET Core without Windows by Douglas Starnes
 - [Read the guide](https://www.pluralsight.com/guides/microsoft-net/asp-net-core-without-windows?status=draft)
 - [Read more from Douglas Starnes](https://www.pluralsight.com/guides/author/douglasstarnes) <img src="https://avatars3.githubusercontent.com/u/1081484?v=4" width="30" height="30" alt="Douglas Starnes" />
