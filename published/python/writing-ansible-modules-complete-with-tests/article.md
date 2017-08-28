@@ -84,55 +84,6 @@ With these, you'll gain the following `git` commands:
 - `git fa` - Fetch (but don't merge) the latest from all remotes
 - `git far` - Like `git fa` but also includes those from git submodules
 
-
-## Prep Your Core (or Extras) Modules Repo
-
-Go to the core modules subdir
-
-    $ cd lib/ansible/modules/core
-
-You are now in a git submodule. If you run `git ta` here, you will
-notice that the output is different from when you run the command one
-level up. If you're not familiar with git submodules, it's really just
-a separate git repo that's being referenced by a parent repo. when we
-ran our `git clone` command earlier with the `--recursive` option, git
-automatically cloned this repo as well.
-
-If you view this repo's remotes, you will see:
-
-    $ git remote -v
-    origin        https://github.com/ansible/ansible-modules-core (fetch)
-    origin        https://github.com/ansible/ansible-modules-core (push)
-
-
-We want the naming of this repo's remotes to be consistent with that of
-the parent repo. So let's rename origin to upstream:
-
-    $ git remote rename origin upstream
-
-Then, if you haven't already done so, create a fork of the
-[ansible-modules-core](https://github.com/ansible/ansible-modules-core)
-repo in the same account where you placed your fork of the Ansible repo.
-
-Now, add that fork as a remote to your local repo and name it 'origin':
-
-    $ git remote add origin git@github.com:<your-github-account>/ansible-modules-core.git
-
-Your remotes list should now be:
-
-    $ git remote -v
-    origin  git@github.com:<your-github-account>/ansible-modules-core.git (fetch)
-    origin  git@github.com:<your-github-account>/ansible-modules-core.git (push)
-    upstream        https://github.com/ansible/ansible-modules-core (fetch)
-    upstream        https://github.com/ansible/ansible-modules-core (push)
-
-I'm going to refer to this local clone the **core modules repo** from
-now on.
-
-If you plan on contributing to the extras repo too, just repeat the same steps
-above but replace core with extras.
-
-
 ## Prepare Your Environment For Local Development
 
 While at the root dir of your **ansible repo**, run the following:
@@ -182,15 +133,15 @@ I have my dotfiles project [here](https://github.com/relaxdiego/dotfiles). Yes
 I still need to convert it to an Ansible playbook!
 
 
-## Install The Ansible Module Validator (Linter)
+## Test the Ansible Module Validator (Linter)
 
-It's like Flake8 for Ansible. Install it with:
-
-    $ pip install git+https://github.com/sivel/ansible-testing.git#egg=ansible_testing
+It comes preloaded with Ansible but requires the following pip packages:
+    $ sudo pip install voluptuous
+    $ sudo pip install mock
 
 Try running it with:
 
-    $ ansible-validate-modules lib/ansible/modules/core/cloud/amazon
+    $ ansible-test sanity --test validate-modules
 
 It shouldn't output anything since the amazon core modules are compliant.
 We will see it in a fouler mood later when we write a sample module.
