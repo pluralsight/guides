@@ -89,7 +89,9 @@ Each of the projects identified above might also be paralleled with a unit test 
 
 The Visual Studio solution explorer view of a web application structured in the fashion shown above, including test projects, might look like this:
 
-![solution view all projects](sol-exp-all-projects-collapsed_50pct.png)  
+
+![solution view all projects](https://raw.githubusercontent.com/pluralsight/guides/master/images/f78d1f13-beb9-49c7-8e6d-2309b982606b.png)
+
 *Visual Studio solution explorer: multi-project solution*
 
 Note the following attributes of the example shown above:
@@ -100,7 +102,9 @@ Note the following attributes of the example shown above:
 
 The folder structure corresponding to the above solution structure looks like this:
 
-![file explorer view of multi-solution project](file-exp-BlipProjects-dir_50pct.png)  
+
+![file explorer view of multi-solution project](https://raw.githubusercontent.com/pluralsight/guides/master/images/bc2d159e-d8ed-42db-85b5-14a44fbf5dff.png)
+
 *File Explorer: BlipProjects directory*
 
 ### The BlipProjects example project
@@ -128,7 +132,9 @@ In Visual Studio, select `File / New / Project` (Ctrl + Shift + N).
 
 You should see a modal dialog box like this:
 
-![Visual Studio new project](vs-new-project_50pct.png)  
+
+![Visual Studio new project](https://raw.githubusercontent.com/pluralsight/guides/master/images/bf2e5cab-d18b-4aab-a670-cfc690780dd3.png)
+
 *Visual Studio: New Project dialog box*
 
 Be sure to do the following:
@@ -143,7 +149,9 @@ Click **Ok**.
 
 You will be taken to a modal dialog box where you can choose the type of project:
 
-![Visual Studio new ASP.NET Web Application](vs-new-AspNet-project_50pct.png)  
+
+![Visual Studio new ASP.NET Web Application](https://raw.githubusercontent.com/pluralsight/guides/master/images/1ddc131d-315b-4ab8-af03-a6be72a9fe37.png)
+
 *Visual Studio New ASP.NET Web Application dialog box*
 
 Be sure to do the following:
@@ -158,7 +166,9 @@ Be sure to do the following:
 
 In the Visual Studio solution explorer you'll see this:
 
-![Visual Studio solution explorer single project](vs-sol-exp-single-project_50pct.png)  
+
+![Visual Studio solution explorer single project](https://raw.githubusercontent.com/pluralsight/guides/master/images/415bb53d-9dde-4a51-a956-5ca85bb32337.png)
+  
 *Visual Studio solution explorer: single project*
 
 Note the following:
@@ -170,7 +180,9 @@ Now rename the project to "Blip.Web".
 
 The solution explorer should now look like this:
 
-![Visual Studio solution explorer single project](vs-sol-exp-single-project-after_50pct.png)  
+
+![Visual Studio solution explorer single project](https://raw.githubusercontent.com/pluralsight/guides/master/images/3a3893dc-4559-4616-b44f-cbf10b702ea0.png)
+  
 *Visual Studio solution explorer: single project after renaming*
 
 Note the following:
@@ -236,7 +248,9 @@ The process looks like this as we add the Blip.Entities project to the BlipProje
 
 You will be taken to a modal dialog box where you can choose the type of project:
 
-![Visual Studio new ASP.NET Web Application](vs-add-AspNet-entities_50pct.png)  
+
+![Visual Studio new ASP.NET Web Application](https://raw.githubusercontent.com/pluralsight/guides/master/images/a461d81f-1469-4c8d-8f2f-82d3e283d177.png)
+  
 *Visual Studio New ASP.NET Web Application dialog box*
 
 Do the following:
@@ -249,7 +263,9 @@ Do the following:
 
 You will be taken to the modal dialog box:
 
-![Visual Studio new ASP.NET Web Application](vs-add-AspNet-web-app-empty_50pct.png)  
+
+![Visual Studio new ASP.NET Web Application](https://raw.githubusercontent.com/pluralsight/guides/master/images/a6776cef-7f2d-45a9-8c8f-ec54637f15a8.png)
+  
 *Visual Studio: New ASP.NET Web Application dialog box*
 
 Do the following:
@@ -267,7 +283,8 @@ Repeat this process for the other projects in the example:
 
 When you are finished, the Solution Explorer should look like this if you have added test projects along with the empty .NET Framework projects:
 
-![Visual Studio new ASP.NET Web Application](sol-exp-all-projects-collapsed_50pct.png)  
+![Visual Studio new ASP.NET Web Application](https://raw.githubusercontent.com/pluralsight/guides/master/images/c6cec3f2-25e2-4af5-aa57-bae669868cd2.png)
+  
 *Visual Studio Solution Explorer*
 
 Note that the project icons are different for empty .NET Framework projects.
@@ -283,7 +300,8 @@ Delete the following folders from Blip.Web:
 
 The revised folder structure for Blip.Web should look like this:
 
-![Visual Studio new ASP.NET Web Application](vs-sol-exp-web_50pct.png)  
+![Visual Studio new ASP.NET Web Application](https://raw.githubusercontent.com/pluralsight/guides/master/images/9cf9c315-63ea-4a9b-a57b-30ca17851b41.png)
+  
 *Visual Studio Solution Explorer: Blip.Web folder structure*
 
 While working with multiple projects adds some complexity on the front end, it makes it easier to focus on the relevant code when developing each tier of the application; folders for other tiers are hidden when the Solution Explorer tree is rolled up for those projects.
@@ -296,7 +314,9 @@ Managing NuGet packages at the solution level allows us to consolidate reference
 
 The solution level view of NuGet packages allows us to clearly see which projects have a given package installed and what version is installed in each package. For example, in the BlipProjects sample solution, we can see that jQuery is only installed in the web project:
 
-![Visual Studio new ASP.NET Web Application](vs-NuGet-jQuery_25pct.png)  
+
+![Visual Studio new ASP.NET Web Application](https://raw.githubusercontent.com/pluralsight/guides/master/images/0016a62a-7634-426d-a230-3b63dd91b704.png)
+  
 *Visual Studio NuGet package manager for BlipProjects solution*
 
 To see the package manager for the *solution* be sure to highlight the solution in the Solution Explorer, then right-click and select **Manage NuGet packages for solution...** or select `Tools /  NuGet Package Manager / Manage NuGet Packages for Solution...`
@@ -522,7 +542,9 @@ This is how references are created between projects in a solution, using the **B
 
 The result should look like this:
 
-![Visual Studio Reference Manager](vs-ref-mgr-web_50pct.png)  
+
+![Visual Studio Reference Manager](https://raw.githubusercontent.com/pluralsight/guides/master/images/6369014b-dc0c-4a2b-9036-9b408874ffc1.png)
+  
 *Visual Studio Reference Manager for Blip.Web*
 
 Click **Ok**.
