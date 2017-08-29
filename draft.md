@@ -1,7 +1,7 @@
 ### Push Notifications with Firebase Cloud Messaging by Dimitar Stoyanov
-- [Read the guide](https://www.pluralsight.com/guides/other/push-notifications-with-firebase-cloud-messaging?status=draft)
+- [Read the guide](https://www.pluralsight.com/guides/android/push-notifications-with-firebase-cloud-messaging?status=draft)
 - [Read more from Dimitar Stoyanov](https://www.pluralsight.com/guides/author/DimitarStoyanoff) <img src="https://avatars3.githubusercontent.com/u/19796939?v=4" width="30" height="30" alt="Dimitar Stoyanov" />
-- Related to: other
+- Related to: Android
 
 ### ASP.NET Core without Windows by Douglas Starnes
 - [Read the guide](https://www.pluralsight.com/guides/microsoft-net/asp-net-core-without-windows?status=draft)
