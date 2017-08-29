@@ -230,10 +230,10 @@ You should consider what you want your notification intent should do and handle 
 It is recommendable that your notification has a picture:
 
 ```
-<b> Bitmap bitmap = getBitmapfromUrl(remoteMessage.getData().get("image-url")); </b>
+Bitmap bitmap = getBitmapfromUrl(remoteMessage.getData().get("image-url")); //obtain the image
 Uri defaultSoundUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
 	NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(this)
-		<b> .setLargeIcon(bitmap) </b>
+		    .setLargeIcon(bitmap)  //set it in the notification
 			.setSmallIcon(R.mipmap.ic_launcher)
 			.setContentTitle(remoteMessage.getData().get("title"))
 			.setContentText(remoteMessage.getData().get("message"))
@@ -241,7 +241,8 @@ Uri defaultSoundUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFIC
 			.setSound(defaultSoundUri)
 			.setContentIntent(pendingIntent);
 ....
-} <b>
+} 
+//Simple method for image downloading
 public Bitmap getBitmapfromUrl(String imageUrl) {
 try {
 		URL url = new URL(imageUrl);
@@ -255,7 +256,7 @@ try {
 		e.printStackTrace();
 		return null;
 	}
-} </b>
+} 
 ```
 In this case we send an image URL in the notification payload so the app can download it. Usually, such processes are executed on a separate thread, but in this case, this class is a service, which means that once the code in <mark>onMessageReceived</mark> executes, the service, which is a thread different from the main thread, is destroyed along with every thread the service created. Hence, we can afford to make the image download synchronously. This shouldn't pose a threat, as the service is not the main thread itself.
 
@@ -269,9 +270,9 @@ NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(
 			.setLargeIcon(bitmap)
 			.setSmallIcon(R.drawable.ic_notification_small)
 			.setContentTitle(remoteMessage.getData().get("title"))
-		<b>   .setStyle(new NotificationCompat.BigPictureStyle()
+		    .setStyle(new NotificationCompat.BigPictureStyle()
 					.setSummaryText(remoteMessage.getData().get("message"))
-					.bigPicture(bitmap)) </b>
+					.bigPicture(bitmap))
 			.setContentText(remoteMessage.getData().get("message"))
 			.setAutoCancel(true)
 			.setSound(defaultSoundUri)
@@ -281,10 +282,10 @@ NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(
 You can also add buttons to your notifications:
 
 ```
-<b> Intent likeIntent = new Intent(this,LikeService.class);
+Intent likeIntent = new Intent(this,LikeService.class);
 likeIntent.putExtra(NOTIFICATION_ID_EXTRA,notificationId);
 	likeIntent.putExtra(IMAGE_URL_EXTRA,remoteMessage.getData().get("image-url"));
-	PendingIntent likePendingIntent = PendingIntent.getService(this,notificationId+1,likeIntent,PendingIntent.FLAG_ONE_SHOT); </b>
+	PendingIntent likePendingIntent = PendingIntent.getService(this,notificationId+1,likeIntent,PendingIntent.FLAG_ONE_SHOT); 
 
 	Uri defaultSoundUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
 	NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(this)
@@ -297,7 +298,8 @@ likeIntent.putExtra(NOTIFICATION_ID_EXTRA,notificationId);
 			.setContentText(remoteMessage.getData().get("message"))
 			.setAutoCancel(true)
 			.setSound(defaultSoundUri)
-<b>         .addAction(R.drawable.ic_favorite_true,getString(R.string.notification_like_button),likePendingIntent) </b>
+            .addAction(R.drawable.ic_favorite_true,
+                       getString(R.string.notification_like_button),likePendingIntent) //Setting the action
 			.setContentIntent(pendingIntent);
 ```
 In this case we use an action that is unrelated to the app and regardless of whether the app is active or inactive a certain simple action is executed through another simple service that extends the Service class:
