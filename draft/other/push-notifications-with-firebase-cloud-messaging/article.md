@@ -10,9 +10,9 @@ In order to establish connection with Firebase, you need to create a project for
 
 <h2>Create a Firebase project</h2>
 
-Head to the [Firebase console][1], log in and create a new Android project. You will be asked to enter your package name. You can pretty much see it in every Java file in your project, but if you still have any doubts you can find it in your AndroidManifest.xml file. You can also add a SHA1 key for extra security measures, but that will not be required for this tutorial.
+Head to the [Firebase console][1], log in and create a new <b>Android</b> project. You will be asked to enter your package name. You can pretty much see it in every Java file in your project, but if you still have any doubts you can find it in your AndroidManifest.xml file. You can also add a SHA1 key for extra security measures, but that will not be required for this tutorial.
 
-Next, you will get a google-services.json file, which contains information about your project signature. In case you missed the instructions while creating your app, you need to add this file to your app directory, which you can find when you open your file structure to Project.
+Next, you will get a <text color="red">google-services.json</text> file, which contains information about your project signature. In case you missed the instructions while creating your app, you need to add this file to your <b>app</b> directory, which you can find when you open your file structure to Project.
 
 <img src="https://docs.centroida.co/wp-content/uploads/2017/05/2.png" alt="" width="389" height="262" class="alignnone size-full wp-image-749" />
 
@@ -114,16 +114,16 @@ The purpose of this service is very simple:
 
 It obtains a Firebase Token, making the connection between the device and Firebase. Through this Token you can send notifications to this specific device. So when obtained, in this case is saved in a shared preference for future use. Naturally, you would like to send it to your server at some point, say user registration, or even right away, so that the server can send this device notifications through Firebase.
 
-Moving on to the more interesting class, namely MyFirebaseMessagingService.
+Moving on to the more interesting class, namely <b>MyFirebaseMessagingService</b>.
 
-<pre>
-<code class="language-java">public class MyFirebaseMessagingService extends FirebaseMessagingService {
+```
+public class MyFirebaseMessagingService extends FirebaseMessagingService {
 @Override
 public void onMessageReceived(RemoteMessage remoteMessage) {
 
    }
-}</code>
-</pre>
+}
+```
 This service needs to extend FirebaseMessagingService. When the target device receives a notification, onMessageReceived is called. You have in your hands the remoteMessage object, which contains all the information that you received about the notification. Now let's create an actual notification with that information.
 ```
 @Override public void onMessageReceived(RemoteMessage remoteMessage) {
@@ -153,11 +153,11 @@ Also another thing that should be noted is that we use remoteMessage.getData() t
 
 Data messages are handled here in onMessageReceived whether the app is in the foreground or background. Whereas notification messages are received only when the app is in foreground. Which would make them pretty useless in a way, or at least rather boring, don't you think?
 
-For an unified notifications system, we use messages that have only data payload.
+For an unified notifications system, we use messages that have <b>only data</b> payload.
 
 <font color="red">Messages containing both notification and data payloads are treated as notification messages, so they won't be handled by MyFirebaseMessagingService when the app is in the background!</font>
 
-If you haven't set up your server yet, you can still test your push notifications with a POST http request directly to firebase. You can use any app you find fit for that, we use the Google Postman plugin. You can download it from [this link][2].
+If you haven't set up your server yet, you can still test your push notifications with a POST http request directly to firebase. You can use any app you find fit for that, we use the Google <b>Postman</b> plugin. You can download it from [this link][2].
 
 The endpoint you can use from firebase is this one:
 <pre>https://fcm.googleapis.com/fcm/send
@@ -166,7 +166,7 @@ Obtaining the Server key:
 
 <img src="https://docs.centroida.co/wp-content/uploads/2017/05/server_key-1024x323.png" alt="" width="1024" height="250" class="alignnone size-large wp-image-762" />
 
-This request requires an Authorization header, the value of which is the Server key of your application in Firebase, preceded by a key=. You can find it in your Project settings in the [Firebase console][1] under the tab Cloud messaging.
+This request requires an Authorization header, the value of which is the <b>Server key</b> of your application in Firebase, preceded by a <b>"key="</b>. You can find it in your Project settings in the [Firebase console][1] under the tab <b>Cloud messaging</b>.
 
 Here is how your POST request should look like: 
 
@@ -176,7 +176,7 @@ And this is how the body of your request should look like:
 
 <img src="https://docs.centroida.co/wp-content/uploads/2017/05/postman_body-1.png" alt="" width="967" height="283" class="alignnone size-full wp-image-754" />
 
-In the body of your request you need to specify the to field in order to send a notification to the targeted device. It's value is the fore-mentioned Firebase token that your device obtains in MyFirebaseInstanceIDService. You can retrieve it from the log message or directly from the shared preferences. In the data payload you can specify all kinds of key-value pairs that would suit your application needs.
+In the body of your request you need to specify the "<b>to</b>" field in order to send a notification to the targeted device. It's value is the fore-mentioned <b>Firebase token</b> that your device obtains in MyFirebaseInstanceIDService. You can retrieve it from the log message or directly from the shared preferences. In the data payload you can specify all kinds of key-value pairs that would suit your application needs.
 
 Now that we can send and test notifications, let's make them fancier. First let's add a click functionality for the notification:
 
