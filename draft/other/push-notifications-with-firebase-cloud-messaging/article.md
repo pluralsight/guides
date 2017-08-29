@@ -1,4 +1,3 @@
-
 In this tutorial, you will get to learn the fundamentals of setting up push notifications in your Android project.
 
 <h2>How to implement Firebase?</h2>
@@ -325,3 +324,6 @@ The result of your efforts:
 That's all you need to get started with push notifications in Android.
 
 Have fun exploring and styling your cool notifications! I hope this tutorial helped you out and you found it enjoyable. Until next time!
+
+ [1]: https://console.firebase.google.com/
+ [2]: https://chrome.google.com/webstore/detail/postman/fhbjgbiflinjbdggehcddcbncdddomop?hl=bg
