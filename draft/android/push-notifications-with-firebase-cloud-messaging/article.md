@@ -6,7 +6,7 @@ Firebase acts as a module between your server and the devices that will be recei
 
 <img src="https://docs.centroida.co/wp-content/uploads/2017/05/1-1024x662.png" alt="" width="1024" height="500" class="alignnone size-large wp-image-746" />
 
-In order to establish connection with Firebase, you need to create a project for your own app in the Firebase console and you must set up your project in such a way that every time a user installs it, their device is registered in Firebase with an unique token. This may sound quite complex, but setting it up is actually really simple and easy.
+In order to establish connection with Firebase, you need to create a project for your own app in the <mark>Firebase console</mark> and you must set up your project in such a way that every time a user installs it, their device is registered in Firebase with an unique token. This may sound quite complex, but setting it up is actually really simple and easy.
 
 <h2>Create a Firebase project</h2>
 
@@ -82,9 +82,9 @@ The last thing that you need to add to your manifest file is a RECEIVE permissio
 
 <h2>Setting up the services</h2>
 
-Next, go ahead and create those two Java class services which you declared in the manifest in a new package called notifications.
+Next, go ahead and create those two Java class services which you declared in the manifest in a new package called <mark>notifications</mark>.
 
-This is the implementation of the MyFirebaseInstanceIDService class:
+This is the implementation of the <mark>MyFirebaseInstanceIDService</mark> class:
 
 ```
 import android.content.SharedPreferences;
@@ -112,7 +112,7 @@ public void onTokenRefresh() {
 
 The purpose of this service is very simple:
 
-It obtains a Firebase Token, making the connection between the device and Firebase. Through this Token you can send notifications to this specific device. So when obtained, in this case is saved in a shared preference for future use. Naturally, you would like to send it to your server at some point, say user registration, or even right away, so that the server can send this device notifications through Firebase.
+It obtains a <mark>Firebase Token</mark>, making the connection between the device and Firebase. Through this Token you can send notifications to this specific device. So when obtained, in this case is saved in a shared preference for future use. Naturally, you would like to send it to your server at some point, say user registration, or even right away, so that the server can send this device notifications through Firebase.
 
 Moving on to the more interesting class, namely <mark>MyFirebaseMessagingService</mark>.
 
@@ -157,7 +157,7 @@ For an unified notifications system, we use messages that have <b>only data</b> 
 
 <font color="red">Messages containing both notification and data payloads are treated as notification messages, so they won't be handled by MyFirebaseMessagingService when the app is in the background!</font>
 
-If you haven't set up your server yet, you can still test your push notifications with a POST http request directly to firebase. You can use any app you find fit for that, we use the Google <b>Postman</b> plugin. You can download it from [this link][2].
+If you haven't set up your server yet, you can still test your push notifications with a <mark>POST</mark> http request directly to firebase. You can use any app you find fit for that, we use the Google <b>Postman</b> plugin. You can download it from [this link][2].
 
 The endpoint you can use from firebase is this one:
 <pre>https://fcm.googleapis.com/fcm/send
