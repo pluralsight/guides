@@ -10,13 +10,13 @@ In order to establish connection with Firebase, you need to create a project for
 
 <h2>Create a Firebase project</h2>
 
-Head to the [Firebase console][1], log in and create a new <b>Android</b> project. You will be asked to enter your package name. You can pretty much see it in every Java file in your project, but if you still have any doubts you can find it in your AndroidManifest.xml file. You can also add a SHA1 key for extra security measures, but that will not be required for this tutorial.
+Head to the [Firebase console][1], log in and create a new <b>Android</b> project. You will be asked to enter your package name. You can pretty much see it in every Java file in your project, but if you still have any doubts you can find it in your <mark>AndroidManifest.xml</mark> file. You can also add a SHA1 key for extra security measures, but that will not be required for this tutorial.
 
-Next, you will get a <text color="red">google-services.json</text> file, which contains information about your project signature. In case you missed the instructions while creating your app, you need to add this file to your <b>app</b> directory, which you can find when you open your file structure to Project.
+Next, you will get a <mark>google-services.json</mark> file, which contains information about your project signature. In case you missed the instructions while creating your app, you need to add this file to your <b>app</b> directory, which you can find when you open your file structure to Project.
 
 <img src="https://docs.centroida.co/wp-content/uploads/2017/05/2.png" alt="" width="389" height="262" class="alignnone size-full wp-image-749" />
 
-After that you need to add the gms dependency in your project-level build.gradle file:
+After that you need to add the <mark>gms</mark> dependency in your project-level <mark>build.gradle</mark> file:
 
 ```
 buildscript {
@@ -26,7 +26,7 @@ dependencies {
     }
 }
 ```
-Then, add the corresponding plugin in your app-level build.gradle. You will also need to add a Firebase messaging dependency in this file.
+Then, add the corresponding plugin in your app-level <mark>build.gradle</mark>. You will also need to add a Firebase messaging dependency in this file.
 
 ```
 dependencies {
@@ -42,7 +42,7 @@ apply plugin: 'com.google.gms.google-services'
 
 The next step is to create two services. One will handle the device registration process, and the other will handle receiving the actual notifications.
 
-Go to your AndroidManifest.xml file and add these service declarations under the application tag:
+Go to your <mark>AndroidManifest.xml</mark> file and add these service declarations under the <mark>application</mark> tag:
 
 ```
 <service
@@ -114,7 +114,7 @@ The purpose of this service is very simple:
 
 It obtains a Firebase Token, making the connection between the device and Firebase. Through this Token you can send notifications to this specific device. So when obtained, in this case is saved in a shared preference for future use. Naturally, you would like to send it to your server at some point, say user registration, or even right away, so that the server can send this device notifications through Firebase.
 
-Moving on to the more interesting class, namely <b>MyFirebaseMessagingService</b>.
+Moving on to the more interesting class, namely <mark>MyFirebaseMessagingService</mark>.
 
 ```
 public class MyFirebaseMessagingService extends FirebaseMessagingService {
@@ -124,7 +124,7 @@ public void onMessageReceived(RemoteMessage remoteMessage) {
    }
 }
 ```
-This service needs to extend FirebaseMessagingService. When the target device receives a notification, onMessageReceived is called. You have in your hands the remoteMessage object, which contains all the information that you received about the notification. Now let's create an actual notification with that information.
+This service needs to extend FirebaseMessagingService. When the target device receives a notification, <mark>onMessageReceived</mark> is called. You have in your hands the <mark>remoteMessage</mark> object, which contains all the information that you received about the notification. Now let's create an actual notification with that information.
 ```
 @Override public void onMessageReceived(RemoteMessage remoteMessage) {
 
@@ -149,9 +149,9 @@ Here, in order to have unique notifications each time you receive one, for the s
 
 <h2>Background compatibility</h2>
 
-Also another thing that should be noted is that we use remoteMessage.getData() to access the values of the received notification. Now, there are two types of Firebase notifications - There are data messages and notification messages.
+Also another thing that should be noted is that we use <mark>remoteMessage.getData()</mark> to access the values of the received notification. Now, there are two types of Firebase notifications - There are data messages and notification messages.
 
-Data messages are handled here in onMessageReceived whether the app is in the foreground or background. Whereas notification messages are received only when the app is in foreground. Which would make them pretty useless in a way, or at least rather boring, don't you think?
+Data messages are handled here in <mark>onMessageReceived</mark> whether the app is in the foreground or background. Whereas notification messages are received only when the app is in foreground. Which would make them pretty useless in a way, or at least rather boring, don't you think?
 
 For an unified notifications system, we use messages that have <b>only data</b> payload.
 
@@ -166,9 +166,9 @@ Obtaining the Server key:
 
 <img src="https://docs.centroida.co/wp-content/uploads/2017/05/server_key-1024x323.png" alt="" width="1024" height="250" class="alignnone size-large wp-image-762" />
 
-This request requires an Authorization header, the value of which is the <b>Server key</b> of your application in Firebase, preceded by a <b>"key="</b>. You can find it in your Project settings in the [Firebase console][1] under the tab <b>Cloud messaging</b>.
+This request requires an Authorization header, the value of which is the <b>Server key</b> of your application in Firebase, preceded by a <mark>key=</mark>. You can find it in your Project settings in the [Firebase console][1] under the tab <b>Cloud messaging</b>.
 
-Here is how your POST request should look like: 
+Here is how your <mark>POST</mark> request should look like: 
 
 <img src="https://docs.centroida.co/wp-content/uploads/2017/05/postman_header.png" alt="" width="967" height="221" class="alignnone size-full wp-image-754" />
 
@@ -176,7 +176,7 @@ And this is how the body of your request should look like:
 
 <img src="https://docs.centroida.co/wp-content/uploads/2017/05/postman_body-1.png" alt="" width="967" height="283" class="alignnone size-full wp-image-754" />
 
-In the body of your request you need to specify the "<b>to</b>" field in order to send a notification to the targeted device. It's value is the fore-mentioned <b>Firebase token</b> that your device obtains in MyFirebaseInstanceIDService. You can retrieve it from the log message or directly from the shared preferences. In the data payload you can specify all kinds of key-value pairs that would suit your application needs.
+In the body of your request you need to specify the "<b>to</b>" field in order to send a notification to the targeted device. It's value is the fore-mentioned <b>Firebase token</b> that your device obtains in <mark>MyFirebaseInstanceIDService</mark>. You can retrieve it from the log message or directly from the shared preferences. In the data payload you can specify all kinds of key-value pairs that would suit your application needs.
 
 Now that we can send and test notifications, let's make them fancier. First let's add a click functionality for the notification:
 
@@ -205,7 +205,7 @@ Now that we can send and test notifications, let's make them fancier. First let'
 
 ```
 
-It is recommendable that you handle the case when the user clicks the notification while the app is still running. In this case we use a static boolean which indicates whether the root activity (StartActivity) is running.
+It is recommendable that you handle the case when the user clicks the notification while the app is still running. In this case we use a static boolean which indicates whether the root activity (<mark>StartActivity</mark>) is running.
 
 ```
 public class StartActivity extends AppCompatActivity {
@@ -257,11 +257,11 @@ try {
 	}
 } </b>
 ```
-In this case we send an image URL in the notification payload so the app can download it. Usually, such processes are executed on a separate thread, but in this case, this class is a service, which means that once the code in onMessageReceived executes, the service, which is a thread different from the main thread, is destroyed along with every thread the service created. Hence, we can afford to make the image download synchronously. This shouldn't pose a threat, as the service is not the main thread itself.
+In this case we send an image URL in the notification payload so the app can download it. Usually, such processes are executed on a separate thread, but in this case, this class is a service, which means that once the code in <mark>onMessageReceived</mark> executes, the service, which is a thread different from the main thread, is destroyed along with every thread the service created. Hence, we can afford to make the image download synchronously. This shouldn't pose a threat, as the service is not the main thread itself.
 
 <h2>Notification Styles</h2>
 
-The NotificationCompat.Buildersupports a few different types of styles for notifications, including a player and ones with custom layouts:
+The <mark>NotificationCompat.Builder</mark> supports a few different types of styles for notifications, including a player and ones with custom layouts:
 
 ```
 Uri defaultSoundUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
