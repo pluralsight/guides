@@ -1,6 +1,6 @@
 # Docker experiment to build hello world image from scratch. Instead of using shell script, a C based application is used to make it comparable to custom application package/distribution.
 
-Creating minimal Docker image
+Creating minimal Docker image (on linux)
 -----------------------------
 
 #### What you need :
@@ -44,9 +44,9 @@ ADD ./helloWorld /helloWorld
 CMD ["/helloWorld"]
 ```
 
-It tells Docker to seed the image from the `scratch` (Ubuntu 14LTS) image, which is completely empty, and add the helloWorld executable to it as target path `/helloWorld` and the startup command is to execute /helloWorld.
+This tells Docker to seed the image from the `scratch` (Ubuntu 14LTS) image, which is completely empty, and add the helloWorld executable to it as target path `/helloWorld` and the startup command is to execute /helloWorld.
 
-Now build the image with
+Now build the image with:
 
 ```bash
 $ docker build -t "helloWorld" .
@@ -78,7 +78,7 @@ You should see output like:
 Hello from docker
 ```
 
-> Recommended to checkout https://github.com/docker/docker.git and browse the source in your
+> Recommended to checkout https://github.com/docker/for-azure.git https://github.com/for-win.git https://github.com/for-linux.git  and browse the source in your
 favorite ide
 
 
