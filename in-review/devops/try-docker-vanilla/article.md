@@ -78,7 +78,7 @@ You should see output like:
 Hello from docker
 ```
 
-> Recommended to checkout https://github.com/docker/for-azure.git https://github.com/for-win.git https://github.com/for-linux.git  and browse the source in your
+> Recommended to checkout https://github.com/docker/for-azure.git https://github.com/for-win.git https://github.com/for-linux.git https://github.com/moby/moby  and browse the source in your
 favorite ide
 
 
