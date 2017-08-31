@@ -156,9 +156,9 @@ for (var i = 0; i < 5; i++) {
     }, 3000);
 }
 ```
-Let's analyse this code. The function, which is passed as an argument to the `setTimeout` function, will be executed 3s after the first loop iteration. This practically means that the value of the variable `i`, which is in its outer scope, will become `5` before its execution, because all 5 iterations will certainly be done within those 3 seconds. Then, it will be executed 5 times, 1 time for every iteration, and it will log `5` five times.
+Let's analyse this code. The function, which is passed as an argument to the `setTimeout` function, will be executed 3s after the first loop iteration. This practically means that the value of the variable `i`, which is in its outer scope (this function is also a closure), will become `5` before its execution, because all 5 iterations will certainly be done within those 3 seconds. Then, it will be executed 5 times, 1 time for every iteration, and it will log `5` five times.
 
-In order to get the desired output, we will need to add a closure, so our code should look like this:
+In order to get the desired output, we will need to add one more closure, so our code should look like this:
 
 ``` JavaScript
 for (var i = 0; i < 5; i++) {
@@ -172,9 +172,11 @@ for (var i = 0; i < 5; i++) {
     })(i), 3000);
 }
 ```
+So, now our code contains 2 closures, `outer` and `inner`, which both have access to the variable `i`, but there is a slight difference between them. The outer scope of the `outer` function is created once and the outer scope of the `inner` function is created 5 times, for every `inner` function separately. 
+
 In the first iteration the value of the variable `i` is `0`. We have invoked the `outer` function immediately with parameter `0` and it returned the `inner` function, so the `inner` function was actualy provided as an argument to the `setTimeout` function instead of the `outer` function. Therefore, the `inner` function will be called after 3s and it will have access to its own outer scope. The value of the variable `i` in its scope is `0`, so the `inner` function will log `0` at the momment of its execution.
 
-The same will happen in the second iteration, the `inner` function will be executed 3s later, but this time the variable `i` will be `1`, and so on. Finally, we will get desired output in the console.
+The same will happen in the second iteration, but this time the variable `i` will be `1`, and so on. Finally, we will get desired output in the console.
 
 However, there is a simpler soulution for this problem. The EcmaScript 2015 (or ES6) introduced some very useful new features and some of them are *let* and *const* keywords, which create block scoped variables. If we just replace the keyword `var` with `let` in this example, we will get completely different output:
 
@@ -188,7 +190,7 @@ for (let i = 0; i < 5; i++) {
     }, 3000);
 }
 ```
-The keyword `let` created a block scope for the variable `i`, for every loop iteration particularly. Therefore, we didn't have to put the line `console.log(i)` into a closure in order to create a new scope for `i`, because the `let` keyword did it for us.
+The keyword `let` created a block scope for the variable `i`, for every loop iteration particularly. Therefore, we didn't have to put the line `console.log(i)` into a new closure in order to create a new scope for `i`, because the `let` keyword did it for us.
 
 ### Event Handlers
 
@@ -247,7 +249,7 @@ This code works fine, but we had to define a global variable for counting user c
 </body>
 </html>
 ```
-In this code, we have defined the `outer` function which returns the `inner` function. The `outer` function is immediately invoked and after its execution, the `inner` function is being assigned to the `onclick` handler. This means that whenever the user clicks on the button, the `inner` function will be called instead of the `outer` function. Since it is a closure, it has access to the `outer` function's scope, so it can easily change the value of the `counter` variable. Therefore, the line `var counter = 0` will be executed just one time, before returning the `outer` function. After that, the `outer` function will be called every time the user clicks on the button and it will increment the `counter` by 1, so the `counter` will always contain the accurate number of button clicks.
+In this code, we have defined the `outer` function which returns the `inner` function. The `outer` function is immediately invoked and after its execution, the `inner` function is being assigned to the `onclick` handler. This means that whenever the user clicks on the button, the `inner` function will be called instead of the `outer` function. Since it is a closure, it has access to the `outer` function's scope, so it can easily change the value of the `counter` variable. Therefore, the line `var counter = 0` will be executed just once, before returning the `outer` function. After that, the `outer` function will be called every time the user clicks on the button and it will increment the `counter` by 1, so the `counter` will always contain the accurate number of button clicks.
 
 ### The Module Pattern
 
@@ -280,9 +282,25 @@ var counter = (function() {
     };
 })();
 ```
-The module pattern is a special case of the singletone pattern, so there can be just one instance of the `counter` module. This is accomplished by immediate invocation of function which returns an object that contains references to the public functions. We can use the `counter` module in the same way as we used the `myCounter` object.
+The module pattern is a special case of the singletone pattern, so there can be just one instance of the `counter` module. This is accomplished by immediate invocation of function (IIFE) which returns an object that contains references to the public functions and assigns it to a global variable, in our case `counter`. We can call functions of the `counter` module in the same we did on the `myCounter` object, so we could have, for instance, the following code:
+
+``` JavaScript
+counter.increment(1);
+counter.increment(2);
+counter.decrement(1);
+
+```
+which will produce the following output:
+
+```
+currentValue = 1
+currentValue = 3
+currentValue = 2
+```
+
+In this case, the `currentValue` has been initialized to zero during the module initialization.
 
 ## Conclusion
-This tutorial covered all important things about the closures. Hopefully it gave you a better understanding of how this mechanism works and which problems can be solved by using it. If you still need more clarification about the closures, feel free to leave your question or comment below.
+This tutorial covered all most important things about the closures. Hopefully it gave you a better understanding of how this mechanism works and which problems can be solved by using it. If you still need more clarification about the closures, feel free to leave questions or comments below.
 
 Thank you very much for reading this tutorial.
