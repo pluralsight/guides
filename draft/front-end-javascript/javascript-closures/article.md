@@ -156,7 +156,7 @@ for (var i = 0; i < 5; i++) {
     }, 3000);
 }
 ```
-Let's analyze this code. The function, which is passed as an argument to the `setTimeout` function, will be executed 3s after the first loop iteration. This practically means that the value of the variable `i`, which is in its outer scope (this function is also a closure), will become `5` before its execution, because all 5 iterations will certainly be done within those 3 seconds. Then, it will be executed 5 times, 1 time for every iteration, and it will log `5` five times.
+Let's analyze this code. The function, which is passed as an argument to the `setTimeout` function, will be executed 3s after the first loop iteration. This practically means that the value of the variable `i`, which is in its outer scope (this function is also a closure), will become `5` before its execution because all 5 iterations will certainly be done within those 3 seconds. That function will be executed 5 times, 1 time for every iteration, and it will log `5` five times.
 
 In order to get the desired output, we will need to add one more closure, so our code should look like this:
 
@@ -172,7 +172,7 @@ for (var i = 0; i < 5; i++) {
     })(i), 3000);
 }
 ```
-So, now our code contains 2 closures, `outer` and `inner`, which both have access to the variable `i`, but there is a slight difference between them. The outer scope of the `outer` function is created once and the outer scope of the `inner` function is created 5 times, for every `inner` function separately. 
+So, now our code contains 2 closures, `outer` and `inner`, which both have access to the variable `i`, but there is a slight difference between them. The outer scope of the `outer` function is created once and the outer scope of the `inner` function is created 5 times, for every iteration separately. The outer scope of the `outer` function contains the variable `i`, created in the `for` loop, while the outer scope of the `inner` function contains the same variable, which is actually an argument of the `outer` function. So, those are two different variables with the same name.
 
 In the first iteration the value of the variable `i` is `0`. We have invoked the `outer` function immediately with parameter `0` and it returned the `inner` function, so the `inner` function was actually provided as an argument to the `setTimeout` function instead of the `outer` function. Therefore, the `inner` function will be called after 3s and it will have access to its own outer scope. The value of the variable `i` in its scope is `0`, so the `inner` function will log `0` at the moment of its execution.
 
@@ -282,7 +282,7 @@ var counter = (function() {
     };
 })();
 ```
-The module pattern is a special case of the singleton pattern, so there can be just one instance of the `counter` module. This is accomplished by the immediate invocation of function (IIFE) which returns an object that contains references to the public functions and assigns it to a global variable, in our case `counter`. We can call functions of the `counter` module in the same we did on the `myCounter` object, so we could have, for instance, the following code:
+The module pattern is a special case of the singleton pattern, so there can be just one instance of the `counter` module. This is accomplished by the immediate invocation of function (IIFE) which returns an object that contains references to the public functions and assigns it to a global variable, in our case `counter`. We can call functions of the `counter` module like we called them on the `myCounter` object, so we could have, for instance, the following code:
 
 ``` JavaScript
 counter.increment(1);
@@ -301,6 +301,6 @@ currentValue = 2
 In this case, the `currentValue` has been initialized to zero during the module initialization.
 
 ## Conclusion
-This tutorial covered all most important things about the closures. Hopefully, it gave you a better understanding of how this mechanism works and which problems can be solved by using it. If you still need more clarification about the closures, feel free to leave questions or comments below.
+This tutorial covered all most important things about the closures. Hopefully, it gave you a better understanding of how this mechanism works and which problems can be solved by using them. If you still need more clarification about the closures, feel free to leave questions or comments below.
 
 Thank you very much for reading this tutorial.
