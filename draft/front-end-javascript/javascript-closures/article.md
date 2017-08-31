@@ -1,4 +1,4 @@
-Closures are a very powerful mechanism in the JavaScript programming language. All members of an object in the JavaScript are public by default. However, closures mechanism provides to objects possibility to have private members, and not only that. In this tutorial we will learn what the closures are and what are benefits of using them in the JavaScript code.
+Closures are a very powerful mechanism in the JavaScript programming language. All members of an object in the JavaScript are public by default. However, closures mechanism provides to objects possibility to have private members, and not only that. In this tutorial, we will learn what the closures are and what are benefits of using them in the JavaScript code.
 
 So, what is the closure? Douglas Crockford, author of the book *JavaScript: The Good Parts*, wrote an excellent definition of the closure, which says: 
 
@@ -26,7 +26,7 @@ incrementCounter(1);
 incrementCounter(2);
 incrementCounter(3);
 ```
- In the JavaScript language, functions are objects, so they can be passed as arguments to other functions and they can be also returned from other functions and assigned to variables. In our example, we have created the `counter` function, which returns the `increment` function and assignes it to the `incrementCounter` variable, so that variable contains a reference to the `increment` function (the objects in the JavaScript are being copied by reference, not by value). That reference enables us to call the `increment` function outside of the `counter` function's scope, so in our case, we called it from the global scope. Beside that, the line `var incrementCounter = counter(0);` initializes the `currentValue` variable to zero.  
+ In the JavaScript language, functions are objects, so they can be passed as arguments to other functions and they can be also returned from other functions and assigned to variables. In our example, we have created the `counter` function, which returns the `increment` function and assigns it to the `incrementCounter` variable, so that variable contains a reference to the `increment` function (the objects in the JavaScript are being copied by reference, not by value). That reference enables us to call the `increment` function outside of the `counter` function's scope, so in our case, we called it from the global scope. Besides that, the line `var incrementCounter = counter(0);` initializes the `currentValue` variable to zero.  
  
 The line `incrementCounter(1);` actually invokes the `increment` function with parameter 1. Since that function is a closure and it still has access to the variables and parameters of its outer function, although we called it outside of its outer function, the `currentValue` will be increased by 1 and its value will become 1. In the next function calls, its value will be increased by 2 and 3, respectively, so the output of the code will be:    
 
@@ -75,7 +75,7 @@ myCounter.increment(3);
 myCounter.decrement(2);
 ```
 
-For sure, when just one function is being returned, it can also be wrapped into an object, but there is no need for that. If more than one function are being returned, they must be wrapped into an object, like in the example above. We could also have functions inside of the `counter` functions which we don't want to expose to the global (outer) scope. For instance, we could have a "private" function for logging the `currentValue`:
+For sure, when just one function is being returned, it can also be wrapped into an object, but there is no need for that. If more than one function is being returned, they must be wrapped into an object, like in the example above. We could also have functions inside of the `counter` functions which we don't want to expose to the global (outer) scope. For instance, we could have a "private" function for logging the `currentValue`:
 
 ```JavaScript
 function counter(initValue) {
@@ -116,7 +116,7 @@ myCounter2.increment(2);
 myCounter1.decrement(1);
 myCounter2.decrement(1);
 ```
-In the first two lines of the code, we have actually created 2 different objects, `myCounter1` and `myCounter2`. These objects have the same properties, `increment` and `decrement`, which are references to the `increment` and `decrement` functions. The `myCounter1` object is created by calling `counter` function with parameter `0`, and the `myCounter2` by calling it with parameter `3`. This means that `increment` and `decrement` functions will have different values of the `currentValue` variable in the outer scope, so their calls on those two objects will produce different results, although there are called with the same parameters, like in the example above. Actually, we have 2 different `increment` and `decrement` functions, because we created 2 different objects and each pair of those functions has its own scope. 
+In the first two lines of the code, we have actually created 2 different objects, `myCounter1` and `myCounter2`. These objects have the same properties, `increment` and `decrement`, which are references to the `increment` and `decrement` functions. The `myCounter1` object is created by calling the `counter` function with parameter `0`, and the `myCounter2` by calling it with parameter `3`. This means that `increment` and `decrement` functions will have different values of the `currentValue` variable in the outer scope, so their calls on those two objects will produce different results, although there are called with the same parameters, like in the example above. Actually, we have 2 different `increment` and `decrement` functions, because we created 2 different objects and each pair of those functions has its own scope. 
 
 The output of the code above will be:
 
@@ -156,7 +156,7 @@ for (var i = 0; i < 5; i++) {
     }, 3000);
 }
 ```
-Let's analyse this code. The function, which is passed as an argument to the `setTimeout` function, will be executed 3s after the first loop iteration. This practically means that the value of the variable `i`, which is in its outer scope (this function is also a closure), will become `5` before its execution, because all 5 iterations will certainly be done within those 3 seconds. Then, it will be executed 5 times, 1 time for every iteration, and it will log `5` five times.
+Let's analyze this code. The function, which is passed as an argument to the `setTimeout` function, will be executed 3s after the first loop iteration. This practically means that the value of the variable `i`, which is in its outer scope (this function is also a closure), will become `5` before its execution, because all 5 iterations will certainly be done within those 3 seconds. Then, it will be executed 5 times, 1 time for every iteration, and it will log `5` five times.
 
 In order to get the desired output, we will need to add one more closure, so our code should look like this:
 
@@ -174,11 +174,11 @@ for (var i = 0; i < 5; i++) {
 ```
 So, now our code contains 2 closures, `outer` and `inner`, which both have access to the variable `i`, but there is a slight difference between them. The outer scope of the `outer` function is created once and the outer scope of the `inner` function is created 5 times, for every `inner` function separately. 
 
-In the first iteration the value of the variable `i` is `0`. We have invoked the `outer` function immediately with parameter `0` and it returned the `inner` function, so the `inner` function was actualy provided as an argument to the `setTimeout` function instead of the `outer` function. Therefore, the `inner` function will be called after 3s and it will have access to its own outer scope. The value of the variable `i` in its scope is `0`, so the `inner` function will log `0` at the momment of its execution.
+In the first iteration the value of the variable `i` is `0`. We have invoked the `outer` function immediately with parameter `0` and it returned the `inner` function, so the `inner` function was actually provided as an argument to the `setTimeout` function instead of the `outer` function. Therefore, the `inner` function will be called after 3s and it will have access to its own outer scope. The value of the variable `i` in its scope is `0`, so the `inner` function will log `0` at the moment of its execution.
 
 The same will happen in the second iteration, but this time the variable `i` will be `1`, and so on. Finally, we will get desired output in the console.
 
-However, there is a simpler soulution for this problem. The EcmaScript 2015 (or ES6) introduced some very useful new features and some of them are *let* and *const* keywords, which create block scoped variables. If we just replace the keyword `var` with `let` in this example, we will get completely different output:
+However, there is a simpler solution for this problem. The ECMAScript 2015 (or ES6) introduced some very useful new features and some of them are *let* and *const* keywords, which create block scoped variables. If we just replace the keyword `var` with `let` in this example, we will get the completely different output:
 
 ``` JavaScript
 for (let i = 0; i < 5; i++) {
@@ -220,7 +220,7 @@ Let's consider the following example: there is a button on an HTML page and we w
 </html>
 ```
 
-This code works fine, but we had to define a global variable for counting user clicks on the button. That's generally not recommended, since we are polluting the global scope. We use the `counter` variable just in the event handler, so why wouldn't we declare it inside the handler? However, if we just move declaration to the handler's scope, it will not work as expected, because every time the handler is called (i.e. every time the user clicks on the button), the `counter` will be reset to zero. The solution is to use a closure, like in the following code:
+This code works fine, but we had to define a global variable for counting user clicks on the button. That's generally not recommended since we are polluting the global scope. We use the `counter` variable just in the event handler, so why wouldn't we declare it inside the handler? However, if we just move declaration to the handler's scope, it will not work as expected, because every time the handler is called (i.e. every time the user clicks on the button), the `counter` will be reset to zero. The solution is to use a closure, like in the following code:
 
 ``` HTML
 <!DOCTYPE html>
@@ -282,7 +282,7 @@ var counter = (function() {
     };
 })();
 ```
-The module pattern is a special case of the singletone pattern, so there can be just one instance of the `counter` module. This is accomplished by immediate invocation of function (IIFE) which returns an object that contains references to the public functions and assigns it to a global variable, in our case `counter`. We can call functions of the `counter` module in the same we did on the `myCounter` object, so we could have, for instance, the following code:
+The module pattern is a special case of the singleton pattern, so there can be just one instance of the `counter` module. This is accomplished by the immediate invocation of function (IIFE) which returns an object that contains references to the public functions and assigns it to a global variable, in our case `counter`. We can call functions of the `counter` module in the same we did on the `myCounter` object, so we could have, for instance, the following code:
 
 ``` JavaScript
 counter.increment(1);
@@ -301,6 +301,6 @@ currentValue = 2
 In this case, the `currentValue` has been initialized to zero during the module initialization.
 
 ## Conclusion
-This tutorial covered all most important things about the closures. Hopefully it gave you a better understanding of how this mechanism works and which problems can be solved by using it. If you still need more clarification about the closures, feel free to leave questions or comments below.
+This tutorial covered all most important things about the closures. Hopefully, it gave you a better understanding of how this mechanism works and which problems can be solved by using it. If you still need more clarification about the closures, feel free to leave questions or comments below.
 
 Thank you very much for reading this tutorial.
