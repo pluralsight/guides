@@ -27,6 +27,9 @@ The test project required a choice.  Two testing frameworks are support by the `
 
 So the entire project structure should look like this when open in Visual Studio Code:
 
+
+![description](https://raw.githubusercontent.com/douglasstarnes/CoreStoreimages/master/Figure01.png)
+
 Figure 1. The project folder structure
 
 ### `CoreStore.Web` Setup
@@ -46,6 +49,8 @@ app.UseMvcWithDefaultRoute();
 ```
 
 This will be the same as creating an explicit route with a default `Home` controller, `Index` action, and optional `id`.  Therefore I need to create those resources.  First in the `CoreStore.Web` project root, I'll add a new folder named `Controllers` to follow the ASP.NET Core MVC convention.  Inside of the folder, I'll continue to honor the convention with a C# file named `HomeController.cs`.
+
+![description](https://raw.githubusercontent.com/douglasstarnes/CoreStoreimages/master/Figure02.png)
 
 Figure 2. The Controllers folder structure
 
@@ -71,6 +76,8 @@ I'll add more to this class throughout the guide but just to get started I'll ha
 ```
 
 And here is the complete `CoreStore.Web` project structure in Visual Studio Code.
+
+![description](https://raw.githubusercontent.com/douglasstarnes/CoreStoreimages/master/Figure03.png)
 
 Figure 3. The `CoreStore.Web` project structure
 
@@ -100,6 +107,8 @@ Opening up the `CoreStore.Tests.csproj` file, notice the new `ProjectReference` 
 
 This last step is curious.  Currently, Visual Studio Code does not provide Intellisense for referenced projects unless the editor is restarted.  I'm not sure what causes this but fortunately the solution is simple.  Just open the Command Palette with Cmd-Shift-P on macOS or Ctrl-Shift-P on Windows.  In the search bar, type `reload` and select the `Reload Window` option.
 
+![description](https://raw.githubusercontent.com/douglasstarnes/CoreStoreimages/master/Figure04.png)
+
 Figure 4. Reloading the editor
 
 # The First Test
@@ -124,9 +133,13 @@ var result = controller.Index();
 Assert.IsType<ViewResult>(result);
 ```
 
+![description](https://raw.githubusercontent.com/douglasstarnes/CoreStoreimages/master/Figure05.png)
+
 Figure 5. Errors in the editor
 
 This will generate a new a red lines which mean errors.  So I'm going to fix those next.  The first one, under `HomeController` is easy to correct.  Putting the cursor on the `HomeController` text and pressing Cmd-. on macOS, Ctrl-. on Windows, will bring up the Quick Fix popup menu.  This will give the option to add the `CoreStore.Web.Controllers` namespace to the file.  In this case, fixing one error causes another.  This one is a little more subtle.  Hovering over the error will show the following.
+
+![description](https://raw.githubusercontent.com/douglasstarnes/CoreStoreimages/master/Figure06.png)
 
 Figure 6. The missing assembly
 
@@ -137,6 +150,8 @@ This error is complaining about the `IActionResult` type returned by the `Index`
 ```
 
 This will trigger a prompt to restore the packages in the project as the new one has been added to the test project .csproj.
+
+![description](https://raw.githubusercontent.com/douglasstarnes/CoreStoreimages/master/Figure07.png)
 
 Figure 7. The restore prompt
 
@@ -150,9 +165,13 @@ And that's the code for the first test.  So what does it mean?  Let's look at th
 
 Notice that Visual Studio Code has added some links above the signature of the test method.
 
+![description](https://raw.githubusercontent.com/douglasstarnes/CoreStoreimages/master/Figure08.png)
+
 Figure 8. Test method links
 
 Clicking on the `run test` link will build the `CoreStore.Web` project and the `CoreStore.Tests` project.  The it will look for unit tests in the test project.  Those tests will be run and the results reported.  And for this first run, my very simple test passed.  
+
+![description](https://raw.githubusercontent.com/douglasstarnes/CoreStoreimages/master/Figure09.png)
 
 Figure 9. All tests passed
 
@@ -163,6 +182,8 @@ Assert.IsType<string>(result);
 ```
 
 Clicking the `run tests` link again will build and run the tests but this time the test failed.  As the summary states, the expected type of the `result` was a `System.String` and the actual type was `Microsoft.AspNetCore.Mvc.ViewResult`.  Thus the assertion falied.
+
+![description](https://raw.githubusercontent.com/douglasstarnes/CoreStoreimages/master/Figure10.png)
 
 Figure 10. A failing test
 
@@ -227,6 +248,8 @@ public void VerifyListActionProductCount()
 There are several interesting things going on here.  First is the call to `Assert.IsType` in the second line.  This time I am capturing the return value.  With this method, if the assertion passes, it will return the parameter cast to the type parameter.  So `result` will be a `ViewResult` instead of an `IActionResult`.  This is nice because in this test I want to count the number of `Product` in the model.  `ViewResult` has a `Model` property, `IActionResult` does not.  The `Model` property is of type `object` but I need it to be a collection of `Product` to count them.  So I rely upon `Assert.IsType` again.  With `model` as an `List<Product>` I can make the assertion.  This time I am using `Assert.Equal` which compares an expected and actual value.  This method has several overloads with different types.
 
 Running the test with the `run test` link produces this output.
+
+![description](https://raw.githubusercontent.com/douglasstarnes/CoreStoreimages/master/Figure11.png)
 
 Figure 11. Running the model test
 
@@ -338,6 +361,8 @@ And a `NotFound` view that I'll add to the `Views/Shared` folder because it's no
 
 The `CoreStore.Web` project structure now looks like:
 
+![description](https://raw.githubusercontent.com/douglasstarnes/CoreStoreimages/master/Figure12.png)
+
 Figure 12. `CoreStore.Web` project structure 
 
 # Mocking
@@ -354,6 +379,8 @@ Now I'll verify that the tests still pass by running `dotnet test` from the comm
 ```
 > dotnet test
 ```
+
+![description](https://raw.githubusercontent.com/douglasstarnes/CoreStoreimages/master/Figure13.png)
 
 Figure 13. All tests still passing
 
@@ -378,6 +405,8 @@ var controller = new HomeController(productRepository.Object);
 
 This mock does absolutely nothing except satisfy the requirement of the constructor parameter.  And that's another thing, mock objects should be light weight so they don't slow down the unit tests.  Now I can click the `run test` link to make sure this test is passing.
 
+![description](https://raw.githubusercontent.com/douglasstarnes/CoreStoreimages/master/Figure14.png)
+
 Figure 14.  Running a test with a mock repository
 
 For the next test method, I'll need to do a little extra setup on the mock repository.
@@ -397,6 +426,8 @@ Assert.Equal(3, model.Count());
 ```
 
 Clicking on the `run test` links shows that this test is still passing.
+
+![description](https://raw.githubusercontent.com/douglasstarnes/CoreStoreimages/master/Figure15.png)
 
 Figure 15. Testing the mock repository
 
@@ -418,6 +449,8 @@ public void VerifyDetailsActionReturnsProduct()
 ```
 
 The main difference in this test from the previous one is the `It.IsAny<int>` call in the `Setup` method.  This tells Moq to setup the mock repository to accept any value to the method, as long as it is of type `int`.  Then it will return a hardcoded `Product` which will be in the `Model` that can be examined in the `Assert.Equal` call.  Running all of the tests now with `dotnet test` shows they are all passing again.
+
+![description](https://raw.githubusercontent.com/douglasstarnes/CoreStoreimages/master/Figure16.png)
 
 Figure 16. All tests are passing
 
