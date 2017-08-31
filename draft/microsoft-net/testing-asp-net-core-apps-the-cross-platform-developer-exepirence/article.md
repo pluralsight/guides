@@ -19,7 +19,7 @@ Next I'll create two projects, one for the web application and one for the unit 
 
 Go ahead and open the folder in Visual Studio Code now.  This will prompt to add build and debug assets.  To ensure that they are properly configured for the web project, this must be done before adding the test project.
 
-The test project required a choice.  Two testing frameworks are support by the `dotnet` CLI.  The first is MSTest, which is from Microsoft.  It's a fine product and if you have previous experience with testing Microsoft software in Visual Studio you've likely used it.  But now we are in a cross-platform world and while MSTest with .NET Core is cross platform, there are other options.  One of these is xUnit.NET.  This is an open source project that is inspired by the [xUnit concept](https://en.wikipedia.org/wiki/XUnit).  There are many frameworks that follow this structure and xUnit.NET is the one for .NET projects.  The `dotnet` template for xUnit is `xunit`.  I'll name the test project `CoreStore.Tests`.
+The test project required a choice.  Two testing frameworks are support by the `dotnet` CLI.  The first is MSTest, which is from Microsoft.  It's a fine product and if you have previous experience with testing Microsoft software in Visual Studio you've likely used it.  But now we are in a cross-platform world and while MSTest with .NET Core is cross platform, there are other options.  One of these is [xUnit.net](https://xunit.github.io/).  This is an open source project that is inspired by the [xUnit concept](https://en.wikipedia.org/wiki/XUnit).  There are many frameworks that follow this structure and xUnit.NET is the one for .NET projects.  The `dotnet` template for xUnit is `xunit`.  I'll name the test project `CoreStore.Tests`.
 
 ```
 > dotnet new xunit -o CoreStore.Tests
@@ -146,7 +146,7 @@ And that's the code for the first test.  So what does it mean?  Let's look at th
 
 * Arrange - This is where the prequisites for the test are created.  In this case all that is needed is an instance of the `HomeController`.
 * Act - This is the action that is being tested by the unit test.  Here the action is the `Index` method.
-* Assert - Here is where the result of the Act step is verified.  The assertion API is provided by xUnit.NET.  The `Assert` class has many methods that do a variety of checks.  The `IsType` method takes a generic type and then compares that to the type of the method parameter.  So in this case its checking to make sure that the type of the `result` is identical to `ViewResult`.
+* Assert - Here is where the result of the Act step is verified.  The assertion API is provided by xUnit.net.  The `Assert` class has many methods that do a variety of checks.  The `IsType` method takes a generic type and then compares that to the type of the method parameter.  So in this case its checking to make sure that the type of the `result` is identical to `ViewResult`.
 
 Notice that Visual Studio Code has added some links above the signature of the test method.
 
@@ -361,7 +361,7 @@ But now I have a problem.  Remember that I said to pretend the `MemoryProductRep
 
 ### Meet Moq
 
-Moq (pronounced 'mock' or 'mock-u') is a mocking library.  It will create mock implementations of interfaces that will always behave the same way according to predefined conditions setup with a fluent API.  Moq is also distributed as a NuGet package so I'll add it to the test project with the `dotnet` CLI.
+[Moq](https://github.com/moq/moq4) (pronounced 'mock' or 'mock-u') is a mocking library.  It will create mock implementations of interfaces that will always behave the same way according to predefined conditions setup with a fluent API.  Moq is also distributed as a NuGet package so I'll add it to the test project with the `dotnet` CLI.
 
 ```
 dotnet add package Moq
@@ -372,10 +372,55 @@ Visual Studio Code will need to restore the packages.
 Now I'll create a mock implementation of `IProductRepository` in the `VerifyIndexViewType` test method.  This will replace the `MemoryProductRepository` object.
 
 ```
-var productRepository = new Mock<IProductRepository>().Object;
+var productRepository = new Mock<IProductRepository>();
+var controller = new HomeController(productRepository.Object);
 ```
 
 This mock does absolutely nothing except satisfy the requirement of the constructor parameter.  And that's another thing, mock objects should be light weight so they don't slow down the unit tests.  Now I can click the `run test` link to make sure this test is passing.
 
 Figure 14.  Running a test with a mock repository
 
+For the next test method, I'll need to do a little extra setup on the mock repository.
+
+```
+var productRepository = new Mock<IProductRepository>();
+productRepository.Setup(x => x.ListProducts()).Returns(new List<Product>{
+    new Product(), new Product(), new Product()
+});
+var controller = new HomeController(productRepository.Object);
+```
+
+Here the `Setup` method is saying that when the `ListProducts` method is called, return a new `List` with 3 `Product` objects.  Notice that the `Product` objects are empty.  I didn't fill in any of the properties.  That's because for this test, the property values are irrelevant.  All I want to do is make sure that I have the correct count.  Also, I'll need to update the `Assert.Equal` call expected value to 3.
+
+```
+Assert.Equal(3, model.Count());
+```
+
+Clicking on the `run test` links shows that this test is still passing.
+
+Figure 15. Testing the mock repository
+
+Now I want to write a new test for the `Details` action method.  The `Details` action method is unique because it takes a parameter.  Here is how to handle that test.
+
+```
+[Fact]
+public void VerifyDetailsActionReturnsProduct()
+{
+    var productRepository = new Mock<IProductRepository>();
+    productRepository.Setup(x => x.GetProductById(It.IsAny<int>())).Returns(new Product {
+        ID = 1, Name = "Apricots", Price = 1.00m
+    });
+    var controller = new HomeController(productRepository.Object);
+    var result = Assert.IsType<ViewResult>(controller.Details(1));
+    var model = Assert.IsType<Product>(result.Model);
+    Assert.Equal("Apricots", model.Name);
+}
+```
+
+The main difference in this test from the previous one is the `It.IsAny<int>` call in the `Setup` method.  This tells Moq to setup the mock repository to accept any value to the method, as long as it is of type `int`.  Then it will return a hardcoded `Product` which will be in the `Model` that can be examined in the `Assert.Equal` call.  Running all of the tests now with `dotnet test` shows they are all passing again.
+
+Figure 16. All tests are passing
+
+# Summary
+
+This guide has only scratched the surface of xUnit.net, Moq and testing in general.  The tests that I wrote here were simple for the sake of brevity.  What it did accomplish was to touch as many parts of the testing workflow as possible in a short amount of time.  Now you have a foundation to build on when starting to test your own applications.
