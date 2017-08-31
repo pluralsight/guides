@@ -1,8 +1,3 @@
-### JavaScript Closures by Miroslav Gajic
-- [Read the guide](https://www.pluralsight.com/guides/front-end-javascript/javascript-closures?status=in-review)
-- [Read more from Miroslav Gajic](https://www.pluralsight.com/guides/author/mgajic78) <img src="https://avatars3.githubusercontent.com/u/25859460?v=4" width="30" height="30" alt="Miroslav Gajic" />
-- Related to: Front-End JavaScript (Angular, React, Meteor, etc)
-
 ### ASP.NET MVC - Creating solutions with separate projects for entities, data access, and website functionality by ajsaulsberry
 - [Read the guide](https://www.pluralsight.com/guides/microsoft-net/asp-net-mvc-creating-solutions-with-separate-projects-for-entities-data-access-and-website-functionality?status=in-review)
 - [Read more from ajsaulsberry](https://www.pluralsight.com/guides/author/ajsaulsberry) <img src="https://avatars1.githubusercontent.com/u/11444510?v=4" width="30" height="30" alt="ajsaulsberry" />
