@@ -17,6 +17,8 @@ Next I'll create two projects, one for the web application and one for the unit 
 > dotnet new web -o CoreStore.Web
 ```
 
+Go ahead and open the folder in Visual Studio Code now.  This will prompt to add build and debug assets.  To ensure that they are properly configured for the web project, this must be done before adding the test project.
+
 The test project required a choice.  Two testing frameworks are support by the `dotnet` CLI.  The first is MSTest, which is from Microsoft.  It's a fine product and if you have previous experience with testing Microsoft software in Visual Studio you've likely used it.  But now we are in a cross-platform world and while MSTest with .NET Core is cross platform, there are other options.  One of these is xUnit.NET.  This is an open source project that is inspired by the [xUnit concept](https://en.wikipedia.org/wiki/XUnit).  There are many frameworks that follow this structure and xUnit.NET is the one for .NET projects.  The `dotnet` template for xUnit is `xunit`.  I'll name the test project `CoreStore.Tests`.
 
 ```
@@ -96,4 +98,9 @@ Opening up the `CoreStore.Tests.csproj` file, notice the new `ProjectReference` 
 
 ### Final Step
 
-This last step is curious.  Currently, Visual Studio Code does not provide Intellisense for referenced projects unless the editor is restarted.  I'm not sure what causes this but fortunately the solution is simple.  Just open the Command Palette with Cmd-Shift-P on macOS or Ctrl-Shift-P on Windows.  In the search bar, type `reload` and 
+This last step is curious.  Currently, Visual Studio Code does not provide Intellisense for referenced projects unless the editor is restarted.  I'm not sure what causes this but fortunately the solution is simple.  Just open the Command Palette with Cmd-Shift-P on macOS or Ctrl-Shift-P on Windows.  In the search bar, type `reload` and select the `Reload Window` option.
+
+Figure 4. Reloading the editor
+
+# The First Test
+
