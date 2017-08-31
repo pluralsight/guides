@@ -367,3 +367,15 @@ Moq (pronounced 'mock' or 'mock-u') is a mocking library.  It will create mock i
 dotnet add package Moq
 ```
 
+Visual Studio Code will need to restore the packages.
+
+Now I'll create a mock implementation of `IProductRepository` in the `VerifyIndexViewType` test method.  This will replace the `MemoryProductRepository` object.
+
+```
+var productRepository = new Mock<IProductRepository>().Object;
+```
+
+This mock does absolutely nothing except satisfy the requirement of the constructor parameter.  And that's another thing, mock objects should be light weight so they don't slow down the unit tests.  Now I can click the `run test` link to make sure this test is passing.
+
+Figure 14.  Running a test with a mock repository
+
