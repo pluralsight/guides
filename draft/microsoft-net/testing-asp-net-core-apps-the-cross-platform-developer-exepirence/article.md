@@ -164,6 +164,8 @@ Assert.IsType<string>(result);
 
 Clicking the `run tests` link again will build and run the tests but this time the test failed.  As the summary states, the expected type of the `result` was a `System.String` and the actual type was `Microsoft.AspNetCore.Mvc.ViewResult`.  Thus the assertion falied.
 
+Figure 10. A failing test
+
 # Adding the Model
 
 Let's go deeper into the result of an action method.  The `ViewResult` has a `Model` property referring to the model object passed to the `View` method in the action method.  Right now, none of my action methods do this so I'll add a new one to the controller class.  But first, I need a model class.  So I'll add a `Models` folder to the `CoreStore.Web` project and then a new `Product.cs` file for the model object.
@@ -207,17 +209,161 @@ And the corresponding view in a new file `Views/Home/List.cshtml`.
 </ul>
 ```
 
-# Testing the Model
+# Testing the `Model`
 
-In `ControllerTests.cs` in `CoreStore.Tests` add a new test method.
+In `ControllerTests.cs` in `CoreStore.Tests` add a new test method.  Use the Quick Fix to resolve any namespaces that haven't been included.
 
 ```
 [Fact]
 public void VerifyListActionProductCount()
 {
     var controller = new HomeController();
-    var result = Assert.IsType<ViewResult>(controller.Index());
-    var model = Assert.IsType<IEnumerable<Product>>(result.Model);
+    var result = Assert.IsType<ViewResult>(controller.List());
+    var model = Assert.IsType<List<Product>>(result.Model);
     Assert.Equal(2, model.Count());
 }
 ```
+
+There are several interesting things going on here.  First is the call to `Assert.IsType` in the second line.  This time I am capturing the return value.  With this method, if the assertion passes, it will return the parameter cast to the type parameter.  So `result` will be a `ViewResult` instead of an `IActionResult`.  This is nice because in this test I want to count the number of `Product` in the model.  `ViewResult` has a `Model` property, `IActionResult` does not.  The `Model` property is of type `object` but I need it to be a collection of `Product` to count them.  So I rely upon `Assert.IsType` again.  With `model` as an `List<Product>` I can make the assertion.  This time I am using `Assert.Equal` which compares an expected and actual value.  This method has several overloads with different types.
+
+Running the test with the `run test` link produces this output.
+
+Figure 11. Running the model test
+
+# Adding a repository
+
+To simplify data access, the concept of a repository class is often used.  This is an abstraction that talks to code which actually does the heavy lifting of talking to a database, such as a context class in Entity Framework Core.  But these data access implementations can be swapped out.  One might make the move from SQL Server to Azure Document DB.  To facilitate this, the repository defines an interface and two implementation of the interface, one for SQL Server and Document DB, are created.  This approach also helps with testing as we will soon see.  But first I'll set up the repository.  In a new `Core` folder I'll add a file to contain the interface `IProductRepository.cs`.
+
+```
+namespace CoreStore.Web.Core
+{
+    public interface IProductRepository
+    {
+        List<Product> ListProducts();
+        Product GetProductById(int id);
+    }
+}
+```
+
+Obviously a real world repository would be more extensive but this will do for our purposes.  The repository implementation will also be equally simplistic.  I'll put that in another file `MemoryProductRepository.cs` in a new `Infrastrucure` folder.
+
+```
+using System.Collections.Generic;
+using System.Linq;
+using CoreStore.Web.Core;
+using CoreStore.Web.Models;
+
+namespace CoreStore.Web.Infrastrucure
+{
+    public class MemoryProductRepository : IProductRepository
+    {
+        private static List<Product> products = new List<Product> {
+            new Product { ID = 1, Name = "Apples", Price = 1.50m },
+            new Product { ID = 2, Name = "Bananas", Price = 2.00m }
+        };
+        public Product GetProductById(int id)
+        {
+            return products.Where(p => p.ID == id).FirstOrDefault();
+        }
+
+        public List<Product> ListProducts()
+        {
+            return products;
+        }
+    }
+}
+```
+
+The reason the class is named `MemoryProductRepository` is because all of the products are stored in memory.  This class does not talk to a database.  And this is just to keep things simple.  For now, pretend that the repository implementation does talk to a database.  The controller will make use of the repository.  In the `HomeController` class add a `private` instance of the `IProductRepository` and then add a constructor to initialize it.
+
+```
+private IProductRepository productRepository;
+
+public HomeController(IProductRepository _pr)
+{
+    productRepository = _pr;
+}
+```
+
+### Dependency injection briefly
+
+If you're not familiar with dependency injection you might be asking how to get the parameter to the `HomeController` constructor as the application code never explicitly calls the constructor.  This is where dependency injection comes in.  To use dependency injection, you register an interface and a corresponding implementation, IProductRepository and MemoryProductRepository in this case, with a dependency injection container.  Then when an instance of the interface is asked for, such as in the constructor parameter, an instance of the implementation will be provided.  Registering the interface and implementation is done in the `Startup` class in the `ConfigureServices` method.
+
+```
+services.AddScoped<IProductRepository, MemoryProductRepository>();
+```
+
+A detailed discussion of dependency injection is outside the scope of this guide.  But I wanted to reveal some of the magic to avoid confusion.
+
+### Finishing the controller
+
+The action methods will now make use of the repository.
+
+```
+public IActionResult List()
+{
+    return View(productRepository.ListProducts());
+}
+
+public IActionResult Details(int id)
+{
+    var product = productRepository.GetProductById(id);
+    if (product == null)
+    {
+        return View("NotFound");
+    }
+    else
+    {
+        return View(product);
+    }
+}
+```
+
+I also need to add two new views, one for the `Details` action method:
+
+```
+@model CoreStore.Web.Models.Product
+
+<ul>
+    <li>@Model.Name</l1>
+    <li>$@Model.Price.ToString("F2")
+</ul>
+```
+
+And a `NotFound` view that I'll add to the `Views/Shared` folder because it's not specific to the `HomeController`.
+
+```
+<h1>The requested resource was not found, sorry!</h1>
+```
+
+The `CoreStore.Web` project structure now looks like:
+
+Figure 12. `CoreStore.Web` project structure 
+
+# Mocking
+
+The last test I'm going to write will test the `Details` action method.  But opening the `ControllerTests.cs` file shows that the existing tests are broken.  The `HomeController` constructor now expects a parameter which should be an implementation of `IProductRepository`.  I'll add a new instance to each test.
+
+```
+var productRepository = new MemoryProductRepository();
+var controller = new HomeController(productRepository);
+```
+
+Now I'll verify that the tests still pass by running `dotnet test` from the command line in the `CoreStore.Tests` project folder to run all of the tests at once.
+
+```
+> dotnet test
+```
+
+Figure 13. All tests still passing
+
+But now I have a problem.  Remember that I said to pretend the `MemoryProductRepository` actually **does** talk to a database?  What if the connection to that database failed?  Or the wrong connection string was used?  My tests would fail but it would not be the fault of the web app.  So at this point I have changed from unit tests to integration tests.  What I need, is a way to ensure that a call to the API exposed by the repository will always succeed.  That way I can be sure that any errors are isolated to the web app and didn't happen somehwere else in the code.
+
+### Meet Moq
+
+Moq (pronounced 'mock' or 'mock-u') is a mocking library.  It will create mock implementations of interfaces that will always behave the same way according to predefined conditions setup with a fluent API.  Moq is also distributed as a NuGet package so I'll add it to the test project with the `dotnet` CLI.
+
+```
+dotnet add package Moq
+```
+
