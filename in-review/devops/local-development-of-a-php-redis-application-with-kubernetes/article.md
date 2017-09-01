@@ -34,8 +34,11 @@ Move Telepresence to somewhere on your $PATH:
 
 ```
 % mv telepresence /usr/local/bin
-```
 
+**OR**
+export /path/to/telepresence:$PATH
+export $PATH
+```
 
 You'll also need to install `torsocks`. On Mac OS X, use `brew`:
 
@@ -54,11 +57,11 @@ We'll also configure a local development environment for PHP that can run the Gu
 ```
 % curl -O https://pear.php.net/go-pear.phar
 % php go-pear.par
-% pear channel-discover pear.nrk.io   # You may need to add pear to your path
+% pear channel-discover pear.nrk.io   # You may need to add pear to your path, if so, use one of the methods above used with telepresence
 % pear install nrk/Predis
 ```
 
-This tutorial uses several Kubernetes configuration files. You can optionally clone the [Telepresence GitHub repo](https://github.com/datawire/telepresence/):
+This tutorial uses several Kubernetes configuration files. You can optionally clone the [Telepresence GitHub repo](https://github.com/datawire/telepresence/) to get a local copy of them all:
 
 ```
 % git clone https://github.com/datawire/telepresence.git
@@ -128,7 +131,7 @@ In this shell, `cd` into the `examples/guestbook` directory and start the fronte
 % pear config-get php_dir
 ```
 
-Now, in the `examples/guestbook` directory, start PHP:
+Now, in the `examples/guestbook` directory, and start PHP:
 
 ```
 % php -d include_path="PATH_TO_PEAR_DIR" -S 0.0.0.0:8080

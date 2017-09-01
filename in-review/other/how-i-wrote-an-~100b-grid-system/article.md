@@ -1,6 +1,6 @@
 We are living in a world when (lots of) people use big frameworks in their apps. In general that's easier. In some cases that's cool. In terms of performance that could be painful.
 
-Let's talk about CSS grid systems. There are a lot of libraries/frameworks providing grid functionalities. Twitter Bootstrap is one of these [big] frameworks. Loading it would make sense if you really needed it. Just for using it as grid system you most probably shouldn't include Bootstrap (lot of developers do that, though).
+Let's talk about CSS grid systems. There are a lot of libraries/frameworks providing grid functionalities. Twitter Bootstrap is one of these [big] frameworks. Loading it would make sense if you really needed it. Just for using it as grid system you most probably shouldn't include Bootstrap (lot of developers do that, though). This just adds needless pain and possible confusion for you or others later down the road.
 
 I really wanted to have a **minimal** and **usable** solution for **modern browsers**. I did a quick research and found some information, but all the libraries I found were providing too many features, making the things slower and bigger.
 
@@ -45,7 +45,7 @@ Then, to handle the smaller devices (to create full-width columns), I added:
 [![gridly](http://i.imgur.com/m4pwrnO.png)](http://ionicabizau.github.io/gridly/example/)
 
 
-Then, I thought it could be convenient to add percent values (e.g. `third`–33%, `quarter`–25% etc), so the columns could have different widths inside of the same row. I did this keeping the modularization in mind. I created  `gridly-col-widths.css` and put the following things there:
+Then, I thought it could be convenient to add percent values (e.g. `third`–33%, `quarter`–25% etc), so the columns could have different widths inside of the same row. I did this keeping the aspect of modularization in mind. I created  `gridly-col-widths.css` and put the following things there:
 
 ```css
 @media (min-width: 48em) {
