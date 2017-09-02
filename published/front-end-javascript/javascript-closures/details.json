@@ -3,7 +3,12 @@
     "author_name": "mgajic78",
     "author_real_name": "Miroslav Gajic",
     "branch": "master",
-    "branches": [],
+    "branches": [
+        [
+            "adityavarshney",
+            "adityavarshney-front-end-javascript-javascript-closures"
+        ]
+    ],
     "filename": "article.md",
     "first_commit": "d92bfff5c45a1a475588bf5d102046c760185525",
     "image_url": "https://avatars3.githubusercontent.com/u/25859460?v=4",
