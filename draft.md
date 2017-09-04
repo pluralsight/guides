@@ -1,3 +1,8 @@
+### iOS Rich Push Notifications by Veronika
+- [Read the guide](https://www.pluralsight.com/guides/swift/ios-rich-push-notifications?status=draft)
+- [Read more from Veronika](https://www.pluralsight.com/guides/author/veronikahristozova) <img src="https://avatars2.githubusercontent.com/u/22590489?v=4" width="30" height="30" alt="Veronika" />
+- Related to: Swift
+
 ### Data Structures in Swift - Part 2 by Károly Nyisztor
 - [Read the guide](https://www.pluralsight.com/guides/swift/data-structures-in-swift-part-2?status=draft)
 - [Read more from Károly Nyisztor](https://www.pluralsight.com/guides/author/nyisztor) <img src="https://avatars1.githubusercontent.com/u/198511?v=4" width="30" height="30" alt="Károly Nyisztor" />
