@@ -126,3 +126,12 @@ print("pop() ->", stackInt.pop() ?? "Stack is empty") 
 stackInt.pop() 
 print(stackInt)  // Output:[]
 ```
+For better readability, we can add a custom description through a type extension. The ```CustomStringConvertible``` protocol defines the ```description``` computed property. By implementing it, we can add a custom description to our type. For our ```Stack``` type, we simply log the contents of the internal ```elements``` array.
+```
+extension Stack: CustomStringConvertible {
+    var description: String {
+        return "\(elements)"
+    }
+}
+```
+# Queues
