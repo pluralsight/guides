@@ -1,3 +1,8 @@
+### Data Structures in Swift - Part 2 by Károly Nyisztor
+- [Read the guide](https://www.pluralsight.com/guides/swift/data-structures-in-swift-part-2?status=draft)
+- [Read more from Károly Nyisztor](https://www.pluralsight.com/guides/author/nyisztor) <img src="https://avatars1.githubusercontent.com/u/198511?v=4" width="30" height="30" alt="Károly Nyisztor" />
+- Related to: Swift
+
 ### Push Notifications with Firebase Cloud Messaging by Dimitar Stoyanov
 - [Read the guide](https://www.pluralsight.com/guides/android/push-notifications-with-firebase-cloud-messaging?status=draft)
 - [Read more from Dimitar Stoyanov](https://www.pluralsight.com/guides/author/DimitarStoyanoff) <img src="https://avatars3.githubusercontent.com/u/19796939?v=4" width="30" height="30" alt="Dimitar Stoyanov" />
