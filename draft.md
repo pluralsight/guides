@@ -1,3 +1,8 @@
+### Creating iOS Rich Push Notifications by Veronika
+- [Read the guide](https://www.pluralsight.com/guides/swift/creating-ios-rich-push-notifications?status=draft)
+- [Read more from Veronika](https://www.pluralsight.com/guides/author/veronikahristozova) <img src="https://avatars2.githubusercontent.com/u/22590489?v=4" width="30" height="30" alt="Veronika" />
+- Related to: Swift
+
 ### iOS Rich Push Notifications by Veronika
 - [Read the guide](https://www.pluralsight.com/guides/swift/ios-rich-push-notifications?status=draft)
 - [Read more from Veronika](https://www.pluralsight.com/guides/author/veronikahristozova) <img src="https://avatars2.githubusercontent.com/u/22590489?v=4" width="30" height="30" alt="Veronika" />
