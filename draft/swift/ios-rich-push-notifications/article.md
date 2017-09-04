@@ -38,7 +38,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
 
     var window: UIWindow?
 
-func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -&gt; Bool {
+func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
 
     UNUserNotificationCenter.current().delegate = self
 
@@ -95,7 +95,7 @@ In the `NotificationService.swift` file handle the media url from the payload fo
 
 ```
 ...
-override func didReceive(_ request: UNNotificationRequest, withContentHandler contentHandler: @escaping (UNNotificationContent) -&gt; Void) {
+override func didReceive(_ request: UNNotificationRequest, withContentHandler contentHandler: @escaping (UNNotificationContent) -> Void) {
         self.contentHandler = contentHandler
         bestAttemptContent = (request.content.mutableCopy() as? UNMutableNotificationContent)
 
@@ -128,7 +128,7 @@ override func didReceive(_ request: UNNotificationRequest, withContentHandler co
 
 ```
 extension UNNotificationAttachment {
-    static func create(imageFileIdentifier: String, data: NSData, options: [NSObject : AnyObject]?) -&gt; UNNotificationAttachment? {
+    static func create(imageFileIdentifier: String, data: NSData, options: [NSObject : AnyObject]?) -> UNNotificationAttachment? {
 
             let fileManager = FileManager.default
             let tmpSubFolderName = ProcessInfo.processInfo.globallyUniqueString
