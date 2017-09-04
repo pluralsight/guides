@@ -11,14 +11,14 @@ In order to get started with push notifications, you need to follow these steps:
 
 
 1.  Open existing Xcode project or create New. Select your project target and go to Capabilities to enable Push Notifications as shown [here][1]. 
-Now open **Keychain Access > Certificate Assistant > Request a Certificate From a Certificate Authority...** Fill the required fields and choose either to email CA the request or save it to disk. Go to [your Apple member center][2] and locate your App ID. You will see that "Push Notifications" service is now *Configurable*. Select the ` Edit` button. Under Push Notifications section there are two options for certificates as shown [here][3]. Select the **Create Certificate** button to create your Certificate.
+2. Open **Keychain Access > Certificate Assistant > Request a Certificate From a Certificate Authority...** Fill the required fields and choose either to email CA the request or save it to disk. Go to [your Apple member center][2] and locate your App ID. You will see that "Push Notifications" service is now *Configurable*. Select the ` Edit` button. Under Push Notifications section there are two options for certificates as shown [here][3]. Select the **Create Certificate** button to create your Certificate.
 
  > **Development Certificate** - App built from Xcode will receive notifications.
 
  > **Production Certificate** -App installed from Apple Store or Test Flight will receive notifications.
 
-    Then you need to upload your *.certSigningRequest* file you prevously saved on disk/emailed the CA, download your generated Certificate and double-click the *.cer* file to install it in your Keychain Access.
-     Locate your Certificate in Keychain Access under
+3. Upload your *.certSigningRequest* file you prevously saved on disk/emailed the CA, download your generated Certificate and double-click the *.cer* file to install it in your Keychain Access.
+4. Locate your Certificate in Keychain Access under
     "Certificates" section and export it as shown [here][4]
 // No link provided?
 Your Certificate is now saved as .p12 file. If you need your Certificate as `.pem/.p8` file you can easy convert it
@@ -27,7 +27,7 @@ Your Certificate is now saved as .p12 file. If you need your Certificate as `.pe
 ```
 
 ## Registering for push notifications
-2*.* Register your project for Push Notifications
+ Simply as that in your AppDelegate file:
 
 ```
 import UIKit
@@ -53,8 +53,7 @@ func application(_ application: UIApplication, didFinishLaunchingWithOptions lau
 ...
 
 ```
-
-3*.* Add the `didRegisterForRemoteNotificationsWithDeviceToken` function in your AppDelegate.swift file to get the deviceToken, which will receive notifications.
+ Add the `didRegisterForRemoteNotificationsWithDeviceToken` function in your AppDelegate.swift file to get the deviceToken, which will receive notifications.
 
 ```
 ...
@@ -71,7 +70,7 @@ Awesome! Now it's time to make them super duper nice-looking. 🙀
 
 > NB: Your notifications interface should feel like natural extension of your containing app!
 
-4*.* A very important step for sending media attachment is the `mutable-content` key in the push payload from the server. So let's take a look at this example payload.
+A very important step for sending media attachment is the `mutable-content` key in the push payload from the server. So let's take a look at this example payload.
 
 <div class="code-snippet">
   <pre class="line-numbers"><code class="json">
