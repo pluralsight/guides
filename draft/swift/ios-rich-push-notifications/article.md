@@ -1,4 +1,4 @@
-When designing applications, end-user experience is king (more info..)
+These days, having a visually stunning mobile app isn’t good enough. In order for your mobile app to be truly successful, it must be designed with UX in mind. Push Notifications are a great solution to interact with your app consumers even when they are not using the application.
 
  This guide will walk you through setting up your project for rich push notifications, you will learn some server-side requirements and we will peek into the infinite possibilities!
 
@@ -226,11 +226,11 @@ application.applicationIconBadgeNumber = 0
 
 ## Custom preview
 
-16*.* Last but not least add custom preview for notifications from **Xcode > File > New > Target...** select *Notification Content* and activate suggested scheme. Now we have `NotificationViewController.swift`, `MainInterface.storyboard` and `Info.plist` files.
+16*.* Last but not least let's add a custom preview for notifications from **Xcode > File > New > Target...** select *Notification Content* and activate suggested scheme. Now we have `NotificationViewController.swift`, `MainInterface.storyboard` and `Info.plist` files. Mindblown?
 
 ## Conclusion - The sky is the limit
 
-It's up to your imagination from now on... or take a look at the sample project included here to begin with something cool!
+It's up to your imagination from now on... or take a look at the sample project included below to begin with something cool!
 
 ### Useful links
 
