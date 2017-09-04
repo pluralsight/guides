@@ -135,3 +135,94 @@ extension Stack: CustomStringConvertible {
 }
 ```
 # Queues
+Unlike the stack, the queue is open at both ends. The queue provides __First-In-First-Out__ (FIFO) access. New elements are added to the bottom of the queue. We can retrieve elements from the top of the queue.
+
+Here’s an illustration of the queue in action:
+
+![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/086a1691-cadd-492f-83eb-6a7365ea4fe2.png)
+
+The ```Enqueuable``` protocol defines the requirements for a basic queue:
+```
+protocol Enqueuable {
+    associatedtype Element
+    mutating func enqueue(_ element: Element)
+    func peek() -> Element?
+    mutating func dequeue() -> Element?
+    mutating func removeAll()
+}
+```
+The ```enqueue(:)``` method adds an item to the bottom of the queue, whereas the ```dequeue()``` method removes and returns the element from the top. ```peek()``` simply returns the top element without removing it.
+
+We could implement the ```Enqueuable``` protocol as follows:
+```
+struct Queue<T>: Enqueuable {
+    typealias Element = T
+    
+    fileprivate var elements = [Element]()
+    
+    mutating func enqueue(_ element: Element) {
+        elements.append(element)
+    }
+    
+    func peek() -> Element? {
+        return elements.first
+    }
+    
+    mutating func dequeue() -> Element? {
+        guard elements.isEmpty == false else {
+            return nil
+        }
+        return elements.removeFirst()
+    }
+    
+    mutating func removeAll() {
+        elements.removeAll()
+    }
+}
+
+extension Queue: CustomStringConvertible {
+    var description: String {
+        return "\(elements)"
+    }
+}
+```
+Now that we have a generic Queue, we can use it with any type:
+```
+var queueInt = Queue<Int>()
+var queueString = Queue<String>()
+var queueData = Queue<Data>()
+
+queueInt.enqueue(1)
+print("enqueue() ->", queueInt)
+// Output: enqueue() -> [1]
+
+queueInt.enqueue(2)
+print("enqueue() ->", queueInt)
+// Output: enqueue() -> [2]
+
+queueInt.enqueue(3)
+print("enqueue() ->", queueInt)
+// Output: enqueue() -> [3]
+
+print("peek() ->", queueInt.peek() ?? "Stack is empty")
+// Output: peek() -> 1
+
+print("peek() ->", queueInt.peek() ?? "Stack is empty")
+// Output: peek() -> 1
+
+print("peek() ->", queueInt.peek() ?? "Stack is empty")
+// Output: peek() -> 1
+
+print("dequeue() ->", queueInt.dequeue() ?? "Stack is empty")
+// Output: dequeue() -> 1
+
+print("dequeue() ->", queueInt.dequeue() ?? "Stack is empty")
+// Output: dequeue() -> 2
+
+print("dequeue() ->", queueInt.dequeue() ?? "Stack is empty")
+// Output: dequeue() -> 3
+
+queueInt.dequeue()
+print(queueInt)
+// Output: []
+```
