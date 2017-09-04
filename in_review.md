@@ -1,3 +1,8 @@
+### Push Notifications with Firebase Cloud Messaging by Dimitar Stoyanov
+- [Read the guide](https://www.pluralsight.com/guides/android/push-notifications-with-firebase-cloud-messaging?status=in-review)
+- [Read more from Dimitar Stoyanov](https://www.pluralsight.com/guides/author/DimitarStoyanoff) <img src="https://avatars3.githubusercontent.com/u/19796939?v=4" width="30" height="30" alt="Dimitar Stoyanov" />
+- Related to: Android
+
 ### Testing ASP.NET Core Apps - The Cross-Platform Developer Exepirence by Douglas Starnes
 - [Read the guide](https://www.pluralsight.com/guides/microsoft-net/testing-asp-net-core-apps-the-cross-platform-developer-exepirence?status=in-review)
 - [Read more from Douglas Starnes](https://www.pluralsight.com/guides/author/douglasstarnes) <img src="https://avatars3.githubusercontent.com/u/1081484?v=4" width="30" height="30" alt="Douglas Starnes" />
