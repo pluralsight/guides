@@ -1,3 +1,6 @@
+
+![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/df051757-9a09-417b-a77a-8192c984b9a4.png)
+
 These days, having a visually stunning mobile app isn’t good enough. In order for your mobile app to be truly successful, it must be designed with UX in mind. Push Notifications are a great solution to interact with your app consumers even when they are not using the application.
 
  This guide will walk you through setting up your project for rich push notifications, you will learn some server-side requirements and we will peek into the infinite possibilities!
