@@ -3,11 +3,6 @@
 - [Read more from Károly Nyisztor](https://www.pluralsight.com/guides/author/nyisztor) <img src="https://avatars1.githubusercontent.com/u/198511?v=4" width="30" height="30" alt="Károly Nyisztor" />
 - Related to: Swift
 
-### Push Notifications with Firebase Cloud Messaging by Dimitar Stoyanov
-- [Read the guide](https://www.pluralsight.com/guides/android/push-notifications-with-firebase-cloud-messaging?status=draft)
-- [Read more from Dimitar Stoyanov](https://www.pluralsight.com/guides/author/DimitarStoyanoff) <img src="https://avatars3.githubusercontent.com/u/19796939?v=4" width="30" height="30" alt="Dimitar Stoyanov" />
-- Related to: Android
-
 ### ASP.NET Core without Windows by Douglas Starnes
 - [Read the guide](https://www.pluralsight.com/guides/microsoft-net/asp-net-core-without-windows?status=draft)
 - [Read more from Douglas Starnes](https://www.pluralsight.com/guides/author/douglasstarnes) <img src="https://avatars3.githubusercontent.com/u/1081484?v=4" width="30" height="30" alt="Douglas Starnes" />
