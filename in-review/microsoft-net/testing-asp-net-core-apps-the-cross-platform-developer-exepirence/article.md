@@ -1,8 +1,12 @@
 # Introduction
 
-Now that .NET Core, and ASP.NET Core, is a reality developers are having to reexamine the tools and methods of creating web applications.  This guide will summarize how to test a simple ASP.NET Core MVC application using cross platform tools such as the `dotnet` CLI tool and Visual Studio Code.  While a vast majority of the source code will be identical to a project written using Visual Studio on Windows, the goal is to focus on the process.  I'm assuming that you already have the .NET Core SDK, Visual Studio Code and the C# extension installed.  I'll also assume that you have some experience developing simple ASP.NET MVC (Core or otherwise) applications.  This guide is about testing, not development.
+Now that .NET Core, and ASP.NET Core are increasingly used worldwide, developers are having to reexamine the tools and methods of creating web applications. This guide will cover how to test a simple ASP.NET Core MVC application using cross-platform tools such as the `dotnet` CLI tool and Visual Studio Code. While a vast majority of the source code will be identical to a project written using Visual Studio on Windows, the goal is to focus on the process. 
 
 The code for the finished sample can be found on [Github](https://github.com/douglasstarnes/CoreStore).
+
+## Prerequisites
+
+I'm assuming that you already have the .NET Core SDK, Visual Studio Code and the C# extension installed.  I'll also assume that you have some experience developing simple ASP.NET MVC (Core or otherwise) applications. *This guide is about testing, not development.*
 
 # Setup
 
@@ -21,7 +25,11 @@ Next I'll create two projects, one for the web application and one for the unit 
 
 Go ahead and open the folder in Visual Studio Code now.  This will prompt to add build and debug assets.  To ensure that they are properly configured for the web project, this must be done before adding the test project.
 
-The test project required a choice.  Two testing frameworks are support by the `dotnet` CLI.  The first is MSTest, which is from Microsoft.  It's a fine product and if you have previous experience with testing Microsoft software in Visual Studio you've likely used it.  But now we are in a cross-platform world and while MSTest with .NET Core is cross platform, there are other options.  One of these is [xUnit.net](https://xunit.github.io/).  This is an open source project that is inspired by the [xUnit concept](https://en.wikipedia.org/wiki/XUnit).  There are many frameworks that follow this structure and xUnit.NET is the one for .NET projects.  The `dotnet` template for xUnit is `xunit`.  I'll name the test project `CoreStore.Tests`.
+### Two Frameworks
+
+The test project required a choice. The `dotnet` CLI supports two testing frameworks. The first is MSTest, which is from Microsoft.  It's a fine product, and if you have previous experience with testing Microsoft software in Visual Studio you've likely used it.  
+
+But now we are in a cross-platform world and while MSTest with .NET Core is cross-platform, there are other options.  One of these is [xUnit.net](https://xunit.github.io/).  This is an open source project that is inspired by the [xUnit concept](https://en.wikipedia.org/wiki/XUnit). There are many frameworks that follow this structure and xUnit.NET is the one for .NET projects.  The `dotnet` template for xUnit is `xunit`.  I'll name the test project `CoreStore.Tests`.
 
 ```
 > dotnet new xunit -o CoreStore.Tests
@@ -36,7 +44,7 @@ Figure 1. The project folder structure
 
 ### `CoreStore.Web` Setup
 
-The empty ASP.NET Core web application has no support for MVC.  I could have created a skeleton MVC application from the `dotnet` CLI but it would have included a lot of plumbing and starter content which would just get in the way.  Instead, I'll add MVC by hand.  It's only a few lines of code.  
+The empty ASP.NET Core web application has no support for MVC. I could have created a skeleton MVC application from the `dotnet` CLI, but it would have included a lot of plumbing and starter content which would just get in the way.  Instead, I'll add MVC by hand.  It's only a few lines of code.  
 
 First in the `Startup.cs` file, in the `ConfigureServices` method, add the following line of the code:
 
@@ -107,7 +115,7 @@ Opening up the `CoreStore.Tests.csproj` file, notice the new `ProjectReference` 
 
 ### Final Step
 
-This last step is curious.  Currently, Visual Studio Code does not provide Intellisense for referenced projects unless the editor is restarted.  I'm not sure what causes this but fortunately the solution is simple.  Just open the Command Palette with Cmd-Shift-P on macOS or Ctrl-Shift-P on Windows.  In the search bar, type `reload` and select the `Reload Window` option.
+This last step is curious.  Currently, Visual Studio Code does not provide Intellisense for referenced projects unless the editor is restarted. I'm not sure what causes this, but fortunately the solution is simple.  Just open the Command Palette with Cmd-Shift-P on macOS or Ctrl-Shift-P on Windows.  In the search bar, type `reload` and select the `Reload Window` option.
 
 ![description](https://raw.githubusercontent.com/douglasstarnes/CoreStoreimages/master/Figure04.png)
 
@@ -115,7 +123,9 @@ Figure 4. Reloading the editor
 
 # The First Test
 
-The `dotnet` CLI added a basic test file when the project was created.  It's in the `UnitTest1.cs` file.  I'll start off by renaming this file to `ControllerTests.cs`.  Then I'll open `ControllerTests.cs` and rename the `UnitTest1` class to `ControllerTests`.  The class itself does not need to be marked explicitly as containing unit tests.  The tests themselves are marked with a `[Fact]` attribute.  The `dotnet` CLI has created one of these for me.  I'll rename the test to something more descriptive, `VerifyIndexViewType`.  The `ControllerTests` class now looks like this:
+The `dotnet` CLI added a basic test file when the project was created.  It's in the `UnitTest1.cs` file.  I'll start off by renaming this file to `ControllerTests.cs`.  Then I'll open `ControllerTests.cs` and rename the `UnitTest1` class to `ControllerTests`.  
+
+The class itself does not need to be marked explicitly as containing unit tests; the tests themselves are marked with a `[Fact]` attribute.  The `dotnet` CLI has created one of these for me.  I'll rename the test to something more descriptive, such as `VerifyIndexViewType`.  The `ControllerTests` class now looks like this:
 
 ```
 public class ControllerTests
@@ -139,7 +149,7 @@ Assert.IsType<ViewResult>(result);
 
 Figure 5. Errors in the editor
 
-This will generate a new a red lines which mean errors.  So I'm going to fix those next.  The first one, under `HomeController` is easy to correct.  Putting the cursor on the `HomeController` text and pressing Cmd-. on macOS, Ctrl-. on Windows, will bring up the Quick Fix popup menu.  This will give the option to add the `CoreStore.Web.Controllers` namespace to the file.  In this case, fixing one error causes another.  This one is a little more subtle.  Hovering over the error will show the following.
+This will generate a new a red lines which mean errors.  So I'm going to fix those next.  The first one, under `HomeController`, is easy to correct. Putting the cursor on the `HomeController` text and pressing <kbd>Cmd</kbd>+<kbd>-</kbd> on macOS or <kbd>Ctrl</kbd>+<kbd>-</kbd> on Windows will bring up the Quick Fix popup menu.  This will give the option to add the `CoreStore.Web.Controllers` namespace to the file.  In this case, fixing one error causes another.  This one is a little more subtle.  Hovering over the error will show the following.
 
 ![description](https://raw.githubusercontent.com/douglasstarnes/CoreStoreimages/master/Figure06.png)
 
@@ -163,7 +173,7 @@ And that's the code for the first test.  So what does it mean?  Let's look at th
 
 * Arrange - This is where the prequisites for the test are created.  In this case all that is needed is an instance of the `HomeController`.
 * Act - This is the action that is being tested by the unit test.  Here the action is the `Index` method.
-* Assert - Here is where the result of the Act step is verified.  The assertion API is provided by xUnit.net.  The `Assert` class has many methods that do a variety of checks.  The `IsType` method takes a generic type and then compares that to the type of the method parameter.  So in this case its checking to make sure that the type of the `result` is identical to `ViewResult`.
+* Assert - Here is where the result of the Act step is verified. The assertion API is provided by xUnit.net. The `Assert` class has many methods that do a variety of checks. The `IsType` method takes a generic type and then compares that to the type of the method parameter. Here, it's checking to make sure that the type of the `result` is identical to `ViewResult`.
 
 Notice that Visual Studio Code has added some links above the signature of the test method.
 
@@ -171,7 +181,9 @@ Notice that Visual Studio Code has added some links above the signature of the t
 
 Figure 8. Test method links
 
-Clicking on the `run test` link will build the `CoreStore.Web` project and the `CoreStore.Tests` project.  The it will look for unit tests in the test project.  Those tests will be run and the results reported.  And for this first run, my very simple test passed.  
+Clicking on the `run test` link will build the `CoreStore.Web` project and the `CoreStore.Tests` project, look for and execute unit tests in the test project, and finish by reporting the results.  
+
+And for this first run, my very simple test passed.  
 
 ![description](https://raw.githubusercontent.com/douglasstarnes/CoreStoreimages/master/Figure09.png)
 
@@ -183,7 +195,7 @@ Just so we can see what a failing test looks like I'll change the generic type i
 Assert.IsType<string>(result);
 ```
 
-Clicking the `run tests` link again will build and run the tests but this time the test failed.  As the summary states, the expected type of the `result` was a `System.String` and the actual type was `Microsoft.AspNetCore.Mvc.ViewResult`.  Thus the assertion falied.
+Clicking the `run tests` link again will build and run the tests, but the test failed this time around.  As the summary states, `result` was expected to be of type `System.String`, but the actual type was `Microsoft.AspNetCore.Mvc.ViewResult` resulting in a failed assertion.
 
 ![description](https://raw.githubusercontent.com/douglasstarnes/CoreStoreimages/master/Figure10.png)
 
@@ -191,7 +203,7 @@ Figure 10. A failing test
 
 # Adding the Model
 
-Let's go deeper into the result of an action method.  The `ViewResult` has a `Model` property referring to the model object passed to the `View` method in the action method.  Right now, none of my action methods do this so I'll add a new one to the controller class.  But first, I need a model class.  So I'll add a `Models` folder to the `CoreStore.Web` project and then a new `Product.cs` file for the model object.
+Let's go deeper into the result of an action method.  The `ViewResult` has a `Model` property referring to the model object passed to the `View` method in the action method. Right now, none of my action methods do this so I'll add a new one to the controller class. But first, I need a model class.  So I'll add a `Models` folder to the `CoreStore.Web` project and then a new `Product.cs` file for the model object.
 
 ```
 namespace CoreStore.Web.Models
@@ -232,9 +244,9 @@ And the corresponding view in a new file `Views/Home/List.cshtml`.
 </ul>
 ```
 
-# Testing the `Model`
+# Testing the Model
 
-In `ControllerTests.cs` in `CoreStore.Tests` add a new test method.  Use the Quick Fix to resolve any namespaces that haven't been included.
+In `ControllerTests.cs` (in `CoreStore.Tests`) add a new test method. Use the Quick Fix to resolve any namespaces that haven't been included.
 
 ```
 [Fact]
@@ -247,7 +259,7 @@ public void VerifyListActionProductCount()
 }
 ```
 
-There are several interesting things going on here.  First is the call to `Assert.IsType` in the second line.  This time I am capturing the return value.  With this method, if the assertion passes, it will return the parameter cast to the type parameter.  So `result` will be a `ViewResult` instead of an `IActionResult`.  This is nice because in this test I want to count the number of `Product` in the model.  `ViewResult` has a `Model` property, `IActionResult` does not.  The `Model` property is of type `object` but I need it to be a collection of `Product` to count them.  So I rely upon `Assert.IsType` again.  With `model` as an `List<Product>` I can make the assertion.  This time I am using `Assert.Equal` which compares an expected and actual value.  This method has several overloads with different types.
+There are several interesting things going on here.  First is the call to `Assert.IsType` in the second line. This time I am capturing the return value. With this method, if the assertion passes, it will return the parameter cast to the type parameter. So `result` will be a `ViewResult` instead of an `IActionResult`. This is nice because in this test I want to count the number of `Product` in the model.  `ViewResult` has a `Model` property, `IActionResult` does not. The `Model` property is of type `object` but I need it to be a collection of `Product` to count them. So I rely upon `Assert.IsType` again.  With `model` as an `List<Product>` I can make the assertion. This time I am using `Assert.Equal` which compares an expected and actual value. This method has several overloads with different types.
 
 Running the test with the `run test` link produces this output.
 
@@ -257,7 +269,11 @@ Figure 11. Running the model test
 
 # Adding a repository
 
-To simplify data access, the concept of a repository class is often used.  This is an abstraction that talks to code which actually does the heavy lifting of talking to a database, such as a context class in Entity Framework Core.  But these data access implementations can be swapped out.  One might make the move from SQL Server to Azure Document DB.  To facilitate this, the repository defines an interface and two implementation of the interface, one for SQL Server and Document DB, are created.  This approach also helps with testing as we will soon see.  But first I'll set up the repository.  In a new `Core` folder I'll add a file to contain the interface `IProductRepository.cs`.
+To simplify data access, the concept of a repository class is often used.  This is an abstraction that talks to code which actually does the heavy lifting of talking to a database, such as a context class in Entity Framework Core.  
+
+But these data access implementations can be swapped out.  One might make the move from SQL Server to Azure Document DB.  To facilitate this, the repository defines an interface and two implementations of the interface, one for SQL Server and Document DB, are created. This approach also helps with testing as we will soon see.  
+
+But first I'll set up the repository. In a new `Core` folder I'll add a file to contain the interface `IProductRepository.cs`.
 
 ```
 namespace CoreStore.Web.Core
@@ -270,7 +286,7 @@ namespace CoreStore.Web.Core
 }
 ```
 
-Obviously a real world repository would be more extensive but this will do for our purposes.  The repository implementation will also be equally simplistic.  I'll put that in another file `MemoryProductRepository.cs` in a new `Infrastrucure` folder.
+Obviously a real world repository would be more extensive, but this will do for our purposes. The repository implementation will also be equally simplistic.  I'll put that in another file `MemoryProductRepository.cs` in a new `Infrastrucure` folder.
 
 ```
 using System.Collections.Generic;
@@ -312,7 +328,7 @@ public HomeController(IProductRepository _pr)
 
 ### Dependency injection briefly
 
-If you're not familiar with dependency injection you might be asking how to get the parameter to the `HomeController` constructor as the application code never explicitly calls the constructor.  This is where dependency injection comes in.  To use dependency injection, you register an interface and a corresponding implementation, IProductRepository and MemoryProductRepository in this case, with a dependency injection container.  Then when an instance of the interface is asked for, such as in the constructor parameter, an instance of the implementation will be provided.  Registering the interface and implementation is done in the `Startup` class in the `ConfigureServices` method.
+If you're not familiar with dependency injection you might be asking how to get the parameter to the `HomeController` constructor as the application code never explicitly calls the constructor. This is where dependency injection comes in. To use dependency injection, you register an interface and a corresponding implementation, IProductRepository and MemoryProductRepository in this case, with a dependency injection container. Then when an instance of the interface is asked for, such as in the constructor parameter, an instance of the implementation will be provided.  Registering the interface and implementation is done in the `Startup` class in the `ConfigureServices` method.
 
 ```
 services.AddScoped<IProductRepository, MemoryProductRepository>();
@@ -405,13 +421,13 @@ var productRepository = new Mock<IProductRepository>();
 var controller = new HomeController(productRepository.Object);
 ```
 
-This mock does absolutely nothing except satisfy the requirement of the constructor parameter.  And that's another thing, mock objects should be light weight so they don't slow down the unit tests.  Now I can click the `run test` link to make sure this test is passing.
+This mock does absolutely nothing except satisfy the requirement of the constructor parameter.  And that's another thing, mock objects should be light-weight to avoid slowing down the unit tests.  Now I can click the `run test` link to make sure this test is passing.
 
 ![description](https://raw.githubusercontent.com/douglasstarnes/CoreStoreimages/master/Figure14.png)
 
 Figure 14.  Running a test with a mock repository
 
-For the next test method, I'll need to do a little extra setup on the mock repository.
+For the next test method, I will need to do a little extra setup on the mock repository.
 
 ```
 var productRepository = new Mock<IProductRepository>();
@@ -421,7 +437,7 @@ productRepository.Setup(x => x.ListProducts()).Returns(new List<Product>{
 var controller = new HomeController(productRepository.Object);
 ```
 
-Here the `Setup` method is saying that when the `ListProducts` method is called, return a new `List` with 3 `Product` objects.  Notice that the `Product` objects are empty.  I didn't fill in any of the properties.  That's because for this test, the property values are irrelevant.  All I want to do is make sure that I have the correct count.  Also, I'll need to update the `Assert.Equal` call expected value to 3.
+Here the `Setup` method is saying that when the `ListProducts` method is called, return a new `List` with 3 `Product` objects.  Notice that the `Product` objects are empty. I didn't fill in any of the properties. That's because for this test, the property values are irrelevant. I'm only worried about having the correct count. Also, I'll need to update the `Assert.Equal` call expected value to 3.
 
 ```
 Assert.Equal(3, model.Count());
@@ -433,7 +449,7 @@ Clicking on the `run test` links shows that this test is still passing.
 
 Figure 15. Testing the mock repository
 
-Now I want to write a new test for the `Details` action method.  The `Details` action method is unique because it takes a parameter.  Here is how to handle that test.
+Now I want to write a new test for the `Details` action method. The `Details` action method is unique because it takes a parameter. Here is how to handle that test.
 
 ```
 [Fact]
@@ -450,7 +466,7 @@ public void VerifyDetailsActionReturnsProduct()
 }
 ```
 
-The main difference in this test from the previous one is the `It.IsAny<int>` call in the `Setup` method.  This tells Moq to setup the mock repository to accept any value to the method, as long as it is of type `int`.  Then it will return a hardcoded `Product` which will be in the `Model` that can be examined in the `Assert.Equal` call.  Running all of the tests now with `dotnet test` shows they are all passing again.
+The main difference in this test from the previous one is the `It.IsAny<int>` call in the `Setup` method. This tells Moq to setup the mock repository to accept any value to the method, as long as it is of type `int`.  Then it will return a hardcoded `Product` which will be in the `Model` that can be examined in the `Assert.Equal` call.  Running all of the tests now with `dotnet test` shows they are all passing again.
 
 ![description](https://raw.githubusercontent.com/douglasstarnes/CoreStoreimages/master/Figure16.png)
 
@@ -458,4 +474,7 @@ Figure 16. All tests are passing
 
 # Summary
 
-This guide has only scratched the surface of xUnit.net, Moq and testing in general.  The tests that I wrote here were simple for the sake of brevity.  What it did accomplish was to touch as many parts of the testing workflow as possible in a short amount of time.  Now you have a foundation to build on when starting to test your own applications.
+This guide has only scratched the surface of xUnit.net, Moq and testing in general. The tests that I wrote here were simple for the sake of brevity. What it did accomplish was to touch as many parts of the testing workflow as possible in a short amount of time. Now you have a foundation to build on when starting to test your own applications.
+
+___
+I hope you found this guide informative and interesting. If you have any comments or questions, please leave them in the discussion section below! Thanks for reading!
