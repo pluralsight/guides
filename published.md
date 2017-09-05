@@ -1,3 +1,8 @@
+### Testing ASP.NET Core Applications - The Cross Platform Developer Experience by Douglas Starnes
+- [Read the guide](https://www.pluralsight.com/guides/microsoft-net/testing-asp-net-core-applications-the-cross-platform-developer-experience)
+- [Read more from Douglas Starnes](https://www.pluralsight.com/guides/author/douglasstarnes) <img src="https://avatars3.githubusercontent.com/u/1081484?v=4" width="30" height="30" alt="Douglas Starnes" />
+- Related to: Microsoft.NET (C#, ASP.NET, VB.NET, etc)
+
 ### JavaScript Closures by Miroslav Gajic
 - [Read the guide](https://www.pluralsight.com/guides/front-end-javascript/javascript-closures)
 - [Read more from Miroslav Gajic](https://www.pluralsight.com/guides/author/mgajic78) <img src="https://avatars3.githubusercontent.com/u/25859460?v=4" width="30" height="30" alt="Miroslav Gajic" />
