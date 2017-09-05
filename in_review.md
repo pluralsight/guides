@@ -1,3 +1,8 @@
+### Testing ASP.NET Core Applications - The Cross Platform Developer Experience by Douglas Starnes
+- [Read the guide](https://www.pluralsight.com/guides/microsoft-net/testing-asp-net-core-applications-the-cross-platform-developer-experience?status=in-review)
+- [Read more from Douglas Starnes](https://www.pluralsight.com/guides/author/douglasstarnes) <img src="https://avatars3.githubusercontent.com/u/1081484?v=4" width="30" height="30" alt="Douglas Starnes" />
+- Related to: Microsoft.NET (C#, ASP.NET, VB.NET, etc)
+
 ### Creating iOS Rich Push Notifications by Veronika
 - [Read the guide](https://www.pluralsight.com/guides/swift/creating-ios-rich-push-notifications?status=in-review)
 - [Read more from Veronika](https://www.pluralsight.com/guides/author/veronikahristozova) <img src="https://avatars2.githubusercontent.com/u/22590489?v=4" width="30" height="30" alt="Veronika" />
