@@ -1,3 +1,8 @@
+###  ASP.NET MVC - Getting default data binding right for hierarchical views by ajsaulsberry
+- [Read the guide](https://www.pluralsight.com/guides/microsoft-net/asp-net-mvc-getting-default-data-binding-right-for-hierarchical-views?status=draft)
+- [Read more from ajsaulsberry](https://www.pluralsight.com/guides/author/ajsaulsberry) <img src="https://avatars1.githubusercontent.com/u/11444510?v=4" width="30" height="30" alt="ajsaulsberry" />
+- Related to: Microsoft.NET (C#, ASP.NET, VB.NET, etc)
+
 ### Sessions in ASP.NET Core by Douglas Starnes
 - [Read the guide](https://www.pluralsight.com/guides/microsoft-net/sessions-in-asp-net-core?status=draft)
 - [Read more from Douglas Starnes](https://www.pluralsight.com/guides/author/douglasstarnes) <img src="https://avatars3.githubusercontent.com/u/1081484?v=4" width="30" height="30" alt="Douglas Starnes" />
