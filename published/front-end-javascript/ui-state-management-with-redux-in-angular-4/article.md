@@ -95,7 +95,6 @@ Start off by adding the core dependencies for the Redux application store:
 ```
 $ yarn add @ngrx/core
 $ yarn add @ngrx/store
-$ yarn add --dev rxjs
 ```
 
 For asynchronous events such as pagination and loading bars, in the layout of the application, there needs to be a middleware:
