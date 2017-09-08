@@ -1,3 +1,8 @@
+### ASP.NET MVC - Populating dropdown lists in Razor views using the MVVM design pattern, Entity Framework, and Ajax by ajsaulsberry
+- [Read the guide](https://www.pluralsight.com/guides/microsoft-net/asp-net-mvc-populating-dropdown-lists-in-razor-views-using-the-mvvm-design-pattern-entity-framework-and-ajax)
+- [Read more from ajsaulsberry](https://www.pluralsight.com/guides/author/ajsaulsberry) <img src="https://avatars1.githubusercontent.com/u/11444510?v=4" width="30" height="30" alt="ajsaulsberry" />
+- Related to: Microsoft.NET (C#, ASP.NET, VB.NET, etc)
+
 ### Testing ASP.NET Core Applications - The Cross Platform Developer Experience by Douglas Starnes
 - [Read the guide](https://www.pluralsight.com/guides/microsoft-net/testing-asp-net-core-applications-the-cross-platform-developer-experience)
 - [Read more from Douglas Starnes](https://www.pluralsight.com/guides/author/douglasstarnes) <img src="https://avatars3.githubusercontent.com/u/1081484?v=4" width="30" height="30" alt="Douglas Starnes" />
