@@ -18,11 +18,6 @@
 - [Read more from ajsaulsberry](https://www.pluralsight.com/guides/author/ajsaulsberry) <img src="https://avatars1.githubusercontent.com/u/11444510?v=4" width="30" height="30" alt="ajsaulsberry" />
 - Related to: Microsoft.NET (C#, ASP.NET, VB.NET, etc)
 
-### ASP.NET MVC - Populating dropdown lists in Razor views using the MVVM design pattern, Entity Framework, and Ajax by ajsaulsberry
-- [Read the guide](https://www.pluralsight.com/guides/microsoft-net/asp-net-mvc-populating-dropdown-lists-in-razor-views-using-the-mvvm-design-pattern-entity-framework-and-ajax?status=in-review)
-- [Read more from ajsaulsberry](https://www.pluralsight.com/guides/author/ajsaulsberry) <img src="https://avatars1.githubusercontent.com/u/11444510?v=4" width="30" height="30" alt="ajsaulsberry" />
-- Related to: Microsoft.NET (C#, ASP.NET, VB.NET, etc)
-
 ### Getting started with Vue.JS (part-1) by A M Rahman
 - [Read the guide](https://www.pluralsight.com/guides/front-end-javascript/getting-started-with-vue-js-part-1?status=in-review)
 - [Read more from A M Rahman](https://www.pluralsight.com/guides/author/amrahman90) <img src="https://avatars2.githubusercontent.com/u/28068398?v=3" width="30" height="30" alt="A M Rahman" />
