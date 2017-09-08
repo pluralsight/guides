@@ -260,7 +260,7 @@ In this approach, instead of creating the plain old thread and using delegate to
 
 ### Problems introduced by threading
 
-While writing the multi-threaded application, there are bunch of known issues that we should be able to handle. Deadlock, race conditions are few to name. It is necessary to maintain synchronized access to different resources to make sure we are not corrupting the output. For example, if a file in the filesystem is being modified by multiple threads, the application must allow only one thread to modify the file at a time, otherwise the file might get corrupted. One way of doing it is using Lock Keyword. If we are accessing the shared resource around the Lock statement, it will allow only one thread to execute the code within the lock block.
+While writing the multi-threaded application, there are a bunch of known issues that we should be able to handle. Deadlocks and race conditions are few to name. It is necessary to maintain synchronized access to different resources to make sure we are not corrupting the output. For example, if a file in the filesystem is being modified by multiple threads, the application must allow only one thread to modify the file at a time, otherwise the file might get corrupted. One way of doing it is using Lock keyword. If we are accessing the shared resource around the Lock statement, it will allow only one thread to execute the code within the lock block.
 
     public class LockExample
     {
