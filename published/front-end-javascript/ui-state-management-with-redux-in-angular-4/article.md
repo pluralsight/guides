@@ -239,7 +239,7 @@ import {metaReducer} from "./common/index";
   //...
   imports: [
     //Provide the application reducer to the store.
-    StoreModule.provideStore(metaReducer),
+    StoreModule.forRoot({ reducer: metaReducer }),
   ],
   //...
 })
