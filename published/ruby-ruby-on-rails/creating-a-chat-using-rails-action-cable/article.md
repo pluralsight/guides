@@ -1,6 +1,6 @@
 In this tutorial we’ll explore two new features of Ruby on Rails - [Action Cable](https://github.com/rails/rails/tree/master/actioncable) and [Active Job](http://edgeguides.rubyonrails.org/active_job_basics.html). Action Cable is without a doubt, the more thrilling of the two. It features integration of the [WebSocket](https://developer.mozilla.org/en-US/docs/Web/API/WebSockets_API) communication protocol which, compared to its ancestor HTTP, offers some great new features that will give you numerous new ideas for building things. Rails is perhaps the first mature framework to adopt and implement the WebScoket protocol in itself, so you can only imagine the possibilities of what you can build with it!
 
-To best demonstrate the capabilities of ActionCable, WebSocket and Active Job, we’ll build a chat using Ruby on Rails 5.
+To best demonstrate the capabilities of ActionCable, WebSocket and Active Job, we’ll build a chat using Ruby on Rails 5.ap
 
 HTTP and Websockets
 --
@@ -117,6 +117,15 @@ Second, let's create a folder for messages in the views folder and create the pa
 
  `render @messages` will automatically look for a `_message.html.erb` partial in the `views/messages` directory to display each single message, so that we don't have to write anything extra--it just can’t get DRYer than that!
 
+Also, make sure that your `applicaton.js` has JQuery included:
+
+```
+// app/assets/javascripts/application.js 
+
+
+//= require jquery
+//= require jquery_ujs
+```
 Creating a channel
 --
 
@@ -350,6 +359,10 @@ There’s only one thing left to do: remove the `alert` and replace it with a fu
 By doing this, the '#messages' div will have the message in the template appended to the DOM. To clarify, `data['message']` contains what was broadcast from the `MessageBroadcastJob` , i.e the rendered `_message.html.erb` partial with the message in it.
 
 
+
 Now you can go ahead and start typing away in the text box and you’ll see your messages appearing in the chat.
  
+ 
+#### Got lost during the turorial?
+You can check out the [code of the tutorial on Github](https://github.com/Kaizeras/actioncable-chat-tutorial).
 
