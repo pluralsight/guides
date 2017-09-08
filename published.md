@@ -610,7 +610,7 @@
 
 ### Creating a chat using Rails' Action Cable by Hristo Georgiev
 - [Read the guide](https://www.pluralsight.com/guides/ruby-ruby-on-rails/creating-a-chat-using-rails-action-cable)
-- [Read more from Hristo Georgiev](https://www.pluralsight.com/guides/author/Kaizeras) <img src="https://avatars.githubusercontent.com/u/6340189?v=3" width="30" height="30" alt="Hristo Georgiev" />
+- [Read more from Hristo Georgiev](https://www.pluralsight.com/guides/author/Kaizeras) <img src="https://avatars3.githubusercontent.com/u/6340189?v=4" width="30" height="30" alt="Hristo Georgiev" />
 - Related to: Ruby, Ruby on Rails
 
 ### Tips and cool tricks to use in git by Lucas Andrey
