@@ -1,3 +1,8 @@
+### Getting Started with JShell by Esteban Herrera
+- [Read the guide](https://www.pluralsight.com/guides/java-and-j2ee/getting-started-with-jshell?status=draft)
+- [Read more from Esteban Herrera](https://www.pluralsight.com/guides/author/eh3rrera) <img src="https://avatars2.githubusercontent.com/u/11665759?v=4" width="30" height="30" alt="Esteban Herrera" />
+- Related to: Java and J2EE
+
 ###  ASP.NET MVC - Getting default data binding right for hierarchical views by ajsaulsberry
 - [Read the guide](https://www.pluralsight.com/guides/microsoft-net/asp-net-mvc-getting-default-data-binding-right-for-hierarchical-views?status=draft)
 - [Read more from ajsaulsberry](https://www.pluralsight.com/guides/author/ajsaulsberry) <img src="https://avatars1.githubusercontent.com/u/11444510?v=4" width="30" height="30" alt="ajsaulsberry" />
