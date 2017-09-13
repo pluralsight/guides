@@ -226,3 +226,274 @@ queueInt.dequeue()
 print(queueInt)
 // Output: []
 ```
+# Linked Lists
+A linked list might look similar to the array, yet there is a fundamental difference.
+The linked list does not allocate big amounts of memory in advance to store its items.
+ 
+Instead, the items in a linked list are separate instances. The item of a linked list is usually called node. By definition, a node is the individual part of a larger data structure. We encounter the term node also when referring to other data structures like trees or graphs.
+I'm going to use the term node instead of element or item from now on.
+ 
+Each node in a linked list has a link to the next item. This type of node lets us create a single linked list, where each node holds a link to the next node.
+<TODO: insert single linked list image>
+ 
+If a node has references for both the next and the previous node, we can build a double linked list.
+ <TODO: insert double linked list image>
+ 
+A node also needs to hold the data we want to store. So basically, for a double linked list we need a type which has a property for storing data and two properties which reprsent the link to the previous and the next node.
+ 
+Let's create a protocol which defines these requirements. I'm going to call it ```Linkable```. (It could be also NodeProtocol, it's really a matter of taste.)
+ 
+The protocol should not restrict the node's data type. Thus, we'll use a placeholder type using the ```associatedtype``` keyword.
+
+Each node can link to the previous and the next node. So, we need two read-write properties. Let's call them simply ```next``` and ```previous```. These should be optional properties, since they can be nil:
+
+ <TODO: add illustration next is nil for the last node, and previous is nil for the first node>
+ 
+Finally, we add an initializer and we're almost done with the ```Linkable``` protocol.
+
+```
+protocol Linkable {
+    associatedtype D
+    var value: D { get }
+    var next: Self? { get set }
+    var previous: Self? { get set }
+    
+    init(value: D)
+}
+```
+
+There is still an issue that we need to address.
+To surface the problem, let's see what happens if we try to adopt the protocol in a value type.
+
+Let's declare the ```StringNode``` structure and make it adopt the ```Linkable`` protocol. Xcode will generate the following code to satisfy the requirements defined in the protocol.
+
+```
+struct StringNode: Linkable {
+    var value: String
+    var next: StringNode?
+    var previous: StringNode?
+    
+    init(value: String) {
+        self.value = value
+    }
+}
+```
+Now, the compiler complains that "Value type 'StringNode' cannot have a stored property that recursively contains it." 
+The reason for this strange compiler error is not obvious, so let's try to clarify it a bit.
+
+The error has to do with memory allocation. Value types keep their data directly in their storage location. Whereas with reference types, the data exists somewhere else and the storage location only stores a reference to it.
+
+And here's what that means for us: ```StringNode``` is a value type - a struct. As such, it must store its data in its storage location. Thus, the compiler __must__ know the exact size of the structure to allocate the required amount of memory. For that, the compiler has to know the size of its properties, too.
+
+A ```StringNode``` instance could contain two values of the same type. And each of these properties could also contain two values of ```StringNode``` type, and so on. Because of this recursion, there is no way to calculate the ```StringNode```'s memory requirements. 
+
+In short, the compiler won't let us create a structure that recursively contains another instance of the same type.
+
+We need to enforce reference type semantics for our node types. We change the ```Linkable``` protocol to a class-only protocol by inheriting from ```AnyObject```. (```AnyObject``` is a protocol that can only be adopted by classes.)
+
+```
+protocol Linkable: AnyObject {
+    associatedtype D
+    var value: D { get }
+    var next: Self? { get set }
+    var previous: Self? { get set }
+    
+    init(value: D)
+}
+```
+
+We're going to unleash the power of generics to create a ```Node``` class that can hold arbitrary types:
+
+```
+final fileprivate class Node<T>: Linkable {
+    private var storage: T
+    
+    var next: Node<T>?
+    var previous: Node<T>?
+    
+    var value: T {
+        return storage
+    }
+    
+    init(value: T) {
+        storage = value
+    }
+}
+```
+
+The ```Node``` class file private since clients should not interact with it directly. And it’s final to prevent subclassing. 
+
+Alright, now it's time to switch gears and start implementing our Double Linked List.
+As usual, we'll first come up with a protocol.
+
+```
+protocol LinkedListProtocol {
+    associatedtype T
+    func append(value: T)
+    subscript(index: Int) -> T? { get set }
+    var first: T? { get }
+    var last: T? { get }
+}
+```
+
+The ```append()``` method lets us add new values to the linked list.
+The ```LinkedList``` protocol defines a subscript to set and retrieve values by index.
+
+For a double linked list, it is useful to have a reference to the first and the last value in the list. So, we introduce the ```first``` and ```last``` gettable property requirements.
+
+Next, we'll implement a conforming generic type. ```LinkedList``` allows creating a linked lists out of any type.
+The head and the tail properties are used as internal storage for the first and last properties.
+
+```
+final class LinkedList<T>: LinkedListProtocol {
+    fileprivate var head: Node<T>?
+    fileprivate var tail: Node<T>?
+    
+    var first: T? {
+        return head?.value
+    }
+    
+    var last: T? {
+        return tail?.value
+    }
+    …
+}
+```
+
+The ```append()``` method first creates a new node with the provided value. We append the new node to the list. If the list is empty, this will be the very first node and the head and the tail will point to it.
+
+```
+func append(value: T) {
+    // create new node
+    let node = Node(value: value)
+    // if tail is nil, the list is empty
+    if let last = tail {
+        node.previous = last
+        last.next = node
+        tail = node // set tail
+    } else {
+        head = node // first node, both head and tail point to it
+        tail = node
+    }
+}
+```
+
+Next, we implement the index subscript.
+        
+```
+subscript(index: Int) -> T? {
+    get {
+        let node = self.node(at: index)
+        return node?.value
+    }
+    set {
+        guard index >= 0 else {
+            return
+        }
+        if let value = newValue {
+            // newValue non-nil -> insert
+            let node = Node(value: value)
+            self.insert(node: node, at: index)
+        } else {
+            // newValue nil -> remove
+            self.remove(at: index)
+        }
+    }
+}
+    
+private func node(at index: Int) -> Node<T>? {
+    // check for valid index and non-empty list
+    guard index >= 0,
+        head != nil else {
+            return nil
+    }
+    
+    var node = head
+    var i = 0
+    while node != nil {
+        if i == index {
+            return node
+        }
+        i += 1
+        node = node?.next
+    }
+    return nil
+}
+```
+
+The getter calls the private helper method ```node(at:)```, which traverses the list of nodes by following the subsequent ```next``` pointers.
+
+The getter either returns nil if the index is invalid or any other validation issues occur.
+The setter serves two purposes: if we assign a valid value, it will insert a new node at the given index. Whereas if we assign nil, it will delete the node and the associated value at the given index.
+
+For insertion, we rely on the ```insert(node: at:)``` helper method. Which in turn uses the ```node(at:)``` method to find the node at the given index.
+
+```
+    private func insert(node: Node<T>, at index: Int) {
+        if index == 0,
+            tail == nil {
+            head = node
+            tail = node
+        } else {
+            guard let nodeAtIndex = self.node(at: index) else {
+                print("Index out of bounds.")
+                return
+            }
+            
+            if nodeAtIndex.previous == nil {
+                head = node
+            }
+
+            // set previous and next links
+            // set new node's previous link
+            node.previous = nodeAtIndex.previous
+            nodeAtIndex.previous?.next = node
+            
+            // set new node's next link
+            node.next = nodeAtIndex
+            nodeAtIndex.previous = node
+        }
+    }
+```
+We're going to insert the new node between the node at the given index and the previous one.
+We must also take care of edge cases like empty list or inserting at the front of the linked list.
+     
+To remove a value from the linked list, we must assign nil to the node at the given index.
+The ```remove(at:)``` helper method performs the logic required to unlink the selected node and deallocate it along with its content.
+Also, we must update the head and tail pointers when the node is removed from the beginning or the end of the list.
+```
+    private func remove(at index: Int) {
+        var nodeAtIndex = self.node(at: index)
+        guard nodeAtIndex != nil else {
+            print("Index out of bounds.")
+            return
+        }
+        
+        let previousNode = nodeAtIndex?.previous
+        let nextNode = nodeAtIndex?.next
+        
+        // head?
+        if previousNode == nil {
+            head = nextNode
+        }
+        
+        // tail?
+        if nodeAtIndex?.next == nil {
+            tail = previousNode
+        }
+        
+        // set previous and next links
+        // we unlink nodeAtIndex from its neighbours
+        previousNode?.next = nextNode
+        nextNode?.previous = previousNode
+        
+        // finally, delete the node
+        nodeAtIndex = nil
+    }
+```
+
+Now, we have a working Double Linked List implementation. We can append, insert, retrieve and delete values from it.
+
+We could add further features like for example the ability to iterate over its elements. But I'll leave this as an exercise to the reader. 
+
+Hint: adopt the Sequence protocol in the LinkedList class (e.g. via an extension) and create an iterator type that conforms to the IteratorProtocol. Once you have these in place, you can use a for - in loop to traverse the linked list.
