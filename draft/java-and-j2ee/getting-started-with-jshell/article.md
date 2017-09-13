@@ -477,7 +477,7 @@ jshell> /list
 By the way, `/open` also works with existing Java source files, for example:
 ```java
 jshell> /open Book.java
-´´´
+```
  
 # Using JShell to explore libraries
 As mentioned before, JShell does an excellent job helping us explore new libraries. So let's assume we want to try out the [Guava](https://github.com/google/guava) library. 
