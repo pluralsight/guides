@@ -1,6 +1,6 @@
 # Introduction
 
-Imagine you have been given a new library to perform some date operations and you want to try it to see how it works.
+Imagine you have been given a new library and you want to try it to see how it works.
 
 What would you do?
 
@@ -8,11 +8,9 @@ Would you create a class with a main method in a new or an existing project just
 
 A JUnit test?
 
-Well, in Java 9, now you have another option to accomplish this task, JShell.
+Well, in Java 9, you have another option to accomplish this task, JShell.
 
 JShell is a Read-Evaluate-Print-Loop (REPL), a command line tool that allows you to enter Java statements (simple statements, compound statements, or even full methods and classes), evaluate them, and print the result.
-
-This is something like what you can find in other JVM languages like [Scala](https://docs.scala-lang.org/overviews/repl/overview.html) and [Groovy](http://www.groovy-lang.org/groovysh.html), which means that you don't have to use the REPLs of these languages to test Java code.
 
 In this tutorial, you'll learn the basics of working with JShell, from executing simple statements to defining classes, along with some commands to manage code snippets. Finally, we'll go through a practical example that will show you how to use JShell to explore [Guava](https://github.com/google/guava), a library that includes a lot of utilities and collection types for Java.
 
@@ -21,25 +19,25 @@ JShell comes with the Java 9 JDK distribution. So download it from [here](http:/
 # The importance of a REPL
 In a few words, a REPL provides a simple way of executing code.
 
-So you might be thinking, why is a REPL better than using other methods? Like a class with a main method in an IDE?
+So you might be thinking, why is a REPL better than using other methods? Like a class with a main method in an IDE.
 
-Moreover, Java already has a few third-party REPL tools (like [Java REPL](http://www.javarepl.com)), without mentioning the capability of some IDEs to execute snippets of code.
+Besides, you could say that Java already has a few third-party REPL tools (like [Java REPL](http://www.javarepl.com)), without mentioning the capability of some IDEs to execute snippets of code.
 
 The [JDK Enhancement-Proposal (JEP) for JShell](http://openjdk.java.net/jeps/222) provides two excellent reasons. Here's the first one:
 
 > Immediate feedback is important when learning a programming language and its APIs. The number one reason schools cite for moving away from Java as a teaching language is that other languages have a "REPL" and have far lower bars to an initial "Hello, world!" program.
 
-When you're learning something new, it's important to try out things with a minimal effort and have immediate feedback for more engaging. If you had to try out some code, even a  *Hello World*, you had to create a class, add a main method, add the line(s) of code, optionally add some dependencies, and then compile and (if there are not any errors) run the code. Even with an IDE, that's more complicated than using a REPL.
+When you're learning something new, it's important to try out things with a minimal effort and have immediate feedback. If you had to try out some code, even a  *Hello World*, you had to create a class, add a main method, add the line(s) of code, optionally add some dependencies, and then compile and (if there are not any errors) run the code. Even with an IDE, that's more complicated than using a REPL.
 
 Of course, Java has alternatives to JShell, but they don't have all the features that JShell provides in one package, like full language support or preserved context and session history.
 
-In addition, JShell also provides or an API to its evaluation engine, so it can be [integrated to IDEs](https://blogs.oracle.com/geertjan/jshell-integration-in-netbeans-ide) or other tools to further simplify our workflow.
+In addition, JShell also provides an API to its evaluation engine, so it can be [integrated to IDEs](https://blogs.oracle.com/geertjan/jshell-integration-in-netbeans-ide) or other tools to further simplify our workflow.
 
 Even experienced developers can benefit from a REPL. Here's the second reason:
 
 > Exploration of coding options is also important for developers prototyping code or investigating a new API. [...] Without the ceremony of class Foo { public static void main(String[] args) { ... } }, learning and exploration is streamlined.
 
-You can quickly prototype and experiment with libraries, like what's is the return type of a method, as well as language features, for example, what's the format pattern to show the time zone for a date.
+You can quickly prototype and experiment with libraries (what's is the return type of a method), as well as language features (what's the format pattern to show the time zone for a date).
 
 Having explained the importance of a REPL, let's dig into the basics of JShell.
 
@@ -49,7 +47,9 @@ As said before, JShell is included with the JDK. Just go to the `bin` directory 
 cd C:\Program Files\Java\jdk-9\bin
 ```
 
-Or make sure this directory is in your `PATH` environment variable and execute:
+Alternatively, you can add this directory is in your `PATH` environment variable.
+
+Next, execute:
 ```bash
 jshell
 ```
@@ -86,7 +86,7 @@ jshell> $1
 $1 ==> "Hello World"
 ```
 
-A variable like this will be created implicitly when the result of an expression is not assigned to some variable. Obviously, if the expression doesn't have a return value (like a print statement), no variable will be created.
+A variable like this will be created implicitly when the result of an expression is not assigned to some variable. If the expression doesn't have a return value (like a print statement), no variable will be created.
 
 You can use this implicit variable like any other:
 ```java
@@ -94,7 +94,7 @@ jshell> System.out.println($1)
 Hello World
 ```
 
-Of course, you can also change the value it holds:
+You can also change the value it holds:
 ```java
 jshell> $1 = $1 + " again"
 $1 ==> "Hello World again"
@@ -134,14 +134,14 @@ jshell> if(sum >0)
    ...> 
 ```
 
-And we'll be prompted to continue entering snippets until a valid statement or block is completed
+We'll be prompted to continue entering snippets until a valid statement or block is completed
 ```java
 jshell> if(sum > 0)
    ...> System.out.print(sum)
 3
 ```
 
-This capability of typing multiline statements allows us to write complete methods and classes. For example, you can define a method to return the negative value of the argument:
+The capability of typing multiline statements allows us to write complete methods and classes. For example, you can define a method to return the negative value of the argument:
 ```java
 jshell> int getNegativeValue(int number) {
    ...> return -number;
@@ -163,7 +163,7 @@ jshell> int addMagicNumber(int number) {
 |  created method addMagicNumber(int), however, it cannot be invoked until variable MAGIC_NUMBER is declared
 ```
 
-You won't be able to use until `MAGIC_NUMBER` is defined:
+You won't be able to use it until `MAGIC_NUMBER` is defined:
 ```java
 jshell> System.out.println(addMagicNumber(3))
 |  attempted to call method addMagicNumber(int) which cannot be invoked until variable MAGIC_NUMBER is declared
@@ -175,7 +175,14 @@ jshell> System.out.println(addMagicNumber(3))
 4
 ```
 
-JShell supports forward references in methods and in the type of return statements, parameters and variables (for example, when you return a *Book* object and that class hasn't been defined). However, it doesn't support forward references in variable initializers (maybe because they need to be executed at the moment the variable is defined):
+JShell supports forward references in:
+- Methods
+- The type of 
+  - Return statements
+  - Parameters
+  - Variables
+
+However, it doesn't support forward references in variable initializers (maybe because they need to be executed at the moment the variable is defined):
 ```java
 jshell> int MAGIC_NUMBER = getMagicNumber()
 |  Error:
@@ -206,7 +213,7 @@ jshell> System.out.println(book.getTitle())
 Java 9
 ```
 
-Modifiers of methods and fields defined inside a class are applied just like Java:
+Modifiers of methods and fields defined inside a class are applied just like in Java:
 ```java
 jshell> book.title
 |  Error:
@@ -268,7 +275,7 @@ jshell> 1/0
 jshell>
 ```
 
-And checked exceptions without wrapping them in a try/catch statement:
+And checked exceptions, without wrapping them in a try/catch statement:
 ```java
 jshell> FileInputStream fis = new FileInputStream("nonexistentfile.txt")
 |  java.io.FileNotFoundException thrown: nonexistentfile.txt (The system cannot find the file specified)
@@ -350,7 +357,8 @@ jshell> /edit 1
 ```
 
 In this case, a window will open with a simple editor that will help you modify the snippet:
-![01-default-editor](default jshell editor)
+
+![default jshell editor](https://raw.githubusercontent.com/pluralsight/guides/master/images/61fdef0f-8103-4cfb-bd68-1509290ed066.png)
 
 This editor comes in handy to add or modify multi line statements like classes or methods and it won't be closed until you click on the *Exit* (saving the changes) or *Cancel* (discarding the changes) buttons. 
 
@@ -425,7 +433,8 @@ jshell> /list
 ```
 
 If you execute the `/edit` command without an argument, the editor will let you modify all the current statements in the session (and even add some if you want):
-![02-editor-all-statements](editor with all the statements)
+
+![editor with all the statements](https://raw.githubusercontent.com/pluralsight/guides/master/images/0c3fe9ea-95c8-41cb-927a-550cbd61695f.png)
 
 One problem we have is that all these statements are lost when we exit JShell. Luckily, there's a '/save' command, that can save all commands and snippets to a file. It has the following options:
 - `/save <file>`. Save the commands and snippets currently active to the provided file path.
@@ -438,7 +447,7 @@ This way, if we execute:
 /save my-session.txt
 ```
 
-We'll get a text file named *my-session.txt* saved in the current directory with the following content:
+A text file named *my-session.txt* will be saved in the current directory with the following content:
 ```java
 "Hello World"
 System.out.println($1)
@@ -514,9 +523,9 @@ jshell> /env -class-path .
 
 Or a list of directories, JARs, or ZIP archives to search for compiled class files (the list must be separated with `:` on Linux/Mac and `;` on Windows). You can find out more by executing `/help context`.
 
-This way, assuming you have downloaded the Guava JAR in `c:\`, we can execute the following command:
+This way, assuming you have downloaded the Guava JAR in `C:\`, we can execute the following command:
 ```java
-jshell> /env -class-path c:\guava-23.0.jar
+jshell> /env -class-path C:\guava-23.0.jar
 |  Setting new options and restoring state.
 ```
 
@@ -524,16 +533,7 @@ As you can see from the message, it will restore the session with the new classp
 
 If the library you want to test depends on other libraries, you have to download those dependencies and add them to the classpath too.
 
-Now, you can import the classes from Guava's packages, and this is where JShell auto-completion comes in handy.
-
-JShell's auto-completion capabilities allow you to view:
-- Classes in a package
-- Class members
-- The parameters required by a method
-- The list of overloads for a method
-- Documentation of classes and their members
-
-For example, you can start typing:
+Now, you can import the classes from Guava's packages. Start typing:
 ```java
 jshell> import com.google.common.primitives.
 ```
@@ -546,6 +546,15 @@ ImmutableDoubleArray   ImmutableIntArray      ImmutableLongArray     Ints       
 Primitives             Shorts                 SignedBytes            UnsignedBytes          UnsignedInteger
 UnsignedInts           UnsignedLong           UnsignedLongs
 ```
+
+This is where JShell auto-completion comes in handy.
+
+JShell's auto-completion capabilities allow you to view:
+- Classes in a package
+- Class members
+- The parameters required by a method
+- The list of overloads for a method
+- Documentation of classes and their members
 
 Let's import the `Longs` class:
 ```java
@@ -588,7 +597,7 @@ int Longs.indexOf(long[] array, long target)
 <press tab to see next documentation>
 ```
 
-Well, in this case there's no documentation found. But you can keep pressing *Tab* to see the documentation of the next methods:
+Well, in this case no documentation is found. But you can keep pressing *Tab* to see the documentation of the next methods:
 ```java
 jshell> Longs.indexOf(
 int Longs.indexOf(long[] array, long[] target)
