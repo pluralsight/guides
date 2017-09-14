@@ -5,7 +5,7 @@ Check it out in case you missed it.
 
 In this tutorial, we’re going implement some of the most popular data structures from scratch in Swift. 
 
-Swift provides some handy collection types. We can use the generic __Array__, __Set__, and __Dictionary__ right away. Yet, there may be cases when we need custom collection types. In the upcoming chapters, we’ll take a closer look at stacks, queues, linked lists, and graphs.
+Swift provides some handy collection types. We can use the generic __Array__, __Set__, and __Dictionary__ right away. Yet, there may be cases when we need custom collection types. In the upcoming chapters, we’ll take a closer look at stacks, queues, and linked lists.
 
 # The Stack
 The stack behaves like an array, in that it stores the elements in a specific order. However, unlike for arrays, we can’t randomly insert, retrieve and delete items from a stack. 
@@ -129,7 +129,7 @@ print(stackInt)  // Output:[]
 For better readability, we can add a custom description through a type extension. The ```CustomStringConvertible``` protocol defines the ```description``` computed property. By implementing it, we can add a custom description to our type. For our ```Stack``` type, we simply log the contents of the internal ```elements``` array.
 ```
 extension Stack: CustomStringConvertible {
-    var description: String {
+    var description: String {won'
         return "\(elements)"
     }
 }
@@ -228,31 +228,33 @@ print(queueInt)
 ```
 # Linked Lists
 A linked list might look similar to the array, yet there is a fundamental difference.
-The linked list does not allocate big amounts of memory in advance to store its items.
- 
-Instead, the items in a linked list are separate instances. The item of a linked list is usually called node. By definition, a node is the individual part of a larger data structure. We encounter the term node also when referring to other data structures like trees or graphs.
+The linked list does not allocate big amounts of memory in advance to store its items. Instead, the items in a linked list are separate instances. The item of a linked list is usually called __node__. 
+
+> A node is the individual part of a larger data structure. 
+
+We encounter the term node also when referring to other data structures like trees or graphs.
 I'm going to use the term node instead of element or item from now on.
  
-Each node in a linked list has a link to the next item. This type of node lets us create a single linked list, where each node holds a link to the next node.
+Each node in a linked list has a link to the next item. This type of node lets us create a __single linked list__, where each node holds a link to the next node.
 
 ![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/d7e9f5ab-f3a8-404b-a125-2e2fdb3ce35b.png)
 
-If a node has references for both the next and the previous node, we can build a double linked list.
+If a node has references for both the next and the previous node, we can build a __double linked list__.
  
 ![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/44884372-1879-4dd2-bad1-418fc3604ae7.png)
  
-A node also needs to hold the data we want to store. So basically, for a double linked list we need a type which has a property for storing data and two properties which reprsent the link to the previous and the next node.
+A node also needs to hold the data we want to store. So basically, for a double linked list we need a type which has a property for storing data and two properties which represent the link to the previous and the next node.
  
 Let's create a protocol which defines these requirements. I'm going to call it ```Linkable```. (It could be also NodeProtocol, it's really a matter of taste.)
  
 The protocol should not restrict the node's data type. Thus, we'll use a placeholder type using the ```associatedtype``` keyword.
 
-Each node can link to the previous and the next node. So, we need two read-write properties. Let's call them simply ```next``` and ```previous```. These should be optional properties, since they can be nil:
+Each node can link to the previous and the next node. So, we need two read-write properties. Let's call them simply ```next``` and ```previous```. These should be optional properties, since they both can be nil:
 
 ![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/df3ea0cb-a49d-4c48-b1df-b5911b908c92.png)
 
 
-Finally, we add an initializer and we're almost done with the ```Linkable``` protocol.
+Finally, we add an initializer and we're *almost* done with the ```Linkable``` protocol. Here's what we've got so far:
 
 ```
 protocol Linkable {
@@ -266,9 +268,9 @@ protocol Linkable {
 ```
 
 There is still an issue that we need to address.
-To surface the problem, let's see what happens if we try to adopt the protocol in a value type.
+To surface the problem, let's see what happens if we try to adopt the protocol in a *value type*.
 
-Let's declare the ```StringNode``` structure and make it adopt the ```Linkable`` protocol. Xcode will generate the following code to satisfy the requirements defined in the protocol.
+So, we declare the ```StringNode``` structure and make it conform to the ```Linkable`` protocol. Xcode will generate the following code to satisfy the protocol requirements:
 
 ```
 struct StringNode: Linkable {
@@ -282,18 +284,18 @@ struct StringNode: Linkable {
 }
 ```
 
-Now, the compiler complains that "Value type 'StringNode' cannot have a stored property that recursively contains it." 
+Unfortunately, this code won't compile: **"Value type 'StringNode' cannot have a stored property that recursively contains it."** 
 The reason for this strange compiler error is not obvious, so let's try to clarify it a bit.
 
 The error has to do with memory allocation. Value types keep their data directly in their storage location. Whereas with reference types, the data exists somewhere else and the storage location only stores a reference to it.
 
-And here's what that means for us: ```StringNode``` is a value type - a struct. As such, it must store its data in its storage location. Thus, the compiler __must__ know the exact size of the structure to allocate the required amount of memory. For that, the compiler has to know the size of its properties, too.
+And here's what that means for us: ```StringNode``` is a value type (a struct). As such, it must store its data in its storage location. Thus, the compiler _must_ know the exact size of the structure to allocate the required amount of memory. For that, the compiler has to know the size of its properties, too.
 
-A ```StringNode``` instance could contain two values of the same type. And each of these properties could also contain two values of ```StringNode``` type, and so on. Because of this recursion, there is no way to calculate the ```StringNode```'s memory requirements. 
+A ```StringNode``` instance could contain two values of the same type. And each of these properties could also contain two values of ```StringNode``` type, and so on. _Because of this recursion, there is no way to calculate the ```StringNode```'s memory requirements._
 
 In short, the compiler won't let us create a structure that recursively contains another instance of the same type.
 
-We need to enforce reference type semantics for our node types. We change the ```Linkable``` protocol to a class-only protocol by inheriting from ```AnyObject```. (```AnyObject``` is a protocol that can only be adopted by classes.)
+We need to enforce __reference type semantics__ for our node types. We change the ```Linkable``` protocol to a class-only protocol by inheriting from ```AnyObject```. (```AnyObject``` is a protocol that can only be adopted by classes.)
 
 ```
 protocol Linkable: AnyObject {
@@ -426,10 +428,11 @@ private func node(at index: Int) -> Node<T>? {
 }
 ```
 
-The getter calls the private helper method ```node(at:)```, which traverses the list of nodes by following the subsequent ```next``` pointers.
+The ```getter``` calls the private helper method ```node(at:)```, which traverses the list of nodes by following the subsequent ```next``` pointers.
 
-The getter either returns nil if the index is invalid or any other validation issues occur.
-The setter serves two purposes: if we assign a valid value, it will insert a new node at the given index. Whereas if we assign nil, it will delete the node and the associated value at the given index.
+The ```getter``` either returns a valid value or nil if the index is invalid or in case of validation issues.
+
+The ```setter``` serves two purposes: if we assign a valid value, it will insert a new node at the given index. Whereas if we assign nil, it will delete the node.
 
 For insertion, we rely on the ```insert(node: at:)``` helper method. Which in turn uses the ```node(at:)``` method to find the node at the given index.
 
@@ -464,7 +467,7 @@ We're going to insert the new node between the node at the given index and the p
 We must also take care of edge cases like empty list or inserting at the front of the linked list.
      
 To remove a value from the linked list, we must assign nil to the node at the given index.
-The ```remove(at:)``` helper method performs the logic required to unlink the selected node and deallocate it along with its content.
+The ```remove(at:)``` helper method performs the logic required to unlink the selected node and deallocate it.
 Also, we must update the head and tail pointers when the node is removed from the beginning or the end of the list.
 ```
 private func remove(at index: Int) {
@@ -497,15 +500,14 @@ private func remove(at index: Int) {
 }
 ```
 
-Now, we have a working Double Linked List implementation. We can append, insert, retrieve and delete values from it.
+Now, we have a working __Double Linked List__ implementation. We can append, insert, retrieve and delete values from it.
 
-We could add further features like for example the ability to iterate over its elements. But I'll leave this as an exercise to the reader. 
+We could add further features like e.g. the ability to iterate over its elements. But I'll leave this as an exercise to the reader. 
 
-> Hint: make the LinkedList class conform to the ```Sequence``` and the ```IteratorProtocol``` protocols and implement the ```next()``` method. The ```next()``` method returns an optional ```T?``` instance. 
+_Hint: make the LinkedList class conform to the ```Sequence``` and the ```IteratorProtocol``` protocols and implement the ```next()``` method. The ```next()``` method returns an optional ```T?``` instance._
 
-> Internally, the method must keep track of the current node, which is initially set to the head node. Subsequent calls to the ```next()``` method set the current node to the next node in the linked list. Once you have these in place, you can use a ___for - in___ loop to traverse the linked list.
+_Internally, the method must keep track of the current node, which is initially set to the head node._ _Subsequent calls to the ```next()``` method set the current node to the next node in the linked list._ _Once you have these in place, you can use a for - in loop to traverse the linked list._
 
-By the way, I'm going to talk about the ___Iterator___ pattern and the other behavioral design patterns in my upcoming Pluralsight course. In the meantime, check out [my existing Swift courses on Pluralsight](https://www.pluralsight.com/authors/karoly-nyisztor)
-
+By the way, I'm going to talk about the ___Iterator___ pattern and the other behavioral design patterns in my upcoming Pluralsight course. In the meantime, check out [my Swift courses on Pluralsight](https://www.pluralsight.com/authors/karoly-nyisztor)
 
 Thanks for reading!
