@@ -13,11 +13,6 @@
 - [Read more from Veronika](https://www.pluralsight.com/guides/author/veronikahristozova) <img src="https://avatars2.githubusercontent.com/u/22590489?v=4" width="30" height="30" alt="Veronika" />
 - Related to: Swift
 
-### Data Structures in Swift - Part 2 by Károly Nyisztor
-- [Read the guide](https://www.pluralsight.com/guides/swift/data-structures-in-swift-part-2?status=draft)
-- [Read more from Károly Nyisztor](https://www.pluralsight.com/guides/author/nyisztor) <img src="https://avatars1.githubusercontent.com/u/198511?v=4" width="30" height="30" alt="Károly Nyisztor" />
-- Related to: Swift
-
 ### ASP.NET Core without Windows by Douglas Starnes
 - [Read the guide](https://www.pluralsight.com/guides/microsoft-net/asp-net-core-without-windows?status=draft)
 - [Read more from Douglas Starnes](https://www.pluralsight.com/guides/author/douglasstarnes) <img src="https://avatars3.githubusercontent.com/u/1081484?v=4" width="30" height="30" alt="Douglas Starnes" />
