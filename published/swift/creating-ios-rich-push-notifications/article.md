@@ -20,7 +20,6 @@ In order to get started with push notifications, you need to follow these steps:
 3. Upload your *.certSigningRequest* file that you prevously saved on disk or emailed the Certificate Authority, download your generated Certificate, and double-click the *.cer* file to install it in your Keychain Access.
 4. Locate your Certificate in Keychain Access under
     "Certificates" section and export it as shown [here](https://docs.centroida.co/wp-content/uploads/2017/04/4d-Export-the-cert-from-Keychain.png)
-// No link provided?
 Your Certificate is now saved as .p12 file. If you need your Certificate as `.pem/.p8` file you can easy convert it
 ```
     $ openssl pkcs12 -in CertName.p12 -out CertName.pem -nodes -clcerts
