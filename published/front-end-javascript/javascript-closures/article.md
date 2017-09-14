@@ -120,7 +120,7 @@ Also, the `currentValue` and `initValue` variables are private for the `counter`
 
 ### Closure calls from multiple object references
 
-Let's see how this mechanism works if we create multiple function objects. For instance, let's use `counter(int)` to create two objects called `myCounter1` and `myCounter2` and call their property functions:
+Let's see how this mechanism works if we create multiple function objects. For instance, let's use `counter` to create two objects called `myCounter1` and `myCounter2` and call their property functions:
 
 ``` JavaScript
 var myCounter1 = counter(0);
@@ -131,7 +131,7 @@ myCounter2.increment(2);
 myCounter1.decrement(1);
 myCounter2.decrement(1);
 ```
-In the first two lines of the code, we have actually created 2 different objects, `myCounter1` and `myCounter2`. These objects have the same properties, `increment` and `decrement`, which are references to the `increment` and `decrement` functions. The `myCounter1` object is created by calling the `counter` function with parameter `0`, and the `myCounter2` by calling it with parameter `3`. This means that `increment` and `decrement` functions will have **different** values of the `currentValue` variable in the outer scope, so their calls on those two objects will produce different results. In this case, we have 2 different `increment` and `decrement` functions because we created 2 different objects each with a pair of functions that has has its own scope. 
+In the first two lines of the code, we have actually created 2 different objects, `myCounter1` and `myCounter2`. These objects have the same properties, `increment` and `decrement`, which are references to the `increment` and `decrement` functions. The `myCounter1` object is created by calling the `counter` function with parameter `0`, and the `myCounter2` by calling it with parameter `3`. This means that `increment` and `decrement` functions will have **different** values of the `currentValue` variable in the outer scope, so their calls on those two objects will produce different results. In this case, we have 2 different `increment` and `decrement` functions because we created 2 different objects each with a pair of functions that has its own scope.
 
 This is a rather confusing edge case, but it makes the code easier to understand. The two variable references point to separate objects because `myCounter1` and `myCounter2` were instantiated using separate calls to `counter`. Thus, their calls to `increment` and `decrement` are separate as well.
 
