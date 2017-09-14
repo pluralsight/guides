@@ -3,7 +3,12 @@
     "author_name": "veronikahristozova",
     "author_real_name": "Veronika",
     "branch": "master",
-    "branches": [],
+    "branches": [
+        [
+            "adityavarshney",
+            "adityavarshney-swift-creating-ios-rich-push-notifications"
+        ]
+    ],
     "filename": "article.md",
     "first_commit": "60d2e76c8d21e85cf56056b629be31e630aaf1a2",
     "image_url": "https://avatars2.githubusercontent.com/u/22590489?v=4",
