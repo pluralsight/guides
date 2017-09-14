@@ -14,7 +14,7 @@ JShell is a Read-Evaluate-Print-Loop (REPL), a command line tool that allows you
 
 In this tutorial, you'll learn the basics of working with JShell, from executing simple statements to defining classes, along with some commands to manage code snippets. Finally, we'll go through a practical example that will show you how to use JShell to explore [Guava](https://github.com/google/guava), a library that includes a lot of utilities and collection types for Java.
 
-JShell comes with the Java 9 JDK distribution. So download it from [here](http://www.oracle.com/technetwork/java/javase/downloads/index.html) or [here](http://openjdk.java.net/install/) and follow install instructions. Alternatively, you can [use Docker and an OpenJDK image to run JShell](https://medium.com/@_purukaushik/start-using-java-9-shell-jshell-with-docker-888c91ff742c).
+JShell comes with the Java 9 JDK distribution. So download it from [here](http://www.oracle.com/technetwork/java/javase/downloads/index.html) or [here](http://openjdk.java.net/install/) and follow the installation instructions. Alternatively, you can [use Docker and an OpenJDK image to run JShell](https://medium.com/@_purukaushik/start-using-java-9-shell-jshell-with-docker-888c91ff742c).
 
 # The importance of a REPL
 In a few words, a REPL provides a simple way of executing code.
