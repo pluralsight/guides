@@ -36,11 +36,11 @@ The example project and the code presented in this guide are based on the .NET F
 
 1. We'll begin with an overview of the case study entities and the principal views of the example solution used to prepare this guide.
 
-1. Then we'll see how to create a view model incorporating member fields of various primitive types and a field that is a collection of an object type.
+1. Then we'll see how to create a view model incorporating member fields of various primitive types and incorporating a field that is a collection of an object type.
 
 1. Next we'll look at the code required to present information to the end user.
 
-1. We'll conclude with a close look at how to ensure Razor code creates the correct HTML and we'll take a look how to use HtmlHelpers and CSS to apply formatting to the form fields created by the view.
+1. We'll conclude with a close look at how to ensure that Razor code creates the correct HTML and we'll take a look how to use HtmlHelpers and CSS to apply formatting to the form fields created by the view.
 
 ### Case study
 
@@ -54,7 +54,7 @@ The sample solution implements the following:
   * web application,
   * entities,
   * data layer (context and repositories);
-* the Model-View ViewModel design pattern;
+* the Model-View ViewModel (MVVM) design pattern;
 * the repository design pattern; and
 * the Entity Framework ORM with code-first development.
 
@@ -64,9 +64,9 @@ Using the example solution you can follow along with each section below and expe
 
 You should have:
 
-* a working knowledge of ASP.NET MVC,
-* an understanding of the Model View ViewModel (MVVM) design pattern, and
-* Visual Studio.
+* a working knowledge of ASP.NET MVC
+* an understanding of the Model View ViewModel (MVVM) design pattern
+* Visual Studio ready to go
 
 ## BlipBinding case study solution
 
@@ -231,7 +231,7 @@ In the code for the view above, note that the list of customers is created with 
 }
 ~~~
 
-In the list of customers the view model has a flat structure, it's just an enumerable list of objects that contain the customer information. Here's the `@model` directive from the beginning of `Index.cshtml`:
+In the list of customers, the view model has a flat structure, it's just an enumerable list of objects that contain the customer information. Here's the `@model` directive from the beginning of `Index.cshtml`:
 
 ~~~csharp
 @model IEnumerable<Blip.Entities.Customers.ViewModels.CustomerDisplayViewModel>
@@ -317,8 +317,7 @@ For the second tier data, the list of orders, we're looping through the records 
     }
 }
 ~~~
-
-You'll also note that we're using a `for` loop with a counting variable rather than a `foreach` loop. *This is crucial to getting binding to work for the 'HttpPost' action.*
+You'll also note that we're using a `for` loop with a counting variable rather than a `foreach` loop. **This is crucial to getting binding to work for the 'HttpPost' action, as we'll see soon.**
 
 #### Blip.Entities\Orders.ViewModels\CustomerOrdersDisplayViewModel.cs
 
@@ -384,7 +383,7 @@ The repository methods take care of transposing the data from the structure of t
 
 ### OrdersController action for Index HttpGet
 
-By using MVVM and the repository design pattern we can make our controller actions succinct and provide separation of concerns between the presentation layer, business logic, and data. We can see that in action in the controller action that populates the **Order/Index** view.
+By using MVVM and the repository design pattern, we can make our controller actions succinct and provide separation of concerns between the presentation layer, business logic, and data. We can see that in action in the controller action that populates the **Order/Index** view.
 
 #### Blip.Web\Controllers\OrderController.cs
 
@@ -420,7 +419,7 @@ All that this controller action needs to do when passed a `CustomerID` from the 
 
 ## Saving data
 
-Saving data using default binding is where things can get tricky, and the correct approach has not always been well documented. This is also a situation where the code fails silently. Developers will see their web pages being populated with data correctly, but the values won't show up in the model when it arrives at the controller action for HttpPost.
+Saving data using default binding can be a tricky process -- the correct approach is not well-documented. This is also a situation where the code fails silently. Developers will see their web pages being populated with data correctly, but the values won't show up in the model when it arrives at the controller action for HttpPost.
 
 To better understand this, we're first going to take a look at the problem, then show how to code the functionality correctly.
 
@@ -471,7 +470,7 @@ The HTML produced by the preceding code would look like this:
 
 *Form elements with ambiguous element names and ID's*
 
-Look at the areas highlighted in yellow. Each row is a separate textbox on the form shown above for the [Order/Index view](#Order/Index-view). Each record has the same value for the `name` and `id` elements: `order.Description`. Without a way to identify the records distinctly, MVC gives up and returns `null` for the `Orders` field of the CustomerOrdersListViewModel to which the **Order/Index** view is bound.
+Look at the areas highlighted in yellow. Each row is a separate textbox on the form shown above for the [Order/Index view](#Order/Index-view). Each record has the same value for the `name` and `id` elements: `order.Description`. Without a way to identify the records distinctly, MVC **gives up** and returns `null` for the `Orders` field of the `CustomerOrdersListViewModel` to which the **Order/Index** view is bound.
 
 ### Correctly binding collection data
 
@@ -530,7 +529,7 @@ By setting a breakpoint in the HttpPost controller action for the **Order/Index*
 
 As we noted above, we're using the `TextBoxFor` HtmlHelper for read-only fields, rather than the `DisplayFor` helper. This is so we can return the data to the controller when the HttpPost event fires (when the **Save** button on the page is pressed).
 
-When MVC generate the HTML for a `DisplayFor` HTML helper it renders the element as simple text.
+When MVC generates the HTML for a `DisplayFor` HTML helper, it renders the element as simple text.
 
 For example, a table cell coded like this:
 
@@ -614,7 +613,7 @@ public ActionResult Index(CustomerOrdersListViewModel model)
 
 ### Save repository method
 
-The repository method associated with our order list view can also be simple: all we need to do is find the appropriate records in the **Orders** table and update them.
+The repository method associated with our order list view can also be simple. All we need to do is find the appropriate records in the **Orders** table and update them.
 
 #### Blip.Data\Orders\OrdersRepository.cs
 
@@ -643,7 +642,7 @@ public void SaveOrders(List<OrderDisplayViewModel> orders)
 
 ## More information
 
-If you want to dive deeper into the topics discussed in this guide, the following is a  selected list of resources.
+If you want to dive deeper into the topics discussed in this guide, the following is a curated list of resources.
 
 ### Related PluralSight training classes
 
@@ -680,4 +679,4 @@ This page is the jumping off point for a variety of resources on EF.
 This page provides a summary of the benefits of the repository pattern.
 
 ---
-*Written by A. J. Saulsberry, 05 September 2017*
+If you found this guide informative or interesting, please hit the favorites button at the top of the page! Feel free to drop comments and feedback in the discussion section below. Thanks for reading!
