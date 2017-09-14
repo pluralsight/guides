@@ -18,11 +18,6 @@
 - [Read more from Douglas Starnes](https://www.pluralsight.com/guides/author/douglasstarnes) <img src="https://avatars3.githubusercontent.com/u/1081484?v=4" width="30" height="30" alt="Douglas Starnes" />
 - Related to: Microsoft.NET (C#, ASP.NET, VB.NET, etc)
 
-### JavaScript Closures by Miroslav Gajic
-- [Read the guide](https://www.pluralsight.com/guides/front-end-javascript/javascript-closures)
-- [Read more from Miroslav Gajic](https://www.pluralsight.com/guides/author/mgajic78) <img src="https://avatars3.githubusercontent.com/u/25859460?v=4" width="30" height="30" alt="Miroslav Gajic" />
-- Related to: Front-End JavaScript (Angular, React, Meteor, etc)
-
 ### ASP.NET MVC - Using multiple submit buttons with default model binding and controller actions by ajsaulsberry
 - [Read the guide](https://www.pluralsight.com/guides/microsoft-net/asp-net-mvc-using-multiple-submit-buttons-with-default-model-binding-and-controller-actions)
 - [Read more from ajsaulsberry](https://www.pluralsight.com/guides/author/ajsaulsberry) <img src="https://avatars1.githubusercontent.com/u/11444510?v=4" width="30" height="30" alt="ajsaulsberry" />
