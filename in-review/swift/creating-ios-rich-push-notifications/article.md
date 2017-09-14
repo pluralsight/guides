@@ -1,8 +1,8 @@
 ![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/df051757-9a09-417b-a77a-8192c984b9a4.png)
 
-These days, having a visually stunning mobile app isn’t good enough. In order for your mobile app to be truly successful, it must be designed with UX in mind. Push Notifications are a great solution to interact with your app consumers even when they are not using the application.
+These days, having a visually stunning mobile app isn’t good enough. For your mobile app to see success, it must be designed with user experience (UX) in mind. Push Notifications are a *great* means of interacting with consumers even when they are not using the application.
 
- This guide will walk you through setting up your project for rich push notifications, you will learn some server-side requirements and we will peek into the infinite possibilities!
+This guide will walk you through setting up your project for rich push notifications, you will learn some server-side requirements and we will peek into the infinite possibilities!
 
 
 ## Setup
@@ -10,16 +10,16 @@ These days, having a visually stunning mobile app isn’t good enough. In order 
 In order to get started with push notifications, you need to follow these steps:
 
 
-1.  Open existing Xcode project or create New. Select your project target and go to Capabilities to enable Push Notifications as shown [here][1]. 
-2. Open **Keychain Access > Certificate Assistant > Request a Certificate From a Certificate Authority...** Fill the required fields and choose either to email CA the request or save it to disk. Go to [your Apple member center][2] and locate your App ID. You will see that "Push Notifications" service is now *Configurable*. Select the ` Edit` button. Under Push Notifications section there are two options for certificates as shown [here][3]. Select the **Create Certificate** button to create your Certificate.
+1.  Open an existing Xcode project or create a new project. Select your project target and go to Capabilities to enable Push Notifications as shown [here](https://docs.centroida.co/wp-content/uploads/2017/04/1-step-enable-PN-in-Capabilities-300x77.png). 
+2. Open **Keychain Access > Certificate Assistant > Request a Certificate From a Certificate Authority...** Fill the required fields and choose either to email CA the request or save it to disk. Go to [your Apple member center](https://developer.apple.com/account/ios/identifier/bundle) and locate your App ID. You will see that "Push Notifications" service is now *Configurable*. Select the ` Edit` button. Under Push Notifications section there are two options for certificates as shown [here](https://docs.centroida.co/wp-content/uploads/2017/04/3-step-create-certificate-300x183.png). Select the **Create Certificate** button to create your Certificate.
 
  > **Development Certificate** - App built from Xcode will receive notifications.
 
  > **Production Certificate** -App installed from Apple Store or Test Flight will receive notifications.
 
-3. Upload your *.certSigningRequest* file you prevously saved on disk/emailed the CA, download your generated Certificate and double-click the *.cer* file to install it in your Keychain Access.
+3. Upload your *.certSigningRequest* file that you prevously saved on disk or emailed the Certificate Authority, download your generated Certificate, and double-click the *.cer* file to install it in your Keychain Access.
 4. Locate your Certificate in Keychain Access under
-    "Certificates" section and export it as shown [here][4]
+    "Certificates" section and export it as shown [here](https://docs.centroida.co/wp-content/uploads/2017/04/4d-Export-the-cert-from-Keychain.png)
 // No link provided?
 Your Certificate is now saved as .p12 file. If you need your Certificate as `.pem/.p8` file you can easy convert it
 ```
@@ -27,7 +27,8 @@ Your Certificate is now saved as .p12 file. If you need your Certificate as `.pe
 ```
 
 ## Registering for push notifications
- Simply as that in your AppDelegate file:
+
+Simply as that in your AppDelegate file:
 
 ```
 import UIKit
@@ -53,7 +54,7 @@ func application(_ application: UIApplication, didFinishLaunchingWithOptions lau
 ...
 
 ```
- Add the `didRegisterForRemoteNotificationsWithDeviceToken` function in your AppDelegate.swift file to get the deviceToken, which will receive notifications.
+Add the `didRegisterForRemoteNotificationsWithDeviceToken` function in your AppDelegate.swift file to get the deviceToken, which will receive notifications.
 
 ```
 ...
@@ -68,7 +69,7 @@ Awesome! Now it's time to make them super duper nice-looking. 🙀
 
 ## Displaying push notifications
 
-> NB: Your notifications interface should feel like natural extension of your containing app!
+> Your notifications interface should feel like natural extension of your containing app!
 
 A very important step for sending media attachment is the `mutable-content` key in the push payload from the server. So let's take a look at this example payload.
 
@@ -89,9 +90,9 @@ A very important step for sending media attachment is the `mutable-content` key 
 </div>
 
 
-From **Xcode > File > New > Target...** select *Notification Service Extension* and activate suggested scheme. Notice that there are two autogenerated files now - NotificationService.swift and Info.plist.
+From **Xcode > File > New > Target...**, select *Notification Service Extension* and activate suggested scheme. Notice that there are two autogenerated files now - `NotificationService.swift` and `Info.plist.`
 
-In the `NotificationService.swift` file handle the media url from the payload for example with FileManager:
+In the `NotificationService.swift` file, we need to handle the media URL from the payload. For example, we can use FileManager:
 
 ```
 ...
@@ -124,7 +125,7 @@ override func didReceive(_ request: UNNotificationRequest, withContentHandler co
 ...
 ```
 
-... and this `UNNotificationAttachment`extension func to save the media to disk:
+... and this `UNNotificationAttachment`extension function to save the media to disk:
 
 ```
 extension UNNotificationAttachment {
@@ -152,11 +153,11 @@ extension UNNotificationAttachment {
 
 Voila!
 
-![Rich Push Notifications - GIF][5]
+![Rich Push Notifications - GIF](https://media.giphy.com/media/3ohzdDLk01t0ZXXix2/giphy.gif)
 
 ## Adding actions to push notifications
 
-Let's add some actions to our Rich Push Notifications. Modify the payload by adding "category" key to notify that we want to display actions.
+Let's add some actions to our Rich Push Notifications. Modify the payload by adding the "category" key to notify that we want to display actions.
 
 ```
 {
@@ -172,11 +173,11 @@ Let's add some actions to our Rich Push Notifications. Modify the payload by add
    }
 }
 ```
- In the autogenerated Notification Service Info.plist add UNNotificationExtensionCategory Array with max 4 actions identifiers.
+In the autogenerated Notification Service `Info.plist`, add an UNNotificationExtensionCategory array with up to 4 action identifiers. These can be seen as "Item 0" and "Item 1" in the picture below:
 
-![enter image description here][6]
+![UNNotificationExtensionCategory items](https://s4.postimg.org/k1find9z1/PN_Service_plist_for_actions.png)
 
- Set the notification category in your `didReceiveRequest` func in the `NotificationService.swift` file
+Adjust the notification category in your `didReceiveRequest` function in the `NotificationService.swift` file:
 
 <div class="code-snippet">
   <pre class="line-numbers"><code class="language-swift">
@@ -190,13 +191,12 @@ UNUserNotificationCenter.current().setNotificationCategories([category])
 </code></pre>
 </div>
 
-Simple as that! Time for preview:
+Simple as that! 🎉
+Time for a preview:
 
-🎉
+![Rich Push Notifications - Actions](https://media.giphy.com/media/xUPGcqdPpl58N3v8dy/giphy.gif)
 
-![Rich Push Notifications - Actions][7]
-
-Finally add the logic for the notifications buttons in the AppDelegate.swift file, using the identifiers we specified in the Info.plist file earlier. The method we call is **didReceive response** from the `UNUserNotificationCenterDelegate`
+Finally, add the logic for the notifications buttons in the `AppDelegate.swift` file, using the identifiers that we specified in the `Info.plist` file earlier. The method we call is **didReceive response** from the `UNUserNotificationCenterDelegate`
 
 ```
 ...
@@ -214,8 +214,7 @@ func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive respo
 ```
 
 
->  Warning!
-Don't forget to update the badge icon number when needed!
+>  Warning! Don't forget to update the badge icon number when needed!
 
 
 ```
@@ -224,24 +223,17 @@ application.applicationIconBadgeNumber = 0
 
 ## Custom preview
 
- Last but not least let's add a custom preview for notifications from **Xcode > File > New > Target...** select *Notification Content* and activate suggested scheme. Now we have `NotificationViewController.swift`, `MainInterface.storyboard` and `Info.plist` files.
+ Last, but not least, let's add a custom preview for notifications from **Xcode > File > New > Target...** select *Notification Content* and activate suggested scheme. Now we have `NotificationViewController.swift`, `MainInterface.storyboard` and `Info.plist` files.
 
-## Conclusion - The sky is the limit
+## Conclusion
 
-It's up to your imagination from now on... or take a look at the sample project included below to begin with something cool!
+> The sky is the limit
 
-### Useful links
+Let your imagination run wild as you use your newfound abilities to build richer and richer push notifications for IOS apps. or take a look at the sample project included below to continue practicing with some cool ideas!
 
-1.  Sample Project: <https://github.com/veronikahristozova/RichPushNotifications>
-2.  Apple Human Interface Guidelines for Push Notifications: [here][8]
-3.  Ray Wenderlich Tutorial: [here][9]
+1.  [Sample Project](https://github.com/veronikahristozova/RichPushNotifications)
+2.  [Apple Human Interface Guidelines for Push Notifications](https://developer.apple.com/ios/human-interface-guidelines/features/notifications/)
+3.  [Ray Wenderlich Tutorial](https://www.raywenderlich.com/123862/push-notifications-tutorial)
 
- [1]: https://docs.centroida.co/wp-content/uploads/2017/04/1-step-enable-PN-in-Capabilities-300x77.png
- [2]: https://developer.apple.com/account/ios/identifier/bundle
- [3]: https://docs.centroida.co/wp-content/uploads/2017/04/3-step-create-certificate-300x183.png
- [4]: https://docs.centroida.co/wp-content/uploads/2017/04/4d-Export-the-cert-from-Keychain.png
- [5]: https://media.giphy.com/media/3ohzdDLk01t0ZXXix2/giphy.gif
- [6]: https://s4.postimg.org/k1find9z1/PN_Service_plist_for_actions.png
- [7]: https://media.giphy.com/media/xUPGcqdPpl58N3v8dy/giphy.gif
- [8]: https://developer.apple.com/ios/human-interface-guidelines/features/notifications/
- [9]: https://www.raywenderlich.com/123862/push-notifications-tutorial
+___
+If you found this guide informative, engaging, or just plain awesome, feel free to hit the favorite button atop the page, and leave your comments in the discussion section below. Thanks for reading!
