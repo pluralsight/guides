@@ -234,10 +234,12 @@ Instead, the items in a linked list are separate instances. The item of a linked
 I'm going to use the term node instead of element or item from now on.
  
 Each node in a linked list has a link to the next item. This type of node lets us create a single linked list, where each node holds a link to the next node.
-<TODO: insert single linked list image>
- 
+
+![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/d7e9f5ab-f3a8-404b-a125-2e2fdb3ce35b.png)
+
 If a node has references for both the next and the previous node, we can build a double linked list.
- <TODO: insert double linked list image>
+ 
+![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/44884372-1879-4dd2-bad1-418fc3604ae7.png)
  
 A node also needs to hold the data we want to store. So basically, for a double linked list we need a type which has a property for storing data and two properties which reprsent the link to the previous and the next node.
  
@@ -247,8 +249,9 @@ The protocol should not restrict the node's data type. Thus, we'll use a placeho
 
 Each node can link to the previous and the next node. So, we need two read-write properties. Let's call them simply ```next``` and ```previous```. These should be optional properties, since they can be nil:
 
- <TODO: add illustration next is nil for the last node, and previous is nil for the first node>
- 
+![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/df3ea0cb-a49d-4c48-b1df-b5911b908c92.png)
+
+
 Finally, we add an initializer and we're almost done with the ```Linkable``` protocol.
 
 ```
