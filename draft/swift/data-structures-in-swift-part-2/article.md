@@ -278,6 +278,7 @@ struct StringNode: Linkable {
     }
 }
 ```
+
 Now, the compiler complains that "Value type 'StringNode' cannot have a stored property that recursively contains it." 
 The reason for this strange compiler error is not obvious, so let's try to clarify it a bit.
 
@@ -400,7 +401,8 @@ subscript(index: Int) -> T? {
         }
     }
 }
-    
+
+// Returns the node at given index
 private func node(at index: Int) -> Node<T>? {
     // check for valid index and non-empty list
     guard index >= 0,
@@ -429,31 +431,31 @@ The setter serves two purposes: if we assign a valid value, it will insert a new
 For insertion, we rely on the ```insert(node: at:)``` helper method. Which in turn uses the ```node(at:)``` method to find the node at the given index.
 
 ```
-    private func insert(node: Node<T>, at index: Int) {
-        if index == 0,
-            tail == nil {
-            head = node
-            tail = node
-        } else {
-            guard let nodeAtIndex = self.node(at: index) else {
-                print("Index out of bounds.")
-                return
-            }
-            
-            if nodeAtIndex.previous == nil {
-                head = node
-            }
-
-            // set previous and next links
-            // set new node's previous link
-            node.previous = nodeAtIndex.previous
-            nodeAtIndex.previous?.next = node
-            
-            // set new node's next link
-            node.next = nodeAtIndex
-            nodeAtIndex.previous = node
+private func insert(node: Node<T>, at index: Int) {
+    if index == 0,
+        tail == nil {
+        head = node
+        tail = node
+    } else {
+        guard let nodeAtIndex = self.node(at: index) else {
+            print("Index out of bounds.")
+            return
         }
+    
+        if nodeAtIndex.previous == nil {
+            head = node
+        }
+
+        // set previous and next links
+        // set new node's previous link
+        node.previous = nodeAtIndex.previous
+        nodeAtIndex.previous?.next = node
+    
+        // set new node's next link
+        node.next = nodeAtIndex
+        nodeAtIndex.previous = node
     }
+}
 ```
 We're going to insert the new node between the node at the given index and the previous one.
 We must also take care of edge cases like empty list or inserting at the front of the linked list.
@@ -462,38 +464,45 @@ To remove a value from the linked list, we must assign nil to the node at the gi
 The ```remove(at:)``` helper method performs the logic required to unlink the selected node and deallocate it along with its content.
 Also, we must update the head and tail pointers when the node is removed from the beginning or the end of the list.
 ```
-    private func remove(at index: Int) {
-        var nodeAtIndex = self.node(at: index)
-        guard nodeAtIndex != nil else {
-            print("Index out of bounds.")
-            return
-        }
-        
-        let previousNode = nodeAtIndex?.previous
-        let nextNode = nodeAtIndex?.next
-        
-        // head?
-        if previousNode == nil {
-            head = nextNode
-        }
-        
-        // tail?
-        if nodeAtIndex?.next == nil {
-            tail = previousNode
-        }
-        
-        // set previous and next links
-        // we unlink nodeAtIndex from its neighbours
-        previousNode?.next = nextNode
-        nextNode?.previous = previousNode
-        
-        // finally, delete the node
-        nodeAtIndex = nil
+private func remove(at index: Int) {
+    var nodeAtIndex = self.node(at: index)
+    guard nodeAtIndex != nil else {
+        print("Index out of bounds.")
+        return
     }
+    
+    let previousNode = nodeAtIndex?.previous
+    let nextNode = nodeAtIndex?.next
+    
+    // head?
+    if previousNode == nil {
+        head = nextNode
+    }
+    
+    // tail?
+    if nodeAtIndex?.next == nil {
+        tail = previousNode
+    }
+    
+    // set previous and next links
+    // we unlink nodeAtIndex from its neighbours
+    previousNode?.next = nextNode
+    nextNode?.previous = previousNode
+        
+    // finally, delete the node
+    nodeAtIndex = nil
+}
 ```
 
 Now, we have a working Double Linked List implementation. We can append, insert, retrieve and delete values from it.
 
 We could add further features like for example the ability to iterate over its elements. But I'll leave this as an exercise to the reader. 
 
-Hint: adopt the Sequence protocol in the LinkedList class (e.g. via an extension) and create an iterator type that conforms to the IteratorProtocol. Once you have these in place, you can use a for - in loop to traverse the linked list.
+> Hint: make the LinkedList class conform to the ```Sequence``` and the ```IteratorProtocol``` protocols and implement the ```next()``` method. The ```next()``` method returns an optional ```T?``` instance. 
+
+> Internally, the method must keep track of the current node, which is initially set to the head node. Subsequent calls to the ```next()``` method set the current node to the next node in the linked list. Once you have these in place, you can use a ___for - in___ loop to traverse the linked list.
+
+By the way, I'm going to talk about the ___Iterator___ pattern and the other behavioral design patterns in my upcoming Pluralsight course. In the meantime, check out [my existing Swift courses on Pluralsight](https://www.pluralsight.com/authors/karoly-nyisztor)
+
+
+Thanks for reading!
