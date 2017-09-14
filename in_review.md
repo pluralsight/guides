@@ -1,3 +1,8 @@
+### Data Structures in Swift - Part 2 by Károly Nyisztor
+- [Read the guide](https://www.pluralsight.com/guides/swift/data-structures-in-swift-part-2?status=in-review)
+- [Read more from Károly Nyisztor](https://www.pluralsight.com/guides/author/nyisztor) <img src="https://avatars1.githubusercontent.com/u/198511?v=4" width="30" height="30" alt="Károly Nyisztor" />
+- Related to: Swift
+
 ### JavaScript Closures by Miroslav Gajic
 - [Read the guide](https://www.pluralsight.com/guides/front-end-javascript/javascript-closures?status=in-review)
 - [Read more from Miroslav Gajic](https://www.pluralsight.com/guides/author/mgajic78) <img src="https://avatars3.githubusercontent.com/u/25859460?v=4" width="30" height="30" alt="Miroslav Gajic" />
