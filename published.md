@@ -1,3 +1,8 @@
+### Creating iOS Rich Push Notifications by Veronika
+- [Read the guide](https://www.pluralsight.com/guides/swift/creating-ios-rich-push-notifications)
+- [Read more from Veronika](https://www.pluralsight.com/guides/author/veronikahristozova) <img src="https://avatars2.githubusercontent.com/u/22590489?v=4" width="30" height="30" alt="Veronika" />
+- Related to: Swift
+
 ### Push Notifications with Firebase Cloud Messaging by Dimitar Stoyanov
 - [Read the guide](https://www.pluralsight.com/guides/android/push-notifications-with-firebase-cloud-messaging)
 - [Read more from Dimitar Stoyanov](https://www.pluralsight.com/guides/author/DimitarStoyanoff) <img src="https://avatars3.githubusercontent.com/u/19796939?v=4" width="30" height="30" alt="Dimitar Stoyanov" />
