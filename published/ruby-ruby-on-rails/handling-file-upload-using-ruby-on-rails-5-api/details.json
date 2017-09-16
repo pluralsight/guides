@@ -3,12 +3,7 @@
     "author_name": "Kaizeras",
     "author_real_name": "Hristo Georgiev",
     "branch": "master",
-    "branches": [
-        [
-            "Hkly",
-            "Hkly-ruby-ruby-on-rails-handling-file-upload-using-ruby-on-rails-5-api"
-        ]
-    ],
+    "branches": [],
     "filename": "article.md",
     "first_commit": null,
     "image_url": "https://avatars.githubusercontent.com/u/6340189?v=3",
