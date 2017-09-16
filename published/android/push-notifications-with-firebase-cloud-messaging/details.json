@@ -3,12 +3,7 @@
     "author_name": "DimitarStoyanoff",
     "author_real_name": "Dimitar Stoyanov",
     "branch": "master",
-    "branches": [
-        [
-            "adityavarshney",
-            "adityavarshney-android-push-notifications-with-firebase-cloud-messaging"
-        ]
-    ],
+    "branches": [],
     "filename": "article.md",
     "first_commit": "f76028b9ba27e9fca48d389edbb6b4552a7752ad",
     "image_url": "https://avatars3.githubusercontent.com/u/19796939?v=4",
