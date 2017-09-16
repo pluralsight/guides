@@ -1,3 +1,8 @@
+### Sentiment Analysis in C# by nescampos
+- [Read the guide](https://www.pluralsight.com/guides/other/sentiment-analysis-in-c?status=draft)
+- [Read more from nescampos](https://www.pluralsight.com/guides/author/nescampos) <img src="https://avatars2.githubusercontent.com/u/7274106?v=4" width="30" height="30" alt="nescampos" />
+- Related to: other
+
 ###  ASP.NET MVC - Getting default data binding right for hierarchical views by ajsaulsberry
 - [Read the guide](https://www.pluralsight.com/guides/microsoft-net/asp-net-mvc-getting-default-data-binding-right-for-hierarchical-views?status=draft)
 - [Read more from ajsaulsberry](https://www.pluralsight.com/guides/author/ajsaulsberry) <img src="https://avatars1.githubusercontent.com/u/11444510?v=4" width="30" height="30" alt="ajsaulsberry" />
