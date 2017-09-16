@@ -3,12 +3,7 @@
     "author_name": "Kaizeras",
     "author_real_name": "Hristo Georgiev",
     "branch": "master",
-    "branches": [
-        [
-            "beccanelson",
-            "beccanelson-front-end-javascript-ui-state-management-with-redux-in-angular-4"
-        ]
-    ],
+    "branches": [],
     "filename": "article.md",
     "first_commit": "4869a0e181feee0e80c965af45e50334a6fbd758",
     "image_url": "https://avatars0.githubusercontent.com/u/6340189?v=3",
