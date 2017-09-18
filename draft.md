@@ -1,3 +1,8 @@
+### Getting Started with the Java Platform Module System by Esteban Herrera
+- [Read the guide](https://www.pluralsight.com/guides/java-and-j2ee/getting-started-with-the-java-platform-module-system?status=draft)
+- [Read more from Esteban Herrera](https://www.pluralsight.com/guides/author/eh3rrera) <img src="https://avatars2.githubusercontent.com/u/11665759?v=4" width="30" height="30" alt="Esteban Herrera" />
+- Related to: Java and J2EE
+
 ### Sentiment Analysis in C# by nescampos
 - [Read the guide](https://www.pluralsight.com/guides/other/sentiment-analysis-in-c?status=draft)
 - [Read more from nescampos](https://www.pluralsight.com/guides/author/nescampos) <img src="https://avatars2.githubusercontent.com/u/7274106?v=4" width="30" height="30" alt="nescampos" />
