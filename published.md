@@ -1,3 +1,8 @@
+###  ASP.NET MVC - Getting default data binding right for hierarchical views by ajsaulsberry
+- [Read the guide](https://www.pluralsight.com/guides/microsoft-net/asp-net-mvc-getting-default-data-binding-right-for-hierarchical-views)
+- [Read more from ajsaulsberry](https://www.pluralsight.com/guides/author/ajsaulsberry) <img src="https://avatars1.githubusercontent.com/u/11444510?v=4" width="30" height="30" alt="ajsaulsberry" />
+- Related to: Microsoft.NET (C#, ASP.NET, VB.NET, etc)
+
 ### Creating iOS Rich Push Notifications by Veronika
 - [Read the guide](https://www.pluralsight.com/guides/swift/creating-ios-rich-push-notifications)
 - [Read more from Veronika](https://www.pluralsight.com/guides/author/veronikahristozova) <img src="https://avatars2.githubusercontent.com/u/22590489?v=4" width="30" height="30" alt="Veronika" />
