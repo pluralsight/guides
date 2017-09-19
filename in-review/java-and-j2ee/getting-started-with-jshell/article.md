@@ -27,7 +27,7 @@ The [JDK Enhancement-Proposal (JEP) for JShell](http://openjdk.java.net/jeps/222
 
 > Immediate feedback is important when learning a programming language and its APIs. The number one reason schools cite for moving away from Java as a teaching language is that other languages have a "REPL" and have far lower bars to an initial "Hello, world!" program.
 
-When you're learning something new, it's important to try out things with a minimal effort and have immediate feedback. If you had to try out some code, even a  *Hello World*, you had to create a class, add a main method, add the line(s) of code, optionally add some dependencies, and then compile and (if there are not any errors) run the code. Even with an IDE, that's more complicated than using a REPL.
+When you're learning something new, it's important to try out things with a minimal effort and have immediate feedback. Previously in Java, if you had to try out some code, even as basic as *Hello World*, you had to create a class, add a main method, add lines of code, perhaps add dependencies, compile, and (if there are not any errors) run the code. Even with an IDE simplifying things, that's more complicated than using a REPL.
 
 Of course, Java has alternatives to JShell, but they don't have all the features that JShell provides in one package, like full language support or preserved context and session history.
 
@@ -42,6 +42,8 @@ You can quickly prototype and experiment with libraries (what's is the return ty
 Having explained the importance of a REPL, let's dig into the basics of JShell.
 
 # JShell Basics
+
+### Installation
 As said before, JShell is included with the JDK. Just go to the `bin` directory of your installation, for example:
 ```bash
 cd C:\Program Files\Java\jdk-9\bin
@@ -53,6 +55,7 @@ Next, execute:
 ```bash
 jshell
 ```
+### Shell interactions 
 
 You should see something like the following:
 ```java
@@ -74,13 +77,15 @@ You can input specific JShell commands or Java code (referred as *snippets*), in
 - Field declarations
 - Import declarations
 
+### Expressions and Variables
+
 So let's start with a simple expression:
 ```java
 jshell> "Hello World"
 $1 ==> "Hello World"
 ```
 
-Notice that the result of the evaluation is shown and it's assigned to the variable named `$1`. You can check this by entering the name of the variable:
+Notice that the result of the evaluation is shown, and it's assigned to the variable named `$1`. You can check this by entering the name of the variable:
 ```java
 jshell> $1
 $1 ==> "Hello World"
@@ -140,6 +145,7 @@ jshell> if(sum > 0)
    ...> System.out.print(sum)
 3
 ```
+### Methods
 
 The capability of typing multiline statements allows us to write complete methods and classes. For example, you can define a method to return the negative value of the argument:
 ```java
@@ -155,7 +161,9 @@ jshell> getNegativeValue(10)
 $5 ==> -10
 ```
 
-Sometimes, a method references variables or other methods that are defined later in a class. These are called forward references. Since in JShell the code is entered and evaluated sequentially, code that uses forward reference cannot be invoked until these references are evaluated. Take the following method declaration for example:
+### Referencing
+
+Sometimes, a method references variables or other methods that are defined later in a class. These are called forward references. Since in JShell the code is entered and evaluated sequentially, code that uses forward reference **cannot be invoked** until these references are evaluated. Take the following method declaration for example:
 ```java
 jshell> int addMagicNumber(int number) {
    ...> return number + MAGIC_NUMBER;
@@ -192,6 +200,8 @@ jshell> int MAGIC_NUMBER = getMagicNumber()
 |                     ^------------^
 ```
 
+### Classes
+
 You can also declare classes, for example:
 ```java
 jshell> class Book {
@@ -222,7 +232,9 @@ jshell> book.title
 |  ^--------^
 ```
 
-However, declarations outside a class or interface (and declarations of classes and interfaces by itself) are created under the following rules:
+### External declarations
+
+However, declarations outside a class or interface (and declarations of classes and interfaces by themselves) are created under the following rules:
 1. Access modifiers (`public`, `protected`, and `private`) are ignored. All declaration snippets are accessible to all other snippets:
   ```java
   jshell> private int x = 1;
@@ -265,6 +277,8 @@ However, declarations outside a class or interface (and declarations of classes 
   |  abstract void method();
   |  ^------^
   ```
+
+### Exceptions
 
 JShell automatically catches exceptions, display information about them and allows you to continue the session as if nothing has happened. This works for unchecked exceptions:
 ```java
@@ -436,7 +450,9 @@ If you execute the `/edit` command without an argument, the editor will let you 
 
 ![editor with all the statements](https://raw.githubusercontent.com/pluralsight/guides/master/images/0c3fe9ea-95c8-41cb-927a-550cbd61695f.png)
 
-One problem we have is that all these statements are lost when we exit JShell. Luckily, there's a '/save' command, that can save all commands and snippets to a file. It has the following options:
+### Saving Files
+
+One problem we have is that all these statements are lost when we exit JShell. Luckily, there's a `/save` command, that can save all commands and snippets to a file. It has the following options:
 - `/save <file>`. Save the commands and snippets currently active to the provided file path.
 - `/save -all <file>`. Save all commands and snippets, including overwritten, start-up, and failed commands and snippets to the provided file path.
 - `/save -history <file>`. Save all commands and snippets run to the provided file.
@@ -489,6 +505,7 @@ jshell> /open Book.java
 ```
  
 # Using JShell to explore libraries
+
 As mentioned before, JShell does an excellent job helping us explore new libraries. So let's assume we want to try out the [Guava](https://github.com/google/guava) library. 
 
 You can download the JAR file of Guava Release 23.0 (the latest at this time) [here](https://github.com/google/guava/wiki/Release23).
@@ -509,7 +526,9 @@ jshell> /imports
 |    import java.util.stream.*
 ```
 
-You can import other packages, but how does JShell know where to look for custom packages like the following:
+You can import other packages, but how does JShell know where to look for custom packages? 
+
+Consider the following case:
 ```java
 jshell> import com.mycompany.*
 ```
@@ -644,8 +663,13 @@ wait(
 ```
 
 # Conclusion
-JShell is an important addition to the language. In an easy and quick way, you can verify things like return types, formatting options, or try out libraries or language features.
+JShell is an important addition to the Java language. With it, users can easily and quickly verify things like return types, adjust formatting options, or try out libraries or language features.
 
-In this tutorial, you have learned how to work with various types of code snippets in JShell, some useful commands and about its auto-completion capabilities to explore a class’s members and documentation.
+Hopefully this guide taught you all you needed to know about how to work with various types of code snippets in JShell, some of its useful commands, and its auto-completion capabilities to explore a class’s members and documentation.
 
-Of course, there's still a lot of things to learn for more advanced uses, like feedback modes, custom options (like setting a custom editor), and how to integrate JShell into your Java programs. A good resource to learn about some of these topics is [Robert Field's tutorial on JShell](http://cr.openjdk.java.net/~rfield/tutorial/JShellTutorial.html). Thanks for reading.
+### Resources
+Of course, this guide only scratches the surface. Advanced users should look forward to learning more about feedback modes, custom options (like setting a custom editor), and ways of integrating JShell into your Java programs. A good resource to learn about some of these topics is [Robert Field's tutorial on JShell](http://cr.openjdk.java.net/~rfield/tutorial/JShellTutorial.html). 
+
+____
+
+Hopefully you found this guide informative and engaging. Please leave all comments and feedback in the discussion section below. Thanks for reading!
