@@ -1,9 +1,9 @@
 # Introduction
-Java 9 has introduced the concept of modules to the Java platform. Modules change the way we design and build Java applications, and even though their use is optional since the JDK itself is now modularized, we must at least know the basics of the Java Platform Module System (JPMS).
+Java 9 has introduced the concept of modules to the Java platform. Modules change the way we design and build Java applications, and even though their use is optional, since the JDK itself is now modularized, we must at least know the basics of the Java Platform Module System (JPMS).
 
-In this tutorial, you'll learn what are modules and the problems they solve, how to create your own modules, interact with others, and use the service locator pattern to decouple modules. Finally, we'll review how Maven works with the module system.
+In this tutorial, you'll learn what are modules and the problems they solve, how to create your own modules, how modules interact with each other, and use the service locator pattern to decouple modules. Finally, we'll review how Maven works with the module system.
 
-We'll be using the command line to compile, package and run the code examples to better understand what's going on. However, you can use the latest (or beta) versions of your favorite IDE to do this. Of course, you'll need to have the Java 9 SDK installed. Download it from [here](http://www.oracle.com/technetwork/java/javase/downloads/index.html) or [here](http://openjdk.java.net/install/) and follow the installation instructions.
+We'll be using the command line to compile, package and run the code examples to better understand what's going on. However, you can use the latest (or beta) version of your favorite IDE to do this. Of course, you'll need to have the Java 9 SDK installed. Download it from [here](http://www.oracle.com/technetwork/java/javase/downloads/index.html) or [here](http://openjdk.java.net/install/) and follow the installation instructions.
 
 Let's start by talking about what are modules and what problems they solve.
 
@@ -12,13 +12,13 @@ In a few words, a module is (generally) a JAR file that contains a set of packag
 
 Modularizing an application means decomposing it into multiple modules that work together.
 
-The important thing is that with modules, you have to explicitly *require* other modules your module depends on, and you have to *export* packages from your module to be used by other modules. This brings some benefits and solves a couple of problems.
+The important thing is that with modules, you have to explicitly *require* other modules your module depends on, and you have to *export* packages from your module to be used by other modules. This brings some benefits and solves three problems.
 
 First of all, the direct consequence of the module system is that `public` no longer means everyone can access a type. If a class is marked as public, it can be public only within a module (if its package is not exported) or only to specific modules that require it.
 
 This promotes stronger encapsulation (the ability to hide parts of the code), which is good because we will no longer have access to internal (private) classes or private members (through reflection) that we are not supposed to use because they are likely to change between versions and break our code.
 
-Then we have the problem of classloaders. Traditionally, the Java Virtual Machine (JVM) has used classloaders to load classes specified in the classpath.
+Then, we have the problem of classloaders. Traditionally, the Java Virtual Machine (JVM) has used classloaders to load classes specified in the classpath.
 
 But what happens if you forget to add a JAR or a class to the classpath and run your application?
 
@@ -28,13 +28,13 @@ And let's not forget all the problems that can happen when we have duplicate JAR
 
 Projects like [Maven](https://maven.apache.org/), at compile-time by helping managing dependencies, and [OSGi (Open Services Gateway initiative)](https://en.wikipedia.org/wiki/OSGi), at runtime with JARs annotated with metadata that declares which packages to export and import from other annotated JARs, had helped us mitigate those classpath problems.
 
-The JPMS doesn't intend to completely replace those projects (we'll talk about Maven in particular in a later section), but Java now has the necessary information to throw not only a compile-time error if a module is not present or visible but also a runtime error when trying to start an application without having access to all the modules it needs or with duplicate modules.
+The JPMS doesn't intend to completely replace those projects (we'll talk about Maven in particular in a later section), but Java now has the necessary information to throw not only a compile-time error if a module is not present or visible but also a runtime error when trying to start an application without having access to all the modules it needs or when there's duplicate modules.
 
-A third problem is the deployment size of Java application. Even a simple *Hello World* program requires a full JRE installation with the `rt.jar` file (at around 50 MB) that contains almost all the standard Java classes. 
+The third problem is the deployment size of Java application. Even a simple *Hello World* program requires a full JRE installation with the `rt.jar` file (at around 50 MB) that contains almost all the standard Java classes. 
 
 As said before, in addition to offering a module system for our applications, the JPMS modularizes the JDK itself and with the help of a tool, [jlink](https://docs.oracle.com/javase/9/tools/jlink.htm), we can create a custom JDK with only the modules we need.
 
-And if your application is not ready yet to use modules, there's no problem, the use of modules is optional. Java 9 is backward compatible, if there's no modules information, Java will use the classpath as usual. Besides, an application can even mix a module path and a classpath.
+In addition, there's no problem if your application is not ready yet to use modules, the use of modules is optional. Java 9 is backward compatible, if there's no modules information, Java will use the classpath as usual. Besides, an application can even mix a module path and a classpath.
 
 Having explained what a module is and what problems it solves, let's dive into creating our first module.
 
@@ -75,7 +75,7 @@ public class ProgrammingQuotes {
 
 First, we have to put our class in a package because a module cannot use the default package (you cannot export an *unnamed* package).
 
-So let's  use the package com.example.programming:
+So let's  use the package `com.example.programming`:
 ```java
 package com.example.programming;
 import java.util.Random;
@@ -85,10 +85,10 @@ public class ProgrammingQuotes {
 }
 ```
 
-Next, we have to choose a name for our module. The recommended approach is to use the same reverse-domain-name pattern that is used for packages. Mark Reinhold [wrote](http://mail.openjdk.java.net/pipermail/jpms-spec-experts/2017-May/000687.html):
+Next, we have to choose a name for our module. The recommended approach is to use the same reverse-domain-name pattern that is used for packages. Mark Reinhold, Chief Architect of the Java Platform Group at Oracle, [wrote](http://mail.openjdk.java.net/pipermail/jpms-spec-experts/2017-May/000687.html):
 > Strongly recommend that all modules be named according to the reverse Internet domain-name convention.  A module's name should correspond to the name of its principal exported API package, which should also follow that convention.  If a module does not have such a package, or if for legacy reasons it must have a name that does not correspond to one of its exported packages, then its name should at least start with the reversed form of an Internet domain with which the author is associated.
 
-Of course, you can use any other naming convention you want, like a short, project-oriented name. 
+Of course, you can use any naming convention you want, for example, some people use  short, project-oriented names. 
 
 To make a module, you need to add a `module-info.java` file under the base directory (where your package directories start). By convention, the name of this base directory is the same than the module name. 
 
@@ -113,26 +113,28 @@ module com.example.programming {
 }
 ```
 
-Open a terminal window, make sure to `cd` into the base directory and compile as usual:
+Now open a terminal window, make sure to `cd` into the base directory and compile as usual:
 ```
 javac -d out module-info.java com/example/programming/ProgrammingQuotes.java
 ```
 
 The directory `out` will be created with the compiled `.class` files for `module-info.java` and `ProgrammingQuotes.java`.
 
-Now package the class into a modular JAR (actually the only difference is the presence of the `module-info.class` file):
+Next, package the class into a modular JAR (the only difference with a normal JAR is the presence of the `module-info.class` file):
 ```
 jar cvfe programming-quote.jar com.example.programming.ProgrammingQuotes -C out .
 ```
 
-This will create the file `programming-quote.jar` with all the classes found in the directory `out` and with `com.example.programming.ProgrammingQuotes` as the main class. Now run it with:
+This will create the file `programming-quote.jar` with all the classes found in the directory `out` and with `com.example.programming.ProgrammingQuotes` as the main class.
+
+Now run it with:
 ```
 java -jar programming-quote.jar
 ```
 
-Of course, all this compilation/packaging/running can be done with an IDE, but I wanted to show that the commands to do that are the same as always.
+Of course, all this compilation/packaging/running can be done with an IDE, but I wanted to show you that the commands that do these task haven't changed.
 
-However, to run this program as a module, you specify the module path (which contains modules, instead of classpath that contains classes) with the option `--module-path` (or just `-p`) and the main class with the option `--module` (or just `-m`), in the format `module/class`:
+However, to run this program as a module, you have to specify the module path (which contains modules, unlike the classpath that contains classes) with the option `--module-path` (or just `-p`) and the main module/class with the option `--module` (or just `-m`), in the format `module/class`:
 ```
 java --module-path programming-quote.jar --module com.example.programming/com.example.programming.ProgrammingQuotes
 ```
@@ -181,7 +183,7 @@ module com.example.gui {
 }
 ```
 
-If you execute `javac` to compile the files:
+When you execute `javac` to compile the files:
 ```
 javac -d out module-info.java com/example/gui/QuoteFxApp.java
 ```
@@ -212,18 +214,18 @@ com\example\gui\QuoteFxApp.java:10: error: method does not override or implement
 
 Apparently, the JavaFX packages are not visible, we need to reference the modules `javafx.graphics` and `javafx.controls`. But why?
 
-The reason is that now, the JDK is also modularized, and the module of our application needs to declare that relies on those modules of the JDK.
+The reason is that now, the JDK is also modularized, and our application needs to declare on which modules of the JDK it relies.
 
 But why we didn't get any errors in the previous example?
 
-We didn't get any errors because the classes we used are included in the `java.base` module, which is required by default in all modular applications.
+We didn't get any errors because the classes we used were included in the `java.base` module, which is required by default in all modular applications.
 
-Notice that this only happens in modular applications. As said before, Java 9 is backward compatible, if you don't include a `module-info.java` file in your application, everything will work like in previous versions of Java because you will no be working with modules. If you compile the application without that file, you'll see that no errors will be thrown:
+Notice that this only happens in modular applications. As said before, Java 9 is backward compatible, if you don't include a `module-info.java` file in your application, everything will work like in previous versions of Java because you will no be working with modules. For example, if you compile the application without that file, you'll see that no errors will be thrown:
 ```
 javac -d out com/example/gui/QuoteFxApp.java
 ```
 
-But we are working modules, so we need to *require* the JavaFX modules our application needs to the `module-info.java` file:
+But we are working modules, so we need to *require* the JavaFX modules our application needs in the `module-info.java` file:
 ```
 module com.example.gui {
   requires javafx.controls;
@@ -232,7 +234,7 @@ module com.example.gui {
 
 This time, `javac` will execute successfully. 
 
-However, notice that we only required `javafx.controls`, and not `javafx.graphics` as the error messages mention.
+However, notice that we only required `javafx.controls`, and not `javafx.graphics` as the error messages mentioned.
 
 The reason is that if you use the `javafx.controls` module, most likely, you'll use the `javafx.graphics` too, so `javafx.controls` declares this module as a *transitive* dependency:
 ```
@@ -278,11 +280,11 @@ module com.example.gui {
 }
 ```
 
-This way, only the listed modules (in this case only`javafx.graphics`) can access the package `com.example.gui`. And our application should now work:
+This way, only the listed modules (in this case only`javafx.graphics`) can access the package `com.example.gui`. Our application should work now:
 
 ![first run JavaFX](https://raw.githubusercontent.com/pluralsight/guides/master/images/7ea02f97-e7dd-4369-abe0-463bfc0c6422.png)
 
-And now that you have learned how to require/export other modules, integrating the programming quotes module and the GUI module should be easy.
+Having learned how to require/export other modules, integrating the programming quotes module and the GUI module should be easy.
 
 First, in the module `com.example.programming`, export its package:
 ```java
@@ -344,9 +346,9 @@ java.lang.module.FindException: Module com.example.programming not found, requir
 This, as said before, solves in part the JAR/classpath hell problem.
 
 # Using Services with the ServiceLoader
-Let's assume we now want to show math quotes in addition to programming quotes.
+Let's say we now want to show math quotes in addition to programming quotes. We could create another module for math quotes and modify the GUI module to require it. 
 
-We could create another module for math quotes and modify the GUI module to require it. We can also create an interface for both types of quotes. In the Java Platform Module System, this will give us the possibility to abstract the mechanism for matching up service interfaces with implementations using the [service locator pattern](https://en.wikipedia.org/wiki/Service_locator_pattern).
+We can also create an interface for both types of quotes. In the Java Platform Module System, this will give us the possibility to abstract the mechanism for matching up service interfaces with implementations using the [service locator pattern](https://en.wikipedia.org/wiki/Service_locator_pattern).
 
 This works by using the [service-provider loading facility](https://docs.oracle.com/javase/tutorial/ext/basics/spi.html) that Java provides with the [ServiceLoader](https://docs.oracle.com/javase/8/docs/api/java/util/ServiceLoader.html) class.
 
@@ -397,7 +399,7 @@ module com.example.programming {
 }
 ```
 
-And now, instead of exporting the package of the module, with the help of *provides with*, indicate that this module provides an implementation of the `Quote` interface:
+And now, instead of exporting the package of the module, with the help of *provides with*, you can indicate that this module provides an implementation of the `Quote` interface:
 ```java
 module com.example.programming {
   requires com.example.quote;
@@ -407,7 +409,7 @@ module com.example.programming {
 }
 ```
 
-And compile and package:
+Next, compile and package:
 ```
 # Compilation
 javac -d out --module-path ../lib module-info.java com/example/programming/ProgrammingQuotes.java
@@ -416,13 +418,13 @@ javac -d out --module-path ../lib module-info.java com/example/programming/Progr
 jar cvf ../lib/programming-quote.jar -C out .
 ```
 
-Before proceeding, have you notice that we're not exporting the package of this module?
+But before proceeding, have you notice that we're not exporting the package of this module?
 
 We're just declaring the interface and its implementation (both with their fully-qualified name).
 
 The implementation is encapsulated in a non-exported package. This is generally the case because the point is to hide implementation details, the consumer only knows about the interface, not the implementation.
 
-Talking about the consumer, in the GUI module, we use the `ServiceLoader` class like this:
+Talking about the consumer, in the GUI module, you use the `ServiceLoader` class like this:
 ```java
 ...
 
@@ -469,7 +471,7 @@ javac -d out --module-path ../lib module-info.java com/example/gui/QuoteFxApp.ja
 java --module-path out;../lib --module com.example.gui/com.example.gui.QuoteFxApp
 ```
 
-The app will work as before, but this time, it doesn't depend on the implementation, just the interface. If you want to add another implementation, just drop it into the `lib` directory and it will be discovered by the `ServiceLoader` class automatically.
+The app will work as before, but this time, it doesn't depend on the implementation, just the interface. If you want to add another implementation, just drop another module like `com.example.programming` into the `lib` directory and it will be discovered by the `ServiceLoader` class automatically.
 
 # What about Maven?
 
