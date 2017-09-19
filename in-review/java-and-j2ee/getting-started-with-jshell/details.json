@@ -3,7 +3,12 @@
     "author_name": "eh3rrera",
     "author_real_name": "Esteban Herrera",
     "branch": "master",
-    "branches": [],
+    "branches": [
+        [
+            "adityavarshney",
+            "adityavarshney-java-and-j2ee-getting-started-with-jshell"
+        ]
+    ],
     "filename": "article.md",
     "first_commit": "ad2e949a828d7e92b4feb9ef70403536b101adfb",
     "image_url": "https://avatars2.githubusercontent.com/u/11665759?v=4",
