@@ -3,7 +3,12 @@
     "author_name": "nyisztor",
     "author_real_name": "K\u00e1roly Nyisztor",
     "branch": "master",
-    "branches": [],
+    "branches": [
+        [
+            "adityavarshney",
+            "adityavarshney-swift-data-structures-in-swift-part-2"
+        ]
+    ],
     "filename": "article.md",
     "first_commit": "8fc4303087fc0d1f7aa44afa8f8ec11f763be07d",
     "image_url": "https://avatars1.githubusercontent.com/u/198511?v=4",
