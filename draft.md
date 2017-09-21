@@ -1,3 +1,8 @@
+### Visual Studio 2017 - Resolving SSL/TLS connections problems with IIS Express by ajsaulsberry
+- [Read the guide](https://www.pluralsight.com/guides/microsoft-net/visual-studio-2017-resolving-ssl-tls-connections-problems-with-iis-express?status=draft)
+- [Read more from ajsaulsberry](https://www.pluralsight.com/guides/author/ajsaulsberry) <img src="https://avatars1.githubusercontent.com/u/11444510?v=4" width="30" height="30" alt="ajsaulsberry" />
+- Related to: Microsoft.NET (C#, ASP.NET, VB.NET, etc)
+
 ### Sentiment Analysis in C# by nescampos
 - [Read the guide](https://www.pluralsight.com/guides/other/sentiment-analysis-in-c?status=draft)
 - [Read more from nescampos](https://www.pluralsight.com/guides/author/nescampos) <img src="https://avatars2.githubusercontent.com/u/7274106?v=4" width="30" height="30" alt="nescampos" />
