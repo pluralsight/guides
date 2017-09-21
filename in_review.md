@@ -1,3 +1,8 @@
+### Visual Studio 2017 - Resolving SSL/TLS connections problems with IIS Express by ajsaulsberry
+- [Read the guide](https://www.pluralsight.com/guides/microsoft-net/visual-studio-2017-resolving-ssl-tls-connections-problems-with-iis-express?status=in-review)
+- [Read more from ajsaulsberry](https://www.pluralsight.com/guides/author/ajsaulsberry) <img src="https://avatars1.githubusercontent.com/u/11444510?v=4" width="30" height="30" alt="ajsaulsberry" />
+- Related to: Microsoft.NET (C#, ASP.NET, VB.NET, etc)
+
 ### Getting Started with the Java Platform Module System by Esteban Herrera
 - [Read the guide](https://www.pluralsight.com/guides/java-and-j2ee/getting-started-with-the-java-platform-module-system?status=in-review)
 - [Read more from Esteban Herrera](https://www.pluralsight.com/guides/author/eh3rrera) <img src="https://avatars2.githubusercontent.com/u/11665759?v=4" width="30" height="30" alt="Esteban Herrera" />
