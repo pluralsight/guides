@@ -1,9 +1,9 @@
 # Introduction
 Java 9 has introduced the concept of modules to the Java platform. Modules change the way we design and build Java applications, and even though their use is optional, since the JDK itself is now modularized, we must at least know the basics of the Java Platform Module System (JPMS).
 
-In this tutorial, you'll learn what are modules and the problems they solve, how to create your own modules, how modules interact with each other, and use the service locator pattern to decouple modules. Finally, we'll review how Maven works with the module system.
+In this tutorial, you'll learn what modules are, which problems they solve, how to create them, how they interact with each other, and how we can decouple modules using the service locator pattern. Finally, we'll review how Maven works with the module system.
 
-We'll be using the command line to compile, package and run the code examples to better understand what's going on. However, you can use the latest (or beta) version of your favorite IDE to do this. Of course, you'll need to have the Java 9 SDK installed. Download it from [here](http://www.oracle.com/technetwork/java/javase/downloads/index.html) or [here](http://openjdk.java.net/install/) and follow the installation instructions.
+We'll be using the command line to compile, package, and run the code examples to better understand what's going on. However, you can use the latest (or beta) version of your favorite IDE to do this. Of course, you'll need to have the Java 9 SDK installed. Download it from [here](http://www.oracle.com/technetwork/java/javase/downloads/index.html) or [here](http://openjdk.java.net/install/) and follow the installation instructions.
 
 Let's start by talking about what are modules and what problems they solve.
 
@@ -14,9 +14,9 @@ Modularizing an application means decomposing it into multiple modules that work
 
 The important thing is that with modules, you have to explicitly *require* other modules your module depends on, and you have to *export* packages from your module to be used by other modules. This brings some benefits and solves three problems.
 
-First of all, the direct consequence of the module system is that `public` no longer means everyone can access a type. If a class is marked as public, it can be public only within a module (if its package is not exported) or only to specific modules that require it.
+First of all, the direct consequence of the module system is that `public` no longer means everyone can access a type. If a class is marked as public, it can be public **only within a module** (if its package is not exported) or only to specific modules that require it.
 
-This promotes stronger encapsulation (the ability to hide parts of the code), which is good because we will no longer have access to internal (private) classes or private members (through reflection) that we are not supposed to use because they are likely to change between versions and break our code.
+This promotes stronger encapsulation (the ability to hide parts of the code), which is good because we will no longer have access to internal (private) classes or private members (through reflection) that we are not supposed to use but occasionally change between versions and break our code.
 
 Then, we have the problem of classloaders. Traditionally, the Java Virtual Machine (JVM) has used classloaders to load classes specified in the classpath.
 
@@ -26,13 +26,13 @@ Maybe nothing, and that's a bad thing. Yes, when the classloader will try to loa
 
 And let's not forget all the problems that can happen when we have duplicate JARs or when two libraries require different versions of a third library. This situation even has a name, [JAR (or classpath) hell](https://en.wikipedia.org/wiki/Java_Classloader#JAR_hell).
 
-Projects like [Maven](https://maven.apache.org/), at compile-time by helping managing dependencies, and [OSGi (Open Services Gateway initiative)](https://en.wikipedia.org/wiki/OSGi), at runtime with JARs annotated with metadata that declares which packages to export and import from other annotated JARs, had helped us mitigate those classpath problems.
+Projects like [Maven](https://maven.apache.org/) (at compile-time by helping managing dependencies) and [Open Services Gateway initiative (OSGi)](https://en.wikipedia.org/wiki/OSGi) (at runtime with JARs annotated with metadata declaring which packages to export and import from other annotated JARs) had helped us mitigate those classpath problems.
 
 The JPMS doesn't intend to completely replace those projects (we'll talk about Maven in particular in a later section), but Java now has the necessary information to throw not only a compile-time error if a module is not present or visible but also a runtime error when trying to start an application without having access to all the modules it needs or when there's duplicate modules.
 
 The third problem is the deployment size of Java application. Even a simple *Hello World* program requires a full JRE installation with the `rt.jar` file (at around 50 MB) that contains almost all the standard Java classes. 
 
-As said before, in addition to offering a module system for our applications, the JPMS modularizes the JDK itself and with the help of a tool, [jlink](https://docs.oracle.com/javase/9/tools/jlink.htm), we can create a custom JDK with only the modules we need.
+As said before, in addition to offering a module system for our applications, the JPMS modularizes the JDK itself and, with the help of a tool, [jlink](https://docs.oracle.com/javase/9/tools/jlink.htm), we can create a custom JDK with only the modules we need.
 
 In addition, there's no problem if your application is not ready yet to use modules, the use of modules is optional. Java 9 is backward compatible, if there's no modules information, Java will use the classpath as usual. Besides, an application can even mix a module path and a classpath.
 
@@ -86,9 +86,9 @@ public class ProgrammingQuotes {
 ```
 
 Next, we have to choose a name for our module. The recommended approach is to use the same reverse-domain-name pattern that is used for packages. Mark Reinhold, Chief Architect of the Java Platform Group at Oracle, [wrote](http://mail.openjdk.java.net/pipermail/jpms-spec-experts/2017-May/000687.html):
-> Strongly recommend that all modules be named according to the reverse Internet domain-name convention.  A module's name should correspond to the name of its principal exported API package, which should also follow that convention.  If a module does not have such a package, or if for legacy reasons it must have a name that does not correspond to one of its exported packages, then its name should at least start with the reversed form of an Internet domain with which the author is associated.
+> "Strongly recommend that all modules be named according to the reverse Internet domain-name convention.  A module's name should correspond to the name of its principal exported API package, which should also follow that convention.  If a module does not have such a package, or if for legacy reasons it must have a name that does not correspond to one of its exported packages, then its name should at least start with the reversed form of an Internet domain with which the author is associated."
 
-Of course, you can use any naming convention you want, for example, some people use  short, project-oriented names. 
+Of course, you can use any naming convention you want. For example, some people use  short, project-oriented names. 
 
 To make a module, you need to add a `module-info.java` file under the base directory (where your package directories start). By convention, the name of this base directory is the same than the module name. 
 
@@ -212,15 +212,15 @@ com\example\gui\QuoteFxApp.java:10: error: method does not override or implement
 5 errors
 ```
 
-Apparently, the JavaFX packages are not visible, we need to reference the modules `javafx.graphics` and `javafx.controls`. But why?
+Apparently, the JavaFX packages are not visible. We need to reference the modules `javafx.graphics` and `javafx.controls`. But why?
 
-The reason is that now, the JDK is also modularized, and our application needs to declare on which modules of the JDK it relies.
+The reason behind this is that the JDK has now become modularized, and our application needs to declare which JDK modules it needs.
 
 But why we didn't get any errors in the previous example?
 
-We didn't get any errors because the classes we used were included in the `java.base` module, which is required by default in all modular applications.
+We didn't get any errors because the classes we used were included in the `java.base` module, which is added by default to all modular applications.
 
-Notice that this only happens in modular applications. As said before, Java 9 is backward compatible, if you don't include a `module-info.java` file in your application, everything will work like in previous versions of Java because you will no be working with modules. For example, if you compile the application without that file, you'll see that no errors will be thrown:
+Notice that this only happens in modular applications. As mentioned before, Java 9 is backward compatible; if you don't include a `module-info.java` file in your application, everything will work like in previous versions of Java. For example, if you compile the application without `module-info.java`, you'll find that no errors are thrown:
 ```
 javac -d out com/example/gui/QuoteFxApp.java
 ```
@@ -247,12 +247,14 @@ module javafx.controls {
 
 Of course, you can explicitly add `requires javafx.graphics` to your `module-info.java` file, but it's not required, you get it implicitly (automatically).
 
-By the way, if you want to see all the modules of the JDK, in the JDK installation directory, there's a directory named `jmods`. Conveniently, we can use the [jmod](https://docs.oracle.com/javase/9/tools/jmod.htm) tool to list the content of these JMOD files. For example, on my Windows machine, to see the details of the `javafx.controls` module, I execute:
+By the way, if you want to see all the modules of the JDK, the JDK installation directory contains a subdirectory named `jmods`. Conveniently, we can use the [jmod](https://docs.oracle.com/javase/9/tools/jmod.htm) tool to list the content of these JMOD files.
+
+On my Windows machine, to see the details of the `javafx.controls` module, I execute:
 ```
 jmod describe "C:\Program Files\Java\jdk-9\jmods\javafx.controls.jmod"
 ```
 
-Moving on, the problems are not over. If we run the program with:
+Moving on, our problems are not finished. If we run the program with:
 ```
 java --module-path out --module com.example.gui/com.example.gui.QuoteFxApp
 ```
@@ -477,11 +479,11 @@ The app will work as before, but this time, it doesn't depend on the implementat
 
 Here's commonly asked question: Is there an overlap between Maven and JPMS? 
 
-The answer is no, they complement each other.
+The answer is no; they complement each other.
 
-While modularization is more about encapsulation and visibility (which packages can be seen outside a module/JAR), Maven has two jobs, dependency management and compiling code into artifacts. They work at different levels.
+While modularization is more about encapsulation and visibility (i.e. deciding which packages can be seen outside a module/JAR), Maven is about dependency management and compiling code into artifacts. The two things work at different levels.
 
-About the dependency management, every Maven artifact has three parts:
+On the topic of dependency management, every Maven artifact has three parts:
 - A group ID, which uniquely identifies the project it belongs
 - An artifact ID, which is its name
 - A version
@@ -491,7 +493,7 @@ The JPMS does not know about versions, and depending on naming conventions, the 
 The bottom line is that because of this, we cannot directly associate a Java module with a Maven POM dependency/artifact. Basically, this means two things:
 - Maven cannot generate the `module-info.java` file.
 - In a modular application, adding a dependency involves two steps now:
-  1. Adding the dependency to the POM file as always. This dependency can be modularized or not, it doesn't matter (if it's not, it becomes an automatic module).
+  1. Adding the dependency to the POM file as always. This dependency can be modularized or not, it doesn't matter. Even if it is not modularized, it becomes a module automatically.
   2. The dependency's module is added to the `module-info.java` file of the project.
   
 For example, let's assume our project consists of two modules, one for the API and one for the GUI, which depends on the API module.
@@ -538,7 +540,7 @@ By the way, we can structure our project with [Maven modules](http://books.sonat
 </project>
 ```
 
-Nothing different than what we are used to, except maybe for the `maven-compiler-plugin` configuration. Make sure to use at least, version 3.6.1.
+Nothing different from what we are used to, except maybe for the `maven-compiler-plugin` configuration. Make sure to use at least, version 3.6.1.
 
 The directory structure of the project can be like the following:
 ```
@@ -644,17 +646,17 @@ module my.company.webapp {
 }
 ```
 
-This way, when it's time to build the project, the Maven compiler plug-in will set up the module path so the Java compiler can work correctly.
+This way, when it's time to build the project, the Maven compiler plug-in will set up the module path so that the Java compiler can work correctly.
 
 # Conclusion
-The module system has been introduced to Java to promote a stronger encapsulation, better design and so Java can become a more flexible and future-proof language.
+The module system has been introduced to Java to promote stronger encapsulation and better design, while making Java a more flexible and future-proof language.
 
 There are features like [incubator modules](http://blog.takipi.com/how-java-9-incubator-modules-will-change-the-future-of-java/) that will bring new APIs to us while they progress towards either finalization or removal in a future release, giving us the change to provide input. This also fits pretty well with the [proposed fast release cycle for Java](https://mreinhold.org/blog/forward-faster).
 
 In this tutorial, you have learned the basics of the JPMS, like the benefits of modules, how they work, and how they integrate with a tool like Maven.
 
-Of course, there's still a lot of things to learn, like [custom runtime images](https://blogs.oracle.com/jtc/creating-custom-jdk9-runtime-images), [how to migrate classpath projects to modules](https://dzone.com/articles/migrating-to-java-9), or how to [unit test a modular project](https://stackoverflow.com/questions/41366582/where-should-i-put-unit-tests-when-migrating-a-java-8-project-to-jigsaw).
+Of course, there are several more things to learn, like [custom runtime images](https://blogs.oracle.com/jtc/creating-custom-jdk9-runtime-images), [how to migrate classpath projects to modules](https://dzone.com/articles/migrating-to-java-9), or how to [unit test a modular project](https://stackoverflow.com/questions/41366582/where-should-i-put-unit-tests-when-migrating-a-java-8-project-to-jigsaw).
 
-The best book I have read about JPMS is [Java 9 Modularity](https://javamodularity.com/) by [Sander Mak](https://twitter.com/sander_mak) and [Paul Bakker](https://twitter.com/pbakker), totally recommended. Also, [The Java Module System](https://www.manning.com/books/the-java-module-system) by [Nicolai Parlog](https://twitter.com/nipafx) is a book that at this time is still being written but looks very promising.
-
-Thanks for reading.
+The best book I have read about JPMS is [Java 9 Modularity](https://javamodularity.com/) by [Sander Mak](https://twitter.com/sander_mak) and [Paul Bakker](https://twitter.com/pbakker). I totally recommended it. Also, [The Java Module System](https://www.manning.com/books/the-java-module-system) by [Nicolai Parlog](https://twitter.com/nipafx) is a book that, at the time of writing this guide, is currently in progress yet looks very promising. Definitely look to these resources if you find yourself using Java 9 and JPMS in the future.
+___
+I hope you found this guide educational and engaging. Please leave your comments and feedback in the discussion section below. Thanks for reading! 
