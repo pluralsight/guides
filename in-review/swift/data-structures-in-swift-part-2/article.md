@@ -3,22 +3,29 @@
 This is the second part of a two-part series on data structures in Swift. In the first part, [we delved into generics and built-in Swift collection types](https://www.pluralsight.com/guides/swift/data-structures-in-swift-part-1). 
 Check it out in case you missed it. 
 
-In this tutorial, we’re going implement some of the most popular data structures from scratch in Swift. 
+In this tutorial, we’re going implement some of Swift's most popular data structures from scratch.
 
-Swift provides some handy collection types. We can use the generic __Array__, __Set__, and __Dictionary__ right away. Yet, there may be cases when we need custom collection types. In the upcoming chapters, we’ll take a closer look at stacks, queues, and linked lists.
+Swift provides some handy collection types. We can use the generic __Array__, __Set__, and __Dictionary__ structures right away. However, we may need custom collection types in specific instances. In the upcoming chapters, we’ll take a closer look at stacks, queues, and linked lists and discuss when we could use these specialized structures.
 
 # The Stack
-The stack behaves like an array, in that it stores the elements in a specific order. However, unlike for arrays, we can’t randomly insert, retrieve and delete items from a stack. 
 
-The stack only permits pushing a new item, that is, appending it to the end of the collection. Also, we can only remove the last item, also known as pop.
+### Properties
+The stack behaves like an array, in that it stores the elements in a specific order. However, unlike arrays, we can’t insert, retrieve and delete items from a stack using random access. Instead, the stack provides **fast, constant time** control over the first element in the list: it permits pushing a new item onto the start of the stack, peeking at the first item in the stack, and popping the most accessible item off the stack.
 
-The stack provides a __Last-In-First-Out__ (in short, LIFO) access. The item that was added last (or pushed) can be accessed first (peek or pop).
-Here’s an illustration of the LIFO behavior:
+The stack provides a __Last-In-First-Out__ (LIFO) access. The most recently added item can be accessed first (peek or pop). Here’s LIFO in action!
 
 ![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/9ad7373a-1c7c-445c-bf4c-db53e493ecae.png)
 
-The stack is useful if we need to **retrieve the elements in the order in which we added them**.
-We could fulfill this requirements using an Array:
+### Using Stacks
+
+The stack is useful if we need to **retrieve the elements in the order in which we added them**. For example, a stack would be useful for modeling an ever-growing pile of dirty laundry. The piece of clothing that you last tossed onto the pile is the first one that you can pick up to clean. Here, we are unable to pick out specific clothing randomly from within the enormous pile of clothes. Instead, our only way of picking clothes is off the top. This produces the LIFO system described above. Similar use cases exist for representing recursive calls, modeling paperwork on someone's desk, or keeping track of server transactions.
+
+## Implementation
+
+
+#### Array Implementation?
+
+We could fulfill these requirements using an Array:
 ```
 var numbers = [Int]()
 numbers.append(1)
@@ -34,15 +41,18 @@ But, the array does not prevent us from (accidentally) accessing the elements in
 last = numbers[2]
 numbers.remove(at: 3)
 ```
-Thus, if we need a strict LIFO behavior, we have to create a custom stack collection.
+Thus, if we want strict LIFO behavior, we have to use a stack implementation that does not operate as an array. 
+
 Our Stack needs three methods:  
 - push() - to append a new item
-- peek() - retrieves the last element without removing it
+- peek() - gets the last element without removing or modifying it
 - pop() - removes the last element and returns it
 
-Optionally, we can add a ```removeAll()``` method to wipe out the stack.
+Optionally, we can add a ```removeAll()``` method to clear the stack of its values.
 
-There are different ways to implement these requirements. Let’s follow a [protocol-oriented approach and declare a protocol first](https://www.pluralsight.com/guides/swift/protocol-oriented-programming-in-swift) .
+#### Protocol-Oriented Approach
+
+There are different ways to implement these requirements. Let’s follow a [protocol-oriented approach](https://www.pluralsight.com/guides/swift/protocol-oriented-programming-in-swift) and declare a protocol first.
 ```
 protocol Stackable {
     associatedtype Element
@@ -56,10 +66,11 @@ The Stackable protocol defines all the requirements needed to define a stack.
 
 We use an ```associatedtype``` called Element that acts as a placeholder. Types that adopt the Stackable protocol can provide the exact type.
 
-Notice the use of ```mutating``` for all the methods which change the contents of the stack. We must mark methods that modify a structure as ```mutating```. 
-Class methods can always modify the class. Thus we don’t need to use the ```mutating``` keyword in classes.
+Notice the use of the ```mutating``` identifier next to all methods that change the contents of the stack. We must mark methods that modify a structure as ```mutating```.  Class methods can always modify the class. Thus we don’t need to use the ```mutating``` keyword in classes.
 
->We used the mutating keyword in the Stackable protocol to also allow structs adopt it.
+> We used the `mutating` keyword in the Stackable protocol to also allow structs adopt it.
+
+### Generic Implementation
 
 Next, we implement a generic stack.
 ```
@@ -85,7 +96,7 @@ struct Stack<T>: Stackable {
     }
 }
 ```
-```Stack``` can work with any type:
+Using generics in the protocol declaration (`Stack<T>`), we can make our ```Stack``` work with any type. 
 ```
 var stackInt = Stack<Int>()
 var stackString = Stack<String>()
@@ -135,11 +146,24 @@ extension Stack: CustomStringConvertible {
 }
 ```
 # Queues
+
+### Properties
+
 Unlike the stack, the queue is open at both ends. The queue provides __First-In-First-Out__ (FIFO) access. New elements are added to the bottom of the queue. We can retrieve elements from the top of the queue.
 
 Here’s an illustration of the queue in action:
 
 ![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/086a1691-cadd-492f-83eb-6a7365ea4fe2.png)
+
+We would use the queue to put things in line. Consider it when modeling lines for restaurants: people who are in line first get tables first. Similarly, we could model water coming out of a tube using a queue, snce water that goes through one end of the tube first leaves the other end first. 
+Our queue needs to be able to:
+* Enqueue -- add items to the end of the queue
+* Dequeue -- pull the next items off the front of the queue
+* Peek -- check the next item in the queue 
+
+We will also add a `removeAll` method to our implementation.
+
+## Implementation
 
 The ```Enqueuable``` protocol defines the requirements for a basic queue:
 ```
@@ -186,7 +210,7 @@ extension Queue: CustomStringConvertible {
     }
 }
 ```
-Now that we have a generic Queue, we can use it with any type:
+We now have a generic Queue -- denoted by `Queue<T>` in the protocol declaration. We can use it with any type:
 ```
 var queueInt = Queue<Int>()
 var queueString = Queue<String>()
@@ -227,31 +251,38 @@ print(queueInt)
 // Output: []
 ```
 # Linked Lists
-A linked list might look similar to the array, yet there is a fundamental difference.
-The linked list does not allocate big amounts of memory in advance to store its items. Instead, the items in a linked list are separate instances. The item of a linked list is usually called __node__. 
 
-> A node is the individual part of a larger data structure. 
+### Properties 
 
-We encounter the term node also when referring to other data structures like trees or graphs.
-I'm going to use the term node instead of element or item from now on.
- 
-Each node in a linked list has a link to the next item. This type of node lets us create a __single linked list__, where each node holds a link to the next node.
+Linked lists are collections of data made of nodes that store a value and a pointer to the next node in the chain. Unlike arrays, linked lists do not allocate fixed amounts of memory in advance to store items. Instead, the items in a linked list are separate instances. Each block in the linked list is usually called __node__ and gets added when needed. 
 
-![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/d7e9f5ab-f3a8-404b-a125-2e2fdb3ce35b.png)
+> A node is the individual part of a larger data structure.
 
-If a node has references for both the next and the previous node, we can build a __double linked list__.
+You will encounter the node when considering other data structures like trees or graphs. 
+
+As mentioned before, each node in a linked list has a link to the next item. This type of node lets us create a __singly-linked list__, where each node holds a link to the next node.
+
+This node structure means that we do not have constant time access to the elements in the middle of the linked list. However, this converts resizing and accessing the next node into constant time operations. 
+
+An example of a linked list would be a locomotive train. Each of the cars in the train are nodes: they each store something and have a link to the next car in the train. The train continues until one of the nodes (the caboose) points to nothing, marking the end of the list.
+
+![SLL](https://raw.githubusercontent.com/pluralsight/guides/master/images/d7e9f5ab-f3a8-404b-a125-2e2fdb3ce35b.png)
+
+If a node has references for both the next and the previous node, we can build a __doubly-linked list__. This would be equivalent to each car in the train knowing the car before it and the car after it. 
  
-![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/44884372-1879-4dd2-bad1-418fc3604ae7.png)
+![DLL](https://raw.githubusercontent.com/pluralsight/guides/master/images/44884372-1879-4dd2-bad1-418fc3604ae7.png)
  
-A node also needs to hold the data we want to store. So basically, for a double linked list we need a type which has a property for storing data and two properties which represent the link to the previous and the next node.
+A node also needs to hold the data we want to store. So basically, for a double linked list we need a type which has a property for storing data and two properties which represent links to the previous and the next nodes.
+
+## Implementation
  
-Let's create a protocol which defines these requirements. I'm going to call it ```Linkable```. (It could be also NodeProtocol, it's really a matter of taste.)
+Let's create a protocol which defines these requirements. I'm going to call it ```Linkable```.
  
 The protocol should not restrict the node's data type. Thus, we'll use a placeholder type using the ```associatedtype``` keyword.
 
 Each node can link to the previous and the next node. So, we need two read-write properties. Let's call them simply ```next``` and ```previous```. These should be optional properties, since they both can be nil:
 
-![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/df3ea0cb-a49d-4c48-b1df-b5911b908c92.png)
+![nil ends](https://raw.githubusercontent.com/pluralsight/guides/master/images/df3ea0cb-a49d-4c48-b1df-b5911b908c92.png)
 
 
 Finally, we add an initializer and we're *almost* done with the ```Linkable``` protocol. Here's what we've got so far:
@@ -287,13 +318,17 @@ struct StringNode: Linkable {
 Unfortunately, this code won't compile: **"Value type 'StringNode' cannot have a stored property that recursively contains it."** 
 The reason for this strange compiler error is not obvious, so let's try to clarify it a bit.
 
+#### Structs and Memory Allocation
+
 The error has to do with memory allocation. Value types keep their data directly in their storage location. Whereas with reference types, the data exists somewhere else and the storage location only stores a reference to it.
 
-And here's what that means for us: ```StringNode``` is a value type (a struct). As such, it must store its data in its storage location. Thus, the compiler _must_ know the exact size of the structure to allocate the required amount of memory. For that, the compiler has to know the size of its properties, too.
+And here's what that means for us: ```StringNode``` is a value type (a struct). As such, it must store its data in its storage location. Thus, the compiler _must_ know the exact size of the struct is before allocating the required amount of memory. To figure out the size of the struct, the compiler must know the size of the struct's properties, too.
 
 A ```StringNode``` instance could contain two values of the same type. And each of these properties could also contain two values of ```StringNode``` type, and so on. _Because of this recursion, there is no way to calculate the ```StringNode```'s memory requirements._
 
-In short, the compiler won't let us create a structure that recursively contains another instance of the same type.
+Thus, the compiler won't let us create a structure that recursively contains another instance of the same type.
+
+#### The Workaround
 
 We need to enforce __reference type semantics__ for our node types. We change the ```Linkable``` protocol to a class-only protocol by inheriting from ```AnyObject```. (```AnyObject``` is a protocol that can only be adopted by classes.)
 
@@ -327,7 +362,9 @@ final fileprivate class Node<T>: Linkable {
 }
 ```
 
-The ```Node``` class file private since clients should not interact with it directly. And it’s final to prevent subclassing. 
+The ```Node``` class file is private because clients should not interact with it directly. It’s final to prevent subclassing. This ensures that abstraction is not breached.
+
+### DLL Implementation
 
 Alright, now it's time to switch gears and start implementing our Double Linked List.
 As usual, we'll first come up with a protocol.
@@ -430,9 +467,9 @@ private func node(at index: Int) -> Node<T>? {
 
 The ```getter``` calls the private helper method ```node(at:)```, which traverses the list of nodes by following the subsequent ```next``` pointers.
 
-The ```getter``` either returns a valid value or nil if the index is invalid or in case of validation issues.
+The ```getter``` either returns a valid value or nil (if the index is invalid or in case of validation issues.)
 
-The ```setter``` serves two purposes: if we assign a valid value, it will insert a new node at the given index. Whereas if we assign nil, it will delete the node.
+The ```setter``` serves two purposes: if we assign a valid value, it will insert a new node at the given index. If we assign nil, it will delete the node.
 
 For insertion, we rely on the ```insert(node: at:)``` helper method. Which in turn uses the ```node(at:)``` method to find the node at the given index.
 
@@ -467,7 +504,7 @@ We're going to insert the new node between the node at the given index and the p
 We must also take care of edge cases like empty list or inserting at the front of the linked list.
      
 To remove a value from the linked list, we must assign nil to the node at the given index.
-The ```remove(at:)``` helper method performs the logic required to unlink the selected node and deallocate it.
+The ```remove(at:)``` helper method performs the logic required to **unlink** the selected node and deallocate it.
 Also, we must update the head and tail pointers when the node is removed from the beginning or the end of the list.
 ```
 private func remove(at index: Int) {
@@ -500,14 +537,15 @@ private func remove(at index: Int) {
 }
 ```
 
-Now, we have a working __Double Linked List__ implementation. We can append, insert, retrieve and delete values from it.
+Now, we have a working __Doubly-Linked List__ implementation. We can append, insert, retrieve and delete values from it.
 
-We could add further features like e.g. the ability to iterate over its elements. But I'll leave this as an exercise to the reader. 
+We could add further features like e.g. the ability to iterate over its elements. But I'll leave this as an exercise to the reader!
 
 _Hint: make the LinkedList class conform to the ```Sequence``` and the ```IteratorProtocol``` protocols and implement the ```next()``` method. The ```next()``` method returns an optional ```T?``` instance._
 
 _Internally, the method must keep track of the current node, which is initially set to the head node._ _Subsequent calls to the ```next()``` method set the current node to the next node in the linked list._ _Once you have these in place, you can use a for - in loop to traverse the linked list._
 
-By the way, I'm going to talk about the ___Iterator___ pattern and the other behavioral design patterns in my upcoming Pluralsight course. In the meantime, check out [my Swift courses on Pluralsight](https://www.pluralsight.com/authors/karoly-nyisztor)
+Stay tuned! I'm going to talk about the ___Iterator___ pattern and the other behavioral design patterns in my upcoming Pluralsight course. In the meantime, head over to [my Swift courses on Pluralsight](https://www.pluralsight.com/authors/karoly-nyisztor)
+____
 
-Thanks for reading!
+I hope you found this guide informative or engaging. Please leave your comments and feedback in the discussion section below, and definitely hit the "favorites" button! Thanks for reading! 
