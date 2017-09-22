@@ -3,7 +3,7 @@ Java 9 has introduced the concept of modules to the Java platform. Modules chang
 
 In this tutorial, you'll learn what modules are, which problems they solve, how to create them, how they interact with each other, and how we can decouple modules using the service locator pattern. Finally, we'll review how Maven works with the module system.
 
-We'll be using the command line to compile, package, and run the code examples to better understand what's going on. However, you can use the latest (or beta) version of your favorite IDE to do this. Of course, you'll need to have the Java 9 SDK installed. Download it from [here](http://www.oracle.com/technetwork/java/javase/downloads/index.html) or [here](http://openjdk.java.net/install/) and follow the installation instructions.
+We'll be using the command line to compile, package, and run the code examples to better understand what's going on. However, you can use the latest (or beta) version of your favorite IDE to do this. Of course, you'll need to have the Java 9 SDK installed. Download it from [here](http://www.oracle.com/technetwork/java/javase/downloads/index.html) or [here](http://jdk.java.net/9/) and follow the installation instructions.
 
 Let's start by talking about what are modules and what problems they solve.
 
