@@ -13,11 +13,6 @@
 - [Read more from Károly Nyisztor](https://www.pluralsight.com/guides/author/nyisztor) <img src="https://avatars1.githubusercontent.com/u/198511?v=4" width="30" height="30" alt="Károly Nyisztor" />
 - Related to: Swift
 
-### JavaScript Closures by Miroslav Gajic
-- [Read the guide](https://www.pluralsight.com/guides/front-end-javascript/javascript-closures?status=in-review)
-- [Read more from Miroslav Gajic](https://www.pluralsight.com/guides/author/mgajic78) <img src="https://avatars3.githubusercontent.com/u/25859460?v=4" width="30" height="30" alt="Miroslav Gajic" />
-- Related to: Front-End JavaScript (Angular, React, Meteor, etc)
-
 ### Getting Started with JShell by Esteban Herrera
 - [Read the guide](https://www.pluralsight.com/guides/java-and-j2ee/getting-started-with-jshell?status=in-review)
 - [Read more from Esteban Herrera](https://www.pluralsight.com/guides/author/eh3rrera) <img src="https://avatars2.githubusercontent.com/u/11665759?v=4" width="30" height="30" alt="Esteban Herrera" />
