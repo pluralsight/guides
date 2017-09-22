@@ -1,3 +1,8 @@
+### Getting Started with JShell by Esteban Herrera
+- [Read the guide](https://www.pluralsight.com/guides/java-and-j2ee/getting-started-with-jshell)
+- [Read more from Esteban Herrera](https://www.pluralsight.com/guides/author/eh3rrera) <img src="https://avatars2.githubusercontent.com/u/11665759?v=4" width="30" height="30" alt="Esteban Herrera" />
+- Related to: Java and J2EE
+
 ### JavaScript Closures by Miroslav Gajic
 - [Read the guide](https://www.pluralsight.com/guides/front-end-javascript/javascript-closures)
 - [Read more from Miroslav Gajic](https://www.pluralsight.com/guides/author/mgajic78) <img src="https://avatars3.githubusercontent.com/u/25859460?v=4" width="30" height="30" alt="Miroslav Gajic" />
