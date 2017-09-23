@@ -114,7 +114,9 @@ Arrays store values of the same type in a specific order. The values must not be
 ### Creating Arrays
 We create an array using the following syntax:
 ```
-let numbers: Array<Int> = [0, 2, 1, 3, 1, 42] print(numbers) // Output: [0, 2, 1, 3, 1, 42]
+let numbers: Array<Int> = [0, 2, 1, 3, 1, 42] 
+print(numbers) 
+// Output: [0, 2, 1, 3, 1, 42]
 ```
 You can also use the shorthand form ```[Type]``` - this is the preferred form by the way:
 ```
