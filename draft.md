@@ -1,3 +1,8 @@
+### Linux System Administration by Gabriel Cánepa
+- [Read the guide](https://www.pluralsight.com/guides/other/linux-system-administration?status=draft)
+- [Read more from Gabriel Cánepa](https://www.pluralsight.com/guides/author/gacanepa) <img src="https://avatars2.githubusercontent.com/u/2545170?v=4" width="30" height="30" alt="Gabriel Cánepa" />
+- Related to: other
+
 ### Indepth Dimple Code Analysis of a Multiline Chart by sonisick
 - [Read the guide](https://www.pluralsight.com/guides/other/indepth-dimple-code-analysis-of-a-multiline-chart?status=draft)
 - [Read more from sonisick](https://www.pluralsight.com/guides/author/sonisick) <img src="https://avatars0.githubusercontent.com/u/6710145?v=4" width="30" height="30" alt="sonisick" />
