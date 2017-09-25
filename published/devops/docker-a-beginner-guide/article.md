@@ -60,7 +60,7 @@ EXPOSE 8080
 
 # CMD sets the first command that will run when you create containers from the resulting image.
 # Here, we will start tomcat once the container is called
-CMD ["/usr/local/tomcat/catalina.sh", "run"]
+CMD ["/usr/local/tomcat/bin/catalina.sh", "run"]
 ```
 
 ## 2. Creating an Image
