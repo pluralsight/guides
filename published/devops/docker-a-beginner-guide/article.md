@@ -48,11 +48,10 @@ ENV PATH $CATALINA_HOME/bin:$PATH
 # Here we will navigate into /usr/local then download tomcat from the server
 # then decompress it and rename it to /tomcat.
 # The final path to tomcat will be /usr/local/tomcat.
-RUN 
-     cd /usr/local/ \
-     && wget http://mirrors.m247.ro/apache/tomcat/tomcat-8/v8.0.32/bin/apache-tomcat-8.0.32.tar.gz \
-     && tar xzf apache-tomcat-8.0.32.tar.gz \
-     && mv apache-tomcat-8.0.32/ tomcat/
+RUN cd /usr/local/ \
+     && wget http://mirrors.m247.ro/apache/tomcat/tomcat-8/v8.0.46/bin/apache-tomcat-8.0.46.tar.gz \
+     && tar xzf apache-tomcat-8.0.46.tar.gz \
+     && mv apache-tomcat-8.0.46/ tomcat/
 
 
 # the EXPOSE command will tell your future container to expose 8080 port to the outside
