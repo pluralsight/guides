@@ -43,14 +43,16 @@ ENV PATH $CATALINA_HOME/bin:$PATH
 
 
 # RUN lets you run Linux commands inside the image.
+# The \ symbol allows you to continue the command onto the next line
+# The && allows you to string multiple commands together. This is preferred over having a RUN statement for each command
 # Here we will navigate into /usr/local then download tomcat from the server
 # then decompress it and rename it to /tomcat.
 # The final path to tomcat will be /usr/local/tomcat.
 RUN 
-     cd /usr/local/ && 
-     wget http://mirrors.m247.ro/apache/tomcat/tomcat-8/v8.0.32/bin/apache-tomcat-8.0.32.tar.gz && 
-     tar xzf apache-tomcat-8.0.32.tar.gz &&
-     mv apache-tomcat-8.0.32/ tomcat/
+     cd /usr/local/ \
+     && wget http://mirrors.m247.ro/apache/tomcat/tomcat-8/v8.0.32/bin/apache-tomcat-8.0.32.tar.gz \
+     && tar xzf apache-tomcat-8.0.32.tar.gz \
+     && mv apache-tomcat-8.0.32/ tomcat/
 
 
 # the EXPOSE command will tell your future container to expose 8080 port to the outside
@@ -64,7 +66,7 @@ CMD ["/usr/local/tomcat/catalina.sh", "run"]
 
 ## 2. Creating an Image
 
-After you create this Dockerfile you need to create your image.
+After you create this Dockerfile you need to create your image. Docker will run an _intermediate_ container for each step in your Dockerfile during the build process, eventually creating a final image that you can export and import to other systems.
 You need to navigate through your directory to where the Dockerfile was saved. Use this command line prompt: 
 
 ```
@@ -73,10 +75,19 @@ docker build -t tomcat .
 
 A couple quick definitions:
 
-**docker build** - _This command builds a new image from the source code at PATH_. In our case, the PATH is '.' (current folder). 
+**docker build** - _This command builds a new image from the Dockerfile code at PATH_. In our case, the PATH is '.' (current folder). 
 The option **-t** refers to a Name of (or tag of) the image (format name:tag). In this case, just the name "tomcat".
 
-After all steps have been executed, you can test your code's functionality by typing docker images and you will see your image there: tomcat.
+After all steps have been executed, you can test your code's functionality by typing `docker images` and you will see your image there named `tomcat` after the tomcat image we just built:
+```
+
+$ docker images
+REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
+tomcat              latest              24b60eaf8397        7 seconds ago       334 MB
+java                8-jre               e44d62cf8862        8 months ago        311 MB
+
+
+```
 
 ## 3. Starting a container
 
@@ -90,11 +101,11 @@ Let's break down this simple, yet complex command.
 
 **docker run** - _Runs a command in a new container_. 
 
-**p** - an important term. Usually applications that use some ports in order to run, like tomcat 8080, mySQL 3306, Apache 80, and so on. In a docker container, those ports will be restricted to that container. This means that, if you start a container with mySQL (port 3306) and you'd like to access that mySQL instance from a Java application, you will not be able to access it. The mySQL port is forced to be open in the Docker container that you have started. 
+**-p parameter** - Establishes a connection between container's port(s) to the host. By using **port1:port2** you make  **port1** match with **port2**. After that, you can use **port2** in order to access the service that is opened on **port1** inside the container. Thus, the container is now connected with outside environments. Usually applications that use some ports in order to run (like tomcat on port 8080, mySQL on port 3306, Apache on port 80, and so) will be restricted in a container to that specific container, unable to communicate with the host or outside network. That means if you start a mySQL container using port 3306, you wouldn't be able to access it with another application outside that container. Using the `-p 8080:8080` option allows communication between the container on the container's port 8080 and the host's port 8080. 
 
-But we solve this port issue by using p parameter.
+**--name=** - _The assigned name for the container_. This will be what you reference when you run other docker commands against the container. Here we are naming the container `tomcat`
 
-**-p parameter** - Establishes a connection between container's port(s) to the host. By using **port1:port2** you make  **port1** match with **port2**. After that, you can use **port2** in order to access the service that is opened on **port1** inside the container. Thus, the container is now connected with outside environments.
+**tomcat** - _The image the container is based on_. In this example, we are specifying running the Tomcat image we just created as a container.
 
 ## 4. Checking for containers
 
