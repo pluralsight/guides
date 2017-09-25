@@ -3,11 +3,6 @@
 - [Read more from ajsaulsberry](https://www.pluralsight.com/guides/author/ajsaulsberry) <img src="https://avatars1.githubusercontent.com/u/11444510?v=4" width="30" height="30" alt="ajsaulsberry" />
 - Related to: Microsoft.NET (C#, ASP.NET, VB.NET, etc)
 
-### Getting Started with the Java Platform Module System by Esteban Herrera
-- [Read the guide](https://www.pluralsight.com/guides/java-and-j2ee/getting-started-with-the-java-platform-module-system?status=in-review)
-- [Read more from Esteban Herrera](https://www.pluralsight.com/guides/author/eh3rrera) <img src="https://avatars2.githubusercontent.com/u/11665759?v=4" width="30" height="30" alt="Esteban Herrera" />
-- Related to: Java and J2EE
-
 ### Data Structures in Swift - Part 2 by Károly Nyisztor
 - [Read the guide](https://www.pluralsight.com/guides/swift/data-structures-in-swift-part-2?status=in-review)
 - [Read more from Károly Nyisztor](https://www.pluralsight.com/guides/author/nyisztor) <img src="https://avatars1.githubusercontent.com/u/198511?v=4" width="30" height="30" alt="Károly Nyisztor" />
