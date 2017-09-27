@@ -3,11 +3,6 @@
 - [Read more from ajsaulsberry](https://www.pluralsight.com/guides/author/ajsaulsberry) <img src="https://avatars1.githubusercontent.com/u/11444510?v=4" width="30" height="30" alt="ajsaulsberry" />
 - Related to: Microsoft.NET (C#, ASP.NET, VB.NET, etc)
 
-### Data Structures in Swift - Part 2 by Károly Nyisztor
-- [Read the guide](https://www.pluralsight.com/guides/swift/data-structures-in-swift-part-2?status=in-review)
-- [Read more from Károly Nyisztor](https://www.pluralsight.com/guides/author/nyisztor) <img src="https://avatars1.githubusercontent.com/u/198511?v=4" width="30" height="30" alt="Károly Nyisztor" />
-- Related to: Swift
-
 ###  ASP.NET MVC - Getting default data binding right for hierarchical views by ajsaulsberry
 - [Read the guide](https://www.pluralsight.com/guides/microsoft-net/asp-net-mvc-getting-default-data-binding-right-for-hierarchical-views?status=in-review)
 - [Read more from ajsaulsberry](https://www.pluralsight.com/guides/author/ajsaulsberry) <img src="https://avatars1.githubusercontent.com/u/11444510?v=4" width="30" height="30" alt="ajsaulsberry" />
