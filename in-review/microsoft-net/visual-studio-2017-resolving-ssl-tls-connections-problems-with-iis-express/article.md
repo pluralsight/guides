@@ -292,4 +292,4 @@ For best results, be sure you are using the latest versions of Visual Studio 201
 [docs.microsoft.com: Handling URL Binding Failures in IIS Express](https://docs.microsoft.com/en-us/iis/extensions/using-iis-express/handling-url-binding-failures-in-iis-express) - This article, from 2011, provides much useful information on using a custom SSL certificate and custom port bindings with IIS Express. It is of more help to those looking to customize their IIS Express configuration than those looking to resolve problems with their configuration.
 
 ---
-*Written by A. J. Saulsberry, 20 August 2017.*
+*Written by A. J. Saulsberry*
