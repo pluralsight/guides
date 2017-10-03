@@ -257,7 +257,7 @@ An interesting query, for example, could be “Show me all Error messages transm
 
 In the end, there are an unlimited number of interesting questions to ask about our collected data :-).
 
-For a more in-depth review of Elasticsearch, feel free to check my latest Pluralsight course, which dedicates a *complete module* to explain how the technology works.
+For a more in-depth review of Elasticsearch, feel free to check [my latest Pluralsight course](https://www.pluralsight.com/courses/building-enterprise-distributed-online-analytics-platform), which dedicates a *complete module* to explain how the technology works.
 
 
 # Visualizing with Kibana
