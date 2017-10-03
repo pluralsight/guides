@@ -7,6 +7,10 @@
         [
             "prtkgpt",
             "prtkgpt-microsoft-net-visual-studio-2017-resolving-ssl-tls-connections-problems-with-iis-express"
+        ],
+        [
+            "adityavarshney",
+            "adityavarshney-microsoft-net-visual-studio-2017-resolving-ssl-tls-connections-problems-with-iis-express"
         ]
     ],
     "filename": "article.md",
