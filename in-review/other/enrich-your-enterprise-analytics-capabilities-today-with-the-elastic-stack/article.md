@@ -106,7 +106,9 @@ Outsourcing the concern for centralized system logging into a dedicated technolo
 ## The Opportunity
 
 
-![Opportunity Graphic](https://raw.githubusercontent.com/pluralsight/guides/master/images/af5974ec-f8a1-4a23-b69b-01ad661aaa2f.png)
+![Opportunity Graphic](https://raw.githubusercontent.com/pluralsight/guides/master/images/4aba4908-9bbc-4176-99d5-c886c25b916f.net-resizeimage)
+
+
 
 
 #### Rapid introduction of a rock-solid log analytics provider to your existing system.
