@@ -1,8 +1,10 @@
-Building ASP.NET web projects that enable [HTTPS](https://en.wikipedia.org/wiki/HTTPS) is a good thing. HTTPS helps ensure: the authenticity of the website, the integrity of the data exchanged between the client and the website, and protects interactions with the website from the prying eyes of internet service providers and other snoopers.
+Building ASP.NET web projects that enable [HTTPS](https://en.wikipedia.org/wiki/HTTPS) helps ensure website authenticity, integrity of the data exchanged between the client and the website, and protections over users' interactions with the website from prying internet service providers and third-party snoopers.
 
-HTTPS for production websites relies on trusted [public key certificates](https://en.wikipedia.org/wiki/Public_key_certificate) that are issued by [certificate authorities](https://en.wikipedia.org/wiki/Certificate_authority). These certificates are issued by specialist commercial enterprises or nonprofit organizations like [CACert.org](http://www.cacert.org/) and [Let's Encrypt](https://letsencrypt.org/).
+Using HTTPS for production websites relies on trusted [public key certificates](https://en.wikipedia.org/wiki/Public_key_certificate) that are issued by [certificate authorities](https://en.wikipedia.org/wiki/Certificate_authority). These certificates are issued by specialist commercial enterprises or nonprofit organizations like [CACert.org](http://www.cacert.org/) and [Let's Encrypt](https://letsencrypt.org/).
 
-Developers using Microsoft Visual Studio to build websites can create a local certificate to provide HTTPS functionality. Visual Studio includes [IIS Express](https://docs.microsoft.com/en-us/iis/extensions/introduction-to-iis-express/iis-express-overview), a "lightweight" version of Internet Information Server designed for the needs of developers. In particular, IIS Express:
+Developers using Microsoft Visual Studio to build websites can create a local certificate to provide HTTPS functionality. Visual Studio includes [IIS Express](https://docs.microsoft.com/en-us/iis/extensions/introduction-to-iis-express/iis-express-overview), a "lightweight" version of Internet Information Server designed for the needs of developers.
+
+In particular, IIS Express:
 
 * does not require Administrator rights on the local machine, making it convenient for developers working in an enterprise environment where the user rights on their development workstation are restricted;
 
@@ -18,9 +20,9 @@ Note that IIS Express **10** is the current version and ships with Visual Studio
 
 ## Identifying the problem
 
-When IIS Express is installed with Visual Studio the installation process creates an IIS Express Development Certificate that serves as the HTTPS certificate for websites running on IIS Express on the local machine. This certificate has an *expiration date* that is five years from the date on which the certificate is created.
+When IIS Express is installed with Visual Studio, the installation process creates an IIS Express Development Certificate that serves as the HTTPS certificate for websites running on IIS Express on the local machine. This certificate has an *expiration date* that is five years from the date on which the certificate is created.
 
-Attempting to connect to a website running in IIS Express using HTTPS will fail when the IIS Express Development Certificate is improperly bound to the port or the certificate has expired. It can also result from an improperly installed certificate.
+Using HTTPS to connect to a website running in IIS Express will fail when the IIS Express Development Certificate is improperly bound to the port or the certificate has expired or the certificate has been improperly installed.
 
 Common browser error messages for HTTPS failures include the following:
 
@@ -33,13 +35,11 @@ The specific error message you receive will depend on the browser version you ar
 
 ## Before you begin
 
-> PluralSight and the author disclaim all liability for the reliability, accuracy, and effect of following these instructions. Use at your own risk.
-
 This guide provides one approach to resolving SSL/TLS connection problems experienced when running ASP.NET web projects using the IIS Express development web server. It is oriented to the current version of Visual Studio (as of the time of writing). It has not been tested for compatibility with prior versions of Visual Studio or IIS Express.
 
 Most importantly, this guide is intended for developers who are using automatic port configuration for their web projects. Visual Studio assigns unique ports to projects for both HTTP and HTTPS on the local machine (localhost) and keeps this information in sync in various places. Unless you have a compelling reason to assign specific ports, life is more convenient if you leave this alone.
 
-This guide is also based on the automatic creation of a self-signed certificate for use in development. If you have any reason to use a specific certificate the instructions in this guide will not apply to you.
+This guide is also based on the automatic creation of a self-signed certificate for use in development. If you have any reason to use a specific certificate, the instructions in this guide will not apply to you.
 
 In addition, we have no way of knowing if your system is configured in a way that might adversely effect the results of following the procedures documented here or if these instructions are incomplete or inaccurate for a specific configuration.
 
@@ -77,7 +77,7 @@ As noted above, there are a few constraints on the use of these instructions:
 
 #### Google Chrome version
 
-Google introduced a breaking change in the way it handled SSL certificates in version 58. Working with Microsoft, they resolved it in version 60. Many recent problem reports associated with SSL debugging with Visual Studio and Chrome come from this issue.
+Google introduced a key change in the way it handled SSL certificates in version 58. Working with Microsoft, they resolved differences in version 60. Many recent problem reports associated with SSL debugging with Visual Studio and Chrome come from this issue.
 
 Before proceeding with this solution, check your Chrome version number and be sure it is 60 or higher:
 
@@ -90,11 +90,11 @@ IIS Express reserves a limited number of ports for automatic SSL binding. Be sur
 
     44300 to 44399 (inclusive)
 
-If you are running an up-to-date version of Chrome (or Edge or Firefox or Opera) and you are using a valid SSL port number and you are still getting errors, proceed with the process presented in this guide..
+If you are running an up-to-date version of Chrome (or Edge or Firefox or Opera) and you are using a valid SSL port number and you are still getting errors, proceed with the process presented in this guide.
 
 ### Resetting local certificates
 
-The following instructions are based on the premise that you want your development environment to leverage as much automation as possible for routine, repetitive tasks. Accordingly, they are intended to enable Visual Studio and IIS Express to interact automatically in the way they are intended to do.
+The following instructions are based on the premise that you want your development environment to automate as many routine, repetitive tasks as possible. Accordingly, the instructions intend to generalize and automate Visual Studio and IIS Express.
 
 These instructions are also based on the premise that a clean slate is often the best way to resolve a problem and prevent future problems. Accordingly, these instructions are intended to provide a *complete reset of your IIS Express Development Certificate* by removing any currently existing certificates and creating a new one that will bind successfully to the appropriate ports.
 
@@ -104,14 +104,14 @@ These instructions are also based on the premise that a clean slate is often the
 
 The first step in the repair process is to clear out existing certificates for **localhost**. You may want to [create a system restore point](https://support.microsoft.com/en-us/help/4027538/windows-create-a-system-restore-point) and a [recovery drive](https://support.microsoft.com/en-us/help/4026852/windows-create-a-recovery-drive) before beginning.
 
-1. Open a command window (Run As Administrator).
+Open a command window (Run As Administrator).
 
-1. Open Microsoft Management Console: type `MMC` at the command prompt and press **Enter**.
+Open Microsoft Management Console: type `MMC` at the command prompt and press **Enter**.
 
     
-![command prompt](https://raw.githubusercontent.com/pluralsight/guides/master/images/2bfc8ec3-994a-4c84-aad1-da2780e190cc.png)
+    ![command prompt](https://raw.githubusercontent.com/pluralsight/guides/master/images/2bfc8ec3-994a-4c84-aad1-da2780e190cc.png)
 
-1. Add the **Certificates** snap-in.
+Add the **Certificates** snap-in.
 
     **File** > **Add or Remove Snap-ins** > **Certificates** > **Add**
 
@@ -122,62 +122,62 @@ When you click **Add** you will be presented with a dialog box to select the acc
 
 ![MMC Select Account](https://raw.githubusercontent.com/pluralsight/guides/master/images/39d0d316-94cd-4d8d-8e59-1165e37c5cfc.png)
 
-1. Select **My User Account** and click **Finish**.
+Select **My User Account** and click **Finish**.
 
-1. Under **Console Root / Certificates - Current User / Personal / Certificates** locate any certificates for which the value in the **Issued To** column is `localhost`. (Under most circumstances there shouldn't be any.) Select the certificate(s), right-click, and select **Delete**.
+Under **Console Root / Certificates - Current User / Personal / Certificates** locate any certificates for which the value in the **Issued To** column is `localhost`. (Under most circumstances there shouldn't be any.) Select the certificate(s), right-click, and select **Delete**.
 
-1. Under **Console Root / Certificates - Current User / Trusted Root Certification Authorities / Certificates** locate any certificates for which the value in the **Issued To** column is `localhost`. Select the certificate(s), right-click, and select **Delete**.
+Under **Console Root / Certificates - Current User / Trusted Root Certification Authorities / Certificates** locate any certificates for which the value in the **Issued To** column is `localhost`. Select the certificate(s), right-click, and select **Delete**.
 
-    There will be a longer list of certificates. Some of the certificates issued to `localhost` may be current or expired. Delete all of them: the goal is to remove potential conflicts with the results of the IIS Express repair process described below.
+There will be a longer list of certificates. Some of the certificates issued to `localhost` may be current or expired. Delete all of them: the goal is to remove potential conflicts with the results of the IIS Express repair process described below.
 
 ![MMC Delete Personal Trusted Certificates](https://raw.githubusercontent.com/pluralsight/guides/master/images/b8b4eaa2-cbf1-4492-a91d-2f4495879fb1.png)
 
-1. Close Microsoft Management Console.
+Close Microsoft Management Console.
 
-1. Re-open Microsoft Management Console (from the command prompt in the command window you previously opened) and add the **Certificates** snap-in. This time, select **Computer account** at the **Certificates snap-in** dialog box and click **Finish**.
+Re-open Microsoft Management Console (from the command prompt in the command window you previously opened) and add the **Certificates** snap-in. This time, select **Computer account** at the **Certificates snap-in** dialog box and click **Finish**.
 
     You will be presented with a dialog box:
 
 ![MMC Select Computer](https://raw.githubusercontent.com/pluralsight/guides/master/images/0873f5a2-1d42-4c08-a9b2-7a70b2a20da5.png)
 
-1. Select **Local Computer** and click **Finish**.
+Select **Local Computer** and click **Finish**.
 
-1. Under **Console Root / Certificates -  (Local Computer) / Personal / Certificates** locate any certificates for which the value in the **Issued To** column is `localhost`. Select the certificate(s), right-click, and select **Delete**.
+Under **Console Root / Certificates -  (Local Computer) / Personal / Certificates** locate any certificates for which the value in the **Issued To** column is `localhost`. Select the certificate(s), right-click, and select **Delete**.
 
 ![MMC Delete Local Computer Personal Certificates](https://raw.githubusercontent.com/pluralsight/guides/master/images/d081ae80-2099-421d-b8b5-ddf9267f60d4.png)
 
-1. Under **Console Root / Certificates -  (Local Computer) / Trusted Root Certification Authorities / Certificates** locate any certificates for which the value in the **Issued To** column is `localhost`. Select the certificate(s), right-click, and select **Delete**.
+Under **Console Root / Certificates -  (Local Computer) / Trusted Root Certification Authorities / Certificates** locate any certificates for which the value in the **Issued To** column is `localhost`. Select the certificate(s), right-click, and select **Delete**.
 
-1. Close Microsoft Management Console.
+Close Microsoft Management Console.
 
 #### Creating a new certificate
 
 This process uses the IIS Express installer to generate a certificate for `localhost` and get it installed in the right place, then it uses Visual Studio to bind the certificate to the ports used by IIS Express. These steps only need to be executed once to install the certificate. After installation, each subsequent web project that uses SSL will be assigned a SSL port bound to the certificate.
 
-1. From the Windows desktop, open the old-style Control Panel:
+From the Windows desktop, open the old-style Control Panel:
 
     **Start** > **Windows System** folder > **Control Panel**
 
-    *Note: you must use the old-style Control Panel. Windows Settings / Apps will not give you the appropriate context menu option.
+    *Note*: you must use the old-style Control Panel. Windows Settings / Apps will not give you the appropriate context menu option.
 
-1. Select **Programs** > **Programs and Features** and find **IIS Express** in the list of programs.
+Select **Programs** > **Programs and Features** and find **IIS Express** in the list of programs.
 
-1. Right-click on **ISS Express** and click **Repair**. Answer "Yes" to any confirmation dialog boxes that appear.
+Right-click on **ISS Express** and click **Repair**. Answer "Yes" to any confirmation dialog boxes that appear.
 
 
-![Control Panel Programs and Features](https://raw.githubusercontent.com/pluralsight/guides/master/images/736d2c32-75fc-4a89-9f64-59e906a37d38.png)
+    ![Control Panel Programs and Features](https://raw.githubusercontent.com/pluralsight/guides/master/images/736d2c32-75fc-4a89-9f64-59e906a37d38.png)
 
 The IIS Express installer will chug through the repair process and return you to the list of Programs and Features when it's finished.
 
-1. Open Microsoft Management Console again and select the Certificates snap-in for the **Local Computer** account.
+Open Microsoft Management Console again and select the Certificates snap-in for the **Local Computer** account.
 
     Under  **Console Root / Certificates -  (Local Computer) / Personal / Certificates** you should see a new certificate Issued To `localhost` with a description of `IIS Express Development Certificate` and a Expiration Date 5 years minus 1 day from the current date.
 
-1. Close Microsoft Management Console. (Leave the command window open; you're not done with it. )
+Close Microsoft Management Console. (Leave the command window open, though. You're not done with it. )
 
-1. Open Visual Studio and open the solution containing the web project you'd like to run in IIS Express with SSL.
+Open Visual Studio and open the solution containing the web project you'd like to run in IIS Express with SSL.
 
-1. Verify that the project is configured to use SSL by selecting the project in Visual Studio Solution Explorer and pressing **F4**. You should see a panel similar to the following:
+Verify that the project is configured to use SSL by selecting the project in Visual Studio Solution Explorer and pressing **F4**. You should see a panel similar to the following:
 
 
 ![Visual Studio Development Server Properties](https://raw.githubusercontent.com/pluralsight/guides/master/images/101f0994-971a-4385-97f5-b72580af00e0.png)
@@ -188,7 +188,7 @@ If you are working with a web project for which SSL has not yet been enabled, se
 
 Make note of the value for **SSL URL**.
 
-1. Open the project properties by selecting the project in Solution Explorer and:
+Open the project properties by selecting the project in Solution Explorer and:
 
     pressing **Alt + Enter**, or
 
@@ -196,7 +196,7 @@ Make note of the value for **SSL URL**.
 
     selecting **Project** > **_project name_ Properties** from the menu bar.
 
-1. Select the **Web** tab and enter the value from **SSL URL** in the step above in the **Project URL** field:
+Select the **Web** tab and enter the value from **SSL URL** in the step above in the **Project URL** field:
 
 ![Visual Studio Project Properties](https://raw.githubusercontent.com/pluralsight/guides/master/images/71beec54-1fb1-4db0-b8b6-73592dc9dcfa.png)
 
@@ -208,11 +208,11 @@ You may be shown a dialog box like the following if you haven't run the web proj
 
 Select **Yes**.
 
-1. Run the project in Visual Studio:
+Run the project in Visual Studio:
 
     **Debug** > **Start Debugging** (**F5**)
 
-1. You will be presented with a dialog box:
+You will be presented with a dialog box:
 
 ![Visual Studio SSL configuration warning](https://raw.githubusercontent.com/pluralsight/guides/master/images/d45fd286-70a8-4269-973d-af50707f8091.png)
 
@@ -222,7 +222,7 @@ This enables Visual Studio to trust the SSL certificate you created using the II
 
 **Certificates -  (Local Computer) / Personal / Certificates**
 
-1. You will be presented with another dialog box:
+You will be presented with another dialog box:
 
 ![Visual Studio SSL Certificate Installation Warning](https://raw.githubusercontent.com/pluralsight/guides/master/images/09605b83-6ece-4383-921c-e418867cc5f5.png)
 
@@ -232,7 +232,7 @@ This will take the certificate that you created and bound to the port selected i
 
 **Console Root / Certificates - Current User / Trusted Root Certification Authorities / Certificates**
 
-1. The project should run (unless you have build or runtime problems otherwise) and appear in the browser like below:
+The project should run (unless you have build or runtime problems otherwise) and appear in the browser like below:
 
 ![BlipTLS project in Chrome using SSL](https://raw.githubusercontent.com/pluralsight/guides/master/images/5c8af427-7849-43b4-b29c-36c49f0f6620.png)
 
@@ -244,7 +244,7 @@ Note the following characteristics:
 
 * The port being served is the automatically generated one for SSL connections.
 
-1. Examine the values for running applications in IIS Express:
+Examine the values for running applications in IIS Express:
 
     Find the IIS Express Tray Icon, open the context menu (right-click), and select **Show All Applications**.
 
@@ -256,15 +256,15 @@ This will display the IIS Express Running Applications dialog box:
 
 Note that IIS is running the website on both the http and https ports specified in the Project Development Server Properties.
 
-1. Stop the project in Visual Studio. The browser window should close and IIS Express should stop running. (The tray icon will disappear.)
+Stop the project in Visual Studio. The browser window should close and IIS Express should stop running. (The tray icon will disappear.)
 
 ## Verifying certificate installation
 
 As a final step, you can verify the installation of the new IIS Express Development Certificate.
 
-1. Open Microsoft Management Console and add the **Certificates** snap-in. Select the **Current user** account.
+Open Microsoft Management Console and add the **Certificates** snap-in. Select the **Current user** account.
 
-1. Navigate the folder structure to:
+Navigate the folder structure to:
 
     **Console Root / Certificates - Current User / Trusted Root Certification Authorities / Certificates**
 
