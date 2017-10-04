@@ -1,3 +1,8 @@
+### Create Charts using PHP and MongoDB by Gagan Sikri
+- [Read the guide](https://www.pluralsight.com/guides/php/create-charts-using-php-and-mongodb?status=draft)
+- [Read more from Gagan Sikri](https://www.pluralsight.com/guides/author/sikrigagan) <img src="https://avatars0.githubusercontent.com/u/6383448?v=4" width="30" height="30" alt="Gagan Sikri" />
+- Related to: PHP
+
 ### Linux System Administration by Gabriel Cánepa
 - [Read the guide](https://www.pluralsight.com/guides/other/linux-system-administration?status=draft)
 - [Read more from Gabriel Cánepa](https://www.pluralsight.com/guides/author/gacanepa) <img src="https://avatars2.githubusercontent.com/u/2545170?v=4" width="30" height="30" alt="Gabriel Cánepa" />
