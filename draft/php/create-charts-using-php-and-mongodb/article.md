@@ -92,5 +92,3 @@ $data=iterator_to_array($myObj);
 asort($data);
 ```
 
-* Forming 
-
