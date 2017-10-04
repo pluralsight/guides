@@ -1,0 +1,15 @@
+{
+    "_publish_status": "draft",
+    "author_name": "sikrigagan",
+    "author_real_name": "Gagan Sikri",
+    "branch": "master",
+    "branches": [],
+    "filename": "article.md",
+    "first_commit": "7d2c7bbb0732ac0308fd9ffcc0360da50e911d86",
+    "image_url": "https://avatars0.githubusercontent.com/u/6383448?v=4",
+    "stacks": [
+        "PHP"
+    ],
+    "thumbnail_url": null,
+    "title": "Create Charts using PHP and MongoDB"
+}
