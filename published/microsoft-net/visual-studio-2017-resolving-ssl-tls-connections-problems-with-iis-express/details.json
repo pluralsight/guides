@@ -3,12 +3,7 @@
     "author_name": "ajsaulsberry",
     "author_real_name": "ajsaulsberry",
     "branch": "master",
-    "branches": [
-        [
-            "prtkgpt",
-            "prtkgpt-microsoft-net-visual-studio-2017-resolving-ssl-tls-connections-problems-with-iis-express"
-        ]
-    ],
+    "branches": [],
     "filename": "article.md",
     "first_commit": "595c867506f84eb1eb1bfcda6568ab4b1605476a",
     "image_url": "https://avatars1.githubusercontent.com/u/11444510?v=4",
