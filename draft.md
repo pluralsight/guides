@@ -1,8 +1,3 @@
-### Software Delivery using Test Driven Development (TDD) by Abhinav Kaiser
-- [Read the guide](https://www.pluralsight.com/guides/other/software-delivery-using-test-driven-development-tdd?status=draft)
-- [Read more from Abhinav Kaiser](https://www.pluralsight.com/guides/author/abskaiser) <img src="https://avatars2.githubusercontent.com/u/26959448?v=4" width="30" height="30" alt="Abhinav Kaiser" />
-- Related to: other
-
 ### Create Charts using PHP and MongoDB by Gagan Sikri
 - [Read the guide](https://www.pluralsight.com/guides/php/create-charts-using-php-and-mongodb?status=draft)
 - [Read more from Gagan Sikri](https://www.pluralsight.com/guides/author/sikrigagan) <img src="https://avatars0.githubusercontent.com/u/6383448?v=4" width="30" height="30" alt="Gagan Sikri" />
