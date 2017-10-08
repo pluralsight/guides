@@ -646,7 +646,7 @@ module my.company.webapp {
 }
 ```
 
-This way, when it's time to build the project, the Maven compiler plug-in will set up the module path so that the Java compiler can work correctly.
+This way, when it's time to build the project (for example, with `mvn package`), the Maven compiler plug-in will set up the module path so that the Java compiler can work correctly.
 
 # Conclusion
 The module system has been introduced to Java to promote stronger encapsulation and better design, while making Java a more flexible and future-proof language.
