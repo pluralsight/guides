@@ -1,4 +1,3 @@
-# How a disposable dockerized chrome can help get rid of a headache
 
 A week into writing functional tests for the web related work I ran into this weird issue of not getting chrome up and running for getting my WebdriverIo and Nightwatch tests to work. The issue was quite flaky. 
 When I would run them on my local it would run just fine because it was a configure once run all the time scenario.
