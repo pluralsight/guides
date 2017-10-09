@@ -1,3 +1,8 @@
+### How a disposable dockerized chrome can help get rid of a headache by Nilanjan Siromani
+- [Read the guide](https://www.pluralsight.com/guides/front-end-javascript/how-a-disposable-dockerized-chrome-can-help-get-rid-of-a%20headache?status=in-review)
+- [Read more from Nilanjan Siromani](https://www.pluralsight.com/guides/author/nilanjansiromani) <img src="https://avatars3.githubusercontent.com/u/23280169?v=4" width="30" height="30" alt="Nilanjan Siromani" />
+- Related to: Front-End JavaScript (Angular, React, Meteor, etc)
+
 ### Software Delivery using Test Driven Development (TDD) by Abhinav Kaiser
 - [Read the guide](https://www.pluralsight.com/guides/other/software-delivery-using-test-driven-development-tdd?status=in-review)
 - [Read more from Abhinav Kaiser](https://www.pluralsight.com/guides/author/abskaiser) <img src="https://avatars2.githubusercontent.com/u/26959448?v=4" width="30" height="30" alt="Abhinav Kaiser" />
