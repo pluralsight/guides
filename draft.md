@@ -1,3 +1,8 @@
+### Blockchain Architecture by parker mccurley
+- [Read the guide](https://www.pluralsight.com/guides/software-engineering-best-practices/blockchain-architecture?status=draft)
+- [Read more from parker mccurley](https://www.pluralsight.com/guides/author/parkertm) <img src="https://avatars1.githubusercontent.com/u/13035147?v=4" width="30" height="30" alt="parker mccurley" />
+- Related to: Software Engineering Best Practices
+
 ### Linux System Administration by Gabriel Cánepa
 - [Read the guide](https://www.pluralsight.com/guides/other/linux-system-administration?status=draft)
 - [Read more from Gabriel Cánepa](https://www.pluralsight.com/guides/author/gacanepa) <img src="https://avatars2.githubusercontent.com/u/2545170?v=4" width="30" height="30" alt="Gabriel Cánepa" />
