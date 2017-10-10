@@ -18,7 +18,7 @@ For creating charts using PHP and MongoDB, you need the following to be download
 ### Part 1: Including Dependencies
 To render FusionCharts in PHP using MongoDB, we need to include following dependencies:
 
-* FusionCharts Suite XT ([Download Link](https://www.fusioncharts.com/download/)):  Download FusionCharts Suite XT zip file and store all the extracted script files in a new folder inside the project folder, as shown below.
+* FusionCharts Suite XT:  [Download FusionCharts Suite XT](https://www.fusioncharts.com/download/) zip file and store all the extracted script files in a new folder inside the project folder, as shown below.
 
 ```
 <html>
@@ -30,12 +30,12 @@ To render FusionCharts in PHP using MongoDB, we need to include following depend
 </html>
 ```
 
-* FusionCharts PHP Wrapper ([Download Link](https://www.fusioncharts.com/php-charts/)): Extract the fusioncharts PHP wrapper and save the `fusioncharts.php` file inside the same folder created in the previous step for keeping the script files.
+* FusionCharts PHP Wrapper: Extract the [FusionCharts PHP Wrapper](https://www.fusioncharts.com/php-charts/) and save the `fusioncharts.php` file inside the same folder created in the previous step for keeping the script files.
 
 ```
 <?php
 	// including FusionCharts PHP wrapper
-	require("fusioncharts/fusioncharts.php")
+	require 'fusioncharts/fusioncharts.php';
 ?>
 ```
 
@@ -202,7 +202,7 @@ If you have followed the above steps, then you must have a working chart with yo
 
 ![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/5cf57250-ad8d-4076-8038-493e11ee5a2c.png)
 
-If you are having trouble rendering the chart, you can download the source code from this GitHub repo.
+If you are having trouble rendering the chart, you can [download the source code from this GitHub repo](https://github.com/sikrigagan/PHP-MongoDB-Charts).
 
 Got questions? Leave a comment or feel free to say hi on [Twitter](https://twitter.com/sikrigagan)!
 
