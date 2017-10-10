@@ -1,5 +1,4 @@
-# Blockchain Architecture
-## by Decent Technologies
+_By Decent Technologies_
 
 ## Preface
 
