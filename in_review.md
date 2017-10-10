@@ -8,11 +8,6 @@
 - [Read more from Nilanjan Siromani](https://www.pluralsight.com/guides/author/nilanjansiromani) <img src="https://avatars3.githubusercontent.com/u/23280169?v=4" width="30" height="30" alt="Nilanjan Siromani" />
 - Related to: Front-End JavaScript (Angular, React, Meteor, etc)
 
-### Software Delivery using Test Driven Development (TDD) by Abhinav Kaiser
-- [Read the guide](https://www.pluralsight.com/guides/other/software-delivery-using-test-driven-development-tdd?status=in-review)
-- [Read more from Abhinav Kaiser](https://www.pluralsight.com/guides/author/abskaiser) <img src="https://avatars2.githubusercontent.com/u/26959448?v=4" width="30" height="30" alt="Abhinav Kaiser" />
-- Related to: other
-
 ### Indepth Dimple Code Analysis of a Multiline Chart by sonisick
 - [Read the guide](https://www.pluralsight.com/guides/other/indepth-dimple-code-analysis-of-a-multiline-chart?status=in-review)
 - [Read more from sonisick](https://www.pluralsight.com/guides/author/sonisick) <img src="https://avatars0.githubusercontent.com/u/6710145?v=4" width="30" height="30" alt="sonisick" />
