@@ -1,3 +1,8 @@
+### Blockchain Architecture by Decent
+- [Read the guide](https://www.pluralsight.com/guides/software-engineering-best-practices/blockchain-architecture?status=in-review)
+- [Read more from Decent](https://www.pluralsight.com/guides/author/decentcrypto) <img src="https://avatars3.githubusercontent.com/u/29243763?v=4" width="30" height="30" alt="Decent" />
+- Related to: Software Engineering Best Practices
+
 ### Create Charts using PHP and MongoDB by Gagan Sikri
 - [Read the guide](https://www.pluralsight.com/guides/php/create-charts-using-php-and-mongodb?status=in-review)
 - [Read more from Gagan Sikri](https://www.pluralsight.com/guides/author/sikrigagan) <img src="https://avatars0.githubusercontent.com/u/6383448?v=4" width="30" height="30" alt="Gagan Sikri" />
