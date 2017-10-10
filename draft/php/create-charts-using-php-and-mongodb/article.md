@@ -126,7 +126,7 @@ if ($data) {
                 "plotBorderAlpha"=> "0",
                 "bgColor"=> "#FFFFFFF",
                 "canvasBgColor"=> "#FFFFFF",
-                "showValues":"0",
+                "showValues"=> "0",
                 "showCanvasBorder"=> "0",
                 "showBorder"=> "0",
                 "divLineAlpha"=> "40",
