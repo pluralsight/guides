@@ -1,3 +1,8 @@
+### Create Charts using PHP and MongoDB by Gagan Sikri
+- [Read the guide](https://www.pluralsight.com/guides/php/create-charts-using-php-and-mongodb?status=in-review)
+- [Read more from Gagan Sikri](https://www.pluralsight.com/guides/author/sikrigagan) <img src="https://avatars0.githubusercontent.com/u/6383448?v=4" width="30" height="30" alt="Gagan Sikri" />
+- Related to: PHP
+
 ### How a disposable dockerized chrome can help get rid of a headache by Nilanjan Siromani
 - [Read the guide](https://www.pluralsight.com/guides/front-end-javascript/how-a-disposable-dockerized-chrome-can-help-get-rid-of-a%20headache?status=in-review)
 - [Read more from Nilanjan Siromani](https://www.pluralsight.com/guides/author/nilanjansiromani) <img src="https://avatars3.githubusercontent.com/u/23280169?v=4" width="30" height="30" alt="Nilanjan Siromani" />
