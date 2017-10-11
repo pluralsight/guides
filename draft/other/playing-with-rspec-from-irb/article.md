@@ -1,6 +1,5 @@
 
-
-This is a quick guide showing you necessary steps you should take to make `rspec` on `irb` 
+This is a quick guide showing you necessary steps you should take to make `rspec` work on `irb` 
 
 Lets start by loading rspec core and expectations
 
