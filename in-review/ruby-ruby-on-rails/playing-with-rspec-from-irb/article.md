@@ -1,13 +1,13 @@
-This is a quick guide showing you necessary steps you should take to make `rspec` work on `irb` 
+This is a quick guide showing you necessary steps you should take to make `rspec` work on `irb`.
 
-Lets start by loading rspec core and expectations
+Lets start by loading rspec core and expectations.
 
 ```
 require 'rspec/core' # this is what really runs your tests
 require 'rspec/expectations' # readable syntax for checking properties of your code 
 ```
 
-We then include the matchers modules
+We then include the matchers modules.
 
 ```
 include RSpec::Matchers # rspec will NOT automatically include this for you if you are using irb
@@ -20,7 +20,7 @@ With this we  can now test out our expectations:
 => true
 ```
 
-Whooohoo! You are good to go.. Not really, try this out 
+Whooohoo! You are good to go.. Not really, try this out.
 ```
 2.3.0 :003 > array_hashes = [{lol: nil}]
  => [{:lol=>nil}] 
@@ -38,9 +38,9 @@ TypeError: wrong argument type RSpec::Matchers::BuiltIn::Has (expected Module)
         from /usr/local/rvm/rubies/ruby-2.3.0/bin/irb:11:in `<main>'
 ```
 
-If you read closely into the error it expects a Module as an argument, this is because when using irb we are runing in the main ruby object. This object has another method called `include` that has presidence over rspec's `include` method
+If you read closely into the error it expects a Module as an argument, this is because when using irb we are running in the main ruby object. This object has another method called `include` that has presidence over rspec's `include` method
 
-To work around this we can `prepend RSpec::Matcher`s onto main's `singleton` class:
+To work around this, we can `prepend RSpec::Matcher`s onto main's `singleton` class:
 
 ```
 $ irb
@@ -54,5 +54,5 @@ irb(main):004:0> expect(array_hashes).to include(have_key(:lol))
 => true
 ```
 
-We ecountered this problem while doing a mob session at [AgileVentures](www.agileventures.org) and [raised the issue](https://github.com/rspec/rspec-expectations/issues/1018) on the rspec expectations github page where we got this hack
+We encountered this problem while doing a mob session at [AgileVentures](https://agileventures.org) and [raised the issue](https://github.com/rspec/rspec-expectations/issues/1018) on the rspec expectations github page where we got this hack.
 
