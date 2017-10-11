@@ -1,3 +1,8 @@
+### Blockchain Architecture by Decent
+- [Read the guide](https://www.pluralsight.com/guides/software-engineering-best-practices/blockchain-architecture)
+- [Read more from Decent](https://www.pluralsight.com/guides/author/decentcrypto) <img src="https://avatars3.githubusercontent.com/u/29243763?v=4" width="30" height="30" alt="Decent" />
+- Related to: Software Engineering Best Practices
+
 ### Software Delivery using Test Driven Development (TDD) by Abhinav Kaiser
 - [Read the guide](https://www.pluralsight.com/guides/other/software-delivery-using-test-driven-development-tdd)
 - [Read more from Abhinav Kaiser](https://www.pluralsight.com/guides/author/abskaiser) <img src="https://avatars2.githubusercontent.com/u/26959448?v=4" width="30" height="30" alt="Abhinav Kaiser" />
