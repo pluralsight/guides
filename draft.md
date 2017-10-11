@@ -1,3 +1,8 @@
+### Playing with rspec from IRB by Sigu Magwa
+- [Read the guide](https://www.pluralsight.com/guides/other/playing-with-rspec-from-irb?status=draft)
+- [Read more from Sigu Magwa](https://www.pluralsight.com/guides/author/sigu) <img src="https://avatars1.githubusercontent.com/u/584211?v=4" width="30" height="30" alt="Sigu Magwa" />
+- Related to: other
+
 ### Linux System Administration by Gabriel Cánepa
 - [Read the guide](https://www.pluralsight.com/guides/other/linux-system-administration?status=draft)
 - [Read more from Gabriel Cánepa](https://www.pluralsight.com/guides/author/gacanepa) <img src="https://avatars2.githubusercontent.com/u/2545170?v=4" width="30" height="30" alt="Gabriel Cánepa" />
