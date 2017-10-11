@@ -1,3 +1,8 @@
+### Playing with rspec from IRB by Sigu Magwa
+- [Read the guide](https://www.pluralsight.com/guides/ruby-ruby-on-rails/playing-with-rspec-from-irb?status=in-review)
+- [Read more from Sigu Magwa](https://www.pluralsight.com/guides/author/sigu) <img src="https://avatars1.githubusercontent.com/u/584211?v=4" width="30" height="30" alt="Sigu Magwa" />
+- Related to: Ruby, Ruby on Rails
+
 ### Blockchain Architecture by Decent
 - [Read the guide](https://www.pluralsight.com/guides/software-engineering-best-practices/blockchain-architecture?status=in-review)
 - [Read more from Decent](https://www.pluralsight.com/guides/author/decentcrypto) <img src="https://avatars3.githubusercontent.com/u/29243763?v=4" width="30" height="30" alt="Decent" />
