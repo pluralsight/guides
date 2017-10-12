@@ -1,17 +1,22 @@
+### Playing with rspec from IRB by Sigu Magwa
+- [Read the guide](https://www.pluralsight.com/guides/ruby-ruby-on-rails/playing-with-rspec-from-irb?status=in-review)
+- [Read more from Sigu Magwa](https://www.pluralsight.com/guides/author/sigu) <img src="https://avatars1.githubusercontent.com/u/584211?v=4" width="30" height="30" alt="Sigu Magwa" />
+- Related to: Ruby, Ruby on Rails
+
+### Create Charts using PHP and MongoDB by Gagan Sikri
+- [Read the guide](https://www.pluralsight.com/guides/php/create-charts-using-php-and-mongodb?status=in-review)
+- [Read more from Gagan Sikri](https://www.pluralsight.com/guides/author/sikrigagan) <img src="https://avatars0.githubusercontent.com/u/6383448?v=4" width="30" height="30" alt="Gagan Sikri" />
+- Related to: PHP
+
+### How a disposable dockerized chrome can help get rid of a headache by Nilanjan Siromani
+- [Read the guide](https://www.pluralsight.com/guides/front-end-javascript/how-a-disposable-dockerized-chrome-can-help-get-rid-of-a%20headache?status=in-review)
+- [Read more from Nilanjan Siromani](https://www.pluralsight.com/guides/author/nilanjansiromani) <img src="https://avatars3.githubusercontent.com/u/23280169?v=4" width="30" height="30" alt="Nilanjan Siromani" />
+- Related to: Front-End JavaScript (Angular, React, Meteor, etc)
+
 ### Indepth Dimple Code Analysis of a Multiline Chart by sonisick
 - [Read the guide](https://www.pluralsight.com/guides/other/indepth-dimple-code-analysis-of-a-multiline-chart?status=in-review)
 - [Read more from sonisick](https://www.pluralsight.com/guides/author/sonisick) <img src="https://avatars0.githubusercontent.com/u/6710145?v=4" width="30" height="30" alt="sonisick" />
 - Related to: other
-
-### Visual Studio 2017 - Resolving SSL/TLS connections problems with IIS Express by ajsaulsberry
-- [Read the guide](https://www.pluralsight.com/guides/microsoft-net/visual-studio-2017-resolving-ssl-tls-connections-problems-with-iis-express?status=in-review)
-- [Read more from ajsaulsberry](https://www.pluralsight.com/guides/author/ajsaulsberry) <img src="https://avatars1.githubusercontent.com/u/11444510?v=4" width="30" height="30" alt="ajsaulsberry" />
-- Related to: Microsoft.NET (C#, ASP.NET, VB.NET, etc)
-
-###  ASP.NET MVC - Getting default data binding right for hierarchical views by ajsaulsberry
-- [Read the guide](https://www.pluralsight.com/guides/microsoft-net/asp-net-mvc-getting-default-data-binding-right-for-hierarchical-views?status=in-review)
-- [Read more from ajsaulsberry](https://www.pluralsight.com/guides/author/ajsaulsberry) <img src="https://avatars1.githubusercontent.com/u/11444510?v=4" width="30" height="30" alt="ajsaulsberry" />
-- Related to: Microsoft.NET (C#, ASP.NET, VB.NET, etc)
 
 ### Getting started with Vue.JS (part-1) by A M Rahman
 - [Read the guide](https://www.pluralsight.com/guides/front-end-javascript/getting-started-with-vue-js-part-1?status=in-review)

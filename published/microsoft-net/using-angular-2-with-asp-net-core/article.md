@@ -1,7 +1,7 @@
 # Using Angular 2 with ASP.NET Core with TypeScript using Microsoft Visual Studio 2015
 
 This tutorial is aimed at beginners starting Angular 2 in ASP.NET Core using Visual Studio 2015.
-I have compiled the steps involved in starting to learn Angular 2. This is largely a step-by-step explanation, abd you will feel much more confident at the end of the article.
+I have compiled the steps involved in starting to learn Angular 2. This is largely a step-by-step explanation, and you will feel much more confident at the end of the article.
 
 
 # Step 1: Creating an empty ASP.NET Core project

@@ -1,0 +1,20 @@
+{
+    "_publish_status": "published",
+    "author_name": "decentcrypto",
+    "author_real_name": "Decent",
+    "branch": "master",
+    "branches": [
+        [
+            "adityavarshney",
+            "adityavarshney-software-engineering-best-practices-blockchain-architecture"
+        ]
+    ],
+    "filename": "article.md",
+    "first_commit": "ba466753e88bc3e9626fc5576ea9d9566495da2d",
+    "image_url": "https://avatars3.githubusercontent.com/u/29243763?v=4",
+    "stacks": [
+        "Software Engineering Best Practices"
+    ],
+    "thumbnail_url": null,
+    "title": "Blockchain Architecture"
+}

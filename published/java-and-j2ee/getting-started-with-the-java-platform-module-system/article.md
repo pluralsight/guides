@@ -646,7 +646,7 @@ module my.company.webapp {
 }
 ```
 
-This way, when it's time to build the project, the Maven compiler plug-in will set up the module path so that the Java compiler can work correctly.
+This way, when it's time to build the project (for example, with `mvn package`), the Maven compiler plug-in will set up the module path so that the Java compiler can work correctly.
 
 # Conclusion
 The module system has been introduced to Java to promote stronger encapsulation and better design, while making Java a more flexible and future-proof language.
@@ -658,5 +658,7 @@ In this tutorial, you have learned the basics of the JPMS, like the benefits of 
 Of course, there are several more things to learn, like [custom runtime images](https://blogs.oracle.com/jtc/creating-custom-jdk9-runtime-images), [how to migrate classpath projects to modules](https://dzone.com/articles/migrating-to-java-9), or how to [unit test a modular project](https://stackoverflow.com/questions/41366582/where-should-i-put-unit-tests-when-migrating-a-java-8-project-to-jigsaw).
 
 The best book I have read about JPMS is [Java 9 Modularity](https://javamodularity.com/) by [Sander Mak](https://twitter.com/sander_mak) and [Paul Bakker](https://twitter.com/pbakker). I totally recommended it. Also, [The Java Module System](https://www.manning.com/books/the-java-module-system) by [Nicolai Parlog](https://twitter.com/nipafx) is a book that, at the time of writing this guide, is currently in progress yet looks very promising. Definitely look to these resources if you find yourself using Java 9 and JPMS in the future.
+
+You can find the code of the sample JavaFX with ServiceLoader and Maven apps on this [GitHub repository](https://github.com/eh3rrera/getting-started-jpms).
 ___
 I hope you found this guide educational and engaging. Please leave your comments and feedback in the discussion section below. Thanks for reading! 

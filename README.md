@@ -78,7 +78,8 @@ Got an idea for improving the article? Click the fork button in the top-right co
 
 1. Click on the [published.md file](https://github.com/pluralsight/guides/blob/master/published.md) to see our published guides.
     - Here you can find links to our top guides as well as links to read more from your favorite contributors.
-2. Click on the [unpublished.md file](https://github.com/pluralsight/guides/blob/master/unpublished.md) to search through the guides currently needing review.
+2. Click on the [draft.md file](https://github.com/pluralsight/guides/blob/master/draft.md) to search through drafts of potential guides. 
+3. Click on the [in_review.md file](https://github.com/pluralsight/guides/blob/master/in_review.md) to search through completed drafts that are undergoing final evalutation and review.
 
 ## Creating a new guide the hacker way
 

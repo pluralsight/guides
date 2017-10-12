@@ -1,3 +1,23 @@
+### Blockchain Architecture by Decent
+- [Read the guide](https://www.pluralsight.com/guides/software-engineering-best-practices/blockchain-architecture)
+- [Read more from Decent](https://www.pluralsight.com/guides/author/decentcrypto) <img src="https://avatars3.githubusercontent.com/u/29243763?v=4" width="30" height="30" alt="Decent" />
+- Related to: Software Engineering Best Practices
+
+### Software Delivery using Test Driven Development (TDD) by Abhinav Kaiser
+- [Read the guide](https://www.pluralsight.com/guides/other/software-delivery-using-test-driven-development-tdd)
+- [Read more from Abhinav Kaiser](https://www.pluralsight.com/guides/author/abskaiser) <img src="https://avatars2.githubusercontent.com/u/26959448?v=4" width="30" height="30" alt="Abhinav Kaiser" />
+- Related to: other
+
+### Enrich Your Enterprise Analytics Capabilities Today With The Elastic Stack by Kobi Hikri
+- [Read the guide](https://www.pluralsight.com/guides/other/enrich-your-enterprise-analytics-capabilities-today-with-the-elastic-stack)
+- [Read more from Kobi Hikri](https://www.pluralsight.com/guides/author/kobihikri) <img src="https://avatars2.githubusercontent.com/u/4434689?v=4" width="30" height="30" alt="Kobi Hikri" />
+- Related to: other
+
+### Visual Studio 2017 - Resolving SSL/TLS connections problems with IIS Express by ajsaulsberry
+- [Read the guide](https://www.pluralsight.com/guides/microsoft-net/visual-studio-2017-resolving-ssl-tls-connections-problems-with-iis-express)
+- [Read more from ajsaulsberry](https://www.pluralsight.com/guides/author/ajsaulsberry) <img src="https://avatars1.githubusercontent.com/u/11444510?v=4" width="30" height="30" alt="ajsaulsberry" />
+- Related to: Microsoft.NET (C#, ASP.NET, VB.NET, etc)
+
 ### Data Structures in Swift - Part 2 by Károly Nyisztor
 - [Read the guide](https://www.pluralsight.com/guides/swift/data-structures-in-swift-part-2)
 - [Read more from Károly Nyisztor](https://www.pluralsight.com/guides/author/nyisztor) <img src="https://avatars1.githubusercontent.com/u/198511?v=4" width="30" height="30" alt="Károly Nyisztor" />
