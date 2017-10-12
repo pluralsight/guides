@@ -175,7 +175,9 @@ generation, and create a "chain" of keys.
 At great detail, this process is slightly more complicated, but for the scope of this article, that
 definition is sufficient.
 
-(IMAGE - HD sequence)
+
+![hd wallet](https://raw.githubusercontent.com/pluralsight/guides/master/images/c2327d40-3abb-490d-bb12-9d6c68fb5a0d.png)
+
 
 Why is this important? Well, consider the following. It is known that in a sequence of keys, each
 private key is generated based on some input, which is a preceding key. This means that by simply
@@ -195,7 +197,7 @@ computer data into a more comfortable format for people to digest. This brings u
 which introduces a mnemonic seed phrase to the HD wallet protocol.
 
 If you look at the codebase for a Bitcoin wallet, you will probably find somewhere a file called
-`words.txt`, `wordlist.txt`, or similar. This is the list of words used to generate the mnemonic
+"words.txt", "wordlist.txt", or similar. This is the list of words used to generate the mnemonic
 seed for an HD wallet. It contains 2048 words and is available in many different languages.
 
 This process is fairly simple. When an HD wallet is a created, it generates "computer generated
@@ -217,7 +219,7 @@ When I first learned of the mnemonic key process, I was worried that they were l
 Bitcoin itself. I was correct. The total number of seed phrases that can be generated is 2048^12,
 or 2^132, which is less than the total address space of 2^160 and thus easier to brute force.
 However, 2^132 is still a monumentally huge set (in fact, it is still greater than the total sand
-count we discussed earlier) and more than secure enough to use.
+count we discussed earlier) and more than secure enough to use. It is this many:
 
 ```
 5,444,517,870,735,015,415,413,993,718,908,291,383,296
