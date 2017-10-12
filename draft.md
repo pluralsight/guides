@@ -1,3 +1,8 @@
+### How to win at hackathons! by Prateek Gupta
+- [Read the guide](https://www.pluralsight.com/guides/software-engineering-best-practices/how-to-win-at-hackathons?status=draft)
+- [Read more from Prateek Gupta](https://www.pluralsight.com/guides/author/prtkgpt) <img src="https://avatars3.githubusercontent.com/u/2454349?v=4" width="30" height="30" alt="Prateek Gupta" />
+- Related to: Software Engineering Best Practices
+
 ### Dummy guide by Luke Lee
 - [Read the guide](https://www.pluralsight.com/guides/other/dummy-guide?status=draft)
 - [Read more from Luke Lee](https://www.pluralsight.com/guides/author/durden) <img src="https://avatars1.githubusercontent.com/u/58063?v=4" width="30" height="30" alt="Luke Lee" />
