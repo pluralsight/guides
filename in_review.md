@@ -1,8 +1,3 @@
-### Playing with rspec from IRB by Sigu Magwa
-- [Read the guide](https://www.pluralsight.com/guides/ruby-ruby-on-rails/playing-with-rspec-from-irb?status=in-review)
-- [Read more from Sigu Magwa](https://www.pluralsight.com/guides/author/sigu) <img src="https://avatars1.githubusercontent.com/u/584211?v=4" width="30" height="30" alt="Sigu Magwa" />
-- Related to: Ruby, Ruby on Rails
-
 ### Create Charts using PHP and MongoDB by Gagan Sikri
 - [Read the guide](https://www.pluralsight.com/guides/php/create-charts-using-php-and-mongodb?status=in-review)
 - [Read more from Gagan Sikri](https://www.pluralsight.com/guides/author/sikrigagan) <img src="https://avatars0.githubusercontent.com/u/6383448?v=4" width="30" height="30" alt="Gagan Sikri" />
