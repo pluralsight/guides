@@ -1,3 +1,8 @@
+### The Cryptography of Bitcoin by Decent
+- [Read the guide](https://www.pluralsight.com/guides/software-engineering-best-practices/the-cryptography-of-bitcoin?status=draft)
+- [Read more from Decent](https://www.pluralsight.com/guides/author/decentcrypto) <img src="https://avatars3.githubusercontent.com/u/29243763?v=4" width="30" height="30" alt="Decent" />
+- Related to: Software Engineering Best Practices
+
 ### Linux System Administration by Gabriel Cánepa
 - [Read the guide](https://www.pluralsight.com/guides/other/linux-system-administration?status=draft)
 - [Read more from Gabriel Cánepa](https://www.pluralsight.com/guides/author/gacanepa) <img src="https://avatars2.githubusercontent.com/u/2545170?v=4" width="30" height="30" alt="Gabriel Cánepa" />
