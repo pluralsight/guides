@@ -294,7 +294,6 @@ Then, write a simple controller:
 angular.module('ItemsApp', [])
   .controller('MainCtrl', function($scope) {
       $scope.title = 'Hello Pluralsight';
-    });
 ```
 We have a controller with one simple `$scope` variable attached to it. Let's write a test to see if the scope variable contains the value we expect it to have:
 
