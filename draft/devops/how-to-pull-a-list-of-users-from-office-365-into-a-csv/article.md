@@ -5,21 +5,24 @@ When using Microsoft Office 365, we sometimes find problems in the regular user 
 In these situations, PowerShell is the tool of choice as it allows for remote administration for all components within Office 365. In this post, we will walk through the steps needed to work with Office 365 using PowerShell.
 
 ## Office 365 PowerShell Setup for remote Administration
-Getting your system configured and ready is the first step. You will first need to download the following components:
+Getting your system configured and ready is the first step. You will first need to download the following components: (links below respective picture)
 
-1. Microsoft Online Service Sign-in Assistant for IT Professionals
+1. Microsoft Online Service Sign-in Assistant for IT Professionals 
 2. Windows Azure Active Directory Module for Windows PowerShell
 3. SharePoint Online Management Shell
 
 Install each component in the order listed ensuring that each one completes successfully. Make sure to use the correct version based on your operating system (32 bit or 64 bit).
 
 ![alt text](https://github.com/helloitsliam/assets/blob/master/images/pl-1/4923efc3-8217-4f02-9a8f-fcdbe5f193f5.png "Wizard Image One")
+<center>(https://www.microsoft.com/en-us/download/details.aspx?id=28177)</center>
 
 ![alt text](https://github.com/helloitsliam/assets/blob/master/images/pl-1/681fa419-84f2-4cb8-b73a-9e970d4cece1.png "Wizard Image Two")
+<center>(https://docs.microsoft.com/en-us/powershell/azure/active-directory/install-adv2?view=azureadps-2.0#installing-the-azure-ad-module)</center>
 
 ![alt text](https://github.com/helloitsliam/assets/blob/master/images/pl-1/0be4b2c7-a8be-40c9-a955-6fb65d711430.png "Wizard Image Three")
+<center>(https://www.microsoft.com/en-us/download/details.aspx?id=35588)</center>
 
-Now launch a standard PowerShell window and run the following command:
+Now launch a standard (non-admin) PowerShell window and run the following command:
 
 ```powershell 
 Set-ExecutionPolicy RemoteSigned 
@@ -30,7 +33,7 @@ This will ensure that all PowerShell scripts that you run are not blocked by the
 You are now setup as an administrator and ready to use Office 365 PowerShell commands. As a note, you will notice that there is not an installation for Exchange Online PowerShell cmdlets. Connecting to Exchange Online is completed using the New-PSSession and Import-PSSession commands instead.
 
 ## Connect to Office 365 using PowerShell
-To run the needed PowerShell commands, for ease and convenience you will use the PowerShell ISE tool found within Windows. To launch this, if you are using Windows 8 and higher then you can simply press the start menu and type “**PowerShell ISE**” and launch it from there. Once it is found, right click and choose “**Run as administrator**”.
+To run the needed PowerShell commands, for ease and convenience you will use the PowerShell ISE tool found within Windows. To launch this, if you are using Windows 8 or higher, then you can simply press the start menu and type “**PowerShell ISE**” from the **run cmd/search bar** and launch it from there. Once it is found, right click and choose “**Run as administrator**”.
 
 ![alt text](https://github.com/helloitsliam/assets/blob/master/images/pl-1/9095f91-e635-4c48-894e-8251657e2860.png "")
 
@@ -89,7 +92,7 @@ Get-MsolUser | Out-GridView
 
 ![alt text](https://github.com/helloitsliam/assets/blob/master/images/pl-1/716801ca-10f7-432c-a0ff-8af883dd5718.png  "")
 
-Close the Grid view windows and modify the command to now be the following:
+Close the Grid view windows and modify the command to now be the following (showing membership status):
 
 ```powershell
 Get-MsolUser | Get-Member | Out-GridView
@@ -126,6 +129,7 @@ As you can see iterating user accounts is simple and easy using the standard Pow
 
 
 ## Export users from Office 365 using PowerShell
+
 Exporting users from Office 365 into a flat file, still relies on the same commands you used previously for getting a user, so namely Get-MsolUser. In the previous examples, you simply loaded the Grid View, though that works well, it does not give you the option to perform extra work on the raw data.
 
 Exporting to a CSV file within PowerShell is really as simple as using the Export-Csv PowerShell cmdlet. To export all users from Office 365 to a CSV file, which will contain the UPN, Display Name, Country and Department of the user, use the following command.

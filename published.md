@@ -1,3 +1,98 @@
+### Blockchain Architecture by Decent
+- [Read the guide](https://www.pluralsight.com/guides/software-engineering-best-practices/blockchain-architecture)
+- [Read more from Decent](https://www.pluralsight.com/guides/author/decentcrypto) <img src="https://avatars3.githubusercontent.com/u/29243763?v=4" width="30" height="30" alt="Decent" />
+- Related to: Software Engineering Best Practices
+
+### Software Delivery using Test Driven Development (TDD) by Abhinav Kaiser
+- [Read the guide](https://www.pluralsight.com/guides/other/software-delivery-using-test-driven-development-tdd)
+- [Read more from Abhinav Kaiser](https://www.pluralsight.com/guides/author/abskaiser) <img src="https://avatars2.githubusercontent.com/u/26959448?v=4" width="30" height="30" alt="Abhinav Kaiser" />
+- Related to: other
+
+### Enrich Your Enterprise Analytics Capabilities Today With The Elastic Stack by Kobi Hikri
+- [Read the guide](https://www.pluralsight.com/guides/other/enrich-your-enterprise-analytics-capabilities-today-with-the-elastic-stack)
+- [Read more from Kobi Hikri](https://www.pluralsight.com/guides/author/kobihikri) <img src="https://avatars2.githubusercontent.com/u/4434689?v=4" width="30" height="30" alt="Kobi Hikri" />
+- Related to: other
+
+### Visual Studio 2017 - Resolving SSL/TLS connections problems with IIS Express by ajsaulsberry
+- [Read the guide](https://www.pluralsight.com/guides/microsoft-net/visual-studio-2017-resolving-ssl-tls-connections-problems-with-iis-express)
+- [Read more from ajsaulsberry](https://www.pluralsight.com/guides/author/ajsaulsberry) <img src="https://avatars1.githubusercontent.com/u/11444510?v=4" width="30" height="30" alt="ajsaulsberry" />
+- Related to: Microsoft.NET (C#, ASP.NET, VB.NET, etc)
+
+### Data Structures in Swift - Part 2 by Károly Nyisztor
+- [Read the guide](https://www.pluralsight.com/guides/swift/data-structures-in-swift-part-2)
+- [Read more from Károly Nyisztor](https://www.pluralsight.com/guides/author/nyisztor) <img src="https://avatars1.githubusercontent.com/u/198511?v=4" width="30" height="30" alt="Károly Nyisztor" />
+- Related to: Swift
+
+### Getting Started with the Java Platform Module System by Esteban Herrera
+- [Read the guide](https://www.pluralsight.com/guides/java-and-j2ee/getting-started-with-the-java-platform-module-system)
+- [Read more from Esteban Herrera](https://www.pluralsight.com/guides/author/eh3rrera) <img src="https://avatars2.githubusercontent.com/u/11665759?v=4" width="30" height="30" alt="Esteban Herrera" />
+- Related to: Java and J2EE
+
+### Getting Started with JShell by Esteban Herrera
+- [Read the guide](https://www.pluralsight.com/guides/java-and-j2ee/getting-started-with-jshell)
+- [Read more from Esteban Herrera](https://www.pluralsight.com/guides/author/eh3rrera) <img src="https://avatars2.githubusercontent.com/u/11665759?v=4" width="30" height="30" alt="Esteban Herrera" />
+- Related to: Java and J2EE
+
+### JavaScript Closures by Miroslav Gajic
+- [Read the guide](https://www.pluralsight.com/guides/front-end-javascript/javascript-closures)
+- [Read more from Miroslav Gajic](https://www.pluralsight.com/guides/author/mgajic78) <img src="https://avatars3.githubusercontent.com/u/25859460?v=4" width="30" height="30" alt="Miroslav Gajic" />
+- Related to: Front-End JavaScript (Angular, React, Meteor, etc)
+
+###  ASP.NET MVC - Getting default data binding right for hierarchical views by ajsaulsberry
+- [Read the guide](https://www.pluralsight.com/guides/microsoft-net/asp-net-mvc-getting-default-data-binding-right-for-hierarchical-views)
+- [Read more from ajsaulsberry](https://www.pluralsight.com/guides/author/ajsaulsberry) <img src="https://avatars1.githubusercontent.com/u/11444510?v=4" width="30" height="30" alt="ajsaulsberry" />
+- Related to: Microsoft.NET (C#, ASP.NET, VB.NET, etc)
+
+### Creating iOS Rich Push Notifications by Veronika
+- [Read the guide](https://www.pluralsight.com/guides/swift/creating-ios-rich-push-notifications)
+- [Read more from Veronika](https://www.pluralsight.com/guides/author/veronikahristozova) <img src="https://avatars2.githubusercontent.com/u/22590489?v=4" width="30" height="30" alt="Veronika" />
+- Related to: Swift
+
+### Push Notifications with Firebase Cloud Messaging by Dimitar Stoyanov
+- [Read the guide](https://www.pluralsight.com/guides/android/push-notifications-with-firebase-cloud-messaging)
+- [Read more from Dimitar Stoyanov](https://www.pluralsight.com/guides/author/DimitarStoyanoff) <img src="https://avatars3.githubusercontent.com/u/19796939?v=4" width="30" height="30" alt="Dimitar Stoyanov" />
+- Related to: Android
+
+### ASP.NET MVC - Creating solutions with separate projects for entities, data access, and website functionality by ajsaulsberry
+- [Read the guide](https://www.pluralsight.com/guides/microsoft-net/asp-net-mvc-creating-solutions-with-separate-projects-for-entities-data-access-and-website-functionality)
+- [Read more from ajsaulsberry](https://www.pluralsight.com/guides/author/ajsaulsberry) <img src="https://avatars1.githubusercontent.com/u/11444510?v=4" width="30" height="30" alt="ajsaulsberry" />
+- Related to: Microsoft.NET (C#, ASP.NET, VB.NET, etc)
+
+### ASP.NET MVC - Populating dropdown lists in Razor views using the MVVM design pattern, Entity Framework, and Ajax by ajsaulsberry
+- [Read the guide](https://www.pluralsight.com/guides/microsoft-net/asp-net-mvc-populating-dropdown-lists-in-razor-views-using-the-mvvm-design-pattern-entity-framework-and-ajax)
+- [Read more from ajsaulsberry](https://www.pluralsight.com/guides/author/ajsaulsberry) <img src="https://avatars1.githubusercontent.com/u/11444510?v=4" width="30" height="30" alt="ajsaulsberry" />
+- Related to: Microsoft.NET (C#, ASP.NET, VB.NET, etc)
+
+### Testing ASP.NET Core Applications - The Cross Platform Developer Experience by Douglas Starnes
+- [Read the guide](https://www.pluralsight.com/guides/microsoft-net/testing-asp-net-core-applications-the-cross-platform-developer-experience)
+- [Read more from Douglas Starnes](https://www.pluralsight.com/guides/author/douglasstarnes) <img src="https://avatars3.githubusercontent.com/u/1081484?v=4" width="30" height="30" alt="Douglas Starnes" />
+- Related to: Microsoft.NET (C#, ASP.NET, VB.NET, etc)
+
+### ASP.NET MVC - Using multiple submit buttons with default model binding and controller actions by ajsaulsberry
+- [Read the guide](https://www.pluralsight.com/guides/microsoft-net/asp-net-mvc-using-multiple-submit-buttons-with-default-model-binding-and-controller-actions)
+- [Read more from ajsaulsberry](https://www.pluralsight.com/guides/author/ajsaulsberry) <img src="https://avatars1.githubusercontent.com/u/11444510?v=4" width="30" height="30" alt="ajsaulsberry" />
+- Related to: Microsoft.NET (C#, ASP.NET, VB.NET, etc)
+
+### Data Structures in Swift - Part 1 by Károly Nyisztor
+- [Read the guide](https://www.pluralsight.com/guides/swift/data-structures-in-swift-part-1)
+- [Read more from Károly Nyisztor](https://www.pluralsight.com/guides/author/nyisztor) <img src="https://avatars1.githubusercontent.com/u/198511?v=4" width="30" height="30" alt="Károly Nyisztor" />
+- Related to: Swift
+
+### Understanding the Four Pillars of Big Data Analytics by Kobi Hikri
+- [Read the guide](https://www.pluralsight.com/guides/big-data/understanding-the-four-pillars-of-big-data-analytics)
+- [Read more from Kobi Hikri](https://www.pluralsight.com/guides/author/kobihikri) <img src="https://avatars2.githubusercontent.com/u/4434689?v=4" width="30" height="30" alt="Kobi Hikri" />
+- Related to: Big Data (Hadoop, Spark, etc)
+
+### Conditional Logic in C# .NET by pattydaniels
+- [Read the guide](https://www.pluralsight.com/guides/microsoft-net/conditional-logic-in-c-net)
+- [Read more from pattydaniels](https://www.pluralsight.com/guides/author/pattydaniels) <img src="https://avatars3.githubusercontent.com/u/16217973?v=3" width="30" height="30" alt="pattydaniels" />
+- Related to: Microsoft.NET (C#, ASP.NET, VB.NET, etc)
+
+### Using Cordova InAppBrowser Plugin with Ionic 2+ to Open URLs  by Techiediaries
+- [Read the guide](https://www.pluralsight.com/guides/front-end-javascript/using-cordova-inappbrowser-plugin-with-ionic-2+-to-open-urls)
+- [Read more from Techiediaries](https://www.pluralsight.com/guides/author/techiediaries) <img src="https://avatars2.githubusercontent.com/u/22133314?v=4" width="30" height="30" alt="Techiediaries" />
+- Related to: Front-End JavaScript (Angular, React, Meteor, etc)
+
 ### Everything You Need to Know about Continuous Testing by Abhinav Kaiser
 - [Read the guide](https://www.pluralsight.com/guides/devops/everything-you-need-to-know-about-continuous-testing)
 - [Read more from Abhinav Kaiser](https://www.pluralsight.com/guides/author/abskaiser) <img src="https://avatars2.githubusercontent.com/u/26959448?v=4" width="30" height="30" alt="Abhinav Kaiser" />
@@ -575,7 +670,7 @@
 
 ### Creating a chat using Rails' Action Cable by Hristo Georgiev
 - [Read the guide](https://www.pluralsight.com/guides/ruby-ruby-on-rails/creating-a-chat-using-rails-action-cable)
-- [Read more from Hristo Georgiev](https://www.pluralsight.com/guides/author/Kaizeras) <img src="https://avatars.githubusercontent.com/u/6340189?v=3" width="30" height="30" alt="Hristo Georgiev" />
+- [Read more from Hristo Georgiev](https://www.pluralsight.com/guides/author/Kaizeras) <img src="https://avatars3.githubusercontent.com/u/6340189?v=4" width="30" height="30" alt="Hristo Georgiev" />
 - Related to: Ruby, Ruby on Rails
 
 ### Tips and cool tricks to use in git by Lucas Andrey

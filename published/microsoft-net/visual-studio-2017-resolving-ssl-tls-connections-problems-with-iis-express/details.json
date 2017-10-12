@@ -1,0 +1,15 @@
+{
+    "_publish_status": "published",
+    "author_name": "ajsaulsberry",
+    "author_real_name": "ajsaulsberry",
+    "branch": "master",
+    "branches": [],
+    "filename": "article.md",
+    "first_commit": "595c867506f84eb1eb1bfcda6568ab4b1605476a",
+    "image_url": "https://avatars1.githubusercontent.com/u/11444510?v=4",
+    "stacks": [
+        "Microsoft.NET (C#, ASP.NET, VB.NET, etc)"
+    ],
+    "thumbnail_url": null,
+    "title": "Visual Studio 2017 - Resolving SSL/TLS connections problems with IIS Express"
+}

@@ -1,3 +1,38 @@
+### Linux System Administration by Gabriel Cánepa
+- [Read the guide](https://www.pluralsight.com/guides/other/linux-system-administration?status=draft)
+- [Read more from Gabriel Cánepa](https://www.pluralsight.com/guides/author/gacanepa) <img src="https://avatars2.githubusercontent.com/u/2545170?v=4" width="30" height="30" alt="Gabriel Cánepa" />
+- Related to: other
+
+### Sentiment Analysis in C# by nescampos
+- [Read the guide](https://www.pluralsight.com/guides/other/sentiment-analysis-in-c?status=draft)
+- [Read more from nescampos](https://www.pluralsight.com/guides/author/nescampos) <img src="https://avatars2.githubusercontent.com/u/7274106?v=4" width="30" height="30" alt="nescampos" />
+- Related to: other
+
+###  ASP.NET MVC - Getting default data binding right for hierarchical views by ajsaulsberry
+- [Read the guide](https://www.pluralsight.com/guides/microsoft-net/asp-net-mvc-getting-default-data-binding-right-for-hierarchical-views?status=draft)
+- [Read more from ajsaulsberry](https://www.pluralsight.com/guides/author/ajsaulsberry) <img src="https://avatars1.githubusercontent.com/u/11444510?v=4" width="30" height="30" alt="ajsaulsberry" />
+- Related to: Microsoft.NET (C#, ASP.NET, VB.NET, etc)
+
+### Sessions in ASP.NET Core by Douglas Starnes
+- [Read the guide](https://www.pluralsight.com/guides/microsoft-net/sessions-in-asp-net-core?status=draft)
+- [Read more from Douglas Starnes](https://www.pluralsight.com/guides/author/douglasstarnes) <img src="https://avatars3.githubusercontent.com/u/1081484?v=4" width="30" height="30" alt="Douglas Starnes" />
+- Related to: Microsoft.NET (C#, ASP.NET, VB.NET, etc)
+
+### iOS Rich Push Notifications by Veronika
+- [Read the guide](https://www.pluralsight.com/guides/swift/ios-rich-push-notifications?status=draft)
+- [Read more from Veronika](https://www.pluralsight.com/guides/author/veronikahristozova) <img src="https://avatars2.githubusercontent.com/u/22590489?v=4" width="30" height="30" alt="Veronika" />
+- Related to: Swift
+
+### ASP.NET Core without Windows by Douglas Starnes
+- [Read the guide](https://www.pluralsight.com/guides/microsoft-net/asp-net-core-without-windows?status=draft)
+- [Read more from Douglas Starnes](https://www.pluralsight.com/guides/author/douglasstarnes) <img src="https://avatars3.githubusercontent.com/u/1081484?v=4" width="30" height="30" alt="Douglas Starnes" />
+- Related to: Microsoft.NET (C#, ASP.NET, VB.NET, etc)
+
+### Beginner 2D Car Game with HTML5 Canvas by Dustin McQuay
+- [Read the guide](https://www.pluralsight.com/guides/front-end-javascript/beginner-2d-car-game-with-html5-canvas?status=draft)
+- [Read more from Dustin McQuay](https://www.pluralsight.com/guides/author/dmcquay) <img src="https://avatars1.githubusercontent.com/u/116849?v=4" width="30" height="30" alt="Dustin McQuay" />
+- Related to: Front-End JavaScript (Angular, React, Meteor, etc)
+
 ### Building Desktop Applications with Electron, Angular 2+ and TypeORM  by Techiediaries
 - [Read the guide](https://www.pluralsight.com/guides/node-js/building-desktop-applications-with-electron-angular-2+-and-typeorm?status=draft)
 - [Read more from Techiediaries](https://www.pluralsight.com/guides/author/techiediaries) <img src="https://avatars2.githubusercontent.com/u/22133314?v=4" width="30" height="30" alt="Techiediaries" />
@@ -61,11 +96,6 @@
 ### Managing layout state in Angular 2 with Redux  by Hristo Georgiev
 - [Read the guide](https://www.pluralsight.com/guides/front-end-javascript/managing-layout-state-in-angular-2-with-redux?status=draft)
 - [Read more from Hristo Georgiev](https://www.pluralsight.com/guides/author/Kaizeras) <img src="https://avatars0.githubusercontent.com/u/6340189?v=3" width="30" height="30" alt="Hristo Georgiev" />
-- Related to: Front-End JavaScript (Angular, React, Meteor, etc)
-
-### JavaScript Closures by Miroslav Gajic
-- [Read the guide](https://www.pluralsight.com/guides/front-end-javascript/javascript-closures?status=draft)
-- [Read more from Miroslav Gajic](https://www.pluralsight.com/guides/author/mgajic78) <img src="https://avatars3.githubusercontent.com/u/25859460?v=4" width="30" height="30" alt="Miroslav Gajic" />
 - Related to: Front-End JavaScript (Angular, React, Meteor, etc)
 
 ### Hyperloop with Rails, NPM and Webpack by Barrie Hadfield

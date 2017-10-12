@@ -1,0 +1,15 @@
+{
+    "_publish_status": "draft",
+    "author_name": "douglasstarnes",
+    "author_real_name": "Douglas Starnes",
+    "branch": "master",
+    "branches": [],
+    "filename": "article.md",
+    "first_commit": "be438a86291a28f3970705ebe0f10a0a99f76b9b",
+    "image_url": "https://avatars3.githubusercontent.com/u/1081484?v=4",
+    "stacks": [
+        "Microsoft.NET (C#, ASP.NET, VB.NET, etc)"
+    ],
+    "thumbnail_url": null,
+    "title": "Sessions in ASP.NET Core"
+}

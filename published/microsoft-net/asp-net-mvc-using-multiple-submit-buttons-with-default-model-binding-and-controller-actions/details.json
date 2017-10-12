@@ -1,0 +1,15 @@
+{
+    "_publish_status": "published",
+    "author_name": "ajsaulsberry",
+    "author_real_name": "ajsaulsberry",
+    "branch": "master",
+    "branches": [],
+    "filename": "article.md",
+    "first_commit": "2cdb087c720f4456e018ad767301ff6b03af2944",
+    "image_url": "https://avatars1.githubusercontent.com/u/11444510?v=4",
+    "stacks": [
+        "Microsoft.NET (C#, ASP.NET, VB.NET, etc)"
+    ],
+    "thumbnail_url": null,
+    "title": "ASP.NET MVC - Using multiple submit buttons with default model binding and controller actions"
+}

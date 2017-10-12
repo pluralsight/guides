@@ -1,15 +1,9 @@
->Docker experiment to build hello world image from scratch. Instead of using shell script, C based application is used to make it comparable to custom application package/distribution.
-
-
-Creating minimal Docker image
------------------------------
-
+# Docker experiment to build hello world image from scratch. Instead of using shell script, a C based application is used to make it comparable to custom application package/distribution.
 
 #### What you need :
 
 * Docker installed on linux variant (tested on Ubuntu 14LTS)
 * gcc for making minimal application
-
 
 #### Let's create Helloworld application to package it to Docker:
 
@@ -25,21 +19,20 @@ void main() {
 }
 ```
 
-
-We can compile with static linking to avoid shared library dependencies.
+We can compile with static linking in order to avoid shared library dependencies.
 
 ```bash
 gcc -static helloWorld.c -o helloWorld`
 ```
 
 Verify that there are no dependencies with ldd
+
 ```bash
 ldd "helloWorld"
 >     not a dynamic executable
 ```
 
-
-Create a Dockerfile as follows (configuration for Docker image that
+Now we create a Dockerfile as follows (configuration for Docker image that
 we are about to build).
 
 Dockerfile:
@@ -49,11 +42,6 @@ FROM scratch
 ADD ./helloWorld /helloWorld
 CMD ["/helloWorld"]
 ```
-
-The above Dockerfile tells Docker to seed the image from the `scratch` image, which is completely empty, and add the helloWorld executable to it as target path /helloWorld and the startup command is to execute /helloWorld.
-
-
-Now build the image with
 
 ```bash
 $ docker build -t "helloWorld" .
@@ -75,7 +63,6 @@ REPOSITORY   TAG    IMAGE ID     CREATED           VIRTUAL SIZE
 first_image  latest f6982bf61e13 54 seconds ago      877.4 kB
 ```
 
-
 To Run the docker image as a container:  
 ```bash
 $ docker run helloWorld
@@ -86,7 +73,7 @@ You should see output like:
 Hello from docker
 ```
 
-> Recommended to checkout https://github.com/docker/docker.git and browse the source in your
+> Recommended to checkout https://github.com/docker/for-azure.git https://github.com/for-win.git https://github.com/for-linux.git https://github.com/moby/moby  and browse the source in your
 favorite ide
 
 

@@ -239,7 +239,7 @@ import {metaReducer} from "./common/index";
   //...
   imports: [
     //Provide the application reducer to the store.
-    StoreModule.provideStore(metaReducer),
+    StoreModule.forRoot({ reducer: metaReducer }),
   ],
   //...
 })
@@ -249,7 +249,7 @@ export class AppModule { }
 #### "Smart" containers and "dumb" components
 If you are fimilar with Redux, you would know that there are two types of components - [presentational components and container components](https://medium.com/@dan_abramov/smart-and-dumb-components-7ca2f9a7c7d0#.e8sft6x0y). 
 
-> When building the UI state, it's best to keep the logic inside [directives](https://docs.angularjs.org/guide/directive) in order to keep the logic [DRY](http://deviq.com/don-t-repeat-yourself/). You don't have to write the same logic for a sidebar in every container component in your application.
+> When building the UI state, it's best to keep the logic inside [directives](https://angular.io/guide/attribute-directives) in order to keep the logic [DRY](http://deviq.com/don-t-repeat-yourself/). You don't have to write the same logic for a sidebar in every container component in your application.
 
 Another possibility is to keep the logic in the container and only in exceptional cases there's a need to put the logic inside a component that represents a UI element.
 
@@ -306,7 +306,7 @@ export class OpenModalAction implements Action {
 
 export class CloseModalAction implements Action {
   type = LayoutActionTypes.CLOSE_MODAL;
-  constructor() {
+  constructor(public payload:string) {
   }
 }
 

@@ -1,0 +1,15 @@
+{
+    "_publish_status": "published",
+    "author_name": "douglasstarnes",
+    "author_real_name": "Douglas Starnes",
+    "branch": "master",
+    "branches": [],
+    "filename": "article.md",
+    "first_commit": "87611ccbd3ae1c821537aae58b1ea9ba6881b656",
+    "image_url": "https://avatars3.githubusercontent.com/u/1081484?v=4",
+    "stacks": [
+        "Microsoft.NET (C#, ASP.NET, VB.NET, etc)"
+    ],
+    "thumbnail_url": null,
+    "title": "Testing ASP.NET Core Applications - The Cross Platform Developer Experience"
+}

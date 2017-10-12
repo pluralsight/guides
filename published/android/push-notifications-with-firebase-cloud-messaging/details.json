@@ -1,0 +1,15 @@
+{
+    "_publish_status": "published",
+    "author_name": "DimitarStoyanoff",
+    "author_real_name": "Dimitar Stoyanov",
+    "branch": "master",
+    "branches": [],
+    "filename": "article.md",
+    "first_commit": "f76028b9ba27e9fca48d389edbb6b4552a7752ad",
+    "image_url": "https://avatars3.githubusercontent.com/u/19796939?v=4",
+    "stacks": [
+        "Android"
+    ],
+    "thumbnail_url": null,
+    "title": "Push Notifications with Firebase Cloud Messaging"
+}

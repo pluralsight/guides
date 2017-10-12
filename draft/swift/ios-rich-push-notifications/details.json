@@ -1,0 +1,15 @@
+{
+    "_publish_status": "draft",
+    "author_name": "veronikahristozova",
+    "author_real_name": "Veronika",
+    "branch": "master",
+    "branches": [],
+    "filename": "article.md",
+    "first_commit": "0e5eaa9453393293d7572a3addaeac9e6b8fa308",
+    "image_url": "https://avatars2.githubusercontent.com/u/22590489?v=4",
+    "stacks": [
+        "Swift"
+    ],
+    "thumbnail_url": null,
+    "title": "iOS Rich Push Notifications"
+}

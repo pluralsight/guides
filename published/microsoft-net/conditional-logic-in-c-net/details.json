@@ -1,0 +1,15 @@
+{
+    "_publish_status": "published",
+    "author_name": "pattydaniels",
+    "author_real_name": "pattydaniels",
+    "branch": "master",
+    "branches": [],
+    "filename": "article.md",
+    "first_commit": "84299db4f130b6c0a7d6a01f48832ac033eb9555",
+    "image_url": "https://avatars3.githubusercontent.com/u/16217973?v=3",
+    "stacks": [
+        "Microsoft.NET (C#, ASP.NET, VB.NET, etc)"
+    ],
+    "thumbnail_url": null,
+    "title": "Conditional Logic in C# .NET"
+}

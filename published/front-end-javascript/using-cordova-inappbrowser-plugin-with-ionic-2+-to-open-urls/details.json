@@ -1,0 +1,20 @@
+{
+    "_publish_status": "published",
+    "author_name": "techiediaries",
+    "author_real_name": "Techiediaries",
+    "branch": "master",
+    "branches": [
+        [
+            "adityavarshney",
+            "adityavarshney-front-end-javascript-using-cordova-inappbrowser-plugin-with-ionic-2+-to-open-urls"
+        ]
+    ],
+    "filename": "article.md",
+    "first_commit": "56581974d004d3c0e50dda7a99e1f87726c7bbae",
+    "image_url": "https://avatars2.githubusercontent.com/u/22133314?v=4",
+    "stacks": [
+        "Front-End JavaScript (Angular, React, Meteor, etc)"
+    ],
+    "thumbnail_url": null,
+    "title": "Using Cordova InAppBrowser Plugin with Ionic 2+ to Open URLs "
+}

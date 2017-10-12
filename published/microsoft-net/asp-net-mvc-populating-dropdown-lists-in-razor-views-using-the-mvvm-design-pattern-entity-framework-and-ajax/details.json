@@ -1,0 +1,15 @@
+{
+    "_publish_status": "published",
+    "author_name": "ajsaulsberry",
+    "author_real_name": "ajsaulsberry",
+    "branch": "master",
+    "branches": [],
+    "filename": "article.md",
+    "first_commit": "423926ee0bd5fe533937a35c6371190ec573578d",
+    "image_url": "https://avatars1.githubusercontent.com/u/11444510?v=4",
+    "stacks": [
+        "Microsoft.NET (C#, ASP.NET, VB.NET, etc)"
+    ],
+    "thumbnail_url": null,
+    "title": "ASP.NET MVC - Populating dropdown lists in Razor views using the MVVM design pattern, Entity Framework, and Ajax"
+}

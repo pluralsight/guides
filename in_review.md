@@ -1,7 +1,22 @@
-### Using Cordova InAppBrowser Plugin with Ionic 2+ to Open URLs  by Techiediaries
-- [Read the guide](https://www.pluralsight.com/guides/front-end-javascript/using-cordova-inappbrowser-plugin-with-ionic-2+-to-open-urls?status=in-review)
-- [Read more from Techiediaries](https://www.pluralsight.com/guides/author/techiediaries) <img src="https://avatars2.githubusercontent.com/u/22133314?v=4" width="30" height="30" alt="Techiediaries" />
+### Playing with rspec from IRB by Sigu Magwa
+- [Read the guide](https://www.pluralsight.com/guides/ruby-ruby-on-rails/playing-with-rspec-from-irb?status=in-review)
+- [Read more from Sigu Magwa](https://www.pluralsight.com/guides/author/sigu) <img src="https://avatars1.githubusercontent.com/u/584211?v=4" width="30" height="30" alt="Sigu Magwa" />
+- Related to: Ruby, Ruby on Rails
+
+### Create Charts using PHP and MongoDB by Gagan Sikri
+- [Read the guide](https://www.pluralsight.com/guides/php/create-charts-using-php-and-mongodb?status=in-review)
+- [Read more from Gagan Sikri](https://www.pluralsight.com/guides/author/sikrigagan) <img src="https://avatars0.githubusercontent.com/u/6383448?v=4" width="30" height="30" alt="Gagan Sikri" />
+- Related to: PHP
+
+### How a disposable dockerized chrome can help get rid of a headache by Nilanjan Siromani
+- [Read the guide](https://www.pluralsight.com/guides/front-end-javascript/how-a-disposable-dockerized-chrome-can-help-get-rid-of-a%20headache?status=in-review)
+- [Read more from Nilanjan Siromani](https://www.pluralsight.com/guides/author/nilanjansiromani) <img src="https://avatars3.githubusercontent.com/u/23280169?v=4" width="30" height="30" alt="Nilanjan Siromani" />
 - Related to: Front-End JavaScript (Angular, React, Meteor, etc)
+
+### Indepth Dimple Code Analysis of a Multiline Chart by sonisick
+- [Read the guide](https://www.pluralsight.com/guides/other/indepth-dimple-code-analysis-of-a-multiline-chart?status=in-review)
+- [Read more from sonisick](https://www.pluralsight.com/guides/author/sonisick) <img src="https://avatars0.githubusercontent.com/u/6710145?v=4" width="30" height="30" alt="sonisick" />
+- Related to: other
 
 ### Getting started with Vue.JS (part-1) by A M Rahman
 - [Read the guide](https://www.pluralsight.com/guides/front-end-javascript/getting-started-with-vue-js-part-1?status=in-review)
@@ -10,7 +25,7 @@
 
 ### Coup d'oeil sur VueJS by ArtyProg
 - [Read the guide](https://www.pluralsight.com/guides/front-end-javascript/coup-d-oeil-sur-vuejs?status=in-review)
-- [Read more from ArtyProg](https://www.pluralsight.com/guides/author/artyprog) <img src="https://avatars3.githubusercontent.com/u/3104461?v=3" width="30" height="30" alt="ArtyProg" />
+- [Read more from ArtyProg](https://www.pluralsight.com/guides/author/artyprog) <img src="https://avatars0.githubusercontent.com/u/3104461?v=4" width="30" height="30" alt="ArtyProg" />
 - Related to: Front-End JavaScript (Angular, React, Meteor, etc)
 
 ### Dual authentication using Devise and JWT by froy001
@@ -22,11 +37,6 @@
 - [Read the guide](https://www.pluralsight.com/guides/devops/local-development-of-a-php-redis-application-with-kubernetes?status=in-review)
 - [Read more from Richard Li](https://www.pluralsight.com/guides/author/richarddli) <img src="https://avatars1.githubusercontent.com/u/10065494?v=3" width="30" height="30" alt="Richard Li" />
 - Related to: DevOps (Docker, Nagios, Jenkins, Chef, Puppet, etc)
-
-### Conditional Logic in C# .NET by pattydaniels
-- [Read the guide](https://www.pluralsight.com/guides/microsoft-net/conditional-logic-in-c-net?status=in-review)
-- [Read more from pattydaniels](https://www.pluralsight.com/guides/author/pattydaniels) <img src="https://avatars3.githubusercontent.com/u/16217973?v=3" width="30" height="30" alt="pattydaniels" />
-- Related to: Microsoft.NET (C#, ASP.NET, VB.NET, etc)
 
 ### Using the REST Interface with Licas by discompsys
 - [Read the guide](https://www.pluralsight.com/guides/java-and-j2ee/using-the-rest-interface-with-licas?status=in-review)

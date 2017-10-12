@@ -1,0 +1,15 @@
+{
+    "_publish_status": "published",
+    "author_name": "eh3rrera",
+    "author_real_name": "Esteban Herrera",
+    "branch": "master",
+    "branches": [],
+    "filename": "article.md",
+    "first_commit": "ad2e949a828d7e92b4feb9ef70403536b101adfb",
+    "image_url": "https://avatars2.githubusercontent.com/u/11665759?v=4",
+    "stacks": [
+        "Java and J2EE"
+    ],
+    "thumbnail_url": null,
+    "title": "Getting Started with JShell"
+}

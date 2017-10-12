@@ -31,7 +31,7 @@ If the user enters "John" in the text input, and selects the text file "file1.tx
    --AaB03x
    Content-Disposition: form-data; name="submit-name"
 
-   Larry
+   John
    --AaB03x
    Content-Disposition: form-data; name="files"; filename="file1.txt"
    Content-Type: text/plain
@@ -50,7 +50,7 @@ Let's consider another file. If the user selects another file  "file2.gif", the 
    --AaB03x
    Content-Disposition: form-data; name="submit-name"
 
-   Larry
+   John
    --AaB03x
    Content-Disposition: form-data; name="file"
    Content-Type: multipart/mixed; boundary=BbC04y
@@ -345,7 +345,7 @@ Second, add a private method for decoding <code>image_base</code> and assigning 
   end
 
 ``` 
-The <code>parse_image </code> method takes <code>image_base</code> and puts it into Paperclip's [IO adapters](http://www.rubydoc.info/gems/paperclip/Paperclip/AdapterRegistry#registered_handlers-instance_method). They contain a registry which can turn the base64 string into binary. Because the file name is not stored, you can either put an arbitrary value (like "file.jpg", even if your file is not in jpg format) or add another <code>atr_accessor</code> for the name itself. Finally, <code> self.photo = image </code> assigns the image to the current instance of the object.
+The <code>parse_image </code> method takes <code>image_base</code> and puts it into Paperclip's [IO adapters](http://www.rubydoc.info/gems/paperclip/Paperclip/AdapterRegistry#registered_handlers-instance_method). They contain a registry which can turn the base64 string into binary. Because the file name is not stored, you can either put an arbitrary value (like "file.jpg", even if your file is not in jpg format) or add another <code>attr_accessor</code> for the name itself. Finally, <code> self.picture = image </code> assigns the image to the current instance of the object.
 
 The method is ready, but it has to be called every time a new object is created. Let's add a filter that will call the <code> parse_image </code> method when that happens:
 
@@ -393,7 +393,6 @@ end
   private
 
   def parse_file
-    p file_contents
     file = Paperclip.io_adapters.for(file_contents)
     file.original_filename = "pdfile.pdf"
     self.file = file
