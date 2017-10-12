@@ -1,8 +1,5 @@
 # Docker experiment to build hello world image from scratch. Instead of using shell script, a C based application is used to make it comparable to custom application package/distribution.
 
-Creating minimal Docker image (on linux)
------------------------------
-
 #### What you need :
 
 * Docker installed on linux variant (tested on Ubuntu 14LTS)
@@ -38,15 +35,13 @@ ldd "helloWorld"
 Now we create a Dockerfile as follows (configuration for Docker image that
 we are about to build).
 
+Dockerfile:
+-----------
 ```
 FROM scratch
 ADD ./helloWorld /helloWorld
 CMD ["/helloWorld"]
 ```
-
-This tells Docker to seed the image from the `scratch` (Ubuntu 14LTS) image, which is completely empty, and add the helloWorld executable to it as target path `/helloWorld` and the startup command is to execute /helloWorld.
-
-Now build the image with:
 
 ```bash
 $ docker build -t "helloWorld" .
