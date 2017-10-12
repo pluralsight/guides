@@ -32,6 +32,136 @@ Linux allows you to create empty files using the `touch` command followed by the
 You are highly encouraged to review this section before proceeding with the rest of the tutorial. After reviewing the man pages, you may want to consider referring to [The Linux Documentation Project](http://tldp.org/) web site for further details on the use of command-line tools that are a must for prospective Linux system administrators.
 
 # Section 1 - User And Group Management
+Since Linux is a multi-user operating system, several people may be logged in and actively working on a given machine at the same time. Security-wise, it is never a good idea to allow users to share the credentials of the same account. In fact, best practices dictate the use of as many user accounts as people needing access to the machine. At the same time, it is to be expected that two or more users may need to share access to certain system resources, such as directories and files. User and group management in Linux allows us to accomplish both objectives. In this section and in the next (*Chapter 2 - Permissions*) we will explain how.
+
+## A Note On Super-User Permissions
+Since adding a new user involves dealing with an account other than your own, it requires super-user (aka *root*) privileges. The same applies to other user or group management tasks, such as deleting an account, updating it, and creating and removing groups. These operations are performed using the following commands:
+- `adduser`: add a user to the system.
+- `userdel`: delete a user account and related files.
+- `addgroup`: add a group to the system.
+- `delgroup`: remove a group from the system.
+- `usermod`: modify a user account.
+- `chage`: change user password expiry information.
+- Relevant files: `/etc/passwd` (user information), `/etc/shadow` (encrypted passwords) and `/etc/group` (group information).
+
+>Super-user permissions can be gained either by changing to the *root* user with the `su` command or using `sudo`. The latter approach is used by default in Ubuntu and derivatives, and is preferred over the former in other distributions as well. It is also important to note that, as opposed to other Linux flavors, the user that is created when Ubuntu is first installed has super-user privileges out-of-the-box.
+>You can verify whether `sudo` is installed on your machine by running `which sudo` on a terminal. If this command returns the absolute path of the associated file (typically `/usr/bin/sudo`), it means that the package is installed. Otherwise, you can install it with `apt-get install sudo` on Debian, or `yum install sudo` in CentOS or similar.
+
+## Adding A New Regular Account
+To begin, let's create a new user named **pluralsight** using Ubuntu and CentOS as representative distributions. 
+
+In Ubuntu or derivatives, this is as easy as doing (you will be required to enter your password to run `sudo`):
+```
+sudo adduser pluralsight
+```
+
+In other distributions, login as **root** and do:
+```
+adduser pluralsight
+```
+
+> You may be prompted to set the new user's initial password, and other optional information (such as full name, work phone, etc) to be stored in `/etc/passwd` using colons as field separators. If not, you can assign a password for **pluralsight** with `passwd pluralsight` and entering it twice. Needless to say, you must do `sudo passwd pluralsight` if you're in Ubuntu.
+
+Now that we have a regular user account created, we will explain how to utilize it to perform user management tasks.
+
+## The /etc/sudoers File
+To grant **pluralsight** super-user permissions, we will need to add an entry for it in  `/etc/sudoers`. This file is used to indicate which users can run what commands with elevated permissions (most likely as *root*).
+
+### Step 1 - Open /etc/sudoers With Visudo
+Although `/etc/sudoers` is nothing more and nothing less than a plain text file, it must **NOT** be edited using a regular text editor. Instead, we will use the `visudo` command. As opposed to other text editors, by utilizing `visudo` we will ensure that 1) no one else can modify the file at the same time, and 2) the file syntax is checked upon saving changes.
+
+>To launch `visudo`, just type the command and press Enter. Don't forget to do `sudo visudo` instead if you're in Ubuntu. In any event, the file will be opened using your default text editor.
+
+### Step 2 - Add An Entry in /etc/sudoers For The New User Account
+The easiest method to grant super-user permissions for **pluralsight** is adding the following line at the bottom of `/etc/sudoers`:
+```
+pluralsight    ALL=(ALL) ALL
+```
+Let's explain the syntax of this line:
+- First off, we indicate which user this rule refers to (**pluralsight**).
+- The first `ALL` means the rule applies to all hosts using the same `/etc/sudoers` file. Nowadays, this means the *current host* since the same file is not shared across across other machines. 
+- Next, `(ALL) ALL` tells us that **pluralsight** will be allowed to run *all* commands as any user. Functionally speaking, this is equivalent to `(root) ALL`.
+
+>For more information on the available options in `/etc/sudoers`, refer to `man sudoers`.
+
+While saving, `visudo` will alert you if a syntax error is found in the file, and indicate the line where the error is found so that you can identify it more easily. 
+
+## Switching Users
+If no errors are found while saving the recent changes in `/etc/sudoers`, we'll be ready to start using **pluralsight** to perform administrative tasks. To do so, use the `su` command to change to that account. 
+
+>Note that from this point, there is no need to use the **root** account.
+
+Additionally, the `-l` option will allow to provide an environment similar to what the user would expect if he or she had logged in directly:
+```
+su -l pluralsight
+```
+and press Enter.
+
+## Getting Started With User Management
+While we're logged as **pluralsight**, let's add yet another user account called **student** with a password of our choice. You can skip the second command if the first one prompts you to enter the password for **student**:
+```
+sudo adduser student
+sudo passwd student
+```
+(enter password twice).
+If everything went as expected, a new user and a primary group called **student** were created with an unique user and group id, respectively. Additionally, the new user is assigned a personal directory (`/home/student` in this case), and a login shell (`/bin/bash` by default). 
+Using `usermod` we can change the *home* directory to another existing one, edit the login shell, and an add an optional comment on the user (such as full name or employee information) as follows:
+- To change the *home* directory to `/Users/student` (this directory must exist), use the `--home` (or its short equivalent `-d`) option: `sudo usermod --home /Users/student student`
+- If the user prefers to use `/bin/sh` as login shell (or company policies require employees to use it), the `--shell` (or `-s`)  flag will do the trick: `sudo usermod --shell /bin/sh student`
+- To add a descriptive comment to the user account, use `--comment` (or `-c`), followed by the comment enclosed between double quotes. For example, you can do `sudo usermod --comment "Account used for Pluralsight guide" student`
+
+The above commands can be grouped into one as follows:
+```
+sudo usermod --home /Users/student --shell /bin/sh --comment "Account used for Pluralsight guide" student
+```
+In Fig. 1 we see the contents of `/etc/passwd` *before* and *after* modifying the user information:
+
+
+![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/c8a0e38f-3432-42f5-8fb1-f4f6b5ce5743.png)
+
+
+>As you can see in these examples, the syntax of `usermod` consists in invoking the command followed by one or more options (with their corresponding values) and the user account they should be applied to.
+
+In addition to changing the user's home directory, login shell, and descriptive comment, `usermod` also allows to lock (and unlock) an account and set its expiration date. To do so, use `--lock` (or `-L`), `--unlock` (or `-U`), and `--expiredate` (or `-e`), respectively. The expiration date must be specified using the **YYYY-MM-DD** format.
+
+For example, to lock **student**, do:
+```
+sudo usermod --lock pluralsight
+```
+If we now try to login as **student**, we will get an `Authentication failure` error, as shown in Fig. 2. After unlocking the account with `sudo usermod --unlock student`, we will be able to use the account again, as also observed in Fig. 2.
+>When an user is locked, an exclamation sign `!` is placed before the encrypted password in `/etc/shadow`, thus disabling the account.
+
+
+![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/62679a1e-8f87-4b1c-b3b5-5811bf6e2042.png)
+
+
+To set the expiration date of **student**, do
+```
+sudo usermod --expire-date 2017-10-31 student
+```
+
+The changes can then be viewed with 
+```
+sudo chage -l student
+```
+By the way, you can use `chage` to enforce a password change policy. As a safety measure, it is important to have users change their passwords after a given period of time. For example, to force **student** to change his password every 60 days, do:
+```
+sudo chage --maxdays 60 student
+```
+ Fig. 3 shows **student**'s password information after performing the above changes:
+ 
+
+![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/763f6f34-715d-4287-9ca8-428299f517be.png)
+
+
+>In `man chage` you can find more information about other useful password expiration tasks.
+
+### Groups
+In Linux, groups can be defined as a way to organize users that need the same type of access to a directory or file. In this section we will explain how to create and remove groups, whereas in *Chapter 2 - Permissions* a more detailed discussion on user and group permissions will be given, along with file and directory ownership.
+
+To create a new group named **finances**, do `addgroup finances`. To remove it from the system, use `delgroup finances`. The information of the new group is stored in `/etc/group`, where each line shows the name of the group and the user accounts that are associated with it.
+
+>It is important that you practice the commands and examples outlined in this section until you feel confident using them. Then proceed with the next section where we will be adding and removing users to and from groups, and granting or preventing access to files and directories.
 
 
 
