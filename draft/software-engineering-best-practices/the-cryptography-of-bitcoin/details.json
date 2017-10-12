@@ -1,0 +1,15 @@
+{
+    "_publish_status": "draft",
+    "author_name": "decentcrypto",
+    "author_real_name": "Decent",
+    "branch": "master",
+    "branches": [],
+    "filename": "article.md",
+    "first_commit": "8c3db530ba90519b56e66154a066b26025ad7314",
+    "image_url": "https://avatars3.githubusercontent.com/u/29243763?v=4",
+    "stacks": [
+        "Software Engineering Best Practices"
+    ],
+    "thumbnail_url": null,
+    "title": "The Cryptography of Bitcoin"
+}
