@@ -165,11 +165,49 @@ To create a new group named **finances**, do `addgroup finances`. To remove it f
 
 >It is important that you practice the commands and examples outlined in this section until you feel confident using them. Then proceed with the next section where we will be adding and removing users to and from groups, and granting or preventing access to files and directories.
 
-
-
 # Section 2 - Permissions
 
+Every file, directory, and other system objects in Linux are assigned an owner and a group. This is the most basic, yet essential, part of system security that protects users from each other. Owners, users belonging to a group, and all others may be granted different types of access to read from, write to, or execute files. This is generally referred to as *file permissions* in Linux. 
+To set permissions and manage ownership, we will use the following commands:
+- `chmod`: change file permissions.
+- `chown`: change file owner.
+- `chgrp`: change group ownership.
+- `id`: print user and group IDs.
 
+### Users, Groups, and Everyone Else
+Typically, the owner of a file is the user who created it, and (at least initially) the group is the one associated with the owner (aka *primary group*). To illustrate, let's create a new file called `test1` in the current working directory:
+```
+echo "This is a dummy file called test1" > test1
+```
+Then let's do `ls -l` on it:
+```
+ls -l test1
+```
+As seen in Fig. 1, the first character in the output indicates that `test1` is a regular file (i.e. not a directory or other type of system object). The next nine  characters (divided in 3 groups of 3) indicate the *read* (`r`), *write* (`w`), and *execute* (`x`) permissions of the owner, the group owner, and the other users in the system.
+
+![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/6d74f02b-ea4a-48ee-83d7-0574e9064fce.png)
+
+The first group of 3 characters (`rw-`) indicate that the owner of the file (**pluralsight**) has *read* and *write* permissions. In this example, the next 2 groups of 3 characters are identical, which means that both the members of the group owner (**pluralsight**) and the rest of the users have the same permissions on the file, respectively.
+
+> The *read* permission on a file is necessary for it to be opened and read. The same permission on a directory (along with *execute*) is required to list its contents and to move into it.
+
+To change the permissions on a file, we will use `chmod`. This command must be followed by a symbolic representation that indicates 1) who the new permissions should be applied to:
+- `u` means *user* (or more precisely, the owner of the file).
+- `g` means *group*.
+- `o` means **all other** users.
+- `a` means **all** users.
+
+and 2) the type of permission:
+- `+r` *adds* read permission
+- `-r` *removes* read permission
+- `+w` *adds* write permission
+- `-w` *removes* write permission
+- `+x` *adds* execute permission
+- `-x` *removes* execute permission
+- `+rw` *adds* read **and** write permissions
+- `+rwx` *adds* read **and** write **and** execute permissions
+
+and so on
 
 # Section 3 - Processes
 
