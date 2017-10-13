@@ -64,6 +64,8 @@ adduser pluralsight
 
 Now that we have a regular user account created, we will explain how to utilize it to perform user management tasks.
 
+> When a new user is added, a group (more on this in *Chapter 2 - Permissions*) with the same name is created automatically. This is called a *primary group*.
+
 ## The /etc/sudoers File
 To grant **pluralsight** super-user permissions, we will need to add an entry for it in  `/etc/sudoers`. This file is used to indicate which users can run what commands with elevated permissions (most likely as *root*).
 
