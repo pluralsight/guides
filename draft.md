@@ -1,3 +1,8 @@
+### Test guide by Rattanak Chea
+- [Read the guide](https://www.pluralsight.com/guides/python/test-guide?status=draft)
+- [Read more from Rattanak Chea](https://www.pluralsight.com/guides/author/rattanakchea) <img src="https://avatars3.githubusercontent.com/u/3496405?v=4" width="30" height="30" alt="Rattanak Chea" />
+- Related to: Python
+
 ### How to win at hackathons! by Prateek Gupta
 - [Read the guide](https://www.pluralsight.com/guides/software-engineering-best-practices/how-to-win-at-hackathons?status=draft)
 - [Read more from Prateek Gupta](https://www.pluralsight.com/guides/author/prtkgpt) <img src="https://avatars3.githubusercontent.com/u/2454349?v=4" width="30" height="30" alt="Prateek Gupta" />
