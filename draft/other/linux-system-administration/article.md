@@ -207,7 +207,29 @@ and 2) the type of permission:
 - `+rw` *adds* read **and** write permissions
 - `+rwx` *adds* read **and** write **and** execute permissions
 
-and so on
+and so on. Finally, we also need to indicate the name of the file or directory. Thus, we can change the permissions on `test1` as follows:
+- Add *execute* permissions for the owner only: `chmod u+x test1`
+- Remove *read* and *write* permissions from users other than the owner and not in the group owner: `chmod o-rw test1`.
+
+Fig. 2 shows the current permissions of `test1` after making the above changes:
+
+![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/3f244cb1-7a0c-4fd3-9e45-b5988b6b58b9.png)
+
+Another way to set permissions is using an octal instead of a symbolic expression. To *translate* into octal form, we must split the the desired permissions in groups of 3 characters, and use the following table to replace each group with its octal equivalent:
+
+| Permissions 	| Binary 	| Octal 	|
+|:-----------:	|:------:	|:-----:	|
+|     ---     	|   000  	|   0   	|
+|     --x     	|   001  	|   1   	|
+|     -w-     	|   010  	|   2   	|
+|     -wx     	|   011  	|   3   	|
+|     r--     	|   100  	|   4   	|
+|     r-x     	|   101  	|   5   	|
+|     rw-     	|   110  	|   6   	|
+|     rwx     	|   111  	|   7   	|
+
+Thus, if you need to assign `rwx` permissions on `test1` for the owner, `rw` for the group, and only `r` for everyone else, you should do `chmod 764 test1`. Here, the 7, 6, and 4 represent `rwx`, `rw`, and `r`, respectively.
+
 
 # Section 3 - Processes
 
