@@ -1,3 +1,8 @@
+### Indepth Dimple Code Analysis of a Multiline Chart by sonisick
+- [Read the guide](https://www.pluralsight.com/guides/other/indepth-dimple-code-analysis-of-a-multiline-chart)
+- [Read more from sonisick](https://www.pluralsight.com/guides/author/sonisick) <img src="https://avatars0.githubusercontent.com/u/6710145?v=4" width="30" height="30" alt="sonisick" />
+- Related to: other
+
 ### Playing with rspec from IRB by Sigu Magwa
 - [Read the guide](https://www.pluralsight.com/guides/ruby-ruby-on-rails/playing-with-rspec-from-irb)
 - [Read more from Sigu Magwa](https://www.pluralsight.com/guides/author/sigu) <img src="https://avatars1.githubusercontent.com/u/584211?v=4" width="30" height="30" alt="Sigu Magwa" />
