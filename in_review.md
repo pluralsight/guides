@@ -13,11 +13,6 @@
 - [Read more from Nilanjan Siromani](https://www.pluralsight.com/guides/author/nilanjansiromani) <img src="https://avatars3.githubusercontent.com/u/23280169?v=4" width="30" height="30" alt="Nilanjan Siromani" />
 - Related to: Front-End JavaScript (Angular, React, Meteor, etc)
 
-### Indepth Dimple Code Analysis of a Multiline Chart by sonisick
-- [Read the guide](https://www.pluralsight.com/guides/other/indepth-dimple-code-analysis-of-a-multiline-chart?status=in-review)
-- [Read more from sonisick](https://www.pluralsight.com/guides/author/sonisick) <img src="https://avatars0.githubusercontent.com/u/6710145?v=4" width="30" height="30" alt="sonisick" />
-- Related to: other
-
 ### Getting started with Vue.JS (part-1) by A M Rahman
 - [Read the guide](https://www.pluralsight.com/guides/front-end-javascript/getting-started-with-vue-js-part-1?status=in-review)
 - [Read more from A M Rahman](https://www.pluralsight.com/guides/author/amrahman90) <img src="https://avatars2.githubusercontent.com/u/28068398?v=3" width="30" height="30" alt="A M Rahman" />
