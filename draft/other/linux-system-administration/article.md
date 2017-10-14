@@ -407,6 +407,15 @@ ps -o pid,cmd,ni --pid=940
 
 After changing the *niceness* value of `snapd`, the kernel will start allocating more CPU cycles for it.
 
+### Killing processes
+Processes can be forced to terminate by sending them *signals* using `kill` or `killall` commands. The former requires that the **PID** of the process that we want to manipulate, whereas the latter allows us to terminate processes by name or by specifying owning user. 
+
+> Terminating a process manually should only be considered when it has failed to respond or is interfering with the normal operation of other processes. For example, an outdated or failed plugin running on a web browser can cause the browser -and ultimately the system- to crash. Under this scenario, the memory usage typically skyrockets. Before that happens, it is a good idea to terminate (aka *kill*) the browser process and uninstall the offending plugin as soon as possible.
+
+To kill a process by PID (say `PID=1025`), do `sudo kill -SIGTERM 1026`. If it ignores this signal, you can resort to a more drastic measure by using `-SIGKILL` instead: `sudo kill -SIGKILL 1026`. Please note, however, that the use of **SIGTERM** is preferred as it gives the process a chance to close any files it may be using (aka *clean termination*). 
+
+If we want to terminate all the processes owned by a particular user, `killall` is more appropriate. The command should be followed by `-u [USER]`, where `[USER]` is the owner of the processes. For example, `sudo killall -u www-data` will terminate all processes owned by **www-data**. By the way, this account is the default owner of the Apache web server on Debian, Ubuntu, and similar distributions.
+
 # Section 4 - Shell Scripting With Bash
 
 
