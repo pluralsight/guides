@@ -327,6 +327,13 @@ The only difference when compared to individual users is that the group name mus
 # Section 3 - Processes
 
 Every program that runs on a Linux system is managed as a process. As such, it is started, executed, and eventually terminates or continues running on the background. In this last case, it is often referred to as a *daemon* or *system service*. This cycle is automatically managed by the kernel, without need for user intervention under normal circumstances. However, a process may require action on our part if it is not behaving as expected, or if it needs to be restarted after changes have been made to its configuration, or when we need to assign more or less system resources to it before or during its execution. 
+In this section we are going to introduce the following process management commands:
+- `ps`
+- `pstree`
+- `top`
+- `nice`
+- `renice`
+- `kill`
 
 # Section 4 - Shell Scripting With Bash
 
