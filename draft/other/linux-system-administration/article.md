@@ -271,7 +271,7 @@ and add the account to **finances**, again using `usermod` but this time with th
 sudo usermod -aG finances student
 ```
 
->The `-aG` combined option is short for *append to group*. Now **finances** is said to be a *secondary* or *supplementary* group for user **student**. The new access permissions will take effect the next time **student** logs in.
+>The `-aG` combined option is short for *append to group*. Now **finances** is said to be a *secondary* or *supplementary* group for user **student**. The new access permissions will take effect the next time **student** logs in. At that point, we can use the `id student` command to verify that the account was added correctly to the group. If we're logged in as **student**, just `id` will return the same information.
 
 ![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/8fa07297-9b0f-4dbe-9360-7dc505fa9c08.png)
 
@@ -322,9 +322,11 @@ Using `/etc/sudoers`, we can also allow **all** the users in a group to execute 
 
 The only difference when compared to individual users is that the group name must be prefaced by the `%` sign. Command aliases can be used in this case as well.
 
+> To list the allowed commands for the invoking user in `/etc/sudoers`, simply do `sudo -l` in the command line and press Enter.
+
 # Section 3 - Processes
 
-
+Every program that runs on a Linux system is managed as a process. As such, it is started, executed, and eventually terminates or continues running on the background. In this last case, it is often referred to as a *daemon* or *system service*. This cycle is automatically managed by the kernel, without need for user intervention under normal circumstances. However, a process may require action on our part if it is not behaving as expected, or if it needs to be restarted after changes have been made to its configuration, or when we need to assign more or less system resources to it before or during its execution. 
 
 # Section 4 - Shell Scripting With Bash
 
