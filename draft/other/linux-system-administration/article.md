@@ -262,7 +262,12 @@ sudo usermod -aG finances student
 
 ### Special Permissions
 
-Besides the standard `rwx` file permissions, there are three others that are worth mentioning.
+Besides the standard `rwx` file permissions, there are three others that are worth mentioning: **setuid**, **setgid**, and the **sticky bit**. Let's examine each of them.
+
+- When the **setuid** bit is set on an executable file, any user can execute it using the permissions of the *owner* of such file.
+- When the **setgid** bit is set on an executable file, any user can execute it using the permissions of the *group* of such file.
+
+These special permissions pose a security risk when used carelessly. For example, if any user is allowed to run a command with superuser privileges, he or she can gain access to files owned by other users, and even by root. It isn't hard to see how this can easily cause havoc in a system: essential files could be removed, personal directories could be wiped out entirely, and even hardware can experience erratic behavior. It only takes a malicious or irresponsible individual to cause all this. Thus, the use of the **setuid** and the **setgid** bits must be highly restricted. A valid case where the **setuid** bit must be used is in `/usr/bin/passwd`. This file is owned by root but needs to be used by any user to change his or her own password (but not that of other users).
 
 
 # Section 3 - Processes
