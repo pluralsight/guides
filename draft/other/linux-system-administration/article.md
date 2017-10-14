@@ -174,7 +174,7 @@ sudo chage --maxdays 60 student
 
 >In `man chage` you can find more information about other useful password expiration tasks.
 
-### Groups
+## Groups
 In Linux, groups can be defined as a way to organize users that need the same type of access to a directory or file. In this section we will explain how to create and remove groups, whereas in *Chapter 2 - Permissions* a more detailed discussion on user and group permissions will be given, along with file and directory ownership.
 
 To create a new group named **finances**, do `addgroup finances`. To remove it from the system, use `delgroup finances`. The information of the new group is stored in `/etc/group`, where each line shows the name of the group and the user accounts that are associated with it.
@@ -190,7 +190,7 @@ To set permissions and manage ownership, we will use the following commands:
 - `chgrp`: change group ownership.
 - `id`: print user and group IDs.
 
-### Users, Groups, and Everyone Else
+## Users, Groups, and Everyone Else
 Typically, the owner of a file is the user who created it, and (at least initially) the group is the one associated with the owner (aka *primary group*). To illustrate, let's create a new file called `test1` in the current working directory:
 ```
 echo "This is a dummy file called test1" > test1
@@ -282,7 +282,7 @@ sudo chown student test1
 ```
 > Note that the above command will cause that **pluralsight** does not have access to `test1` anymore, as such account is now neither the owner of the file or has not been added to the **finances** group.
 
-### Special Permissions
+## Special Permissions
 
 Besides the standard `rwx` file permissions, there are three others that are worth mentioning: **setuid**, **setgid**, and the **sticky bit**. Let's examine each of them.
 
@@ -313,7 +313,7 @@ To illustrate the use of these special permissions, let's refer to Fig. 4. Note 
 
 Under this scenario and if `test1` was a program, any user could execute it using the permissions of **pluralsight** (owner) or the access privileges of the **finances** group.
 
-### Revisiting /etc/sudoers
+## Revisiting /etc/sudoers
 Using `/etc/sudoers`, we can also allow **all** the users in a group to execute programs with superuser privileges. For example, the following line indicates that members of **finances** are allowed to run `updatedb` (or more precisely, `/usr/bin/updatedb`):
 
 ```
@@ -327,6 +327,7 @@ The only difference when compared to individual users is that the group name mus
 # Section 3 - Processes
 
 Every program that runs on a Linux system is managed as a process. As such, it is started, executed, and eventually terminates or continues running on the background. In this last case, it is often referred to as a *daemon* or *system service*. This cycle is automatically managed by the kernel, without need for user intervention under normal circumstances. However, a process may require action on our part if it is not behaving as expected, or if it needs to be restarted after changes have been made to its configuration, or when we need to assign more or less system resources to it before or during its execution. 
+
 In this section we are going to introduce the following process management commands:
 - `ps`
 - `pstree`
