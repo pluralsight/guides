@@ -374,7 +374,7 @@ Given the parent / child relationship between process, it is often necessary to 
 - A **PID**, then the tree will be displayed with such process at its root. Otherwise, it is rooted at `PID=1`. 
 - A username, `pstree` will return all trees own by the user.
 
-In addition to displaying only the name of processes, `pstree` can also return their **PIDs** when used with the –p option. Fig. 2 shows all trees owned by **pluralsight**. The images on the left and the right show the output with and without the use of `-p`. The number inside parentheses is the **PID** of each process.
+In addition to displaying only the name of processes, `pstree` can also return their **PIDs** when used with the `–p` option. Fig. 2 shows all trees owned by **pluralsight**. The images on the left and the right show the output with and without the use of `-p`. The number inside parentheses is the **PID** of each process.
 
 ![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/bbce1994-50f2-41d5-a4d3-8346e64c4885.png)
 
@@ -383,18 +383,29 @@ On the right, we can see that `tmux` (`PID=1470`) is the parent of two `bash` pr
 >Terminating a parent process has the effect of terminating its children as well.
 
 ### Top and Uptime
-Although it is useful to use `ps` to take snapshots of the process list, it may be useful to monitor that list with refreshing intervals. Instead of doing `ps` several times, Linux provides another tool called `top` that is more fit for the job. Additionally, `top` shows the same information as `uptime` as we can see in Fig. 3:
+Although it is useful to use `ps` to take snapshots of the process list, it may be necessary to monitor that list dynamically with refreshing intervals. Instead of doing `ps` several times, Linux provides another tool called `top` that is more fit for the job. Additionally, `top` shows the same information as `uptime` as we can see in Fig. 3:
 
 ![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/67080801-0b01-4815-89d0-588bbbc4dd2d.png)
 
 Fig. 3 indicates that the current time is **19:23:57**. The system has been up for **1 hour and 10 minutes** and the load average over the last minute, 5 and 15 minutes has been **0.03** (3%), **0.02** (2%), and **0.00** (0%). These percentages represent the use of CPU by running processes over the specified time intervals. In a multi-CPU system, these numbers should be divided by the number of processors to find out the average CPU usage. If you consistently experience high CPU usage, it may be time to add hardware resources to the machine or move the more CPU-hungry services to another system.
+> Remember to check out `man top` for further details on the use of this tool, particularly the **FIELDS / Columns** section, which describes the available information of processes that are shown by `top`. 
 
 ### Process Execution Priorities
-Without any intervention on our part, the kernel will adjust automatically the CPU cycles that are allocated to a certain process. However, Linux also allows the system administrator to change this behavior through the `nice` (for new processes) and `renice` (for running processes) commands. Both tools are used to modify the *priority* that should be given to a process in terms of CPU usage.
+Without any intervention on our part, the kernel will adjust automatically the CPU cycles that are allocated to a certain process. However, Linux also allows the system administrator to change this behavior through the `nice` (for new processes) and `renice` (for running processes) commands. Both tools use an integer value in the range of -20 to 19 to modify the *priority* that should be given to a process in terms of CPU usage. The lower the value, the less *nice* the application - which means it will take up more system resources.
 
-The range of possible niceness values is from –20 to 19. The lower the value, the less nice the application will be, which means it will take up more system resources.
-While a regular user can only increase the niceness of a process he owns, he cannot decrease it nor change this value for other user's processes (which is another system administrative tasks that must be performed either as root or using sudo).
+> A regular user can only increase the *niceness* of a process he or she owns. He or she cannot either decrease it or change the priority of processes owned by other users. These are other administrative tasks that must be performed either as root or using `sudo` as explained earlier.
 
+To *renice* a process, use `renice` followed by the new *niceness* value, and `-p [PID]` where `[PID]` is the **PID** of the process. For example, let's increase the priority of `snapd` from **0** (current) to **-5**. Fig. 4 shows the change of the *niceness* value, and the use of `ps` with another format specifier (`ni`) to return this information. Also, `--pid` followed by a **PID** allows us to view the process fields of the corresponding process only.
+
+```
+ps -o pid,cmd,ni --pid=940
+sudo renice -5 -p 940
+ps -o pid,cmd,ni --pid=940
+```
+
+![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/a85a5f48-7bf6-4a1a-a98d-50718a00d2b7.png)
+
+After changing the *niceness* value of `snapd`, the kernel will start allocating more CPU cycles for it.
 
 # Section 4 - Shell Scripting With Bash
 
