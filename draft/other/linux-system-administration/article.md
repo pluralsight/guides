@@ -236,11 +236,33 @@ Other examples:
 - `rw` permissions for the owner and the group and no access whatsoever for other users: `chmod 660 test1`
 - All (`rwx`) permissions for the owner, but only *read* **and** *execute* permissions for everyone else (this includes both the group and other users): `chmod 755 test1`
 
+>When to use the symbolic expression or the octal form to set permissions depends on the specific scenario. If only a bit needs to be set, it's likely that the symbolic expression will be faster. But if we want to set different permissions for the owner, the group, and all others, the octal form is easier and more straightforward.
+
+If we executed the above commands, the current permissions of `test1` are `rwxr-xr-x` (`755`) and both the owner and the group are **pluralsight** and **pluralsight**, respectively. Let's now introduce the use of `chgrp` to change the group to **finances**, which we created in *Chapter 1 - User and Group Management*. The command must be followed by the group name and the name of the file whose ownership needs to be set (`test1` in this case):
+
+```
+sudo chgrp finances test1
+```
+Next, let's see if user **student** can write to this file. As we can see in Fig. 3, we get a *Permission denied* error. To give **student** write access to the file, we can set the corresponding bit for the group:
+
+```
+sudo chmod g+w test1
+```
+
+and add the account to **finances**, again using `usermod` but this time with the `-aG` combined option as follows:
+
+```
+sudo usermod -aG finances student
+```
+
+>The `-aG` combined option is short for *append to group*. Now **finances** is said to be a *secondary* or *supplementary* group for user **student**. The new access permissions will take effect the next time **student** logs in.
+
+![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/8fa07297-9b0f-4dbe-9360-7dc505fa9c08.png)
 
 
 ### Special Permissions
 
-Besides the standard 
+Besides the standard `rwx` file permissions, there are three others that are worth mentioning.
 
 
 # Section 3 - Processes
