@@ -259,6 +259,12 @@ sudo usermod -aG finances student
 
 ![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/8fa07297-9b0f-4dbe-9360-7dc505fa9c08.png)
 
+If instead of adding **student** to the **finances** group, we wanted to make him the owner of `test1`, we can use `chown` followed by the user and file names, in that order:
+
+```
+sudo chown student test1
+```
+> Note that the above command will cause that **pluralsight** does not have access to `test1` anymore, as such account is now neither the owner of the file or has not been added to the **finances** group.
 
 ### Special Permissions
 
@@ -268,6 +274,10 @@ Besides the standard `rwx` file permissions, there are three others that are wor
 - When the **setgid** bit is set on an executable file, any user can execute it using the permissions of the *group* of such file.
 
 These special permissions pose a security risk when used carelessly. For example, if any user is allowed to run a command with superuser privileges, he or she can gain access to files owned by other users, and even by root. It isn't hard to see how this can easily cause havoc in a system: essential files could be removed, personal directories could be wiped out entirely, and even hardware can experience erratic behavior. It only takes a malicious or irresponsible individual to cause all this. Thus, the use of the **setuid** and the **setgid** bits must be highly restricted. A valid case where the **setuid** bit must be used is in `/usr/bin/passwd`. This file is owned by root but needs to be used by any user to change his or her own password (but not that of other users).
+
+- When the **sticky bit** is set on a directory (it cannot be set on a regular file), the files within that directory can be deleted only by the owner, the owner of the directory, or by root. This is often used in shared directories to prevent a user from deleting other people's files from it.
+
+### Revisiting /etc/sudoers
 
 
 # Section 3 - Processes
