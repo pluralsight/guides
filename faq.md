@@ -72,7 +72,7 @@ Please reach out to Prateek (prateek-gupta@pluralsight.com) if you want to chat 
 One easy thing you can do is to check-out what else is out there for this particular subject. Try doing a quick search now for some topics that interest you. Other articles are generally OK so long as there is enough unique/useful content that sets your article apart. Are there ideas you can talk about in your proposed article that hasn't already been written? Enough interesting unique contributions that can be added that move the world's knowledge forward? Those are some things to think about.
 
 ### What is the writing process?
-1. [Submit a guide](/write/)
+1. [Submit a guide](https://www.pluralsight.com/guides/write)
 2. Share a link for suggestions to your article with friends, co-workers, etc.
 3. Continue improving your guide and mark it as 'in-review' from the bottom of the guide page itself.  Marking a guide as 'in-review' will make it visible to the community editors and signal that you're ready for help improving the content.
 4. Our editors will also assist you with improving your guide
