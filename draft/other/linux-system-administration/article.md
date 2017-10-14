@@ -329,12 +329,46 @@ The only difference when compared to individual users is that the group name mus
 Every program that runs on a Linux system is managed as a process. As such, it is started, executed, and eventually terminates or continues running on the background. In this last case, it is often referred to as a *daemon* or *system service*. This cycle is automatically managed by the kernel, without need for user intervention under normal circumstances. However, a process may require action on our part if it is not behaving as expected, or if it needs to be restarted after changes have been made to its configuration, or when we need to assign more or less system resources to it before or during its execution. 
 
 In this section we are going to introduce the following process management commands:
-- `ps`
-- `pstree`
-- `top`
-- `nice`
-- `renice`
-- `kill`
+- `ps`: report a snapshot of the current processes.
+- `pstree`: display a tree of processes.
+- `top`: display processes and uptime information.
+- `nice`: run a program with modified scheduling priority.
+- `renice`: alter priority of running processes.
+- `kill`: terminate processes.
+- `uptime`: how long the system has been running.
+
+## Introducing processes in Linux
+When a process is started either manually or during the boot process, it is assigned an unique integer number as identifier called **Process ID** or **PID** for short. If a process **A** launches or starts a process **B**, it is said that **A** is the parent of **B**, or that **B** is the child of **A**. Under this scenario, the **PID** of **A** is the **Parent PID** (or **PPID**) of **B**.
+
+>The first process started by the kernel at boot time (`PID=1`) is called **systemd** in modern Linux distributions. This process is responsible for starting several other processes, which in turn start more, until the operating system is fully functional.
+
+Additionally, each process is associated with the user who started it. This *user* can be an actual person, or an account used by the system for its operation. What we talked in the previous section (*Section 2 - Permissions*) apply here: a process only has access to the system resources that its associated user account is allowed to utilize. In other words, if a process **A** was started by `user1`, and such account does not have write permissions in a given file, the process will not be permitted to write to that file either.
+
+To display a snapshot of all the processes currently running in our system, we will use `ps`. When executed without arguments, this command will return **only** the processes owned by the current user. More useful information is available by using the `aux` or `-ef` options. Since the output in both cases can be **very** long, we can pipe the output to a *pager* such as less to inspect it more easily:
+
+```
+ps aux | less
+```
+or
+```
+ps -ef | less
+```
+The above commands return more information than what we're usually interested in. Most often we will want to view the PPID, PID, the command associated with the process (or the absolute path to the executable file), and the percentage of system memory and CPU usage. Each of these fields (and others as well) are explained in detail under the *STANDARD FORMAT SPECIFIERS* section in `man ps`. To view only these fields in the output of `ps`, we will use the `-eo` combined option followed by the corresponding format specifiers. For example,
+
+```
+ps -eo ppid,pid,cmd,%mem,%cpu | less
+```
+During a regular inspection or system troubleshooting, it is useful to identify which processes are consuming the most memory. Fortunately, `ps` supports the `--sort` option. When used with the above command, and piped to `head` instead of less, we can easily get a list of the most memory-hungry processes as follows (see Fig. 1):
+```
+ps -eo ppid,pid,cmd,%mem,%cpu --sort -%mem | head -n 5
+```
+
+![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/3cd0a77f-bec4-4740-8414-19194a335b6b.png)
+
+
+>The minus sign in `--sort -%mem` indicates that the output should be sorted in *descending form*. Using a plus sign (`+`) instead, will result in the output being sorted in *ascending* form, which is the default behavior.
+
+
 
 # Section 4 - Shell Scripting With Bash
 
