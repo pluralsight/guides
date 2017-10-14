@@ -353,7 +353,7 @@ or
 ```
 ps -ef | less
 ```
-The above commands return more information than what we're usually interested in. Most often we will want to view the PPID, PID, the command associated with the process (or the absolute path to the executable file), and the percentage of system memory and CPU usage. Each of these fields (and others as well) are explained in detail under the *STANDARD FORMAT SPECIFIERS* section in `man ps`. To view only these fields in the output of `ps`, we will use the `-eo` combined option followed by the corresponding format specifiers. For example,
+The above commands return more information than what we're usually interested in. Most often we will want to view the **PPID**, **PID**, the command associated with the process (or the absolute path to the executable file), and the percentage of system memory and CPU usage. Each of these fields (and others as well) are explained in detail under the *STANDARD FORMAT SPECIFIERS* section in `man ps`. To view only these fields in the output of `ps`, we will use the `-eo` combined option followed by the corresponding format specifiers. For example,
 
 ```
 ps -eo ppid,pid,cmd,%mem,%cpu | less
@@ -365,10 +365,29 @@ ps -eo ppid,pid,cmd,%mem,%cpu --sort -%mem | head -n 5
 
 ![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/3cd0a77f-bec4-4740-8414-19194a335b6b.png)
 
+Among other things, the above image shows that the **PID** of `snapd` is 940. This process was started by `systemd`, as we can tell from `PPID=1`, and is currently the process that is consuming the most memory.
 
 >The minus sign in `--sort -%mem` indicates that the output should be sorted in *descending form*. Using a plus sign (`+`) instead, will result in the output being sorted in *ascending* form, which is the default behavior.
 
+### Process trees
+Given the parent / child relationship between process, it is often necessary to visualize a hierarchical list of processes in the form of a tree. To do this, we will use a tool called `pstree`. If the command is followed by
+- A **PID**, then the tree will be displayed with such process at its root. Otherwise, it is rooted at `PID=1`. 
+- A username, `pstree` will return all trees own by the user.
 
+In addition to displaying only the name of processes, `pstree` can also return their **PIDs** when used with the –p option. Fig. 2 shows all trees owned by **pluralsight**. The images on the left and the right show the output with and without the use of `-p`. The number inside parentheses is the **PID** of each process.
+
+![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/bbce1994-50f2-41d5-a4d3-8346e64c4885.png)
+
+On the right, we can see that `tmux` (`PID=1470`) is the parent of two `bash` process (`PID=1471` and `PID=1486`). The latter is in turn the parent of `pstree`. This simple example illustrates the usefulness of `pstree` to view at a glance the process trees of a given user.
+
+>Terminating a parent process has the effect of terminating its children as well.
+
+### Top and Uptime
+Although it is useful to use `ps` to take snapshots of the process list, it may be useful to monitor that list with refreshing intervals. Instead of doing `ps` several times, Linux provides another tool called `top` that is more fit for the job. Additionally, `top` shows the same information as `uptime` as we can see in Fig. 3:
+
+![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/67080801-0b01-4815-89d0-588bbbc4dd2d.png)
+
+Fig. 3 indicates that the current time is **19:23:57**. The system has been up for **1 hour and 10 minutes** and the load average over the last minute, 5 and 15 minutes has been **0.03** (3%), **0.02** (2%), and **0.00** (0%). These percentages represent the use of CPU by running processes over the specified time intervals. In a multi-CPU system, these numbers should be divided by the number of processors to find out the average CPU usage. If you consistently experience high CPU usage, it may be time to add hardware resources to the machine or move the more CPU-hungry services to another system.
 
 # Section 4 - Shell Scripting With Bash
 
