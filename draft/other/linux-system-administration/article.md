@@ -389,6 +389,13 @@ Although it is useful to use `ps` to take snapshots of the process list, it may 
 
 Fig. 3 indicates that the current time is **19:23:57**. The system has been up for **1 hour and 10 minutes** and the load average over the last minute, 5 and 15 minutes has been **0.03** (3%), **0.02** (2%), and **0.00** (0%). These percentages represent the use of CPU by running processes over the specified time intervals. In a multi-CPU system, these numbers should be divided by the number of processors to find out the average CPU usage. If you consistently experience high CPU usage, it may be time to add hardware resources to the machine or move the more CPU-hungry services to another system.
 
+### Process Execution Priorities
+Without any intervention on our part, the kernel will adjust automatically the CPU cycles that are allocated to a certain process. However, Linux also allows the system administrator to change this behavior through the `nice` (for new processes) and `renice` (for running processes) commands. Both tools are used to modify the *priority* that should be given to a process in terms of CPU usage.
+
+The range of possible niceness values is from –20 to 19. The lower the value, the less nice the application will be, which means it will take up more system resources.
+While a regular user can only increase the niceness of a process he owns, he cannot decrease it nor change this value for other user's processes (which is another system administrative tasks that must be performed either as root or using sudo).
+
+
 # Section 4 - Shell Scripting With Bash
 
 
