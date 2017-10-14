@@ -2,7 +2,7 @@
 Prospective Linux system administrators (aka *sysadmins*) are expected to be well-acquainted with the command line. However, in this section we will review some of those commands with their most common options to help you brush up your skills (for more information, you can always refer to each *man page*). Additionally, it is important to be familiar with a text mode editor such as `vim`, `nano`, or `emacs` since the configuration directives for system services and user environments -to name a few examples- are stored in plain-text files.
 > Unless where explicitly noted, this tutorial is distribution-agnostic, meaning the concepts and commands covered herein apply regardless of the Linux flavor of your choice. On a side note, commands that require super-user permissions are noted accordingly.
 
-## System information commands
+## System Information Commands
 The commands in this section will help *sysadmins* get to know the systems they are responsible for like the palm of their hands:
 - When run without options, `hostname` wil shot the system's **host name** as defined in `/etc/hosts` or `/etc/hostname`. By adding `-I` (or its equivalent `--all-ip-addresses`), all the configured addresses on all network interfaces will be returned.
 - **Disk usage and available storage space** can be easily found out using `du` and `df`, respectively. Strictly speaking, the former will estimate the file space usage by file or directoty, whereas the latter will report the same information on a per-filesystem basis. Both support the `-h` flag, which formats the output if human-readable form (10K, 15M, 3G, for example) instead of using bytes.
@@ -10,7 +10,7 @@ When followed by a directory and the star wildcard `*`, the combined switch `-sc
 - **Memory and CPU** represent another essential set of information when it comes to planning the kind of software that can run on the system. For example, you would not run a mail service on a machine with only 1 GB of RAM (believe me, I've tried!). To find out the architecture, number of cores, vendor id, model name, and speed (and more) of the CPU, you can use `lscpu`. On the other hand, the `free` command (which, by the way, also supports the `-h` for returning output in human-readable form) shows the amount of free and used memory in the system. For a thorough explanation on how Linux actually handles system memory, you may want to refer to [Linux Ate My RAM](http://www.linuxatemyram.com/).
 - **Uptime** is a critical metric that indicates the time during which the system has been operational. If you're only interested in knowing how long the machine has been running, use the `-p` option. If you remove that flag, `uptime` will also return the current system time, the number of logged users, and the load average for the past 1, 5, and 15 minutes. We will revisit this topic in *Section 3 - Processes* later in this guide.
 
-## Text processing commands
+## Text Processing Commands
 It is often said that in Unix and its derivatives everything is a file, and thus the need to master command-line text processing tools. The following commands are a must for every system administrator.
 > When in the Linux community we speak of everything being a file, we actually mean that every system object can be opened, read from, and written to as a file in the regular sense of the word (given you have the necessary permissions to do so).
 
@@ -74,7 +74,7 @@ Although `/etc/sudoers` is nothing more and nothing less than a plain text file,
 
 >To launch `visudo`, just type the command and press Enter. Don't forget to do `sudo visudo` instead if you're in Ubuntu. In any event, the file will be opened using your default text editor.
 
-### Step 2 - Add An Entry in /etc/sudoers For The New User Account
+### Step 2 - Add An Entry in /etc/sudoers for the new User Account
 The easiest method to grant super-user permissions for **pluralsight** is adding the following line at the bottom of `/etc/sudoers`:
 ```
 pluralsight    ALL=(ALL) ALL
@@ -83,6 +83,22 @@ Let's explain the syntax of this line:
 - First off, we indicate which user this rule refers to (**pluralsight**).
 - The first `ALL` means the rule applies to all hosts using the same `/etc/sudoers` file. Nowadays, this means the *current host* since the same file is not shared across across other machines. 
 - Next, `(ALL) ALL` tells us that **pluralsight** will be allowed to run *all* commands as any user. Functionally speaking, this is equivalent to `(root) ALL`.
+
+### Step 3 (Optional): Create Command Aliases
+An alternative to using the wide permissions outlined above, we can restrict the list of commands that can be executed by a given user by grouping them into sets known as *aliases*. For example, we may want to allow user **jdoe** to only use `adduser` and `usermod`, but not other commands. We have to choices here:
+- List the commands one by one at the end in the same entry, such as
+```
+pluralsight    ALL=(root) /usr/sbin/adduser, /usr/sbin/usermod
+```
+**or**
+
+- define an alias (which we can name as we wish as long as it's all upper case, for example **USERMANAGEMENT**):
+```
+Cmnd_Alias USERMANAGEMENT = /usr/sbin/adduser, /usr/sbin/usermod
+pluralsight    ALL=(root) USERMANAGEMENT
+```
+
+While the latter requires two lines, it is often preferred instead of the former since it contributes to keep `/etc/sudoers` cleaner and more readable. In any event, **pluralsight** will not be able to execute any other commands as root other than those specified above.
 
 >For more information on the available options in `/etc/sudoers`, refer to `man sudoers`.
 
