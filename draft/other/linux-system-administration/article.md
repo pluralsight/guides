@@ -275,7 +275,28 @@ Besides the standard `rwx` file permissions, there are three others that are wor
 
 These special permissions pose a security risk when used carelessly. For example, if any user is allowed to run a command with superuser privileges, he or she can gain access to files owned by other users, and even by root. It isn't hard to see how this can easily cause havoc in a system: essential files could be removed, personal directories could be wiped out entirely, and even hardware can experience erratic behavior. It only takes a malicious or irresponsible individual to cause all this. Thus, the use of the **setuid** and the **setgid** bits must be highly restricted. A valid case where the **setuid** bit must be used is in `/usr/bin/passwd`. This file is owned by root but needs to be used by any user to change his or her own password (but not that of other users).
 
-- When the **sticky bit** is set on a directory (it cannot be set on a regular file), the files within that directory can be deleted only by the owner, the owner of the directory, or by root. This is often used in shared directories to prevent a user from deleting other people's files from it.
+- When the **sticky bit** is set on a directory, the files within that directory can be deleted only by the owner, the owner of the directory, or by root. This is often used in shared directories to prevent a user from deleting other people's files from it.
+
+To set the **setuid** bit from `test1`:
+```
+sudo chmod u+s test1
+```
+To set the **setgid** from `test1`:
+```
+sudo chmod g+s test1
+```
+To create a directory named `files` and set the **sticky bit** on it:
+```
+sudo mkdir files
+sudo chmod +t files
+```
+
+To illustrate the use of these special permissions, let's refer to Fig. 4. Note how now there is a `t` where the *execute* permission should be for all users in `files`, and two `s`'s in the same position for the owner and the group.
+
+![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/bef1d9a8-91bb-43ce-8298-c3eab49b31d6.png)
+
+Under this scenario and if `test1` was a program, any user could execute it using the permissions of **pluralsight** (owner) or the access privileges of the **finances** group.
+
 
 ### Revisiting /etc/sudoers
 
