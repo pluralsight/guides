@@ -86,7 +86,7 @@ Let's explain the syntax of this line:
 
 ### Step 3 (Optional): Create Command Aliases
 An alternative to using the wide permissions outlined above, we can restrict the list of commands that can be executed by a given user by grouping them into sets known as *aliases*. For example, we may want to allow user **jdoe** to only use `adduser` and `usermod`, but not other commands. We have to choices here:
-- List the commands one by one at the end in the same entry, such as
+- List the commands one by one (using the corresponding absolute paths) at the end in the same entry, such as
 ```
 pluralsight    ALL=(root) /usr/sbin/adduser, /usr/sbin/usermod
 ```
@@ -313,9 +313,14 @@ To illustrate the use of these special permissions, let's refer to Fig. 4. Note 
 
 Under this scenario and if `test1` was a program, any user could execute it using the permissions of **pluralsight** (owner) or the access privileges of the **finances** group.
 
-
 ### Revisiting /etc/sudoers
+Using `/etc/sudoers`, we can also allow **all** the users in a group to execute programs with superuser privileges. For example, the following line indicates that members of **finances** are allowed to run `updatedb` (or more precisely, `/usr/bin/updatedb`):
 
+```
+%finances ALL=(ALL) /usr/bin/updatedb
+``` 
+
+The only difference when compared to individual users is that the group name must be prefaced by the `%` sign. Command aliases can be used in this case as well.
 
 # Section 3 - Processes
 
