@@ -215,7 +215,7 @@ Fig. 2 shows the current permissions of `test1` after making the above changes:
 
 ![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/3f244cb1-7a0c-4fd3-9e45-b5988b6b58b9.png)
 
-Another way to set permissions is using an octal instead of a symbolic expression. To *translate* into octal form, we must split the the desired permissions in groups of 3 characters, and use the following table to replace each group with its octal equivalent:
+Another way to set permissions is using an octal instead of a symbolic expression. To *translate* into octal form, we must split the desired permissions in groups of 3 characters, and use the following table to replace each group with its octal equivalent:
 
 | Permissions 	| Binary 	| Octal 	|
 |:-----------:	|:------:	|:-----:	|
@@ -228,7 +228,19 @@ Another way to set permissions is using an octal instead of a symbolic expressio
 |     rw-     	|   110  	|   6   	|
 |     rwx     	|   111  	|   7   	|
 
+>Each permission is often referred to as *bit* based on the above table. Thus, the presence of a given permission means the corresponding *bit* is set. For example, `r-x` means that both the *read* **and** *execute* bits are set, whereas the *write* bit is not.
+
 Thus, if you need to assign `rwx` permissions on `test1` for the owner, `rw` for the group, and only `r` for everyone else, you should do `chmod 764 test1`. Here, the 7, 6, and 4 represent `rwx`, `rw`, and `r`, respectively.
+
+Other examples:
+- `rw` permissions for the owner and the group and no access whatsoever for other users: `chmod 660 test1`
+- All (`rwx`) permissions for the owner, but only *read* **and** *execute* permissions for everyone else (this includes both the group and other users): `chmod 755 test1`
+
+
+
+### Special Permissions
+
+Besides the standard 
 
 
 # Section 3 - Processes
