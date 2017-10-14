@@ -1,3 +1,5 @@
+NOTE: This guide IS OUTDATED. Please visit [this site](https://www.relaxdiego.com/2016/06/writing-ansible-modules-with-tests.html) for a more updated version.
+
 I'm writing an Ansible module that I hope to contribute to the core modules.
 In the process of doing so, I noticed that there wasn't any resource that completely
 described how to get started on your dev environment. This article documents
