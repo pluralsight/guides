@@ -19,9 +19,9 @@
 - Related to: other
 
 ### Enrich Your Enterprise Analytics Capabilities Today With The Elastic Stack by Kobi Hikri
-- [Read the guide](https://www.pluralsight.com/guides/other/enrich-your-enterprise-analytics-capabilities-today-with-the-elastic-stack)
+- [Read the guide](https://www.pluralsight.com/guides/big-data/enrich-your-enterprise-analytics-capabilities-today-with-the-elastic-stack)
 - [Read more from Kobi Hikri](https://www.pluralsight.com/guides/author/kobihikri) <img src="https://avatars2.githubusercontent.com/u/4434689?v=4" width="30" height="30" alt="Kobi Hikri" />
-- Related to: other
+- Related to: Big Data (Hadoop, Spark, etc)
 
 ### Visual Studio 2017 - Resolving SSL/TLS connections problems with IIS Express by ajsaulsberry
 - [Read the guide](https://www.pluralsight.com/guides/microsoft-net/visual-studio-2017-resolving-ssl-tls-connections-problems-with-iis-express)
