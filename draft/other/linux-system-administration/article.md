@@ -1,6 +1,6 @@
 # Section 0 - Prerequisites
 Prospective Linux system administrators (aka *sysadmins*) are expected to be well-acquainted with the command line. However, in this section we will review some of those commands with their most common options to help you brush up your skills (for more information, you can always refer to each *man page*). Additionally, it is important to be familiar with a text mode editor such as `vim`, `nano`, or `emacs` since the configuration directives for system services and user environments -to name a few examples- are stored in plain-text files.
-> Unless where explicitly noted, this tutorial is distribution-agnostic, meaning the concepts and commands covered herein apply regardless of the Linux flavor of your choice. On a side note, commands that require super-user permissions are noted accordingly.
+> Unless where explicitly noted, this tutorial is distribution-agnostic, meaning the concepts and commands covered herein apply regardless of the Linux flavor of your choice. On a side note, commands that require superuser permissions are noted accordingly.
 
 ## System Information Commands
 The commands in this section will help *sysadmins* get to know the systems they are responsible for like the palm of their hands:
@@ -32,10 +32,10 @@ Linux allows you to create empty files using the `touch` command followed by the
 You are highly encouraged to review this section before proceeding with the rest of the tutorial. After reviewing the man pages, you may want to consider referring to [The Linux Documentation Project](http://tldp.org/) web site for further details on the use of command-line tools that are a must for prospective Linux system administrators.
 
 # Section 1 - User And Group Management
-Since Linux is a multi-user operating system, several people may be logged in and actively working on a given machine at the same time. Security-wise, it is never a good idea to allow users to share the credentials of the same account. In fact, best practices dictate the use of as many user accounts as people needing access to the machine. At the same time, it is to be expected that two or more users may need to share access to certain system resources, such as directories and files. User and group management in Linux allows us to accomplish both objectives. In this section and in the next (*Chapter 2 - Permissions*) we will explain how.
+Since Linux is a multi-user operating system, several people may be logged in and actively working on a given machine at the same time. Security-wise, it is never a good idea to allow users to share the credentials of the same account. In fact, best practices dictate the use of as many user accounts as people needing access to the machine. At the same time, it is to be expected that two or more users may need to share access to certain system resources, such as directories and files. User and group management in Linux allows us to accomplish both objectives. In this section and in the next (*Section 2 - Permissions*) we will explain how.
 
-## A Note On Super-User Permissions
-Since adding a new user involves dealing with an account other than your own, it requires super-user (aka *root*) privileges. The same applies to other user or group management tasks, such as deleting an account, updating it, and creating and removing groups. These operations are performed using the following commands:
+## A Note On Superuser Permissions
+Since adding a new user involves dealing with an account other than your own, it requires superuser (aka *root*) privileges. The same applies to other user or group management tasks, such as deleting an account, updating it, and creating and removing groups. These operations are performed using the following commands:
 - `adduser`: add a user to the system.
 - `userdel`: delete a user account and related files.
 - `addgroup`: add a group to the system.
@@ -44,7 +44,7 @@ Since adding a new user involves dealing with an account other than your own, it
 - `chage`: change user password expiry information.
 - Relevant files: `/etc/passwd` (user information), `/etc/shadow` (encrypted passwords) and `/etc/group` (group information).
 
->Super-user permissions can be gained either by changing to the *root* user with the `su` command or using `sudo`. The latter approach is used by default in Ubuntu and derivatives, and is preferred over the former in other distributions as well. It is also important to note that, as opposed to other Linux flavors, the user that is created when Ubuntu is first installed has super-user privileges out-of-the-box.
+>Superuser permissions can be gained either by changing to the *root* user with the `su` command or using `sudo`. The latter approach is used by default in Ubuntu and derivatives, and is preferred over the former in other distributions as well. It is also important to note that, as opposed to other Linux flavors, the user that is created when Ubuntu is first installed has superuser privileges out-of-the-box.
 >You can verify whether `sudo` is installed on your machine by running `which sudo` on a terminal. If this command returns the absolute path of the associated file (typically `/usr/bin/sudo`), it means that the package is installed. Otherwise, you can install it with `apt-get install sudo` on Debian, or `yum install sudo` in CentOS or similar.
 
 ## Adding A New Regular Account
@@ -64,10 +64,10 @@ adduser pluralsight
 
 Now that we have a regular user account created, we will explain how to utilize it to perform user management tasks.
 
-> When a new user is added, a group (more on this in *Chapter 2 - Permissions*) with the same name is created automatically. This is called a *primary group*.
+> When a new user is added, a group (more on this in *Section 2 - Permissions*) with the same name is created automatically. This is called a *primary group*.
 
 ## The /etc/sudoers File
-To grant **pluralsight** super-user permissions, we will need to add an entry for it in  `/etc/sudoers`. This file is used to indicate which users can run what commands with elevated permissions (most likely as *root*).
+To grant **pluralsight** superuser permissions, we will need to add an entry for it in  `/etc/sudoers`. This file is used to indicate which users can run what commands with elevated permissions (most likely as *root*).
 
 ### Step 1 - Open /etc/sudoers With Visudo
 Although `/etc/sudoers` is nothing more and nothing less than a plain text file, it must **NOT** be edited using a regular text editor. Instead, we will use the `visudo` command. As opposed to other text editors, by utilizing `visudo` we will ensure that 1) no one else can modify the file at the same time, and 2) the file syntax is checked upon saving changes.
@@ -75,7 +75,7 @@ Although `/etc/sudoers` is nothing more and nothing less than a plain text file,
 >To launch `visudo`, just type the command and press Enter. Don't forget to do `sudo visudo` instead if you're in Ubuntu. In any event, the file will be opened using your default text editor.
 
 ### Step 2 - Add An Entry in /etc/sudoers for the new User Account
-The easiest method to grant super-user permissions for **pluralsight** is adding the following line at the bottom of `/etc/sudoers`:
+The easiest method to grant superuser permissions for **pluralsight** is adding the following line at the bottom of `/etc/sudoers`:
 ```
 pluralsight    ALL=(ALL) ALL
 ```
@@ -85,14 +85,14 @@ Let's explain the syntax of this line:
 - Next, `(ALL) ALL` tells us that **pluralsight** will be allowed to run *all* commands as any user. Functionally speaking, this is equivalent to `(root) ALL`.
 
 ### Step 3 (Optional): Create Command Aliases
-An alternative to using the wide permissions outlined above, we can restrict the list of commands that can be executed by a given user by grouping them into sets known as *aliases*. For example, we may want to allow user **jdoe** to only use `adduser` and `usermod`, but not other commands. We have to choices here:
-- List the commands one by one (using the corresponding absolute paths) at the end in the same entry, such as
+An alternative to using the wide permissions outlined above, we can restrict the list of commands that can be executed by a given user by grouping them into sets known as *aliases*. For example, we may want to allow user **pluralsight** to only use `adduser` and `usermod`, but not other commands. We have to choices here:
+- List the commands one by one (using the corresponding absolute paths) at the end of the same entry, such as
 ```
 pluralsight    ALL=(root) /usr/sbin/adduser, /usr/sbin/usermod
 ```
 **or**
 
-- define an alias (which we can name as we wish as long as it's all upper case, for example **USERMANAGEMENT**):
+- define an *alias* (which we can name as we wish as long as it's all upper case, for example **USERMANAGEMENT**):
 ```
 Cmnd_Alias USERMANAGEMENT = /usr/sbin/adduser, /usr/sbin/usermod
 pluralsight    ALL=(root) USERMANAGEMENT
@@ -174,10 +174,12 @@ sudo chage --maxdays 60 student
 
 >In `man chage` you can find more information about other useful password expiration tasks.
 
-## Groups
-In Linux, groups can be defined as a way to organize users that need the same type of access to a directory or file. In this section we will explain how to create and remove groups, whereas in *Chapter 2 - Permissions* a more detailed discussion on user and group permissions will be given, along with file and directory ownership.
+If an account needs to be deleted for good, use `sudo userdel -r` followed by the corresponding username. In this example, the use of `-r` will ensure that all the user's files are removed as well. If you want to keep such files for some reason, omit that option.
 
-To create a new group named **finances**, do `addgroup finances`. To remove it from the system, use `delgroup finances`. The information of the new group is stored in `/etc/group`, where each line shows the name of the group and the user accounts that are associated with it.
+## Groups
+In Linux, groups can be defined as a way to organize users that need the same type of access to a directory or file. In this section we will explain how to create and remove groups, whereas in *Section 2 - Permissions* a more detailed discussion on user and group permissions will be given, along with file and directory ownership.
+
+To create a new group named **finances**, do `addgroup finances`. To remove it from the system, use `delgroup finances`. The information of the new group is stored in `/etc/group`, where each line shows the name of the group and the user accounts that are associated with it. Similarly, a group can be deleted using `delgroup` followed by the group name.
 
 >It is important that you practice the commands and examples outlined in this section until you feel confident using them. Then proceed with the next section where we will be adding and removing users to and from groups, and granting or preventing access to files and directories.
 
@@ -203,7 +205,7 @@ As seen in Fig. 1, the first character in the output indicates that `test1` is a
 
 ![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/6d74f02b-ea4a-48ee-83d7-0574e9064fce.png)
 
-The first group of 3 characters (`rw-`) indicate that the owner of the file (**pluralsight**) has *read* and *write* permissions. In this example, the next 2 groups of 3 characters are identical, which means that both the members of the group owner (**pluralsight**) and the rest of the users have the same permissions on the file, respectively.
+The first group of 3 characters (`rw-`) indicate that the owner of the file (**pluralsight**) has *read* and *write* permissions, as it is the case with the group (as indicated by the next 3 characters). Finally, the last group (`r--`) means that the rest of the users can only *read* that file - but not *write* to it or *execute* it.
 
 > The *read* permission on a file is necessary for it to be opened and read. The same permission on a directory (along with *execute*) is required to list its contents and to move into it.
 
@@ -271,7 +273,7 @@ and add the account to **finances**, again using `usermod` but this time with th
 sudo usermod -aG finances student
 ```
 
->The `-aG` combined option is short for *append to group*. Now **finances** is said to be a *secondary* or *supplementary* group for user **student**. The new access permissions will take effect the next time **student** logs in. At that point, we can use the `id student` command to verify that the account was added correctly to the group. If we're logged in as **student**, just `id` will return the same information.
+>The `-aG` combined option is short for *append to group*. Now **finances** is said to be a *secondary* or *supplementary* group for user **student**. The new access permissions will take effect the next time **student** logs in. At that point, we can use the `id student` command to verify that the account was added correctly to the group. If we're logged in as **student**, doing just `id` will do the trick.
 
 ![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/8fa07297-9b0f-4dbe-9360-7dc505fa9c08.png)
 
@@ -342,9 +344,9 @@ When a process is started either manually or during the boot process, it is assi
 
 >The first process started by the kernel at boot time (`PID=1`) is called **systemd** in modern Linux distributions. This process is responsible for starting several other processes, which in turn start more, until the operating system is fully functional.
 
-Additionally, each process is associated with the user who started it. This *user* can be an actual person, or an account used by the system for its operation. What we talked in the previous section (*Section 2 - Permissions*) apply here: a process only has access to the system resources that its associated user account is allowed to utilize. In other words, if a process **A** was started by `user1`, and such account does not have write permissions in a given file, the process will not be permitted to write to that file either.
+Additionally, each process is associated with the user who started it. This *user* can be an actual person, or an account used by the system for its operation. What we discussed in the previous section (*Section 2 - Permissions*) applies here as well: a process only has access to the system resources that its associated user account is allowed to utilize. In other words, if a process **A** was started by `user1`, and such account does not have write permissions in a given file, the process will not be permitted to write to that file either.
 
-To display a snapshot of all the processes currently running in our system, we will use `ps`. When executed without arguments, this command will return **only** the processes owned by the current user. More useful information is available by using the `aux` or `-ef` options. Since the output in both cases can be **very** long, we can pipe the output to a *pager* such as less to inspect it more easily:
+To display a snapshot of all the processes currently running in our system, we will use `ps`. When executed without arguments, this command will return **only** the processes owned by the current user. More useful information is available by using the `aux` or `-ef` options. Since the output in both cases can be **very** long, we can pipe the output to a *pager* such as `less` to inspect it more easily:
 
 ```
 ps aux | less
@@ -353,7 +355,9 @@ or
 ```
 ps -ef | less
 ```
-The above commands return more information than what we're usually interested in. Most often we will want to view the **PPID**, **PID**, the command associated with the process (or the absolute path to the executable file), and the percentage of system memory and CPU usage. Each of these fields (and others as well) are explained in detail under the *STANDARD FORMAT SPECIFIERS* section in `man ps`. To view only these fields in the output of `ps`, we will use the `-eo` combined option followed by the corresponding format specifiers. For example,
+The above commands return more information than what we're usually interested in. Most often we will want to view the **PPID**, **PID**, the command associated with the process (or the absolute path to the executable file), and the percentage of system memory and CPU usage. Each of these fields (and others as well) are explained in detail under the *STANDARD FORMAT SPECIFIERS* section in `man ps`. 
+
+To view only these fields in the output of `ps`, we will use the `-eo` combined option followed by the corresponding format specifiers. For example,
 
 ```
 ps -eo ppid,pid,cmd,%mem,%cpu | less
@@ -367,14 +371,14 @@ ps -eo ppid,pid,cmd,%mem,%cpu --sort -%mem | head -n 5
 
 Among other things, the above image shows that the **PID** of `snapd` is 940. This process was started by `systemd`, as we can tell from `PPID=1`, and is currently the process that is consuming the most memory.
 
->The minus sign in `--sort -%mem` indicates that the output should be sorted in *descending form*. Using a plus sign (`+`) instead, will result in the output being sorted in *ascending* form, which is the default behavior.
+>The minus sign in `-%mem` after `--sort` indicates that the output should be sorted in *descending form*. Using a plus sign (`+`) instead, will result in the output being sorted in *ascending* form, which is the default behavior.
 
 ### Process trees
 Given the parent / child relationship between process, it is often necessary to visualize a hierarchical list of processes in the form of a tree. To do this, we will use a tool called `pstree`. If the command is followed by
 - A **PID**, then the tree will be displayed with such process at its root. Otherwise, it is rooted at `PID=1`. 
 - A username, `pstree` will return all trees own by the user.
 
-In addition to displaying only the name of processes, `pstree` can also return their **PIDs** when used with the `–p` option. Fig. 2 shows all trees owned by **pluralsight**. The images on the left and the right show the output with and without the use of `-p`. The number inside parentheses is the **PID** of each process.
+In addition to displaying only the name of processes, `pstree` can also return their **PIDs** when used with the `-p` option. Fig. 2 shows all trees owned by **pluralsight**. The images on the left and the right show the output with and without the use of `-p`. The number inside parentheses is the **PID** of each process.
 
 ![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/bbce1994-50f2-41d5-a4d3-8346e64c4885.png)
 
@@ -387,8 +391,8 @@ Although it is useful to use `ps` to take snapshots of the process list, it may 
 
 ![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/67080801-0b01-4815-89d0-588bbbc4dd2d.png)
 
-Fig. 3 indicates that the current time is **19:23:57**. The system has been up for **1 hour and 10 minutes** and the load average over the last minute, 5 and 15 minutes has been **0.03** (3%), **0.02** (2%), and **0.00** (0%). These percentages represent the use of CPU by running processes over the specified time intervals. In a multi-CPU system, these numbers should be divided by the number of processors to find out the average CPU usage. If you consistently experience high CPU usage, it may be time to add hardware resources to the machine or move the more CPU-hungry services to another system.
-> Remember to check out `man top` for further details on the use of this tool, particularly the **FIELDS / Columns** section, which describes the available information of processes that are shown by `top`. 
+Fig. 3 indicates that the current time is **19:23:57**. The system has been up for **1 hour and 10 minutes** and the load average over the last minute, 5 and 15 minutes has been **0.03** (3%), **0.02** (2%), and **0.00** (0%), respectively. These percentages represent the use of CPU by running processes over the specified time intervals. In a multi-CPU system, these numbers should be divided by the number of processors to find out the average CPU usage. If you consistently experience high CPU usage, it may be time to add hardware resources to the machine or move the more CPU-hungry services to another system.
+> Remember to check out `man top` for further details on the use of this tool, particularly the *FIELDS / Columns* section, which describes the available information of processes that are shown by `top`. 
 
 ### Process Execution Priorities
 Without any intervention on our part, the kernel will adjust automatically the CPU cycles that are allocated to a certain process. However, Linux also allows the system administrator to change this behavior through the `nice` (for new processes) and `renice` (for running processes) commands. Both tools use an integer value in the range of -20 to 19 to modify the *priority* that should be given to a process in terms of CPU usage. The lower the value, the less *nice* the application - which means it will take up more system resources.
@@ -412,7 +416,7 @@ Processes can be forced to terminate by sending them *signals* using `kill` or `
 
 > Terminating a process manually should only be considered when it has failed to respond or is interfering with the normal operation of other processes. For example, an outdated or failed plugin running on a web browser can cause the browser -and ultimately the system- to crash. Under this scenario, the memory usage typically skyrockets. Before that happens, it is a good idea to terminate (aka *kill*) the browser process and uninstall the offending plugin as soon as possible.
 
-To kill a process by PID (say `PID=1025`), do `sudo kill -SIGTERM 1026`. If it ignores this signal, you can resort to a more drastic measure by using `-SIGKILL` instead: `sudo kill -SIGKILL 1026`. Please note, however, that the use of **SIGTERM** is preferred as it gives the process a chance to close any files it may be using (aka *clean termination*). 
+To kill a process by PID (say `PID=1025`), do `sudo kill -SIGTERM 1025`. If it ignores this signal, you can resort to a more drastic measure by using `-SIGKILL` instead: `sudo kill -SIGKILL 1025`. Please note, however, that the use of **SIGTERM** is preferred as it gives the process a chance to close any files it may be using (aka *clean termination*). 
 
 If we want to terminate all the processes owned by a particular user, `killall` is more appropriate. The command should be followed by `-u [USER]`, where `[USER]` is the owner of the processes. For example, `sudo killall -u www-data` will terminate all processes owned by **www-data**. By the way, this account is the default owner of the Apache web server on Debian, Ubuntu, and similar distributions.
 
