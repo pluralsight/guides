@@ -1,3 +1,8 @@
+### The Cryptography of Bitcoin by Decent
+- [Read the guide](https://www.pluralsight.com/guides/software-engineering-best-practices/the-cryptography-of-bitcoin)
+- [Read more from Decent](https://www.pluralsight.com/guides/author/decentcrypto) <img src="https://avatars3.githubusercontent.com/u/29243763?v=4" width="30" height="30" alt="Decent" />
+- Related to: Software Engineering Best Practices
+
 ### Indepth Dimple Code Analysis of a Multiline Chart by sonisick
 - [Read the guide](https://www.pluralsight.com/guides/other/indepth-dimple-code-analysis-of-a-multiline-chart)
 - [Read more from sonisick](https://www.pluralsight.com/guides/author/sonisick) <img src="https://avatars0.githubusercontent.com/u/6710145?v=4" width="30" height="30" alt="sonisick" />
