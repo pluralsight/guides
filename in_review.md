@@ -1,3 +1,8 @@
+### ASP.NET MVC - Using Ajax helpers with Razor partial views by ajsaulsberry
+- [Read the guide](https://www.pluralsight.com/guides/microsoft-net/asp-net-mvc-using-ajax-helpers-with-razor-partial-views?status=in-review)
+- [Read more from ajsaulsberry](https://www.pluralsight.com/guides/author/ajsaulsberry) <img src="https://avatars1.githubusercontent.com/u/11444510?v=4" width="30" height="30" alt="ajsaulsberry" />
+- Related to: Microsoft.NET (C#, ASP.NET, VB.NET, etc)
+
 ### Disaster Recoverable Data Persistence with Apache Cassandra – Prepare for the Unexpected by Kobi Hikri
 - [Read the guide](https://www.pluralsight.com/guides/big-data/disaster-recoverable-data-persistence-with-apache-cassandra-prepare-for-the-unexpected?status=in-review)
 - [Read more from Kobi Hikri](https://www.pluralsight.com/guides/author/kobihikri) <img src="https://avatars2.githubusercontent.com/u/4434689?v=4" width="30" height="30" alt="Kobi Hikri" />
