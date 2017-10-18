@@ -1,0 +1,15 @@
+{
+    "_publish_status": "draft",
+    "author_name": "ajsaulsberry",
+    "author_real_name": "ajsaulsberry",
+    "branch": "master",
+    "branches": [],
+    "filename": "article.md",
+    "first_commit": "61abace909df82c9340b7f2d2802f805a918a5be",
+    "image_url": "https://avatars1.githubusercontent.com/u/11444510?v=4",
+    "stacks": [
+        "Microsoft.NET (C#, ASP.NET, VB.NET, etc)"
+    ],
+    "thumbnail_url": null,
+    "title": "ASP.NET MVC - Using Ajax helpers with Razor partial views"
+}
