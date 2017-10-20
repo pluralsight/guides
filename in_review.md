@@ -8,11 +8,6 @@
 - [Read more from Kobi Hikri](https://www.pluralsight.com/guides/author/kobihikri) <img src="https://avatars2.githubusercontent.com/u/4434689?v=4" width="30" height="30" alt="Kobi Hikri" />
 - Related to: Big Data (Hadoop, Spark, etc)
 
-### How a disposable dockerized chrome can help get rid of a headache by Nilanjan Siromani
-- [Read the guide](https://www.pluralsight.com/guides/front-end-javascript/how-a-disposable-dockerized-chrome-can-help-get-rid-of-a%20headache?status=in-review)
-- [Read more from Nilanjan Siromani](https://www.pluralsight.com/guides/author/nilanjansiromani) <img src="https://avatars3.githubusercontent.com/u/23280169?v=4" width="30" height="30" alt="Nilanjan Siromani" />
-- Related to: Front-End JavaScript (Angular, React, Meteor, etc)
-
 ### Getting started with Vue.JS (part-1) by A M Rahman
 - [Read the guide](https://www.pluralsight.com/guides/front-end-javascript/getting-started-with-vue-js-part-1?status=in-review)
 - [Read more from A M Rahman](https://www.pluralsight.com/guides/author/amrahman90) <img src="https://avatars2.githubusercontent.com/u/28068398?v=3" width="30" height="30" alt="A M Rahman" />
