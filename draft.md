@@ -1,8 +1,3 @@
-### Build a multiplayer VR app that works in realtime - in less than 10 minutes. by Srushtika Neelakantam
-- [Read the guide](https://www.pluralsight.com/guides/other/build-a-multiplayer-vr-app-that-works-in-realtime-in-less-than-10-minutes?status=draft)
-- [Read more from Srushtika Neelakantam](https://www.pluralsight.com/guides/author/Srushtika) <img src="https://avatars0.githubusercontent.com/u/5900152?v=4" width="30" height="30" alt="Srushtika Neelakantam" />
-- Related to: other
-
 ### Test guide by Rattanak Chea
 - [Read the guide](https://www.pluralsight.com/guides/python/test-guide?status=draft)
 - [Read more from Rattanak Chea](https://www.pluralsight.com/guides/author/rattanakchea) <img src="https://avatars3.githubusercontent.com/u/3496405?v=4" width="30" height="30" alt="Rattanak Chea" />
