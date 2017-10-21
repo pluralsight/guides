@@ -1,8 +1,3 @@
-### ASP.NET MVC - Using JavaScript with Ajax and Razor partial views by ajsaulsberry
-- [Read the guide](https://www.pluralsight.com/guides/microsoft-net/asp-net-mvc-using-javascript-with-ajax-and-razor-partial-views?status=draft)
-- [Read more from ajsaulsberry](https://www.pluralsight.com/guides/author/ajsaulsberry) <img src="https://avatars1.githubusercontent.com/u/11444510?v=4" width="30" height="30" alt="ajsaulsberry" />
-- Related to: Microsoft.NET (C#, ASP.NET, VB.NET, etc)
-
 ### Test guide by Rattanak Chea
 - [Read the guide](https://www.pluralsight.com/guides/python/test-guide?status=draft)
 - [Read more from Rattanak Chea](https://www.pluralsight.com/guides/author/rattanakchea) <img src="https://avatars3.githubusercontent.com/u/3496405?v=4" width="30" height="30" alt="Rattanak Chea" />
