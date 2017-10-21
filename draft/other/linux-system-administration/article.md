@@ -422,6 +422,26 @@ If we want to terminate all the processes owned by a particular user, `killall` 
 
 # Section 4 - Shell Scripting With Bash
 
+Shell scripts are plain text files that contain a sequence of commands that are run by a shell one after another. Since Bash is the default shell in most modern Linux distributions, in this section we will explain how to leverage its programming capabilities to create simple scripts. As we gain experience, we can use what we've learned to develop more robust programs. 
+
+>System administrators often use shell scripts to automate routinary tasks. As a rule of thumb, if a task has to be performed periodically (even when it's only once a month), it needs to be automated. In *Section 5 - Scheduling And Running Tasks With Cron* we will learn how to accomplish this goal.
+
+## Structure of a shell script
+The first line in a shell script must indicate the shell (aka *interpreter*) that will be used to execute it. For Bash, this means
+```
+#!/bin/bash
+```
+The above line then must be followed by the commands that should be run by the shell. Although preferences between system administrators may vary, effective and well-maintained shell scripts often include the following sections.
+
+### Header
+The script header is a commented-out section where the developer can include items such as:
+- Description / purpose of the script
+- Revision history
+- License terms and / or copyright notice
+
+>The shell ignores blank and commented-out lines. The former are only meant as information for the author, other reviewers, and people using the program. To comment out a line, simply place a `#` sign at the beginning.
+
+A common header looks as follows:
 
 
 # Section 5 - Scheduling And Running Tasks With Cron
