@@ -426,7 +426,7 @@ Shell scripts are plain text files that contain a sequence of commands that are 
 
 >System administrators often use shell scripts to automate routinary tasks. As a rule of thumb, if a task has to be performed periodically (even when it's only once a month), it needs to be automated. In *Section 5 - Scheduling And Running Tasks With Cron* we will learn how to accomplish this goal.
 
-## Structure of a shell script
+## Structure of a Shell Script
 The first line in a shell script must indicate the shell (aka *interpreter*) that will be used to execute it. For Bash, this means
 ```
 #!/bin/bash
@@ -468,6 +468,7 @@ For example:
 
 ```
 echo "Starting to run the script..."
+# VARIABLE ASSIGNMENT
 # Show hostname:
 HOST=$(hostname)
 # User executing the script:
@@ -477,18 +478,25 @@ CURRENTDATE=$(date +%F)
 # Host IP address:
 IPADDRESS=$(hostname -I | cut -d ' ' -f1)
 
+# SHOW MESSAGES
 echo "Today is $CURRENTDATE"
-echo "Hostname: " $HOST ($IPADDRESS)
+echo "Hostname: $HOST ($IPADDRESS)"
 echo "User info for $CURRENTUSER:"
 grep $CURRENTUSER /etc/passwd
 ```
 
-Let's now put everything together and save as `systeminfo.sh`. Next, make the file executable and run it:
+Let's now put everything together (`#!/bin/bash`, header and body) and save as `systeminfo.sh`. Next, make the file executable and run it:
 ```
 chmod a+x systeminfo.sh
 ./systeminfo.sh
 ```
 Fig. 1 shows the output of the script:
+
+![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/d2407a59-986a-4962-9f65-362d553ebbfe.png)
+
+>As you can see in the above image, the `echo` Bash builtin allows to embed variables and fixed text inside double quotes. Thus, the content of the given variable(s) will be part of the output, along with the text.
+
+## Loops
 
 # Section 5 - Scheduling And Running Tasks With Cron
 
