@@ -462,20 +462,33 @@ A common header looks as follows:
 ### Body
 The body of the script is where the sequence of commands is placed one per line. A command can be executed directly by the shell or have its output be saved into a container known as *variable*. You can think of variables as boxes where we can store a fixed value (such as text or a number), or the output of a command, for later reuse. As a best practice, system administrators often use comments in the body to indicate what a given line of code is supposed to do. This also serves as a reminder for himself / herself and other who will later work on the same file.
 
+>To store the output of a command in a variable, enclose the command between parentheses and preface them with the dollar sign. Thus, in `MYVAR=$(command)`, the variable `MYVAR` contains the output of `command`, where `command` can be any command executed by the shell. To use the contents of `MYVAR` in the script, add `$MYVAR` wherever it is needed.
+
 For example:
 
 ```
 echo "Starting to run the script..."
+# Show hostname:
 HOST=$(hostname)
+# User executing the script:
 CURRENTUSER=$(whoami)
+# Current date:
 CURRENTDATE=$(date +%F)
+# Host IP address:
+IPADDRESS=$(hostname -I | cut -d ' ' -f1)
 
 echo "Today is $CURRENTDATE"
+echo "Hostname: " $HOST ($IPADDRESS)
 echo "User info for $CURRENTUSER:"
 grep $CURRENTUSER /etc/passwd
 ```
 
-
+Let's now put everything together and save as `systeminfo.sh`. Next, make the file executable and run it:
+```
+chmod a+x systeminfo.sh
+./systeminfo.sh
+```
+Fig. 1 shows the output of the script:
 
 # Section 5 - Scheduling And Running Tasks With Cron
 
