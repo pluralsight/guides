@@ -443,6 +443,39 @@ The script header is a commented-out section where the developer can include ite
 
 A common header looks as follows:
 
+```
+# ======================================================================
+# SCRIPT NAME: systeminfo.sh
+
+# PURPOSE: Demonstrate simple Bash programming concepts
+
+# REVISION HISTORY:
+
+# AUTHOR				DATE			DETAILS
+# --------------------- --------------- --------------------------------
+# Gabriel A. Cánepa	 2017-10-21	  Initial version
+
+# LICENSE: CC Attribution-ShareAlike 4.0 International
+# ======================================================================
+```
+
+### Body
+The body of the script is where the sequence of commands is placed one per line. A command can be executed directly by the shell or have its output be saved into a container known as *variable*. You can think of variables as boxes where we can store a fixed value (such as text or a number), or the output of a command, for later reuse. As a best practice, system administrators often use comments in the body to indicate what a given line of code is supposed to do. This also serves as a reminder for himself / herself and other who will later work on the same file.
+
+For example:
+
+```
+echo "Starting to run the script..."
+HOST=$(hostname)
+CURRENTUSER=$(whoami)
+CURRENTDATE=$(date +%F)
+
+echo "Today is $CURRENTDATE"
+echo "User info for $CURRENTUSER:"
+grep $CURRENTUSER /etc/passwd
+```
+
+
 
 # Section 5 - Scheduling And Running Tasks With Cron
 
