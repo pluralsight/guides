@@ -230,6 +230,8 @@ It is not a fictional assumption to assume that an entire data center might go o
 Doing so with Cassandra is not only possible but also rather simple to configure.
 
 
+![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/a9bc23e0-c7ee-48da-add3-ffb3c536a329.png)
+
 
 What you’ve learned up to this point will serve you well. You already know that you need to distribute your data in a uniform manner across your cluster. And you understand that this will mostly be done by choosing a proper partitioner. I’ve recommended the Murmur3Partitioner.
 
@@ -254,15 +256,19 @@ These practices are mostly relates to performance matters and I might touch thes
 My personal recommendation, and some people have a different opinion, is not to treat one data center as a “main” datacenter and the other as “disaster recovery” datacenter, and assign each different resources. Try to scale them similarly and replicate your data with the same replication factor on each.
 
 This will have a larger overhead of nodes and storage - and it is your decision how to balance  the cost of overhead with the possible cost of data loss. 
-In Conclusion
-	In this short article, I’ve tried to emphasize the importance of proper Cassandra cluster deployment and replication configuration so that your enterprizes data remains integral and available when disaster strikes.
 
-With hardware devices, it is only a matter of time prior to failure, and in todays “always-on” user demands, you can probably not allow your system to become neither.
+# In Conclusion
+
+In this short article, I’ve tried to emphasize the importance of proper Cassandra cluster deployment and replication configuration so that your enterprizes data remains integral and available when disaster strikes.
+
+With hardware devices, it is only a matter of time prior to failure, and in today's “always-on” user demands, you can probably not allow your system to become neither.
 
 By proper deployment of your cluster nodes, in a balanced manner, across server racks and data centers - and complementing the deployment with a generous replication policy - you will be able to meet these demands.
 
 As previously mentioned, this article favours disaster recoverability over performance.
 
 As with anything in life, a proper balance should be met, and your scenario might be the other way around. In such a case, you will find out that mostly the same parameters we’ve discussed in this article come to play again, and with proper tuning of them - you will be able to achieve your goal.
+___
 
-I hope you’ve enjoyed this article and thank you for joining me in this short journey towards understanding disaster recoverability with Apache Cassandra.
+
+I hope you’ve enjoyed this article and thank you for joining me in this short journey towards understanding disaster recoverability with Apache Cassandra. Got questions? Leave them in the feedback section below!
