@@ -1,12 +1,12 @@
 ## Introduction
 
-Many web developers are challenged to provide user interfaces which provide an interactive experience on the same web page, collecting data from users and responding with new page elements. The user interface design may call for the page to collect data and respond with UI elements that collect additional data.
+Many web developers are challenged to design user interfaces that provide an interactive experience while collecting data from users and dynamically creating new page elements.
 
-The collection of technologies known as Ajax (Asynchronous JavaScript and XML) provides a way for web applications to asynchronously send and receive data from a server without the need to refresh the page or interfere with its appearance. By decoupling the presentational layer from the data exchange layer, Ajax enables web applications to dynamically change content without reloading the entire page.
+The collection of technologies known as AJAX (Asynchronous JavaScript and XML) provides a way for web applications to asynchronously send and receive data from a server without the need to refresh the page or interfere with its appearance. By decoupling the presentational layer from the data exchange layer, AJAX (or Ajax) enables web applications to dynamically change content without reloading the entire page.
 
 Ajax has enabled many enhancements to website user interfaces as support for Ajax has become more extensive in modern web browsers. Support for Ajax in the widely-used jQuery JavaScript library has simplified Ajax implementation.
 
-Microsoft provides support for Ajax functionality in ASP.NET MVC through classes in the System.Web.Mvc and System.Web.Mvc.Ajax namespaces. One of the principal classes in this group is `AjaxHelper<TModel>` which, [as Microsoft puts it](https://msdn.microsoft.com/en-us/library/dd470355), "... includes methods that provide client-side functionality in ASP.NET AJAX in MVC applications, such as creating asynchronous forms and rendering links. The AjaxHelper class supports asynchronous partial-page updates."
+Microsoft provides support for Ajax functionality in ASP.NET MVC through classes in the System.Web.Mvc and System.Web.Mvc.Ajax namespaces. One of the principal classes in this group is `AjaxHelper<TModel>` which, [as Microsoft puts it](https://msdn.microsoft.com/en-us/library/dd470355), "includes methods that provide client-side functionality in ASP.NET AJAX in MVC applications, such as creating asynchronous forms and rendering links. The AjaxHelper class supports asynchronous partial-page updates."
 
 The case study presented in this guide uses one AjaxHelper class method, `BeginForm` to provide the asynchronous functionality needed to update a section of a web page without refreshing the entire page. The rest of the functionality comes from basic ASP.NET MVC components like controller actions and partial views.
 
@@ -14,7 +14,7 @@ The case study presented in this guide uses one AjaxHelper class method, `BeginF
 
 The examples shown in this guide are derived from a case study project available on [GitHub](https://github.com/ajsaulsberry/BlipAjax). You can download and run the project to see the techniques illustrated here in action and to experiment on your own.
 
-The case study is a multi-project Visual Studio 2017 solution developed from the default ASP.NET .NET Framework MVC template. It uses Entity Framework 6.1 and the repository and Model View ViewModel design patterns.
+The case study is a multi-project Visual Studio 2017 solution developed from the default ASP.NET .NET Framework MVC template. It uses Entity Framework 6.1 and the repository and Model View ViewModel (MVVM) design patterns.
 
 The solution consists of three projects that constitute the different layers of the application:
 
@@ -26,7 +26,7 @@ The solution consists of three projects that constitute the different layers of 
 
 The case study application, **BlipAjax** is a simple system for gathering, storing, and retrieving  geographic and other information about customers. It's not production-ready from either the design or coding perspectives; it exists to illustrate the concepts discussed in this guide.
 
-More importantly, Entity Framework, and the repository and MVVM design patterns are very much production-ready tools. The example project was constructed so you can start with the MVC template and put together your own solutions using these resources using the sample project as a guide.
+More importantly, Entity Framework and the repository and MVVM design patterns are production-ready tools. The example project was constructed so you can start with the MVC template and put together your own solutions using these resources using the sample project as a guide.
 
 ### Entities
 
@@ -63,11 +63,11 @@ And this is what *Edit Customer Information* looks like with the postal address 
 
 ## Code
 
-The power of ASP.NET MVC Ajax Helper classes is their ability to provide functionality similar to that of a client-side framework without imposing the development overhead. With relatively little code a developer can leverage knowledge of C# to provide flexible, responsive user interface elements.
+ASP.NET MVC Ajax Helper classes provide functionality similar to that of a client-side framework without imposing the development overhead. With relatively little C#, a developer can create flexible, responsive user interface elements.
 
 ### Components summary
 
-Separation of concerns and the constraint that HTML pages cannot have nested views both dictate that the **Customer/Edit** view does not have its own view model. Instead, each form section of the view is composed of a partial view with its own view model.
+Separation of concerns and the constraint that HTML pages cannot have nested views both dictate that the **Customer/Edit** view cannot have its own view model. **Instead, each form section of the view is composed of a partial view with its own view model.**
 
 In **BlipAjax**, the accompanying example solution, the application tiers are located in different projects, as follows:
 
@@ -134,7 +134,7 @@ Note that there is no signature associated with the `Edit` method. This is becau
 * `CreateEmailAddressPartial`
 * `CreatePostalAddressPartial`
 
-Note also that `CreateEmailAddressPartial` and `CreatePostalAddressPartial` only have signatures for HTTP POST. This is because the POST action of `AddressTypePartial` performs the function of invoking the Razor engine for the e-mail address and postal address partial views.
+Note also that `CreateEmailAddressPartial` and `CreatePostalAddressPartial` only have signatures for HTTP POST because the POST action of `AddressTypePartial` performs the function of invoking the Razor engine for the e-mail address and postal address partial views.
 
 ### Views and partial views
 
@@ -197,7 +197,7 @@ The code for the parent view is quite straightforward. Note the following:
 }
 ~~~
 
-The JavaScript represented by the ellipsis above provides functionality for the dropdown lists and does not effect the Ajax functionality. It is covered in a separate PluralSight Hack.Guide. The complete code can be seen in the example project on GitHub.
+The JavaScript represented by the ellipses above provides functionality for the dropdown lists and does not effect the Ajax functionality. That topic is one for a separate tutorial. The complete code can be seen in the example project on GitHub.
 
 #### JavaScript for AjaxHelper methods
 
@@ -259,7 +259,7 @@ Note that it also has a code section where the value of the `Layout` attribute o
 }
 ~~~
 
-Because the submit button is associated with this HTML form defined in this partial view, its action and the data associated with it are specific to this `<form>` element within the page.
+Because the submit button is associated with the HTML form defined in this partial view, its action and the data associated with it are specific to this `<form>` element within the page.
 
 #### Blip.Web/Views/Customer/AddressTypePartial.cshtml
 
@@ -307,7 +307,7 @@ The partial view for selecting the address type to add (e-mail or postal) is als
 
 Note that an `Html.AntiForgeryToken()` method call is included for each partial view.
 
-Also note that neither partial view contains JavaScript. The standard is for scripts to be located in the parent form, with one exception discussed in the companion Hack.Guide on using JavaScript with Ajax partial views.
+Also note that neither partial view contains JavaScript. Scripts are located in the parent form, with one exception discussed in the [companion tutorial]((https://app.pluralsight.com/library/courses/aspdotnet-mvc-advanced-topics/table-of-contents) on using JavaScript with Ajax partial views.
 
 ### Rendered HTML
 
@@ -554,7 +554,7 @@ public ActionResult EditCustomerPartial(string id)
 }
 ~~~
 
-The method is decorated with the `ChildActionOnly` attribute to indicate that it can only be called within a parent view, never as a standalone GET action. This prevents the partial view from being rendered on its own and potentially used to subvert the proper operation of the application.
+The method is decorated with the `ChildActionOnly` attribute to indicate that it can only be called within a parent view, never as a standalone GET action. This prevents the partial view from being rendered on its own and potentially being used to subvert the proper operation of the application.
 
 #### AddressTypePartial GET method
 
@@ -586,7 +586,7 @@ public ActionResult AddressTypePartial(string id)
 }
 ~~~
 
-At this point the Razor engine has all the data and markup it needs to render the page. The **Customer/Edit** view can be used by the user.
+At this point, the Razor engine has all the data and markup it needs to render the page. The **Customer/Edit** view can be used by the user.
 
 #### AddressTypePartial POST method
 
@@ -653,7 +653,7 @@ public ActionResult CreateEmailAddressPartial(EmailAddressViewModel model)
 }
 ~~~
 
-In the example project, when the e-mail address is successfully saved the controller passes control to the method to load the **Customer/Edit** page (`Edit.cshtml`) for the current customer, effectively resetting the page. In real-world applications any number of other results are possible, including reloading an Ajax partial view that displays the current list of addresses of the associated type.
+In the example project, when the e-mail address is successfully saved, the controller passes control to the method to load the **Customer/Edit** page (`Edit.cshtml`) for the current customer. This is equivalent to resetting the page. In real-world applications, any number of other results are possible, including reloading an Ajax partial view that displays the current list of addresses of the associated type.
 
 ## Other Ajax actions
 
@@ -673,7 +673,7 @@ ASP.NET MVC **AjaxHelper** methods provide a flexible way to add Ajax functional
 
 Ajax helper methods leverage the developer's knowledge of server-side programming with C# and with the MVC design pattern. They require minimal code in the Razor view and allow for powerful combinations of partial views, controller actions, and client-side JavaScript to create an interactive single page experience for the user.
 
-Implementing the Model View ViewModel (MVVM) design pattern by combining Ajax helpers with partial views and associated view models can provide effective separation of concerns for interactive pages built with these resources. Compatibility of ASP.NET security tools like the antiforgery token with Ajax helpers maintains the robust security of ASP.NET without additional programming effort.
+Implementing the Model View ViewModel (MVVM) design pattern by combining Ajax helpers with partial views and associated view models can provide an effective separation of concerns for interactive pages built with these resources. Compatibility of ASP.NET security tools like the anti=forgery token with Ajax helpers ensures the robust security of ASP.NET without additional programming effort.
 
 Developers should evaluate the capabilities of AjaxHelper methods before deciding to move from ASP.NET MVC to WebAPI and Angular (or another client-side framework). This is particularly true when search engine optimization (SEO) and page analytics integration are objectives.
 
@@ -698,7 +698,7 @@ Disclaimer: PluralSight and the author of this guide are not responsible for the
 [Microsoft: System.Web.Mvc.Ajax namespace](https://msdn.microsoft.com/en-US/library/system.web.mvc.ajax) &mdash; This is the canonical documentation for the AjaxExtensions (including the BeginForm method) and AjaxOptions classes. Note that if you go looking for information on docs.microsoft.com it will boot you over to this URL. Although this page refers to Visual Studio 2013, it is, in fact, the most recent documentation.
 
 [Wikipedia: Ajax (programming)](https://en.wikipedia.org/wiki/Ajax_(programming) &mdash; A nice summary of the Ajax architecture, history, and implementation. Good background for beginners looking for a fundamental grounding in the technology.
-
-###
+___
+Thanks for reading! If you found this article informative or engaging please favorite this article and drop a comment below! 
 
 Written by A. J. Saulsberry, 18 October 2017
