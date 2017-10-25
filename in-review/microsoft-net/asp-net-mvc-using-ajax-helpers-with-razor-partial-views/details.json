@@ -3,7 +3,12 @@
     "author_name": "ajsaulsberry",
     "author_real_name": "ajsaulsberry",
     "branch": "master",
-    "branches": [],
+    "branches": [
+        [
+            "adityavarshney",
+            "adityavarshney-microsoft-net-asp-net-mvc-using-ajax-helpers-with-razor-partial-views"
+        ]
+    ],
     "filename": "article.md",
     "first_commit": "61abace909df82c9340b7f2d2802f805a918a5be",
     "image_url": "https://avatars1.githubusercontent.com/u/11444510?v=4",
