@@ -1,3 +1,8 @@
+### Disaster Recoverable Data Persistence with Apache Cassandra – Prepare for the Unexpected by Kobi Hikri
+- [Read the guide](https://www.pluralsight.com/guides/big-data/disaster-recoverable-data-persistence-with-apache-cassandra-prepare-for-the-unexpected)
+- [Read more from Kobi Hikri](https://www.pluralsight.com/guides/author/kobihikri) <img src="https://avatars2.githubusercontent.com/u/4434689?v=4" width="30" height="30" alt="Kobi Hikri" />
+- Related to: Big Data (Hadoop, Spark, etc)
+
 ### How a disposable dockerized chrome can help get rid of a headache by Nilanjan Siromani
 - [Read the guide](https://www.pluralsight.com/guides/front-end-javascript/how-a-disposable-dockerized-chrome-can-help-get-rid-of-a%20headache)
 - [Read more from Nilanjan Siromani](https://www.pluralsight.com/guides/author/nilanjansiromani) <img src="https://avatars3.githubusercontent.com/u/23280169?v=4" width="30" height="30" alt="Nilanjan Siromani" />
