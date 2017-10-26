@@ -1,3 +1,8 @@
+### Introduction to the Fork/Join Framework by Esteban Herrera
+- [Read the guide](https://www.pluralsight.com/guides/java-and-j2ee/introduction-to-the-fork-join-framework?status=in-review)
+- [Read more from Esteban Herrera](https://www.pluralsight.com/guides/author/eh3rrera) <img src="https://avatars2.githubusercontent.com/u/11665759?v=4" width="30" height="30" alt="Esteban Herrera" />
+- Related to: Java and J2EE
+
 ### ASP.NET MVC - Using JavaScript with Ajax and Razor partial views by ajsaulsberry
 - [Read the guide](https://www.pluralsight.com/guides/microsoft-net/asp-net-mvc-using-javascript-with-ajax-and-razor-partial-views?status=in-review)
 - [Read more from ajsaulsberry](https://www.pluralsight.com/guides/author/ajsaulsberry) <img src="https://avatars1.githubusercontent.com/u/11444510?v=4" width="30" height="30" alt="ajsaulsberry" />
