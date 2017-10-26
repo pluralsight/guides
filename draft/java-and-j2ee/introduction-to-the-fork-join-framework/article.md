@@ -23,13 +23,14 @@ There's a [blog post](http://yosefk.com/blog/parallelism-and-concurrency-need-di
 
 Here's my animated version of the concurrency drawing:
 
-[IMAGE]()
-Concurrent: 2 queues, 1 vending machine
+![concurrent](https://raw.githubusercontent.com/pluralsight/guides/master/images/73752b9b-e94e-42d0-ac1b-3fe17fbe169d.gif)
 
-And the parallel one:
+**Concurrent: 2 queues, 1 vending machine**
 
-[IMAGE]()
-Parallel: 2 queues, 2 vending machine
+
+![parallel](https://raw.githubusercontent.com/pluralsight/guides/master/images/94f55717-1876-438a-ab4c-f5faa5a524d7.gif)
+
+**Parallel: 2 queues, 2 vending machine**
 
 The post goes on noting the differences between these two concepts, especially when talking about event handling systems (like in the vendor-machine example) and computational systems (showing the example of gift-giving).
 
@@ -43,8 +44,7 @@ Applying a *divide and conquer* principle, the framework recursively divides the
 
 Then, the subtasks are processed independently and if they return a result, all the results are recursively combined into a single result. This is the *join* part.
 
-[IMAGE]()
-https://self-learning-java-tutorial.blogspot.mx/2015/07/java-fork-join-framework.html
+![fork-join](https://raw.githubusercontent.com/pluralsight/guides/master/images/fd7505bb-3285-409d-b9ab-810ed9975c25.gif)
 
 To perform this parallel execution, the framework uses a pool of threads, with a number of threads equal to the number of processors available to the Java Virtual Machine (JVM) by default.
 
