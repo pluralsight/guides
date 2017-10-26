@@ -1,3 +1,8 @@
+### Introduction to the Fork/Join Framework by Esteban Herrera
+- [Read the guide](https://www.pluralsight.com/guides/java-and-j2ee/introduction-to-the-fork-join-framework?status=draft)
+- [Read more from Esteban Herrera](https://www.pluralsight.com/guides/author/eh3rrera) <img src="https://avatars2.githubusercontent.com/u/11665759?v=4" width="30" height="30" alt="Esteban Herrera" />
+- Related to: Java and J2EE
+
 ### Test guide by Rattanak Chea
 - [Read the guide](https://www.pluralsight.com/guides/python/test-guide?status=draft)
 - [Read more from Rattanak Chea](https://www.pluralsight.com/guides/author/rattanakchea) <img src="https://avatars3.githubusercontent.com/u/3496405?v=4" width="30" height="30" alt="Rattanak Chea" />
