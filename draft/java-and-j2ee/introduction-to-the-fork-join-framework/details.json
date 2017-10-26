@@ -1,0 +1,15 @@
+{
+    "_publish_status": "draft",
+    "author_name": "eh3rrera",
+    "author_real_name": "Esteban Herrera",
+    "branch": "master",
+    "branches": [],
+    "filename": "article.md",
+    "first_commit": "7e70b3c3084ce9aef4481bcf0f2bddd73734391f",
+    "image_url": "https://avatars2.githubusercontent.com/u/11665759?v=4",
+    "stacks": [
+        "Java and J2EE"
+    ],
+    "thumbnail_url": null,
+    "title": "Introduction to the Fork/Join Framework"
+}
