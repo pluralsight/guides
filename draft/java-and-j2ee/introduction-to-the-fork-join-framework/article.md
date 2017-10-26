@@ -461,6 +461,7 @@ private static void testParallelStream(List<Long> data) {
 
   System.out.println("Executed with a sequential stream in (ms): " + (System.currentTimeMillis() - start));
 }
+```
 
 The average execution time I get is 181.6 ms.
 
