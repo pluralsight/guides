@@ -2,9 +2,9 @@ Most enterprise apps currently use relational databases like SQL, MariaDB, or My
 
 In this tutorial we will follow a step-by-step approach to create charts using data stored in a MongoDB database. We will use the PHP scripting language to connect to the database and fetch the data, which would then be used to render the chart. 
 
-We picked PHP over others as it comes with a MongoDB driver that connects it to the database. If you need to add more firepower to your web application, you can also use Node.js.
+We picked PHP over other similar languages because it comes with a MongoDB driver that connects it to the database. If you need to add more firepower in your web application, you can also use Node.js.
 
-**Now that we have an overview, let’s get started...**
+# Prerequisites
 
 For creating charts using PHP and MongoDB, you need the following to be downloaded and installed on your system:
 
@@ -13,10 +13,10 @@ For creating charts using PHP and MongoDB, you need the following to be download
 * PHP driver for MongoDB
 * Composer
 
-
+# The Project
  
 ### Part 1: Including Dependencies
-To render FusionCharts in PHP using MongoDB, we need to include following dependencies:
+To render FusionCharts in PHP using MongoDB, we need to include the following dependencies:
 
 * FusionCharts Suite XT:  [Download FusionCharts Suite XT](https://www.fusioncharts.com/download/) zip file and store all the extracted script files in a new folder inside the project folder, as shown below.
 
@@ -49,7 +49,7 @@ To render FusionCharts in PHP using MongoDB, we need to include following depend
 
 
 ### Part 2: Establishing and Validating Database Connection
-Once the dependencies are included in our code, we now establish the connection with our database to fetch data for the chart.
+Once we've added dependencies, we can establish the connection with our database to fetch data for the chart.
 
 ```
 <?php
@@ -198,13 +198,14 @@ $msChart = new FusionCharts("msline", "demochart", "600", "400", "chart-containe
 $msChart->render();
 ```
 
-If you have followed the above steps, then you must have a working chart with you now. Your output should be like the image shown below:
+If you have followed the above steps, then you should have a working chart with you now. Your output should be like the image shown below:
 
 ![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/5cf57250-ad8d-4076-8038-493e11ee5a2c.png)
 
 If you are having trouble rendering the chart, you can [download the source code from this GitHub repo](https://github.com/sikrigagan/PHP-MongoDB-Charts).
+____
 
-Got questions? Leave a comment or feel free to say hi on [Twitter](https://twitter.com/sikrigagan)!
+Got questions? Leave a comment or feel free to say hi on [Twitter](https://twitter.com/sikrigagan)! Thank you for reading!
 
 
 
