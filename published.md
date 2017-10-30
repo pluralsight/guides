@@ -1,3 +1,8 @@
+### Build a multiplayer VR app that works in realtime - in less than 10 minutes. by Srushtika Neelakantam
+- [Read the guide](https://www.pluralsight.com/guides/other/build-a-multiplayer-vr-app-that-works-in-realtime-in-less-than-10-minutes)
+- [Read more from Srushtika Neelakantam](https://www.pluralsight.com/guides/author/Srushtika) <img src="https://avatars0.githubusercontent.com/u/5900152?v=4" width="30" height="30" alt="Srushtika Neelakantam" />
+- Related to: other
+
 ### Introduction to the Fork/Join Framework by Esteban Herrera
 - [Read the guide](https://www.pluralsight.com/guides/java-and-j2ee/introduction-to-the-fork-join-framework)
 - [Read more from Esteban Herrera](https://www.pluralsight.com/guides/author/eh3rrera) <img src="https://avatars2.githubusercontent.com/u/11665759?v=4" width="30" height="30" alt="Esteban Herrera" />
