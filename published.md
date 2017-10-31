@@ -1,3 +1,8 @@
+### ASP.NET MVC - Using JavaScript with Ajax and Razor partial views by ajsaulsberry
+- [Read the guide](https://www.pluralsight.com/guides/microsoft-net/asp-net-mvc-using-javascript-with-ajax-and-razor-partial-views)
+- [Read more from ajsaulsberry](https://www.pluralsight.com/guides/author/ajsaulsberry) <img src="https://avatars1.githubusercontent.com/u/11444510?v=4" width="30" height="30" alt="ajsaulsberry" />
+- Related to: Microsoft.NET (C#, ASP.NET, VB.NET, etc)
+
 ### Build a multiplayer VR app that works in realtime - in less than 10 minutes. by Srushtika Neelakantam
 - [Read the guide](https://www.pluralsight.com/guides/other/build-a-multiplayer-vr-app-that-works-in-realtime-in-less-than-10-minutes)
 - [Read more from Srushtika Neelakantam](https://www.pluralsight.com/guides/author/Srushtika) <img src="https://avatars0.githubusercontent.com/u/5900152?v=4" width="30" height="30" alt="Srushtika Neelakantam" />
