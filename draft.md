@@ -188,11 +188,6 @@
 - [Read more from Mohammed Nisar Ansari](https://www.pluralsight.com/guides/author/niisar) <img src="https://avatars.githubusercontent.com/u/6368685?v=3" width="30" height="30" alt="Mohammed Nisar Ansari" />
 - Related to: Front-End JavaScript (Angular, React, Meteor, etc)
 
-### Basic node.js with Kafka by Igor Nakshin
-- [Read the guide](https://www.pluralsight.com/guides/node-js/basic-node-js-with-kafka?status=draft)
-- [Read more from Igor Nakshin](https://www.pluralsight.com/guides/author/logycon) <img src="https://avatars.githubusercontent.com/u/538881?v=3" width="30" height="30" alt="Igor Nakshin" />
-- Related to: Node.js
-
 ### Building Cross Platform apps with React Native and Exponent by Ilango Rajagopal
 - [Read the guide](https://www.pluralsight.com/guides/front-end-javascript/building-cross-platform-apps-with-react-native-and-exponent?status=draft)
 - [Read more from Ilango Rajagopal](https://www.pluralsight.com/guides/author/ilangorajagopal) <img src="https://avatars.githubusercontent.com/u/4386534?v=3" width="30" height="30" alt="Ilango Rajagopal" />
