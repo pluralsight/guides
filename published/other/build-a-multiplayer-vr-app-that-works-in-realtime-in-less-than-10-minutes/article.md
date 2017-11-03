@@ -1,26 +1,27 @@
-# Building a multiplayer realtime VR app - in less than 10 minutes.
 
-#### Never worked with VR? This is for you.
+### Never worked with VR? This is for you.
 
-Virtual Reality has come to level where it does not need any introduction, at least in the developer circles. However, how can one develop VR apps is still a mystery for web developers which essentially forms a major portion of all software developers. This is mainly because most of the existing VR ecosystems are closed which prevents developers from freely exploring the existing VR apps and play around with the code. Even if it weren't closed sourced, the tech stack required for building traditional VR apps is pretty complex and a web developer would rather not venture into that direction.
+Virtual Reality (VR) has become so well-known that it needs no introduction, in developer circles and beyond. However, developing VR apps is still a mystery for a major portion of all software developers. This is primarily because most existing VR ecosystems are closed, preventing developers from freely tinkering with VR code. Even if it weren't closed-source, the tech stack required for building traditional VR apps is pretty complex and a web developer, say, would rather not venture in that formidable direction.
 
 In this tutorial, we'll learn about a breaking new API that lets you build VR with a web developer's existing tech stack. Let's dive right in!
 
-#### What will we build?
+### What will we build?
 
 <img src="https://raw.githubusercontent.com/pluralsight/guides/master/images/aed2ea6f-915d-40a5-9f99-cdd457572b29.jpg-large" width="750" height="500" />
 
-By the end of this tutorial, you will have a VR app similar to the one seen in the above picture. It will have a basic VR scene where multiple users can connect to your app from their mobile phones by simply hitting a URL on their mobile phone's browsers. We'll use only open source technologies and frameworks for implementing this application, thus at no point you are expected to pay and you will be able to find numerous resources for extended research/learning.
+By the end of this tutorial, you will have a VR app similar to the one seen above. It will have a basic VR scene where multiple users can connect to your app from their mobile phones by simply hitting a URL on their mobile phone's browsers. We'll use open-source technologies and frameworks for implementing this application. Not only does this mean that you'll be learning VR tech for free, you will also be able to find numerous resources for further research and learning.
 
-For every user who joins your application, a new avatar will appear in your VR scene which will rotate/move in realtime according to the movement of the user's phone in real life. This app was made for a talk at [Front-end connect](http://frontend-con.io/) conference but I later realized that it would serve as a great getting-started guide for both VR and realtime, separately as technologies as well as implemented together like in this one.
+The gist of the app is this: for every user who joins your application, a new avatar will appear in your VR scene which will rotate/move in realtime according to the movement of the user's phone in real life. 
 
-#### What will we use?
+This app was made for a talk at [Front-end connect](http://frontend-con.io/) conference, but I later realized that it would serve as a great getting-started guide for both VR and realtime as separate technologies and for projects when implemented together, as in this case.
 
-As mentioned before, we wish to access VR directly in the browsers, without having to download anything. We shall use [WebVR](https://webvr.info/) to achieve this. WebVR is a web framework allows us to build Virtual Reality applications that are accessible directly on the web, thus completely eliminating heavy downloads and installs as well making Virtual Reality device independent.
+### What will we use?
+
+As mentioned before, we wish to access VR directly in browsers, without having to download anything. We shall use [WebVR](https://webvr.info/) to achieve this. WebVR is a web framework allows us to build Virtual Reality applications that are accessible directly on the web, thus eliminating heavy downloads and installs while making Virtual Reality device independent.
 
 <img src="https://raw.githubusercontent.com/pluralsight/guides/master/images/24413ad4-4f09-4b66-a592-689bdc49c428.png" width="350" height="350" />
 
-However, building applications directly in WebVR is a bit complex since it requires the knowledge of WebGL, etc and since we brought VR to the web, there should be a way for Web developers to be able to build VR apps without much complexity. Hence, Mozilla's VR team built a framework on top of WebVR, called [A-Frame](aframe.io). A-Frame completely eliminates WebVR's boilerplate code and allows developers to build VR apps with something as simple as HTML.
+However, building applications directly in WebVR is a bit complex; it requires the knowledge of WebGL and more. And since we brought VR to the web, there should be a way for web developers to be able to build VR apps without delving into too much complexity. Fortunately, Mozilla's VR team built a framework on top of WebVR, called [A-Frame](aframe.io). A-Frame completely eliminates WebVR's boilerplate code and allows developers to build VR apps with something as simple as HTML.
 
 <img src="https://raw.githubusercontent.com/pluralsight/guides/master/images/78806784-3ab1-46d1-8fe9-b4020821c78b.png" width="400" height="250" />
 
@@ -28,11 +29,11 @@ Further, we'll use [deepstream.io](https://deepstreamhub.com/) to implement all 
 
 ![deepstream logo](https://raw.githubusercontent.com/pluralsight/guides/master/images/b72cd656-c2f8-488b-b8c6-4916e69a3f91.png)
 
-As you know by now that every WebVR application can be accessed from just a browser. This means, we'll need to host our files in order to be able to access them in a mobile with a URL. [Glitch](https://glitch.com/) is a very convenient way of doing this. You can simply create a new project and when you are done, the URL is readily available so that you can use it via mobile browsers instantly.
+As you know by now, every WebVR application can be accessed from just a browser. This means, we'll need to host our files in order to be able to access them from a mobile device using a URL. [Glitch](https://glitch.com/) is a very convenient way of doing this. Using Glitch, you can create a new project and when you are done, the URL is readily available so that you can use it via mobile browsers instantly.
 
 #### Getting started
 
-Let us start by building the basic VR setup for the application. We'll use A-Frame's [entity-component system](https://aframe.io/docs/0.7.0/introduction/entity-component-system.html) (ECS). ECS makes it easy to build any objects in the scene by treating every object as an entity which differs from other entities by the various components (or attributes) that can attached to an entity.
+Let us start by building the basic VR setup for the application. We'll use A-Frame's [entity-component system](https://aframe.io/docs/0.7.0/introduction/entity-component-system.html) (ECS). ECS makes it easy to build any objects in the scene by treating ev5656ery object as an entity which differs from other entities by the various components (or attributes) that can attached to an entity.
 
 In your HTML file, start of by adding the HTML skeleton code: 
 
