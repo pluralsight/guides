@@ -395,11 +395,11 @@ Let's talk about some popular misconceptions about assertions.
 
 Assertions are a development-time tool, they are not meant for production environments.
 
-Assertions are a tool to validate your assumptions so you can take other measures to prevent errors. 
+They are a tool to validate your assumptions so you can take other measures to prevent errors. 
 
 Why didn't the assumption hold true when testing this or performing that?
 
-Find the root cause and fix it.
+Answer this question, find the root cause and fix it.
 
 The point of using assertions is to prevent those errors from happening in production. They shouldn't be used as a barrier to avoid problems in production.
 
