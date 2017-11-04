@@ -497,6 +497,46 @@ Fig. 1 shows the output of the script:
 >As you can see in the above image, the `echo` Bash builtin allows to embed variables and fixed text inside double quotes. Thus, the content of the given variable(s) will be part of the output, along with the text.
 
 ## Loops
+Once in a while, some tasks will need to be executed repeatedly either a fixed number of times or until a specified condition is satisfied. That is where the `for` and `while` *looping constructs* come in handy.
+
+### The For Loop
+This looping construct is used to operate on each element of a list of items. Such list can be specified explicitly (by listing each element one by one), or as the result of a command. The basic syntax of the `for` loop is illustrated in the following *pseudo-code*:
+
+```
+for variable-name in list
+do
+    Run command on variable-name as $variable-name
+done
+```
+
+where `variable-name` is an arbitrary name that represents an item in `list` during each iteration.
+
+For example, we can change the permissions on files `file1.txt`, `file2.txt`, and `file3.txt` to `640` using a `for` loop very easily:
+
+```
+for FILE in file1.txt file2.txt file3.txt
+do
+    chmod 640 $FILE
+done
+```
+
+>In the above example, the variable named `FILE` is used inside the loop (between the `do` and `done` lines) as `$FILE`. During the first, second, and third iteration, `$FILE` represents `file1.txt`, `file2.txt`, and `file3.txt`, respectively.
+
+An alternative approach is to provide the list of files using the `ls` command and `grep` to only return the files where the names begin with the word `file`. Thus,
+
+```
+for FILE in $(ls -1 | grep file)
+do
+    chmod 640 $FILE
+done
+```
+
+produces the same result as the previous example.
+
+### The While Loop
+As opposed to the `for` loop, `while` is used when the number of iterations is not known beforehand. Examples include, but are not limited to, reading a file line by line, increasing or decreasing the value of a variable until it reaches a given value, or responding to user input.
+
+
 
 # Section 5 - Scheduling And Running Tasks With Cron
 
