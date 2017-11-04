@@ -3,7 +3,12 @@
     "author_name": "ajsaulsberry",
     "author_real_name": "ajsaulsberry",
     "branch": "master",
-    "branches": [],
+    "branches": [
+        [
+            "adityavarshney",
+            "adityavarshney-microsoft-net-asp-net-mvc-using-javascript-with-ajax-and-razor-partial-views"
+        ]
+    ],
     "filename": "article.md",
     "first_commit": "073c874b1ef284d3b4382e708be892c4c28fd785",
     "image_url": "https://avatars1.githubusercontent.com/u/11444510?v=4",
