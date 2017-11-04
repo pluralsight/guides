@@ -499,10 +499,10 @@ Fig. 1 shows the output of the script:
 ## Conditional Statements
 When you need to execute different series of commands depending on a condition, the shell provides a standard `if`/`elif`/`else` construct, similar to most programming languages. If you realize there are several conditions to be examined, you may want to use a `case` construct instead, as explained later.
 
-The syntax of a basic conditional statement is shown in *pseudo-code* as follows:
+The syntax of a basic conditional statement is shown in *pseudo-code* as follows. Note that there must be a space after the opening bracket **and** before the closing one:
 
 ```
-if [ condition 1]
+if [ condition 1 ]
 then
 	commands
 elif [ condition 2 ]
@@ -514,7 +514,20 @@ fi
 
 > The `elif` section is optional and used only when needed to test for a specific alternative to the condition specified through the `if`.
 
+```
+#!/bin/bash
+CURRENTDAYOFTHEMONTH=$(date +%d)
 
+if [ $CURRENTDAYOFTHEMONTH -le 10 ]
+then
+    echo "We are within the first 10 days of the month";
+elif [ $CURRENTDAYOFTHEMONTH -le 20 ]
+then
+    echo "We are within the first 20 days of the month";
+else
+    echo "We are within the last 10 days of the month";
+fi
+```
 
 ## Loops and Case
 Once in a while, some tasks will need to be executed repeatedly either a fixed number of times or until a specified condition is satisfied. That is where the `for` and `while` *looping constructs* come in handy. Additionally, at times you will need a script to *choose* between different courses of action based on the value of a given variable - we'll use the `case` statement for that.
