@@ -3,12 +3,7 @@
     "author_name": "decentcrypto",
     "author_real_name": "Decent",
     "branch": "master",
-    "branches": [
-        [
-            "adityavarshney",
-            "adityavarshney-software-engineering-best-practices-the-cryptography-of-bitcoin"
-        ]
-    ],
+    "branches": [],
     "filename": "article.md",
     "first_commit": "8c3db530ba90519b56e66154a066b26025ad7314",
     "image_url": "https://avatars3.githubusercontent.com/u/29243763?v=4",
