@@ -497,7 +497,7 @@ Fig. 1 shows the output of the script:
 >As you can see in the above image, the `echo` Bash builtin allows to embed variables and fixed text inside double quotes. Thus, the content of the given variable(s) will be part of the output, along with the text.
 
 ## Conditional Statements
-When you need to execute different series of commands depending on a condition, the shell provides a standard `if`/`elseif`/`else` construct, similar to most programming languages. If you realize there are several conditions to be examined, you may want to use a `case` construct instead, as explained later.
+When you need to execute different series of commands depending on a condition, the shell provides a standard `if`/`elif`/`else` construct, similar to most programming languages. If you realize there are several conditions to be examined, you may want to use a `case` construct instead, as explained later.
 
 The syntax of a basic conditional statement is shown in *pseudo-code* as follows:
 
@@ -511,6 +511,10 @@ else
 	commands
 fi
 ```
+
+> The `elif` section is optional and used only when needed to test for a specific alternative to the condition specified through the `if`.
+
+
 
 ## Loops and Case
 Once in a while, some tasks will need to be executed repeatedly either a fixed number of times or until a specified condition is satisfied. That is where the `for` and `while` *looping constructs* come in handy. Additionally, at times you will need a script to *choose* between different courses of action based on the value of a given variable - we'll use the `case` statement for that.
