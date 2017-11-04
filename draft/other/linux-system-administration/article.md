@@ -520,7 +520,7 @@ do
 done
 ```
 
->In the above example, the variable named `FILE` is used inside the loop (between the `do` and `done` lines) as `$FILE`. During the first, second, and third iteration, `$FILE` represents `file1.txt`, `file2.txt`, and `file3.txt`, respectively.
+In the above example, the variable named `FILE` is used inside the loop (between the `do` and `done` lines) as `$FILE`. During the first, second, and third iteration, `$FILE` represents `file1.txt`, `file2.txt`, and `file3.txt`, respectively.
 
 An alternative approach is to provide the list of files using the `ls` command and `grep` to only return the files where the names begin with the word `file`. Thus,
 
@@ -534,9 +534,31 @@ done
 produces the same result as the previous example.
 
 ### The While Loop
-As opposed to the `for` loop, `while` is used when the number of iterations is not known beforehand. Examples include, but are not limited to, reading a file line by line, increasing or decreasing the value of a variable until it reaches a given value, or responding to user input.
+As opposed to the `for` loop, `while` is typically used when the number of iterations is not known beforehand, or when using `for` is impractical. Examples include, but are not limited to, reading a file line by line, increasing or decreasing the value of a variable until it reaches a given value, or responding to user input.
 
+The basic syntax of the `while` loop is:
 
+```
+while condition is true
+do
+    Run commands here
+done
+```
+
+To illustrate, let's consider two examples. To begin, let's read the `/etc/passwd` file line by line and return a message showing each username with its corresponding **UID**.
+
+>The **UID**, or **U**ser **ID**, is an integer number that identifies each user in the *third* field in `/etc/passwd`. It can be returned for each individual account using the `id` command followed by the username.
+
+```
+while read LINE
+do
+    USERNAME=$(echo $LINE | cut -d':' -f 1)
+    USERID=$(echo $LINE | cut -d':' -f 3)
+    echo "The UID of $USERNAME is $USERID"
+done < /etc/passwd
+```
+
+In this example, the condition that is checked at the beginning of each iteration is whether we have reached the end of the file. The variable named `LINE` represents each line in `/etc/passwd`. This file is set as the input to the loop by using the `<` redirection operator. When each line is read, the contents of the first and third fields are stored in `USERNAME` and `USERID`, respectively.
 
 # Section 5 - Scheduling And Running Tasks With Cron
 
@@ -550,9 +572,7 @@ As opposed to the `for` loop, `while` is used when the number of iterations is n
 
 
 
-
 # Section 8 - RAID
-
 
 
 
