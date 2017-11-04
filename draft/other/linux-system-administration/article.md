@@ -496,8 +496,24 @@ Fig. 1 shows the output of the script:
 
 >As you can see in the above image, the `echo` Bash builtin allows to embed variables and fixed text inside double quotes. Thus, the content of the given variable(s) will be part of the output, along with the text.
 
-## Loops
-Once in a while, some tasks will need to be executed repeatedly either a fixed number of times or until a specified condition is satisfied. That is where the `for` and `while` *looping constructs* come in handy.
+## Conditional Statements
+When you need to execute different series of commands depending on a condition, the shell provides a standard `if`/`elseif`/`else` construct, similar to most programming languages. If you realize there are several conditions to be examined, you may want to use a `case` construct instead, as explained later.
+
+The syntax of a basic conditional statement is shown in *pseudo-code* as follows:
+
+```
+if [ condition 1]
+then
+	commands
+elif [ condition 2 ]
+	commands
+else
+	commands
+fi
+```
+
+## Loops and Case
+Once in a while, some tasks will need to be executed repeatedly either a fixed number of times or until a specified condition is satisfied. That is where the `for` and `while` *looping constructs* come in handy. Additionally, at times you will need a script to *choose* between different courses of action based on the value of a given variable - we'll use the `case` statement for that.
 
 ### The For Loop
 This looping construct is used to operate on each element of a list of items. Such list can be specified explicitly (by listing each element one by one), or as the result of a command. The basic syntax of the `for` loop is illustrated in the following *pseudo-code*:
@@ -585,6 +601,7 @@ Fig. 3 shows our game in action:
 
 ![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/10ce3c16-3c0b-4f66-9e0d-c8f92315169f.png)
 
+### Using Case
 
 # Section 5 - Scheduling And Running Tasks With Cron
 
