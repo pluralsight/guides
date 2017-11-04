@@ -525,6 +525,7 @@ In the above example, the variable named `FILE` is used inside the loop (between
 An alternative approach is to provide the list of files using the `ls` command and `grep` to only return the files where the names begin with the word `file`. Thus,
 
 ```
+#!/bin/bash
 for FILE in $(ls -1 | grep file)
 do
     chmod 640 $FILE
@@ -534,7 +535,7 @@ done
 produces the same result as the previous example.
 
 ### The While Loop
-As opposed to the `for` loop, `while` is typically used when the number of iterations is not known beforehand, or when using `for` is impractical. Examples include, but are not limited to, reading a file line by line, increasing or decreasing the value of a variable until it reaches a given value, or responding to user input.
+As opposed to the `for` loop, `while` is typically used when the number of iterations is not known beforehand, or when using `for` is impractical. Examples include, but are not limited to, reading a file line by line, increasing or decreasing the value of a variable until it reaches a given value, or responding to user input. 
 
 The basic syntax of the `while` loop is:
 
@@ -545,11 +546,12 @@ do
 done
 ```
 
-To illustrate, let's consider two examples. To begin, let's read the `/etc/passwd` file line by line and return a message showing each username with its corresponding **UID**.
+To illustrate, let's consider two examples. First off, let's read the `/etc/passwd` file line by line and return a message showing each username with its corresponding **UID**. This is an example of the case when we need to repeat an iteration an undetermined number of times.
 
 >The **UID**, or **U**ser **ID**, is an integer number that identifies each user in the *third* field in `/etc/passwd`. It can be returned for each individual account using the `id` command followed by the username.
 
 ```
+#!/bin/bash
 while read LINE
 do
     USERNAME=$(echo $LINE | cut -d':' -f 1)
@@ -559,6 +561,30 @@ done < /etc/passwd
 ```
 
 In this example, the condition that is checked at the beginning of each iteration is whether we have reached the end of the file. The variable named `LINE` represents each line in `/etc/passwd`. This file is set as the input to the loop by using the `<` redirection operator. When each line is read, the contents of the first and third fields are stored in `USERNAME` and `USERID`, respectively.
+
+Fig. 2 shows the output of the while loop, which we have saved in a script named `users.sh` in the current working directory:
+
+![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/53c8319e-5c70-4b57-8ad6-d4c08958ba5e.png)
+
+Finally, let's write a simple number-guessing game in a script called `guess.sh`. When the script is launch, a random number between 1 and 10 is generated and stored in the variable `RANDOMNUM`. The script then will expect input from the user and indicate if the guess is correct, less than, or greater than the right number. This will continue until the user guesses the number correctly. In this example, `$NUMBER != $RANDOMNUM` is enclosed within square brackets to indicate accurately what is the condition to test.
+
+```
+#!/bin/bash
+RANDOMNUM=$(shuf -i1-10 -n1)
+
+NUMBER=0
+
+while [ $NUMBER != $RANDOMNUM ]
+do
+    read -p "Enter a number between 1 and 10: " NUMBER
+done
+echo "Congratulations! Your guess was right!"
+```
+
+Fig. 3 shows our game in action:
+
+![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/10ce3c16-3c0b-4f66-9e0d-c8f92315169f.png)
+
 
 # Section 5 - Scheduling And Running Tasks With Cron
 
