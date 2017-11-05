@@ -1,0 +1,15 @@
+{
+    "_publish_status": "draft",
+    "author_name": "kobihikri",
+    "author_real_name": "Kobi Hikri",
+    "branch": "master",
+    "branches": [],
+    "filename": "article.md",
+    "first_commit": "f2a7a699ea760dbf6c6932d9d9d7d684bd56e62b",
+    "image_url": "https://avatars2.githubusercontent.com/u/4434689?v=4",
+    "stacks": [
+        "Big Data (Hadoop, Spark, etc)"
+    ],
+    "thumbnail_url": null,
+    "title": "Data Stream Management with Apache Kafka Streams"
+}
