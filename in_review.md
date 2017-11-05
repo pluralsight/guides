@@ -1,3 +1,8 @@
+### Data Stream Management with Apache Kafka Streams by Kobi Hikri
+- [Read the guide](https://www.pluralsight.com/guides/big-data/data-stream-management-with-apache-kafka-streams?status=in-review)
+- [Read more from Kobi Hikri](https://www.pluralsight.com/guides/author/kobihikri) <img src="https://avatars2.githubusercontent.com/u/4434689?v=4" width="30" height="30" alt="Kobi Hikri" />
+- Related to: Big Data (Hadoop, Spark, etc)
+
 ### Programming with Assertions in Java by Esteban Herrera
 - [Read the guide](https://www.pluralsight.com/guides/java-and-j2ee/programming-with-assertions-in-java?status=in-review)
 - [Read more from Esteban Herrera](https://www.pluralsight.com/guides/author/eh3rrera) <img src="https://avatars2.githubusercontent.com/u/11665759?v=4" width="30" height="30" alt="Esteban Herrera" />
