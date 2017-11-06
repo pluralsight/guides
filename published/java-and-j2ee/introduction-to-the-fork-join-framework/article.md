@@ -8,16 +8,16 @@ In Java, the fork/join framework provides support for parallel programming by sp
 
 In fact, Java 8's [parallel streams](https://docs.oracle.com/javase/tutorial/collections/streams/parallelism.html) and the method [Arrays#parallelSort](https://docs.oracle.com/javase/9/docs/api/java/util/Arrays.html#parallelSort-byte:A-0) use under the hood the fork/join framework to execute parallel tasks.
 
-In this guide, you'll learn about the concepts the fork/join framework relies on, the classes that are part of the framework, how they're used, and on which cases this framework can provide a performance increase.
+In this guide, you'll learn about the concepts and classes behind the fork/join framework, how the framework's inner classes are used, and when it can boost performance.
 
 For reference, you can find the source code of the demo on this [GitHub repository](https://github.com/eh3rrera/fork-join-demo).
 
 # How does the fork/join framework work?
-Parallelism is a simple concept, it's the simultaneous execution of two or more tasks.
+**Parallelism** is the simultaneous execution of two or more tasks.
 
 However, since parallelism can be considered a concurrency model, it's often confused with the concept of concurrency itself. 
 
-Concurrency is the execution of two or more tasks in overlapping time periods that are not necessarily simultaneous.
+**Concurrency** is the execution of two or more tasks in overlapping time periods that are not necessarily simultaneous.
 
 There's a [blog post](http://yosefk.com/blog/parallelism-and-concurrency-need-different-tools.html) on the differences between parallelism and concurrency that has great illustrations based on the [drawings of Joe Armstrong](https://web.archive.org/web/20130409073054/http://joearms.github.io/2013/04/05/concurrent-and-parallel-programming.html).
 
@@ -52,17 +52,17 @@ Each thread has its own double-ended queue (deque) to store the tasks that will 
 
 A [deque](https://en.wikipedia.org/wiki/Double-ended_queue) is a type of queue that supports adding or removing elements from either the front (head) or the back (tail). This allows two things:
 - A thread can execute only one task at a time (the task at the head of its deque).
-- A *work-stealing algorithm* is implemented to balance the thread’s workload.
+- A **work-stealing algorithm** s implemented to balance the thread’s workload.
 
 With the work-stealing algorithm, threads that run out of tasks to process can steal tasks from other threads that are still busy (by removing tasks from the tail of their deque).
 
-This approach can provide more efficient processing when there are many tasks to process or when a task spawns many subtasks.
+This approach makes processing more efficient by increasing throughput when there are many tasks to process or when one task diverges into many subtasks.
  
 # Understanding the framework classes
 
-The fork/join framework has two main classes, [ForkJoinPool](https://docs.oracle.com/javase/9/docs/api/java/util/concurrent/ForkJoinPool.html) and [ForkJoinTask](https://docs.oracle.com/javase/9/docs/api/java/util/concurrent/ForkJoinTask.html). 
+The fork/join framework has two main classes, [`ForkJoinPool`](https://docs.oracle.com/javase/9/docs/api/java/util/concurrent/ForkJoinPool.html) and [`ForkJoinTask`](https://docs.oracle.com/javase/9/docs/api/java/util/concurrent/ForkJoinTask.html). 
 
-`ForkJoinPool` is an implementation of the interface [ExecutorService](https://docs.oracle.com/javase/9/docs/api/java/util/concurrent/ExecutorService.html). In general, executors provide an easier way to manage concurrent tasks than plain old threads, and the main feature of this implementation it's the work-stealing algorithm mentioned in the previous section.
+`ForkJoinPool` is an implementation of the interface [`ExecutorService`](https://docs.oracle.com/javase/9/docs/api/java/util/concurrent/ExecutorService.html). In general, executors provide an easier way to manage concurrent tasks than plain old threads. The main feature of this implementation is the aforementioned work-stealing algorithm.
 
 There's a common `ForkJoinPool` instance available to all applications that you can get with the static method `commonPool()`:
 ```java
@@ -106,23 +106,19 @@ else {
 - [fork()](https://docs.oracle.com/javase/9/docs/api/java/util/concurrent/ForkJoinTask.html#fork--), which allows a `ForkJoinTask` to be scheduled for asynchronous execution (launching a new subtask from an existing one).
 - [join()](https://docs.oracle.com/javase/9/docs/api/java/util/concurrent/ForkJoinTask.html#join--), which returns the result of the computation when it is done, allowing a task to wait for the completion of another one.
 
-First, you have to decide when the problem is small enough to solve directly. This is the base case. A big task is divided into smaller tasks recursively until the base case is reached.
+First, you have to decide when the problem is small enough to solve directly. This acts as the the base case. A big task is divided into smaller tasks recursively until the base case is reached.
 
 Each time a task is divided, you call the `fork()` method to place the first subtask in the current thread's deque, and then you call the `compute()` method on the second subtask to recursively process it.
 
-Finally, to get the result of the first subtask you call the `join()` method on this first subtask. This should be the last step because `join()` will block the program until the result is returned.
+Finally, to get the result of the first subtask you call the `join()` method on this first subtask. This should be the last step because `join()` will block the next program from being processed until until the result is returned.
 
-This means that the order in which you call the methods is important.
-
-If you don't call `fork()` before `join()`, there won't be any result to get.
-
-If you call `join()` before `compute()`, the program will perform like if it was executed in one thread and you'll be wasting time.
+**Thus, the order in which you call the methods is important.** If you don't call `fork()` before `join()`, there won't be any result to retrieve. If you call `join()` before `compute()`, the program will perform like if it was executed in one thread and you'll be wasting time.
 
 If you follow the right order, while the second subtask is recursively calculating the value, the first one can be stolen by another thread to process it. This way, when `join()` is finally called, either the result is ready or you don't have to wait a long time to get it.
 
 You can also call the method [invokeAll(ForkJoinTask<?>... tasks)](https://docs.oracle.com/javase/9/docs/api/java/util/concurrent/ForkJoinTask.html#invokeAll-java.util.concurrent.ForkJoinTask-java.util.concurrent.ForkJoinTask-) to fork and join the task in the right order.
 
-Finally, to submit a task to the thread pool, you can use the [execute(ForkJoinTask<?> task)](https://docs.oracle.com/javase/9/docs/api/java/util/concurrent/ForkJoinPool.html#execute-java.util.concurrent.ForkJoinTask-) method in the following way:
+Finally, to submit a task to the thread pool, you can use the [execute(ForkJoinTask<?> task)](https://docs.oracle.com/javase/9/docs/api/java/util/concurrent/ForkJoinPool.html#execute-java.util.concurrent.ForkJoinTask-) as follows:
 ```java
 forkJoinPool.execute(recursiveAction);
 recursiveAction.join();
@@ -132,28 +128,28 @@ forkJoinPool.execute(recursiveTask);
 Object result = recursiveTask.join();
 ```
 
-Or the [submit(ForkJoinTask<T> task)](https://docs.oracle.com/javase/9/docs/api/java/util/concurrent/ForkJoinPool.html#submit-java.util.concurrent.ForkJoinTask-) method (which only differs from the `execute` method in that it returns the submitted task):
+Alternatively, use the [submit(ForkJoinTask<T> task)](https://docs.oracle.com/javase/9/docs/api/java/util/concurrent/ForkJoinPool.html#submit-java.util.concurrent.ForkJoinTask-) method (which only differs from the `execute` method in that it returns the submitted task):
 ```java
 forkJoinPool.execute(recursiveAction).join();
 // Or if a value is returned
 Object result = forkJoinPool.execute(recursiveTask).join();
 ``` 
 
-However, most of the time you'll use [invoke(ForkJoinTask<T> task)](https://docs.oracle.com/javase/9/docs/api/java/util/concurrent/ForkJoinPool.html#invoke-java.util.concurrent.ForkJoinTask-), which performs the given task, returning its result upon completion:
+However, you will typically use [invoke(ForkJoinTask<T> task)](https://docs.oracle.com/javase/9/docs/api/java/util/concurrent/ForkJoinPool.html#invoke-java.util.concurrent.ForkJoinTask-), which performs the given task, returning its result upon completion:
 ```java
 forkJoinPool.invoke(recursiveAction);
 // Or if a value is returned
 Object result = forkJoinPool.invoke(recursiveTask);
 ```
 
-Now let's review an example that will help you understand how this framework works.
+Now let's review an example to get a better grasp on this framework.
 
 # Implementing a demo
 Let's implement something simple, like finding the sum of all the elements in a list.
 
 This list can be split up in many sublists to sum the elements of each one. Then, we can find sum all those values.
 
-Let's implement this as `RecursiveAction` first. However, as this class doesn't return the partial results, we're only going to print them.
+Let's implement this as `RecursiveAction` first. However, as this class does not return the partial results, we're only going to print them.
 
 First, let's create a class that extends from `RecursiveAction`:
 ```java
@@ -164,7 +160,7 @@ public class SumAction extends RecursiveAction {
 
 Next, let's choose a value that will indicate if the task is processed sequentially or in parallel.
 
-The most basic case is when we have a list of two values. However, having subtasks that are so small can have a negative impact on performance because of the overhead of forking too much.
+The most basic case is when we have a list of two values. However, having subtasks that are so small can have a negative impact on performance because forking too much creates significant overhead cost through the recursive stack.
 
 For this reason, we have to choose a value that represents the number of elements that can be processed sequentially without any problem. A value neither too small nor too big.
 
@@ -266,7 +262,7 @@ Sum of [1, 4, 4, 2, 3]: 14
 Sum of [4, 1, 2, 1, 1]: 9
 ```
 
-However, dividing the task may not always result in evenly distributed subtasks. For example, if we try with a list of eleven elements, this is could be a possible output:
+However, dividing the task may not always result in evenly distributed subtasks. For example, if we try with a list of eleven elements, this could be a possible output:
 ```
 Sum of [1, 2, 2]: 5
 Sum of [3, 3, 2]: 8
@@ -405,9 +401,9 @@ public class ComparePerformance {
 
 I know that the validity of a test like this is questionable (using `System.currentTimeMillis()` to measure the execution time?), and that depending on the hardware you're testing, you can get different results.
 
-I run the test on a Windows machine with a modest i3-6100 processor (four logical cores) and 16 GB of RAM, but don't pay much attention to the actual numbers but on how they compared to each other and what conclusion we can draw from them.
+However, we need not worry too much about the actual numbers because how they compare to each other is far more interesting!
 
-I run the program ten times for each test to get an average execution time. First with the fork/join framework, using a threshold of one thousand elements, then a one hundred thousand threshold, and then a one million elements threshold. Then I used the sequential implementation.
+I ran the program ten times for each test to get an average execution time. the first test used the fork/join framework, using a threshold of one thousand elements, then a one hundred thousand threshold, and then a one million elements threshold. The second test used the sequential implementation.
 
 Here are the results:
 
@@ -425,7 +421,7 @@ Here are the results:
 | Time #10 (in ms) | 37                | 32                  | 33                    | 15           |
 | **Average**      | **52.9**          | **28.4**            | **31.8**              | **18.8**     |
 
-You can see some (probably) unexpected results.
+This gave some unexpected results.
 
 First, you can see that on a list of ten million, one thousand elements is actually a low threshold, which impacts performance due to the overhead of creating many small subtasks.
 
@@ -433,9 +429,9 @@ On the other hand, if you go all the way up to one million, you'll get better ti
 
 However, the most time efficient implementation was the sequential one, about 30% faster than the fork/join implementation with a one hundred thousand threshold.
 
-Is it because the task is so simple to be executed in parallel?
+Is it because the task is so simple it need not be executed in parallel?
 
-Probably. Although a sum task can be considered a divide and conquer algorithm (the type of algorithm that works perfectly with the fork/join framework), if the task is small, then it is probably better to do it sequentially, because at the end, the cost of splitting and queuing the tasks adds up to the time.
+Probably. Although a sum task can be considered a divide and conquer algorithm (the type of algorithm that works perfectly with the fork/join framework), if the task is small, then it is probably better to do it sequentially; at the end, the cost of splitting and queuing the tasks adds up to exacerbate the runtime.
 
 On the other hand, the `computeSumDirectly` method on the fork/join implementation has the same loop than the sequential implementation to sum all the list elements, but what happens if we change the sequential implementation to something like the following:
 ```java
@@ -469,13 +465,13 @@ But back to the original comparison, is it because my processor only has four co
 
 Probably, that also sounds like a good reason.
 
-I have heard that in some cases, a number of sixteen processors work best for parallelism.
+More cores &mdash; maybe sixteen of them &mdash; could work best for parallelism as smaller tasks can be pipelined quickly.
 
 However, what we can deny is that two very important aspects of getting a good performance when using the fork/join framework are:
 - Determine the proper threshold of a fork-join task
 - Determine the right level of parallelism
 
-In other words, all comes down to experimenting with different parameters.
+In other words, deciding whether to use fork/join comes down to experimenting with different parameters.
 
 [David Hovemeyer](http://faculty.ycp.edu/~dhovemey/) says in his [lecture about Fork/join parallelism](http://faculty.ycp.edu/~dhovemey/spring2013/cs365/lecture/lecture18.html):
 
@@ -487,19 +483,19 @@ In other words, all comes down to experimenting with different parameters.
 
 > In general, some experimentation will be necessary to find an appropriate threshold value.
 
-Like I said at the beginning, parallelism can bring its own problems, and it's not a good fit for all situations.
+Clearly parallelism has advantages and disadvantages, and it's not a good fit for all situations.
 
 # Conclusion
 You have learned about the fork/join framework, which is designed to work with large tasks that can be recursively split up into smaller tasks (the fork part) for processing and the results can be combined at the end (the join part).
 
-The main class of the fork/join framework is `ForkJoinPool`, a subclass of `ExecutorService` that implements a work-stealing algorithm, which means that when a thread is free, it *steals* the pending work of other threads that are still busy doing other work.
+The main class of the fork/join framework is `ForkJoinPool`, a subclass of `ExecutorService` that implements a work-stealing algorithm. This algorithm enables a free thread to *steal* the pending work of busier threads.
 
 But the most important thing to really take advantage of this framework is to determine the proper threshold to execute a task in sequence or in parallel and get the right level of parallelism.
 
-Unfortunately, there's no formula to get this value, you have to experiments with different values depending on the task and the hardware on which you're executing the program.
+Unfortunately, there's no concrete formula for identifying this value. While we may be able to dig deeper and calculate an asymptotic bound on the runtime for parallel processing, the most practical way to figure out when to use fork/join is to experiment. Depending on the task and the hardware used, there will be a variety of results which will provide insight on whether parallelizing is the way to go.
 
-I execute an informal performance test for this guide, however, you can find more professional benchmarks, like the one in the post [Fork/Join Framework vs. Parallel Streams vs. ExecutorService: The Ultimate Fork/Join Benchmark](http://blog.takipi.com/forkjoin-framework-vs-parallel-streams-vs-executorservice-the-ultimate-benchmark/).
+In this guide, I executed an informal performance test. However, this was designed to demonstrates the concepts behind the framework; you can find more professional benchmarks, like the one in the post [Fork/Join Framework vs. Parallel Streams vs. ExecutorService: The Ultimate Fork/Join Benchmark](http://blog.takipi.com/forkjoin-framework-vs-parallel-streams-vs-executorservice-the-ultimate-benchmark/) if this guide has piqued your interest.
 
-Remeber that you can find the code of the demo on this [GitHub repository](https://github.com/eh3rrera/fork-join-demo).
+Remember that you can find the code of the demo on this [GitHub repository](https://github.com/eh3rrera/fork-join-demo). Additional notes on multithreading and multi-core processing are available [on this presentation by UNC's CS department.](https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=9&cad=rja&uact=8&ved=0ahUKEwji75q4lqTXAhUS_WMKHXiQBmwQFghaMAg&url=http%3A%2F%2Fwwwx.cs.unc.edu%2FCourses%2Fcomp523-f10%2Fhot%2520topics%2520presentation.pptx&usg=AOvVaw3r9h8LQZO06cTOEj1YEGbC)
 ___
 I hope you found this guide educational and engaging. Please leave your comments and feedback in the discussion section below. Thanks for reading!
