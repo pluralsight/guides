@@ -4,9 +4,9 @@ Ajax helper methods and extensions in the System.Web.Mvc and System.Web.Mvc.Ajax
 
 This guide shows how to effectively implement JavaScript functionality when creating a web page from Razor partial views, including `<form>` elements created using the `Ajax.BeginForm` helper method. This guide is a companion to [ASP.NET MVC - Using Ajax helpers with Razor partial views](https://www.pluralsight.com/guides/microsoft-net/asp-net-mvc-using-ajax-helpers-with-razor-partial-views).
 
-The codes in this guide are derived from the same Visual Studio solution used for the companion guide, available on [GitHub](https://github.com/ajsaulsberry/BipAjax).  You can download and run the project to see the techniques illustrated here in action and to experiment on your own.
+The codes in this guide are derived from the same Visual Studio solution used for the companion guide, available on [GitHub](https://github.com/ajsaulsberry/BipAjax). You can download and run the project to see the techniques illustrated here in action and to experiment on your own.
 
-## Case study description
+## Some Details
 
 The case study is a multi-project Visual Studio 2017 solution developed from the default ASP.NET .NET Framework MVC template. It uses Entity Framework 6.1 and the repository and Model View ViewModel (MVVM) design patterns.
 
@@ -48,7 +48,7 @@ Most of the JavaScript libraries are rendered at the bottom of the `<body>` elem
 
 The user interface functionality provided by the **Bootstrap** CSS framework is included in the **Bootstrap.js** library loaded with the **Bootstrap** bundle. **Bootstrap.js** depends on the ubiquitous **jQuery** library, which is loaded using the **jquery** bundle.
 
-The definition of the **jquery** bundle enables the current version of jQuery to be loaded without changing the bundle definition or _Layout.cshtml to match the current version number. In this way the jQuery library can be updated through the associated NuGet package without updating the code to keep the version number in sync.
+The definition of the **jquery** bundle enables the current version of jQuery to be loaded without changing the bundle definition or _Layout.cshtml to match the current version number. This way, the jQuery library can be updated through the associated NuGet package without updating the code to keep the version number in sync.
 
 Ajax functionality depends on the **jQuery** library, but not the **Bootstrap** library. If the web project does not implement the Bootstrap CSS framework the **Bootstrap** library is unnecessary. In the example solution, BlipAjax, the Bootstrap CSS framework is used to provide user interface styling and functionality for a number of user interface elements, including form elements like the **Country** and **State/Region** dropdown lists.
 
@@ -291,7 +291,7 @@ Also note the following Razor code:
 }
 ~~~
 
-Because **CustomerEditPartial.cshtml** is the first partial view loaded in the **Edit.cshtml** parent view and because **Edit.cshtml** does not have an `@Model` directive it is necessary to tell the Razor engine not to use _Layout.cshtml for the partial view. Without this directive the Razor engine gets confused and renders elements from the layout file, such as the footer.
+Because **CustomerEditPartial.cshtml** is the first partial view loaded in the **Edit.cshtml** parent view and because **Edit.cshtml** does not have an `@Model` directive, it is necessary to tell the Razor engine not to use _Layout.cshtml for the partial view. Without this directive the Razor engine gets confused and renders elements from the layout file, such as the footer.
 
 ### Scripts for **CustomerEditPartial.cshtml**
 
@@ -318,7 +318,7 @@ Ellipsis ("`...`") indicates places where irrelevant code has been redacted for 
 
 This function gets the value of the `Country` and `Region` elements provided by the view model **CustomerEditViewModel.cs**, calls the `AddRegions` function to add the appropriate values to the `Region` element, and resets the value of the `Region` element.
 
-The `AddRegions` function calls the `CustomerController.GetRegions` method to get a list of the regions for the country identified in the value for the `Region` element. It then appends these key+value pairs to the list of values for the `Region` element, adding a blank record before doing so to present the dropdown in an unselected state before doing so. As noted above, the `(docment).ready` function for **Edit.cshtml** resets the selected value for `Region` once the list is loaded.
+The `AddRegions` function calls the `CustomerController.GetRegions` method to get a list of the regions for the country identified in the value for the `Region` element. It then appends these key-value pairs to the list of values for the `Region` element, adding a blank record before doing so to present the dropdown in an unselected state. As noted above, the `(docment).ready` function for **Edit.cshtml** resets the selected value for `Region` once the list is loaded.
 
 ~~~html
 <script type="text/javascript">
@@ -343,7 +343,7 @@ function AddRegions(selectedCountry, regionsSelect) {
 
 For more information on the `GetRegions` controller action, see the [BlipAjax](https://github.com/ajsaulsberry/BlipAjax) example solution on GitHub.
 
-#### An important note about script binding for partial views
+#### A note about script binding for partial views
 
 As noted above, the convention for JavaScript associated with Razor partial views is to include them in the parent view **.cshtml**. JavaScript functions can be bound to elements on the partial view the partial view is rendered at the same time as the parent view. This happens when loading the partial view with an `@Html.Action` helper method, as in this section from **Edit.cshtml**:
 
@@ -355,11 +355,11 @@ As noted above, the convention for JavaScript associated with Razor partial view
 ...
 ~~~
 
-All that the partial views **CustomerEditPartial.cshtml** and **AddressTypePartial.cshtml** do is enable the "componentization" of the **Customer/Edit.cshtml** view; both partial views are rendered at the same time as the parent view, and thus the `Country` and `Region` elements are available for binding when the `document.ready` event occurs.
+The partial views **CustomerEditPartial.cshtml** and **AddressTypePartial.cshtml** enable the "componentization" of the **Customer/Edit.cshtml** view. Both partial views are rendered at the same time as the parent view, and thus the `Country` and `Region` elements are available for binding when the `document.ready` event occurs.
 
 ### Scripts for **CreatePostalAddressPartial.cshtml**
 
-Rendering of the partial view **CreatePostalAddressPartial.cshtml** is begun by the `HttpPost` event of the Ajax form created by the **AddressTypePartial.cshtml** partial view, defined as follows:
+Rendering of the partial view **CreatePostalAddressPartial.cshtml** is initiated by the `HttpPost` event of the Ajax form created by the **AddressTypePartial.cshtml** partial view, defined as follows:
 
 #### AddressTypePartial.cshtml
 
@@ -373,9 +373,10 @@ Rendering of the partial view **CreatePostalAddressPartial.cshtml** is begun by 
 }
 ~~~
 
-The controller action `CustomerController.AddressTypePartial(AddressTypeViewModel model)` initiates the rendering of the Ajax partial view, rather than an `HttpGet` action for the **CreatePostalAddressPartial.cshtml** partial view, even though the postal address partial view itself is `Html.BeginForm` helper method form, rather than an Ajax form. The partial view rendered with unobtrusive Ajax replaces the empty `<div id="CreateAddress"></div>` element of **Edit.cshtml**. (For a more detailed explanation of using Ajax partial views, see the companion guide )
+Despite the `Html.BeginForm` helper method form, the controller action `CustomerController.AddressTypePartial(AddressTypeViewModel model)` kicks off the rendering of the Ajax partial view rather than an `HttpGet` action for the **CreatePostalAddressPartial.cshtml** partial view. The partial view replaces the empty `<div id="CreateAddress"></div>` element of **Edit.cshtml**. (For a more detailed explanation of using Ajax partial views, see the companion guide )
 
-Because the postal address partial view is not rendered when the parent view and the preceding partial views are rendered, there is no way for JavaScript loaded with the parent view **Edit.cshtml** to be bound to elements on the postal address partial view. Accordingly, *the scripts associated with the Ajax partial view must be included with the partial view, rather than the parent view*. **This is the exception to the coding convention, necessitated by script binding.**
+Because the postal address partial view is not rendered when the parent view and the preceding partial views are rendered, JavaScript loaded with the parent view **Edit.cshtml** cannot be bound to elements on the postal address partial view. 
+> Accordingly, the scripts associated with the Ajax partial view must be included with the partial view, rather than the parent view. This is a key exception to the coding convention, necessitated by script binding.
 
 Note that some of the form elements have been redacted for brevity, as shown by ellipsis ("`...`").
 
@@ -445,7 +446,7 @@ Note the following features of the partial view:
 
 * Although the script is loaded with the partial view, it can reference the libraries and scripts on the **Edit.cshtml** parent view, including the jQuery library ("`$`") and the function `AddRegions`.
 
-The final point is a powerful one for using custom scripts with Ajax partial views. The partial view rendered with unobtrusive Ajax needs to include only enough script code to take care of element binding and calls to libraries and functions in the parent, helping to prevent duplication of code.
+The final point is a powerful one for using custom scripts with Ajax partial views. The partial view rendered with unobtrusive Ajax needs to include just enough script code to take care of element binding and calls to libraries and functions in the parent, helping to prevent duplication of code.
 
 Also note that the unobtrusive client-side validation loaded with the `jqueryval` bundle in the parent view will work on the form elements in the partial view loaded with Ajax.
 
@@ -453,13 +454,13 @@ Also note that the unobtrusive client-side validation loaded with the `jqueryval
 
 When structured properly, JavaScript code can extend the power of JavaScript libraries and custom code to Razor partial views rendered with the unobtrusive Ajax library. The key steps are:
 
-* load jQuery in _Layout.cshtml;
+* load jQuery in _Layout.cshtml
 
-* load jquery-unobtrusive-ajax.js, jquery.validate.js, and jquery.validate.unobtrusive.js in the `Scripts` section of appropriate pages;
+* load jquery-unobtrusive-ajax.js, jquery.validate.js, and jquery.validate.unobtrusive.js in the `Scripts` section of appropriate pages
 
-* include scripts for partial views rendered with the parent view in the parent view;
+* include scripts for partial views rendered with the parent view in the parent view
 
-* include scripts for partial views rendered with Ajax in the partial view; and
+* include scripts for partial views rendered with Ajax in the partial view
 
 * include common functions in the `Scripts` section of the parent view.
 
@@ -483,8 +484,6 @@ The example project is provided as is, without any warranty expressed or implied
 
 ### Other resources
 
-Disclaimer: PluralSight and the author of this guide are not responsible for the content, accuracy, or availability of 3rd party resources.
-
 [learn.jquery.com](http://learn.jquery.com/) &mdash; This is the official site for jQuery documentation, provided by the jQuery Foundation.
 
 [Microsoft: Bundling and Minification](https://docs.microsoft.com/en-us/aspnet/mvc/overview/performance/bundling-and-minification), by Rick Anderson, 23 August 2012 &mdash; This is the essential guide to implementing bundling and minification in ASP.NET MVC. If you are writing for mobile devices &ndash; and you should be &ndash; Google will down-rate your page performance unless you use bundling and minification, hurting your performance in search.
@@ -494,5 +493,7 @@ Disclaimer: PluralSight and the author of this guide are not responsible for the
 [Wikipedia: Ajax (programming)](https://en.wikipedia.org/wiki/Ajax_(programming)) &mdash; A nice summary of the Ajax architecture, history, and implementation. Good background for beginners looking for a fundamental grounding in the technology.
 
 ---
+
+Thank you for reading! Feel free to drop any comments or questions in the discussion section below and favorite this article if you found it interesting or informative.
 
 Written by A. J. Saulsberry, 20 October 2017
