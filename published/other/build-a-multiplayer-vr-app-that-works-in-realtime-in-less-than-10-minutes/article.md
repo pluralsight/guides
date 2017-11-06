@@ -1,26 +1,26 @@
-# Building a multiplayer realtime VR app - in less than 10 minutes.
+### Never worked with VR? This is for you.
 
-#### Never worked with VR? This is for you.
-
-Virtual Reality has come to level where it does not need any introduction, at least in the developer circles. However, how can one develop VR apps is still a mystery for web developers which essentially forms a major portion of all software developers. This is mainly because most of the existing VR ecosystems are closed which prevents developers from freely exploring the existing VR apps and play around with the code. Even if it weren't closed sourced, the tech stack required for building traditional VR apps is pretty complex and a web developer would rather not venture into that direction.
+Virtual Reality (VR) has become so well-known that it needs no introduction, in developer circles and beyond. However, developing VR apps is still a mystery for a major portion of all software developers. This is primarily because most existing VR ecosystems are closed, preventing developers from freely tinkering with VR code. Even if it weren't closed-source, the tech stack required for building traditional VR apps is pretty complex and a web developer, say, would rather not venture in that formidable direction.
 
 In this tutorial, we'll learn about a breaking new API that lets you build VR with a web developer's existing tech stack. Let's dive right in!
 
-#### What will we build?
+### What will we build?
 
 <img src="https://raw.githubusercontent.com/pluralsight/guides/master/images/aed2ea6f-915d-40a5-9f99-cdd457572b29.jpg-large" width="750" height="500" />
 
-By the end of this tutorial, you will have a VR app similar to the one seen in the above picture. It will have a basic VR scene where multiple users can connect to your app from their mobile phones by simply hitting a URL on their mobile phone's browsers. We'll use only open source technologies and frameworks for implementing this application, thus at no point you are expected to pay and you will be able to find numerous resources for extended research/learning.
+By the end of this tutorial, you will have a VR app similar to the one seen above. It will have a basic VR scene where multiple users can connect to your app from their mobile phones by simply hitting a URL on their mobile phone's browsers. We'll use open-source technologies and frameworks for implementing this application. Not only does this mean that you'll be learning VR tech for free, you will also be able to find numerous resources for further research and learning.
 
-For every user who joins your application, a new avatar will appear in your VR scene which will rotate/move in realtime according to the movement of the user's phone in real life. This app was made for a talk at [Front-end connect](http://frontend-con.io/) conference but I later realized that it would serve as a great getting-started guide for both VR and realtime, separately as technologies as well as implemented together like in this one.
+The gist of the app is this: for every user who joins your application, a new avatar will appear in your VR scene which will rotate/move in realtime according to the movement of the user's phone in real life. 
 
-#### What will we use?
+This app was made for a talk at [Front-end connect](http://frontend-con.io/) conference, but I later realized that it would serve as a great getting-started guide for both VR and realtime as separate technologies and for projects when implemented together, as in this case.
 
-As mentioned before, we wish to access VR directly in the browsers, without having to download anything. We shall use [WebVR](https://webvr.info/) to achieve this. WebVR is a web framework allows us to build Virtual Reality applications that are accessible directly on the web, thus completely eliminating heavy downloads and installs as well making Virtual Reality device independent.
+### What will we use?
+
+As mentioned before, we wish to access VR directly in browsers, without having to download anything. We shall use [WebVR](https://webvr.info/) to achieve this. WebVR is a web framework allows us to build Virtual Reality applications that are accessible directly on the web, thus eliminating heavy downloads and installs while making Virtual Reality device independent.
 
 <img src="https://raw.githubusercontent.com/pluralsight/guides/master/images/24413ad4-4f09-4b66-a592-689bdc49c428.png" width="350" height="350" />
 
-However, building applications directly in WebVR is a bit complex since it requires the knowledge of WebGL, etc and since we brought VR to the web, there should be a way for Web developers to be able to build VR apps without much complexity. Hence, Mozilla's VR team built a framework on top of WebVR, called [A-Frame](aframe.io). A-Frame completely eliminates WebVR's boilerplate code and allows developers to build VR apps with something as simple as HTML.
+However, building applications directly in WebVR is a bit complex; it requires the knowledge of WebGL and more. And since we brought VR to the web, there should be a way for web developers to be able to build VR apps without delving into too much complexity. Fortunately, Mozilla's VR team built a framework on top of WebVR, called [A-Frame](aframe.io). A-Frame completely eliminates WebVR's boilerplate code and allows developers to build VR apps with something as simple as HTML.
 
 <img src="https://raw.githubusercontent.com/pluralsight/guides/master/images/78806784-3ab1-46d1-8fe9-b4020821c78b.png" width="400" height="250" />
 
@@ -28,11 +28,11 @@ Further, we'll use [deepstream.io](https://deepstreamhub.com/) to implement all 
 
 ![deepstream logo](https://raw.githubusercontent.com/pluralsight/guides/master/images/b72cd656-c2f8-488b-b8c6-4916e69a3f91.png)
 
-As you know by now that every WebVR application can be accessed from just a browser. This means, we'll need to host our files in order to be able to access them in a mobile with a URL. [Glitch](https://glitch.com/) is a very convenient way of doing this. You can simply create a new project and when you are done, the URL is readily available so that you can use it via mobile browsers instantly.
+As you know by now, every WebVR application can be accessed from just a browser. This means, we'll need to host our files in order to be able to access them from a mobile device using a URL. [Glitch](https://glitch.com/) is a very convenient way of doing this. Using Glitch, you can create a new project and when you are done, the URL is readily available so that you can use it via mobile browsers instantly.
 
 #### Getting started
 
-Let us start by building the basic VR setup for the application. We'll use A-Frame's [entity-component system](https://aframe.io/docs/0.7.0/introduction/entity-component-system.html) (ECS). ECS makes it easy to build any objects in the scene by treating every object as an entity which differs from other entities by the various components (or attributes) that can attached to an entity.
+Let us start by building the basic VR setup for the application. We'll use A-Frame's [entity-component system](https://aframe.io/docs/0.7.0/introduction/entity-component-system.html) (ECS). ECS makes it easy to build any objects in the scene by treating ev5656ery object as an entity which differs from other entities by the various components (or attributes) that can attached to an entity.
 
 In your HTML file, start of by adding the HTML skeleton code: 
 
@@ -88,7 +88,7 @@ You will observe that we added two new tags in the above code snippet, let's cra
 
 `a-asset-item` - invokes the three.js file loader. You can use this to load all file types.
 
-`a-mixin` - is a very useful tag that allows code reuse by letting you specify a set of properties(components) to be applied to a single entity. You can give it an id and reference it multiple times as we'll see. We will have three mixins, each specifying certain attributes of the avatar that we intend to create- the eyes, pupils and arms.
+`a-mixin` - is a very useful tag that allows code reuse by letting you specify a set of properties (components) to be applied to a single entity. You can give it an ID and reference it multiple times. We will have three `mixins`, each specifying certain attributes of the avatar that we intend to create &mdash; the eyes, pupils and arms.
 
 Now, let us add all the static visual elements in our VR scene.
 
@@ -141,11 +141,11 @@ Now, let us add all the static visual elements in our VR scene.
 ```
 As you can see, we have implemented the complete app using ECS. However, this is not the only way that you can add objects to the scene. A-Frame comes with a few custom entities such as box, sphere etc. These custom entities are called [primitives](https://aframe.io/docs/0.7.0/introduction/html-and-primitives.html#primitives).
 
-As you can see, the code contains very easy to follow comments that explain what each of the entity-component set is trying to implement in our app. For VR newbies, here's something interesting- a sky is like a layer that covers your 360 deg sphere inside which you assume yourself to be standing while experiencing a VR app. It is generally analogous to the sky in real-life which can be seen on the top and appears to drop down near the horizon. We use `a-sky` in A-Frame to add a sky and the resource to be used can be either a 360 deg image or just a solid colour.
+As you can see, the code contains easy-to-follow comments that explain what each of the entity-component set is trying to implement in our app. For VR newbies, here's something interesting &mdash; a sky is like a layer that covers your 360&deg; sphere inside which the user "stands" when using the app. It is generally analogous to the sky in real-life which can be seen on the top and appears to drop down near the horizon. We use `a-sky` in A-Frame to add a sky and the resource to be used can be either a 360&deg; image or just a solid colour.
 
-Now comes the interesting part. We require a camera entity. This is a special entity offered by A-Frame that intrinsically grabs the continously changing position as well as rotation values of your mobile phone while you are using an A-Frame powered VR app in the browser. It takes advantage of the various gyro sensors in your phone to achieve this under-the-hood.
+Now comes the interesting part. We require a camera entity. This is a special entity offered by A-Frame that intrinsically grabs the continously changing position as well as rotation values of your mobile phone while you are using an A-Frame powered VR app in the browser. It takes advantage of the various gyro sensors in your phone to achieve this under the hood.
 
-Here's how we can add a camera entity. We can optionally give it a shape and animation, which helps us track it's movement by serving as a cursor.
+Here's how we can add a camera entity. We can optionally give it a shape and animation, which helps us track its movement by serving as a cursor.
 
 ```html
  <!--camera entity-->
@@ -159,7 +159,7 @@ Here's how we can add a camera entity. We can optionally give it a shape and ani
   </a-entity>
 ```
 
-By the end of this section, your VR app should ideally look like as shown below. But only if you haven't switched the resources with your custom ones, of course!
+By the end of this section, your VR app should ideally look like the one shown below. (If you've customized your resources, then it'll look cooler than the one below.)
 
 ![first look](https://raw.githubusercontent.com/pluralsight/guides/master/images/83779eef-aa4b-4cd3-968e-1417afc4fd0b.51)
 
@@ -184,7 +184,7 @@ client.login({}, function (success,data) {
 
 We can connect to deepstream's JS client as shown above. For this tutorial, I have used deepstream's hosted version called deepstreamHub. For this, navigate to deepstream's [dashboard](dashboard.deepstreamhub.com) and create an account for free. Next, add a new application and give it a name. On the home page of this application, you'll find something called the APP URL. Add this URL in the above code.
 
-deepstream comes with a many [authentication mechanisms](https://deepstreamhub.com/tutorials/guides/security-overview/#authentication). For our application, we will simply use the NO AUTH mechanism for the sake of simplicity of this tutorial. This is the reason why the first parameter of the login method is left empty. You can also choose to skip this paramater completely. Login method's callback has two parameters- `success` is a boolean variable, which if true implies that the login was successful and `data` contains some user specific data such as a unique ID. This data is different for different users. We'll use this unique ID in order to differentiate between multiple avatars generated by different users that would appear in the scene.
+deepstream comes with many [authentication mechanisms](https://deepstreamhub.com/tutorials/guides/security-overview/#authentication). For our application, we will simply use the `NO AUTH` mechanism for the sake of simplicity of this tutorial. This is the reason why the first parameter of the login method is left empty. You can also choose to skip this paramater completely. Login method's callback has two parameters- `success` is a boolean variable, which if true implies that the login was successful and `data` contains some user specific data such as a unique ID. This data is different for different users. We'll use this unique ID in order to differentiate between multiple avatars generated by different users that would appear in the scene.
 
 ```javascript
 //startup by creating a new record for each user
@@ -247,7 +247,7 @@ For simplicity, we'll restrict the avatar's rotation/movement to x-axis only, wh
 
 We retrieve an existing record or create a new one using `client.record.getRecord(<record name>);` We will ensure that it's a unique record for every user by adding the client's id to the name(path) of the record. Further, we need to add all the required attribures in this record, including the initial position which is selected at random. As discussed above, we track the movement of the phone by using the camera entity and we update this data every 100 milliseconds as seen above and consequently set this new data in the record each time.
 
-[Presence](https://deepstreamhub.com/tutorials/guides/presence/) is a common term in the realtime world which basically gives you the information about the user's online status. In our case, we would create and make the avatar appear in the scene only when a user comes online(hits the URL) and likewise make it disappear as soon as a user quits the app, in other words, closes the browser window on his/her phone. Additionally, deepstream allows you to subscribe to presence, which fires a callback every time a new user logs in or an existing user logs out. This is exactly what we require in our app.
+[Presence](https://deepstreamhub.com/tutorials/guides/presence/) is a common term in the realtime world. It gives you the information about the user's online status. In our case, we would display the avatar in the scene only when a user comes online (hits the URL) and make it disappear as soon as a user quits the app (i.e. closes the browser window). Additionally, deepstream allows you to subscribe to presence. This lets you fire a callback every time a new user logs in or an existing user logs out. This is exactly what we require in our app.
 
 As soon as a user comes online, we will make the user subscribe to the changes in the record. These changes, as you can imagine will be in the attr object due to changing position and rotation. Our goal is to update the avatar as these attributes update.
 
@@ -404,6 +404,9 @@ We start by removing the complete avatar from the scene. We also make sure to de
 
 #### That's it!
 
-We have now successfully implemented a simple VR app in realtime. Go ahead and test it out with your friends and let them witness the magic. If you have been working in a local envrironment, you might need a local server to host your files. As mentioned above, I personally use [glitch](glitch.com) for all my VR projects. It automatically hosts all the projects and gives a URL which can be instantly used on multiple devices for the applications like we just built.
+We have now successfully implemented a simple VR app in realtime. Go ahead and test it out with your friends and let them witness the magic. If you have been working in a local environment, you might need a local server to host your files. As mentioned above, I personally use [glitch](glitch.com) for all my VR projects. It automatically hosts all the projects and gives a URL which can be instantly used on multiple devices for the applications like we just built.
 
-You now know the basics of both A-Frame and deepstream allowing you to build both VR apps and realtime apps or both together like we just did. Ideas are already brewing in your mind? Go ahead and build that app you've always wanted to! Here's the complete [source code](https://github.com/Srushtika/realtime-multiplayer-webvr-aframe) for this application. Feel free to shout to me on [Twitter](https://twitter.com/Srushtika) if you get stuck or would like to know more about something.
+You now know the basics of both A-Frame and deepstream allowing you to build both VR apps and realtime apps or both together like we just did. Ideas are already brewing in your mind? Go ahead and build that app you've always wanted to! Here's the complete [source code](https://github.com/Srushtika/realtime-multiplayer-webvr-aframe) for this application. 
+
+____
+Thanks for reading this guide! Feel free to shout to me on [Twitter](https://twitter.com/Srushtika) if you get stuck or would like to know more about something. Please favorite this guide if you found it informative or simply interesting!
