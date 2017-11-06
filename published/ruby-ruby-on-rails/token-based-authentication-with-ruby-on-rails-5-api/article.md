@@ -326,7 +326,7 @@ class ApplicationController < ActionController::API
   end
 end
 ```
-By using `before_action`, the server passes the request headers (using the built-in object property `request.headers`) to `AuthorizeApiRequest` every time the user makes a request. The request results are returned to the `@current_user`, thus becoming available to all controllers inheriting from `ApplicationController`.
+By using `before_action`, the server passes the request headers (using the built-in object property `request.headers`) to `AuthorizeApiRequest` every time the user makes a request. Calling `result` on `AuthorizeApiRequest.call(request.headers)` ic s coming from `SimpleCommand` module where it is defined as `attr_reader :result`. The request results are returned to the `@current_user`, thus becoming available to all controllers inheriting from `ApplicationController`.
 
 
 ### Does it work?
