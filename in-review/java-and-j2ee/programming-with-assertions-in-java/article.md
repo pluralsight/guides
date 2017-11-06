@@ -1,23 +1,23 @@
 # Introduction
-Probably, you have used the assertion methods of unit testing frameworks like [JUnit](http://junit.org) or third-party assertion libraries like [AssertJ](http://joel-costigliola.github.io/assertj/).
+You probably have used assertion methods when unit testing through frameworks like [JUnit](http://junit.org) or third-party assertion libraries like [AssertJ](http://joel-costigliola.github.io/assertj/).
 
-But, do you know that Java has a built-in assert mechanism? Have you used it?
+But, do you know that Java has a built-in assert mechanism? If so, have you used it before?
 
-Java's assertions were introduced in Java 1.4, and like the assertion methods of unit testing frameworks, they take a boolean expression to throw an exception if it evaluates to false.
+Java's assertions were introduced way back in Java 1.4, and like the assertion methods of unit testing frameworks, they take a boolean expression to throw an exception if it evaluates to false.
 
 However, they can be used anywhere in the code (with a few restrictions due to some good practices) and with different semantics than the other assertion methods.
 
-Assertions are primary for testing things that you *assume* are true.
+> Assertions test things that you *assume* are true.
 
 It may be things that you consider impossible to happen, things that must be present after executing a piece of code or something that must be true so your code to work.
 
-This may sound like a simple concept, but it's the key to understand and use assertions properly.
+This may sound like a simple concept, but it's the key to understanding and using assertions properly.
 
-In this guide, I'll show you how to use the Java assertion mechanism, the syntax and options to enable and disable assertions, some good practices, how to use assertion to program in the style of Design by Contract, and how they differentiate to exceptions and unit tests.
-
-Let's start with the basics of how to use assertions.
+In this guide, I'll show you how to use the Java assertion mechanism, the syntax and options to enable and disable assertions, good assertion practices, the Design by Contract style of programming using assertions, and how assertions differentiate to exceptions and unit tests.
 
 # Using assertions
+
+Let's start with the basics of how to use assertions.
 
 Assertions use the reserved `assert` keyword. It has the following syntax:
 ```java
@@ -60,9 +60,9 @@ As you might have guessed from its name, `AssertionError` is a subclass of `Erro
 
 Why is `AssertionError` a subclass of `Error` rather than `RuntimeException`?
 
-Because we are not supposed to catch `Error` and its subclasses.
+Because we are **not** supposed to catch `Error` and its subclasses.
 
-It doesn't make sense to try to recover from assertion errors. Such an error would mean that the program is not operating in the expected conditions and it would be very likely that continuing the execution would lead to other errors.
+It doesn't make sense to try to recover from assertion errors. Such an error would mean that the program is not operating under conditions assumed by the programmer to be true. This would make it very likely that continuing the execution will lead to more errors down the line.
 
 So the error will cause the program to stop and a stack trace will be printed, for example:
 ```
@@ -191,10 +191,11 @@ java –ea:com.example... -da:com.example.Utils AssertTest
 
 Now let's review when it's recommended to use assertions and when it's not.
 
-# Assertions' best practices
-There are some situations where it's better to use assertions.
+# Best practices for using assertions
 
-### Do use assertions instead of comments.
+In some cases, assertions are the way to go!
+
+#### Use assertions instead of comments.
 
 Something like the following is good for documentation purposes:
 ```java
@@ -207,7 +208,7 @@ void printTotals() {
 }
 ```
  
-But it cannot really be enforced when testing or running the program. Assertions can help you with this:
+But it's even better to enforce this check when testing or running the program. Assertions can help you with this and highlight potential bugs:
 ```java
 void printTotals() {
   // ...
@@ -221,7 +222,9 @@ void printTotals() {
 }
 ```
 
-### Do use assertions to validate _unreachable_ code. 
+Never again rely on using comments and a debugger. Use assertions instead!
+
+### Use assertions to validate _unreachable_ code. 
 
 This can be especially helpful when you don't want the execution flow to reach a certain point of your program. Like in the following example, you can place an assertion in the `default` clause of a `switch` statement to add an extra protection:
 ```java
@@ -240,7 +243,7 @@ switch(type) {
 }
 ```
 
-However, take into account that truly unreachable code actually generates a compile-time error:
+However, take into account that truly unreachable code can generate a compile-time error:
 ```java
 if(interest < 0) {
   return 0;
@@ -251,7 +254,7 @@ if(interest < 0) {
 assert false : "A valid interest should be returned"; // Compile time error
 ```
 
-### Do use assertions to verify the result of an operation.
+### Use assertions to verify the result of an operation.
 
 Don't think of assertions of something to only check input values or enforce control flow. Remember that you can place an assertion statement anywhere in your program.
  
@@ -261,31 +264,32 @@ String defaultPassw = generateDefaultPassword();
 
 assert isValidPassword(defaultPassw);
 ```
+Many beginners choose to use print statements here. Assertions go a step further by actually evaluating code and flagging it if it does not meet expectations.
 
-And there are situations where assertions are not the best choice.
+### Where to avoid assertions
 
-### Do not use assertions for argument checking in public methods.
+#### Do not use assertions to check arguments in public methods.
+
+At last, a situation where assertions are not the best choice.
 
 In theory, a public method can be used by everyone who has access to its class (although with the introduction of Java 9's module system this may not be completely true). Most likely, they are part of your API.
 
-For this reason, an assert statement is inappropriate, it can be disabled but the method has to enforce the validation of its arguments at all times. 
+For this reason, an assert statement is inappropriate; it can be disabled, but the method has to enforce the validation of its arguments at all times. 
 
-In addition, an assertion can only throw AssertionErrors. By manually checking the arguments, you have the options of using other exceptions or return an error code.
+In addition, an assertion can only throw AssertionErrors. By manually checking the arguments, you have the options of using other exceptions or returning an error code.
 
 This practice doesn't apply to private methods because in these cases, you have more control over what should happen.
 
-Also, note that this practice doesn't say you shouldn't use assertions in public methods. It's just about checking the input of those methods.
+Also, note that this practice doesn't say that you should not use assertions in public methods rather that you should not use them to check inputs to those methods.
 
-### Do not use assertions to perform an operation required by your application.
+#### Do not use assertions to perform an operation required by your application.
 
-Having something like this:
+Having something like the following is bad practice because the `newElement` won't be added when assertions are disabled:
 ```java
 assert list.add(newElement);
 ```
 
-It's a bad practice because the element won't be added when assertions are disabled.
-
-This would be the correct way to do it:
+The correct way to do it would be:
 ```java
 boolean elementAdded = list.add(newElement);
 assert elementAdded;
@@ -299,11 +303,11 @@ Even if something may seem obviously true to you, remember that bugs can appear 
 
 Yes, this may bloat your code, but the advantages of fixing bugs earlier and less debugging time (the stack trace of an `AssertionError` can help you pinpoint the source of the error)
 
-If you're concerned about performance for having lot's of assert statements, don't be.
+And if you're concerned that all your assert statements will harm your performance, **don't be**.
 
-First of all, most of the time, assert operations will be simple comparisons. Then, assert statements should be enabled in development but disabled in production. Remember, they're internal checks to make sure your assumptions are correct, and they should not change the behavior of the application.
+First of all, most of the time, assert operations are simple comparisons that get enabled in development and  disabled in production. Remember, they're *internal* checks to make sure a developer's assumptions are correct. They should not change the behavior of the application.
 
-However, you can make use of an optimization the Java compiler does by placing all the assert statements inside an if block that tests for a `static final false` value:  
+However, you can make use of a Java compiler optimization by **placing all the assert statements inside an if-block** that tests for a `static final false` value:  
 ```java
 static final boolean assertsEnabled = false;
 
@@ -318,7 +322,9 @@ if (assertsEnabled) {
 
 This will eliminate the `if` block from the generated class file because the compiler is smart enough to see that it will never be executed. You can see the explanation of this form of *conditional compilation* at the end of [this section of the Java Language Specification](https://docs.oracle.com/javase/specs/jls/se9/html/jls-14.html#jls-14.21).
 
-# Using design-by-contract style programming with assertions
+For a deeper look at the effects of assertions on performance, look at some of the posts on [this StackOverflow thread](https://stackoverflow.com/questions/4624919/performance-drag-of-java-assertions-when-disabled). 
+
+# Design-by-Contract style and assertions
 Java's assert mechanism can be used for an informal design-by-contract style of programming.
 
 [Design by Contract](https://en.wikipedia.org/wiki/Design_by_contract) is an approach to designing software that views software as a set of components whose interactions are based on mutual defined obligations or contracts in the form of:
@@ -343,7 +349,7 @@ processElement (e : ELEMENT) is
   end
 ```
 
-The `require` clause checks the input, or preconditions, while the `ensure` clause checks the output or postconditions. Both of these conditions are part of the contract associated with this routine.
+Similar to assert, the `require` clause checks the input, or preconditions, while the `ensure` clause checks the output or postconditions. Both of these conditions are part of the contract associated with this routine.
 
 But we can also have conditions that must apply to the whole class all the time (like before and after calling one of its methods), not just at a certain moment. These are known as class invariants:
 ```eiffel
@@ -391,34 +397,27 @@ assert checkClassInvariants();
 
 Let's talk about some popular misconceptions about assertions.
 
-### You should run production code with assertions turned on.
+### Production code should be run with assertions turned on.
 
-Assertions are a development-time tool, they are not meant for production environments.
+Assertions are a development-time tool **for testing purposes only**. They are not meant for production environments. They validate your assumptions to help the developer prevent errors down the line. 
 
-They are a tool to validate your assumptions so you can take other measures to prevent errors. 
+Why didn't the assumption hold true when testing this or performing that? Answer this question, find the root cause and fix it. But do so in the development stages. The point of using assertions is to prevent those errors from happening by the time code becomes production-worthy. 
 
-Why didn't the assumption hold true when testing this or performing that?
-
-Answer this question, find the root cause and fix it.
-
-The point of using assertions is to prevent those errors from happening in production. They shouldn't be used as a barrier to avoid problems in production.
-
-Besides, remember, we are not supposed to use or handle exceptions of type Error or its subclasses, which takes me to the next misconception.
-
+Besides, remember, we are not supposed to use assertions to handle errors, which takes me to the next misconception.
 
 ### Instead of asserting a condition, I can just throw a RuntimeException.
 
 Sometimes yes, you can throw an exception instead of using an assertion. In fact, assertions are built on top of exceptions, and an AssertionError can be caught like any other Java exception (not that we should do it).
 
-But not in all cases you can substitute an assertion by an exception.
+But cases exist in which you cannot substitute an assertion with an exception.
 
-The purpose of assertions is different than the purpose of exceptions.
-
-Assertions are intended to test assumptions and detect bugs. On the other hand, exceptions indicate *exceptional* conditions.
+Once again, assertions serve a distinct purpose from exceptions. They are intended to test assumptions and detect bugs. Meanwhile, exceptions indicate *exceptional* conditions &mdash; problems for which the developer may not have accounted.
 
 You can use assertions for internal logic checks within your code, unchecked exceptions for error conditions outside your immediate code's control, and checked exceptions for *business* and recoverable errors.
 
-Besides, don't forget that assertions can be enabled or disabled (globally or for individual packages or classes). If you really care about something happening, maybe it's better to use an exception instead.
+Besides, don't forget that assertions can be enabled or disabled (globally or for individual packages or classes). 
+
+> If you really care if a particular process happens seamlessly, exceptions may be better.
 
 For example, you can start by using an assumption to check that the execution flow doesn't reach a certain point of your program:
 ```java
@@ -456,7 +455,7 @@ switch(type) {
 
 But with the advantage of having the option to disable the throwing of the exception.
 
-However, if you find that the assumption of the `default` clause being *unreachable*, most of the time doesn't hold true, it's better to use something like a meaningful exception:
+And, as with customizable assert messages, it is better practice to use meaningful exceptions whenever possible:
 ```java
 switch(type) {
   case 1:
@@ -473,24 +472,24 @@ switch(type) {
 }
 ```
 
-### Unit tests substitute assertions.
+### Unit tests are substitutes for assertions.
 
 In some way, assert statements serve as tests of your code.
 
-However, neither unit tests substitute assertions nor assertions substitute unit tests.
+However, unit tests should not substitute assertions and assertions should not substitute unit tests.
 
 Instead, assert statements can *complement* your unit tests.
 
-Assertions validate assumptions about the internal state of your program. Things like preconditions, postconditions, and invariants.
+Assertions validate assumptions about the internal state of your program &mdash; things like preconditions, postconditions, and invariants.
 
-In contrast, unit tests check the external behavior of your program. Generally, they follow the structure Arrange-Act-Assert. In other words, they set the preconditions (don't test them), perform the operation, and assert the result, all from an external perspective of the class or method being tested.
+In contrast, unit tests check the external behavior of your program. Generally, they follow the structure **Arrange-Act-Assert**. In other words, they set the preconditions (don't test them), perform the operation, and assert the result, all from an external perspective of the class or method being tested.
 
-Yes, there can be some overlap between them, the assertions of the unit tests may be the same than the postconditions assertions, but they have their own and different purposes.
+Yes, there can be some overlap between them, the assertions of the unit tests may be the same than the postconditions assertions, but they have different purposes.
 
-There's a limit of what you can do with assertion statements. Unit tests provide more flexibility and have a bigger scope than assertions. In fact, unit tests can drive the software development process (Test-driven development).
+There's a limit of what you can do with assertion statements. Unit tests provide more flexibility and have a bigger scope than assertions since they are specifically tailored to certain tasks. In fact, unit tests often drive the software development process, as seen by the test-driven development model. 
 
 # Conclusion
-The idea behind assertions is simple, a boolean condition is checked, it does nothing if it is true but throws an error if it is false.
+The idea behind assertions is simple: a boolean condition is checked, it does nothing if it is true but throws an error if it is false.
 
 Although it's a feature that is not used quite often (or not very well-known in some cases), it can turn out to be something helpful.
 
@@ -498,11 +497,11 @@ Assertions are more a development-time tool, they can help you to discover an in
 
 In other words, they make sure that your application logic is correct.
 
-They are different than exceptions:
+They are different from exceptions:
 - Exceptions can be caught, assertions are not meant to be caught. 
 - Assertions can be disabled, exceptions cannot be disabled. 
 
-They are different than unit tests:
+They differ from unit tests too:
 - Assertions check the internal state of your program. Unit tests check the external behavior of your program.
 - They have a bigger scope than assertions. Unit tests can drive the software development process (Test-driven development).
 
@@ -516,3 +515,5 @@ At the end of [this Oracle's document about assertions](https://docs.oracle.com/
 I wonder, would assertions had become more popular among Java programmers if they were more formal (like the Eiffel implementation) or with more features (like Groovy's)?
 
 What do you think?
+
+Let me know in the comments below and favorite this guide if you found it helpful or interesting. Thanks for reading!
