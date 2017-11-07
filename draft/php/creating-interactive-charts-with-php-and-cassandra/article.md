@@ -1,4 +1,4 @@
-Apache Cassandra, a distributed database with unique benefits which should ideally be present in the developer's toolkit. Cassandra is free and open-source distributed database management system which is designed to manage very large amount of structured data.
+Apache Cassandra is a distributed database with unique benefits which should ideally be present in the developer's toolkit. Cassandra is free and open-source distributed database management system which is designed to manage very large amount of structured data.
 
 In this article, we’ll discuss the step-by-step process of creating charts by fetching chart data from a cassandra database. For this, we will use FusionCharts, a JavaScript-charting library and its PHP wrapper.
 
@@ -168,13 +168,10 @@ $toptenChart = new FusionCharts("bar2d", "topChart" , '600', '450', "chart-conta
 $toptenChart->render();	
 ```
 
-![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/8849f396-2aea-436d-a5ec-5cb0f90b504c.jpeg)
-
-
 We are done with all the steps to render an interactive chart using FusionCharts. The output looks like as shown in the image below:
 
-Perfect isn’t it?
+![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/8849f396-2aea-436d-a5ec-5cb0f90b504c.jpeg)
 
-If you are having trouble rendering the chart, you can refer to source code from [GitHub repository](https://github.com/sikrigagan/PHP-Cassandra-Charts).
+Perfect, isn’t it? If you are having trouble rendering the chart, you can refer to source code from [GitHub repository](https://github.com/sikrigagan/PHP-Cassandra-Charts).
 
 Leave a comment or feel free to say hi on [Twitter](https://twitter.com/sikrigagan)!
