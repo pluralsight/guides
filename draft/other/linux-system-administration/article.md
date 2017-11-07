@@ -529,6 +529,10 @@ else
 fi
 ```
 
+The above script returns different messages depending on the current day of the month. The first `if` tests whether the current day is less or equal to 10. If this condition evaluates to true, the message `We are within the first 10 days of the month` is displayed, and the other conditions are not tested. Otherwise, `elif` checks if `$CURRENTDAYOFTHEMONTH` is less or equal to 20. If that is the case, `We are within the first 20 days of the month` will be returned instead. If none of the previous conditions are met, the default `else` block will apply, returning `We are within the last 10 days of the month`.
+
+>If several alternative conditions need to be considered, we can still use several `elif` blocks. However, it's cleaner to use `case`, as explained next.
+
 ## Loops and Case
 Once in a while, some tasks will need to be executed repeatedly either a fixed number of times or until a specified condition is satisfied. That is where the `for` and `while` *looping constructs* come in handy. Additionally, at times you will need a script to *choose* between different courses of action based on the value of a given variable - we'll use the `case` statement for that.
 
