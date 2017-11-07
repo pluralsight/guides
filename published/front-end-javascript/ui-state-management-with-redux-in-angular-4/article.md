@@ -204,9 +204,10 @@ import {compose} from "@ngrx/core";
 import {combineReducers} from "@ngrx/store";
 
 export interface AppState {
-  layout: fromLayout.State
+    reducer: {
+        layout: fromLayout.State;
+    };
 }
-
 export const reducers = {
   layout: fromLayout.reducer
 };
@@ -224,7 +225,7 @@ export function metaReducer(state: any, action: any) {
  * Layout selectors
  */
 
-export const getLayoutState = (state: AppState) => state.layout;
+export const getLayoutState = (state: AppState) => state.reducer.layout;
 
 ```
 Finally, add the `metaReducer` to the `StoreModule` in the `imports` array of the root module:
