@@ -1,3 +1,8 @@
+### Creating Interactive charts with PHP and Cassandra by Gagan Sikri
+- [Read the guide](https://www.pluralsight.com/guides/php/creating-interactive-charts-with-php-and-cassandra)
+- [Read more from Gagan Sikri](https://www.pluralsight.com/guides/author/sikrigagan) <img src="https://avatars0.githubusercontent.com/u/6383448?v=4" width="30" height="30" alt="Gagan Sikri" />
+- Related to: PHP
+
 ### Programming with Assertions in Java by Esteban Herrera
 - [Read the guide](https://www.pluralsight.com/guides/java-and-j2ee/programming-with-assertions-in-java)
 - [Read more from Esteban Herrera](https://www.pluralsight.com/guides/author/eh3rrera) <img src="https://avatars2.githubusercontent.com/u/11665759?v=4" width="30" height="30" alt="Esteban Herrera" />
