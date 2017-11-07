@@ -1,8 +1,3 @@
-### Creating Interactive charts with PHP and Cassandra by Gagan Sikri
-- [Read the guide](https://www.pluralsight.com/guides/php/creating-interactive-charts-with-php-and-cassandra?status=draft)
-- [Read more from Gagan Sikri](https://www.pluralsight.com/guides/author/sikrigagan) <img src="https://avatars0.githubusercontent.com/u/6383448?v=4" width="30" height="30" alt="Gagan Sikri" />
-- Related to: PHP
-
 ### Test guide by Rattanak Chea
 - [Read the guide](https://www.pluralsight.com/guides/python/test-guide?status=draft)
 - [Read more from Rattanak Chea](https://www.pluralsight.com/guides/author/rattanakchea) <img src="https://avatars3.githubusercontent.com/u/3496405?v=4" width="30" height="30" alt="Rattanak Chea" />
