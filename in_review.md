@@ -1,8 +1,3 @@
-### Creating Interactive charts with PHP and Cassandra by Gagan Sikri
-- [Read the guide](https://www.pluralsight.com/guides/php/creating-interactive-charts-with-php-and-cassandra?status=in-review)
-- [Read more from Gagan Sikri](https://www.pluralsight.com/guides/author/sikrigagan) <img src="https://avatars0.githubusercontent.com/u/6383448?v=4" width="30" height="30" alt="Gagan Sikri" />
-- Related to: PHP
-
 ### Data Stream Management with Apache Kafka Streams by Kobi Hikri
 - [Read the guide](https://www.pluralsight.com/guides/big-data/data-stream-management-with-apache-kafka-streams?status=in-review)
 - [Read more from Kobi Hikri](https://www.pluralsight.com/guides/author/kobihikri) <img src="https://avatars2.githubusercontent.com/u/4434689?v=4" width="30" height="30" alt="Kobi Hikri" />
