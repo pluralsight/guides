@@ -229,7 +229,7 @@ This code has a bit of SQL-like look and would enhance the readability and the p
 Person FindPerson(int id) {
    var people = DbContext.GetPeople(); // Returns List<Person>
 
-   return people.Where(x => x.ID == id).FirstOrDefault();
+   return people.FirstOrDefault(x => x.ID == id);
 }
 
 // Then do this
