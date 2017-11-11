@@ -1,8 +1,3 @@
-### Role of Configuration Management in DevOps by Abhinav Kaiser
-- [Read the guide](https://www.pluralsight.com/guides/other/role-of-configuration-management-in-devops?status=draft)
-- [Read more from Abhinav Kaiser](https://www.pluralsight.com/guides/author/abskaiser) <img src="https://avatars2.githubusercontent.com/u/26959448?v=4" width="30" height="30" alt="Abhinav Kaiser" />
-- Related to: other
-
 ### Test guide by Rattanak Chea
 - [Read the guide](https://www.pluralsight.com/guides/python/test-guide?status=draft)
 - [Read more from Rattanak Chea](https://www.pluralsight.com/guides/author/rattanakchea) <img src="https://avatars3.githubusercontent.com/u/3496405?v=4" width="30" height="30" alt="Rattanak Chea" />
