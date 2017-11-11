@@ -30,7 +30,7 @@ Configuration management in DevOps is termed as comprehensive configuration mana
 
 <center>
 ![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/3c66133a-deaa-47a2-8a92-d90df37eee76.jpg)
-
+<br />
 Figure 1: Comprehensive Configuration Management</center>
 
 <h2>Source Code Repository</h2>
@@ -80,7 +80,7 @@ The management of binaries can be cumbersome. When there are thousands of binari
 Every time a build is successfully run, the binary that gets generated is stored in the Snapshot repository. But not every one of them gets pushed into production unless the project adopts the Continuous Deployment methodology. The binary that gets pushed into the production is first moved into the Release partition, and then it gets deployed into production. This is illustrated in figure 2.
 
 <center>
-![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/5bb8f8af-c70c-4211-a091-6a57e91a1180.jpg)
+![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/5bb8f8af-c70c-4211-a091-6a57e91a1180.jpg)<br />
 Figure 2: Artifact Repository</center>
 
 <h3>Illustration on Artifact Repository</h3>
@@ -100,8 +100,7 @@ The configuration management database (CMDB) comes from the ITIL service managem
 <center>
 ![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/db096003-a8e3-4bb2-a0bb-9350b2dd871f.jpg)
 
-<br /><br />Figure 3: CMDB Illustration</center>
-![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/f7f2c245-a8ef-4c5b-b1e9-4d71951c5dd1.jpg)
+<br /><br />Figure 3: CMDB Illustration</center><br />
 
 
 In the figure 3, I have represented services, applications, databases and servers. In the illustration, Service 1 is dependent on Application A. This is represented through the relationship (arrow in the figure). The Application A leverages on Database 1. Both the Application A and Database 1 reside on Server A. 
