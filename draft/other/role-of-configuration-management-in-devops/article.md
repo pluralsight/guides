@@ -28,7 +28,10 @@ Configuration management in DevOps is termed as comprehensive configuration mana
 2.	<strong>Artifact Repository</strong> – Used during the development and operations phases.
 3.	<strong>Configuration Management Database</strong> – Used during the development and operations phases.
 
-<center>Figure 1: Comprehensive Configuration Management</center>
+<center>
+![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/3c66133a-deaa-47a2-8a92-d90df37eee76.jpg)
+
+Figure 1: Comprehensive Configuration Management</center>
 
 <h2>Source Code Repository</h2>
 A source code repository primarily houses all versions of code. Apart from the code, it is a good practice to store test scripts, build scripts, deployment scripts and configuration files in a source code repository.
@@ -76,7 +79,9 @@ The management of binaries can be cumbersome. When there are thousands of binari
 
 Every time a build is successfully run, the binary that gets generated is stored in the Snapshot repository. But not every one of them gets pushed into production unless the project adopts the Continuous Deployment methodology. The binary that gets pushed into the production is first moved into the Release partition, and then it gets deployed into production. This is illustrated in figure 2.
 
-<center>Figure 2: Artifact Repository</center>
+<center>
+![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/5bb8f8af-c70c-4211-a091-6a57e91a1180.jpg)
+Figure 2: Artifact Repository</center>
 
 <h3>Illustration on Artifact Repository</h3>
 In the figure 2 illustration, various binaries are generated every time the build is successful. The binaries in this example are named as Binary 0.x, and are stored in the Snapshot partition. Not every binary is promoted into production. 
@@ -92,7 +97,12 @@ In the absence of a logical partition, imagine the amount of planning that had t
 <h2>Configuration Management Database</h2>
 The configuration management database (CMDB) comes from the ITIL service management framework. The CMDB is a repository of various infrastructure devices, applications, databases and services. It is not just an inventory, but it also bears relationships between the various elements within the CMDB. This is illustrated in figure 3.
 
-<center>Figure 3: CMDB Illustration</center>
+<center>
+![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/db096003-a8e3-4bb2-a0bb-9350b2dd871f.jpg)
+
+<br /><br />Figure 3: CMDB Illustration</center>
+![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/f7f2c245-a8ef-4c5b-b1e9-4d71951c5dd1.jpg)
+
 
 In the figure 3, I have represented services, applications, databases and servers. In the illustration, Service 1 is dependent on Application A. This is represented through the relationship (arrow in the figure). The Application A leverages on Database 1. Both the Application A and Database 1 reside on Server A. 
 All these relationships are indicated with arrows. However, in a real CMDB, each of these arrows have a different connotation. For examples the relationship between an application and a database is generally makes use of. To indicate the application residing on a server, the relationship can be dependent on. The relationship around data flow between applications (indicated between Application B and Application C) is data dependency.
