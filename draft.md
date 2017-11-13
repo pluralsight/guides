@@ -1,3 +1,8 @@
+### Everything You Need To Know About JavaScript Objects by Miroslav Gajic
+- [Read the guide](https://www.pluralsight.com/guides/front-end-javascript/everything-you-need-to-know-about-javascript-objects?status=draft)
+- [Read more from Miroslav Gajic](https://www.pluralsight.com/guides/author/mgajic78) <img src="https://avatars3.githubusercontent.com/u/25859460?v=4" width="30" height="30" alt="Miroslav Gajic" />
+- Related to: Front-End JavaScript (Angular, React, Meteor, etc)
+
 ### Test guide by Rattanak Chea
 - [Read the guide](https://www.pluralsight.com/guides/python/test-guide?status=draft)
 - [Read more from Rattanak Chea](https://www.pluralsight.com/guides/author/rattanakchea) <img src="https://avatars3.githubusercontent.com/u/3496405?v=4" width="30" height="30" alt="Rattanak Chea" />
