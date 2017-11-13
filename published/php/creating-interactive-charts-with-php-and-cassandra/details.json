@@ -3,7 +3,12 @@
     "author_name": "sikrigagan",
     "author_real_name": "Gagan Sikri",
     "branch": "master",
-    "branches": [],
+    "branches": [
+        [
+            "adityavarshney",
+            "adityavarshney-php-creating-interactive-charts-with-php-and-cassandra"
+        ]
+    ],
     "filename": "article.md",
     "first_commit": "692058691f2d782a00f264d1192908661c026615",
     "image_url": "https://avatars0.githubusercontent.com/u/6383448?v=4",
