@@ -1,7 +1,7 @@
-### Draft by kranetr
-- [Read the guide](https://www.pluralsight.com/guides/other/draft?status=draft)
-- [Read more from kranetr](https://www.pluralsight.com/guides/author/kranetr) <img src="https://avatars2.githubusercontent.com/u/10641956?v=4" width="30" height="30" alt="kranetr" />
-- Related to: other
+### Draft by Troy Kranendonk
+- [Read the guide](https://www.pluralsight.com/guides/python/draft?status=draft)
+- [Read more from Troy Kranendonk](https://www.pluralsight.com/guides/author/kranetr) <img src="https://avatars2.githubusercontent.com/u/10641956?v=4" width="30" height="30" alt="Troy Kranendonk" />
+- Related to: Python
 
 ### Everything You Need To Know About JavaScript Objects by Miroslav Gajic
 - [Read the guide](https://www.pluralsight.com/guides/front-end-javascript/everything-you-need-to-know-about-javascript-objects?status=draft)
