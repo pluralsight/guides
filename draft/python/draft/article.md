@@ -54,9 +54,11 @@ b_chart.render_in_browser()
 ```
 #### <b> Example</b>
 
-
+<details>
+<summary><b>EXAMPLE</b></summary>
+<br>
 ![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/ec4a6f0d-9cde-4785-8a76-2b819df70775.gif)
-
+</details>
 ---
 
 
@@ -75,7 +77,7 @@ Then you can change a number of objects.  (_Exapnd the Dropdown for all availble
 
 
 <details>
-<summary>Objects</summary>
+<summary><b>```Click``` To Reveal Some Objects</b></summary>
 <br>
 Properties & Description
 
@@ -86,8 +88,6 @@ Properties & Description
 ``` value_colors```The print_values color list<br>
 Complete List: http://www.pygal.org/en/stable/documentation/custom_styles.html
 </details>
-
-
 
 
 
