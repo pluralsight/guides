@@ -1,6 +1,5 @@
-# Creating Graphs with Python Pygal
 
-Pygal 
+Pygal is amazing for creating customizable SVG's that can easily scale.  
 
 
 
@@ -12,7 +11,7 @@ You can easiely and minimally create line charts, bar graphs, even Radar Chars w
 <br>
 
 ---
-#### Let's Begin - Install
+#### <b>Let's Begin with an Install</b>
 
 Open Terminal
 ```
@@ -21,14 +20,14 @@ $  pip install Pygal
 <b>Extra Help:</b>  Installing and Dependencies  - http://www.pygal.org/en/stable/installing.html
 
 ---
-<br>
-#### Step 1:  Import
+
+#### <b>Step 1:  Import</b>
 
 ```
 import pygal
 ```
-<br>
-#### Step 2: Create a Variable to Store Your Graph
+
+#### <b>Step 2: Create a Variable to Store Your Graph</b>
 For our first example we'll create a bar chart.  We simply need to create a varible and store ```pygal.Bar()``` inside.
 
 ```
@@ -36,8 +35,8 @@ b_chart = pygal.Bar()
 ```
 You can easily use ```pygal.Line```, ```pygal.pie``` etc.
 
-<br>
-#### Step 3: Let's Add Some Values
+
+#### <b>Step 3: Let's Add Some Values</b>
 Next we need to start creating our chart.  I will be using Data that I scraped from a gaming tracker for the game <b>Destiny 2.</b>  Eventually the graph will be live and I can see my stats change, hopefully in real time.  <i>Let's not get ahead of our selves.</i>
 
 We need to give our chart a title.
@@ -55,7 +54,7 @@ Technically we can be finished without further customization.  We can now render
 ```
 b_chart.render_in_browser()
 ```
-#### Example
+#### <b> Example</b>
 
 
 ![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/af93de40-4e61-4329-93b3-835e127e77cc.gif)
