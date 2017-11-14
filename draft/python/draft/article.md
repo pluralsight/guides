@@ -52,17 +52,19 @@ Technically we can be finished without further customization.  We can now render
 ```
 b_chart.render_in_browser()
 ```
-#### <b> Example</b>
-
 <details>
-<summary><b>EXAMPLE</b></summary>
+<summary><b>```Click``` To Reveal Our Example</b></summary>
 <br>
 ![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/ec4a6f0d-9cde-4785-8a76-2b819df70775.gif)
 </details>
+
 ---
 
+<br>
 
-#### <b>Step 2: Customize</b>
+
+
+#### <b>Let's Customize</b>
 Lets say that we want some custom colors added to our graph<br>
 ![#E80080](https://placehold.it/15/e80080/000000?text=+) `#E80080`
 ![#404040](https://placehold.it/15/404040/000000?text=+) `#404040`
