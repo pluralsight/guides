@@ -1,4 +1,3 @@
-
 # Creating Graphs w/ Python Pygal
 
 
@@ -15,9 +14,9 @@ You can easiely and minimally create line charts, bar graphs, even Radar Chars w
 Just know SVG's are interactive. 
 
 ---
-#### Install
+#### Let's Bgein - Install
 
-Open Term
+Open Terminal
 ```
 $  pip install Pygal
 ```
@@ -40,20 +39,33 @@ We need to give our chart a title.
 ```
 b_chart.title = "Destiny Kill/Death Ratio"
 ```
-Next we need to create an axis with a range.  
-```
-line_chart.x_labels = map(str, range(0, 1.25))
-```
-Don't forget to include ```str``` to convert the int into a string.
-
 Now we can start adding some data. I need 3 bars for each player.
 ```
-bar_chart.add("Dijiphos", [0.93])
-bar_chart.add("Punisherdonk", [1.05])
-bar_chart.add("Punisherdonk", [1.10])
+b_chart.add("Dijiphos", [0.93])
+b_chart.add("Punisherdonk", [1.05])
+b_chart.add("Musclemuffins20", [1.10])
 ```
 
-Technically we can be finished with out further customization.
+Technically we can be finished with out further customization.  We can render this quickly to a browser using:
+```
+import pygal
+
+b_chart = pygal.Bar()
+b_chart.add("Dijiphos", [0.93])
+b_chart.add("Punisherdonk", [1.05])
+b_chart.add("Musclemuffins20", [1.10])
+b_chart.render_in_browser()
+```
+See the example below
+
+
+![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/af93de40-4e61-4329-93b3-835e127e77cc.gif)
+
+
+
+
+
+
 
 
 
