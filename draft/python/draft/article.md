@@ -7,12 +7,7 @@ Pygal is amazing for creating customizable SVG's that can easily scale.
 
 You can easiely and minimally create line charts, bar graphs, even Radar Chars with very little code. 
 <br>
-<br>
 
-<details>
-
-<summary>Objects</summary>
-<br>
 ---
 #### <b>Let's Begin with an Install</b>
 
