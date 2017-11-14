@@ -85,7 +85,7 @@ Properties & Description
 ``` colors```The serie color list<br>
 ``` value_colors```The print_values color list<br>
 Complete List: http://www.pygal.org/en/stable/documentation/custom_styles.html
-<details>
+</details>
 
 
 
