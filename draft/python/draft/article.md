@@ -1,39 +1,44 @@
-# Creating Graphs w/ Python Pygal
+# Creating Graphs with Python Pygal
+
+Pygal 
 
 
-Py Gal - works well with Django Flask etc. 
-+ SVG Graphics
-+ PNG
-+ Embeds etc
+
+<br>
+<br>
 
 You can easiely and minimally create line charts, bar graphs, even Radar Chars with very little code. 
-
-
-
->Examples will be static images due to Githbubs supprt of SVG's is.....  sigh...
-Just know SVG's are interactive. 
+<br>
+<br>
 
 ---
-#### Let's Bgein - Install
+#### Let's Begin - Install
 
 Open Terminal
 ```
 $  pip install Pygal
 ```
----
+<b>Extra Help:</b>  Installing and Dependencies  - http://www.pygal.org/en/stable/installing.html
 
-In an editor: Sublime, IDLE, etc type the following -
+---
+<br>
+#### Step 1:  Import
+
 ```
 import pygal
 ```
-For this example we'll create a bar chart and a stacked bar chart.  So, we simply need to create a varible and store ```pygal.Bar()``` inside.
+<br>
+#### Step 2: Create a Variable to Store Your Graph
+For our first example we'll create a bar chart.  We simply need to create a varible and store ```pygal.Bar()``` inside.
 
 ```
 b_chart = pygal.Bar()
 ```
 You can easily use ```pygal.Line```, ```pygal.pie``` etc.
 
-Next we need to start creating our chart.  I will be using Data that I scraped from a gaming tracker for the Game Destiny 2.  Eventually the graph will be live and I can see my stats change hopefully in real time.  Let's not get a head of our selves.
+<br>
+#### Step 3: Let's Add Some Values
+Next we need to start creating our chart.  I will be using Data that I scraped from a gaming tracker for the game <b>Destiny 2.</b>  Eventually the graph will be live and I can see my stats change, hopefully in real time.  <i>Let's not get ahead of our selves.</i>
 
 We need to give our chart a title.
 ```
@@ -46,17 +51,11 @@ b_chart.add("Punisherdonk", [1.05])
 b_chart.add("Musclemuffins20", [1.10])
 ```
 
-Technically we can be finished with out further customization.  We can render this quickly to a browser using:
+Technically we can be finished without further customization.  We can now render this quickly to a browser using ```render_in_browser()```:
 ```
-import pygal
-
-b_chart = pygal.Bar()
-b_chart.add("Dijiphos", [0.93])
-b_chart.add("Punisherdonk", [1.05])
-b_chart.add("Musclemuffins20", [1.10])
 b_chart.render_in_browser()
 ```
-See the example below
+#### Example
 
 
 ![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/af93de40-4e61-4329-93b3-835e127e77cc.gif)
