@@ -52,6 +52,7 @@ Technically we can be finished without further customization.  We can now render
 ```
 b_chart.render_in_browser()
 ```
+---
 <details>
 <summary><b>```Click``` To Reveal Our Example</b></summary>
 <br>
@@ -65,7 +66,7 @@ b_chart.render_in_browser()
 
 
 #### <b>Let's Customize</b>
-Lets say that we want some custom colors added to our graph<br>
+Lets say we want some custom colors added to our graph<br>
 ![#E80080](https://placehold.it/15/e80080/000000?text=+) `#E80080`
 ![#404040](https://placehold.it/15/404040/000000?text=+) `#404040`
 ![#9bc850](https://placehold.it/15/9bc850/000000?text=+) `#9BC850`
@@ -75,9 +76,13 @@ First, import ```style```.
 ```
 from pygal.style import Style
 ```
-Then you can change a number of objects.  (_Exapnd the Dropdown for all availble options._)
+Then you can change a number of objects by adding:
+```
+custom_style = Style(
+```
+_Notice I left the perenteses open_
 
-
+---
 <details>
 <summary><b>```Click``` To Reveal Some Objects</b></summary>
 <br>
@@ -91,8 +96,27 @@ Properties & Description
 Complete List: http://www.pygal.org/en/stable/documentation/custom_styles.html
 </details>
 
+----
+
+Let's change the color of our bars. _Don't forget to indent and close our final perecteses._
+```
+    colors=('#E80080', '#404040', '#9BC850'))
+```
+Now all we need to do is pass ```style=custom_style``` in our ```pygal.Bar()```
+```
+b_chart = pygal.Bar(style=custom_style)
+```
+
+---
+<details>
+<summary><b>```Click``` To Reveal Our Example</b></summary>
+<br>
 
 
+![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/f522dcab-e4f3-4a1e-9e94-0e318634c7ee.gif)
+</details>
+
+----
 
 
 
