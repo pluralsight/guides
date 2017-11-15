@@ -1,6 +1,14 @@
 You may be familar with Matplotlib, Seaborn, and Bokeh to name a few.  Sure, there are a few others the allow interactivty and soforth, but it's Pygal that allows you to create SVG's. Besides the scalability of an SVG, you can edit them in any editor and can print them with very high quality resolution.  My favorite part is that I can import it straight into Illustrator to enhance my aesthetics. Lastly, you can easiely and minimally create line charts, bar graphs, even Radar Charts with very little code as you'll see below. 
 <br>
 
+<details>
+<summary><b>```Click``` To Reveal Some</b></summary>
+<br>
+
+
+![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/f522dcab-e4f3-4a1e-9e94-0e318634c7ee.gif)
+</details>
+
 ---
 ##### <b>Let's Begin with an Install</b>
 
@@ -116,8 +124,6 @@ b_chart = pygal.Bar(style=custom_style)
 <br>
 <br>
 <br>
-
-
 
 
 
