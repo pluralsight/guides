@@ -62,12 +62,12 @@ Lets say we want some custom colors added to our graph<br>
 ![#404040](https://placehold.it/15/404040/000000?text=+) `#404040`
 ![#9bc850](https://placehold.it/15/9bc850/000000?text=+) `#9BC850`
 
-This is easy to do, actually, it can be done multiple ways.
+This is easy to do, and can actually be achieved in multiple ways.
 First, import ```style```.
 ```
 from pygal.style import Style
 ```
-Then you can change a number of objects by adding:
+You can change a number of objects by simply by adding:
 ```
 custom_style = Style(
 ```
@@ -89,7 +89,7 @@ Complete List: http://www.pygal.org/en/stable/documentation/custom_styles.html
 
 ----
 
-Let's change the color of our bars. _Don't forget to indent and close our final parentheses._
+Let's change the color of our bars.<br>_Don't forget to indent and close our final parentheses._
 ```
 custom_style = Style(
   colors=('#E80080', '#404040', '#9BC850'))
@@ -114,11 +114,14 @@ b_chart = pygal.Bar(style=custom_style)
 ----
 
 
+<br>
+<br>
+<br>
 
 
 
 
 
+<br>
 
-
-
+<br>
