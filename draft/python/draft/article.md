@@ -28,13 +28,13 @@ You can easily use ```pygal.Line```, ```pygal.pie``` as well.
 
 
 ##### <b>Step 3: Let's Add Some Values</b>
-Next we need to start creating our chart.  I will be using Data that I scraped from a gaming tracker for the game <b>Destiny 2.</b>  Eventually the graph will be live and I'll be able to see my stats change (_hopefully_) in real time.  <i>Let's not get ahead of our selves.</i>
+Next we need to start creating our chart.  I will be using Data that I scraped from a gaming tracker for the game <b>Destiny 2.</b>  Eventually the graph will be live and I'll be able to see my stats change (_hopefully_) in real time. <br> <i>Let's not get ahead of our selves.</i> <br>In short, everytime I play in a PvP or Crusible Match and eliminate an opponient, or, be eliminated myself, the KD (_Kill/Death Ratio_) will change.  I simply want to compare myself to my clan mates.
 
-We need to give our chart a title.
+So to start things off we'll need a chart a title.
 ```
 b_chart.title = "Destiny Kill/Death Ratio"
 ```
-Now we can start adding some data. I need 3 bars for each player.
+Now we can start adding in our data. I need 3 bars, one for each player.  To do that all need to use ```add``` followed by a title and some values.  
 ```
 b_chart.add("Dijiphos", [0.94])
 b_chart.add("Punisherdonk", [1.05])
@@ -53,9 +53,8 @@ b_chart.render_in_browser()
 </details>
 
 ---
+Let's say we want to add more data.  Those stats are from Quick Play, let's add our Compeetive Data by using a Stacked Bar Chart.
 <br>
-
-
 ##### <b>Let's Customize</b>
 Lets say we want some custom colors added to our graph<br>
 ![#E80080](https://placehold.it/15/e80080/000000?text=+) `#E80080`
