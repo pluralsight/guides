@@ -69,7 +69,7 @@ To start things off we'll need a chart title.
 ```
 b_chart.title = "Destiny Kill/Death Ratio"
 ```
-Now we can start adding in our data. I need 3 bars, one for each player.  To do that all need to use ```add``` followed by a title and some values.  
+Now we can start adding in our data. I need 3 bars, one for each player.  To accomplish this, i'll need to use ```add``` followed by a title and some values.  
 ```
 b_chart.add("Dijiphos", [0.94])
 b_chart.add("Punisherdonk", [1.05])
