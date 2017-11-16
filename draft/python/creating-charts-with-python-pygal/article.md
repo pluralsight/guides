@@ -169,14 +169,11 @@ I would check out [Pygal's](http://www.pygal.org/en/stable/installing.html) docu
 
 <br>
 Leave a comment or reach out and say hi on [Twitter](https://twitter.com/TroyKranendonk)
-Read more at 
 
 
 
-<br>
 
-<br>
-<br>
+
 
 
 
