@@ -108,7 +108,7 @@ b_chart.render_in_browser()
 
 
 ##### <b>Let's Customize</b>
-Lets say we want some custom colors added to our graph<br>
+Say we want some custom colors added to our graph<br>
 ![#E80080](https://placehold.it/15/e80080/000000?text=+) `#E80080`
 ![#404040](https://placehold.it/15/404040/000000?text=+) `#404040`
 ![#9bc850](https://placehold.it/15/9bc850/000000?text=+) `#9BC850`
