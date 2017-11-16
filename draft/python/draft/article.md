@@ -65,7 +65,7 @@ You can easily use ```pygal.Line```, ```pygal.pie``` as well.
 #### Step 3: Let's Add Some Values
 Next we need to start creating our chart.  I will be using Data that I scraped from a gaming tracker for the game <b>Destiny 2.</b>  Eventually the graph will be live and I'll be able to see my stats change (_hopefully_) in real time. <br> <i>Let's not get ahead of our selves.</i> <br>In short, everytime I play in a PvP or Crusible Match and eliminate an opponient, or, be eliminated myself, the KD (_Kill/Death Ratio_) will change.  I simply want to compare myself to my clan mates.
 
-So to start things off we'll need a chart a title.
+To start things off we'll need a chart title.
 ```
 b_chart.title = "Destiny Kill/Death Ratio"
 ```
