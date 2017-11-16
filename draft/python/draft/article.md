@@ -1,3 +1,5 @@
+## Creating Charts with Python Pygal
+
 You may be familar with Matplotlib, Seaborn, and Bokeh to name a few.  Sure, there are a few others the allow interactivty and soforth, but it's Pygal that allows you to create SVG's. Besides the scalability of an SVG, you can edit them in any editor and can print them with very high quality resolution.  My favorite part is that I can import it straight into Illustrator to enhance my aesthetics. Lastly, you can easiely and minimally create line charts, bar graphs, even Radar Charts with very little code as you'll see below. 
 
 #### Check Out The Some Examples Below:
@@ -43,7 +45,7 @@ Open Terminal
 $  pip install Pygal
 ```
 ---
-<b>Extra Help:</b>  Installing and Dependencies  - http://www.pygal.org/en/stable/installing.html
+<b>Extra Help:</b>  Installing and Dependencies  - [Link](http://www.pygal.org/en/stable/installing.html)
 
 ---
 
@@ -115,7 +117,7 @@ First, import ```style```.
 ```
 from pygal.style import Style
 ```
-You can change a number of objects by simply by adding:
+You can change a number of objects by simply adding:
 ```
 custom_style = Style(
 ```
@@ -160,9 +162,18 @@ b_chart = pygal.Bar(style=custom_style)
 </details>
 
 ----
+#### It's a Wrap
+
+I would check out [Pygal's](http://www.pygal.org/en/stable/installing.html) documentation to for further builds.  You should have all the tools needed to create great looking graphs with Python Pygal :)
+
+<br>
+Leave a comment or reach out and say hi on [Twitter](https://twitter.com/TroyKranendonk)
+Read more at 
+
 
 
 <br>
+
 <br>
 <br>
 
