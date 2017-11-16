@@ -2,11 +2,36 @@ You may be familar with Matplotlib, Seaborn, and Bokeh to name a few.  Sure, the
 <br>
 
 <details>
-<summary><b>```Click``` To Reveal Some</b></summary>
+<summary><b>```Click``` Pie Example</b></summary>
 <br>
 
 
-![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/f522dcab-e4f3-4a1e-9e94-0e318634c7ee.gif)
+
+![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/fb8f5685-d93f-4876-ace5-80e69d81a402.gif)
+
+
+</details>
+
+<details>
+<summary><b>```Click```  Dot Example</b></summary>
+<br>
+
+
+
+![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/ee93583e-d848-451b-b23c-94b927e13caf.gif)
+
+</details>
+
+<details>
+<summary><b>```Click``` KPI Example</b></summary>
+<br>
+
+
+
+
+![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/567bc7bb-b0a0-4047-9654-59c91e868144.gif)
+
+
 </details>
 
 ---
