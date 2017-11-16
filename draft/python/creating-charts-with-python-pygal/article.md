@@ -60,6 +60,7 @@ import pygal
 For our first example we'll create a bar chart.  We'll simply need to create a varible and store ```pygal.Bar()``` inside.
 
 ```
+import pygal
 b_chart = pygal.Bar()
 ```
 You can easily use ```pygal.Line```, ```pygal.pie``` as well.
@@ -84,10 +85,15 @@ Next we need to start creating our chart.  I will be using Data that I scraped f
 
 To start things off we'll need a chart title.
 ```
+import pygal
+b_chart = pygal.Bar()
 b_chart.title = "Destiny Kill/Death Ratio"
 ```
 Now we can start adding in our data. I need 3 bars, one for each player.  To accomplish this, i'll need to use ```add``` followed by a title and some values.  
 ```
+import pygal
+b_chart = pygal.Bar()
+b_chart.title = "Destiny Kill/Death Ratio"
 b_chart.add("Dijiphos", [0.94])
 b_chart.add("Punisherdonk", [1.05])
 b_chart.add("Musclemuffins20", [1.10])
@@ -95,6 +101,12 @@ b_chart.add("Musclemuffins20", [1.10])
 
 Technically, we can finish and render without further customization.  To render quickly to a browser we'll use ```render_in_browser()``` as our output. 
 ```
+import pygal
+b_chart = pygal.Bar()
+b_chart.title = "Destiny Kill/Death Ratio"
+b_chart.add("Dijiphos", [0.94])
+b_chart.add("Punisherdonk", [1.05])
+b_chart.add("Musclemuffins20", [1.10])
 b_chart.render_in_browser()
 ```
 ---
@@ -169,11 +181,6 @@ I would check out [Pygal's](http://www.pygal.org/en/stable/installing.html) docu
 
 <br>
 Leave a comment or reach out and say hi on [Twitter](https://twitter.com/TroyKranendonk)
-
-
-
-
-
 
 
 
