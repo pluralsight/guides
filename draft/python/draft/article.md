@@ -1,5 +1,6 @@
 You may be familar with Matplotlib, Seaborn, and Bokeh to name a few.  Sure, there are a few others the allow interactivty and soforth, but it's Pygal that allows you to create SVG's. Besides the scalability of an SVG, you can edit them in any editor and can print them with very high quality resolution.  My favorite part is that I can import it straight into Illustrator to enhance my aesthetics. Lastly, you can easiely and minimally create line charts, bar graphs, even Radar Charts with very little code as you'll see below. 
-<br>
+
+#### Check Out The Some Examples Below:
 
 <details>
 <summary><b>```Click``` Pie Example</b></summary>
@@ -34,24 +35,25 @@ You may be familar with Matplotlib, Seaborn, and Bokeh to name a few.  Sure, the
 
 </details>
 
----
-##### <b>Let's Begin with an Install</b>
+
+#### Let's Begin with an Install
 
 Open Terminal
 ```
 $  pip install Pygal
 ```
+---
 <b>Extra Help:</b>  Installing and Dependencies  - http://www.pygal.org/en/stable/installing.html
 
 ---
 
-##### <b>Step 1:  Import</b>
+#### Step 1:  Import
 
 ```
 import pygal
 ```
 
-##### <b>Step 2: Create a Variable to Store Your Graph In</b>
+#### Step 2: Create a Variable to Store Your Graph In
 For our first example we'll create a bar chart.  We'll simply need to create a varible and store ```pygal.Bar()``` inside.
 
 ```
@@ -60,7 +62,7 @@ b_chart = pygal.Bar()
 You can easily use ```pygal.Line```, ```pygal.pie``` as well.
 
 
-##### <b>Step 3: Let's Add Some Values</b>
+#### Step 3: Let's Add Some Values
 Next we need to start creating our chart.  I will be using Data that I scraped from a gaming tracker for the game <b>Destiny 2.</b>  Eventually the graph will be live and I'll be able to see my stats change (_hopefully_) in real time. <br> <i>Let's not get ahead of our selves.</i> <br>In short, everytime I play in a PvP or Crusible Match and eliminate an opponient, or, be eliminated myself, the KD (_Kill/Death Ratio_) will change.  I simply want to compare myself to my clan mates.
 
 So to start things off we'll need a chart a title.
