@@ -1,0 +1,15 @@
+{
+    "_publish_status": "draft",
+    "author_name": "kranetr",
+    "author_real_name": "Troy Kranendonk",
+    "branch": "master",
+    "branches": [],
+    "filename": "article.md",
+    "first_commit": "8a99fc8914afbee9351d39abc446dcec220e6bfe",
+    "image_url": "https://avatars2.githubusercontent.com/u/10641956?v=4",
+    "stacks": [
+        "Python"
+    ],
+    "thumbnail_url": null,
+    "title": "Creating Charts with Python Pygal"
+}
