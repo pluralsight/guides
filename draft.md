@@ -1,3 +1,8 @@
+### Creating Interactive Charts with Python Pygal by Troy Kranendonk
+- [Read the guide](https://www.pluralsight.com/guides/python/creating-interactive-charts-with-python-pygal?status=draft)
+- [Read more from Troy Kranendonk](https://www.pluralsight.com/guides/author/kranetr) <img src="https://avatars2.githubusercontent.com/u/10641956?v=4" width="30" height="30" alt="Troy Kranendonk" />
+- Related to: Python
+
 ### Creating Charts with Python Pygal by Troy Kranendonk
 - [Read the guide](https://www.pluralsight.com/guides/python/creating-charts-with-python-pygal?status=draft)
 - [Read more from Troy Kranendonk](https://www.pluralsight.com/guides/author/kranetr) <img src="https://avatars2.githubusercontent.com/u/10641956?v=4" width="30" height="30" alt="Troy Kranendonk" />
