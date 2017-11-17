@@ -130,6 +130,7 @@ First, import ```style``` ```from``` ```pygal.style```.
 ```
 import pygal
 from pygal.style import Style
+
 b_chart = pygal.Bar()
 b_chart.title = "Destiny Kill/Death Ratio"
 b_chart.add("Dijiphos", [0.94])
@@ -209,7 +210,7 @@ b_chart.render_in_browser()
 ----
 #### That's a Wrap
 
-I would check out [Pygal's](http://www.pygal.org/en/stable/installing.html) documentation for further builds.  You should have all the tools needed to create great looking graphs with Python Pygal :)
+It's that simple.  I would check out [Pygal's](http://www.pygal.org/en/stable/installing.html) documentation for further builds.  You should have all the tools needed to create great looking graphs/charts with Python Pygal :)
 
 <br>
 Leave a comment or reach out and say hi on [Twitter](https://twitter.com/TroyKranendonk)
