@@ -63,7 +63,7 @@ For our first example we'll create a bar chart.  We'll simply need to create a v
 import pygal
 b_chart = pygal.Bar()
 ```
-You can easily use ```pygal.Line```, ```pygal.pie``` as well.
+You can easily use ```pygal.Line```, ```pygal.pie```, or any of the [following](http://www.pygal.org/en/stable/documentation/index.html).
 
 
 #### Step 3: Let's Add Some Values
@@ -128,11 +128,27 @@ Say we want some custom colors added to our graph<br>
 This is easy to do, and can actually be achieved in multiple ways.
 First, import ```style```.
 ```
+import pygal
 from pygal.style import Style
+b_chart = pygal.Bar()
+b_chart.title = "Destiny Kill/Death Ratio"
+b_chart.add("Dijiphos", [0.94])
+b_chart.add("Punisherdonk", [1.05])
+b_chart.add("Musclemuffins20", [1.10])
+b_chart.render_in_browser()
 ```
 You can change a number of objects by simply adding:
 ```
+import pygal
+from pygal.style import Style
 custom_style = Style(
+
+b_chart = pygal.Bar()
+b_chart.title = "Destiny Kill/Death Ratio"
+b_chart.add("Dijiphos", [0.94])
+b_chart.add("Punisherdonk", [1.05])
+b_chart.add("Musclemuffins20", [1.10])
+b_chart.render_in_browser()
 ```
 _Notice I left the parentheses open_
 
@@ -152,17 +168,33 @@ Complete List: http://www.pygal.org/en/stable/documentation/custom_styles.html
 
 ----
 
-Let's change the color of our bars.<br>_Don't forget to indent and close our final parentheses._
+Let's change the color of our bars by using the object ```colors```.<br>_Don't forget to indent and close our final parentheses._
 ```
+import pygal
+from pygal.style import Style
 custom_style = Style(
   colors=('#E80080', '#404040', '#9BC850'))
+  
+b_chart = pygal.Bar()
+b_chart.title = "Destiny Kill/Death Ratio"
+b_chart.add("Dijiphos", [0.94])
+b_chart.add("Punisherdonk", [1.05])
+b_chart.add("Musclemuffins20", [1.10])
+b_chart.render_in_browser()
 ```
-Now all we need to do is pass ```style=custom_style``` in our ```pygal.Bar()```
+Now all we need to do is pass ```style=custom_style``` in our ```pygal.Bar()``` to get it to work.
 ```
+import pygal
+from pygal.style import Style
 custom_style = Style(
   colors=('#E80080', '#404040', '#9BC850'))
-
+  
 b_chart = pygal.Bar(style=custom_style)
+b_chart.title = "Destiny Kill/Death Ratio"
+b_chart.add("Dijiphos", [0.94])
+b_chart.add("Punisherdonk", [1.05])
+b_chart.add("Musclemuffins20", [1.10])
+b_chart.render_in_browser()
 ```
 
 ---
@@ -175,9 +207,9 @@ b_chart = pygal.Bar(style=custom_style)
 </details>
 
 ----
-#### It's a Wrap
+#### That's a Wrap
 
-I would check out [Pygal's](http://www.pygal.org/en/stable/installing.html) documentation to for further builds.  You should have all the tools needed to create great looking graphs with Python Pygal :)
+I would check out [Pygal's](http://www.pygal.org/en/stable/installing.html) documentation for further builds.  You should have all the tools needed to create great looking graphs with Python Pygal :)
 
 <br>
 Leave a comment or reach out and say hi on [Twitter](https://twitter.com/TroyKranendonk)
