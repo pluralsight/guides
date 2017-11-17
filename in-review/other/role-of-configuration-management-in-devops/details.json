@@ -3,7 +3,12 @@
     "author_name": "abskaiser",
     "author_real_name": "Abhinav Kaiser",
     "branch": "master",
-    "branches": [],
+    "branches": [
+        [
+            "adityavarshney",
+            "adityavarshney-other-role-of-configuration-management-in-devops"
+        ]
+    ],
     "filename": "article.md",
     "first_commit": "4e9604463f3956a3581257d63327bac156b73d86",
     "image_url": "https://avatars2.githubusercontent.com/u/26959448?v=4",
