@@ -1,8 +1,3 @@
-### Creating Interactive Charts with Python Pygal by Troy Kranendonk
-- [Read the guide](https://www.pluralsight.com/guides/python/creating-interactive-charts-with-python-pygal?status=draft)
-- [Read more from Troy Kranendonk](https://www.pluralsight.com/guides/author/kranetr) <img src="https://avatars2.githubusercontent.com/u/10641956?v=4" width="30" height="30" alt="Troy Kranendonk" />
-- Related to: Python
-
 ### Everything You Need To Know About JavaScript Objects by Miroslav Gajic
 - [Read the guide](https://www.pluralsight.com/guides/front-end-javascript/everything-you-need-to-know-about-javascript-objects?status=draft)
 - [Read more from Miroslav Gajic](https://www.pluralsight.com/guides/author/mgajic78) <img src="https://avatars3.githubusercontent.com/u/25859460?v=4" width="30" height="30" alt="Miroslav Gajic" />
