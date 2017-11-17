@@ -32,4 +32,13 @@ var employee = {
 }
 ```
 
-Objects can be nested into each other, like the `contactData` in the `employee` object. Even an empty object actually contains properties and methods inherited from the [Object.prototype](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/prototype).
+Objects can be nested into each other, like the `contactData` in the `employee` object. Even an empty object actually has access to  methods of the [Object.prototype](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/prototype). One of those methods is the `toString` method, so, we could execute, for instance, this line of code:
+``` JavaScript
+console.log(emptyObject.toString());
+```
+and get the following output in the console:
+```
+[object Object]
+```
+
+The `[object Object]` means that the `emptyObject` is an `object` which prototype is the `Object.prototype`. There are different types of objects in JavaScript (functions, arrays, dates etc.), so we should get different results in the console for those types of objects.
