@@ -126,7 +126,7 @@ Say we want some custom colors added to our graph<br>
 ![#9bc850](https://placehold.it/15/9bc850/000000?text=+) `#9BC850`
 
 This is easy to do, and can actually be achieved in multiple ways.
-First, import ```style```.
+First, import ```style``` ```from``` ```pygal.style```.
 ```
 import pygal
 from pygal.style import Style
