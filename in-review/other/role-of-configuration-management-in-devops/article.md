@@ -132,7 +132,7 @@ Let’s say Server C is a production server that needs to be replicated. In the 
 
 The CMDB also has other benefits such as supporting the incident management teams during incident resolutions. The CMDB readily provides the architecture of applications and infrastructure, which is used to troubleshoot and identify the cause of the issue.
 
-<h1>In DevOps, it Starts and Ends with Configuration</h1>
+<h1>DevOps Starts and Ends with Configuration</h1>
 Yes, it is true that you cannot really do DevOps without configuration management in place. I have shared the principles and examples around the comprehensive configuration management, without which the artifacts and other useful information will be all over the place, and in a disorganized manner.
 
 Remember the objective of DevOps &mdash; developing software as quickly as possible. This objective can only be done through proper organization and planning, and the comprehensive configuration management gives you sufficient ammo to power up the DevOps machine.
