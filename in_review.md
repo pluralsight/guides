@@ -1,3 +1,8 @@
+### Distributed Graph Computation as Simple as It Gets with Apache Storm by Kobi Hikri
+- [Read the guide](https://www.pluralsight.com/guides/big-data/distributed-graph-computation-as-simple-as-it-gets-with-apache-storm?status=in-review)
+- [Read more from Kobi Hikri](https://www.pluralsight.com/guides/author/kobihikri) <img src="https://avatars2.githubusercontent.com/u/4434689?v=4" width="30" height="30" alt="Kobi Hikri" />
+- Related to: Big Data (Hadoop, Spark, etc)
+
 ### Creating Interactive Charts with Python Pygal by Troy Kranendonk
 - [Read the guide](https://www.pluralsight.com/guides/python/creating-interactive-charts-with-python-pygal?status=in-review)
 - [Read more from Troy Kranendonk](https://www.pluralsight.com/guides/author/kranetr) <img src="https://avatars2.githubusercontent.com/u/10641956?v=4" width="30" height="30" alt="Troy Kranendonk" />
