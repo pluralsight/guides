@@ -1,10 +1,12 @@
 ## _Ionic 2_ + _AngularFire2_ = **Awesomeness**!
 
-[In this year's I/O conference](https://events.google.com/io2016/), Google introduced the [new version of firebase](https://firebase.google.com/) and all the goodies that came with it; from analytics integration to admob to monetize your apps, it has everything.
+> NOTE: This post was written in 2016, but last updated Nov, 23rd 2017.
 
-As soon as they announced the big update, [David East](https://twitter.com/_davideast) and [Jeff Cross](https://twitter.com/jeffbcross) started working really hard in making [AngularFire2](https://angularfire2.com/api/) compatible with the new services.
+<a href="https://events.google.com/io2016/" target="_blank">In 2016 I/O conference</a>, Google introduced the <a href="https://firebase.google.com/" target="_blank">new version of firebase</a> and all the goodies that came with it; from analytics integration to admob to monetize your apps, it has everything.
 
-For [ionic framework](https://ionicframework.com) developers this means we get a really great library that integrates deeply with the framework, facilitating app creation.
+As soon as they announced the big update, <a href="https://twitter.com/_davideast" target="_blank">David East</a> and <a href="https://twitter.com/jeffbcross" target="_blank">Jeff Cross</a> started working really hard in making <a href="https://github.com/angular/angularfire2/" target="_blank">AngularFire2</a> compatible with the new services.
+
+For <a href="https://ionicframework.com" target="_blank">ionic framework</a> developers this means we get a really great library that integrates deeply with the framework, facilitating app creation.
 
 I have been using **AngularFire2** for over a month now and I find it fascinating how quickly I'm building my apps now.
 
@@ -19,21 +21,19 @@ This guide will help you create an app using **Ionic 2 + AngularFire2** so you c
 The first thing you want to do is to make sure you have the latest version of ionic installed in your machine. Open your terminal and type:
 
 ```bash
-  npm install -g ionic@beta cordova typings
+  npm install -g ionic cordova
 ```
 
 This command installs the latest version of the Ionic CLI (you'll use it to create your projects) Cordova (this is how you get that nice installable) and typings to work with TypeScript.
 
 Once you have everything installed, it's time to create your app. Go back to your terminal and navigate to wherever you want to create the app. I create my applications in my development folder. Then create the app. 
 
-If you need help at this point, refer to the [Ionic Introductory Tutorial.](http://ionicframework.com/getting-started/) *This tutorial assumes that you have some experience in ionic development.*
-
 Next, run the following command:
 
 ```bash
-  cd Development
-  ionic start billTracker blank --v2
-  cd billTracker
+$ cd Development
+$ ionic start billTracker blank
+$ cd billTracker
 ```
 
 That does a few things:
@@ -41,87 +41,80 @@ That does a few things:
 * **ionic start** creates the new app.
 * **billTracker** is the name we are giving the app.
 * **blank** tells the CLI we don't want to use any starter template, just a blank project.
-* **--v2** tells the CLI to create an Ionic2 app instead of Ionic1 (_pretty soon this will be default_)
 
-Now that you have created a new app and are inside your app folder, it's time to install the dependencies we'll need, right now you'll install **firebase**, **angularfire2** and **typings for firebase**.
+Now that you have created a new app and are inside your app folder, it's time to install the dependencies we'll need, right now you'll install **firebase** and **angularfire2**.
 
 Go back to your terminal and, inside the `billTracker` folder, type:
 
 ```bash
-  npm install firebase angularfire2@2.0.0-beta.2 --save
-  typings install --save --global firebase
+$ npm install firebase angularfire2
 ```
 
-**NOTE ON IONIC BETA11**:
+If you are running intro trouble getting this to work you can message me and I'll help you troubleshoot. Easiest way to get in touch is via twitter <a href="https://twitter.com/javebratt" target="_blank">@javebratt</a>.
 
-Since AngularFire2 pushed a few updates last week everything is breaking, that's because AngularFire2 is now using Angular RC5 and Ionic beta11 is using beta12.
+Now that we have everything installed, it's time to open your app in your favorite text editor or IDE.
 
-I've managed to get my beta11 & angularfire2 apps working following this steps:
-
-First, install firebase only: `npm install --save firebase`
-
-Then install AngularFire2: `  npm install  --save angularfire2@2.0.0-beta.2`
-
-After that install typings (_You won't need this on the next version, since they'll come by default_)
-
-`typings install file:node_modules/angularfire2/firebase3.d.ts --save --global && typings install`
-
-I'm using the `@2.0.0-beta.2` tag when installing AngularFire2 because I need AngularFire2 to work with Ionic 2 beta11. If the tag is left out, AngularFire2 will install the new version that works with NG RC5 instead.
-
-If you are running intro trouble getting this to work you can message me and I'll help you troubleshoot. If this is an important production project I'd advise you use the JS SDK instead.
-
-Now that we have everything installed, it's time to open your app in your favorite text editor or IDE. I'm using **atom** so I just type `atom .` inside my app folder.
-
-Go to `app/app.ts` and you should see something like this:
+Go to `app/app.module.ts` and you should see something like this:
 
 ```javascript
-import { Component } from '@angular/core';
-import { Platform, ionicBootstrap } from 'ionic-angular';
-import { StatusBar } from 'ionic-native';
-import { HomePage } from './pages/home/home';
+import { BrowserModule } from '@angular/platform-browser';
+import { ErrorHandler, NgModule } from '@angular/core';
+import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
+import { SplashScreen } from '@ionic-native/splash-screen';
+import { StatusBar } from '@ionic-native/status-bar';
 
-@Component({
-  template: '<ion-nav [root]="rootPage"></ion-nav>'
+import { MyApp } from './app.component';
+import { HomePage } from '../pages/home/home';
+
+@NgModule({
+  declarations: [MyApp, HomePage],
+  imports: [
+    BrowserModule,
+    IonicModule.forRoot(MyApp)
+  ],
+  bootstrap: [IonicApp],
+  entryComponents: [MyApp, HomePage],
+  providers: [
+    StatusBar,
+    SplashScreen,
+    { provide: ErrorHandler, useClass: IonicErrorHandler }
+  ]
 })
-export class MyApp {
-  rootPage: any = HomePage;
-
-  constructor(platform: Platform) {
-    platform.ready().then(() => {
-      // Okay, so the platform is ready and our plugins are available.
-      // Here you can do any higher level native things you might need.
-      StatusBar.styleDefault();
-    });
-  }
-}
-
-ionicBootstrap(MyApp);
-
+export class AppModule {}
 ```
 
-You need to do a couple of things here. First, at the top of the file, you'll see were we import the components that we need. Go ahead and add an import for AngularFire2 components:
+You need to do a couple of things here. First, at the top of the file, you'll see where we import the components that we need. Go ahead and import AngularFire2:
 
 ```javascript
-import { FIREBASE_PROVIDERS, defaultFirebase } from 'angularfire2';
+import { AngularFireModule } from 'angularfire2';
+import { AngularFireDatabaseModule } from 'angularfire2/database';
 ```
 
-Next, pass those to the `ionicBootstrap` that you'll find at the end of the file:
+Next, inside the `@NgModule` initialize your Firebase app:
 
 ```javascript
-ionicBootstrap(MyApp, [
-  FIREBASE_PROVIDERS,
-  defaultFirebase({
-    apiKey: "AIzaSyCw1SKmz1Bu2ibncu5Bxd1sZgR1taV7ujM",
-    authDomain: "aftutorial-ef306.firebaseapp.com",
-    databaseURL: "https://aftutorial-ef306.firebaseio.com",
-    storageBucket: "aftutorial-ef306.appspot.com",
-  })
-]);
+@NgModule({
+  declarations: [...],
+  imports: [
+    BrowserModule,
+    IonicModule.forRoot(MyApp),
+    AngularFireModule.initializeApp({
+      apiKey: "Your Credentials Here",
+      authDomain: "Your Credentials Here",
+      databaseURL: "Your Credentials Here",
+      storageBucket: "Your Credentials Here",
+    }),
+    AngularFireDatabaseModule
+  ],
+  bootstrap: [...],
+  entryComponents: [...],
+  providers: [...]
+})
 ```
 
-You'll need to replace the `defaultFirebase` options with your own, you can use those for testing, those are from an app I made exclusively for this tutorial so no biggie there.
+You'll need to replace the `Your credentials here` string with your own firebase data.
 
-If you don't know where to get those, you'll need to go to the [Firebase Console](https://console.firebase.google.com/) and click on your app (_or create a new one_)
+If you don't know where to get those, you'll need to go to the <a href="https://console.firebase.google.com/" target="_blank">Firebase Console</a> and click on your app (_or create a new one_)
 
 You'll see a welcome message like the one in the image below, just pick **Add Firebase to your web app** and it'll open a pop up with all the info for you to use.
 
@@ -130,7 +123,7 @@ You'll see a welcome message like the one in the image below, just pick **Add Fi
 
 Now we are ready to start building because we are already connected to firebase and most of the configuration is done. 
 
-The first thing we'll want to do is to add a button, so our users can create new bills inside their app. Go to `app/pages/home/home.html`. It should look like this:
+The first thing we'll want to do is to add a button, so our users can create new bills inside their app. Go to `src0/pages/home/home.html`. It should look like this:
 
 ```html
 <ion-header>
@@ -176,12 +169,11 @@ import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 
 @Component({
-  templateUrl: 'build/pages/home/home.html',
+  selector: 'page-home',
+  templateUrl: 'home.html'
 })
 export class HomePage {
-  constructor(public navCtrl: NavController) {
-  }
-
+  constructor(public navCtrl: NavController) {}
 }
 ```
 
@@ -191,7 +183,9 @@ First, however, let's create the `BillCreate` page to see the coolest thing abou
 
 `ionic g page BillCreate`
 
-That little line of code right there creates a `bill-create` folder, with 3 files in it `bill-create.ts bill-create.html bill-create.scss` and they all have the boilerplate code already there. Talk about a productivity boost!
+That little line of code right there creates a `bill-create` folder, with 4 files in it `bill-create.ts bill-create.html bill-create.scss bill-create.module.ts` and they all have the boilerplate code already there. 
+
+Talk about a productivity boost!
 
 We'll open those files later, for now we just needed to create them to avoid errors when creating the `newBill()` function.
 
@@ -199,7 +193,7 @@ Go back to `home.ts` and right after the `constructor()` create the new function
 
 ```javascript
 newBill(){
-  this.navCtrl.push(BillCreatePage);
+  this.navCtrl.push('BillCreatePage');
 }
 ```
 
@@ -237,9 +231,9 @@ So go to `pages/bill-create/bill-create.html` and delete everything in there, we
 </ion-content>
 ```
 
-The first two items created are just regular inputs; you can see everything about them in the [ionic docs](http://ionicframework.com/docs/v2/components/#inputs). We are just adding an `[(ngModel)]` to them to hold the values.
+The first two items created are just regular inputs; you can see everything about them in the <a href="http://ionicframework.com/docs/components/#inputs" target="_blank">ionic docs</a>. We are just adding an `[(ngModel)]` to them to hold the values.
 
-The third item is a date-time item, this is why Ionic is so awesome, you add that input and it will add a beautifully designed date picker to your app, you can read more about it [here](http://ionicframework.com/docs/v2/components/#datetime)
+The third item is a date-time item, this is why Ionic is so awesome, you add that input and it will add a beautifully designed date picker to your app.
 
 And finally we add a button that calls the `createBill()` method passing the values of the inputs.
 
@@ -247,38 +241,41 @@ Now we need to go to `bill-create.ts` and create that function. Open the file an
 
 ```javascript
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { IonicPage, NavController } from 'ionic-angular';
 
+@IonicPage()
 @Component({
-  templateUrl: 'build/pages/bill-create/bill-create.html',
+  selector: 'page-bill-create',
+  templateUrl: 'bill-create.html'
 })
 export class BillCreatePage {
-  constructor(public navCtrl: NavController) {
-  }
-
+  constructor(public navCtrl: NavController) {}
 }
 ```
 
 We'll need to import AngularFire and our list observable to this file, so right below your last import statement type:
 
-`import { AngularFire, FirebaseListObservable } from 'angularfire2';`
+`import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';`
 
-* **AngularFire** gives us the AngularFire2 magic, where we can call lists, objects, auth methods, etc.
-* **FirebaseListObservable** gives us the observable we'll be using, it will subscribe to the list and sync it in real time with our app.
+* **AngularFireDatabase** gives us the AngularFire2 magic, where we can call lists, objects, auth methods, etc.
+* **AngularFireList** gives us the observable we'll be using, it will subscribe to the list and sync it in real time with our app.
 
 Right before the constructor, create a variable that will hold our list. If you are getting confused on where to do this don't worry, I'll show you the completed file later.
 
-`billList: FirebaseListObservable<any>;`
+`billList: AngularFireList<any>;`
 
-Inject `AngularFire` into your constructor.
+Inject `AngularFireDatabase` into your constructor.
 
 ```javascript
-constructor(public navCtrl: NavController, public af: AngularFire) {}
+constructor(
+  public navCtrl: NavController, 
+  public afDatabase: AngularFireDatabase
+) {}
 ```
 
 Now create a binding to the list inside the constructor:
 
-`this.billList = af.database.list('/bills');`
+`this.billList = afDatabase.list('/bills');`
 
 This will keep `billList` synced with our Firebase real-time database on the 
 `/bills` node.
@@ -287,11 +284,14 @@ To add new bills to that list, we just need to use angularfire's `push()` method
 
 ```javascript
 createBill(name, amount, dueDate) {
-  this.billList.push({
+  const newBillRef = this.billList.push({});
+
+  newBillRef.set({
     name: name,
     amount: amount,
     dueDate: dueDate,
-    paid: false
+    paid: false,
+    id: newBillRef.key
   }).then( newBill => {
     this.navCtrl.pop();
   }, error => {
@@ -309,31 +309,38 @@ The final version of the file should look like this:
 
 ```javascript
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
-import { AngularFire, FirebaseListObservable } from 'angularfire2';
+import { IonicPage, NavController } from 'ionic-angular';
+import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
 
+@IonicPage()
 @Component({
-  templateUrl: 'build/pages/bill-create/bill-create.html',
+  selector: 'page-bill-create',
+  templateUrl: 'bill-create.html'
 })
 export class BillCreatePage {
-  billList: FirebaseListObservable<any>;
-  constructor(public navCtrl: NavController, public af: AngularFire) {
-    this.billList = af.database.list('/bills');
+  billList: AngularFireList<any>;
+  constructor(
+    public navCtrl: NavController, 
+    public afDatabase: AngularFireDatabase
+  ) {
+    this.billList = afDatabase.list('/bills');
   }
 
   createBill(name, amount, dueDate) {
-    this.billList.push({
+    const newBillRef = this.billList.push({});
+
+    newBillRef.set({
       name: name,
       amount: amount,
       dueDate: dueDate,
-      paid: false
+      paid: false,
+      id: newBillRef.key
     }).then( newBill => {
       this.navCtrl.pop();
     }, error => {
       console.log(error);
     });
   }
-
 }
 ```
 
@@ -341,25 +348,28 @@ export class BillCreatePage {
 
 Great! We can create bills now. Is that it for this app? 
 
-Nope, now we are going to list those bills in the Home page. To do this, open `home.ts`, import AngularFire, inject it to the controller, and bind it to a list:
+Nope, now we are going to list those bills in the Home page. To do this, open `home.ts`, import AngularFireDatabase, inject it to the controller, and bind it to a list:
 
 ```javascript
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
-import { BillCreatePage } from '../bill-create/bill-create';
-import { AngularFire, FirebaseListObservable } from 'angularfire2';
+import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
 
 @Component({
-  templateUrl: 'build/pages/home/home.html',
+  templateUrl: 'home.html',
 })
 export class HomePage {
-  billList: FirebaseListObservable<any>;
-  constructor(public navCtrl: NavController, public af: AngularFire, public alertCtrl: AlertController) {
-    this.billList = af.database.list('/bills');
+  
+  billList: AngularFireList<any>;
+  constructor(
+    public navCtrl: NavController, 
+    public afDatabase: AngularFireDatabase
+  ) {
+    this.billList = afDatabase.list('/bills').valueChanges();
   }
 
   newBill(){
-    this.navCtrl.push(BillCreatePage);
+    this.navCtrl.push('BillCreatePage');
   }
 
 }
@@ -373,7 +383,6 @@ Open your terminal and type:
 
 ```bash
 npm install --save angular2-moment
-typings install --save moment
 ```
 
 This will install both the module and its typings, you can read the docs [here](https://github.com/urish/angular2-moment#usage) but we'll only use a small part of it.
@@ -401,7 +410,7 @@ And that's it! Go to the `home.html` file to use our app. Just open the file and
   </ion-card-header>
 
   <ion-list>
-    <ion-item text-wrap *ngFor="let bill of billList | async" (click)="promptPayment(bill.$key)"
+    <ion-item text-wrap *ngFor="let bill of billList | async" (click)="promptPayment(bill.id)"
       [class.hide]="bill.paid == true">
       <ion-icon name="timer" danger item-left></ion-icon>
       <h2>{{bill.name}}</h2>
@@ -415,7 +424,7 @@ And that's it! Go to the `home.html` file to use our app. Just open the file and
 There are a few things going on here:
 
 * `*ngFor="let bill of billList | async"` tells our item to repeat for every bill it finds on our billList.
-* `(click)="promptPayment(bill.$key)` tells our system to call that function when users tap on the item. (_we'll create that function in a minute_).
+* `(click)="promptPayment(bill.id)` tells our system to call that function when users tap on the item. (_we'll create that function in a minute_).
 * `[class.hide]="bill.paid == true"` says that if the bill is already paid, add the hide css class, which will hide the item from the list.
 
 And after that we are creating a regular item and binding the `bill` properties to it.
@@ -482,4 +491,4 @@ Piece of cake!
 
 The entire source code for this app is available on [github](https://github.com/JAVEBRATTCODE/bill-reminder).
 
-If you want to take your Ionic + Firebase skills to the next step, I created a **free 5-lesson** course that will help you build your first Firebase powered mobile app. All you have to do is [go here](https://javebratt.com/signup/?ref=HackGuidesTutorial).
+If you want to take your Ionic + Firebase skills to the next step, I created a **free** course that will help you build your first Firebase powered mobile app. All you have to do is [go here](https://javebratt.com/firebase-free-course/?ref=HackGuidesTutorial).
