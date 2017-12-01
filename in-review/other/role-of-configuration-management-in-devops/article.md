@@ -1,32 +1,32 @@
-DevOps is made of several elements that need to work in unison for the DevOps machinery to meet the objectives that it is set out to do. One of the key elements, which sits right in the center is the configuration management. 
-
-It is a critical success factor – if you get it right, there is a good chance that you will end up meeting all the DevOps objectives. Other elements that make up the DevOps jigsaw are reviews, testing (functional and non-functional) and environment provisioning among others.
-
-Configuration management can have many connotations, depending on who you are talking to. Most people in the software development industry refer to the source code management alone as configuration management. But, there is a whole lot more to configuration than managing source codes in DevOps, and this article delves into the end to end configuration management and the role it plays in the DevOps machinery.
+DevOps has several components that must work in unison for the team to meet its objectives. A key element, which usually serves as the center of the DevOps "machinery," is **configuration management**. 
 
 <h1>What is Configuration Management?</h1>
-Configuration management represents the one true source of the configuration items. A configuration item can be anything that can be configured, and is absolutely necessary for the success of your project. Examples of a configuration item in a software industry include source codes, property files, binaries, servers, and tools.
 
-The term configuration management is used in all industries. So, it may mean different elements in the respective industries. 
+Configuration management represents the one true source of the configuration items. A configuration item is anything that can be configured and that is absolutely necessary for the success of your project. For example, source codes, property files, binaries, servers, and tools can all be configuration items for a software firm.
 
-In you pick the automotive industry, configuration management refers to the configuration of the assembly lines, the machines that are instrumental in the manufacturing process, and also the inventory of the various parts that go into making of an automobile.
+In fact, the term configuration management means something or another in most industries. If you pick the automotive industry, for example, configuration management could refer to the configuration of the assembly line machines that are instrumental to manufacturing. Another configuration item could be the inventory of various automobile parts, as this would be configured early on in the development process.
 
-Focusing back on our industry - software development and management, configuration management refers to the items that need to be configured and managed in order for the project to be successful. I will go into the details of configuration management in the software industry in the next section – configuration management in DevOps.
+> In software development and management, configuration management refers to the items that need to be configured and managed in order for the project to be successful. 
+
+Configuration management, however, can have many connotations, depending on who's discussing it. Most people in the software development industry refer to the source code management alone as configuration management. But, there is a whole lot more to configuration than managing source codes when it comes to DevOps. This article discusses configuration management end-to-end and studies its role in DevOps.
 
 <h2>The Process of Configuration</h2>
-No matter the industry, the configuration management process takes into consideration the following broad-set activities:
-1.	<strong>Configuration identification</strong> – The configuration that needs to be maintained first needs to be identified. It can either be a manual process such as maintaining the source code on a common repository or using discovery tools to automatically identify the configuration.
-2.	<strong>Configuration control</strong> – Once the configuration items are identified, there is no guarantee that it will remain unchanged. In all probability, the configuration is likely to change. So, there needs to be an effective mechanism to control the changes that go into the configuration management system. In most configuration management frameworks, the change management process acts as a guardian for controlling the changes to the configuration management system.
-3.	<strong>Configuration audit</strong> – Even when there are controlling mechanisms for changes to the configuration, it does not necessarily mean that you cannot bypass it. Therefore, configuration audits are a necessary evil to keep an eye on configuration compliance.
+
+The configuration management process takes into consideration the following broad-set activities:
+1.	<strong>Configuration identification</strong> &mdash; The configuration that needs to be maintained first must be identified. It can either be a manual process, such as maintaining the source code on a common repository or using discovery tools to automatically identify the configuration.
+2.	<strong>Configuration control</strong> &mdash; Once the configuration items are identified, there is no guarantee that it will remain unchanged. In all probability, the configuration is likely to change. Thus, there needs to be an effective mechanism to control the changes that go into the configuration management system. In most configuration management frameworks, the *change management process* acts as a guardian for controlling the changes to the configuration management system.
+3.	<strong>Configuration audit</strong> &mdash; Despite there being control mechanisms protecting against changes in configuration, means of bypassing exist. Therefore, *configuration audits* are necessary to keep an eye on configuration compliance.
 
 <h1>Configuration Management in DevOps</h1>
-DevOps spans across software development and operations phases. Therefore, it is only fitting that the configuration management spans across both the areas (unlike source code management as some people believe).
 
-To define configuration management in DevOps, the inspiration comes from the book Continuous Delivery: Reliable Software Releases through Build, Test, and Deployment Automation, authored by Jez Humble and David Farley.
-Configuration management in DevOps is termed as comprehensive configuration management, and is made up of 
-1.	<strong>Source Code Repository</strong> –Used primarily during the development phase.
-2.	<strong>Artifact Repository</strong> – Used during the development and operations phases.
-3.	<strong>Configuration Management Database</strong> – Used during the development and operations phases.
+DevOps spans across software development and operations phases. Therefore, it is only fitting that configuration management spans across both the areas. 
+
+To define configuration management in DevOps, the inspiration comes from the book *Continuous Delivery: Reliable Software Releases through Build, Test, and Deployment Automation*, authored by Jez Humble and David Farley.
+
+Configuration management in DevOps is coined as "comprehensive configuration management", and is made up of 
+1.	<strong>Source Code Repository</strong> &mdash; Used primarily during the development phase.
+2.	<strong>Artifact Repository</strong> &mdash; Used during the development and operations phases.
+3.	<strong>Configuration Management Database</strong> &mdash; Used during the development and operations phases.
 
 <center>
 ![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/3c66133a-deaa-47a2-8a92-d90df37eee76.jpg)
@@ -34,68 +34,73 @@ Configuration management in DevOps is termed as comprehensive configuration mana
 Figure 1: Comprehensive Configuration Management</center>
 
 <h2>Source Code Repository</h2>
-A source code repository primarily houses all versions of code. Apart from the code, it is a good practice to store test scripts, build scripts, deployment scripts and configuration files in a source code repository.
+A source code repository is the primary container for all versions of code. Apart from keeping all the code, it generally stores test scripts, build scripts, deployment scripts, and configuration files as well.
 
-Some projects also leverage a source code repository to store binaries. This is not recommended, as the binaries are numerous depending on the number of builds, and they need to be stored in a different manner – which I will discuss under the section – Artifact Repository. 
-So, what can be stored in a source code repository? Here’s an easy way to remember it - anything that is human readable goes into the source code repository. This implies: software binaries are not human readable – so it does go into it.
+Some projects also leverage a source code repo to store binaries. However, this is not recommended because, depending on the number of builds, there can be numerous binaries, and they need to be stored in a different manner, as I will discuss when talking about Artifact Repositories.
+
+So, what can be stored in a source code repository? Simply put &mdash; anything that is human readable goes into the source code repository. Software binaries are not human readable, so they get omitted. Test scripts, actual code, and config files are all readable (and usable) by humans, so they are included.
 
 <h3>Types of Source Code Repositories</h3>
-Not all source code repositories are the same. The times have changed, and along with it the technology. The source code repository technology of yesteryears is the centralized version control system (CVCS). Surprisingly, many software development projects still leverage on this antiquated technology.
+Not all source code repositories are the same. The times have changed and so has the technology. The source code repository technology of yesteryears is the **Centralized Version Control System** (CVCS). However, many software development projects still utilize this somewhat-antiquated technology.
 
 The concept around CVCS is that the source code resides in a central server. The code needs to be checked out, changes committed and checked back into the repository. All these activities are performed directly onto the central repository.
 
-The source code repository technology of today is distributed version control system (DVCS). The source code in this technology not only resides on a central server, but also does on all terminals used for development. In other words, every developer will have the entire source code repository on his/her workstation, and any merge or other changes to be performed is done locally, and is generally seamless.
+The source code repository technology of today is **Distributed Version Control System** (DVCS). The source code in this technology not only resides on a central server but also on *all terminals used for development*. In other words, every developer will have the entire source code repository on his or her workstation. Any merge or change is performed locally and usually seamlessly.
 
 <h3>Benefits of DVCS over CVCS</h3>
-The greatest advantage of DVCS over CVCS is its availability. For DVCS to function, you don’t need an active network connection, and for CVCS it is absolutely necessary. If there are obstructions to accessing the central server, the entire development activity comes to a standstill. So, CVCS can be a single point of failure (SPOF), which goes against the principles of DevOps – where we like things to keep moving all the time in order to deliver software at the earliest possible hour.
+The greatest advantage of DVCS over CVCS is its availability. For DVCS to function, you don’t need an active network connection, but for CVCS it is absolutely necessary. If server access is blocked, development comes to a complete standstill. Thus, CVCS has a **single point of failure** (SPOF), something that goes against the principles of DevOps, which emphasize incessant development and maximum efficiency.
 
-As the source code is available locally in DVCS, the whole activity around accessing, merging and pushing the code is faster compared to the CVCS counterparts.
+Since source code is available locally in DVCS, accessing, merging and pushing the code is much faster relative to CVCS.
 
-It is also possible in DVCS that software developers can exchange their pieces of code with other developers to check if all is well, before pushing it to the central server, and to the rest of the developers.
+DVCS also enables software developers to exchange code with other developers before pushing it to the central server and, consequently, to all other developers.
 
-There are no notable disadvantages with DVCS other than the storage needs on developer’s terminal if the source code was to contain an elongated history of changesets.
+In fact, there are no notable disadvantages with DVCS other than perhaps the storage needs on a developer’s terminal if source code contains an elongated history of changesets.
 
 <h3>Toolsets for Managing Source Code</h3>
-There are a number of source code repositories available off the shelf today. The Git source code repository, which falls into the DVCS bracket, is perhaps the most popular owing to its flexibility that allows multiple changes to be done simultaneously. So, no more check-out and check-in by individual developers.
 
-The Git software can either be hosted on premises or is available on public clouds, under various guises – such as Bitbucket, Github and Gitlib.
+There are a number of source code repos available off-the-shelf today. Git's repo system as well as Mercurial are key DVCS technologies. Git is perhaps the most popular VCS platform, likely owing to its flexibility in allowing multiple simultaneous changes. (No more check-out and check-in by individual developers.)
 
-Another source code repository built around DVCS worth a mention is Mercurial.
+The Git software can either be used on premises or hosted on public clouds under various guises (i.e. Bitbucket, Github and Gitlib.)
 
-The source code repositories built around CVCS, and that are still in vogue include Subversion and CVS. 
+Meanwhile, some CVCS source code repositories still in vogue include Subversion and CVS. 
 
-There are a number of migration projects across organizations where projects that ran on CVCS toolsets are moving towards DVCS.
+Given the rise of DVCS and its abundant advantages, organizations have made a push to migrate CVCS toolsets to DVCS.
 
 <h2>Artifact Repository</h2>
-An artifact repository is a database meant primarily to store binaries. Apart from binaries, test data, and libraries can be stored on it. Just as source code repository is meant to store human readable files, an artifact repository is primarily used to store machine readable files.
 
-<h3>Starts with Continuous Integration</h3>
-In Continuous Integration, we encourage developers to push their codes to the mainline in short intervals. This in turn triggers build, which results in a binary getting generated. Depending on the size of the project, we could end up looking at an artifact repository that potentially has hundreds and thousands of binaries.
+An **artifact repository** is a database for storing binaries. Additionally, test data and libraries can be stored on it as well. Whereas source code repository is meant to store human readable files, an artifact repository stores machine files.
+
+<h3>Continuous Integration</h3>
+
+Principles of **Continuous Integration** encourage developers to push code to the main line frequently. Each push triggers a build, which results in a binary getting generated. Depending on the size of the project, the artifact repo could end with thousands of binaries.
 
 <h3>Management of Artifacts</h3>
-The management of binaries can be cumbersome. When there are thousands of binaries, which one must the release manager select to be pushed into the production? Believe me, it is an unenviable task. To his/her aid, an artifact repository can be a big help. How? It comes with two logical partitions for storing and managing binaries:
-1.	Snapshot and
-2.	Release
 
-Every time a build is successfully run, the binary that gets generated is stored in the Snapshot repository. But not every one of them gets pushed into production unless the project adopts the Continuous Deployment methodology. The binary that gets pushed into the production is first moved into the Release partition, and then it gets deployed into production. This is illustrated in figure 2.
+Binary management can be cumbersome; with thousands of binaries, which one should the release manager choose to push into production? Believe me, this is an undesirable task. To the release manager's aid, an artifact repository help big time. 
+
+How? The artifact repo comes with two logical partitions for storing and managing binaries:
+1.	**Snapshot**
+2.	**Release**
+
+Every time a build is successfully run, the binary that gets generated is stored in the Snapshot repository. But not all of them get pushed into production unless the project adopts the Continuous Deployment methodology. The binary that gets pushed into the production is first moved into the Release partition before getting deployed into production. (See Figure 2.)
 
 <center>
 ![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/5bb8f8af-c70c-4211-a091-6a57e91a1180.jpg)<br />
 Figure 2: Artifact Repository</center>
 
-<h3>Illustration on Artifact Repository</h3>
-In the figure 2 illustration, various binaries are generated every time the build is successful. The binaries in this example are named as Binary 0.x, and are stored in the Snapshot partition. Not every binary is promoted into production. 
+The figure demonstrates that various binaries are generated every time the build is successful. The binaries in this example are named as Binary 0.x, and are stored in the Snapshot partition. Not every binary gets promoted into production. 
 
-The binaries that gets promoted into production are moved into the Release partition from the Snapshot partition. Examples: Binary 0.3 and Binary 0.5. 
+The binaries that are promoted get moved into the Release partition from the Snapshot partition. Examples: Binary 0.3 and Binary 0.5. 
 
-This is a key step in the release management process. Let’s say that the Binary 0.5 is deployed into production, and the deployment fails. As a fallback step, the deployment must rollback to the previous version. 
+**This is key to the release management process.** Let’s say that the Binary 0.5 is deployed into production, and the deployment fails. As a fallback step, the deployment must roll back to the previous version. 
 
-The previous binary versions used are stored in the Release partition, and it makes planning and executing releases efficient. 
+The previous binary versions used are stored in the Release partition, making planning and executing releases efficient. 
 
-In the absence of a logical partition, imagine the amount of planning that had to go in for identifying the previous version that was put on production, and the amount of management needed to execute the rollback.
+Without a logical partition, imagine the planning and effort it would take to identify the previous version in production and roll it back.
 
 <h2>Configuration Management Database</h2>
-The configuration management database (CMDB) comes from the ITIL service management framework. The CMDB is a repository of various infrastructure devices, applications, databases and services. It is not just an inventory, but it also bears relationships between the various elements within the CMDB. This is illustrated in figure 3.
+
+The **Configuration Management Database** (CMDB) comes from the Information Technology Infrastructure Library (ITIL) service management framework. The CMDB is a repository of various infrastructure devices, applications, databases, and services. Not just an inventory, it also bears relationships between the various elements within the CMDB, as illustrated in figure 3. 
 
 <center>
 ![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/db096003-a8e3-4bb2-a0bb-9350b2dd871f.jpg)
@@ -103,27 +108,37 @@ The configuration management database (CMDB) comes from the ITIL service managem
 <br /><br />Figure 3: CMDB Illustration</center><br />
 
 
-In the figure 3, I have represented services, applications, databases and servers. In the illustration, Service 1 is dependent on Application A. This is represented through the relationship (arrow in the figure). The Application A leverages on Database 1. Both the Application A and Database 1 reside on Server A. 
-All these relationships are indicated with arrows. However, in a real CMDB, each of these arrows have a different connotation. For examples the relationship between an application and a database is generally makes use of. To indicate the application residing on a server, the relationship can be dependent on. The relationship around data flow between applications (indicated between Application B and Application C) is data dependency.
+In the figure above, services, applications, databases and servers are represented by the different-colored boxes. In the illustration, Service 1 depends on Application A, as seen by the arrow relationship. Application A leverages on Database 1. Both the Application A and Database 1 reside on Server A.
+
+In a real CMDB, however, the arrows mean something different from the relationships as described. For example, an application generally *makes use of* a database &mdash; this is the relationship between the two entities. An application residing on a server leads to a *dependent on* relationship. The relationship around data flow between applications (indicated between Application B and Application C) is one of *data dependency*.
 
 <h3>CMDB for Change Management</h3>
-The CMDB is particularly useful when you are trying to make a change to any of the applications, databases or servers. Let’s say you want to make a change to Application B. To make the change, you must first do an impact assessment. CMDB helps in performing impact assessments, and in the illustration, suppose changes are done to Application B. The impact assessment will read that any changes done to Application B will impact Application C, as the data is flowing through it.
 
-Today, software development does not happen in isolation. The software to be developed is either an improvement over an existing one, or is getting plugged into an enterprise network of applications. Therefore, it is critical that the impacts are assessed to the tee, and CMDB is a great help in this area.
+The CMDB is particularly useful when you are trying to make a change to any of the applications, databases or servers. 
+
+Let’s say you want to make a change to Application B. To make the change, you must first do an impact assessment. CMDB helps in performing impact assessments, and in the illustration, suppose changes are done to Application B. The impact assessment will read that any changes done to Application B will impact Application C, as the data is flowing through it.
+
+Today, software development seldom happens in isolation. The software to be developed is either an improvement over existing code or is getting plugged into an enterprise network of applications. Therefore, it is critical that the impacts are assessed to the tee, and CMDB is a great help in this area.
 
 <h3>CMDB for Provisioning Environments</h3>
-Another application of CMDB in DevOps is in environment provisioning. Today we can spin up environments on the go through scripts using tools such as Ansible. When you key in the exact configuration of the production server, the environment provisioning tools create a prod-like server in a snap of a finger. 
+
+Another application of CMDB in DevOps is in environment provisioning. Today we can spin up environments on the go by tools like Ansible in our scripts. When you key in the exact configuration of the production server, the environment provisioning tools create a prod-like server in a snap of a finger. 
 
 But how is it that you are going to obtain the complete configuration of a server? The most straightforward way is to refer to a CMDB.
 
-Let’s say Server C is a production server that needs to be replicated. In the CMDB, the server C entry will provide the complete configuration of the server, which is a great help in scripting provisioning scripts such as Playbooks (compatible with Ansible).
+Let’s say Server C is a production server that needs to be replicated. In the CMDB, the server C entry will provide the complete configuration of the server, which is a great help in scripting provisioning scripts such as Playbooks (compatible with Ansible.)
 
 <h3>CMDB for Incident Management</h3>
+
 The CMDB also has other benefits such as supporting the incident management teams during incident resolutions. The CMDB readily provides the architecture of applications and infrastructure, which is used to troubleshoot and identify the cause of the issue.
 
-<h1>In DevOps, it Starts and Ends with Configuration</h1>
+<h1>DevOps Starts and Ends with Configuration</h1>
 Yes, it is true that you cannot really do DevOps without configuration management in place. I have shared the principles and examples around the comprehensive configuration management, without which the artifacts and other useful information will be all over the place, and in a disorganized manner.
 
-Remember the objective of DevOps – developing software as quickly as possible. This objective can only be done through proper organization and planning, and the comprehensive configuration management gives you sufficient ammo to power up the DevOps machine.
+Remember the objective of DevOps &mdash; developing software as quickly as possible. This objective can only be done through proper organization and planning, and the comprehensive configuration management gives you sufficient ammo to power up the DevOps machine.
 
-From a role perspective, professionals who are configuration management are in great demand. I am a solution architect in configuration management, and I don’t claim to know-it-all. Every project throws up new challenges at me, which heralds new findings and learnings – which is the beauty of configuration management.
+For this reason, configuration management professionals are in great demand. As a solution architect in configuration management, I don’t claim to know it all; every project throws new challenges in my direction, thus heralding new findings and learnings. For me, this is the beauty of configuration management.
+
+____
+
+I hope you found this guide on Configuration Management and DevOps interesting. Please favorite this article and drop comments, questions, and feedback in the discussion section below. Thank you for reading!
