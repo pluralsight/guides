@@ -8,11 +8,6 @@
 - [Read more from Troy Kranendonk](https://www.pluralsight.com/guides/author/kranetr) <img src="https://avatars2.githubusercontent.com/u/10641956?v=4" width="30" height="30" alt="Troy Kranendonk" />
 - Related to: Python
 
-### Role of Configuration Management in DevOps by Abhinav Kaiser
-- [Read the guide](https://www.pluralsight.com/guides/other/role-of-configuration-management-in-devops?status=in-review)
-- [Read more from Abhinav Kaiser](https://www.pluralsight.com/guides/author/abskaiser) <img src="https://avatars2.githubusercontent.com/u/26959448?v=4" width="30" height="30" alt="Abhinav Kaiser" />
-- Related to: other
-
 ### Data Stream Management with Apache Kafka Streams by Kobi Hikri
 - [Read the guide](https://www.pluralsight.com/guides/big-data/data-stream-management-with-apache-kafka-streams?status=in-review)
 - [Read more from Kobi Hikri](https://www.pluralsight.com/guides/author/kobihikri) <img src="https://avatars2.githubusercontent.com/u/4434689?v=4" width="30" height="30" alt="Kobi Hikri" />
