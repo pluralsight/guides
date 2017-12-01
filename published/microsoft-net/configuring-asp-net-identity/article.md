@@ -348,7 +348,7 @@ By now, we have developed a fully-functional User Accounts system that is able t
 
 Now, let's add some additional fields to our accounts system. To keep things simple, I will create just two additional columns in the ```AspNetUsers``` table. The first one will be ```IsDeleted```, a ```BIT``` column that will serve as a marker used for soft deletion.
 
-The second column will be ```CompanySecretCode```, an encrypted column that keeps a code taht each user can use to access different documents (there is no particular reason for putting such a column in our table, it is just an example of how to encrypt columns when it comes to accounts system).
+The second column will be ```CompanySecretCode```, an encrypted column that keeps a code that each user can use to access different documents (there is no particular reason for putting such a column in our table, it is just an example of how to encrypt columns when it comes to accounts system).
 
 ### Soft deletion
 
