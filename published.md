@@ -1,3 +1,8 @@
+### Creating Interactive Charts with Python Pygal by Troy Kranendonk
+- [Read the guide](https://www.pluralsight.com/guides/python/creating-interactive-charts-with-python-pygal)
+- [Read more from Troy Kranendonk](https://www.pluralsight.com/guides/author/kranetr) <img src="https://avatars2.githubusercontent.com/u/10641956?v=4" width="30" height="30" alt="Troy Kranendonk" />
+- Related to: Python
+
 ### Role of Configuration Management in DevOps by Abhinav Kaiser
 - [Read the guide](https://www.pluralsight.com/guides/other/role-of-configuration-management-in-devops)
 - [Read more from Abhinav Kaiser](https://www.pluralsight.com/guides/author/abskaiser) <img src="https://avatars2.githubusercontent.com/u/26959448?v=4" width="30" height="30" alt="Abhinav Kaiser" />
