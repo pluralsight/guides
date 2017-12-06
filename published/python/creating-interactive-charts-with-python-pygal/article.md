@@ -1,7 +1,7 @@
 <br>
 #### Quick Introduction:
 
-You may be familar with Matplotlib, Seaborn, and Bokeh to name a few.  Sure, there are a few others the allow interactivty and soforth, but it's Pygal that allows you to create SVG's. Besides the scalability of an SVG, you can edit them in any editor and can print them with very high quality resolution.  They are great to use with Flask and Django as well.  Lastly, you can easiely and minimally create line charts, bar graphs, and Radar Charts (_to name a few_) with very little code as you'll see below. 
+You may be familiar with Matplotlib, Seaborn, and Bokeh to name a few.  Sure, there are a few others then allow interactivity and so forth, but it's Pygal that allows you to create SVG's. Besides the scalability of an SVG, you can edit them in any editor and can print them with very high quality resolution.  They are great to use with Flask and Django as well.  Lastly, you can easily and minimally create line charts, bar graphs, and Radar Charts (_to name a few_) with very little code as you'll see below. 
 
 Examples:
 
@@ -89,7 +89,7 @@ import pygal
 b_chart = pygal.Bar()
 b_chart.title = "Destiny Kill/Death Ratio"
 ```
-Now we can start adding in our data. I need 3 bars, one for each player.  To accomplish this, i'll need to use ```add``` followed by a title and some values.  
+Now we can start adding in our data. I need 3 bars, one for each player.  To accomplish this, I'll need to use ```add``` followed by a title and some values.  
 ```
 import pygal
 b_chart = pygal.Bar()
@@ -183,7 +183,7 @@ b_chart.add("Punisherdonk", [1.05])
 b_chart.add("Musclemuffins20", [1.10])
 b_chart.render_in_browser()
 ```
-Now all we need to do is pass ```style=custom_style``` in our ```pygal.Bar()``` to get it to work.
+Now, all we need to do is pass ```style=custom_style``` in our ```pygal.Bar()``` to get it to work.
 ```
 import pygal
 from pygal.style import Style
@@ -210,7 +210,7 @@ b_chart.render_in_browser()
 ----
 #### That's a Wrap
 
-It's that simple.  I would check out [Pygal's](http://www.pygal.org/en/stable/installing.html) documentation for further builds.  You should have all the tools needed to create great looking graphs/charts with Python Pygal :)
+It's that simple.  I would check out [Pygal's](http://www.pygal.org/en/stable/installing.html) documentation for further builds.  You should have all the tools needed to create great looking graphs and charts with Python Pygal :)
 
 <br>
 Leave a comment or reach out and say hi on [Twitter](https://twitter.com/TroyKranendonk)
