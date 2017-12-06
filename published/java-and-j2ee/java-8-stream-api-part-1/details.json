@@ -3,7 +3,12 @@
     "author_name": "eh3rrera",
     "author_real_name": "Esteban Herrera",
     "branch": "master",
-    "branches": [],
+    "branches": [
+        [
+            "michelronero",
+            "michelronero-java-and-j2ee-java-8-stream-api-part-1"
+        ]
+    ],
     "filename": "article.md",
     "first_commit": "a1c55c2204a32a7e10f9b7ba8fcf3d12af03c6c9",
     "image_url": "https://avatars.githubusercontent.com/u/11665759?v=3",

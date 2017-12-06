@@ -1,7 +1,12 @@
-### Draft by Troy Kranendonk
-- [Read the guide](https://www.pluralsight.com/guides/python/draft?status=draft)
+### No name by Sandra Andonov
+- [Read the guide](https://www.pluralsight.com/guides/front-end-javascript/no-name?status=draft)
+- [Read more from Sandra Andonov](https://www.pluralsight.com/guides/author/sandraandonov88) <img src="https://avatars3.githubusercontent.com/u/4996647?v=4" width="30" height="30" alt="Sandra Andonov" />
+- Related to: Front-End JavaScript (Angular, React, Meteor, etc)
+
+### d by Troy Kranendonk
+- [Read the guide](https://www.pluralsight.com/guides/other/d?status=draft)
 - [Read more from Troy Kranendonk](https://www.pluralsight.com/guides/author/kranetr) <img src="https://avatars2.githubusercontent.com/u/10641956?v=4" width="30" height="30" alt="Troy Kranendonk" />
-- Related to: Python
+- Related to: other
 
 ### Everything You Need To Know About JavaScript Objects by Miroslav Gajic
 - [Read the guide](https://www.pluralsight.com/guides/front-end-javascript/everything-you-need-to-know-about-javascript-objects?status=draft)

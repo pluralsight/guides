@@ -1,3 +1,13 @@
+### Creating Interactive Charts with Python Pygal by Troy Kranendonk
+- [Read the guide](https://www.pluralsight.com/guides/python/creating-interactive-charts-with-python-pygal)
+- [Read more from Troy Kranendonk](https://www.pluralsight.com/guides/author/kranetr) <img src="https://avatars2.githubusercontent.com/u/10641956?v=4" width="30" height="30" alt="Troy Kranendonk" />
+- Related to: Python
+
+### Role of Configuration Management in DevOps by Abhinav Kaiser
+- [Read the guide](https://www.pluralsight.com/guides/other/role-of-configuration-management-in-devops)
+- [Read more from Abhinav Kaiser](https://www.pluralsight.com/guides/author/abskaiser) <img src="https://avatars2.githubusercontent.com/u/26959448?v=4" width="30" height="30" alt="Abhinav Kaiser" />
+- Related to: other
+
 ### Creating Interactive charts with PHP and Cassandra by Gagan Sikri
 - [Read the guide](https://www.pluralsight.com/guides/php/creating-interactive-charts-with-php-and-cassandra)
 - [Read more from Gagan Sikri](https://www.pluralsight.com/guides/author/sikrigagan) <img src="https://avatars0.githubusercontent.com/u/6383448?v=4" width="30" height="30" alt="Gagan Sikri" />
@@ -410,7 +420,7 @@
 
 ### Using AngularFire2 to build Ionic 2 & Firebase apps! by Jorge Vergara
 - [Read the guide](https://www.pluralsight.com/guides/front-end-javascript/using-angularfire2-to-build-ionic-2-firebase-apps)
-- [Read more from Jorge Vergara](https://www.pluralsight.com/guides/author/javebratt) <img src="https://avatars.githubusercontent.com/u/7296623?v=3" width="30" height="30" alt="Jorge Vergara" />
+- [Read more from Jorge Vergara](https://www.pluralsight.com/guides/author/javebratt) <img src="https://avatars0.githubusercontent.com/u/7296623?v=4" width="30" height="30" alt="Jorge Vergara" />
 - Related to: Front-End JavaScript (Angular, React, Meteor, etc)
 
 ### Scale ASP.NET Core apps with Docker Swarm Mode by Stefan Prodan

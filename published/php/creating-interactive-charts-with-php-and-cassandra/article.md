@@ -1,14 +1,14 @@
-Apache Cassandra is a distributed database with unique benefits which should ideally be present in the developer's toolkit. Cassandra is free and open-source distributed database management system which is designed to manage very large amount of structured data.
+Apache Cassandra is a distributed database with unique benefits that strengthen a developer's toolkit. Cassandra is free and open-source distributed database management system which is designed to manage large amounts of structured data.
 
-In this article, we’ll discuss the step-by-step process of creating charts by fetching chart data from a cassandra database. For this, we will use FusionCharts, a JavaScript-charting library and its PHP wrapper.
+In this article, we’ll discuss the step-by-step process of creating charts by fetching chart data from a Cassandra database using FusionCharts, a JavaScript-charting library, and its PHP wrapper.
 
 
 ## Requirements
 To render charts in PHP, we need three components, as listed below:
 
-* FusionCharts Core Package JS Files [Download Link](https://www.fusioncharts.com/download/)
-* FusionCharts PHP Wrapper [Download Link](https://www.fusioncharts.com/php-charts/)
-* PHP Driver for Apache Cassandra [Download Link](http://downloads.datastax.com/php-driver/)
+* [FusionCharts Core Package JS Files](https://www.fusioncharts.com/download/)
+* [FusionCharts PHP Wrapper](https://www.fusioncharts.com/php-charts/)
+* [PHP Driver for Apache Cassandra](http://downloads.datastax.com/php-driver/)
 
 ### Including FusionCharts Core JS Files
 To include FusionCharts core packages (`fusioncharts.js` and `fusioncharts.charts.js`) in the HTML file, refer to the code below:
@@ -33,11 +33,11 @@ Refer to the code below to include FusionCharts PHP wrapper (`fusioncharts.php`)
 ?>
 ```
 
-Once done, you are all set with the environment in your system to work with Cassandra database.
+Once this step is complete, you are all set with the environment. You should be able to work with a Cassandra database on your system.
 
 
 ## Step 1: Establishing and Verifying Connection with Database
-Establish the connection with Cassandra database to fetch data for the chart. Refer to the PHP code below:
+Establish the connection with Cassandra database to fetch data for the chart with the PHP code below:
 
 ```
 $cluster = Cassandra::cluster()->build();
@@ -55,14 +55,14 @@ if(!$session) {
 
 In the above code:
 
-* `Cassandra::cluster()->build();` will by default establish connection with localhost cluster. You can also specify remote URL to establish connection with remote cluster. `withContactPoints()` and `withPort()` methods are used to specify IP addresses or hostnames, and port number of the nodes in a given Cassandra cluster. Refer to [this link](http://docs.datastax.com/en/developer/php-driver/1.3/features/#specifying-addresses-of-cassandra-nodes) for more details.
-* `$keyspace` holds name of keyspace (database) from which data will be fetched for the chart.  
+* `Cassandra::cluster()->build();` by default establishes a connection with a localhost cluster. You can also specify remote URL to establish connection with remote cluster. `withContactPoints()` and `withPort()` methods are used to specify IP addresses or hostnames, and port number of the nodes in a given Cassandra cluster. Refer to [this link](http://docs.datastax.com/en/developer/php-driver/1.3/features/#specifying-addresses-of-cassandra-nodes) for more details.
+* `$keyspace` holds the name of keyspace (database) from which data will be fetched for the chart.  
 * The `$session` variable is used to establish the connection with the database. In case of any connection error, the above code will throw an error message. You can also create a separate `.php` file for this step and include it instead of writing it every time.
 
 **Note**: To use Cassandra in PHP, please make sure you have enabled the necessary extensions by including `extension=php_cassandra.dll` in your `php.ini` configuration file.
 
 
-## Step 2: Fetching Data and Forming JSON Array
+## Step 2: Fetching Data and Forming the JSON Array
 Now that we have successfully established connection with the database, we will write the query statement to fetch data for the chart.
 
 Refer to the code  below to fetch the data:
@@ -77,7 +77,7 @@ $exec = $session->executeAsync($statement);
 $result = $exec->get();
 ```
 
-Here, `$result` variable holds the data, once the above code is executed.
+Here, `$result` variable holds the data once the above code is executed.
 
 FusionCharts understands both XML and JSON data formats. Since we will be using JSON, we will now append the data (located in `$result` variable) along with FusionCharts chart configurations and parse the end result as an associative JSON array.
 
@@ -136,15 +136,15 @@ if($result) {
 	$jsonEncodedData = json_encode($arrData);
 ```
 
-In above code, an if statement is used to check whether the  value of `$result` variable is valid or not which creates an associative JSON array to form data for the chart.
+In the code shown, an if-statement determines whether the  value of `$result` is valid and creates an associative JSON array to form data for the chart.
 
-The chart object under `$arrData` variable contains chart configuration options for caption, sub-caption, div lines, values, tooltips, color, etc.
+The chart object under the `$arrData` variable contains chart configuration options for caption, sub-caption, div lines, values, tooltips, color, etc.
 
-To know more about customizing the chart cosmetics, you can refer to [this developer documentation page](https://www.fusioncharts.com/dev/chart-attributes.html?chart=bar2d).
+To find out more about customizing the chart cosmetics, you can refer to [this developer documentation page](https://www.fusioncharts.com/dev/chart-attributes.html?chart=bar2d).
 
 
 ## Step 3: Creating the Chart Container
-To create HTML container for the chart, use `<div>` element. Refer to the code below:
+To create an HTML container for the chart, use `<div>` as shown below:
 
 ```
 <body>
@@ -152,26 +152,29 @@ To create HTML container for the chart, use `<div>` element. Refer to the code b
 </body>
 ```
 
+This tells the browser that all elements within `<div ...>` and `</div>` belong to the same container. 
 
 ## Step 4: Creating a Chart Instance and Rendering the Chart
-* Now, that we have the chart data and container in place, let’s initiate FusionCharts PHP wrapper class instance to specify the details like chart type, chart ID, chart dimensions, chart container ID, etc to render the chart. Refer to the code below:
+* Now, that we have the chart data and container in place, let’s instantiate the FusionCharts PHP wrapper class and specify details like chart type, chart ID, chart dimensions, chart container ID, and more to render the chart:
 
 ```
 // creating FusionCharts instance
 $toptenChart = new FusionCharts("bar2d", "topChart" , '600', '450', "chart-container", "json", $jsonEncodedData);
 ```
 
-* Once done call the `render()` method to render the chart. `render()` is a PHP Class function that invokes the JS `render()` method, which in turn is used to render the chart. Refer to the code shown below:
+* Next, call the `render()` method to render the chart. `render()` is a PHP class function that invokes the JS `render()` method to render the chart. Call `render()` as follows:
 
 ```
 // FusionCharts render method
 $toptenChart->render();	
 ```
 
-We are done with all the steps to render an interactive chart using FusionCharts. The output looks like as shown in the image below:
+We are done with all the steps to render an interactive chart using FusionCharts. The output looks like this:
 
 ![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/8849f396-2aea-436d-a5ec-5cb0f90b504c.jpeg)
 
-Perfect, isn’t it? If you are having trouble rendering the chart, you can refer to source code from [GitHub repository](https://github.com/sikrigagan/PHP-Cassandra-Charts).
+Perfect, isn’t it? If you are having trouble rendering the chart, refer to source code from [GitHub repository](https://github.com/sikrigagan/PHP-Cassandra-Charts).
 
-Leave a comment or feel free to say hi on [Twitter](https://twitter.com/sikrigagan)!
+_____
+
+Thanks for reading! If you found this guide informative or engaging, please add it to your favorites! Otherwise, feel free to leave a comment or feel free to say hi on [Twitter](https://twitter.com/sikrigagan)!
