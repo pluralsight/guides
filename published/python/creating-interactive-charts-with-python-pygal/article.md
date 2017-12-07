@@ -1,9 +1,9 @@
 <br>
-#### Quick Introduction:
+# A Quick Introduction to Pygal
 
-You may be familiar with Matplotlib, Seaborn, and Bokeh to name a few.  Sure, there are a few others then allow interactivity and so forth, but it's Pygal that allows you to create SVG's. Besides the scalability of an SVG, you can edit them in any editor and can print them with very high quality resolution.  They are great to use with Flask and Django as well.  Lastly, you can easily and minimally create line charts, bar graphs, and Radar Charts (_to name a few_) with very little code as you'll see below. 
+When it comes to interactive charts and the modules you can use, you may be familiar with Matplotlib, Seaborn, and Bokeh, which each allow interactivity and support additional features. 
 
-Examples:
+However, Pygal specializes in allowing the user to create SVGs. Besides the scalability of an SVG, you can edit them in any editor and print them in very high quality resolution. SVG formatting is easily integrated with Flask and Django as well. Lastly, you can easily and minimally create line charts, bar graphs, and Radar Charts (_to name a few_) with very little code, as we'll see shortly with the following examples:
 
 <details>
 <summary><b>```Click``` Pie Example</b></summary>
@@ -39,7 +39,7 @@ Examples:
 </details>
 
 
-#### Let's Begin with an Install
+# Installation
 
 Open Terminal
 ```
@@ -50,14 +50,17 @@ $  pip install Pygal
 
 ---
 
-#### Step 1:  Import
+# Using Pygal
+
+### Step 1:  Import
 
 ```
 import pygal
 ```
 
-#### Step 2: Create a Variable to Store Your Graph In
-For our first example we'll create a bar chart.  We'll simply need to create a varible and store ```pygal.Bar()``` inside.
+### Step 2: Create a Variable to Store the Graph
+
+For our first example we'll create a bar chart.  We'll simply need to create a variable and store ```pygal.Bar()``` inside.
 
 ```
 import pygal
@@ -66,7 +69,8 @@ b_chart = pygal.Bar()
 You can easily use ```pygal.Line```, ```pygal.pie```, or any of the [following](http://www.pygal.org/en/stable/documentation/index.html).
 
 
-#### Step 3: Let's Add Some Values
+### Step 3: Add Some Values
+
 Next we need to start creating our chart.  I will be using Data that I scraped from a gaming tracker for the game <b>Destiny 2.</b>  Eventually the graph will be live and I'll be able to see my stats change (_hopefully_) in real time. 
 
 ---
@@ -79,17 +83,16 @@ Next we need to start creating our chart.  I will be using Data that I scraped f
 
 ---
 
-<i>Let's not get ahead of our selves.</i> <br>In short, everytime I play in a PvP or Crusible Match and eliminate an opponient, or, be eliminated myself, the KD (_Kill/Death Ratio_) will change.  I simply want to compare myself to my clan mates.
+<i>Let's not get ahead of ourselves.</i> <br>In short, everytime I play in a PvP or Crusible Match and eliminate an opponent or end up getting eliminated myself, the KD (_Kill/Death Ratio_) will change.  I simply want to compare myself to my clan mates.
 
+Thus, to start things off, we'll need a chart title.
 
-
-To start things off we'll need a chart title.
 ```
 import pygal
 b_chart = pygal.Bar()
 b_chart.title = "Destiny Kill/Death Ratio"
 ```
-Now we can start adding in our data. I need 3 bars, one for each player.  To accomplish this, I'll need to use ```add``` followed by a title and some values.  
+Now we can start adding in our data. I need 3 bars, one for each player. To accomplish this, I'll need to use ```add``` followed by a title and some values.  
 ```
 import pygal
 b_chart = pygal.Bar()
@@ -99,7 +102,7 @@ b_chart.add("Punisherdonk", [1.05])
 b_chart.add("Musclemuffins20", [1.10])
 ```
 
-Technically, we can finish and render without further customization.  To render quickly to a browser we'll use ```render_in_browser()``` as our output. 
+Technically, we can finish and render without further customization.  To render quickly to a browser, we'll use ```render_in_browser()``` as our output. 
 ```
 import pygal
 b_chart = pygal.Bar()
@@ -119,7 +122,7 @@ b_chart.render_in_browser()
 ---
 
 
-##### <b>Let's Customize</b>
+## Customizing the Graph
 Say we want some custom colors added to our graph<br>
 ![#E80080](https://placehold.it/15/e80080/000000?text=+) `#E80080`
 ![#404040](https://placehold.it/15/404040/000000?text=+) `#404040`
@@ -151,7 +154,7 @@ b_chart.add("Punisherdonk", [1.05])
 b_chart.add("Musclemuffins20", [1.10])
 b_chart.render_in_browser()
 ```
-_Notice I left the parentheses open_
+_Notice I left the parentheses open_.
 
 ---
 <details>
@@ -210,13 +213,6 @@ b_chart.render_in_browser()
 ----
 #### That's a Wrap
 
-It's that simple.  I would check out [Pygal's](http://www.pygal.org/en/stable/installing.html) documentation for further builds.  You should have all the tools needed to create great looking graphs and charts with Python Pygal :)
-
-<br>
-Leave a comment or reach out and say hi on [Twitter](https://twitter.com/TroyKranendonk)
-
-
-
-<br>
-
-<br>
+It's that simple.  I would check out [Pygal's](http://www.pygal.org/en/stable/installing.html) documentation for further builds.  However, after reading this guide, you should have all the knowledge needed to create visually appealing graphs and charts with Python Pygal. 
+___
+Thanks for reading this guide on using the Pygal module. Leave a comment with your favorite Pygal graph or reach out and say hi on [Twitter](https://twitter.com/TroyKranendonk). And, of course, please add this guide to your favorites if you found it informative or engaging.
