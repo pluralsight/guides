@@ -3,7 +3,12 @@
     "author_name": "kranetr",
     "author_real_name": "Troy Kranendonk",
     "branch": "master",
-    "branches": [],
+    "branches": [
+        [
+            "adityavarshney",
+            "adityavarshney-python-creating-interactive-charts-with-python-pygal"
+        ]
+    ],
     "filename": "article.md",
     "first_commit": "a0f89ef533322cd66ebc917896f34834efbd2888",
     "image_url": "https://avatars2.githubusercontent.com/u/10641956?v=4",
