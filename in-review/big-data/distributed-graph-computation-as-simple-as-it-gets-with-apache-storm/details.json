@@ -3,7 +3,12 @@
     "author_name": "kobihikri",
     "author_real_name": "Kobi Hikri",
     "branch": "master",
-    "branches": [],
+    "branches": [
+        [
+            "adityavarshney",
+            "adityavarshney-big-data-distributed-graph-computation-as-simple-as-it-gets-with-apache-storm"
+        ]
+    ],
     "filename": "article.md",
     "first_commit": "288368a1793122aea8d554f3bc7787fccb79b43b",
     "image_url": "https://avatars2.githubusercontent.com/u/4434689?v=4",
