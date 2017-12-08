@@ -6,6 +6,9 @@ JavaScript is an object oriented programming language. Almost everything in Java
 
 Object is a collection of key/value pairs. Keys are also known as properties. An object can be empty, if it doesn't contain any key/value pair.
 
+## What is a prototype?
+Every object has its prototype. The prototype is actually a base object which an object is inherited from. The empty object is inherited from the [Object.prototype](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/prototype), so it has access to all methods of the `Object.prototype`.
+
 ## How can it be instantiated?
 
 There are several ways of creating new objects in JavaScript. We will start from the simplest one.
@@ -65,5 +68,3 @@ person['last' + nameSuffix] = 'Smith';
 ### Object.create()
 
 The `Object.create()` function
-
-
