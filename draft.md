@@ -1,3 +1,8 @@
+### Redis as a Dynamic Interconnecting Datastore by Kobi Hikri
+- [Read the guide](https://www.pluralsight.com/guides/big-data/redis-as-a-dynamic-interconnecting-datastore?status=draft)
+- [Read more from Kobi Hikri](https://www.pluralsight.com/guides/author/kobihikri) <img src="https://avatars2.githubusercontent.com/u/4434689?v=4" width="30" height="30" alt="Kobi Hikri" />
+- Related to: Big Data (Hadoop, Spark, etc)
+
 ### No name by Sandra Andonov
 - [Read the guide](https://www.pluralsight.com/guides/front-end-javascript/no-name?status=draft)
 - [Read more from Sandra Andonov](https://www.pluralsight.com/guides/author/sandraandonov88) <img src="https://avatars3.githubusercontent.com/u/4996647?v=4" width="30" height="30" alt="Sandra Andonov" />
