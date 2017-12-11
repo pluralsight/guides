@@ -1,16 +1,3 @@
-Introduction
-Graph Computation as a Way to Reduce System Complexity
-The Apache Storm Way
-Apache Storm Overview
-Sample Topology - Let’s See Some Code
-So How Is My Computation Distributed?
-Inherent Parallelism - Streams as a Degree of Parallelism
-A Bolt Has Several Instances
-Grouping as an Internal “Order Maker”
-In Conclusion
-
-
-
 # Introduction
 
 Computations can be complex for us, the human drivers of the software world. There’s even a whole domain of science centered around problem solving and computations &mdash; computer science.
@@ -52,7 +39,7 @@ Let’s get started!
 Graph computation as a way to reduce system complexity? After all the introduction about turing machines, automata theory and graph theory?
 
 Well … yes.
-Relying on a tested and proven model does not necessarily mean that using this model is as complicated as proving it.
+Relying on a tested and proven model does not necessarily mean that using this model is as complicated as **proving** it.
 
 As example, think of the following expression: **1 + 1 = 2**
 
@@ -92,7 +79,7 @@ In case we are witnessing a bottleneck in the order validation process, could we
 
 Now, please keep in mind that we’ve described in our graph how each input message should be handled. We haven’t described anything about how to deploy it.
 
-So, we’ve also separated the concerns of software correctness and software deployment.
+So, we’ve also **separated** the concerns of software **correctness** and software **deployment**.
 
 It could very well be the case that we have one physical computation unit instantiated for each “logical” graph vertex except of the validation vertex which we will instantiate two computation units for.
 
