@@ -768,7 +768,7 @@ we can repeat this multiplication by counting `1` to `k`.
 
 But how to write the function using multiplication only? We can write
 `exp(x,k)=x times x times dots times x` (`k` times). If we knew `k`
-is `2`, the expression becomes `exp(x,2) = x 	imes x`, if it is `3`,
+is `2`, the expression becomes `exp(x,2) = x 	times x`, if it is `3`,
 the expression is `exp(x, 3) = x times x times x` and so on. But when
 `k` is unknown, then it is difficult to write in very clear way. Most
 importantly, C programming does not support any expression like
@@ -856,7 +856,7 @@ driving parameter(s).
 
     - The induction hypothesis often needs to be computed with
         something else to be equal to the original definition. For
-        example, `exp(x)=x 	imes exp(x-1)`.
+        example, `exp(x)=x 	times exp(x-1)`.
 
     - Other parameters remain the same in recursion call inside
         the body.
@@ -971,9 +971,9 @@ as the induction hypothesis.
              . | .
   -------------|----------------------------------------------------------------
   `factorial(x-1) = (x-1)!` | …(1) by induction hypothesis
-  `(x-1)! = (x-1) 	imes (x-2) 	imes ... 	imes 1` | expanded form
-  so, `x 	imes (x-1)! = x 	imes (x-1) 	imes (x-2) 	imes ldots 	imes 1` | multiplying both side by `x`
-  so, `x 	imes factorial(x-1) = x!` | from (1)
+  `(x-1)! = (x-1) 	times (x-2) 	times ... 	times 1` | expanded form
+  so, `x 	times (x-1)! = x 	times (x-1) 	times (x-2) 	times ldots 	imes 1` | multiplying both side by `x`
+  so, `x 	times factorial(x-1) = x!` | from (1)
   `	herefore factorial(x) = x!` | from the function
 
 
