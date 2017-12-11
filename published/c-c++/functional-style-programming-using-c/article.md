@@ -208,9 +208,9 @@ into programming function:
 
 1. `sub(x,y) = x - y`
 
-2. `addOfSquare(x,y) = (x 	imes x) + (y 	imes y)`
+2. `addOfSquare(x,y) = (x 	times x) + (y 	times y)`
 
-3. `subOfSquare(x,y) = (x 	imes x) - (y 	imes y)`
+3. `subOfSquare(x,y) = (x 	times x) - (y 	times y)`
 
 4. `subOfSquare_1(x,y) = (x+y)(x-y)` 
 
