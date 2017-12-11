@@ -1,6 +1,6 @@
 # Introduction
 
-Computations can be complex for us, the human drivers of the software world. There’s even a whole domain of science centered around problem solving and computations &mdash; computer science.
+Computations can be complex. Mostly for us, the human drivers of the software world. There’s even a whole domain of science centered around problem solving and computations &mdash; computer science.
 
 When you begin your studies of computer science you are introduced with terms and ideas which were all created around the idea of trying to model and represent solutions to problems in a provable, correct manner.
 
@@ -146,7 +146,7 @@ I am not going to perform a deep dive into the technology itself. However, if yo
 At the bird's-eye-view, let’s see how a Storm cluster is built. This will help us understand how it is able to provide us with the aforementioned infrastructure such as reliable messaging between our computation graph parts, as well as a certain degree of parallelism as I will explain a bit further down the road.
 
 To begin with, the storm cluster is built from (not surprising) … nodes.
-These nodes can take on the form of either a master node, running the Nimbus daemon, or a worker node - running the Supervisor daemon.
+These nodes can take on the form of either a **master node**, running the **Nimbus** daemon, or a **worker node** - running the **Supervisor** daemon.
 
  
 ![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/d09b04e9-ff4a-4c3f-a66c-adfc8579ae94.png)
@@ -169,9 +169,9 @@ A **worker process** is responsible for executing a subset of the topology. Each
 ![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/d886e691-a2e6-48a6-abb9-0ca4b492e44b.png)
 
 
-While it may seem rather laborious to understand, this structure is exactly what gives us the ability to distribute our logical computation graph among various physical machines, processes and threads, allowing our storm cluster to conserve our logical computational integrity in case of hardware failures.
+While it may seem rather laborious to understand, this structure is exactly what gives us the ability to distribute our logical computation graph among various physical machines, processes and threads, allowing our storm cluster to **conserve our logical computational integrity** in case of hardware failures.
 
-For example, if a worker dies, we (as the master node) will assign its work to another worker node.
+A worker dies? No problem - we (the master node) will assign its work to another worker node.
  
 
 ![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/63601eef-c9dc-4751-8f8c-51941df6a103.png)
@@ -189,14 +189,12 @@ This architecture is an enabler for separation of concerns among our teams. We c
 ![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/b55fd5e4-cd3c-4cf9-a67b-9b85f0eb329b.png)
 
 
-The engineers developing Storm gave thought to the aforementioned separation of concerns notion, and supplied the developers with a mean of running a topology locally, on the developer's machine.
+The engineers developing Storm gave thought to the aforementioned separation of concerns notion, and supplied the developers with a **mean of running a topology locally**, on the developer's machine.
 
-Speaking of development, how about we look at some code?
+Talking about developers - how about we look at some code?
 
 
-# Sample Topology
-
-### Let’s See Some Code
+# Sample Topology - Let’s See Some Code
 
 Ok, so some of you probably thought that when I gave the order validation, packaging, and shipment, my example wasn’t that good for demonstrating graph computation.
 
