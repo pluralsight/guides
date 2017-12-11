@@ -134,7 +134,7 @@ It includes infrastructure which will enable you to work with Elasticsearch, Mon
 
 So, if I wanted to summarize “The Storm Way” in a sentence I would say that:
 
-Apache Storm is a distributed technology aimed at allowing developers to provide logical solutions to problems utilizing a graph computation model while providing a mature and highly integratable infrastructure capabilities “under the hood” through message load-balancing and “on the shelf” through a ready-to-use Kafka Spout.
+Apache Storm is a distributed technology, aimed at allowing developers to provide logical solutions to problems utilizing a graph computation model - while providing a mature and highly integratable infrastructure capabilities both “under the hood” (e.g. message load-balancing) and “on the shelf” (e.g. a ready to use Kafka Spout - just configure and consume data from Kafka).
 
 
 # Apache Storm Overview
