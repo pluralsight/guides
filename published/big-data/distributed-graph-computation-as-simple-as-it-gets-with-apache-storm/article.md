@@ -41,7 +41,9 @@ Graph computation as a way to reduce system complexity? After all the introducti
 Well … yes.
 Relying on a tested and proven model does not necessarily mean that using this model is as complicated as **proving** it.
 
-As example, think of the following expression: **1 + 1 = 2**
+For example, think of the following expression: 
+
+**1 + 1 = 2**
 
 We all “know” it’s correct and are able to use it because someone else had already proven it to be true.
 
