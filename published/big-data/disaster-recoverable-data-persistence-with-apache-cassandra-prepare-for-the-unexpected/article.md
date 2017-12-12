@@ -164,7 +164,7 @@ Using a proven, out of the box partitioner, such as the **Murmur3Partitioner**, 
 
 A replication strategy is, as the name suggests, the manner by which the Cassandra cluster will distribute replicas across the cluster.
 
-When your cluster is deployed within a single data center (not recommended), the **SimpleStrategy** will suffice.
+When your cluster is deployed within a single data center (**not recommended**), the SimpleStrategy will suffice.
 
 However, when moving to a multi data center deployment, please make sure to use the **NetworkTopologyStrategy**, which will allow for the definition of desired replication across multiple data centers.
 
@@ -187,17 +187,17 @@ Make sure to distribute your Cassandra nodes evenly, among your racks (Assuming 
 ![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/dfd04257-2824-4783-86b7-16d3444bc18e.png)
 
 
-> Use a rack aware snitch. 
+ Use a **rack aware snitch**. 
 
 A rack aware snitch will make sure that the Cassandra cluster is aware of each node's physical location and can distribute replicas across racks accordingly.
 
 But is configuring a rack aware snitch sufficient to make sure our data is properly replicated among server racks? No. Something is missing.
 
-That something is a proper configuration value of the replication factor defined at the keyspace level.
+That something is a proper configuration value of the **replication factor** defined at the keyspace level.
 
 Choosing the correct replication factor could be confusing at first because setting a replication factor is not orthogonal to other configuration parameters, such as write level (the number of replicas that need to acknowledge a write operation) and read level (the number of replicas that need to acknowledge a read operation).
 
-A good practice would be to make sure your write level when added to the read level is larger than your replication factor.
+A good practice would be to make sure your **write** level when **added** to the **read** level is **larger than** your **replication factor**.
 
 So, in a cluster made of 4 nodes, spread across 2 racks, given a write level of 2, and a read level of 1, you will need to make sure your replication factor is larger than 3.
 
@@ -209,7 +209,7 @@ While we achieved this with an inherent overhead (all of our nodes are storing 1
 
 As I’ve mentioned before, your cluster size (node count), replication factor, write consistency and read consistency are not orthogonal. A change to one, might have an impact on how your cluster behaves, both performance wise and consistency wise.
 
-Make sure you read and understand the mentioned parameters from the problem above and adjust them properly to your use case.
+Make sure you read and understand the [mentioned parameters](http://cassandra.apache.org/doc/latest/architecture/dynamo.html?highlight=consistency) from the problem above and adjust them properly to your use case.
 
 # Avoid Using Shared Storage
 
