@@ -249,13 +249,13 @@ Each time I’ve added a bolt to the topology, I invoked `setBolt`.
 Then, I named the bolt, and provided an instance for that bolt. That instance is a class implemented per each bolts required logic. I will review such a bolt shortly.
 
  
-![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/9e2a74ef-8266-4bd6-960e-5f0274f29f16.png)
+![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/ccb37df6-d7bd-476a-a1ba-46967a6ad35b.png)
 
 
 Per each bolt, we’ve connected it to another bolt or spout which will provide it with input.
 
  
-![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/ccb37df6-d7bd-476a-a1ba-46967a6ad35b.png)
+![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/9e2a74ef-8266-4bd6-960e-5f0274f29f16.png)
 
 
 In the case of the validation bolt, as two outcomes are possible (valid or invalid) - per each possible result we’ve created a bolt which listens to messages only on a particular stream (which the validation bolt is sending messages to).
