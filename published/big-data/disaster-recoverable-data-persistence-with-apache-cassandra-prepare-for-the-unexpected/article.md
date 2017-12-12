@@ -7,7 +7,7 @@ To begin with, it tells me you have come to the understanding that your data is 
 When it comes to data management, most platforms will make promises about their data integrity.
 
 However, being the responsible professional you are, would you risk your business on the mere promise that "once you’ve migrated to this technology, your data will be (safe/secure/etc.)”?
-Some might, but if you’re reading this article, you will not; you know better.
+Some might, but again - if you’ve got to read this article, that “some people” is not you. You know better.
 	
 When talking about data integrity, I refer to the factors of **data accuracy** and **data consistency**.
 
