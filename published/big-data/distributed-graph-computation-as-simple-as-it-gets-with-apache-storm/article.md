@@ -322,7 +322,8 @@ After we submit our topology to the cluster, packed as a jar file, the topology 
 The Storm infrastructure is aware of data streams flowing within the topology. This infrastructure also tracks tuple acknowledgment by bolts, providing us with a reliable messaging system.
 
 # Inherent Parallelism: Streams as a Degree of Parallelism
-	One of the benefits of graph computation is that we can clearly visualize the separate computation paths in our application.
+
+One of the benefits of graph computation is that we can clearly visualize the separate computation paths in our application.
 
 Take a look here:
 
@@ -347,7 +348,7 @@ When defining a topology, we can declare the degree of parallelism we desire per
 
 Please notice that we do not want tasks to be spawned on-demand with no control! Too many tasks (i.e. threads) will introduce over-parallelism and possibly cause our cluster to “slow down” and eventually become unresponsive.
 
-Before you use Storm's parallelizing capabilities, **consider the degree of parallelism you are trying to achieve and the resources available**.
+Before you use Storm's parallelizing capabilities, consider the **degree of parallelism you are trying to achieve, given available resources**.
 
 Given that we have 3 Storm worker nodes, and we deploy a topology with a single spout with degree of parallelism set to 2 and 5 bolts with degree of parallelism set to 2 for each &mdash; we will have storm spawn 2 tasks for the spout and 5 * 2 = 10 tasks per the bolts.
 
@@ -359,7 +360,9 @@ That means that we will have 12 tasks which the storm cluster will try to spread
  
 # Grouping as an Internal “Order Maker”
 
-I promised I’ll get back to the concept of **grouping**. We’ve previously seen that when creating a bolt, we’ve specified it’s “input” bolt:
+I promised I’ll get back to the concept of **grouping**. 
+
+We’ve previously seen that when creating a bolt, we’ve specified it’s “input” bolt:
 
  
 ![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/51f7630e-05b3-413d-80f7-5c78556969ca.png)
@@ -373,7 +376,9 @@ But the way we’ve done so was unclear, as we’ve stated that we want a “shu
 
 Strange, isn’t it? What does grouping have to do with the graph topology we set up earlier? Don’t all stream tuples simply flow from one bolt to the other?
 
-Well, remember that spouts and bolts can have multiple instances, in order to parallelize our distributed computation. While a spout or bolt is **logically** an atomic computation unit, it’s **physical** implementation may depend on other instances.
+Well, remember that spouts and bolts can have multiple instances, in order to parallelize our distributed computation. 
+
+While a spout or bolt is **logically** an atomic computation unit, it’s **physical** implementation isn’t necessarily.
 
 Grouping is our way of defining the flow of tuples between two different topology elements. It will define how tuples flow between instances (tasks) of the input entity and the target entity.
 
