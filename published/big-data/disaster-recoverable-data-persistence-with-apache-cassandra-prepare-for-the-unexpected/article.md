@@ -36,15 +36,15 @@ We’ve already mentioned in the introduction that physical integrity of data mi
 
 The amount of benefit is subject to change and is dependent of several factors.
 
-The first factor is that we’ve introduced relevant additional physical resources.
+The first factor is that we’ve introduced **relevant** additional physical resources.
 
-An Apache Cassandra cluster is made out of nodes. These nodes are basically processes running on a host machine, contributing their capabilities to the cluster.
+An Apache Cassandra **cluster** is made out of **nodes**. These nodes are basically processes running on a host machine, contributing their capabilities to the cluster.
 
 
 ![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/85ec087d-b48e-4957-92e2-f2d80c18e16d.png)
 
 
-These nodes can be grouped under logical data centers and racks, as a matter of simple configuration.
+These nodes can be grouped under **logical** data centers and racks, as a matter of simple configuration.
 
 
 ![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/18bf5629-c661-4ef5-8256-53d5ca99f907.png)
