@@ -211,17 +211,20 @@ A computation layer, built using [Apache Storm](http://storm.apache.org/), and i
 
 Though we’ve already mentioned the storage layer in our discussion of the previous “Pillars”, or layers as I usually refer to them. Let’s examine our requirements from a big data analytics compliant storage layer:
 	
-* Our storage layer must be able to persist incoming data very fast or else we'll run into a system bottleneck that will crush our system's "online" viability.
+* Our storage layer must be able to **persist incoming data very fast** or else we'll run into a system bottleneck that will crush our system's "online" viability.
 
-* Making things interesting, it must be able to manage changing rates of incoming data. We would like to be able to change the scale of our storage layer on demand.
+* Making things interesting, it must be able to **manage changing rates of incoming data**. We would like to be able to change the scale of our storage layer on demand.
 
 * Losing data is something none of us desires in an enterprise-grade data analytics system; our storage layer must be reliable.
 
-In terms of reliability, we would also like to make sure our system can withstand an occasional failure (hardware or software), and still remain functional. We would also like to make sure that our data wasn’t corrupted or lost should a failure occur.
+In terms of reliability, we would also like to make sure our system can **withstand an occasional failure** (hardware or software), and still **remain functional**. 
+
+We would also like to make sure that our data wasn’t corrupted or lost should a failure occur.
 
 I would like to remind you, now, that our storage layer, just as any other layer in our system, is not limited to a single technology. It might be desirable to utilize several technologies, under the hoods, to make sure we are meeting all our enterprises requirements.
 
 For example, let’s consider the following system:
+
 Our system is given the following input:
 
 •	A constant stream of stock trade records.
@@ -237,9 +240,11 @@ In turn, we will receive a massive file, daily, that we will parse, process and 
 
 Then, once our data model is ready, our computation layer could take advantage of it and generate insights according to the data it reflects, data that relates to a larger scope (a day) than the 10 minute intervals during which we received individual data points. 
 
-Please notice that I said “could take advantage of” and not “should” or “would”. There is no definitive rule here; it could very well be that the data model is used directly by your systems analysts. 
+Please notice that I said “**could** take advantage of” and not “should” or “would”. 
 
-If you would like to see for yourself how a storage layer can be implemented, using Apache Cassandra, take a look [at the Pluralsight tutorial mentioned before](https://app.pluralsight.com/player?course=building-enterprise-distributed-online-analytics-platform&author=kobi-hikri&name=building-enterprise-distributed-online-analytics-platform-m4&clip=0&mode=live).
+There is no definitive rule here; it could very well be that the data model is used directly by your systems analysts. 
+
+If you would like to see for yourself how a storage layer can be implemented, using [Apache Cassandra](http://cassandra.apache.org/), take a look [here](https://app.pluralsight.com/player?course=building-enterprise-distributed-online-analytics-platform&author=kobi-hikri&name=building-enterprise-distributed-online-analytics-platform-m4&clip=0&mode=live).
 
 # “Offline” and Complementary “Online” Analytics 
 ## The Insights engine
