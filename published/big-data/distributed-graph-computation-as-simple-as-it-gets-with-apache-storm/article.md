@@ -400,22 +400,30 @@ There are additional interesting grouping methods you can check [here](http://st
 
 # In Conclusion
 
-Thank you for bearing with me through this trek examining the implications of using graph-theory computations with Apache Storm.
+Thanks for bearing with me through this short journey, examining the concept of graph computations in general and with Apache Storm in more specific details.
+While writing this article I kept in mind “keeping it simple”, assuming that once you’ve “got” the idea and understood the tool - you will be able to decide if a deeper examination of Storm is desirable.
+That is also the reason I’ve referred to additional reading and to my Pluralsight course.
 
-To recap, we began this journey with understanding what graph computation is, and where it originated. In particular, we understood how profound a concept it is in the domain of computer science. 
+We began this journey with understanding what graph computation is, and where it originated.
+In particular, we understood how profound a concept it is in the domain of computer science.
 
-Afterwards, we moved on to discuss the benefits of a supporting infrastructure, in order to reliably implement our application as a graph computation. We presented Apache Storm as such a technology.
+Once convinced (hopefully), we’ve moved on to discuss the benefits of a supporting infrastructure, in order to reliably implement our application as a graph computation.
 
-Storm was reviewed at its various levels &mdash; the logical level, the topological level, and the physical level (or the physical cluster itself).
+We presented Apache Storm as such a technology.
 
-We understood how a topology is spread across the cluster and executed in the final abstraction layer of the physical level, the task.
+Storm was reviewed at the levels - the logical level, the topology and the physical level - the physical cluster itself.
 
-Then we covered how Storm provides parallelism at the stream level and at the specific task level (spout or bolt).
+We understood how a topology is spread across the cluster and executed in the final abstraction layer of the physical level - the task.
 
-Hopefully after looking at some code, you can see the simplicity and beauty of using Storm and are intrigued.
+Then - we’ve discussed how parallelism is provided is Storm - both at the stream level and at the specific task level (spout or bolt).
 
-There is far more to learn. While writing this article I aimed to keep it as simple as possible, assuming that once you “got” the idea and understood the tool, you will be able to dive deeper based on your own interests. That is also the reason I’ve referred to additional reading and to my Pluralsight course.
+Looking at some code, I’ve tried to convey the simplicity and beauty of using Storm.
 
+Hopefully I’ve succeeded in intriguing you.
+
+Feel free to drop me a word at the comments section and thank you very much for being here!
+
+Kobi.
 ______
 
 Thank you very much for reading! As always, feel free to drop me a word at the comments section and make sure to add this guide to your favorites!
