@@ -13,7 +13,7 @@
 <!--##### Summary	11-->
 
 
-“Big Data is a term encompassing the use of techniques to capture, process, analyze and visualize potentially large datasets in a reasonable timeframe not accessible to standard IT technologies.” By extension, the platform, tools and software used for this purpose are collectively called “Big Data technologies” - NESSI (2012)
+> “Big Data is a term encompassing the use of techniques to capture, process, analyze and visualize potentially large datasets in a reasonable timeframe not accessible to standard IT technologies.” By extension, the platform, tools and software used for this purpose are collectively called “Big Data technologies” - NESSI (2012)
 
 # Introduction
 
@@ -34,7 +34,9 @@ In this article, I hope to build up, step by step, understanding about how big d
 
 Throughout this article, we will describe the “moving parts” in a typical big data analytics platform. I am saying “typical” as other approaches may exist, that will also benefit your enterprise or research. However – in my experience, the following approach is most common and capable.
 	
-For each pillar (or role) we examine, I will explain how it fits into the bigger picture, and mention the specific responsibilities this role has. For each such role, I will mention relevant popular technologies that will serve well as an implementation fitted to the overarching task of big data analytics.
+For each pillar (or role) we examine, I will explain how it fits into the bigger picture, and mention the specific responsibilities this role has. 
+
+For each such role, I will mention relevant popular technologies that will serve well as an implementation fitted to the overarching task of big data analytics.
 
 ## Common Concerns for All Four Pillars
 
@@ -44,17 +46,17 @@ Why doesn’t the “legacy” manner of things suffice? Can’t we simply write
 We can, but to an extent. For expensive operations, we will reach our resource limit very quickly.
 Any single modern machine, be it as fast as it gets, with the fastest storage and network devices money can buy today – will still have an upper limit to the amount of data it can manage in any given time.
 
-Another concern, when working with a single machine, is that the system itself is a single point of failure. Hardware **will fail** at some point. This could mean data loss and inefficiency to your enterprise.
+Another concern, when working with a single machine, is that the system itself is a single point of failure. Hardware **will** fail at some point. This could mean data loss and inefficiency to your enterprise.
 
 Putting these concerns to terms, we understand that our desired system should be:
 
-•	Scalable - able to overcome the data management limitations any single machine might have. 
+•	**Scalable** - able to overcome the data management limitations any single machine might have. 
 
-•	Fault-tolerant - able to remain operational even when something unexpected happens (such as a hard drive failure or power surge).
+•	**Fault-tolerant** - able to remain operational even when something unexpected happens (such as a hard drive failure or power surge).
 
-Meeting both the requirements, will mean that our system need be:
+#### Meeting both the requirements, will mean that our system need be:
 
-•	Distributed - easily extended and compatible with additional resources that raise the upper limits of its data management capabilities, such as collecting, processing, storing, replicating, gathering insights and more.
+•	**Distributed** - easily extended and compatible with additional resources that raise the upper limits of its data management capabilities, such as collecting, processing, storing, replicating, gathering insights and more.
 
 As our system is built as a chain of technologies, we need make sure each link in the chain conforms to our requirements. Let’s get started.
 
@@ -73,22 +75,25 @@ In other cases, our system will register for data reception from data sources an
 
 ### The Role of the Data Backbone
 
-The technology (or technologies) we decide to use for collection and perparation marks the the first Pillar of our system – The Data Backbone. The data backbone is the entry point into our system. Its sole responsibility is to relay data to the other links in our data analytics platform.
+The technology (or technologies) we decide to use for collection and perparation marks the the first Pillar of our system – **The Data Backbone**. The data backbone is the entry point into our system. Its sole responsibility is to relay data to the other links in our data analytics platform.
 
-But let’s not make the mistake of over-simplification here. While the data backbone has a single role, it is not an easy one! I remind you that the data backbone is required to be scalable and fault-tolerant, under changing rates of incoming data – which may be a short burst of data or a constant stream of massive amounts of data.
+But let’s not make the mistake of over-simplification here. While the data backbone has a single role, it is not an easy one! 
+
+I remind you that the data backbone is required to be **scalable** and **fault-tolerant**, under **changing rates of incoming data** – which may be a short burst of data or a constant stream of massive amounts of data.
 
 The capabilities of our data backbone will dictate whether or not we will lose important data!
+
 In some cases, data will be produced only once, and if we don’t “catch” it in time – we will lose it forever. As a result, in such scenarios, the data collection schemes must be airtight.
 
 To conclude our discussion about the data backbone, I would like to summarize our requirements from this specific role, in our big data analytics system.
 
-•   Our data backbone, as a data collection and reception mechanism, is expected to provide data to the rest of the system – regardless of how it gets this data, actively via pull or passively via push mechanisms.
+•   Our data backbone, as a data collection and reception mechanism, is expected to provide data to the rest of the system – regardless of how it gets this data, actively via **pull** or passively via **push** mechanisms.
 
-•	As data sources may vary in characteristics, our data backbone should be simple enough to integrate with. Working with standard API protocols will probably benefit your enterprise.
+•	As data sources may vary in characteristics, our data backbone should be **simple enough to integrate with**. Working with standard API protocols will probably benefit your enterprise.
 
-•	For the data backbone to be reliable, we need it to be scalable and fault-tolerant.
+•	For the data backbone to be reliable, we need it to be **scalable** and **fault-tolerant**.
 
-An example of data backbone creation and utilization using the amazing Apache Kafka can be seen in the Pluralsight course on [Building an Enterprise Grade Distributed Online Analytics Platform](https://www.pluralsight.com/courses/building-enterprise-distributed-online-analytics-platform).
+An example of data backbone creation and utilization using the amazing [Apache Kafka](https://kafka.apache.org/) can be seen in the Pluralsight course on [Building an Enterprise Grade Distributed Online Analytics Platform](https://www.pluralsight.com/courses/building-enterprise-distributed-online-analytics-platform).
   	
 # “Online” Analytics - The Computation Layer
 
