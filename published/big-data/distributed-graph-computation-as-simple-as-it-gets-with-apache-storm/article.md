@@ -70,11 +70,11 @@ To begin with, it's simpler for our human mind to comprehend the bigger picture,
 
 Then, it encourages us to follow good and pragmatic software design principles, such as the [separation of concerns](https://en.wikipedia.org/wiki/Separation_of_concerns) principle. Each vertex does exactly only one thing.
 
-Then, it makes us look at the common things each vertex does and outsource it to our infrastructure.
+Then again, it makes us look at the common things each vertex does and outsource it to our infrastructure.
 
-For example, each vertex receives and possibly sends messages. **Outsourcing** the responsibility of handling incoming and outgoing messages in a **fault-tolerant** manner is very desirable.
+For example, each vertex receives and possibly sends messages. **Outsourcing the responsibility** of handling **incoming and outgoing messages** in a **fault-tolerant** manner is very desirable.
 
-Our deployment can also become more flexible this way - for example, we could deploy each computation unit of a separate machine and have the infrastructure worry about proper message delivery and distribution.
+Our **deployment** can also become **more flexible** this way - for example, we could deploy each computation unit of a separate machine and have the infrastructure worry about proper message delivery and distribution.
 
 What about **load-balancing** and **scalability**? Could we rely on our “external” message delivery system for managing multiple instances of the same computation unit for us? Yes we can!
 
@@ -82,7 +82,7 @@ In case we are witnessing a bottleneck in the order validation process, could we
 
 Now, please keep in mind that we’ve described in our graph how each input message should be handled. We haven’t described anything about how to deploy it.
 
-So, we’ve also **separated** the concerns of software **correctness** and software **deployment**.
+So, **we’ve also separated** the concerns of software **correctness** and software **deployment**.
 
 It could very well be the case that we have one physical computation unit instantiated for each “logical” graph vertex except of the validation vertex which we will instantiate two computation units for.
 
