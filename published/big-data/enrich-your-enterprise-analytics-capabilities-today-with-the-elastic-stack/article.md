@@ -70,7 +70,7 @@ For the sake of data collection, we will examine the most capable products from 
 
 Once we’ve gathered all our system logs, we will want to analyze them in order to gather as much insight as possible.
 
-To do so, we will introduce the powerful analytics engine, **Elasticsearch**. With Elasticsearch at our disposal, we will be able to ingest and “massage” our data to a form suitable for us.
+To do so, we will introduce the powerful analytics engine, [Elasticsearch](https://www.elastic.co/products/elasticsearch). With Elasticsearch at our disposal, we will be able to ingest and “massage” our data to a form suitable for us.
 
 Alternatively, we could simply use Elasticsearch as our “integration” platform. Such a platform integrates our transmitted data with with our visualization layer, something that we will cover shortly. In other words, sometimes data “massaging” prior to visualization may be unnecessary.
 
