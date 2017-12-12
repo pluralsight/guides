@@ -129,7 +129,7 @@ The flow of tuples through spouts and tuples is referred to as [streams](https:/
 
 
 Storm is a great team player and integrates well with other technologies.
-It includes infrastructure which will enable you to work with Elasticsearch, Mongodb, Kafka, Redis, Kinesis and much more. In case you need something custom, that is also possible.
+It includes infrastructure which will enable you to work with [Elasticsearch](https://www.elastic.co/products/elasticsearch), [Mongodb](https://www.mongodb.com/), [Kafka](https://kafka.apache.org/), [Redis](https://redislabs.com/), [Kinesis](https://aws.amazon.com/kinesis/) and much more. In case you need something custom, that is also possible.
  
  
 ![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/d2b12e2d-c124-4c23-b972-0b0c94658e79.png)
