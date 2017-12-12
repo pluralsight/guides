@@ -421,9 +421,6 @@ Looking at some code, I’ve tried to convey the simplicity and beauty of using 
 
 Hopefully I’ve succeeded in intriguing you.
 
-Feel free to drop me a word at the comments section and thank you very much for being here!
-
-Kobi.
 ______
 
 Thank you very much for reading! As always, feel free to drop me a word at the comments section and make sure to add this guide to your favorites!
