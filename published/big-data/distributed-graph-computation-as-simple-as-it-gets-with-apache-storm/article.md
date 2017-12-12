@@ -157,16 +157,16 @@ These nodes can take on the form of either a **master node**, running the **Nimb
 
 The master node takes on the job of distributing work among the worker nodes. What work? The actual code that implements our graph computation, passed on to the Storm cluster as a topology.
 
-How do the master node and the worker nodes know each other? **Through [Zookeeper](http://zookeeper.apache.org/)**.
+How do the master node and the worker nodes know each other? Through [Zookeeper](http://zookeeper.apache.org/).
 Zookeeper is a distributed service that serves as a reliable configuration and synchronization provider. To learn more about Zookeeper, including setup and integration demos, take a look [here](https://www.pluralsight.com/courses/building-enterprise-distributed-online-analytics-platform).
 
  
 ![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/a07f1cd7-90a4-4667-a873-bc08fab32cb0.png)
 
 
-Ok, so we said that the master node is responsible of distributing code to worker nodes. However, there is an additional abstraction layer here: the worker process.
+Ok, so we said that the master node is responsible of distributing code to worker nodes. However, there is an additional abstraction layer here: the **worker process**.
 
-A **worker process** is responsible for executing a subset of the topology. Each worker process will instantiate executor **threads** which will host task instances. These **tasks** can be either **spouts** or **bolts**.
+A worker **process** is responsible for executing a subset of the topology. Each worker process will instantiate executor **threads** which will host **task** instances. These tasks can be either **spouts** or **bolts**.
 
  
 ![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/d886e691-a2e6-48a6-abb9-0ca4b492e44b.png)
@@ -192,7 +192,7 @@ This architecture is an enabler for separation of concerns among our teams. We c
 ![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/b55fd5e4-cd3c-4cf9-a67b-9b85f0eb329b.png)
 
 
-The engineers developing Storm gave thought to the aforementioned separation of concerns notion, and supplied the developers with a **mean of running a topology locally**, on the developer's machine.
+The engineers developing Storm gave thought to the aforementioned separation of concerns notion, and supplied the developers with a mean of **running a topology locally**, on the developer's machine.
 
 Talking about developers - how about we look at some code?
 
