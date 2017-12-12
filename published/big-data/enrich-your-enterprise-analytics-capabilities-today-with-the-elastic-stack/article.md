@@ -234,7 +234,7 @@ Ok, at this point in time, we have data shipped to our Elasticsearch cluster.
 
 *But wait, Kobi, what is this Elasticsearch you keep talking about? And a cluster? You haven’t said anything about a cluster.*
 
-Elasticsearch is a distributed technology which acts as an abstraction layer to the most capable full-text-search engine,  [Lucene](https://lucene.apache.org/), and does so while introducing scalability and reliability to the equation. To top that, Elasticsearch adds a [RESTful](http://www.drdobbs.com/web-development/restful-web-services-a-tutorial/240169069) query language which makes integrating with it simple.
+Elasticsearch is a **distributed** technology which acts as an abstraction layer to the most capable full-text-search engine,  [Lucene](https://lucene.apache.org/), and does so while introducing scalability and reliability to the equation. To top that, Elasticsearch adds a [RESTful](http://www.drdobbs.com/web-development/restful-web-services-a-tutorial/240169069) query language which makes integrating with it simple.
 
 Using Elasticsearch, we can receive textual data, from various sources. In our case, these data sources will be Logstash instances or Beats - or both.
 
@@ -242,7 +242,7 @@ The data is then indexed (for the sake of fast retrieval, upon request) and repl
 
 By deploying more than one node, we can scale-out our cluster and increase the bandwidth (of data) it can manage.
 
-The cluster exposes an endpoint, to which we can then connect and run queries against using the Elasticsearch [query DSL (domain specific language)](https://www.elastic.co/guide/en/elasticsearch/reference/current/_introducing_the_query_language.html). This is what **Kibana** does, by the way, as we will shortly discuss.
+The cluster exposes an endpoint, to which we can then connect and run queries against using the Elasticsearch [query DSL(domain specific language)](https://www.elastic.co/guide/en/elasticsearch/reference/current/_introducing_the_query_language.html). This is what Kibana does, by the way, as we will shortly discuss.
 
 Utilizing the Sense chrome plugin, for example, you can query your Elasticsearch cluster on-demand. 
 
@@ -258,7 +258,7 @@ An interesting query, for example, could be “Show me all Error messages transm
 
 In the end, there are an unlimited number of interesting questions to ask about our collected data :-).
 
-For a more in-depth review of Elasticsearch, feel free to check [my latest Pluralsight course](https://www.pluralsight.com/courses/building-enterprise-distributed-online-analytics-platform), which dedicates a *complete module* to explain how the technology works.
+For a more in-depth review of Elasticsearch, feel free to check my latest [Pluralsight course](https://www.pluralsight.com/courses/building-enterprise-distributed-online-analytics-platform), which dedicates a *complete module* to explain how the technology works.
 
 
 # Visualizing with Kibana
