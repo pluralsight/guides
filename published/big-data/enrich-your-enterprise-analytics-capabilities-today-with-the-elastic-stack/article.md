@@ -54,13 +54,13 @@ Note: In this article I using the term “logs” to describe any information ou
 ![Logstash](https://raw.githubusercontent.com/pluralsight/guides/master/images/f8dd4f3b-6cd8-45b6-a23d-ad5660a8a29e.PNG)
 
 
-A running software platform produces plenty of data. This information might be the individual processes log info, CPU utilization information, I/O utilization info, and/or much more.
+A running software platform produces plenty of data. This information might be the individual processes log info, CPU utilization information, I/O utilization information, and much more.
 
 Every piece of information, as described above, might come handy in the process of gathering insights that our marketing team can leverage to better understand how the system is being used.
 
 However, it may be the case that we have deployed integrated instrumentation tools into our software platform unwisely or not at all. Sometimes, to include such instrumentation tools (e.g. performance counters on the Windows operating system), we will need to deal with an already deployed system that cannot be modified currently.
 
-For the sake of data collection, we will examine the most capable products from Elastic, Beats, and Logstash.
+For the sake of data collection, we will examine the most capable products from [elastic](https://www.elastic.co/) - [Beats](https://www.elastic.co/products/beats), and [Logstash](https://www.elastic.co/products/logstash).
  
 ###	Analysis
 
