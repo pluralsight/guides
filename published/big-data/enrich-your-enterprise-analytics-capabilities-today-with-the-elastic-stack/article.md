@@ -111,15 +111,14 @@ Outsourcing the concern for centralized system logging into a dedicated technolo
 
 
 
-#### Rapid introduction of a rock-solid log analytics provider to your existing system.
+**Rapid introduction of a rock-solid log analytics provider to your existing system**
 
 People tend to underestimate the importance of logging. That is true mostly at the development phase, but not only. Sometimes, we already have good system logs but are simply unaware of them! Important data could actually be lying there and becoming obsolete.
 
-Why not take advantage of the log data your system produces? You’ve already invested so much in development and maintenance. Your system is up and running. 
+Why not harness the log data your system produces to your advantage? You’ve invested so much in development and maintenance and your system is up and running - take advantage of what it tell you.
 
-Plus, using the Elastic Stack, leveraging this information becomes so easy. And as you will shortly see when we examine Beats and Logstash, gathering relevant data can even become a DevOps task! 
-
-In short, the typical excuse that “data pipelining takes too much time and I would rather focus on feature development” falls flat on its face! 
+Well, using the Elastic Stack, it becomes so easy, that the “it takes too much time and I would rather focus on feature development” excuse becomes irrelevant. And you know what? Gathering relevant data can even become a DevOps task, as you will shortly see, when we examine Beats and Logstash.
+ 
 
 ## Deploy As You Wish
 
@@ -127,7 +126,7 @@ In short, the typical excuse that “data pipelining takes too much time and I w
 ![Deployment Options](https://raw.githubusercontent.com/pluralsight/guides/master/images/15ed11b4-8217-44bf-beb2-fbe5c7a9fbaf.PNG)
 
 
-#### Supports on-premise and cloud deployment
+**Supports on-premise and cloud deployment**
 
 Flexible deployment options are important, but I don’t have to tell you that, right?
 
@@ -138,7 +137,7 @@ Choosing a technological stack, then, becomes more interesting.
 
 Lucky for us, the Elastic Stack is capable of running on the cloud and on-premises.
 
-When running on-premise, we can run all required services on Windows, Linux or inside a docker container. 
+When running on-premise, we can run all required services on Windows, Linux or inside a [docker](https://www.docker.com/) container. 
 
 Interesting, right? Without further ado, let's get started.
 
@@ -159,7 +158,7 @@ What is a data processing pipeline, in our context? Once again, we are talking a
 
 This time, though, we are talking about collecting raw data from various inputs, sending that data through filters, and outputting the result data into outputs.
 
-#### Inputs, filters, and outputs implemented as plugins
+Inputs, filters, and outputs implemented as plugins.
 
 You will probably be able to find what you need on the Logstash [page](https://www.elastic.co/products/logstash), but in case you don’t, it is rather simple to implement your own plugins.
 
@@ -174,7 +173,7 @@ Our (male) client has Windows machines. He would like to pass all Windows event 
 
 #### Input(s) configuration
 
-He begins by deploying the Logstash agent on the windows machines, as well as the Eventlog input plugin, as described here. There are plenty of configuration options for which event to send and at which interval to look for them, though, for this example, the below input configuration will suffice:
+He begins by deploying the Logstash agent on the windows machines, as well as the Eventlog input plugin, as described [here](https://www.elastic.co/guide/en/logstash/current/plugins-inputs-eventlog.html). There are plenty of configuration options for which event to send and at which interval to look for them, though, for this example, the below input configuration will suffice:
 
 
 ![Input Configuration](https://raw.githubusercontent.com/pluralsight/guides/master/images/e6198609-9063-4bb0-8df8-800ef00b4b26.png)
@@ -182,7 +181,7 @@ He begins by deploying the Logstash agent on the windows machines, as well as th
 
 #### Filter(s) configuration
 
-Now, once our data is being collected by Logstash, because we’ve configured an input plugin, we can proceed to the (optional) task of transforming the data and preparing it for transmission. This is done using a filter plugin. Again, a plethora of filter plugins is already available for you to use. If you cannot find a desired filter, you can roll your own.
+Now, once our data is being collected by Logstash, because we’ve configured an input plugin, we can proceed to the (optional) task of transforming the data and preparing it for transmission. This is done using a filter plugin. Again, a plethora of [filter plugins](https://www.elastic.co/guide/en/logstash/current/filter-plugins.html) is already available for you to use. If you cannot find a desired filter, you can roll your own.
 
 For the sake of simplicity let's assume that client want us to transmit all “host” fields in the event log messages in lowercase. To do so, we will configure a mutate filter which will do just that.
 
@@ -192,7 +191,7 @@ For the sake of simplicity let's assume that client want us to transmit all “h
 
 #### Output(s) configuration
 
-Just you’ve probably guessed, setting an output will also happen via the configuration of an output plugin. I will choose the Elasticsearch output plugin from the list of available plugins.
+Just you’ve probably guessed, setting an output will also happen via the configuration of an output plugin. I will choose the Elasticsearch output plugin from the list of [available plugins](https://www.elastic.co/guide/en/logstash/current/output-plugins.html).
 Configuring the Elasticsearch output plugin is a breeze, as can be seen below.
 
 
