@@ -30,25 +30,25 @@ Everyone around you is talking about data analytics and insights. They are talki
 
 How about you? Have you considered gathering insights from your software platform?
 
-Oh, but it probably will cost a fortune to develop and integrate such capabilities into your platform, right? **Well, not necessarily.**
+Oh, but it probably will cost a fortune to develop and integrate such capabilities into your platform, right? Well, not necessarily.
 
 The world of software has plenty to offer in terms of data collection, ingestion and analysis. Many of these modern systems integrate fluidly into existing systems.
 
 In this article, I am going to overview a technology stack that will enrich your existing software platform with enterprise grade analytics capabilities.
 
-And to put the cherry on top, we will perform this upgrade **without writing a single line of code**, through the magic of the Elastic Stack.
+And to put the cherry on top, we will perform this upgrade **without writing a single line of code**, through the magic of the [Elastic Stack](http://www.elastic.co/products).
 
 # What We Will Cover in This Article
 
-At a higher abstraction level, one might break down the common process of gathering (possibly monetization enabling) insights from a running systems information to the following three steps. These steps can be performed on information gathered from our current, running software platform.
+At a higher abstraction level, one might break down the common process of gathering (possibly monetization enabling) insights from a running systems information to the following three steps. These steps can be performed on **information gathered from our current, running software platform**.
 
 
 ## Log Collection, Analysis, and Visualization
 
 
-Note: In this article I using the term “logs” to describe any information our software system produces (e.g. output stream, error stream, hardware interrupts, and also textual log files), and not only textual log files, to which developers write information.
+Note: In this article I using the term “logs” to describe any information our software system produces (e.g. output stream, error stream, hardware interrupts, and **also** textual log files), and **not only** textual log files, to which developers write information.
 
-###	Log Collection
+###	Collection
 
 
 ![Logstash](https://raw.githubusercontent.com/pluralsight/guides/master/images/f8dd4f3b-6cd8-45b6-a23d-ad5660a8a29e.PNG)
