@@ -214,12 +214,12 @@ First, we need to setup a new project. I am demonstrating with a Maven project. 
 We will begin by creating a topology, using the `TopologyBuilder` provided by Storm:
 
  
-![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/f7fcf83d-33f5-45e5-b1ff-2f6e01256069.png)
+![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/2069b4fa-a967-415d-89fe-b166a671dcbb.png)
 
 In order, to set topology spouts, we will invoke the `setSpout` method on the `TopologyBuilder` instance, passing it a spout id and a spout instance.
 
 
-![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/2069b4fa-a967-415d-89fe-b166a671dcbb.png)
+![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/f7fcf83d-33f5-45e5-b1ff-2f6e01256069.png)
 
 
 This is our entry point into our graph computation. In your case it could be a `KafkaSpout`, for example.
