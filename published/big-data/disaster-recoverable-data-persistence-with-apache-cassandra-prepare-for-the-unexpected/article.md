@@ -221,10 +221,11 @@ Even the best storage arrays will suffer from malfunctions, eventually. Sharing 
 
 When discussing node storage, in a Cassandra cluster - I highly recommend using local storage. You can protect your local node storage by using raid - just make sure you work locally.
 
-Please notice that I am not saying that network storage is bad. Use it, if that is what you prefer. Just make sure every storage resource you are using is local to a single Cassandra node.
+>Please notice that I am not saying that network storage is bad. Use it, if that is what you prefer. Just make sure every storage resource you are using is local to a single Cassandra node.
 
 # Data Center Aware Cluster Configuration - Be Paranoid
-	Multiple racks are great, but not enough.
+Multiple racks are great, but not enough.
+
 It is not a fictional assumption to assume that an entire data center might go offline. It happened in the past for the largest companies and cloud providers. It is a matter of time before it happens again. If you care about your data and your users remaining online under such circumstances - be responsible and make sure your cluster is (properly) deployed across multiple data centers.
 
 Doing so with Cassandra is not only possible but also rather simple to configure.
@@ -237,7 +238,7 @@ What you’ve learned up to this point will serve you well. You already know tha
 
 You also understood that it is of importance to let your cluster be aware of the network topology it resides in, using the NetworkTopologyStrategy snitch.
 
-In Cassandra, the replication factor is defined per keyspace and data center.
+In Cassandra, the replication factor is defined per keyspace **and** data center.
 
 That means, that we can (and usually will) define a different replication factor per each datacenter.
 
@@ -251,7 +252,7 @@ Some prefer placing different data centers at different geographical zones, havi
 
 Others, prefer having all nodes serve all users, letting Cassandra decide which node serves which user.
 
-These practices are mostly relates to performance matters and I might touch these in a future article, as per your request.  
+These practices are mostly relates to **performance** matters and I might touch these in a future article, as per your request.  
 
 My personal recommendation, and some people have a different opinion, is not to treat one data center as a “main” datacenter and the other as “disaster recovery” datacenter, and assign each different resources. Try to scale them similarly and replicate your data with the same replication factor on each.
 
