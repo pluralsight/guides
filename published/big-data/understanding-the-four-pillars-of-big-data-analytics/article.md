@@ -158,21 +158,25 @@ One last thing worth mentioning – if you’ve noticed, the first diagram in th
 
 When referring to a data model, in the realm of big data, we usually refer to data of interest organized in a manner that is suited for analytic derivation. 
 
-For example, it might be the case that we have a data model, which the aggregation of cellular data usage, partitioned by cities and logically persisted as a decision tree. Given a pre-calculated data model, our big data analytics system can relate to already calculated results (or even insights) in its search for new insights.
+For example, it might be the case that we have a data model, which the aggregation of cellular data usage, partitioned by cities and logically persisted as a [decision tree](https://en.wikipedia.org/wiki/Decision_tree). 
+
+Given a pre-calculated data model, our big data analytics system can relate to already calculated results (or even insights) in its search for new insights.
 
 It is very common that the data model is:
 
-* Persisted in our storage layer.
+### Persisted in our storage layer.
 
-It is sometimes the case, that our data model is kept separately, persisted using a different technology than the one we use for our “online” persistence needs. For example, it might be the case that we are using Apache Cassandra as our persistence of choice, due to its blazing fast writes and performance scalability capabilities. However, we might be using a different technology in order to persist large data files which we will analyze “offline”, due to its fast read performance.
+It is sometimes the case, that our data model is kept separately, persisted using a different technology than the one we use for our “online” persistence needs. For example, it might be the case that we are using [Apache Cassandra](http://cassandra.apache.org/) as our persistence of choice, due to its blazing fast writes and performance scalability capabilities. However, we might be using a different technology in order to persist large data files which we will analyze “offline”, due to its fast read performance.
 
-* Calculated in an “offline” manner, periodically.
+### Calculated in an “offline” manner, periodically.
 
 This is usually due to necessity: performing highly (time, CPU, I/O) consuming computations on large datasets is something that is resource intensive. Anything that we do not want to sacrifice the valuable computational resources to do “online” should be left for a later “offline” computation.
 
-* Pre-loaded into the computation layer, which relates to it in two manners:
-    * Reads data from it, to deduce insights.
-    *	Writes fresh data to its loaded representation, so it is kept “up to date”, until we are given a freshly calculated data model.
+### Pre-loaded into the computation layer, which relates to it in two manners:
+
+1. Reads data from it, to deduce insights.
+
+2. Writes fresh data to its loaded representation, so it is kept “up to date”, until we are given a freshly calculated data model.
 
 ## Resolving Context
 
