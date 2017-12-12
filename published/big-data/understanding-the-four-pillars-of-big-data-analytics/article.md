@@ -123,26 +123,34 @@ Let’s consider the following diagram:
 
 Assuming a fresh dataset arrived at our computation layer, we will possibly need to verify that it is logically complete. If it isn’t, we will probably persist it and wait until we have a logically complete dataset (hopefully, in the future). 
 
-But then again, if it is logically complete, we might want to ask analytical questions about it. In other words, we would like to perform a computation on it. As previously mentioned, we might want to observe any logical dataset in context.
+But then again, if it is logically complete, we might want to ask analytical questions about it. In other words, we would like to **perform a computation** on it. 
+
+As previously mentioned, we might want to observe any logical dataset in context.
 
 Here lies an interesting aspect of the computation layer in big data systems.
 
 As our computation layer is a distributed system, to meet the requirements of scalability and fault-tolerance – we need to be able to synchronize it’s moving parts with a shared state.
-This shared state mechanism will be a blazing fast persistence / caching technology. Each dataset which arrives at our computation layers gate, will have to be [persisted](https://www.datastax.com/dev/blog/what-persistence-and-why-does-it-matter) at the context-providing mechanism prior to any computation. 
+This shared state mechanism will be a blazing fast persistence / caching technology. Each dataset which arrives at our computation layers gate, will have to be persisted at the context-providing mechanism prior to any computation. 
 
 
- 
+
 ### Real Life Example
 
 For example, say we have a rather “naive” analytical question: we would like to know how many orders of a specific product were placed every minute.
 
-To fnd an answer, we’ve implemented a means of solving this analytical question in our computation layer. As we are expecting a massive flow of events, we’ve scaled our computation layer and we have multiple processes listening to these order events. 
+To fnd an answer, we’ve implemented a means of solving this analytical question in our computation layer. 
+
+As we are expecting a massive flow of events, we’ve scaled our computation layer and we have **multiple processes** listening to these order events. 
 
 Now – process #1 receives an order for product A. it counts it and checks if the counter passed the threshold for insight generation. If it did – an insight is generated. 
 
-Simple enough, right? Wrong.
+Simple enough, right? **Wrong**.
 
-This implementation does not take into consideration the possible (and very likely) scenario where order events arrive at multiple processes simultaneously That means that our order event counter should be synchronized. And that is why we need an external (to a computation layer process) synchronized context provider to whom all context-aware analytical questions refer to.
+This implementation does not take into consideration the possible (and very likely) scenario where order events arrive at multiple processes simultaneously.
+
+That means that our order event counter should be **synchronized**. 
+
+And that is why we need an external (to a computation layer process) **synchronized context provider** to whom all context-aware analytical questions refer to.
 
 # Getting Assistance From a Data Model
 
