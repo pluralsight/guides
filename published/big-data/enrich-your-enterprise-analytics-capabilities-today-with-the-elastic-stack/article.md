@@ -83,7 +83,7 @@ In any case, it is important to understand that in the technology stack we are d
 
 
 Data has been transmitted, collected, and analyzed. Next, we want to display it to our end users.
-That will be done using Kibana, another amazing tool, which directly connects to Elasticsearch and utilises its analytical capabilities to provide stunning dashboards, graphs and ad-hoc queries.
+That will be done using [Kibana](https://www.elastic.co/products/kibana), another amazing tool, which directly connects to Elasticsearch and utilises its analytical capabilities to provide stunning dashboards, graphs and ad-hoc queries.
 
 Before we begin, I would like to emphasize several things, which justify the existence of this article.
 
@@ -92,14 +92,14 @@ Before we begin, I would like to emphasize several things, which justify the exi
 
 ![Concept](https://raw.githubusercontent.com/pluralsight/guides/master/images/02bda623-81f5-4d1c-ae4f-da7188b2cca0.PNG)
 
-#### Outsource your distributed systems central log management
+**Outsource your distributed systems central log management**
 
 Logging information correctly in software platforms, in particular distributed systems - is hard.
-Gathering data reliably, across machines, networks and domains, and doing so while preserving correct data context is not simple.
+Gathering data reliably, across machines, networks and domains, and doing so while **preserving correct data context** is not simple.
 
 Under many circumstances, it will be easy to lose data context (e.g. “where did this function call arrive from”) or even loss data completely.
 
-As we want our data and we want it in context, it is better that we make sure to reliably collect and analyze it. Otherwise, else we will simply not be able to gather insights about our system or even worse we will gather incorrect insights.
+As we want our data and we want it in context, it is better that we make sure to reliably collect and analyze it. Otherwise, else we will simply not be able to gather insights about our system or even worse we will gather **incorrect** insights.
 
 Outsourcing the concern for centralized system logging into a dedicated technology stack, does not seem like a bad idea at all. It actually sounds good, to me, and I have done that successfully in several projects. 
 
