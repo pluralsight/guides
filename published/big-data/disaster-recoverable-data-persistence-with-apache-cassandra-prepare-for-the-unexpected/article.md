@@ -144,7 +144,7 @@ DC2Rack2Node2
 ![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/22809ee2-de95-455e-9a37-16c4e1213a0d.png)
 
 
-Now, this touches upon something that should be trivial, but at the same time something that I encountered in surprising situations.  make sure the logical names reflect the physical deployment. There is no sense, in naming a node which physically resides on data center x and rack y “DCxRackz”, right?
+Now, this touches upon something that should be trivial, but at the same time something that I encountered in surprising situations.  make sure the logical names **reflect the physical deployment**. There is no sense, in naming a node which physically resides on data center x and rack **y** “DCxRack**z**”, right?
 
 
 ![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/d53d5c23-c065-44df-a8b8-4f7617bcde36.png)
