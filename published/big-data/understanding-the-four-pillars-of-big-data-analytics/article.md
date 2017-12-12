@@ -103,17 +103,19 @@ As soon as new data arrives, we would probably want to observe it and determine 
 
 The following scenarios are possible, given the arrival of a fresh dataset:
 
-•	The new dataset is logically complete and insights can be generated directly from it. For example – a specific event we are watching for, such as “Panic button pressed” event in an adult monitoring system.
+•	The new dataset is **logically** complete and insights can be generated **directly from it**. For example – a specific event we are watching for, such as “Panic button pressed” event in an adult monitoring system.
 
-•	The new dataset is logically complete and insights can be generated about it, when related to a context. For example – An “Add to cart” event, on an online shopping site, when no “Payment” event happened within five minutes.
+•	The new dataset is **logically complete** and insights can be generated about it, when **related to a context**. For example – An “Add to cart” event, on an online shopping site, when no “Payment” event happened within five minutes.
 
-•	The new dataset is a part of a logical dataset, which wasn’t yet composed. An example here could be that we’ve received a part of a satellite image, but would like to analyze it only once all the image parts are available.
+•	The new dataset is a **part of a logical dataset**, which wasn’t yet composed. An example here could be that we’ve received a part of a satellite image, but would like to analyze it only once all the image parts are available.
 
-•	The new dataset is a part of a logical dataset and insights can be generated about it, when related to a context. A common example here is a video clip, which comprises of multiple frames with multiple packets per frame.
+•	The new dataset is a **part of a logical dataset** and insights can be generated about it, when **related to a context**. 
 
-The role of the computation layer is to provide you with the tools to do just that – contextualize and complement any given dataset so that we can answer analytical questions. 
+A common example here is a video clip, which comprises of multiple frames with multiple packets per frame.
 
-Let’s consider the following situation:
+The role of the computation layer is to provide you with the tools to do just that – **contextualize and complement any given dataset** so that we can answer analytical questions. 
+
+Let’s consider the following diagram:
 
 
 ![Computation Process](https://raw.githubusercontent.com/pluralsight/guides/master/images/bd1b0671-86e0-4a3d-8b6d-47270e4efdc5.png)
