@@ -178,14 +178,18 @@ This is usually due to necessity: performing highly (time, CPU, I/O) consuming c
 
 2. Writes fresh data to its loaded representation, so it is kept “up to date”, until we are given a freshly calculated data model.
 
-## Resolving Context
+## Context Resolving as a Constraint
 
-Now, let’s pause for a moment and understand a most important aspect of data analytics, which becomes more of an issue when dealing with “big data." **There is a limit to the amount of data we can process at a given time.**
+Now, let’s pause for a moment and understand a most important aspect of data analytics, which becomes more of an issue when dealing with “big data." 
 
-It’s true that with a scalable system, we can push the limits higher, but at some discrete point in time – limitations will exist. These limitations are particularly relevant under the headline “online analytics,” when the word “online” can be translated to “close enough to the data creation time”.
+> There is a limit to the amount of data we can process at a given time.
+
+It’s true that with a scalable system, we can push the limits higher, but at some discrete point in time – limitations will exist. 
+
+These limitations are particularly relevant under the headline “online analytics,” when the word “online” can be translated to “close enough to the data creation time”.
 In turn, “close enough” can be translated to a specific period of time – specific to your business requirements.
 
-Context resolving relies first and foremost on inter-process communication. Persisting and retrieving our dataset's context metadata requires that we “reach out” and request services from an external mechanism.
+Context resolving relies first and foremost on **inter-process communication**. Persisting and retrieving our dataset's context metadata requires that we “reach out” and request services from an external mechanism.
 
 To make things worse, this external mechanism is a synchronized mechanism, which means that (at least logical) locking of resources takes place instantaneously!
 
@@ -193,13 +197,15 @@ There is also the concern of context metadata persistence. Not all data can be (
 
 To top that, we are dealing with “big data.” We might have so much data at our gate that we simply cannot hold it in memory entirely.
 
-So we understand that our synchronized context provider has to both synchronize and persist data.
+So we understand that our synchronized context provider has to both **synchronize** and **persist data**.
+
 We also understand that synchronization and persistence of data takes time. 
 
-If you look back at the title of this subject, you will notice that it refers to “online” analytics. 
+If you look back at the title of this subject, you will notice that it refers to “online” analytics.
+
 Generally, we are required to analyze any incoming dataset within a limited amount of time. If our computation time plus the time cost of our interactions with the context provider exceeds our time limit, our system is inviable for “online” work.
 
-Therein lies the challenge of constructing computation layers. These layers must be fast enough to process tons of data while also deciding on computations based on contexts. Luckily, a functioning computation layer, built using Apache Storm, and integrated with a full-blown analytics system, can be seen [in the Pluralsight course on Online Analytics Platforms](https://app.pluralsight.com/player?course=building-enterprise-distributed-online-analytics-platform&author=kobi-hikri&name=building-enterprise-distributed-online-analytics-platform-m3&clip=0&mode=live).
+A computation layer, built using [Apache Storm](http://storm.apache.org/), and integrated with a full-blown analytics system, can be seen [here](https://app.pluralsight.com/player?course=building-enterprise-distributed-online-analytics-platform&author=kobi-hikri&name=building-enterprise-distributed-online-analytics-platform-m3&clip=0&mode=live).
 
 # Persisting - The Storage Layer
 
