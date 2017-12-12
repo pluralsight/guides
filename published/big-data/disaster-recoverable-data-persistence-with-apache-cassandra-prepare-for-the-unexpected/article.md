@@ -107,7 +107,7 @@ But some of this bandwidth depends on some prior preparation.
 
 And that preparation is mostly by considering the way we deploy our cluster. By giving thought to the manner in which we configure our cluster nodes, we can increase our system's ability to maintain its data integrity under very bad situations (hardware failure wise).
 
-Choosing how we spread our nodes across logical racks and data centers - as well as across physical racks and data centers, will make a difference.
+Choosing how we spread our nodes across **logical** racks and data centers - as well as across **physical** racks and data centers, will make a difference.
   
 ## Deployment Considerations
 
