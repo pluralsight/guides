@@ -15,7 +15,7 @@ Under most circumstances, you - the technology user - would be correct to assume
 
 In order to maintain data accuracy, for example, you have to make sure that a specific data insertion request did not (undesirably) overwrite previously stored data.
 
-Algorithmic correctness is mandatory when working against your data layer, with any technology. No technology will fully protect you from an evil bug. Algorithmic correctness will help you achieve logical integrity of your data.
+**Algorithmic correctness** is mandatory when working against your data layer, with **any** technology. No technology will fully protect you from an evil bug. Algorithmic correctness will help you achieve **logical integrity** of your data.
 
 Once you’ve got logical integrity out of the way, you will now enter the domain of **physical integrity.**
 
@@ -23,7 +23,7 @@ Reaching a high physical integrity of your data means that you have given though
 
 In general, the most common way to tackle physical integrity is by using a distributed architecture. Distributed architectures come in various flavours, sizes and shapes. Most of them have a sort of a redundancy mechanism. Some have the notion of data replication.
 
-In this article, I would like to review the concept of physical data integrity with [Apache Cassandra](http://cassandra.apache.org/), a popular distributed database technology that I’ve had the pleasure of using.
+In this article, I would like to review the concept of physical data integrity with [Apache Cassandra](http://cassandra.apache.org/), a most popular distributed database technology that I’ve had the pleasure of using.
 
 If you want a more basic overview of Apache Cassandra, before you dive into the article, I’ve written a dedicated module about it in my latest course. Feel free to check it out [here](https://app.pluralsight.com/library/courses/building-enterprise-distributed-online-analytics-platform/table-of-contents).
 
