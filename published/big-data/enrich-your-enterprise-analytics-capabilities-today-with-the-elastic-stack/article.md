@@ -263,7 +263,7 @@ For a more in-depth review of Elasticsearch, feel free to check my latest [Plura
 
 # Visualizing with Kibana
 
-The last piece of the Elastic Stack puzzle will be Kibana.
+The last piece of the Elastic Stack puzzle will be [Kibana](https://www.elastic.co/products/kibana).
 
 Kibana is a visualization engine, specifically made to work with Elasticsearch as its data store.
 As such, it allows utilizing the full capabilities of the Elasticsearch query DSL in order to tailor dynamic graphs, charts, time-series, geospatial queries and much more.
@@ -283,11 +283,11 @@ For example, a system analyst might point out to some “strange” result he en
 
 # In Conclusion
 
-Gathering information from and about your running software used to be a task for developers. At one time, our developers needed to “be prophets," anticipating any information which might be of interest to them when debugging a system bug. They also had to embed instrumentation tools (e.g. performance counters) into the software in case clients were interested in any such information. Then, they were tasked with properly transmitting and centralizing the collected information in a single place, where they would use external tools to analyze the data. For that reason, logging was once a developer domain.
+Gathering information from and **about** your running software used to be a task for developers. At one time, our developers needed to “be prophets," anticipating any information which might be of interest to them when debugging a system bug. They also had to embed instrumentation tools (e.g. performance counters) into the software in case clients were interested in any such information. Then, they were tasked with properly transmitting and centralizing the collected information in a single place, where they would use external tools to analyze the data. For that reason, logging was once a developer domain.
 
 > The Elastic Stack has completely revamped this system. 
 
-Using your DevOps team, you can deploy and configure data-shippers, such as Logstash and/or Beats, and have them transmit all data into an Elasticsearch cluster (also deployed by your DevOps team or hosted in the cloud) which you can then gather insights from using Kibana.
+Using your DevOps team, you can deploy and **configure** data-shippers, such as Logstash and/or Beats, and have them transmit all data into an Elasticsearch cluster (also deployed by your DevOps team or **hosted in the cloud**) which you can then gather insights from using Kibana.
 
 Being able to eliminate dependence on development resources to gather information and analyze a running system grants flexibility to any enterprise.
 
