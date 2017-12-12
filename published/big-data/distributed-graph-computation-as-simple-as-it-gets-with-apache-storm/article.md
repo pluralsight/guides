@@ -39,13 +39,14 @@ Let’s get started!
 Graph computation as a way to reduce system complexity? After all the introduction about turing machines, automata theory and graph theory?
 
 Well … yes.
-Relying on a tested and proven model does not necessarily mean that using this model is as complicated as **proving** it.
+
+Relying on a tested and proven model does not necessarily mean that **using** this model is as complicated as **proving** it.
 
 For example, think of the following expression: 
 
 **1 + 1 = 2**
 
-We all “know” it’s correct and are able to use it because someone else had already proven it to be true.
+We all “know” it’s correct and are able to use it because someone else had already [proven](https://en.wikipedia.org/wiki/Philosophi%C3%A6_Naturalis_Principia_Mathematica) it to be true.
 
 In our case, we are trying to take a known problem, and transform it into the shape of a computation graph, where each [vertex](http://mathworld.wolfram.com/Vertex.html) is a computation unit. We “move” between vertices, according to the edges which connect them.
 
