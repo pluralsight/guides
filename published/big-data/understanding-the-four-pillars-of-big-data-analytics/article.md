@@ -246,17 +246,28 @@ There is no definitive rule here; it could very well be that the data model is u
 
 If you would like to see for yourself how a storage layer can be implemented, using [Apache Cassandra](http://cassandra.apache.org/), take a look [here](https://app.pluralsight.com/player?course=building-enterprise-distributed-online-analytics-platform&author=kobi-hikri&name=building-enterprise-distributed-online-analytics-platform-m4&clip=0&mode=live).
 
-# “Offline” and Complementary “Online” Analytics 
-## The Insights engine
+# “Offline” and Complementary “Online” Analytics - The Insights engine
 
 Excellent! By now you already understand the conceptual basics of big data analytics.
+
 Most importantly, you understand that to be able to handle “big data” (as defined in the beginning of the article) – we require special tools, particularly distributed technologies. Using these tools, we will be able to implement a robust data backbone, computation and storage layer. 
 
 And that’s pretty much it, right? Well, not always...
 
 Building a distributed system with so many moving parts requires that we integrate the technologies. This integration of technologies, is what gives us the ability to cherry pick the best technology for the task at hand. It allows us to raise the limits of what analytical questions we can ask in an “online” manner.
 
-Unfortunately, it also means that our system's complexity rises. Several technologies piped together, means that your developers and data analysts need to know more to develop new analytical questions and integrate them into the whole system. This adds to the risk of a breakdown in the overall system. Finding a healthy balance between complexity and integrated functionality is key.
+Unfortunately – it also means that our system complexity rises. Several technologies piped together, means that your developers and data analysts need know more to develop new analytical questions and integrate them into the whole system.
+
+Ok, but that is a limitation we need to live with, right? Well, yes. but …
+
+What if we could do better? In particular – do much better at a very low cost?
+
+Assuming we’ve built a big data analytics system, with the knowledge we have up to this point, we now have a solid big data analytics platform which answers a **pre-defined** set of questions.
+
+This system has its limitations, as previously discussed.
+
+To begin with, its ability to answer analytical questions within a specific time frame (a time frame dictated by our requirement to answer questions in an “online” manner) is not boundless – as we’ve seen in our discussion about limitations posed by the context providing mechanism, for example.
+
 
 ### Overcoming complexity-related limitations
 
@@ -266,9 +277,11 @@ In case you are unfamiliar with elasticsearch or Kibana, I will just mention tha
 
 #### Elasticsearch and Kibana
 
-The first, elasticsearch, is a search and analytics engine, which abstracts the usage of the most capable Lucene full text search engine – and brings forth a simple API, as well a query domain specific language (i.e. DSL).
+The first, elasticsearch, is a search and analytics engine, which abstracts the usage of the most capable [Lucene](https://lucene.apache.org/) full text search engine – and brings forth a simple API, as well a query domain specific language (i.e. DSL).
 
-The second, Kibana, brings the ability of data visualization to your system. By defining dashboards, time series, charts, geo spatial data, and much more, Kibana grows out your analytical tools box. Kibana also allows direct interaction with you elasticsearch cluster, in the form of analytical queries, written with a rather simple DSL, as mentioned before.
+The second, Kibana, brings the ability of data visualization to your system. By defining dashboards, time series, charts, geo spatial data, and much more, Kibana grows out your analytical tools box. 
+
+Kibana also allows direct interaction with your elasticsearch cluster, in the form of analytical queries, written with a rather simple DSL, as mentioned before.
 
 # Summary
 
@@ -295,6 +308,6 @@ Finally, we discussed a complementary component in the form of an Insights engin
 
 ___
 
-Thanks for joining me in this short journey of understanding the four pillars of big data analytics 😊. There's a lot more to be learned in the world of big data, and I encourage you to explore the Pluralsight tutorial that I linked to learn more. 
+Thanks for joining me in this short journey of understanding the four pillars of big data analytics 😊. 
 
 As always please leave your comments and feedback in the discussion section below! Thanks for reading!
