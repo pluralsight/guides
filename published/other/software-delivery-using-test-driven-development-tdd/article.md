@@ -1,6 +1,6 @@
 At some level, we can see sequences in all things we do – logically speaking. If I was to build a house, I'd need to first lay the foundation and then the walls – followed by the roof. I cannot do the roof before starting on the foundation.
 
-Likewise, in the software development world, you first gather requirements, analyze tehm, design (HLD followed by LLD), come up with user stories, write some code, write test cases, execute your tests, revise, repeat, and eventually deploy. Shuffling the sequences of these activities is like building the roof before the foundation. However, this is **exactly** what we are set out to do in Test Driven Development.
+Likewise, in the software development world, you first gather requirements, analyze them, design (HLD followed by LLD), come up with user stories, write some code, write test cases, execute your tests, revise, repeat, and eventually deploy. Shuffling the sequences of these activities is like building the roof before the foundation. However, this is **exactly** what we are set out to do in Test Driven Development.
 
 <h1>What is Test Driven Development?</h1>
 

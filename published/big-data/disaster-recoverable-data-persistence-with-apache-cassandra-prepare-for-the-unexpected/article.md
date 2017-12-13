@@ -7,7 +7,7 @@ To begin with, it tells me you have come to the understanding that your data is 
 When it comes to data management, most platforms will make promises about their data integrity.
 
 However, being the responsible professional you are, would you risk your business on the mere promise that "once you’ve migrated to this technology, your data will be (safe/secure/etc.)”?
-Some might, but if you’re reading this article, you will not; you know better.
+Some might, but again - if you’ve got to read this article, that “some people” is not you. You know better.
 	
 When talking about data integrity, I refer to the factors of **data accuracy** and **data consistency**.
 
@@ -15,7 +15,7 @@ Under most circumstances, you - the technology user - would be correct to assume
 
 In order to maintain data accuracy, for example, you have to make sure that a specific data insertion request did not (undesirably) overwrite previously stored data.
 
-Algorithmic correctness is mandatory when working against your data layer, with any technology. No technology will fully protect you from an evil bug. Algorithmic correctness will help you achieve logical integrity of your data.
+**Algorithmic correctness** is mandatory when working against your data layer, with **any** technology. No technology will fully protect you from an evil bug. Algorithmic correctness will help you achieve **logical integrity** of your data.
 
 Once you’ve got logical integrity out of the way, you will now enter the domain of **physical integrity.**
 
@@ -23,7 +23,7 @@ Reaching a high physical integrity of your data means that you have given though
 
 In general, the most common way to tackle physical integrity is by using a distributed architecture. Distributed architectures come in various flavours, sizes and shapes. Most of them have a sort of a redundancy mechanism. Some have the notion of data replication.
 
-In this article, I would like to review the concept of physical data integrity with [Apache Cassandra](http://cassandra.apache.org/), a popular distributed database technology that I’ve had the pleasure of using.
+In this article, I would like to review the concept of physical data integrity with [Apache Cassandra](http://cassandra.apache.org/), a most popular distributed database technology that I’ve had the pleasure of using.
 
 If you want a more basic overview of Apache Cassandra, before you dive into the article, I’ve written a dedicated module about it in my latest course. Feel free to check it out [here](https://app.pluralsight.com/library/courses/building-enterprise-distributed-online-analytics-platform/table-of-contents).
 
@@ -36,15 +36,15 @@ We’ve already mentioned in the introduction that physical integrity of data mi
 
 The amount of benefit is subject to change and is dependent of several factors.
 
-The first factor is that we’ve introduced relevant additional physical resources.
+The first factor is that we’ve introduced **relevant** additional physical resources.
 
-An Apache Cassandra cluster is made out of nodes. These nodes are basically processes running on a host machine, contributing their capabilities to the cluster.
+An Apache Cassandra **cluster** is made out of **nodes**. These nodes are basically processes running on a host machine, contributing their capabilities to the cluster.
 
 
 ![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/85ec087d-b48e-4957-92e2-f2d80c18e16d.png)
 
 
-These nodes can be grouped under logical data centers and racks, as a matter of simple configuration.
+These nodes can be grouped under **logical** data centers and racks, as a matter of simple configuration.
 
 
 ![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/18bf5629-c661-4ef5-8256-53d5ca99f907.png)
@@ -107,7 +107,7 @@ But some of this bandwidth depends on some prior preparation.
 
 And that preparation is mostly by considering the way we deploy our cluster. By giving thought to the manner in which we configure our cluster nodes, we can increase our system's ability to maintain its data integrity under very bad situations (hardware failure wise).
 
-Choosing how we spread our nodes across logical racks and data centers - as well as across physical racks and data centers, will make a difference.
+Choosing how we spread our nodes across **logical** racks and data centers - as well as across **physical** racks and data centers, will make a difference.
   
 ## Deployment Considerations
 
@@ -144,7 +144,7 @@ DC2Rack2Node2
 ![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/22809ee2-de95-455e-9a37-16c4e1213a0d.png)
 
 
-Now, this touches upon something that should be trivial, but at the same time something that I encountered in surprising situations.  make sure the logical names reflect the physical deployment. There is no sense, in naming a node which physically resides on data center x and rack y “DCxRackz”, right?
+Now, this touches upon something that should be trivial, but at the same time something that I encountered in surprising situations.  make sure the logical names **reflect the physical deployment**. There is no sense, in naming a node which physically resides on data center x and rack **y** “DCxRack**z**”, right?
 
 
 ![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/d53d5c23-c065-44df-a8b8-4f7617bcde36.png)
@@ -164,7 +164,7 @@ Using a proven, out of the box partitioner, such as the **Murmur3Partitioner**, 
 
 A replication strategy is, as the name suggests, the manner by which the Cassandra cluster will distribute replicas across the cluster.
 
-When your cluster is deployed within a single data center (not recommended), the **SimpleStrategy** will suffice.
+When your cluster is deployed within a single data center (**not recommended**), the SimpleStrategy will suffice.
 
 However, when moving to a multi data center deployment, please make sure to use the **NetworkTopologyStrategy**, which will allow for the definition of desired replication across multiple data centers.
 
@@ -187,17 +187,17 @@ Make sure to distribute your Cassandra nodes evenly, among your racks (Assuming 
 ![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/dfd04257-2824-4783-86b7-16d3444bc18e.png)
 
 
-> Use a rack aware snitch. 
+ Use a **rack aware snitch**. 
 
 A rack aware snitch will make sure that the Cassandra cluster is aware of each node's physical location and can distribute replicas across racks accordingly.
 
 But is configuring a rack aware snitch sufficient to make sure our data is properly replicated among server racks? No. Something is missing.
 
-That something is a proper configuration value of the replication factor defined at the keyspace level.
+That something is a proper configuration value of the **replication factor** defined at the keyspace level.
 
 Choosing the correct replication factor could be confusing at first because setting a replication factor is not orthogonal to other configuration parameters, such as write level (the number of replicas that need to acknowledge a write operation) and read level (the number of replicas that need to acknowledge a read operation).
 
-A good practice would be to make sure your write level when added to the read level is larger than your replication factor.
+A good practice would be to make sure your **write** level when **added** to the **read** level is **larger than** your **replication factor**.
 
 So, in a cluster made of 4 nodes, spread across 2 racks, given a write level of 2, and a read level of 1, you will need to make sure your replication factor is larger than 3.
 
@@ -209,7 +209,7 @@ While we achieved this with an inherent overhead (all of our nodes are storing 1
 
 As I’ve mentioned before, your cluster size (node count), replication factor, write consistency and read consistency are not orthogonal. A change to one, might have an impact on how your cluster behaves, both performance wise and consistency wise.
 
-Make sure you read and understand the mentioned parameters from the problem above and adjust them properly to your use case.
+Make sure you read and understand the [mentioned parameters](http://cassandra.apache.org/doc/latest/architecture/dynamo.html?highlight=consistency) from the problem above and adjust them properly to your use case.
 
 # Avoid Using Shared Storage
 
@@ -221,10 +221,11 @@ Even the best storage arrays will suffer from malfunctions, eventually. Sharing 
 
 When discussing node storage, in a Cassandra cluster - I highly recommend using local storage. You can protect your local node storage by using raid - just make sure you work locally.
 
-Please notice that I am not saying that network storage is bad. Use it, if that is what you prefer. Just make sure every storage resource you are using is local to a single Cassandra node.
+>Please notice that I am not saying that network storage is bad. Use it, if that is what you prefer. Just make sure every storage resource you are using is local to a single Cassandra node.
 
 # Data Center Aware Cluster Configuration - Be Paranoid
-	Multiple racks are great, but not enough.
+Multiple racks are great, but not enough.
+
 It is not a fictional assumption to assume that an entire data center might go offline. It happened in the past for the largest companies and cloud providers. It is a matter of time before it happens again. If you care about your data and your users remaining online under such circumstances - be responsible and make sure your cluster is (properly) deployed across multiple data centers.
 
 Doing so with Cassandra is not only possible but also rather simple to configure.
@@ -237,7 +238,7 @@ What you’ve learned up to this point will serve you well. You already know tha
 
 You also understood that it is of importance to let your cluster be aware of the network topology it resides in, using the NetworkTopologyStrategy snitch.
 
-In Cassandra, the replication factor is defined per keyspace and data center.
+In Cassandra, the replication factor is defined per keyspace **and** data center.
 
 That means, that we can (and usually will) define a different replication factor per each datacenter.
 
@@ -251,7 +252,7 @@ Some prefer placing different data centers at different geographical zones, havi
 
 Others, prefer having all nodes serve all users, letting Cassandra decide which node serves which user.
 
-These practices are mostly relates to performance matters and I might touch these in a future article, as per your request.  
+These practices are mostly relates to **performance** matters and I might touch these in a future article, as per your request.  
 
 My personal recommendation, and some people have a different opinion, is not to treat one data center as a “main” datacenter and the other as “disaster recovery” datacenter, and assign each different resources. Try to scale them similarly and replicate your data with the same replication factor on each.
 

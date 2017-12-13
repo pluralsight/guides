@@ -6,7 +6,10 @@ JavaScript is an object oriented programming language. Almost everything in Java
 
 Object is a collection of key/value pairs. Keys are also known as properties. An object can be empty, if it doesn't contain any key/value pair.
 
-## How can it be instantiated?
+## What is a prototype?
+Every object has its prototype. The prototype is actually a base object which an object is inherited from. The empty object is inherited from the [Object.prototype](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/prototype), so it has access to all methods of the `Object.prototype`.
+
+## How objects can be instantiated?
 
 There are several ways of creating new objects in JavaScript. We will start from the simplest one.
 
@@ -41,4 +44,27 @@ and get the following output in the console:
 [object Object]
 ```
 
-The `[object Object]` means that the `emptyObject` is an `object` which prototype is the `Object.prototype`. There are different types of objects in JavaScript (functions, arrays, dates etc.), so we should get different results in the console for those types of objects.
+The `[object Object]` means that the `emptyObject` is an `object` which prototype is the `Object.prototype`. There are different types of object in JavaScript (functions, arrays, dates etc.), so we should get different results in the console for different types of object.
+
+We could initialze the *person* object in the above example in the following way, as well:
+```JavaScript
+var person = {};
+
+person['firstName'] = 'John';
+person['lastName'] = 'Smith';
+```
+
+So, we can use square brackets to access (or create) object properties. They do the same thing as the *dot* operator does, but they are useful if a property needs to be the result of an expression. For instance, this code will also work:
+
+```JavaScript
+var nameSuffix = 'Name';
+
+var person = {};
+
+person['first' + nameSuffix] = 'John';
+person['last' + nameSuffix] = 'Smith';
+```
+
+### Object.create()
+
+The `Object.create()` function

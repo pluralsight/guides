@@ -1,19 +1,6 @@
-Introduction
-Graph Computation as a Way to Reduce System Complexity
-The Apache Storm Way
-Apache Storm Overview
-Sample Topology - Let’s See Some Code
-So How Is My Computation Distributed?
-Inherent Parallelism - Streams as a Degree of Parallelism
-A Bolt Has Several Instances
-Grouping as an Internal “Order Maker”
-In Conclusion
-
-
-
 # Introduction
 
-Computations can be complex for us, the human drivers of the software world. There’s even a whole domain of science centered around problem solving and computations &mdash; computer science.
+Computations can be complex. Mostly for us, the human drivers of the software world. There’s even a whole domain of science centered around problem solving and computations &mdash; computer science.
 
 When you begin your studies of computer science you are introduced with terms and ideas which were all created around the idea of trying to model and represent solutions to problems in a provable, correct manner.
 
@@ -52,11 +39,14 @@ Let’s get started!
 Graph computation as a way to reduce system complexity? After all the introduction about turing machines, automata theory and graph theory?
 
 Well … yes.
-Relying on a tested and proven model does not necessarily mean that using this model is as complicated as proving it.
 
-As example, think of the following expression: **1 + 1 = 2**
+Relying on a tested and proven model does not necessarily mean that **using** this model is as complicated as **proving** it.
 
-We all “know” it’s correct and are able to use it because someone else had already proven it to be true.
+For example, think of the following expression: 
+
+**1 + 1 = 2**
+
+We all “know” it’s correct and are able to use it because someone else had already [proven](https://en.wikipedia.org/wiki/Philosophi%C3%A6_Naturalis_Principia_Mathematica) it to be true.
 
 In our case, we are trying to take a known problem, and transform it into the shape of a computation graph, where each [vertex](http://mathworld.wolfram.com/Vertex.html) is a computation unit. We “move” between vertices, according to the edges which connect them.
 
@@ -80,11 +70,11 @@ To begin with, it's simpler for our human mind to comprehend the bigger picture,
 
 Then, it encourages us to follow good and pragmatic software design principles, such as the [separation of concerns](https://en.wikipedia.org/wiki/Separation_of_concerns) principle. Each vertex does exactly only one thing.
 
-Then, it makes us look at the common things each vertex does and outsource it to our infrastructure.
+Then again, it makes us look at the common things each vertex does and outsource it to our infrastructure.
 
-For example, each vertex receives and possibly sends messages. **Outsourcing** the responsibility of handling incoming and outgoing messages in a **fault-tolerant** manner is very desirable.
+For example, each vertex receives and possibly sends messages. **Outsourcing the responsibility** of handling **incoming and outgoing messages** in a **fault-tolerant** manner is very desirable.
 
-Our deployment can also become more flexible this way - for example, we could deploy each computation unit of a separate machine and have the infrastructure worry about proper message delivery and distribution.
+Our **deployment** can also become **more flexible** this way - for example, we could deploy each computation unit of a separate machine and have the infrastructure worry about proper message delivery and distribution.
 
 What about **load-balancing** and **scalability**? Could we rely on our “external” message delivery system for managing multiple instances of the same computation unit for us? Yes we can!
 
@@ -92,7 +82,7 @@ In case we are witnessing a bottleneck in the order validation process, could we
 
 Now, please keep in mind that we’ve described in our graph how each input message should be handled. We haven’t described anything about how to deploy it.
 
-So, we’ve also separated the concerns of software correctness and software deployment.
+So, **we’ve also separated** the concerns of software **correctness** and software **deployment**.
 
 It could very well be the case that we have one physical computation unit instantiated for each “logical” graph vertex except of the validation vertex which we will instantiate two computation units for.
 
@@ -139,7 +129,7 @@ The flow of tuples through spouts and tuples is referred to as [streams](https:/
 
 
 Storm is a great team player and integrates well with other technologies.
-It includes infrastructure which will enable you to work with Elasticsearch, Mongodb, Kafka, Redis, Kinesis and much more. In case you need something custom, that is also possible.
+It includes infrastructure which will enable you to work with [Elasticsearch](https://www.elastic.co/products/elasticsearch), [Mongodb](https://www.mongodb.com/), [Kafka](https://kafka.apache.org/), [Redis](https://redislabs.com/), [Kinesis](https://aws.amazon.com/kinesis/) and much more. In case you need something custom, that is also possible.
  
  
 ![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/d2b12e2d-c124-4c23-b972-0b0c94658e79.png)
@@ -147,7 +137,7 @@ It includes infrastructure which will enable you to work with Elasticsearch, Mon
 
 So, if I wanted to summarize “The Storm Way” in a sentence I would say that:
 
-Apache Storm is a distributed technology aimed at allowing developers to provide logical solutions to problems utilizing a graph computation model while providing a mature and highly integratable infrastructure capabilities “under the hood” through message load-balancing and “on the shelf” through a ready-to-use Kafka Spout.
+Apache Storm is a distributed technology, aimed at allowing developers to provide logical solutions to problems utilizing a graph computation model - while providing a mature and highly integratable infrastructure capabilities both “under the hood” (e.g. message load-balancing) and “on the shelf” (e.g. a ready to use Kafka Spout - just configure and consume data from Kafka).
 
 
 # Apache Storm Overview
@@ -159,7 +149,7 @@ I am not going to perform a deep dive into the technology itself. However, if yo
 At the bird's-eye-view, let’s see how a Storm cluster is built. This will help us understand how it is able to provide us with the aforementioned infrastructure such as reliable messaging between our computation graph parts, as well as a certain degree of parallelism as I will explain a bit further down the road.
 
 To begin with, the storm cluster is built from (not surprising) … nodes.
-These nodes can take on the form of either a master node, running the Nimbus daemon, or a worker node - running the Supervisor daemon.
+These nodes can take on the form of either a **master node**, running the **Nimbus** daemon, or a **worker node** - running the **Supervisor** daemon.
 
  
 ![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/d09b04e9-ff4a-4c3f-a66c-adfc8579ae94.png)
@@ -167,24 +157,24 @@ These nodes can take on the form of either a master node, running the Nimbus dae
 
 The master node takes on the job of distributing work among the worker nodes. What work? The actual code that implements our graph computation, passed on to the Storm cluster as a topology.
 
-How do the master node and the worker nodes know each other? **Through [Zookeeper](http://zookeeper.apache.org/)**.
+How do the master node and the worker nodes know each other? Through [Zookeeper](http://zookeeper.apache.org/).
 Zookeeper is a distributed service that serves as a reliable configuration and synchronization provider. To learn more about Zookeeper, including setup and integration demos, take a look [here](https://www.pluralsight.com/courses/building-enterprise-distributed-online-analytics-platform).
 
  
 ![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/a07f1cd7-90a4-4667-a873-bc08fab32cb0.png)
 
 
-Ok, so we said that the master node is responsible of distributing code to worker nodes. However, there is an additional abstraction layer here: the worker process.
+Ok, so we said that the master node is responsible of distributing code to worker nodes. However, there is an additional abstraction layer here: the **worker process**.
 
-A **worker process** is responsible for executing a subset of the topology. Each worker process will instantiate executor **threads** which will host task instances. These **tasks** can be either **spouts** or **bolts**.
+A worker **process** is responsible for executing a subset of the topology. Each worker process will instantiate executor **threads** which will host **task** instances. These tasks can be either **spouts** or **bolts**.
 
  
 ![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/d886e691-a2e6-48a6-abb9-0ca4b492e44b.png)
 
 
-While it may seem rather laborious to understand, this structure is exactly what gives us the ability to distribute our logical computation graph among various physical machines, processes and threads, allowing our storm cluster to conserve our logical computational integrity in case of hardware failures.
+While it may seem rather laborious to understand, this structure is exactly what gives us the ability to distribute our logical computation graph among various physical machines, processes and threads, allowing our storm cluster to **conserve our logical computational integrity** in case of hardware failures.
 
-For example, if a worker dies, we (as the master node) will assign its work to another worker node.
+A worker dies? No problem - we (the master node) will assign its work to another worker node.
  
 
 ![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/63601eef-c9dc-4751-8f8c-51941df6a103.png)
@@ -202,14 +192,12 @@ This architecture is an enabler for separation of concerns among our teams. We c
 ![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/b55fd5e4-cd3c-4cf9-a67b-9b85f0eb329b.png)
 
 
-The engineers developing Storm gave thought to the aforementioned separation of concerns notion, and supplied the developers with a mean of running a topology locally, on the developer's machine.
+The engineers developing Storm gave thought to the aforementioned separation of concerns notion, and supplied the developers with a mean of **running a topology locally**, on the developer's machine.
 
-Speaking of development, how about we look at some code?
+Talking about developers - how about we look at some code?
 
 
-# Sample Topology
-
-### Let’s See Some Code
+# Sample Topology - Let’s See Some Code
 
 Ok, so some of you probably thought that when I gave the order validation, packaging, and shipment, my example wasn’t that good for demonstrating graph computation.
 
@@ -226,12 +214,12 @@ First, we need to setup a new project. I am demonstrating with a Maven project. 
 We will begin by creating a topology, using the `TopologyBuilder` provided by Storm:
 
  
-![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/f7fcf83d-33f5-45e5-b1ff-2f6e01256069.png)
+![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/2069b4fa-a967-415d-89fe-b166a671dcbb.png)
 
 In order, to set topology spouts, we will invoke the `setSpout` method on the `TopologyBuilder` instance, passing it a spout id and a spout instance.
 
 
-![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/2069b4fa-a967-415d-89fe-b166a671dcbb.png)
+![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/f7fcf83d-33f5-45e5-b1ff-2f6e01256069.png)
 
 
 This is our entry point into our graph computation. In your case it could be a `KafkaSpout`, for example.
@@ -261,13 +249,13 @@ Each time I’ve added a bolt to the topology, I invoked `setBolt`.
 Then, I named the bolt, and provided an instance for that bolt. That instance is a class implemented per each bolts required logic. I will review such a bolt shortly.
 
  
-![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/9e2a74ef-8266-4bd6-960e-5f0274f29f16.png)
+![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/ccb37df6-d7bd-476a-a1ba-46967a6ad35b.png)
 
 
 Per each bolt, we’ve connected it to another bolt or spout which will provide it with input.
 
  
-![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/ccb37df6-d7bd-476a-a1ba-46967a6ad35b.png)
+![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/9e2a74ef-8266-4bd6-960e-5f0274f29f16.png)
 
 
 In the case of the validation bolt, as two outcomes are possible (valid or invalid) - per each possible result we’ve created a bolt which listens to messages only on a particular stream (which the validation bolt is sending messages to).
@@ -334,7 +322,8 @@ After we submit our topology to the cluster, packed as a jar file, the topology 
 The Storm infrastructure is aware of data streams flowing within the topology. This infrastructure also tracks tuple acknowledgment by bolts, providing us with a reliable messaging system.
 
 # Inherent Parallelism: Streams as a Degree of Parallelism
-	One of the benefits of graph computation is that we can clearly visualize the separate computation paths in our application.
+
+One of the benefits of graph computation is that we can clearly visualize the separate computation paths in our application.
 
 Take a look here:
 
@@ -359,7 +348,7 @@ When defining a topology, we can declare the degree of parallelism we desire per
 
 Please notice that we do not want tasks to be spawned on-demand with no control! Too many tasks (i.e. threads) will introduce over-parallelism and possibly cause our cluster to “slow down” and eventually become unresponsive.
 
-Before you use Storm's parallelizing capabilities, **consider the degree of parallelism you are trying to achieve and the resources available**.
+Before you use Storm's parallelizing capabilities, consider the **degree of parallelism you are trying to achieve, given available resources**.
 
 Given that we have 3 Storm worker nodes, and we deploy a topology with a single spout with degree of parallelism set to 2 and 5 bolts with degree of parallelism set to 2 for each &mdash; we will have storm spawn 2 tasks for the spout and 5 * 2 = 10 tasks per the bolts.
 
@@ -371,7 +360,9 @@ That means that we will have 12 tasks which the storm cluster will try to spread
  
 # Grouping as an Internal “Order Maker”
 
-I promised I’ll get back to the concept of **grouping**. We’ve previously seen that when creating a bolt, we’ve specified it’s “input” bolt:
+I promised I’ll get back to the concept of **grouping**. 
+
+We’ve previously seen that when creating a bolt, we’ve specified it’s “input” bolt:
 
  
 ![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/51f7630e-05b3-413d-80f7-5c78556969ca.png)
@@ -385,7 +376,9 @@ But the way we’ve done so was unclear, as we’ve stated that we want a “shu
 
 Strange, isn’t it? What does grouping have to do with the graph topology we set up earlier? Don’t all stream tuples simply flow from one bolt to the other?
 
-Well, remember that spouts and bolts can have multiple instances, in order to parallelize our distributed computation. While a spout or bolt is **logically** an atomic computation unit, it’s **physical** implementation may depend on other instances.
+Well, remember that spouts and bolts can have multiple instances, in order to parallelize our distributed computation. 
+
+While a spout or bolt is **logically** an atomic computation unit, it’s **physical** implementation isn’t necessarily.
 
 Grouping is our way of defining the flow of tuples between two different topology elements. It will define how tuples flow between instances (tasks) of the input entity and the target entity.
 
@@ -407,21 +400,26 @@ There are additional interesting grouping methods you can check [here](http://st
 
 # In Conclusion
 
-Thank you for bearing with me through this trek examining the implications of using graph-theory computations with Apache Storm.
+Thanks for bearing with me through this short journey, examining the concept of graph computations in general and with Apache Storm in more specific details.
+While writing this article I kept in mind “keeping it simple”, assuming that once you’ve “got” the idea and understood the tool - you will be able to decide if a deeper examination of Storm is desirable.
+That is also the reason I’ve referred to additional reading and to my Pluralsight course.
 
-To recap, we began this journey with understanding what graph computation is, and where it originated. In particular, we understood how profound a concept it is in the domain of computer science. 
+We began this journey with understanding what graph computation is, and where it originated.
+In particular, we understood how profound a concept it is in the domain of computer science.
 
-Afterwards, we moved on to discuss the benefits of a supporting infrastructure, in order to reliably implement our application as a graph computation. We presented Apache Storm as such a technology.
+Once convinced (hopefully), we’ve moved on to discuss the benefits of a supporting infrastructure, in order to reliably implement our application as a graph computation.
 
-Storm was reviewed at its various levels &mdash; the logical level, the topological level, and the physical level (or the physical cluster itself).
+We presented Apache Storm as such a technology.
 
-We understood how a topology is spread across the cluster and executed in the final abstraction layer of the physical level, the task.
+Storm was reviewed at the levels - the logical level, the topology and the physical level - the physical cluster itself.
 
-Then we covered how Storm provides parallelism at the stream level and at the specific task level (spout or bolt).
+We understood how a topology is spread across the cluster and executed in the final abstraction layer of the physical level - the task.
 
-Hopefully after looking at some code, you can see the simplicity and beauty of using Storm and are intrigued.
+Then - we’ve discussed how parallelism is provided is Storm - both at the stream level and at the specific task level (spout or bolt).
 
-There is far more to learn. While writing this article I aimed to keep it as simple as possible, assuming that once you “got” the idea and understood the tool, you will be able to dive deeper based on your own interests. That is also the reason I’ve referred to additional reading and to my Pluralsight course.
+Looking at some code, I’ve tried to convey the simplicity and beauty of using Storm.
+
+Hopefully I’ve succeeded in intriguing you.
 
 ______
 

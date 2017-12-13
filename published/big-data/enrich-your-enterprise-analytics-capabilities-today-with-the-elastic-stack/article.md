@@ -30,37 +30,37 @@ Everyone around you is talking about data analytics and insights. They are talki
 
 How about you? Have you considered gathering insights from your software platform?
 
-Oh, but it probably will cost a fortune to develop and integrate such capabilities into your platform, right? **Well, not necessarily.**
+Oh, but it probably will cost a fortune to develop and integrate such capabilities into your platform, right? Well, not necessarily.
 
 The world of software has plenty to offer in terms of data collection, ingestion and analysis. Many of these modern systems integrate fluidly into existing systems.
 
 In this article, I am going to overview a technology stack that will enrich your existing software platform with enterprise grade analytics capabilities.
 
-And to put the cherry on top, we will perform this upgrade **without writing a single line of code**, through the magic of the Elastic Stack.
+And to put the cherry on top, we will perform this upgrade **without writing a single line of code**, through the magic of the [Elastic Stack](http://www.elastic.co/products).
 
 # What We Will Cover in This Article
 
-At a higher abstraction level, one might break down the common process of gathering (possibly monetization enabling) insights from a running systems information to the following three steps. These steps can be performed on information gathered from our current, running software platform.
+At a higher abstraction level, one might break down the common process of gathering (possibly monetization enabling) insights from a running systems information to the following three steps. These steps can be performed on **information gathered from our current, running software platform**.
 
 
 ## Log Collection, Analysis, and Visualization
 
 
-Note: In this article I using the term “logs” to describe any information our software system produces (e.g. output stream, error stream, hardware interrupts, and also textual log files), and not only textual log files, to which developers write information.
+Note: In this article I using the term “logs” to describe any information our software system produces (e.g. output stream, error stream, hardware interrupts, and **also** textual log files), and **not only** textual log files, to which developers write information.
 
-###	Log Collection
+###	Collection
 
 
 ![Logstash](https://raw.githubusercontent.com/pluralsight/guides/master/images/f8dd4f3b-6cd8-45b6-a23d-ad5660a8a29e.PNG)
 
 
-A running software platform produces plenty of data. This information might be the individual processes log info, CPU utilization information, I/O utilization info, and/or much more.
+A running software platform produces plenty of data. This information might be the individual processes log info, CPU utilization information, I/O utilization information, and much more.
 
 Every piece of information, as described above, might come handy in the process of gathering insights that our marketing team can leverage to better understand how the system is being used.
 
 However, it may be the case that we have deployed integrated instrumentation tools into our software platform unwisely or not at all. Sometimes, to include such instrumentation tools (e.g. performance counters on the Windows operating system), we will need to deal with an already deployed system that cannot be modified currently.
 
-For the sake of data collection, we will examine the most capable products from Elastic, Beats, and Logstash.
+For the sake of data collection, we will examine the most capable products from [elastic](https://www.elastic.co/) - [Beats](https://www.elastic.co/products/beats), and [Logstash](https://www.elastic.co/products/logstash).
  
 ###	Analysis
 
@@ -70,7 +70,7 @@ For the sake of data collection, we will examine the most capable products from 
 
 Once we’ve gathered all our system logs, we will want to analyze them in order to gather as much insight as possible.
 
-To do so, we will introduce the powerful analytics engine, **Elasticsearch**. With Elasticsearch at our disposal, we will be able to ingest and “massage” our data to a form suitable for us.
+To do so, we will introduce the powerful analytics engine, [Elasticsearch](https://www.elastic.co/products/elasticsearch). With Elasticsearch at our disposal, we will be able to ingest and “massage” our data to a form suitable for us.
 
 Alternatively, we could simply use Elasticsearch as our “integration” platform. Such a platform integrates our transmitted data with with our visualization layer, something that we will cover shortly. In other words, sometimes data “massaging” prior to visualization may be unnecessary.
 
@@ -83,7 +83,7 @@ In any case, it is important to understand that in the technology stack we are d
 
 
 Data has been transmitted, collected, and analyzed. Next, we want to display it to our end users.
-That will be done using Kibana, another amazing tool, which directly connects to Elasticsearch and utilises its analytical capabilities to provide stunning dashboards, graphs and ad-hoc queries.
+That will be done using [Kibana](https://www.elastic.co/products/kibana), another amazing tool, which directly connects to Elasticsearch and utilises its analytical capabilities to provide stunning dashboards, graphs and ad-hoc queries.
 
 Before we begin, I would like to emphasize several things, which justify the existence of this article.
 
@@ -92,14 +92,14 @@ Before we begin, I would like to emphasize several things, which justify the exi
 
 ![Concept](https://raw.githubusercontent.com/pluralsight/guides/master/images/02bda623-81f5-4d1c-ae4f-da7188b2cca0.PNG)
 
-#### Outsource your distributed systems central log management
+**Outsource your distributed systems central log management**
 
 Logging information correctly in software platforms, in particular distributed systems - is hard.
-Gathering data reliably, across machines, networks and domains, and doing so while preserving correct data context is not simple.
+Gathering data reliably, across machines, networks and domains, and doing so while **preserving correct data context** is not simple.
 
 Under many circumstances, it will be easy to lose data context (e.g. “where did this function call arrive from”) or even loss data completely.
 
-As we want our data and we want it in context, it is better that we make sure to reliably collect and analyze it. Otherwise, else we will simply not be able to gather insights about our system or even worse we will gather incorrect insights.
+As we want our data and we want it in context, it is better that we make sure to reliably collect and analyze it. Otherwise, else we will simply not be able to gather insights about our system or even worse we will gather **incorrect** insights.
 
 Outsourcing the concern for centralized system logging into a dedicated technology stack, does not seem like a bad idea at all. It actually sounds good, to me, and I have done that successfully in several projects. 
 
@@ -111,15 +111,14 @@ Outsourcing the concern for centralized system logging into a dedicated technolo
 
 
 
-#### Rapid introduction of a rock-solid log analytics provider to your existing system.
+**Rapid introduction of a rock-solid log analytics provider to your existing system**
 
 People tend to underestimate the importance of logging. That is true mostly at the development phase, but not only. Sometimes, we already have good system logs but are simply unaware of them! Important data could actually be lying there and becoming obsolete.
 
-Why not take advantage of the log data your system produces? You’ve already invested so much in development and maintenance. Your system is up and running. 
+Why not harness the log data your system produces to your advantage? You’ve invested so much in development and maintenance and your system is up and running - take advantage of what it tell you.
 
-Plus, using the Elastic Stack, leveraging this information becomes so easy. And as you will shortly see when we examine Beats and Logstash, gathering relevant data can even become a DevOps task! 
-
-In short, the typical excuse that “data pipelining takes too much time and I would rather focus on feature development” falls flat on its face! 
+Well, using the Elastic Stack, it becomes so easy, that the “it takes too much time and I would rather focus on feature development” excuse becomes irrelevant. And you know what? Gathering relevant data can even become a DevOps task, as you will shortly see, when we examine Beats and Logstash.
+ 
 
 ## Deploy As You Wish
 
@@ -127,7 +126,7 @@ In short, the typical excuse that “data pipelining takes too much time and I w
 ![Deployment Options](https://raw.githubusercontent.com/pluralsight/guides/master/images/15ed11b4-8217-44bf-beb2-fbe5c7a9fbaf.PNG)
 
 
-#### Supports on-premise and cloud deployment
+**Supports on-premise and cloud deployment**
 
 Flexible deployment options are important, but I don’t have to tell you that, right?
 
@@ -138,7 +137,7 @@ Choosing a technological stack, then, becomes more interesting.
 
 Lucky for us, the Elastic Stack is capable of running on the cloud and on-premises.
 
-When running on-premise, we can run all required services on Windows, Linux or inside a docker container. 
+When running on-premise, we can run all required services on Windows, Linux or inside a [docker](https://www.docker.com/) container. 
 
 Interesting, right? Without further ado, let's get started.
 
@@ -159,7 +158,7 @@ What is a data processing pipeline, in our context? Once again, we are talking a
 
 This time, though, we are talking about collecting raw data from various inputs, sending that data through filters, and outputting the result data into outputs.
 
-#### Inputs, filters, and outputs implemented as plugins
+Inputs, filters, and outputs implemented as plugins.
 
 You will probably be able to find what you need on the Logstash [page](https://www.elastic.co/products/logstash), but in case you don’t, it is rather simple to implement your own plugins.
 
@@ -174,7 +173,7 @@ Our (male) client has Windows machines. He would like to pass all Windows event 
 
 #### Input(s) configuration
 
-He begins by deploying the Logstash agent on the windows machines, as well as the Eventlog input plugin, as described here. There are plenty of configuration options for which event to send and at which interval to look for them, though, for this example, the below input configuration will suffice:
+He begins by deploying the Logstash agent on the windows machines, as well as the Eventlog input plugin, as described [here](https://www.elastic.co/guide/en/logstash/current/plugins-inputs-eventlog.html). There are plenty of configuration options for which event to send and at which interval to look for them, though, for this example, the below input configuration will suffice:
 
 
 ![Input Configuration](https://raw.githubusercontent.com/pluralsight/guides/master/images/e6198609-9063-4bb0-8df8-800ef00b4b26.png)
@@ -182,7 +181,7 @@ He begins by deploying the Logstash agent on the windows machines, as well as th
 
 #### Filter(s) configuration
 
-Now, once our data is being collected by Logstash, because we’ve configured an input plugin, we can proceed to the (optional) task of transforming the data and preparing it for transmission. This is done using a filter plugin. Again, a plethora of filter plugins is already available for you to use. If you cannot find a desired filter, you can roll your own.
+Now, once our data is being collected by Logstash, because we’ve configured an input plugin, we can proceed to the (optional) task of transforming the data and preparing it for transmission. This is done using a filter plugin. Again, a plethora of [filter plugins](https://www.elastic.co/guide/en/logstash/current/filter-plugins.html) is already available for you to use. If you cannot find a desired filter, you can roll your own.
 
 For the sake of simplicity let's assume that client want us to transmit all “host” fields in the event log messages in lowercase. To do so, we will configure a mutate filter which will do just that.
 
@@ -192,7 +191,7 @@ For the sake of simplicity let's assume that client want us to transmit all “h
 
 #### Output(s) configuration
 
-Just you’ve probably guessed, setting an output will also happen via the configuration of an output plugin. I will choose the Elasticsearch output plugin from the list of available plugins.
+Just you’ve probably guessed, setting an output will also happen via the configuration of an output plugin. I will choose the Elasticsearch output plugin from the list of [available plugins](https://www.elastic.co/guide/en/logstash/current/output-plugins.html).
 Configuring the Elasticsearch output plugin is a breeze, as can be seen below.
 
 
@@ -235,7 +234,7 @@ Ok, at this point in time, we have data shipped to our Elasticsearch cluster.
 
 *But wait, Kobi, what is this Elasticsearch you keep talking about? And a cluster? You haven’t said anything about a cluster.*
 
-Elasticsearch is a distributed technology which acts as an abstraction layer to the most capable full-text-search engine,  [Lucene](https://lucene.apache.org/), and does so while introducing scalability and reliability to the equation. To top that, Elasticsearch adds a [RESTful](http://www.drdobbs.com/web-development/restful-web-services-a-tutorial/240169069) query language which makes integrating with it simple.
+Elasticsearch is a **distributed** technology which acts as an abstraction layer to the most capable full-text-search engine,  [Lucene](https://lucene.apache.org/), and does so while introducing scalability and reliability to the equation. To top that, Elasticsearch adds a [RESTful](http://www.drdobbs.com/web-development/restful-web-services-a-tutorial/240169069) query language which makes integrating with it simple.
 
 Using Elasticsearch, we can receive textual data, from various sources. In our case, these data sources will be Logstash instances or Beats - or both.
 
@@ -243,7 +242,7 @@ The data is then indexed (for the sake of fast retrieval, upon request) and repl
 
 By deploying more than one node, we can scale-out our cluster and increase the bandwidth (of data) it can manage.
 
-The cluster exposes an endpoint, to which we can then connect and run queries against using the Elasticsearch [query DSL (domain specific language)](https://www.elastic.co/guide/en/elasticsearch/reference/current/_introducing_the_query_language.html). This is what **Kibana** does, by the way, as we will shortly discuss.
+The cluster exposes an endpoint, to which we can then connect and run queries against using the Elasticsearch [query DSL(domain specific language)](https://www.elastic.co/guide/en/elasticsearch/reference/current/_introducing_the_query_language.html). This is what Kibana does, by the way, as we will shortly discuss.
 
 Utilizing the Sense chrome plugin, for example, you can query your Elasticsearch cluster on-demand. 
 
@@ -259,12 +258,12 @@ An interesting query, for example, could be “Show me all Error messages transm
 
 In the end, there are an unlimited number of interesting questions to ask about our collected data :-).
 
-For a more in-depth review of Elasticsearch, feel free to check [my latest Pluralsight course](https://www.pluralsight.com/courses/building-enterprise-distributed-online-analytics-platform), which dedicates a *complete module* to explain how the technology works.
+For a more in-depth review of Elasticsearch, feel free to check my latest [Pluralsight course](https://www.pluralsight.com/courses/building-enterprise-distributed-online-analytics-platform), which dedicates a *complete module* to explain how the technology works.
 
 
 # Visualizing with Kibana
 
-The last piece of the Elastic Stack puzzle will be Kibana.
+The last piece of the Elastic Stack puzzle will be [Kibana](https://www.elastic.co/products/kibana).
 
 Kibana is a visualization engine, specifically made to work with Elasticsearch as its data store.
 As such, it allows utilizing the full capabilities of the Elasticsearch query DSL in order to tailor dynamic graphs, charts, time-series, geospatial queries and much more.
@@ -284,11 +283,11 @@ For example, a system analyst might point out to some “strange” result he en
 
 # In Conclusion
 
-Gathering information from and about your running software used to be a task for developers. At one time, our developers needed to “be prophets," anticipating any information which might be of interest to them when debugging a system bug. They also had to embed instrumentation tools (e.g. performance counters) into the software in case clients were interested in any such information. Then, they were tasked with properly transmitting and centralizing the collected information in a single place, where they would use external tools to analyze the data. For that reason, logging was once a developer domain.
+Gathering information from and **about** your running software used to be a task for developers. At one time, our developers needed to “be prophets," anticipating any information which might be of interest to them when debugging a system bug. They also had to embed instrumentation tools (e.g. performance counters) into the software in case clients were interested in any such information. Then, they were tasked with properly transmitting and centralizing the collected information in a single place, where they would use external tools to analyze the data. For that reason, logging was once a developer domain.
 
 > The Elastic Stack has completely revamped this system. 
 
-Using your DevOps team, you can deploy and configure data-shippers, such as Logstash and/or Beats, and have them transmit all data into an Elasticsearch cluster (also deployed by your DevOps team or hosted in the cloud) which you can then gather insights from using Kibana.
+Using your DevOps team, you can deploy and **configure** data-shippers, such as Logstash and/or Beats, and have them transmit all data into an Elasticsearch cluster (also deployed by your DevOps team or **hosted in the cloud**) which you can then gather insights from using Kibana.
 
 Being able to eliminate dependence on development resources to gather information and analyze a running system grants flexibility to any enterprise.
 

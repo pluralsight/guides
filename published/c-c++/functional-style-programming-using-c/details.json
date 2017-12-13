@@ -3,7 +3,12 @@
     "author_name": "phaysaal",
     "author_real_name": "Mahmudul FAISAL Al Ameen",
     "branch": "master",
-    "branches": [],
+    "branches": [
+        [
+            "dev-onekenobi",
+            "dev-onekenobi-c-c++-functional-style-programming-using-c"
+        ]
+    ],
     "filename": "article.md",
     "first_commit": null,
     "image_url": "https://avatars.githubusercontent.com/u/12531542?v=3",
