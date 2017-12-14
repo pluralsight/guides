@@ -395,8 +395,7 @@ Here, you can see how each tuple is transferred randomly to one bolt instance (t
 A most interesting grouping option is the “Fields” grouping, in which we specify specific fields by which we want to group our tuples. For example, we grouped our     `ShipmentRequestBolt` to the `PackageGenerationRequest` based on the field “WarehouseId”. Due to this "Fields" grouping strategy, all tuples with the same `WarehouseId` value in an incoming tuple will always get directed to the same `ShipmentRequestBolt` task instance.
 
 
-
-![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/314f9032-134a-4dfa-9606-1f51ef74b1ee.png)
+![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/432a3669-0b71-4afa-8254-259853f5d75c.png)
 
 
 There are additional interesting grouping methods you can check [here](http://storm.apache.org/releases/1.1.0/Concepts.html).
