@@ -101,7 +101,7 @@ Apache Storm provides us with both the ability to write our computations as grap
 With Storm, our main application is called a topology.
 
 
-![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/798f943e-905e-424b-83f4-e6e8d72d506e.png)
+![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/33dd44a2-7fcb-486a-a7b4-e92731049bbf.png)
 
 
 Each topology represents an always-on application, which can receive input from data sources referred to as [spouts](https://www.merriam-webster.com/dictionary/spout).
