@@ -1,11 +1,5 @@
 
-
 ## Why Web Scraping
-
-
-
-
-
 
 
 
@@ -44,10 +38,61 @@ The basic framework (_or behind the curtain_) of a webpage is `HTML` & `CSS`.  J
 </html>
 ```
 
-
 ## Tools
-mm
 
+We will be using the following:  (_<b>Note:</b>  I am on a Mac, what's a PC anyways jk_)<br>
+`1` [Python 3.6](https://www.python.org/downloads/)<br> 
+`2` Terminal<br>
+`3` [Sublime Text 3](https://www.sublimetext.com/3)<br>
+
+Pyton Packages:<br>
+[urllib](https://docs.python.org/3/library/urllib.html)<br>
+[BeautfulSoup](https://pypi.python.org/pypi/BeautifulSoup/3.2.1)<br>
+
+If you don't have Pyhton, do not fear.  Simply open the Python link above, download it, and install.  
+If you have Python and are unsure to what version you are using.  Open Terminal and type `python` and click enter.
+
+```
+$ Python
+```
+You'll see the version populate like below. 
+```
+Python 3.6.3 (v3.6.3:2c5fed86e0, Oct  3 2017, 00:32:08) 
+[GCC 4.2.1 (Apple Inc. build 5666) (dot 3)] on darwin
+Type "help", "copyright", "credits" or "license" for more information.
+>>>
+```
+Now let's install our packages.  While in terminal type the following: `pip install` 
+```
+$ pip install beautifulsoup4
+```
+and
+```
+$ pip install urllib3
+```
+To make sure everything is working you can now simply type `python` or if you have mutliple versions type in `python3`.  import your packages, BeautifulSoup and urllib.  
+
+```
+$ Python
+import bs4, urllib3
+```
+
+
+Should look something like this.
+
+![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/640c0c20-aa57-41a7-9a64-2e80991724e9.gif)
+```>>>``` Is a good sign!!!
+
+
+
+
+
+
+```
+from urllib.request import urlopen as alias
+from bs4 import BeautifulSoup as Soup
+```
+_When importing remeber it's case sensitive._
 
 
 
