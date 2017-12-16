@@ -1,4 +1,3 @@
-
 ## Why Web Scraping
 
 
