@@ -3,7 +3,12 @@
     "author_name": "kobihikri",
     "author_real_name": "Kobi Hikri",
     "branch": "master",
-    "branches": [],
+    "branches": [
+        [
+            "adityavarshney",
+            "adityavarshney-big-data-redis-as-a-dynamic-interconnecting-datastore"
+        ]
+    ],
     "filename": "article.md",
     "first_commit": "8e1a6e53e92b7dcad3a71eef18600f8493ce4149",
     "image_url": "https://avatars2.githubusercontent.com/u/4434689?v=4",
