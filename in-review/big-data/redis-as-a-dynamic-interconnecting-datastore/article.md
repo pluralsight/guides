@@ -213,9 +213,7 @@ And here is the subscribing client, but this time subscribed to channels which n
 
 To summarize, we began this discussion with a point about context, and why it is important that our context has a discrete value or state at any point in time.
 
-Then, we covered how the concept of a context features in distributed systems.
-
-Next, we examined how Redis allows us to “solve” the distributed context problem using the Redlock algorithm. 
+Then, we covered how the concept of a context features in distributed systems, particularly when it comes to synchronized caches. As part of this, we examined locking and how Redis “solves” the distributed context problem using the Redlock algorithm. 
 
 Finally, we examined another popular use-case for Redis &mdash; the Publisher/Subscriber messaging model implementation. In covering this, we examined the concept of publishing and demonstrated with Python code. 
 
