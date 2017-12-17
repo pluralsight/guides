@@ -1,19 +1,7 @@
 
-Introduction
-So … What is Redis?
-Using Redis As a Synchronized Cache Mechanism
-Distributed Locking Mechanism at Your Disposal
-Sample Context Interaction Implementation
-Interprocess Communication With Redis
-Sample Publisher / Subscriber Mechanism Implementation
-In Conclusion
-
-
-
-
-Introduction
-	“Context and memory play powerful roles in all the truly great meals in one's life.”
-	Anthony Bourdain, Chef
+# Introduction
+> “Context and memory play powerful roles in all the truly great meals in one's life.” 
+Anthony Bourdain, Chef
 
 Yes, I know. He (Anthony) is talking about meals and we are talking about software development. But not all is different. Sometimes our data, passing through our software parts, goes through specific transformations, being passed around according to a very specific algorithm. The output of that data will eventually become our output, or “meal”, if you want to.
 
