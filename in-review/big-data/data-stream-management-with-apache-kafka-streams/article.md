@@ -19,13 +19,15 @@ When using Kafka using proper deployment and configuration schemes, our precious
 
 ![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/1e7db5b4-9354-4c30-84e1-a99c6da98233.png)
 
-Given various input rates, we can also easily scale our cluster in order to adjust to our changing requirements. Apache Kafka (or Kafka) makes these tasks feel easy and efficient.
-
+Given various input rates, we can also easily scale our cluster in order to adjust to our changing requirements.
 
 ![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/9f2a400b-ec3d-4381-aac2-2cfac55370f5.png)
 
+Apache Kafka (from now on I will omit the “Apache”, but I am always referring to the official Apache Kafka release) makes all these “real-life” problems easy to solve, and it does so efficiently and with great speed.
 
-In short, Kafka is extremely capable of managing variable rates of incoming data efficiently in a fault-tolerant and scalable manner.
+In short, Kafka is extremely capable of managing **variable rates** of incoming data **efficiently** in a **fault-tolerant** and **scalable** manner.
+
+That sounds to me like a great tool for the toolbox!
 
 **Kafka Streams** is a client library which provides an abstraction to an underlying Kafka cluster, and allows for stream manipulation operations to be performed on the hosting client.
 The abstraction provided for us is load-balanced by default, making it an interesting candidate for several use cases in particular.
