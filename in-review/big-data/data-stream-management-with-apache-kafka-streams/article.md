@@ -182,7 +182,7 @@ Let’s talk about such use cases.
 
 The first use case that comes in mind (for me, that is) is a scalable and reliable interprocess communication mechanism for your software platform services.
 
-The first interprocess paradigm that pops to mind is the most popular publisher/subscriber mechanism.
+The first interprocess paradigm that pops to mind is the most popular publisher / subscriber mechanism.
 
 This paradigm allows us to have a microservice or numerous microservices produce messages into a Kafka Stream (e.g “PrintRequest”). This Stream will then be consumed by other microservices.
 
@@ -200,13 +200,15 @@ Sounds good, right? It might actually remind you of using Kafka Producers and Ka
 
 Indeed, the Kafka Stream performs the load-balancing for us, perhaps a bit better than what we could have implemented at a lower abstraction level.
 
-> "So I'm working with a higher abstraction level and getting exactly-once message delivery guarantees? I’m 100% down!"
+> "So I'm working with a higher abstraction level and getting exactly-once message delivery guarantees? Well ... I'm in!"
 
 Let’s observe how such code would like like, utilizing the Kafka Streams API.
 
 # Stream Message Consumers Code Sample
 
-In the below example you can see how a Kafka Stream is created with its source being the “PrintRequest” topic. After it's created, we are able to consume all messages as a key-value pair and process as we desire.
+In the below example you can see how a Kafka Stream is created with its source being the “PrintRequest” topic. 
+
+After it's created, we are able to consume all messages as a key-value pair and process as we desire.
 
 
 ![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/7419e467-6c34-4ce9-ad3e-91c6769c7c69.png)
@@ -214,7 +216,7 @@ In the below example you can see how a Kafka Stream is created with its source b
 
 Pretty straightforward, right?
 
-I would like to remind you, that you can (and should) spawn multiple stream message producers and consumers.* Messages will be delivered and load balanced for you.
+I would like to remind you, that you can (and should) spawn multiple stream message producers and consumers*. Messages will be delivered and load balanced for you.
 
 **Please do not confuse the terms “producer” and “consumer” with the lower level Kafka producers and consumers.* 
 
@@ -232,7 +234,7 @@ In this case, I’ve prefixed every PrintRequest message key, with the current m
 ![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/b093e98f-3337-4691-88d0-6cb7402c55ae.png)
 
 
-Ok, this is starting to get interesting! So we are *outside* of our Kafka cluster and are doing data transformations in a scalable and fault-tolerant manner, all the while enjoying the benefits (e.g security) that we get when **inside of a Kafka cluster**? Magic :-)
+Ok, this is starting to get interesting! So we are **outside of our Kafka cluster** and are doing data transformations in a scalable and fault-tolerant manner, all the while enjoying the benefits (e.g security) that we get when **inside of a Kafka cluster**? Magic :-)
 
 But seriously, that is exactly what you are doing &mdash; you are hosting your Kafka Streams application in your own process, and, using the Streams API, you are getting message-handling services from the underlying capabilities of the Kafka Streams client. And the Kafka Streams client, in turn, “knows” how to properly “break down” the abstracted stream and stream application into the terms of the Kafka cluster which deals with topics.
 
@@ -279,7 +281,12 @@ Let’s think about the following use case:
 
 ## Use Case Analysis via User Cart Management
 
-We have a user who would like to add an item to his shopping cart. He clicks on the “Add Item” button, next to the item he wants.
+We have a user. That is a good thing :-).
+
+Our user would like to add an item to his shopping cart.
+
+He clicks on the “Add Item” button, next to the item he wants.
+
 
 
 ![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/9862a496-8b4f-4ac6-adcc-88a718fcbc8e.png)
@@ -301,7 +308,9 @@ Cart management is just an abstraction we, humans, are using, in order to descri
 
 This was just a simple example for how simple things can become with proper infrastructure and system architecture.
 
-If you’re already dealing with microservices and thus abide by the rules that a microservices architecture lives by, Kafka Streams should definitely be a tool in your infrastructure toolbox!  	
+If you’re already dealing with microservices and thus abide by the rules that a microservices architecture lives by, Kafka Streams should definitely be a tool in your infrastructure toolbox!
+
+Think about it.
 
 
 # In Conclusion
