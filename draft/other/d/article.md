@@ -8,13 +8,10 @@ A lot of people scrape a site (or multiple sites) to see if prices of items have
 
 
 
-Say you have a website like one of the two below. If you would like to monitor multiple prices/values/data from one site or multiple sites you'll need to create a program that scrapes that information. 
+Say you have a website like one of the two below. If you would like to monitor multiple prices/values/data from one site, or multiple sites you'll need to create a program that scrapes that information.  
 
 ![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/4ab40f70-5fb6-4ce4-9bae-b65661c3c605.png)
 
-
-
-![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/6223d0ce-eb2c-4685-8660-551e7adfcd4f.png)
 
 <p align="center">
 <b>The Flow Is Pretty Simple:</b> 
@@ -29,7 +26,7 @@ Say you have a website like one of the two below. If you would like to monitor m
 ![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/6223d0ce-eb2c-4685-8660-551e7adfcd4f.png)
 
 You'll need to know some basic `HTML` and `CSS` or atleast be able to read it and understand what you are looking at.
-Essentually, what you'll be doing is pulling up a webpage and peaking behind the curtain.  
+Essentually, what you'll be doing is pulling up a webpage and peaking behind the curtain.  We will write a script to grab the `HTML` and then parse it into usable chunks.
 
 The basic framework (_or behind the curtain_) of a webpage is `HTML` & `CSS`.  Just think of `HTML` as a structure and `CSS` as the structure's style.  The layout of a webpage is super important as you will come to find later.  
 
@@ -51,10 +48,10 @@ The basic framework (_or behind the curtain_) of a webpage is `HTML` & `CSS`.  J
 
 We will be using the following:  (_<b>Note:</b>  I am on a Mac, what's a PC anyways jk_)<br>
 `1` [Python 3.6](https://www.python.org/downloads/)<br> 
-`2` Terminal:  Just use ⌘ + Space Bar and type 'Terminal' <br>
+`2` Terminal:  _Just use ⌘ + Space Bar and type 'Terminal'_ <br>
 `3` [Sublime Text 3](https://www.sublimetext.com/3)<br>
 
-Pyton Packages:<br>
+Python Packages:<br>
 [urllib](https://docs.python.org/3/library/urllib.html)<br>
 [BeautfulSoup](https://pypi.python.org/pypi/BeautifulSoup/3.2.1)<br>
 
@@ -97,10 +94,16 @@ Should look something like this.
 
 Now that we have Python and our packages let's scrape.
 
+Wait, what's a package?  
+
+Watch This Video:  
 
 
 
 
+## Python Time
+
+Please open your Terminal and type in the following.
 ```
 from urllib.request import urlopen as alias
 from bs4 import BeautifulSoup as Soup
