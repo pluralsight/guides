@@ -74,7 +74,7 @@ In this domain, we were presented with [ETL](https://en.wikipedia.org/wiki/Extra
 ![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/4765bf82-bda3-404b-8c41-64bbcc9085c7.png)
 
 
-> Kafka Streams knocks out all of these use cases and many more.
+> The use cases I’ve just mentioned will certainly benefit from using Kafka Streams.
 
 In the first use case, we could use Kafka Streams in order to consume the data stored in our (e.g. HDFS volume) storage and pass it forward to workers, which will then perform a computation on it.
 
@@ -110,7 +110,7 @@ The Streams API client will be hosted in your application, but it’s important 
 ![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/d1f270a2-4cfe-4b14-ac2a-a89c81d2a711.png)
 
 
-The Kafka Streams client performs all of his work inside of your application and not the Kafka cluster.
+>**The Kafka Streams client performs all of his work inside of your application and not the Kafka cluster.**
 
 And why is that? Simply because your Kafka cluster is already busy enough :-).
 
@@ -120,7 +120,7 @@ Yes, there is overhead.
 
 However, in many cases, that overhead will depend on the specific manner in which you manipulate your data and can be kept to a minimum.
 
-Other than ease of development and ease of deployment, and precisely because all computation is performed on the client applications, Kafka Streams applications do not require a dedicated compute cluster (e.g. [Apache Spark](https://spark.apache.org/)). All you do is point at your existing Kafka cluster and define what (data) transformations and enrichments you would like to do.
+Other than ease of development and ease of deployment, and precisely because all computation is performed on the client applications, **Kafka Streams applications do not require a dedicated compute cluster** (e.g. [Apache Spark](https://spark.apache.org/)). All you do is point at your existing Kafka cluster and define what (data) transformations and enrichments you would like to do.
 
 Here, at the diagram below, you can see, that a client application defines a message stream from the topic “CheckoutRequest”. It then enriches the request with additional data, and passes it to an outgoing stream,”EnrichedCheckoutRequest”, for further processing by processes listening to the “EnrichedCheckoutRequest” stream.
 
@@ -129,7 +129,7 @@ Here, at the diagram below, you can see, that a client application defines a mes
 
 ### Scalable, fault-tolerant, secure 
  
-One more point to consider when considering using Kafka Streams, is that it comes with Kafka's promises of scalability, fault-tolerance and security.
+One more point to consider when considering using Kafka Streams, is that it comes with Kafka's promises of **scalability**, **fault-tolerance** and **security**.
 
 As all of the data is being managed by the Kafka cluster in relevant Kafka topics, we enjoy Kafka's maturity with managing our data safely.
 
