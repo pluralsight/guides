@@ -7,6 +7,10 @@
         [
             "adityavarshney",
             "adityavarshney-big-data-data-stream-management-with-apache-kafka-streams"
+        ],
+        [
+            "prtkgpt",
+            "prtkgpt-big-data-data-stream-management-with-apache-kafka-streams"
         ]
     ],
     "filename": "article.md",
