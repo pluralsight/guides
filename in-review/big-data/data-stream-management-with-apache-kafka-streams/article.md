@@ -40,7 +40,9 @@ Sound interesting? Well, let’s get started!
 
 # Batch Processing? Real-time Processing? How About Something New?
 
-The world of data has changed vastly over the last decade, or even more. Data was once local to a single machine; it's now shared on multiple machines, computer networks, and even network domains (hosted on multiple datacenters).
+The world of data has changed vastly over the last decade, or even more. 
+
+Data was once local to a single machine; it's now shared on multiple machines, computer networks, and even network domains (hosted on multiple datacenters).
 
 In short, data management systems have gone from being centralized to being widely distributed.
 
