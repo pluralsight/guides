@@ -10,7 +10,7 @@
 <!--In Conclusion-->
 
 # Introduction
-[**Apache Kafka**](https://kafka.apache.org/) is a distributed streaming platform that is effective and reliable when handling massive amounts of incoming data from various sources heading into numerous outputs. 
+[**Apache Kafka**](https://kafka.apache.org/) is a distributed streaming platform that is effective and reliable when handling massive amounts of incoming data from various sources heading into the numerous outputs.
 
 ![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/f3ff9c53-6054-4ab4-9882-23d5224dace9.png)
 
