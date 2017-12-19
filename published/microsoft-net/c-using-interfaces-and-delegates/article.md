@@ -39,7 +39,7 @@ We start by defining the Interface.
 ```CSharp
 public interface ICalculate
 {
-	public int Calculate(int x, int y);
+	 int Calculate(int x, int y);
 }
   ```
 
