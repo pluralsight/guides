@@ -5,7 +5,7 @@ REST defines a set of principles that must be followed. There's a certain degree
 
 [GraphQL](http://graphql.org/) is a query language that offers an alternative model to developing APIs using a strong type system to provide a detailed description of an API.
 
-In this tutorial, you're going to learn how to build a GraphQL Server that will expose an API to create, update and delete entities of type `Book` with the following attributes:
+In this tutorial, you're going to learn how to build a GraphQL server that will expose an API to create, update and delete entities of type `Book` with the following attributes:
 - ID
 - Title
 - ISBN
@@ -17,16 +17,16 @@ In this tutorial, you're going to learn how to build a GraphQL Server that will 
 - First name
 - Last name
 
-You'll define these types in a GraphQL schema using [a special Graphql DSL called IDL](http://graphql-java.readthedocs.io/en/v6/schema.html), create resolvers, queries, mutations, error handlers and the rest of the infrastructure for the server.
+You'll define these types in a GraphQL schema using [a special Graphql DSL called IDL](http://graphql-java.readthedocs.io/en/v6/schema.html). You'll also create resolvers, queries, mutations, error handlers and the rest of the infrastructure for the server.
 
-We'll use:
+This tutorial will use:
 - [Java 9](http://www.oracle.com/technetwork/java/javase/downloads/jdk9-downloads-3848520.html)
 - [Spring Boot 1.5.9](https://projects.spring.io/spring-boot/) with an embedded [H2 database](http://www.h2database.com/html/main.html)
 - [graphql-java](https://github.com/graphql-java/graphql-java), a GraphQL Java implementation
 - [GraphiQL](https://github.com/skevy/graphiql-app), an app for editing and testing GraphQL queries/mutations (you'll learn how to use its web version)
 - [Maven](https://maven.apache.org/) (but you can use [Gradle](https://gradle.org/) if you prefer it)
 
-This way, at the end of the tutorial, you'll have a strong foundation to build APIs with GraphQL using Spring Boot.
+At the end of the tutorial, you'll have a strong foundation to build APIs with GraphQL using Spring Boot.
 
 You can find the entire source code of this project on this [GitHub repository](https://github.com/eh3rrera/graphql-java-spring-boot-example).
 
@@ -59,9 +59,9 @@ type Artist {
    songs: [Song]
 }
 ```
-Notice that the fields are typed. These types can be scalar types (Int, Float, String, Boolean and ID) or references to other types defined in the specification.
+Notice that the fields are typed. These types can be scalar types (`Int`, `Float`, `String`, `Boolean` and `ID`) or references to other types defined in the specification.
 
-You can also specify if they are required (`!`) or if they are an array (`[]`). Here's more information about [object types and fields](http://graphql.org/learn/schema/#object-types-and-fields).
+You can also specify if they are required (`!`) or if they are an array (`[]`). Here you can find more information about [object types and fields](http://graphql.org/learn/schema/#object-types-and-fields).
 
 Query operations are also treated as types. They declare fields that represent the available operations. For example, you can define query operations to get all the songs and filter the songs by genre:
 ```
@@ -171,7 +171,7 @@ You can add the library as a dependency on your project to start using it. At th
 </dependency>
 ```
 
-However, you'll also want to use a library like [GraphQL Java Tools](https://github.com/graphql-java/graphql-java-tools) to parse GraphQL schemas instead of describing your types programmatically and map them automatically to Java objects:
+However, you'll also want to use a library like [GraphQL Java Tools](https://github.com/graphql-java/graphql-java-tools) to parse GraphQL schemas instead of describing your types programmatically. This library also maps them automatically to Java objects:
 ```
 <!-- https://mvnrepository.com/artifact/com.graphql-java/graphql-java-tools -->
 <dependency>
@@ -284,13 +284,13 @@ spring.h2.console.path=/h2-console
 Update your Maven configuration in your IDE to download the dependencies if you haven't already, and run the main class of your project, in my case, `com.example.DemoGraphQL`. Alternatively, in a terminal window, you can execute `mvnw spring-boot:run` (or `gradle bootRun` if you're using Gradle).
 
 Apart from some warnings, everything should look fine in the console logs. You can go to [http://localhost:8080/h2-console/login.jsp](http://localhost:8080/h2-console/login.jsp) and enter the following information:
-- JDBC URL: jdbc:h2:mem:testdb
-- User Name: sa
-- Password: <blank>
+- JDBC URL: `jdbc:h2:mem:testdb`
+- User Name: `sa`
+- Password: (empty)
 
 ![H2 console login](https://raw.githubusercontent.com/pluralsight/guides/master/images/166fd721-9d3d-4e15-b2bc-e527d365a862.png)
 
-When you press the *Connect* button the console of the in-memory database should appear:
+When you press the *Connect* button, the console of the in-memory database should appear:
 
 ![H2 console](https://raw.githubusercontent.com/pluralsight/guides/master/images/365b3266-f00a-40e5-ac21-44b498e95022.png)
 
@@ -782,7 +782,7 @@ public class DefaultGraphQLErrorHandler implements GraphQLErrorHandler {
 }
 ```
 
-Only the client errors (for example, when you misspell the name of a field) are processed. The rest of the errors are treated as a generic error and logged.
+Only the client errors (for example, when you misspell the name of a field) are processed. The rest of the errors are treated as a generic error and then logged.
 
 If you want the client to get the correct message, the first thing you need to do is create a custom exception that implements `GraphQLError`. For example, a `BookNotFoundException` class:
 ```java
