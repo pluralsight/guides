@@ -3,7 +3,12 @@
     "author_name": "jigneshBeladiya",
     "author_real_name": "jigneshBeladiya",
     "branch": "master",
-    "branches": [],
+    "branches": [
+        [
+            "chethan-marideva",
+            "chethan-marideva-microsoft-net-c-using-interfaces-and-delegates"
+        ]
+    ],
     "filename": "article.md",
     "first_commit": "8e37911bc93b98f145ca93ec649fdff15f311f59",
     "image_url": "https://avatars.githubusercontent.com/u/11713657?v=3",
