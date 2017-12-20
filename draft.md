@@ -1,8 +1,3 @@
-### Building Your First Conversational App by chen-levkovich
-- [Read the guide](https://www.pluralsight.com/guides/other/building-your-first-conversational-app?status=draft)
-- [Read more from chen-levkovich](https://www.pluralsight.com/guides/author/chen-levkovich) <img src="https://avatars0.githubusercontent.com/u/26025482?v=4" width="30" height="30" alt="chen-levkovich" />
-- Related to: other
-
 ### No name by Sandra Andonov
 - [Read the guide](https://www.pluralsight.com/guides/front-end-javascript/no-name?status=draft)
 - [Read more from Sandra Andonov](https://www.pluralsight.com/guides/author/sandraandonov88) <img src="https://avatars3.githubusercontent.com/u/4996647?v=4" width="30" height="30" alt="Sandra Andonov" />
