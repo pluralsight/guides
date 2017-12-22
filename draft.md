@@ -1,8 +1,3 @@
-### Building a Serverless Web App on AWS Services by Esteban Herrera
-- [Read the guide](https://www.pluralsight.com/guides/front-end-javascript/building-a-serverless-web-app-on-aws-services?status=draft)
-- [Read more from Esteban Herrera](https://www.pluralsight.com/guides/author/eh3rrera) <img src="https://avatars2.githubusercontent.com/u/11665759?v=4" width="30" height="30" alt="Esteban Herrera" />
-- Related to: Front-End JavaScript (Angular, React, Meteor, etc)
-
 ### No name by Sandra Andonov
 - [Read the guide](https://www.pluralsight.com/guides/front-end-javascript/no-name?status=draft)
 - [Read more from Sandra Andonov](https://www.pluralsight.com/guides/author/sandraandonov88) <img src="https://avatars3.githubusercontent.com/u/4996647?v=4" width="30" height="30" alt="Sandra Andonov" />
