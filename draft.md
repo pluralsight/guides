@@ -1,3 +1,8 @@
+### Test a article by 吴启成 (Chasel Wu)
+- [Read the guide](https://www.pluralsight.com/guides/other/test-a-article?status=draft)
+- [Read more from 吴启成 (Chasel Wu)](https://www.pluralsight.com/guides/author/minowu) <img src="https://avatars0.githubusercontent.com/u/1282787?v=4" width="30" height="30" alt="吴启成 (Chasel Wu)" />
+- Related to: other
+
 ### No name by Sandra Andonov
 - [Read the guide](https://www.pluralsight.com/guides/front-end-javascript/no-name?status=draft)
 - [Read more from Sandra Andonov](https://www.pluralsight.com/guides/author/sandraandonov88) <img src="https://avatars3.githubusercontent.com/u/4996647?v=4" width="30" height="30" alt="Sandra Andonov" />
