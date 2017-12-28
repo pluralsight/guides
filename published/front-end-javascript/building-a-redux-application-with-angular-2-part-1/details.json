@@ -3,7 +3,12 @@
     "author_name": "Kaizeras",
     "author_real_name": "Hristo Georgiev",
     "branch": "master",
-    "branches": [],
+    "branches": [
+        [
+            "Pavneet-Sing",
+            "Pavneet-Sing-front-end-javascript-building-a-redux-application-with-angular-2-part-1"
+        ]
+    ],
     "filename": "article.md",
     "first_commit": "0ccaf92118206e8f1c8b002b09bb91bd8ea44339",
     "image_url": "https://avatars.githubusercontent.com/u/6340189?v=3",
