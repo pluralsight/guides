@@ -49,7 +49,7 @@ In this guide, I will provide a birds-eye view of Redis, as it is today &mdash; 
 
 
 You, the Redis consumer, will be hosting a **Redis client** in your application.
-That client will communicate any request given to it to the **Redis server** (or servers, when deployed as a cluster). This communication will be performed over TCP, a simple and efficient protocol used worldwide.
+That client will communicate any request given to it to the **Redis server** (or servers, when deployed as a cluster). This communication will be performed over a simple and efficient protocol, over **TCP**.
 
 The requests we pass on to Redis will be mostly CRUD (Create, Read, Update, Delete) operations in the form `<Key, Object>`, where Object can take on the form of any [supported data type](https://redis.io/topics/data-types-intro), such as a string, a list, an ordered list or a set.
 
@@ -75,7 +75,7 @@ Let’s observe some use cases and see some code to better understand the techno
 
 Redis is commonly used as a distributed cache. Having more than one process in our application, Redis can be a “central point of reference” to all processes (optionally across more than one machine).
 
-Having a central, single representation of our systems data allows us to safely implement our logic, “knowing” that at any **given point in time per input message**, all processes “looking” at a specific piece of information (e.g. context) will “see” the **same information**.
+Having a central, single representation of our systems data allows us to safely implement our logic, “knowing” that at any given **point in** time per **input message**, all processes “looking” at a specific piece of information (e.g. context) will “see” the **same information**.
 
 
 ![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/6e9ca4bd-4d1c-4757-85e8-e9c36d3dc117.png)
@@ -101,7 +101,7 @@ In such a case, we might do wisely to cache that context information in-memory a
 
 That is very helpful indeed. As long as we can make sure that our data is properly synchronized.
 
-Remember that point about having a single representation of our context at a given point in time? Well, it appears that making sure this is true is not a simple a task when dealing with [concurrent systems](https://en.wikipedia.org/wiki/Concurrent_computing). Multiple processes might access the same data at the same time. Some might try to modify it.
+Remember that point about having a single representation of our context at a given point in time? Well, it appears that making sure this is true is not a simple a task when dealing with [concurrent](https://en.wikipedia.org/wiki/Concurrent_computing) systems. Multiple processes might access the same data at the same time. Some might try to modify it.
 
 
 ![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/82208be5-3da3-4c2b-9fb2-a1cfa202a120.png)
@@ -118,11 +118,11 @@ Now, if you’ve studied computer science, you might know that the presentation 
 
 So how can the Redis team claim that their approach is deadlock free?
 
-Because the concept “deadlock free” refers to the process of **obtaining and releasing** a lock holistically. 
+Because the concept “deadlock free” refers to the process of obtaining **and releasing** a lock holistically. 
 
 It’s true that if a specific client acquired a lock, other clients trying to consume that data get blocked.
 
-However, using the Redlock algorithm, that lock is guaranteed to **eventually be released**, making the algorithm deadlock free.
+However, using the Redlock algorithm, that lock is **guaranteed to eventually be released**, making the algorithm deadlock free.
 
 
 ![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/d41543d6-29db-4914-a61b-fe466c561950.png)
