@@ -1,5 +1,6 @@
 # Introduction
-> “Context and memory play powerful roles in all the truly great meals in one's life.” - Anthony Bourdain, Chef
+> “Context and memory play powerful roles in all the truly great meals in one's life.”
+Anthony Bourdain, Chef
 
 Yes, I know. He (Anthony) is talking about meals, and we are talking about software development. But there is slight similarity. Sometimes our data, passing through our software parts, goes through specific transformations, getting passed around according to a very specific algorithm. The output of that data will eventually become our output, or “meal”, so to speak.
 
@@ -31,13 +32,13 @@ So context resolution is the process in which a running software component recei
 
 In some common cases, such as web applications, that context could be the session established per user &mdash; when the user logged into our system &mdash; or it could contain any metadata about the information being passed to us.
 
-Working with software systems these days is quite different from how it was several years ago. **Various software components might change our context as time passes.** These components need access to a shared resource to which they can simultaneously refer and consume (read / write) the context they so need.
+Working with software systems these days is quite different from how it was several years ago. Various software components might **change our context as time passes.** These components need access to a shared resource to which they can simultaneously refer and consume (read / write) the context they so need.
 
 [Redis](https://redis.io/) provides such capabilities.
 
 # So … What is Redis?
 
-Redis, originally created by Salvatore Sanfilippo, was named “Redis” to reflect its original purpose to provide “Remote Dictionary Server”. It was initially released on [GitHub](https://github.com/antirez/redis/) in 2010 and has undergone many new releases since.
+Redis, originally created by Salvatore Sanfilippo, was named “Redis” to reflect its original purpose to provide “**Re**mote **Di**ctionary **S**erver”. It was initially released on [GitHub](https://github.com/antirez/redis/) in 2010 and has undergone many new releases since.
 
 
 In this guide, I will provide a birds-eye view of Redis, as it is today &mdash; in my opinion, it is more than a remote dictionary server.
