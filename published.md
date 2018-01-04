@@ -1,3 +1,8 @@
+### Redis as a Dynamic Interconnecting Datastore by Kobi Hikri
+- [Read the guide](https://www.pluralsight.com/guides/big-data/redis-as-a-dynamic-interconnecting-datastore)
+- [Read more from Kobi Hikri](https://www.pluralsight.com/guides/author/kobihikri) <img src="https://avatars2.githubusercontent.com/u/4434689?v=4" width="30" height="30" alt="Kobi Hikri" />
+- Related to: Big Data (Hadoop, Spark, etc)
+
 ### Data Stream Management with Apache Kafka Streams by Kobi Hikri
 - [Read the guide](https://www.pluralsight.com/guides/big-data/data-stream-management-with-apache-kafka-streams)
 - [Read more from Kobi Hikri](https://www.pluralsight.com/guides/author/kobihikri) <img src="https://avatars2.githubusercontent.com/u/4434689?v=4" width="30" height="30" alt="Kobi Hikri" />
