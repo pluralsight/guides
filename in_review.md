@@ -23,11 +23,6 @@
 - [Read more from Kobi Hikri](https://www.pluralsight.com/guides/author/kobihikri) <img src="https://avatars2.githubusercontent.com/u/4434689?v=4" width="30" height="30" alt="Kobi Hikri" />
 - Related to: Software Engineering Best Practices
 
-### Redis as a Dynamic Interconnecting Datastore by Kobi Hikri
-- [Read the guide](https://www.pluralsight.com/guides/big-data/redis-as-a-dynamic-interconnecting-datastore?status=in-review)
-- [Read more from Kobi Hikri](https://www.pluralsight.com/guides/author/kobihikri) <img src="https://avatars2.githubusercontent.com/u/4434689?v=4" width="30" height="30" alt="Kobi Hikri" />
-- Related to: Big Data (Hadoop, Spark, etc)
-
 ### Getting started with Vue.JS (part-1) by A M Rahman
 - [Read the guide](https://www.pluralsight.com/guides/front-end-javascript/getting-started-with-vue-js-part-1?status=in-review)
 - [Read more from A M Rahman](https://www.pluralsight.com/guides/author/amrahman90) <img src="https://avatars2.githubusercontent.com/u/28068398?v=3" width="30" height="30" alt="A M Rahman" />
