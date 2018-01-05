@@ -1,3 +1,8 @@
+### Making a notes app using Room database by Pavneet Singh
+- [Read the guide](https://www.pluralsight.com/guides/other/making-a-notes-app-using-room-database?status=in-review)
+- [Read more from Pavneet Singh](https://www.pluralsight.com/guides/author/Pavneet-Sing) <img src="https://avatars1.githubusercontent.com/u/11755381?v=4" width="30" height="30" alt="Pavneet Singh" />
+- Related to: other
+
 ### Boost Android Development Skills To Produce Quality Apps  by Pavneet Singh
 - [Read the guide](https://www.pluralsight.com/guides/android/boost-android-development-skills-to-produce-quality-apps?status=in-review)
 - [Read more from Pavneet Singh](https://www.pluralsight.com/guides/author/Pavneet-Sing) <img src="https://avatars1.githubusercontent.com/u/11755381?v=4" width="30" height="30" alt="Pavneet Singh" />
