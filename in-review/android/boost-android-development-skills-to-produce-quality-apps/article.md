@@ -1,18 +1,18 @@
-Android OS has several releases over the past 2 years, while introducing astonishing features, and deprecation of few functionalities by introducing more stable features, so one of the challenging factor in android development is to make your app compatible with different levels of android versions and significantly make an elegant [UI](https://en.wikipedia.org/wiki/User_interface), along with providing a smooth descriptive [UX](https://en.wikipedia.org/wiki/User_experience) experience to users.
+Android OS has several releases over the past 2 years. These updates have introduced astonishing features thus causing several significant functionalities to become deprecated. This technological evolution has led to Android development challenge of keeping an app compatible with the different levels of Android OS, while keeping [UI](https://en.wikipedia.org/wiki/User_interface) and  [UX](https://en.wikipedia.org/wiki/User_experience) elegant.
 
-Throughout this tutorial, You will learn about, how you can enhance your wisdom and experience to implement UI, UX, code quality, security and third party libraries, along with tips and tricks to boost the quality of application with minimal efforts.
+Throughout this tutorial, You will learn about how you can implement UI, UX, code quality, security, and third party libraries, along with tips and tricks to boost the quality of application with minimal efforts.
 
 
 # Quick Start Guide
 
 The following guide will give you an instant notion about the basic android development terminologies in simplest terms, that is being used throughout this tutorial.
 
-* View : A `View` represents a graphical rectangular on the screen. Every [GUI](https://en.wikipedia.org/wiki/Graphical_user_interface) component like Button, TextView, EditText are inherited from `View` class.
+* View: A `View` represents a graphical rectangular on the screen. Every [GUI](https://en.wikipedia.org/wiki/Graphical_user_interface) component like Button, TextView, EditText are inherited from `View` class.
 
 
-* ViewGroup : A `ViewGroup` is a layout container, which is responsible for positioning multiple views on the screen. There are various decedents of ViewGroup like `LinearLayout`, `RelativeLayout`, `ConstraintLayout` etc, to position child views in linear or relative fashion.
+* ViewGroup: A `ViewGroup` is a layout container, which is responsible for positioning multiple views on the screen. There are various decedents of ViewGroup like `LinearLayout`, `RelativeLayout`, `ConstraintLayout` etc, to position child views in linear or relative fashion.
 
-* Activity : An `Activity` is a single screen view that is visible to user. An application can consist multiple Activities for separate functionalities, for e.g splash, Login , signUp etc.
+* Activity: An `Activity` is a single screen view that is visible to user. An application can consist multiple Activities for separate functionalities, for e.g splash, Login , signUp etc.
 
 ```android
 // To create activity, a class must extend Activity or AppCompatActivity class
@@ -27,23 +27,19 @@ public class MainActivity extends AppCompatActivity {
     }
 }
 ```
+Using a backward compatibility component from a support package requires additional dependencies, which will result in increasing the [APK](https://en.wikipedia.org/wiki/Android_application_package) size. 
 
->Using backward comparability component from support package, requires additional dependencies, which will result in increasing  [apk](https://en.wikipedia.org/wiki/Android_application_package) size. 
+* Layout XML file: [XML](https://en.wikipedia.org/wiki/XML) is a tag based file which represents a static layout design view, which can be embedded into activities. A layout file can be attached to an Activity by calling `setContentView(int)` method.
 
-* Layout XML file : [XML](https://en.wikipedia.org/wiki/XML) is a tag based file which represents a static layout design view , which can be embedded into activities. A layout file can be attached to an Activity by calling `setContentView(int)` method.
+    A single XML file can be attached with multiple activities and there are many types of XML files, to design menu, shapes, selectors or to store global constant values.**
 
->** A single XML file can be attached with multiple activities and there are many types of XML files, to design menu, shapes, selectors or to store global constant values.**
+    The design can also be created at run time (while the app is running) using Java or Kotlin code. This is helpful when you have no idea about the number of views to be drawn on the screen in dynamic environment.
 
-> The design can also be created at run time (while app is running) using Java or Kotlin code which is helpful when you have no idea about number of views to be drawn on the screen in dynamic environment.
+* Application: An application is a **single** entity which represents the whole app. It is the first instance to be initialized by Android OS, so often being used to declare global constants or configure services like crash-reposting, analysis, [dependency injections]()  which are required to run the app.
 
+    You can provide your own implementation by creating a subclass and specifying the fully-qualified name of this subclass as the "android:name" attribute in your AndroidManifest.xml's <application> tag.
 
-* Application : An application is a **single** entity which represents the whole app. It is the first instance to be initialized by Android OS, so often being used to declare global constants or configure services like crash-reposting, analysis, [dependency injections]()  which are required to run the app.
-
-> You can provide your own implementation by creating a subclass and specifying the fully-qualified name of this subclass as the "android:name" attribute in your AndroidManifest.xml's <application> tag.
-
-
-
-* LifeCycle : LifeCycle mean series of methods which will be invoked by android OS according to the current state of the android components. An activity's LifecCycle consist of various methods , described below
+* LifeCycle: LifeCycle corresponds to a series of methods which will be invoked by the Android OS according to the current state of the process. LifeCycle methods are described below:
 
 ```
 public class MainActivity extends AppCompatActivity {
@@ -76,20 +72,17 @@ public class MainActivity extends AppCompatActivity {
      protected void onDestroy(){...};
  } 
 ```
-
-> These methods are invoked in a serial order in normal scenarios and there are many other methods, which can be overridden, when required as show in below image.
+These methods are invoked in a serial order in normal scenarios. There are many other methods, which can be overridden when required, as shown in below image.
 
 ![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/901e7627-d1c4-4a56-97d4-d6bb1f547989.png)
 
+* Context : A `context` is a special object which is used to access the resources and files (assets, XML constants) contained in application. Activities has their own context and can be used as `YourActivityName.this` which is internally initialized by Application object.
 
-
-* Context : A `context` is a special object which is used to access the resources and files(assets,XML constants) contained in application. Activities has their own context and can be used as `YourActivityName.this` which is internally initialized by Application object.
-
-	Note: `getContext()` will give current host activity's context and `getApplicationContext()` will give the context of the application. These methods are not accessible in normal classes but they can be passed as values.
+    `getContext()` will give current host activity's context and `getApplicationContext()` will give the context of the application. These methods are not accessible in normal classes but they can be passed as values.
 
 * Manifest : `manifest.xml` contains information about app which is required by android OS to grant permission to access resources like storage, Internet, SMS and registered activities etc. Every activity or customize application class (if there is any) should be registered in `manifest.xml`.
 
-	*A minimal manifest file*
+    *A boilerplate manifest file*
 ```
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
@@ -127,7 +120,7 @@ public class MainActivity extends AppCompatActivity {
  </manifest>
 ```
 
-* Gradle : Gradle is a build system used to download dependencies, tools and to manage application configuration settings to build project.
+* Gradle: The build system used to download dependencies, tools and to manage application configuration settings to build project.
 
  There are two gradle files.
 	
@@ -135,46 +128,49 @@ public class MainActivity extends AppCompatActivity {
 
 	>Module : which is used to configure app, dependencies,SDK versions etc.
 
-* R.java : It is a `final` Java class file which consist of `static final int` constants or arrays constant. Every file or unique id (+@id/name attribute of views), is given an `int` value by the gradle build system and these constants are used to access those components and files in project.  
+* R.java: A `final` Java class file that consists of `static final int` constants and array constants. Every file or unique id (+@id/name attribute of views), is given an `int` value by the gradle and these constants are used to access those components and files in project.  
 
-	>This file is created under `app\generated\source\r\debug\your_package_name\R.java` directory and should never be modified by hand.
+	This file is created under `app\generated\source\r\debug\your_package_name\R.java` directory and should never be modified by hand.
+	
+	> The R file is especially useful when trying to get access views in code. For example, the [View](https://developer.android.com/reference/android/view/View.html) method `findViewById()` takes in an `R.id` value based on the component to be selected, such as `R.id.my_button`.
 
 
 # Design
-An android application should provide a simplified, beautiful and sparking interface with meaningful motion like elevation, ripple and material design.
 
-Android 5.0 Lollipop introduced the concept of [Material design](https://material.io/guidelines/material-design/introduction.html?utm_campaign=io15&utm_source=dac&utm_medium=blog), can also be implemented on older versions by using Android Design library which provides material design components to make an elegant app.
+An Android application should provide a simplified, engaging interface with meaningful motion like elevation, ripple, and material design.
+
+Android 5.0 Lollipop introduced the concept of [Material design](https://material.io/guidelines/material-design/introduction.html?utm_campaign=io15&utm_source=dac&utm_medium=blog), which can also be implemented on older versions by using the Android Design library which provides material design components to make an elegant app.
 
 Steps to include design library as dependency
 
-1. Open build.gradle (module)
-2. add the below dependancy inside `dependencies` block
+1. Open `build.gradle` (module)
+2. Add the following dependency inside the `dependencies` block
 
 		compile 'com.android.support:design:27.0.2'
 		
-	or use `implementation` for Android studio 3.0
+	or use `implementation` for Android studio 3.0. Note that the version number `27.0.2` may differ in to future releases:
+
+	
 		implementation 'com.android.support:design:27.0.2'
 
-	Note : The version `27.0.2` can differ due to future releases
-
-### FloatingActionButton 
-A FloatingActionButton is a round button with an icon, which denotes a quick primary action on the interface such as
-* Add a Note or alarm
-* Send email or text
+### FloatingActionButton (fab)
+A `FloatingActionButton` (fab) is a round button with an icon, which denotes a quick primary action on the interface such as:
+* Adding a Note or alarm
+* Sending an email or text
  
 ![Fab](https://developer.android.com/training/material/images/fab.png)
 
 
-### SnakBar
-Snackbar appears from bottom for short time then disappear. It shows a brief message along with an action button to perform corresponding task.It is appropriate to
+### Snackbar
+Snackbar appears from the bottom for a short time then disappears. It shows a brief message along with an action button to perform corresponding task. Using the SnackBar is best when trying to:
  * Undo the item deletion
- * Display exit action when back button pressed
+ * Display an exit action when back button pressed
 
 ![Snakbar](https://developer.android.com/images/training/snackbar/snackbar_undo_action.png)
 
-#### Move up the Fab button when SnackBar shows up
+#### Move up the Fab when SnackBar appears
 
-If fab button is at the bottom then you can coordinate the fab with SnackBar to move the fab button up when SnackBar shows up by using `coordinator` layout as root ViewGroup 
+If fab button is at the bottom of the screen, you can coordinate with the SnackBar to move the fab up when the SnackBar appears. This is done by using `coordinator` layout as the root ViewGroup.
 
 **FoatingAndSnakBarActivity.Java**
 
@@ -233,7 +229,7 @@ If fab button is at the bottom then you can coordinate the fab with SnackBar to 
 
 	</android.support.design.widget.CoordinatorLayout>
 
-Tip : Design library provide many other elegant views like NavigationDrawer, CollapsingToolbarLayout.
+Tip: Design library provides many other elegant views like `NavigationDrawer`, `CollapsingToolbarLayout`.
 
 ### TextInputLayout 
 `TextInputLayout` is like an `EditText` which supports floating label as hint and it moves up when user stats typing.
@@ -264,19 +260,18 @@ overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
 ```
 
 ### Material Design 
-Material design is a standard design guidelines for user interface, appearance and motion for application development. Features of material themes are as follows:-
+Material design standards are the design guidelines for an application's user interface, appearance, and motion. Features of material themes are as follows:
 
-- CardView : CardView is a rounded corner rectangular view which supports elevation(shadow) and ripple animation.
+- CardView: CardView is a rounded corner rectangular view which supports elevation (shadow) and ripple animation.
 	
-- RecyclerView : RecyclerView is an enhance version of ListView in terms of efficiency and it also supports
+- RecyclerView: RecyclerView is an enhance version of ListView in terms of efficiency and it also supports
 	- Linear View
 	- Grid View
 	- Staggered View
 
 
-- Circular Image : Android provides inbuilt support to crop and display in circular shape which efficient than creating a customize one.
-
-
+- Circular Image: Android provides inbuilt support to crop and display in circular shape which efficient than creating a customize one.
+- 
  	// fetch the image as bitmap
 	Bitmap b= BitmapFactory.decodeResource(getResources(),R.drawable.norml);
 	// create a rounded drawable
@@ -284,27 +279,28 @@ Material design is a standard design guidelines for user interface, appearance a
     // create a circular image
     drawable.setCircular(true);
 
-# Code Optimization :
+# Code Optimization
 
 ### Serializable and Parcelable
-[Serialization](https://en.wikipedia.org/wiki/Serialization) is a process of converting your object into bytes to persist them. This can be achieved by implementing both Serializable or [Parcelable](https://developer.android.com/reference/android/os/Parcelable.html)  interface.
+[Serialization](https://en.wikipedia.org/wiki/Serialization) is the process of converting your object into bytes to persist them. This can be achieved by implementing both the `Serializable` and [`Parcelable`](https://developer.android.com/reference/android/os/Parcelable.html) interfaces.
 
-The important difference is, Parcelable is implemented at the android native(c++) framework which required more resources, so to send object one activity to another via intent object, always prefer implementing Serializable on contrary, use Parcelable to send list of customize objects to next Activity.
+The important difference is that `Parcelable` is implemented via the Android native (C++) framework which requires less resources per single instruction resulting in overall better performance. `Serializable` is best when sending singular objects from one activity to another. Parcelable is far better for larger transfers, however, such as sending lists of customized objects to the next `Activity`. Learn more about the difference [here](https://www.3pillarglobal.com/insights/parcelable-vs-java-serialization-in-android-app-development).
 
 ### OutOfMemoryError 
-Android has limited resources so it's always better to avoid using large size bitmap or images. There are other options that be applied, such as
+Like every system, the Android OS has limited resources, so it's always better to avoid using large size bitmaps or images. There are other options that be applied, such as
 
 * [BitmapFactory.Options](https://developer.android.com/topic/performance/graphics/load-bitmap.html#read-bitmap) to reduce image size
 * 3rd party libraries like [Glide](https://github.com/bumptech/glide), [Picasso](http://square.github.io/picasso/) or [Fresco](https://github.com/facebook/fresco)
 
 
 ### LinearLayout 
-To achieve better performance for simple layout(without multiple nested ViewGroups), it is preferred to use LinearLayout due to support of linear flow based UI drawing whereas the [Relative layout always use two measure passes](https://www.youtube.com/watch?v=NYtB6mlu7vA&t=38m04s).
 
-LinearLayout is also quite handy to allocate the available width or height as per the `weight` property.
+To achieve better performance for simple layout(without multiple nested ViewGroups), it is preferred to use LinearLayout due to support of linear flow-based UI drawing whereas the [Relative layout always use two measure passes](https://www.youtube.com/watch?v=NYtB6mlu7vA&t=38m04s).
 
-* set the attribute value as 0dp of either height or width
-* as per the `weight` property, the 0dp space (either height or width) will be allocated.
+LinearLayout is also quite handy for allocating the available width or height as per the `weight` property.
+
+* Set the attribute value as 0dp of either height or width
+* As per the `weight` property, `0dp` of space (either height or width) will be allocated.
 
 		<?xml version="1.0" encoding="utf-8"?>
 		<LinearLayout android:layout_height="match_parent"
@@ -327,74 +323,70 @@ LinearLayout is also quite handy to allocate the available width or height as pe
 
 Clean-Code Architecture separates the background logic from the UI so that both user interface and background logic can be tested independently.
 
-[MVP](https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93presenter): Model View Presenter is the talk of the town among android developers to implement clean-code architecture.
+[MVP](https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93presenter): Model View Presenter is the talk of the town amongst Android developers when it comes to implementing clean-code architecture.
 
-- Model : object structure to store data
-- View : A dumb view who receives the actions from user and pass it on to presenter
-- Presenter : Presenter acts upon the model and the view. It retrieves data from model, and formats it to display in the view.
+- Model: Object structure to store data.
+- View: A dumb view who receives the actions from user and pass it on to presenter.
+- Presenter: A relay that acts upon the model and the view. It retrieves data from model, and formats it to display in the view.
 
-Resource 
-
-[Google Official Android Architecture Blueprints Guide](https://github.com/googlesamples/android-architecture)
+> [Google Official Android Architecture Blueprints Guide](https://github.com/googlesamples/android-architecture)
 
 # IDE Support
 
 ### Live template
-Live template are quick code insertion shortcut mean you don't have to write the whole statement instead just 
-*  press `ctrl+j` and select the `Toast` or any other option to insert respective code.
+Live template offers quick code insertion shortcut, so you don't have to write the whole statement. Instead just press `ctrl+j` and select the `Toast` or any other option to insert respective code.
 
 ### Refactoring code
 
-Use shift+f6 to rename components, variables or module across project.		
+Use `shift+f6` to rename components, variables or module across project.		
 
-There are lots of other useful options under `Refactor` menu like extract,change signature etc, which saves lot of time and prevent possible mistakes.
-
-
+There are lots of other useful options under `Refactor` menu like extract, change signature, and more that save us a lot of time and prevent mistakes.
 
 ### Patterns & Principals
 
-- Builder patterns : [Builder patterns](https://github.com/davidmoten/java-builder-pattern-tricks) widely used to create API's and libraries to reduce the complexity of object creation while minimizing the efforts.
+- Builder patterns: [Builder patterns](https://github.com/davidmoten/java-builder-pattern-tricks) are widely used to create APIs and libraries and reducing the complexity of and effort needed for object creation.
 
-- SOLID : [SOLID](https://en.wikipedia.org/wiki/SOLID_(object-oriented_design)) is an acronym for principals, widely used to make a stable, scalable and effective software design.
+- SOLID: [SOLID](https://scotch.io/bar-talk/s-o-l-i-d-the-first-five-principles-of-object-oriented-design) is an acronym for principals widely used to make a stable, scalable and effective software design. The five parts of SOLID are discussed in depth in the linked article.
 
-There are wide variety of patterns has been invented to solve specific problems and [mentioned here](https://en.wikipedia.org/wiki/Software_design_pattern) to create quality softwares
-
+There are several patterns that have been invented to solve specific problems. These patterns and problems are [discussed here](https://en.wikipedia.org/wiki/Software_design_pattern). Read more to create better quality applications.
 
 ### UI Testing 
-Android studio provides inbuilt support to test user interface actions via recoding an espresso test. Espresso, tests state expectations, interactions, and assertions. 
 
-A simple example to perform button click and check whether the text of TextView has been changed or not.
+Android studio provides built-in support to test user interface actions via recoding an Espresso test. Espresso tests state expectations, interactions, and assertions. 
+
+A simple example would be to perform a button click and check whether the text of TextView has changed or not.
 
     onView(withId(R.id._button)).perform(click()); // perform click
     onView(withText("Hello")).check(matches(isDisplayed())); // check a view is visible with text "Hello"
 
-To Record a test
+To Record a test:
 	* Click "run" in menu
 	* Select "Record Esprsso Test"
-This will open app on device and record user actions and generate a UI test.
+This will open the app on a device and record user actions, generating a UI test.
 
 
 # Best Practices
 
 ### Security 
-An [apk](https://en.wikipedia.org/wiki/Android_application_package) is like an archive, contains a [classes.dex](https://en.wikipedia.org/wiki/Dalvik_(software) archive which is a collection of `.class` files.
 
-Anyone having access to [dex2-jar](https://sourceforge.net/projects/dex2jar/) tool can obtain the original source code(java files) and can build a personal version of his own app to harm your product value by uploading a free version of your app.
+An [APK](https://en.wikipedia.org/wiki/Android_application_package) is like an archive. It contains a [classes.dex](https://en.wikipedia.org/wiki/Dalvik_(software) archive which is a collection of `.class` files.
 
-The process is called [Reverse engineering](https://en.wikipedia.org/wiki/Reverse_engineering) which is a big security threat to app's revenue.
+Anyone having access to [dex2-jar](https://sourceforge.net/projects/dex2jar/) tool can obtain the original source code (java files) and can build a **personal version** of your market app to harm your product value by uploading a free version of your app.
 
-By default, android studio build a debug version of project as an apk, from which the original source code can be easily obtained.
+The process is called [Reverse engineering](https://en.wikipedia.org/wiki/Reverse_engineering), and it is a major security threat to app revenue.
 
-> Never share debug apk with any 2nd or 3rd party user.
+By default, Android Studio built a debug version of project as an APK, from which the original source code can be easily obtained.
 
-Unfortunately, There is no way to protect our app from reverse engineering so the optimal solution is [Obfuscation](https://en.wikipedia.org/wiki/Obfuscation).
+> Never share your debug APK with any outside user.
 
-To generate an obfuscated code, The apk should be generated as a **release** version. A release version is signed with a SHA1 key and outputs a working obfuscated source code apk.
+#### Obfuscation
 
+Unfortunately, there is currently no way to protect our app from reverse engineering so the optimal solution is to use [obfuscation](https://en.wikipedia.org/wiki/Obfuscation).
 
+To generate obfuscated code, the apk should be generated as a **release** version. A release version is signed with a SHA1 key and outputs a working obfuscated source code apk.
 
-Result of reverse-engineering on debug apk
-
+* Result of reverse-engineering on debug apk
+```
 	public class MainActivity
 	  extends AppCompatActivity
 	{
@@ -411,10 +403,11 @@ Result of reverse-engineering on debug apk
 	    this.listView.setAdapter(this.adapter);
 	  }
 	}
+```
 
+* Result of reverse-engineering on release apk
 
-Result of reverse-engineering on release apk
-
+```
 	import android.support.v7.a.a;
 	import android.support.v7.a.s;
 	import android.support.v7.a.u;
@@ -438,15 +431,17 @@ Result of reverse-engineering on release apk
 	  
 	}
 
-	
+```
+
 Reference
 
 [Steps to generate a signed apk](https://developer.android.com/studio/publish/app-signing.html)
 
-### Proguard-rules.pro 
+### `Proguard-rules.pro` 
+
 This file contains the instructions to obfuscate source code for release apk. ProGuard is a command line tool that shrinks the size of apk by optimizing, obfuscating and eliminating the files (java/bytecode/resources) which results in smaller size apk.
 
-Enable progurad 
+Enable progurad:
 
 * Open build.gradle (module)
 * set "minifyEnabled" flag to true
@@ -477,11 +472,11 @@ android {
 }
 ```
 
-The above configuration is for testing purpose which will obfuscate apk for every build though do not use the "minifyEnabled true" for `debug` because it will result in longer project buld duration.
+The above configuration is for testing purposes. It will obfuscate the APK for every build. Please do not use the `minifyEnabled true` for `debug` because it will result in longer project buld duration.
 
-> Often you might required to disable obfuscation for POJO classes and libraries which are required with proper naming convention during json parsing or making network calls so you can define [customize rules for which code to keep](https://developer.android.com/studio/build/shrink-code.html#keep-code).
+Often you might be required to disable obfuscation for POJO classes and libraries to meet proper naming convention during JSON parsing or placing network calls. To accommodate for this, you can define [customize rules for which code to keep](https://developer.android.com/studio/build/shrink-code.html#keep-code).
 
-Reference:
+#### Resources
 
 [Reverse engineering from an APK file to a project](https://stackoverflow.com/questions/12732882/reverse-engineering-from-an-apk-file-to-a-project)
 
@@ -492,15 +487,15 @@ Reference:
 [Proguard configurations for common Android libraries](https://github.com/krschultz/android-proguard-snippets/tree/master/libraries)
 
 ### Hide Sensitive Information 
-There is basically no way that you can protect your api key from hacker but the safest way is to use NDK thrugh which, c and c++ can be implemented in android project.
+There is basically no way that you can protect your API key from a hacker but the safest way is to use an NDK, or a Native Developers Toolkit. Through the NDK, corresponding C and C++ functions can be implemented in Android project. 
 
-NDK port C and C++ code into separate libraries which are hard to decompile although the NDK compiled code can still be opened with hexadecimal code but it is still hard to detect an API key out of hexadecimal code.
+The NDK ports C and C++ code into separate libraries that are hard to decompile &mdash; although the NDK compiled code can still be opened with hexadecimal code, it is still hard to detect an API key out of hex code.
 
-
+Learn more about [NDKs and security](https://androidsecurity.info/2016/12/15/storing-your-secure-information-in-the-ndk/).
 
 ### API Levels
 
-Every android release introduces new features, which might not be backward compatible with older versions so to integrate new feature while making your app compatible with older versions. You can put a check to verify the current android OS version and process according as
+Every Android release introduces new features that might not be backward compatible with older versions, making it important to make your app compatible with older versions. You can put a check to verify the current android OS version and process according as
 
 ```java
 if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
@@ -508,7 +503,7 @@ if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
 }else{/* perform alternative actions for older version */}			
 ```
 
-Common Issues:
+#### Common Issues:
 
 [Requesting Permissions at Run Time for Marshmallow and Above](https://developer.android.com/training/permissions/requesting.html)
 
@@ -518,7 +513,7 @@ Common Issues:
 
 Android has a huge open source development community and there are thousands of developers who has published their great work in open source community which saves lot of time and efforts while offering tons of features.
 
-For example, Do not use background threads to download and display images just because you can write lengthy code, instead just use [Picasso](http://square.github.io/picasso/), an image downloading library which offers lot other functionalities like cache, resizing, error handling and easily customizable.
+For example, do not use background threads to download and display images just because you can write lengthy code &mdash; use [Picasso](http://square.github.io/picasso/), an image downloading library which offers lot other functionalities like cache, resizing, error handling and easily customizable.
 
 ```
 Picasso.with(context)
@@ -528,22 +523,22 @@ Picasso.with(context)
   .into(imageView)
 ```
 
-References:
+#### References:
 
 [Material Design Library Collection](https://github.com/wasabeef/awesome-android-ui) 
  
 [Famous Android Development Libraries](https://github.com/codepath/android_guides/wiki/Must-Have-Libraries)
 
 # Summary
-* Follow [Google Java Style Guide](https://google.github.io/styleguide/javaguide.html) guidelines for clear and quickly readable code
-* Don't reinvent the wheel, always use libraries design, cardview, recyclerview, retrofit etc
-* Enhance UI with swipeToRefresh , BottomBarNavigation, design library
-* Add meaningful animations ripple, elevation, transition
-* Use proguard rules to obfuscate your code
-* Perform UI and logical testing for quick deployment for [beta testing](https://en.wikipedia.org/wiki/Software_testing)
-* Use job scheduler for longer running background tasks
-* Add support for latest API's using runtime permissions, Doze or StandBy mode
+
+* Follow the [Google Java Style Guide](https://google.github.io/styleguide/javaguide.html) for readable code.
+* Don't reinvent the wheel, and always use libraries design, `CardView`, `RecyclerView`, retrofit etc.
+* Enhance UI with `swipeToRefresh` , `BottomBarNavigation`, and the design library.
+* Add meaningful animations, ripple, elevation, transition.
+* Use pro-guard rules to obfuscate your code.
+* Perform UI and logical testing for quick deployment for [beta testing](https://en.wikipedia.org/wiki/Software_testing).
+* Use the job scheduler for longer running background tasks.
+* Add support for the latest APIs using runtime permissions, Doze, or StandBy mode.
 ***
 
-
-I am glad that you have made this far. Thanks for reading this article, Please feel free to fill the comment section with your precious suggestions or doubts (if any).
+I am glad that you have made this far! Please feel free to post your precious suggestions or questions (if any) in the comments section below. Thanks for reading and I hope this guide helped you with your Android endeavors!
