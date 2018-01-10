@@ -4,10 +4,23 @@ JavaScript is an object oriented programming language. Almost everything in Java
 
 ## What is an object?
 
-Object is a collection of key/value pairs. Keys are also known as properties. An object can be empty, if it doesn't contain any key/value pair.
+Object is a collection of key/value pairs. Keys are also known as properties. An object can be empty, if it doesn't contain any key/value pair. For instance, this is an empty object:
+
+``` JavaScript
+var x = {};
+```
+
+This is an example of a simple object (`x` and `y` are properties which have values `5` and `"abc"`, respectively):
+``` JavaScript
+var a = {
+    x: 5,
+    y: "abc"
+};
+```
+Every object has its prototype.
 
 ## What is a prototype?
-Every object has its prototype. The prototype is actually a base object which an object is inherited from. The empty object is inherited from the [Object.prototype](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/prototype), so it has access to all methods of the `Object.prototype`.
+The prototype is actually a base object which an object is inherited from. Objects `x` and `a` from the above examples are inherited from the [Object.prototype](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/prototype), so they have access to all methods of the `Object.prototype`, beside access to their own properties.
 
 ## How objects can be instantiated?
 
