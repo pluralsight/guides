@@ -69,7 +69,7 @@ print(order.uid)
 ```
 ### Protocol Inheritance
 A protocol can inherit from other protocols and then add further requirements on top of the requirements it inherits. 
-In the following example, the protocol, Persistable, inherits from the Entity protocol I introduced earlier. It adds the requirement to save an entity to file and load it based on its unique identifier.
+In the following example, the protocol Persistable inherits from the Entity protocol I introduced earlier. It adds the requirement to save an entity to file and load it based on its unique identifier.
 
 ```
 protocol Persistable: Entity {
