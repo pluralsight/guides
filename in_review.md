@@ -1,3 +1,8 @@
+### Build a Secure Chat Web Application with JavaScript, Auth0 and Pusher by Peter Mbanugo
+- [Read the guide](https://www.pluralsight.com/guides/front-end-javascript/build-a-secure-chat-web-application-with-javascript-auth0-and-pusher?status=in-review)
+- [Read more from Peter Mbanugo](https://www.pluralsight.com/guides/author/pmbanugo) <img src="https://avatars3.githubusercontent.com/u/4036118?v=4" width="30" height="30" alt="Peter Mbanugo" />
+- Related to: Front-End JavaScript (Angular, React, Meteor, etc)
+
 ### How to build a public anonymous chat app in JavaScript by Peter Mbanugo
 - [Read the guide](https://www.pluralsight.com/guides/front-end-javascript/how-to-build-a-public-anonymous-chat-app-in-javascript?status=in-review)
 - [Read more from Peter Mbanugo](https://www.pluralsight.com/guides/author/pmbanugo) <img src="https://avatars3.githubusercontent.com/u/4036118?v=4" width="30" height="30" alt="Peter Mbanugo" />
