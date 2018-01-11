@@ -11,7 +11,7 @@ Here's the architecture diagram:
 
 ![architecture diagram](https://raw.githubusercontent.com/pluralsight/guides/master/images/2965d6f2-9e6b-4a3c-855e-97eef7f22c43.png)
 
-For the lambda functions, the Node.js runtime with the Javascript SDK will be used.
+For the lambda functions, we will use a Node.js runtime environment with the Javascript SDK.
 
 Everything will be made from the AWS Management Console, without external frameworks, SDK, or command-line interfaces (CLI).
 
@@ -19,11 +19,11 @@ The sample web app allows you to create/edit/delete courses. This is how it look
 
 ![demo](https://raw.githubusercontent.com/pluralsight/guides/master/images/db216707-2ba9-4229-acb7-d2c76ed9413b.gif)
 
-It's a Single-page application made with React and Redux. The credit for this application goes to [Aries McRae](https://github.com/ariesmcrae), I just modified his [React CRUD boilerplate](https://github.com/ariesmcrae/reactjs-crud-boilerplate) for the purposes of this tutorial.
+It's a single-page application made with React and Redux. The credit for this application goes to [Aries McRae](https://github.com/ariesmcrae). For this guide, I just modified his [React CRUD boilerplate](https://github.com/ariesmcrae/reactjs-crud-boilerplate).
 
 You can clone the app from [this GitHub repository](https://github.com/eh3rrera/react-app-frontend) and test it locally with the included Express server.
 
-This tutorial won't explain how the app is made. There's no problem if you don't know about React and Redux, this tutorial will focus on building the API and setting up all the AWS services.
+This guide won't explain how the app is made. So don't worry if you are unfamiliar with React and Redux, as this tutorial will focus on building the API and setting up all the AWS services.
 
 The API works with two data structures, `course` and `author`:
 ```javascript
@@ -47,14 +47,14 @@ Author:
 
 Of course, you'll need an AWS account. If you don't have one, [sign up here](https://aws.amazon.com/). Registration is free, and all the services used in this tutorial are within the [AWS Free Tier](https://aws.amazon.com/free/), but you'll need to enter a credit card number in case you exceed that free tier.
 
-The most difficult step is the verification, in which an automated system will call you, and you have to enter a PIN code. It doesn't always work and probably you'll have to ask the support team to call you to verify your account.
+The most difficult step is verification, in which an automated system will call you, and you have to enter a PIN code. It doesn't always work and you may have to ask the support team to call you to verify your account.
 
-Once you have created your account, your AWS account is automatically signed up for all services in AWS, but it's a good practice to create an admin user instead of using your root account for day-to-day operations. Follow the steps in [this guide](http://docs.aws.amazon.com/IAM/latest/UserGuide/getting-started_create-admin-group.html) to do this.
+Once you have created your account, you automatically sign up for all services in AWS. However, it's a good practice to create an admin user instead of using your root account for day-to-day operations. Follow the steps in [this guide](http://docs.aws.amazon.com/IAM/latest/UserGuide/getting-started_create-admin-group.html) to do this.
 
 Now let's start by creating the tables to store the app information in DynamoDB.
 
 # Storing data in DynamoDB
-DynamoDB is a fully-managed NoSQL database that stores the data in key-value pairs, like a JSON object:
+**DynamoDB** is a fully-managed NoSQL database that stores the data in key-value pairs, like a JSON object:
 ```javascript
 {
   "ID": 1,
@@ -95,13 +95,13 @@ It might take a few seconds, but you should see a confirmation page like the fol
 
 ![table created](https://raw.githubusercontent.com/pluralsight/guides/master/images/8c343e09-e42d-4300-ac99-9a566777cd3c.png)
 
-Take note of the table's Amazon Resource Name (ARN), you'll need it later.
+Take note of the table's **Amazon Resource Name (ARN)**, you'll need it later.
 
 In the *Items* tab you can query your table or add items:
 
 ![course table items](https://raw.githubusercontent.com/pluralsight/guides/master/images/8eb151ac-c6a1-4187-bf3c-cb14a39e644d.png)
 
-I'm going to leave it empty, I'll add items to this table when the application is finished, so I'll go ahead and create a new table for the authors with the following information:
+I'm going to leave it empty for now, but I'll add items to this table when the application is finished. Meanwhile, I'll go ahead and create a new table for the authors with the following information:
 - Table name: `authors`
 - Primary key: `id`
 
@@ -135,7 +135,7 @@ Now let's create the lambda functions that will use these tables.
 
 # Creating lambda functions
 
-AWS Lambda is a service that allows you to run functions upon certain events, for example, when data is inserted in a DynamoDB table or when a file is uploaded to S3.
+**AWS Lambda** is a service that allows you to run functions upon certain events, for example, when data is inserted in a DynamoDB table or when a file is uploaded to S3.
 
 In this case, a lambda function will be run whenever a request hits one of the API endpoints you'll set up in the next section.
 
@@ -186,7 +186,7 @@ Alternatively, you could choose the option `Create a new role from a template(s)
 } 
 ```
 
-However, this is not a good practice, service should have the minimum set of permissions to operate. That's way, you'll create a custom role with only the permissions the function requires.
+However, this is not good practice; custom services should require as few permissions as possible to reduce overhead and maximize privacy and security.
 
 So in the window to create a new role, enter `get-all-authors-lambda-role` as the role name:
 
@@ -215,7 +215,7 @@ At this point, it will only give you permissions to write to the CloudWatch logs
 }
 ```
 
-Just replace the ARN of your author's table. This will give you permissions to perform a scan operation to get all the items of the author's table only.
+Just replace the DynamoDB Scan `Resource` field with the ARN of your author's table. This will give you permissions to perform a scan operation to read all the items of the author's table only.
 
 Finally, click on the *Allow* button.
 
@@ -249,17 +249,17 @@ exports.handler = (event, context, callback) => {
 First, you require the AWS SDK and create a DynamoDB instance passing the code of the region where the database is located, for example `us-east-2` for Ohio (find out your region code [here](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html#concepts-available-regions)), and the API version (`2012-08-10` is the latest at the time of writing this tutorial).
 
 The exported function receives three parameters:
-- `event`, an object that is used to pass data to the handler.
-- `context`, an object that provides runtime information about the Lambda function that is executing.
-- `callback`, a function to return information to the caller (if it's called, otherwise the return value is `null`). It takes two parameters:
-  - error, an object that provides the result of a failed execution. When a Lambda function succeeds, you can pass null as the first parameter.
-  - result, an object that provides the result of a successful execution. The result provided must be JSON.stringify compatible. If an error is provided, this parameter is ignored.
+- `event` &mdash; an object that is used to pass data to the handler.
+- `context`&mdash; an object that provides runtime information about the Lambda function being executed.
+- `callback`&mdash; a function to return information to the caller (if it's called, otherwise the return value is `null`). The callback takes two parameters:
+  - error &mdash; an object that provides the result of a failed execution. When a Lambda function succeeds, you can pass null as the first parameter.
+  - result &mdash; an object that provides the result of a successful execution. The result provided must be `JSON.stringify`-compatible. If an error is provided, this parameter is ignored.
 
 Inside the `handler` function, you execute a [scan](http://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/DynamoDB.html#scan-property) operation to get all the items of the `authors` table.
 
-If there's an error, it's passed to the callback function. Otherwise, the callback is executed passing the data returned.
+Any error that occurs is passed to the callback function. Otherwise, the callback is executed passing the data returned.
 
-Keep in mind that the `scan` operation will return up to one MB of data. If there's more data available, a `LastEvaluatedKey` value is included in the results along with the number of items exceeding the limit to continue the scan in a subsequent operation.
+Keep in mind that the `scan` operation will return up to one MB of data. If there is more data available, a `LastEvaluatedKey` value is included in the results along with the number of items exceeding the limit to continue the scan in a subsequent operation.
 
 You can know more about the available methods of the AWS Javascript SDK for DynamoDB in the [API documentation](http://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/DynamoDB.html).
 
@@ -267,7 +267,7 @@ Now click *Save*. Then, if you click on the *Test* button, a window to configure
 
 ![test event](https://raw.githubusercontent.com/pluralsight/guides/master/images/1ad8439c-310e-4b69-a024-f57f43cdc3ca.png)
 
-This function doesn't take any parameters so give it a name and just click on *Create* and then on *Test* one more time.
+This function does not take any parameters so give it a name and just click on *Create* and then on *Test* one more time.
 
 You can check the execution results at the top of the page:
 
@@ -366,7 +366,7 @@ Now follow the *Functions* link at the top of the page. Your function should app
 
 ![functions dashboard](https://raw.githubusercontent.com/pluralsight/guides/master/images/3a63f2dd-91b3-4fb8-b127-1d37788b4c5a.png)
 
-Next, we need to create the rest of the functions with their corresponding roles and policies. Of course, you can create one role with a full access policy and use it for all your function, but remember, that is not the recommended approach.
+Next, we need to create the rest of the functions with their corresponding roles and policies. Of course, you can create one role with a full access policy and use it for all your functions, but remember, that is not the recommended approach. Custom roles that minimize the number of permissions are better in the long run.
 
 You can also create the policies and roles from the Identity and Access Management (IAM) console with the visual editor, first creating a policy with required permission and then creating the role that will contain that policy.
 
@@ -452,7 +452,7 @@ To test this function, you can configure a test event with the following data:
 
 To update a course we're also going to use the `putItem` operation so the policy is the same and you can reuse the role of the previous function.
 
-The code for the corresponding lambda function (`update-course`) is also similar, the only difference is that the `id` and `watchHref` fields are not generated:
+The code for the corresponding lambda function (`update-course`) is also similar, with the only difference being that the `id` and `watchHref` fields are not generated:
 ```javascript
 const AWS = require('aws-sdk');
 const dynamodb = new AWS.DynamoDB({region: '<YOUR_AWS_REGION_CODE>', apiVersion: '2012-08-10'});
@@ -663,7 +663,7 @@ And these are all the functions you'll need. Now let's expose them to the world 
 
 # Setting up API Gateway
 
-API Gateway is a service that allows creating a REST API fully managed by AWS that acts as the front-end for other services.
+**API Gateway** is a service that allows creating a REST API fully managed by AWS that acts as the front-end for other services.
 
 Open the *Services* menu and choose *API Gateway*:
 
@@ -713,7 +713,7 @@ Confirm the permission to invoke the lambda function:
 
 By default, API Gateway will pass the request body to the lambda function and return to the client the object returned by the lambda function. Since the client is going to send exactly what the lambda function expects and the lambda function is going to do the same, there's no need to configure any request or response [body mapping templates](http://docs.aws.amazon.com/apigateway/latest/developerguide/models-mappings.html#models-mappings-mappings).
 
-However, probably it's a good idea to use a [model](http://docs.aws.amazon.com/apigateway/latest/developerguide/models-mappings.html#models-mappings-models) to validate the request.
+However, probably it's a good idea to use a [**model**](http://docs.aws.amazon.com/apigateway/latest/developerguide/models-mappings.html#models-mappings-models) to validate the request.
 
 So go to the *Models* section and click on *Create*:
 
@@ -780,9 +780,9 @@ Next, create a PUT method and link it to the `update-course` lambda function:
 
 ![update method](https://raw.githubusercontent.com/pluralsight/guides/master/images/ab282cb6-317c-42be-97bf-dfe29aff6cd2.png)
 
-Now the thing with this operation is that the ID of the course is in the URL and the rest of the attributes are in the request body.
+Now the thing with this operation is that the ID of the course is in the URL, and the rest of the attributes are in the request body.
 
-In this case, we'll have to use a body mapping template to send all the information as the lambda function requires it.
+In this case, we'll have to use a **body mapping template** to send all the information as the lambda function requires it.
 
 So select the PUT method and click on *Integration Request*:
 
@@ -800,7 +800,7 @@ Then, in the *Body Mapping Templates* section, choose the option *When there are
 }
 ```
 
-The mapping template uses the [Velocity Template Language](http://velocity.apache.org/engine/devel/vtl-reference-guide.html) (VTL). [Here's](http://docs.aws.amazon.com/apigateway/latest/developerguide/models-mappings.html) the link to the relevant section in the AWS documentation.
+The mapping template uses the [Velocity Template Language](http://velocity.apache.org/engine/devel/vtl-reference-guide.html) (VTL). [Here's the link](http://docs.aws.amazon.com/apigateway/latest/developerguide/models-mappings.html) to the relevant section in the AWS documentation.
 
 The `$input` variable gives you access to all the request data, while `$input.params()` to the request parameters from the path, query string, or headers (in that order) and `$input.json()` returns a JSON string from the request body. You can know more about the `$input` variable and their functions [here](http://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-mapping-template-reference.html#input-variable-reference).
 
@@ -821,7 +821,7 @@ Everything should work correctly:
 
 ![test result](https://raw.githubusercontent.com/pluralsight/guides/master/images/dce6e938-660d-4b90-b68b-2050600d375a.png)
 
-You can optionally add a model to validate the request, just like in the case of the POST method.
+If you like, add a model to validate the request, just like in the case of the POST method.
 
 Now, applying what you have learned, create a DELETE and GET method on the `/courses/{id}` resource, linking them to the `delete-course` and `get-course` functions and passing only the ID with the following template:
 ```javascript
@@ -837,6 +837,8 @@ And another resource, `/authors`, for the `get-all-authors` function.
 When you're done, you should have something like this:
 
 ![final API](https://raw.githubusercontent.com/pluralsight/guides/master/images/793a1b14-c07d-4929-a65f-9e43156ce293.png)
+
+### Cross Origin Resource Sharing (CORS)
 
 Now, we need to add the CORS header to all the methods (the CORS option you chose when creating a resource only adds the CORS headers for the preflight request). 
 
@@ -886,7 +888,7 @@ If you want to test it locally, execute `npm start` on the terminal.
 
 Then, execute `npm run build` to build a version of the app ready for production. You can find the output files in the `build` folder.
 
-Now let's use Amazon S3 to host the app and go completely serverless.
+Now, let's use Amazon S3 to host the app and go completely serverless.
 
 Amazon S3 is a storage service that can also function as a web server.
 
@@ -948,7 +950,7 @@ Once the upload has finished, go to your app using the URL you copied (or go bac
 
 Optionally, you can create another bucket to store the logs of the web server, you just have to enable the *Server access logging* option in the *Properties* tab.
 
-However, one thing that is strongly recommended is to use CloudFront.
+However, I would highly recommend using **CloudFront**.
 
 CloudFront is a Content Delivery Network (CDN) service that will copy your app to edge locations around the world to improve the speed in which your app is served to your users. You can learn more about it in [this developer guide](http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/Introduction.html).
 
@@ -970,12 +972,11 @@ Wait a few minutes until the deployment has finished, and then click on the ID o
 
 ![distribution ID](https://raw.githubusercontent.com/pluralsight/guides/master/images/6e2187ab-5de4-4f88-aef8-583f5edf8ccd.png)
 
-In the *General* tab, you'll find the new URL of your app in the *Domain Name* row:
+In the *General* tab, you'll find the new URL of your app in the *Domain Name* row. (You can use the HTTPS protocol for your URL if you prefer):
 
 ![domain name](https://raw.githubusercontent.com/pluralsight/guides/master/images/078285ec-56b2-432a-8859-0f86c00462b4.png)
 
-And that's it, you can use the HTTPS protocol for your URL if you want.
-
+And that's it! 
 
 # Conclusion
 
@@ -984,6 +985,12 @@ The idea of a serverless application is interesting:
 - The application can be scaled automatically and highly available.
 - You pay only for the resources used and for the time the application is used.
 
-In this tutorial, you have learned how to build a REST API using API Gateway and Lambda functions that stores and read database from a DynamoDB database, and it's consumed by a single-page application hosted in S3 and distributed over the world with CloudFront.
+In this tutorial, you have learned how to use AWS's API Gateway and Lambda functions to build a REST API that performs CRUD operations on a database built on the AWS DynamoDB database framework. This guide also covered how to host this API on S3 in a single-page application that can be distributed worldwide using CloudFront.
 
-Of course, there's a lot more to learn, for example, how to authenticate users with [Amazon Cognito](https://aws.amazon.com/cognito/) or how to use a framework like [Serveless](https://serverless.com/) or a service like [AWS CloudFormation](https://aws.amazon.com/cloudformation/) to simplify the managing and deploying of serverless applications, but that can be material for other tutorials. Thanks for reading.
+This was just a cursory look at each of these technologies; there is a lot more to learn about each technology and about other AWS components as well! 
+
+In case AWS excites you, some interesting projects would include authenticating users with [Amazon Cognito](https://aws.amazon.com/cognito/) or using a framework like [Serveless](https://serverless.com/) or a service like [AWS CloudFormation](https://aws.amazon.com/cloudformation/) to simplify the managing and deploying of serverless applications.
+
+___
+
+Thanks for reading. I hope you found this guide informative and engaging. Please leave your comments and feedback in the discussion section below.
