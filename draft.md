@@ -1,3 +1,8 @@
+### Build a Secure Chat Web Application with JavaScript, Auth0 and Pusher by Peter Mbanugo
+- [Read the guide](https://www.pluralsight.com/guides/front-end-javascript/build-a-secure-chat-web-application-with-javascript-auth0-and-pusher?status=draft)
+- [Read more from Peter Mbanugo](https://www.pluralsight.com/guides/author/pmbanugo) <img src="https://avatars3.githubusercontent.com/u/4036118?v=4" width="30" height="30" alt="Peter Mbanugo" />
+- Related to: Front-End JavaScript (Angular, React, Meteor, etc)
+
 ### Test a article by 吴启成 (Chasel Wu)
 - [Read the guide](https://www.pluralsight.com/guides/other/test-a-article?status=draft)
 - [Read more from 吴启成 (Chasel Wu)](https://www.pluralsight.com/guides/author/minowu) <img src="https://avatars0.githubusercontent.com/u/1282787?v=4" width="30" height="30" alt="吴启成 (Chasel Wu)" />
