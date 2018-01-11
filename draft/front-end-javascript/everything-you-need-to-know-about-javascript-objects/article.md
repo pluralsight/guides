@@ -17,10 +17,9 @@ var a = {
     y: "abc"
 };
 ```
-Every object has its prototype.
 
 ## What is a prototype?
-The prototype is actually a base object which an object is inherited from. Objects `x` and `a` from the above examples are inherited from the [Object.prototype](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/prototype), so they have access to all methods of the `Object.prototype`, beside access to their own properties.
+Every object has its prototype. The prototype is actually a base object which an object is inherited from. Objects `x` and `a` from the above examples are inherited from the [Object.prototype](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/prototype), so they have access to all methods of the `Object.prototype`and access to their own properties, as well.
 
 ## How objects can be instantiated?
 
@@ -28,7 +27,7 @@ There are several ways of creating new objects in JavaScript. We will start from
 
 ### Object literals
 
-The most simple way of object creation is using the literal notation. Here are some examples:
+The most simple way of object creation is using the literal notation. The objects in previous examples are created using the literal notation. Here are some more examples:
 
 ```JavaScript
 var emptyObject = {};
@@ -48,18 +47,9 @@ var employee = {
 }
 ```
 
-Objects can be nested into each other, like the `contactData` in the `employee` object. Even an empty object actually has access to  methods of the [Object.prototype](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/prototype). One of those methods is the `toString` method, so, we could execute, for instance, this line of code:
-``` JavaScript
-console.log(emptyObject.toString());
-```
-and get the following output in the console:
-```
-[object Object]
-```
+Objects can be nested into each other, like the `contactData` in the `employee` object.
 
-The `[object Object]` means that the `emptyObject` is an `object` which prototype is the `Object.prototype`. There are different types of object in JavaScript (functions, arrays, dates etc.), so we should get different results in the console for different types of object.
-
-We could initialze the *person* object in the above example in the following way, as well:
+We could initialize the *person* object in the above example in the following way, as well:
 ```JavaScript
 var person = {};
 
@@ -80,4 +70,4 @@ person['last' + nameSuffix] = 'Smith';
 
 ### Object.create()
 
-The `Object.create()` function
+Objects can be created by using the `Object.create()` function
