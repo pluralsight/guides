@@ -1,3 +1,8 @@
+### Building a Serverless Web App on AWS Services by Esteban Herrera
+- [Read the guide](https://www.pluralsight.com/guides/front-end-javascript/building-a-serverless-web-app-on-aws-services)
+- [Read more from Esteban Herrera](https://www.pluralsight.com/guides/author/eh3rrera) <img src="https://avatars2.githubusercontent.com/u/11665759?v=4" width="30" height="30" alt="Esteban Herrera" />
+- Related to: Front-End JavaScript (Angular, React, Meteor, etc)
+
 ### Making a notes app using Room database by Pavneet Singh
 - [Read the guide](https://www.pluralsight.com/guides/other/making-a-notes-app-using-room-database)
 - [Read more from Pavneet Singh](https://www.pluralsight.com/guides/author/Pavneet-Sing) <img src="https://avatars1.githubusercontent.com/u/11755381?v=4" width="30" height="30" alt="Pavneet Singh" />
