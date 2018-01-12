@@ -18,6 +18,25 @@ var a = {
 };
 ```
 
+Values of properties can be functions, as well. For instance, the object *a* could have the following properties: 
+
+``` JavaScript
+var a = {
+    x: 5,
+    y: "abc",
+    z: function() {
+       console.log("This is a method.");
+    }
+};
+```
+
+As you can see, the value of the property *z* is a function, which will be executed if we call it in the following way:
+```JavaScript
+a.z();
+```
+
+A property which value is a function is called **method**.
+
 ## What is a prototype?
 Every object has its prototype. The prototype is actually a base object which an object is inherited from. Objects `x` and `a` from the above examples are inherited from the [Object.prototype](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/prototype), so they have access to all methods of the `Object.prototype`and access to their own properties, as well.
 
