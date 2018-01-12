@@ -1,18 +1,19 @@
-Data persistence is one of the basic requirement of most applications. SQLite, an open-source library is a part of Android framework to persist data for applications. The implementation of sqlite requires lot of boilerplate code which has its own drawbacks :
+Data persistence is one of the basic requirements of most applications. SQLite, an open-source library is a means of persisting data for Android applications. The implementation of SQLite requires lots of boilerplate code, however. This has drawbacks:
   * Syntax errors in queries
   * No compile time error detection (Time consuming)
-  * Parsing is required to convert data to [pojo](https://en.wikipedia.org/wiki/Plain_old_Java_object) objects
+  * Parsing is required to convert data to [Plain Old Java Objects (POJO)](https://en.wikipedia.org/wiki/Plain_old_Java_object) objects
 
-These issues are quite common in Q&A forms so this gave rise to popular No-SQL database like Realm, GreenDAO and ROOM where Room is a persistent library to abstract away the most of the sqlite code using annotations.
+These issues are quite common in Q&A forums, which is likely why popular No-SQL databases like Realm, GreenDAO and Room came along. Room is a persistent library that abstract away the most of the SQLite code using annotations.
 
 
-#### The prime goals of this tutorials is to provide an exposure on
-  * Storage options in android
-  * SQL vs No-SQL
-  * Developing a notepad app using Room library
+** This tutorial aims to cover: **
+  * Storage options for Android
+  * SQL vs. No-SQL
+  * Room Library basics
+  * Using the Room Library to build a notepad app
 
-# Introduction to android storage mechanism
-#### Android support several storage mechanisms to store data, as mentioned below
+# Introduction to Android storage mechanisms
+#### Core data storage mechanisms
 1. Key-Value pairs : [SharedPreferences](https://developer.android.com/reference/android/content/SharedPreferences.html), An android framework API, which stores key-values pairs in an XML file under protected file system.
 
  - Data stored via SharedPreference can only be accessed within the app.
@@ -21,16 +22,17 @@ These issues are quite common in Q&A forms so this gave rise to popular No-SQL d
 2. Internal and External storage : Applications can store text or [CSV](https://en.wikipedia.org/wiki/Comma-separated_values) files, images, videos in phone memory or inside **public directories**(kitkat or above) under SD card storage.
 
     - To access phone or external storage, Applications requires to implement [Requesting Permissions Model](https://developer.android.com/training/permissions/requesting.html) for marshmallow and above.
+    - Repeatedly accessing physical hard drive space slows down the application.
     - Applications can access all directories under external storage on API's below KitKat.
     - Accessible to other applications, No protection.
 
-3. SQLite : [SQLite](https://sqlite.org/index.html) is a light weight [relational database](https://en.wikipedia.org/wiki/Relational_database), embedded into android OS. The [database schema](https://en.wikipedia.org/wiki/Database_schema) is mapped to tables and integrity constraints.
+3. SQLite : [SQLite](https://sqlite.org/index.html) is a light-weight [relational database](https://en.wikipedia.org/wiki/Relational_database), embedded into the Android OS. The [database schema](https://en.wikipedia.org/wiki/Database_schema) is mapped to tables and integrity constraints.
     - Runtime memory consumption is merely 250 [kbytes](https://en.wikipedia.org/wiki/Kilobyte).
-    - Supported data types are INTEGER, REAL (decimals), TEXT, [BLOB](https://developer.android.com/reference/java/sql/Blob.html)(mostly used to store images but don't do it) and `null`.
+    - Supported data types are INTEGER, REAL (decimals), TEXT, [BLOB](https://developer.android.com/reference/java/sql/Blob.html) (mostly used to store images but don't do it) and `null`.
 
-4. NoSQL : `NoSQL` simply means Objects or Documents. Instead of strong the data in tabular form, The data is stored as [POJO Object](https://en.wikipedia.org/wiki/Plain_old_Java_object) which is extremely suitable for semi-structured or un-structured data when there is no fix [Database Schema](https://en.wikipedia.org/wiki/Database_schema).
+4. NoSQL : `NoSQL` simply means Objects or Documents. Instead of strong the data in tabular form, The data is stored in POJO form, which is extremely suitable for semi-structured or un-structured data when there is no fixed schema.
 
-##### SQL vs NoSQL
+# SQL vs NoSQL
 
 Features |SQL | No-SQL
 ----|-------
@@ -42,14 +44,16 @@ Scalable  | RDBMS |      key-value pairs
 Android Support  |  SQLite |      Room(semi-sql), GreenDAO, Realm
 
 
-Rooms : Room library acts as an abstract layer for underlying SQLite database, means Room annotations are used 
-* To Database and Entities where entities are POJO classes representing table structure
-* To specify operation for retrieval, updation and deletion
-* To add constraints like foreign keys etc
-* Support for LiveData
+# Room Basics
+
+The Room library acts as an abstract layer for underlying SQLite database. Thus, Room annotations are used: 
+- To Database and Entities where entities are POJO classes representing table structures.
+- To specify operation for retrieval, updation and deletion.
+- To add constraints, such as foreign keys.
+- Support for LiveData.
 
 ### There are 3 major components in Room
-1. Entity : A class annotated with [`@Entity`](https://developer.android.com/reference/android/arch/persistence/room/Entity.html) annotation is mapped to a table in database. Every entity is persisted in its own table and every field in class represents the column name.
+1. Entity : A class annotated with the [`@Entity`](https://developer.android.com/reference/android/arch/persistence/room/Entity.html) annotation is mapped to a table in database. Every entity is persisted in its own table and every field in class represents the column name.
   - `tableName` attribute is used to define the name of the table
   - Every entity class must have at-least one [Primary Key](http://wiki.c2.com/?PrimaryKey) field, annotated with @PrimaryKey
   - Fields in entity class can be annotated with `@ColumnInfo(name = “name_of_column”)` annotation to give specific column names
@@ -67,25 +71,28 @@ Rooms : Room library acts as an abstract layer for underlying SQLite database, m
     - `entities = {EntityClassOne.class, ....}` is used to define list of entities for database
 
 
-##### Room Architecture
+### Room Architecture
 
 ![Room Architecture](https://raw.githubusercontent.com/pluralsight/guides/master/images/3fefe389-9a9b-467c-bcef-793da8449f05.png)
 
-# Notes App Structure
-  Hope, You are tempted enough to try room library, so let's try it. Notes App will allow the user to 
-- Create and Save notes in database
-- Display, list of notes
-- Update and Delete notes
+# Building a Notepad App 
 
-# Let's do it!
-  In this section, we will create a demo application to get started with a database oriented application, and conceptually, code implementation can further be used to create alarm, schedule, sms based applications.
+Hopefully, you are tempted enough to try Room library now! We will build a Notes App that will allow the user to:
+- **Create** and **Save** notes in database
+- **Display** a list of notes
+- **Update** and **Delete** notes
 
-  > While creating an android project in android studio, choose "Basic Activity" template
-  
+The demo application we create here will hopefully demonstrate database-oriented application skills and get you started with Room. Conceptually, however, this code can further be extended or changed to build alarm apps, scheduling apps, SMS-driven applications, and more.
+
   > All the code is available at [Github Repo](https://github.com/Pavneet-Sing/RoomDemo)
 
-### Add Maven Repository
-- Open `build.gradle` project and add following maven dependency
+### Getting Started
+
+Create a new project in Android Studio. Choose "Basic Activity" template.
+
+### Add a Maven Repository
+
+Next, add a Maven Repository. Open `build.gradle` project and add following Maven dependency
 
   ```
   allprojects {
@@ -100,7 +107,7 @@ Rooms : Room library acts as an abstract layer for underlying SQLite database, m
 
   > [Google Maven Repository](https://androidstudio.googleblog.com/2017/05/android-studio-30-canary-1-sdk-updates.html) provides all the updated support libraries, which will be downloaded by gradle instead of downloading from SDK Manager.
 
-- Add Room dependency in `build.gradle`(Module:app), inside dependency block
+Then we will add a Room dependency in `build.gradle`(Module:app) within the dependency block.
  ```
  dependencies {
     //... other dependencies
@@ -115,11 +122,13 @@ Rooms : Room library acts as an abstract layer for underlying SQLite database, m
 
 Before creating a database, Let's create an Entity, named as `Note` and later, Objects of this class will be added to database.
 
-- Create a `class` named `Note`
-- Add `@Entity` annotation on the class
-- Add id, content and title fields
-- **Importantly** mark at-least one field with `@PrimaryKey` annotation
-- Use `alt+insert` to implement constructor, `override` getter and setter, and optionally override `equals` or `tostring`
+To do this:
+
+- Create a `class` named `Note`.
+- Add `@Entity` annotation on the class.
+- Add ID, content, and title fields.
+- **Important:** mark at least one field with `@PrimaryKey` annotation.
+- Use `alt+insert` to implement constructor, `override` getter and setter, and optionally override `equals` or `toString`.
 
 ```
 package com.example.pavneet_singh.roomdemo.notedb.model;
@@ -201,10 +210,13 @@ public class Note {
 }
 ```
 
-### Creating DAO's 
-  DAO define all methods to access database, annotated with `@Dao` annotation. It acts as a contract to perform CRUD operations on data in database.
-  - Create an interface, marked with `@Dao` annotation
-  - Add methods for CURD operations
+### Creating DAOs 
+
+DAOs define all methods to access database, annotated with `@Dao` annotation. The DAO acts as a contract to perform CRUD operations on data within a database.
+
+The following code will:
+  - Create an interface, marked with `@Dao` annotation.
+  - Add methods for CURD operations.
 
 ```java
 package com.example.pavneet_singh.roomdemo.notedb.dao;
@@ -258,17 +270,18 @@ public interface NoteDao {
 
 
 ### Create Database
-  Now, we have table defined as `Entity` and CRUD methods defined via `NoteDao` so the last piece of the database puzzle is the database itself.
 
-- Create an abstract class `NoteDatabse` which extends `RoomDatabase`
-- Add version and entities to database as `@Database(entities = {Note.class}, version = 1)`
-- Add abstract methods of all DAO's where the returned DAO object will be constructed by Room for database interactions
+Now, we have table defined as `Entity` and CRUD methods defined via `NoteDao`. The last piece of the database puzzle is the database itself.
 
-  > Version number is changed to update the database structure, when required in future updates
+We will have to:
+- Create an abstract class `NoteDatabse` which extends `RoomDatabase`.
+- Add version and entities to database as `@Database(entities = {Note.class}, version = 1)`.
+- Add abstract methods of all DAO's where the returned DAO object will be constructed by Room for database interactions.
 
-  > Database name must ends with `.db` extension
-
-  > Creating instance of database is quite costly so we will apply [Singlton Pattern](https://en.wikipedia.org/wiki/Singleton_pattern) to create and use already instantiated single instance for every database access.
+Some things to remember:
+- Version number is changed to update the database structure, when required in future updates
+- The database file name must end with the `.db` extension
+- Creating instance of database is quite costly so we will apply a [Singleton Pattern](https://en.wikipedia.org/wiki/Singleton_pattern) to create and use already instantiated single instance for every database access.
 
 ```
 
@@ -310,22 +323,18 @@ public abstract class NoteDatabase extends RoomDatabase {
 
 }
 ```
-
-> Room does not allow code execution on Main thread, `allowMainThreadQueries` is used to allow the execution
-
-> Do not do this in real app, this is just for demonstration instead use AsyncTask (or handler, rxjava)
-
-> `AddNoteActivity.java` snippet demonstrates, how to use AsyncTask
+Additionally, it is good to note that Room does not allow code execution on Main thread. Instead, `allowMainThreadQueries` is used to allow the execution. However, using this is not recommended on real apps. This is just for demonstration instead use AsyncTask (or handler, rxjava). The `AddNoteActivity.java` snippet demonstrates how to use AsyncTask.
 
 # Implement Database Interactions
-  The below snippet will demonstrate the working of insert, update and delete functionality using Room database
+
+The below snippet will demonstrate the working of insert, update, and delete functionality using the Room database.
 
 ### Add Notes 
 In `AddNoteActivity.java`
 
-- Initialize views and database 
-- Fetch data from `EditText` and create `Note` object
-- Insert previously created `Note` object into database
+- Initialize views and database.
+- Fetch data from `EditText` and create `Note` object.
+- Insert previously created `Note` object into database.
 
 ```
 package com.example.pavneet_singh.roomdemo;
@@ -466,9 +475,9 @@ public class AddNoteActivity extends AppCompatActivity {
 </RelativeLayout>```
 
 ### Retrieve And Display NoteList
-- Initialize Room database instance and fetch all note objects as List
-- To display list, we will use RecyclerView
-- Pass the list of notes to adapter and link adapter with the RecyclerView
+- Initialize Room database instance and fetch all note objects as List.
+- To display list, we will use RecyclerView.
+- Pass the list of notes to adapter and link adapter with the RecyclerView.
 
 `NoteListActivity.java`
 
@@ -566,14 +575,15 @@ public class NoteListActivity extends AppCompatActivity implements NotesAdapter.
 
 }```
 
- ### Update Note
- To update note object, the content of already created object needs to be updated while keeping the **same primary key**
+### Update Note
+
+To update note object, the content of already created object needs to be updated while keeping the **same primary key**
 
 - Receive the Note Object from NoteListActivity and display its content on screen
-- Once the data has been updated by user then fetch the updated data from EditText and update the note object
-- Invoke update method of NoteDao with room database instance and pass the updated note object
+- Once the data has been updated by user, fetch the updated version from EditText and update the note object.
+- Invoke update method of NoteDao with a Room database instance and pass in the updated note object.
 
- > In project, AddNoteActivity is being reused to perform update and insertion
+Here, `AddNoteActivity` is being reused to perform update and insertion.
 
   ``` 
   public class AddNoteActivity extends AppCompatActivity {
@@ -611,12 +621,21 @@ public class NoteListActivity extends AppCompatActivity implements NotesAdapter.
   }```
 
 ### Delete Note
-  To delete note object, just invoke `delete` method and pass the note object for deletion 
+
+To delete a note object, just invoke the `delete` method and provide the note object for deletion as the argument.
 
   ```noteDatabase.getNoteDao().deleteNote(notes.get(pos));```
 
-  > Do not forget to remove object from list which is being used in NoteListActivity to display list and also notify the adapter using `adapterObj.notifyDataSetChanged()`
+Do not forget to remove object from list which is being used in NoteListActivity to display list and also notify the adapter using `adapterObj.notifyDataSetChanged()`
+
+### Other features
 
 Room offers many other features like [LiveData](https://developer.android.com/topic/libraries/architecture/livedata.html) for keeping the data source updated all the time and `rxAndroid` for reactive programming.
 
-Check out the sample application [**repository here**](https://github.com/Pavneet-Sing/RoomDemo), please post your comments, doubts or suggestion , it would mean a lot.
+# Conclusion
+
+Check out the sample application [repository here](https://github.com/Pavneet-Sing/RoomDemo). Hopefully this guide introduced you to a lesser known yet useful form of Android application data storage. 
+
+___
+
+Please post your comments, questions, or suggestions in the discussion section below and favorite this guide if you enjoyed it. Thank you for reading!
