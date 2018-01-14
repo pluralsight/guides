@@ -4,9 +4,9 @@
 - Related to: Front-End JavaScript (Angular, React, Meteor, etc)
 
 ### Making a notes app using Room database by Pavneet Singh
-- [Read the guide](https://www.pluralsight.com/guides/other/making-a-notes-app-using-room-database)
+- [Read the guide](https://www.pluralsight.com/guides/android/making-a-notes-app-using-room-database)
 - [Read more from Pavneet Singh](https://www.pluralsight.com/guides/author/Pavneet-Sing) <img src="https://avatars1.githubusercontent.com/u/11755381?v=4" width="30" height="30" alt="Pavneet Singh" />
-- Related to: other
+- Related to: Android
 
 ### Redis as a Dynamic Interconnecting Datastore by Kobi Hikri
 - [Read the guide](https://www.pluralsight.com/guides/big-data/redis-as-a-dynamic-interconnecting-datastore)
