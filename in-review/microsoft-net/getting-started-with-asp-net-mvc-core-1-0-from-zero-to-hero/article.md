@@ -1,11 +1,11 @@
-## Getting started with all the power of ASP.net Core 2.0
+## Getting started with all the power of ASP.net MVC Core 1.0
 
 Detail:
 This is going to be my first tutorial written in English, so if you find a bug in my spelling system I will appreciate you report it to me!
 Well, first we need to accept the terms and conditions in order to continue with this tutorial:
 
 1.  Focus your attention first on this tutorial and after you complete it you will create it by your own.
-2.  The tools we need are: Visual Studio Code, so, you can be on your Windows, Mac or in a GNU/Linux Distribution, Visual Studio Code is Cross-platform.  
+2.  The tools we need are: Visual Studio Code, so, you can be on your Windows, Mac or in a GNU/Linux Distribution, Visual Studio Code is Cross-platform.
 3.  This is just the starting point, promise with yourself to expand, keep this in mind: Today I will better than yesterday and tomorrow better than today.
 4.  Say this to yourself: I am going to help more people interested on this topic :)
 
@@ -13,6 +13,7 @@ Ok! perfect! Once you accepted this Terms and Conditions, let's rock!
 
 This is the idea:
 --------------------------
+* Installing the tools
 * Overview about MVC Pattern.
 * Create a simple project from scratch (No validation).
 * Add MVC support.
@@ -21,8 +22,7 @@ This is the idea:
 * Create a custom helper to increase our productivity.
 * Add Sessions.
 * Store the data on a database.
-* Add Identity : This will take care about users, logins, roles, claims. 
-* Deploy the project to a Local IIS.
+* Add Identity : This will take care about users, logins, roles, claims.
 
 ## Overview about MVC Pattern.
 This is not new, according to the story and thanks to Wikipedia the concept of MVC comes from 1970s... 
@@ -71,8 +71,7 @@ Here is one of my favorite part: Entity Framework! This ORM was created on the t
 
 ## Add Identity : This will take care about users, logins, roles, claims. 
 
-## Deploy the project to a Local IIS.
-We are almost close to complete this journey, get a 5 minute break, relax and complete this simple project to production! 
+
 
 Final words
 ------------------------
