@@ -150,7 +150,7 @@
 
 ### Getting Started With ASP.net MVC Core 1.0 from zero to hero! by Fredy Guibert
 - [Read the guide](https://www.pluralsight.com/guides/microsoft-net/getting-started-with-asp-net-mvc-core-1-0-from-zero-to-hero?status=in-review)
-- [Read more from Fredy Guibert](https://www.pluralsight.com/guides/user/fredyfx) <img src="https://avatars.githubusercontent.com/u/4960023?v=3" width="30" height="30" alt="Fredy Guibert" />
+- [Read more from Fredy Guibert](https://www.pluralsight.com/guides/author/fredyfx) <img src="https://avatars2.githubusercontent.com/u/4960023?v=4" width="30" height="30" alt="Fredy Guibert" />
 - Related to: Microsoft.NET (C#, ASP.NET, VB.NET, etc)
 
 ### ELB SSL termination the Docker way by Scott Miller
