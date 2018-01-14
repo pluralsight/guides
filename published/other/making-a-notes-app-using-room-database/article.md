@@ -30,7 +30,7 @@ These issues are quite common in Q&A forums, which is likely why popular No-SQL 
     - Runtime memory consumption is merely 250 [kbytes](https://en.wikipedia.org/wiki/Kilobyte).
     - Supported data types are INTEGER, REAL (decimals), TEXT, [BLOB](https://developer.android.com/reference/java/sql/Blob.html) (mostly used to store images but don't do it) and `null`.
 
-4. NoSQL : `NoSQL` simply means Objects or Documents. Instead of strong the data in tabular form, The data is stored in POJO form, which is extremely suitable for semi-structured or un-structured data when there is no fixed schema.
+4. NoSQL : `NoSQL` simply means Objects or Documents. Instead of storing the data in tabular form, The data is stored in POJO form, which is extremely suitable for semi-structured or un-structured data when there is no fixed schema.
 
 # SQL vs NoSQL
 
@@ -630,7 +630,7 @@ Do not forget to remove object from list which is being used in NoteListActivity
 
 ### Other features
 
-Room offers many other features like [LiveData](https://developer.android.com/topic/libraries/architecture/livedata.html) for keeping the data source updated all the time and `rxAndroid` for reactive programming.
+Room offers many other features like [LiveData](https://developer.android.com/topic/libraries/architecture/livedata.html) for keeping the data source updated all the time and `rxAndroid` support for reactive programming.
 
 # Conclusion
 
