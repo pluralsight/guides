@@ -1,8 +1,3 @@
-### Android studio tips and tools to be productive by Pavneet Singh
-- [Read the guide](https://www.pluralsight.com/guides/android/android-studio-tips-and-tools-to-be-productive?status=draft)
-- [Read more from Pavneet Singh](https://www.pluralsight.com/guides/author/Pavneet-Sing) <img src="https://avatars1.githubusercontent.com/u/11755381?v=4" width="30" height="30" alt="Pavneet Singh" />
-- Related to: Android
-
 ### Test a article by 吴启成 (Chasel Wu)
 - [Read the guide](https://www.pluralsight.com/guides/other/test-a-article?status=draft)
 - [Read more from 吴启成 (Chasel Wu)](https://www.pluralsight.com/guides/author/minowu) <img src="https://avatars0.githubusercontent.com/u/1282787?v=4" width="30" height="30" alt="吴启成 (Chasel Wu)" />

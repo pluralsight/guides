@@ -1,3 +1,8 @@
+### Android studio tips and tools to be productive by Pavneet Singh
+- [Read the guide](https://www.pluralsight.com/guides/android/android-studio-tips-and-tools-to-be-productive?status=in-review)
+- [Read more from Pavneet Singh](https://www.pluralsight.com/guides/author/Pavneet-Sing) <img src="https://avatars1.githubusercontent.com/u/11755381?v=4" width="30" height="30" alt="Pavneet Singh" />
+- Related to: Android
+
 ### Build a Secure Chat Web Application with JavaScript, Auth0 and Pusher by Peter Mbanugo
 - [Read the guide](https://www.pluralsight.com/guides/front-end-javascript/build-a-secure-chat-web-application-with-javascript-auth0-and-pusher?status=in-review)
 - [Read more from Peter Mbanugo](https://www.pluralsight.com/guides/author/pmbanugo) <img src="https://avatars3.githubusercontent.com/u/4036118?v=4" width="30" height="30" alt="Peter Mbanugo" />
