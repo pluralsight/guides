@@ -1,14 +1,13 @@
-## Getting started with all the power of ASP.net MVC Core 1.0
+## Getting started with all the power of ASP.net Core 2.0
 
 Detail:
 This is going to be my first tutorial written in English, so if you find a bug in my spelling system I will appreciate you report it to me!
 Well, first we need to accept the terms and conditions in order to continue with this tutorial:
 
 1.  Focus your attention first on this tutorial and after you complete it you will create it by your own.
-2.  The tools we need are: Visual Studio Community Edition 2015.
-3.  On Visual Studio CE 2015, install Web Essential Extension (This is very powerful).
-4.  This is just the starting point, promise with yourself to expand, keep this in mind: Today I will better than yesterday and tomorrow better than today.
-5.  Say this to yourself: I am going to help more people interested on this topic as the same way the author does with me.
+2.  The tools we need are: Visual Studio Code, so, you can be on your Windows, Mac or in a GNU/Linux Distribution, Visual Studio Code is Cross-platform.  
+3.  This is just the starting point, promise with yourself to expand, keep this in mind: Today I will better than yesterday and tomorrow better than today.
+4.  Say this to yourself: I am going to help more people interested on this topic :)
 
 Ok! perfect! Once you accepted this Terms and Conditions, let's rock!
 
