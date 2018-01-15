@@ -49,14 +49,14 @@ There are several ways of creating new objects in JavaScript. We will start from
 The most simple way of object creation is using the literal notation. The objects in previous examples are created using the literal notation. Here are some more examples:
 
 ```JavaScript
-var emptyObject = {};
+const emptyObject = {};
 
-var person = {
+const person = {
     firstName: 'John',
     lastName: 'Smith'
 };
 
-var employee = {
+const employee = {
     id: '1',
     contactData: {
         email: test@test.com
@@ -70,7 +70,7 @@ Objects can be nested into each other, like the `contactData` in the `employee` 
 
 We could initialize the *person* object in the above example in the following way, as well:
 ```JavaScript
-var person = {};
+const person = {};
 
 person['firstName'] = 'John';
 person['lastName'] = 'Smith';
@@ -89,4 +89,14 @@ person['last' + nameSuffix] = 'Smith';
 
 ### Object.create()
 
-Objects can be created by using the `Object.create()` function
+Objects can be created by using the [`Object.create()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/create) function, which has 2 arguments. The first argument is an object which will be the prototype of the new object created by this function. The second argument is an object which contains properties which will be added to the new object. This argument is optional. For instance, we will derive the `musician` object from the `person` object :
+``` JavaScript
+const musician = Object.create(person, {
+    instrument: {
+        value: 'accordion',
+        configurable: true,
+        writable: true
+    }
+})
+```
+
