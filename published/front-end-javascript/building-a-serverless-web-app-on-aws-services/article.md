@@ -112,19 +112,19 @@ After the table is created, take note of its ARN.
 Now, in the *Items* tab, create some authors, for example:
 ```javascript
 {
-  id: 'cory-house',
-  firstName: 'Cory',
-  lastName: 'House'
+  "id": "cory-house",
+  "firstName": "Cory",
+  "lastName": "House"
 },
 {
-  id: 'samer-buma',
-  firstName: 'Samer',
-  lastName: 'Buma'
+  "id": "samer-buma",
+  "firstName": "Samer",
+  "lastName": "Buma"
 },
 {
-  id: 'deborah-kurata',
-  firstName: 'Deborah',
-  lastName: 'Kurata'
+  "id": "deborah-kurata",
+  "firstName": "Deborah",
+  "lastName": "Kurata"
 }
 ```
 
