@@ -3,7 +3,12 @@
     "author_name": "ajsaulsberry",
     "author_real_name": "ajsaulsberry",
     "branch": "master",
-    "branches": [],
+    "branches": [
+        [
+            "timcuculic",
+            "timcuculic-microsoft-net-asp-net-mvc-creating-solutions-with-separate-projects-for-entities-data-access-and-website-functionality"
+        ]
+    ],
     "filename": "article.md",
     "first_commit": "50ae02fa8cdcfcb78ca4efdfd79bc3c3c9894116",
     "image_url": "https://avatars1.githubusercontent.com/u/11444510?v=4",
