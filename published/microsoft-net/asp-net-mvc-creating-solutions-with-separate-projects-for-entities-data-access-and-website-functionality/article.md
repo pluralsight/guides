@@ -370,7 +370,7 @@ We'll begin by adding folders to contain the class files.
 
 1. Select **Add / New Folder** from the context menu.
 
-1. Name the folder "Customers".
+1. Name the folder "Customer".
 
 Repeat the process for the following folders:
 
@@ -385,7 +385,7 @@ Keep in mind that the folder structure and naming convention effects the default
 
 | Folder | Namespace |
 | :--- | :--- |
-| Blip.Entities\Customers | Blip.Entities.Customer |
+| Blip.Entities\Customer | Blip.Entities.Customer |
 | Blip.Entities\Customer.ViewModels |  Blip.Entities.Customer.ViewModels |
 | Blip.Entities\Customer.ViewModels\Partial | Blip.Entities.Customer.ViewModels.Partial |
 
