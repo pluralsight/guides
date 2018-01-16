@@ -103,6 +103,21 @@ The `musician`object inherits all properties from the `person` object and has it
 
 ### Constructor
 
+Objects can be created by using a constructor function and operator **new**. Here is an example:
+``` JavaScript
+function Person(firstName, lastName) {
+    this.firstName = firstName;
+    this.lastName = lastName;
+}
+
+const musician = new Person('Ray', 'Charles');
+musician.instrument = 'piano';
+```
+
+When we call a function using operator **new**, several things are being happened:
+- A new empty object is created implicitly inside of the constructor function and it is being assigned to the **this** pointer. **This** is a reserved keyword in JavaScript and it is a pointer which always points to an object, in dependence of the execution context. In this case, it points to an empty object.
+
+
 ### Property descriptor
 
 Beside `value`, `configurable`
