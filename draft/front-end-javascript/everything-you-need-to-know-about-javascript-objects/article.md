@@ -99,4 +99,14 @@ const musician = Object.create(person, {
     }
 })
 ```
+The `musician`object inherits all properties from the `person` object and has its own property `instrument`, which value is initialized to `"accordion"`. As you can see, the `instrument` property is defined by a special object, which is called property descriptor. It is used as an argument in the [Object.defineProperty](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/defineProperty) method, as well. We will consider it later in this tutorial.
 
+### Constructor
+
+### Property descriptor
+
+Beside `value`, `configurable`
+
+### Getters and setters
+
+### Copying objects
