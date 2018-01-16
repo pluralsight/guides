@@ -1,3 +1,8 @@
+### ASP.NET Core MVC Client Data Validation - Part 1: ViewModels and Data Annotations by ajsaulsberry
+- [Read the guide](https://www.pluralsight.com/guides/microsoft-net/asp-net-core-mvc-client-data-validation-part-1-viewmodels-and-data-annotations?status=in-review)
+- [Read more from ajsaulsberry](https://www.pluralsight.com/guides/author/ajsaulsberry) <img src="https://avatars1.githubusercontent.com/u/11444510?v=4" width="30" height="30" alt="ajsaulsberry" />
+- Related to: Microsoft.NET (C#, ASP.NET, VB.NET, etc)
+
 ### Android studio tips and tools to be productive by Pavneet Singh
 - [Read the guide](https://www.pluralsight.com/guides/android/android-studio-tips-and-tools-to-be-productive?status=in-review)
 - [Read more from Pavneet Singh](https://www.pluralsight.com/guides/author/Pavneet-Sing) <img src="https://avatars1.githubusercontent.com/u/11755381?v=4" width="30" height="30" alt="Pavneet Singh" />
