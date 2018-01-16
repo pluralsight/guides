@@ -1,3 +1,8 @@
+### ASP.NET Core MVC Client Data Validation - Part 1: ViewModels and Data Annotations by ajsaulsberry
+- [Read the guide](https://www.pluralsight.com/guides/microsoft-net/asp-net-core-mvc-client-data-validation-part-1-viewmodels-and-data-annotations?status=draft)
+- [Read more from ajsaulsberry](https://www.pluralsight.com/guides/author/ajsaulsberry) <img src="https://avatars1.githubusercontent.com/u/11444510?v=4" width="30" height="30" alt="ajsaulsberry" />
+- Related to: Microsoft.NET (C#, ASP.NET, VB.NET, etc)
+
 ### Test a article by 吴启成 (Chasel Wu)
 - [Read the guide](https://www.pluralsight.com/guides/other/test-a-article?status=draft)
 - [Read more from 吴启成 (Chasel Wu)](https://www.pluralsight.com/guides/author/minowu) <img src="https://avatars0.githubusercontent.com/u/1282787?v=4" width="30" height="30" alt="吴启成 (Chasel Wu)" />
