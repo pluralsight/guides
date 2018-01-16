@@ -1,4 +1,4 @@
-We're all familiar with instant messaging and using it to chat with people in real-time. Sometimes, though, we might want an app which allows us to send messages anonymously to friends, or to chat anonymously with strangers in close proximity. An example of such an app is [Truth](https://itunes.apple.com/us/app/truth-be-honest/id791407399), which lets you talk with people on your contact list without disclosing your identity.
+We're all familiar with instant messaging and using it to chat with people in real-time. Sometimes, though, we might want an app which allows us to send messages anonymously to friends or to chat anonymously with strangers nearby. An example of such an app is [Truth](https://itunes.apple.com/us/app/truth-be-honest/id791407399), which lets you talk with people on your contact list without disclosing your identity.
 
 In this tutorial, I'll be showing you how to build a public anonymous chat app in JavaScript (using NodeJS and Express on the server, and VanillaJS on the client) and Pusher. Pusher allows us to build scalable and reliable real-time applications, and since we need real-time delivery of chat messages, this is a key component of the chat app. The image below depicts what we will be building:
 
@@ -20,9 +20,9 @@ To create a new Pusher app, click the **Your apps** side menu, then click the **
 
 ## Code-up the server
 
-We need a backend which will serve our static files and also accept messages from a client and then broadcast to other connected clients through Pusher. Our backend will be written in NodeJS, so we need to set it up.
+We need a back-end which will serve our static files, accept messages from a client, and broadcast to other connected clients through Pusher. Our back-end will be written in NodeJS, so we need to set it up.
 
-We need a `package.json` file and I'll add it by running the command below. I'll use the defaults provided by hitting enter for every prompt.
+We need a `package.json` file and I'll add it by running the command below. I will use the defaults provided by hitting `enter` for every prompt.
 
 > $ npm init
 
@@ -60,7 +60,7 @@ app.listen(port, function () {
   console.log(`app listening on port ${port}!`)
 });
 ```
-With the code above, we have defined an end-point `/message` which will be used by the client to send in the message it wants to send to another client through Pusher. The other routes are used to serve the static files which we will add later.
+With the code above, we have defined an endpoint, `/message`, which will be used by the client to send the message that it wants to another client using Pusher. The other routes are used to serve static files to be added later.
 
 > Replace the placeholder strings App ID, Secret and Key with the values from your Pusher dashboard.
 
@@ -258,15 +258,19 @@ $(document).ready(function(){
 ```
 With the code in this file, we get the message to send from the page, and then call the server with the message. After that, we connect to Pusher by creating a new Pusher object with the App Secret and the Cluster that you set earlier.
 
-We subscribe to a channel and an event named `message-added`. The channel is a public channel so it can be named any way you like. I've chosen to prefix mine with `public-` but that's just my own convention as there are no rules for a public channel. The difference between a public channel (which does not require client to be authenticated), and the other two, are that they're prefixed with `private-` and `presence-`.
+We subscribe to a channel and an event named `message-added`. The channel is a public channel so it can be named any way you like. I've chosen to prefix mine with `public-` but that's just my own convention as there are no rules for a public channel. However, private channels are prefixed with `private-` and presence channels are prefixed with `presence-`. Read more about channels and channel types [here](https://pusher.com/docs/client_api_guide/client_channels).
 
 We bind to the click event of the chat button on the page, then we retrieve the message from the textbox on the page, and then send it to the server with the username. With all we have setup, we can run start the app by running `npm start`. Here's a glimpse of how it works on my computer.
 
 <img src="http://blog.pusher.com/wp-content/uploads/2017/05/build-public-anonymous-chat-app-javascript-gif.gif" alt="" width="1425" height="764" class="alignnone size-full wp-image-2968" />
 
-### Wrap Up
+### Wrapping Up
 
-This is a  app to show how you can use Pusher to send messages in real-time. We built a public anonymous chat app that allows your website visitors to send anonymous messages to each other in real-time. You can find the code here on [GitHub](https://github.com/pmbanugo/Pusher-Anonymous-Chat-App)
+This guide demonstrated how you can use Pusher to allow website visitors send messages anonymously in real-time. You can find the code used in [this GitHub repository](https://github.com/pmbanugo/Pusher-Anonymous-Chat-App). Hopefully, this demo sparked some other application ideas that could be implemented using Pusher's real-time services.
+
+__ 
+
+I hope you found this guide informative and engaging. Please do not hesitate to post your comments or feedback or to add this guide to your favorites for future reference. Thank you for reading!
 
 
 *This was originally published on [Pusher](https://blog.pusher.com/build-public-anonymous-chat-app-javascript/)*
