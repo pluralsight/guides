@@ -128,10 +128,17 @@ This service needs to extend FirebaseMessagingService. When the target device re
 ```
 @Override public void onMessageReceived(RemoteMessage remoteMessage) {
 
+    notificationManager =
+                (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+                
+    //Setting up Notification channels for android O and above
+    if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+        setupChannels();
+    }
 	int notificationId = new Random().nextInt(60000);
 
 	Uri defaultSoundUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
-	NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(this)
+	NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(this, ADMIN_CHANNEL_ID)
 			.setSmallIcon(R.drawable.ic_notification_small)  //a resource for your custom small icon
 			.setContentTitle(remoteMessage.getData().get("title")) //the "title" value you sent in your notification
 			.setContentText(remoteMessage.getData().get("message")) //ditto
@@ -146,6 +153,33 @@ This service needs to extend FirebaseMessagingService. When the target device re
 }
 ```
 Here, to get unique notifications each time you receive a new message, for the sake of this example, we generate a random number and use it as notification ID. With this ID, you can do several things to your notifications. As such, you should probably group them if they are of the same kind, or update them. If you want to see each notification individually from the others, their IDs need to be different.
+
+## Android Oreo compatibility
+
+Every app that targets SDK 26 or above (Android O) must implement notification channels and add its notifications to at least one of them. I won't go into the specifics of how those work, as it is out of the scope of this article. Simply put, you separate your notifications into channels based on their function and importance level. Having more channels gives the users more control over what notifications they receive. You can read more about channels here: https://developer.android.com/guide/topics/ui/notifiers/notifications.html#ManageChannels. If you want the newest phones to receive <b>any</b> of your notifications, paste this method in your service. 
+
+```
+    @RequiresApi(api = Build.VERSION_CODES.O)
+    private void setupChannels(){
+        CharSequence adminChannelName = getString(R.string.notifications_admin_channel_name);
+        String adminChannelDescription = getString(R.string.notifications_admin_channel_description);
+
+        NotificationChannel adminChannel;
+        adminChannel = new NotificationChannel(ADMIN_CHANNEL_ID, adminChannelName, NotificationManager.IMPORTANCE_LOW);
+        adminChannel.setDescription(adminChannelDescription);
+        adminChannel.enableLights(true);
+        adminChannel.setLightColor(Color.RED);
+        adminChannel.enableVibration(true);
+        if (notificationManager != null) {
+            notificationManager.createNotificationChannel(adminChannel);
+        }
+    }
+```
+I've initialized a constant `ADMIN_CHANNEL_ID` which is of type `String`. I use that id variable to refer to my newly created channel. So every time I use `NotificationCompat.Builder` to create a new notification, I initialize the builder object and pass in the id in the constructor, like so:
+
+```
+NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(this, ADMIN_CHANNEL_ID) {...}
+```
 
 ## Background compatibility
 
@@ -176,6 +210,18 @@ This is what your <mark>POST</mark> request should look like:
 And this should be the body of your request: 
 
 <img src="https://docs.centroida.co/wp-content/uploads/2017/05/postman_body-1.png" alt="" width="967" height="283" class="alignnone size-full wp-image-754" />
+
+```
+{
+	"to" : "d4_9RguWZNQ:APA91bH677zDilszjdf30-i12-0W-02314-0@0-123495-0-02-Something-rXEtW_wZNXa6K_-V96rEHPEysXSIfL",
+	"data" :
+	{
+		"title": "I'd tell you a chemistry joke",
+		"message" : "but I know I wouldn't get a reaction",
+		"image-url" : "https://docs.centroida.co/wp-content/uploads/2017/05/notification.png"
+	}
+}
+```
 
 In the body of your request you need to specify the "<b>to</b>" field to send a notification to the targeted device. It's value is the aforementioned <b>Firebase token</b> that your device obtains in `MyFirebaseInstanceIDService`. You can retrieve it from the log message or directly from the shared preferences. In the data payload, you can specify all kinds of key-value pairs that would suit your application needs.
 
@@ -329,6 +375,8 @@ The result of your efforts:
 <img src="https://docs.centroida.co/wp-content/uploads/2017/05/notification.png" alt="" width="350" height="450" class="center-block size-full wp-image-758" />
 
 That's all you need to get started with push notifications in Android!
+
+Here is the link to the github repo of the working example project from this tutorial: https://github.com/DimitarStoyanoff/Notifications
 
 Now you can have some fun exploring and styling your notifications. I hope this tutorial helped you out and you found it enjoyable. Until next time!
 
