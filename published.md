@@ -1,3 +1,8 @@
+### Build a Secure Chat Web Application with JavaScript, Auth0 and Pusher by Peter Mbanugo
+- [Read the guide](https://www.pluralsight.com/guides/front-end-javascript/build-a-secure-chat-web-application-with-javascript-auth0-and-pusher)
+- [Read more from Peter Mbanugo](https://www.pluralsight.com/guides/author/pmbanugo) <img src="https://avatars3.githubusercontent.com/u/4036118?v=4" width="30" height="30" alt="Peter Mbanugo" />
+- Related to: Front-End JavaScript (Angular, React, Meteor, etc)
+
 ### Building a Serverless Web App on AWS Services by Esteban Herrera
 - [Read the guide](https://www.pluralsight.com/guides/front-end-javascript/building-a-serverless-web-app-on-aws-services)
 - [Read more from Esteban Herrera](https://www.pluralsight.com/guides/author/eh3rrera) <img src="https://avatars2.githubusercontent.com/u/11665759?v=4" width="30" height="30" alt="Esteban Herrera" />
