@@ -1,17 +1,22 @@
-Security is hard. Often when we build applications we want to allow only registered users to access the application. We want to be able to manage user accounts, see when they last logged in, be able to disable suspicious accounts and have a dashboard to view and manage all this data. We might also decide to support multi-factor authentication and social login. 
+Security is hard. When we build applications, we want to allow only registered users to access the application. We want to be able to manage user accounts, see when they last logged in, disable suspicious accounts, and have a dashboard to manage incoming data. We might also need to support multi-factor authentication and social login. 
 
-But security isn’t just hard, it also takes a while to implement. What if there’s a service that could take away this part of the development hassle from you? Why spend weeks or months rolling your own auth?  This is where Auth0 shines. In this tutorial, I’ll show you how to build a chat application with Pusher, add user authentication with Auth0 Lock, and manage users from the Auth0 dashboard. 
+But security isn’t just hard, it also takes a while to implement. What if there’s a service that could handle some part of the development hassle for you? Why spend weeks or months rolling your own auth?  This is where **Auth0** shines. 
+
+This tutorial will give you an in-depth view of how to: 
+* build a chat application with Pusher
+* add user authentication with Auth0 Lock
+* manage users from the Auth0 dashboard. 
 
 
   ## Introduction to Auth0 and Pusher
 
-[Auth0](https://auth0.com/) is an Authentication-as-a-Service (or Identity-as-a-Service) provider focused on encapsulating user authentication and management,  which provides an SDK to allow developers to easily add authentication and manage users. Its user management dashboard  allows for breach detection and multi-factor authentication, and Passwordless login. 
+[Auth0](https://auth0.com/) is an Authentication-as-a-Service (or Identity-as-a-Service) provider focused on encapsulating user authentication and management. The service provides an SDK to allow developers to easily add authentication and manage users. Its user management dashboard  assists with breach detection, multi-factor authentication, and passwordless login. 
 
-[Pusher](https://pusher.com/)’s API’s and hosted infrastructure allow us to build scalable and reliable realtime applications. Pusher has a concept of channels and events which are fundamental to it. Channels provide a way of filtering data and controlling access to different streams of information, while events are the primary method of packaging messages in the Pusher system and form the basis of all communication.
+[Pusher's](https://pusher.com/) APIs and hosted infrastructure allow us to build scalable and reliable realtime applications. At its core, Pusher works through **channels** and **events**. Channels provide a way of filtering data and controlling access to different streams of information. Events are the primary method of packaging messages in the Pusher system and form the basis of all communication.
 
 ## Building the application
 
-We will be building a chat application that’ll allow users to communicate with each other where everyone sees every other person’s messages. It’ll work similarly to how channels work in Slack: just one channel for everybody to communicate.
+We will be building a chat application that will allow users to communicate so that everyone registered to a particular channel can see other users' messages to the channel. It’ll work similarly to how channels work in Slack: just one channel for everybody to communicate.
 
 Here’s what we’ll be building:
 
@@ -19,10 +24,10 @@ Here’s what we’ll be building:
 ![](https://d2mxuefqeaa7sj.cloudfront.net/s_98BAD045E14A60425D95386F6B1F7ED1D8E7A24C1FDC54BA88FB765B2ACC0033_1502274258315_build-secure-chat-app-with-auth0-and-pusher-in-javascript.gif)
 
 
-**Setting up the backend**
+### Setting up the backend
 We’ll start by building the backend which will facilitate receiving and broadcasting chat messages, serving static files, and also setting up Auth0 and Pusher. 
 
-First, you’ll need to signup for a Pusher and Auth0 account. Go to [pusher.com](https://pusher.com/) and [auth0.com](https://auth0.com) and sign up for an account. To use Pusher API we have to signup and create a Pusher app from the dashboard. We can create as many applications as we want and each one will get an application id and secret key which we’ll use to initialise a Pusher instance on client or server side code. 
+First, you’ll need to signup for a Pusher and Auth0 account. Go to [pusher.com](https://pusher.com/) and [auth0.com](https://auth0.com) and sign up for an account. To use Pusher API we have to signup and create a Pusher app from the dashboard. We can create as many applications as we want, and each one will get an application ID and secret key which we’ll use to initialize a Pusher instance on client or server side code. 
 
 **Create a new Pusher account**
 To create a new Pusher app, click the **Your apps** side menu, then click the **Create a new app** button below the drawer. This brings up the setup wizard.
@@ -43,7 +48,6 @@ Since we’re building our backend in Node using Express, let’s initialise a n
 2. **npm i --save body-parser express pusher** to install express and the Pusher node package
 
 Add a new file called `server.js` which will contain logic to authenticate the Pusher client and also render the static files we’ll be adding later. This file will contain the content below:
-
 
     var express = require('express');
     var bodyParser = require('body-parser');
@@ -80,7 +84,7 @@ Add a new file called `server.js` which will contain logic to authenticate the P
       console.log(`app listening on port ${port}!`)
     });
 
-We instantiate Pusher by passing in an object that contains the details of our app ID and secret key, which can be found on the **App Keys** tab in your Pusher dashboard. Pusher also provides a mechanism for authenticating users to a channel at the point of subscription. To do this, we expose an endpoint on the server that will validate the request and respond with a success or failure. This endpoint will be called by Pusher client libraries and can be named anything. We used the default name for this endpoint on Pusher, which is `/pusher/auth`. The line `var auth = pusher.authenticate(socketId, channel);` authenticates the client with Pusher and returns an authentication code to the calling client. 
+To break down the code, we first instantiate Pusher by passing in an object containing the details of our app ID and secret key. These can be found on the **App Keys** tab in your Pusher dashboard. Pusher also provides a mechanism for authenticating users to a channel at the point of subscription. To do this, we expose an endpoint on the server that will validate the request and respond with a success or failure. This endpoint will be called by Pusher client libraries and can be named anything. We used the default name for this endpoint on Pusher, which is `/pusher/auth`. The line `var auth = pusher.authenticate(socketId, channel);` authenticates the client with Pusher and returns an authentication code to the calling client. 
 
 To allow this file to run when we start npm, we update **package.json** with the following value:
 
@@ -91,7 +95,7 @@ To allow this file to run when we start npm, we update **package.json** with the
       }
 
 
-**Create an Auth0 client**
+#### Create an Auth0 client
 To create an Auth0 client
 
 1. Select  **Clients** from the side menu.
@@ -103,14 +107,14 @@ To create an Auth0 client
 ![](https://d2mxuefqeaa7sj.cloudfront.net/s_98BAD045E14A60425D95386F6B1F7ED1D8E7A24C1FDC54BA88FB765B2ACC0033_1502092704077_Screen+Shot+2017-07-28+at+13.14.03.png)
 
 
-An Auth0 client provides us with Client Id and Secret which we’ll use to interact with Auth0 from the code. On the settings tab, we can see the Name, Client Id, Secret, Client Type and many more. I want to enable CORS for my domain http://localhost:5000, set the log out URL and the URL to redirect to after the user has been authenticated with Auth0. Update the following settings with **http://localhost:5000**
+An Auth0 client provides us with Client ID and Secret which we’ll use to interact with Auth0 from the code. On the settings tab, we can see the Name, Client Id, Secret, Client Type and many more. I want to enable Cross-Origin Resource Sharing (CORS) for my domain `http://localhost:5000` and set the log out URL and the post-authentication redirect URL. Update the following settings with **http://localhost:5000**:
 
 
 1. Allowed Callback URLs
 2. Allowed Logout URLs
 3. Allowed Origins (CORS)
 
-**Building the frontend**
+### Building the frontend
 With the backend all good to go, we build the web page that will facilitate messaging. Create a folder named **public** which will contain the html and javascript file. Create two new files **style.css and** **index.html** with the following content:
 
 **style.css** 
@@ -244,9 +248,9 @@ With the backend all good to go, we build the web page that will facilitate mess
     </body>
     </html>
 
-This file uses template from [bootsnip](http://bootsnipp.com/snippets/6eWd) and also includes a script reference to Auth0 Lock `<script src="https://cdn.auth0.com/js/lock/10.18.0/lock.min.js"></script>`. [Lock](https://auth0.com/docs/libraries#lock-login-signup-widgets) is  a drop-in authentication widget that provides a standard set of behaviours required for login and a customisable user interface. It provides a simple way to integrate with Auth0 with very minimal configuration. 
+This file uses template from [bootsnip](http://bootsnipp.com/snippets/6eWd) and also includes a script reference to Auth0 Lock `<script src="https://cdn.auth0.com/js/lock/10.18.0/lock.min.js"></script>`. [Lock](https://auth0.com/docs/libraries#lock-login-signup-widgets) is  a drop-in authentication widget that provides a standard set of behaviours required for login and a customizable user interface. It provides a simple way to integrate with Auth0 with very minimal configuration. 
 
-We want to allow users to sign in when they enter the application and be able to send messages once they’re authenticated. Add a new file **index.js** with the following content:
+We want to allow users to sign in when they enter the application, get authenticated, and only then be able to send messages. Add a new file **index.js** with the following content:
 
 
     $(document).ready(function(){
@@ -296,9 +300,9 @@ We want to allow users to sign in when they enter the application and be able to
         });
     });
 
-We initialise Lock by passing it the Client Id of the app, your user domain which starts with your username followed by `.auth0.com` or `.{YOUR_SELECTED_REGION}.auth0.com` e.g `lotus.eu.auth0.com`. The widget is configurable and we can send in configuration options like *closable*, *autoClose*, and *auth*. Within the *auth* option we tell it to return the `openid`  and `profile` claims. 
+We initialise Lock by passing it the Client Id of the app, your user domain which starts with your username followed by `.auth0.com` or `.{YOUR_SELECTED_REGION}.auth0.com` e.g `lotus.eu.auth0.com`. The widget is configurable, so we can send in configuration options like *closable*, *autoClose*, and *auth*. Within the *auth* option, we tell it to return the `openid`  and `profile` claims. 
 
-We check if the user is authenticated and show the widget when they’re not. Once the user is authenticated, Lock emits the `authenticated` event which we’ve subscribed to. When it’s raised, we store the user profile and other credentials to localStorage and set the user’s name to be displayed on the page. Once the user is authenticated, we want to connect to Pusher and send messages across. Update index.js with the following code: 
+We check if the user is authenticated and show the widget when they’re not. Once the user is authenticated, Lock emits the `authenticated` event to which we’ve subscribed. When the event is raised, we store the user profile and other credentials to `localStorage` and set the user’s name to be displayed on the page. Once the user is authenticated, we want to connect to Pusher and send messages across. Update index.js with the following code: 
 
 
     if(!isAuthenticated && !window.location.hash){
@@ -326,7 +330,7 @@ We check if the user is authenticated and show the widget when they’re not. On
         $(".chat").append(template);
     }
 
-Pusher is initialised with the **APP_SECRET** and **CLUSTER** which you can get from the app dashboard on Pusher. We subscribe to a channel called `private-chat` . Pusher has 3 types of channels: Public, Private and Presence channel. Private and Presence channels let your server control access to the data you are broadcasting. Presence channels go further to force subscribers to register user information when subscribing. Private channels are named starting with `private-` and authenticated in the server when subscribing. 
+Pusher is initialised with the **APP_SECRET** and **CLUSTER** which you can get from the app dashboard on Pusher. We subscribe to a channel called `private-chat`. Pusher has 3 types of channels: Public, Private and Presence channel. Private and Presence channels let your server control access to the data you are broadcasting. Presence channels go further to force subscribers to register user information when subscribing. Private channels are named starting with `private-` and authenticated in the server when subscribing. 
 
 And finally we want to send the message to the user when they click send and also log them out when they select signout. Update **index.js** with the code below
 
@@ -451,9 +455,9 @@ To test the app, run `npm start` on the terminal and open `http://localhost:5000
 
 ![](https://d2mxuefqeaa7sj.cloudfront.net/s_98BAD045E14A60425D95386F6B1F7ED1D8E7A24C1FDC54BA88FB765B2ACC0033_1502274209684_build-secure-chat-app-with-auth0-and-pusher-in-javascript.gif)
 
-## Wrap
+# Wrapping up
 
-This is an app to show how you can use Pusher to send messages in real-time and secure the channels, add user authentication and account management with Auth0, and easily integrate to Auth0 using Auth0 Lock. On your auth0 [dashboard](https://manage.auth0.com/#/) you can see the total number of users, logins and new signups. 
+This is an app to show how you can use Pusher to send messages in real-time and secure the channels, add user authentication and account management with Auth0, and easily integrate to Auth0 using Auth0 Lock. On your Auth0 [dashboard](https://manage.auth0.com/#/) you can see the total number of users, logins and new signups. 
 
 ![](https://d2mxuefqeaa7sj.cloudfront.net/s_98BAD045E14A60425D95386F6B1F7ED1D8E7A24C1FDC54BA88FB765B2ACC0033_1502296411642_Screen+Shot+2017-08-09+at+17.27.18.png)
 
@@ -472,7 +476,11 @@ Selecting a user takes you to a more detailed page where you can take various ac
 ![](https://d2mxuefqeaa7sj.cloudfront.net/s_98BAD045E14A60425D95386F6B1F7ED1D8E7A24C1FDC54BA88FB765B2ACC0033_1502296864217_Screen+Shot+2017-08-09+at+17.29.27.png)
 
 
- Also on Pusher, you can go to your application dashboard, under the **Stats,** where you’ll see statistics concerning your application, such as connection frequency and how many messages were sent through that app. The combination of these two technologies makes it faster and easier to build real-time secured applications. You can find the code here on [GitHub](https://github.com/pmbanugo/Pusher-Auth0-ChatApp). 
+Pusher also allows you to view statistics regarding your application. To do this, go to your application dashboard, under **Stats,** where you’ll see statistics concerning your application, such as connection frequency and how many messages were sent through that app. The combination of these two technologies makes it faster and easier to build real-time secured applications. 
 
+You can find the code here on [GitHub](https://github.com/pmbanugo/Pusher-Auth0-ChatApp). Hopefully this guide has been an effective introduction to Auth0 and Pusher and a quality springboard to help you set up authentication faster in your upcoming applications.
+____
 
-*This was originally published on [Pusher](https://blog.pusher.com/build-secure-chat-web-app-javascript-auth0-pusher/)*
+Thanks for reading this guide. As always, please drop your comments and feedback in the discussion section, and don't be afraid to add this guide to your favorites. Till next time.
+
+*This was originally published on [Pusher](https://blog.pusher.com/build-secure-chat-web-app-javascript-auth0-pusher/)*.
