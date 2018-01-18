@@ -8,7 +8,7 @@ In this guide, I will cover the core concepts of Redux and how they boost Angula
 
 # Main concepts of Redux
 
-Redux comprises three main partsH
+Redux comprises three main parts
 1. **The main store**
 2. **Reducers**  
 3. **Actions**
