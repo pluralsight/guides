@@ -59,21 +59,26 @@ If the producer doesn’t wait for the previous message to be fully consumed, fo
 In both scenarios, an **in-process bottleneck** will result. This is bad for performance. A bottleneck could lead to a bloat in RAM usage on whichever side (producer or consumer) the messages are waiting to be consumed.
 
 
+![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/9d2a3f89-9ce2-4391-947c-0bda5afa5bf1.png)
 
-The bottlenecked process uses so much RAM that it slows down as paging takes place and possibly eventually blocks the entire host machine.
 
- 
+The bottlenecked process uses so much RAM that it slows down as [paging](https://en.wikipedia.org/wiki/Paging) takes place, **potentially blocking the entire host machine**.
 
-So up to this point was the bearer of bad news. Now the good news - these situations can easily be optimized using a … queue.
+
+![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/a1124432-957c-4b35-9e2b-3b0634b9195d.png)
+
+
+So up to this point, I was the bearer of bad news. Now the good news &mdash; *these situations can easily be optimized using a queue.*
 
 Please take a look at the following proposed architecture:
 
- 
+
+![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/ce5b1080-7637-4f62-85a5-25393fce681c.png)
 
 In the diagram above, you can see that the message producer(s) and message consumer(s) are not communicating directly.
 
-The message producer produces messages into a queue as soon as they are ready.
-We can say that the producer “pushes” messages into the queue.
+The message producer produces messages and **pushes** them into a queue once they are ready.
+
 
  
 The message consumer then consumes messages from the queue as soon as he is able to.
