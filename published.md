@@ -1,3 +1,8 @@
+### Boost Android Development Skills To Produce Quality Apps  by Pavneet Singh
+- [Read the guide](https://www.pluralsight.com/guides/android/boost-android-development-skills-to-produce-quality-apps)
+- [Read more from Pavneet Singh](https://www.pluralsight.com/guides/author/Pavneet-Sing) <img src="https://avatars1.githubusercontent.com/u/11755381?v=4" width="30" height="30" alt="Pavneet Singh" />
+- Related to: Android
+
 ### Build a Secure Chat Web Application with JavaScript, Auth0 and Pusher by Peter Mbanugo
 - [Read the guide](https://www.pluralsight.com/guides/front-end-javascript/build-a-secure-chat-web-application-with-javascript-auth0-and-pusher)
 - [Read more from Peter Mbanugo](https://www.pluralsight.com/guides/author/pmbanugo) <img src="https://avatars3.githubusercontent.com/u/4036118?v=4" width="30" height="30" alt="Peter Mbanugo" />

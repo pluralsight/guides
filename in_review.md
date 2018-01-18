@@ -23,11 +23,6 @@
 - [Read more from Peter Mbanugo](https://www.pluralsight.com/guides/author/pmbanugo) <img src="https://avatars3.githubusercontent.com/u/4036118?v=4" width="30" height="30" alt="Peter Mbanugo" />
 - Related to: Front-End JavaScript (Angular, React, Meteor, etc)
 
-### Boost Android Development Skills To Produce Quality Apps  by Pavneet Singh
-- [Read the guide](https://www.pluralsight.com/guides/android/boost-android-development-skills-to-produce-quality-apps?status=in-review)
-- [Read more from Pavneet Singh](https://www.pluralsight.com/guides/author/Pavneet-Sing) <img src="https://avatars1.githubusercontent.com/u/11755381?v=4" width="30" height="30" alt="Pavneet Singh" />
-- Related to: Android
-
 ### Building Your First Conversational App by chen-levkovich
 - [Read the guide](https://www.pluralsight.com/guides/other/building-your-first-conversational-app?status=in-review)
 - [Read more from chen-levkovich](https://www.pluralsight.com/guides/author/chen-levkovich) <img src="https://avatars0.githubusercontent.com/u/26025482?v=4" width="30" height="30" alt="chen-levkovich" />
