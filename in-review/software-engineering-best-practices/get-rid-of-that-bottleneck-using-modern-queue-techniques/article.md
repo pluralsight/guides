@@ -1,4 +1,3 @@
-
 Introduction
 Common Use Cases
 Shifting from Push to Pull - Preventing Client Overload
@@ -10,56 +9,56 @@ In Conclusion
 
 
  
-Introduction
-	There are common situations in which your software, even when properly written and debugged, will face bottlenecks.
+# Introduction
+There are common situations in which your software, even when properly written and debugged, will face bottlenecks.
 
 These bottlenecks will mostly be related to the hosting machine and its limitations.
-In some cases we will be limited by the capabilities of our CPU. In other cases it will be the machines disk I/O capabilities. RAM can also become a bottleneck - even for today's monstrous machines.
+In some cases, we may limited by the capabilities of our CPU. In other cases the limiting factor will be our machine's disk I/O capabilities. RAM can also become a bottleneck, even for today's monstrous machines.
 
-In this article, we will try to examine several of these situations and suggest a queue based solution to them.
+In this article, we will try to examine several of these situations and come upon a queue-based solution to them.
 
-This article will be an “overview” article and will not be specific to any technology (though relevant technologies will be mentioned).
-
-If you feel like a specific topic is of specific interest to you, please drop me a word in the comments section and I will try to provide a follow-up article.
+This article will serve as an “overview” rather than being specific to any technology (though it will mention the relevant technologies). If you feel like a specific topic is of interest to you, please drop me a word in the comments section, and I will try to provide a follow-up article.
 
 Let’s get started!
  
-Common Use Cases
-	The use cases we will examine are the following:
+# Common Use Cases
 
-1.	Managing the consumption rate of data per client, through shifting from push to pull.
-2.	Making unreliable messaging between software components reliable.
-3.	Introducing load-balancing to our system, using queues and multi-instance (of software components)  deployment.
-4.	Utilizing resources in parallel, when possible, in order to process more data per unit of time.
+The use cases we will examine are the following:
 
-There are probably more use cases where queues can and are being used. This article is about minimizing bottlenecks and will focus on relevant use cases.
+1.	Managing the consumption rate of data **per client**, through shifting from push to pull.
+2.	Making unreliable messaging between software components **reliable**.
+3.	Introducing **load-balancing** to our system, using queues and multi-instance (of software components) deployment.
+4.	Utilizing resources in **parallel** to process more data per unit of time.
+
+There are more use-cases where queues are being used. However, this article being an overview, we will focus on the most relevant ways of using queues for minimizing bottlenecks.
  
-Shifting from Push to Pull - Preventing Client Overload
-	We all make the mistake of writing a piece of code to which we send requests to.
+## Shifting from Push to Pull - Preventing Client Overload
+
+We all make the mistake of writing a piece of code to which we send requests.
+
+![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/244f41a1-5576-4df2-b74e-25823b7850c1.png)
+
+Writing that code is not the problem, of course. The problem arises when we fail to consider the scenario in which this piece of code has to process more requests than it can handle.
 
 
- 
+![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/3bd34ce8-4f8d-425e-84b4-e7d96bd8ff67.png)
 
-Writing that code is not the problem, of course :-).
 
-Not considering the scenario where this piece of code has to process more requests than it can is.
+In cases where there is a direct connection between a message producer and a message consumer, if a producer produces more messages than the consumer can consume, several things can happen. The diagrams below will cover these cases in detail.
 
- 
+In case the producer waits for the previous message to be fully consumed, subsequent messages will be **produced with delay.**
 
-In cases where there is a direct connection between a message producer and a  message consumer, several things can happen when the producer can produce more messages than the consumer can consume:
-In case the producer waits for the previous message to be fully consumed, following messages will be produced with delay.
+![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/ed7ca8c2-1fdc-4e62-817f-a67102c9da51.png)
 
- 
 
-In case the producer doesn’t wait for the previous message to be fully consumed, following messages will be produced on-time, but will be consumed with delay.
+If the producer doesn’t wait for the previous message to be fully consumed, following messages will be produced on-time but **consumed with delay.**
 
- 
 
-In both scenarios, a bottleneck will be generated in-process. This is bad.
+![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/ba97ce0d-ec00-4336-9e10-b02aaa3e3bb7.png)
 
-This could lead to a bloat in RAM usage on either sides, where the messages are waiting to be consumed.
+In both scenarios, an **in-process bottleneck** will result. This is bad for performance. A bottleneck could lead to a bloat in RAM usage on whichever side (producer or consumer) the messages are waiting to be consumed.
 
- 
+
 
 The bottlenecked process uses so much RAM that it slows down as paging takes place and possibly eventually blocks the entire host machine.
 
