@@ -1,3 +1,8 @@
+### Building a GraphQL Server with Spring Boot by Esteban Herrera
+- [Read the guide](https://www.pluralsight.com/guides/java-and-j2ee/building-a-graphql-server-with-spring-boot)
+- [Read more from Esteban Herrera](https://www.pluralsight.com/guides/author/eh3rrera) <img src="https://avatars2.githubusercontent.com/u/11665759?v=4" width="30" height="30" alt="Esteban Herrera" />
+- Related to: Java and J2EE
+
 ### Boost Android Development Skills To Produce Quality Apps  by Pavneet Singh
 - [Read the guide](https://www.pluralsight.com/guides/android/boost-android-development-skills-to-produce-quality-apps)
 - [Read more from Pavneet Singh](https://www.pluralsight.com/guides/author/Pavneet-Sing) <img src="https://avatars1.githubusercontent.com/u/11755381?v=4" width="30" height="30" alt="Pavneet Singh" />
