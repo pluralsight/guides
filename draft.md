@@ -1,3 +1,8 @@
+### Creating a tic-tac-toe app with React Native and Pusher by Wern Ancheta
+- [Read the guide](https://www.pluralsight.com/guides/node-js/creating-a-tic-tac-toe-app-with-react-native-and-pusher?status=draft)
+- [Read more from Wern Ancheta](https://www.pluralsight.com/guides/author/anchetaWern) <img src="https://avatars3.githubusercontent.com/u/743603?v=4" width="30" height="30" alt="Wern Ancheta" />
+- Related to: Node.js
+
 ### Creating a Ride-booking app with React Native and Pusher by Wern Ancheta
 - [Read the guide](https://www.pluralsight.com/guides/node-js/creating-a-ride-booking-app-with-react-native-and-pusher?status=draft)
 - [Read more from Wern Ancheta](https://www.pluralsight.com/guides/author/anchetaWern) <img src="https://avatars3.githubusercontent.com/u/743603?v=4" width="30" height="30" alt="Wern Ancheta" />
