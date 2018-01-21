@@ -1,3 +1,8 @@
+### SOLID Software Design Principles and How They Fit in a Microservices Architecture Design by Kobi Hikri
+- [Read the guide](https://www.pluralsight.com/guides/software-engineering-best-practices/solid-software-design-principles-and-how-they-fit-in-a-microservices-architecture-design?status=in-review)
+- [Read more from Kobi Hikri](https://www.pluralsight.com/guides/author/kobihikri) <img src="https://avatars2.githubusercontent.com/u/4434689?v=4" width="30" height="30" alt="Kobi Hikri" />
+- Related to: Software Engineering Best Practices
+
 ### ASP.NET Core MVC Client Data Validation - Part 1: ViewModels and Data Annotations by ajsaulsberry
 - [Read the guide](https://www.pluralsight.com/guides/microsoft-net/asp-net-core-mvc-client-data-validation-part-1-viewmodels-and-data-annotations?status=in-review)
 - [Read more from ajsaulsberry](https://www.pluralsight.com/guides/author/ajsaulsberry) <img src="https://avatars1.githubusercontent.com/u/11444510?v=4" width="30" height="30" alt="ajsaulsberry" />
