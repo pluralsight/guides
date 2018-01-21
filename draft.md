@@ -1,8 +1,3 @@
-### SOLID Software Design Principles and How They Fit in a Microservices Architecture Design by Kobi Hikri
-- [Read the guide](https://www.pluralsight.com/guides/software-engineering-best-practices/solid-software-design-principles-and-how-they-fit-in-a-microservices-architecture-design?status=draft)
-- [Read more from Kobi Hikri](https://www.pluralsight.com/guides/author/kobihikri) <img src="https://avatars2.githubusercontent.com/u/4434689?v=4" width="30" height="30" alt="Kobi Hikri" />
-- Related to: Software Engineering Best Practices
-
 ### Creating a tic-tac-toe app with React Native and Pusher by Wern Ancheta
 - [Read the guide](https://www.pluralsight.com/guides/node-js/creating-a-tic-tac-toe-app-with-react-native-and-pusher?status=draft)
 - [Read more from Wern Ancheta](https://www.pluralsight.com/guides/author/anchetaWern) <img src="https://avatars3.githubusercontent.com/u/743603?v=4" width="30" height="30" alt="Wern Ancheta" />
