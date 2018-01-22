@@ -1,5 +1,5 @@
-##What is Augmented Reality?
-Augmented reality is simply put the ability to place virtual elements into a real world, physical scene and interact with them.  AR opens interesting new possibilities in many areas, including navigation, gaming, military, travel, etc. 
+# What is Augmented Reality?
+Augmented reality is simply put the ability to place virtual elements into a real world, physical scene and interact with them.  AR opens exciting new possibilities in many areas, including navigation, gaming, military, travel, etc. 
 We can enhance the real world environment in ways that were not possible before. The possibilities are endless and are limited only by our creativity.
 Apple announced their ARKit framework at WWDC  in June 2017.  ARKit framework relies on advanced features like real-time world tracking and hit testing, horizontal plane detection, the ability to apply real lighting to virtual objects. 
 But we don’t have to be experts in all these areas. ARKit hides all the underlying complexity and allows creating AR applications easily. 
@@ -8,10 +8,10 @@ Your First AR App
 Prerequisites
 To implement the ARKit demos in the tutorial, you’ll need a Mac with Xcode 9. Also, ARKit requires the A9 or newer processors to perform all the complex computations in real-time.  Thus, you’ll need an iPhone SE, iPhone 6s, iPhone 6s Plus, 5th generation iPad or a newer device* running iOS 11. Note that ARKit apps won’t run in the Simulator.
 Let’s get started
-Apple made it easy for us to create beautiful, realistic augmented reality apps and games. Xcode 9 comes with an dedicated template that makes it easy for us to create our very first ARKit app.  Open up Xcode and choose File -> New -> Project. Choose the Augmented Reality App template:
-Hit Next, then pick a name for your project (e.g. “FirstARKitApp”). You can leave the defaults for the other settings (Language: Swift, Content Technology: SceneKit). Click Next then create the project in a folder of your choice.
+Apple made it easy for us to create beautiful, realistic augmented reality apps and games. Xcode 9 comes with a dedicated template that makes it easy for us to create our very first ARKit app.  Open up Xcode and choose File -> New -> Project. Choose the Augmented Reality App template:
+Hit Next, then pick a name for your project (e.g., “FirstARKitApp”). You can leave the defaults for the other settings (Language: Swift, Content Technology: SceneKit). Click Next then create the project in a folder of your choice.
 Congrats! You just created your very first augmented reality app.  Yes, you read that right! No coding required. And here’s what you’ll see after running the app on a real device.
- Now, let’s take a closer look at the project generated project. The Main.storyboard contains a single view controller which has a main view of type ARSCNView. ARSCNView is a special view used for displaying scenes that blend the device’s camera view with virtual 3D content. The view is connected to the sceneView outlet in the ViewController.swift file:  @IBOutlet var sceneView: ARSCNView!  
+ Now, let’s take a closer look at the generated project. The Main.storyboard contains a single view controller which has a main view of type ARSCNView. ARSCNView is a special view used for displaying scenes that blend the device’s camera view with virtual 3D content. The view is connected to the sceneView outlet in the ViewController.swift file:  @IBOutlet var sceneView: ARSCNView!  
 Next, let’s inspect the ViewController’s viewDidLoad() method: override func viewDidLoad() {         super.viewDidLoad()          // Set the view's delegate         sceneView.delegate = self        
         // Show statistics such as fps and timing information         sceneView.showsStatistics = true          // Create a new scene         let scene = SCNScene(named: "art.scnassets/ship.scn")!  
         // Set the scene to the view         sceneView.scene = scene     }
@@ -32,8 +32,8 @@ sceneView.scene = scene  We’re almost ready to run our first AR-app. The f
 - ARWorldTrackingConfiguration Provides high-quality AR experiences that use the rear-facing camera precisely track a device's position and orientation and allow plane detection and hit testing.
 - AROrientationTrackingConfiguration Provides basic AR experiences that use the rear-facing camera and track only a device's orientation.
 - ARFaceTrackingConfiguration Provides AR experiences that use the front-facing camera and track the movement and expressions of the user's face. 
-The ARKit template uses the ARWorldTrackingConfiguration class. This will track the device’s position and orientation changes as well. As a result, we’ll be able to freely move around the spaceship model which stays at a fixed position in the real world place.
-If I instead used a AROrientationTrackingConfiguration, the device’s position changes would not be tracked. As a consequence, the starship will move together with the device. We could use this configuration to display the planets of the solar system orbiting around our device.  Yet, the lack of position change tracking is a deal-breaker for most AR apps and games, so you’ll probably end up using ARWorldTrackingConfiguration.   In addition to position and orientation changes, ARFaceTrackingConfiguration can also track facial expressions, which opens further opportunities. Note that ARFaceTrackingConfiguration requires the iPhoneX’s TrueDepth camera.
+The ARKit template uses the ARWorldTrackingConfiguration class. This type of configuration will track the device’s position and orientation changes as well. As a result, we’ll be able to freely move around the spaceship model which stays at a fixed position in the real world place.
+If I instead used an AROrientationTrackingConfiguration, the device’s position changes would not be tracked. As a consequence, the starship will move together with the device. We could use this configuration to display the planets of the solar system orbiting around our device.   However, the lack of position change tracking is a deal-breaker for most AR apps and games, so you’ll probably end up using ARWorldTrackingConfiguration.   In addition to position and orientation changes, ARFaceTrackingConfiguration can also track facial expressions, which opens further opportunities. Note that ARFaceTrackingConfiguration requires the iPhoneX’s TrueDepth camera.
 
 Detecting Planes
 
@@ -57,7 +57,7 @@ Running the app will show visual indicators, the so-called feature points as ARK
 That’s cool, but how about visualizing the detected planes?
 Here’s where we need the ARSCNViewDelegate. As you may recall, the ARSCNView’s delegate is set to self in the viewDidLoad() delegate method:  override func viewDidLoad() {         super.viewDidLoad()          // Set the view's delegate         sceneView.delegate = self        
         …     }
-The ARSCNViewDelegate delegate provides useful delegate methods. In this demo, we’ll rely on the renderer(_:didAdd node: for anchor:) delegate method.  ARKit calls this delegate method whenever a new node corresponding to an anchor has been added to the scene. Let’s take a closer look at the method: func renderer(_ renderer: SCNSceneRenderer, didAdd node: SCNNode, for anchor: ARAnchor)  The first parameter is a scene renderer. This is our ARSCNView instance.  The second one is an SCNNode object. The third parameter is an AR anchor object corresponding to the node.  So, what’s an AR anchor object? AR anchors are used to track the real-world positions and orientations of real or simulated objects relative to the camera.  When we enable horizontal plane detection, ARKit calls the renderer(_: didAdd node:, for anchor:) delegate method automatically whenever it detects a new horizontal plane and adds a new node for it. We receive the anchor of each detected flat surface, that will be of type ARPlaneAnchor. 
+The ARSCNViewDelegate delegate provides useful delegate methods. In this demo, we’ll rely on the renderer(_:didAdd node: for anchor:) delegate method.  ARKit calls this delegate method whenever a new node corresponding to an anchor has been added to the scene. Let’s take a closer look at the method: func renderer(_ renderer: SCNSceneRenderer, didAdd node: SCNNode, for anchor: ARAnchor)  The first parameter is a scene renderer. This is our ARSCNView instance.  The second one is a SCNNode object. The third parameter is an AR anchor object corresponding to the node.  So, what’s an AR anchor object? AR anchors are used for tracking the real-world positions and orientations of real or simulated objects relative to the camera.  When we enable horizontal plane detection, ARKit calls the renderer(_: didAdd node:, for anchor:) delegate method automatically whenever it detects a new horizontal plane and adds a new node for it. We receive the anchor of each detected flat surface, that will be of type ARPlaneAnchor. 
 ARPlaneAnchor represents a planar surface in the world, defined using X and Z coordinates, where Y is the plane’s normal.
 
 Let’s implement the renderer(_: didAdd node:, for anchor:) method:  func renderer(_ renderer: SCNSceneRenderer, didAdd node: SCNNode, for anchor: ARAnchor) {
@@ -71,7 +71,7 @@ To visualize the detected planes, I create an SCNPlane object. The SCNPlane is a
 Next, I set the plane’s diffuse material to white with 75% transparency.
         let planeNode = SCNNode(geometry: plane)         planeNode.position = SCNVector3Make(planeAnchor.center.x, planeAnchor.center.y, planeAnchor.center.z)         planeNode.eulerAngles.x = -.pi / 2
         
-An SCNode gets created with the plane geometry. The node’s position shall match the anchor’s position to give us an accurate visual clue. I use the anchor center’s coordinate’s to create a 3D vector.  SCNPlane is one-sided and would appear perpendicular to the surface by default. I need to rotate the planeNode 90 degrees counter-clockwise to make it display correctly.
+A SCNode gets created with the plane geometry. The node’s position shall match the anchor’s position to give us an accurate visual clue. I use the anchor center’s coordinate’s to create a 3D vector.  SCNPlane is one-sided and would appear perpendicular to the surface by default. I need to rotate the planeNode 90 degrees counter-clockwise to make it display correctly.
         node.addChildNode(planeNode)
 Finally, we make the planeNode a child node of the newly created scene node.
 Running the app will produce results like this:
@@ -85,16 +85,16 @@ Now, we are able to detect larger continuous surfaces and display the plane over
 Build and run the app on a device. Allow ARKit to collect enough information about the environment by moving your device around flat surfaces. You’ll see ARKit in action as it updates the size and the position of the detected surfaces. 
 Virtual 3D Shapes in Your Living Room
 How about placing some 3D-objects in our living room? Now that we can detect those flat surfaces, it’s relatively easy to build a scene which blends reality with virtual objects.
-We’ll continue enhancing the app from where we left off. First, we need a SceneKit scene. Right click on your project in the project navigator, and choose “New File…”. Pick “SceneKit Scene File” and click Next. I saved it as scene3d.scn.
+We’ll continue enhancing the app from where we left off. First, we need a SceneKit scene. Right click on your project in the project navigator, and choose “New File…” Pick “SceneKit Scene File” and click Next. I saved it as scene3d.scn.
 We can use the SceneKit Editor to place various pre-defined 3D-shapes to our scene: boxes, spheres, pyramids and so on. We could also create these shapes in code, but I used the scene editor to keep it brief.
 I created a private method to load the scene:
 private func loadScene() {         guard let scene = SCNScene(named: "art.scnassets/geometry.scn") else {             print("Could not load scene!")             return         }
         let childNodes = scene.rootNode.childNodes        
         for childNode in childNodes {             sceneNode.addChildNode(childNode)         }     }
- I also added a property called sceneNode:  var sceneNode = SCNNode() This will be the parent node for the nodes in the loaded scene.  I call the loadScene() method from viewDidLoad(), but I don’t want display the scene yet. My aim is to place the scene once ARKit detects a horizontal plane. As you may recall, the renderer(_:, didAdd node:, for anchor:) delegate method gets called whenever a new anchor is detected and a corresponding node is created. So, all we have to do is to add our scene to this node. Here’s our enhanced delegate method:
+ I also added a property called sceneNode:  var sceneNode = SCNNode() This will be the parent node for the nodes in the scene.  I call the loadScene() method from viewDidLoad(), but I don’t want to display the scene yet. I aim to place the scene once ARKit detects a horizontal plane. As you may recall, the renderer(_:, didAdd node:, for anchor:) delegate method gets called whenever a new anchor is detected, and a corresponding node is created. So, all we have to do is to add our scene to this node. Here’s our enhanced delegate method:
 func renderer(_ renderer: SCNSceneRenderer, didAdd node: SCNNode, for anchor: ARAnchor) {
     if let planeAnchor = anchor as? ARPlaneAnchor {        …              if !isSceneRendered {                 isSceneRendered = true                  sceneNode.scale = SCNVector3(0.01, 0.01, 0.01)                 sceneNode.position = SCNVector3Zero                 node.addChildNode(sceneNode)             }     } }
-Note that I created a new boolean property. By checking the isSceneRendered property we ensure that the scene is only added to the node belonging to the first to detected horizontal plane. The other couple of lines of code set the scale and the position of the scene node. Finally, I add the sceneNode as a child node.  Now walk around your home with the app running on your iPhone. ARKit will soon detect a flat surface and you should see the scene appearing at random places:
+Note that I created a new boolean property. By checking the isSceneRendered property, we ensure that the scene is only added to the node belonging to the first to detected horizontal plane. The other couple of lines of code set the scale and the position of the scene node. Finally, I add the sceneNode as a child node.  Now walk around your home with the app running on your iPhone. ARKit will soon detect a flat surface, and you should see the scene appearing at random places:
 
 
 
@@ -113,7 +113,7 @@ Devices that can run ARKit can render more complex scenes. Here’s a scene I pu
    
 
 Where to Go from Here?
-If you enjoyed this quick introduction to ARKit, you’ll probably want to find out more.   I collected a couple of links for you: - Introducing ARKit (WWDC 2017): https://developer.apple.com/videos/play/wwdc2017/602/ - Official ARKit site: https://developer.apple.com/arkit  - Free and premium 3D models for your ARKit/SceneKit apps: free3d.com, https://sketchfab.com, https://www.turbosquid.com 
+If you enjoyed this quick introduction to ARKit, you'd probably want to find out more.   I collected a couple of links for you: - Introducing ARKit (WWDC 2017): https://developer.apple.com/videos/play/wwdc2017/602/ - Official ARKit site: https://developer.apple.com/arkit  - Free and premium 3D models for your ARKit/SceneKit apps: free3d.com, https://sketchfab.com, https://www.turbosquid.com 
 - Blender, free 3D creation tool: https://www.blender.org
 Also, you may want to check out my Swift courses on Pluralsight 
 
