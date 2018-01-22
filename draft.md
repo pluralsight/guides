@@ -1,8 +1,3 @@
-### Introduction to Augmented Reality with ARKit by Károly Nyisztor
-- [Read the guide](https://www.pluralsight.com/guides/other/introduction-to-augmented-reality-with-arkit?status=draft)
-- [Read more from Károly Nyisztor](https://www.pluralsight.com/guides/author/nyisztor) <img src="https://avatars1.githubusercontent.com/u/198511?v=4" width="30" height="30" alt="Károly Nyisztor" />
-- Related to: other
-
 ### Creating a tic-tac-toe app with React Native and Pusher by Wern Ancheta
 - [Read the guide](https://www.pluralsight.com/guides/node-js/creating-a-tic-tac-toe-app-with-react-native-and-pusher?status=draft)
 - [Read more from Wern Ancheta](https://www.pluralsight.com/guides/author/anchetaWern) <img src="https://avatars3.githubusercontent.com/u/743603?v=4" width="30" height="30" alt="Wern Ancheta" />
