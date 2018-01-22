@@ -3,7 +3,7 @@ Augmented reality is simply put the ability to place virtual elements into a rea
 
 We can enhance the real world environment in ways that were not possible before. The possibilities are endless and are limited only by our creativity.
 
-Apple announced their ARKit framework at WWDC in June 2017. The ARKit framework relies on advanced features like real-time world tracking and hit testing, horizontal plane detection, the ability to apply real lighting to virtual objects. 
+Apple announced their *ARKit framework* at WWDC in June 2017. The ARKit framework relies on advanced features like real-time world tracking and hit testing, horizontal plane detection, the ability to apply real lighting to virtual objects. 
 
 But we don’t have to be experts in all these areas. ARKit hides all the underlying complexity and allows creating AR applications easily. 
 
@@ -233,7 +233,8 @@ Next, I set the plane’s ```width``` and ```height``` to the anchor ```extent``
 Next, I set the plane’s diffuse material to white with 75% transparency.
 ```
    let planeNode = SCNNode(geometry: plane)         
-   planeNode.position = SCNVector3Make(planeAnchor.center.x, planeAnchor.center.y, planeAnchor.center.z)   planeNode.eulerAngles.x = -.pi / 2
+   planeNode.position = SCNVector3Make(planeAnchor.center.x, planeAnchor.center.y, planeAnchor.center.z) 
+   planeNode.eulerAngles.x = -.pi / 2
 ```     
 A ```SCNode``` gets created with the plane geometry. The node’s position shall match the anchor’s position to give us an accurate visual clue. I use the anchor ```center```’s coordinate’s to create a 3D vector. ```SCNPlane``` is one-sided and would appear perpendicular to the surface by default. I need to rotate the ```planeNode``` 90 degrees counter-clockwise to make it display correctly.
 ```
