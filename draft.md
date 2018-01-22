@@ -1,3 +1,8 @@
+### MVP with testing by Pavneet Singh
+- [Read the guide](https://www.pluralsight.com/guides/android/mvp-with-testing?status=draft)
+- [Read more from Pavneet Singh](https://www.pluralsight.com/guides/author/Pavneet-Sing) <img src="https://avatars1.githubusercontent.com/u/11755381?v=4" width="30" height="30" alt="Pavneet Singh" />
+- Related to: Android
+
 ### Introduction to Augmented Reality with ARKit by Károly Nyisztor
 - [Read the guide](https://www.pluralsight.com/guides/other/introduction-to-augmented-reality-with-arkit?status=draft)
 - [Read more from Károly Nyisztor](https://www.pluralsight.com/guides/author/nyisztor) <img src="https://avatars1.githubusercontent.com/u/198511?v=4" width="30" height="30" alt="Károly Nyisztor" />
