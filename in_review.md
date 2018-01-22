@@ -48,11 +48,6 @@
 - [Read more from chen-levkovich](https://www.pluralsight.com/guides/author/chen-levkovich) <img src="https://avatars0.githubusercontent.com/u/26025482?v=4" width="30" height="30" alt="chen-levkovich" />
 - Related to: other
 
-### Get Rid of That Bottleneck Using Modern Queue Techniques by Kobi Hikri
-- [Read the guide](https://www.pluralsight.com/guides/software-engineering-best-practices/get-rid-of-that-bottleneck-using-modern-queue-techniques?status=in-review)
-- [Read more from Kobi Hikri](https://www.pluralsight.com/guides/author/kobihikri) <img src="https://avatars2.githubusercontent.com/u/4434689?v=4" width="30" height="30" alt="Kobi Hikri" />
-- Related to: Software Engineering Best Practices
-
 ### Getting started with Vue.JS (part-1) by A M Rahman
 - [Read the guide](https://www.pluralsight.com/guides/front-end-javascript/getting-started-with-vue-js-part-1?status=in-review)
 - [Read more from A M Rahman](https://www.pluralsight.com/guides/author/amrahman90) <img src="https://avatars2.githubusercontent.com/u/28068398?v=3" width="30" height="30" alt="A M Rahman" />
