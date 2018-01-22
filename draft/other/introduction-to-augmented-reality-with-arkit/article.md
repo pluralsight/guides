@@ -11,7 +11,7 @@ Here’s a screenshot from the AR-demo we’re going to build in this tutorial:
 
 ![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/66eb6c0f-bb81-4937-b477-7e968e153310.PNG)
 
-Follow along with me to see how we get there.
+Follow along with me to see how we get there. You can download the demo projects from [Github](https://github.com/nyisztor/arkit-intro)
 
 # Your First AR App
 You're going to create your first iOS augmented reality app in a matter of minutes. Fired up? Read along.
@@ -330,6 +330,8 @@ Devices supporting ARKit can render more complex scenes. Here’s a scene I put 
 ![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/2b87593c-178e-46e6-be2d-f16cf81719bf.PNG)
 
 ![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/9e15f7ec-c880-4a50-9580-54ae062dac4a.PNG)
+
+Don't forget to check out the [demo projects on Github](https://github.com/nyisztor/arkit-intro)
 
 # Where to Go from Here?
 If you enjoyed this quick introduction to ARKit, you'd probably want to find out more. 
