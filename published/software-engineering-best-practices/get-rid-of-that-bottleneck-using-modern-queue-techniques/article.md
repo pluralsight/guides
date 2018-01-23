@@ -1,3 +1,4 @@
+
 # Introduction
 There are common situations in which your software, even when properly written and debugged, will face bottlenecks.
 
@@ -81,18 +82,18 @@ The message consumer then consumes messages as soon as possible by **pulling** f
 
 Let's see if this design handles the problematic bottlenecks from before.
 
-To begin with, **messages will no longer face a delay in being produced,** assuming our queue design is robust, which, if we are using technologies such as [MSMQ](https://msdn.microsoft.com/en-us/library/ms711472(v=vs.85).aspx) or Apache Kafka, is a fair assumption.
+To begin with, **messages will no longer face a delay in being produced,** assuming our queue design is robust, which, if we are using technologies such as [MSMQ](https://goo.gl/LsJyCS) or [Apache Kafka](https://kafka.apache.org/), is a fair assumption.
 
 
 ![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/261dbc0e-4416-48fc-bfb9-ec9547083dda.png)
 
 
-Furthermore, our consumer is still able to consume just as many messages as before but now has control over the rate of message consumption.
+Furthermore, **our consumer** is still able to consume just as many messages as before but now **has control** over the **rate** of message consumption.
 
 
 ![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/05161761-952f-4a29-b361-931f1c3fa8d3.png)
 
-This is done without “bloating” RAM and risking an out-of-memory exception, as pending messages are stored in the queue instead of in RAM processes. We will consider enhancing our architecture to increase message consumption rate a bit later in this article.
+This is done without “bloating” RAM and risking an out-of-memory exception, as pending messages are stored in the queue instead of in processes RAM. We will consider enhancing our architecture to increase message consumption rate a bit later in this article.
 
 Seems nice, right? This architecture outsources our message production/consumption bottlenecks to a third party technology, thus making our software platform more reliable (i.e. reduced risk of out of memory exceptions).
 
