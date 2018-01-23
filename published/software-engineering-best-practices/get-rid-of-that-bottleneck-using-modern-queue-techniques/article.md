@@ -89,15 +89,13 @@ To begin with, **messages will no longer face a delay in being produced,** assum
 
 Furthermore, **our consumer** is still able to consume just as many messages as before but now **has control** over the **rate** of message consumption.
 
-
 ![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/05161761-952f-4a29-b361-931f1c3fa8d3.png)
 
-This is done without “bloating” RAM and risking an out-of-memory exception, as pending messages are stored in the queue instead of in processes RAM. We will consider enhancing our architecture to increase message consumption rate a bit later in this article.
+This is done without “bloating” RAM and risking an out-of-memory exception, as pending messages are now stored in the queue instead of in RAM. Later in this article, we will consider enhancing our architecture to increase message consumption rate.
 
 Seems nice, right? This architecture outsources our message production/consumption bottlenecks to a third party technology, thus making our software platform more reliable (i.e. reduced risk of out of memory exceptions).
 
 Lets see what other benefits queues can offer.
-
  
 # Reliable Messaging Systems
 
@@ -140,6 +138,10 @@ In the same way, when the developer's code has something to say to the world (i.
 ![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/6fd95380-098f-438e-8394-87f9c3de8bbd.png)
 
 Using a decent queue technology like [Apache Kafka](https://kafka.apache.org/) &mdash; which is much more than a queue actually &mdash; will allow us to separate the concern of system-wide reliable messaging from our code base and outsource that concern to a proven, mature technology that specializes in reliable message delivery. Having done that, we will also have created a healthy integration point between our software development team and our DevOps team from the standpoint of the product development life cycle.
+
+
+![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/a76d32e1-1fdd-4325-83f6-17a265d9bd05.png)
+
 
 Our DevOps team will deploy our software to their environment and provide feedback on messaging issues, bottlenecks, and other unacceptable messaging delays relaying even before our version has reached the QA team! Possibly even as part of automated build test on an environment “closer to real-life” than the developer's environment.
 
