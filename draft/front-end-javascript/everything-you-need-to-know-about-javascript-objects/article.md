@@ -116,7 +116,9 @@ musician.instrument = 'piano';
 
 When we call a function using operator **new**, several things are being happened:
 - A new empty object is created implicitly inside of the constructor function and it is being assigned to the **this** pointer. **This** is a reserved keyword in JavaScript and it is a pointer which always points to an object, in dependence of the execution context. In this case, it points to an empty object.
-
+- Every object has an implicit property which value is a pointer to the prototype of an object it is derived from. This is the *__*proto*__* property. In this case, this.*__*proto*__* points to the prototype of the constructor function (i.e. *Person.prototype*). This cannot access to this property directly, since it is a part of scope chain mechanism, which will be considered later in this tutorial. We can only get its value using the [Object.getPrototypeOf](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/getPrototypeOf) method.
+- Every object has the **constructor** property as well, which points to its constructor function, so in this case it will point to the *Person* function.
+- If the constructor function doesn't return the pointer to the new object explicitly, it will return the **this** pointer.
 
 ### Property descriptor
 
@@ -125,3 +127,5 @@ Beside `value`, `configurable`
 ### Getters and setters
 
 ### Copying objects
+
+## Scope Chain

@@ -1,14 +1,3 @@
-Introduction
-Common Use Cases
-Shifting from Push to Pull - Preventing Client Overload
-Reliable Messaging Systems
-Load Balancing
-Parallel Processing
-In Conclusion
-
-
-
- 
 # Introduction
 There are common situations in which your software, even when properly written and debugged, will face bottlenecks.
 
@@ -92,18 +81,18 @@ The message consumer then consumes messages as soon as possible by **pulling** f
 
 Let's see if this design handles the problematic bottlenecks from before.
 
-To begin with, **messages will no longer face a delay in being produced,** assuming our queue design is robust, which, if we are using technologies such as MSMQ or Apache Kafka, is a fair assumption.
+To begin with, **messages will no longer face a delay in being produced,** assuming our queue design is robust, which, if we are using technologies such as [MSMQ](https://goo.gl/LsJyCS) or [Apache Kafka](https://kafka.apache.org/), is a fair assumption.
 
 
 ![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/261dbc0e-4416-48fc-bfb9-ec9547083dda.png)
 
 
-Furthermore, our consumer is still able to consume just as many messages as before but now has control over the rate of message consumption.
+Furthermore, **our consumer** is still able to consume just as many messages as before but now **has control** over the **rate** of message consumption.
 
 
 ![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/05161761-952f-4a29-b361-931f1c3fa8d3.png)
 
-This is done without “bloating” RAM and risking an out-of-memory exception, as pending messages are stored in the queue instead of in RAM processes. We will consider enhancing our architecture to increase message consumption rate a bit later in this article.
+This is done without “bloating” RAM and risking an out-of-memory exception, as pending messages are stored in the queue instead of in processes RAM. We will consider enhancing our architecture to increase message consumption rate a bit later in this article.
 
 Seems nice, right? This architecture outsources our message production/consumption bottlenecks to a third party technology, thus making our software platform more reliable (i.e. reduced risk of out of memory exceptions).
 
@@ -133,11 +122,13 @@ First of all, it requires the producing service to be familiar with the consumin
 
 ![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/fc37493d-e28d-414a-96bb-a83182b9bcea.png)
 
-We will have to write code that behaves according to its configuration, manages endpoints (“discovers” new endpoints, load-balancing traffic among them), and basically has built-in additional infrastructure modules. 
+We will have to write code that behaves according to its configuration, manages endpoints (“discovers” new endpoints, load-balancing traffic among them), and basically has built-in **additional infrastructure modules**. 
 
-However, service-discovery, load-balancing, dynamic system scaling, and reliable messaging should be taken care of by the infrastructure managed by the DevOps team, not the software team!
+I claim that these concern should remain in the realm of DevOps, and not software design.
+Service discovery, load balancing, dynamic system scaling and reliable messaging should be taken care of by the infrastructure managed by our DevOps team!.
 
-A software engineer should focus on the algorithmic problem to be solved and simply **declare** the messages that need to be consumed, letting the infrastructure handle message delivery to the code in question.
+
+I believe that a software engineer should focus at the algorithmic problem he is trying to solve, and simply **declare** the messages he wants to consume and have the infrastructure deliver these messages to his code.
 
 
 ![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/3ea6bf56-1c1c-4a51-973c-cdb5a0ee030c.png)
@@ -148,7 +139,7 @@ In the same way, when the developer's code has something to say to the world (i.
 
 ![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/6fd95380-098f-438e-8394-87f9c3de8bbd.png)
 
-Using a decent queue technology like [Apache Kafka](https://kafka.apache.org/) &mdash; a framework which has much more than just queue infrastructure &mdash; will allow us to separate the concern of system-wide reliable messaging from our code base and outsource that concern to a proven, mature technology that specializes in reliable message delivery. Having done that, we will also have created a healthy integration point between our software development team and our DevOps team from the standpoint of the product development life cycle.
+Using a decent queue technology like [Apache Kafka](https://kafka.apache.org/) &mdash; which is much more than a queue actually &mdash; will allow us to separate the concern of system-wide reliable messaging from our code base and outsource that concern to a proven, mature technology that specializes in reliable message delivery. Having done that, we will also have created a healthy integration point between our software development team and our DevOps team from the standpoint of the product development life cycle.
 
 Our DevOps team will deploy our software to their environment and provide feedback on messaging issues, bottlenecks, and other unacceptable messaging delays relaying even before our version has reached the QA team! Possibly even as part of automated build test on an environment “closer to real-life” than the developer's environment.
 

@@ -1,0 +1,15 @@
+{
+    "_publish_status": "in-review",
+    "author_name": "kobihikri",
+    "author_real_name": "Kobi Hikri",
+    "branch": "master",
+    "branches": [],
+    "filename": "article.md",
+    "first_commit": "6f43fcf540adc46ad06f10cf94b9b3f10583b4f7",
+    "image_url": "https://avatars2.githubusercontent.com/u/4434689?v=4",
+    "stacks": [
+        "Software Engineering Best Practices"
+    ],
+    "thumbnail_url": null,
+    "title": "SOLID Software Design Principles and How They Fit in a Microservices Architecture Design"
+}

@@ -1,3 +1,23 @@
+### Introduction to Augmented Reality with ARKit by Károly Nyisztor
+- [Read the guide](https://www.pluralsight.com/guides/other/introduction-to-augmented-reality-with-arkit?status=in-review)
+- [Read more from Károly Nyisztor](https://www.pluralsight.com/guides/author/nyisztor) <img src="https://avatars1.githubusercontent.com/u/198511?v=4" width="30" height="30" alt="Károly Nyisztor" />
+- Related to: other
+
+### MVP with testing by Pavneet Singh
+- [Read the guide](https://www.pluralsight.com/guides/android/mvp-with-testing?status=in-review)
+- [Read more from Pavneet Singh](https://www.pluralsight.com/guides/author/Pavneet-Sing) <img src="https://avatars1.githubusercontent.com/u/11755381?v=4" width="30" height="30" alt="Pavneet Singh" />
+- Related to: Android
+
+### ASP.NET Core MVC Client Data Validation - Part 2: jQuery validation by ajsaulsberry
+- [Read the guide](https://www.pluralsight.com/guides/microsoft-net/asp-net-core-mvc-client-data-validation-part-2-jquery-validation?status=in-review)
+- [Read more from ajsaulsberry](https://www.pluralsight.com/guides/author/ajsaulsberry) <img src="https://avatars1.githubusercontent.com/u/11444510?v=4" width="30" height="30" alt="ajsaulsberry" />
+- Related to: Microsoft.NET (C#, ASP.NET, VB.NET, etc)
+
+### SOLID Software Design Principles and How They Fit in a Microservices Architecture Design by Kobi Hikri
+- [Read the guide](https://www.pluralsight.com/guides/software-engineering-best-practices/solid-software-design-principles-and-how-they-fit-in-a-microservices-architecture-design?status=in-review)
+- [Read more from Kobi Hikri](https://www.pluralsight.com/guides/author/kobihikri) <img src="https://avatars2.githubusercontent.com/u/4434689?v=4" width="30" height="30" alt="Kobi Hikri" />
+- Related to: Software Engineering Best Practices
+
 ### ASP.NET Core MVC Client Data Validation - Part 1: ViewModels and Data Annotations by ajsaulsberry
 - [Read the guide](https://www.pluralsight.com/guides/microsoft-net/asp-net-core-mvc-client-data-validation-part-1-viewmodels-and-data-annotations?status=in-review)
 - [Read more from ajsaulsberry](https://www.pluralsight.com/guides/author/ajsaulsberry) <img src="https://avatars1.githubusercontent.com/u/11444510?v=4" width="30" height="30" alt="ajsaulsberry" />
@@ -27,16 +47,6 @@
 - [Read the guide](https://www.pluralsight.com/guides/other/building-your-first-conversational-app?status=in-review)
 - [Read more from chen-levkovich](https://www.pluralsight.com/guides/author/chen-levkovich) <img src="https://avatars0.githubusercontent.com/u/26025482?v=4" width="30" height="30" alt="chen-levkovich" />
 - Related to: other
-
-### Building a GraphQL Server with Spring Boot by Esteban Herrera
-- [Read the guide](https://www.pluralsight.com/guides/java-and-j2ee/building-a-graphql-server-with-spring-boot?status=in-review)
-- [Read more from Esteban Herrera](https://www.pluralsight.com/guides/author/eh3rrera) <img src="https://avatars2.githubusercontent.com/u/11665759?v=4" width="30" height="30" alt="Esteban Herrera" />
-- Related to: Java and J2EE
-
-### Get Rid of That Bottleneck Using Modern Queue Techniques by Kobi Hikri
-- [Read the guide](https://www.pluralsight.com/guides/software-engineering-best-practices/get-rid-of-that-bottleneck-using-modern-queue-techniques?status=in-review)
-- [Read more from Kobi Hikri](https://www.pluralsight.com/guides/author/kobihikri) <img src="https://avatars2.githubusercontent.com/u/4434689?v=4" width="30" height="30" alt="Kobi Hikri" />
-- Related to: Software Engineering Best Practices
 
 ### Getting started with Vue.JS (part-1) by A M Rahman
 - [Read the guide](https://www.pluralsight.com/guides/front-end-javascript/getting-started-with-vue-js-part-1?status=in-review)

@@ -1,0 +1,15 @@
+{
+    "_publish_status": "in-review",
+    "author_name": "ajsaulsberry",
+    "author_real_name": "ajsaulsberry",
+    "branch": "master",
+    "branches": [],
+    "filename": "article.md",
+    "first_commit": "5d39119058b6b4f540c2217a4f85e92d24175e2a",
+    "image_url": "https://avatars1.githubusercontent.com/u/11444510?v=4",
+    "stacks": [
+        "Microsoft.NET (C#, ASP.NET, VB.NET, etc)"
+    ],
+    "thumbnail_url": null,
+    "title": "ASP.NET Core MVC Client Data Validation - Part 2: jQuery validation"
+}
