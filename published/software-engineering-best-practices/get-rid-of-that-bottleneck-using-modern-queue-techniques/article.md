@@ -1,4 +1,3 @@
-
 # Introduction
 There are common situations in which your software, even when properly written and debugged, will face bottlenecks.
 
@@ -123,11 +122,13 @@ First of all, it requires the producing service to be familiar with the consumin
 
 ![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/fc37493d-e28d-414a-96bb-a83182b9bcea.png)
 
-We will have to write code that behaves according to its configuration, manages endpoints (“discovers” new endpoints, load-balancing traffic among them), and basically has built-in additional infrastructure modules. 
+We will have to write code that behaves according to its configuration, manages endpoints (“discovers” new endpoints, load-balancing traffic among them), and basically has built-in **additional infrastructure modules**. 
 
-However, service-discovery, load-balancing, dynamic system scaling, and reliable messaging should be taken care of by the infrastructure managed by the DevOps team, not the software team!
+I claim that these concern should remain in the realm of DevOps, and not software design.
+Service discovery, load balancing, dynamic system scaling and reliable messaging should be taken care of by the infrastructure managed by our DevOps team!.
 
-A software engineer should focus on the algorithmic problem to be solved and simply **declare** the messages that need to be consumed, letting the infrastructure handle message delivery to the code in question.
+
+I believe that a software engineer should focus at the algorithmic problem he is trying to solve, and simply **declare** the messages he wants to consume and have the infrastructure deliver these messages to his code.
 
 
 ![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/3ea6bf56-1c1c-4a51-973c-cdb5a0ee030c.png)
@@ -138,7 +139,7 @@ In the same way, when the developer's code has something to say to the world (i.
 
 ![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/6fd95380-098f-438e-8394-87f9c3de8bbd.png)
 
-Using a decent queue technology like [Apache Kafka](https://kafka.apache.org/) &mdash; a framework which has much more than just queue infrastructure &mdash; will allow us to separate the concern of system-wide reliable messaging from our code base and outsource that concern to a proven, mature technology that specializes in reliable message delivery. Having done that, we will also have created a healthy integration point between our software development team and our DevOps team from the standpoint of the product development life cycle.
+Using a decent queue technology like [Apache Kafka](https://kafka.apache.org/) &mdash; which is much more than a queue actually &mdash; will allow us to separate the concern of system-wide reliable messaging from our code base and outsource that concern to a proven, mature technology that specializes in reliable message delivery. Having done that, we will also have created a healthy integration point between our software development team and our DevOps team from the standpoint of the product development life cycle.
 
 Our DevOps team will deploy our software to their environment and provide feedback on messaging issues, bottlenecks, and other unacceptable messaging delays relaying even before our version has reached the QA team! Possibly even as part of automated build test on an environment “closer to real-life” than the developer's environment.
 
