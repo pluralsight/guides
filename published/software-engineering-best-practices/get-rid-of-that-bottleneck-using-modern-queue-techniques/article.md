@@ -81,7 +81,7 @@ The message consumer then consumes messages as soon as possible by **pulling** f
 
 Let's see if this design handles the problematic bottlenecks from before.
 
-To begin with, **messages will no longer face a delay in being produced,** assuming our queue design is robust, which, if we are using technologies such as MSMQ or Apache Kafka, is a fair assumption.
+To begin with, **messages will no longer face a delay in being produced,** assuming our queue design is robust, which, if we are using technologies such as [MSMQ](https://msdn.microsoft.com/en-us/library/ms711472(v=vs.85).aspx) or Apache Kafka, is a fair assumption.
 
 
 ![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/261dbc0e-4416-48fc-bfb9-ec9547083dda.png)
