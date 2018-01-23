@@ -1,14 +1,3 @@
-Introduction
-Common Use Cases
-Shifting from Push to Pull - Preventing Client Overload
-Reliable Messaging Systems
-Load Balancing
-Parallel Processing
-In Conclusion
-
-
-
- 
 # Introduction
 There are common situations in which your software, even when properly written and debugged, will face bottlenecks.
 
