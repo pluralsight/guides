@@ -1,3 +1,8 @@
+### ASP.NET Core MVC Client Data Validation - Part 3: Controller validation by ajsaulsberry
+- [Read the guide](https://www.pluralsight.com/guides/microsoft-net/asp-net-core-mvc-client-data-validation-part-3-controller-validation?status=in-review)
+- [Read more from ajsaulsberry](https://www.pluralsight.com/guides/author/ajsaulsberry) <img src="https://avatars1.githubusercontent.com/u/11444510?v=4" width="30" height="30" alt="ajsaulsberry" />
+- Related to: Microsoft.NET (C#, ASP.NET, VB.NET, etc)
+
 ### Introduction to Augmented Reality with ARKit by Károly Nyisztor
 - [Read the guide](https://www.pluralsight.com/guides/other/introduction-to-augmented-reality-with-arkit?status=in-review)
 - [Read more from Károly Nyisztor](https://www.pluralsight.com/guides/author/nyisztor) <img src="https://avatars1.githubusercontent.com/u/198511?v=4" width="30" height="30" alt="Károly Nyisztor" />
