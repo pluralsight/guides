@@ -1,3 +1,8 @@
+### How to build a Laravel chat app with Pusher by Chimezie Enyinnaya
+- [Read the guide](https://www.pluralsight.com/guides/php/how-to-build-a-laravel-chat-app-with-pusher?status=in-review)
+- [Read more from Chimezie Enyinnaya](https://www.pluralsight.com/guides/author/ammezie) <img src="https://avatars1.githubusercontent.com/u/6279134?v=4" width="30" height="30" alt="Chimezie Enyinnaya" />
+- Related to: PHP
+
 ### ASP.NET Core MVC Client Data Validation - Part 3: Controller validation by ajsaulsberry
 - [Read the guide](https://www.pluralsight.com/guides/microsoft-net/asp-net-core-mvc-client-data-validation-part-3-controller-validation?status=in-review)
 - [Read more from ajsaulsberry](https://www.pluralsight.com/guides/author/ajsaulsberry) <img src="https://avatars1.githubusercontent.com/u/11444510?v=4" width="30" height="30" alt="ajsaulsberry" />
