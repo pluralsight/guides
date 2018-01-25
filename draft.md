@@ -1,3 +1,8 @@
+### ASP.NET Core MVC Client Data Validation - Part 3: Controller validation by ajsaulsberry
+- [Read the guide](https://www.pluralsight.com/guides/microsoft-net/asp-net-core-mvc-client-data-validation-part-3-controller-validation?status=draft)
+- [Read more from ajsaulsberry](https://www.pluralsight.com/guides/author/ajsaulsberry) <img src="https://avatars1.githubusercontent.com/u/11444510?v=4" width="30" height="30" alt="ajsaulsberry" />
+- Related to: Microsoft.NET (C#, ASP.NET, VB.NET, etc)
+
 ### Creating a tic-tac-toe app with React Native and Pusher by Wern Ancheta
 - [Read the guide](https://www.pluralsight.com/guides/node-js/creating-a-tic-tac-toe-app-with-react-native-and-pusher?status=draft)
 - [Read more from Wern Ancheta](https://www.pluralsight.com/guides/author/anchetaWern) <img src="https://avatars3.githubusercontent.com/u/743603?v=4" width="30" height="30" alt="Wern Ancheta" />
