@@ -1,3 +1,8 @@
+### How to build a Laravel chat app with Pusher by Chimezie Enyinnaya
+- [Read the guide](https://www.pluralsight.com/guides/php/how-to-build-a-laravel-chat-app-with-pusher?status=draft)
+- [Read more from Chimezie Enyinnaya](https://www.pluralsight.com/guides/author/ammezie) <img src="https://avatars1.githubusercontent.com/u/6279134?v=4" width="30" height="30" alt="Chimezie Enyinnaya" />
+- Related to: PHP
+
 ### Creating a tic-tac-toe app with React Native and Pusher by Wern Ancheta
 - [Read the guide](https://www.pluralsight.com/guides/node-js/creating-a-tic-tac-toe-app-with-react-native-and-pusher?status=draft)
 - [Read more from Wern Ancheta](https://www.pluralsight.com/guides/author/anchetaWern) <img src="https://avatars3.githubusercontent.com/u/743603?v=4" width="30" height="30" alt="Wern Ancheta" />
