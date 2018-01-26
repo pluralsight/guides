@@ -474,6 +474,11 @@ public class AddNoteActivity extends AppCompatActivity {
 
 </RelativeLayout>```
 
+Visual result of `AddNoteActivity` with above implementation
+
+![Add Note Activity](https://raw.githubusercontent.com/Pavneet-Sing/RoomDemo/master/screenshots/insert.gif)
+
+
 ### Retrieve And Display NoteList
 - Initialize Room database instance and fetch all note objects as List.
 - To display list, we will use RecyclerView.
@@ -627,6 +632,10 @@ To delete a note object, just invoke the `delete` method and provide the note ob
   ```noteDatabase.getNoteDao().deleteNote(notes.get(pos));```
 
 Do not forget to remove object from list which is being used in NoteListActivity to display list and also notify the adapter using `adapterObj.notifyDataSetChanged()`
+
+Final result after implementing update and delete
+
+![Update and delete](https://raw.githubusercontent.com/Pavneet-Sing/RoomDemo/master/screenshots/update_delete.gif)
 
 ### Other features
 
