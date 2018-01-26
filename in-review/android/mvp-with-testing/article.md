@@ -462,6 +462,9 @@ public final class SimulateMovieClient implements MovieRepo{
     }
 }
 ```
+Final visual output
+
+![mvp demo](https://raw.githubusercontent.com/Pavneet-Sing/MVP-with-Testing/master/screenshots/demo.gif)
 
 This concludes the introductory implementation of MVP and the complete code structure is available as [github repository](https://github.com/Pavneet-Sing/MVP-with-Testing) to play with.
 
