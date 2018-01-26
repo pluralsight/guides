@@ -1,3 +1,8 @@
+### Android studio tips and tools to be productive by Pavneet Singh
+- [Read the guide](https://www.pluralsight.com/guides/android/android-studio-tips-and-tools-to-be-productive)
+- [Read more from Pavneet Singh](https://www.pluralsight.com/guides/author/Pavneet-Sing) <img src="https://avatars1.githubusercontent.com/u/11755381?v=4" width="30" height="30" alt="Pavneet Singh" />
+- Related to: Android
+
 ### How to build a public anonymous chat app in JavaScript by Peter Mbanugo
 - [Read the guide](https://www.pluralsight.com/guides/front-end-javascript/how-to-build-a-public-anonymous-chat-app-in-javascript)
 - [Read more from Peter Mbanugo](https://www.pluralsight.com/guides/author/pmbanugo) <img src="https://avatars3.githubusercontent.com/u/4036118?v=4" width="30" height="30" alt="Peter Mbanugo" />
