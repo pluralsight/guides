@@ -1,3 +1,8 @@
+### How to build a public anonymous chat app in JavaScript by Peter Mbanugo
+- [Read the guide](https://www.pluralsight.com/guides/front-end-javascript/how-to-build-a-public-anonymous-chat-app-in-javascript)
+- [Read more from Peter Mbanugo](https://www.pluralsight.com/guides/author/pmbanugo) <img src="https://avatars3.githubusercontent.com/u/4036118?v=4" width="30" height="30" alt="Peter Mbanugo" />
+- Related to: Front-End JavaScript (Angular, React, Meteor, etc)
+
 ### Get Rid of That Bottleneck Using Modern Queue Techniques by Kobi Hikri
 - [Read the guide](https://www.pluralsight.com/guides/software-engineering-best-practices/get-rid-of-that-bottleneck-using-modern-queue-techniques)
 - [Read more from Kobi Hikri](https://www.pluralsight.com/guides/author/kobihikri) <img src="https://avatars2.githubusercontent.com/u/4434689?v=4" width="30" height="30" alt="Kobi Hikri" />
