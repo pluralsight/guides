@@ -1,3 +1,8 @@
+### Testing in android with espresso by Pavneet Singh
+- [Read the guide](https://www.pluralsight.com/guides/android/testing-in-android-with-espresso?status=in-review)
+- [Read more from Pavneet Singh](https://www.pluralsight.com/guides/author/Pavneet-Sing) <img src="https://avatars1.githubusercontent.com/u/11755381?v=4" width="30" height="30" alt="Pavneet Singh" />
+- Related to: Android
+
 ### How to build a Laravel chat app with Pusher by Chimezie Enyinnaya
 - [Read the guide](https://www.pluralsight.com/guides/php/how-to-build-a-laravel-chat-app-with-pusher?status=in-review)
 - [Read more from Chimezie Enyinnaya](https://www.pluralsight.com/guides/author/ammezie) <img src="https://avatars1.githubusercontent.com/u/6279134?v=4" width="30" height="30" alt="Chimezie Enyinnaya" />
