@@ -1,3 +1,8 @@
+### Testing in android with espresso by Pavneet Singh
+- [Read the guide](https://www.pluralsight.com/guides/android/testing-in-android-with-espresso?status=draft)
+- [Read more from Pavneet Singh](https://www.pluralsight.com/guides/author/Pavneet-Sing) <img src="https://avatars1.githubusercontent.com/u/11755381?v=4" width="30" height="30" alt="Pavneet Singh" />
+- Related to: Android
+
 ### Creating a tic-tac-toe app with React Native and Pusher by Wern Ancheta
 - [Read the guide](https://www.pluralsight.com/guides/node-js/creating-a-tic-tac-toe-app-with-react-native-and-pusher?status=draft)
 - [Read more from Wern Ancheta](https://www.pluralsight.com/guides/author/anchetaWern) <img src="https://avatars3.githubusercontent.com/u/743603?v=4" width="30" height="30" alt="Wern Ancheta" />
