@@ -1,0 +1,15 @@
+{
+    "_publish_status": "draft",
+    "author_name": "Pavneet-Sing",
+    "author_real_name": "Pavneet Singh",
+    "branch": "master",
+    "branches": [],
+    "filename": "article.md",
+    "first_commit": "4644f8de6838f21f6bece10bb93e790a9d894446",
+    "image_url": "https://avatars1.githubusercontent.com/u/11755381?v=4",
+    "stacks": [
+        "Android"
+    ],
+    "thumbnail_url": null,
+    "title": "Testing in android with espresso"
+}
