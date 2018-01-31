@@ -1,11 +1,11 @@
 # What is Augmented Reality?
-Augmented reality is simply put the ability to place virtual elements into a real world, physical scene and interact with them.  AR opens exciting new possibilities in many areas, including navigation, gaming, military, travel, etc. 
+Augmented reality is simply the ability to digitally place virtual elements into the real world and interact with these elements as if they were actually present.  AR opens exciting new possibilities in many areas, including navigation, gaming, military technology, travel enhancements, and more. 
 
-We can enhance the real world environment in ways that were not possible before. The possibilities are endless and are limited only by our creativity.
+We can spruce up the real world environment in ways impossible before AR. The possibilities are endless, limited only by our creativity.
 
-Apple announced their *ARKit framework* at WWDC in June 2017. The ARKit framework relies on advanced features like real-time world tracking and hit testing, horizontal plane detection, the ability to apply real lighting to virtual objects. 
+Apple announced their **ARKit framework** at World Wide Developers Conference (WWDC) in June 2017. The ARKit framework relies on advanced iOS features like real-time world tracking and hit testing, horizontal plane detection, and the ability to apply real lighting to virtual objects. 
 
-But we don’t have to be experts in all these areas. ARKit hides all the underlying complexity and allows creating AR applications easily. 
+But we don’t have to be experts in all these areas. ARKit hides all the underlying complexity and makes creating AR applications rather simple. 
 
 Here’s a screenshot from the AR-demo we’re going to build in this tutorial: 
 
@@ -14,16 +14,19 @@ Here’s a screenshot from the AR-demo we’re going to build in this tutorial:
 Follow along with me to see how we get there. You can download the demo projects from [Github](https://github.com/nyisztor/arkit-intro)
 
 # Your First AR App
+
 You're going to create your first iOS augmented reality app in a matter of minutes. Fired up? Read along.
 
 ## Prerequisites
-To implement the ARKit demos in the tutorial, you’ll need a **Mac** with **Xcode 9** or newer. 
-Also, ARKit requires the A9 or newer processors to perform all the complex computations in real-time. Thus, you’ll need an **iPhone SE, iPhone 6s, iPhone 6s Plus, 5th generation iPad or a newer device running iOS 11**. Note that 
 
-> ARKit apps won’t run in the Simulator.
+To implement the ARKit demos in the tutorial, you’ll need a **Mac** with **Xcode 9** or newer. 
+Also, ARKit requires the A9 or newer processors to perform all the complex computations in real-time. Thus, you’ll need an **iPhone SE, iPhone 6s, iPhone 6s Plus, 5th generation iPad or a newer device running iOS 11**. 
+
+**Note that ARKit apps won’t run in the Simulator.**
 
 ## Let’s get started
-Apple made it easy for us to create beautiful, realistic augmented reality apps and games. Xcode 9 comes with a dedicated template that makes it easy for us to create our very first ARKit app. 
+
+Apple made it easy for us to create beautiful, realistic augmented reality apps and games through Xcode 9 and the hardware described above. Xcode 9 even comes with a dedicated template that allows us to build our first ARKit app within minutes. 
 
 Open up Xcode and choose *File -> New -> Project*. Choose the *Augmented Reality App* template:
 
@@ -33,7 +36,7 @@ Hit *Next*, then pick a name for your project (e.g., “FirstARKitApp”). You c
 
 > Congrats! You just created your very first augmented reality app.  
 
-Yes, you read that right! No coding required. And here’s what you’ll see after running the app on a real device:
+Yes, you read that right! **No coding required.** And here’s what you’ll see after running the app on a real device:
 
 ![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/0209a2ef-48b3-4ad1-81ef-29232b82b63e.PNG)
 
@@ -60,25 +63,25 @@ override func viewDidLoad() { 
 }
 ```
 
-The sceneView’s delegate is set to self, but we won’t be using the ```ARSCNViewDelegate``` in this demo. 
+The sceneView’s delegate is set to `self`, but we won’t be using the ```ARSCNViewDelegate``` in this demo. 
 ```
 sceneView.showsStatistics = true  
 ```
-By setting the showsStatistics to true, we’ll see real-time statistics. 
+By setting the `showsStatistics` attribute to true, we’ll see real-time statistics when running our app. 
 
 ![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/6773258a-c6c9-416c-b70a-88c2970bc87a.jpg)
 
-Tapping the “+” button reveals even more details:
+Tapping the `+` icon in at bottom left reveals even more details:
 
 ![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/3a28d02f-29bf-448b-a706-21b402695104.jpg)
 
 - The green bar is the performance indicator. A full bar indicates good performance.
-- The rendering engine is displayed next. Possible values are GL (OpenGL) and Mt (Metal). On modern devices capable of running ARKit you’ll see Mt.
-- The FPS counter shows the frame rate, that is, the number of screen updates per second. 60 is the maximum and values above 30 are acceptable.
+- The rendering engine is displayed to its right. Possible values are GL (OpenGL) and Mt (Metal). On modern devices capable of running ARKit you’ll see Mt.
+- The FPS counter shows the frame rate, or the number of screen updates per second. 60 is the maximum and values above 30 are acceptable.
 - The node count (the value next to the diamond-shaped icon) shows the number of nodes in your scene graph. More on this later.
-- The next is the polygon count indicator. It shows how many polygons are rendered currently in your scene.
+- The next piece of information is the polygon count indicator. It shows how many polygons are rendered currently in your scene.
 - The donut chart shows what the time is being spent on while rendering a frame. We can also see how much time it takes to render a frame.  
-In this example, it only took 0.4 ms to display a frame. Thus, we could display up to 2500 frames/s if the device supported such a high frame-rate.  
+In this example, it only took 0.4 ms to display a frame. Thus, we could display up to 2500 frames/s if the device supported such a high frame-rate.   
 
 We load the scene next: 
 ```
@@ -105,7 +108,9 @@ override func viewWillAppear(_ animated: Bool) { 
 ```
 An ```ARSCNView``` has an AR session associated with it. The ```ARSession``` processes the camera image and tracks the device’s motion. The AR-processing starts after calling the ```ARsession```’s ```run()``` method. The ```run()``` method needs a valid ```ARConfiguration``` instance. This configuration object defines the session’s motion and scene tracking behaviors.  
 
-```ARConfiguration``` cannot be instantiated directly. Instead, use one of the following subclasses provided by ARKit - *quoting from the ARKit documentation*:
+```ARConfiguration``` cannot be instantiated directly. Instead, use one of the following subclasses provided by ARKit. 
+
+*Quoting from the ARKit documentation*:
 - ```ARWorldTrackingConfiguration``` Provides high-quality AR experiences that use the rear-facing camera precisely track a device's position and orientation and allow plane detection and hit testing.
 - ```AROrientationTrackingConfiguration``` Provides basic AR experiences that use the rear-facing camera and track only a device's orientation.
 - ```ARFaceTrackingConfiguration``` Provides AR experiences that use the front-facing camera and track the movement and expressions of the user's face. 
@@ -191,7 +196,7 @@ func renderer(_ renderer: SCNSceneRenderer, didAdd node: SCNNode, for anchor: AR
 The first parameter is a scene renderer. This is our ```ARSCNView``` instance.  
 The second one is a ```SCNNode``` object. The third parameter is an AR anchor object corresponding to the node.  
 
-So, *what’s an AR anchor object*? AR anchors are used for tracking the real-world positions and orientations of real or simulated objects relative to the camera.  When we enable horizontal plane detection, ARKit calls the ```renderer(_: didAdd node:, for anchor:)``` delegate method automatically whenever it detects a new horizontal plane and adds a new node for it. We receive the anchor of each detected flat surface, which will be of type ```ARPlaneAnchor```. 
+So, what *is* an AR anchor object? **AR anchors are used for tracking the real-world positions and orientations of real or simulated objects relative to the camera.**  When we enable horizontal plane detection, ARKit calls the ```renderer(_: didAdd node:, for anchor:)``` delegate method automatically whenever it detects a new horizontal plane and adds a new node for it. We receive the anchor of each detected flat surface, which will be of type ```ARPlaneAnchor```. 
 
 ```ARPlaneAnchor``` represents a planar surface in the world, defined using X and Z coordinates, where Y is the plane’s normal.
 
@@ -236,7 +241,7 @@ Next, I set the plane’s diffuse material to white with 75% transparency.
    planeNode.position = SCNVector3Make(planeAnchor.center.x, planeAnchor.center.y, planeAnchor.center.z) 
    planeNode.eulerAngles.x = -.pi / 2
 ```     
-A ```SCNode``` gets created with the plane geometry. The node’s position shall match the anchor’s position to give us an accurate visual clue. I use the anchor ```center```’s coordinate’s to create a 3D vector. ```SCNPlane``` is one-sided and would appear perpendicular to the surface by default. I need to rotate the ```planeNode``` 90 degrees counter-clockwise to make it display correctly.
+A ```SCNode``` gets created with the plane geometry. The node’s position will match the anchor’s position to give us an accurate visual clue. I use the anchor ```center```’s coordinate’s to create a 3D vector. ```SCNPlane``` is one-sided and would appear perpendicular to the surface by default. I need to rotate the ```planeNode``` 90 degrees counter-clockwise to make it display correctly.
 ```
    node.addChildNode(planeNode)
 ```
@@ -331,9 +336,10 @@ Devices supporting ARKit can render more complex scenes. Here’s a scene I put 
 
 ![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/9e15f7ec-c880-4a50-9580-54ae062dac4a.PNG)
 
-Don't forget to check out the [demo projects on Github](https://github.com/nyisztor/arkit-intro)
-
 # Where to Go from Here?
+
+Hopefully, you can see some potential in AR and have seen some of the neat features of ARKit. If you got a little lost in the code, don't fret. Check out the [demo projects on Github](https://github.com/nyisztor/arkit-intro)!
+
 If you enjoyed this quick introduction to ARKit, you'd probably want to find out more. 
 
 I collected a couple of links for you: 
