@@ -1,3 +1,8 @@
+### Introduction to Augmented Reality with ARKit by Károly Nyisztor
+- [Read the guide](https://www.pluralsight.com/guides/other/introduction-to-augmented-reality-with-arkit)
+- [Read more from Károly Nyisztor](https://www.pluralsight.com/guides/author/nyisztor) <img src="https://avatars1.githubusercontent.com/u/198511?v=4" width="30" height="30" alt="Károly Nyisztor" />
+- Related to: other
+
 ### Android studio tips and tools to be productive by Pavneet Singh
 - [Read the guide](https://www.pluralsight.com/guides/android/android-studio-tips-and-tools-to-be-productive)
 - [Read more from Pavneet Singh](https://www.pluralsight.com/guides/author/Pavneet-Sing) <img src="https://avatars1.githubusercontent.com/u/11755381?v=4" width="30" height="30" alt="Pavneet Singh" />
