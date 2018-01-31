@@ -141,6 +141,10 @@ In the same way, when the developer's code has something to say to the world (i.
 
 Using a decent queue technology like [Apache Kafka](https://kafka.apache.org/) &mdash; which is much more than a queue actually &mdash; will allow us to separate the concern of system-wide reliable messaging from our code base and outsource that concern to a proven, mature technology that specializes in reliable message delivery. Having done that, we will also have created a healthy integration point between our software development team and our DevOps team from the standpoint of the product development life cycle.
 
+![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/d9695701-4692-4425-bd35-84970b55bc55.png)
+
+Now - I don’t mean that its a healthy integration point from social reasons, but from the product development life cycle aspect.
+
 Our DevOps team will deploy our software to their environment and provide feedback on messaging issues, bottlenecks, and other unacceptable messaging delays relaying even before our version has reached the QA team! Possibly even as part of automated build test on an environment “closer to real-life” than the developer's environment.
 
 > Early detection of problems = money saved.
