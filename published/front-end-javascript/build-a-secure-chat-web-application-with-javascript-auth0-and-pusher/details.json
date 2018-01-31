@@ -3,12 +3,7 @@
     "author_name": "pmbanugo",
     "author_real_name": "Peter Mbanugo",
     "branch": "master",
-    "branches": [
-        [
-            "adityavarshney",
-            "adityavarshney-front-end-javascript-build-a-secure-chat-web-application-with-javascript-auth0-and-pusher"
-        ]
-    ],
+    "branches": [],
     "filename": "article.md",
     "first_commit": "db52584a3d0b43b66a108153efaee6606f05ab43",
     "image_url": "https://avatars3.githubusercontent.com/u/4036118?v=4",
