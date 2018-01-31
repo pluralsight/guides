@@ -3,12 +3,7 @@
     "author_name": "eh3rrera",
     "author_real_name": "Esteban Herrera",
     "branch": "master",
-    "branches": [
-        [
-            "adityavarshney",
-            "adityavarshney-front-end-javascript-building-a-serverless-web-app-on-aws-services"
-        ]
-    ],
+    "branches": [],
     "filename": "article.md",
     "first_commit": "abb6c31b27ee1f8bcc4e0a617bb581728332aa6a",
     "image_url": "https://avatars2.githubusercontent.com/u/11665759?v=4",
