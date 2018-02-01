@@ -160,7 +160,7 @@ if __name__ == '__main__':
 
 ### Run the application as a service
 
-To run the application as a service I used [Supervisor](http://supervisord.org/). This is a matter of personal preference; feel free to use any other process controol system.
+To run the application as a service I used [Supervisor](http://supervisord.org/). This is a matter of personal preference; feel free to use any other process control system.
 
 Define a program on Supervisor.
 
