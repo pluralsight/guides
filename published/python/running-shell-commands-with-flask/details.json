@@ -3,7 +3,12 @@
     "author_name": "redmoses",
     "author_real_name": "Red Moses",
     "branch": "master",
-    "branches": [],
+    "branches": [
+        [
+            "v1tal3",
+            "v1tal3-python-running-shell-commands-with-flask"
+        ]
+    ],
     "filename": "article.md",
     "first_commit": null,
     "image_url": "https://avatars.githubusercontent.com/u/4059490?v=3",
