@@ -1,4 +1,3 @@
-
 ![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/310d6edd-b569-408a-a61d-f6d9a9a9eb61.png)
 
 
@@ -75,7 +74,7 @@ $ pip install beautifulsoup4
 ```
 and
 ```
-$ pip install urllib3
+$ pip install requests
 ```
 
 
@@ -89,7 +88,7 @@ $ Python
 Next import your packages: BeautifulSoup and urllib.  
 
 ```
-import bs4, urllib3
+import bs4, requests
 ```
 
 
@@ -127,7 +126,7 @@ Here is the URL:  [Cow Mask](https://www.amazon.com/CreepyParty-Novelty-Hallowee
 
 ![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/c55c896d-a5f7-4a85-ad53-7c78bf1d06b7.41)
 
-Let's say this product is to expensive and we want to keep checking to see if it will come down.  
+Let's say this product is too expensive and we want to keep checking to see if it will come down.  
 
 First, we need Python to connect to the URL and grab the HTML.
 
@@ -135,15 +134,49 @@ Type the following:
 ```
 source = request.get("https://www.amazon.com/CreepyParty-Novelty-Halloween-Costume-Party/dp/B0199PV50K/ref=pd_sim_21_3?_encoding=UTF8&pd_rd_i=B0199PV50K&pd_rd_r=9CN0FB2X3B4YRY4JBSHW&pd_rd_w=yoPuL&pd_rd_wg=AsYde&psc=1&refRID=9CN0FB2X3B4YRY4JBSHW").text
 ```
-We just grabbed our URL with requests and stored it into a variable called "source".  To simplify, we took infomation and placed it into a box called "source"  That way when we need it, we don't need to type "`urllib('https://www.......')`" over and over, we simply need to type "`source`".
+We just grabbed our URL with requests and stored it into a variable called "source".  To simplify, we took information and placed it into a box called "source"  That way when we need it, we don't need to type "`request.get('https://www.......')`" over and over, we simply need to type "`source`".  Essenually, to get source code from the responce object we'll use .text
 
 Next type:
 
 ```
-soup = BeautifulSoup(source.html, 'html.parser')
+soup = BeautifulSoup(source.html, 'lxml')
 ```
 
-We are 
+We are taking the stringged HTML and will be passing it through BeautifulSoup to be parsed.  Now, to print out the code to be examined.  At it's current state printing it would resualt in nasty looking code that would be horrible to read.  So, to make it reasable like the HTML example above will use a function in BeautifulSoup called `prettify`.
+
+```
+print(soup.prettify())
+```
+
+We can see that our program is corrcetly taking the HTML and displaying it in a readable format.  Now lets find the HTML code the cooresponds to the price we want to scrape.  In Google Chrome right click on the price "$12.99" and click inpect.
+
+INSERT GIF
+
+We can see that the price is found in a Span.  
+
+```
+<span id="priceblock_ourprice" class="a-size-medium a-color-price">$12.99</span>
+```
+
+Let's look at it closer.  The span also has a unique `class` called "a-size-medium a-color-price".  We can use that to find the price with ease.  
+
+We are going to create a variable called "price".  Next we are going to use a function of soup called "find" in order to locate the `<span>`. Next, we need to place the `class` and the value in the variable.  See below. 
+
+```
+price = soup.find('span', {'class' : 'a-size-medium a-color-price'})
+```
+
+All that's left is to print "price".  Don't forget to include "text" other wise it would just print the entire `<span class="a-size-medium a-color-price" id="priceblock_ourprice">$12.99</span>`.
+
+```
+print(price.text)
+```
+
+```
+$ 12.99
+```
+
+Success.  Yes, it's just a price, however, we could scrape multiple sections or sites to gather data with ease. All that we need to do is simply run our program and we'll get the price and the best part is, we'll never have to open up a browser.
 
 
 
