@@ -46,7 +46,7 @@ We will be using the following:  <br>
 `3` [Sublime Text 3](https://www.sublimetext.com/3)<br>
 
 Python Packages:<br>
-[urllib](https://docs.python.org/3/library/urllib.html)<br>
+[requests](https://pypi.python.org/pypi/requests/2.12.1)<br>
 [BeautfulSoup](https://pypi.python.org/pypi/BeautifulSoup/3.2.1)<br>
 
 If you do not have Pyhton, do not fear.  Simply open the Python link above, download it, and install it (_3.x and above_).
@@ -85,7 +85,7 @@ $ Python
 
 ```
 
-Next import your packages: BeautifulSoup and urllib.  
+Next import your packages: BeautifulSoup and Requests.  
 
 ```
 import bs4, requests
@@ -94,33 +94,34 @@ import bs4, requests
 
 It should look something like this.
 
-![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/640c0c20-aa57-41a7-9a64-2e80991724e9.gif)
+
+![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/7f4a6c09-7cf4-4ae0-9979-60564e48e407.gif)
+
+
 
 ```>>>``` Is a good sign!!!  If there was an error you would get a bunch of nasty literature...
 
-Now that we have Python and our packages let's scrape.
+Now that we have Python and our packages are imported let's scrape.  To do this I willl be using Sublime3, feel free to use what ever text editor you like.  
 
  
 
 
 
 
-## Python Time
+## Let's Make a Program
 
-You can complete this in the terminal line by line which is great for testing.  Meaning, you cannot move forward until your errors are resolved, or, you can use a text editor to create your script as a whole then run it.  Sometimes it's easier to use terminal until you know everything is working then copy it to your .py program.  The choice is yours.  
+Again you can use Terminal for this whole prcoess, but I would encourage you to use a text editor so you can easily save your .py program which can later be opened by Terminal.  Secondly, if you'd like, you can complete this in the terminal line by line which is great for testing.  Meaning, you cannot move forward until your errors are resolved.  Sometimes it's easier to use Terminal until you know everything is working properly, then simply copy it to your .py program.  The choice is yours.  
 
-Please open your Terminal and type in the following.
+Type in the following.
 ```
 import requests
 from bs4 import BeautifulSoup
 ```
 When importing, remember packages are case sensitive. If you type `beautifulsoup` you'll get an error, so make sure you type your packages correctly. 
 
-Also, notice I wrote `BeautifulSoup as Soup` "as" assigns an allias.  You don't want to type "BeautifulSoup" over and over.  You can asign anything as the variable such as "Soup" or "BS" or "WowThisIsReallyAwesome" etc.  
+Also, notice I wrote `BeautifulSoup as soup` "as" assigns an allias.  You don't want to type "BeautifulSoup" over and over.  You can asign anything as the alias such as "Soup" or "BS" or "WowThisIsReallyAwesome" etc.  
 
-If you get our favorite `>>>` then we can move forward. 
-
-Let's grab a website.  For this example will use something simple.  
+Let's grab a website.  For this example we will use something simple.  
 
 Here is the URL:  [Cow Mask](https://www.amazon.com/CreepyParty-Novelty-Halloween-Costume-Party/dp/B0199PV50K/ref=pd_sim_21_3?_encoding=UTF8&pd_rd_i=B0199PV50K&pd_rd_r=9CN0FB2X3B4YRY4JBSHW&pd_rd_w=yoPuL&pd_rd_wg=AsYde&psc=1&refRID=9CN0FB2X3B4YRY4JBSHW)
 
@@ -128,7 +129,7 @@ Here is the URL:  [Cow Mask](https://www.amazon.com/CreepyParty-Novelty-Hallowee
 
 Let's say this product is too expensive and we want to keep checking to see if it will come down.  
 
-First, we need Python to connect to the URL and grab the HTML.
+First, we need Python to connect to the URL and then grab the HTML.
 
 Type the following:
 ```
@@ -142,17 +143,25 @@ Next type:
 soup = BeautifulSoup(source.html, 'lxml')
 ```
 
-We are taking the stringged HTML and will be passing it through BeautifulSoup to be parsed.  Now, to print out the code to be examined.  At it's current state printing it would resualt in nasty looking code that would be horrible to read.  So, to make it reasable like the HTML example above will use a function in BeautifulSoup called `prettify`.
+We are taking the stringged HTML and will be passing it through BeautifulSoup to be parsed.  Now, lets print out the code to be examined.  At it's current state printing it would resualt in nasty looking code that would be horrible to read.  So, to make it readable like the HTML example above will use a function in BeautifulSoup called `prettify`.  
 
 ```
 print(soup.prettify())
 ```
 
-We can see that our program is corrcetly taking the HTML and displaying it in a readable format.  Now lets find the HTML code the cooresponds to the price we want to scrape.  In Google Chrome right click on the price "$12.99" and click inpect.
 
-INSERT GIF
 
-We can see that the price is found in a Span.  
+![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/484f3ec9-d1d6-4aa8-af4f-054dc7e8ccc1.gif)
+
+Just keep in mind, it will take 2-4 seconds to load, it will display the entire html of that page, so depending on the site it may be chunky.
+
+Alright, we can see that our program is corrcetly taking the HTML and displaying it in a readable format.  Now lets find the HTML code the cooresponds to the price we want to scrape.  In Google Chrome right click on the price "$12.99" and click inpect.
+
+
+![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/09ebee42-dc62-4f2d-89d5-07315f00f8ca.gif)
+
+
+We can see that the price is found in a Span.  The exact code is found below.
 
 ```
 <span id="priceblock_ourprice" class="a-size-medium a-color-price">$12.99</span>
@@ -166,17 +175,36 @@ We are going to create a variable called "price".  Next we are going to use a fu
 price = soup.find('span', {'class' : 'a-size-medium a-color-price'})
 ```
 
-All that's left is to print "price".  Don't forget to include "text" other wise it would just print the entire `<span class="a-size-medium a-color-price" id="priceblock_ourprice">$12.99</span>`.
+All that's left is to print "price".  Don't forget to include "text" other wise it will just print the entire `<span class="a-size-medium a-color-price" id="priceblock_ourprice">$12.99</span>`.
 
 ```
 print(price.text)
 ```
 
+Here is the entire script.
+
 ```
-$ 12.99
+from bs4 import BeautifulSoup
+import requests 
+
+source = requests.get('https://www.amazon.com/CreepyParty-Novelty-Halloween-Costume-Party/dp/B0199PV50K/ref=pd_sim_21_3?_encoding=UTF8&pd_rd_i=B0199PV50K&pd_rd_r=9CN0FB2X3B4YRY4JBSHW&pd_rd_w=yoPuL&pd_rd_wg=AsYde&psc=1&refRID=9CN0FB2X3B4YRY4JBSHW').text
+
+soup = BeautifulSoup(source, 'lxml')
+#print(soup.prettify())
+price = soup.find('span', {'class' : 'a-size-medium a-color-price'})
+
+print(price.text)
 ```
 
-Success.  Yes, it's just a price, however, we could scrape multiple sections or sites to gather data with ease. All that we need to do is simply run our program and we'll get the price and the best part is, we'll never have to open up a browser.
+Let's see it in action.  I'm just going to open Terminal and run the program that I saved.  Let's see it in action. 
+
+
+![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/77c421ef-b1d4-49b6-b4ea-d14a59631d28.gif)
+
+
+
+
+Success!! :octocat:  Yes, it's just a price, however, we could scrape multiple sections or sites to gather data with ease. All that we need to do is simply run our program and we'll get the price and the best part is, we'll never have to open up a browser.
 
 
 
