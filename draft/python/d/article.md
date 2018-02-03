@@ -148,17 +148,35 @@ We are taking the stringged HTML and will be passing it through BeautifulSoup to
 ```
 print(soup.prettify())
 ```
+---
 
-
+<details>
+<summary><b>```Click``` To Reveal the Prettify Example</b></summary>
+<br>
 
 ![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/484f3ec9-d1d6-4aa8-af4f-054dc7e8ccc1.gif)
+</details>
+
+---
+
+
+
 
 Just keep in mind, it will take 2-4 seconds to load, it will display the entire html of that page, so depending on the site it may be chunky.
 
 Alright, we can see that our program is corrcetly taking the HTML and displaying it in a readable format.  Now lets find the HTML code the cooresponds to the price we want to scrape.  In Google Chrome right click on the price "$12.99" and click inpect.
 
+---
+
+<details>
+<summary><b>```Click``` To Reveal the Inspect Example</b></summary>
+<br>
 
 ![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/09ebee42-dc62-4f2d-89d5-07315f00f8ca.gif)
+</details>
+
+---
+
 
 
 We can see that the price is found in a Span.  The exact code is found below.
@@ -198,14 +216,24 @@ print(price.text)
 
 Let's see it in action.  I'm just going to open Terminal and run the program that I saved.  Let's see it in action. 
 
+---
+
+<details>
+<summary><b>```Click``` To Reveal the Inspect Example</b></summary>
+<br>
 
 ![description](https://raw.githubusercontent.com/pluralsight/guides/master/images/77c421ef-b1d4-49b6-b4ea-d14a59631d28.gif)
+</details>
+
+---
 
 
 
+**Success!!**   
 
-Success!! :octocat:  Yes, it's just a price, however, we could scrape multiple sections or sites to gather data with ease. All that we need to do is simply run our program and we'll get the price and the best part is, we'll never have to open up a browser.
+Yes, it's just a price, however, we could scrape multiple sections or sites to gather data with ease. All that we need to do is simply run our program and we'll get the price and the best part is, we'll never have to open up a browser.
 
+Thanks for reading this guide on using the Scraping Data with Python.  And, of course, please add this guide to your favorites if you found it informative or engaging.
 
 
 
