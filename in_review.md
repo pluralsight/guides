@@ -1,3 +1,8 @@
+### Web Scraping with Python by Troy Kranendonk
+- [Read the guide](https://www.pluralsight.com/guides/python/web-scraping-with-python?status=in-review)
+- [Read more from Troy Kranendonk](https://www.pluralsight.com/guides/author/kranetr) <img src="https://avatars2.githubusercontent.com/u/10641956?v=4" width="30" height="30" alt="Troy Kranendonk" />
+- Related to: Python
+
 ### Testing in android with espresso by Pavneet Singh
 - [Read the guide](https://www.pluralsight.com/guides/android/testing-in-android-with-espresso?status=in-review)
 - [Read more from Pavneet Singh](https://www.pluralsight.com/guides/author/Pavneet-Sing) <img src="https://avatars1.githubusercontent.com/u/11755381?v=4" width="30" height="30" alt="Pavneet Singh" />
