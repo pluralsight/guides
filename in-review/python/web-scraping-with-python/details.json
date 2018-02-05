@@ -3,7 +3,12 @@
     "author_name": "kranetr",
     "author_real_name": "Troy Kranendonk",
     "branch": "master",
-    "branches": [],
+    "branches": [
+        [
+            "geimerman",
+            "geimerman-python-web-scraping-with-python"
+        ]
+    ],
     "filename": "article.md",
     "first_commit": "3d2f16ca8ee18220fc11e94a7a9e0a88331fe63f",
     "image_url": "https://avatars2.githubusercontent.com/u/10641956?v=4",
