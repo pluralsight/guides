@@ -41,7 +41,7 @@ So some of the typical problems for this type of Selenium test are:
 So instead of having each test fetch elements directly and being fragile towards UI changes, the Page Object Pattern introduces what is basically a decoupling layer.
 
 You create an object that represents the UI you want to test, which could be a whole page or a significant part of it.
-The responsibility of this object is to wrap HTML elements and encapslutate interactions with the UI, meaning that this is
+The responsibility of this object is to wrap HTML elements and encapsulate interactions with the UI, meaning that this is
 where all calls to WebDriver will go. 
 This is where most WebElements are. 
 And this is the only place you need to modify when the UI changes.
