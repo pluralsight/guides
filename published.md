@@ -1,3 +1,8 @@
+### Web Scraping with Python by Troy Kranendonk
+- [Read the guide](https://www.pluralsight.com/guides/python/web-scraping-with-python)
+- [Read more from Troy Kranendonk](https://www.pluralsight.com/guides/author/kranetr) <img src="https://avatars2.githubusercontent.com/u/10641956?v=4" width="30" height="30" alt="Troy Kranendonk" />
+- Related to: Python
+
 ### Introduction to Augmented Reality with ARKit by Károly Nyisztor
 - [Read the guide](https://www.pluralsight.com/guides/other/introduction-to-augmented-reality-with-arkit)
 - [Read more from Károly Nyisztor](https://www.pluralsight.com/guides/author/nyisztor) <img src="https://avatars1.githubusercontent.com/u/198511?v=4" width="30" height="30" alt="Károly Nyisztor" />
