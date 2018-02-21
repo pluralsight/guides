@@ -822,7 +822,7 @@ public class Mutation implements GraphQLMutationResolver {
     public Book updateBookPageCount(Integer pageCount, Long id) {
         Book book = bookRepository.findOne(id);
         if(book == null) {
-            throw new BookNotFoundException("The book to be updated was found", id);
+            throw new BookNotFoundException("The book to be updated was not found", id);
         }
         book.setPageCount(pageCount);
 
