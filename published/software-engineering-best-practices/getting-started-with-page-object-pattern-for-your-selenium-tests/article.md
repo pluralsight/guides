@@ -8,7 +8,7 @@ or you are starting out fresh.
 The code examples here are written in Java, but the concepts apply to any language. You can find the complete [code examples on github](https://github.com/kschiller/page-object-pattern-tutorial)
 
 ## Problem
-When you are writing functional tests using Selenium a major part of your code will consist of interactions with the web interface your are testing through the WebDriver API. After fetching elements you will verify some state of the element through various assertions and move on to fetching the next element. 
+When you are writing functional tests using Selenium a major part of your code will consist of interactions with the web interface you are testing through the WebDriver API. After fetching elements you will verify some state of the element through various assertions and move on to fetching the next element. 
 
 Consider this example as a part of a basic Selenium test:
 
