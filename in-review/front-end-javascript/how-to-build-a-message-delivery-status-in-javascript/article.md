@@ -1,16 +1,16 @@
-When building realtime applications, we often want to know the actual time when a process or event occurs. For example, in an instant messaging application we want to know if and when our message was delivered to the intended client. We see this in WhatsApp where messages are sent in realtime and you see status of each message when it is delivered and read, with double grey tick when delivered and double blue tick when read. We can easily build a message delivery status using Pusher and JavaScript.
+When building real-time applications, we often want to log or identify when a process or event occurs. For example, in an instant messaging application, we want to know if and when our message was delivered to the intended client. We see this in WhatsApp where messages are sent in realtime and you see status of each message when it is delivered and read, with double grey tick when delivered and double blue tick when the message has been read by another user. We can easily build a message delivery status using Pusher and JavaScript.
 
-## How?
+## Introducing Pusher and the app idea
 
-Pusher has a concept of channels and event which are fundamental to it. We can send a message to a client through a channel and have that client notify us of a read receipt by triggering an event which the sender will listen to and react accordingly.
+[Pusher](https://pusher.com/) is built on channels and events. We can send a message to a client through a channel and have that client notify us of a read receipt by triggering an event to which the sender will respond.
 
-Channels provide a way of filtering data and controlling access to different streams of information, while events are the primary method of packaging messages in the Pusher system which forms the basis of all communication.
+**Channels** provide a way of filtering data and controlling access to different streams of information, while **events** are the primary method of packaging messages in the Pusher system which forms the basis of all communication.
 
 To implement a message delivery status with Pusher, we'll have to subscribe to a channel and listen for events on the channel. We'll build a simple chat application in JavaScript that will send out messages to a client and the client will trigger an event when received.
 
 ## Application setup
 
-To use Pusher API we have to signup and create a Pusher app from the dashboard. We can create as many applications as we want and each one will get an application id and secret key which we'll use to initialise a Pusher instance on client or server side code.
+To use the Pusher API, we have to sign up and create a Pusher app from the dashboard. We can create as many applications as we want and each one will get an application ID and secret key that enables the developer to initialize a Pusher instance in client- or server- side code.
 
 ### Create a new Pusher account
 
@@ -28,19 +28,21 @@ To use Pusher API we have to signup and create a Pusher app from the dashboard. 
 
 ## Code
 
-We will use channels as a means to send messages and trigger events through the channel. There are 3 types of channels in Pusher:
+We will use channels as a means to send messages and trigger events through the channel. There are 3 types of [channels](https://pusher.com/docs/client_api_guide/client_channels) in Pusher:
 
-- **Public Channel** which can be subscribed to by anyone who knows the name of the channel.
-- **Private Channel** which lets your server control access to the data you are broadcasting.
-- **Presence Channel** which is an extension of the private channel, but forces channel subscribers to register user information when subscribing. It also enables users to know who is online.
+- **Public Channel** &mdash; a channel that can be subscribed to by anyone who knows the name of the channel.
+- **Private Channel** &mdash; a channel that lets your server control access to the data you are broadcasting.
+- **Presence Channel** &mdash; an extension of the private channel, but forces channel subscribers to register user information when subscribing. It also enables users to know who is online.
  
-Clients needs to be authenticated to use the private and presence channels. For the sample app, we'll build the client using vanilla JS and server (for authentication) using NodeJS. Because I don't want message to go through the server, but from client to client, and I don't need to know if the user is online or away, I'll use a private channel for this demonstration, but the same technique will apply using any channel type. Client events can only be triggered in private or presence channels, and to use any of these channel types, the user/client must be authenticated, therefore the need for NodeJS back-end for authentication.
+To use the private and presence channel, clients must first be authenticated. For the sample app, we'll build the client using Vanilla JS and the server (for authentication) using Node.js. Because I want messages to from client to client rather than through the server, and because I don't need to know if the user is online or away, I'll use a **private channel** for this demonstration. However, the same technique will apply using any channel type. Our Node back-end will handle channel authentication.
+
+> Client events can only be triggered in private or presence channels, and to use any of these channel types, the user/client must be authenticated.
 
 Also, to use client events, they must be enabled for the application. Go to your Pusher dashboard and on the **App Settings** tab, select "Enable Client Event" and update.
 
-#### Back-End
+### Back-End
 
-Since we're building our backend in Node using Express, let's initialise a new node app and install the needed dependencies. Run the following command:
+Since we're building our backend in Node using Express, let's initialize a new node app and install the needed dependencies. Run the following command:
 
 - `npm init` and select the default options
 - `npm i --save body-parser express pusher` to install express and the Pusher node package
@@ -85,7 +87,7 @@ We instantiate Pusher by passing in an object that contains the details of our a
     "test": "echo \"Error: no test specified\" && exit 1"
   },
 ```
-#### Front-end
+### Front-end
 
 With the back-end in place, we now move on to crafting the front-end. We'll be using the template from this [site](http://bootsnipp.com/snippets/6eWd) with a slight modification.
 
@@ -253,7 +255,7 @@ Add a new file named `index.html` and `style.css` with the following content in 
     background-color: #555;
 }
 ```
-The page we added holds a 1-to-1 chat template. At line **18** we added script to load the Pusher JavaScript library, and at **19** we're loading a custom JavaScript file which we will use to handle interactions from the page. Add this file with the following content:
+The page we added holds a 1-to-1 chat template. At line **18** we added a script to load the Pusher JavaScript library, and at **19** we're loading a custom JavaScript file which we will use to handle interactions from the page. Add this file with the following content:
 
 **index.js**
 
@@ -273,7 +275,7 @@ $(document).ready(function(){
 ```
 From the code above we first connect to Pusher by creating a Pusher object with the **App_Key** and cluster. These values are gotten from the Pusher dashboard. `encrypted` is set to false to allow it to send information on an unencrypted connection.
 
-Afterwards, we subscribe to a channel which is to be used for sending out messages. Channel names can be anything, but must be a maximum of 164 characters. Another restriction on a private channel is that it must be prefixed with `private-` .
+Afterwards, we subscribe to a channel which is to be used for sending out messages. Channel names can be anything, but must be a maximum of 164 characters. Another restriction on a private channel is that it must be prefixed with `private-`.
 
 Next we bind to events. This way we can receive messages from a client through the channel we subscribed to. Add the following line to `index.js`
 
@@ -314,18 +316,25 @@ function onMessageDelivered(data) {
     $("#" + data.id).find("small").html("Delivered");
 }
 ```
-I will be triggering events from the client and don't want it to go through the back-end or be validated. This is just for this demo. [Client events](https://pusher.com/docs/client_api_guide/client_events#trigger-events) must be prefixed by `client-` that is why I have done so with the code above. Events with any other prefix will be rejected by the Pusher server, as will events sent to channels to which the client is not subscribed.
 
-> It is important that you apply additional care when when triggering client events. Since these originate from other users, and could be subject to tampering by a malicious user of your site.
+Remember, I will be triggering events from the client and don't want these to go through the back-end or be validated. This is just for this demo. [Client events](https://pusher.com/docs/client_api_guide/client_events#trigger-events) must be prefixed by `client-`, as can be seen in the code above. Events with any other prefix will be rejected by the Pusher server, as will events sent to channels to which the client is not subscribed.
 
-`client-message-added` will be triggered when a user enters a new message. Once the other user gets the message, it is displayed on the page, and `client-message-delivered` event is triggered to notify the sender of receipt. This way we can achieve the objective of getting notified about message delivery status in our application.
+> It is important that you apply additional care when when triggering client events because these originate from other users and could be tampered with by a malicious user of your site.
 
-Run the application and see how it works.
+`client-message-added` will be triggered when a user enters a new message. Once the other user gets the message, it is displayed on the page, and `client-message-delivered` event is triggered to notify the sender of receipt. This way we achieve the objective of getting notified when messages are delivered in our application.
+
+Run the application and see how it works!
 
 <img src="http://blog.pusher.com/wp-content/uploads/2017/03/how-build-a-message-delivery-status-in-javascript-final-app.gif" alt="" width="1425" height="764" class="alignnone size-full wp-image-2830" />
 
-## Wrap Up
+## Wrapping Up
 
-With what you've seen so far, and knowing that Channels and Events are the fundamentals of Pusher, I hope I've shown you how to implement a message delivery status using Pusher and JavaScript. You can find the code on [GitHub](https://github.com/pmbanugo/pusher-message-delivery-status)
+This guide aimed to demonstrate how to implement a message delivery status notification using Pusher, a realtime service, and JavaScript. You can find the code on [GitHub](https://github.com/pmbanugo/pusher-message-delivery-status). I hope that this exercise has helped you see other ways that Pusher can be used for messaging and other applications.
+
+Until next time!
+
+___
+
+Thank you for reading this tutorial. Please leave your comments and feedback in the discussion section below. Be sure to add this guide to your favorites as well!
 
 *This was originally published on [Pusher](https://blog.pusher.com/how-to-build-a-message-delivery-status-in-javascript/)*
