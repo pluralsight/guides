@@ -135,7 +135,7 @@ schema {
 Here's a sample mutation based on the above declaration:
 ```
 mutation {
-  newSong(sond: {
+  newSong(song: {
     title: "Song #2",
     duration: 122,
     genre: "hrock",
