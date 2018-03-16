@@ -351,8 +351,8 @@ extend type Mutation {
 This way, at runtime, the `Query` type will contain all the author and book operation, as it was defined like:
 ```
 type Query {
-  findAllAuthors: [Author]!
-  countAuthors: Long!
+    findAllAuthors: [Author]!
+    countAuthors: Long!
     findAllBooks: [Book]!
     countBooks: Long!
 }
@@ -361,7 +361,7 @@ type Query {
 Just like the `Mutation` type:
 ```
 type Mutation {
-  newAuthor(firstName: String!, lastName: String!) : Author!
+    newAuthor(firstName: String!, lastName: String!) : Author!
     newBook(title: String!, isbn: String!, pageCount: Int, author: ID!) : Book!
     deleteBook(id: ID!) : Boolean
     updateBookPageCount(pageCount: Int!, id: ID!) : Book!
