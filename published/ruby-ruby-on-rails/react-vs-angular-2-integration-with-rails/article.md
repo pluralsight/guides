@@ -322,7 +322,7 @@ This step completes the Angular 2 integration into your Rails application. Start
 ```bash
 rails s
 ```
-Open your browser and go to [http://localhost:3000](http://localhost:3000). You should see the <cvode>home.component</code> with the message displayed on the server. if you encounter any errors, you can check the [GitHub repository](https://github.com/Kaizeras/rails-angular2starter) of what we just implemented.
+Open your browser and go to [http://localhost:3000](http://localhost:3000). You should see the <cvode>home.component</code> with the message displayed on the server. if you encounter any errors, you can check the [GitHub repository](https://github.com/hggeorgiev/rails-angular2starter) of what we just implemented.
 
 ## Integrating React
  Unlike Angular 2, which is a full-fledged framework, React is simply a library that provides bare-bones features for constructing user interfaces. React uses [JSX](https://jsx.github.io/), or Java Serialization to XML, to render its components. JSX is much simpler and lighter than TypeScript, and, unlike TypeScript, JSX can be integrated into Rails' asset pipeline. As a result, React integration becomes sufficiently faster. 
@@ -434,7 +434,7 @@ Last, make a view to render the component. Go to <code>app/views</code>, create 
 ```
 <code> react_component </code> is a built-in helper method provided by react-rails that is going to render the <code>Item</code> component into the Rails view.
 
- With this step, the Rails application integrates React. Go to http://localhost:3000 and see the results. If you encounter any problems, check the [GitHub repository](https://github.com/Kaizeras/rails-reactstarter) .
+ With this step, the Rails application integrates React. Go to http://localhost:3000 and see the results. If you encounter any problems, check the [GitHub repository](https://github.com/hggeorgiev/rails-reactstarter) .
 
 ## Summary
 

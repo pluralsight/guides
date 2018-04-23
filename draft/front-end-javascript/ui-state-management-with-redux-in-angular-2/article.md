@@ -1700,7 +1700,7 @@ These examples represent many of the use cases that you might encounter when bui
 
 Does Redux do a good job in controlling the UI layout? In my opinion, it absolutely does. It may require a little bit more code to be written at times, but the benefits truly start to shine as the application's codebase grows and logic gets reused. 
 
-Missed anything? [I have uploaded the source code with all the examples on Github.](https://github.com/Kaizeras/ng2-redux-ui-management-recipes).
+Missed anything? [I have uploaded the source code with all the examples on Github.](https://github.com/hggeorgiev/ng2-redux-ui-management-recipes).
 
 ___ 
 Thank you for reading this guide. I hope you found it helpful and interesting. Feel free to leave questions or feedback in the comments section below.

@@ -416,7 +416,7 @@ If you'd want to test out a dashboard layout or see how your queries visualize a
 Dashboard items are distributed in rows in columns, the same way it is done when building a web applicaiton.You can pick your saved queries and distribute them in the dashboard.
 
 
-That was all! I hope you found this tutorial interesting. If you missed out some of the parts or need a reference on the code, I have created a [GitHub repository](https://github.com/Kaizeras/keen.io-actioncable) that contains the code from the tutorial.
+That was all! I hope you found this tutorial interesting. If you missed out some of the parts or need a reference on the code, I have created a [GitHub repository](https://github.com/hggeorgiev/keen.io-actioncable) that contains the code from the tutorial.
 
 Please favorite this tutorial and leave your comments and feedback in the comments below!
 

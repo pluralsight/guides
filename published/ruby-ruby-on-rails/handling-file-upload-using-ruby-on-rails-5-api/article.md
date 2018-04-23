@@ -579,7 +579,7 @@ localhost:3000/items
  ```
 ## Conclusion
 
-Now you know how to upload files. You can now go ahead and set up a client-side application that can consume the API. In case you got lost in the guide, I created a [Github repository](https://github.com/Kaizeras/rails-api-fileupload-tutorial) and added [branches](https://github.com/Kaizeras/rails-api-fileupload-tutorial/branches/all) for each of the steps and the implementations done in the tutorial.
+Now you know how to upload files. You can now go ahead and set up a client-side application that can consume the API. In case you got lost in the guide, I created a [Github repository](https://github.com/hggeorgiev/rails-api-fileupload-tutorial) and added [branches](https://github.com/hggeorgiev/rails-api-fileupload-tutorial/branches/all) for each of the steps and the implementations done in the tutorial.
 
 My personal preference for file upload is [CarrieWave](https://github.com/carrierwaveuploader/carrierwave) because it offers a more straightforward approach. The logic for the file is isolated into uploaders, which can be reused repeatedly for multiple models. This makes the code more maintinable. It took me considerably less time to implement file uploading for both single and multiple items. With the [CarrierWave-base64](https://github.com/lebedev-yury/carrierwave-base64) gem, I did not have to add any custom logic for decoding and saving images - changing the name of the mounting method was enough. **The only significant drawback is that CarrierWave has a lot of "magic" going behind it.** It does not feel as customizable as Paperclip, and debugging on CarrierWave seems more difficult.
 

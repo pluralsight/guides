@@ -1,5 +1,5 @@
 # What we did last time
-  [In part 1 of this guide](http://tutorials.pluralsight.com/front-end-javascript/building-a-redux-application-with-angular-2-part-1), I covered Redux's main principles and terminology by creating a small [application for recording financial operations](https://github.com/Kaizeras/ng2-redux-app).
+  [In part 1 of this guide](http://tutorials.pluralsight.com/front-end-javascript/building-a-redux-application-with-angular-2-part-1), I covered Redux's main principles and terminology by creating a small [application for recording financial operations](https://github.com/hggeorgiev/ng2-redux-app).
   
   This tutorial builds on the concepts learned in the previous one. If you need a refresher, I highly recommend looking over the first Redux application tutorial again.
   
@@ -1111,7 +1111,7 @@ Go to [http://localhost:4200](http://localhost:4200) and have a look at the comp
 Redux is a new approach for managing application state. The concepts from functional programming applied in Redux may be suitable for certain use cases, and it's up to you your to decide whether Redux is the right way to go for your next project.
 
 #### Got lost in the code?
-In case you didn't understand what goes where, [I have uploaded the final version of the example application for you to use as a reference.](https://github.com/Kaizeras/ng2-redux-app/tree/step-2)
+In case you didn't understand what goes where, [I have uploaded the final version of the example application for you to use as a reference.](https://github.com/hggeorgiev/ng2-redux-app/tree/step-2)
 
 In case you have any questions regarding Redux and Angular 2, post a comment or send me an e-mail. Thanks for reading!
 

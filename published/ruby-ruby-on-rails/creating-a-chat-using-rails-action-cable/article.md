@@ -364,5 +364,5 @@ Now you can go ahead and start typing away in the text box and you’ll see your
  
  
 #### Got lost during the turorial?
-You can check out the [code of the tutorial on Github](https://github.com/Kaizeras/actioncable-chat-tutorial).
+You can check out the [code of the tutorial on Github](https://github.com/hggeorgiev/actioncable-chat-tutorial).
 
