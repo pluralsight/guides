@@ -295,7 +295,7 @@
 
 ### UI state management with Redux in Angular 4 by Hristo Georgiev
 - [Read the guide](https://www.pluralsight.com/guides/front-end-javascript/ui-state-management-with-redux-in-angular-4)
-- [Read more from Hristo Georgiev](https://www.pluralsight.com/guides/author/Kaizeras) <img src="https://avatars3.githubusercontent.com/u/6340189?v=4" width="30" height="30" alt="Hristo Georgiev" />
+- [Read more from Hristo Georgiev](https://www.pluralsight.com/guides/author/hggeorgiev) <img src="https://avatars3.githubusercontent.com/u/6340189?v=4" width="30" height="30" alt="Hristo Georgiev" />
 - Related to: Front-End JavaScript (Angular, React, Meteor, etc)
 
 ### Semantic HTML by Miroslav Gajic
@@ -340,12 +340,12 @@
 
 ### Building a Redux application with Angular 2 - Part 2 by Hristo Georgiev
 - [Read the guide](https://www.pluralsight.com/guides/front-end-javascript/building-a-redux-application-with-angular-2-part-2)
-- [Read more from Hristo Georgiev](https://www.pluralsight.com/guides/author/Kaizeras) <img src="https://avatars.githubusercontent.com/u/6340189?v=3" width="30" height="30" alt="Hristo Georgiev" />
+- [Read more from Hristo Georgiev](https://www.pluralsight.com/guides/author/hggeorgiev) <img src="https://avatars.githubusercontent.com/u/6340189?v=3" width="30" height="30" alt="Hristo Georgiev" />
 - Related to: Front-End JavaScript (Angular, React, Meteor, etc)
 
 ### Building a Redux application with Angular 2 - Part 1 by Hristo Georgiev
 - [Read the guide](https://www.pluralsight.com/guides/front-end-javascript/building-a-redux-application-with-angular-2-part-1)
-- [Read more from Hristo Georgiev](https://www.pluralsight.com/guides/author/Kaizeras) <img src="https://avatars.githubusercontent.com/u/6340189?v=3" width="30" height="30" alt="Hristo Georgiev" />
+- [Read more from Hristo Georgiev](https://www.pluralsight.com/guides/author/hggeorgiev) <img src="https://avatars.githubusercontent.com/u/6340189?v=3" width="30" height="30" alt="Hristo Georgiev" />
 - Related to: Front-End JavaScript (Angular, React, Meteor, etc)
 
 ### Build a Futurama Quote-bot with Twilio MMS, Morbotron, and Ruby by Chris Hranj
@@ -400,7 +400,7 @@
 
 ### React vs. Angular 2 by Hristo Georgiev
 - [Read the guide](https://www.pluralsight.com/guides/front-end-javascript/react-vs-angular-2)
-- [Read more from Hristo Georgiev](https://www.pluralsight.com/guides/author/Kaizeras) <img src="https://avatars.githubusercontent.com/u/6340189?v=3" width="30" height="30" alt="Hristo Georgiev" />
+- [Read more from Hristo Georgiev](https://www.pluralsight.com/guides/author/hggeorgiev) <img src="https://avatars.githubusercontent.com/u/6340189?v=3" width="30" height="30" alt="Hristo Georgiev" />
 - Related to: Front-End JavaScript (Angular, React, Meteor, etc)
 
 ### Using the Tierion Hash API with Python by Matthew Sedaghatfar
@@ -445,7 +445,7 @@
 
 ### Debugging Angular 2 applications by Hristo Georgiev
 - [Read the guide](https://www.pluralsight.com/guides/front-end-javascript/debugging-angular-2-applications)
-- [Read more from Hristo Georgiev](https://www.pluralsight.com/guides/author/Kaizeras) <img src="https://avatars.githubusercontent.com/u/6340189?v=3" width="30" height="30" alt="Hristo Georgiev" />
+- [Read more from Hristo Georgiev](https://www.pluralsight.com/guides/author/hggeorgiev) <img src="https://avatars.githubusercontent.com/u/6340189?v=3" width="30" height="30" alt="Hristo Georgiev" />
 - Related to: Front-End JavaScript (Angular, React, Meteor, etc)
 
 ### Build a scalable, fault tolerant system with ASP.NET Core and RethinkDB on Docker Swarm mode by Stefan Prodan
@@ -470,7 +470,7 @@
 
 ### Build an Angular 2 application that displays wallpapers using the Reddit API by Hristo Georgiev
 - [Read the guide](https://www.pluralsight.com/guides/front-end-javascript/build-an-angular-2-application-that-displays-wallpapers-using-the-reddit-api)
-- [Read more from Hristo Georgiev](https://www.pluralsight.com/guides/author/Kaizeras) <img src="https://avatars.githubusercontent.com/u/6340189?v=3" width="30" height="30" alt="Hristo Georgiev" />
+- [Read more from Hristo Georgiev](https://www.pluralsight.com/guides/author/hggeorgiev) <img src="https://avatars.githubusercontent.com/u/6340189?v=3" width="30" height="30" alt="Hristo Georgiev" />
 - Related to: Front-End JavaScript (Angular, React, Meteor, etc)
 
 ### Scalable Analytics in Plain Java with Keen IO and Spring Boot by Alejandro
@@ -595,7 +595,7 @@
 
 ### Introduction to Angular test-driven development by Hristo Georgiev
 - [Read the guide](https://www.pluralsight.com/guides/front-end-javascript/introduction-to-angular-test-driven-development)
-- [Read more from Hristo Georgiev](https://www.pluralsight.com/guides/author/Kaizeras) <img src="https://avatars.githubusercontent.com/u/6340189?v=3" width="30" height="30" alt="Hristo Georgiev" />
+- [Read more from Hristo Georgiev](https://www.pluralsight.com/guides/author/hggeorgiev) <img src="https://avatars.githubusercontent.com/u/6340189?v=3" width="30" height="30" alt="Hristo Georgiev" />
 - Related to: Front-End JavaScript (Angular, React, Meteor, etc)
 
 ### Advanced workflows for building rock-solid Ionic apps. Part 3: Orbit by Jonathan Grupp
@@ -680,7 +680,7 @@
 
 ### Reactive analytics using Keen.IO and ActionCable in Rails 5 by Hristo Georgiev
 - [Read the guide](https://www.pluralsight.com/guides/interesting-apis/reactive-analytics-using-keen-io-and-actioncable-in-rails-5)
-- [Read more from Hristo Georgiev](https://www.pluralsight.com/guides/author/Kaizeras) <img src="https://avatars.githubusercontent.com/u/6340189?v=3" width="30" height="30" alt="Hristo Georgiev" />
+- [Read more from Hristo Georgiev](https://www.pluralsight.com/guides/author/hggeorgiev) <img src="https://avatars.githubusercontent.com/u/6340189?v=3" width="30" height="30" alt="Hristo Georgiev" />
 - Related to: Interesting APIs (SendGrid, Twilio, etc)
 
 ### A Practical Introduction to RethinkDB by Esteban Herrera
@@ -735,7 +735,7 @@
 
 ### React vs. Angular 2 integration with Rails by Hristo Georgiev
 - [Read the guide](https://www.pluralsight.com/guides/ruby-ruby-on-rails/react-vs-angular-2-integration-with-rails)
-- [Read more from Hristo Georgiev](https://www.pluralsight.com/guides/author/Kaizeras) <img src="https://avatars.githubusercontent.com/u/6340189?v=3" width="30" height="30" alt="Hristo Georgiev" />
+- [Read more from Hristo Georgiev](https://www.pluralsight.com/guides/author/hggeorgiev) <img src="https://avatars.githubusercontent.com/u/6340189?v=3" width="30" height="30" alt="Hristo Georgiev" />
 - Related to: Ruby, Ruby on Rails
 
 ### Building a Generic CSV Writer/Reader using Reflection by Murat Aykanat
@@ -755,7 +755,7 @@
 
 ### Handling file upload using Ruby on Rails 5 API  by Hristo Georgiev
 - [Read the guide](https://www.pluralsight.com/guides/ruby-ruby-on-rails/handling-file-upload-using-ruby-on-rails-5-api)
-- [Read more from Hristo Georgiev](https://www.pluralsight.com/guides/author/Kaizeras) <img src="https://avatars.githubusercontent.com/u/6340189?v=3" width="30" height="30" alt="Hristo Georgiev" />
+- [Read more from Hristo Georgiev](https://www.pluralsight.com/guides/author/hggeorgiev) <img src="https://avatars.githubusercontent.com/u/6340189?v=3" width="30" height="30" alt="Hristo Georgiev" />
 - Related to: Ruby, Ruby on Rails
 
 ### Beginner: Linux Navigation Manual by Prakrit Duangsutha
@@ -780,7 +780,7 @@
 
 ### Token-based authentication with Ruby on Rails 5 API by Hristo Georgiev
 - [Read the guide](https://www.pluralsight.com/guides/ruby-ruby-on-rails/token-based-authentication-with-ruby-on-rails-5-api)
-- [Read more from Hristo Georgiev](https://www.pluralsight.com/guides/author/Kaizeras) <img src="https://avatars.githubusercontent.com/u/6340189?v=3" width="30" height="30" alt="Hristo Georgiev" />
+- [Read more from Hristo Georgiev](https://www.pluralsight.com/guides/author/hggeorgiev) <img src="https://avatars.githubusercontent.com/u/6340189?v=3" width="30" height="30" alt="Hristo Georgiev" />
 - Related to: Ruby, Ruby on Rails
 
 ### Globalization with Attached Properties in WPF by Murat Aykanat
@@ -805,7 +805,7 @@
 
 ### Creating a chat using Rails' Action Cable by Hristo Georgiev
 - [Read the guide](https://www.pluralsight.com/guides/ruby-ruby-on-rails/creating-a-chat-using-rails-action-cable)
-- [Read more from Hristo Georgiev](https://www.pluralsight.com/guides/author/Kaizeras) <img src="https://avatars3.githubusercontent.com/u/6340189?v=4" width="30" height="30" alt="Hristo Georgiev" />
+- [Read more from Hristo Georgiev](https://www.pluralsight.com/guides/author/hggeorgiev) <img src="https://avatars3.githubusercontent.com/u/6340189?v=4" width="30" height="30" alt="Hristo Georgiev" />
 - Related to: Ruby, Ruby on Rails
 
 ### Tips and cool tricks to use in git by Lucas Andrey
@@ -835,7 +835,7 @@
 
 ### Building a CRUD interface with React and Ruby on Rails by Hristo Georgiev
 - [Read the guide](https://www.pluralsight.com/guides/ruby-ruby-on-rails/building-a-crud-interface-with-react-and-ruby-on-rails)
-- [Read more from Hristo Georgiev](https://www.pluralsight.com/guides/user/Kaizeras) <img src="https://avatars.githubusercontent.com/u/6340189?v=3" width="30" height="30" alt="Hristo Georgiev" />
+- [Read more from Hristo Georgiev](https://www.pluralsight.com/guides/user/hggeorgiev) <img src="https://avatars.githubusercontent.com/u/6340189?v=3" width="30" height="30" alt="Hristo Georgiev" />
 - Related to: Ruby, Ruby on Rails
 
 ### Using ​a Spreadsheet​ ​to Power Charts in AngularJS Apps by Rohit Boggarapu

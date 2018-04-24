@@ -11,7 +11,7 @@ In short, token-based authentication is a security strategy in which users log i
 
 
 # Setting up Dual authentication with Rails 4
-Parts of this tutorial were directly copied from [the guide](https://www.pluralsight.com/guides/ruby-ruby-on-rails/token-based-authentication-with-ruby-on-rails-5-api) by [Hristo Georgiev](https://www.pluralsight.com/guides/author/Kaizeras).
+Parts of this tutorial were directly copied from [the guide](https://www.pluralsight.com/guides/ruby-ruby-on-rails/token-based-authentication-with-ruby-on-rails-5-api) by [Hristo Georgiev](https://www.pluralsight.com/guides/author/hggeorgiev).
 
 I assume you already have a Rails 4 application set up to work with [Devise](https://github.com/plataformatec/devise). I also assume that you are using a vanilla [Devise](https://github.com/plataformatec/devise) setup. In other words, you did not override any controllers yet and you use at least `:database_authenticatable`, `:registerable strategies`.
 

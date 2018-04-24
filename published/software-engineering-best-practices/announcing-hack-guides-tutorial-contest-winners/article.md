@@ -51,7 +51,7 @@ Special congratulations to all the winning authors. The winner of the each spons
     <td>$500</td>
     <td>Best tutorial building a Dashboard</td>
     <td>[Reactive Analytics using Keen IO and ActionCable in Rails 5](http://tutorials.pluralsight.com/interesting-apis/reactive-analytics-using-keen-io-and-actioncable-in-rails-5)</td>
-    <td>[Hristo Georgiev](https://github.com/Kaizeras)</td>
+    <td>[Hristo Georgiev](https://github.com/hggeorgiev)</td>
   </tr>
   <tr>
     <td>Pluralsight</td>

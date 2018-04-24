@@ -372,4 +372,4 @@ With the token prepended, an empty array (`[]`) is returned. This is normal -- a
 
 Awesome! Everything works. 
 
-If you missed something, the project has been uploaded on [GitHub](https://github.com/Kaizeras/rails-jwt-auth-tutorial). If you have any questions, do not hesitate to ask in the comments or feel free to message me on Github.
+If you missed something, the project has been uploaded on [GitHub](https://github.com/hggeorgiev/rails-jwt-auth-tutorial). If you have any questions, do not hesitate to ask in the comments or feel free to message me on Github.

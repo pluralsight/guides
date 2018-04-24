@@ -1159,6 +1159,6 @@ updateItems(item) {
 
 
 
-That’s it! We managed to implement a full CRUD functionality for one model. Now you can improve your project by adding some styles to it or adding some extra information to the items themselves. [Here’s the github repository of the project we just created](https://github.com/Kaizeras/react-rails-tutorial).
+That’s it! We managed to implement a full CRUD functionality for one model. Now you can improve your project by adding some styles to it or adding some extra information to the items themselves. [Here’s the github repository of the project we just created](https://github.com/hggeorgiev/react-rails-tutorial).
 
 If you’d like to learn more about React with Rails, you can check out the official git repository of react-rails.  Or, if you’d like to learn more about React in general, you can check out its documentation. If you have any questions, you can message me in our [community slack](https://hackguides.herokuapp.com/).
