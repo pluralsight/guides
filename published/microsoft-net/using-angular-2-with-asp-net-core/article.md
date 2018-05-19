@@ -31,7 +31,7 @@ Right click on `wwwroot` folder, `Add New Item` and create the `index.html` file
 
 ```
 
-For ASP.NET Core to serve static files, we need to add StaticFiles middleware in the **Configure** method of the `Startup.cs` page. Ensure that packages are restored properly.
+For ASP.NET Core to serve static files, we need to add StaticFiles middleware in the **Configure** method of the `Startup.cs` page. Ensure the NuGet package `Microsoft.AspNetCore.StaticFiles` is installed that packages are restored properly.
 
 `project.json` is redesigned to make it better, we have StaticFiles middleware to serve static assets like HTML, JS files etc.
 ```C#
@@ -66,7 +66,7 @@ public void Configure(IApplicationBuilder app)
       "imports": [
         "dotnet5.6",
         "portable-net45+win8"
-      ]
+      ]serv
     }
   },
  
